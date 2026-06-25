@@ -1,0 +1,92 @@
+# Tiny MA paper shakedown — one symbol, one dumb strategy, tiny notional.
+
+mode = "paper"
+strategy_name = "dual_ma_crossover"
+strategy_version = "0.1.0"
+strategies_enabled = ["ma"]
+artifacts_dir = "~/trading_artifacts"
+
+[[brokers]]
+name = "alpaca"
+asset_class = "equity"
+api_key_env = "ALPACA_API_KEY"
+api_secret_env = "ALPACA_API_SECRET"
+base_url = "https://paper-api.alpaca.markets"
+data_url = "https://data.alpaca.markets"
+is_paper = true
+
+[[data]]
+symbols = ["AAPL"]
+asset_class = "equity"
+bar_frequency_raw = "1min"
+target_frequencies = ["1d"]
+start_date = "2020-01-01"
+adjustment = "split_dividend"
+storage_dir = "data/parquet/equity"
+min_volume = 1000000.0
+price_floor = 5.0
+
+[risk_limits]
+per_position_pct = 0.01
+max_daily_loss_pct = 0.03
+block_new_at_daily_loss_pct = 0.02
+max_weekly_loss_pct = 0.06
+max_monthly_loss_pct = 0.15
+max_gross_exposure_pct = 1.0
+max_net_exposure_pct = 1.0
+max_sector_gross_pct = 1.0
+max_sector_net_pct = 1.0
+max_correlated_cluster_gross_pct = 1.0
+max_correlated_cluster_risk_pct = 0.01
+correlation_threshold = 0.70
+max_open_positions = 1
+
+[portfolio]
+sizing_method = "fixed_fraction"
+execution_mode = "signal_transition"
+per_position_risk_pct = 0.01
+dollar_neutral = false
+equal_weight = false
+rebalance_frequency = "daily"
+min_notional_delta = 25.0
+min_qty_delta = 1e-6
+min_pct_position_delta = 0.05
+
+[cost_model]
+slippage_fixed_pct = 0.0005
+slippage_variable_coeff = 0.5
+commission_pct = 0.0
+sec_fee_per_dollar_sold = 5.1e-6
+finra_taf_per_share_sold = 0.000119
+crypto_taker_fee_pct = 0.001
+crypto_maker_fee_pct = 0.0007
+borrow_cost_annual_pct = 0.01
+
+[monitoring]
+dashboard_enabled = true
+dashboard_port = 8501
+telegram_alerts = false
+heartbeat_interval_seconds = 30
+watchdog_enabled = true
+watchdog_heartbeat_timeout_seconds = 120
+
+[engine]
+bar_close_execution = true
+reconciliation_interval_minutes = 60
+startup_reconciliation_required = true
+kill_switch_persistent = true
+
+[live_deployment]
+authorized = false
+dry_run_mode = false
+promotion_status = "paper"
+paper_submit_enabled = true
+max_paper_notional = 100.0
+max_notional_per_order = 100.0
+max_strategy_capital = 500.0
+strategy_capital_limit = 500.0
+allow_short = false
+paper_order_type = "limit"
+paper_limit_offset_pct = 0.001
+paper_cancel_open_order_after_submit = true
+paper_session_count = 1

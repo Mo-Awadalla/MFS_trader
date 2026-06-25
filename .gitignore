@@ -43,6 +43,7 @@ ENV/
 # External artifact store (heavy results live outside repo, but guard local too)
 runs/
 external_artifacts/
+data/parquet/
 
 # Jupyter
 .ipynb_checkpoints/

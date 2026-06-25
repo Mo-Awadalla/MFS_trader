@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import time
 from typing import Any
+from urllib.parse import quote
 
 import requests
 import structlog
@@ -235,6 +236,16 @@ class AlpacaAdapter(BrokerAdapter):
             if status is None or status.broker_order_id is None:
                 log.warning("alpaca_cancel_not_found", client_order_id=client_order_id)
                 return False
+            if status.status == "CANCELLED":
+                log.info("alpaca_cancel_already_cancelled", client_order_id=client_order_id)
+                return True
+            if status.status in {"FILLED", "REJECTED", "EXPIRED"}:
+                log.warning(
+                    "alpaca_cancel_terminal",
+                    client_order_id=client_order_id,
+                    status=status.status,
+                )
+                return False
 
             # Cancel by broker-assigned order ID
             resp = self._request("DELETE", f"/v2/orders/{status.broker_order_id}")
@@ -254,8 +265,9 @@ class AlpacaAdapter(BrokerAdapter):
             return None
 
         try:
+            encoded_client_order_id = quote(client_order_id, safe="")
             resp = self._request(
-                "GET", f"/v2/orders:by_client_order_id?client_order_id={client_order_id}"
+                "GET", f"/v2/orders:by_client_order_id?client_order_id={encoded_client_order_id}"
             )
         except Exception as e:
             log.error("alpaca_status_error", error=str(e), client_order_id=client_order_id)
@@ -269,6 +281,26 @@ class AlpacaAdapter(BrokerAdapter):
         else:
             log.warning("alpaca_status_failed", status=resp.status_code)
             return None
+
+    def get_open_orders(self) -> list[BrokerOrderResponse]:
+        """Fetch currently open Alpaca orders."""
+        if not self.is_connected:
+            return []
+
+        try:
+            resp = self._request("GET", "/v2/orders", params={"status": "open", "limit": 100})
+        except Exception as e:
+            log.error("alpaca_open_orders_error", error=str(e))
+            return []
+
+        if resp.status_code == 200:
+            return [
+                self._parse_order_response(order, order.get("client_order_id", ""))
+                for order in resp.json()
+            ]
+
+        log.warning("alpaca_open_orders_failed", status=resp.status_code)
+        return []
 
     def get_positions(self) -> list[BrokerPosition]:
         """Fetch all open positions from Alpaca."""
@@ -325,10 +357,21 @@ class AlpacaAdapter(BrokerAdapter):
                 bid = float(quote.get("bp", quote.get("bid_price", 0)))
                 ask = float(quote.get("ap", quote.get("ask_price", 0)))
                 if bid > 0 and ask > 0:
-                    return (bid + ask) / 2
-                elif ask > 0:
+                    midpoint = (bid + ask) / 2
+                    spread_pct = (ask - bid) / midpoint if midpoint > 0 else float("inf")
+                    if spread_pct <= 0.20:
+                        return midpoint
+                    trade_price = self._get_latest_trade_price(symbol)
+                    if trade_price is not None:
+                        return trade_price
+                    return midpoint
+
+                trade_price = self._get_latest_trade_price(symbol)
+                if trade_price is not None:
+                    return trade_price
+                if ask > 0:
                     return ask
-                elif bid > 0:
+                if bid > 0:
                     return bid
                 return None
             else:
@@ -336,6 +379,23 @@ class AlpacaAdapter(BrokerAdapter):
                 return None
         except Exception as e:
             log.error("alpaca_price_error", symbol=symbol, error=str(e))
+            return None
+
+    def _get_latest_trade_price(self, symbol: str) -> float | None:
+        if not self._session:
+            return None
+        try:
+            url = f"{self._data_url}/v2/stocks/{symbol}/trades/latest"
+            resp = self._session.get(url, timeout=DEFAULT_TIMEOUT)
+            if resp.status_code != 200:
+                log.warning("alpaca_trade_price_failed", symbol=symbol, status=resp.status_code)
+                return None
+            data = resp.json()
+            trade = data.get("trade", data)
+            price = float(trade.get("p", trade.get("price", 0)))
+            return price if price > 0 else None
+        except Exception as e:
+            log.error("alpaca_trade_price_error", symbol=symbol, error=str(e))
             return None
 
     def _parse_order_response(self, data: dict[str, Any], client_order_id: str) -> BrokerOrderResponse:

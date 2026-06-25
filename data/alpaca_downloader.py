@@ -23,10 +23,12 @@ class AlpacaDownloader(BaseDownloader):
         api_key: str | None = None,
         api_secret: str | None = None,
         data_url: str = "https://data.alpaca.markets",
+        feed: str | None = "iex",
     ):
         self._api_key = api_key or os.environ.get("ALPACA_API_KEY", "")
         self._api_secret = api_secret or os.environ.get("ALPACA_API_SECRET", "")
         self._data_url = data_url.rstrip("/")
+        self._feed = feed
 
     @property
     def source_name(self) -> str:
@@ -75,6 +77,8 @@ class AlpacaDownloader(BaseDownloader):
                 "limit": 10000,
                 "adjustment": "all",  # split + dividend adjusted
             }
+            if self._feed:
+                params["feed"] = self._feed
             if next_page_token:
                 params["page_token"] = next_page_token
 
@@ -107,6 +111,7 @@ class AlpacaDownloader(BaseDownloader):
             metadata={
                 "frequency": request.frequency,
                 "adjustment": "split_dividend",
+                "feed": self._feed,
                 "bar_count": len(df),
                 "start": str(start),
                 "end": str(end),
