@@ -224,6 +224,27 @@ class TestMAReplayVsVectorBT:
         assert result.orders_submitted == 0
         assert result.orders_filled == 0
 
+    def test_unchanged_long_signal_does_not_rebalance_every_bar(self, tmp_path):
+        """Signal-transition strategies should enter once, then hold unchanged exposure."""
+        bars = _make_synthetic_bars(40)
+        config = _make_config()
+
+        def constant_long_strategy(bars, params):
+            return {"AAPL": 1.0}
+
+        result = run_replay(
+            bars=bars,
+            config=config,
+            strategy_fn=constant_long_strategy,
+            strategy_name="constant_long",
+            strategy_params={},
+            db_path=tmp_path / "constant_long.sqlite",
+            initial_capital=10000.0,
+        )
+
+        assert result.orders_submitted == 1
+        assert result.orders_filled == 1
+
     def test_golden_file_exists_or_create(self, tmp_path):
         """Verify golden file can be created and loaded."""
         GOLDEN_DIR.mkdir(parents=True, exist_ok=True)

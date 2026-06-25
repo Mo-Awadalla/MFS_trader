@@ -363,7 +363,14 @@ class TradingEngine:
         for target in evaluation.adjusted_targets:
             # Compute delta from current position
             current_qty = current_positions.get(target.symbol, {}).get("quantity", 0.0)
-            delta = compute_position_delta(target, current_qty)
+            delta = compute_position_delta(
+                target,
+                current_qty,
+                execution_mode=self._config.portfolio.execution_mode,
+                min_notional_delta=self._config.portfolio.min_notional_delta,
+                min_qty_delta=self._config.portfolio.min_qty_delta,
+                min_pct_position_delta=self._config.portfolio.min_pct_position_delta,
+            )
 
             if delta["action"] == "hold":
                 continue

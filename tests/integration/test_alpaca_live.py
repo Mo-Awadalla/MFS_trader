@@ -67,6 +67,15 @@ class TestAlpacaLiveSmoke:
         for p in positions:
             print(f"    {p.symbol}: {p.quantity} @ {p.avg_entry_price}")
 
+    def test_fetch_open_orders(self, alpaca_adapter):
+        """Verify open orders fetch works and no smoke leftovers remain."""
+        orders = alpaca_adapter.get_open_orders()
+        print(f"  Open orders: {len(orders)}")
+        smoke_orders = [
+            order for order in orders if order.client_order_id.startswith("smoke_test_")
+        ]
+        assert smoke_orders == []
+
     def test_get_price(self, alpaca_adapter):
         """Verify price fetch for a liquid symbol."""
         price = alpaca_adapter.get_price("AAPL")

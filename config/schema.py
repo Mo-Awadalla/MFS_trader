@@ -71,10 +71,14 @@ class RiskLimits:
 @dataclass(frozen=True)
 class PortfolioConfig:
     sizing_method: str = "fixed_fraction"  # fixed_fraction | vol_target | kelly
+    execution_mode: str = "signal_transition"  # signal_transition | continuous_rebalance
     per_position_risk_pct: float = 0.01
     dollar_neutral: bool = False
     equal_weight: bool = True
     rebalance_frequency: str = "daily"  # daily | weekly
+    min_notional_delta: float = 25.0
+    min_qty_delta: float = 1e-6
+    min_pct_position_delta: float = 0.05
 
 
 @dataclass(frozen=True)
@@ -119,6 +123,15 @@ class LiveDeploymentConfig:
     max_live_capital: float = 0.0
     starting_capital: float = 0.0
     strategy_capital_limit: float = 0.0
+    paper_submit_enabled: bool = False
+    max_paper_notional: float = 0.0
+    max_notional_per_order: float = 0.0
+    max_strategy_capital: float = 0.0
+    allow_short: bool = False
+    paper_order_type: str = "limit"  # limit | market
+    paper_limit_offset_pct: float = 0.001
+    paper_cancel_open_order_after_submit: bool = False
+    paper_session_count: int = 1
     initial_capital_fraction: float = 0.15  # 10-25% phase 1
     dry_run_mode: bool = False  # real data, read-only broker, no order submit
     single_strategy_first_live: bool = True

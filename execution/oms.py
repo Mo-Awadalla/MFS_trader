@@ -66,6 +66,7 @@ class OrderIntent:
     stop_price: float | None = None
     bar_timestamp: str | None = None
     correlation_id: str | None = None
+    client_order_namespace: str = ""
     version: str = "0.0.0"
 
 
@@ -112,16 +113,24 @@ class OMS:
         symbol: str,
         bar_timestamp: str,
         target_hash: str,
+        namespace: str = "",
     ) -> str:
         """Generate a deterministic client_order_id.
 
-        Format: {strategy}_{symbol}_{bar_timestamp}_{target_hash}
+        Format: {strategy}_{symbol}_{timestamp}_{hash}
         Deterministic = same inputs always produce same ID = idempotency.
         """
-        raw = f"{strategy}_{symbol}_{bar_timestamp}_{target_hash}"
+        raw = f"{strategy}_{symbol}_{namespace}_{bar_timestamp}_{target_hash}"
         hash_suffix = hashlib.sha256(raw.encode()).hexdigest()[:8]
         safe_symbol = symbol.replace("/", "_")
-        return f"{strategy}_{safe_symbol}_{bar_timestamp}_{hash_suffix}"
+        safe_strategy = "".join(ch for ch in strategy if ch.isalnum())[:12] or "strategy"
+        safe_ts = "".join(ch for ch in bar_timestamp if ch.isdigit())[:14] or "ts"
+        ns = "".join(ch for ch in namespace if ch.isalnum())[:8]
+        parts = [safe_strategy, safe_symbol, safe_ts]
+        if ns:
+            parts.append(ns)
+        parts.append(hash_suffix)
+        return "_".join(parts)
 
     def create_and_submit(self, intent: OrderIntent) -> str | None:
         """Create an order intent, log to DB, and submit to broker.
@@ -145,7 +154,11 @@ class OMS:
         ).hexdigest()[:8]
         bar_ts = intent.bar_timestamp or utc_now_iso()
         client_order_id = self.generate_client_order_id(
-            intent.strategy, intent.symbol, bar_ts, target_hash
+            intent.strategy,
+            intent.symbol,
+            bar_ts,
+            target_hash,
+            namespace=intent.client_order_namespace,
         )
 
         # Check if order already exists (idempotency)
@@ -452,19 +465,21 @@ class OMS:
         if not is_transition_allowed(old_state, OrderState.CANCEL_REQUESTED):
             return False
 
+        intent = OrderIntent(
+            strategy=existing["strategy"],
+            symbol=existing["symbol"],
+            asset_class=existing["asset_class"],
+            side=OrderSide(existing["side"]),
+            order_type=OrderType(existing["order_type"]),
+            quantity=existing["requested_qty"],
+        )
+        self._update_order_state(client_order_id, OrderState.CANCEL_REQUESTED, intent)
         success = self._broker.cancel_order(client_order_id)
         if success:
             self._update_order_state(
                 client_order_id,
                 OrderState.CANCELLED,
-                OrderIntent(
-                    strategy=existing["strategy"],
-                    symbol=existing["symbol"],
-                    asset_class=existing["asset_class"],
-                    side=OrderSide(existing["side"]),
-                    order_type=OrderType(existing["order_type"]),
-                    quantity=existing["requested_qty"],
-                ),
+                intent,
             )
             self._logger.log(
                 "ORDER_CANCELLED",

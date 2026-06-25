@@ -26,6 +26,11 @@ class SizingMethod(StrEnum):
     KELLY = "kelly"  # reserved for future — not implemented yet
 
 
+class ExecutionMode(StrEnum):
+    SIGNAL_TRANSITION = "signal_transition"
+    CONTINUOUS_REBALANCE = "continuous_rebalance"
+
+
 @dataclass
 class TargetPosition:
     """A target position for one symbol."""
@@ -250,23 +255,51 @@ def _apply_dollar_neutral(targets: list[TargetPosition], config: PortfolioConfig
 
 
 def compute_position_delta(
-    target: TargetPosition, current_qty: float
+    target: TargetPosition,
+    current_qty: float,
+    *,
+    execution_mode: str = ExecutionMode.SIGNAL_TRANSITION.value,
+    min_notional_delta: float = 0.0,
+    min_qty_delta: float = 1e-9,
+    min_pct_position_delta: float = 0.0,
 ) -> dict[str, float]:
     """Compute the delta between target and current position.
 
     Returns:
         {"action": "buy"|"sell"|"hold", "delta_qty": float, "delta_notional": float}
     """
+    if execution_mode == ExecutionMode.SIGNAL_TRANSITION.value:
+        current_side = _position_side(current_qty)
+        target_side = _position_side(target.target_qty)
+        if current_side == target_side:
+            return {"action": "hold", "delta_qty": 0.0, "delta_notional": 0.0}
+
     delta_qty = target.target_qty - current_qty
 
-    if abs(delta_qty) < 1e-9:
+    if abs(delta_qty) < min_qty_delta:
         return {"action": "hold", "delta_qty": 0.0, "delta_notional": 0.0}
 
     action = "buy" if delta_qty > 0 else "sell"
     delta_notional = abs(delta_qty) * target.current_price
+
+    if delta_notional < min_notional_delta:
+        return {"action": "hold", "delta_qty": 0.0, "delta_notional": 0.0}
+
+    if abs(current_qty) > 1e-9:
+        pct_delta = abs(delta_qty) / abs(current_qty)
+        if pct_delta < min_pct_position_delta:
+            return {"action": "hold", "delta_qty": 0.0, "delta_notional": 0.0}
 
     return {
         "action": action,
         "delta_qty": delta_qty,
         "delta_notional": delta_notional,
     }
+
+
+def _position_side(qty: float) -> str:
+    if qty > 1e-9:
+        return "long"
+    if qty < -1e-9:
+        return "short"
+    return "flat"

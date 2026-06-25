@@ -132,16 +132,61 @@ class TestPositionDelta:
         assert delta["action"] == "hold"
         assert delta["delta_qty"] == 0.0
 
+    def test_signal_transition_holds_same_side_even_if_target_qty_drifts(self):
+        target = TargetPosition("AAPL", "equity", "long", 101.0, 10100.0, 100.0)
+        delta = compute_position_delta(
+            target,
+            current_qty=100.0,
+            execution_mode="signal_transition",
+        )
+        assert delta["action"] == "hold"
+        assert delta["delta_qty"] == 0.0
+
+    def test_signal_transition_flattens_on_side_change(self):
+        target = TargetPosition("AAPL", "equity", "flat", 0.0, 0.0, 100.0)
+        delta = compute_position_delta(
+            target,
+            current_qty=100.0,
+            execution_mode="signal_transition",
+        )
+        assert delta["action"] == "sell"
+        assert delta["delta_qty"] == -100.0
+
+    def test_continuous_rebalance_suppresses_small_deltas(self):
+        target = TargetPosition("AAPL", "equity", "long", 101.0, 10100.0, 100.0)
+        delta = compute_position_delta(
+            target,
+            current_qty=100.0,
+            execution_mode="continuous_rebalance",
+            min_notional_delta=25.0,
+            min_qty_delta=0.01,
+            min_pct_position_delta=0.05,
+        )
+        assert delta["action"] == "hold"
+
+    def test_continuous_rebalance_allows_meaningful_deltas(self):
+        target = TargetPosition("AAPL", "equity", "long", 120.0, 12000.0, 100.0)
+        delta = compute_position_delta(
+            target,
+            current_qty=100.0,
+            execution_mode="continuous_rebalance",
+            min_notional_delta=25.0,
+            min_qty_delta=0.01,
+            min_pct_position_delta=0.05,
+        )
+        assert delta["action"] == "buy"
+        assert delta["delta_qty"] == 20.0
+
     def test_increase_is_buy(self):
         target = TargetPosition("AAPL", "equity", "long", 150.0, 15000.0, 100.0)
-        delta = compute_position_delta(target, current_qty=100.0)
+        delta = compute_position_delta(target, current_qty=100.0, execution_mode="continuous_rebalance")
         assert delta["action"] == "buy"
         assert delta["delta_qty"] == 50.0
         assert delta["delta_notional"] == 5000.0
 
     def test_decrease_is_sell(self):
         target = TargetPosition("AAPL", "equity", "long", 50.0, 5000.0, 100.0)
-        delta = compute_position_delta(target, current_qty=100.0)
+        delta = compute_position_delta(target, current_qty=100.0, execution_mode="continuous_rebalance")
         assert delta["action"] == "sell"
         assert delta["delta_qty"] == -50.0
 

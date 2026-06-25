@@ -223,6 +223,30 @@ class TestGetPositions:
         assert len(positions) == 0
 
 
+class TestGetOpenOrders:
+    @responses.activate
+    def test_fetch_open_orders(self, adapter):
+        responses.add(
+            responses.GET,
+            f"{PAPER_URL}/v2/account",
+            json=ACCOUNT_RESPONSE,
+            status=200,
+        )
+        responses.add(
+            responses.GET,
+            f"{PAPER_URL}/v2/orders",
+            json=[ORDER_PARTIAL],
+            status=200,
+        )
+        adapter.connect()
+
+        orders = adapter.get_open_orders()
+
+        assert len(orders) == 1
+        assert orders[0].client_order_id == "test_client_id_2"
+        assert orders[0].status == "PARTIALLY_FILLED"
+
+
 class TestSubmitOrder:
     @responses.activate
     def test_submit_market_buy_filled(self, adapter):
@@ -375,7 +399,7 @@ class TestCancelOrder:
         responses.add(
             responses.GET,
             f"{PAPER_URL}/v2/orders:by_client_order_id",
-            json=ORDER_FILLED,
+            json={**ORDER_FILLED, "status": "new", "filled_qty": "0", "filled_avg_price": None},
             status=200,
             match=[responses.matchers.query_string_matcher("client_order_id=test_client_id_1")],
         )
@@ -468,6 +492,30 @@ class TestGetPrice:
         adapter.connect()
         price = adapter.get_price("AAPL")
         assert price == 150.0  # midpoint of 149.50 and 150.50
+
+    @responses.activate
+    def test_get_price_falls_back_to_latest_trade_for_one_sided_quote(self, adapter):
+        responses.add(
+            responses.GET,
+            f"{PAPER_URL}/v2/account",
+            json=ACCOUNT_RESPONSE,
+            status=200,
+        )
+        responses.add(
+            responses.GET,
+            f"{DATA_URL}/v2/stocks/AAPL/quotes/latest",
+            json={"quote": {"bp": 0, "ap": 0.01}},
+            status=200,
+        )
+        responses.add(
+            responses.GET,
+            f"{DATA_URL}/v2/stocks/AAPL/trades/latest",
+            json={"trade": {"p": 201.25}},
+            status=200,
+        )
+        adapter.connect()
+        price = adapter.get_price("AAPL")
+        assert price == 201.25
 
     @responses.activate
     def test_get_price_not_connected(self, adapter):
