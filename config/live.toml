@@ -1,0 +1,95 @@
+# Live environment — REAL money. Requires explicit authorization.
+# Refuses to start without: valid keys, non-paper URLs, risk limits, capital caps.
+# First live deployment is dry-run (read-only) until manually promoted.
+
+mode = "live"
+strategy_name = "dual_ma_crossover"
+strategy_version = "0.1.0"
+strategies_enabled = ["ma"]
+artifacts_dir = "~/trading_artifacts"
+
+[[brokers]]
+name = "alpaca"
+asset_class = "equity"
+api_key_env = "LIVE_ALPACA_API_KEY"
+api_secret_env = "LIVE_ALPACA_API_SECRET"
+base_url = "https://api.alpaca.markets"
+data_url = "https://data.alpaca.markets"
+is_paper = false
+
+[[data]]
+symbols = ["AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META"]
+asset_class = "equity"
+bar_frequency_raw = "1min"
+target_frequencies = ["1h", "1d"]
+start_date = "2020-01-01"
+adjustment = "split_dividend"
+storage_dir = "data/parquet/equity"
+min_volume = 1000000.0
+price_floor = 5.0
+
+[risk_limits]
+per_position_pct = 0.005  # 0.5% — tighter for first live
+max_daily_loss_pct = 0.03
+block_new_at_daily_loss_pct = 0.02
+max_weekly_loss_pct = 0.06
+max_monthly_loss_pct = 0.15
+max_gross_exposure_pct = 1.0  # 100% for first live, no leverage
+max_net_exposure_pct = 0.10
+max_sector_gross_pct = 0.35
+max_sector_net_pct = 0.10
+max_correlated_cluster_gross_pct = 0.30
+max_correlated_cluster_risk_pct = 0.02
+correlation_threshold = 0.70
+max_open_positions = 10  # phase 1: 10 max
+
+[portfolio]
+sizing_method = "fixed_fraction"
+per_position_risk_pct = 0.005
+dollar_neutral = false
+equal_weight = true
+rebalance_frequency = "daily"
+
+[cost_model]
+slippage_fixed_pct = 0.0005
+slippage_variable_coeff = 0.5
+commission_pct = 0.0
+sec_fee_per_dollar_sold = 5.1e-6
+finra_taf_per_share_sold = 0.000119
+crypto_taker_fee_pct = 0.001
+crypto_maker_fee_pct = 0.0007
+borrow_cost_annual_pct = 0.01
+
+[monitoring]
+dashboard_enabled = true
+dashboard_port = 8501
+telegram_alerts = true
+telegram_bot_token_env = "TELEGRAM_BOT_TOKEN"
+telegram_chat_id_env = "TELEGRAM_CHAT_ID"
+alert_cooldown_minutes = 5  # tighter for live
+alert_escalation_minutes = 15
+heartbeat_interval_seconds = 15  # tighter for live
+watchdog_enabled = true
+watchdog_heartbeat_timeout_seconds = 60
+
+[engine]
+bar_close_execution = true
+reconciliation_interval_minutes = 30  # tighter for live
+startup_reconciliation_required = true
+kill_switch_persistent = true
+max_consecutive_losses_before_halt = 20
+
+[live_deployment]
+# MANUAL APPROVAL GATE — set authorized=true only after:
+#   1. research gauntlet passed
+#   2. paper ops gate passed (30d + 100-200 trades)
+#   3. live dry-run passed
+#   4. deployment checklist complete
+authorized = false
+dry_run_mode = true  # first live is dry-run; flip to false after dry-run passes
+starting_capital = 1000.0
+max_live_capital = 2000.0
+strategy_capital_limit = 200.0  # 10-25% of intended
+initial_capital_fraction = 0.15
+single_strategy_first_live = true
+promotion_status = "live_candidate"
