@@ -1,0 +1,19 @@
+{
+  "strategy": "dual_ma_crossover",
+  "params": {
+    "fast_ma_window": 10,
+    "slow_ma_window": 50,
+    "trend_filter_active": false,
+    "long_only": true
+  },
+  "orders_submitted": 51,
+  "orders_filled": 51,
+  "orders_rejected": 0,
+  "orders_timed_out": 0,
+  "final_positions": {
+    "AAPL": 68.84399037620925
+  },
+  "bar_count": 100,
+  "data_seed": 42,
+  "data_bars": 100
+}
