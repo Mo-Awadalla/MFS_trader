@@ -21,12 +21,14 @@ dependencies = [
     "requests>=2.31",
     "python-dotenv>=1.0",
     "pytz>=2024.1",
+    "scipy>=1.12",
+    "scikit-learn>=1.4",
 ]
 
 [project.optional-dependencies]
 alpaca = ["alpaca-py>=0.20"]
 crypto = ["ccxt>=4.2"]
-research = ["vectorbt>=0.26", "scipy>=1.12", "statsmodels>=0.14"]
+research = ["vectorbt>=0.26", "statsmodels>=0.14"]
 monitoring = ["streamlit>=1.32"]
 alerts = ["python-telegram-bot>=21.0"]
 dev = [

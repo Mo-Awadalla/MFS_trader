@@ -304,11 +304,19 @@ class TradingEngine:
                 bar_timestamp=bar_ts,
                 message="No signals generated",
             )
+            self._log_cycle_complete(cycle_id, bar_ts)
             return None
 
         # Filter out NaN exposures (strategy hasn't warmed up yet)
         exposures = {k: v for k, v in exposures.items() if not (isinstance(v, float) and np.isnan(v))}
         if not exposures:
+            self._logger.log(
+                "SIGNAL_GENERATED",
+                strategy=self._strategy_name,
+                bar_timestamp=bar_ts,
+                message="Only NaN warmup exposures generated — no orders submitted",
+            )
+            self._log_cycle_complete(cycle_id, bar_ts)
             return None
 
         # 2. Compute target positions (portfolio converts exposure → targets)
@@ -335,8 +343,15 @@ class TradingEngine:
             current_positions=current_positions,
         )
 
+        if evaluation.is_approved:
+            risk_event_type = "RISK_CHECK_PASSED"
+        elif evaluation.is_rejected:
+            risk_event_type = "RISK_CHECK_BLOCKED"
+        else:
+            risk_event_type = "RISK_CHECK_REDUCED"
+
         self._logger.log(
-            "RISK_CHECK_PASSED" if evaluation.is_approved else "RISK_CHECK_BLOCKED",
+            risk_event_type,
             severity="INFO" if evaluation.is_approved else "WARN",
             strategy=self._strategy_name,
             bar_timestamp=bar_ts,
@@ -373,6 +388,12 @@ class TradingEngine:
 
             self._oms.create_and_submit(intent)
 
+        self._log_cycle_complete(cycle_id, bar_ts)
+
+        return evaluation
+
+    def _log_cycle_complete(self, cycle_id: str, bar_ts: str) -> None:
+        """Record completion of a bar cycle, including no-op/warmup bars."""
         self._logger.log(
             "ENGINE_HEARTBEAT",
             severity="INFO",
@@ -380,8 +401,6 @@ class TradingEngine:
             bar_timestamp=bar_ts,
             message=f"Bar {bar_ts} complete — cycle {self._state.cycle_count}",
         )
-
-        return evaluation
 
     def shutdown(self) -> None:
         """Graceful shutdown — persist state and exit."""
