@@ -112,6 +112,26 @@ _Avoid_: Price difference, ratio, residual (when you mean the traded spread)
 Operational testing stage where an Experiment trades against a broker (paper) to prove implementation behavior. Not alpha validation.
 _Avoid_: Paper trading (when you mean alpha test), validation
 
+**Paper Broker Session**:
+One bounded broker-authority run for an Experiment in Paper Ops. A paper broker session records lifecycle gate outcomes, caps, broker actions, reconciliation, drills, and final pass/block status as immutable Experiment Evidence.
+_Avoid_: Paper run (when you mean the evidence-bearing broker session), live dry-run
+
+**Simulated Paper Drill**:
+A controlled `sim_broker` paper broker session that forces reject, timeout, and reconciliation failure modes before any real paper broker authority is allowed.
+_Avoid_: Backtest, Alpaca smoke test
+
+**Alpaca Paper Smoke**:
+A one-shot paper broker session against Alpaca paper that may submit at most one tiny far-limit DAY order, immediately cancel it, and reconcile broker state.
+_Avoid_: Continuous paper trading, live dry-run, market order test
+
+**Paper Capital Cap**:
+The explicit paper broker session limits on per-order notional, session notional, and open paper exposure. Missing or excessive caps block broker authority before order submission.
+_Avoid_: Risk limit, portfolio allocation
+
+**Paper Operator Report**:
+Experiment-level paper readiness evidence aggregating paper broker sessions, operational reports, lifecycle gates, caps, drills, and blockers. It supports but does not replace manual operator confirmation.
+_Avoid_: Operational report (when you mean one engine DB summary), automatic promotion
+
 **Live Dry-Run**:
 A distinct promotion stage using live broker credentials and live account/market reads, with order submission disabled at the lifecycle level regardless of config.
 _Avoid_: Paper ops, live candidate
@@ -381,15 +401,21 @@ Package layout: `models.py`, `hashing.py`, `storage.py`, `registry.py`, `backfil
 
 **Pairs v1 discipline:** if Pairs v1 fails, archive it. Do not tune thresholds, add crypto, add sector filtering retroactively, change lookback, or change z-score thresholds. Any variant is a new Experiment.
 
-**Next:** Implement Pairs Trading pair-discovery, pair lifecycle, spread diagnostics, registry/artifact integration, and validation path.
+**Pairs v1 negative-control gate:** Pairs v1 must fail early and cleanly before signal generation when the feasible universe cannot support the declared matching requirements. The canonical failure is `UNIVERSE_COVERAGE_FAILURE` at Layer 2A, recorded as immutable feasibility evidence on the Experiment, with no validation report written because the Validation Gauntlet never ran.
+
+**Paper-run safety spine:** `paper-run` is lifecycle-gated and defaults to sim/stub execution. It must refuse wrong `promotion_status`, experiment hash mismatch, any active Experiment kill switch, and any `portfolio_state` other than `KNOWN`; Alpaca paper is only reachable through the explicit one-shot Paper Broker Session gate.
+
+**Alpaca paper boundary:** Alpaca paper is broker authority, so it is allowed only as a one-shot Paper Broker Session with explicit operator confirmation, tiny caps, prior passing Simulated Paper Drill evidence, and immediate cancel/reconcile. It is not a continuous loop and not a live dry-run.
 
 ## Implementation backlog (domain ahead of code)
 
 - ~~Experiment registry (UUID, hash, label)~~ ✓
 - ~~Artifact Manager (`validation/`, `replay/`, `paper/` under `experiments/<uuid>/`)~~ ✓
 - ~~Momentum canonical v1 hypothesis~~ ✓
-- Pairs Trading pair-discovery subsystem
-- `promotion_status` vocabulary migration (`validation_passed`, `paper_ops`, `superseded`, etc.)
-- Experiment-scoped kill switches (replace `strategy_kill_switches`)
-- `portfolio_state` derivation in runtime
-- Operator confirm commands (`confirm-paper-ops-pass`, `confirm-resume`, `confirm-retire`)
+- ~~Pairs v1 negative-control feasibility gate~~ ✓
+- ~~`promotion_status` vocabulary migration (`validation_passed`, `paper_ops`, `superseded`, etc.)~~ ✓
+- ~~Experiment-scoped kill switches~~ ✓
+- ~~`portfolio_state` derivation in runtime~~ ✓
+- ~~Operator confirm commands (`confirm-paper-ops-pass`, `confirm-resume`, `confirm-retire`)~~ ✓
+- ~~Sim/stub-only `paper-run` CLI safety gate~~ ✓
+- Pairs vX pair-discovery subsystem (research-only first; create Experiment/evidence if it enters validation)

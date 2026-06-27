@@ -21,7 +21,10 @@ class ArtifactKind(StrEnum):
     VALIDATION_VERDICT_TXT = "validation_verdict_txt"
     REPLAY_ATTRIBUTION_JSON = "replay_attribution_json"
     DIAGNOSTICS_SIGNALS_JSON = "diagnostics_signals_json"
+    FEASIBILITY_REPORT_JSON = "feasibility_report_json"
     PAPER_SESSION_JSON = "paper_session_json"
+    PAPER_OPERATOR_REPORT_JSON = "paper_operator_report_json"
+    PAPER_OPERATOR_REPORT_MD = "paper_operator_report_md"
     LIVE_SESSION_JSON = "live_session_json"
     RUN_LOG = "run_log"
 
@@ -55,8 +58,17 @@ ARTIFACT_DEFINITIONS: dict[ArtifactKind, ArtifactDefinition] = {
     ArtifactKind.DIAGNOSTICS_SIGNALS_JSON: ArtifactDefinition(
         Path("diagnostics") / "signals.json", format="json"
     ),
+    ArtifactKind.FEASIBILITY_REPORT_JSON: ArtifactDefinition(
+        Path("feasibility") / "report.json", format="json"
+    ),
     ArtifactKind.PAPER_SESSION_JSON: ArtifactDefinition(
         Path("paper") / "session.json", format="json"
+    ),
+    ArtifactKind.PAPER_OPERATOR_REPORT_JSON: ArtifactDefinition(
+        Path("paper") / "operator_report.json", format="json"
+    ),
+    ArtifactKind.PAPER_OPERATOR_REPORT_MD: ArtifactDefinition(
+        Path("paper") / "operator_report.md", format="text"
     ),
     ArtifactKind.LIVE_SESSION_JSON: ArtifactDefinition(Path("live") / "session.json", format="json"),
     ArtifactKind.RUN_LOG: ArtifactDefinition(Path("logs") / "run.log", format="text"),
@@ -153,6 +165,94 @@ class ArtifactManager:
         """Return whether the canonical artifact exists."""
         return self.path(experiment_uuid, kind).exists()
 
+    def paper_session_path(self, experiment_uuid: str, session_id: str) -> Path:
+        """Return the canonical immutable paper-session path."""
+        safe_session_id = self._validate_session_id(session_id)
+        return self.experiment_dir(experiment_uuid) / "paper" / "sessions" / f"{safe_session_id}.json"
+
+    def write_paper_session_json(
+        self,
+        experiment_uuid: str,
+        session_id: str,
+        payload: Any,
+    ) -> Path:
+        """Write one immutable paper session artifact under ``paper/sessions``."""
+        text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+        path = self.paper_session_path(experiment_uuid, session_id)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            self._atomic_create(path, text)
+        except ArtifactExistsError as exc:
+            raise ArtifactImmutableError(
+                f"Paper session artifact is immutable: {path}"
+            ) from exc
+        return path
+
+    def read_paper_session_json(self, experiment_uuid: str, session_id: str) -> Any:
+        """Read one immutable paper session artifact."""
+        return json.loads(self.paper_session_path(experiment_uuid, session_id).read_text(encoding="utf-8"))
+
+    def paper_session_report_path(
+        self,
+        experiment_uuid: str,
+        session_id: str,
+        report_name: str,
+    ) -> Path:
+        """Return an immutable report path for one paper session."""
+        safe_session_id = self._validate_session_id(session_id)
+        safe_report_name = self._validate_report_name(report_name)
+        return (
+            self.experiment_dir(experiment_uuid)
+            / "paper"
+            / "sessions"
+            / safe_session_id
+            / safe_report_name
+        )
+
+    def write_paper_session_report_json(
+        self,
+        experiment_uuid: str,
+        session_id: str,
+        report_name: str,
+        payload: Any,
+    ) -> Path:
+        """Write one immutable JSON report for a paper session."""
+        if not report_name.endswith(".json"):
+            raise ArtifactError(f"Paper session report must be JSON: {report_name}")
+        text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+        path = self.paper_session_report_path(experiment_uuid, session_id, report_name)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            self._atomic_create(path, text)
+        except ArtifactExistsError as exc:
+            raise ArtifactImmutableError(
+                f"Paper session report artifact is immutable: {path}"
+            ) from exc
+        return path
+
+    def read_paper_session_report_json(
+        self,
+        experiment_uuid: str,
+        session_id: str,
+        report_name: str,
+    ) -> Any:
+        """Read one immutable JSON report for a paper session."""
+        return json.loads(
+            self.paper_session_report_path(
+                experiment_uuid, session_id, report_name
+            ).read_text(encoding="utf-8")
+        )
+
+    def list_paper_sessions(self, experiment_uuid: str) -> list[dict[str, Any]]:
+        """Read all paper session artifacts for an Experiment, sorted by session id."""
+        sessions_dir = self.experiment_dir(experiment_uuid) / "paper" / "sessions"
+        if not sessions_dir.exists():
+            return []
+        sessions: list[dict[str, Any]] = []
+        for path in sorted(sessions_dir.glob("*.json")):
+            sessions.append(json.loads(path.read_text(encoding="utf-8")))
+        return sessions
+
     def _write_text_payload(
         self,
         experiment_uuid: str,
@@ -240,3 +340,23 @@ class ArtifactManager:
                 f"Experiment UUID must be canonical lowercase form: {canonical}"
             )
         return canonical
+
+    def _validate_session_id(self, session_id: str) -> str:
+        if not session_id:
+            raise ArtifactError("Paper session id is required")
+        if any(ch in session_id for ch in ("/", "\\", ".")):
+            raise ArtifactError(f"Invalid paper session id: {session_id}")
+        if not all(ch.isalnum() or ch in {"-", "_"} for ch in session_id):
+            raise ArtifactError(f"Invalid paper session id: {session_id}")
+        return session_id
+
+    def _validate_report_name(self, report_name: str) -> str:
+        if not report_name:
+            raise ArtifactError("Paper session report name is required")
+        if any(ch in report_name for ch in ("/", "\\")):
+            raise ArtifactError(f"Invalid paper session report name: {report_name}")
+        if report_name in {".", ".."}:
+            raise ArtifactError(f"Invalid paper session report name: {report_name}")
+        if not all(ch.isalnum() or ch in {"-", "_", "."} for ch in report_name):
+            raise ArtifactError(f"Invalid paper session report name: {report_name}")
+        return report_name

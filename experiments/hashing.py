@@ -137,12 +137,18 @@ def experiment_to_metadata_dict(experiment: Experiment) -> dict[str, Any]:
         "superseded_by": experiment.superseded_by,
         "legacy_artifacts_path": experiment.legacy_artifacts_path,
         "legacy_experiment_id": experiment.legacy_experiment_id,
+        "suspended_from_status": (
+            experiment.suspended_from_status.value
+            if experiment.suspended_from_status is not None
+            else None
+        ),
     }
 
 
 def experiment_from_metadata_dict(data: dict[str, Any]) -> Experiment:
     """Deserialize Experiment from metadata.json."""
     snapshot = snapshot_from_dict(data)
+    suspended_raw = data.get("suspended_from_status")
     return Experiment(
         uuid=str(data["uuid"]),
         label=str(data["label"]),
@@ -153,6 +159,9 @@ def experiment_from_metadata_dict(data: dict[str, Any]) -> Experiment:
         superseded_by=data.get("superseded_by"),
         legacy_artifacts_path=data.get("legacy_artifacts_path"),
         legacy_experiment_id=data.get("legacy_experiment_id"),
+        suspended_from_status=(
+            PromotionStatus(str(suspended_raw)) if suspended_raw else None
+        ),
     )
 
 

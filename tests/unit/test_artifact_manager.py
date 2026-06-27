@@ -93,6 +93,60 @@ class TestArtifactManager:
             )
         assert manager.read_json(exp_uuid, ArtifactKind.REPLAY_ATTRIBUTION_JSON) == {"run": 1}
 
+    def test_writes_unique_immutable_paper_sessions(self, tmp_path: Path) -> None:
+        manager = ArtifactManager(tmp_path / "experiments")
+        exp_uuid = "fd42a55c-abc4-59f3-abd3-c70c0380482b"
+
+        first = manager.write_paper_session_json(exp_uuid, "session-1", {"passed": True})
+        second = manager.write_paper_session_json(exp_uuid, "session-2", {"passed": False})
+
+        assert first == tmp_path / "experiments" / exp_uuid / "paper" / "sessions" / "session-1.json"
+        assert second.name == "session-2.json"
+        assert manager.read_paper_session_json(exp_uuid, "session-1") == {"passed": True}
+        assert manager.list_paper_sessions(exp_uuid) == [{"passed": True}, {"passed": False}]
+        with pytest.raises(ArtifactImmutableError):
+            manager.write_paper_session_json(exp_uuid, "session-1", {"passed": False})
+
+    def test_writes_immutable_paper_session_reports(self, tmp_path: Path) -> None:
+        manager = ArtifactManager(tmp_path / "experiments")
+        exp_uuid = "fd42a55c-abc4-59f3-abd3-c70c0380482b"
+
+        path = manager.write_paper_session_report_json(
+            exp_uuid,
+            "pass-session",
+            "operator_report.json",
+            {"passed": True},
+        )
+
+        assert path == (
+            tmp_path
+            / "experiments"
+            / exp_uuid
+            / "paper"
+            / "sessions"
+            / "pass-session"
+            / "operator_report.json"
+        )
+        assert manager.read_paper_session_report_json(
+            exp_uuid,
+            "pass-session",
+            "operator_report.json",
+        ) == {"passed": True}
+        with pytest.raises(ArtifactImmutableError):
+            manager.write_paper_session_report_json(
+                exp_uuid,
+                "pass-session",
+                "operator_report.json",
+                {"passed": False},
+            )
+
+    def test_rejects_unsafe_paper_session_ids(self, tmp_path: Path) -> None:
+        manager = ArtifactManager(tmp_path / "experiments")
+        exp_uuid = "fd42a55c-abc4-59f3-abd3-c70c0380482b"
+
+        with pytest.raises(Exception, match="Invalid paper session id"):
+            manager.write_paper_session_json(exp_uuid, "../escape", {"passed": True})
+
     def test_metadata_json_may_be_overwritten_explicitly(self, tmp_path: Path) -> None:
         manager = ArtifactManager(tmp_path / "experiments")
         exp_uuid = "fd42a55c-abc4-59f3-abd3-c70c0380482b"

@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS experiments (
     data_source             TEXT,
     created_at              TEXT NOT NULL,
     superseded_by           TEXT,
+    suspended_from_status   TEXT,
     metadata_path           TEXT NOT NULL
 );
 
@@ -35,6 +36,13 @@ CREATE INDEX IF NOT EXISTS idx_experiments_data_source
 CREATE INDEX IF NOT EXISTS idx_experiments_label
     ON experiments(label);
 """
+
+# Backwards-compatible migration: older indexes were created before
+# ``suspended_from_status`` existed. Add the column when missing rather than
+# dropping/recreating the table (existing UUIDs and their hashes must survive).
+MIGRATION_ADD_SUSPENDED_FROM_STATUS = (
+    "ALTER TABLE experiments ADD COLUMN suspended_from_status TEXT"
+)
 
 
 def utc_now_iso() -> str:
@@ -58,8 +66,19 @@ class ExperimentStore:
         conn.row_factory = sqlite3.Row
         conn.execute("PRAGMA journal_mode=WAL")
         conn.executescript(SCHEMA_SQL)
+        self._migrate(conn)
         conn.commit()
         return conn
+
+    @staticmethod
+    def _migrate(conn: sqlite3.Connection) -> None:
+        """Apply additive migrations for older index files."""
+        cols = {
+            row[1]
+            for row in conn.execute("PRAGMA table_info(experiments)").fetchall()
+        }
+        if "suspended_from_status" not in cols:
+            conn.execute(MIGRATION_ADD_SUSPENDED_FROM_STATUS)
 
     def close(self) -> None:
         self._conn.close()
@@ -88,8 +107,9 @@ class ExperimentStore:
             """
             INSERT INTO experiments (
                 uuid, label, experiment_hash, strategy, strategy_template_version,
-                promotion_status, data_source, created_at, superseded_by, metadata_path
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                promotion_status, data_source, created_at, superseded_by,
+                suspended_from_status, metadata_path
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 experiment.uuid,
@@ -101,6 +121,11 @@ class ExperimentStore:
                 experiment.snapshot.data_version.source,
                 experiment.created_at,
                 experiment.superseded_by,
+                (
+                    experiment.suspended_from_status.value
+                    if experiment.suspended_from_status is not None
+                    else None
+                ),
                 str(metadata_path),
             ),
         )
@@ -112,14 +137,26 @@ class ExperimentStore:
         *,
         promotion_status: PromotionStatus,
         superseded_by: str | None = None,
+        suspended_from_status: PromotionStatus | None = None,
     ) -> None:
         self._conn.execute(
             """
             UPDATE experiments
-            SET promotion_status = ?, superseded_by = COALESCE(?, superseded_by)
+            SET promotion_status = ?,
+                superseded_by = COALESCE(?, superseded_by),
+                suspended_from_status = COALESCE(?, suspended_from_status)
             WHERE uuid = ?
             """,
-            (promotion_status.value, superseded_by, uuid),
+            (
+                promotion_status.value,
+                superseded_by,
+                (
+                    suspended_from_status.value
+                    if suspended_from_status is not None
+                    else None
+                ),
+                uuid,
+            ),
         )
         if self._conn.total_changes == 0:
             raise ExperimentNotFoundError(f"Experiment {uuid} not in index")

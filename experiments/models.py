@@ -92,6 +92,7 @@ class Experiment:
     superseded_by: str | None = None
     legacy_artifacts_path: str | None = None
     legacy_experiment_id: str | None = None
+    suspended_from_status: PromotionStatus | None = None
 
 
 class DuplicateExperimentError(Exception):
@@ -111,3 +112,121 @@ class ImmutableExperimentError(Exception):
 
 class ExperimentNotFoundError(Exception):
     """Raised when an experiment UUID is not in the registry."""
+
+
+class IllegalPromotionTransitionError(Exception):
+    """Raised when a promotion-status transition violates the lifecycle matrix.
+
+    Carries the source and target status so callers can surface the exact
+    rule that was violated. Per CONTEXT.md: "Status says where the Experiment
+    is. Blockers say why it cannot advance. Events say what happened. Do not
+    mix them."
+    """
+
+    def __init__(
+        self,
+        uuid: str,
+        source: PromotionStatus,
+        target: PromotionStatus,
+        reason: str,
+    ) -> None:
+        self.uuid = uuid
+        self.source = source
+        self.target = target
+        super().__init__(
+            f"Illegal promotion transition for {uuid}: {source.value} -> {target.value}: {reason}"
+        )
+
+
+SINGLE_STRATEGY_FIRST_LIVE_BLOCKED = (
+    "single_strategy_first_live is enabled and another Experiment is already LIVE"
+)
+
+
+def is_legal_promotion_transition(
+    source: PromotionStatus,
+    target: PromotionStatus,
+) -> bool:
+    """Transition matrix for Experiment promotion_status (CONTEXT.md).
+
+    ``superseded`` is reachable from any non-terminal status (operator marks
+    a prior experiment as invalidated by a newer one). ``retired`` requires
+    operator confirmation and is terminal. ``suspended`` captures the prior
+    status into ``suspended_from_status`` so resume restores it.
+    """
+    if source == target:
+        return True  # idempotent transitions are tolerated
+    allowed: dict[PromotionStatus, frozenset[PromotionStatus]] = {
+        PromotionStatus.RESEARCH: frozenset(
+            {
+                PromotionStatus.VALIDATION_RUNNING,
+                PromotionStatus.RETIRED,
+                PromotionStatus.SUPERSEDED,
+            }
+        ),
+        PromotionStatus.VALIDATION_RUNNING: frozenset(
+            {
+                PromotionStatus.VALIDATION_FAILED,
+                PromotionStatus.VALIDATION_PASSED,
+                PromotionStatus.RETIRED,
+                PromotionStatus.SUPERSEDED,
+            }
+        ),
+        PromotionStatus.VALIDATION_FAILED: frozenset(
+            {PromotionStatus.RETIRED, PromotionStatus.SUPERSEDED}
+        ),
+        PromotionStatus.VALIDATION_PASSED: frozenset(
+            {
+                PromotionStatus.PAPER_OPS,
+                PromotionStatus.RETIRED,
+                PromotionStatus.SUPERSEDED,
+            }
+        ),
+        PromotionStatus.PAPER_OPS: frozenset(
+            {
+                PromotionStatus.LIVE_DRY_RUN,
+                PromotionStatus.SUSPENDED,
+                PromotionStatus.RETIRED,
+                PromotionStatus.SUPERSEDED,
+            }
+        ),
+        PromotionStatus.LIVE_DRY_RUN: frozenset(
+            {
+                PromotionStatus.LIVE_CANDIDATE,
+                PromotionStatus.SUSPENDED,
+                PromotionStatus.RETIRED,
+                PromotionStatus.SUPERSEDED,
+            }
+        ),
+        PromotionStatus.LIVE_CANDIDATE: frozenset(
+            {
+                PromotionStatus.LIVE,
+                PromotionStatus.SUSPENDED,
+                PromotionStatus.RETIRED,
+                PromotionStatus.SUPERSEDED,
+            }
+        ),
+        PromotionStatus.LIVE: frozenset(
+            {PromotionStatus.SUSPENDED, PromotionStatus.RETIRED}
+        ),
+        # SUSPENDED may resume into any non-terminal status; the
+        # ``suspended_from_status`` match is enforced separately in
+        # ``ExperimentRegistry._enforce_transition``.
+        PromotionStatus.SUSPENDED: frozenset(
+            {
+                PromotionStatus.RESEARCH,
+                PromotionStatus.VALIDATION_RUNNING,
+                PromotionStatus.VALIDATION_FAILED,
+                PromotionStatus.VALIDATION_PASSED,
+                PromotionStatus.PAPER_OPS,
+                PromotionStatus.LIVE_DRY_RUN,
+                PromotionStatus.LIVE_CANDIDATE,
+                PromotionStatus.LIVE,
+                PromotionStatus.RETIRED,
+                PromotionStatus.SUPERSEDED,
+            }
+        ),
+        PromotionStatus.RETIRED: frozenset(),  # terminal
+        PromotionStatus.SUPERSEDED: frozenset(),  # terminal
+    }
+    return target in allowed[source]

@@ -126,6 +126,8 @@ class LiveDeploymentConfig:
     paper_submit_enabled: bool = False
     max_paper_notional: float = 0.0
     max_notional_per_order: float = 0.0
+    max_paper_session_notional: float = 0.0
+    max_open_paper_exposure: float = 0.0
     max_strategy_capital: float = 0.0
     allow_short: bool = False
     paper_order_type: str = "limit"  # limit | market
