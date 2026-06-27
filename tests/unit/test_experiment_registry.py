@@ -28,10 +28,10 @@ def registry(tmp_path):
     reg.close()
 
 
-def _draft(label: str = "test-bb") -> ExperimentDraft:
+def _draft(label: str = "test-bb", window: int = 15) -> ExperimentDraft:
     snap = build_bb_aapl_1d_default_snapshot()
     mutated = copy.deepcopy(snap)
-    object.__setattr__(mutated, "parameters", {**snap.parameters, "window": 15})
+    object.__setattr__(mutated, "parameters", {**snap.parameters, "window": window})
     return ExperimentDraft(label=label, snapshot=mutated)
 
 
@@ -105,11 +105,74 @@ class TestExperimentRegistry:
 
     def test_promotion_status_transition(self, registry):
         exp = registry.create(_draft())
+        registry.transition_promotion_status(
+            exp.uuid, PromotionStatus.VALIDATION_RUNNING
+        )
         updated = registry.transition_promotion_status(
             exp.uuid, PromotionStatus.VALIDATION_FAILED
         )
         assert updated.promotion_status == PromotionStatus.VALIDATION_FAILED
         assert registry.get(exp.uuid).promotion_status == PromotionStatus.VALIDATION_FAILED
+
+    def test_illegal_promotion_transition_rejected(self, registry):
+        from experiments.models import IllegalPromotionTransitionError
+
+        exp = registry.create(_draft())
+        with pytest.raises(IllegalPromotionTransitionError):
+            registry.transition_promotion_status(
+                exp.uuid, PromotionStatus.LIVE  # cannot shortcut research -> live
+            )
+
+    def test_suspended_from_status_preserved_on_resume(self, registry):
+        exp = registry.create(_draft())
+        registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
+        registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
+        registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
+        suspended = registry.suspend_experiment(exp.uuid)
+        assert suspended.promotion_status == PromotionStatus.SUSPENDED
+        assert suspended.suspended_from_status == PromotionStatus.PAPER_OPS
+        resumed = registry.resume_experiment(exp.uuid)
+        assert resumed.promotion_status == PromotionStatus.PAPER_OPS
+
+    def test_resume_rejected_when_target_does_not_match_suspended_from(self, registry):
+        from experiments.models import IllegalPromotionTransitionError
+
+        exp = registry.create(_draft())
+        registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
+        registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
+        registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
+        registry.suspend_experiment(exp.uuid)
+        with pytest.raises(IllegalPromotionTransitionError):
+            # Cannot resume directly into LIVE_DRY_RUN — must resume into PAPER_OPS.
+            registry.transition_promotion_status(
+                exp.uuid, PromotionStatus.LIVE_DRY_RUN
+            )
+
+    def test_single_strategy_first_live_blocks_seconds_live_entry(self, registry):
+        from experiments.models import IllegalPromotionTransitionError
+
+        first = registry.create(_draft("first", window=15))
+        second = registry.create(_draft("second-different", window=20))
+        for exp in (first, second):
+            registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
+            registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
+            registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
+            registry.transition_promotion_status(exp.uuid, PromotionStatus.LIVE_DRY_RUN)
+            registry.transition_promotion_status(exp.uuid, PromotionStatus.LIVE_CANDIDATE)
+        registry.transition_promotion_status(first.uuid, PromotionStatus.LIVE)
+        with pytest.raises(IllegalPromotionTransitionError, match="single_strategy_first_live"):
+            registry.transition_promotion_status(second.uuid, PromotionStatus.LIVE)
+
+    def test_terminal_status_rejects_further_transition(self, registry):
+        from experiments.models import IllegalPromotionTransitionError
+
+        exp = registry.create(_draft())
+        registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
+        registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_FAILED)
+        with pytest.raises(IllegalPromotionTransitionError):
+            registry.transition_promotion_status(
+                exp.uuid, PromotionStatus.VALIDATION_PASSED
+            )
 
     def test_get_by_label_and_legacy_id(self, registry):
         archived = registry.import_existing(build_bb_aapl_1d_default_experiment())

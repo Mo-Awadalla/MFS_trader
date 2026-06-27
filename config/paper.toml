@@ -99,3 +99,7 @@ kill_switch_persistent = true
 authorized = false
 dry_run_mode = false
 promotion_status = "paper"
+paper_submit_enabled = false
+max_notional_per_order = 25.0
+max_paper_session_notional = 100.0
+max_open_paper_exposure = 100.0

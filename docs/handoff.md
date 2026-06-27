@@ -1,198 +1,83 @@
-# Handoff: mfs-trader Medium-Frequency Trading System
+# Handoff: Phase 1 Continuous Paper Ops
 
-## State of Play
+Updated: 2026-06-27
 
-The repository now has a usable local operational path for MA/sim-broker paper-trade simulation, plus a working engine CLI, reproducible shakedown command, and operator-facing reports. The code is not yet wired for continuous Alpaca paper trading; Alpaca paper connectivity should be verified next with the live broker smoke tests using the gitignored `.env` keys.
+## Current Goal
 
-Current branch: `main`.
-Remote: `origin` → `https://github.com/Mo-Awadalla/untitled_project.git`.
+Implement Phase 1 Continuous Paper Ops:
 
-## What Is Built
+- Paper Ops Smoke as a non-promoting evidence sub-gate under `promotion_status=paper_ops`.
+- Full immutable Paper Ops Pass gate before `paper_ops -> live_dry_run`.
+- Immutable paper session artifacts, bar-cycle tracking, order lifecycle persistence, multi-cycle reconciliation, slippage aggregation, drill reports, operator reports, and manual `confirm-paper-ops-pass`.
 
-### Phase 1 (Data pipeline, config, storage, MA strategy, research)
+## Suggested Skills
 
-- `config/`: TOML per environment (`research`, `paper`, `live`), dataclass schema, config loader, live-mode safety gate.
-- `storage/`: SQLite runtime tables with WAL mode, append-only events, state repository, Parquet OHLCV IO.
-- `data/`: Alpaca + CCXT downloaders, quality validation, resampling, CLI pipeline.
-- `strategies/ma/signal.py`: Dual moving-average crossover signal generator; pure function, no lookahead.
-- `research/runner.py` and `research/cost_model.py`: Vectorized single-asset backtest and modular trading-cost model.
+- `implement` for continued coding.
+- `tdd` for adding missing coverage around broker failure drills and pass-window edge cases.
+- `review` before merging the branch.
+- `handoff` if context needs compacting again.
 
-### Phase 2 (Validation engine)
+## What Is Implemented
 
-- Walk-forward validation.
-- Block-bootstrap Monte Carlo.
-- Deflated Sharpe Ratio.
-- Parameter stability/plateau checks.
-- `validation/gauntlet.py` orchestrates the validation gates.
+- Immutable per-session report artifacts under `paper/sessions/{session_id}/...` in `experiments/artifacts.py`.
+- Paper Ops Smoke report generation:
+  - `paper_ops_smoke_report.json`
+  - requires `session_kind=paper_ops_smoke`
+  - requires 5 market sessions, 7 calendar days, zero unplanned interruptions, no unexplained missed cycles, and kill-switch drill evidence
+  - writes `promotion_unlocked: false`
+- Paper Ops Pass report generation from session + SQLite runtime evidence:
+  - `operator_report.json`
+  - `reconciliation_report.json`
+  - `slippage_report.json`
+  - `bar_cycle_report.json`
+  - `kill_switch_drill_report.json`
+- `confirm-paper-ops-pass` now requires `--paper-session-id` and refuses unless a full immutable `paper_ops_pass` session satisfies the 30-day/20-session/100-trade gate and all required reports pass.
+- Confirmation writes immutable `paper_ops_pass_confirmation.json`.
+- Continuous paper runs now:
+  - record bar-cycle rows in the immutable session artifact
+  - halt on unexplained missed price cycles instead of silently sleeping
+  - snapshot `order_lifecycle` from `orders_live`
+  - reconcile broker state on every bar cycle via `TradingEngine.reconcile_broker()`
+  - record broker-sync ids in each bar-cycle record
+- CLI split:
+  - `paper-run --broker alpaca_paper --alpaca-paper-smoke` runs one-shot Alpaca submit/cancel smoke.
+  - `paper-run --broker alpaca_paper` without `--alpaca-paper-smoke` runs the continuous paper loop, gated by `--confirm-paper-broker`.
 
-### Phase 3 (Execution skeleton)
+## Important Files
 
-- `portfolio/sizing.py`: Portfolio sizing and target-position deltas.
-- `risk/engine.py`: Portfolio risk engine, kill switch, drawdown limits, exposure limits, sector/correlation checks.
-- `execution/sim_broker/`: Configurable simulated broker with fills, rejections, timeouts, partial fills, stale data, mismatches.
-- `execution/order_state_machine.py`: Order lifecycle and reconciliation state mapping.
-- `execution/oms.py`: Intent-before-submit, deterministic client order IDs, idempotency, reconciliation handling.
-- `execution/alpaca/adapter.py`: Alpaca REST adapter for paper/live endpoints, status mapping, rate-limit retry.
-- `execution/ccxt/adapter.py`: CCXT Binance spot adapter/testnet reference.
-- `engine/runtime.py`: TradingEngine bar-cycle processing, risk/OMS path, startup/shutdown/reconciliation mechanics.
-- `engine/replay.py`: Historical replay through the full engine and simulated broker.
-- `monitoring/`: Telegram alerts, watchdog, and operational report generation.
+- `engine/paper_session.py`
+- `engine/paper_run.py`
+- `engine/cli.py`
+- `engine/runtime.py`
+- `experiments/artifacts.py`
+- `experiments/operator_confirmations.py`
+- `tests/unit/test_paper_session.py`
+- `tests/unit/test_paper_run.py`
+- `tests/unit/test_operator_confirmations.py`
+- `tests/unit/test_cli_smoke.py`
 
-## Key Fixes and Additions From Latest Work
+## Verification Run
 
-1. Added missing engine CLI entry point: `engine/cli.py`.
-   - `mfs-engine --help`
-   - `mfs-engine --config config/paper.toml preflight`
-   - `mfs-engine shakedown-ma ...`
-   - `mfs-engine report ...`
+Passing:
 
-2. Added reproducible MA operational shakedown: `engine/shakedown.py`.
-   - Generates deterministic synthetic OHLCV bars.
-   - Runs OHLCV validation.
-   - Runs MA research backtest.
-   - Replays bars through `TradingEngine` + `SimBroker`.
-   - Exercises baseline fill path plus rejection, timeout, and partial-fill scenarios.
-   - Writes Markdown and JSON reports.
+- `.venv/bin/python -m pytest tests/unit`
+- `.venv/bin/python -m pytest tests/integration`
+- `.venv/bin/python -m pytest tests/contracts tests/replay tests/property`
+- `.venv/bin/python -m ruff check ...` on touched files
 
-3. Added operator-facing reports: `monitoring/reports.py`.
-   - Summarizes events, bar-cycle completion, broker failures, risk decisions, reconciliation issues, exceptions, open orders, final positions, and promotion blockers.
-   - Report CLI returns nonzero on blockers unless `--allow-blockers` is used.
+Known not passing:
 
-4. Patched runtime cycle accounting in `engine/runtime.py`.
-   - Warmup/no-signal bars now log cycle completion, so operational reports do not show false bar-cycle mismatches.
-   - Risk decisions are now distinguished as:
-     - `RISK_CHECK_PASSED`
-     - `RISK_CHECK_REDUCED`
-     - `RISK_CHECK_BLOCKED`
+- `.venv/bin/python -m mypy experiments/artifacts.py engine/paper_session.py engine/paper_run.py experiments/operator_confirmations.py`
+- Remaining mypy failures are in existing dependencies (`portfolio/sizing.py`, `risk/engine.py`, `monitoring/reports.py`, `engine/runtime.py`) plus the existing `_OperationalReportShim` typing issue in `engine/paper_session.py`.
 
-5. Fixed dependency declarations in `pyproject.toml`.
-   - Added `scipy` and `scikit-learn` to core dependencies because existing validation/tests require them.
-   - Kept `statsmodels` under the `research` extra.
+## Remaining Work
 
-6. Updated README quickstart.
-   - Added venv setup.
-   - Added local smoke checks.
-   - Corrected `mfs-data` global `--config` ordering.
-   - Clarified live mode is gated.
+- Exercise the continuous Alpaca paper loop against real Alpaca paper credentials for a real smoke window.
+- Add stronger broker-failure drill automation for continuous sessions, not just report-level evidence.
+- Add explicit reconciliation repair/blocker workflow artifacts for mismatches that are resolved versus blocked.
+- Consider making slippage samples generated from order/fill reference prices instead of requiring supplied samples.
+- Clean up repository-wide mypy failures if strict typing is a release requirement.
 
-7. Added test coverage for the new path.
-   - `tests/unit/test_cli_smoke.py`
-   - `tests/unit/test_operational_report.py`
-   - `tests/integration/test_ma_shakedown.py`
+## Worktree Warning
 
-8. Created local `.env` with temporary Alpaca paper keys.
-   - `.env` is gitignored and must never be committed.
-   - `ALPACA_BASE_URL` is intentionally `https://paper-api.alpaca.markets` without `/v2`; the adapter appends `/v2/...` internally.
-
-## Verification Results
-
-Latest full local verification after the code changes:
-
-```text
-ruff check .
-All checks passed!
-
-pytest -q
-316 passed, 10 skipped
-```
-
-Skipped tests are live broker tests gated behind `RUN_LIVE_BROKER_TESTS=1`.
-
-Manual smoke checks run successfully:
-
-```bash
-mfs-engine --config config/paper.toml preflight
-mfs-data --config config/research.toml status
-mfs-engine shakedown-ma --out-dir runs/ma_shakedown_verify --bars 140 --fast-window 5 --slow-window 20 --no-trend-filter
-mfs-engine report --db runs/ma_shakedown_verify/baseline.sqlite
-```
-
-Observed shakedown/report result:
-
-```text
-MA shakedown status: PASS
-Operational Report: PASS
-Bars started/completed: 140/140
-Broker timeouts: 0
-Broker rejections: 0
-Risk blocks: 0
-Risk reductions: 121
-Reconciliation mismatches: 0
-Exceptions: 0
-```
-
-Local generated artifacts live under `runs/ma_shakedown_verify/`; `runs/` is gitignored.
-
-## Current Readiness
-
-Ready:
-
-- Local sim-broker paper-trade simulations.
-- Deterministic MA operational shakedown.
-- Operator report generation from runtime SQLite DBs.
-- Config preflight.
-- Data status CLI.
-- Alpaca paper credentials are present locally in `.env` and ignored by git.
-
-Not ready yet:
-
-- Continuous Alpaca paper trading loop.
-- Real Alpaca paper order flow has not been verified in this latest environment after adding `.env`.
-- No `mfs-engine paper-run` / `paper-dry-run` command exists yet.
-- No recent real Alpaca market data has been downloaded for replay in this clone.
-- MA remains a plumbing/ops validator, not a validated alpha strategy.
-
-## Recommended Next Steps
-
-1. Recreate/install the local venv if needed:
-
-```bash
-python -m venv .venv
-source .venv/Scripts/activate
-pip install -e ".[dev,alpaca,crypto,research,monitoring,alerts]"
-```
-
-2. Verify Alpaca paper connectivity:
-
-```bash
-RUN_LIVE_BROKER_TESTS=1 .venv/Scripts/python -m pytest tests/integration/test_alpaca_live.py -v --live_broker
-```
-
-This should verify account fetch, positions, price fetch, safe far-limit submit/cancel, and invalid-symbol rejection.
-
-3. Download/check real Alpaca data:
-
-```bash
-.venv/Scripts/mfs-data --config config/research.toml download --symbol AAPL
-.venv/Scripts/mfs-data --config config/research.toml status
-```
-
-4. Add a real-data replay CLI before live paper orders.
-   Suggested command shape:
-
-```bash
-mfs-engine replay-data --config config/paper.toml --symbol AAPL --broker sim
-```
-
-5. Add a read-only paper dry run before order placement.
-   Suggested command shape:
-
-```bash
-mfs-engine paper-dry-run --config config/paper.toml --symbol AAPL
-```
-
-6. Only after the above passes, add explicit opt-in paper order placement.
-   Suggested command shape:
-
-```bash
-mfs-engine paper-run --config config/paper.toml --symbol AAPL --confirm-paper-orders
-```
-
-## Important Constraints
-
-- `.env` files are gitignored and must never be committed.
-- Use Alpaca paper keys for paper tests; do not use live keys.
-- Paper/live should share engine logic; mode should come from config and explicit safety gates.
-- Live mode remains intentionally gated by `config/live.toml` and `live_deployment.authorized = false`.
-- Binance is not viable for NY live crypto use; keep it as mock/testnet reference unless a Coinbase/Gemini/Kraken adapter is added.
-- Single-strategy first-live rule: only one strategy should touch live trading until months of clean paper/live operation.
+The repo had many unrelated modified/untracked files before this handoff, including graphify cache churn, pairs work, config/model changes, and deleted `docs/handoff.md`. Keep commits scoped carefully.

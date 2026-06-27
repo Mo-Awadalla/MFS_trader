@@ -76,6 +76,7 @@ def test_portfolio_research_loads_validated_experiment_outputs(tmp_path: Path) -
                 data_source="synthetic",
             )
         )
+        registry.transition_promotion_status(experiment.uuid, PromotionStatus.VALIDATION_RUNNING)
         registry.transition_promotion_status(experiment.uuid, PromotionStatus.VALIDATION_PASSED)
         artifacts.write_json(
             experiment.uuid,

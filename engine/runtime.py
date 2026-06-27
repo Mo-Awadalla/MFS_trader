@@ -40,11 +40,21 @@ import structlog
 from config.schema import Config
 from execution.base import BrokerAdapter, OrderSide, OrderType
 from execution.oms import OMS, OrderIntent
+from execution.order_state_machine import OrderState, ReconciliationStatus
 from portfolio.sizing import PortfolioState, compute_position_delta, compute_target_positions
+from portfolio.state import (
+    OrderRiskView,
+    PortfolioStateInput,
+    derive_portfolio_state,
+)
+from portfolio.state import (
+    PortfolioState as PortfolioStateAuthority,
+)
 from risk.engine import DrawdownState, RiskEngine, RiskEvaluation
 from storage.event_logger import EventLogger, utc_now_iso
 from storage.repository import (
     get_engine_state,
+    get_open_orders,
     get_positions,
     is_strategy_halted,
     set_engine_state,
@@ -72,6 +82,7 @@ class EngineState:
     last_heartbeat: str | None = None
     cycle_count: int = 0
     strategy_halted: set[str] = field(default_factory=set)
+    portfolio_state_authority: PortfolioStateAuthority | None = None
 
 
 class TradingEngine:
@@ -94,6 +105,9 @@ class TradingEngine:
         strategy_fn: Callable[[pd.DataFrame, dict[str, Any]], dict[str, float]],
         strategy_name: str,
         strategy_params: dict[str, Any] | None = None,
+        *,
+        experiment_uuid: str | None = None,
+        registry: Any | None = None,
     ):
         self._config = config
         self._conn = conn
@@ -101,6 +115,8 @@ class TradingEngine:
         self._strategy_fn = strategy_fn
         self._strategy_name = strategy_name
         self._strategy_params = strategy_params or {}
+        self._experiment_uuid = experiment_uuid
+        self._registry = registry
 
         self._logger = EventLogger(conn, environment=config.mode.value)
         self._oms = OMS(broker, conn, self._logger, environment=config.mode.value)
@@ -219,12 +235,14 @@ class TradingEngine:
                     self._state.halt_reason = "reconciliation_mismatch"
                     set_engine_state(self._conn, "halted", "true")
                     set_engine_state(self._conn, "halt_reason", "reconciliation_mismatch")
+                self._derive_portfolio_state(broker_positions_available=False)
             else:
                 self._logger.log(
                     "RECONCILIATION_RUN",
                     severity="INFO",
                     message="Reconciliation passed — all positions match",
                 )
+                self._derive_portfolio_state(broker_positions_available=True)
 
         except Exception as e:
             self._logger.log(
@@ -236,6 +254,60 @@ class TradingEngine:
             if self._state.mode == EngineMode.LIVE:
                 self._state.halted = True
                 self._state.halt_reason = "reconciliation_failed"
+            self._derive_portfolio_state(broker_positions_available=False)
+
+    def reconcile_broker(self) -> None:
+        """Run broker reconciliation using the engine's canonical reconciliation path."""
+        self._reconcile_broker()
+
+    def _derive_portfolio_state(self, *, broker_positions_available: bool) -> None:
+        """Derive ``PortfolioState`` (KNOWN | PARTIAL | UNKNOWN) from open
+        orders and current positions. Called after every reconciliation. The
+        authority drives subsequent ``process_bar`` gating — UNKNOWN freezes,
+        PARTIAL blocks new orders.
+        """
+        open_orders = get_open_orders(self._conn, strategy=self._strategy_name)
+        order_views = tuple(
+            OrderRiskView(
+                client_order_id=str(row["client_order_id"]),
+                symbol=str(row["symbol"]),
+                side=str(row["side"]),
+                remaining_qty=float(row.get("remaining_qty") or 0.0),
+                last_price=float(
+                    row.get("avg_fill_price")
+                    or row.get("limit_price")
+                    or 0.0
+                ),
+                order_state=OrderState(str(row["order_state"])),
+                reconciliation_status=ReconciliationStatus(
+                    str(row.get("reconciliation_status") or "NOT_CHECKED")
+                ),
+            )
+            for row in open_orders
+        )
+        positions = get_positions(self._conn, strategy=self._strategy_name)
+        net_exposure = 0.0
+        for pos in positions:
+            net_exposure += float(pos.get("quantity", 0.0)) * float(pos.get("last_price", 0.0))
+        equity = 10_000.0  # default research sizing; overridden in live wiring
+        max_net = float(self._config.risk_limits.max_net_exposure_pct or 0.0) or 0.30
+
+        result = derive_portfolio_state(
+            PortfolioStateInput(
+                broker_positions_available=broker_positions_available,
+                current_net_exposure=float(net_exposure),
+                max_net_exposure_pct=max_net,
+                equity=equity,
+                orders=order_views,
+            )
+        )
+        self._state.portfolio_state_authority = result.state
+        self._logger.log(
+            "PORTFOLIO_STATE_DERIVED",
+            severity="INFO" if result.state == PortfolioStateAuthority.KNOWN else "WARN",
+            message=f"portfolio_state={result.state.value} ({result.reason})",
+            details=result.to_dict(),
+        )
 
     def process_bar(
         self,
@@ -269,6 +341,20 @@ class TradingEngine:
             )
             return None
 
+        authority = self._state.portfolio_state_authority
+        if authority == PortfolioStateAuthority.UNKNOWN:
+            self._logger.log(
+                "PORTFOLIO_STATE_FREEZE",
+                severity="CRITICAL",
+                strategy=self._strategy_name,
+                bar_timestamp=bar_timestamp,
+                message=(
+                    "Bar skipped — portfolio_state UNKNOWN: broker truth ambiguous, "
+                    "manual intervention required (no flatten, no new orders)"
+                ),
+            )
+            return None
+
         bar_ts = bar_timestamp or utc_now_iso()
         self._state.current_bar = pd.Timestamp(bar_ts)
         self._state.cycle_count += 1
@@ -294,7 +380,17 @@ class TradingEngine:
                 message="Strategy signal generation failed — disabling strategy",
             )
             self._risk.halt_strategy(self._strategy_name, "signal_generation_error")
-            set_strategy_kill_switch(self._conn, self._strategy_name, True, "signal_generation_error")
+            if self._experiment_uuid is not None and self._registry is not None:
+                from experiments.kill_switch import KillSwitchSeverity
+
+                self._registry.set_kill_switch(
+                    self._experiment_uuid,
+                    KillSwitchSeverity.SOFT,
+                    f"signal_generation_error: {e}",
+                    set_by="engine",
+                )
+            else:
+                set_strategy_kill_switch(self._conn, self._strategy_name, True, "signal_generation_error")
             return None
 
         if not exposures:
@@ -360,6 +456,21 @@ class TradingEngine:
         )
 
         # 4. Submit orders for approved targets
+        if authority == PortfolioStateAuthority.PARTIAL:
+            self._logger.log(
+                "PORTFOLIO_STATE_BLOCK_NEW_ORDERS",
+                severity="WARN",
+                strategy=self._strategy_name,
+                bar_timestamp=bar_ts,
+                message=(
+                    "New order submission blocked — portfolio_state PARTIAL: "
+                    "outstanding orders still reconciling. Reconcile/cancel "
+                    "before submitting new intents."
+                ),
+            )
+            self._log_cycle_complete(cycle_id, bar_ts)
+            return evaluation
+
         for target in evaluation.adjusted_targets:
             # Compute delta from current position
             current_qty = current_positions.get(target.symbol, {}).get("quantity", 0.0)
