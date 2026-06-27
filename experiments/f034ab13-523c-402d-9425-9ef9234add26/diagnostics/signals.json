@@ -1,0 +1,39 @@
+{
+  "experiment_uuid": "f034ab13-523c-402d-9425-9ef9234add26",
+  "postmortem": {
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.00 < 0.8",
+      "WFA: oos_sortino 0.00 < 1.0",
+      "MC: 5th pct CAGR = 0.000 <= 0",
+      "DSR: no positive Sharpe to deflate"
+    ],
+    "root_cause": "Canonical Pairs v1 generated no trades on the available Alpaca dataset because every scheduled rebalance was skipped under the frozen universe/liquidity/history constraints.",
+    "summary": "Validation failed; archive this Experiment without parameter tuning."
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+    "mode": "vectorized_cross_sectional_replay",
+    "reason": "engine replay is currently single-symbol; Pairs evidence uses deterministic vectorized pair-spread target weights with explicit pair lifecycle diagnostics"
+  },
+  "research_metrics": {
+    "ann_volatility": 0.0,
+    "cagr": 0.0,
+    "final_equity": 10000.0,
+    "max_drawdown": 0.0,
+    "sharpe": 0.0,
+    "sortino": 0.0,
+    "total_bars": 1487,
+    "total_return": 0.0,
+    "win_rate": 0
+  },
+  "signal_activity": {
+    "bar_count": 1487,
+    "rebalance_count": 72,
+    "skipped_rebalance_count": 72,
+    "skipped_rebalance_pct": 1.0,
+    "trade_count": 0
+  },
+  "strategy": "pairs_trading",
+  "terminal_verdict": "validation_failed"
+}

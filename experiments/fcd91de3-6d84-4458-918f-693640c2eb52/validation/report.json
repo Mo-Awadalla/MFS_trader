@@ -1,0 +1,76 @@
+{
+  "experiment_uuid": "fcd91de3-6d84-4458-918f-693640c2eb52",
+  "gauntlet": {
+    "dsr": {
+      "m_eff": 1.0,
+      "m_raw": 1,
+      "method": "M_eff_corr",
+      "passed": false,
+      "pvalue": 0.061054779039832474
+    },
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.63 < 0.8",
+      "WFA: oos_sortino 1.00 < 1.0",
+      "MC: 5th pct CAGR = -0.060 <= 0",
+      "DSR: DSR p-value (M_eff_corr) = 0.0611 >= 0.05",
+      "Stability: isolated_peak_detected \u2014 best params not on a stable plateau"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": 0.6246181458531735,
+      "pct_5_cagr": -0.06049817429179172,
+      "pct_95_max_dd": -0.15518502575066512,
+      "prob_loss": 0.1456,
+      "prob_ruin": 0.0043
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": true,
+      "passed": false,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "cross_sectional_momentum",
+    "wfa": {
+      "frac_negative": 0.3333333333333333,
+      "num_folds": 6,
+      "oos_sharpe": 0.6308670361047943,
+      "passed": false
+    }
+  },
+  "params": {
+    "formation_lookback_days": 252,
+    "liquidity_lookback_days": 20,
+    "long_gross": 1.0,
+    "min_eligible_symbols": 100,
+    "min_history_days": 60,
+    "min_median_dollar_volume": 20000000.0,
+    "min_price": 5.0,
+    "short_gross": 1.0,
+    "skip_recent_days": 21
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+    "mode": "vectorized_cross_sectional_replay",
+    "reason": "engine replay is currently single-symbol; Momentum evidence uses deterministic vectorized cross-sectional weights"
+  },
+  "research": {
+    "bar_count": 871,
+    "metrics": {
+      "ann_volatility": 0.2063768207710425,
+      "cagr": 0.17770625182475652,
+      "final_equity": 17600.646124658837,
+      "max_drawdown": -0.15076776740816997,
+      "sharpe": 0.8961347608540146,
+      "sortino": 1.060573497907361,
+      "total_bars": 871,
+      "total_return": 0.7600646124658836,
+      "win_rate": 0.5575959933222037
+    },
+    "rebalance_count": 42,
+    "skipped_rebalance_count": 13,
+    "trade_count": 2658
+  },
+  "strategy": "cross_sectional_momentum",
+  "strategy_template_version": "cross_sectional_momentum:v1",
+  "sweep_rows": 1
+}

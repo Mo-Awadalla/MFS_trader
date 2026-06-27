@@ -161,7 +161,7 @@ def _check_isolated_peak(
     avg_neighbor = float(np.mean(neighbor_sharpes))
     if best_sharpe > 0 and avg_neighbor > 0:
         ratio = best_sharpe / avg_neighbor
-        return ratio > 3.0  # best is 3x better than average neighbor
+        return bool(ratio > 3.0)  # best is 3x better than average neighbor
     elif avg_neighbor <= 0 and best_sharpe > 0:
         return True  # neighbors are negative, best is positive — isolated
 

@@ -1,0 +1,6 @@
+{
+  "engine_replay_available": false,
+  "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+  "mode": "vectorized_cross_sectional_replay",
+  "reason": "engine replay is currently single-symbol; Momentum evidence uses deterministic vectorized cross-sectional weights"
+}
