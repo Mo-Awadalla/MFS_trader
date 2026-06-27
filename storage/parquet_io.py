@@ -41,12 +41,12 @@ def write_bars(df: pd.DataFrame, path: str | Path, *, compression: str = "snappy
     if "index" in out.columns and "timestamp" not in out.columns:
         out = out.rename(columns={"index": "timestamp"})
     table = pa.Table.from_pandas(out, preserve_index=False)
-    pq.write_table(table, str(path), compression=compression)
+    pq.write_table(table, str(path), compression=compression)  # type: ignore[no-untyped-call]
 
 
 def read_bars(path: str | Path) -> pd.DataFrame:
     """Read an OHLCV Parquet file, returning a DataFrame with DatetimeIndex."""
-    table = pq.read_table(str(path))
+    table = pq.read_table(str(path))  # type: ignore[no-untyped-call]
     df = table.to_pandas()
     if "timestamp" in df.columns:
         df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
@@ -78,10 +78,10 @@ def write_artifact(df: pd.DataFrame, path: str | Path, *, compression: str = "sn
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     table = pa.Table.from_pandas(df, preserve_index=True)
-    pq.write_table(table, str(path), compression=compression)
+    pq.write_table(table, str(path), compression=compression)  # type: ignore[no-untyped-call]
 
 
 def read_artifact(path: str | Path) -> pd.DataFrame:
     """Read a generic Parquet artifact."""
-    table = pq.read_table(str(path))
+    table = pq.read_table(str(path))  # type: ignore[no-untyped-call]
     return table.to_pandas()

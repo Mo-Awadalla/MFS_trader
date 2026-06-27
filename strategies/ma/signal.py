@@ -12,6 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Literal
 
+import numpy as np
 import pandas as pd
 
 
@@ -91,15 +92,11 @@ def generate_signals(df: pd.DataFrame, params: MAParams) -> pd.DataFrame:
     # Long-only mode: +1 when fast > slow AND trend_ok, else 0
     # Long/short mode: +1 when fast > slow, -1 when fast < slow (trend filter for longs only)
     if params.long_only:
-        position = pd.Series(0, index=df.index, dtype=int)
-        # Enter long on cross_above (with trend filter)
-        position[cross_above & trend_ok] = 1
-        # Exit on cross_below
+        raw_position = pd.Series(np.nan, index=df.index, dtype=float)
+        raw_position[cross_above & trend_ok] = 1.0
         if params.exit_on_flip:
-            position[cross_below] = 0
-        # Hold position until exit signal
-        position = position.replace(0, pd.NA).ffill().fillna(0).astype(int)
-        # Re-apply: only stay long if trend is still ok
+            raw_position[cross_below] = 0.0
+        position = raw_position.ffill().fillna(0).astype(int)
         position = position.where(trend_ok, 0)
     else:
         position = pd.Series(0, index=df.index, dtype=int)
@@ -171,3 +168,12 @@ def sweep_grid() -> list[MAParams]:
                         )
                     )
     return params_list
+
+
+def compact_sweep_grid() -> list[MAParams]:
+    """Small grid for fast tests and smoke sweeps."""
+    return [
+        MAParams(fast_ma_window=10, slow_ma_window=50, trend_filter_active=False, long_only=True),
+        MAParams(fast_ma_window=20, slow_ma_window=100, trend_filter_active=True, long_only=True),
+        MAParams(fast_ma_type="ema", fast_ma_window=15, slow_ma_window=60, trend_filter_active=False, long_only=True),
+    ]

@@ -1,0 +1,93 @@
+{
+  "config_version": "research.toml@0.1.0",
+  "cost_model": {
+    "borrow_cost_annual_pct": 0.01,
+    "commission_pct": 0.0,
+    "crypto_maker_fee_pct": 0.0007,
+    "crypto_taker_fee_pct": 0.001,
+    "finra_taf_per_share_sold": 0.000119,
+    "sec_fee_per_dollar_sold": 5.1e-06
+  },
+  "created_at": "2026-06-26T12:00:00Z",
+  "data_version": {
+    "adjustment": "split_dividend",
+    "bar_frequency": "1d",
+    "data_version": "alpaca:AAPL:1d@1486",
+    "source": "alpaca",
+    "storage_dir": "data/parquet/equity"
+  },
+  "date_range": {
+    "end": null,
+    "start": "2020-01-01"
+  },
+  "execution_mode": "next_bar_open",
+  "experiment_hash": "532553bf2a648957b31eb04c48d4ee9b4bd48006052a84aa006012230c074262",
+  "git_commit": "c5795471193a320598c1db4d3c10d599dd7e98d8",
+  "label": "BB-AAPL-1D-Default",
+  "legacy_artifacts_path": "runs/bb_aapl_validation_alpaca",
+  "legacy_experiment_id": "BB-AAPL-1D-Default",
+  "paper_thresholds": {
+    "min_calendar_days": 30,
+    "min_trades": 100,
+    "target_trades": 200
+  },
+  "parameters": {
+    "long_only": true,
+    "mean_reversion": true,
+    "std_mult": 2.0,
+    "width_lookback": 252,
+    "width_mode": "normal",
+    "width_percentile_high": 75,
+    "width_percentile_low": 25,
+    "window": 20
+  },
+  "portfolio_config": {
+    "dollar_neutral": false,
+    "equal_weight": true,
+    "execution_mode": "signal_transition",
+    "min_notional_delta": 25.0,
+    "min_pct_position_delta": 0.05,
+    "min_qty_delta": 1e-06,
+    "per_position_risk_pct": 0.01,
+    "rebalance_frequency": "daily",
+    "sizing_method": "fixed_fraction"
+  },
+  "promotion_status": "validation_failed",
+  "random_seed": 42,
+  "risk_profile": {
+    "block_new_at_daily_loss_pct": 0.02,
+    "correlation_threshold": 0.7,
+    "max_beta_adjusted_net_pct": 0.1,
+    "max_correlated_cluster_gross_pct": 0.35,
+    "max_correlated_cluster_risk_pct": 0.03,
+    "max_daily_loss_pct": 0.03,
+    "max_gross_exposure_pct": 1.5,
+    "max_monthly_loss_pct": 0.15,
+    "max_net_exposure_pct": 0.1,
+    "max_open_positions": 15,
+    "max_open_positions_live_phase1": 10,
+    "max_sector_gross_pct": 0.35,
+    "max_sector_net_pct": 0.1,
+    "max_weekly_loss_pct": 0.06,
+    "per_position_pct": 0.01
+  },
+  "slippage_model": {
+    "slippage_fixed_pct": 0.0005,
+    "slippage_variable_coeff": 0.5
+  },
+  "strategy": "bollinger_bands",
+  "strategy_template_version": "bollinger_bands:v1",
+  "superseded_by": null,
+  "universe": {
+    "asset_class": "equity",
+    "filters": {
+      "min_volume": 1000000.0,
+      "price_floor": 5.0
+    },
+    "selection_rule": null,
+    "symbols": [
+      "AAPL"
+    ]
+  },
+  "uuid": "fd42a55c-abc4-59f3-abd3-c70c0380482b"
+}

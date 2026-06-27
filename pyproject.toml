@@ -48,7 +48,7 @@ mfs-data = "data.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["config*", "storage*", "data*", "strategies*", "research*", "validation*", "portfolio*", "risk*", "execution*", "engine*", "monitoring*", "research_scout*"]
+include = ["config*", "storage*", "data*", "strategies*", "research*", "validation*", "portfolio*", "risk*", "execution*", "engine*", "monitoring*", "experiments*", "research_scout*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

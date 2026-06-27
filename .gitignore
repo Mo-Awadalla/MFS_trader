@@ -40,6 +40,9 @@ ENV/
 *.db
 !experiment_index.sqlite
 
+# Experiment registry index (local query DB; metadata.json is audit artifact)
+experiments/index.sqlite
+
 # External artifact store (heavy results live outside repo, but guard local too)
 runs/
 external_artifacts/

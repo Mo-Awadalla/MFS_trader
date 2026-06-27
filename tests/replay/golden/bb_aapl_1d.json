@@ -1,0 +1,21 @@
+{
+  "strategy": "bollinger_bands",
+  "params": {
+    "window": 10,
+    "std_mult": 1.5,
+    "width_mode": "none",
+    "width_lookback": 30,
+    "long_only": true,
+    "mean_reversion": true
+  },
+  "orders_submitted": 7,
+  "orders_filled": 7,
+  "orders_rejected": 0,
+  "orders_timed_out": 0,
+  "final_positions": {
+    "AAPL": 64.16193356558458
+  },
+  "bar_count": 120,
+  "data_seed": 11,
+  "data_bars": 120
+}

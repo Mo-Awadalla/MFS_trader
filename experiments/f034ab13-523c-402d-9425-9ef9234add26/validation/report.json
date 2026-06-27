@@ -1,0 +1,75 @@
+{
+  "experiment_uuid": "f034ab13-523c-402d-9425-9ef9234add26",
+  "gauntlet": {
+    "dsr": null,
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.00 < 0.8",
+      "WFA: oos_sortino 0.00 < 1.0",
+      "MC: 5th pct CAGR = 0.000 <= 0",
+      "DSR: no positive Sharpe to deflate"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": 0.0,
+      "pct_5_cagr": 0.0,
+      "pct_95_max_dd": 0.0,
+      "prob_loss": 0.0,
+      "prob_ruin": 0.0
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": false,
+      "passed": true,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "pairs_trading",
+    "wfa": {
+      "frac_negative": 0.0,
+      "num_folds": 16,
+      "oos_sharpe": 0.0,
+      "passed": false
+    }
+  },
+  "params": {
+    "candidate_pool_size": 150,
+    "coint_pvalue_threshold": 0.05,
+    "entry_zscore": 2.0,
+    "equal_gross_budget_per_pair": true,
+    "exit_zscore": 0.5,
+    "formation_window_days": 252,
+    "liquidity_lookback_days": 20,
+    "max_active_pairs": 20,
+    "max_holding_days": 60,
+    "min_eligible_universe": 100,
+    "min_history_days": 60,
+    "min_median_dollar_volume": 20000000.0,
+    "min_price": 5.0,
+    "one_active_position_per_symbol": true,
+    "stop_zscore": 4.0
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+    "mode": "vectorized_cross_sectional_replay",
+    "reason": "engine replay is currently single-symbol; Pairs evidence uses deterministic vectorized pair-spread target weights with explicit pair lifecycle diagnostics"
+  },
+  "research": {
+    "bar_count": 1487,
+    "metrics": {
+      "ann_volatility": 0.0,
+      "cagr": 0.0,
+      "final_equity": 10000.0,
+      "max_drawdown": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "total_bars": 1487,
+      "total_return": 0.0,
+      "win_rate": 0
+    },
+    "rebalance_count": 72,
+    "skipped_rebalance_count": 72,
+    "trade_count": 0
+  },
+  "strategy": "pairs_trading",
+  "strategy_template_version": "pairs_trading:v1",
+  "sweep_rows": 1
+}

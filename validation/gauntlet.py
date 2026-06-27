@@ -78,8 +78,8 @@ class GauntletResult:
 def run_gauntlet(
     strategy_name: str,
     df: pd.DataFrame,
-    train_fn: Callable,
-    test_fn: Callable,
+    train_fn: Callable[..., dict[str, Any]],
+    test_fn: Callable[..., dict[str, Any]],
     sweep_results: pd.DataFrame,
     param_columns: list[str],
     *,
@@ -91,7 +91,7 @@ def run_gauntlet(
     max_dd_limit: float = -0.30,
     mc_num_paths: int = 10000,
     mc_block_size: int = 20,
-    wfa_config=None,
+    wfa_config: Any = None,
     seed: int = 42,
     **wfa_kwargs: Any,
 ) -> GauntletResult:
