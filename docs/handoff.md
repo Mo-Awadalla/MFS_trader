@@ -97,6 +97,8 @@ Known not passing:
 
 ## Remaining Work
 
+- Latest trading attempt: downloaded Alpaca IEX AAPL daily bars and froze `BB-AAPL-1D-v2-Alpaca-IEX-2020-2026` as Experiment `68127d37-d4d3-4516-be61-ccf8148161e1`. Validation failed, so it is not eligible for `paper_ops` and no paper broker session should be run for it. Evidence is under `experiments/68127d37-d4d3-4516-be61-ccf8148161e1/validation/`.
+- Find or create a new frozen Experiment that genuinely passes the Validation Gauntlet before running sim drills or Alpaca paper smoke.
 - Exercise the continuous Alpaca paper loop against real Alpaca paper credentials for a real smoke window.
 - Add stronger broker-failure drill automation for continuous sessions, not just report-level evidence.
 - Add explicit reconciliation repair/blocker workflow artifacts for mismatches that are resolved versus blocked.
