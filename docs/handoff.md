@@ -58,6 +58,13 @@ Implement Phase 1 Continuous Paper Ops:
 
 ## Verification Run
 
+Latest local audit after pulling `origin/main` and fixing event idempotency passed:
+
+- `.venv/Scripts/python -m pytest tests/unit/test_paper_session.py tests/unit/test_paper_run.py tests/unit/test_operator_confirmations.py tests/unit/test_cli_smoke.py`
+- `.venv/Scripts/python -m ruff check storage/event_logger.py engine/paper_session.py engine/paper_run.py engine/cli.py engine/runtime.py experiments/artifacts.py experiments/operator_confirmations.py tests/unit/test_paper_session.py tests/unit/test_paper_run.py tests/unit/test_operator_confirmations.py tests/unit/test_cli_smoke.py`
+
+Fix note: `storage/event_logger.py` now gives automatically generated events unique idempotency keys unless a caller supplies an explicit key. This prevents legitimate heartbeats/reconciliation/bar-cycle markers from being suppressed on Windows timestamp collisions, which had made operational reports show false bar-cycle mismatches.
+
 Earlier broad verification before the implementation commit passed:
 
 - `.venv/bin/python -m pytest tests/unit`
@@ -85,12 +92,8 @@ Known not passing:
 
 ## Commit And Push Status
 
-- Implementation commit: `f5e2648 Implement continuous paper ops gates`.
-- `docs/handoff.md` has an uncommitted handoff-only update after that commit.
-- A push to `origin/main` was attempted after the commit.
-- Push failed because the configured HTTPS remote returned `Repository not found` / authentication failed:
-  `https://github.com/Mo-Awadalla/untitled_project`
-- As of this handoff, local `main` is ahead of `origin/main`; authenticate or correct the remote, then push.
+- `origin/main` was pulled successfully through `b45cec6 Update paper ops handoff`.
+- The worktree has local uncommitted fixes after that pull.
 
 ## Remaining Work
 
