@@ -1,0 +1,71 @@
+{
+  "experiment_uuid": "68127d37-d4d3-4516-be61-ccf8148161e1",
+  "frequency": "1d",
+  "gauntlet": {
+    "dsr": {
+      "m_eff": 3.8549480761458677,
+      "m_raw": 189,
+      "method": "M_eff_corr",
+      "passed": false,
+      "pvalue": 0.1363975249009417
+    },
+    "failure_reasons": [
+      "WFA: oos_sharpe -0.03 < 0.8",
+      "WFA: oos_sortino 0.01 < 1.0",
+      "WFA: single fold contributes 100% of profit > 60%",
+      "MC: 5th pct CAGR = -0.053 <= 0",
+      "DSR: DSR p-value (M_eff_corr) = 0.1364 >= 0.05",
+      "DSR: DSR collapses under M_raw: p = 0.9689 >= 0.10",
+      "Stability: plateau_within_pct 0.69 < required 0.70"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": -0.011387165906293926,
+      "pct_5_cagr": -0.053159324347718646,
+      "pct_95_max_dd": -0.08938647304306561,
+      "prob_loss": 0.6578,
+      "prob_ruin": 0.0249
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": false,
+      "passed": false,
+      "plateau_within_pct": 0.6903447748811189
+    },
+    "strategy_name": "bollinger_bands",
+    "wfa": {
+      "frac_negative": 0.1875,
+      "num_folds": 16,
+      "oos_sharpe": -0.02578058081809681,
+      "passed": false
+    }
+  },
+  "params": {
+    "long_only": true,
+    "mean_reversion": true,
+    "std_mult": 2.0,
+    "width_lookback": 252,
+    "width_mode": "normal",
+    "width_percentile_high": 75,
+    "width_percentile_low": 25,
+    "window": 20
+  },
+  "replay_attribution": {},
+  "research": {
+    "bar_count": 1487,
+    "metrics": {
+      "ann_volatility": 0.12035800920959132,
+      "cagr": 0.062260320102783595,
+      "final_equity": 14281.817417242393,
+      "max_drawdown": -0.17125816593014268,
+      "sharpe": 0.560862221676988,
+      "sortino": 0.27855819307083035,
+      "total_bars": 1487,
+      "total_return": 0.4281817417242393,
+      "win_rate": 0.5321637426900585
+    },
+    "trade_count": 15
+  },
+  "strategy_template_version": "bollinger_bands:v2",
+  "sweep_rows": 189,
+  "symbol": "AAPL"
+}
