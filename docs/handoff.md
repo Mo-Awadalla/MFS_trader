@@ -93,7 +93,7 @@ Known not passing:
 ## Commit And Push Status
 
 - `origin/main` was pulled successfully through `b45cec6 Update paper ops handoff`.
-- The worktree has local uncommitted fixes after that pull.
+- Fix commit `2ebd83d Fix paper ops event evidence` was pushed to `origin/main`.
 
 ## Remaining Work
 
