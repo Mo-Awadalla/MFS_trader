@@ -1,0 +1,76 @@
+{
+  "experiment_uuid": "5b8514cc-5f1b-4c63-b815-6f90a26c5aba",
+  "gauntlet": {
+    "dsr": null,
+    "failure_reasons": [
+      "WFA: oos_sharpe -0.65 < 0.8",
+      "WFA: oos_sortino -1.17 < 1.0",
+      "WFA: frac_negative_folds 0.73 > 0.5",
+      "MC: P(ruin) = 0.908 >= 0.05",
+      "MC: 5th pct CAGR = -0.139 <= 0",
+      "MC: 95th pct max DD = -0.449 < -0.3",
+      "DSR: no positive Sharpe to deflate"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": -0.6487395775495964,
+      "pct_5_cagr": -0.13928489220312182,
+      "pct_95_max_dd": -0.44858536743566285,
+      "prob_loss": 0.996,
+      "prob_ruin": 0.908
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": false,
+      "passed": true,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "residual_vol_momentum",
+    "wfa": {
+      "frac_negative": 0.7272727272727273,
+      "num_folds": 22,
+      "oos_sharpe": -0.6529496882700021,
+      "passed": false
+    }
+  },
+  "params": {
+    "formation_lookback_days": 252,
+    "liquidity_lookback_days": 20,
+    "long_gross": 1.0,
+    "max_symbol_weight": 0.08,
+    "min_eligible_symbols": 50,
+    "min_history_days": 252,
+    "min_median_dollar_volume": 20000000.0,
+    "min_price": 5.0,
+    "min_regression_obs": 126,
+    "residual_vol_lookback_days": 63,
+    "risk_off_gross_scalar": 0.5,
+    "short_gross": 1.0,
+    "skip_recent_days": 21
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+    "mode": "vectorized_cross_sectional_replay",
+    "reason": "engine replay is currently single-symbol; residual momentum evidence uses deterministic vectorized cross-sectional weights"
+  },
+  "research": {
+    "bar_count": 1491,
+    "metrics": {
+      "ann_volatility": 0.1329641124495435,
+      "cagr": -0.08847386923433909,
+      "final_equity": 5780.5253720140645,
+      "max_drawdown": -0.48521255959972354,
+      "sharpe": -0.6301729365750744,
+      "sortino": -0.8536292170554693,
+      "total_bars": 1491,
+      "total_return": -0.4219474627985935,
+      "win_rate": 0.46504065040650405
+    },
+    "rebalance_count": 76,
+    "skipped_rebalance_count": 34,
+    "trade_count": 1592
+  },
+  "strategy": "residual_vol_momentum",
+  "strategy_template_version": "residual_vol_momentum:v1",
+  "sweep_rows": 1
+}

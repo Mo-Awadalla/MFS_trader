@@ -1,6 +1,6 @@
 # Handoff: Phase 1 Continuous Paper Ops
 
-Updated: 2026-06-27
+Updated: 2026-06-28
 
 ## Current Goal
 
@@ -98,6 +98,7 @@ Known not passing:
 ## Remaining Work
 
 - Latest trading attempt: downloaded Alpaca IEX AAPL daily bars and froze `BB-AAPL-1D-v2-Alpaca-IEX-2020-2026` as Experiment `68127d37-d4d3-4516-be61-ccf8148161e1`. Validation failed, so it is not eligible for `paper_ops` and no paper broker session should be run for it. Evidence is under `experiments/68127d37-d4d3-4516-be61-ccf8148161e1/validation/`.
+- Latest broader strategy attempt: tested a frozen residual volatility-managed cross-sectional momentum hypothesis as `ResidualVolMomentum-v1-LargeCapDaily-2018-2026` / Experiment `5b8514cc-5f1b-4c63-b815-6f90a26c5aba` on a bounded 75-stock large-cap universe plus SPY/QQQ/IWM daily bars. It failed validation decisively: research Sharpe `-0.6302`, research total return `-0.4219`, WFA OOS Sharpe `-0.65 < 0.8`, WFA OOS Sortino `-1.17 < 1.0`, negative fold fraction `0.73 > 0.5`, MC ruin probability `0.908 >= 0.05`, MC 5th percentile CAGR `-0.139 <= 0`, MC 95th percentile max drawdown `-0.449 < -0.3`, and DSR had no positive Sharpe to deflate. Do not paper trade it. Only the immutable failed Experiment evidence was retained; the failed strategy implementation should not be kept active in the registry.
 - Find or create a new frozen Experiment that genuinely passes the Validation Gauntlet before running sim drills or Alpaca paper smoke.
 - Exercise the continuous Alpaca paper loop against real Alpaca paper credentials for a real smoke window.
 - Add stronger broker-failure drill automation for continuous sessions, not just report-level evidence.
