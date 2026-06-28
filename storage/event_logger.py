@@ -72,7 +72,14 @@ class EventLogger:
     ) -> int:
         """Write one event row. Returns the event id."""
         ts = utc_now_iso()
-        idem = idempotency_key or f"{event_type}:{client_order_id or symbol}:{ts}"
+        # Only caller-supplied keys should deduplicate events. The audit log is
+        # append-only, and many legitimate operational events (heartbeats,
+        # reconciliation passes, bar-cycle start/complete markers) share the
+        # same type and may be emitted close enough together that Windows' clock
+        # resolution produces identical timestamps. A unique automatic key keeps
+        # distinct rows from being suppressed; call sites that need retry
+        # idempotency must pass an explicit idempotency_key.
+        idem = idempotency_key or f"auto:{self._run_id}:{uuid.uuid4().hex}"
 
         row = {
             "timestamp": ts,

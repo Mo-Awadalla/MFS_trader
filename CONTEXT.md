@@ -403,9 +403,9 @@ Package layout: `models.py`, `hashing.py`, `storage.py`, `registry.py`, `backfil
 
 **Pairs v1 negative-control gate:** Pairs v1 must fail early and cleanly before signal generation when the feasible universe cannot support the declared matching requirements. The canonical failure is `UNIVERSE_COVERAGE_FAILURE` at Layer 2A, recorded as immutable feasibility evidence on the Experiment, with no validation report written because the Validation Gauntlet never ran.
 
-**Paper-run safety spine:** `paper-run` is lifecycle-gated and defaults to sim/stub execution. It must refuse wrong `promotion_status`, experiment hash mismatch, any active Experiment kill switch, and any `portfolio_state` other than `KNOWN`; Alpaca paper is only reachable through the explicit one-shot Paper Broker Session gate.
+**Paper-run safety spine:** `paper-run` is lifecycle-gated and defaults to sim/stub execution. It must refuse wrong `promotion_status`, experiment hash mismatch, any active Experiment kill switch, and any `portfolio_state` other than `KNOWN`; Alpaca paper is reachable only through explicit broker-authority flags, tiny caps, and immutable paper-session evidence.
 
-**Alpaca paper boundary:** Alpaca paper is broker authority, so it is allowed only as a one-shot Paper Broker Session with explicit operator confirmation, tiny caps, prior passing Simulated Paper Drill evidence, and immediate cancel/reconcile. It is not a continuous loop and not a live dry-run.
+**Alpaca paper boundary:** Alpaca paper is broker authority. The one-shot Alpaca Paper Smoke path (`--broker alpaca_paper --alpaca-paper-smoke --confirm-paper-broker`) submits at most one tiny far-limit DAY order, immediately cancels/reconciles it, and requires prior passing Simulated Paper Drill evidence. Continuous Alpaca paper runs are separate evidence-bearing `paper-run --broker alpaca_paper --confirm-paper-broker` sessions under `promotion_status=paper_ops`; they are still paper ops, not live dry-run, and cannot promote without a passing immutable `paper_ops_pass` session plus manual `confirm-paper-ops-pass`.
 
 ## Implementation backlog (domain ahead of code)
 
