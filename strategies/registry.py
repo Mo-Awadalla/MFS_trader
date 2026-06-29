@@ -7,6 +7,7 @@ from typing import Any
 from strategies.bb.strategy import get_strategy as get_bb_strategy
 from strategies.contract import StrategyTemplate
 from strategies.csmr.strategy import get_strategy as get_csmr_strategy
+from strategies.etf_time_series_momentum.strategy import get_strategy as get_etf_tsm_strategy
 from strategies.ma.strategy import get_strategy as get_ma_strategy
 from strategies.momentum.strategy import get_strategy as get_momentum_strategy
 from strategies.pairs.strategy import get_strategy as get_pairs_strategy
@@ -16,6 +17,7 @@ _REGISTRY: dict[str, StrategyTemplate[Any]] = {
     "cross_sectional_mean_reversion": get_csmr_strategy(),
     "cross_sectional_momentum": get_momentum_strategy(),
     "dual_ma_crossover": get_ma_strategy(),
+    "etf_time_series_momentum": get_etf_tsm_strategy(),
     "pairs_trading": get_pairs_strategy(),
 }
 
