@@ -27,7 +27,7 @@ dependencies = [
 
 [project.optional-dependencies]
 alpaca = ["alpaca-py>=0.20"]
-crypto = ["ccxt>=4.2"]
+crypto = ["ccxt>=4.2,<4.5"]
 research = ["vectorbt>=0.26", "statsmodels>=0.14"]
 monitoring = ["streamlit>=1.32"]
 alerts = ["python-telegram-bot>=21.0"]
@@ -36,6 +36,7 @@ dev = [
     "pytest-cov>=5.0",
     "pytest-asyncio>=0.23",
     "hypothesis>=6.100",
+    "matplotlib>=3.8",
     "ruff>=0.4",
     "mypy>=1.10",
     "types-pytz",

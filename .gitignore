@@ -36,6 +36,8 @@ ENV/
 
 # SQLite databases (local runtime state)
 *.sqlite
+*.sqlite-shm
+*.sqlite-wal
 *.sqlite3
 *.db
 !experiment_index.sqlite

@@ -1,0 +1,82 @@
+{
+  "experiment_uuid": "f5fc4a35-f999-476e-a1ec-b8546360dde3",
+  "gauntlet": {
+    "dsr": {
+      "m_eff": 1.0,
+      "m_raw": 1,
+      "method": "M_eff_corr",
+      "passed": true,
+      "pvalue": 0.000805298464493398
+    },
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.39 < 0.8",
+      "WFA: oos_sortino 0.54 < 1.0",
+      "Stability: isolated_peak_detected \u2014 best params not on a stable plateau"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": 0.39097187781224846,
+      "pct_5_cagr": 0.01016704551402452,
+      "pct_95_max_dd": -0.15830818443396844,
+      "prob_loss": 0.0001,
+      "prob_ruin": 0.0008
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": true,
+      "passed": false,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "volatility_standardized_intraday_momentum",
+    "wfa": {
+      "frac_negative": 0.08333333333333333,
+      "num_folds": 12,
+      "oos_sharpe": 0.39045519462343176,
+      "passed": false
+    }
+  },
+  "params": {
+    "atr_lookback_bars": 13,
+    "gross_exposure": 0.98,
+    "liquidity_lookback_sessions": 60,
+    "max_holding_bars": 39,
+    "max_position_weight": 0.15,
+    "min_eligible_symbols": 15,
+    "min_history_sessions": 60,
+    "min_hourly_volume": 10000.0,
+    "min_median_dollar_volume": 0.0,
+    "min_price": 5.0,
+    "momentum_lookback_bars": 6,
+    "price_lookback_sessions": 5,
+    "top_k": 15,
+    "trailing_stop_atr_multiple": 3.0,
+    "transition_buffer_rank": 220,
+    "universe_size": 200,
+    "volatility_lookback_bars": 13
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+    "mode": "vectorized_cross_sectional_replay",
+    "reason": "engine replay is currently single-symbol; VS-ICSM evidence uses deterministic vectorized cross-sectional hourly target weights"
+  },
+  "research": {
+    "bar_count": 19833,
+    "metrics": {
+      "ann_volatility": 0.04194807458030382,
+      "cagr": 0.01279120250411081,
+      "final_equity": 135956.77990012002,
+      "max_drawdown": -0.2418590338048982,
+      "sharpe": 0.3239436099938102,
+      "sortino": 0.324523692684519,
+      "total_bars": 19833,
+      "total_return": 1.7191355980024006,
+      "win_rate": 0.5269428856945192
+    },
+    "rebalance_count": 19833,
+    "skipped_rebalance_count": 19832,
+    "trade_count": 15
+  },
+  "strategy": "volatility_standardized_intraday_momentum",
+  "strategy_template_version": "volatility_standardized_intraday_momentum:v1",
+  "sweep_rows": 1
+}

@@ -1,0 +1,79 @@
+{
+  "experiment_uuid": "017c9b19-14ee-4b0b-92f7-7e5d8886ba2c",
+  "gauntlet": {
+    "dsr": {
+      "m_eff": 1.0,
+      "m_raw": 4,
+      "method": "M_eff_corr",
+      "passed": false,
+      "pvalue": 0.060475701725868025
+    },
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.52 < 0.8",
+      "WFA: oos_sortino 0.83 < 1.0",
+      "DSR: DSR p-value (M_eff_corr) = 0.0605 >= 0.05",
+      "DSR: DSR collapses under M_raw: p = 0.5590 >= 0.10"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": 0.5257666664366463,
+      "pct_5_cagr": 0.001053735086913976,
+      "pct_95_max_dd": -0.143358612396743,
+      "prob_loss": 0.0465,
+      "prob_ruin": 0.0026
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": false,
+      "passed": true,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "etf_tactical_momentum",
+    "wfa": {
+      "frac_negative": 0.2608695652173913,
+      "num_folds": 23,
+      "oos_sharpe": 0.5161574675232494,
+      "passed": false
+    }
+  },
+  "params": {
+    "defensive_top_n": 2,
+    "liquidity_lookback_days": 20,
+    "long_gross": 1.0,
+    "long_lookback_days": 252,
+    "max_symbol_weight": 0.6,
+    "min_eligible_symbols": 4,
+    "min_history_days": 252,
+    "min_median_dollar_volume": 5000000.0,
+    "min_price": 5.0,
+    "short_lookback_days": 126,
+    "top_n": 3,
+    "trend_ma_days": 200,
+    "vol_lookback_days": 63
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+    "mode": "vectorized_cross_sectional_replay",
+    "reason": "engine replay is currently single-symbol; ETF tactical evidence uses deterministic vectorized ETF weights"
+  },
+  "research": {
+    "bar_count": 1488,
+    "metrics": {
+      "ann_volatility": 0.11675879214882706,
+      "cagr": 0.04833513681973711,
+      "final_equity": 13214.430728515521,
+      "max_drawdown": -0.24532097602815972,
+      "sharpe": 0.4627652743031789,
+      "sortino": 0.5454337693467534,
+      "total_bars": 1488,
+      "total_return": 0.32144307285155205,
+      "win_rate": 0.5316780821917808
+    },
+    "rebalance_count": 73,
+    "skipped_rebalance_count": 14,
+    "trade_count": 176
+  },
+  "strategy": "etf_tactical_momentum",
+  "strategy_template_version": "etf_tactical_momentum:v1",
+  "sweep_rows": 4
+}

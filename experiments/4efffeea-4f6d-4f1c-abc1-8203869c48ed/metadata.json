@@ -1,0 +1,121 @@
+{
+  "config_version": "research.toml@0.1.0",
+  "cost_model": {
+    "borrow_cost_annual_pct": 0.01,
+    "commission_pct": 0.0,
+    "crypto_maker_fee_pct": 0.0007,
+    "crypto_taker_fee_pct": 0.001,
+    "finra_taf_per_share_sold": 0.000119,
+    "sec_fee_per_dollar_sold": 5.1e-06
+  },
+  "created_at": "2026-06-29T21:16:14Z",
+  "data_version": {
+    "adjustment": "split_dividend",
+    "bar_frequency": "1d",
+    "data_version": "alpaca_iex_static_global_dual_momentum_v1_cached:global_dual_momentum_static_v1:1d@1489x8",
+    "source": "alpaca_iex_static_global_dual_momentum_v1_cached",
+    "storage_dir": "data/parquet/equity"
+  },
+  "date_range": {
+    "end": "2026-06-29 04:00:00+00:00",
+    "start": "2018-11-01 04:00:00+00:00"
+  },
+  "execution_mode": "signals_after_t_minus_1_close_first_executable_price",
+  "experiment_hash": "4c33842736601c8266aa9f276f5cdfaf0010e4080a95a9b2d929093881d5c4f9",
+  "git_commit": "f919a84d5bebb1c583370528cb6605de70e99d8a",
+  "label": "GlobalDualMomentumDefensive-v1-Daily-2010-2026",
+  "legacy_artifacts_path": null,
+  "legacy_experiment_id": null,
+  "paper_thresholds": {
+    "min_calendar_days": 30,
+    "min_trades": 100,
+    "target_trades": 200
+  },
+  "parameters": {
+    "defensive_n": 1,
+    "liquidity_lookback_days": 20,
+    "min_history_days": 252,
+    "min_median_dollar_volume": 5000000.0,
+    "min_price": 5.0,
+    "momentum_lookback_days": 252,
+    "target_gross": 1.0,
+    "top_risk_n": 1
+  },
+  "portfolio_config": {
+    "dollar_neutral": false,
+    "equal_weight": true,
+    "execution_mode": "signal_transition",
+    "min_notional_delta": 25.0,
+    "min_pct_position_delta": 0.05,
+    "min_qty_delta": 1e-06,
+    "per_position_risk_pct": 0.01,
+    "rebalance_frequency": "monthly",
+    "sizing_method": "fixed_fraction"
+  },
+  "promotion_status": "validation_failed",
+  "random_seed": 42,
+  "risk_profile": {
+    "block_new_at_daily_loss_pct": 0.02,
+    "correlation_threshold": 0.7,
+    "max_beta_adjusted_net_pct": 0.1,
+    "max_correlated_cluster_gross_pct": 0.35,
+    "max_correlated_cluster_risk_pct": 0.03,
+    "max_daily_loss_pct": 0.03,
+    "max_gross_exposure_pct": 1.0,
+    "max_monthly_loss_pct": 0.15,
+    "max_net_exposure_pct": 1.0,
+    "max_open_positions": 1,
+    "max_open_positions_live_phase1": 10,
+    "max_sector_gross_pct": 0.35,
+    "max_sector_net_pct": 0.1,
+    "max_weekly_loss_pct": 0.06,
+    "per_position_pct": 0.01
+  },
+  "slippage_model": {
+    "slippage_fixed_pct": 0.0005,
+    "slippage_variable_coeff": 0.5
+  },
+  "strategy": "global_dual_momentum",
+  "strategy_template_version": "global_dual_momentum:v1",
+  "superseded_by": null,
+  "suspended_from_status": null,
+  "universe": {
+    "asset_class": "equity_etf",
+    "filters": {
+      "absolute_momentum_lookback_days": 252,
+      "defensive_assets": [
+        "IEF",
+        "TLT",
+        "SHY"
+      ],
+      "defensive_n": 1,
+      "median_dollar_volume_lookback_days": 20,
+      "median_dollar_volume_min": 5000000.0,
+      "min_history_days": 252,
+      "price_min": 5.0,
+      "risk_assets": [
+        "SPY",
+        "QQQ",
+        "IWM",
+        "EFA",
+        "EEM"
+      ],
+      "risk_off_rule": "hold_best_defensive_asset_when_no_positive_risk_asset",
+      "risk_on_rule": "hold_top_risk_asset_only_if_positive_absolute_momentum",
+      "source_memo": "docs/strategy_sources/GlobalDualMomentumDefensive-v1.md",
+      "top_risk_n": 1
+    },
+    "selection_rule": "static_source_declared_global_dual_momentum_v1",
+    "symbols": [
+      "EEM",
+      "EFA",
+      "IEF",
+      "IWM",
+      "QQQ",
+      "SHY",
+      "SPY",
+      "TLT"
+    ]
+  },
+  "uuid": "4efffeea-4f6d-4f1c-abc1-8203869c48ed"
+}

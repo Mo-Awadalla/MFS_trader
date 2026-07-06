@@ -168,6 +168,15 @@ def make_no_tuning_wfa_fns(
 ) -> tuple[Any, Any]:
     """Build WFA callables for a frozen no-tuning cross-sectional hypothesis."""
     cost_config = cost_config or default_cost_config()
+    full_result = backtest_cross_sectional(
+        df,
+        params,
+        strategy_name=strategy_name,
+        generate_signals=generate_signals,
+        params_to_dict=params_to_dict,
+        cost_config=cost_config,
+        initial_capital=initial_capital,
+    )
 
     def train_fn(train_df: pd.DataFrame, **kwargs: Any) -> dict[str, Any]:
         return params_to_dict(params)
@@ -177,17 +186,7 @@ def make_no_tuning_wfa_fns(
             return {}
         test_start = test_df.index.min()
         test_end = test_df.index.max()
-        context_df = df.loc[:test_end]
-        result = backtest_cross_sectional(
-            context_df,
-            params,
-            strategy_name=strategy_name,
-            generate_signals=generate_signals,
-            params_to_dict=params_to_dict,
-            cost_config=cost_config,
-            initial_capital=initial_capital,
-        )
-        oos_returns = result.returns.loc[test_start:test_end]
+        oos_returns = full_result.returns.loc[test_start:test_end]
         oos_equity = (1.0 + oos_returns).cumprod() * initial_capital
         metrics = compute_metrics(oos_returns, oos_equity, initial_capital)
         metrics["returns"] = oos_returns

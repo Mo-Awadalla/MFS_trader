@@ -1,0 +1,162 @@
+{
+  "passed": true,
+  "symbols": [
+    "SPY",
+    "QQQ",
+    "IWM",
+    "IEF",
+    "GLD",
+    "SHY",
+    "DBC"
+  ],
+  "bars_loaded": 5405,
+  "bars_start": "2005-01-03 14:30:00+00:00",
+  "bars_end": "2026-06-29 13:30:00+00:00",
+  "params": {
+    "momentum_lookback_days": 252,
+    "vol_lookback_days": 63,
+    "liquidity_lookback_days": 20,
+    "min_history_days": 252,
+    "min_price": 5.0,
+    "min_median_dollar_volume": 5000000.0,
+    "min_eligible_symbols": 1,
+    "top_n": 3,
+    "fallback_symbol": "SHY",
+    "target_volatility_annual": 0.1,
+    "min_gross": 0.25,
+    "max_gross": 1.0,
+    "max_symbol_weight": 0.5,
+    "strategy_template_version": "etf_time_series_momentum:v1",
+    "runtime_config_overrides": {
+      "portfolio.execution_mode": "continuous_rebalance",
+      "portfolio.per_position_risk_pct": 0.05,
+      "risk_limits.per_position_pct": 0.05,
+      "risk_limits.max_gross_exposure_pct": 1.0,
+      "risk_limits.max_net_exposure_pct": 1.0,
+      "engine.startup_reconciliation_required": false,
+      "portfolio.min_notional_delta": 25.0,
+      "portfolio.min_pct_position_delta": 0.05,
+      "target_weight_timing": "weights shifted one bar to match vectorized research execution"
+    }
+  },
+  "db_path": "docs\\reports\\etf_tsm_engine_replay\\etf_tsm_engine_replay.sqlite",
+  "report_path": "docs\\reports\\etf_tsm_engine_replay\\etf_tsm_engine_replay.md",
+  "json_path": "docs\\reports\\etf_tsm_engine_replay\\etf_tsm_engine_replay.json",
+  "operational_report_path": "docs\\reports\\etf_tsm_engine_replay\\etf_tsm_engine_replay_operational.md",
+  "operational_json_path": "docs\\reports\\etf_tsm_engine_replay\\etf_tsm_engine_replay_operational.json",
+  "research": {
+    "metrics": {
+      "total_return": 4.094436664130869,
+      "cagr": 0.0788654762318457,
+      "sharpe": 0.7953705443463879,
+      "sortino": 1.0009129991000913,
+      "max_drawdown": -0.17300942170119024,
+      "ann_volatility": 0.10200318249630874,
+      "win_rate": 0.5530214424951267,
+      "total_bars": 5405,
+      "final_equity": 50944.36664130869
+    },
+    "rebalances": 258,
+    "trade_rows": 776
+  },
+  "replay": {
+    "bar_count": 5405,
+    "cycle_count": 5405,
+    "orders_submitted": 1072,
+    "orders_filled": 1072,
+    "orders_rejected": 0,
+    "orders_timed_out": 0,
+    "final_positions": {
+      "DBC": 94.34438287240306,
+      "IWM": 10.39065989800991,
+      "QQQ": 4.788720978370359
+    },
+    "final_equity": 27759.41725036657,
+    "error": null
+  },
+  "final_target_weights": {
+    "SPY": 0.0,
+    "QQQ": 0.3383327239167933,
+    "IWM": 0.30233500289502413,
+    "IEF": 0.0,
+    "GLD": 0.0,
+    "SHY": 0.0,
+    "DBC": 0.25586197426765284
+  },
+  "final_replay_weights": {
+    "DBC": 0.25057867587056887,
+    "IWM": 0.3106495602391934,
+    "QQQ": 0.3467417167856902
+  },
+  "operational_report": {
+    "database": "docs\\reports\\etf_tsm_engine_replay\\etf_tsm_engine_replay.sqlite",
+    "first_event_at": "2026-07-06T22:38:51.144728+00:00",
+    "last_event_at": "2026-07-06T22:39:07.172066+00:00",
+    "events_total": 18362,
+    "bars_started": 5405,
+    "bars_completed": 5405,
+    "severity_counts": {
+      "INFO": 18349,
+      "WARN": 13
+    },
+    "event_counts": {
+      "ENGINE_HEARTBEAT": 10810,
+      "ENGINE_RESUMED": 1,
+      "ENGINE_SHUTDOWN": 1,
+      "ENGINE_STARTUP": 1,
+      "ORDER_FILLED": 1072,
+      "ORDER_INTENT": 1072,
+      "RISK_CHECK_PASSED": 5392,
+      "RISK_CHECK_REDUCED": 13
+    },
+    "order_state_counts": {
+      "FILLED": 1072
+    },
+    "open_orders": [],
+    "final_positions": [
+      {
+        "strategy": "etf_time_series_momentum",
+        "symbol": "DBC",
+        "side": "long",
+        "quantity": 94.34438287240306,
+        "avg_entry_price": 27.133560839653015,
+        "notional": null,
+        "updated_at": "2026-07-06T22:39:07.107219+00:00"
+      },
+      {
+        "strategy": "etf_time_series_momentum",
+        "symbol": "IWM",
+        "side": "long",
+        "quantity": 10.39065989800991,
+        "avg_entry_price": 291.11353211975097,
+        "notional": null,
+        "updated_at": "2026-07-06T22:39:07.082568+00:00"
+      },
+      {
+        "strategy": "etf_time_series_momentum",
+        "symbol": "QQQ",
+        "side": "long",
+        "quantity": 4.788720978370359,
+        "avg_entry_price": 706.8732795410156,
+        "notional": null,
+        "updated_at": "2026-07-06T22:39:07.136421+00:00"
+      }
+    ],
+    "risk_blocks": 0,
+    "risk_reductions": 13,
+    "reconciliation_mismatches": 0,
+    "broker_timeouts": 0,
+    "broker_rejections": 0,
+    "exceptions": 0,
+    "data_quality_counts": {},
+    "passed": true,
+    "blockers": []
+  },
+  "differences": [],
+  "assumption_gaps": [
+    "Replay uses a simulated broker, not Alpaca paper/live broker authority.",
+    "ETF target weights are precomputed from the frozen signal function and replayed through runtime as a target-weight adapter.",
+    "Runtime sizing is configured so fixed-fraction sizing maps target weights to notional exposure; this proves operational plumbing, not new alpha.",
+    "Portfolio equity is held constant for target sizing during replay; mark-to-market equity is computed from filled orders at the end."
+  ]
+}
