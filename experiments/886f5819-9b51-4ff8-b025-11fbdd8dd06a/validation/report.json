@@ -1,0 +1,80 @@
+{
+  "experiment_uuid": "886f5819-9b51-4ff8-b025-11fbdd8dd06a",
+  "gauntlet": {
+    "dsr": null,
+    "failure_reasons": [
+      "WFA: oos_sharpe -5.68 < 0.8",
+      "WFA: oos_sortino -8.88 < 1.0",
+      "WFA: frac_negative_folds 1.00 > 0.5",
+      "MC: P(ruin) = 1.000 >= 0.05",
+      "MC: 5th pct CAGR = -0.662 <= 0",
+      "MC: 95th pct max DD = -1.000 < -0.3",
+      "DSR: no positive Sharpe to deflate"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": -5.696274591585237,
+      "pct_5_cagr": -0.662378928533065,
+      "pct_95_max_dd": -0.9999956185522828,
+      "prob_loss": 1.0,
+      "prob_ruin": 1.0
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": false,
+      "passed": true,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "residual_reversal_stat_arb",
+    "wfa": {
+      "frac_negative": 1.0,
+      "num_folds": 26,
+      "oos_sharpe": -5.681489150061996,
+      "passed": false
+    }
+  },
+  "params": {
+    "factor_symbols": [
+      "SPY",
+      "QQQ",
+      "IWM"
+    ],
+    "liquidity_lookback_days": 20,
+    "long_gross": 1.0,
+    "max_symbol_weight": 0.1,
+    "min_eligible_symbols": 60,
+    "min_history_days": 120,
+    "min_median_dollar_volume": 20000000.0,
+    "min_price": 5.0,
+    "min_regression_obs": 45,
+    "regression_lookback_days": 60,
+    "residual_vol_lookback_days": 20,
+    "selection_count": 10,
+    "short_gross": 1.0
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+    "mode": "vectorized_cross_sectional_replay",
+    "reason": "engine replay is currently single-symbol; residual reversal evidence uses deterministic vectorized cross-sectional weights"
+  },
+  "research": {
+    "bar_count": 2136,
+    "metrics": {
+      "ann_volatility": 0.16994739781682058,
+      "cagr": -0.6156307239636675,
+      "final_equity": 3.0216947860493373,
+      "max_drawdown": -0.999697830521395,
+      "sharpe": -5.530379733894523,
+      "sortino": -7.681637333340699,
+      "total_bars": 2136,
+      "total_return": -0.999697830521395,
+      "win_rate": 0.31712158808933
+    },
+    "rebalance_count": 2136,
+    "skipped_rebalance_count": 120,
+    "trade_count": 69388
+  },
+  "strategy": "residual_reversal_stat_arb",
+  "strategy_template_version": "residual_reversal_stat_arb:v1",
+  "sweep_rows": 1
+}

@@ -1,0 +1,64 @@
+{
+  "database": "docs\\reports\\etf_tsm_engine_replay\\etf_tsm_engine_replay.sqlite",
+  "first_event_at": "2026-07-06T22:38:51.144728+00:00",
+  "last_event_at": "2026-07-06T22:39:07.172066+00:00",
+  "events_total": 18362,
+  "bars_started": 5405,
+  "bars_completed": 5405,
+  "severity_counts": {
+    "INFO": 18349,
+    "WARN": 13
+  },
+  "event_counts": {
+    "ENGINE_HEARTBEAT": 10810,
+    "ENGINE_RESUMED": 1,
+    "ENGINE_SHUTDOWN": 1,
+    "ENGINE_STARTUP": 1,
+    "ORDER_FILLED": 1072,
+    "ORDER_INTENT": 1072,
+    "RISK_CHECK_PASSED": 5392,
+    "RISK_CHECK_REDUCED": 13
+  },
+  "order_state_counts": {
+    "FILLED": 1072
+  },
+  "open_orders": [],
+  "final_positions": [
+    {
+      "strategy": "etf_time_series_momentum",
+      "symbol": "DBC",
+      "side": "long",
+      "quantity": 94.34438287240306,
+      "avg_entry_price": 27.133560839653015,
+      "notional": null,
+      "updated_at": "2026-07-06T22:39:07.107219+00:00"
+    },
+    {
+      "strategy": "etf_time_series_momentum",
+      "symbol": "IWM",
+      "side": "long",
+      "quantity": 10.39065989800991,
+      "avg_entry_price": 291.11353211975097,
+      "notional": null,
+      "updated_at": "2026-07-06T22:39:07.082568+00:00"
+    },
+    {
+      "strategy": "etf_time_series_momentum",
+      "symbol": "QQQ",
+      "side": "long",
+      "quantity": 4.788720978370359,
+      "avg_entry_price": 706.8732795410156,
+      "notional": null,
+      "updated_at": "2026-07-06T22:39:07.136421+00:00"
+    }
+  ],
+  "risk_blocks": 0,
+  "risk_reductions": 13,
+  "reconciliation_mismatches": 0,
+  "broker_timeouts": 0,
+  "broker_rejections": 0,
+  "exceptions": 0,
+  "data_quality_counts": {},
+  "passed": true,
+  "blockers": []
+}

@@ -131,6 +131,21 @@ class TestReconcileTimeout:
         state = reconcile_timeout("OPEN", 0, 100)
         assert state == OrderState.ACKNOWLEDGED
 
+    @pytest.mark.parametrize(
+        ("broker_status", "expected"),
+        [
+            ("CANCELLED", OrderState.CANCELLED),
+            ("CANCELED", OrderState.CANCELLED),
+            ("REJECTED", OrderState.REJECTED),
+            ("EXPIRED", OrderState.EXPIRED),
+            ("cancelled", OrderState.CANCELLED),
+            (" rejected ", OrderState.REJECTED),
+        ],
+    )
+    def test_terminal_broker_status_returns_terminal_state(self, broker_status, expected):
+        state = reconcile_timeout(broker_status, 0, 100)
+        assert state == expected
+
 
 class TestReconciliationStatus:
     def test_reconciliation_is_separate_field(self):

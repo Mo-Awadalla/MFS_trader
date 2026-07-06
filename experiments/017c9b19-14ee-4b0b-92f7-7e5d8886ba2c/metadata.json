@@ -1,0 +1,111 @@
+{
+  "config_version": "research.toml@0.1.0",
+  "cost_model": {
+    "borrow_cost_annual_pct": 0.01,
+    "commission_pct": 0.0,
+    "crypto_maker_fee_pct": 0.0007,
+    "crypto_taker_fee_pct": 0.001,
+    "finra_taf_per_share_sold": 0.000119,
+    "sec_fee_per_dollar_sold": 5.1e-06
+  },
+  "created_at": "2026-06-28T21:30:45Z",
+  "data_version": {
+    "adjustment": "split_dividend",
+    "bar_frequency": "1d",
+    "data_version": "alpaca_iex_static_etf_tactical_v1:etf_tactical_static_v1:1d@1488x7",
+    "source": "alpaca_iex_static_etf_tactical_v1",
+    "storage_dir": "data/parquet/equity"
+  },
+  "date_range": {
+    "end": "2026-06-26 00:00:00+00:00",
+    "start": "2018-11-01 00:00:00+00:00"
+  },
+  "execution_mode": "signals_after_t_minus_1_close_first_executable_price",
+  "experiment_hash": "7fc78b6081371a6ebde3543d1446c4072e65a1df928aa6c0055ce69f3695cbb4",
+  "git_commit": "cc5463bb2cde608353b317f02bcecfabcf8db3e8",
+  "label": "ETFTacticalMomentum-v1-Daily-2010-2026",
+  "legacy_artifacts_path": null,
+  "legacy_experiment_id": null,
+  "paper_thresholds": {
+    "min_calendar_days": 30,
+    "min_trades": 100,
+    "target_trades": 200
+  },
+  "parameters": {
+    "defensive_top_n": 2,
+    "liquidity_lookback_days": 20,
+    "long_gross": 1.0,
+    "long_lookback_days": 252,
+    "max_symbol_weight": 0.6,
+    "min_eligible_symbols": 4,
+    "min_history_days": 252,
+    "min_median_dollar_volume": 5000000.0,
+    "min_price": 5.0,
+    "short_lookback_days": 126,
+    "top_n": 3,
+    "trend_ma_days": 200,
+    "vol_lookback_days": 63
+  },
+  "portfolio_config": {
+    "dollar_neutral": false,
+    "equal_weight": false,
+    "execution_mode": "signal_transition",
+    "min_notional_delta": 25.0,
+    "min_pct_position_delta": 0.05,
+    "min_qty_delta": 1e-06,
+    "per_position_risk_pct": 0.01,
+    "rebalance_frequency": "monthly",
+    "sizing_method": "fixed_fraction"
+  },
+  "promotion_status": "validation_failed",
+  "random_seed": 42,
+  "risk_profile": {
+    "block_new_at_daily_loss_pct": 0.02,
+    "correlation_threshold": 0.7,
+    "max_beta_adjusted_net_pct": 0.1,
+    "max_correlated_cluster_gross_pct": 0.35,
+    "max_correlated_cluster_risk_pct": 0.03,
+    "max_daily_loss_pct": 0.03,
+    "max_gross_exposure_pct": 1.0,
+    "max_monthly_loss_pct": 0.15,
+    "max_net_exposure_pct": 1.0,
+    "max_open_positions": 3,
+    "max_open_positions_live_phase1": 10,
+    "max_sector_gross_pct": 0.35,
+    "max_sector_net_pct": 0.1,
+    "max_weekly_loss_pct": 0.06,
+    "per_position_pct": 0.01
+  },
+  "slippage_model": {
+    "slippage_fixed_pct": 0.0005,
+    "slippage_variable_coeff": 0.5
+  },
+  "strategy": "etf_tactical_momentum",
+  "strategy_template_version": "etf_tactical_momentum:v1",
+  "superseded_by": null,
+  "suspended_from_status": null,
+  "universe": {
+    "asset_class": "equity_etf",
+    "filters": {
+      "cash_proxy": "SHY",
+      "defensive_top_n": 2,
+      "median_dollar_volume_lookback_days": 20,
+      "median_dollar_volume_min": 5000000.0,
+      "min_history_days": 252,
+      "price_min": 5.0,
+      "risk_filter": "SPY_close_below_200dma_selects_defensive_assets_only",
+      "top_n": 3
+    },
+    "selection_rule": "static_low_budget_etf_tactical_v1",
+    "symbols": [
+      "DBC",
+      "GLD",
+      "IEF",
+      "IWM",
+      "QQQ",
+      "SHY",
+      "SPY"
+    ]
+  },
+  "uuid": "017c9b19-14ee-4b0b-92f7-7e5d8886ba2c"
+}
