@@ -9,8 +9,12 @@ from strategies.contract import StrategyTemplate
 from strategies.csmr.strategy import get_strategy as get_csmr_strategy
 from strategies.etf_time_series_momentum.strategy import get_strategy as get_etf_tsm_strategy
 from strategies.ma.strategy import get_strategy as get_ma_strategy
+from strategies.market_intraday_momentum.strategy import (
+    get_strategy as get_market_intraday_momentum_strategy,
+)
 from strategies.momentum.strategy import get_strategy as get_momentum_strategy
 from strategies.pairs.strategy import get_strategy as get_pairs_strategy
+from strategies.residual_reversal.strategy import get_strategy as get_residual_reversal_strategy
 
 _REGISTRY: dict[str, StrategyTemplate[Any]] = {
     "bollinger_bands": get_bb_strategy(),
@@ -18,7 +22,9 @@ _REGISTRY: dict[str, StrategyTemplate[Any]] = {
     "cross_sectional_momentum": get_momentum_strategy(),
     "dual_ma_crossover": get_ma_strategy(),
     "etf_time_series_momentum": get_etf_tsm_strategy(),
+    "market_intraday_momentum": get_market_intraday_momentum_strategy(),
     "pairs_trading": get_pairs_strategy(),
+    "residual_reversal_stat_arb": get_residual_reversal_strategy(),
 }
 
 # Raw exit column used by exit-contract tests per strategy.

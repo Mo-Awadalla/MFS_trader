@@ -105,9 +105,9 @@ def run_ma_shakedown(
     out_dir: str | Path,
     bars: int = 300,
     seed: int = 42,
-    fast_window: int = 20,
-    slow_window: int = 100,
-    trend_filter_active: bool = True,
+    fast_window: int = 5,
+    slow_window: int = 20,
+    trend_filter_active: bool = False,
     initial_capital: float = 10000.0,
 ) -> MAShakedownResult:
     """Run local MA research + replay + failure-mode shakedown and write reports."""
