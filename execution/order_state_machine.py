@@ -84,7 +84,9 @@ ALLOWED_TRANSITIONS: dict[OrderState, set[OrderState]] = {
     OrderState.TIMEOUT: {
         # TIMEOUT must reconcile, NOT retry blindly
         OrderState.ACKNOWLEDGED,  # found alive on broker
+        OrderState.CANCELLED,  # broker confirms cancel/no live order
         OrderState.REJECTED,  # broker confirms rejection
+        OrderState.EXPIRED,  # broker confirms order expired
         OrderState.FILLED,  # actually filled
         OrderState.PARTIALLY_FILLED,
         OrderState.UNKNOWN,  # cannot determine → manual review
@@ -160,13 +162,22 @@ def reconcile_timeout(
         # Broker unreachable → UNKNOWN, manual review
         return OrderState.UNKNOWN
 
+    normalized_status = broker_status.strip().upper()
+    terminal_statuses = {
+        "CANCELLED": OrderState.CANCELLED,
+        "CANCELED": OrderState.CANCELLED,
+        "REJECTED": OrderState.REJECTED,
+        "EXPIRED": OrderState.EXPIRED,
+    }
+    acknowledged_statuses = {"ACKNOWLEDGED", "OPEN", "NEW", "ACCEPTED"}
+
     if broker_filled_qty >= requested_qty:
         return OrderState.FILLED
     elif broker_filled_qty > 0:
         return OrderState.PARTIALLY_FILLED
-    elif broker_status in ("CANCELLED", "REJECTED", "EXPIRED"):
-        return OrderState(broker_status.capitalize()) if broker_status.capitalize() in OrderState.__members__.values() else OrderState.UNKNOWN
-    elif broker_status in ("ACKNOWLEDGED", "OPEN", "NEW", "ACCEPTED"):
+    elif normalized_status in terminal_statuses:
+        return terminal_statuses[normalized_status]
+    elif normalized_status in acknowledged_statuses:
         return OrderState.ACKNOWLEDGED
     else:
         return OrderState.UNKNOWN

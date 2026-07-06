@@ -46,7 +46,7 @@ def trending_ohlcv(n: int = 300) -> pd.DataFrame:
 
 def cross_sectional_ohlcv(n_days: int = 90, n_symbols: int = 120) -> pd.DataFrame:
     idx = pd.bdate_range("2024-01-02", periods=n_days, tz="UTC")
-    symbols = tuple(f"S{i:03d}" for i in range(n_symbols))
+    symbols = ("SHY",) + tuple(f"S{i:03d}" for i in range(n_symbols))
     columns = pd.MultiIndex.from_product(
         [symbols, ("open", "high", "low", "close", "volume")],
         names=["symbol", "field"],
@@ -85,7 +85,7 @@ def assert_required_surface(strategy: StrategyTemplate[Any]) -> None:
 
 
 def assert_validate_inputs_enforced(strategy: StrategyTemplate[Any]) -> None:
-    if strategy.metadata().get("data_shape") == "cross_sectional":
+    if str(strategy.metadata().get("data_shape", "")).startswith("cross_sectional"):
         bad = pd.DataFrame({"close": [1.0, 2.0]}, index=pd.date_range("2024-01-01", periods=2))
     else:
         bad = pd.DataFrame({"close": [1.0, 2.0]})
@@ -228,12 +228,12 @@ def assert_cross_sectional_contract(strategy: StrategyTemplate[Any]) -> None:
     assert diag.bars == len(df)
     assert diag.warmup_bars == strategy.warmup_bars(params)
     assert diag.filtered_entry_events <= diag.raw_entry_events
-    assert diag.extra["data_shape"] == "cross_sectional"
+    assert str(diag.extra["data_shape"]).startswith("cross_sectional")
 
 
 def run_contract_suite(strategy: StrategyTemplate[Any]) -> None:
     """Run all reusable contract assertions for one strategy."""
-    if strategy.metadata().get("data_shape") == "cross_sectional":
+    if str(strategy.metadata().get("data_shape", "")).startswith("cross_sectional"):
         assert_cross_sectional_contract(strategy)
         return
 

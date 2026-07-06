@@ -1,0 +1,73 @@
+{
+  "experiment_uuid": "4efffeea-4f6d-4f1c-abc1-8203869c48ed",
+  "gauntlet": {
+    "dsr": {
+      "m_eff": 1.0,
+      "m_raw": 4,
+      "method": "M_eff_corr",
+      "passed": false,
+      "pvalue": 0.01722210975840599
+    },
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.59 < 0.8",
+      "WFA: oos_sortino 0.88 < 1.0",
+      "DSR: DSR collapses under M_raw: p = 0.2797 >= 0.10"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": 0.5743652459364681,
+      "pct_5_cagr": 0.007645622796637212,
+      "pct_95_max_dd": -0.192086388311457,
+      "prob_loss": 0.0335,
+      "prob_ruin": 0.023
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": false,
+      "passed": true,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "global_dual_momentum",
+    "wfa": {
+      "frac_negative": 0.21739130434782608,
+      "num_folds": 23,
+      "oos_sharpe": 0.5882183282589979,
+      "passed": false
+    }
+  },
+  "params": {
+    "defensive_n": 1,
+    "liquidity_lookback_days": 20,
+    "min_history_days": 252,
+    "min_median_dollar_volume": 5000000.0,
+    "min_price": 5.0,
+    "momentum_lookback_days": 252,
+    "target_gross": 1.0,
+    "top_risk_n": 1
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+    "mode": "vectorized_cross_sectional_replay",
+    "reason": "engine replay is currently single-symbol; Global Dual Momentum evidence uses deterministic vectorized ETF target weights"
+  },
+  "research": {
+    "bar_count": 1489,
+    "metrics": {
+      "ann_volatility": 0.16815044467146303,
+      "cagr": 0.09630766525858903,
+      "final_equity": 17216.706482873098,
+      "max_drawdown": -0.2568243850174929,
+      "sharpe": 0.6310780046795428,
+      "sortino": 0.7718674738406662,
+      "total_bars": 1489,
+      "total_return": 0.7216706482873099,
+      "win_rate": 0.5277777777777778
+    },
+    "rebalance_count": 73,
+    "skipped_rebalance_count": 14,
+    "trade_count": 39
+  },
+  "strategy": "global_dual_momentum",
+  "strategy_template_version": "global_dual_momentum:v1",
+  "sweep_rows": 4
+}

@@ -9,7 +9,10 @@ import pytest
 
 
 def pytest_configure(config):
-    """Load .env before test collection."""
+    """Optionally load .env before test collection for explicit live-broker runs."""
+    if os.environ.get("MFS_TEST_LOAD_DOTENV", "0") != "1":
+        return
+
     from dotenv import load_dotenv
 
     env_path = Path(__file__).resolve().parents[1] / ".env"

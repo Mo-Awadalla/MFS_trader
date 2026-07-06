@@ -13,6 +13,7 @@ from typing import Any
 import pandas as pd
 
 from config.loader import ConfigError, get_broker_creds, load_config
+from engine.etf_tsm_replay import run_etf_tsm_engine_replay
 from engine.ma_replay import run_ma_real_data_replay
 from engine.paper_dry_run import run_ma_paper_dry_run
 from engine.paper_run import PaperRunConfig, PaperRunLoop
@@ -85,7 +86,7 @@ def cmd_shakedown_ma(args: argparse.Namespace) -> int:
         seed=args.seed,
         fast_window=args.fast_window,
         slow_window=args.slow_window,
-        trend_filter_active=not args.no_trend_filter,
+        trend_filter_active=args.trend_filter_active,
         initial_capital=args.initial_capital,
     )
     print(f"MA shakedown status: {'PASS' if result.passed else 'BLOCKED'}")
@@ -127,6 +128,37 @@ def cmd_replay_ma(args: argparse.Namespace) -> int:
     print(f"MA real-data replay status: {'PASS' if result.passed else 'DIFFS FOUND'}")
     print(f"Markdown: {Path(args.out_dir) / f'{stem}.md'}")
     print(f"JSON:     {Path(args.out_dir) / f'{stem}.json'}")
+    print(f"Replay DB: {result.db_path}")
+    if result.differences:
+        print("Differences:")
+        for difference in result.differences:
+            print(f"  - {difference}")
+    return 0 if result.passed or args.allow_diffs else 1
+
+
+def cmd_replay_etf_tsm(args: argparse.Namespace) -> int:
+    """Replay ETF TSM target weights through runtime/OMS/sim broker."""
+
+    if not args.config:
+        print("replay-etf-tsm requires --config", file=sys.stderr)
+        return 2
+    try:
+        cfg = load_config(args.config)
+        result = run_etf_tsm_engine_replay(
+            config=cfg,
+            out_dir=args.out_dir,
+            cache_dir=args.cache_dir,
+            initial_capital=args.initial_capital,
+            max_bars=args.max_bars,
+        )
+    except (ConfigError, FileNotFoundError, ValueError) as exc:
+        print(f"ETF TSM replay error: {exc}", file=sys.stderr)
+        return 1
+
+    print(f"ETF TSM engine replay status: {'PASS' if result.passed else 'BLOCKED'}")
+    print(f"Markdown: {result.report_path}")
+    print(f"JSON:     {result.json_path}")
+    print(f"Operational report: {result.operational_report_path}")
     print(f"Replay DB: {result.db_path}")
     if result.differences:
         print("Differences:")
@@ -614,9 +646,21 @@ def build_parser() -> argparse.ArgumentParser:
     p_shakedown.add_argument("--out-dir", default="runs/ma_shakedown", help="Artifact directory")
     p_shakedown.add_argument("--bars", type=int, default=300, help="Synthetic daily bars")
     p_shakedown.add_argument("--seed", type=int, default=42, help="Synthetic data RNG seed")
-    p_shakedown.add_argument("--fast-window", type=int, default=20)
-    p_shakedown.add_argument("--slow-window", type=int, default=100)
-    p_shakedown.add_argument("--no-trend-filter", action="store_true")
+    p_shakedown.add_argument("--fast-window", type=int, default=5)
+    p_shakedown.add_argument("--slow-window", type=int, default=20)
+    p_shakedown.add_argument(
+        "--trend-filter",
+        dest="trend_filter_active",
+        action="store_true",
+        default=False,
+        help="Enable the long-trend filter; disabled by default so the local smoke exercises orders.",
+    )
+    p_shakedown.add_argument(
+        "--no-trend-filter",
+        dest="trend_filter_active",
+        action="store_false",
+        help=argparse.SUPPRESS,
+    )
     p_shakedown.add_argument("--initial-capital", type=float, default=10000.0)
     p_shakedown.add_argument(
         "--allow-blockers",
@@ -645,6 +689,30 @@ def build_parser() -> argparse.ArgumentParser:
         help="Exit 0 even if research/replay structural differences are found",
     )
     p_replay.set_defaults(func=cmd_replay_ma)
+
+    p_etf_replay = sub.add_parser(
+        "replay-etf-tsm",
+        help="Replay ETF TSM target weights through runtime/OMS/sim broker",
+    )
+    p_etf_replay.add_argument("--out-dir", default="runs/etf_tsm_engine_replay", help="Artifact directory")
+    p_etf_replay.add_argument(
+        "--cache-dir",
+        default="data/parquet/equity/yahoo_chart",
+        help="Cached Yahoo ETF daily bar directory",
+    )
+    p_etf_replay.add_argument("--initial-capital", type=float, default=10000.0)
+    p_etf_replay.add_argument(
+        "--max-bars",
+        type=int,
+        default=None,
+        help="Optional tail bar limit for quick local smoke runs",
+    )
+    p_etf_replay.add_argument(
+        "--allow-diffs",
+        action="store_true",
+        help="Exit 0 even if replay structural differences are found",
+    )
+    p_etf_replay.set_defaults(func=cmd_replay_etf_tsm)
 
     p_dry = sub.add_parser(
         "paper-dry-run-ma",
