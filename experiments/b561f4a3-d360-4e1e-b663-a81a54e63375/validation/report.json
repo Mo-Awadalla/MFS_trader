@@ -1,0 +1,92 @@
+{
+  "experiment_uuid": "b561f4a3-d360-4e1e-b663-a81a54e63375",
+  "gauntlet": {
+    "dsr": null,
+    "failure_reasons": [
+      "WFA: oos_sharpe -0.49 < 0.8",
+      "WFA: oos_sortino -1.57 < 1.0",
+      "WFA: frac_negative_folds 0.81 > 0.5",
+      "MC: P(ruin) = 0.993 >= 0.05",
+      "MC: 5th pct CAGR = -0.012 <= 0",
+      "MC: 95th pct max DD = -0.572 < -0.2",
+      "DSR: no positive Sharpe to deflate"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": -0.49378159856807907,
+      "pct_5_cagr": -0.011625560480653547,
+      "pct_95_max_dd": -0.571728659035349,
+      "prob_loss": 1.0,
+      "prob_ruin": 0.9927
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": false,
+      "passed": true,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "opening_range_breakout",
+    "wfa": {
+      "frac_negative": 0.8135593220338984,
+      "num_folds": 59,
+      "oos_sharpe": -0.493748360356843,
+      "passed": false
+    }
+  },
+  "intraday": {
+    "failures": [],
+    "metrics": {
+      "expectancy_per_trade": 5.012193420419962e-05,
+      "exposure_fraction": 0.3200561009817672,
+      "flat_by_session_close": true,
+      "has_short_exposure": false,
+      "max_abs_exposure": 1.0,
+      "max_holding_period_bars": 9,
+      "max_single_session_profit_share": 0.03418338390132245,
+      "max_trades_per_session": 8,
+      "max_turnover_per_session": 2.6666666666666665,
+      "profit_factor": 1.278415334333496,
+      "trade_count": 3249,
+      "trading_sessions": 1376
+    },
+    "passed": true
+  },
+  "params": {
+    "allow_short": false,
+    "bars_per_session": 13,
+    "breakout_buffer_pct": 0.0,
+    "exit_before_close_bars": 1,
+    "max_gross": 1.0,
+    "max_symbol_weight": 0.5,
+    "min_opening_range_volume": 100000.0,
+    "min_price": 5.0,
+    "opening_range_bars": 2
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "breakout signal is held from next 30m bar; zero target before close prevents overnight exposure",
+    "mode": "vectorized_intraday_cross_sectional_replay",
+    "reason": "engine replay is currently not session-scheduled for multi-ETF 30m intraday flat-by-close strategies"
+  },
+  "research": {
+    "bar_count": 17825,
+    "metrics": {
+      "ann_return": -0.11466431126925775,
+      "ann_volatility": 0.0634099416308861,
+      "annualization_factor": 3276.0,
+      "cagr": -0.110128611828193,
+      "final_equity": 13250.282760077023,
+      "max_drawdown": -0.47163537557363355,
+      "sharpe": -1.808301794957123,
+      "sortino": -1.3372720215530514,
+      "total_bars": 17825.0,
+      "total_return": -0.4699886895969191,
+      "win_rate": 0.45005403736297667
+    },
+    "rebalance_count": 17825,
+    "skipped_rebalance_count": 2,
+    "trade_count": 3249
+  },
+  "strategy": "opening_range_breakout",
+  "strategy_template_version": "opening_range_breakout:v1",
+  "sweep_rows": 1
+}
