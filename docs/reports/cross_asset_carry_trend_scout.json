@@ -1,0 +1,507 @@
+{
+  "analysis_end": "2024-03-28",
+  "analysis_start": "2010-01-04",
+  "asset_class_diagnostics": {
+    "default_net_pnl": {
+      "agriculture": 0.2794944552776549,
+      "energy": 0.14901435354830256,
+      "equity_index": 0.4777284257382376,
+      "fx": 0.36194674060049425,
+      "metals": -0.09855057205490783,
+      "rates": 0.30760503527262106
+    },
+    "gross_pnl": {
+      "agriculture": 0.31335980262866037,
+      "energy": 0.1685013063055196,
+      "equity_index": 0.5078494094038362,
+      "fx": 0.4167463908057646,
+      "metals": -0.08990691809350689,
+      "rates": 0.36608385654598474
+    },
+    "largest_absolute_gross_pnl_share": 0.2726784831734007,
+    "metrics": {
+      "agriculture": {
+        "default_net": {
+          "ann_volatility": 0.05117982813120106,
+          "annualized_return": 0.010413852677543597,
+          "cagr": 0.009145610380666636,
+          "final_equity": 11427.270738157864,
+          "max_drawdown": -0.19120869281368189,
+          "sharpe": 0.20347572584353676,
+          "sortino": 0.2384750125903377,
+          "total_bars": 3693,
+          "total_return": 0.14272707381578642,
+          "win_rate": 0.5114678899082569
+        },
+        "gross": {
+          "ann_volatility": 0.051159795394806744,
+          "annualized_return": 0.010731727754868381,
+          "cagr": 0.009467467259725026,
+          "final_equity": 11480.798141223413,
+          "max_drawdown": -0.18964133761200727,
+          "sharpe": 0.20976877784694511,
+          "sortino": 0.2455889923721848,
+          "total_bars": 3693,
+          "total_return": 0.1480798141223414,
+          "win_rate": 0.5129806112389089
+        }
+      },
+      "energy": {
+        "default_net": {
+          "ann_volatility": 0.04073265083303029,
+          "annualized_return": 0.0063645568573115225,
+          "cagr": 0.005550581796183396,
+          "final_equity": 10844.983583867996,
+          "max_drawdown": -0.1598199071878854,
+          "sharpe": 0.15625196806858624,
+          "sortino": 0.1951789582471748,
+          "total_bars": 3693,
+          "total_return": 0.08449835838679953,
+          "win_rate": 0.5217687074829932
+        },
+        "gross": {
+          "ann_volatility": 0.04071340279147472,
+          "annualized_return": 0.006849062115279782,
+          "cagr": 0.006038675258274839,
+          "final_equity": 10922.384580110707,
+          "max_drawdown": -0.15754961967729395,
+          "sharpe": 0.16822622639427126,
+          "sortino": 0.2102708522196296,
+          "total_bars": 3693,
+          "total_return": 0.09223845801107067,
+          "win_rate": 0.5246069719753931
+        }
+      },
+      "equity_index": {
+        "default_net": {
+          "ann_volatility": 0.0518656432179577,
+          "annualized_return": 0.02546782004531297,
+          "cagr": 0.02441319139857967,
+          "final_equity": 14240.03342697904,
+          "max_drawdown": -0.12313832623425246,
+          "sharpe": 0.4910344973123773,
+          "sortino": 0.508159862795856,
+          "total_bars": 3693,
+          "total_return": 0.42400334269790396,
+          "win_rate": 0.548474314407107
+        },
+        "gross": {
+          "ann_volatility": 0.05183532257832341,
+          "annualized_return": 0.02617440012769023,
+          "cagr": 0.025138827742799297,
+          "final_equity": 14388.570595426743,
+          "max_drawdown": -0.12240234385184087,
+          "sharpe": 0.5049529707882224,
+          "sortino": 0.5220382300594776,
+          "total_bars": 3693,
+          "total_return": 0.4388570595426744,
+          "win_rate": 0.5513765025203567
+        }
+      },
+      "fx": {
+        "default_net": {
+          "ann_volatility": 0.04459890775355764,
+          "annualized_return": 0.014122668336292225,
+          "cagr": 0.01321541848898744,
+          "final_equity": 12121.556072541824,
+          "max_drawdown": -0.08726797022823965,
+          "sharpe": 0.31665951135688214,
+          "sortino": 0.3947121890042096,
+          "total_bars": 3693,
+          "total_return": 0.21215560725418237,
+          "win_rate": 0.5180446194225722
+        },
+        "gross": {
+          "ann_volatility": 0.0445854001420316,
+          "annualized_return": 0.015484425697090598,
+          "cagr": 0.014596654727005776,
+          "final_equity": 12365.983433632678,
+          "max_drawdown": -0.08655108438841382,
+          "sharpe": 0.3472981210836572,
+          "sortino": 0.43278055771076,
+          "total_bars": 3693,
+          "total_return": 0.2365983433632679,
+          "win_rate": 0.519723865877712
+        }
+      },
+      "metals": {
+        "default_net": {
+          "ann_volatility": 0.031816667863764,
+          "annualized_return": -0.0034672926596508334,
+          "cagr": -0.0039652902350743036,
+          "final_equity": 9434.367990805784,
+          "max_drawdown": -0.10792109362019969,
+          "sharpe": -0.10897724030993619,
+          "sortino": -0.13067658387726513,
+          "total_bars": 3693,
+          "total_return": -0.056563200919421575,
+          "win_rate": 0.4830858085808581
+        },
+        "gross": {
+          "ann_volatility": 0.03180961066731944,
+          "annualized_return": -0.0028356920993845157,
+          "cagr": -0.003335759939732008,
+          "final_equity": 9522.13044120416,
+          "max_drawdown": -0.10470737094699867,
+          "sharpe": -0.08914576569457511,
+          "sortino": -0.10698415021960986,
+          "total_bars": 3693,
+          "total_return": -0.047786955879583926,
+          "win_rate": 0.48792672772689427
+        }
+      },
+      "rates": {
+        "default_net": {
+          "ann_volatility": 0.0405103734580845,
+          "annualized_return": 0.015305523250720912,
+          "cagr": 0.01459047666824187,
+          "final_equity": 12364.87999551805,
+          "max_drawdown": -0.106702751265195,
+          "sharpe": 0.377817382171441,
+          "sortino": 0.4151813881984296,
+          "total_bars": 3693,
+          "total_return": 0.236487999551805,
+          "win_rate": 0.5126353790613718
+        },
+        "gross": {
+          "ann_volatility": 0.040501049098239164,
+          "annualized_return": 0.017236626700402918,
+          "cagr": 0.016551919813103222,
+          "final_equity": 12719.852518508693,
+          "max_drawdown": -0.10176930221287289,
+          "sharpe": 0.4255846967962196,
+          "sortino": 0.4646847107196925,
+          "total_bars": 3693,
+          "total_return": 0.2719852518508692,
+          "win_rate": 0.5223717715532921
+        }
+      }
+    }
+  },
+  "component_metrics": {
+    "carry": {
+      "default_net": {
+        "ann_volatility": 0.10379011797580526,
+        "annualized_return": 0.046651643076968244,
+        "cagr": 0.042122048215699204,
+        "final_equity": 18305.96331652188,
+        "max_drawdown": -0.2751165233537691,
+        "sharpe": 0.44948058627164594,
+        "sortino": 0.6389817782024821,
+        "total_bars": 3693,
+        "total_return": 0.830596331652188,
+        "win_rate": 0.5193109196999166
+      },
+      "gross": {
+        "ann_volatility": 0.10371688861056615,
+        "annualized_return": 0.054240639200626446,
+        "cagr": 0.05006752720338992,
+        "final_equity": 20461.309745349838,
+        "max_drawdown": -0.24798680491374794,
+        "sharpe": 0.5229682448756054,
+        "sortino": 0.7439698207416957,
+        "total_bars": 3693,
+        "total_return": 1.0461309745349836,
+        "win_rate": 0.5227904391328516
+      }
+    },
+    "combined": {
+      "default_net": {
+        "ann_volatility": 0.11218226394636499,
+        "annualized_return": 0.06820712850753038,
+        "cagr": 0.06385701695545953,
+        "final_equity": 24772.384383824243,
+        "max_drawdown": -0.2917530550216641,
+        "sharpe": 0.6080027814391464,
+        "sortino": 0.8230604229013859,
+        "total_bars": 3693,
+        "total_return": 1.4772384383824244,
+        "win_rate": 0.5279905715969357
+      },
+      "gross": {
+        "ann_volatility": 0.11215325658243915,
+        "annualized_return": 0.07364055029594739,
+        "cagr": 0.06965526291981705,
+        "final_equity": 26826.338475962555,
+        "max_drawdown": -0.2740010736508419,
+        "sharpe": 0.6566064378328356,
+        "sortino": 0.8891597216027003,
+        "total_bars": 3693,
+        "total_return": 1.6826338475962554,
+        "win_rate": 0.5316828765104628
+      }
+    },
+    "trend": {
+      "default_net": {
+        "ann_volatility": 0.1133459356442118,
+        "annualized_return": 0.06198199833085833,
+        "cagr": 0.057115374222621806,
+        "final_equity": 22568.768837650376,
+        "max_drawdown": -0.25413890728149185,
+        "sharpe": 0.5468391784723297,
+        "sortino": 0.7217226253821514,
+        "total_bars": 3693,
+        "total_return": 1.2568768837650377,
+        "win_rate": 0.5261161365625912
+      },
+      "gross": {
+        "ann_volatility": 0.11332860116687535,
+        "annualized_return": 0.0677401807720378,
+        "cagr": 0.06322080095078197,
+        "final_equity": 24556.164539627895,
+        "max_drawdown": -0.25227936462588707,
+        "sharpe": 0.5977324353654644,
+        "sortino": 0.7885142755924932,
+        "total_bars": 3693,
+        "total_return": 1.4556164539627896,
+        "win_rate": 0.5287423402392764
+      }
+    }
+  },
+  "cost_sensitivity_bps": {
+    "0.0": {
+      "ann_volatility": 0.11215325658243915,
+      "annualized_return": 0.07364055029594739,
+      "cagr": 0.06965526291981705,
+      "final_equity": 26826.338475962555,
+      "max_drawdown": -0.2740010736508419,
+      "sharpe": 0.6566064378328356,
+      "sortino": 0.8891597216027003,
+      "total_bars": 3693,
+      "total_return": 1.6826338475962554,
+      "win_rate": 0.5316828765104628
+    },
+    "1.0": {
+      "ann_volatility": 0.11216629449373303,
+      "annualized_return": 0.07092422685333881,
+      "cagr": 0.06675280447371734,
+      "final_equity": 25779.127159300442,
+      "max_drawdown": -0.2829297875121076,
+      "sharpe": 0.6323131843969536,
+      "sortino": 0.8561671039567317,
+      "total_bars": 3693,
+      "total_return": 1.5779127159300441,
+      "win_rate": 0.5306423099587507
+    },
+    "2.0": {
+      "ann_volatility": 0.11218226394636499,
+      "annualized_return": 0.06820712850753038,
+      "cagr": 0.06385701695545953,
+      "final_equity": 24772.384383824243,
+      "max_drawdown": -0.2917530550216641,
+      "sharpe": 0.6080027814391464,
+      "sortino": 0.8230604229013859,
+      "total_bars": 3693,
+      "total_return": 1.4772384383824244,
+      "win_rate": 0.5279905715969357
+    },
+    "5.0": {
+      "ann_volatility": 0.11224777264820045,
+      "annualized_return": 0.06005115933974156,
+      "cagr": 0.055209533933037847,
+      "final_equity": 21979.772159394117,
+      "max_drawdown": -0.31760206274223696,
+      "sharpe": 0.5349875362600729,
+      "sortino": 0.7243781323794439,
+      "total_bars": 3693,
+      "total_return": 1.1979772159394115,
+      "win_rate": 0.5262227460223925
+    }
+  },
+  "gates": {
+    "all_leave_one_asset_class_out_net_sharpes_positive": true,
+    "best_12_months_positive_pnl_share_at_most_50pct": true,
+    "both_subperiods_net_profitable_with_positive_sharpe": true,
+    "carry_and_trend_gross_total_returns_positive": true,
+    "combined_gross_sharpe_at_least_0_40": true,
+    "combined_gross_total_return_positive": true,
+    "combined_net_sharpe_at_least_0_35": true,
+    "combined_net_total_return_positive": true,
+    "combined_profitable_at_5bps": true,
+    "largest_asset_class_absolute_gross_pnl_share_at_most_60pct": true,
+    "primary_overlay_cagr_within_1pct_of_spy": true,
+    "primary_overlay_drawdown_within_1pct_of_spy": true,
+    "primary_overlay_sharpe_not_below_spy": true
+  },
+  "leave_one_asset_class_out": {
+    "agriculture": {
+      "ann_volatility": 0.1055987143896936,
+      "annualized_return": 0.06101112268723934,
+      "cagr": 0.056986490878070395,
+      "final_equity": 22528.47862353797,
+      "max_drawdown": -0.24876010003622176,
+      "sharpe": 0.5777638775230582,
+      "sortino": 0.7617499297671976,
+      "total_bars": 3693,
+      "total_return": 1.2528478623537969,
+      "win_rate": 0.5312315851502651
+    },
+    "energy": {
+      "ann_volatility": 0.1087873522920971,
+      "annualized_return": 0.06455149536126588,
+      "cagr": 0.06037391033278805,
+      "final_equity": 23610.004913543886,
+      "max_drawdown": -0.23285024278350236,
+      "sharpe": 0.5933731633429528,
+      "sortino": 0.78770194452117,
+      "total_bars": 3693,
+      "total_return": 1.3610004913543885,
+      "win_rate": 0.5294811320754716
+    },
+    "equity_index": {
+      "ann_volatility": 0.10884898388202184,
+      "annualized_return": 0.04406027568591271,
+      "cagr": 0.0388704581897823,
+      "final_equity": 17486.51740926708,
+      "max_drawdown": -0.35971884274854754,
+      "sharpe": 0.4047835277329582,
+      "sortino": 0.5534831515174121,
+      "total_bars": 3693,
+      "total_return": 0.7486517409267079,
+      "win_rate": 0.5167865707434053
+    },
+    "fx": {
+      "ann_volatility": 0.10474506742743761,
+      "annualized_return": 0.05585371111436186,
+      "cagr": 0.05165334456626525,
+      "final_equity": 20918.852273792967,
+      "max_drawdown": -0.350960748796323,
+      "sharpe": 0.5332347621338317,
+      "sortino": 0.7426384947464663,
+      "total_bars": 3693,
+      "total_return": 1.0918852273792967,
+      "win_rate": 0.5289181899910099
+    },
+    "metals": {
+      "ann_volatility": 0.10627981599871689,
+      "annualized_return": 0.07494605644914963,
+      "cagr": 0.0717392728752182,
+      "final_equity": 27602.553513287912,
+      "max_drawdown": -0.23037188071601714,
+      "sharpe": 0.7051767614092825,
+      "sortino": 0.9354499822102056,
+      "total_bars": 3693,
+      "total_return": 1.7602553513287913,
+      "win_rate": 0.5343443354148082
+    },
+    "rates": {
+      "ann_volatility": 0.11723335534537307,
+      "annualized_return": 0.056335174035932654,
+      "cagr": 0.050693086451424785,
+      "final_equity": 20640.67183944717,
+      "max_drawdown": -0.2558170350698182,
+      "sharpe": 0.4805387841196518,
+      "sortino": 0.6465641169192251,
+      "total_bars": 3693,
+      "total_return": 1.0640671839447173,
+      "win_rate": 0.5259412985472873
+    }
+  },
+  "limitations": [
+    "Public source multiple-price data are curated and stale after 2024-03-28.",
+    "The panel lacks complete individual-contract chains, volume, open interest, and exact notice dates.",
+    "Source roll calendars may contain maintainer judgment or manual edits.",
+    "Back-adjusted point changes and supplied contract mappings are suitable only for falsification research.",
+    "A passing scout requires independent raw-contract replication before validation or trading."
+  ],
+  "monthly_concentration": {
+    "best_12_positive_pnl_share": 0.3716579713523098,
+    "positive_month_count": 97.0
+  },
+  "overlay_metrics": {
+    "spy_plus_20pct": {
+      "ann_volatility": 0.17295109446261558,
+      "annualized_return": 0.15065235985145778,
+      "cagr": 0.14523197822813239,
+      "final_equity": 72957.46345161337,
+      "max_drawdown": -0.3257800399977726,
+      "sharpe": 0.8710691326906994,
+      "sortino": 1.063069049811882,
+      "total_bars": 3693,
+      "total_return": 6.295746345161336,
+      "win_rate": 0.5536784741144414
+    },
+    "spy_plus_50pct_primary": {
+      "ann_volatility": 0.18282412551861368,
+      "annualized_return": 0.1711144984037169,
+      "cagr": 0.16684132763881632,
+      "final_equity": 95949.34488780457,
+      "max_drawdown": -0.30891943690469587,
+      "sharpe": 0.9359514118736775,
+      "sortino": 1.162967290517783,
+      "total_bars": 3693,
+      "total_return": 8.594934488780458,
+      "win_rate": 0.5607629427792915
+    }
+  },
+  "params": {
+    "default_cost_bps": 2.0,
+    "end": "2024-03-28",
+    "execution_lag_sessions": 2,
+    "max_gross_notional": 3.0,
+    "max_market_notional": 0.35,
+    "min_active_markets": 8,
+    "overlay_diagnostic_scale": 0.2,
+    "overlay_primary_scale": 0.5,
+    "start": "2010-01-04",
+    "target_volatility": 0.1,
+    "trend_lookback_days": 252,
+    "vol_lookback_days": 63,
+    "vol_min_periods": 42
+  },
+  "portfolio_diagnostics": {
+    "max_daily_turnover": 3.137574667690296,
+    "max_gross_notional": 3.4140160604838354,
+    "mean_active_markets": 8.364744110479284,
+    "mean_daily_cost_bps": 0.21637167109276997,
+    "mean_daily_turnover": 0.10818583554638496,
+    "mean_gross_notional": 2.0662142047832797,
+    "median_daily_turnover": 0.0,
+    "min_active_markets_when_invested": 3.0,
+    "rebalance_count": 161.0,
+    "roll_count": 471.0,
+    "spy_daily_correlation": 0.07610442411211892,
+    "total_cost_arithmetic_return": 0.07990605813455995
+  },
+  "scout_passed": true,
+  "source_commit": "883c8681cf880d83acad5c39b842403a8eac5676",
+  "spy_metrics": {
+    "ann_volatility": 0.1697905982271799,
+    "annualized_return": 0.1370109341499517,
+    "cagr": 0.13033518803780586,
+    "final_equity": 60219.83291529375,
+    "max_drawdown": -0.3371726596479674,
+    "sharpe": 0.8069406408865525,
+    "sortino": 0.9732417708324707,
+    "total_bars": 3693,
+    "total_return": 5.021983291529375,
+    "win_rate": 0.5521008403361345
+  },
+  "strategy_name": "cross_asset_carry_trend_scout_v1",
+  "subperiod_metrics": {
+    "2010_2016": {
+      "ann_volatility": 0.09784686987791917,
+      "annualized_return": 0.05972553788364506,
+      "cagr": 0.05646857505135805,
+      "final_equity": 14869.540447049241,
+      "max_drawdown": -0.16580544873028985,
+      "sharpe": 0.6103980429641026,
+      "sortino": 0.8071302252697846,
+      "total_bars": 1820,
+      "total_return": 0.4869540447049241,
+      "win_rate": 0.5350819672131147
+    },
+    "2017_2024": {
+      "ann_volatility": 0.12456581839583587,
+      "annualized_return": 0.07644871683399665,
+      "cagr": 0.07108588472447752,
+      "final_equity": 16659.818420104595,
+      "max_drawdown": -0.24166341000137595,
+      "sharpe": 0.6137214672412272,
+      "sortino": 0.8577987722728108,
+      "total_bars": 1873,
+      "total_return": 0.6659818420104595,
+      "win_rate": 0.5222043873729267
+    }
+  }
+}

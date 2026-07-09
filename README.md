@@ -21,6 +21,7 @@ Most trading repos show a backtest. This repo tries to show the harder engineeri
 - Current strongest candidate: `ETFTimeSeriesMomentumVolTarget-v1-YahooAdjustedDaily-2005-2026`
 - Current promotion status: `validation_passed`
 - Paper/live status: not approved; next step is paper-ops evidence, not live deployment
+- Latest mechanism scout: `CrossAssetCarryTrendScout-v1` passed all 13 frozen public-data gates; next evidence step is a five-market raw-contract replication, not paper/live promotion
 
 ## Validated candidate
 
@@ -70,6 +71,56 @@ The validated candidate also has a no-credential runtime replay through the engi
 Report: `docs/reports/etf_tsm_engine_replay/etf_tsm_engine_replay.md`.
 
 Scope: this proves the validated ETF target weights can pass through runtime plumbing in simulation. It is still not Alpaca paper/live broker approval.
+
+## Latest research scouts
+
+### Cross-asset futures carry plus trend
+
+`CrossAssetCarryTrendScout-v1` tested a predeclared 15-market futures carry/trend portfolio on the public `pst-group/pysystemtrade` panel pinned to commit `883c8681cf880d83acad5c39b842403a8eac5676`. The panel covers 2010-01-04 through 2024-03-28 and is suitable for mechanism falsification, not deployment validation.
+
+After independent implementation review and a complete rerun, the scout passed all 13 frozen gates:
+
+| Portfolio | Total return | CAGR | Sharpe | Annual volatility | Max drawdown |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Carry/trend gross | 168.26% | 6.97% | 0.6566 | 11.22% | -27.40% |
+| Carry/trend net at 2 bps | 147.72% | 6.39% | 0.6080 | 11.22% | -29.18% |
+| SPY | 502.20% | 13.03% | 0.8069 | 16.98% | -33.72% |
+| 100% SPY + 20% scout overlay | 629.57% | 14.52% | 0.8711 | 17.30% | -32.58% |
+| 100% SPY + 50% scout overlay | 859.49% | 16.68% | 0.9360 | 18.28% | -30.89% |
+
+The standalone scout did not beat SPY's absolute or risk-adjusted return. Its value was low correlation to SPY (`0.0761`) and improved portfolio utility as a futures overlay. The overlay rows add futures exposure on top of 100% SPY; they are not 80/20 or 50/50 allocations.
+
+All leave-one-asset-class-out Sharpes remained positive, both frozen subperiods had Sharpe above `0.61`, the strategy remained profitable at 5 bps one-way costs, the largest absolute asset-class P&L share was 27.27%, and the best 12 positive months contributed 37.17% of positive monthly P&L.
+
+Evidence:
+
+- Frozen specification and audit corrections: `docs/strategy_sources/CrossAssetCarryTrendScout-v1.md`
+- Full report: `docs/reports/cross_asset_carry_trend_scout.md`
+- Machine-readable report: `docs/reports/cross_asset_carry_trend_scout.json`
+- Data-feasibility memo: `docs/research_scout/DataFeasibilityEarningsFutures-v1.md`
+
+This PASS authorizes only a bounded raw-contract replication for ES, ZN, CL, GC, and ZC using an auditable source. It does not establish deployable alpha or authorize paper/live trading.
+
+### Fundamental-event smart reversal
+
+`FundamentalEventSmartReversal-v1` tested whether vetoing recent SEC-disclosure-associated moves could rescue short-term cross-sectional reversal. The point-in-time event pipeline covered material 8-K, 8-K/A, 10-Q, 10-Q/A, 10-K, 10-K/A, 6-K, and 6-K/A filings.
+
+The frozen scout failed and was not tuned after the result:
+
+| Portfolio | Total return | CAGR | Sharpe | Max drawdown |
+| --- | ---: | ---: | ---: | ---: |
+| Strategy gross | -5.56% | -0.69% | -0.0084 | -36.70% |
+| Strategy net | -43.47% | -6.69% | -0.5748 | -50.56% |
+| SPY | 219.35% | 15.14% | 0.8421 | -33.79% |
+
+The signal had no gross edge, its mean Rank IC had the wrong sign for reversal, and its SPY overlay reduced portfolio utility. The SEC filter is therefore documented as a disclosure-associated move veto, not a complete fundamental-news classifier.
+
+Evidence:
+
+- Frozen specification: `docs/strategy_sources/FundamentalEventSmartReversal-v1.md`
+- Full report: `docs/reports/fundamental_event_smart_reversal_scout.md`
+- Postmortem: `docs/reports/fundamental_event_smart_reversal_lessons.md`
+- Institutional strategy survey: `docs/research_scout/InstitutionalSystematicStrategyCandidates-v1.md`
 
 ## Failed honestly, not tuned after the fact
 
@@ -174,6 +225,31 @@ Outputs:
 - `docs/reports/etf_tsm_spy_comparison.md`
 - `docs/assets/etf_tsm_equity_vs_spy.png`
 - `docs/assets/etf_tsm_drawdown_vs_spy.png`
+
+### Reproduce the public futures scout
+
+```bash
+python scripts/download_public_futures_curve_data.py
+python scripts/run_cross_asset_carry_trend_scout.py
+```
+
+The downloader pins and hash-records the public source files. The scout writes:
+
+- `docs/reports/cross_asset_carry_trend_scout.json`
+- `docs/reports/cross_asset_carry_trend_scout.md`
+
+### Reproduce the SEC-event reversal scout
+
+Set an SEC-compliant identifying user agent, download the filing-event cache for the desired fixed symbol set, and run the scout against the existing Alpaca SIP daily cache:
+
+```bash
+export SEC_USER_AGENT="Your Name your-email@example.com"
+SYMBOLS=$(python -c "from research.universes.residual_reversal_v1 import stock_symbols; print(' '.join((*stock_symbols(), 'SPY')))")
+python scripts/download_sec_filing_events.py --symbols $SYMBOLS --start 2017-12-01
+python scripts/run_fundamental_event_smart_reversal_scout.py --start 2018-01-01
+```
+
+The committed report used the frozen 133-stock research universe plus SPY. Raw SEC JSON, normalized Parquet events, and market-data caches remain local and are not committed.
 
 ### Run the ETF TSM runtime replay
 
