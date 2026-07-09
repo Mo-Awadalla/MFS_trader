@@ -8,6 +8,9 @@ from strategies.bb.strategy import get_strategy as get_bb_strategy
 from strategies.contract import StrategyTemplate
 from strategies.csmr.strategy import get_strategy as get_csmr_strategy
 from strategies.etf_time_series_momentum.strategy import get_strategy as get_etf_tsm_strategy
+from strategies.fundamental_event_smart_reversal.strategy import (
+    get_strategy as get_fundamental_event_smart_reversal_strategy,
+)
 from strategies.global_dual_momentum.strategy import (
     get_strategy as get_global_dual_momentum_strategy,
 )
@@ -28,6 +31,7 @@ _REGISTRY: dict[str, StrategyTemplate[Any]] = {
     "cross_sectional_momentum": get_momentum_strategy(),
     "dual_ma_crossover": get_ma_strategy(),
     "etf_time_series_momentum": get_etf_tsm_strategy(),
+    "fundamental_event_smart_reversal": get_fundamental_event_smart_reversal_strategy(),
     "global_dual_momentum": get_global_dual_momentum_strategy(),
     "market_intraday_momentum": get_market_intraday_momentum_strategy(),
     "opening_range_breakout": get_opening_range_breakout_strategy(),

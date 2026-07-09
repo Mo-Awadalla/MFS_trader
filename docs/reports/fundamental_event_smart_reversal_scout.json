@@ -1,0 +1,197 @@
+{
+  "analysis_end": "2026-07-02 00:00:00+00:00",
+  "analysis_start": "2018-04-02 00:00:00+00:00",
+  "cost_drag": {
+    "mean_daily_borrow_cost_bps": 0.16427615222795944,
+    "mean_daily_total_cost_bps": 2.4724787570868507,
+    "mean_daily_trading_cost_bps": 2.3082026048588906
+  },
+  "cost_sensitivity_bps": {
+    "0.0": {
+      "ann_volatility": 0.10987005888203925,
+      "cagr": -0.011027837046173494,
+      "final_equity": 9127.35621466207,
+      "max_drawdown": -0.37577178150777213,
+      "sharpe": -0.04605337142196334,
+      "sortino": -0.0428275822339977,
+      "total_bars": 2075,
+      "total_return": -0.08726437853379299,
+      "win_rate": 0.4970896391152503
+    },
+    "0.5": {
+      "ann_volatility": 0.10987225013111958,
+      "cagr": -0.01672294497233473,
+      "final_equity": 8703.470690529275,
+      "max_drawdown": -0.38843456438119534,
+      "sharpe": -0.09860730448415957,
+      "sortino": -0.09315900766619017,
+      "total_bars": 2075,
+      "total_return": -0.12965293094707253,
+      "win_rate": 0.44642857142857145
+    },
+    "1.0": {
+      "ann_volatility": 0.10987676384359053,
+      "cagr": -0.02238563579622377,
+      "final_equity": 8299.244445449876,
+      "max_drawdown": -0.40084133565926855,
+      "sharpe": -0.15115594630974732,
+      "sortino": -0.14320541364088338,
+      "total_bars": 2075,
+      "total_return": -0.1700755554550124,
+      "win_rate": 0.44012605042016806
+    },
+    "10.0": {
+      "ann_volatility": 0.11035411659985556,
+      "cagr": -0.118973825901177,
+      "final_equity": 3523.9592965713855,
+      "max_drawdown": -0.6707465733709002,
+      "sharpe": -1.0923587284992633,
+      "sortino": -1.0654517921930247,
+      "total_bars": 2075,
+      "total_return": -0.6476040703428614,
+      "win_rate": 0.4012605042016807
+    },
+    "2.0": {
+      "ann_volatility": 0.10989275736674751,
+      "cagr": -0.033614494622762225,
+      "final_equity": 7546.1697282573705,
+      "max_drawdown": -0.42490737422353575,
+      "sharpe": -0.25622403584472864,
+      "sortino": -0.24353193966232714,
+      "total_bars": 2075,
+      "total_return": -0.24538302717426297,
+      "win_rate": 0.4369747899159664
+    },
+    "5.0": {
+      "ann_volatility": 0.10999641702356755,
+      "cagr": -0.06654182015035326,
+      "final_equity": 5672.275643605263,
+      "max_drawdown": -0.5041525249118574,
+      "sharpe": -0.5709557298426055,
+      "sortino": -0.5480418993537245,
+      "total_bars": 2075,
+      "total_return": -0.43277243563947365,
+      "win_rate": 0.4254201680672269
+    }
+  },
+  "default_net_metrics": {
+    "ann_volatility": 0.10999846988082534,
+    "cagr": -0.06693740757994704,
+    "final_equity": 5652.512461793236,
+    "max_drawdown": -0.5055728807174008,
+    "sharpe": -0.5747951979767776,
+    "sortino": -0.5518795652928185,
+    "total_bars": 2075,
+    "total_return": -0.43474875382067635,
+    "win_rate": 0.42436974789915966
+  },
+  "event_diagnostics": {
+    "event_forced_exits": 1479,
+    "event_vetoed_symbol_days": 83866,
+    "filing_flagged_symbol_sessions": 17727,
+    "normalized_event_rows": 20107,
+    "unique_issuer_filings": 19978
+  },
+  "factor_diagnostics": {
+    "annualized_alpha": -0.07508787914748191,
+    "beta_to_spy": 0.07465044474880736,
+    "correlation_to_spy": 0.12804401150505396
+  },
+  "gross_metrics": {
+    "ann_volatility": 0.10986942571485596,
+    "cagr": -0.006924651576531327,
+    "final_equity": 9443.89310173232,
+    "max_drawdown": -0.3669539076615115,
+    "sharpe": -0.00837473744598407,
+    "sortino": -0.007789298473835931,
+    "total_bars": 2075,
+    "total_return": -0.05561068982676809,
+    "win_rate": 0.5017462165308498
+  },
+  "limitations": [
+    "Static current-active stock universe has survivorship bias.",
+    "SEC filing presence is a public-information proxy, not directional fundamental sentiment.",
+    "Shared daily backtester credits close-to-close returns after a one-bar target lag; broker next-open fills require separate reconciliation.",
+    "Known Validation Gauntlet defects block promotion even if scout gates pass."
+  ],
+  "no_event_comparator": {
+    "default_net_metrics": {
+      "ann_volatility": 0.19859244528063005,
+      "cagr": -0.06053465000713454,
+      "final_equity": 5979.939497308064,
+      "max_drawdown": -0.5958935624348286,
+      "sharpe": -0.21556440951941944,
+      "sortino": -0.30748516384784075,
+      "total_bars": 2075,
+      "total_return": -0.40200605026919356,
+      "win_rate": 0.4785542168674699
+    },
+    "label": "diagnostic_only",
+    "mean_daily_gross_turnover": 0.6568189749655892,
+    "promotion_eligible": false
+  },
+  "overlay_diagnostics": {
+    "strategy_overlay_gross": 0.2,
+    "strategy_return_scale": 0.1,
+    "total_portfolio_gross": 1.2,
+    "total_portfolio_net": 1.0
+  },
+  "params": {
+    "benchmark_symbol": "SPY",
+    "entry_fraction": 0.2,
+    "event_veto_sessions": 6,
+    "exit_percentile": 0.5,
+    "liquidity_lookback_days": 20,
+    "long_gross": 1.0,
+    "lookback_days": 5,
+    "max_symbol_weight": 0.05,
+    "min_eligible_symbols": 100,
+    "min_history_days": 60,
+    "min_median_dollar_volume": 20000000.0,
+    "min_price": 5.0,
+    "short_gross": 1.0
+  },
+  "rank_ic": {
+    "mean": 0.002384438214935349,
+    "median": 0.012027073638260458,
+    "observations": 859.0,
+    "positive_fraction": 0.5273573923166472
+  },
+  "scout_gates": {
+    "default_net_total_return_positive": false,
+    "gross_sharpe_positive": false,
+    "gross_total_return_positive": false,
+    "mean_daily_gross_turnover_at_most_1x": true,
+    "mean_rank_ic_negative": false
+  },
+  "scout_passed": false,
+  "spy_metrics": {
+    "ann_volatility": 0.18867463402733137,
+    "cagr": 0.1514378980361466,
+    "final_equity": 31934.653974787765,
+    "max_drawdown": -0.33793819113402707,
+    "sharpe": 0.8421430988406146,
+    "sortino": 1.0382108540776855,
+    "total_bars": 2075,
+    "total_return": 2.1934653974787763,
+    "win_rate": 0.551857211770381
+  },
+  "spy_plus_20pct_overlay_metrics": {
+    "ann_volatility": 0.19039589601723608,
+    "cagr": 0.14382132122331748,
+    "final_equity": 30236.30572743584,
+    "max_drawdown": -0.3379381911340271,
+    "sharpe": 0.8013217980883103,
+    "sortino": 0.9908840264710184,
+    "total_bars": 2075,
+    "total_return": 2.023630572743584,
+    "win_rate": 0.5515911282545806
+  },
+  "strategy_name": "fundamental_event_smart_reversal",
+  "turnover": {
+    "max_daily_gross": 2.284228493650967,
+    "mean_daily_gross": 0.4582793486659925,
+    "median_daily_gross": 0.0,
+    "p95_daily_gross": 2.0
+  }
+}
