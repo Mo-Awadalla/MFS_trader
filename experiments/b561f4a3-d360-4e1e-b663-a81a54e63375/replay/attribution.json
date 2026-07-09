@@ -1,0 +1,6 @@
+{
+  "engine_replay_available": false,
+  "execution_alignment": "breakout signal is held from next 30m bar; zero target before close prevents overnight exposure",
+  "mode": "vectorized_intraday_cross_sectional_replay",
+  "reason": "engine replay is currently not session-scheduled for multi-ETF 30m intraday flat-by-close strategies"
+}
