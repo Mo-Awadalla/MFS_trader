@@ -1,0 +1,60 @@
+{
+  "specification_id": "Bitcoin-SpotPerp-Basis-Convergence-Binance-v1",
+  "frozen_at": "2026-07-10",
+  "status": "frozen_relative_value_falsification_scout",
+  "intended_utility": "market-neutral alpha sleeve, not a standalone SPY challenger",
+  "evidence_strength": "mechanism-backed but exact threshold and horizon are implementation choices",
+  "venue": "binance",
+  "spot_instrument": "BTCUSDT spot",
+  "perpetual_instrument": "BTCUSDT USD-margined perpetual",
+  "interval": "30m",
+  "signal": {
+    "decision_time": "00:05:00 UTC daily",
+    "signal_prices": "fully closed 23:30-00:00 UTC spot and perpetual kline closes",
+    "basis": "log(perpetual_close / spot_close)",
+    "threshold": "strictly above zero and strictly above the 90th percentile of the 90 immediately preceding available daily basis observations",
+    "quantile": 0.90,
+    "lookback_days": 90,
+    "minimum_prior_days": 60,
+    "strictly_prior": true
+  },
+  "trade": {
+    "entry": "00:30 UTC open of both spot and perpetual klines",
+    "exit": "07:30 UTC open of both spot and perpetual klines",
+    "legs": "long spot and short equal-notional perpetual",
+    "gross_exposure": 1.0,
+    "spot_weight": 0.5,
+    "perpetual_short_weight": 0.5,
+    "leverage": "none beyond collateralized short margin; no liquidation benefit assumed",
+    "capital_return": "0.5 * spot simple return + 0.5 * perpetual short simple return",
+    "maximum_trades_per_day": 1,
+    "funding_guard": "exclude if an actual funding calc_time is in (entry, exit]",
+    "missing_data": "skip any day missing a signal, entry, or exit boundary on either leg"
+  },
+  "costs": {
+    "spot_fee_per_side_bps": 10.0,
+    "perpetual_fee_per_side_bps": 5.0,
+    "slippage_per_side_per_leg_bps": 5.0,
+    "fee_only_capital_round_trip_bps": 15.0,
+    "conservative_capital_round_trip_bps": 25.0,
+    "explanation": "four executions weighted by 0.5 capital per leg; subtract once on triggered days"
+  },
+  "partitions": {
+    "development": {"start": "2020-01-01", "end": "2022-12-31"},
+    "internal_validation": {"start": "2023-01-01", "end": "2023-12-31"},
+    "final_holdout": {"start": "2024-01-01", "end": "2025-12-31"}
+  },
+  "progression_gates": {
+    "minimum_selected_days": 60,
+    "minimum_mean_gross_bps": 0.0,
+    "require_positive_each_chronological_half_gross": true,
+    "minimum_bootstrap_lower_95_bps": 0.0,
+    "require_positive_after_conservative_costs": true,
+    "require_positive_after_top_5pct_absolute_removed": true,
+    "maximum_top_5pct_profit_contribution": 0.50,
+    "require_complete_timestamp_alignment": true,
+    "require_basis_contraction_on_average": true
+  },
+  "bootstrap": {"session_resamples": 10000, "seed": 211},
+  "holdout_policy": "Evaluate development first. If any gate fails, stop without opening later partitions. Do not alter quantile/lookback, clocks, holding period, weights, costs, basis definition, add OI/funding/volume filters, invert the trade, add ML, or switch venues/coins on consumed data."
+}

@@ -1,0 +1,62 @@
+{
+  "specification_id": "Bitcoin-DeltaNeutral-Funding-Carry-Binance-v1",
+  "frozen_at": "2026-07-10",
+  "status": "frozen_multiday_carry_falsification_scout",
+  "intended_utility": "market-neutral swing/carry sleeve, not day trading or a standalone SPY challenger",
+  "evidence_strength": "funding cash flow is contractual; persistence and after-cost profitability are unproven",
+  "instruments": ["BTCUSDT spot", "BTCUSDT USD-margined perpetual"],
+  "decision": {
+    "time": "00:10 UTC daily while flat",
+    "fixed_publication_lag_minutes": 5,
+    "maximum_latest_funding_staleness_minutes": 10,
+    "funding_history": "three most recent settled funding rows whose calc_time plus five minutes is <= decision time",
+    "basis_observation": "fully closed 23:30-00:00 UTC spot and perpetual kline closes"
+  },
+  "entry_signal": {
+    "all_three_funding_rates_strictly_positive": true,
+    "minimum_trailing_three_mean_rate": 0.0003,
+    "minimum_trailing_three_mean_bps_per_settlement": 3.0,
+    "basis": "log(perpetual_close / spot_close)",
+    "minimum_basis": 0.0,
+    "economic_rationale": "at three settlements per day for seven days, 0.5 approximate perpetual capital weight times 21 times 3 bps projects 31.5 capital bps, exceeding the 25 bps simple conservative hurdle before mean reversion"
+  },
+  "position": {
+    "entry": "00:30 UTC exact spot and perpetual kline opens",
+    "exit": "00:30 UTC exact kline opens seven calendar days later",
+    "holding_days": 7,
+    "non_overlapping": true,
+    "quantity": "same BTC quantity on both legs, q = 1 / (spot_entry + perpetual_entry), giving exactly 1.0 initial gross notional per unit capital",
+    "legs": "long q BTC spot and short q BTC perpetual",
+    "rebalancing": "none",
+    "funding_events": "credit every actual funding row with calc_time in (entry, exit], including a settlement before the exit on the exit date",
+    "funding_payment": "q * mark_price_at_settlement * settled_funding_rate; positive rate is received by the short",
+    "mark_proxy": "mark-price 30m kline open whose open_time is the settlement timestamp floored to 30 minutes",
+    "missing_data": "skip candidate if any exact entry/exit price, funding mark, or required signal observation is missing"
+  },
+  "costs": {
+    "spot_fee_per_side_bps": 10.0,
+    "perpetual_fee_per_side_bps": 5.0,
+    "slippage_per_side_per_leg_bps": 5.0,
+    "fee_formula": "q*(spot_entry+spot_exit)*0.001 + q*(perp_entry+perp_exit)*0.0005",
+    "conservative_formula": "fee formula plus q*(spot_entry+spot_exit+perp_entry+perp_exit)*0.0005"
+  },
+  "partitions": {
+    "development": {"start": "2020-01-01", "end": "2022-12-31"},
+    "internal_validation": {"start": "2023-01-01", "end": "2023-12-31"},
+    "final_holdout": {"start": "2024-01-01", "end": "2025-12-31"}
+  },
+  "progression_gates": {
+    "minimum_trades": 20,
+    "require_positive_mean_gross": true,
+    "require_positive_mean_fee_only": true,
+    "require_positive_mean_conservative": true,
+    "require_positive_each_chronological_half_conservative": true,
+    "require_bootstrap_lower_95_conservative_above_zero": true,
+    "maximum_conservative_drawdown": 0.10,
+    "require_positive_after_largest_5pct_absolute_removed": true,
+    "maximum_top_5pct_profit_contribution": 0.50,
+    "require_complete_cashflow_accounting": true
+  },
+  "bootstrap": {"trade_resamples": 10000, "seed": 307},
+  "holdout_policy": "If any development gate fails, stop. Do not change funding threshold/history, holding period, entry clock, basis condition, add OI/flow filters, rebalance, overlap trades, alter costs, add leverage/ML, or inspect later partitions to rescue it."
+}
