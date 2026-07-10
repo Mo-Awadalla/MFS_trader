@@ -1,0 +1,64 @@
+{
+  "specification_id": "Bitcoin-5m-Probability-BinancePerp-v1",
+  "frozen_at": "2026-07-10",
+  "status": "research_only_exchange_proxy",
+  "purpose": "Estimate the probability that the next BTCUSDT perpetual five-minute bar closes above its open; this is a directional proxy for a binary BTC five-minute event and is not a Polymarket execution validation.",
+  "source": {
+    "price_data": "Official Binance public futures monthly BTCUSDT 5m klines",
+    "derivatives_data": "Official Binance public futures 5m metrics",
+    "price_url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/5m/",
+    "metrics_url": "https://data.binance.vision/data/futures/um/daily/metrics/BTCUSDT/"
+  },
+  "event": {
+    "instrument": "BTCUSDT",
+    "venue": "binance_usds_m_perpetual",
+    "interval": "5m",
+    "decision_time": "bar open timestamp",
+    "label": "1 when close > open, 0 when close < open",
+    "ties": "excluded",
+    "availability": "price features use only completed bars before the decision; derivatives metrics use create_time <= decision_time minus five minutes",
+    "gaps": "rows without twelve consecutive prior five-minute transitions are excluded"
+  },
+  "features": [
+    "log_return_1_bar",
+    "log_return_3_bars",
+    "log_return_6_bars",
+    "log_return_12_bars",
+    "log_range_1_bar",
+    "log_body_1_bar",
+    "volume_zscore_288_bars",
+    "trade_count_zscore_288_bars",
+    "taker_flow_1_bar",
+    "taker_flow_3_bar_mean",
+    "open_interest_log_change_12_bars",
+    "open_interest_log_change_48_bars",
+    "top_trader_long_short_log_ratio",
+    "global_long_short_log_ratio",
+    "taker_long_short_log_ratio"
+  ],
+  "model": {
+    "family": "standardized logistic regression",
+    "regularization": "L2",
+    "C": 0.1,
+    "max_iter": 1000,
+    "calibration": "Platt logistic calibration fitted on the separate calibration partition",
+    "trials": 1,
+    "random_state": 42
+  },
+  "partitions": {
+    "training": {"start": "2020-09-01", "end": "2023-06-30"},
+    "calibration": {"start": "2023-07-01", "end": "2023-12-31"},
+    "internal_validation": {"start": "2024-01-01", "end": "2024-12-31"},
+    "final_holdout": {"start": "2025-01-01", "end": "2025-12-31"}
+  },
+  "interpretation": {
+    "probability_claim": "A calibrated model probability is meaningful only if predictions in a probability bucket resolve at approximately that frequency on unseen data.",
+    "not_claimed": [
+      "Polymarket profitability",
+      "historical Polymarket fill quality",
+      "an executable edge after prediction-market fees",
+      "a universal BTC directional edge",
+      "live or paper-trading approval"
+    ]
+  }
+}
