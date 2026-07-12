@@ -29,6 +29,7 @@ from engine.paper_trade import halt_paper_trading, run_ma_paper_trade_once
 from engine.shakedown import run_ma_shakedown
 from execution.alpaca.adapter import AlpacaAdapter
 from execution.sim_broker.broker import SimBroker
+from experiments.operator_confirmations import verify_experiment_hash
 from monitoring.reports import (
     build_operational_report,
     format_operational_report,
@@ -417,9 +418,13 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
         finally:
             registry.close()
 
-        data_cfg = next((d for d in cfg.data if args.symbol in d.symbols), None)
-        if data_cfg is None:
-            raise ConfigError(f"No data config contains symbol {args.symbol}")
+        registry = _open_registry(args)
+        try:
+            experiment = verify_experiment_hash(
+                registry, args.experiment_uuid, args.experiment_hash
+            )
+        finally:
+            registry.close()
 
         if args.broker == "alpaca_paper":
             broker_cfg = next((b for b in cfg.brokers if b.name == "alpaca"), None)
@@ -468,21 +473,79 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
                 "--confirm-paper-broker is required for continuous alpaca_paper runs"
             )
 
-        bars = load_bars(
-            data_cfg.storage_dir,
-            args.symbol,
-            args.frequency,
-            source="alpaca",
-        )
-        if not bars.empty and "close" in bars:
-            broker.set_price(args.symbol, float(bars["close"].iloc[-1]))
+        from engine.paper_strategy import prepare_paper_strategy
+
+        bars_provider = None
+        if cfg.strategy_name == "etf_time_series_momentum" and args.broker == "alpaca_paper":
+            from data.pipeline import build_downloader, download_and_store
+
+            data_cfg = replace(cfg.data[0], storage_dir="data/parquet/equity")
+            broker_cfg = next((b for b in cfg.brokers if b.name == "alpaca"), None)
+            if broker_cfg is None:
+                raise ConfigError("No alpaca broker configured for ETF panel refresh")
+            api_key, api_secret = get_broker_creds(broker_cfg)
+            downloader = build_downloader(data_cfg, api_key, api_secret, is_paper=True)
+            cfg = replace(
+                cfg,
+                data=[data_cfg],
+                raw={**cfg.raw, "paper_data_source": "alpaca"},
+            )
+
+            def refresh_and_prepare():
+                summary = download_and_store(data_cfg, downloader, environment="paper")
+                failed = [
+                    symbol
+                    for symbol, item in summary["symbols"].items()
+                    if item.get("status") == "error" or not item.get("stored", False)
+                ]
+                if failed:
+                    raise ConfigError(f"ETF panel refresh failed for: {', '.join(failed)}")
+                return prepare_paper_strategy(
+                    cfg,
+                    experiment,
+                    frequency=args.frequency,
+                    load_symbol=load_bars,
+                    ma_symbol=args.symbol,
+                    ma_params={
+                        "fast_ma_window": args.fast_window,
+                        "slow_ma_window": args.slow_window,
+                        "trend_filter_active": not args.no_trend_filter,
+                    },
+                )
+
+            prepared = refresh_and_prepare()
+
+            def bars_provider():
+                return refresh_and_prepare().bars
+        else:
+            prepared = prepare_paper_strategy(
+                cfg,
+                experiment,
+                frequency=args.frequency,
+                load_symbol=load_bars,
+                ma_symbol=args.symbol,
+                ma_params={
+                    "fast_ma_window": args.fast_window,
+                    "slow_ma_window": args.slow_window,
+                    "trend_filter_active": not args.no_trend_filter,
+                },
+            )
+
+        bars = prepared.bars
+        if hasattr(broker, "set_price"):
+            if isinstance(bars.columns, pd.MultiIndex):
+                closes = bars.xs("close", axis=1, level="field").iloc[-1]
+                for symbol, price in closes.items():
+                    broker.set_price(str(symbol), float(price))
+            elif not bars.empty and "close" in bars:
+                broker.set_price(args.symbol, float(bars["close"].iloc[-1]))
 
         run_config = PaperRunConfig(
             experiment_uuid=args.experiment_uuid,
             experiment_hash=args.experiment_hash,
             experiment_root=args.experiment_root,
             operator=args.operator,
-            symbols=(args.symbol,),
+            symbols=prepared.symbols,
             session_id=args.session_id,
             session_kind=args.session_kind,
             bar_frequency=args.frequency,
@@ -499,31 +562,14 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
             max_cycles=args.max_cycles,
         )
 
-        from strategies.ma.signal import MAParams, generate_signals
-
-        def strategy_fn(bars: pd.DataFrame, params: dict[str, Any]) -> dict[str, float]:
-            ma_params = MAParams(
-                fast_ma_window=int(params.get("fast_ma_window", 20)),
-                slow_ma_window=int(params.get("slow_ma_window", 100)),
-                trend_filter_active=bool(params.get("trend_filter_active", True)),
-                long_only=True,
-            )
-            signals = generate_signals(bars, ma_params)
-            if signals.empty or "position" not in signals:
-                return {}
-            return {args.symbol: float(signals["position"].iloc[-1])}
-
         loop = PaperRunLoop(
             config=cfg,
             broker=broker,
-            strategy_fn=strategy_fn,
-            strategy_name=cfg.strategy_name or "dual_ma_crossover",
+            strategy_fn=prepared.strategy_fn,
+            strategy_name=prepared.strategy_name,
             run_config=run_config,
-            strategy_params={
-                "fast_ma_window": args.fast_window,
-                "slow_ma_window": args.slow_window,
-                "trend_filter_active": not args.no_trend_filter,
-            },
+            strategy_params=prepared.strategy_params,
+            bars_provider=bars_provider,
         )
 
         out_dir = Path(args.out_dir)

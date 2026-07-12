@@ -12,6 +12,8 @@ portfolio state gating, and lifecycle-awareness. The loop:
 from __future__ import annotations
 
 import contextlib
+import json
+import os
 import signal
 import sqlite3
 import time
@@ -118,6 +120,7 @@ class PaperRunLoop:
         strategy_name: str,
         run_config: PaperRunConfig,
         strategy_params: dict[str, Any] | None = None,
+        bars_provider: Callable[[], pd.DataFrame] | None = None,
     ) -> None:
         self._config = config
         self._broker = broker
@@ -125,6 +128,7 @@ class PaperRunLoop:
         self._strategy_name = strategy_name
         self._strategy_params = strategy_params or {}
         self._run_config = run_config
+        self._bars_provider = bars_provider
 
         self._state = PaperRunState()
         self._shutdown_requested = False
@@ -133,6 +137,8 @@ class PaperRunLoop:
         self._engine: TradingEngine | None = None
         self._db_path: Path | None = None
         self._experiment_verified = False
+        self._session_started_at = time.time()
+        self._checkpoint_path: Path | None = None
         self._session_id = run_config.session_id or f"paper-run-{uuid.uuid4().hex[:12]}"
         self._state.session_id = self._session_id
 
@@ -217,14 +223,30 @@ class PaperRunLoop:
             raise PaperRunHalt(self._state.halt_reason)
 
     def _should_stop(self) -> bool:
+        if self._shutdown_requested or self._state.halted:
+            return True
+        if self._has_window_targets():
+            return self._market_session_target_reached() and self._calendar_target_reached()
         return (
-            self._shutdown_requested
-            or self._state.halted
-            or (
-                self._run_config.max_cycles is not None
-                and self._state.cycle_count >= self._run_config.max_cycles
-            )
+            self._run_config.max_cycles is not None
+            and self._state.cycle_count >= self._run_config.max_cycles
         )
+
+    def _has_window_targets(self) -> bool:
+        return bool(
+            self._run_config.window_market_sessions
+            or self._run_config.window_calendar_days
+        )
+
+    def _market_session_target_reached(self) -> bool:
+        target = self._run_config.window_market_sessions
+        if target is None:
+            target = self._run_config.max_cycles
+        return target is None or self._state.cycle_count >= target
+
+    def _calendar_target_reached(self) -> bool:
+        target = self._run_config.window_calendar_days
+        return target is None or time.time() - self._session_started_at >= target * 86_400
 
     def _connect_broker(self) -> None:
         if not self._broker.is_connected:
@@ -269,6 +291,8 @@ class PaperRunLoop:
             cycles=self._run_config.max_cycles or "unlimited",
         )
         self._db_path = Path(db_path)
+        self._checkpoint_path = self._db_path.with_suffix(".paper_run_checkpoint.json")
+        self._restore_checkpoint()
 
         try:
             experiment = self._verify_experiment()
@@ -284,10 +308,29 @@ class PaperRunLoop:
                 return self._state
             self._check_portfolio_state()
 
+            last_processed_bar_timestamp = (
+                str(self._state.bar_cycles[-1].get("input_data_watermark"))
+                if self._state.bar_cycles
+                else None
+            )
             while not self._should_stop():
                 self._check_kill_switch()
 
+                if self._market_session_target_reached() and not self._calendar_target_reached():
+                    self._sleep_between_cycles()
+                    continue
+
+                if self._bars_provider is not None and last_processed_bar_timestamp is not None:
+                    bars = self._bars_provider()
+
                 bar_ts = str(bars.index[-1]) if not bars.empty else None
+                if (
+                    self._bars_provider is not None
+                    and bar_ts is not None
+                    and bar_ts == last_processed_bar_timestamp
+                ):
+                    self._sleep_between_cycles()
+                    continue
                 broker_sync_record_id = f"{self._session_id}-reconciliation-{self._state.cycle_count + 1:06d}"
                 engine.reconcile_broker()
                 try:
@@ -323,6 +366,7 @@ class PaperRunLoop:
                 )
 
                 self._state.cycle_count += 1
+                last_processed_bar_timestamp = bar_ts
                 self._record_cycle(
                     result="completed",
                     bar_timestamp=bar_ts,
@@ -337,6 +381,7 @@ class PaperRunLoop:
                     cycle=self._state.cycle_count,
                     orders_submitted=self._state.total_orders_submitted,
                 )
+                self._write_checkpoint()
 
                 if self._should_stop():
                     break
@@ -360,7 +405,11 @@ class PaperRunLoop:
             self._state.record_error(str(e))
             log.error("paper_run_error", error=str(e))
         finally:
-            self._write_session_evidence()
+            if not self._has_window_targets() or (
+                self._market_session_target_reached() and self._calendar_target_reached()
+            ):
+                self._write_session_evidence()
+                self._remove_checkpoint()
             self._cleanup()
 
         return self._state
@@ -501,9 +550,10 @@ class PaperRunLoop:
         }
 
     def _build_window_summary(self) -> dict[str, Any]:
+        elapsed_days = int((time.time() - self._session_started_at) // 86_400)
         return {
-            "calendar_days": self._run_config.window_calendar_days,
-            "market_sessions": self._run_config.window_market_sessions,
+            "calendar_days": elapsed_days,
+            "market_sessions": self._state.cycle_count,
             "trades": (
                 self._run_config.window_trades
                 if self._run_config.window_trades is not None
@@ -514,6 +564,38 @@ class PaperRunLoop:
                 self._run_config.insufficient_activity_override_approved
             ),
         }
+
+    def _restore_checkpoint(self) -> None:
+        path = self._checkpoint_path
+        if path is None or not path.exists():
+            return
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if payload.get("session_id") != self._session_id:
+            raise PaperRunHalt("paper-run checkpoint session identity mismatch")
+        self._session_started_at = float(payload["session_started_at"])
+        self._state.cycle_count = int(payload.get("cycle_count", 0))
+        self._state.total_orders_submitted = int(payload.get("total_orders_submitted", 0))
+        self._state.bar_cycles = list(payload.get("bar_cycles", []))
+
+    def _write_checkpoint(self) -> None:
+        path = self._checkpoint_path
+        if path is None:
+            return
+        payload = {
+            "session_id": self._session_id,
+            "session_started_at": self._session_started_at,
+            "cycle_count": self._state.cycle_count,
+            "total_orders_submitted": self._state.total_orders_submitted,
+            "bar_cycles": self._state.bar_cycles,
+        }
+        path.parent.mkdir(parents=True, exist_ok=True)
+        temporary = path.with_suffix(path.suffix + ".tmp")
+        temporary.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
+        os.replace(temporary, path)
+
+    def _remove_checkpoint(self) -> None:
+        if self._checkpoint_path is not None:
+            self._checkpoint_path.unlink(missing_ok=True)
 
     def _current_portfolio_state(self) -> str | None:
         if self._engine is None:
