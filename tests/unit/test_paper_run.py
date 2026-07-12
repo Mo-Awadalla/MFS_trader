@@ -300,6 +300,96 @@ class TestPaperRunKillSwitchGating:
 
 
 class TestPaperRunLifecycle:
+    def test_counts_only_distinct_refreshed_market_sessions(self, experiment, registry, tmp_path):
+        initial = _make_bars()
+        refreshed = pd.concat(
+            [
+                initial,
+                pd.DataFrame(
+                    {
+                        "open": [151.0],
+                        "high": [152.0],
+                        "low": [150.0],
+                        "close": [151.5],
+                        "volume": [1_000_000],
+                    },
+                    index=[initial.index[-1] + pd.Timedelta(days=1)],
+                ),
+            ]
+        )
+        refreshes = iter([initial, refreshed])
+        loop = PaperRunLoop(
+            config=_make_config(),
+            broker=_FixedSimBroker(),
+            strategy_fn=_strategy_fn,
+            strategy_name="test",
+            run_config=PaperRunConfig(
+                experiment_uuid=experiment.uuid,
+                experiment_hash=experiment.experiment_hash,
+                experiment_root=registry.root,
+                session_id="distinct-market-sessions",
+                max_cycles=2,
+                sleep_between_bars_seconds=0,
+            ),
+            bars_provider=lambda: next(refreshes),
+        )
+
+        result = loop.run(initial, db_path=tmp_path / "distinct.sqlite")
+
+        assert not result.halted
+        assert result.cycle_count == 2
+        assert [cycle["input_data_watermark"] for cycle in result.bar_cycles] == [
+            str(initial.index[-1]),
+            str(refreshed.index[-1]),
+        ]
+
+    def test_resumes_window_from_atomic_checkpoint(self, experiment, registry, tmp_path):
+        initial = _make_bars()
+        refreshed = initial.copy()
+        refreshed.loc[initial.index[-1] + pd.Timedelta(days=1)] = initial.iloc[-1]
+        db_path = tmp_path / "resumable.sqlite"
+        run_config = PaperRunConfig(
+            experiment_uuid=experiment.uuid,
+            experiment_hash=experiment.experiment_hash,
+            experiment_root=registry.root,
+            session_id="resumable-window",
+            window_market_sessions=2,
+            sleep_between_bars_seconds=0,
+        )
+        first: PaperRunLoop
+
+        def stop_after_first():
+            first._handle_sigterm(None, None)
+            return initial
+
+        first = PaperRunLoop(
+            config=_make_config(),
+            broker=_FixedSimBroker(),
+            strategy_fn=_strategy_fn,
+            strategy_name="test",
+            run_config=run_config,
+            bars_provider=stop_after_first,
+        )
+
+        interrupted = first.run(initial, db_path=db_path)
+
+        assert interrupted.cycle_count == 1
+        assert db_path.with_suffix(".paper_run_checkpoint.json").exists()
+        assert interrupted.evidence_path is None
+
+        resumed = PaperRunLoop(
+            config=_make_config(),
+            broker=_FixedSimBroker(),
+            strategy_fn=_strategy_fn,
+            strategy_name="test",
+            run_config=run_config,
+            bars_provider=lambda: refreshed,
+        ).run(initial, db_path=db_path)
+
+        assert resumed.cycle_count == 2
+        assert not db_path.with_suffix(".paper_run_checkpoint.json").exists()
+        assert resumed.evidence_path is not None
+
     def test_runs_specified_number_of_cycles(self, experiment, registry, tmp_path):
         config = _make_config()
         broker = _FixedSimBroker()
@@ -360,10 +450,11 @@ class TestPaperRunLifecycle:
                     "kill_switch_drill_evidence_exists": True,
                     "new_orders_blocked": True,
                 },
-                max_cycles=2,
+                max_cycles=5,
                 sleep_between_bars_seconds=0.01,
             ),
         )
+        loop._session_started_at -= 8 * 86_400
 
         result = loop.run(_make_bars(), db_path=tmp_path / "smoke.sqlite")
 

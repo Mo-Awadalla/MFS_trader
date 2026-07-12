@@ -1,0 +1,98 @@
+# Paper-only ETF TSM runtime configuration. Frozen identity is checked before data/broker use.
+mode = "paper"
+strategy_name = "etf_time_series_momentum"
+strategy_version = "etf_time_series_momentum:v1"
+strategies_enabled = ["etf_time_series_momentum"]
+artifacts_dir = "~/trading_artifacts"
+paper_data_source = "yahoo_chart"
+
+[frozen_experiment]
+uuid = "119131fa-0f67-48d7-ab87-f20d81c70c1f"
+hash = "8e584c2eb4ba20a90b0af3d62a8f28c1d753a83a3e57ca79deafb869af23270e"
+label = "ETFTimeSeriesMomentumVolTarget-v1-YahooAdjustedDaily-2005-2026"
+strategy = "etf_time_series_momentum"
+universe = ["DBC", "GLD", "IEF", "IWM", "QQQ", "SHY", "SPY"]
+
+[frozen_experiment.parameters]
+momentum_lookback_days = 252
+vol_lookback_days = 63
+liquidity_lookback_days = 20
+min_history_days = 252
+min_price = 5.0
+min_median_dollar_volume = 5000000.0
+min_eligible_symbols = 1
+top_n = 3
+fallback_symbol = "SHY"
+target_volatility_annual = 0.1
+min_gross = 0.25
+max_gross = 1.0
+max_symbol_weight = 0.5
+
+[[brokers]]
+name = "alpaca"
+asset_class = "equity"
+api_key_env = "ALPACA_API_KEY"
+api_secret_env = "ALPACA_API_SECRET"
+base_url = "https://paper-api.alpaca.markets"
+data_url = "https://data.alpaca.markets"
+is_paper = true
+
+[[data]]
+symbols = ["DBC", "GLD", "IEF", "IWM", "QQQ", "SHY", "SPY"]
+asset_class = "equity"
+bar_frequency_raw = "1d"
+target_frequencies = ["1d"]
+start_date = "2005-01-01"
+adjustment = "split_dividend"
+storage_dir = "data/parquet/equity"
+
+[risk_limits]
+per_position_pct = 0.01
+max_daily_loss_pct = 0.03
+block_new_at_daily_loss_pct = 0.02
+max_weekly_loss_pct = 0.06
+max_monthly_loss_pct = 0.15
+max_gross_exposure_pct = 1.0
+max_net_exposure_pct = 1.0
+max_sector_gross_pct = 0.35
+max_sector_net_pct = 0.10
+max_correlated_cluster_gross_pct = 0.35
+max_correlated_cluster_risk_pct = 0.03
+correlation_threshold = 0.70
+max_open_positions = 3
+
+[portfolio]
+sizing_method = "inverse_volatility_vol_target"
+execution_mode = "continuous_rebalance"
+per_position_risk_pct = 0.01
+dollar_neutral = false
+equal_weight = false
+rebalance_frequency = "monthly"
+min_notional_delta = 25.0
+min_qty_delta = 1e-6
+min_pct_position_delta = 0.05
+
+[cost_model]
+slippage_fixed_pct = 0.0005
+slippage_variable_coeff = 0.5
+commission_pct = 0.0
+sec_fee_per_dollar_sold = 5.1e-6
+finra_taf_per_share_sold = 0.000119
+crypto_taker_fee_pct = 0.001
+crypto_maker_fee_pct = 0.0007
+borrow_cost_annual_pct = 0.01
+
+[monitoring]
+
+[engine]
+bar_close_execution = true
+reconciliation_interval_minutes = 60
+startup_reconciliation_required = true
+kill_switch_persistent = true
+
+[live_deployment]
+authorized = false
+paper_submit_enabled = false
+max_notional_per_order = 25.0
+max_paper_session_notional = 100.0
+max_open_paper_exposure = 100.0
