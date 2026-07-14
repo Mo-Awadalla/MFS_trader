@@ -5,11 +5,45 @@ from dataclasses import replace
 import pandas as pd
 
 from config.loader import load_config
-from engine.paper_strategy import prepare_paper_strategy
+from engine.paper_strategy import completed_daily_bars, prepare_paper_strategy
 from experiments.registry import ExperimentRegistry
 
 EXPERIMENT_UUID = "119131fa-0f67-48d7-ab87-f20d81c70c1f"
 SYMBOLS = ("DBC", "GLD", "IEF", "IWM", "QQQ", "SHY", "SPY")
+
+
+def test_alpaca_daily_panel_excludes_current_new_york_session():
+    bars = pd.DataFrame(
+        {"close": [100.0, 101.0]},
+        index=pd.to_datetime(["2026-07-13T04:00:00Z", "2026-07-14T00:00:00Z"]),
+    )
+
+    completed = completed_daily_bars(
+        bars,
+        now=pd.Timestamp("2026-07-14T14:30:00Z"),
+    )
+
+    assert list(completed.index) == [pd.Timestamp("2026-07-13T04:00:00Z")]
+
+
+def test_etf_alpaca_route_never_exposes_current_session_bar():
+    config = load_config("config/paper_etf_tsm.toml", load_env=False)
+    config = replace(config, raw={**config.raw, "paper_data_source": "alpaca"})
+    current_session = pd.Timestamp.now(tz="America/New_York").normalize().tz_convert("UTC")
+    registry = ExperimentRegistry("experiments")
+
+    def load_symbol(_storage_dir: str, symbol: str, _frequency: str, **_kwargs):
+        bars = _bars(symbol)
+        bars.loc[current_session] = bars.iloc[-1]
+        return bars.sort_index()
+
+    try:
+        experiment = registry.get(EXPERIMENT_UUID)
+        prepared = prepare_paper_strategy(config, experiment, load_symbol=load_symbol)
+    finally:
+        registry.close()
+
+    assert current_session not in prepared.bars.index
 
 
 def _bars(symbol: str) -> pd.DataFrame:

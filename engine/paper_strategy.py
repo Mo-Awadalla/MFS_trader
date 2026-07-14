@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
+from zoneinfo import ZoneInfo
 
 import pandas as pd
 
@@ -21,6 +22,27 @@ from strategies.ma.signal import generate_signals as generate_ma_signals
 
 ETF_TSM_STRATEGY = "etf_time_series_momentum"
 MA_STRATEGIES = frozenset({"dual_ma_crossover", "ma"})
+NEW_YORK = ZoneInfo("America/New_York")
+
+
+def completed_daily_bars(
+    bars: pd.DataFrame,
+    *,
+    now: pd.Timestamp | None = None,
+) -> pd.DataFrame:
+    """Return only daily bars from sessions before the current New York date."""
+
+    if bars.empty:
+        return bars
+    current = now or pd.Timestamp.now(tz="UTC")
+    if current.tzinfo is None:
+        current = current.tz_localize("UTC")
+    current_session_date = current.tz_convert(NEW_YORK).date()
+    # Alpaca labels daily equity bars by the UTC calendar date of the session.
+    # Current-session partials may arrive at 00:00 UTC, which maps to the prior
+    # New York date and must not be interpreted through timezone conversion.
+    session_dates = bars.index.date
+    return bars.loc[session_dates < current_session_date]
 
 
 @dataclass(frozen=True)
@@ -91,6 +113,8 @@ def _prepare_etf_tsm(
         except (FileNotFoundError, ValueError) as exc:
             failures.append(f"{symbol}: {exc}")
             continue
+        if config.raw.get("paper_data_source") == "alpaca" and frequency == "1d":
+            frame = completed_daily_bars(frame)
         if frame.empty:
             failures.append(f"{symbol}: empty bars")
         else:
