@@ -17,11 +17,11 @@ data_url = "https://data.alpaca.markets"
 is_paper = true
 
 [[brokers]]
-name = "ccxt_binance"
+name = "coinbase"
 asset_class = "crypto"
-api_key_env = "BINANCE_API_KEY"
-api_secret_env = "BINANCE_API_SECRET"
-base_url = "https://api.binance.com"
+api_key_env = "COINBASE_API_KEY"
+api_secret_env = "COINBASE_SECRET"
+base_url = "https://api.coinbase.com"
 is_paper = true
 
 [[data]]
@@ -36,12 +36,12 @@ min_volume = 1000000.0
 price_floor = 5.0
 
 [[data]]
-symbols = ["BTC/USDT", "ETH/USDT", "LTC/USDT", "SOL/USDT"]
+symbols = ["BTC/USD", "ETH/USD", "SOL/USD", "LTC/USD"]
 asset_class = "crypto"
 bar_frequency_raw = "1min"
 target_frequencies = ["1h", "1d"]
 start_date = "2020-01-01"
-exchange = "binance"
+exchange = "coinbase"
 storage_dir = "data/parquet/crypto"
 min_volume = 1000000.0
 
@@ -73,8 +73,8 @@ slippage_variable_coeff = 0.5
 commission_pct = 0.0
 sec_fee_per_dollar_sold = 5.1e-6
 finra_taf_per_share_sold = 0.000119
-crypto_taker_fee_pct = 0.001
-crypto_maker_fee_pct = 0.0007
+crypto_taker_fee_pct = 0.012
+crypto_maker_fee_pct = 0.006
 borrow_cost_annual_pct = 0.01
 
 [monitoring]

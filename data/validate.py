@@ -71,7 +71,7 @@ def validate_ohlcv(
     Args:
         df: DataFrame with DatetimeIndex and columns open/high/low/close/volume.
         symbol: Ticker or pair identifier.
-        source: Data source tag (alpaca, ccxt_binance, etc.).
+        source: Data source tag (alpaca, ccxt_coinbase, etc.).
         frequency: Bar frequency label for logging.
         expected_interval_seconds: Expected seconds between bars.
         is_live: If True, apply stricter live rules (stale latest bar = FAIL).

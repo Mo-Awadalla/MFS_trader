@@ -1,7 +1,7 @@
-"""CCXT crypto data downloader — OHLCV candles from Binance (and other exchanges).
+"""CCXT crypto data downloader — OHLCV candles from supported exchanges.
 
-Requires the `ccxt` package. Uses BINANCE_API_KEY / BINANCE_API_SECRET env vars
-but works for public historical data without auth (read-only).
+Requires the `ccxt` package. Coinbase configs use COINBASE_API_KEY /
+COINBASE_SECRET, but public historical data works without auth (read-only).
 """
 
 from __future__ import annotations
@@ -14,11 +14,11 @@ from data.base import BaseDownloader, DownloadRequest, DownloadResult
 
 
 class CCXTDownloader(BaseDownloader):
-    """Downloads OHLCV candles from a CCXT-supported exchange (default: Binance)."""
+    """Download OHLCV candles from a CCXT-supported exchange."""
 
     def __init__(
         self,
-        exchange_id: str = "binance",
+        exchange_id: str = "coinbase",
         api_key: str | None = None,
         api_secret: str | None = None,
         is_testnet: bool = False,
@@ -32,14 +32,20 @@ class CCXTDownloader(BaseDownloader):
         self._ccxt = ccxt
 
         exchange_class = getattr(ccxt, exchange_id)
+        # Coinbase's market loader calls a private fee-summary endpoint whenever
+        # credentials are attached. Historical OHLCV is public, so keep this
+        # read-only data client unauthenticated.
+        use_credentials = exchange_id != "coinbase"
         self._exchange = exchange_class(
             {
-                "apiKey": api_key or "",
-                "secret": api_secret or "",
+                "apiKey": api_key if use_credentials and api_key else "",
+                "secret": api_secret if use_credentials and api_secret else "",
                 "enableRateLimit": True,
             }
         )
-        if is_testnet and hasattr(self._exchange, "set_sandbox_mode"):
+        if exchange_id == "coinbase":
+            self._exchange.rateLimit = max(self._exchange.rateLimit, 100)
+        if is_testnet and "test" in self._exchange.urls:
             self._exchange.set_sandbox_mode(True)
 
     @property
@@ -61,7 +67,12 @@ class CCXTDownloader(BaseDownloader):
         }
         if frequency not in mapping:
             raise ValueError(f"Unsupported CCXT frequency: {frequency}")
-        return mapping[frequency]
+        timeframe = mapping[frequency]
+        if self._exchange.timeframes and timeframe not in self._exchange.timeframes:
+            raise ValueError(
+                f"CCXT exchange {self._exchange_id!r} does not support timeframe {timeframe!r}"
+            )
+        return timeframe
 
     def download(self, request: DownloadRequest) -> DownloadResult:
         timeframe = self._freq_to_ccxt(request.frequency)
@@ -73,17 +84,21 @@ class CCXTDownloader(BaseDownloader):
         )
 
         all_ohlcv: list[list[Any]] = []
-        limit = 1000  # Binance max per request
+        limit = {"binance": 1000, "coinbase": 300}.get(self._exchange_id, 1000)
+        timeframe_ms = self._ccxt.Exchange.parse_timeframe(timeframe) * 1000
 
         while since < end_ms:
+            previous_since = since
             ohlcv = self._exchange.fetch_ohlcv(request.symbol, timeframe, since=since, limit=limit)
             if not ohlcv:
-                break
+                since += limit * timeframe_ms
+                continue
             all_ohlcv.extend(ohlcv)
-            # Move since to the last timestamp + 1ms
-            since = ohlcv[-1][0] + 1
-            if len(ohlcv) < limit:
+            last_timestamp = ohlcv[-1][0]
+            if last_timestamp <= previous_since:
                 break
+            # Move since to the last timestamp + 1ms
+            since = last_timestamp + 1
 
         # Filter to end_ms
         all_ohlcv = [row for row in all_ohlcv if row[0] <= end_ms]

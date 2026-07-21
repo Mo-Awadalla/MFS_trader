@@ -30,7 +30,7 @@ def build_downloader(data_config: DataConfig, api_key: str, api_secret: str, is_
         return AlpacaDownloader(api_key=api_key, api_secret=api_secret)
     elif data_config.asset_class == AssetClass.CRYPTO:
         return CCXTDownloader(
-            exchange_id=data_config.exchange or "binance",
+            exchange_id=data_config.exchange or "coinbase",
             api_key=api_key,
             api_secret=api_secret,
             is_testnet=is_paper,
