@@ -8,6 +8,7 @@ from strategies.bb.strategy import get_strategy as get_bb_strategy
 from strategies.contract import StrategyTemplate
 from strategies.csmr.strategy import get_strategy as get_csmr_strategy
 from strategies.etf_time_series_momentum.strategy import get_strategy as get_etf_tsm_strategy
+from strategies.ftre.strategy import get_strategy as get_ftre_strategy
 from strategies.fundamental_event_smart_reversal.strategy import (
     get_strategy as get_fundamental_event_smart_reversal_strategy,
 )
@@ -39,17 +40,24 @@ _REGISTRY: dict[str, StrategyTemplate[Any]] = {
     "residual_reversal_stat_arb": get_residual_reversal_strategy(),
 }
 
+# Binance-only (USDⓈ-M perpetual funding); shelved after the Coinbase migration.
+_SHELVED: dict[str, StrategyTemplate[Any]] = {
+    "funding_time_reversal": get_ftre_strategy(),
+}
+
 # Raw exit column used by exit-contract tests per strategy.
 RAW_EXIT_COLUMNS: dict[str, str] = {
     "bollinger_bands": "cross_above_middle",
     "dual_ma_crossover": "cross_below",
+    "funding_time_reversal": "raw_exit",
 }
 
 
 def get_strategy(name: str) -> StrategyTemplate[Any]:
-    if name not in _REGISTRY:
+    strategy = _REGISTRY.get(name) or _SHELVED.get(name)
+    if strategy is None:
         raise KeyError(f"Unknown strategy template: {name}")
-    return _REGISTRY[name]
+    return strategy
 
 
 def registered_strategies() -> dict[str, StrategyTemplate[Any]]:

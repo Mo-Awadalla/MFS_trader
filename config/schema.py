@@ -25,7 +25,7 @@ class AssetClass(StrEnum):
 
 @dataclass(frozen=True)
 class BrokerConfig:
-    name: str  # "alpaca" | "ccxt_binance" | "sim_broker"
+    name: str  # "alpaca" | "coinbase" | "sim_broker"
     asset_class: AssetClass
     api_key_env: str  # env var name, never the key itself
     api_secret_env: str
@@ -88,8 +88,8 @@ class CostModelConfig:
     commission_pct: float = 0.0
     sec_fee_per_dollar_sold: float = 5.1e-6  # ~$5.10 per $1M
     finra_taf_per_share_sold: float = 0.000119
-    crypto_taker_fee_pct: float = 0.001
-    crypto_maker_fee_pct: float = 0.0007
+    crypto_taker_fee_pct: float = 0.012
+    crypto_maker_fee_pct: float = 0.006
     borrow_cost_annual_pct: float = 0.01  # for shorts
 
 

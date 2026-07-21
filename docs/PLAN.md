@@ -9,7 +9,7 @@ Strategies are hypotheses, not assets. All strategies come from public testable 
 ### Phase 1 — Minimal End-to-End Skeleton
 1. `config/` — TOML per environment (research/paper/live), secrets in env vars
 2. `storage/` — SQLite (WAL, append-first, UTC) for events/orders/positions; Parquet for bars
-3. `data/` — Alpaca (equities) + CCXT Binance (crypto), 1-min raw → resample up. Quality gate: PASS/WARN/FAIL. Stricter for live
+3. `data/` — Alpaca (equities) + CCXT Coinbase (crypto), 1-min raw → resample up. Quality gate: PASS/WARN/FAIL. Stricter for live
 4. `strategies/MA` — baseline pipeline validator, not an edge candidate. SMA/EMA crossover, trend filter, long-only. Its job is testing data/reports/gauntlet/paper plumbing, not making money
 5. `research/` — vectorbt runner, single-asset report
 
@@ -42,7 +42,7 @@ Strategies are hypotheses, not assets. All strategies come from public testable 
 | Paper/live architecture | Same engine, different config mode. Live dry-run mode: real data, read-only broker |
 | Order state machine | 12 states (INTENDED, BLOCKED_BY_RISK, SUBMITTING, ACKNOWLEDGED, PARTIALLY_FILLED, FILLED, CANCEL_REQUESTED, CANCELLED, REJECTED, EXPIRED, TIMEOUT, UNKNOWN) + separate reconciliation_status |
 | Kill switches | Three severity classes. Flatten only if state KNOWN. Unknown state → freeze/alert/manual |
-| Universe rules | Equities: explicit definition, liquidity/price thresholds, survivorship bias documented, PIT timing. Crypto: exchange, spot only, stablecoin exclusion, min volume |
+| Universe rules | Equities: explicit definition, liquidity/price thresholds, survivorship bias documented, PIT timing. Coinbase spot USD: BTC/USD, ETH/USD, SOL/USD, and LTC/USD; stablecoin exclusion and min volume. Shelved: Binance USDⓈ-M perps (BTCUSDT, ETHUSDT, SOLUSDT), funding-aware strategies only, 1× leverage, reduce-only exits |
 | Data quality | Three outcomes (PASS/WARN/FAIL). Live: latest bar missing/stale → block signal. No forward-fill |
 | Experiment tracking | External artifact store. Metadata: git commit, random_seed, data version, M_raw, M_eff_corr, universe definition, promotion_status |
 | Testing | pytest + property-based + state machine + idempotency + reconciliation matrix + lookahead-bias + mock broker + golden + data-leakage + config safety + DB durability |

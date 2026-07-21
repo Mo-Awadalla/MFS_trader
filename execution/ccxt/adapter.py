@@ -1,5 +1,7 @@
 """CCXT Binance spot adapter — crypto via CCXT unified interface.
 
+Binance-only, not wired into the engine, and retained for reference.
+
 Binance-specific behavior handled here (NOT leaked upward):
   - symbol format: CCXT uses "BTC/USDT" not "BTCUSDT"
   - market buy semantics: CCXT handles quote-to-base conversion
