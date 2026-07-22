@@ -133,3 +133,26 @@ def test_coinbase_rejects_unsupported_timeframe() -> None:
 
     with pytest.raises(ValueError, match="does not support timeframe '4h'"):
         downloader._freq_to_ccxt("4h")
+
+
+def test_transient_network_error_is_retried() -> None:
+    downloader = CCXTDownloader(
+        exchange_id="coinbase",
+        max_retries=2,
+        retry_backoff_seconds=0.0,
+    )
+    calls = 0
+
+    def fetch(_symbol: str, _timeframe: str, *, since: int, limit: int) -> list[list[Any]]:
+        nonlocal calls
+        calls += 1
+        if calls < 3:
+            raise downloader._ccxt.NetworkError("temporary Coinbase failure")
+        return [candle(START_MS + MINUTE_MS)]
+
+    downloader._exchange = StubExchange(fetch)
+
+    result = downloader.download(request(end_minutes=1))
+
+    assert calls == 3
+    assert len(result.data) == 1
