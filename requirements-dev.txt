@@ -72,16 +72,23 @@ numpy==2.5.1
     #   contourpy
     #   matplotlib
     #   pandas
+    #   patsy
     #   scikit-learn
     #   scipy
+    #   statsmodels
 packaging==26.2
     # via
     #   matplotlib
     #   pytest
+    #   statsmodels
 pandas==3.0.3
-    # via mfs-trader (pyproject.toml)
+    # via
+    #   mfs-trader (pyproject.toml)
+    #   statsmodels
 pathspec==1.1.1
     # via mypy
+patsy==1.0.2
+    # via statsmodels
 pillow==12.3.0
     # via matplotlib
 pluggy==1.6.0
@@ -136,12 +143,15 @@ scipy==1.18.0
     # via
     #   mfs-trader (pyproject.toml)
     #   scikit-learn
+    #   statsmodels
 setuptools==83.0.0
     # via ccxt
 six==1.17.0
     # via python-dateutil
 sortedcontainers==2.4.0
     # via hypothesis
+statsmodels==0.14.6
+    # via mfs-trader (pyproject.toml)
 structlog==26.1.0
     # via mfs-trader (pyproject.toml)
 threadpoolctl==3.6.0
