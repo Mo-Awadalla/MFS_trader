@@ -60,6 +60,7 @@ class ExperimentStore:
         self.artifacts = ArtifactManager(self.root)
         self.index_path = self.root / "index.sqlite"
         self._conn = self._open()
+        self._bootstrap_index_from_metadata()
 
     def _open(self) -> sqlite3.Connection:
         conn = sqlite3.connect(self.index_path)
@@ -82,6 +83,24 @@ class ExperimentStore:
 
     def close(self) -> None:
         self._conn.close()
+
+    def _bootstrap_index_from_metadata(self) -> None:
+        """Index committed metadata missing from the local SQLite cache."""
+        for metadata_path in sorted(self.root.glob("*/metadata.json")):
+            experiment_uuid = metadata_path.parent.name
+            experiment = experiment_from_metadata_dict(
+                self.artifacts.read_json(experiment_uuid, ArtifactKind.METADATA_JSON)
+            )
+            if experiment.uuid != experiment_uuid:
+                raise ValueError(
+                    f"Experiment metadata UUID {experiment.uuid} does not match directory "
+                    f"{experiment_uuid}"
+                )
+            indexed = self._conn.execute(
+                "SELECT 1 FROM experiments WHERE uuid = ?", (experiment.uuid,)
+            ).fetchone()
+            if indexed is None:
+                self.insert_index(experiment, metadata_path)
 
     def metadata_path_for(self, uuid: str) -> Path:
         return self.artifacts.path(uuid, ArtifactKind.METADATA_JSON)

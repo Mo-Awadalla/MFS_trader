@@ -6,11 +6,12 @@ import copy
 
 import pytest
 
+from experiments.artifacts import ArtifactKind, ArtifactManager
 from experiments.backfill import (
     build_bb_aapl_1d_default_experiment,
     build_bb_aapl_1d_default_snapshot,
 )
-from experiments.hashing import compute_experiment_hash
+from experiments.hashing import compute_experiment_hash, experiment_to_metadata_dict
 from experiments.models import (
     DuplicateExperimentError,
     Experiment,
@@ -36,6 +37,21 @@ def _draft(label: str = "test-bb", window: int = 15) -> ExperimentDraft:
 
 
 class TestExperimentRegistry:
+    def test_bootstraps_index_from_committed_metadata(self, tmp_path):
+        root = tmp_path / "experiments"
+        archived = build_bb_aapl_1d_default_experiment()
+        ArtifactManager(root).write_json(
+            archived.uuid,
+            ArtifactKind.METADATA_JSON,
+            experiment_to_metadata_dict(archived),
+        )
+
+        registry = ExperimentRegistry(root)
+        try:
+            assert registry.get(archived.uuid) == archived
+        finally:
+            registry.close()
+
     def test_create_writes_metadata_and_index(self, registry):
         experiment = registry.create(_draft())
         meta_path = registry.root / experiment.uuid / "metadata.json"
