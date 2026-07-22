@@ -1,0 +1,59 @@
+{
+  "specification_id": "Bitcoin-US-Session-Close-Momentum-BinanceSpot-v1",
+  "frozen_at": "2026-07-10",
+  "execution_semantics_corrected_at": "2026-07-10 after independent review; entry now uses the 16:30 kline open rather than the preceding kline close",
+  "status": "frozen_falsification_scout",
+  "source": {
+    "title": "Bitcoin intraday time series momentum",
+    "authors": ["Dehua Shen", "Andrew Urquhart", "Pengfei Wang"],
+    "doi": "10.1111/fire.12290",
+    "source_rule_note": "The paper's first timing strategy is long the last half-hour when ONFH is positive and short when ONFH is negative. This v1 is a predeclared long/flat Binance proxy, not an exact replication."
+  },
+  "instrument": "BTCUSDT",
+  "venue": "binance_spot",
+  "data_source": "https://data.binance.vision/data/spot/monthly/klines",
+  "interval": "30m",
+  "session": {
+    "timezone": "America/New_York",
+    "opening_time": "09:00:00",
+    "first_half_hour_end": "09:30:00",
+    "close_time": "17:00:00",
+    "last_half_hour_start": "16:30:00",
+    "dst_policy": "America/New_York civil time; intentional proxy deviation from the paper's EST wording",
+    "signal_return": "close at current session 09:30 ET divided by close at prior session 17:00 ET minus one",
+    "trade_return": "close of the 16:30-17:00 ET kline divided by that kline's 16:30 ET open minus one"
+  },
+  "trading_rule": {
+    "trigger": "signal_return > 0",
+    "position": "long 1.0 BTCUSDT when triggered; otherwise flat",
+    "entry": "open of the 16:30-17:00 ET kline after signal is known",
+    "exit": "17:00 ET close",
+    "shorts": false,
+    "leverage": 1.0,
+    "maximum_trades_per_session": 1
+  },
+  "costs": {
+    "fee_only_per_side_bps": 10.0,
+    "conservative_slippage_per_side_bps": 5.0,
+    "conservative_round_trip_bps": 30.0,
+    "cost_application": "subtract one round trip only on triggered sessions"
+  },
+  "partitions": {
+    "development": {"start": "2017-09-01", "end": "2020-12-31"},
+    "internal_validation": {"start": "2021-01-01", "end": "2023-12-31"},
+    "final_holdout": {"start": "2024-01-01", "end": "2025-12-31"}
+  },
+  "progression_gates": {
+    "minimum_selected_sessions": 500,
+    "minimum_mean_gross_bps": 0.0,
+    "minimum_directional_accuracy": 0.5,
+    "require_positive_each_chronological_half_gross": true,
+    "minimum_session_bootstrap_lower_95_bps": 0.0,
+    "require_positive_after_conservative_costs": true,
+    "require_positive_after_top_5pct_absolute_sessions_removed": true,
+    "maximum_top_5pct_profit_contribution": 0.5,
+    "require_complete_timestamp_alignment": true
+  },
+  "bootstrap": {"session_resamples": 5000, "seed": 42},
+  "holdout_policy": "Do not download or evaluate a later partition unless every preceding partition passes unchanged gates. If development fails, do not invert the signal, add the short side, change clocks, add volume/volatility filters, switch instruments, or inspect later partitions on this specification."
+}

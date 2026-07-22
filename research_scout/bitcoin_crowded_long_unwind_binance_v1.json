@@ -1,0 +1,82 @@
+{
+  "specification_id": "Bitcoin-Crowded-Long-Unwind-BinancePerp-v1",
+  "frozen_at": "2026-07-10",
+  "availability_semantics_corrected_at": "2026-07-10 after pre-result review returned asynchronously; fixed five-minute publication lag and actual-funding-event guard added before any later partition was opened",
+  "status": "frozen_weak_evidence_falsification_scout",
+  "evidence_strength": "weak: sources motivate funding, basis, and OI as derivatives-state variables but do not establish a universal reversal sign",
+  "instrument": "BTCUSDT",
+  "venue": "binance_usds_m_perpetual",
+  "data_root": "data/parquet/binance_bitcoin_derivatives_public_v1/normalized",
+  "interval": "30m",
+  "decision": {
+    "timezone": "UTC",
+    "daily_cutoff": "00:10:00",
+    "fixed_publication_lag_minutes": 5,
+    "funding_availability": "latest settled funding row with calc_time plus fixed publication lag <= daily cutoff",
+    "maximum_funding_staleness_minutes": 10,
+    "oi_availability": "latest native metrics row with create_time plus fixed publication lag <= daily cutoff",
+    "maximum_oi_staleness_minutes": 10,
+    "oi_comparison_lag_hours": 8,
+    "oi_lag_rule": "latest native metrics row whose available_at <= current available cutoff minus 8 hours",
+    "entry": "00:30 UTC BTCUSDT perpetual kline open as an execution proxy for an order staged after the 00:10 decision",
+    "exit": "07:30 UTC BTCUSDT perpetual kline open",
+    "holding_hours": 7.0,
+    "funding_crossed": "exclude a candidate if any actual funding calc_time is in (entry, exit], including exactly at exit",
+    "maximum_trades_per_day": 1
+  },
+  "primary_signal": {
+    "funding_variable": "last_funding_rate",
+    "funding_requirement": "current settled funding > 0 and strictly above the 90th percentile of the 270 immediately preceding settled funding observations",
+    "funding_quantile": 0.90,
+    "funding_lookback_settlements": 270,
+    "minimum_prior_funding_observations": 180,
+    "oi_variable": "sum_open_interest",
+    "oi_requirement": "current point-in-time BTC open interest divided by point-in-time BTC open interest eight hours earlier minus one is > 0",
+    "trigger": "funding_extreme_positive and oi_expanding",
+    "position": "short 1.0 notional BTCUSDT perpetual when triggered; otherwise flat",
+    "short_return": "1 minus exit_open divided by entry_open",
+    "no_leverage_assumption": true
+  },
+  "predeclared_controls": {
+    "funding_only": "funding_extreme_positive regardless of OI change",
+    "oi_only": "oi_expanding regardless of funding",
+    "basis_only": "00:00 UTC premium-index close > 0 and above the 90th percentile of the 270 immediately preceding available daily 00:00 premium observations, minimum 180 prior observations",
+    "purpose": "descriptive attribution controls only; none may replace the primary trigger after results"
+  },
+  "costs": {
+    "fee_only_per_side_bps": 5.0,
+    "fee_only_round_trip_bps": 10.0,
+    "conservative_slippage_per_side_bps": 5.0,
+    "conservative_round_trip_bps": 20.0,
+    "funding_cashflow": "none because the frozen position exits before 08:00 UTC settlement",
+    "cost_application": "subtract one round trip only on triggered days"
+  },
+  "partitions": {
+    "development": {"start": "2020-09-01", "end": "2022-12-31"},
+    "internal_validation": {"start": "2023-01-01", "end": "2023-12-31"},
+    "final_holdout": {"start": "2024-01-01", "end": "2025-12-31"}
+  },
+  "progression_gates": {
+    "minimum_selected_days": 40,
+    "minimum_mean_short_gross_bps": 0.0,
+    "minimum_short_directional_accuracy": 0.50,
+    "require_positive_each_chronological_half_gross": true,
+    "minimum_session_bootstrap_lower_95_bps": 0.0,
+    "require_positive_after_conservative_costs": true,
+    "require_positive_after_top_5pct_absolute_days_removed": true,
+    "maximum_top_5pct_profit_contribution": 0.50,
+    "require_complete_timestamp_alignment": true,
+    "require_primary_incremental_vs_funding_only": true
+  },
+  "bootstrap": {"session_resamples": 5000, "seed": 73},
+  "interpretation": {
+    "primary_claim": "crowded positive-funding states with expanding OI have negative subsequent perpetual returns, expressed as a short",
+    "not_claimed": [
+      "funding reversal is a published universal anomaly",
+      "OI identifies net longs",
+      "Binance represents the global Bitcoin market",
+      "mark, index, or premium prices are executable"
+    ]
+  },
+  "holdout_policy": "Evaluate development only first. If any primary gate fails, stop without inspecting later partitions. Do not invert the sign, alter funding percentile/lookback, change OI representation or lag, change clocks/horizon, add trader ratios, volume, volatility, liquidation proxies, ML, stops, leverage, another venue, or another coin on consumed data."
+}
