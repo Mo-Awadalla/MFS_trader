@@ -6,11 +6,15 @@ COINBASE_SECRET, but public historical data works without auth (read-only).
 
 from __future__ import annotations
 
+import time
 from typing import Any
 
 import pandas as pd
+import structlog
 
 from data.base import BaseDownloader, DownloadRequest, DownloadResult
+
+log = structlog.get_logger(__name__)
 
 
 class CCXTDownloader(BaseDownloader):
@@ -22,6 +26,8 @@ class CCXTDownloader(BaseDownloader):
         api_key: str | None = None,
         api_secret: str | None = None,
         is_testnet: bool = False,
+        max_retries: int = 5,
+        retry_backoff_seconds: float = 1.0,
     ):
         try:
             import ccxt
@@ -30,6 +36,8 @@ class CCXTDownloader(BaseDownloader):
 
         self._exchange_id = exchange_id
         self._ccxt = ccxt
+        self._max_retries = max_retries
+        self._retry_backoff_seconds = retry_backoff_seconds
 
         exchange_class = getattr(ccxt, exchange_id)
         # Coinbase's market loader calls a private fee-summary endpoint whenever
@@ -89,7 +97,12 @@ class CCXTDownloader(BaseDownloader):
 
         while since < end_ms:
             previous_since = since
-            ohlcv = self._exchange.fetch_ohlcv(request.symbol, timeframe, since=since, limit=limit)
+            ohlcv = self._fetch_ohlcv_page(
+                request.symbol,
+                timeframe,
+                since=since,
+                limit=limit,
+            )
             if not ohlcv:
                 since += limit * timeframe_ms
                 continue
@@ -124,3 +137,39 @@ class CCXTDownloader(BaseDownloader):
                 "end": request.end_date or "now",
             },
         )
+
+    def _fetch_ohlcv_page(
+        self,
+        symbol: str,
+        timeframe: str,
+        *,
+        since: int,
+        limit: int,
+    ) -> list[list[Any]]:
+        """Fetch one page with bounded retries for transient CCXT network errors."""
+        for retry in range(self._max_retries + 1):
+            try:
+                return self._exchange.fetch_ohlcv(
+                    symbol,
+                    timeframe,
+                    since=since,
+                    limit=limit,
+                )
+            except self._ccxt.NetworkError as exc:
+                if retry >= self._max_retries:
+                    raise
+                delay = self._retry_backoff_seconds * (2**retry)
+                log.warning(
+                    "ccxt_page_retry",
+                    symbol=symbol,
+                    exchange=self._exchange_id,
+                    since=since,
+                    retry=retry + 1,
+                    max_retries=self._max_retries,
+                    delay_seconds=delay,
+                    error=str(exc),
+                )
+                if delay > 0:
+                    time.sleep(delay)
+
+        raise RuntimeError("unreachable CCXT retry state")
