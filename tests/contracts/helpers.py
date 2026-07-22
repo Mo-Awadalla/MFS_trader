@@ -10,6 +10,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+from research.universes.global_dual_momentum_v1 import SYMBOLS as GLOBAL_DUAL_MOMENTUM_SYMBOLS
 from strategies.contract import StrategyTemplate, assert_exit_contract
 from strategies.registry import RAW_EXIT_COLUMNS
 
@@ -46,9 +47,9 @@ def trending_ohlcv(n: int = 300) -> pd.DataFrame:
 
 def cross_sectional_ohlcv(n_days: int = 90, n_symbols: int = 120) -> pd.DataFrame:
     idx = pd.bdate_range("2024-01-02", periods=n_days, tz="UTC")
-    symbols = ("SHY",) + tuple(f"S{i:03d}" for i in range(n_symbols))
+    symbols = GLOBAL_DUAL_MOMENTUM_SYMBOLS + tuple(f"S{i:03d}" for i in range(n_symbols))
     columns = pd.MultiIndex.from_product(
-        [symbols, ("open", "high", "low", "close", "volume")],
+        [symbols, ("open", "high", "low", "close", "volume", "fundamental_event")],
         names=["symbol", "field"],
     )
     df = pd.DataFrame(index=idx, columns=columns, dtype=float)
@@ -61,6 +62,7 @@ def cross_sectional_ohlcv(n_days: int = 90, n_symbols: int = 120) -> pd.DataFram
         df[(symbol, "low")] = close * 0.99
         df[(symbol, "close")] = close
         df[(symbol, "volume")] = 2_000_000.0
+        df[(symbol, "fundamental_event")] = 0.0
     return df
 
 

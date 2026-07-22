@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import uuid
-from dataclasses import asdict
+from dataclasses import asdict, replace
 from pathlib import Path
 from typing import Any
 
@@ -50,6 +50,8 @@ ARCHIVED_PAPER_THRESHOLDS: dict[str, Any] = {
     "min_trades": 100,
     "target_trades": 200,
 }
+ARCHIVED_CRYPTO_TAKER_FEE_PCT = 0.001
+ARCHIVED_CRYPTO_MAKER_FEE_PCT = 0.0007
 
 
 def _slippage_from_cost(cost: CostModelConfig) -> dict[str, Any]:
@@ -68,7 +70,11 @@ def _cost_without_slippage(cost: CostModelConfig) -> dict[str, Any]:
 
 def build_bb_aapl_1d_default_snapshot() -> ExperimentSnapshot:
     """Frozen decision-path snapshot for the archived BB-AAPL-1D-Default experiment."""
-    cost = default_cost_config()
+    cost = replace(
+        default_cost_config(),
+        crypto_taker_fee_pct=ARCHIVED_CRYPTO_TAKER_FEE_PCT,
+        crypto_maker_fee_pct=ARCHIVED_CRYPTO_MAKER_FEE_PCT,
+    )
     risk = RiskLimits()
     portfolio = PortfolioConfig()
     return ExperimentSnapshot(
