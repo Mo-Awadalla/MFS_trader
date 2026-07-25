@@ -1,0 +1,142 @@
+{
+  "data": {
+    "source": "Yahoo Finance public chart endpoint",
+    "test_start": "2021-11-18",
+    "test_end": "2025-07-22",
+    "daily_observations": 920,
+    "discovery_start_excluded": "2025-07-23",
+    "input_prices_sha256": "29e641fc4fb1b20fb06aaa2ca6189615f6077987361be1f3ea2e287de56e5d7d"
+  },
+  "factor_fit": {
+    "intercept_daily": -0.0013464399600742563,
+    "btc_beta": 0.6913735655313163,
+    "qqq_beta": 1.3283602333855038,
+    "daily_r_squared": 0.25315146088064977
+  },
+  "primary_42_day": {
+    "raw": {
+      "blocks": 21,
+      "lag_correlation": 0.0031688724433665346,
+      "permutation_p_negative": 0.5986480270394592,
+      "opposite_sign_transitions": 9,
+      "transitions": 20,
+      "opposite_sign_rate": 0.45,
+      "first_half_lag_correlation": 0.19897099350349018,
+      "second_half_lag_correlation": -0.11163096742843462
+    },
+    "factor_adjusted": {
+      "blocks": 21,
+      "lag_correlation": -0.17547239087153516,
+      "permutation_p_negative": 0.2882542349153017,
+      "opposite_sign_transitions": 13,
+      "transitions": 20,
+      "opposite_sign_rate": 0.65,
+      "first_half_lag_correlation": -0.13064328525022623,
+      "second_half_lag_correlation": -0.0913005988868148
+    }
+  },
+  "success_gate_checks": {
+    "raw_negative_p_lt_0_05": false,
+    "adjusted_negative_p_lt_0_05": false,
+    "opposite_sign_rate_gte_0_60": false,
+    "both_halves_negative": false
+  },
+  "success_gate_passed": false,
+  "robustness_alternate_horizons": {
+    "21": {
+      "raw": {
+        "blocks": 43,
+        "lag_correlation": 0.1104854378606749,
+        "permutation_p_negative": 0.8090638187236255,
+        "opposite_sign_transitions": 17,
+        "transitions": 42,
+        "opposite_sign_rate": 0.40476190476190477,
+        "first_half_lag_correlation": 0.20429200222495242,
+        "second_half_lag_correlation": -0.09350793304439446
+      },
+      "factor_adjusted": {
+        "blocks": 43,
+        "lag_correlation": -0.17552590270989746,
+        "permutation_p_negative": 0.16133677326453472,
+        "opposite_sign_transitions": 21,
+        "transitions": 42,
+        "opposite_sign_rate": 0.5,
+        "first_half_lag_correlation": -0.12946724243433014,
+        "second_half_lag_correlation": -0.23064073749324257
+      }
+    },
+    "63": {
+      "raw": {
+        "blocks": 14,
+        "lag_correlation": 0.09577315398401341,
+        "permutation_p_negative": 0.7352852942941142,
+        "opposite_sign_transitions": 5,
+        "transitions": 13,
+        "opposite_sign_rate": 0.38461538461538464,
+        "first_half_lag_correlation": 0.08662664363951487,
+        "second_half_lag_correlation": -0.4929405248018954
+      },
+      "factor_adjusted": {
+        "blocks": 14,
+        "lag_correlation": -0.4274389128803258,
+        "permutation_p_negative": 0.07933841323173536,
+        "opposite_sign_transitions": 6,
+        "transitions": 13,
+        "opposite_sign_rate": 0.46153846153846156,
+        "first_half_lag_correlation": -0.30145149743358446,
+        "second_half_lag_correlation": -0.7892842997020412
+      }
+    }
+  },
+  "phase_sensitivity_42_day_raw": {
+    "valid_phases": 42,
+    "negative_fraction": 0.9761904761904762,
+    "median_correlation": -0.2427977510029859,
+    "min_correlation": -0.39060149978968595,
+    "max_correlation": 0.0031688724433665346,
+    "correlations": [
+      0.0031688724433665346,
+      -0.020508498144446122,
+      -0.17862376592090035,
+      -0.1899074396518403,
+      -0.18411202869768395,
+      -0.13044076340559468,
+      -0.2446264148700665,
+      -0.21897605239870846,
+      -0.25099672406030743,
+      -0.26239277578648806,
+      -0.29710631041285596,
+      -0.26942580778686986,
+      -0.2655769944004684,
+      -0.2386723361841827,
+      -0.29408351262188775,
+      -0.32396368430025463,
+      -0.3739110451023415,
+      -0.3886390593889558,
+      -0.39060149978968595,
+      -0.3741152499410022,
+      -0.3203688277685626,
+      -0.25409029062085875,
+      -0.2811840383139588,
+      -0.2668224154947095,
+      -0.26960698018106766,
+      -0.2720313128083304,
+      -0.2922425332737819,
+      -0.32453216326947887,
+      -0.24429635469719826,
+      -0.2412991473087735,
+      -0.21815148175729857,
+      -0.19179147030421656,
+      -0.16361643079592705,
+      -0.0443768775922745,
+      -0.12255008287718856,
+      -0.17876317472426245,
+      -0.13591966899139363,
+      -0.022335062036887558,
+      -0.010048474529008188,
+      -0.05814507371709627,
+      -0.0728360202854474,
+      -0.019654367891864526
+    ]
+  }
+}
