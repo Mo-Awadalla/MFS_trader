@@ -1,0 +1,105 @@
+{
+  "experiment_uuid": "9a08eaef-e9d5-4517-989a-3b35575519d7",
+  "gauntlet": {
+    "dsr": null,
+    "failure_reasons": [
+      "WFA: oos_sharpe -1.51 < 0.8",
+      "WFA: oos_sortino -4.34 < 1.0",
+      "WFA: frac_negative_folds 0.98 > 0.5",
+      "WFA: single fold contributes 100% of profit > 60%",
+      "MC: P(ruin) = 1.000 >= 0.05",
+      "MC: 5th pct CAGR = -0.023 <= 0",
+      "MC: 95th pct max DD = -0.907 < -0.2",
+      "DSR: no positive Sharpe to deflate",
+      "Intraday: max_trades_per_session 25 > 20",
+      "Intraday: max_turnover_per_session 9.00 > 8.00",
+      "Intraday: max_holding_period_bars 5 > 1",
+      "Intraday: profit_factor 0.97 < 1.05",
+      "Intraday: expectancy_per_trade -0.000009 < 0.000000"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": -1.5103848734365783,
+      "pct_5_cagr": -0.02271077235171761,
+      "pct_95_max_dd": -0.9074247121935685,
+      "prob_loss": 1.0,
+      "prob_ruin": 1.0
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": false,
+      "passed": true,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "same_clock_intraday_seasonality",
+    "wfa": {
+      "frac_negative": 0.9830508474576272,
+      "num_folds": 59,
+      "oos_sharpe": -1.5102377460942058,
+      "passed": false
+    }
+  },
+  "intraday": {
+    "failures": [
+      "max_trades_per_session 25 > 20",
+      "max_turnover_per_session 9.00 > 8.00",
+      "max_holding_period_bars 5 > 1",
+      "profit_factor 0.97 < 1.05",
+      "expectancy_per_trade -0.000009 < 0.000000"
+    ],
+    "metrics": {
+      "expectancy_per_trade": -9.393831503366378e-06,
+      "exposure_fraction": 0.1164656381486676,
+      "flat_by_session_close": true,
+      "has_short_exposure": false,
+      "max_abs_exposure": 1.0,
+      "max_holding_period_bars": 5,
+      "max_single_session_profit_share": 0.037106867957284184,
+      "max_trades_per_session": 25,
+      "max_turnover_per_session": 9.0,
+      "profit_factor": 0.9704536487925678,
+      "trade_count": 4261,
+      "trading_sessions": 1376
+    },
+    "passed": false
+  },
+  "params": {
+    "allow_short": false,
+    "bars_per_session": 13,
+    "exit_before_close_bars": 1,
+    "lookback_sessions": 20,
+    "max_gross": 1.0,
+    "max_symbol_weight": 0.5,
+    "min_bar_volume": 100000.0,
+    "min_price": 5.0,
+    "min_same_clock_mean_return": 0.0,
+    "skip_opening_bars": 1
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "same-clock target is written one bar before the traded slot; zero target before close prevents overnight exposure",
+    "mode": "vectorized_intraday_cross_sectional_replay",
+    "reason": "engine replay is currently not session-scheduled for multi-ETF 30m intraday flat-by-close strategies"
+  },
+  "research": {
+    "bar_count": 17825,
+    "metrics": {
+      "ann_return": -0.2512376186640298,
+      "ann_volatility": 0.04931648413545768,
+      "annualization_factor": 3276.0,
+      "cagr": -0.22311664863935543,
+      "final_equity": 6329.311799296762,
+      "max_drawdown": -0.7517028938744876,
+      "sharpe": -5.094394360594624,
+      "sortino": -3.013049736621965,
+      "total_bars": 17825.0,
+      "total_return": -0.7468275280281296,
+      "win_rate": 0.23572996706915478
+    },
+    "rebalance_count": 17825,
+    "skipped_rebalance_count": 222,
+    "trade_count": 4261
+  },
+  "strategy": "same_clock_intraday_seasonality",
+  "strategy_template_version": "same_clock_intraday_seasonality:v1",
+  "sweep_rows": 1
+}

@@ -1,0 +1,72 @@
+{
+  "name": "ESCloseAlignedAggressorFlow-v1",
+  "frozen_before_performance_read": true,
+  "development_partition": {
+    "start": "2021-01-01",
+    "end_exclusive": "2024-01-01"
+  },
+  "holdout_partition": {
+    "start": "2024-01-01",
+    "end_exclusive": "2026-01-01"
+  },
+  "signal": {
+    "rth_move": "ES.v.0 09:30 one-minute open to 15:29 one-minute close, America/New_York",
+    "large_move": "absolute RTH move >= trailing 60 eligible-session sample standard deviation, shifted one session",
+    "flow": "ES.v.0 buyer-aggressor volume minus seller-aggressor volume from 15:00:00 through 15:29:59.999 ET",
+    "alignment": "sign(flow) equals sign(RTH move)",
+    "entry_spread": "MES.v.0 ask minus bid <= 0.25 at first MBP-1 record at/after 15:30:05 ET",
+    "direction": "sign of RTH move",
+    "exit": "first MES.v.0 MBP-1 record at/after 15:59:45 ET"
+  },
+  "execution": {
+    "long_entry": "ask",
+    "long_exit": "bid",
+    "short_entry": "bid",
+    "short_exit": "ask",
+    "mes_multiplier_usd_per_point": 5.0,
+    "baseline_round_trip_commission_usd": 1.24,
+    "commission_sensitivity_usd": [
+      0.0,
+      1.24,
+      2.0
+    ]
+  },
+  "exclusions": [
+    "RTH bar count is not exactly 390",
+    "Databento condition is degraded on the study weekday",
+    "missing or crossed executable quote",
+    "ES bar and trade continuous mappings disagree",
+    "MES entry and exit continuous mappings disagree",
+    "fewer than 60 prior eligible sessions for volatility normalization"
+  ],
+  "controls": [
+    "large price move only",
+    "large price move plus one-tick spread",
+    "large price move with opposed aggressive flow",
+    "aggressive-flow direction only"
+  ],
+  "statistics": {
+    "cluster": "calendar month",
+    "bootstrap_samples": 10000,
+    "permutation_samples": 10000,
+    "random_seed": 20260725,
+    "interaction_test": "one-sided permutation test of aligned minus opposed mean net MES P&L"
+  },
+  "development_gate": [
+    "at least 30 frozen-rule trades",
+    "positive mean net P&L at $1.24 round-trip commission",
+    "positive aligned-minus-opposed mean net P&L"
+  ],
+  "live_recommendation_gate": [
+    "development gate passes",
+    "at least 30 holdout trades",
+    "positive holdout mean net P&L at $1.24 commission",
+    "positive holdout aligned-minus-opposed mean net P&L",
+    "lower bound of holdout month-clustered 95% confidence interval for mean net P&L is positive"
+  ],
+  "hashes_sha256": {
+    "evaluation_code": "96d996fa8ab1f3aa89718d146a0ed820d9ac333d7c0a4ad30447c937dcce8fea",
+    "feature_code": "4a26a95735b9c7cb8601dd75f3646c569933a5b3f532477a3379f20b10719603",
+    "feature_artifact": "86b47e92f851f02c8f28054a6fa346737230793bf9d01968946422fa55485f9d"
+  }
+}

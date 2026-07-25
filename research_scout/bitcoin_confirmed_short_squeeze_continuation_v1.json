@@ -1,0 +1,137 @@
+{
+  "specification_id": "BTC-Confirmed-Short-Squeeze-Continuation-v1",
+  "frozen_at": "2026-07-25",
+  "status": "frozen_preregistered_research_scout",
+  "instrument": "BTCUSDT",
+  "venue": "binance_spot",
+  "direction": "long_only",
+  "data": {
+    "spot_5m": "data/parquet/bitcoin_5m_probability_binance_v1/bars_5m.parquet",
+    "metrics_5m": "data/parquet/binance_bitcoin_derivatives_public_v1/normalized/futures_metrics_5m.parquet",
+    "funding": "data/parquet/binance_bitcoin_derivatives_public_v1/normalized/funding_rate.parquet",
+    "premium_30m": "data/parquet/binance_bitcoin_derivatives_public_v1/normalized/premium_index_klines_30m.parquet",
+    "metrics_publication_lag_minutes": 5,
+    "funding_publication_lag_minutes": 5,
+    "maximum_metrics_staleness_minutes": 10,
+    "maximum_funding_staleness_minutes": 510,
+    "maximum_premium_staleness_minutes": 30,
+    "missing_policy": "Any missing or stale required observation makes the decision ineligible; no forward filling."
+  },
+  "decision": {
+    "timezone": "UTC",
+    "times": ["00:25:00", "12:25:00"],
+    "entry_delay_minutes": 5,
+    "holding_hours": 6,
+    "minimum_hours_between_entries": 24,
+    "maximum_concurrent_positions": 1
+  },
+  "rolling": {
+    "lookback_calendar_days": 180,
+    "minimum_prior_decisions": 180,
+    "quantile_interpolation": "linear",
+    "robust_scale": "1.4826 times median absolute deviation",
+    "zero_mad_policy": "decision is ineligible"
+  },
+  "stage_1": {
+    "funding_feature": "negative mean of the three latest already-settled funding rates",
+    "premium_feature": "negative median close of the eight latest completed 30-minute premium-index bars",
+    "positioning_feature": "negative log of the latest available global account long/short ratio (count_long_short_ratio)",
+    "crowding_quantile": 0.70,
+    "minimum_crowding_votes": 2,
+    "oi_buildup_feature": "six-hour log change in BTC-denominated sum_open_interest",
+    "oi_buildup_quantile": 0.70,
+    "price_resistance_rule": "six-hour spot return > -0.5 times six-hour realized volatility",
+    "realized_volatility": "square root of summed squared five-minute close-to-close log returns"
+  },
+  "stage_2": {
+    "positive_spot_return_quantile": 0.75,
+    "oi_contraction_quantile": 0.20,
+    "spot_taker_buy_ratio_quantile": 0.70,
+    "spot_taker_buy_ratio": "sum(taker_buy_base_volume) / sum(volume) over the latest completed hour",
+    "breakout": "latest completed five-minute close strictly above the maximum high in the preceding four hours, excluding the confirmation hour"
+  },
+  "analogue_model": {
+    "state_features": [
+      "short_crowding_score",
+      "oi_buildup_6h",
+      "price_resistance",
+      "oi_contraction_1h",
+      "taker_buy_imbalance",
+      "volatility_expansion"
+    ],
+    "short_crowding_score": "mean strict-trailing percentile rank of the three transformed crowding features",
+    "price_resistance": "six-hour spot return divided by six-hour realized volatility",
+    "oi_contraction_1h": "negative one-hour log change in BTC-denominated open interest",
+    "taker_buy_imbalance": "one-hour spot taker-buy ratio minus 0.5",
+    "volatility_expansion": "log(one-hour realized volatility / (six-hour realized volatility / sqrt(6)))",
+    "normalization": "Current-window median and MAD using only valid decisions in the preceding 180 calendar days",
+    "distance": "unweighted Euclidean distance after robust normalization",
+    "neighbors": 60,
+    "embargo_hours": 24,
+    "outcome": "gross BTCUSDT spot return from the next five-minute boundary open to the open six hours later",
+    "bootstrap_resamples": 2000,
+    "bootstrap_seed": 917,
+    "bootstrap_confidence": 0.80,
+    "minimum_mean_gross_bps": 60,
+    "minimum_lower_bound_gross_bps": 40,
+    "cost_hurdle_bps": 30,
+    "minimum_probability_above_cost": 0.60,
+    "largest_positive_outcomes_count": 5,
+    "maximum_largest_positive_outcome_contribution": 0.40
+  },
+  "execution": {
+    "instrument": "BTCUSDT spot",
+    "leverage": 1,
+    "maximum_notional_fraction": 0.50,
+    "maximum_risk_fraction": 0.0035,
+    "atr_bars": 12,
+    "atr_multiplier": 1.25,
+    "stop_gap_policy": "If a five-minute bar opens below the stop, use the bar open; otherwise use the stop.",
+    "ordinary_round_trip_cost_bps": 30,
+    "stress_round_trip_cost_bps": 50,
+    "cost_sensitivity_bps": [20, 30, 50],
+    "cost_model": "Half the round-trip cost is applied adversely and multiplicatively to each entry and exit fill.",
+    "profit_target": null,
+    "averaging_down": false,
+    "reentry_within_24_hours": false
+  },
+  "partitions": {
+    "development": {"start": "2020-09-01", "end": "2022-12-31"},
+    "internal_validation": {"start": "2023-01-01", "end": "2023-12-31"},
+    "final_holdout": {"start": "2024-01-01", "end": "2025-12-31"}
+  },
+  "development_gates": {
+    "minimum_completed_trades": 50,
+    "minimum_net_mean_bps": 0,
+    "require_positive_chronological_halves": true,
+    "event_bootstrap_confidence": 0.95,
+    "minimum_bootstrap_lower_net_bps": 0,
+    "minimum_net_profit_factor": 1.20,
+    "maximum_top_5pct_profit_contribution": 0.40,
+    "require_positive_stress_mean": true,
+    "require_complete_timestamp_alignment": true,
+    "maximum_profitable_year_contribution": 0.80
+  },
+  "internal_validation_gates": {
+    "minimum_completed_trades": 15,
+    "require_positive_ordinary_mean": true,
+    "require_positive_stress_mean": true,
+    "maximum_probability_brier_score": 0.25,
+    "maximum_top_5pct_profit_contribution": 0.40,
+    "require_positive_trimmed_mean": true,
+    "require_applicable_development_gates": true
+  },
+  "bootstrap": {
+    "event_resamples": 5000,
+    "seed": 2718
+  },
+  "trial_accounting": {
+    "family": "bitcoin_leverage_unwind",
+    "related_prior_trials": [
+      "Bitcoin-Crowded-Long-Unwind-BinancePerp-v1",
+      "Bitcoin-Delta-Neutral-Funding-Carry-Binance-v1",
+      "Bitcoin-Spot-Perp-Basis-Convergence-Binance-v1"
+    ],
+    "holdout_policy": "Do not evaluate a later partition unless every gate in the preceding partition passes without specification changes."
+  }
+}

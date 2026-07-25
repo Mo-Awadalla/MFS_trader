@@ -1,0 +1,17 @@
+[    1712ms] [LOG] JQMIGRATE: Migrate is installed, version 1.4.1 @ https://oup.silverchair-cdn.com/Themes/Silver/app/vendor/v-639163101220611049/jquery-migrate-1.4.1.min.js:1
+[    1877ms] TypeError: Cannot read properties of undefined (reading 'setAccessIcons')
+    at https://academic.oup.com/jfec/article-abstract/12/1/47/816163?redirectedFrom=fulltext:5363:20
+[    2057ms] [LOG] Iframe not attached to: body @ https://oup.silverchair-cdn.com/Themes/Client/app/jsdist/v-639176857420378752/site.min.js:0
+[    2164ms] [ERROR] Permissions policy violation: picture-in-picture is not allowed in this document. @ https://academic.oup.com/cdn-cgi/challenge-platform/scripts/jsd/main.js:0
+[    2283ms] [LOG] Handled init-checkbox message @ https://oup.silverchair-cdn.com/Themes/Client/app/jsdist/v-639176857420378752/site.min.js:0
+[    2285ms] [LOG] No intialized handler @ https://service.seamlessaccess.org/ps_de7abba6197b1ec1abce.js:1
+[    2285ms] [LOG] No intialized handler @ https://service.seamlessaccess.org/ps_de7abba6197b1ec1abce.js:1
+[    2604ms] [WARNING] [GPT] Slot.setTargeting is deprecated, use Slot.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#171 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202607060101/pubads_impl.js?cb=31099589:18
+[    2608ms] [WARNING] [GPT] PubAdsService.setTargeting is deprecated, use googletag.setConfig({targeting: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202607060101/pubads_impl.js?cb=31099589:18
+[    2610ms] [WARNING] [GPT] Invalid value encountered when calling: googletag.setConfig.targeting: {}
+https://goo.gle/gpt-message#159 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202607060101/pubads_impl.js?cb=31099589:18
+[    7395ms] Uncaught (in promise) RetryError: retryCount exceeded
+    at r (https://oup.silverchair-cdn.com/Themes/Client/app/jsdist/v-639176857420378752/site.min.js:0:172535)
+    at a (https://oup.silverchair-cdn.com/Themes/Client/app/jsdist/v-639176857420378752/site.min.js:0:172403)

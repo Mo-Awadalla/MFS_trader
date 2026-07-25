@@ -1,0 +1,79 @@
+{
+  "specification_id": "Bitcoin-Binance-Capitulation-CoinbaseSpot-Reversal-v1",
+  "frozen_at": "2026-07-23T10:25:00-04:00",
+  "status": "frozen_cross_venue_falsification_scout",
+  "claim": "A severe Binance BTCUSDT perpetual capitulation state observed just after a funding settlement transfers to a positive 90-minute Coinbase BTC-USD spot reversal large enough to survive Coinbase execution costs.",
+  "signal_venue": "Binance USD-M BTCUSDT perpetual and Binance BTCUSDT spot public archives",
+  "execution_venue": "Coinbase Advanced BTC-USD spot public candles",
+  "signal_data_root": "data/parquet/binance_bitcoin_derivatives_public_v1/normalized",
+  "execution_product": "BTC-USD",
+  "decision": {
+    "funding_event": "each actual Binance settled funding calc_time",
+    "fixed_publication_lag_minutes": 5,
+    "decision_time": "funding calc_time plus 5 minutes",
+    "entry_time": "funding calc_time plus 10 minutes, using the Coinbase five-minute candle open",
+    "maximum_hold_minutes": 90,
+    "maximum_concurrent_positions": 1
+  },
+  "signal": {
+    "funding_rate_strictly_above": 0.002,
+    "oi_change_horizon_minutes": 60,
+    "oi_change_z_strictly_below": -2.0,
+    "oi_z_reference_observations": 5760,
+    "oi_z_minimum_prior_observations": 5000,
+    "basis_definition": "log(Binance perpetual completed 30m close / Binance spot completed 30m close)",
+    "perp_discount_z_strictly_below": -1.5,
+    "basis_z_reference_observations": 960,
+    "basis_z_minimum_prior_observations": 900,
+    "perp_taker_sell_ratio_definition": "1 - taker_buy_base_volume / volume on the completed Binance perpetual 30m bar ending at funding time",
+    "perp_taker_sell_ratio_strictly_above": 0.55,
+    "spot_taker_buy_ratio_definition": "taker_buy_base_volume / volume on the completed Binance spot 30m bar ending at funding time",
+    "spot_taker_buy_ratio_minimum": 0.50,
+    "btc_return_60m_definition": "Binance spot completed close at funding time / completed close 60 minutes earlier - 1",
+    "btc_return_60m_strictly_above": -0.01,
+    "all_conditions_required": true
+  },
+  "coinbase_transfer_and_execution": {
+    "coinbase_dislocation_window_start_minutes_before_funding": 60,
+    "require_coinbase_entry_below_window_start": true,
+    "target_dislocation_fraction": 0.5,
+    "indicator_cutoff": "only Coinbase candles closed by decision_time",
+    "vwap_bars": 12,
+    "vwap_price_proxy": "candle close",
+    "atr_bars": 14,
+    "spot_failure_stop": "decision-time 12-bar volume-weighted close minus one decision-time ATR",
+    "volatility_stop": "entry price minus 1.5 decision-time ATR",
+    "require_entry_above_both_initial_stops": true,
+    "same_bar_target_and_stop_policy": "stop wins",
+    "stop_fill": "minimum of bar open and breached stop level",
+    "target_fill": "maximum of bar open and target level",
+    "time_stop_fill": "Coinbase candle open exactly 90 minutes after entry",
+    "missing_or_noncontiguous_candles": "candidate excluded"
+  },
+  "position_and_costs": {
+    "capital_fraction": 0.05,
+    "coinbase_taker_fee_per_side_bps": 120.0,
+    "fee_only_round_trip_bps": 240.0,
+    "slippage_per_side_bps": 5.0,
+    "conservative_round_trip_bps": 250.0,
+    "cost_note": "Primary fee assumption is the repository Coinbase configuration; actual account tier may differ, but it may not rescue a failed primary test.",
+    "cost_application": "subtract round-trip cost from each executed trade return before multiplying by the 5% capital fraction"
+  },
+  "partitions": {
+    "development": {"start": "2020-09-01", "end": "2022-12-31"},
+    "internal_validation": {"start": "2023-01-01", "end": "2023-12-31"},
+    "final_holdout": {"start": "2024-01-01", "end": "2025-12-31"}
+  },
+  "progression_gates": {
+    "minimum_executed_trades": 30,
+    "minimum_mean_gross_trade_bps": 0.0,
+    "minimum_directional_accuracy": 0.50,
+    "require_positive_each_chronological_half_gross": true,
+    "minimum_bootstrap_lower_95_conservative_bps": 0.0,
+    "require_positive_after_conservative_costs": true,
+    "minimum_active_calendar_years": 2,
+    "require_complete_timestamp_alignment": true
+  },
+  "bootstrap": {"trade_resamples": 5000, "seed": 173},
+  "holdout_policy": "Run development first. If any gate fails, keep internal validation and final holdout locked. Do not alter thresholds, remove conditions, change venue/product, change holding period, lower costs, invert the signal, or select a nearby variant on consumed data."
+}

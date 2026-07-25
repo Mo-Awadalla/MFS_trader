@@ -47,7 +47,8 @@ def trending_ohlcv(n: int = 300) -> pd.DataFrame:
 
 def cross_sectional_ohlcv(n_days: int = 90, n_symbols: int = 120) -> pd.DataFrame:
     idx = pd.bdate_range("2024-01-02", periods=n_days, tz="UTC")
-    symbols = GLOBAL_DUAL_MOMENTUM_SYMBOLS + tuple(f"S{i:03d}" for i in range(n_symbols))
+    required_etfs = GLOBAL_DUAL_MOMENTUM_SYMBOLS + ("GLD", "DBC")
+    symbols = required_etfs + tuple(f"S{i:03d}" for i in range(n_symbols))
     columns = pd.MultiIndex.from_product(
         [symbols, ("open", "high", "low", "close", "volume", "fundamental_event")],
         names=["symbol", "field"],
