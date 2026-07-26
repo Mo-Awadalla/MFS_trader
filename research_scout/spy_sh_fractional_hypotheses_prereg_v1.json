@@ -1,0 +1,115 @@
+{
+  "specification_id": "SPY-SH-Fractional-Creative-Hypotheses-v1",
+  "saved_at": "2026-07-26",
+  "status": "preregistered_before_first_calculation",
+  "objective": "Test structurally distinct intraday hypotheses for a $100 cash account using fractional SPY for bullish exposure and fractional SH for bearish exposure, targeting at least two completed trades per week.",
+  "data": {
+    "signal_and_primary_execution_feed": "Databento ARCX.PILLAR ohlcv-1m",
+    "symbols": [
+      "SPY",
+      "SH"
+    ],
+    "timezone": "America/New_York",
+    "sample_start": "2021-01-01",
+    "sample_end_exclusive": "2026-01-01",
+    "development": "2021-2023",
+    "secondary_holdout": "2024-2025",
+    "warning": "The secondary holdout is not familywise pristine because related ES hypotheses have already been researched over these years."
+  },
+  "shared_execution": {
+    "account_cash_usd": 100.0,
+    "maximum_planned_loss_usd": 10.0,
+    "position": "Long fractional SPY for a bullish signal; long fractional SH for a bearish signal. Never short and never borrow.",
+    "sizing": "Use min($100, $10 divided by the absolute SPY entry-to-structural-stop percentage).",
+    "entry": "First observable execution-ETF one-minute open at or after the specified decision time; cancel if none appears within five minutes.",
+    "signal_stop": "Evaluate structural stops using SPY one-minute bars. A trigger is known only after the triggering minute completes.",
+    "triggered_exit": "First observable execution-ETF one-minute open after the completed SPY trigger bar; a target and stop touched in the same SPY minute is counted as a stop.",
+    "time_exit": "First observable execution-ETF one-minute open at or after the specified exit time.",
+    "slippage_each_fill_bps": {
+      "SPY": 3.0,
+      "SH": 10.0
+    },
+    "commission_usd": 0.0,
+    "maximum_positions": 1,
+    "maximum_trades_per_day_per_hypothesis": 1,
+    "overnight_positions": false
+  },
+  "eligibility": {
+    "dataset_condition": "Exclude dates Databento marks degraded.",
+    "cash_opening_bars": "Require all 30 SPY bars from 09:30 through 09:59.",
+    "premarket_rule_only": "Require at least 60 observed SPY trade bars from 08:00 through 09:29.",
+    "required_prices": "Require the needed SPY signal/trigger bars and an observable execution-ETF entry within five minutes."
+  },
+  "hypotheses": [
+    {
+      "id": "counterauction_effort_failure",
+      "economic_claim": "If the second half of the opening auction spends more volume per point pushing against the first-half move yet cannot reclaim the cash open, the counterauction is being absorbed and the original inventory should resume.",
+      "signal": "Let A be 09:30 open to 09:44 close and B be 09:44 close to 09:59 close. Require nonzero opposite-signed A and B, the 09:59 close still on A's side of the cash open, and B-volume/abs(B-move) strictly greater than A-volume/abs(A-move). Trade in A's direction.",
+      "entry_time": "10:00",
+      "stop": "09:30 cash open",
+      "exit_time": "15:30"
+    },
+    {
+      "id": "opening_volume_scar_parallax",
+      "economic_claim": "When the opening close and total volume-weighted center migrate together but the single highest-volume minute remains priced across the cash open, the heaviest local inventory is trapped behind accepted value.",
+      "signal": "Within 09:30-09:59, define the scar as the typical price of the highest-volume minute, breaking ties by earliest minute. Go long when close and volume-weighted center are above the cash open while the scar is below it; reverse all inequalities for bearish.",
+      "entry_time": "10:00",
+      "stop": "Opening volume-scar price",
+      "exit_time": "15:30"
+    },
+    {
+      "id": "premarket_false_probe_relay",
+      "economic_claim": "Cash participants own the direction when the opening auction probes through the 08:00-09:29 premarket value center, then moves both its own center and closing print to the other side.",
+      "signal": "Compute the 08:00-09:29 volume-weighted typical-price center. Go long if the 09:30-09:59 low probes below that center but both the cash-opening center and 09:59 close finish above it; reverse for bearish.",
+      "entry_time": "10:00",
+      "stop": "Premarket value center",
+      "exit_time": "15:30"
+    },
+    {
+      "id": "rejected_excursion_transfer",
+      "economic_claim": "If the opening auction explores farther in one direction but both accepted value and the terminal print finish across the open in the opposite direction, ownership has transferred away from the larger failed excursion.",
+      "signal": "Within 09:30-09:59 compare high-minus-open with open-minus-low. Go long when the downside excursion is larger while both the volume-weighted center and 09:59 close are above the cash open; reverse for bearish.",
+      "entry_time": "10:00",
+      "stop": "09:30 cash open",
+      "exit_time": "15:30"
+    },
+    {
+      "id": "center_close_disagreement_snapback",
+      "economic_claim": "When the opening terminal print and volume-weighted center straddle the cash open, the auction has not accepted the endpoint; price should repair toward the center before noon.",
+      "signal": "If the 09:59 close is above the cash open and the opening center below it, buy SH; if the close is below the open and center above it, buy SPY.",
+      "entry_time": "10:00",
+      "target": "Opening volume-weighted center",
+      "stop": "Opening extreme on the endpoint side: opening high for SH and opening low for SPY",
+      "exit_time": "12:00"
+    }
+  ],
+  "benchmark": {
+    "id": "opening_center_migration_translation",
+    "purpose": "Translate the previously frozen ES opening-center rule without modifying its signal logic.",
+    "signal": "At 09:59, both opening volume-weighted center and close must be on the same side of the 09:30 open.",
+    "entry_time": "10:00",
+    "stop": "Opening volume-weighted center",
+    "exit_time": "15:30"
+  },
+  "decision_gates": {
+    "development_frequency_trades_per_week_minimum": 2.0,
+    "development_total_pnl_positive": true,
+    "development_each_year_positive": true,
+    "development_bullish_and_bearish_positive": true,
+    "development_profit_factor_greater_than": 1.0,
+    "holdout_access": "Only hypotheses passing every development gate may access 2024-2025.",
+    "stress_requirements": [
+      "positive after doubling symbol-specific slippage",
+      "positive after 25 bps adverse slippage at each fill",
+      "report result after removing five best trades",
+      "report year, direction, and execution-symbol concentration"
+    ],
+    "prohibited_repairs": [
+      "invert a failed signal",
+      "select only one direction",
+      "select a day of week, year, volatility regime, or month",
+      "change an entry, stop, target, exit, or inequality after seeing results",
+      "combine candidates based on their observed historical interaction"
+    ]
+  }
+}

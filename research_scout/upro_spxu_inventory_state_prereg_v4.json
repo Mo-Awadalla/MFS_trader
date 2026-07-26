@@ -1,0 +1,109 @@
+{
+  "specification_id": "UPRO-SPXU-Inventory-State-v4",
+  "saved_at": "2026-07-26",
+  "status": "preregistered_before_first_outcome_calculation",
+  "objective": "Find a slow intraday UPRO/SPXU system that trades at least twice weekly, survives executable costs and delays, and grows a $100 cash account faster than passive SPY price appreciation.",
+  "lineage_warning": "This family was designed after observing earlier price-pattern and pair-geometry failures. It is a new frozen batch but not statistically independent of the broader research program.",
+  "data": {
+    "signal_bbo": "Databento ARCX.PILLAR UPRO/SPXU bbo-1m",
+    "signal_bars": "Databento ARCX.PILLAR UPRO/SPXU ohlcv-1m where required",
+    "risk_bars": "Databento ARCX.PILLAR SPY ohlcv-1m",
+    "execution": "Databento ARCX.PILLAR UPRO/SPXU bbo-1m; EQUS.MINI audit for unlocked holdout",
+    "development": "2021-01-01 through 2023-12-31",
+    "secondary_holdout": "2024-01-01 through 2025-12-31"
+  },
+  "spy_hurdle": {
+    "measurement": "A fractional $100 passive SPY position from the first eligible 2021 09:30 open through the final eligible 2023 15:59 close for development, and the equivalent same-period measurement for later comparisons.",
+    "dividends": "Databento OHLCV does not contain reinvested distributions. This is a price-only hurdle and is therefore easier than true SPY total return.",
+    "development_gate": "The strategy's simulated cash-account ending equity must exceed the development SPY price-only ending value.",
+    "final_gate": "Any unlocked five-year strategy account must exceed five-year passive SPY price appreciation before it can be considered useful."
+  },
+  "shared_signal_clock": {
+    "bbo_window": "09:31-11:00 inclusive, exactly 90 valid end-of-minute BBO states for quote-depth hypotheses",
+    "bar_window": "09:30-10:59 inclusive; absent ARCA trade bars contribute zero activity and no price is fabricated",
+    "decision_time": "11:00",
+    "entry_time": "11:01",
+    "time_exit": "15:30",
+    "latency": "All features aggregate 90 minutes and must survive one-minute and five-minute delayed entries."
+  },
+  "shared_execution": {
+    "starting_cash_usd": 100.0,
+    "maximum_gross_usd": 100.0,
+    "bullish_trade": "Buy fractional UPRO at the observed ask",
+    "bearish_trade": "Buy fractional SPXU at the observed ask",
+    "exit": "Sell at the observed bid",
+    "catastrophe_stop": "A 3.333333% adverse SPY move from the 11:01 open, evaluated on completed bars and executed at the following ETF bid",
+    "overnight": false,
+    "maximum_trades_per_candidate_per_day": 1
+  },
+  "definitions": {
+    "quote_imbalance": "(bid size - ask size) / (bid size + ask size)",
+    "proportional_spread": "(ask price - bid price) / midpoint",
+    "displayed_notional_depth": "quote price multiplied by displayed quote size",
+    "impedance": "proportional spread divided by square root of bid-notional times ask-notional"
+  },
+  "hypotheses": [
+    {
+      "id": "paired_depth_reciprocity",
+      "claim": "Because UPRO and SPXU express opposite exposure, simultaneous UPRO bid support and SPXU ask supply form a bullish book alignment; the reverse forms bearish alignment. Repeated reciprocal alignments reveal slow dealer inventory rather than one quote.",
+      "score": "Count minutes with UPRO imbalance > 0 and SPXU imbalance < 0, then subtract minutes with SPXU imbalance > 0 and UPRO imbalance < 0.",
+      "direction": "Trade the score sign; skip zero."
+    },
+    {
+      "id": "depth_migration_torque",
+      "claim": "The change in displayed depth orientation from the first to last morning half-hour measures inventory migration. Differencing inverse funds removes market-wide quote-size expansion.",
+      "score": "For each ETF, subtract median 09:31-10:00 imbalance from median 10:31-11:00 imbalance. Score equals UPRO migration minus SPXU migration.",
+      "direction": "Trade the score sign; skip zero."
+    },
+    {
+      "id": "quote_size_memory",
+      "claim": "A one-sided book that retains its sign instead of flickering has memory. The inverse fund with stronger signed memory identifies the directional inventory state likely to persist.",
+      "score": "For each ETF, multiply median quote imbalance by one minus its fraction of consecutive imbalance-sign changes. Score equals UPRO signed memory minus SPXU signed memory.",
+      "direction": "Trade the score sign; skip zero."
+    },
+    {
+      "id": "depth_impedance_relief",
+      "claim": "Spread alone is incomplete; the same spread supported by deeper notional is lower impedance. The exposure whose impedance falls more from the first to last half-hour is becoming easier for dealers to warehouse.",
+      "score": "For each ETF, divide median late-half-hour impedance by median early-half-hour impedance. Score equals the SPXU ratio minus the UPRO ratio, so positive means relatively greater UPRO impedance relief.",
+      "direction": "Trade the score sign; skip invalid values and zero."
+    },
+    {
+      "id": "first_synchronization_pulse",
+      "claim": "The first half-hour in which both inverse ETFs print on ARCA every minute is a participation synchronization event. Within that event, the side whose volume mass arrives later owns the freshest inventory.",
+      "score": "Inspect 09:30-09:59, 10:00-10:29, and 10:30-10:59 in order. Use the first block with exactly 30 bars for both ETFs. Score equals UPRO volume-time centroid minus SPXU centroid within that block.",
+      "direction": "Trade the score sign at 11:01; skip days without a complete block or exact ties."
+    },
+    {
+      "id": "event_density_acceleration",
+      "claim": "The derivative of participation matters more than total participation. The ETF gaining active trading minutes in the second 45 minutes has accelerating attention.",
+      "score": "For each ETF, subtract its number of observed ARCA trade minutes from 09:30-10:14 from its count from 10:15-10:59. Score equals UPRO acceleration minus SPXU acceleration.",
+      "direction": "Trade the score sign; skip ties."
+    },
+    {
+      "id": "volume_share_acceleration",
+      "claim": "A fund receiving a larger fraction of its own morning volume late has fresher flow, even when its absolute activity is structurally different from the inverse fund.",
+      "score": "For each ETF, calculate 10:15-10:59 volume divided by total 09:30-10:59 volume. Score equals the UPRO late share minus the SPXU late share.",
+      "direction": "Trade the score sign; skip invalid values and ties."
+    }
+  ],
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "observed_bbo_net_pnl_positive": true,
+    "profit_factor_greater_than": 1.0,
+    "each_development_year_positive": true,
+    "both_directions_positive": true,
+    "positive_after_one_extra_cent_per_share_at_both_fills": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_five_best_trades": true,
+    "cash_account_beats_spy_price_only": true,
+    "holdout_access": "Only candidates passing every development gate may access 2024-2025."
+  },
+  "prohibited_repairs": [
+    "Invert failed signals.",
+    "Select only UPRO or only SPXU after results.",
+    "Add quote-size, volume, score, clock, spread, year, or regime thresholds after results.",
+    "Change entry, exit, or stop.",
+    "Combine candidates using observed profit.",
+    "Claim victory against SPY total return using a price-only benchmark."
+  ]
+}

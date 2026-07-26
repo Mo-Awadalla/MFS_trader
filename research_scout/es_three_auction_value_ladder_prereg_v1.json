@@ -1,0 +1,90 @@
+{
+  "name": "ES Three-Auction Value Ladder v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "ES continuous front-month signal with one MES execution unit per slot",
+  "source": "Databento GLBX.MDP3 1-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "research_motivation": "Prior candidates suggest that persistent accepted-value migration across participant handoffs is more credible than forecasting direction from isolated volume, volatility, sentiment, or auction-shape indicators. The same rule is repeated across fixed slots to reduce researcher degrees of freedom.",
+  "shared_rule": {
+    "segment_length_minutes": 90,
+    "subauction_length_minutes": 30,
+    "auction_center": "volume-weighted mean of one-minute typical price, where typical price is (high + low + close) / 3",
+    "long_signal": "first auction center < second auction center < third auction center",
+    "short_signal": "first auction center > second auction center > third auction center",
+    "entry": "one-minute open immediately following the third auction plus one adverse ES tick",
+    "stop_trigger": "second auction center",
+    "stop_fill": "second auction center plus one adverse ES tick",
+    "same_bar_rule": "if the entry bar touches the stop trigger, assume the stop fills",
+    "survivor_exit": "15:55 open plus one adverse ES tick",
+    "position_size": "one MES per slot",
+    "overnight_positions": false
+  },
+  "slots": [
+    {
+      "name": "opening_to_morning",
+      "segment": "09:30 through 10:59",
+      "entry": "11:00"
+    },
+    {
+      "name": "midmorning_to_lunch",
+      "segment": "11:00 through 12:29",
+      "entry": "12:30"
+    },
+    {
+      "name": "lunch_to_afternoon",
+      "segment": "12:30 through 13:59",
+      "entry": "14:00"
+    }
+  ],
+  "portfolio_limits": {
+    "maximum_trades_per_session": 3,
+    "maximum_gross_position": "three MES if all slot positions survive and overlap",
+    "signals_are_evaluated_independently": true
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24
+  },
+  "development_gates": {
+    "aggregate_minimum_trades_per_week": 2.0,
+    "aggregate_positive_each_year": true,
+    "aggregate_both_directions_positive": true,
+    "no_single_slot_may_account_for_more_than_all_aggregate_profit_by_offsetting_negative_other_slots": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 1206,
+    "trades_per_week": 7.731,
+    "active_days_per_week": 4.321,
+    "net_pnl_usd": -77.42,
+    "mean_trade_usd": -0.064,
+    "profit_factor": 0.998,
+    "max_daily_drawdown_usd": -2122.28,
+    "year_pnl_usd": {
+      "2021": -228.48,
+      "2022": 906.11,
+      "2023": -755.05
+    },
+    "side_pnl_usd": {
+      "long": 1578.30,
+      "short": -1655.72
+    },
+    "slot_pnl_usd": {
+      "opening_to_morning": 947.43,
+      "midmorning_to_lunch": -290.05,
+      "lunch_to_afternoon": -734.80
+    },
+    "skipped_invalid_stop_geometry": 160
+  },
+  "gate_decision": {
+    "frequency": "pass",
+    "positive_each_year": "fail",
+    "both_directions_positive": "fail",
+    "slot_diversification": "fail",
+    "overall": "reject"
+  },
+  "lesson": "Monotonic auction-center movement is descriptive but not sufficient evidence of persistent accepted inventory. The apparent edge was a 2022 opening-window artifact, while shorts and later windows lost. No side, year, or slot filter is permitted after observing these results.",
+  "holdout_policy": "2024-2025 was not evaluated because the frozen aggregate failed its development gates."
+}

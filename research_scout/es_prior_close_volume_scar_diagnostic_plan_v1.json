@@ -1,0 +1,63 @@
+{
+  "name": "ES Prior-Close Volume-Scar Handoff Diagnostic Plan v1",
+  "status": "completed_without_candidate_parameter_changes",
+  "candidate_specification": "research_scout/es_prior_close_volume_scar_handoff_prereg_v1.json",
+  "purpose": "Falsify or qualify the mechanism without optimizing or changing the candidate.",
+  "samples": {
+    "development": "2021-2023",
+    "secondary_holdout": "2024-2025",
+    "disclosure": "The secondary holdout is no longer pristine and every result in this diagnostic is descriptive."
+  },
+  "anchor_controls": {
+    "prior_volume_scar": "frozen candidate anchor",
+    "prior_transaction_vwap": "same prior 15:00-15:30 transactions summarized by VWAP",
+    "prior_terminal_price": "last prior transaction before 15:30",
+    "two_session_stale_volume_scar": "identical scar construction from two full RTH sessions earlier",
+    "interpretation_rule": "Scar specificity is supported only if the frozen scar beats all three controls in both samples. Controls cannot replace the candidate."
+  },
+  "execution_diagnostics": {
+    "adverse_tick_grid_stop": "round long stops downward and short stops upward to the next 0.25-point grid after placing one tick beyond the continuous center",
+    "entry_delays_minutes": [1, 5, 15],
+    "delay_rule": "cancel if the frozen structural stop is touched before delayed entry; otherwise enter delayed bar open plus one adverse tick",
+    "time_exit_controls": ["14:30", "15:00", "15:55"],
+    "extra_cost_per_trade_usd": [1.25, 2.5, 5.0],
+    "interpretation_rule": "No timing or exit control may replace the frozen candidate after results."
+  },
+  "placebo": {
+    "direction": "flip every accepted signal at the same entry time with identical initial risk distance",
+    "expectation": "actual direction must beat the paired flip in both samples"
+  },
+  "concentration_diagnostics": [
+    "top and bottom trade dates",
+    "net P&L after removing top 1, 5, and 10 trades",
+    "positive week, month, and quarter fractions",
+    "year and quarter P&L",
+    "longest consecutive losing-trade streak",
+    "R-multiple distribution",
+    "five-session and twenty-session moving-block bootstrap loss probabilities before and after another 2.50 dollars per trade"
+  ],
+  "portfolio_diagnostics": {
+    "benchmark": "unchanged ES Three-Engine Intraday Portfolio v1",
+    "measurements": [
+      "daily P&L correlation on all, union-active, and overlapping-active days",
+      "correlation with each component",
+      "same-day signal overlap",
+      "descriptive combined P&L, profit factor, and drawdown"
+    ],
+    "prohibition": "The historical combination cannot be promoted or used to select weights."
+  },
+  "decision_policy": {
+    "live_trading": "not permitted from these diagnostics",
+    "candidate_replacement": "not permitted",
+    "forward_paper_tracking": "continue only if mechanism, execution, and diversification diagnostics are directionally supportive"
+  },
+  "result_report": "research_scout/es_prior_close_volume_scar_deep_dive_v1.md",
+  "result_summary": {
+    "mechanism": "partially supported; the exact scar beat all controls in both samples, but prior VWAP and terminal-price controls were also profitable",
+    "direction": "supported; equal-risk flipped direction lost in development and secondary holdout",
+    "execution": "tick-grid stops survived, but five- and fifteen-minute delays failed holdout",
+    "tail": "failed; top-five removal was negative and cost-stressed bootstrap loss probabilities were high",
+    "diversification": "weak; 92.4 percent same-day overlap and 0.691 holdout daily correlation with the opening-center engine",
+    "decision": "continue unchanged prospective paper tracking only; do not deploy or add historically to the portfolio"
+  }
+}

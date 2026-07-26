@@ -1,0 +1,279 @@
+{
+  "status": "exploratory_curiosity_check_not_clean_validation",
+  "reason": "The candidate failed its frozen development frequency gate, and the user explicitly requested the otherwise locked 2024-2025 result.",
+  "unchanged_specification": "research_scout/upro_spxu_pair_geometry_prereg_v2.json",
+  "candidate": "late_volume_clock_compass",
+  "period": "2024-01-01 through 2025-12-31",
+  "results": {
+    "observed_bbo": {
+      "trades": 115,
+      "trades_per_week": 1.106,
+      "net_pnl_usd": 11.8252,
+      "mean_trade_usd": 0.10283,
+      "median_trade_usd": -0.37764,
+      "win_rate": 0.3913,
+      "profit_factor": 1.1091,
+      "fixed_notional_max_drawdown_usd": -28.3341,
+      "cash_account": {
+        "starting_equity_usd": 100.0,
+        "ending_equity_usd": 107.5092,
+        "return_pct": 7.5092,
+        "maximum_drawdown_usd": -28.2646
+      },
+      "worst_trade_usd": -6.9222,
+      "net_without_five_best_usd": -48.2169,
+      "year_pnl_usd": {
+        "2024": -6.1149,
+        "2025": 17.94
+      },
+      "direction_pnl_usd": {
+        "bearish": -5.0308,
+        "bullish": 16.856
+      },
+      "reason_counts": {
+        "time": 115
+      },
+      "planned_notional_usd": {
+        "median": 100.0,
+        "minimum": 100.0
+      },
+      "entry_spread_bps": {
+        "median": 3.4347,
+        "p95": 7.6456
+      }
+    },
+    "midpoint_diagnostic": {
+      "trades": 115,
+      "trades_per_week": 1.106,
+      "net_pnl_usd": 16.0253,
+      "mean_trade_usd": 0.13935,
+      "median_trade_usd": -0.36323,
+      "win_rate": 0.4087,
+      "profit_factor": 1.1514,
+      "fixed_notional_max_drawdown_usd": -26.8749,
+      "cash_account": {
+        "starting_equity_usd": 100.0,
+        "ending_equity_usd": 112.5356,
+        "return_pct": 12.5356,
+        "maximum_drawdown_usd": -26.8902
+      },
+      "worst_trade_usd": -6.8743,
+      "net_without_five_best_usd": -44.2714,
+      "year_pnl_usd": {
+        "2024": -4.7027,
+        "2025": 20.728
+      },
+      "direction_pnl_usd": {
+        "bearish": -2.056,
+        "bullish": 18.0813
+      },
+      "reason_counts": {
+        "time": 115
+      },
+      "planned_notional_usd": {
+        "median": 100.0,
+        "minimum": 100.0
+      },
+      "entry_spread_bps": {
+        "median": 3.4347,
+        "p95": 7.6456
+      }
+    },
+    "one_extra_cent_each_fill": {
+      "trades": 115,
+      "trades_per_week": 1.106,
+      "net_pnl_usd": 5.0867,
+      "mean_trade_usd": 0.04423,
+      "median_trade_usd": -0.40458,
+      "win_rate": 0.3739,
+      "profit_factor": 1.0451,
+      "fixed_notional_max_drawdown_usd": -30.6531,
+      "cash_account": {
+        "starting_equity_usd": 100.0,
+        "ending_equity_usd": 99.8997,
+        "return_pct": -0.1003,
+        "maximum_drawdown_usd": -30.0032
+      },
+      "worst_trade_usd": -6.9541,
+      "net_without_five_best_usd": -54.7101,
+      "year_pnl_usd": {
+        "2024": -8.744,
+        "2025": 13.8307
+      },
+      "direction_pnl_usd": {
+        "bearish": -10.6042,
+        "bullish": 15.6909
+      },
+      "reason_counts": {
+        "time": 115
+      },
+      "planned_notional_usd": {
+        "median": 100.0,
+        "minimum": 100.0
+      },
+      "entry_spread_bps": {
+        "median": 3.4347,
+        "p95": 7.6456
+      }
+    },
+    "two_extra_cents_each_fill": {
+      "trades": 115,
+      "trades_per_week": 1.106,
+      "net_pnl_usd": -1.6463,
+      "mean_trade_usd": -0.01432,
+      "median_trade_usd": -0.43037,
+      "win_rate": 0.3739,
+      "profit_factor": 0.986,
+      "fixed_notional_max_drawdown_usd": -32.9696,
+      "cash_account": {
+        "starting_equity_usd": 100.0,
+        "ending_equity_usd": 92.8302,
+        "return_pct": -7.1698,
+        "maximum_drawdown_usd": -31.3528
+      },
+      "worst_trade_usd": -6.986,
+      "net_without_five_best_usd": -61.198,
+      "year_pnl_usd": {
+        "2024": -11.3715,
+        "2025": 9.7252
+      },
+      "direction_pnl_usd": {
+        "bearish": -16.1726,
+        "bullish": 14.5262
+      },
+      "reason_counts": {
+        "time": 115
+      },
+      "planned_notional_usd": {
+        "median": 100.0,
+        "minimum": 100.0
+      },
+      "entry_spread_bps": {
+        "median": 3.4347,
+        "p95": 7.6456
+      }
+    },
+    "one_additional_minute_delay": {
+      "trades": 115,
+      "trades_per_week": 1.106,
+      "net_pnl_usd": 8.421,
+      "mean_trade_usd": 0.07323,
+      "median_trade_usd": -0.40454,
+      "win_rate": 0.4087,
+      "profit_factor": 1.0752,
+      "fixed_notional_max_drawdown_usd": -28.9832,
+      "cash_account": {
+        "starting_equity_usd": 100.0,
+        "ending_equity_usd": 103.488,
+        "return_pct": 3.488,
+        "maximum_drawdown_usd": -28.744
+      },
+      "worst_trade_usd": -6.8606,
+      "net_without_five_best_usd": -52.0147,
+      "year_pnl_usd": {
+        "2024": -6.6122,
+        "2025": 15.0332
+      },
+      "direction_pnl_usd": {
+        "bearish": -7.2003,
+        "bullish": 15.6213
+      },
+      "reason_counts": {
+        "time": 115
+      },
+      "planned_notional_usd": {
+        "median": 100.0,
+        "minimum": 100.0
+      },
+      "entry_spread_bps": {
+        "median": 3.4644,
+        "p95": 7.5065
+      }
+    },
+    "five_additional_minutes_delay": {
+      "trades": 115,
+      "trades_per_week": 1.106,
+      "net_pnl_usd": 8.9346,
+      "mean_trade_usd": 0.07769,
+      "median_trade_usd": -0.33965,
+      "win_rate": 0.4087,
+      "profit_factor": 1.0827,
+      "fixed_notional_max_drawdown_usd": -28.5274,
+      "cash_account": {
+        "starting_equity_usd": 100.0,
+        "ending_equity_usd": 104.3561,
+        "return_pct": 4.3561,
+        "maximum_drawdown_usd": -28.238
+      },
+      "worst_trade_usd": -7.0472,
+      "net_without_five_best_usd": -49.9886,
+      "year_pnl_usd": {
+        "2024": -6.8118,
+        "2025": 15.7464
+      },
+      "direction_pnl_usd": {
+        "bearish": -5.4565,
+        "bullish": 14.3912
+      },
+      "reason_counts": {
+        "time": 115
+      },
+      "planned_notional_usd": {
+        "median": 100.0,
+        "minimum": 100.0
+      },
+      "entry_spread_bps": {
+        "median": 3.3904,
+        "p95": 7.5039
+      }
+    },
+    "consolidated_bbo": {
+      "trades": 115,
+      "trades_per_week": 1.106,
+      "net_pnl_usd": 11.598,
+      "mean_trade_usd": 0.10085,
+      "median_trade_usd": -0.38455,
+      "win_rate": 0.3913,
+      "profit_factor": 1.1068,
+      "fixed_notional_max_drawdown_usd": -28.3936,
+      "cash_account": {
+        "starting_equity_usd": 100.0,
+        "ending_equity_usd": 107.2608,
+        "return_pct": 7.2608,
+        "maximum_drawdown_usd": -28.3138
+      },
+      "worst_trade_usd": -6.9068,
+      "net_without_five_best_usd": -48.4441,
+      "year_pnl_usd": {
+        "2024": -6.1374,
+        "2025": 17.7353
+      },
+      "direction_pnl_usd": {
+        "bearish": -5.0308,
+        "bullish": 16.6287
+      },
+      "reason_counts": {
+        "time": 115
+      },
+      "planned_notional_usd": {
+        "median": 100.0,
+        "minimum": 100.0
+      },
+      "entry_spread_bps": {
+        "median": 3.6004,
+        "p95": 7.6456
+      }
+    },
+    "five_session_block_bootstrap": {
+      "iterations": 5000,
+      "block_sessions": 5,
+      "probability_total_not_positive": 0.4186,
+      "total_pnl_95pct_interval_usd": [
+        -57.0326,
+        103.2637
+      ],
+      "median_max_drawdown_usd": -31.7596,
+      "five_percent_bad_tail_max_drawdown_usd": -60.3538
+    }
+  }
+}

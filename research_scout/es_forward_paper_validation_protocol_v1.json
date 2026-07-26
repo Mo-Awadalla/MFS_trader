@@ -1,0 +1,49 @@
+{
+  "name": "ES Benchmark and Challenger Forward Paper Validation Protocol v1",
+  "status": "ready_for_untouched_forward_data",
+  "benchmark": "ES Three-Engine Intraday Portfolio v1, unchanged",
+  "challenger": "ES One-Position First-Signal Challenger v1, unchanged",
+  "collection_requirement": {
+    "minimum_trades_per_variant": 100,
+    "minimum_calendar_coverage": "approximately 12 months",
+    "parallel_shadow_accounting": true,
+    "rule_changes_during_collection": false
+  },
+  "required_trade_fields": [
+    "session_date",
+    "variant",
+    "engine",
+    "side",
+    "signal_timestamp",
+    "decision_timestamp",
+    "entry_timestamp",
+    "entry_bid",
+    "entry_ask",
+    "entry_fill",
+    "stop_trigger",
+    "stop_fill",
+    "exit_timestamp",
+    "exit_bid",
+    "exit_ask",
+    "exit_fill",
+    "commission",
+    "gross_pnl",
+    "net_pnl",
+    "initial_structural_risk",
+    "skip_reason"
+  ],
+  "approval_gates": {
+    "minimum_trades_per_week": 2.0,
+    "both_six_month_halves_positive_after_actual_costs": true,
+    "net_positive_after_additional_2p50_usd_per_trade_reserve": true,
+    "net_positive_after_removing_five_largest_winners": true,
+    "no_single_month_contributes_more_than_total_net_profit": true,
+    "maximum_drawdown": "inside a dollar risk limit selected before collection begins"
+  },
+  "research_integrity": {
+    "historical_2021_2025_not_reused_for_rule_selection": true,
+    "all_skipped_and_cancelled_signals_logged": true,
+    "actual_spread_and_slippage_retained": true,
+    "benchmark_and_challenger_evaluated_on_identical_forward_dates": true
+  }
+}

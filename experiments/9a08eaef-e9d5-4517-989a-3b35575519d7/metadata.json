@@ -1,0 +1,115 @@
+{
+  "config_version": "research.toml@0.1.0",
+  "cost_model": {
+    "borrow_cost_annual_pct": 0.0,
+    "commission_pct": 0.0,
+    "crypto_maker_fee_pct": 0.0007,
+    "crypto_taker_fee_pct": 0.001,
+    "finra_taf_per_share_sold": 0.000195,
+    "sec_fee_per_dollar_sold": 2.0600000000000003e-05
+  },
+  "created_at": "2026-07-07T01:06:14Z",
+  "data_version": {
+    "adjustment": "split_dividend",
+    "bar_frequency": "30min",
+    "data_version": "alpaca_iex_adjusted_30m_static_same_clock_intraday_seasonality_v1@17825x3",
+    "source": "alpaca_iex_static_same_clock_intraday_seasonality_v1_30m_cached",
+    "storage_dir": "data\\parquet\\market_intraday_momentum\\alpaca_iex"
+  },
+  "date_range": {
+    "end": "2026-06-29 19:30:00+00:00",
+    "start": "2021-01-04 14:30:00+00:00"
+  },
+  "execution_mode": "same_clock_signal_prior_bar_execute_next_bar_exit_before_close_no_overnight",
+  "experiment_hash": "6b87e83377f22ead581cb40e71731fcc199caaeb70ca4af22e6e0c0d964a60c4",
+  "git_commit": "4fc57853a12b6754addd148dc723316396a4f83f",
+  "label": "SameClockIntradaySeasonalityETF-v1-AlpacaIEX-30m-2021-2026",
+  "legacy_artifacts_path": null,
+  "legacy_experiment_id": null,
+  "paper_thresholds": {
+    "flat_by_close_required": true,
+    "min_calendar_days": 30,
+    "min_completed_executions": 100,
+    "min_trades": 100,
+    "min_trading_days": 45,
+    "target_trades": 200
+  },
+  "parameters": {
+    "allow_short": false,
+    "bars_per_session": 13,
+    "exit_before_close_bars": 1,
+    "lookback_sessions": 20,
+    "max_gross": 1.0,
+    "max_symbol_weight": 0.5,
+    "min_bar_volume": 100000.0,
+    "min_price": 5.0,
+    "min_same_clock_mean_return": 0.0,
+    "skip_opening_bars": 1
+  },
+  "portfolio_config": {
+    "dollar_neutral": false,
+    "equal_weight": true,
+    "execution_mode": "intraday_flat_by_close",
+    "min_notional_delta": 25.0,
+    "min_pct_position_delta": 0.05,
+    "min_qty_delta": 1e-06,
+    "per_position_risk_pct": 0.01,
+    "rebalance_frequency": "intraday_30min",
+    "sizing_method": "equal_weight_positive_same_clock_etfs"
+  },
+  "promotion_status": "validation_failed",
+  "random_seed": 42,
+  "risk_profile": {
+    "block_new_at_daily_loss_pct": 0.01,
+    "correlation_threshold": 0.7,
+    "max_beta_adjusted_net_pct": 0.1,
+    "max_correlated_cluster_gross_pct": 0.35,
+    "max_correlated_cluster_risk_pct": 0.03,
+    "max_daily_loss_pct": 0.02,
+    "max_gross_exposure_pct": 1.0,
+    "max_monthly_loss_pct": 0.08,
+    "max_net_exposure_pct": 1.0,
+    "max_open_positions": 3,
+    "max_open_positions_live_phase1": 10,
+    "max_sector_gross_pct": 0.35,
+    "max_sector_net_pct": 0.1,
+    "max_weekly_loss_pct": 0.06,
+    "per_position_pct": 0.5
+  },
+  "slippage_model": {
+    "bar_execution_model": "same_clock_signal_prior_bar_execute_next_30m_bar_with_conservative_slippage",
+    "flat_by_close_required": true,
+    "slippage_fixed_pct": 0.0006,
+    "slippage_variable_coeff": 0.0
+  },
+  "strategy": "same_clock_intraday_seasonality",
+  "strategy_template_version": "same_clock_intraday_seasonality:v1",
+  "superseded_by": null,
+  "suspended_from_status": null,
+  "universe": {
+    "asset_class": "equity_etf",
+    "filters": {
+      "exit_before_close_bars": 1,
+      "flat_by_close": true,
+      "long_only": true,
+      "lookback_sessions": 20,
+      "min_bar_volume": 100000.0,
+      "min_price": 5.0,
+      "min_same_clock_mean_return": 0.0,
+      "skip_opening_bars": 1,
+      "source_memo": "docs/strategy_sources/SameClockIntradaySeasonalityETF-v1.md",
+      "symbols": [
+        "IWM",
+        "QQQ",
+        "SPY"
+      ]
+    },
+    "selection_rule": "static_liquid_index_etfs_same_clock_intraday_seasonality_v1",
+    "symbols": [
+      "IWM",
+      "QQQ",
+      "SPY"
+    ]
+  },
+  "uuid": "9a08eaef-e9d5-4517-989a-3b35575519d7"
+}
