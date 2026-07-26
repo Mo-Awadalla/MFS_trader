@@ -1,0 +1,30 @@
+{
+  "status": "diagnostic_only_no_alternative_rule_or_pnl",
+  "eligible_feature_days": 138,
+  "synchronization_shock_sign_counts": {
+    "positive": 0,
+    "zero": 119,
+    "negative": 19
+  },
+  "directional_acceleration_sign_counts": {
+    "positive": 5,
+    "zero": 122,
+    "negative": 11
+  },
+  "days_passing_both_frozen_conditions": 0,
+  "shock_quantiles": {
+    "0.0": -0.19999999999999996,
+    "0.25": 0.0,
+    "0.5": 0.0,
+    "0.75": 0.0,
+    "1.0": 0.0
+  },
+  "mean_jaccard_by_frozen_block": [
+    0.9990338164251208,
+    0.9946859903381643,
+    0.9971014492753625,
+    0.9893719806763287,
+    0.9821256038647345,
+    0.9763285024154591
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "ES Endogenous Impact Half-Life Relay v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "ES transaction-price signal executed with one MES using recorded MBP-1 quotes",
+  "source": "Databento GLBX.MDP3 ES trades and MES MBP-1",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "hypothesis": "A large endogenous price displacement is useful only through the market's subsequent repair response. If at least half of the selected displacement remains at the participant handoff, it represents accepted information and should persist. If less than half remains, the impact was temporary liquidity debt and should continue repairing.",
+  "signal": {
+    "observation_window": "15:00 through 15:29:59.999999 ET",
+    "event_search_window": "15:00 through 15:19:59.999999 ET",
+    "event_binning": "fixed exchange-event one-minute bins",
+    "event_displacement": "last transaction price minus first transaction price in a minute",
+    "event_selection": "minute with greatest absolute nonzero event displacement; earliest minute wins an exact tie",
+    "event_direction": "sign of selected event displacement",
+    "event_midpoint": "arithmetic midpoint of the selected minute's first and last transaction prices",
+    "retained_state": "last transaction price before 15:30 remains on the event-direction side of or exactly at the event midpoint",
+    "repaired_state": "last transaction price before 15:30 is beyond the event midpoint opposite the event direction",
+    "trade_direction": "follow event direction in retained state; fade event direction in repaired state",
+    "zero_or_missing_rule": "no trade if no nonzero event displacement exists or a required price is missing"
+  },
+  "execution": {
+    "entry_time": "first MES MBP-1 record at or after 15:30:05 ET",
+    "long_entry": "recorded ask",
+    "short_entry": "recorded bid",
+    "stop": "none; one MES and a fixed approximately 29-minute holding period bound exposure",
+    "exit_time": "first recorded MES MBP-1 quote at or after 15:59:45 ET",
+    "long_exit": "recorded bid",
+    "short_exit": "recorded ask",
+    "position_limit": "one MES and at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "round_trip_commission_usd": 1.24,
+    "slippage_model": "the full recorded MES bid-ask spread is crossed at entry and exit; no additional modeled slippage"
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "positive_each_year": true,
+    "both_directions_positive": true,
+    "aggregate_profit_factor_greater_than_one": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 749,
+    "trades_per_week": 4.801,
+    "net_pnl_usd": 826.24,
+    "profit_factor": 1.055,
+    "win_rate": 0.491,
+    "max_daily_drawdown_usd": -1706.20,
+    "year_pnl_usd": {"2021": 606.26, "2022": 1400.00, "2023": -1180.02},
+    "side_pnl_usd": {"long": -623.68, "short": 1449.92},
+    "state_pnl_usd": {"repaired": 1108.10, "retained": -281.86}
+  },
+  "development_gate_decision": {
+    "minimum_frequency": "pass",
+    "positive_each_year": "fail",
+    "both_directions_positive": "fail",
+    "aggregate_profit_factor": "pass",
+    "overall": "reject"
+  },
+  "lesson": "The repair response was more informative than the original shock, but the complete state machine failed 2023 and longs. Selecting only repaired shocks or shorts would be post-hoc rescue.",
+  "holdout_policy": "2024-2025 was not evaluated because the unchanged rule failed its development gates.",
+  "prohibited_posthoc_changes": [
+    "changing the event-search window or recovery horizon",
+    "selecting by signed volume, event magnitude, time, side, weekday, volatility, or regime",
+    "changing the natural 50 percent retention boundary",
+    "reversing only one state after observing results",
+    "adding stops or changing execution times"
+  ]
+}

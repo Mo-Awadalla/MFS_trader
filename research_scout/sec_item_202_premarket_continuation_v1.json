@@ -1,0 +1,121 @@
+{
+  "specification_id": "SEC-Item-2.02-Premarket-Continuation-AlpacaIEX-v1",
+  "frozen_at": "2026-07-24",
+  "data_availability_corrected_at": "2026-07-24 before any return panel or report was constructed; the configured Alpaca IEX account returned no bars before 2020-07-28",
+  "status": "frozen_falsification_scout",
+  "research_role": "bounded_survivorship_biased_mechanism_scout",
+  "hypothesis": "For a liquid U.S. stock with a premarket SEC Item 2.02 disclosure, a positive stock-minus-SPY return during the first 30 regular-session minutes continues from a deliberately delayed 10:05 ET entry through a 15:55 ET exit after conservative retail costs.",
+  "event": {
+    "forms": ["8-K", "8-K/A"],
+    "required_item": "2.02",
+    "timezone": "America/New_York",
+    "acceptance_start_time": "00:00:00",
+    "acceptance_cutoff_time": "09:25:00",
+    "session_assignment": "acceptance calendar date in America/New_York",
+    "duplicate_policy": "one event per symbol and session; retain earliest SEC acceptance"
+  },
+  "universe": {
+    "module": "research.universes.residual_reversal_v1",
+    "function": "stock_symbols",
+    "benchmark": "SPY",
+    "known_limitation": "Static current-active large-cap universe has survivorship and historical-identifier bias. A pass can justify better data, not paper or live promotion."
+  },
+  "data": {
+    "event_source": "official SEC submissions JSON normalized by data.sec_filings",
+    "bar_source": "Alpaca historical stock bars",
+    "feed": "iex",
+    "frequency": "5min",
+    "adjustment": "all",
+    "observed_available_start": "2020-07-28",
+    "request_delay_seconds": 0.4,
+    "maximum_rate_limit_retries": 6,
+    "regular_session_only": true,
+    "venue_limitation": "IEX is venue-local and does not represent consolidated SIP/NBBO execution."
+  },
+  "clocks": {
+    "timezone": "America/New_York",
+    "signal_open_bar": "09:30:00",
+    "signal_last_bar": "09:55:00",
+    "signal_known_time": "10:00:00",
+    "entry_bar": "10:05:00",
+    "exit_bar": "15:55:00"
+  },
+  "signal": {
+    "stock_reaction": "09:55 five-minute bar close divided by 09:30 five-minute bar open minus one",
+    "benchmark_reaction": "SPY return over identical timestamps",
+    "residual_reaction": "stock_reaction minus benchmark_reaction",
+    "trigger": "residual_reaction > 0",
+    "threshold": 0.0
+  },
+  "trading_rule": {
+    "position": "long qualifying stock; otherwise flat",
+    "entry": "10:05 ET five-minute bar open, after the 10:00 signal boundary",
+    "exit": "15:55 ET five-minute bar open, leaving the strategy flat for the final bar",
+    "daily_portfolio": "equal weight across all selected names in the session",
+    "maximum_gross": 1.0,
+    "shorts": false,
+    "leverage": 1.0,
+    "reentry": false,
+    "stops_or_targets": false
+  },
+  "costs": {
+    "fixed_slippage_per_side_bps": 5.0,
+    "fixed_round_trip_bps": 10.0,
+    "stress_round_trip_bps": 20.0,
+    "commission_bps": 0.0,
+    "cost_application": "subtract one stock round trip from each selected event; SPY is a diagnostic benchmark and is not traded",
+    "impact_note": "The scout reports fixed and stressed costs. Promotion-quality work must add account-size-specific spread and ADV participation impact using point-in-time SIP and liquidity data."
+  },
+  "partitions": {
+    "development": {
+      "start": "2020-07-28",
+      "end": "2022-12-31",
+      "minimum_selected_events": 250,
+      "minimum_selected_sessions": 100
+    },
+    "internal_validation": {
+      "start": "2023-01-01",
+      "end": "2024-12-31",
+      "minimum_selected_events": 100,
+      "minimum_selected_sessions": 75
+    },
+    "final_holdout": {
+      "start": "2025-01-01",
+      "end": "2025-12-31",
+      "minimum_selected_events": 100,
+      "minimum_selected_sessions": 50
+    }
+  },
+  "reserved_forward_period": {
+    "start": "2026-01-01",
+    "policy": "Do not use for rule selection. Preserve for later unchanged-specification confirmation or forward operation."
+  },
+  "progression_gates": {
+    "minimum_complete_event_fraction": 0.98,
+    "minimum_mean_net_residual_bps": 10.0,
+    "minimum_session_bootstrap_lower_95_bps": 0.0,
+    "minimum_profit_factor": 1.1,
+    "maximum_top_5pct_profitable_session_contribution": 0.5,
+    "maximum_single_issuer_absolute_pnl_share": 0.1,
+    "require_positive_mean_gross_residual": true,
+    "require_positive_mean_stock_net": true,
+    "require_positive_each_chronological_half_net": true,
+    "require_positive_after_top_5pct_absolute_sessions_removed": true,
+    "require_positive_under_stress_costs": true,
+    "require_complete_timestamp_alignment": true
+  },
+  "bootstrap": {
+    "session_resamples": 5000,
+    "seed": 42
+  },
+  "prohibited_rescue_variants": [
+    "minimum residual-return or gap threshold",
+    "negative-event short side",
+    "relative-volume filter",
+    "earnings-surprise, analyst, sentiment, VWAP, sector, or market-regime filter",
+    "different signal, entry, or exit clock",
+    "stop loss, profit target, trailing stop, or re-entry",
+    "post-result symbol deletion or substitution"
+  ],
+  "holdout_policy": "Do not download or evaluate a later partition unless every preceding partition passes every unchanged gate. A failed partition terminates this exact branch. A pass remains a bounded IEX/static-universe scout and does not authorize paper or live trading."
+}

@@ -1,0 +1,60 @@
+{
+  "specification_id": "UPRO-SPXU-Sparse-Event-Volume-Clock-v3",
+  "saved_at": "2026-07-26",
+  "status": "preregistered_before_first_sparse-event-outcome-calculation",
+  "lineage_warning": "This rule is a principled data-semantic continuation of late_volume_clock_compass, which was profitable on 187 complete-window development sessions but failed the two-trades-per-week frequency gate. It is therefore adapted research, not an independent discovery.",
+  "objective": "Determine whether the relative timing of actual UPRO and SPXU traded volume predicts afternoon direction frequently enough for the $100 cash-only system.",
+  "economic_claim": "Clock time is not the market's only time. Each ETF has an event-time center of gravity. The fund whose volume mass arrives later during the morning is receiving newer inventory attention; if that inventory is still being transferred at 11:00, its directional exposure should persist into the afternoon.",
+  "data_semantics": {
+    "signal_bars": "Databento ARCX.PILLAR UPRO/SPXU ohlcv-1m",
+    "window": "09:30-10:59 inclusive",
+    "missing_bar": "A missing exchange OHLCV bar means no reported ARCA trade in that minute and contributes zero volume. No price or volume is forward-filled.",
+    "eligibility": "Each ETF must have positive total observed volume during the window.",
+    "volume_clock": "For every observed bar, calculate integer minutes since 09:30. The centroid is sum(minute_offset * volume) / sum(volume).",
+    "score": "UPRO centroid minus SPXU centroid.",
+    "direction": "Buy UPRO when score > 0 and SPXU when score < 0. Skip exact ties."
+  },
+  "execution": {
+    "decision_time": "11:00",
+    "entry_time": "11:01",
+    "time_exit": "15:30",
+    "starting_cash_usd": 100.0,
+    "gross_notional_usd": 100.0,
+    "entry_fill": "Observed ask",
+    "exit_fill": "Observed bid",
+    "catastrophe_stop": "SPY moves 3.333333% adversely from its 11:01 open; trigger on a completed minute and exit at the following ETF bid.",
+    "planned_maximum_loss_usd": 10.0,
+    "position_type": "Long fractional UPRO or long fractional SPXU only",
+    "latency": "The score aggregates 90 clock minutes, waits one full minute, and must survive additional one-minute and five-minute entry delays."
+  },
+  "development": "2021-01-01 through 2023-12-31",
+  "secondary_holdout": "2024-01-01 through 2025-12-31",
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "observed_bbo_net_pnl_positive": true,
+    "observed_bbo_profit_factor_greater_than": 1.0,
+    "each_of_2021_2022_2023_positive": true,
+    "bullish_and_bearish_pnl_positive": true,
+    "positive_after_one_extra_cent_per_share_at_entry_and_exit": true,
+    "positive_after_five_additional_minutes_entry_delay": true,
+    "positive_after_removing_five_best_trades": true,
+    "holdout_access": "Only if every development gate passes."
+  },
+  "secondary_tests": [
+    "ARCA observed-BBO holdout",
+    "Consolidated-BBO execution audit using the same ARCA-bar signals",
+    "Midpoint diagnostic",
+    "One-cent and two-cent adverse execution per share at both fills",
+    "One-minute and five-minute entry delays",
+    "Five-session moving-block bootstrap",
+    "Non-actionable score-magnitude quintile diagnostic"
+  ],
+  "prohibited_repairs": [
+    "Change or invert the score sign.",
+    "Require a fitted minimum centroid difference.",
+    "Filter weekdays, months, years, direction, volatility, or spread after results.",
+    "Change entry, exit, or stop.",
+    "Assume passive limit-order fills.",
+    "Turn score-magnitude diagnostics into a rule without a new preregistration."
+  ]
+}

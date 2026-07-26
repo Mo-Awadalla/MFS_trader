@@ -1,0 +1,41 @@
+{
+  "title": "IREN roughly-two-month reversal hypothesis",
+  "version": 1,
+  "frozen_at": "2026-07-23T08:50:00-04:00",
+  "discovery_data": {
+    "symbol": "IREN",
+    "window": ["2025-07-23", "2026-07-22"],
+    "use": "visual hypothesis generation only; excluded from the primary test"
+  },
+  "hypothesis": "IREN has a stable roughly two-month boom-bust tendency: a 42-trading-day return predicts an opposite-signed next 42-trading-day return, including after adjustment for Bitcoin and QQQ returns.",
+  "public_data": {
+    "source": "Yahoo Finance public chart endpoint",
+    "symbols": ["IREN", "BTC-USD", "QQQ"],
+    "price_field": "adjusted close",
+    "test_end": "2025-07-22"
+  },
+  "primary_test": {
+    "formation_and_forward_horizon_trading_days": 42,
+    "sampling": "non-overlapping blocks aligned to the first complete IREN return",
+    "statistics": [
+      "lag-1 Pearson correlation of consecutive 42-day log returns",
+      "one-sided permutation p-value for negative correlation",
+      "opposite-sign transition rate"
+    ],
+    "factor_adjustment": "OLS of daily IREN log returns on same-date BTC-USD and QQQ log returns; repeat block test on residual sums",
+    "permutations": 50000,
+    "random_seed": 20260723
+  },
+  "predeclared_success_gate": [
+    "raw lag correlation is negative with one-sided permutation p < 0.05",
+    "factor-adjusted lag correlation is negative with one-sided permutation p < 0.05",
+    "at least 60% of adjacent blocks have opposite signs",
+    "lag correlation is negative in both chronological halves"
+  ],
+  "robustness_not_selection": {
+    "alternate_horizons": [21, 63],
+    "phase_sensitivity": "report all 42 possible block-start offsets",
+    "rule": "alternate horizons and phases cannot rescue a failed primary 42-day test"
+  },
+  "interpretation_rule": "Failure means the one-year oscillation is not evidence of a stable, timeable two-month cycle. It does not prove that IREN never mean-reverts or that fundamentals/news do not matter."
+}

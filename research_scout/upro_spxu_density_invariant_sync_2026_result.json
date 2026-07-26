@@ -1,0 +1,71 @@
+{
+  "status": "prospective_test_complete_rule_frozen_no_repairs",
+  "specification": "research_scout/upro_spxu_density_invariant_sync_prereg_v6.json",
+  "data_validation": "external_artifacts/databento_forward_2026/validation_report.json",
+  "excluded_degraded_dates": [
+    "2026-06-24",
+    "2026-07-14"
+  ],
+  "period": {
+    "first_session": "2026-01-02",
+    "last_session": "2026-07-24",
+    "eligible_sessions": 138
+  },
+  "observed_bbo": {
+    "trades": 0,
+    "trades_per_week": 0.0,
+    "net_pnl_usd": 0.0
+  },
+  "midpoint_diagnostic": {
+    "trades": 0,
+    "trades_per_week": 0.0,
+    "net_pnl_usd": 0.0
+  },
+  "one_extra_cent_each_fill": {
+    "trades": 0,
+    "trades_per_week": 0.0,
+    "net_pnl_usd": 0.0
+  },
+  "two_extra_cents_each_fill": {
+    "trades": 0,
+    "trades_per_week": 0.0,
+    "net_pnl_usd": 0.0
+  },
+  "one_additional_minute_delay": {
+    "trades": 0,
+    "trades_per_week": 0.0,
+    "net_pnl_usd": 0.0
+  },
+  "five_additional_minutes_delay": {
+    "trades": 0,
+    "trades_per_week": 0.0,
+    "net_pnl_usd": 0.0
+  },
+  "spy_price_only_hurdle": {
+    "start_date": "2026-01-02",
+    "end_date": "2026-07-24",
+    "start_price": 685.71,
+    "end_price": 738.9,
+    "starting_cash_usd": 100.0,
+    "ending_value_usd": 107.7569,
+    "price_return_pct": 7.7569,
+    "dividends_included": false
+  },
+  "five_session_block_bootstrap": {
+    "trades": 0
+  },
+  "monthly_pnl_non_actionable": {},
+  "acceptance_criteria": {
+    "minimum_two_trades_per_week": false,
+    "positive_observed_bbo_pnl": false,
+    "profit_factor_at_least_1_1": false,
+    "both_directions_positive": false,
+    "both_chronological_halves_positive": false,
+    "positive_after_one_extra_cent_each_fill": false,
+    "positive_after_five_minute_delay": false,
+    "positive_after_removing_five_best": false,
+    "beats_same_period_spy_price_only": false,
+    "bootstrap_probability_nonpositive_below_0_25": false
+  },
+  "all_acceptance_criteria_passed": false
+}

@@ -7,6 +7,7 @@ from typing import Any
 from strategies.bb.strategy import get_strategy as get_bb_strategy
 from strategies.contract import StrategyTemplate
 from strategies.csmr.strategy import get_strategy as get_csmr_strategy
+from strategies.etf_tactical.strategy import get_strategy as get_etf_tactical_strategy
 from strategies.etf_time_series_momentum.strategy import get_strategy as get_etf_tsm_strategy
 from strategies.ftre.strategy import get_strategy as get_ftre_strategy
 from strategies.fundamental_event_smart_reversal.strategy import (
@@ -25,12 +26,17 @@ from strategies.opening_range_breakout.strategy import (
 )
 from strategies.pairs.strategy import get_strategy as get_pairs_strategy
 from strategies.residual_reversal.strategy import get_strategy as get_residual_reversal_strategy
+from strategies.same_clock_intraday_seasonality.strategy import (
+    get_strategy as get_same_clock_intraday_seasonality_strategy,
+)
+from strategies.vs_icsm.strategy import get_strategy as get_vs_icsm_strategy
 
 _REGISTRY: dict[str, StrategyTemplate[Any]] = {
     "bollinger_bands": get_bb_strategy(),
     "cross_sectional_mean_reversion": get_csmr_strategy(),
     "cross_sectional_momentum": get_momentum_strategy(),
     "dual_ma_crossover": get_ma_strategy(),
+    "etf_tactical_momentum": get_etf_tactical_strategy(),
     "etf_time_series_momentum": get_etf_tsm_strategy(),
     "fundamental_event_smart_reversal": get_fundamental_event_smart_reversal_strategy(),
     "global_dual_momentum": get_global_dual_momentum_strategy(),
@@ -38,6 +44,8 @@ _REGISTRY: dict[str, StrategyTemplate[Any]] = {
     "opening_range_breakout": get_opening_range_breakout_strategy(),
     "pairs_trading": get_pairs_strategy(),
     "residual_reversal_stat_arb": get_residual_reversal_strategy(),
+    "same_clock_intraday_seasonality": get_same_clock_intraday_seasonality_strategy(),
+    "volatility_standardized_intraday_momentum": get_vs_icsm_strategy(),
 }
 
 # Binance-only (USDⓈ-M perpetual funding); shelved after the Coinbase migration.

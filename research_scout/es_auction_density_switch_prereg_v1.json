@@ -1,0 +1,69 @@
+{
+  "name": "ES Closing Auction-Density Switch v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "ES transaction-price and volume signal executed with one MES using recorded MBP-1 quotes",
+  "source": "Databento GLBX.MDP3 ES trades and MES MBP-1",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "hypothesis": "Equal-duration closing-auction halves reveal whether a late price move was densely negotiated or crossed a liquidity vacuum. Rising volume per visited price level indicates acceptance and should preserve the second-half move; falling density indicates fragile displacement that should reverse.",
+  "signal": {
+    "first_half": "15:00 through 15:14:59.999999 ET",
+    "second_half": "15:15 through 15:29:59.999999 ET",
+    "half_density": "sum of transaction size divided by count of distinct transaction prices in that half",
+    "second_half_displacement": "last transaction price minus first transaction price in the second half",
+    "dense_transition": "second-half density is greater than or equal to first-half density; follow second-half displacement",
+    "vacuum_transition": "second-half density is less than first-half density; fade second-half displacement",
+    "zero_or_missing_rule": "no trade if second-half displacement is zero, either half has no trades, or a required value is missing"
+  },
+  "execution": {
+    "entry_time": "first MES MBP-1 record at or after 15:30:05 ET",
+    "long_entry": "recorded ask",
+    "short_entry": "recorded bid",
+    "stop": "none; one MES and a fixed approximately 29-minute holding period bound exposure",
+    "exit_time": "first recorded MES MBP-1 quote at or after 15:59:45 ET",
+    "long_exit": "recorded bid",
+    "short_exit": "recorded ask",
+    "position_limit": "one MES and at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "round_trip_commission_usd": 1.24,
+    "slippage_model": "the full recorded MES bid-ask spread is crossed at entry and exit; no additional modeled slippage"
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "positive_each_year": true,
+    "both_directions_positive": true,
+    "aggregate_profit_factor_greater_than_one": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 730,
+    "trades_per_week": 4.679,
+    "net_pnl_usd": -5328.95,
+    "profit_factor": 0.700,
+    "win_rate": 0.441,
+    "max_daily_drawdown_usd": -5486.84,
+    "year_pnl_usd": {"2021": -1747.55, "2022": -2530.05, "2023": -1051.35},
+    "side_pnl_usd": {"long": -3721.19, "short": -1607.76},
+    "state_pnl_usd": {"dense": -991.43, "vacuum": -4337.52}
+  },
+  "development_gate_decision": {
+    "minimum_frequency": "pass",
+    "positive_each_year": "fail",
+    "both_directions_positive": "fail",
+    "aggregate_profit_factor": "fail",
+    "overall": "reject"
+  },
+  "lesson": "Volume per visited price level was not a stable acceptance measure. Both density states, every year, and both directions lost money.",
+  "holdout_policy": "2024-2025 was not evaluated because the unchanged rule failed its development gates.",
+  "prohibited_posthoc_changes": [
+    "changing half boundaries",
+    "using trade counts, clock duration, range, volatility, or another density denominator",
+    "adding a density-ratio or displacement threshold",
+    "reversing only one transition after observing results",
+    "side, weekday, volatility, volume, or regime filters",
+    "adding stops or changing execution times"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "name": "ES One-Position First-Signal Challenger v1",
+  "status": "prospective_risk_reduction_challenger_failed_historical_robustness_gates",
+  "created_after_historical_holdout_review": true,
+  "historical_results_are_diagnostic_only": true,
+  "instrument": "MES execution using the three frozen ES signal engines",
+  "source_components": [
+    "Compressed Opening-Auction Convexity v1",
+    "Opening Auction Center Migration v1",
+    "Midday Inventory Reload v1"
+  ],
+  "signal_changes": "none; every component retains its frozen signal, stop, and exit",
+  "portfolio_rule": {
+    "maximum_positions": 1,
+    "maximum_trades_per_rth_session": 1,
+    "selection": "take the earliest valid component entry of the session",
+    "same_minute_tie_breaker": "take the signal with the smaller frozen initial structural risk in USD; break an exact risk tie by engine name",
+    "later_signals": "ignore every later signal that session even if the selected trade stops",
+    "overnight_positions": false
+  },
+  "rationale": "Reduce concurrent structural risk, eliminate stacked execution, and avoid choosing engines by historical profitability. Time priority and lower-risk tie breaking are observable at the decision time and do not use future P&L.",
+  "cost_reserves_to_report_usd_per_trade": [
+    0.0,
+    1.25,
+    2.5
+  ],
+  "historical_diagnostic": {
+    "development_2021_2023": {
+      "trades": 676,
+      "trades_per_week": 4.333,
+      "net_pnl_usd": 2415.52,
+      "profit_factor": 1.134,
+      "max_daily_drawdown_usd": -2099.75
+    },
+    "secondary_holdout_2024_2025": {
+      "trades": 444,
+      "trades_per_week": 4.269,
+      "net_pnl_usd": 1023.94,
+      "profit_factor": 1.083,
+      "max_daily_drawdown_usd": -1296.30,
+      "net_after_additional_1p25_usd_per_trade": 468.94,
+      "net_after_additional_2p50_usd_per_trade": -86.06,
+      "net_without_five_largest_winners": -1011.11,
+      "five_day_bootstrap_probability_total_not_positive": 0.303,
+      "five_day_bootstrap_bad_5pct_max_drawdown_usd": -3217.72,
+      "initial_signal_risk_usd": {
+        "median_active_day": 31.98,
+        "95pct_active_day": 98.79,
+        "maximum_active_day": 263.74
+      }
+    },
+    "diagnostic_verdict": "The rule materially reduces concurrent exposure and drawdown-tail estimates while retaining the requested frequency. It does not improve evidence quality: it remains negative under a $2.50 per-trade reserve, more dependent on its five best trades, and has a higher bootstrap probability of nonpositive total P&L. Preserve only as a prospective paper challenger."
+  },
+  "prospective_approval_gates": {
+    "minimum_untouched_trades": 100,
+    "minimum_calendar_coverage": "approximately 12 months",
+    "minimum_trades_per_week": 2.0,
+    "both_six_month_halves_positive_after_actual_costs": true,
+    "net_positive_after_additional_2p50_usd_per_trade_reserve": true,
+    "net_positive_after_removing_five_largest_winners": true,
+    "no_single_month_may_contribute_more_than_total_net_profit": true,
+    "maximum_drawdown": "must remain inside an account-level dollar risk limit chosen before paper trading"
+  },
+  "prohibited_changes": [
+    "engine priority based on historical P&L",
+    "side, weekday, volatility, agreement, or regime filters",
+    "taking a later signal after the selected trade stops",
+    "changing component signals, stops, or exits",
+    "changing the tie breaker after historical comparison",
+    "treating 2021-2025 diagnostics as prospective validation"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "name": "ES Opening Acceptance With Participation Confirmation v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "ES continuous front-month signal with one MES execution unit",
+  "source": "Databento GLBX.MDP3 one-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "origin": "Priority 3 was sealed in es_candidate_macro_synthesis_v1.md before the closing-response and morning-to-lunch results were observed.",
+  "hypothesis": "Opening value migration is credible only when participation migrates with it. If the second 15-minute auction has more volume than the first and moves both its value center and terminal close to the same side of first-half value, the repricing should persist toward the closing handoff.",
+  "signal": {
+    "first_auction": "09:30 through 09:44 ET",
+    "second_auction": "09:45 through 09:59 ET",
+    "auction_center": "volume-weighted mean of one-minute typical price (high + low + close) / 3",
+    "participation_confirmation": "second-auction total volume is strictly greater than first-auction total volume",
+    "long_signal": "participation confirmation holds and the second center and 09:59 close are both strictly above the first center",
+    "short_signal": "participation confirmation holds and the second center and 09:59 close are both strictly below the first center",
+    "zero_rule": "no trade when participation does not increase or center and terminal close do not agree"
+  },
+  "execution": {
+    "entry": "10:00 open plus one adverse ES tick",
+    "long_stop_trigger": "one ES tick below the first-auction center",
+    "short_stop_trigger": "one ES tick above the first-auction center",
+    "stop_fill": "the trigger price unless the stop bar opens beyond it, then the worse bar open plus one adverse tick",
+    "entry_validity": "skip if the stop is not adverse to entry",
+    "same_bar_rule": "if the 10:00 entry bar touches the stop trigger, assume the stop fills",
+    "survivor_exit": "15:30 open plus one adverse ES tick",
+    "position_limit": "one MES and at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "positive_each_year": true,
+    "both_directions_positive": true,
+    "aggregate_profit_factor_greater_than_one": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 31,
+    "trades_per_week": 0.199,
+    "net_pnl_usd": 171.91,
+    "profit_factor": 1.159,
+    "win_rate": 0.355,
+    "year_pnl_usd": {"2021": -165.50, "2022": 24.12, "2023": 313.29},
+    "side_pnl_usd": {"long": 23.64, "short": 148.27}
+  },
+  "development_gate_decision": {
+    "minimum_frequency": "fail",
+    "positive_each_year": "fail",
+    "both_directions_positive": "pass",
+    "aggregate_profit_factor": "pass",
+    "overall": "reject"
+  },
+  "lesson": "Absolute second-half volume almost never exceeds first-half opening volume because of the opening clock's natural decay. The comparison was structurally biased and far too sparse.",
+  "holdout_policy": "2024-2025 was not evaluated because the unchanged rule failed its development gates.",
+  "prohibited_posthoc_changes": [
+    "changing either 15-minute boundary",
+    "using volume ratios or thresholds beyond the natural greater-than comparison",
+    "using close, median, POC, or another center definition",
+    "adding center-distance, volatility, side, weekday, or regime filters",
+    "changing the stop reference or exit time",
+    "selecting years or directions after results"
+  ]
+}

@@ -1,0 +1,1452 @@
+{
+  "specification": "research_scout/spy_sh_fractional_hypotheses_prereg_v1.json",
+  "data": "external_artifacts/databento_fractional_etf/ARCX.PILLAR/bars/spy_sh_ohlcv_1m_2021-01-01_2026-01-01.dbn.zst",
+  "excluded_degraded_dates": 18,
+  "base_slippage_each_fill_bps": {
+    "SPY": 3.0,
+    "SH": 10.0
+  },
+  "candidates": {
+    "counterauction_effort_failure": {
+      "development": {
+        "base": {
+          "trades": 94,
+          "trades_per_week": 0.603,
+          "net_pnl_usd": -11.0456,
+          "mean_trade_usd": -0.11751,
+          "median_trade_usd": -0.2524,
+          "win_rate": 0.2447,
+          "profit_factor": 0.5299,
+          "max_drawdown_usd": -12.448,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 89.4549,
+            "return_pct": -10.5451,
+            "maximum_drawdown_usd": -11.9474
+          },
+          "worst_fixed_notional_trade_usd": -0.8834,
+          "net_without_five_best_usd": -17.3426,
+          "year_pnl_usd": {
+            "2021": -4.9333,
+            "2022": -0.1982,
+            "2023": -5.9141
+          },
+          "direction_pnl_usd": {
+            "bearish": -12.1046,
+            "bullish": 1.059
+          },
+          "symbol_pnl_usd": {
+            "SH": -12.1046,
+            "SPY": 1.059
+          },
+          "reason_counts": {
+            "stop": 69,
+            "time": 25
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 2.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 2.7,
+            "maximum": 14.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "double_symbol_slippage": {
+          "trades": 94,
+          "trades_per_week": 0.603,
+          "net_pnl_usd": -23.3716,
+          "mean_trade_usd": -0.24863,
+          "median_trade_usd": -0.32753,
+          "win_rate": 0.2128,
+          "profit_factor": 0.3038,
+          "max_drawdown_usd": -24.3323,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 79.0524,
+            "return_pct": -20.9476,
+            "maximum_drawdown_usd": -21.9075
+          },
+          "worst_fixed_notional_trade_usd": -1.0814,
+          "net_without_five_best_usd": -29.0815,
+          "year_pnl_usd": {
+            "2021": -9.6793,
+            "2022": -4.2321,
+            "2023": -9.4602
+          },
+          "direction_pnl_usd": {
+            "bearish": -21.6708,
+            "bullish": -1.7008
+          },
+          "symbol_pnl_usd": {
+            "SH": -21.6708,
+            "SPY": -1.7008
+          },
+          "reason_counts": {
+            "stop": 69,
+            "time": 25
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 2.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 2.7,
+            "maximum": 14.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "twenty_five_bps_each_fill": {
+          "trades": 94,
+          "trades_per_week": 0.603,
+          "net_pnl_usd": -45.588,
+          "mean_trade_usd": -0.48498,
+          "median_trade_usd": -0.62649,
+          "win_rate": 0.1064,
+          "profit_factor": 0.1092,
+          "max_drawdown_usd": -45.3339,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 63.2586,
+            "return_pct": -36.7414,
+            "maximum_drawdown_usd": -36.7414
+          },
+          "worst_fixed_notional_trade_usd": -1.1803,
+          "net_without_five_best_usd": -49.9484,
+          "year_pnl_usd": {
+            "2021": -17.6346,
+            "2022": -11.1392,
+            "2023": -16.8142
+          },
+          "direction_pnl_usd": {
+            "bearish": -26.4468,
+            "bullish": -19.1412
+          },
+          "symbol_pnl_usd": {
+            "SH": -26.4468,
+            "SPY": -19.1412
+          },
+          "reason_counts": {
+            "stop": 69,
+            "time": 25
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 2.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 2.7,
+            "maximum": 14.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "zero_slippage": {
+          "trades": 94,
+          "trades_per_week": 0.603,
+          "net_pnl_usd": 1.3013,
+          "mean_trade_usd": 0.01384,
+          "median_trade_usd": -0.12838,
+          "win_rate": 0.2979,
+          "profit_factor": 1.0934,
+          "max_drawdown_usd": -2.9735,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 101.2907,
+            "return_pct": 1.2907,
+            "maximum_drawdown_usd": -2.9735
+          },
+          "worst_fixed_notional_trade_usd": -0.6849,
+          "net_without_five_best_usd": -5.5873,
+          "year_pnl_usd": {
+            "2021": -0.1791,
+            "2022": 3.8425,
+            "2023": -2.3622
+          },
+          "direction_pnl_usd": {
+            "bearish": -2.5192,
+            "bullish": 3.8205
+          },
+          "symbol_pnl_usd": {
+            "SH": -2.5192,
+            "SPY": 3.8205
+          },
+          "reason_counts": {
+            "stop": 69,
+            "time": 25
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 2.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 2.7,
+            "maximum": 14.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        }
+      },
+      "gate_passed": false,
+      "gate_failures": [
+        "frequency",
+        "aggregate_pnl",
+        "profit_factor",
+        "each_year",
+        "both_directions"
+      ],
+      "secondary_holdout": "not_evaluated"
+    },
+    "opening_volume_scar_parallax": {
+      "development": {
+        "base": {
+          "trades": 200,
+          "trades_per_week": 1.282,
+          "net_pnl_usd": -26.6112,
+          "mean_trade_usd": -0.13306,
+          "median_trade_usd": -0.24756,
+          "win_rate": 0.295,
+          "profit_factor": 0.5334,
+          "max_drawdown_usd": -26.9717,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 76.3839,
+            "return_pct": -23.6161,
+            "maximum_drawdown_usd": -23.9766
+          },
+          "worst_fixed_notional_trade_usd": -1.1938,
+          "net_without_five_best_usd": -36.3399,
+          "year_pnl_usd": {
+            "2021": -8.3218,
+            "2022": -12.5214,
+            "2023": -5.768
+          },
+          "direction_pnl_usd": {
+            "bearish": -29.6317,
+            "bullish": 3.0206
+          },
+          "symbol_pnl_usd": {
+            "SH": -29.6317,
+            "SPY": 3.0206
+          },
+          "reason_counts": {
+            "stop": 128,
+            "time": 72
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 4.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 3.0,
+            "maximum": 25.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "double_symbol_slippage": {
+          "trades": 200,
+          "trades_per_week": 1.282,
+          "net_pnl_usd": -53.9302,
+          "mean_trade_usd": -0.26965,
+          "median_trade_usd": -0.35345,
+          "win_rate": 0.25,
+          "profit_factor": 0.3075,
+          "max_drawdown_usd": -54.2306,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 58.0772,
+            "return_pct": -41.9228,
+            "maximum_drawdown_usd": -42.2232
+          },
+          "worst_fixed_notional_trade_usd": -1.3912,
+          "net_without_five_best_usd": -63.2112,
+          "year_pnl_usd": {
+            "2021": -16.7799,
+            "2022": -24.0401,
+            "2023": -13.1102
+          },
+          "direction_pnl_usd": {
+            "bearish": -51.5506,
+            "bullish": -2.3796
+          },
+          "symbol_pnl_usd": {
+            "SH": -51.5506,
+            "SPY": -2.3796
+          },
+          "reason_counts": {
+            "stop": 128,
+            "time": 72
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 4.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 3.0,
+            "maximum": 25.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "twenty_five_bps_each_fill": {
+          "trades": 200,
+          "trades_per_week": 1.282,
+          "net_pnl_usd": -98.9994,
+          "mean_trade_usd": -0.495,
+          "median_trade_usd": -0.61852,
+          "win_rate": 0.14,
+          "profit_factor": 0.1183,
+          "max_drawdown_usd": -98.9194,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 36.9571,
+            "return_pct": -63.0429,
+            "maximum_drawdown_usd": -63.0429
+          },
+          "worst_fixed_notional_trade_usd": -1.5129,
+          "net_without_five_best_usd": -106.6623,
+          "year_pnl_usd": {
+            "2021": -30.7725,
+            "2022": -38.8822,
+            "2023": -29.3447
+          },
+          "direction_pnl_usd": {
+            "bearish": -62.4936,
+            "bullish": -36.5058
+          },
+          "symbol_pnl_usd": {
+            "SH": -62.4936,
+            "SPY": -36.5058
+          },
+          "reason_counts": {
+            "stop": 128,
+            "time": 72
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 4.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 3.0,
+            "maximum": 25.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "zero_slippage": {
+          "trades": 200,
+          "trades_per_week": 1.282,
+          "net_pnl_usd": 0.755,
+          "mean_trade_usd": 0.00377,
+          "median_trade_usd": -0.12036,
+          "win_rate": 0.34,
+          "profit_factor": 1.0202,
+          "max_drawdown_usd": -6.5888,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 100.5355,
+            "return_pct": 0.5355,
+            "maximum_drawdown_usd": -6.4864
+          },
+          "worst_fixed_notional_trade_usd": -1.0193,
+          "net_without_five_best_usd": -9.4525,
+          "year_pnl_usd": {
+            "2021": 0.151,
+            "2022": -0.9819,
+            "2023": 1.5859
+          },
+          "direction_pnl_usd": {
+            "bearish": -7.669,
+            "bullish": 8.424
+          },
+          "symbol_pnl_usd": {
+            "SH": -7.669,
+            "SPY": 8.424
+          },
+          "reason_counts": {
+            "stop": 128,
+            "time": 72
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 4.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 3.0,
+            "maximum": 25.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        }
+      },
+      "gate_passed": false,
+      "gate_failures": [
+        "frequency",
+        "aggregate_pnl",
+        "profit_factor",
+        "each_year",
+        "both_directions"
+      ],
+      "secondary_holdout": "not_evaluated"
+    },
+    "premarket_false_probe_relay": {
+      "development": {
+        "base": {
+          "trades": 444,
+          "trades_per_week": 2.846,
+          "net_pnl_usd": -59.656,
+          "mean_trade_usd": -0.13436,
+          "median_trade_usd": -0.23193,
+          "win_rate": 0.2185,
+          "profit_factor": 0.4683,
+          "max_drawdown_usd": -60.125,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 54.8073,
+            "return_pct": -45.1927,
+            "maximum_drawdown_usd": -45.6616
+          },
+          "worst_fixed_notional_trade_usd": -1.106,
+          "net_without_five_best_usd": -68.6919,
+          "year_pnl_usd": {
+            "2021": -19.0668,
+            "2022": -21.9719,
+            "2023": -18.6174
+          },
+          "direction_pnl_usd": {
+            "bearish": -47.4944,
+            "bullish": -12.1616
+          },
+          "symbol_pnl_usd": {
+            "SH": -47.4944,
+            "SPY": -12.1616
+          },
+          "reason_counts": {
+            "stop": 331,
+            "time": 113
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.85,
+            "maximum": 14.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "double_symbol_slippage": {
+          "trades": 444,
+          "trades_per_week": 2.846,
+          "net_pnl_usd": -114.7089,
+          "mean_trade_usd": -0.25835,
+          "median_trade_usd": -0.34042,
+          "win_rate": 0.1959,
+          "profit_factor": 0.2703,
+          "max_drawdown_usd": -115.1175,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 31.5578,
+            "return_pct": -68.4422,
+            "maximum_drawdown_usd": -68.8509
+          },
+          "worst_fixed_notional_trade_usd": -1.2357,
+          "net_without_five_best_usd": -123.0146,
+          "year_pnl_usd": {
+            "2021": -38.8542,
+            "2022": -40.3608,
+            "2023": -35.4939
+          },
+          "direction_pnl_usd": {
+            "bearish": -88.1589,
+            "bullish": -26.55
+          },
+          "symbol_pnl_usd": {
+            "SH": -88.1589,
+            "SPY": -26.55
+          },
+          "reason_counts": {
+            "stop": 331,
+            "time": 113
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.85,
+            "maximum": 14.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "twenty_five_bps_each_fill": {
+          "trades": 444,
+          "trades_per_week": 2.846,
+          "net_pnl_usd": -225.9371,
+          "mean_trade_usd": -0.50887,
+          "median_trade_usd": -0.61862,
+          "win_rate": 0.1149,
+          "profit_factor": 0.0926,
+          "max_drawdown_usd": -225.965,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 10.3378,
+            "return_pct": -89.6622,
+            "maximum_drawdown_usd": -89.6901
+          },
+          "worst_fixed_notional_trade_usd": -1.5401,
+          "net_without_five_best_usd": -233.1641,
+          "year_pnl_usd": {
+            "2021": -78.0537,
+            "2022": -75.3551,
+            "2023": -72.5284
+          },
+          "direction_pnl_usd": {
+            "bearish": -108.4606,
+            "bullish": -117.4765
+          },
+          "symbol_pnl_usd": {
+            "SH": -108.4606,
+            "SPY": -117.4765
+          },
+          "reason_counts": {
+            "stop": 331,
+            "time": 113
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.85,
+            "maximum": 14.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "zero_slippage": {
+          "trades": 444,
+          "trades_per_week": 2.846,
+          "net_pnl_usd": -4.5133,
+          "mean_trade_usd": -0.01016,
+          "median_trade_usd": -0.12047,
+          "win_rate": 0.2725,
+          "profit_factor": 0.9348,
+          "max_drawdown_usd": -8.8251,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 95.2289,
+            "return_pct": -4.7711,
+            "maximum_drawdown_usd": -8.7356
+          },
+          "worst_fixed_notional_trade_usd": -1.0466,
+          "net_without_five_best_usd": -14.2827,
+          "year_pnl_usd": {
+            "2021": 0.7531,
+            "2022": -3.5524,
+            "2023": -1.714
+          },
+          "direction_pnl_usd": {
+            "bearish": -6.7487,
+            "bullish": 2.2354
+          },
+          "symbol_pnl_usd": {
+            "SH": -6.7487,
+            "SPY": 2.2354
+          },
+          "reason_counts": {
+            "stop": 331,
+            "time": 113
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.85,
+            "maximum": 14.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        }
+      },
+      "gate_passed": false,
+      "gate_failures": [
+        "aggregate_pnl",
+        "profit_factor",
+        "each_year",
+        "both_directions"
+      ],
+      "secondary_holdout": "not_evaluated"
+    },
+    "rejected_excursion_transfer": {
+      "development": {
+        "base": {
+          "trades": 10,
+          "trades_per_week": 0.064,
+          "net_pnl_usd": -1.851,
+          "mean_trade_usd": -0.1851,
+          "median_trade_usd": -0.1564,
+          "win_rate": 0.0,
+          "profit_factor": 0.0,
+          "max_drawdown_usd": -1.7173,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 98.1641,
+            "return_pct": -1.8359,
+            "maximum_drawdown_usd": -1.8359
+          },
+          "worst_fixed_notional_trade_usd": -0.2932,
+          "net_without_five_best_usd": -1.2437,
+          "year_pnl_usd": {
+            "2021": -0.1337,
+            "2022": -0.825,
+            "2023": -0.8923
+          },
+          "direction_pnl_usd": {
+            "bearish": -0.9638,
+            "bullish": -0.8873
+          },
+          "symbol_pnl_usd": {
+            "SH": -0.9638,
+            "SPY": -0.8873
+          },
+          "reason_counts": {
+            "stop": 10
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 3.2,
+            "maximum": 5.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "double_symbol_slippage": {
+          "trades": 10,
+          "trades_per_week": 0.064,
+          "net_pnl_usd": -3.0076,
+          "mean_trade_usd": -0.30076,
+          "median_trade_usd": -0.26667,
+          "win_rate": 0.0,
+          "profit_factor": 0.0,
+          "max_drawdown_usd": -2.6744,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 97.032,
+            "return_pct": -2.968,
+            "maximum_drawdown_usd": -2.968
+          },
+          "worst_fixed_notional_trade_usd": -0.4925,
+          "net_without_five_best_usd": -2.0607,
+          "year_pnl_usd": {
+            "2021": -0.3332,
+            "2022": -1.2039,
+            "2023": -1.4705
+          },
+          "direction_pnl_usd": {
+            "bearish": -1.761,
+            "bullish": -1.2466
+          },
+          "symbol_pnl_usd": {
+            "SH": -1.761,
+            "SPY": -1.2466
+          },
+          "reason_counts": {
+            "stop": 10
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 3.2,
+            "maximum": 5.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "twenty_five_bps_each_fill": {
+          "trades": 10,
+          "trades_per_week": 0.064,
+          "net_pnl_usd": -5.6766,
+          "mean_trade_usd": -0.56766,
+          "median_trade_usd": -0.56715,
+          "win_rate": 0.0,
+          "profit_factor": 0.0,
+          "max_drawdown_usd": -5.2438,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 94.466,
+            "return_pct": -5.534,
+            "maximum_drawdown_usd": -5.534
+          },
+          "worst_fixed_notional_trade_usd": -0.6778,
+          "net_without_five_best_usd": -3.0302,
+          "year_pnl_usd": {
+            "2021": -0.4329,
+            "2022": -2.4385,
+            "2023": -2.8053
+          },
+          "direction_pnl_usd": {
+            "bearish": -2.1591,
+            "bullish": -3.5176
+          },
+          "symbol_pnl_usd": {
+            "SH": -2.1591,
+            "SPY": -3.5176
+          },
+          "reason_counts": {
+            "stop": 10
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 3.2,
+            "maximum": 5.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "zero_slippage": {
+          "trades": 10,
+          "trades_per_week": 0.064,
+          "net_pnl_usd": -0.6926,
+          "mean_trade_usd": -0.06926,
+          "median_trade_usd": -0.06874,
+          "win_rate": 0.1,
+          "profit_factor": 0.0873,
+          "max_drawdown_usd": -0.7588,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 99.3095,
+            "return_pct": -0.6905,
+            "maximum_drawdown_usd": -0.7567
+          },
+          "worst_fixed_notional_trade_usd": -0.1799,
+          "net_without_five_best_usd": -0.5391,
+          "year_pnl_usd": {
+            "2021": 0.0662,
+            "2022": -0.4457,
+            "2023": -0.3131
+          },
+          "direction_pnl_usd": {
+            "bearish": -0.1649,
+            "bullish": -0.5277
+          },
+          "symbol_pnl_usd": {
+            "SH": -0.1649,
+            "SPY": -0.5277
+          },
+          "reason_counts": {
+            "stop": 10
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 0.0,
+            "maximum": 0.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 3.2,
+            "maximum": 5.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        }
+      },
+      "gate_passed": false,
+      "gate_failures": [
+        "frequency",
+        "aggregate_pnl",
+        "profit_factor",
+        "each_year",
+        "both_directions"
+      ],
+      "secondary_holdout": "not_evaluated"
+    },
+    "center_close_disagreement_snapback": {
+      "development": {
+        "base": {
+          "trades": 125,
+          "trades_per_week": 0.801,
+          "net_pnl_usd": -16.7804,
+          "mean_trade_usd": -0.13424,
+          "median_trade_usd": -0.14429,
+          "win_rate": 0.16,
+          "profit_factor": 0.0617,
+          "max_drawdown_usd": -16.7493,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 84.5351,
+            "return_pct": -15.4649,
+            "maximum_drawdown_usd": -15.4649
+          },
+          "worst_fixed_notional_trade_usd": -0.3977,
+          "net_without_five_best_usd": -17.4441,
+          "year_pnl_usd": {
+            "2021": -7.2689,
+            "2022": -6.2546,
+            "2023": -3.2568
+          },
+          "direction_pnl_usd": {
+            "bearish": -11.6505,
+            "bullish": -5.1299
+          },
+          "symbol_pnl_usd": {
+            "SH": -11.6505,
+            "SPY": -5.1299
+          },
+          "reason_counts": {
+            "stop": 80,
+            "target": 45
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 2.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 16.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "double_symbol_slippage": {
+          "trades": 125,
+          "trades_per_week": 0.801,
+          "net_pnl_usd": -33.0603,
+          "mean_trade_usd": -0.26448,
+          "median_trade_usd": -0.24823,
+          "win_rate": 0.032,
+          "profit_factor": 0.0105,
+          "max_drawdown_usd": -32.9693,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 71.8059,
+            "return_pct": -28.1941,
+            "maximum_drawdown_usd": -28.1941
+          },
+          "worst_fixed_notional_trade_usd": -0.5967,
+          "net_without_five_best_usd": -33.4082,
+          "year_pnl_usd": {
+            "2021": -13.8705,
+            "2022": -12.6394,
+            "2023": -6.5504
+          },
+          "direction_pnl_usd": {
+            "bearish": -24.2147,
+            "bullish": -8.8457
+          },
+          "symbol_pnl_usd": {
+            "SH": -24.2147,
+            "SPY": -8.8457
+          },
+          "reason_counts": {
+            "stop": 80,
+            "target": 45
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 2.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 16.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "twenty_five_bps_each_fill": {
+          "trades": 125,
+          "trades_per_week": 0.801,
+          "net_pnl_usd": -62.8148,
+          "mean_trade_usd": -0.50252,
+          "median_trade_usd": -0.49875,
+          "win_rate": 0.0,
+          "profit_factor": 0.0,
+          "max_drawdown_usd": -62.3448,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 53.2696,
+            "return_pct": -46.7304,
+            "maximum_drawdown_usd": -46.7304
+          },
+          "worst_fixed_notional_trade_usd": -0.8108,
+          "net_without_five_best_usd": -61.5279,
+          "year_pnl_usd": {
+            "2021": -23.0962,
+            "2022": -22.8021,
+            "2023": -16.9166
+          },
+          "direction_pnl_usd": {
+            "bearish": -30.4874,
+            "bullish": -32.3275
+          },
+          "symbol_pnl_usd": {
+            "SH": -30.4874,
+            "SPY": -32.3275
+          },
+          "reason_counts": {
+            "stop": 80,
+            "target": 45
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 2.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 16.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "zero_slippage": {
+          "trades": 125,
+          "trades_per_week": 0.801,
+          "net_pnl_usd": -0.473,
+          "mean_trade_usd": -0.00378,
+          "median_trade_usd": 0.0,
+          "win_rate": 0.36,
+          "profit_factor": 0.9111,
+          "max_drawdown_usd": -1.257,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 99.5211,
+            "return_pct": -0.4789,
+            "maximum_drawdown_usd": -1.2514
+          },
+          "worst_fixed_notional_trade_usd": -0.3136,
+          "net_without_five_best_usd": -1.6859,
+          "year_pnl_usd": {
+            "2021": -0.6555,
+            "2022": 0.1413,
+            "2023": 0.0412
+          },
+          "direction_pnl_usd": {
+            "bearish": 0.9388,
+            "bullish": -1.4118
+          },
+          "symbol_pnl_usd": {
+            "SH": 0.9388,
+            "SPY": -1.4118
+          },
+          "reason_counts": {
+            "stop": 80,
+            "target": 45
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 2.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 16.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        }
+      },
+      "gate_passed": false,
+      "gate_failures": [
+        "frequency",
+        "aggregate_pnl",
+        "profit_factor",
+        "each_year",
+        "both_directions"
+      ],
+      "secondary_holdout": "not_evaluated"
+    },
+    "opening_center_migration_translation": {
+      "development": {
+        "base": {
+          "trades": 522,
+          "trades_per_week": 3.346,
+          "net_pnl_usd": -45.2323,
+          "mean_trade_usd": -0.08665,
+          "median_trade_usd": -0.1998,
+          "win_rate": 0.2222,
+          "profit_factor": 0.5989,
+          "max_drawdown_usd": -47.1778,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 63.2611,
+            "return_pct": -36.7389,
+            "maximum_drawdown_usd": -38.6844
+          },
+          "worst_fixed_notional_trade_usd": -0.9072,
+          "net_without_five_best_usd": -57.6445,
+          "year_pnl_usd": {
+            "2021": -15.1256,
+            "2022": -14.2992,
+            "2023": -15.8075
+          },
+          "direction_pnl_usd": {
+            "bearish": -38.0474,
+            "bullish": -7.1849
+          },
+          "symbol_pnl_usd": {
+            "SH": -38.0474,
+            "SPY": -7.1849
+          },
+          "reason_counts": {
+            "stop": 394,
+            "time": 128
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 4.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 35.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "double_symbol_slippage": {
+          "trades": 522,
+          "trades_per_week": 3.346,
+          "net_pnl_usd": -108.481,
+          "mean_trade_usd": -0.20782,
+          "median_trade_usd": -0.29056,
+          "win_rate": 0.1973,
+          "profit_factor": 0.3388,
+          "max_drawdown_usd": -110.0437,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 33.5632,
+            "return_pct": -66.4368,
+            "maximum_drawdown_usd": -67.9995
+          },
+          "worst_fixed_notional_trade_usd": -0.9666,
+          "net_without_five_best_usd": -120.1675,
+          "year_pnl_usd": {
+            "2021": -36.3182,
+            "2022": -37.2578,
+            "2023": -34.905
+          },
+          "direction_pnl_usd": {
+            "bearish": -83.7257,
+            "bullish": -24.7553
+          },
+          "symbol_pnl_usd": {
+            "SH": -83.7257,
+            "SPY": -24.7553
+          },
+          "reason_counts": {
+            "stop": 394,
+            "time": 128
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 4.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 35.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "twenty_five_bps_each_fill": {
+          "trades": 522,
+          "trades_per_week": 3.346,
+          "net_pnl_usd": -242.3211,
+          "mean_trade_usd": -0.46422,
+          "median_trade_usd": -0.57989,
+          "win_rate": 0.1188,
+          "profit_factor": 0.1149,
+          "max_drawdown_usd": -243.3987,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 8.7671,
+            "return_pct": -91.2329,
+            "maximum_drawdown_usd": -92.3105
+          },
+          "worst_fixed_notional_trade_usd": -1.3423,
+          "net_without_five_best_usd": -252.9113,
+          "year_pnl_usd": {
+            "2021": -79.7144,
+            "2022": -80.1237,
+            "2023": -82.483
+          },
+          "direction_pnl_usd": {
+            "bearish": -106.5307,
+            "bullish": -135.7904
+          },
+          "symbol_pnl_usd": {
+            "SH": -106.5307,
+            "SPY": -135.7904
+          },
+          "reason_counts": {
+            "stop": 394,
+            "time": 128
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 4.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 35.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "zero_slippage": {
+          "trades": 522,
+          "trades_per_week": 3.346,
+          "net_pnl_usd": 18.1184,
+          "mean_trade_usd": 0.03471,
+          "median_trade_usd": -0.08155,
+          "win_rate": 0.2739,
+          "profit_factor": 1.2832,
+          "max_drawdown_usd": -5.4503,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 118.1168,
+            "return_pct": 18.1168,
+            "maximum_drawdown_usd": -5.4503
+          },
+          "worst_fixed_notional_trade_usd": -0.8477,
+          "net_without_five_best_usd": 4.9688,
+          "year_pnl_usd": {
+            "2021": 6.1016,
+            "2022": 8.6977,
+            "2023": 3.3191
+          },
+          "direction_pnl_usd": {
+            "bearish": 7.7223,
+            "bullish": 10.3961
+          },
+          "symbol_pnl_usd": {
+            "SH": 7.7223,
+            "SPY": 10.3961
+          },
+          "reason_counts": {
+            "stop": 394,
+            "time": 128
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 4.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 35.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        }
+      },
+      "gate_passed": false,
+      "gate_failures": [
+        "aggregate_pnl",
+        "profit_factor",
+        "each_year",
+        "both_directions"
+      ],
+      "secondary_holdout": {
+        "base": {
+          "trades": 339,
+          "trades_per_week": 3.26,
+          "net_pnl_usd": -39.4188,
+          "mean_trade_usd": -0.11628,
+          "median_trade_usd": -0.18361,
+          "win_rate": 0.1917,
+          "profit_factor": 0.4146,
+          "max_drawdown_usd": -40.3226,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 67.2835,
+            "return_pct": -32.7165,
+            "maximum_drawdown_usd": -33.404
+          },
+          "worst_fixed_notional_trade_usd": -0.8593,
+          "net_without_five_best_usd": -45.6456,
+          "year_pnl_usd": {
+            "2024": -19.0123,
+            "2025": -20.4065
+          },
+          "direction_pnl_usd": {
+            "bearish": -28.8113,
+            "bullish": -10.6075
+          },
+          "symbol_pnl_usd": {
+            "SH": -28.8113,
+            "SPY": -10.6075
+          },
+          "reason_counts": {
+            "stop": 261,
+            "time": 78
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 29.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "double_symbol_slippage": {
+          "trades": 339,
+          "trades_per_week": 3.26,
+          "net_pnl_usd": -82.0597,
+          "mean_trade_usd": -0.24206,
+          "median_trade_usd": -0.25857,
+          "win_rate": 0.1711,
+          "profit_factor": 0.2028,
+          "max_drawdown_usd": -81.9889,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 43.8822,
+            "return_pct": -56.1178,
+            "maximum_drawdown_usd": -56.1378
+          },
+          "worst_fixed_notional_trade_usd": -1.0574,
+          "net_without_five_best_usd": -87.2815,
+          "year_pnl_usd": {
+            "2024": -39.4824,
+            "2025": -42.5774
+          },
+          "direction_pnl_usd": {
+            "bearish": -60.7218,
+            "bullish": -21.3379
+          },
+          "symbol_pnl_usd": {
+            "SH": -60.7218,
+            "SPY": -21.3379
+          },
+          "reason_counts": {
+            "stop": 261,
+            "time": 78
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 29.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "twenty_five_bps_each_fill": {
+          "trades": 339,
+          "trades_per_week": 3.26,
+          "net_pnl_usd": -165.8013,
+          "mean_trade_usd": -0.48909,
+          "median_trade_usd": -0.56344,
+          "win_rate": 0.0796,
+          "profit_factor": 0.057,
+          "max_drawdown_usd": -165.2268,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 18.9406,
+            "return_pct": -81.0594,
+            "maximum_drawdown_usd": -81.0594
+          },
+          "worst_fixed_notional_trade_usd": -1.1563,
+          "net_without_five_best_usd": -170.5117,
+          "year_pnl_usd": {
+            "2024": -78.3161,
+            "2025": -87.4852
+          },
+          "direction_pnl_usd": {
+            "bearish": -76.6532,
+            "bullish": -89.1481
+          },
+          "symbol_pnl_usd": {
+            "SH": -76.6532,
+            "SPY": -89.1481
+          },
+          "reason_counts": {
+            "stop": 261,
+            "time": 78
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 29.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        },
+        "zero_slippage": {
+          "trades": 339,
+          "trades_per_week": 3.26,
+          "net_pnl_usd": 3.2924,
+          "mean_trade_usd": 0.00971,
+          "median_trade_usd": -0.06501,
+          "win_rate": 0.2507,
+          "profit_factor": 1.0986,
+          "max_drawdown_usd": -3.8827,
+          "cash_account": {
+            "starting_equity_usd": 100.0,
+            "ending_equity_usd": 103.2649,
+            "return_pct": 3.2649,
+            "maximum_drawdown_usd": -3.8779
+          },
+          "worst_fixed_notional_trade_usd": -0.6608,
+          "net_without_five_best_usd": -3.9479,
+          "year_pnl_usd": {
+            "2024": 1.4919,
+            "2025": 1.8006
+          },
+          "direction_pnl_usd": {
+            "bearish": 3.1631,
+            "bullish": 0.1293
+          },
+          "symbol_pnl_usd": {
+            "SH": 3.1631,
+            "SPY": 0.1293
+          },
+          "reason_counts": {
+            "stop": 261,
+            "time": 78
+          },
+          "entry_delay_minutes": {
+            "median": 0.0,
+            "p95": 1.0,
+            "maximum": 5.0
+          },
+          "exit_delay_minutes": {
+            "median": 1.0,
+            "p95": 4.0,
+            "maximum": 29.0
+          },
+          "notional_usd": {
+            "median": 100.0,
+            "minimum": 100.0
+          }
+        }
+      }
+    }
+  }
+}

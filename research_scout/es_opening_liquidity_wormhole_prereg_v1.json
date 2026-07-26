@@ -1,0 +1,80 @@
+{
+  "name": "ES Opening Liquidity Wormhole v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "ES continuous front-month signal with one MES execution unit",
+  "source": "Databento GLBX.MDP3 one-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "hypothesis": "The opening minute that produces the greatest directional displacement per traded contract reveals the auction's local path of least resistance. Its direction maps a liquidity void rather than a volume-supported move, and that low-resistance direction should persist through the cash session.",
+  "signal": {
+    "opening_auction": "09:30 through 09:59 ET",
+    "minute_displacement": "one-minute close minus one-minute open",
+    "minute_efficiency": "absolute minute displacement divided by reported minute volume",
+    "selection": "minute with the greatest efficiency; choose the earliest minute on an exact tie",
+    "long_signal": "selected minute displacement > 0",
+    "short_signal": "selected minute displacement < 0",
+    "zero_rule": "no trade if the selected minute displacement equals zero",
+    "interpretation": "trade in the direction that required the least volume per unit of realized directional movement"
+  },
+  "execution": {
+    "entry": "10:00 open plus one adverse ES tick",
+    "long_stop_trigger": "opening-auction low",
+    "short_stop_trigger": "opening-auction high",
+    "stop_fill": "one adverse ES tick beyond the applicable opening extreme",
+    "entry_validity": "skip if the frozen stop fill is not adverse to the simulated entry",
+    "same_bar_rule": "if the 10:00 entry bar touches the stop trigger, assume the stop fills",
+    "gap_through_rule": "if a stop bar opens beyond the trigger, fill at the worse bar open plus one adverse tick; otherwise fill at the frozen stop price",
+    "survivor_exit": "15:30 open plus one adverse ES tick",
+    "position_limit": "one MES and at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "positive_each_year": true,
+    "both_directions_positive": true,
+    "aggregate_profit_factor_greater_than_one": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 749,
+    "trades_per_week": 4.801,
+    "net_pnl_usd": -2341.26,
+    "mean_trade_usd": -3.126,
+    "profit_factor": 0.918,
+    "win_rate": 0.287,
+    "max_daily_drawdown_usd": -3831.88,
+    "year_pnl_usd": {
+      "2021": -979.99,
+      "2022": -288.75,
+      "2023": -1072.52
+    },
+    "side_pnl_usd": {
+      "long": -408.19,
+      "short": -1933.07
+    },
+    "skipped_invalid_stop_geometry": 0
+  },
+  "development_gate_decision": {
+    "minimum_frequency": "pass",
+    "positive_each_year": "fail",
+    "both_directions_positive": "fail",
+    "aggregate_profit_factor": "fail",
+    "overall": "reject"
+  },
+  "lesson": "The most displacement-efficient opening minute did not reveal a persistent liquidity void. Low-volume movement was more consistent with temporary impact or noise, and both directions lost. Reversing the selected direction or changing the displacement definition is prohibited.",
+  "holdout_policy": "2024-2025 was not evaluated because the unchanged rule failed its development gates.",
+  "prohibited_posthoc_changes": [
+    "trading against rather than with the selected minute",
+    "using high-low range, close-to-close change, or typical-price change instead of the frozen body displacement",
+    "using multiple selected minutes or an efficiency threshold",
+    "changing the opening window",
+    "long-only or short-only filtering",
+    "weekday, volatility, volume, or regime filters",
+    "changing the stop or exit after observing results"
+  ]
+}

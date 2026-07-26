@@ -1,0 +1,80 @@
+{
+  "specification_id": "UPRO-SPXU-Density-Invariant-Synchronization-v6",
+  "saved_at": "2026-07-26",
+  "status": "prospectively_preregistered_before_acquiring_or_inspecting_2026_outcomes",
+  "objective": "Test one density-invariant participation-transition hypothesis on previously uninspected 2026 data, without using 2021-2025 to tune or select parameters.",
+  "research_boundary": {
+    "hypothesis_formation_only": "2021-2025",
+    "prospective_test": "2026-01-02 through 2026-07-24",
+    "rule": "The 2026 result will be calculated once and will not be repaired, inverted, filtered, or used to redefine success."
+  },
+  "required_data": {
+    "signal": "Databento ARCX.PILLAR UPRO/SPXU ohlcv-1m",
+    "execution": "Databento ARCX.PILLAR UPRO/SPXU bbo-1m",
+    "risk_and_benchmark": "Databento ARCX.PILLAR SPY ohlcv-1m",
+    "timezone": "America/New_York"
+  },
+  "feature_construction": {
+    "window": "09:30-10:59 inclusive, 90 clock minutes",
+    "blocks": [
+      "09:30-09:44",
+      "09:45-09:59",
+      "10:00-10:14",
+      "10:15-10:29",
+      "10:30-10:44",
+      "10:45-10:59"
+    ],
+    "active_mask": "For each ETF and minute, one when an ARCA OHLCV bar exists and zero otherwise. Missing bars mean no observed ARCA trade and are not price-filled.",
+    "block_synchronization": "Jaccard similarity: jointly active minutes divided by minutes active in either ETF. A block with zero union is invalid.",
+    "synchronization_shock": "Median Jaccard similarity of the final three blocks minus the median of the first three blocks.",
+    "block_upro_share": "UPRO active-minute count divided by the sum of UPRO and SPXU active-minute counts in that block.",
+    "directional_acceleration": "Median UPRO share of the final three blocks minus the median of the first three blocks."
+  },
+  "signal": {
+    "eligibility": "Synchronization shock must be strictly positive and every block must have a nonzero activity union and nonzero combined active counts.",
+    "direction": "Buy UPRO when directional acceleration > 0; buy SPXU when directional acceleration < 0; skip exact zero.",
+    "economic_claim": "An increase in cross-vehicle participation synchronization is a phase change. The inverse exposure gaining relative event share during that phase change owns the fresher inventory transfer. Ratios within the same morning make the state less dependent on the market's absolute activity density."
+  },
+  "execution": {
+    "decision_time": "11:00",
+    "entry_time": "11:01",
+    "entry_fill": "Observed ask",
+    "exit_time": "15:30",
+    "exit_fill": "Observed bid",
+    "starting_cash_usd": 100.0,
+    "gross_notional_usd": 100.0,
+    "position": "Long fractional UPRO for bullish or long fractional SPXU for bearish",
+    "catastrophe_stop": "A 3.333333% adverse SPY move from the 11:01 open, evaluated on completed one-minute bars and filled at the following ETF bid",
+    "maximum_trades_per_day": 1,
+    "overnight": false
+  },
+  "prospective_acceptance_criteria": {
+    "minimum_trades_per_week": 2.0,
+    "trades_per_week_denominator": "Eligible nondegraded SPY RTH sessions divided by five",
+    "observed_bbo_net_pnl_positive": true,
+    "profit_factor_at_least": 1.1,
+    "bullish_and_bearish_pnl_positive": true,
+    "first_and_second_chronological_halves_positive": true,
+    "positive_after_one_extra_cent_per_share_at_entry_and_exit": true,
+    "positive_after_five_additional_minutes_entry_delay": true,
+    "positive_after_removing_five_best_trades": true,
+    "ending_cash_above_same_period_spy_price_only": true,
+    "five_session_block_bootstrap_probability_total_not_positive_below": 0.25
+  },
+  "diagnostics_not_allowed_to_change_rule": [
+    "Midpoint execution",
+    "Two extra cents per share at both fills",
+    "Monthly P&L",
+    "Score magnitude",
+    "Individual dates",
+    "ARCA quote spread distribution"
+  ],
+  "prohibited_actions": [
+    "Inspect 2026 outcomes before freezing this file.",
+    "Change six blocks, medians, Jaccard definition, sign, entry, exit, or stop after acquisition.",
+    "Add thresholds, months, weekdays, directions, volatility regimes, or spread filters after results.",
+    "Invert a failure.",
+    "Test several variants on 2026 and select the best.",
+    "Describe 2026 as a large or definitive sample."
+  ]
+}

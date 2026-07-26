@@ -1,0 +1,96 @@
+{
+  "specification_id": "UPRO-SPXU-Activity-Topology-v5",
+  "saved_at": "2026-07-26",
+  "status": "preregistered_before_first_outcome_calculation",
+  "objective": "Test whether the topology of UPRO/SPXU trade-versus-silence masks predicts the afternoon strongly enough to beat passive SPY with a $100 cash account.",
+  "lineage_warning": "This family follows the observed First Synchronization Pulse clue. No profitable block, year, direction, magnitude, or date is used as a filter.",
+  "data_semantics": {
+    "source": "Databento ARCX.PILLAR UPRO/SPXU ohlcv-1m",
+    "window": "09:30-10:59 inclusive, represented as exactly 90 clock positions",
+    "active_minute": "One when an ETF has an observed ARCA OHLCV bar at that minute",
+    "silent_minute": "Zero when no ARCA trade bar exists; no price or volume is filled",
+    "volume": "Observed bar volume at active minutes and zero at silent minutes",
+    "decision": "11:00",
+    "entry": "11:01 observed ask",
+    "exit": "15:30 observed bid"
+  },
+  "hypotheses": [
+    {
+      "id": "synchronization_transition_charge",
+      "claim": "A transition from asynchronous activity into joint activity is an inventory-coupling event. The ETF contributing more volume relative to its own normal active-minute volume charges the direction of that transition.",
+      "score": "At every minute t>0 where both ETFs are active and they were not both active at t-1, add UPRO volume divided by its morning median nonzero volume and subtract the equivalent SPXU quantity. Sum across the window.",
+      "direction": "Trade the score sign; skip zero or no transition."
+    },
+    {
+      "id": "silence_debt_release",
+      "claim": "Consecutive silent minutes accumulate unexpressed participation debt. The normalized volume of the first trade after silence measures which exposure releases more accumulated attention.",
+      "score": "For each ETF, sum silent-run length multiplied by the release bar's volume divided by that ETF's median nonzero morning volume. Score equals UPRO release energy minus SPXU release energy.",
+      "direction": "Trade the score sign; skip zero."
+    },
+    {
+      "id": "activity_lead_lag_braid",
+      "claim": "Persistent ordering of activity events across inverse funds can reveal which exposure initiates inventory transfer, even though no individual event is fast enough to trade.",
+      "score": "For lags one through five minutes, count UPRO-active minutes followed by SPXU activity at that lag and subtract SPXU-active minutes followed by UPRO activity. Sum all five differences.",
+      "direction": "UPRO-leading is bullish and SPXU-leading bearish; skip zero."
+    },
+    {
+      "id": "longest_run_recency",
+      "claim": "A long uninterrupted participation run ending late represents a more current and coherent inventory state than scattered activity.",
+      "score": "For each ETF, find its longest active run, breaking equal-length ties in favor of the later run. State equals run length divided by total active minutes, multiplied by the run end offset divided by 89. Score equals UPRO state minus SPXU state.",
+      "direction": "Trade the score sign; skip zero."
+    },
+    {
+      "id": "silence_entropy_order",
+      "claim": "The distribution of silence-run lengths measures whether liquidity withdrawal is organized or chaotic. Lower entropy indicates a more coherent participation schedule.",
+      "score": "For each ETF, calculate Shannon entropy of its positive silence-run lengths divided by log(number of silence runs) when more than one run exists; use zero for zero or one run. Score equals SPXU entropy minus UPRO entropy, so lower UPRO entropy is bullish.",
+      "direction": "Trade the score sign; skip zero."
+    },
+    {
+      "id": "binary_event_clock_braid",
+      "claim": "Volume size may obscure timing. The relative centroid of active minutes alone measures which exposure's participation events arrive later.",
+      "score": "For each ETF, calculate sum(minute offset times active mask) divided by total active minutes. Score equals UPRO event centroid minus SPXU event centroid.",
+      "direction": "Later UPRO activity is bullish and later SPXU activity bearish; skip zero."
+    },
+    {
+      "id": "onset_persistence_asymmetry",
+      "claim": "The important event is not a trade but whether activity persists after restarting. Longer post-silence runs reveal which side successfully converts attention into continuing participation.",
+      "score": "For every active-run onset after at least one silent minute, multiply that run's length by its start offset plus one. Average within each ETF. Score equals UPRO onset persistence minus SPXU onset persistence.",
+      "direction": "Trade the score sign; skip invalid values and zero."
+    }
+  ],
+  "execution": {
+    "starting_cash_usd": 100.0,
+    "maximum_gross_usd": 100.0,
+    "bullish": "Long fractional UPRO",
+    "bearish": "Long fractional SPXU",
+    "catastrophe_stop": "A 3.333333% adverse SPY move from the 11:01 open",
+    "latency_tests": "One-minute and five-minute additional entry delays",
+    "maximum_trades_per_candidate_per_day": 1,
+    "overnight": false
+  },
+  "development": "2021-2023",
+  "secondary_holdout": "2024-2025 only for complete development survivors",
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "positive_observed_bbo_pnl": true,
+    "profit_factor_above_one": true,
+    "2021_2022_2023_each_positive": true,
+    "bullish_and_bearish_each_positive": true,
+    "positive_after_one_extra_cent_per_share_at_both_fills": true,
+    "positive_after_five_minute_delay": true,
+    "positive_after_removing_five_best_trades": true,
+    "cash_account_beats_spy_price_only": true
+  },
+  "spy_hurdle": {
+    "development_known_value": "$100 became $126.6613 from 2021-01-04 through 2023-12-29",
+    "five_year_known_value": "$100 became $181.6787 from 2021-01-04 through 2025-12-31",
+    "dividends": "Excluded, making this an easier hurdle than SPY total return"
+  },
+  "prohibited_repairs": [
+    "Invert a failed score.",
+    "Select a profitable year, direction, run length, lag, clock block, or score magnitude.",
+    "Change the five-lag range, 90-minute window, entry, exit, or stop.",
+    "Combine candidates using observed profit.",
+    "Open 2024-2025 for a development failure."
+  ]
+}
