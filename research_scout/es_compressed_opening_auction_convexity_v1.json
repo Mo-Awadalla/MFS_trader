@@ -1,0 +1,169 @@
+{
+  "specification_id": "ES-Compressed-Opening-Auction-Convexity-v1",
+  "saved_at": "2026-07-25",
+  "status": "frozen_exploratory_candidate_not_live_ready",
+  "instrument": {
+    "signal": "ES.v.0 continuous front-month",
+    "execution_proxy": "one MES contract",
+    "dataset": "GLBX.MDP3",
+    "bar_schema": "ohlcv-1m",
+    "timezone": "America/New_York",
+    "data_start": "2021-01-01",
+    "data_end_exclusive": "2026-01-01"
+  },
+  "research_history": {
+    "discovered_after_multiple_related_hypotheses_were_evaluated": true,
+    "holdout_is_not_pristine_for_familywise_inference": true,
+    "rule_frozen_before_its_2024_2025_candidate_specific_evaluation": true,
+    "prohibited_posthoc_changes": [
+      "long-only or short-only filtering",
+      "entry-time filtering",
+      "changing the compression quantile based on reported results",
+      "changing the lookback, acceptance duration, stop, or exit based on reported results",
+      "adding a second trade after a stopped breakout"
+    ]
+  },
+  "eligibility": {
+    "required_rth_bars": 390,
+    "rth_window": "09:30:00 through 15:59:59 ET",
+    "opening_window": "09:30:00 through 09:59:59 ET",
+    "opening_range": "maximum high minus minimum low over the opening window",
+    "compression_reference": "median opening range of the previous 60 eligible sessions, shifted one session",
+    "compression_rule": "current opening range is strictly below the shifted reference median",
+    "warmup_sessions": 60
+  },
+  "entry": {
+    "scan_start": "10:00:00 ET",
+    "last_acceptance_window": "15:20:00 through 15:24:59 ET",
+    "acceptance_windows": "non-overlapping five-minute windows aligned from 10:00 ET",
+    "long_acceptance": "the completed five-minute close is strictly above the opening-range high",
+    "short_acceptance": "the completed five-minute close is strictly below the opening-range low",
+    "selection": "first accepted breakout only",
+    "fill": "following one-minute open plus one adverse tick for longs or minus one adverse tick for shorts",
+    "maximum_trades_per_day": 1,
+    "reentry": false
+  },
+  "exit": {
+    "initial_and_only_stop": "opening-range midpoint",
+    "stop_fill": "midpoint plus one adverse tick; a gap beyond the stop uses the worse bar open plus one adverse tick",
+    "same_bar_policy": "if the entry bar can touch the midpoint stop, assume the stop fills",
+    "profit_target": null,
+    "survivor_exit": "15:30 one-minute open plus one adverse tick",
+    "overnight_positions": false
+  },
+  "costs": {
+    "mes_multiplier_usd_per_point": 5.0,
+    "entry_slippage_ticks": 1,
+    "exit_or_stop_slippage_ticks": 1,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24,
+    "additional_round_trip_cost_sensitivity_usd": [
+      1.25,
+      2.5
+    ]
+  },
+  "partitions": {
+    "development": {
+      "start": "2021-01-01",
+      "end_exclusive": "2024-01-01"
+    },
+    "candidate_specific_holdout": {
+      "start": "2024-01-01",
+      "end_exclusive": "2026-01-01"
+    }
+  },
+  "frozen_results": {
+    "development": {
+      "trades": 354,
+      "trades_per_week": 2.27,
+      "mean_net_usd": 5.98,
+      "total_net_usd": 2117.91,
+      "win_rate": 0.356,
+      "profit_factor": 1.185,
+      "max_drawdown_usd": -866.11,
+      "month_clustered_95pct_ci_mean_net_usd": [
+        -2.08,
+        15.07
+      ],
+      "month_cluster_bootstrap_probability_mean_nonpositive": 0.075
+    },
+    "candidate_specific_holdout": {
+      "trades": 243,
+      "trades_per_week": 2.34,
+      "mean_net_usd": 2.97,
+      "total_net_usd": 721.18,
+      "win_rate": 0.346,
+      "profit_factor": 1.09,
+      "max_drawdown_usd": -979.63,
+      "month_clustered_95pct_ci_mean_net_usd": [
+        -6.44,
+        12.38
+      ],
+      "month_cluster_bootstrap_probability_mean_nonpositive": 0.257
+    },
+    "full_sample": {
+      "trades": 597,
+      "trades_per_week": 2.3,
+      "mean_net_usd": 4.76,
+      "total_net_usd": 2839.09,
+      "win_rate": 0.352,
+      "profit_factor": 1.146,
+      "max_drawdown_usd": -1078.99
+    }
+  },
+  "tail_risk": {
+    "maximum_observed_consecutive_losses": 10,
+    "full_sample_average_winner_usd": 105.96,
+    "full_sample_average_loser_usd": -50.16,
+    "holdout_total_after_removing_five_best_trades_usd": -923.87,
+    "holdout_total_after_removing_ten_best_trades_usd": -2025.17,
+    "holdout_month_cluster_bootstrap_5pct_max_drawdown_usd": -2088.67
+  },
+  "robustness_summary": {
+    "positive_in_both_partitions_for_lookbacks": [
+      40,
+      60,
+      80,
+      120
+    ],
+    "positive_in_both_partitions_for_acceptance_minutes": [
+      3,
+      5,
+      10
+    ],
+    "positive_in_both_partitions_for_exit_times": [
+      "15:00",
+      "15:30",
+      "15:55"
+    ],
+    "positive_in_both_partitions_for_stop_fractions_from_opposite_edge": [
+      0.33,
+      0.5,
+      0.67
+    ],
+    "failed_neighbor": "Using the trailing 40th percentile rather than the median produced negative holdout expectancy.",
+    "two_extra_ticks_holdout": {
+      "mean_net_usd": 0.47,
+      "profit_factor": 1.014
+    }
+  },
+  "verdict": {
+    "classification": "mechanically credible, locally robust, positively skewed, statistically unconfirmed",
+    "live_recommendation": false,
+    "paper_research_recommendation": true,
+    "blocking_reasons": [
+      "month-clustered confidence intervals include zero",
+      "holdout profit factor is only 1.09",
+      "holdout profit depends on a small number of trend-day winners",
+      "two additional ticks nearly eliminate holdout expectancy",
+      "MES executable quotes are unavailable across the full simulated holding window",
+      "multiple related hypotheses were evaluated before discovery"
+    ],
+    "next_evidence_gate": [
+      "freeze this exact specification",
+      "validate with broader MES executable quote data",
+      "collect approximately 100 untouched 2026-forward or paper trades",
+      "do not change parameters based on the saved results"
+    ]
+  }
+}

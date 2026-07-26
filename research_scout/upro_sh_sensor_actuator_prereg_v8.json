@@ -1,0 +1,61 @@
+{
+  "specification_id": "UPRO-SH-Sensor-Actuator-Separation-v8",
+  "saved_at": "2026-07-26",
+  "status": "frozen_before_pricing_acquiring_or_inspecting_SH_BBO_outcomes",
+  "objective": "Test whether retaining UPRO/SPXU/SPY as the sensing system while replacing costly SPXU bearish execution with SH improves the unchanged expanding-memory algorithm enough to beat passive SPY.",
+  "evidence_warning": "The substitution is motivated by repeated historical SPXU execution failures. This is a frozen mechanism test, not independent discovery. A passing result would require future paper validation.",
+  "sensor_layer": {
+    "unchanged_specification": "research_scout/upro_spxu_expanding_analog_memory_prereg_v7.json",
+    "features": "The exact same 12 SPY/UPRO/SPXU morning features",
+    "standardization": "Expanding prior-session median and interquartile range only",
+    "neighbors": "Ceiling of square root of prior valid sessions, uniform weight",
+    "minimum_memory": 125,
+    "trade_gate": "Higher forecast must be positive and more than half of its neighbors profitable"
+  },
+  "actuator_layer": {
+    "bullish": "Long $100 fractional UPRO at observed 11:01 ask",
+    "bearish": "Long $100 fractional SH at observed 11:01 ask",
+    "time_exit": "Observed 15:30 bid",
+    "upro_catastrophe_stop": "SPY 3.333333% below its 11:01 open, approximating a 10% adverse UPRO move",
+    "sh_catastrophe_stop": "SPY 10% above its 11:01 open, approximating a 10% adverse SH move",
+    "maximum_positions": 1,
+    "maximum_trades_per_day": 1,
+    "overnight": false,
+    "account_margin_or_shorting": false
+  },
+  "new_data": {
+    "primary": "Databento ARCX.PILLAR SH bbo-1m from 2021-01-01 through 2026-07-24",
+    "audit": "Databento EQUS.MINI SH bbo-1m from 2023-03-28 through 2026-07-24",
+    "SH_signal_data": "None; SH is an execution actuator only",
+    "existing_SH_bars": "Not used for signals or fills"
+  },
+  "potential_outcomes": {
+    "UPRO": "Unchanged executable UPRO outcome from v7",
+    "SH": "Executable SH ask-to-bid return with the actuator-specific catastrophe stop",
+    "memory_update": "Both potential outcomes are revealed to the online algorithm only after the session close"
+  },
+  "evaluation": {
+    "primary_period": "First model-eligible session after 125 valid memories through 2026-07-24",
+    "primary_feed": "ARCX.PILLAR for continuity over the full period",
+    "consolidated_audit": "Rerun the frozen choices and SH outcome memory using EQUS.MINI only where complete overlap permits; report separately and do not select the favorable feed"
+  },
+  "acceptance_criteria": {
+    "minimum_overall_trades_per_week": 2.0,
+    "profit_factor_at_least": 1.15,
+    "each_of_2022_2023_2024_2025_and_2026_ytd_positive": true,
+    "UPRO_and_SH_trade_pnl_positive": true,
+    "positive_after_one_extra_cent_per_share_at_both_fills": true,
+    "positive_after_five_additional_entry_minutes": true,
+    "positive_after_removing_five_best_trades": true,
+    "ending_cash_above_same_period_spy_price_only": true,
+    "must_improve_on_v7_SPXU_actuator": "Ending cash above $125.2279 and profit factor above 1.0548"
+  },
+  "prohibited_repairs": [
+    "Change sensor features, neighbor logic, majority gate, or minimum memory.",
+    "Use SH prices or outcomes as sensor features.",
+    "Change $100 notional, entry, exit, or actuator-specific stops after results.",
+    "Select only UPRO, only SH, a year, month, score threshold, or favorable feed.",
+    "Tune a confidence or expected-return buffer on observed outcomes.",
+    "Claim independence from the preceding research lineage."
+  ]
+}

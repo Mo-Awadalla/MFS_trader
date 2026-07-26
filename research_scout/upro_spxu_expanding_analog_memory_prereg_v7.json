@@ -1,0 +1,78 @@
+{
+  "specification_id": "UPRO-SPXU-Expanding-Analog-Memory-v7",
+  "saved_at": "2026-07-26",
+  "status": "research_rule_frozen_before_first_calculation",
+  "objective": "Test whether an online nearest-analog memory of joint SPY/UPRO/SPXU morning states can select the better executable afternoon ETF without future leakage, fixed regime thresholds, or latency dependence.",
+  "evidence_warning": "The feature family was designed after extensive exposure to 2021-2026 research. This is a leak-free walk-forward algorithmic test, but not a pristine independent discovery. A passing result would still require future paper validation.",
+  "data": {
+    "period": "2021-01-04 through 2026-07-24",
+    "spy": "ARCX.PILLAR SPY ohlcv-1m",
+    "pair_bars": "ARCX.PILLAR UPRO/SPXU ohlcv-1m",
+    "pair_quotes": "ARCX.PILLAR UPRO/SPXU bbo-1m",
+    "excluded": "Dates officially marked degraded by Databento"
+  },
+  "morning_state": {
+    "feature_cutoff": "11:00",
+    "bar_window": "09:30-10:59",
+    "bbo_window": "09:31-11:00",
+    "features": [
+      "SPY log return from 09:30 open to 10:59 close",
+      "SPY path efficiency: net log return divided by sum of absolute one-minute log returns",
+      "SPY log high-low range over the window",
+      "SPY realized variance: sum of squared one-minute log returns",
+      "SPY log return from 10:30 open to 10:59 close",
+      "SPY volume-time centroid divided by 89",
+      "UPRO residual minus SPXU residual after subtracting their theoretical plus/minus three-times SPY move",
+      "UPRO plus SPXU morning midpoint log returns",
+      "Median UPRO proportional BBO spread",
+      "Median SPXU proportional BBO spread",
+      "Median UPRO quote imbalance minus median SPXU quote imbalance",
+      "UPRO late-volume share minus SPXU late-volume share, where late means 10:15-10:59"
+    ],
+    "missing_data": "Require complete SPY bars and complete valid pair BBO states. ETF trade-bar absences contribute zero volume but no price is filled."
+  },
+  "potential_outcomes": {
+    "upro": "Long $100 fractional UPRO at the 11:01 ask, exit at 15:30 bid or after a completed SPY bar crosses 3.333333% below the 11:01 SPY open.",
+    "spxu": "Long $100 fractional SPXU at the 11:01 ask, exit at 15:30 bid or after a completed SPY bar crosses 3.333333% above the 11:01 SPY open.",
+    "memory_update": "Both potential outcomes become available to the algorithm only after that session has ended."
+  },
+  "online_algorithm": {
+    "minimum_prior_valid_sessions": 125,
+    "standardization": "For each current day, subtract the median and divide by interquartile range calculated only from prior valid sessions. Use scale one when prior IQR is zero.",
+    "distance": "Euclidean distance across the 12 robust-standardized features divided by square root of 12.",
+    "neighbor_count": "Ceiling of the square root of the number of prior valid sessions.",
+    "neighbor_weighting": "Uniform; no outcome or distance weighting.",
+    "upro_forecast": "Mean historical executable UPRO return among nearest neighbors.",
+    "spxu_forecast": "Mean historical executable SPXU return among nearest neighbors.",
+    "choice": "Choose the ETF with the higher forecast.",
+    "trade_gate": "The chosen mean forecast must be strictly positive and more than half of its neighbor outcomes must be strictly positive.",
+    "ties": "Skip exact forecast or vote ties.",
+    "update_order": "Make the current decision first, then add the current morning and both realized outcomes to memory after the close."
+  },
+  "live_execution_model": {
+    "entry": "Observed ask at 11:01",
+    "exit": "Observed bid at stop or 15:30",
+    "starting_cash_usd": 100.0,
+    "maximum_gross_usd": 100.0,
+    "maximum_trades_per_day": 1,
+    "overnight": false,
+    "latency": "Ninety-minute state; stress with five additional entry minutes"
+  },
+  "acceptance_criteria": {
+    "minimum_overall_trades_per_week": 2.0,
+    "profit_factor_at_least": 1.15,
+    "each_of_2022_2023_2024_2025_and_2026_ytd_positive": true,
+    "UPRO_and_SPXU_trade_pnl_positive": true,
+    "positive_after_one_extra_cent_per_share_at_both_fills": true,
+    "positive_after_five_additional_entry_minutes": true,
+    "positive_after_removing_five_best_trades": true,
+    "ending_cash_above_same_period_spy_price_only": true
+  },
+  "prohibited_repairs": [
+    "Change features, minimum memory, neighbor count, majority rule, distance, entry, exit, or stop after results.",
+    "Select only one instrument, year, month, volatility state, or score magnitude.",
+    "Tune k, a confidence threshold, or a cost buffer on observed P&L.",
+    "Use current or future outcomes in standardization or neighbor selection.",
+    "Present a passing backtest as independent validation."
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "name": "ES Volume-Time Geodesic Bow v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "ES continuous front-month signal with one MES execution unit",
+  "source": "Databento GLBX.MDP3 one-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "hypothesis": "An auction can be parameterized by cumulative volume rather than clock time. Relative to the straight minimum-action path connecting the opening price and final opening-auction price, the signed volume-weighted bow of actual prices reveals which side absorbed inventory before the endpoint was established. Price should subsequently move away from the bowed side.",
+  "construction": {
+    "opening_auction": "09:30 through 09:59 ET",
+    "start_price": "09:30 one-minute open",
+    "end_price": "09:59 one-minute close",
+    "typical_price": "(high + low + close) / 3",
+    "volume_coordinate_for_each_minute": "cumulative volume before the minute plus one-half of that minute's volume, divided by total opening volume",
+    "geodesic_price": "start price plus volume coordinate times (end price minus start price)",
+    "bow_score": "sum(volume * (typical price - geodesic price)) divided by total opening volume",
+    "long_signal": "bow score < 0",
+    "short_signal": "bow score > 0",
+    "zero_rule": "no trade when bow score equals zero",
+    "interpretation": "a negative bow means inventory accumulated below the endpoint-consistent path before price recovered; a positive bow is the symmetric case"
+  },
+  "execution": {
+    "entry": "10:00 open plus one adverse ES tick",
+    "long_stop_trigger": "opening-auction low",
+    "short_stop_trigger": "opening-auction high",
+    "stop_fill": "one adverse ES tick beyond the applicable opening extreme",
+    "entry_validity": "skip if the frozen stop fill is not adverse to the simulated entry",
+    "same_bar_rule": "if the 10:00 entry bar touches the stop trigger, assume the stop fills",
+    "gap_through_rule": "if a stop bar opens beyond the trigger, fill at the worse bar open plus one adverse tick; otherwise fill at the frozen stop price",
+    "survivor_exit": "15:30 open plus one adverse ES tick",
+    "position_limit": "one MES and at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "positive_each_year": true,
+    "both_directions_positive": true,
+    "aggregate_profit_factor_greater_than_one": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 749,
+    "trades_per_week": 4.801,
+    "net_pnl_usd": 1134.99,
+    "mean_trade_usd": 1.515,
+    "profit_factor": 1.041,
+    "win_rate": 0.279,
+    "max_daily_drawdown_usd": -2991.55,
+    "year_pnl_usd": {
+      "2021": -454.99,
+      "2022": 715.00,
+      "2023": 874.98
+    },
+    "side_pnl_usd": {
+      "long": -231.19,
+      "short": 1366.18
+    },
+    "skipped_invalid_stop_geometry": 0
+  },
+  "development_gate_decision": {
+    "minimum_frequency": "pass",
+    "positive_each_year": "fail",
+    "both_directions_positive": "fail",
+    "aggregate_profit_factor": "pass",
+    "overall": "reject"
+  },
+  "lesson": "The signed volume-time bow contained weak aggregate information, especially for shorts after 2021, but it failed 2021 and the long side. Neither the side asymmetry nor a direction reversal can be selected. The original geometric construction is rejected unchanged.",
+  "holdout_policy": "2024-2025 was not evaluated because the unchanged rule failed its development gates.",
+  "prohibited_posthoc_changes": [
+    "negating the bow direction after observing results",
+    "changing the cumulative-volume midpoint coordinate",
+    "using closes, midpoints, or another price instead of typical price",
+    "adding a bow-magnitude or endpoint-move threshold",
+    "changing the opening window",
+    "long-only or short-only filtering",
+    "weekday, volatility, volume, or regime filters",
+    "changing the stop or exit after observing results"
+  ]
+}

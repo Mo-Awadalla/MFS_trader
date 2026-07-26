@@ -1,0 +1,83 @@
+{
+  "name": "ES Auction Hysteresis Escape v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "ES continuous front-month signal with one MES execution unit",
+  "source": "Databento GLBX.MDP3 one-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "hypothesis": "Cumulative volume-weighted value is auction memory, not necessarily a magnet. When price crosses the 09:30 cash open while the evolving session value center remains stranded on the opposite side, price and accepted value occupy incompatible states. Trading away from the stale value center should capture liquidation by inventory still benchmarked to the old state.",
+  "anchors": {
+    "cash_open": "09:30 one-minute open",
+    "typical_price": "(high + low + close) / 3",
+    "dynamic_session_center": "cumulative volume-weighted mean of one-minute typical price from 09:30 through each completed minute"
+  },
+  "event_detection": {
+    "scan_window": "completed one-minute bars from 10:00 through 14:59 ET",
+    "long_event": "prior one-minute close <= cash open, current close > cash open, and current dynamic session center < cash open",
+    "short_event": "prior one-minute close >= cash open, current close < cash open, and current dynamic session center > cash open",
+    "selection": "first qualifying event only",
+    "maximum_trades_per_day": 1,
+    "interpretation": "price escapes across the cash open while cumulative accepted value remains in the abandoned state"
+  },
+  "execution": {
+    "entry": "following one-minute open plus one adverse ES tick in the crossing direction",
+    "stop_trigger": "09:30 cash open",
+    "stop_fill": "cash open plus one adverse ES tick",
+    "entry_validity": "skip if the frozen stop fill is not adverse to the simulated entry",
+    "same_bar_rule": "if the entry bar touches the cash-open stop trigger, assume the stop fills",
+    "gap_through_rule": "if a stop bar opens beyond the trigger, fill at the worse bar open plus one adverse tick; otherwise fill at the frozen stop price",
+    "survivor_exit": "15:55 open plus one adverse ES tick",
+    "position_limit": "one MES",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "positive_each_year": true,
+    "both_directions_positive": true,
+    "aggregate_profit_factor_greater_than_one": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 490,
+    "trades_per_week": 3.141,
+    "net_pnl_usd": -1686.35,
+    "mean_trade_usd": -3.442,
+    "profit_factor": 0.689,
+    "win_rate": 0.051,
+    "max_daily_drawdown_usd": -2367.99,
+    "year_pnl_usd": {
+      "2021": -799.74,
+      "2022": -867.02,
+      "2023": -19.59
+    },
+    "side_pnl_usd": {
+      "long": -668.89,
+      "short": -1017.46
+    },
+    "stop_fraction": 0.949,
+    "skipped_invalid_stop_geometry": 0
+  },
+  "development_gate_decision": {
+    "minimum_frequency": "pass",
+    "positive_each_year": "fail",
+    "both_directions_positive": "fail",
+    "aggregate_profit_factor": "fail",
+    "overall": "reject"
+  },
+  "lesson": "Price crossing the cash open while cumulative value lagged on the other side did not create an escape state; nearly every event reclaimed the cash-open stop. This exact away-from-value hypothesis is rejected. A fade toward value is an obvious inverse discovered only after the result and is explicitly prohibited from historical testing.",
+  "holdout_policy": "2024-2025 was not evaluated because the unchanged rule failed its development gates.",
+  "prohibited_posthoc_changes": [
+    "fading toward the value center after observing the escape result",
+    "adding distance, duration, volume, or center-lag thresholds",
+    "changing the scan start or end",
+    "taking more than the first event",
+    "long-only or short-only filtering",
+    "weekday, volatility, or regime filters",
+    "changing the stop or exit after observing results"
+  ]
+}
