@@ -1,0 +1,82 @@
+{
+  "name": "ES Midday Inventory Reload v1",
+  "status": "holdout_positive_but_unstable_supplemental_only",
+  "instrument": "ES continuous front-month signal with one MES execution unit",
+  "source": "Databento GLBX.MDP3 1-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "role": "Supplemental afternoon engine; not frequency-compliant as a standalone strategy",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "holdout_period": "2024-01-01 through 2025-12-31",
+  "hypothesis": "A two-hour lunch move that opposes but does not erase the preceding two-hour morning move represents an incomplete inventory correction. The original morning side should tend to reload into the closing session.",
+  "rules": {
+    "morning_leg": "09:30 open to 11:29 close",
+    "lunch_leg": "11:29 close to 13:29 close",
+    "long_signal": "morning leg is positive, lunch leg is negative, and 13:29 close remains above the 09:30 open",
+    "short_signal": "morning leg is negative, lunch leg is positive, and 13:29 close remains below the 09:30 open",
+    "entry": "13:30 open plus one adverse ES tick",
+    "stop": "09:30 cash-session open plus one adverse ES tick",
+    "same_bar_rule": "a stop touched anywhere in a one-minute bar is filled at the frozen stop price",
+    "survivor_exit": "15:55 open plus one adverse ES tick",
+    "position_limit": "one MES and at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24,
+    "slippage_model": "one adverse tick at entry; one adverse tick at the time exit; stop itself is placed one adverse tick beyond the cash-session open"
+  },
+  "development_result": {
+    "trades": 219,
+    "trades_per_week": 1.4,
+    "mean_pnl_usd": 7.95,
+    "total_pnl_usd": 1740.94,
+    "win_rate": 0.379,
+    "profit_factor": 1.34,
+    "max_drawdown_usd": -604.41,
+    "year_pnl_usd": {
+      "2021": 265.69,
+      "2022": 1307.02,
+      "2023": 168.23
+    },
+    "side_pnl_usd": {
+      "short": 1153.68,
+      "long": 587.26
+    }
+  },
+  "failed_frequency_extension": {
+    "description": "Adding a 60-minute morning leg and 60-minute correction slot at 11:30 raised total frequency to 2.71 trades per week but lost $1329.22 in that added slot and made 2021 negative.",
+    "decision": "The early slot is rejected and prohibited from the frozen engine."
+  },
+  "holdout_result": {
+    "trades": 133,
+    "trades_per_week": 1.28,
+    "mean_pnl_usd": 3.67,
+    "total_pnl_usd": 487.58,
+    "win_rate": 0.316,
+    "profit_factor": 1.135,
+    "max_drawdown_usd": -788.05,
+    "year_pnl_usd": {
+      "2024": -740.55,
+      "2025": 1228.13
+    },
+    "side_pnl_usd": {
+      "short": 855.69,
+      "long": -368.11
+    }
+  },
+  "uncertainty": {
+    "holdout_month_cluster_bootstrap_average_monthly_pnl_95pct_ci_usd": [
+      -66.56,
+      129.91
+    ],
+    "holdout_bootstrap_probability_average_monthly_pnl_not_positive": 0.367
+  },
+  "verdict": "The pristine holdout is positive in aggregate and the engine has low daily correlation with the opening portfolio, but 2024 and longs fail while uncertainty remains high. Preserve only as a one-MES supplemental paper engine with no side or year filters. It is not a validated standalone strategy.",
+  "research_policy": {
+    "holdout_is_one_shot": true,
+    "no_post_holdout_parameter_changes": true,
+    "standalone_frequency_gate_passed": false,
+    "may_only_be_considered_as_part_of_a_frequency-compliant_multi-engine_system": true
+  }
+}

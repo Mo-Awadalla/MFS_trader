@@ -1,0 +1,237 @@
+{
+  "name": "ES Opening Dual-Engine Portfolio v1",
+  "status": "paper_only_failed_live_robustness_threshold",
+  "instrument": "MES execution using ES continuous front-month signals",
+  "source": "Databento GLBX.MDP3 1-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "purpose": "Combine two previously frozen opening-auction mechanisms without changing either component, targeting near-daily activity while preserving one-contract risk per engine.",
+  "components": [
+    {
+      "name": "Compressed Opening-Auction Convexity v1",
+      "specification_file": "research_scout/es_compressed_opening_auction_convexity_v1.json",
+      "position_size": "one MES"
+    },
+    {
+      "name": "Opening Auction Center Migration v1",
+      "specification_file": "research_scout/es_opening_auction_center_migration_v1.json",
+      "position_size": "one MES"
+    }
+  ],
+  "portfolio_mechanics": {
+    "signal_handling": "Run both frozen engines independently. Do not suppress a signal because the other engine is active.",
+    "maximum_gross_position": "two MES when both engines hold positions",
+    "opposite_signals": "Maintain separate virtual positions and net orders at the broker while preserving each engine's independent stop and exit accounting.",
+    "maximum_trades_per_session": 2,
+    "overnight_positions": false,
+    "component_modifications": "none"
+  },
+  "development_result_2021_2023": {
+    "trades": 887,
+    "trades_per_week": 5.69,
+    "active_days": 658,
+    "active_days_per_week": 4.22,
+    "net_pnl_usd": 4632.01,
+    "profit_factor": 1.191,
+    "daily_equity_max_drawdown_usd": -1656.0
+  },
+  "holdout_result_2024_2025": {
+    "trades": 591,
+    "trades_per_week": 5.68,
+    "active_days": 426,
+    "active_days_per_week": 4.1,
+    "net_pnl_usd": 1117.91,
+    "profit_factor": 1.065,
+    "daily_equity_max_drawdown_usd": -1584.47
+  },
+  "full_sample_result_2021_2025": {
+    "trades": 1478,
+    "trades_per_week": 5.68,
+    "active_days": 1084,
+    "active_days_per_week": 4.17,
+    "net_pnl_usd": 5749.92,
+    "profit_factor": 1.139,
+    "daily_equity_max_drawdown_usd": -1656.0,
+    "year_pnl_usd": {
+      "2021": 1046.94,
+      "2022": 2597.85,
+      "2023": 987.21,
+      "2024": 885.03,
+      "2025": 232.88
+    }
+  },
+  "overlap": {
+    "days_with_both_engines": 394,
+    "same_direction_days": 254,
+    "opposite_direction_days": 140,
+    "overlapping_trade_pnl_correlation": 0.607
+  },
+  "extra_cost_stress_per_trade": {
+    "holdout": {
+      "0.00": {
+        "net_pnl_usd": 1117.91,
+        "profit_factor": 1.065
+      },
+      "1.25": {
+        "net_pnl_usd": 379.16,
+        "profit_factor": 1.021
+      },
+      "2.50": {
+        "net_pnl_usd": -359.59,
+        "profit_factor": 0.98
+      },
+      "5.00": {
+        "net_pnl_usd": -1837.09,
+        "profit_factor": 0.905
+      }
+    }
+  },
+  "uncertainty": {
+    "holdout_remove_five_largest_winners_net_pnl_usd": -952.14,
+    "development_five_day_block_bootstrap_total_pnl_95pct_ci_usd": [
+      -948.0,
+      10479.32
+    ],
+    "holdout_five_day_block_bootstrap_total_pnl_95pct_ci_usd": [
+      -3370.61,
+      5798.59
+    ],
+    "holdout_bootstrap_probability_total_pnl_not_positive": 0.318
+  },
+  "further_tests": {
+    "reproducible_test_harness": "research_scout/test_es_opening_dual_engine_robustness.py",
+    "calendar_stability": {
+      "positive_half_years": 7,
+      "total_half_years": 10,
+      "positive_quarters": 14,
+      "total_quarters": 20,
+      "worst_quarter": {
+        "period": "2021Q4",
+        "pnl_usd": -547.77
+      },
+      "best_quarter": {
+        "period": "2022Q2",
+        "pnl_usd": 1777.5
+      }
+    },
+    "holdout_rolling_pnl": {
+      "3_month": {
+        "minimum_usd": -1181.32,
+        "median_usd": 94.11,
+        "fraction_positive": 0.597
+      },
+      "6_month": {
+        "minimum_usd": -960.88,
+        "median_usd": 156.6,
+        "fraction_positive": 0.571
+      },
+      "12_month": {
+        "minimum_usd": -497.3,
+        "median_usd": 374.53,
+        "fraction_positive": 0.861
+      }
+    },
+    "pure_fill_slippage_holdout": {
+      "frozen": {
+        "net_pnl_usd": 1117.91,
+        "profit_factor": 1.065
+      },
+      "additional_half_tick_each_fill": {
+        "net_pnl_usd": 379.16,
+        "profit_factor": 1.021
+      },
+      "additional_one_tick_each_fill": {
+        "net_pnl_usd": -359.59,
+        "profit_factor": 0.98
+      },
+      "additional_two_ticks_each_fill": {
+        "net_pnl_usd": -1837.09,
+        "profit_factor": 0.905
+      }
+    },
+    "delayed_entry_with_stale_signal_cancellation_holdout": {
+      "1_minute": {
+        "trades": 499,
+        "trades_per_week": 4.798,
+        "net_pnl_usd": 538.81,
+        "profit_factor": 1.031
+      },
+      "2_minutes": {
+        "trades": 478,
+        "trades_per_week": 4.596,
+        "net_pnl_usd": 262.64,
+        "profit_factor": 1.015
+      },
+      "5_minutes": {
+        "trades": 445,
+        "trades_per_week": 4.279,
+        "net_pnl_usd": 864.57,
+        "profit_factor": 1.054
+      },
+      "interpretation": "This is a stale-signal cancellation policy, not a clean latency test, because any signal whose frozen stop was touched before delayed entry was skipped."
+    },
+    "overlap_by_sample": {
+      "development": {
+        "same_direction": {
+          "days": 150,
+          "net_pnl_usd": 5396.36
+        },
+        "opposite_direction": {
+          "days": 79,
+          "net_pnl_usd": -1154.36
+        }
+      },
+      "holdout": {
+        "same_direction": {
+          "days": 104,
+          "net_pnl_usd": 2271.03
+        },
+        "opposite_direction": {
+          "days": 61,
+          "net_pnl_usd": -1697.79
+        }
+      },
+      "research_constraint": "The apparent agreement effect was discovered after examining holdout and must not be installed as a historical filter. It may only be preregistered for future untouched data."
+    },
+    "holdout_tail_diagnostics": {
+      "median_trade_usd": -23.39,
+      "largest_winner_usd": 443.76,
+      "largest_loser_usd": -157.08,
+      "net_without_top_five_winners_usd": -952.14,
+      "net_without_top_one_percent_winners_usd": -1313.4,
+      "longest_losing_streak": 19,
+      "positive_week_fraction": 0.448
+    },
+    "five_day_moving_block_bootstrap": {
+      "development": {
+        "total_pnl_95pct_ci_usd": [
+          -948.0,
+          10479.32
+        ],
+        "probability_total_not_positive": 0.055,
+        "median_max_drawdown_usd": -1887.85,
+        "five_percent_bad_tail_max_drawdown_usd": -3478.73
+      },
+      "holdout": {
+        "total_pnl_95pct_ci_usd": [
+          -3370.61,
+          5798.59
+        ],
+        "probability_total_not_positive": 0.318,
+        "median_max_drawdown_usd": -2061.63,
+        "five_percent_bad_tail_max_drawdown_usd": -4021.03
+      }
+    },
+    "volatility_regime_result": "The edge migrated from the high-volatility regime in development to the low and middle regimes in holdout; the high-volatility holdout bucket lost $619.60. Regime filtering is therefore unstable and rejected.",
+    "single_position_diagnostic_not_adopted": {
+      "center_priority_holdout": {
+        "trades_per_week": 4.096,
+        "net_pnl_usd": 1195.01,
+        "profit_factor": 1.103,
+        "max_drawdown_usd": -1468.82
+      },
+      "reason_not_adopted": "This alternative was evaluated after observing holdout and cannot be treated as validated."
+    }
+  },
+  "audit_correction": "Portfolio results were recomputed after separating the convexity engine's midpoint stop trigger from its one-adverse-tick stop fill and applying its frozen gap-through rule. Earlier portfolio totals using the stop-fill price as the trigger were optimistic and are superseded by this file.",
+  "verdict": "The portfolio satisfies the desired operating frequency and shows broad calendar profitability, but it fails a live-execution robustness threshold. Holdout expectancy is only $1.89 per trade, one additional tick at each fill makes it negative, top-tail removal destroys profitability, and block-bootstrap uncertainty is substantial. Keep as a paper-trading research system only. Do not optimize the overlap, regime, or one-position diagnostics on 2021-2025; preregister any such change and evaluate it only on new untouched data."
+}

@@ -1,0 +1,94 @@
+{
+  "name": "ES Incomplete Counter-Auction Relay v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "ES continuous front-month signal with one MES execution unit per slot",
+  "source": "Databento GLBX.MDP3 1-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "research_motivation": "The surviving candidate family is economically consistent with accepted inventory surviving a counter-move. The rejected value-ladder test shows that monotonic center movement alone is insufficient. This hypothesis therefore requires migration, a counter-auction, and failure of that counter-auction to erase the original migration.",
+  "shared_rule": {
+    "observation_segment_minutes": 90,
+    "subauction_length_minutes": 30,
+    "auction_center": "volume-weighted mean of one-minute typical price, where typical price is (high + low + close) / 3",
+    "long_signal": "second auction center > first auction center, while third center < second center but remains > first center",
+    "short_signal": "second auction center < first auction center, while third center > second center but remains < first center",
+    "interpretation": "The second auction migrates accepted value; the third auction counter-moves but cannot reclaim the first auction's center.",
+    "entry": "one-minute open immediately following the third auction plus one adverse ES tick, in the direction of the original migration",
+    "stop_trigger": "first auction center",
+    "stop_fill": "first auction center plus one adverse ES tick",
+    "same_bar_rule": "if the entry bar touches the stop trigger, assume the stop fills",
+    "survivor_exit": "90 minutes after entry, at that minute's open plus one adverse ES tick",
+    "position_size": "one MES per slot",
+    "overnight_positions": false
+  },
+  "slots": [
+    {
+      "name": "opening_to_morning",
+      "observation": "09:30 through 10:59",
+      "entry": "11:00",
+      "time_exit": "12:30"
+    },
+    {
+      "name": "midmorning_to_lunch",
+      "observation": "11:00 through 12:29",
+      "entry": "12:30",
+      "time_exit": "14:00"
+    },
+    {
+      "name": "lunch_to_afternoon",
+      "observation": "12:30 through 13:59",
+      "entry": "14:00",
+      "time_exit": "15:30"
+    }
+  ],
+  "portfolio_limits": {
+    "maximum_trades_per_session": 3,
+    "maximum_gross_position": "one MES because adjacent slots exit as the next slot enters",
+    "signals_are_evaluated_independently": true
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24
+  },
+  "development_gates": {
+    "aggregate_minimum_trades_per_week": 2.0,
+    "aggregate_positive_each_year": true,
+    "aggregate_both_directions_positive": true,
+    "no_single_slot_may_account_for_more_than_all_aggregate_profit_by_offsetting_negative_other_slots": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 322,
+    "trades_per_week": 2.064,
+    "active_days_per_week": 1.808,
+    "net_pnl_usd": -136.10,
+    "mean_trade_usd": -0.423,
+    "profit_factor": 0.977,
+    "max_daily_drawdown_usd": -889.87,
+    "year_pnl_usd": {
+      "2021": -255.08,
+      "2022": 794.70,
+      "2023": -675.72
+    },
+    "side_pnl_usd": {
+      "long": -791.79,
+      "short": 655.69
+    },
+    "slot_pnl_usd": {
+      "opening_to_morning": 486.66,
+      "midmorning_to_lunch": -443.94,
+      "lunch_to_afternoon": -178.83
+    },
+    "skipped_invalid_stop_geometry": 96
+  },
+  "gate_decision": {
+    "frequency": "pass narrowly",
+    "positive_each_year": "fail",
+    "both_directions_positive": "fail",
+    "slot_diversification": "fail",
+    "overall": "reject"
+  },
+  "lesson": "Incomplete correction is not scale-invariant. Repeating the midday inventory story in 30-minute auctions again isolated a 2022 opening-window effect. The original two-hour morning/two-hour lunch handoff may matter because of participant timing, not because any nested three-auction shape has predictive power. No side, year, or slot filter is permitted after observing these results.",
+  "holdout_policy": "2024-2025 was not evaluated because the frozen aggregate failed its development gates."
+}

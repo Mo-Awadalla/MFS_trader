@@ -1,0 +1,68 @@
+{
+  "name": "ES Opening Boundary Debt Repayment v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "ES continuous front-month signal with one MES execution unit",
+  "source": "Databento GLBX.MDP3 one-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "hypothesis": "A morning excursion beyond an opening-auction boundary creates no directional information by itself. If the morning participant group subsequently closes back inside the opening range, the rejected excursion is liquidity debt and price should repay it by traversing to the opening accepted-value center.",
+  "signal": {
+    "opening_auction": "09:30 through 09:59 ET",
+    "opening_range": "opening-auction high and low",
+    "opening_center": "volume-weighted mean of opening one-minute typical price (high + low + close) / 3",
+    "rejection_window": "10:00 through 11:29 ET",
+    "long_signal": "rejection-window low is strictly below opening low and 11:29 close is strictly inside the opening range but below opening center",
+    "short_signal": "rejection-window high is strictly above opening high and 11:29 close is strictly inside the opening range but above opening center",
+    "both_boundary_rule": "if both boundaries were exceeded, the 11:29 close's side of the opening center uniquely determines direction",
+    "zero_rule": "no trade if no qualifying rejected excursion exists or 11:29 closes exactly at the center"
+  },
+  "execution": {
+    "entry": "11:30 open plus one adverse ES tick",
+    "target": "one ES tick before the opening center in the trade direction: center minus one tick for longs and center plus one tick for shorts",
+    "stop": "one adverse ES tick beyond the rejection-window extreme",
+    "geometry_rule": "skip unless target is favorable to entry and stop is adverse to entry",
+    "same_bar_rule": "if target and stop are both touched in one minute, assume the stop fills first",
+    "gap_stop_rule": "if a stop bar opens beyond the stop, fill at the worse bar open plus one adverse tick",
+    "survivor_exit": "13:30 open plus one adverse ES tick",
+    "position_limit": "one MES and at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "positive_each_year": true,
+    "both_directions_positive": true,
+    "aggregate_profit_factor_greater_than_one": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 192,
+    "trades_per_week": 1.231,
+    "net_pnl_usd": -453.14,
+    "profit_factor": 0.854,
+    "win_rate": 0.630,
+    "max_daily_drawdown_usd": -960.96,
+    "year_pnl_usd": {"2021": 93.89, "2022": -85.83, "2023": -461.21},
+    "side_pnl_usd": {"long": 239.70, "short": -692.84}
+  },
+  "development_gate_decision": {
+    "minimum_frequency": "fail",
+    "positive_each_year": "fail",
+    "both_directions_positive": "fail",
+    "aggregate_profit_factor": "fail",
+    "overall": "reject"
+  },
+  "lesson": "The bounded repair engine achieved a 63 percent win rate, but its structural-stop losses overwhelmed targets and signal frequency was insufficient. The profitable long subset cannot be selected.",
+  "holdout_policy": "2024-2025 was not evaluated because the unchanged rule failed its development gates.",
+  "prohibited_posthoc_changes": [
+    "changing the opening, rejection, or exit windows",
+    "requiring excursion magnitude, duration, volume, or bar-count thresholds",
+    "changing the value-center, target, or stop definitions",
+    "removing the target to chase trend-like outliers",
+    "side, weekday, volatility, year, or regime filters"
+  ]
+}

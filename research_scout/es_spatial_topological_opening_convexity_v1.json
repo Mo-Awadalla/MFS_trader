@@ -1,0 +1,90 @@
+{
+  "name": "ES Spatial-or-Topological Opening Convexity v1",
+  "status": "rejected_secondary_holdout_failure",
+  "instrument": "ES continuous front-month signal with one MES execution unit",
+  "source": "Databento GLBX.MDP3 1-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "secondary_holdout_period": "2024-01-01 through 2025-12-31",
+  "hypothesis": "An opening auction can leave exploitable convexity through either spatial compression or topological simplicity. A range below its recent median indicates limited spatial exploration; a center-crossing count below its recent median indicates unusually one-sided inventory formation. In either state, direction should be supplied by a later accepted opening-range escape rather than forecast in advance.",
+  "rules": {
+    "opening_auction": "09:30 through 09:59 inclusive",
+    "spatial_state": "opening high-low range is strictly below the shifted trailing 60-session median opening range",
+    "auction_center": "volume-weighted mean of one-minute typical price, where typical price is (high + low + close) / 3",
+    "rotation_count": "number of sign changes in one-minute closes relative to the completed opening auction center; exact-center observations inherit the nearest prior sign, with initial missing signs backfilled",
+    "topological_state": "rotation count is strictly below the shifted trailing 60-session median rotation count",
+    "eligibility": "spatial_state OR topological_state",
+    "confirmation": "beginning 10:00, scan non-overlapping five-minute bars and use the first close strictly outside the opening high or low",
+    "entry": "next one-minute open plus one adverse ES tick",
+    "stop": "opening-range midpoint plus one adverse ES tick",
+    "same_bar_rule": "a stop touched anywhere in a one-minute bar is filled at the frozen stop price",
+    "survivor_exit": "15:30 open plus one adverse ES tick",
+    "position_limit": "one MES and at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24,
+    "slippage_model": "one adverse tick at entry; one adverse tick at the time exit; stop itself is placed one adverse tick beyond the midpoint"
+  },
+  "development_result": {
+    "trades": 551,
+    "trades_per_week": 3.53,
+    "mean_pnl_usd": 8.47,
+    "total_pnl_usd": 4666.13,
+    "win_rate": 0.388,
+    "profit_factor": 1.231,
+    "max_drawdown_usd": -1740.65,
+    "year_pnl_usd": {
+      "2021": 807.04,
+      "2022": 2570.72,
+      "2023": 1288.37
+    },
+    "side_pnl_usd": {
+      "short": 1906.98,
+      "long": 2759.16
+    },
+    "exclusive_state_pnl_usd": {
+      "spatial_only": 1048.87,
+      "topological_only": 2323.22,
+      "both": 1294.04
+    }
+  },
+  "validation_disclosure": {
+    "secondary_holdout_is_not_fully_pristine": true,
+    "reason": "The spatial-compression component had already been evaluated on 2024-2025 as a prior candidate. The low-rotation topology component and the exact OR-union were frozen before their first 2024-2025 evaluation.",
+    "prohibited_actions": [
+      "Do not tune the 60-session lookback after secondary holdout.",
+      "Do not replace strict less-than with inclusive less-than-or-equal after secondary holdout.",
+      "Do not select a side, year, state, or time subset after secondary holdout."
+    ]
+  },
+  "secondary_holdout_result": {
+    "trades": 392,
+    "trades_per_week": 3.77,
+    "mean_pnl_usd": -3.34,
+    "total_pnl_usd": -1308.58,
+    "win_rate": 0.355,
+    "profit_factor": 0.919,
+    "max_drawdown_usd": -2775.92,
+    "year_pnl_usd": {
+      "2024": -68.05,
+      "2025": -1240.53
+    },
+    "side_pnl_usd": {
+      "short": -879.46,
+      "long": -429.12
+    },
+    "exclusive_state_pnl_usd": {
+      "spatial_only": 277.3,
+      "topological_only": -2216.63,
+      "both": 630.75
+    }
+  },
+  "verdict": "Rejected. The newly introduced topological-only state appeared stable across all development years and both directions but reversed severely in secondary holdout. Do not remove that state after observing the result, and do not promote the union. This is evidence that opening path topology is an unstable classifier despite an appealing mechanism.",
+  "research_policy": {
+    "minimum_frequency_gate_trades_per_week": 2.0,
+    "new_untouched_data_required_before_live_use": true
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "specification_id": "UPRO-SPXU-Creative-Intraday-Hypotheses-v1",
+  "saved_at": "2026-07-26",
+  "status": "preregistered_before_first_calculation",
+  "objective": "Find a cash-only $100 intraday system that buys fractional UPRO for bullish exposure or fractional SPXU for bearish exposure, averages at least two completed trades per week, and survives observed BBO costs without parameter repair.",
+  "research_warning": "2024-2025 is only a secondary holdout because related ES and SPY hypotheses have already been researched over those years. It is not pristine familywise evidence.",
+  "data": {
+    "signal": "Databento ARCX.PILLAR SPY ohlcv-1m",
+    "execution_primary": "Databento ARCX.PILLAR UPRO/SPXU bbo-1m",
+    "execution_overlap_audit": "Databento EQUS.MINI UPRO/SPXU bbo-1m from 2023-03-28",
+    "leveraged_etf_bars": "Databento ARCX.PILLAR and EQUS.MINI UPRO/SPXU ohlcv-1m",
+    "timezone": "America/New_York",
+    "development": "2021-01-01 through 2023-12-31",
+    "secondary_holdout": "2024-01-01 through 2025-12-31"
+  },
+  "shared_execution": {
+    "starting_cash_usd": 100.0,
+    "maximum_gross_exposure_usd": 100.0,
+    "planned_loss_limit_usd": 10.0,
+    "bullish_instrument": "UPRO",
+    "bearish_instrument": "SPXU",
+    "position_type": "long fractional shares only",
+    "entry_fill": "Observed ask at the frozen entry minute.",
+    "exit_fill": "Observed bid at the frozen exit minute.",
+    "signal_latency": "A rule based on the completed 09:59 SPY bar enters no earlier than the 10:01 BBO; a rule based on a completed 10:14 bar enters no earlier than 10:16; a rule based on the completed 14:29 bar enters no earlier than 14:31.",
+    "latency_philosophy": "The system does not compete for a quote update or react to an individual trade. Every feature summarizes at least 15 completed minutes, every unscheduled decision waits a full minute before entry, and every candidate must be interpretable as inventory or liquidity state expected to persist for minutes to hours.",
+    "stop_timing": "SPY stops are evaluated on completed one-minute bars. Exit uses the following minute's ETF bid. If target and stop occur in one SPY minute, stop wins.",
+    "stale_signal_cancellation": "Cancel before entry if the structural SPY stop is touched during the mandatory reaction-delay minute or during any additional delay stress.",
+    "sizing": "Deploy min(current cash, $100, $10 divided by three times the absolute SPY entry-to-stop percentage).",
+    "maximum_positions": 1,
+    "maximum_trades_per_hypothesis_per_day": 1,
+    "overnight_positions": false,
+    "invalid_quotes": "Skip a nonpositive, crossed, or missing entry quote. For an invalid scheduled or triggered exit quote, use the first subsequent valid BBO no more than two minutes later; never forward-fill a price."
+  },
+  "definitions": {
+    "opening_window": "SPY 09:30-09:59 inclusive.",
+    "opening_center": "Volume-weighted mean of SPY one-minute typical price, with typical price equal to (high + low + close) / 3.",
+    "opening_migration_direction": "Bullish when both opening center and 09:59 close are above the 09:30 open; bearish when both are below.",
+    "bbo_midpoint": "(best bid + best ask) / 2.",
+    "proportional_spread": "(best ask - best bid) / midpoint.",
+    "previous_close": "Previous eligible session's 15:59 SPY close."
+  },
+  "hypotheses": [
+    {
+      "id": "daily_reset_recoil",
+      "economic_claim": "Leveraged ETF exposure is reset around the prior close. When the cash open gaps away from that reset anchor and the first half-hour counterauction cannot return through it, inherited positioning should reassert in the gap direction.",
+      "signal": "The 09:30 open-to-previous-close gap and 09:30-open-to-09:59 move must have opposite signs, while 09:59 remains strictly on the gap side of the previous close. Trade the gap direction.",
+      "entry_time": "10:01",
+      "stop": "Previous SPY close",
+      "target": null,
+      "time_exit": "15:30"
+    },
+    {
+      "id": "second_auction_ownership_lease",
+      "economic_claim": "An opening migration becomes durable when a separate 10:00-10:14 participant window establishes both accepted value and its terminal print beyond the opening center. This is a fifteen-minute ownership test rather than a race for the opening quote.",
+      "signal": "Require opening migration. Compute the volume-weighted SPY typical-price center from 10:00-10:14. Both that second-auction center and the 10:14 close must remain strictly beyond the opening center in the migration direction.",
+      "entry_time": "10:16",
+      "stop": "SPY opening center",
+      "target": null,
+      "time_exit": "15:30"
+    },
+    {
+      "id": "opening_liquidity_seesaw",
+      "economic_claim": "Accepted direction is more credible when quote liquidity improves relatively in the ETF that must be bought while deteriorating relatively in the opposite exposure ETF.",
+      "signal": "Require opening migration. For each ETF, divide its 10:00 proportional spread by its own median proportional spread over 09:31-10:00. Trade only when the chosen ETF's ratio is strictly below the opposite ETF's ratio.",
+      "entry_time": "10:01",
+      "stop": "SPY opening center",
+      "target": null,
+      "time_exit": "15:30"
+    },
+    {
+      "id": "dual_etf_path_hysteresis",
+      "economic_claim": "The sum of UPRO and SPXU opening midpoint returns is a direction-neutral measure of whether the leveraged pair jointly retained value rather than paying a churn tax. Positive pair retention should distinguish clean accepted migration from oscillation.",
+      "signal": "Require opening migration and require the UPRO 09:30-to-10:00 midpoint return plus the SPXU return over the same timestamps to be strictly positive. Trade the migration direction.",
+      "entry_time": "10:01",
+      "stop": "SPY opening center",
+      "target": null,
+      "time_exit": "15:30"
+    },
+    {
+      "id": "reset_corridor_escape",
+      "economic_claim": "The prior close is the daily leverage-reset anchor and the current opening center is the new cash-auction anchor. If the opening traverses both anchors and then closes outside their corridor, one participant group has carried price through both definitions of value.",
+      "signal": "Form the closed interval between the previous SPY close and opening center. Require the 09:30-09:59 range to touch both corridor boundaries. Go bullish if 09:59 closes strictly above the upper boundary; bearish if it closes strictly below the lower boundary.",
+      "entry_time": "10:01",
+      "stop": "Opposite reset-corridor boundary",
+      "target": null,
+      "time_exit": "15:30"
+    },
+    {
+      "id": "closing_rebalance_torque",
+      "economic_claim": "Three-times long and inverse funds must adjust derivative exposure as the index moves. When both the full day and the 13:30-14:29 participant window point the same way, closing rebalance demand may add torque in that direction.",
+      "signal": "At 14:30, the previous-close-to-14:29 SPY move and the 13:30-open-to-14:29-close move must be nonzero and have the same sign. Trade that direction.",
+      "entry_time": "14:31",
+      "stop": "SPY 13:30 open",
+      "target": null,
+      "time_exit": "15:55"
+    }
+  ],
+  "benchmark": {
+    "id": "opening_center_migration_bbo_benchmark",
+    "purpose": "Translate the previously frozen opening-center direction into observed UPRO/SPXU ask-to-bid execution without changing the signal.",
+    "signal": "Opening migration direction.",
+    "entry_time": "10:01",
+    "stop": "SPY opening center",
+    "time_exit": "15:30"
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "base_bbo_net_pnl_positive": true,
+    "base_bbo_profit_factor_greater_than": 1.0,
+    "each_of_2021_2022_2023_positive": true,
+    "bullish_and_bearish_pnl_positive": true,
+    "positive_after_one_extra_cent_adverse_at_entry_and_exit": true,
+    "holdout_access": "Only new hypotheses passing every gate may access 2024-2025. The benchmark may be calculated in both partitions as a diagnostic."
+  },
+  "secondary_tests_for_survivors": [
+    "ARCA BBO holdout",
+    "EQUS.MINI consolidated BBO holdout",
+    "one additional minute entry delay with stale-signal cancellation",
+    "five additional minutes of entry delay with stale-signal cancellation",
+    "one extra cent adverse at entry and exit",
+    "two extra cents adverse at entry and exit",
+    "remove five best trades",
+    "year and direction concentration",
+    "five-session moving-block bootstrap"
+  ],
+  "prohibited_repairs": [
+    "Invert a failed rule.",
+    "Choose only UPRO or only SPXU after results.",
+    "Add day-of-week, month, year, volatility, news, or sentiment filters.",
+    "Change a clock, anchor, inequality, stop, target, or exit after results.",
+    "Combine candidates based on observed historical correlation or profit.",
+    "Use a favorable ARCA versus consolidated feed after comparing them."
+  ]
+}

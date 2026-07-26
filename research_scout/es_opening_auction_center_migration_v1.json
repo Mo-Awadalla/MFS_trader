@@ -1,0 +1,140 @@
+{
+  "name": "ES Opening Auction Center Migration v1",
+  "status": "holdout_positive_but_weak_paper_only",
+  "instrument": "ES continuous front-month",
+  "source": "Databento GLBX.MDP3 1-minute OHLCV",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "holdout_period": "2024-01-01 through 2025-12-31",
+  "hypothesis": "A directional opening move is accepted rather than merely transient when both the 09:59 close and the opening auction's volume-weighted price center migrate to the same side of the 09:30 open. Failed acceptance should return through that center quickly; accepted migration can persist into the afternoon.",
+  "rules": {
+    "opening_auction": "09:30 through 09:59 inclusive",
+    "auction_center": "volume-weighted mean of each one-minute bar's typical price, where typical price is (high + low + close) / 3",
+    "long_signal": "09:59 close > 09:30 open and auction center > 09:30 open",
+    "short_signal": "09:59 close < 09:30 open and auction center < 09:30 open",
+    "entry": "10:00 open plus one adverse ES tick",
+    "stop": "auction center plus one adverse ES tick",
+    "entry_validity": "skip if the stop is not adverse to the simulated entry",
+    "same_bar_rule": "a stop touched anywhere in a one-minute bar is filled at the frozen stop price",
+    "survivor_exit": "15:30 open plus one adverse ES tick",
+    "position_limit": "one MES contract, at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "tick_size_points": 0.25,
+    "round_trip_commission_usd": 1.24,
+    "slippage_model": "one adverse tick at entry; one adverse tick at the time exit; stop itself is placed one adverse tick beyond auction center"
+  },
+  "development_result": {
+    "trades": 533,
+    "trades_per_week": 3.42,
+    "mean_pnl_usd": 4.72,
+    "total_pnl_usd": 2514.09,
+    "win_rate": 0.205,
+    "profit_factor": 1.196,
+    "max_drawdown_usd": -1278.67,
+    "year_pnl_usd": {
+      "2021": 1116.66,
+      "2022": 1089.78,
+      "2023": 307.65
+    },
+    "side_pnl_usd": {
+      "short": 1574.09,
+      "long": 940.0
+    }
+  },
+  "holdout_result": {
+    "trades": 348,
+    "trades_per_week": 3.35,
+    "mean_pnl_usd": 1.14,
+    "total_pnl_usd": 396.73,
+    "win_rate": 0.181,
+    "profit_factor": 1.043,
+    "max_drawdown_usd": -1365.73,
+    "year_pnl_usd": {
+      "2024": 571.96,
+      "2025": -175.23
+    },
+    "side_pnl_usd": {
+      "short": 257.25,
+      "long": 139.48
+    }
+  },
+  "robustness": {
+    "opening_window_minutes_with_fixed_1530_exit": {
+      "20": {
+        "development_mean_pnl_usd": 9.1,
+        "holdout_mean_pnl_usd": 1.57
+      },
+      "30_frozen": {
+        "development_mean_pnl_usd": 4.72,
+        "holdout_mean_pnl_usd": 1.14
+      },
+      "45": {
+        "development_mean_pnl_usd": 3.96,
+        "holdout_mean_pnl_usd": 3.13
+      },
+      "60": {
+        "development_mean_pnl_usd": 5.28,
+        "holdout_mean_pnl_usd": 7.93
+      }
+    },
+    "exit_time_with_fixed_30_minute_auction": {
+      "14:30": {
+        "development_mean_pnl_usd": 3.03,
+        "holdout_mean_pnl_usd": 1.31
+      },
+      "15:00": {
+        "development_mean_pnl_usd": 4.26,
+        "holdout_mean_pnl_usd": 1.54
+      },
+      "15:30_frozen": {
+        "development_mean_pnl_usd": 4.72,
+        "holdout_mean_pnl_usd": 1.14
+      },
+      "15:55": {
+        "development_mean_pnl_usd": 4.93,
+        "holdout_mean_pnl_usd": 1.0
+      }
+    },
+    "frozen_holdout_extra_round_trip_cost": {
+      "0.00": {
+        "mean_pnl_usd": 1.14,
+        "profit_factor": 1.043
+      },
+      "1.25": {
+        "mean_pnl_usd": -0.11,
+        "profit_factor": 0.996
+      },
+      "2.50": {
+        "mean_pnl_usd": -1.36,
+        "profit_factor": 0.952
+      },
+      "5.00": {
+        "mean_pnl_usd": -3.86,
+        "profit_factor": 0.873
+      }
+    },
+    "month_cluster_bootstrap_mean_pnl_95pct_ci_usd": {
+      "development": [
+        -2.14,
+        11.61
+      ],
+      "holdout": [
+        -3.99,
+        6.52
+      ]
+    },
+    "bootstrap_probability_mean_not_positive": {
+      "development": 0.093,
+      "holdout": 0.33
+    }
+  },
+  "verdict": "The mechanism is locally robust across nearby auction lengths and exit times, but the frozen holdout edge is economically fragile, 2025 is negative, and uncertainty includes zero. Preserve as a paper-trading candidate only; do not optimize to the favorable 60-minute result and do not deploy live.",
+  "research_policy": {
+    "holdout_is_one_shot": true,
+    "no_post_holdout_parameter_changes": true,
+    "minimum_frequency_gate_trades_per_week": 2.0
+  }
+}

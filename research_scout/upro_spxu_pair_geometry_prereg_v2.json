@@ -1,0 +1,122 @@
+{
+  "specification_id": "UPRO-SPXU-Pair-Geometry-v2",
+  "saved_at": "2026-07-26",
+  "status": "preregistered_before_first_outcome_calculation",
+  "objective": "Test slow intraday signals derived from the internal geometry of the UPRO/SPXU pair rather than conventional SPY price patterns, using a cash-only $100 account and at least two trades per week.",
+  "research_warning": "The entire 2021-2025 period has been exposed to earlier related strategy research. The rules below are new and frozen before their first calculation, but 2024-2025 is only a secondary familywise-contaminated holdout, not pristine evidence.",
+  "data": {
+    "spy_risk_bars": "Databento ARCX.PILLAR SPY ohlcv-1m",
+    "pair_signal_bars": "Databento ARCX.PILLAR UPRO/SPXU ohlcv-1m",
+    "execution_primary": "Databento ARCX.PILLAR UPRO/SPXU bbo-1m",
+    "execution_overlap_audit": "Databento EQUS.MINI UPRO/SPXU bbo-1m from 2023-03-28",
+    "development": "2021-01-01 through 2023-12-31",
+    "secondary_holdout": "2024-01-01 through 2025-12-31",
+    "timezone": "America/New_York"
+  },
+  "shared_clock": {
+    "bar_feature_window": "09:30-10:59 inclusive, 90 completed ETF one-minute bars",
+    "bbo_feature_window": "09:31-11:00 inclusive, 90 end-of-minute ETF BBO states",
+    "decision_time": "11:00",
+    "entry_time": "11:01",
+    "time_exit": "15:30",
+    "latency_claim": "Every signal compresses 90 completed minutes into one state, waits one full minute, and is additionally tested with one-minute and five-minute entry delays. No individual quote transition is traded."
+  },
+  "shared_execution": {
+    "starting_cash_usd": 100.0,
+    "maximum_gross_exposure_usd": 100.0,
+    "planned_loss_limit_usd": 10.0,
+    "bullish_instrument": "UPRO",
+    "bearish_instrument": "SPXU",
+    "position_type": "long fractional shares only",
+    "entry_fill": "Observed ask at entry.",
+    "exit_fill": "Observed bid at exit.",
+    "catastrophe_stop": "From the SPY 11:01 open, 3.333333% adverse in the signal direction. This approximates a 10% adverse move in a three-times ETF and therefore $10 on a fully deployed $100 account.",
+    "stop_timing": "Evaluate completed SPY one-minute bars; execute at the following minute ETF bid.",
+    "stale_signal_cancellation": "Cancel if the catastrophe stop is touched between the 11:00 decision and delayed entry.",
+    "maximum_positions": 1,
+    "maximum_trades_per_hypothesis_per_day": 1,
+    "overnight_positions": false,
+    "invalid_quotes": "Skip invalid entry quotes; an invalid exit may use the first valid BBO no more than two minutes later. Never forward-fill."
+  },
+  "hypotheses": [
+    {
+      "id": "late_volume_clock_compass",
+      "nonconventional_state": "Treat volume as a clock rather than a magnitude.",
+      "economic_claim": "The leveraged side whose trading activity has a later center of mass is receiving newer inventory attention; that attention should persist after 11:00.",
+      "score": "For each ETF, calculate sum(minute_index * share_volume) / sum(share_volume), with minute_index 0 through 89. Score equals UPRO volume-time centroid minus SPXU volume-time centroid.",
+      "direction": "Bullish when score > 0; bearish when score < 0; skip exact ties."
+    },
+    {
+      "id": "friction_work_acceleration",
+      "nonconventional_state": "Treat quoted spread multiplied by traded dollar volume as frictional work performed by the market.",
+      "economic_claim": "If frictional work accelerates more in one leveraged side from the first to the last opening half-hour, forced demand is arriving there faster than market-making capacity and should persist.",
+      "score": "For each ETF and each half-hour 09:30-09:59 and 10:30-10:59, calculate dollar-volume-weighted proportional spread using the corresponding end-of-minute BBO. Acceleration is late divided by early. Score equals UPRO acceleration minus SPXU acceleration.",
+      "direction": "Bullish when score > 0; bearish when score < 0; skip invalid values and exact ties."
+    },
+    {
+      "id": "same_sign_anomaly_ledger",
+      "nonconventional_state": "Use only minutes in which nominally inverse ETFs move in the same direction.",
+      "economic_claim": "Same-sign UPRO/SPXU midpoint changes are mirror failures. Their common component can reveal slow NAV or inventory repricing that is absent from the usual inverse-price signal.",
+      "score": "For each consecutive BBO midpoint pair, when both log returns have the same nonzero sign, add that sign multiplied by the smaller absolute return. Sum across the 90-minute window.",
+      "direction": "Bullish when the anomaly ledger > 0; bearish when < 0; skip zero."
+    },
+    {
+      "id": "oriented_path_tortuosity",
+      "nonconventional_state": "Compare how efficiently each inverse vehicle converts traveled price distance into displacement.",
+      "economic_claim": "The side tracing the straighter path has cleaner inventory transfer. Orienting both inverse paths into SPY direction should reveal which directional state is less contested.",
+      "score": "For each ETF, divide net log return by the sum of absolute one-minute log returns. Score equals UPRO efficiency minus SPXU efficiency.",
+      "direction": "Bullish when score > 0; bearish when score < 0; skip zero or zero-length paths."
+    },
+    {
+      "id": "unmatched_record_topology",
+      "nonconventional_state": "Count failures of the two ETFs to set theoretically matching path records.",
+      "economic_claim": "Persistent unmatched record-setting identifies the side whose price discovery is leading the pair on a horizon much longer than quote latency.",
+      "score": "Using BBO midpoints after the first observation, bullish records are UPRO new highs without simultaneous SPXU new lows plus SPXU new lows without simultaneous UPRO new highs. Bearish records reverse the roles. Score is bullish count minus bearish count.",
+      "direction": "Bullish when score > 0; bearish when score < 0; skip ties."
+    },
+    {
+      "id": "creation_redemption_residual_compass",
+      "nonconventional_state": "Subtract each ETF's theoretical three-times SPY move and compare only the two residuals.",
+      "economic_claim": "The difference between long-fund and inverse-fund tracking residuals represents asymmetric creation, redemption, financing, and inventory pressure; persistent pressure should predict which exposure remains demanded.",
+      "score": "Let x be SPY log return from the 09:30 open to 10:59 close, u the UPRO BBO midpoint log return, and s the SPXU midpoint log return. Score equals (u - 3x) - (s + 3x).",
+      "direction": "Bullish when score > 0; bearish when score < 0; skip zero."
+    },
+    {
+      "id": "volume_price_gravity_tilt",
+      "nonconventional_state": "Compare where traded volume pulls each ETF's price center relative to its unweighted path center.",
+      "economic_claim": "A fund whose volume concentrates disproportionately at the expensive end of its own path is absorbing directional demand. Contrasting inverse funds removes broad activity level.",
+      "score": "For each ETF, divide its 90-minute volume-weighted typical price by its unweighted mean typical price and subtract one. Score equals UPRO tilt minus SPXU tilt.",
+      "direction": "Bullish when score > 0; bearish when score < 0; skip invalid values and zero."
+    }
+  ],
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "observed_bbo_net_pnl_positive": true,
+    "observed_bbo_profit_factor_greater_than": 1.0,
+    "each_of_2021_2022_2023_positive": true,
+    "bullish_and_bearish_pnl_positive": true,
+    "positive_after_one_extra_cent_per_share_at_entry_and_exit": true,
+    "positive_after_five_additional_minutes_entry_delay": true,
+    "positive_after_removing_five_best_trades": true,
+    "holdout_access": "Only candidates passing every development gate may access 2024-2025."
+  },
+  "secondary_tests_for_survivors": [
+    "ARCA observed BBO",
+    "EQUS.MINI consolidated BBO",
+    "midpoint diagnostic",
+    "one-minute and five-minute entry delay",
+    "one-cent and two-cent adverse execution per share at both fills",
+    "remove five best trades",
+    "year and direction concentration",
+    "five-session moving-block bootstrap"
+  ],
+  "prohibited_repairs": [
+    "Invert a failed score.",
+    "Add thresholds after seeing results.",
+    "Select only bullish or bearish signals after results.",
+    "Change the 90-minute window, 11:01 entry, 15:30 exit, or catastrophe stop.",
+    "Combine candidates using observed profit or correlation.",
+    "Assume passive limit fills from one-minute BBO data.",
+    "Use the secondary holdout for a candidate that failed any development gate."
+  ]
+}

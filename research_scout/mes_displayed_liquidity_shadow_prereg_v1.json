@@ -1,0 +1,85 @@
+{
+  "name": "MES Displayed Liquidity Shadow v1",
+  "status": "rejected_on_development_without_holdout_access",
+  "instrument": "one MES executed using recorded MBP-1 quotes",
+  "source": "Databento GLBX.MDP3 MES MBP-1 with ES session eligibility",
+  "session_timezone": "America/New_York",
+  "development_period": "2021-01-01 through 2023-12-31",
+  "hypothesis": "Visible top-of-book size is not necessarily support or resistance. A larger displayed queue can be a liquidity target that attracts marketable flow. During the final half hour, price should move toward the side displaying more immediately consumable liquidity.",
+  "eligibility": {
+    "required_rth_bars": 390,
+    "short_session": false,
+    "degraded_data": false,
+    "es_and_mes_contract_roll_match": true,
+    "entry_and_exit_quotes": "finite, positive, non-crossed recorded MBP-1 bid and ask",
+    "entry_sizes": "finite nonnegative top-of-book bid and ask size",
+    "spread_filter": "none; cross the recorded spread regardless of width"
+  },
+  "signal": {
+    "observation": "first MES MBP-1 record at or after 15:30:05 ET",
+    "long_signal": "displayed ask size > displayed bid size",
+    "short_signal": "displayed bid size > displayed ask size",
+    "equal_size_rule": "no trade",
+    "interpretation": "trade toward the larger visible liquidity target, opposite the conventional support/resistance reading"
+  },
+  "execution": {
+    "long_entry": "recorded 15:30:05 ask",
+    "short_entry": "recorded 15:30:05 bid",
+    "stop": "none; one MES and a fixed approximately 29-minute holding period bound exposure",
+    "long_exit": "recorded bid at the first MBP-1 record at or after 15:59:45 ET",
+    "short_exit": "recorded ask at the first MBP-1 record at or after 15:59:45 ET",
+    "position_limit": "one MES and at most one trade per RTH session",
+    "overnight_positions": false
+  },
+  "economics": {
+    "point_value_usd": 5.0,
+    "round_trip_commission_usd": 1.24,
+    "slippage_model": "the full recorded MES bid-ask spread is crossed at entry and exit; no additional modeled slippage"
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "positive_each_year": true,
+    "both_directions_positive": true,
+    "aggregate_profit_factor_greater_than_one": true,
+    "no_parameter_changes_after_results": true
+  },
+  "development_result": {
+    "trades": 738,
+    "trades_per_week": 4.731,
+    "net_pnl_usd": -596.37,
+    "mean_trade_usd": -0.808,
+    "profit_factor": 0.961,
+    "win_rate": 0.508,
+    "max_daily_drawdown_usd": -1494.90,
+    "year_pnl_usd": {
+      "2021": -937.53,
+      "2022": 967.45,
+      "2023": -626.29
+    },
+    "side_pnl_usd": {
+      "long": -1357.52,
+      "short": 761.15
+    },
+    "median_entry_spread_ticks": 1.0,
+    "median_exit_spread_ticks": 1.0,
+    "excluded_invalid_sessions": 24,
+    "equal_size_no_trades": 11
+  },
+  "development_gate_decision": {
+    "minimum_frequency": "pass",
+    "positive_each_year": "fail",
+    "both_directions_positive": "fail",
+    "aggregate_profit_factor": "fail",
+    "overall": "reject"
+  },
+  "lesson": "Trading toward the larger displayed queue did not produce a stable aggregate edge. The positive short result and positive 2022 result are post-hoc asymmetries and cannot be selected. A single top-of-book snapshot appears too transient or directionally asymmetric to support this rule.",
+  "holdout_policy": "2024-2025 was not evaluated because the unchanged rule failed its development gates.",
+  "prohibited_posthoc_changes": [
+    "reversing the queue direction after observing results",
+    "adding a size-ratio or spread threshold",
+    "combining the queue with price, return, or flow direction",
+    "changing either quote timestamp",
+    "long-only or short-only filtering",
+    "weekday, volatility, volume, or regime filters"
+  ]
+}
