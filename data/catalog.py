@@ -61,6 +61,7 @@ class StrictPanelRequest:
 
     bars: BarRequest
     expected_sessions: tuple[str, ...]
+    expected_session_closes: tuple[str, ...]
     cutoff: str
 
     def __post_init__(self) -> None:
@@ -70,6 +71,8 @@ class StrictPanelRequest:
             raise ValueError("StrictPanelRequest requires require_complete_panel=True")
         if not self.expected_sessions:
             raise ValueError("StrictPanelRequest requires expected completed sessions")
+        if len(self.expected_sessions) != len(self.expected_session_closes):
+            raise ValueError("StrictPanelRequest requires one close timestamp per expected session")
 
 
 class DataCatalog:
@@ -122,8 +125,11 @@ class DataCatalog:
         loaded = self.load(request.bars)
         expected = pd.DatetimeIndex([_utc_timestamp(session) for session in request.expected_sessions])
         cutoff = _utc_timestamp(request.cutoff)
-        if expected.max() > cutoff:
-            raise ValueError("Expected sessions include data after the completed-session cutoff")
+        closes = pd.DatetimeIndex([_utc_timestamp(value) for value in request.expected_session_closes])
+        if not closes.normalize().equals(expected.normalize()):
+            raise ValueError("Expected session closes do not align with their sessions")
+        if (closes > cutoff).any():
+            raise ValueError("Expected sessions include a close after the acquisition cutoff")
         if loaded.frame.index.has_duplicates:
             raise ValueError("Strict panel rejects duplicate timestamps")
         if not loaded.frame.index.equals(expected):
@@ -133,9 +139,15 @@ class DataCatalog:
                 "Strict panel session mismatch: "
                 f"missing={len(missing)} unexpected={len(unexpected)}"
             )
-        values = loaded.frame.select_dtypes(include="number")
-        if values.empty or not np.isfinite(values.to_numpy()).all() or not (values > 0).all().all():
-            raise ValueError("Strict panel requires finite positive numeric OHLCV values")
+        for symbol in request.bars.symbols:
+            fields = loaded.frame[symbol]
+            required = {"open", "high", "low", "close", "volume"}
+            if set(fields.columns) != required or any(not pd.api.types.is_numeric_dtype(fields[column]) for column in required):
+                raise ValueError(f"Strict panel requires numeric OHLCV columns for {symbol}")
+            if not np.isfinite(fields.to_numpy()).all() or not (fields[["open", "high", "low", "close"]] > 0).all().all() or not (fields["volume"] >= 0).all():
+                raise ValueError(f"Strict panel requires finite valid OHLCV values for {symbol}")
+            if (fields["high"] < fields[["open", "low", "close"]].max(axis=1)).any() or (fields["low"] > fields[["open", "high", "close"]].min(axis=1)).any():
+                raise ValueError(f"Strict panel requires ordered OHLC values for {symbol}")
         return loaded
 
     @staticmethod

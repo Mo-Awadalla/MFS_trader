@@ -1,132 +1,95 @@
-# Handoff: ETF SIP Paper-Evidence Campaign
+# Handoff: ETF SIP paper-evidence campaign
 
 Updated: 2026-09-05
 
-## Current Goal
+## Current release status
 
-Produce a reproducible release and collect qualifying paper evidence for a
-new frozen Alpaca SIP ETF successor only after data entitlement, parity, and
-validation gates pass.
+The release baseline is Python 3.12 and preserves the historical Yahoo ETF
+Experiment as authoritative evidence. Its UUID is
+`119131fa-0f67-48d7-ab87-f20d81c70c1f`, its hash is
+`8e584c2eb4ba20a90b0af3d62a8f28c1d753a83a3e57ca79deafb869af23270e`, and
+its current metadata status is `paper_ops`. It is historical evidence and is
+not a SIP successor.
 
-The latest-SPY SIP entitlement preflight at `2026-09-05T21:12:16.148693+00:00`
-returned HTTP 403 for requested recent data. It does not block historical
-acquisition: a separate read-only historical SIP probe for all seven ETFs
-succeeded at `2026-09-05T21:18:56.184538+00:00` for
-`2026-09-03T00:00:00Z` through `2026-09-04T00:00:00Z` with `feed=sip` and
-`adjustment=all`. This limited probe is not a frozen input manifest or a full
-common-history/completeness result. Do not substitute IEX; freeze and validate
-only after the remaining historical-input, parity, and identity gates pass.
+The new SIP campaign stopped at the input-integrity gate. No successor UUID or
+hash, frozen Experiment, validation result, paper-evidence packet, broker
+session, order, launchd job, or promotion exists. Remaining stage-2 paper
+identity/CLI normalization and stages 3–5 are deferred.
 
-The authoritative historical Yahoo Experiment remains
-`119131fa-0f67-48d7-ab87-f20d81c70c1f` /
-`8e584c2eb4ba20a90b0af3d62a8f28c1d753a83a3e57ca79deafb869af23270e` with
-promotion status `paper_ops`. Preserve it unchanged; it is not the SIP
-successor and cannot be reused for different data provenance.
+## Retained SIP input evidence
 
-Perform the full read-only historical seven-symbol panel check and record feed,
-as-of time, requested range, universe, and completeness. Only then create the immutable input manifest and a new
-Experiment identity, run the unchanged gauntlet and session-level economic
-parity reconciliation, then execute the paper gates in sequence.
+The canonical attempted snapshot is
+`sip-etf-daily-20260905t214300z`. Its label is an identifier; the authoritative
+acquisition time is `2026-09-05T21:28:08.316145+00:00`. The immutable manifest
+and portable input bundle are at:
 
-## Suggested Skills
+- `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z/manifest.json`
+- `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z/input-bundle.tar.gz`
 
-- `implement` for continued coding.
-- `tdd` for adding missing coverage around broker failure drills and pass-window edge cases.
-- `review` before merging the branch.
-- `handoff` if context needs compacting again.
+It contains raw and `adjustment=all` SIP daily panels for DBC, GLD, IEF, IWM,
+QQQ, SHY, and SPY. All 14 symbol/adjustment indexes contain 2,684 common
+sessions from `2016-01-04` through `2026-09-04`. The bundle retains 19
+manifest-listed inputs; their hashes match. The bundle SHA-256 is
+`22dac4692868e21abd455b70f8133183b9364d5d3378e797b22d4c464c9af5fd`.
 
-## What Is Implemented
+The original manifest remains failed because 140 of 388 returned cash-dividend
+records lack `payable_date`; the same 140 also lack `record_date`. Missing
+payable dates are the ledger blocker. The returned endpoint payload does not
+prove that every corporate action was returned or that raw/adjusted price
+factors reconcile, so filling those 140 fields alone would not authorize a
+successor.
 
-- Immutable per-session report artifacts under `paper/sessions/{session_id}/...` in `experiments/artifacts.py`.
-- Paper Ops Smoke report generation:
-  - `paper_ops_smoke_report.json`
-  - requires `session_kind=paper_ops_smoke`
-  - requires 5 market sessions, 7 calendar days, zero unplanned interruptions, no unexplained missed cycles, and kill-switch drill evidence
-  - writes `promotion_unlocked: false`
-- Paper Ops Pass report generation from session + SQLite runtime evidence:
-  - `operator_report.json`
-  - `reconciliation_report.json`
-  - `slippage_report.json`
-  - `bar_cycle_report.json`
-  - `kill_switch_drill_report.json`
-- `confirm-paper-ops-pass` now requires `--paper-session-id` and refuses unless a full immutable `paper_ops_pass` session satisfies the 30-day/20-session/100-trade gate and all required reports pass.
-- Confirmation writes immutable `paper_ops_pass_confirmation.json`.
-- Continuous paper runs now:
-  - record bar-cycle rows in the immutable session artifact
-  - halt on unexplained missed price cycles instead of silently sleeping
-  - snapshot `order_lifecycle` from `orders_live`
-  - reconcile broker state on every bar cycle via `TradingEngine.reconcile_broker()`
-  - record broker-sync ids in each bar-cycle record
-- CLI split:
-  - `paper-run --broker alpaca_paper --alpaca-paper-smoke` runs one-shot Alpaca submit/cancel smoke.
-  - `paper-run --broker alpaca_paper` without `--alpaca-paper-smoke` runs the continuous paper loop, gated by `--confirm-paper-broker`.
+The append-only corrected calendar verification is
+`docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-calendar-integrity-verification-v2.json`.
+It verifies the retained panel using date plus `America/New_York` close time,
+then UTC: 2,663 regular closes, 21 early closes, 902 EST closes, 1,782 EDT
+closes, no duplicate dates, and no close after acquisition. It reports
+`verification_status: passed`, while the source manifest remains failed and
+the input gate remains blocked. The earlier verification report is retained
+and referenced by the v2 report; do not overwrite either report or the
+snapshot manifest.
 
-## Important Files
+Earlier attempted acquisition manifests (`212500z`, `213100z`, and `213400z`)
+are retained as failed historical attempts and are not gate evidence.
 
-- `engine/paper_session.py`
-- `engine/paper_run.py`
-- `engine/cli.py`
-- `engine/runtime.py`
-- `experiments/artifacts.py`
-- `experiments/operator_confirmations.py`
-- `tests/unit/test_paper_session.py`
-- `tests/unit/test_paper_run.py`
-- `tests/unit/test_operator_confirmations.py`
-- `tests/unit/test_cli_smoke.py`
+The recorded latest-SPY SIP request returned HTTP 403 for recent data. A
+bounded completed-session historical SIP request for all seven ETFs returned
+HTTP 200. The 403 is advisory about latest access and is not the historical
+input blocker. Do not substitute IEX for SIP.
 
-## Verification Run
+## Historical replay diagnostic
 
-Latest local audit after pulling `origin/main` and fixing event idempotency passed:
+The old Yahoo runtime replay is operational evidence only. Research ended at
+`$50,944.37` and the runtime replay at `$27,759.42`, a `$23,184.95` gap. The
+recorded mechanisms include fixed sizing equity, thresholded position deltas,
+risk reductions, and distinct simulated/research cost treatment. No
+counterfactual attribution was run, so this is not an economic-parity claim.
 
-- `.venv/Scripts/python -m pytest tests/unit/test_paper_session.py tests/unit/test_paper_run.py tests/unit/test_operator_confirmations.py tests/unit/test_cli_smoke.py`
-- `.venv/Scripts/python -m ruff check storage/event_logger.py engine/paper_session.py engine/paper_run.py engine/cli.py engine/runtime.py experiments/artifacts.py experiments/operator_confirmations.py tests/unit/test_paper_session.py tests/unit/test_paper_run.py tests/unit/test_operator_confirmations.py tests/unit/test_cli_smoke.py`
+## Required recovery sequence
 
-Fix note: `storage/event_logger.py` now gives automatically generated events unique idempotency keys unless a caller supplies an explicit key. This prevents legitimate heartbeats/reconciliation/bar-cycle markers from being suppressed on Windows timestamp collisions, which had made operational reports show false bar-cycle mismatches.
+1. Preserve the failed snapshot and append a corporate-action completeness and
+   raw/adjusted factor-reconciliation result; do not infer missing payable
+   dates.
+2. Implement the execution, identity/policy/CLI, and independent
+   research/runtime-ledger work; verify deterministic synthetic parity tests
+   only, then commit the implementation without candidate-performance claims.
+3. Freeze a complete input manifest, predeclared execution/validation
+   protocol, and new Experiment UUID/hash.
+4. Prove session-level economic parity against that frozen identity, then run
+   the unchanged validation gauntlet. Archive a failure without tuning.
+5. Only a successor passing both parity and validation may enter the separate
+   paper smoke, qualification, and operator-review gates.
 
-Earlier broad verification before the implementation commit passed:
+The approved future paper defaults remain `$1,000` allocated capital, `$500`
+maximum per order, `$1,000` gross exposure, `$100,000` cumulative turnover,
+and a `$1` minimum adjustment or broker higher minimum without a percentage
+filter. Existing percentage risk limits, validation thresholds, and tiny smoke
+caps remain unchanged.
 
-- `.venv/bin/python -m pytest tests/unit`
-- `.venv/bin/python -m pytest tests/integration`
-- `.venv/bin/python -m pytest tests/contracts tests/replay tests/property`
-- `.venv/bin/python -m ruff check ...` on touched files
+## Verification baseline
 
-Latest targeted audit after compaction passed:
-
-- `.venv/bin/python -m pytest tests/unit/test_paper_session.py tests/unit/test_paper_run.py tests/unit/test_operator_confirmations.py tests/unit/test_cli_smoke.py`
-  - Result: 42 passed, 1 skipped.
-- `.venv/bin/python -m ruff check engine/paper_session.py engine/paper_run.py engine/cli.py engine/runtime.py experiments/artifacts.py experiments/operator_confirmations.py tests/unit/test_paper_session.py tests/unit/test_paper_run.py tests/unit/test_operator_confirmations.py tests/unit/test_cli_smoke.py`
-  - Result: all checks passed.
-
-Latest broad re-run was started but intentionally interrupted by the user:
-
-- `.venv/bin/python -m pytest tests/unit`
-- `.venv/bin/python -m pytest tests/integration`
-- `.venv/bin/python -m pytest tests/contracts tests/replay tests/property`
-
-Known not passing:
-
-- `.venv/bin/python -m mypy experiments/artifacts.py engine/paper_session.py engine/paper_run.py experiments/operator_confirmations.py`
-- Remaining mypy failures are in existing dependencies (`portfolio/sizing.py`, `risk/engine.py`, `monitoring/reports.py`, `engine/runtime.py`) plus the existing `_OperationalReportShim` typing issue in `engine/paper_session.py`.
-
-## Commit And Push Status
-
-- `origin/main` was pulled successfully through `b45cec6 Update paper ops handoff`.
-- Fix commit `2ebd83d Fix paper ops event evidence` was pushed to `origin/main`.
-
-## Remaining Work
-
-- Latest trading attempt: downloaded Alpaca IEX AAPL daily bars and froze `BB-AAPL-1D-v2-Alpaca-IEX-2020-2026` as Experiment `68127d37-d4d3-4516-be61-ccf8148161e1`. Validation failed, so it is not eligible for `paper_ops` and no paper broker session should be run for it. Evidence is under `experiments/68127d37-d4d3-4516-be61-ccf8148161e1/validation/`.
-- Latest broader strategy attempt: tested a frozen residual volatility-managed cross-sectional momentum hypothesis as `ResidualVolMomentum-v1-LargeCapDaily-2018-2026` / Experiment `5b8514cc-5f1b-4c63-b815-6f90a26c5aba` on a bounded 75-stock large-cap universe plus SPY/QQQ/IWM daily bars. It failed validation decisively: research Sharpe `-0.6302`, research total return `-0.4219`, WFA OOS Sharpe `-0.65 < 0.8`, WFA OOS Sortino `-1.17 < 1.0`, negative fold fraction `0.73 > 0.5`, MC ruin probability `0.908 >= 0.05`, MC 5th percentile CAGR `-0.139 <= 0`, MC 95th percentile max drawdown `-0.449 < -0.3`, and DSR had no positive Sharpe to deflate. Do not paper trade it. Only the immutable failed Experiment evidence was retained; the failed strategy implementation should not be kept active in the registry.
-- Latest low-API ETF strategy attempt: tested a frozen long-only ETF tactical momentum hypothesis as `ETFTacticalMomentum-v1-Daily-2010-2026` / Experiment `017c9b19-14ee-4b0b-92f7-7e5d8886ba2c` on SPY, QQQ, IWM, IEF, GLD, SHY, and DBC daily bars. It failed validation: research Sharpe `0.4628`, research total return `0.3214`, WFA OOS Sharpe `0.52 < 0.8`, WFA OOS Sortino `0.83 < 1.0`, DSR p-value `0.0605 >= 0.05`, and DSR collapsed under raw trial count with `p = 0.5590 >= 0.10`. Monte Carlo did not fail (`P(ruin)=0.0026`, 5th percentile CAGR `0.00105`, 95th percentile max drawdown `-0.143`), so this was healthier than the previous failed attempts but still not eligible for `paper_ops`. Do not paper trade it or switch to the better adjacent `top_n=2` row after seeing results; that would be tuning.
-- Latest residual reversal attempt: `ResidualReversalStatArb-v1-LiquidLargeCapDaily-AlpacaSIP` / Experiment `886f5819-9b51-4ff8-b025-11fbdd8dd06a` failed validation and is not paper-trade eligible. The `$10,000` to `$3.02` headline was mostly cost/turnover compounding, not pure anti-alpha: average daily turnover was `3.4216x` equity, average gross signal return was only `-0.9079` bps/day, and repo default average daily cost drag was `36.3887` bps/day. Cost sensitivity: true gross/no explicit cost ended around `$7,295.81` with Sharpe `-0.1351`, while repo default ended around `$3.02` with Sharpe `-5.5304`. Future high-turnover strategy reviews must decompose gross return, trading-cost drag, borrow drag, turnover, cost sensitivity, Rank IC, and execution alignment before interpreting headline final equity. See `docs/adr/0004-decompose-turnover-cost-drag-before-strategy-verdicts.md`.
-- Latest validation-passed strategy/data-version: reran the unchanged frozen `ETFTimeSeriesMomentumVolTarget-v1` rules as a new long-history Yahoo adjusted daily data-version Experiment `119131fa-0f67-48d7-ab87-f20d81c70c1f` / `ETFTimeSeriesMomentumVolTarget-v1-YahooAdjustedDaily-2005-2026`. Data source is `yahoo_chart_static_etf_tsm_v1_adjusted_cached`, using adjusted OHLC from Yahoo Chart API for SPY, QQQ, IWM, IEF, GLD, SHY, and DBC. Panel date range is `2005-01-03` to `2026-06-29`; DBC starts `2006-02-06`. Validation passed: research Sharpe `0.7954`, total return `4.0944`, WFA OOS Sharpe `0.8386`, negative fold fraction `0.2692`, Monte Carlo `P(loss)=0.0`, `P(ruin)=0.0001`, 5th percentile CAGR `0.05923`, 95th percentile max drawdown `-0.1648`, DSR p-value `3.48e-07`, and stability passed. Promotion status is `validation_passed`. This is the first current candidate eligible for the next paper-ops gate, but no Alpaca paper broker session has been started yet.
-- Next: run paper-ops/sim drills only for validation-passed Experiment `119131fa-0f67-48d7-ab87-f20d81c70c1f`; do not use any validation-failed Experiment.
-- Exercise the continuous Alpaca paper loop against real Alpaca paper credentials for a real smoke window.
-- Add stronger broker-failure drill automation for continuous sessions, not just report-level evidence.
-- Add explicit reconciliation repair/blocker workflow artifacts for mismatches that are resolved versus blocked.
-- Consider making slippage samples generated from order/fill reference prices instead of requiring supplied samples.
-- Clean up repository-wide mypy failures if strict typing is a release requirement.
-
-## Worktree Warning
-
-The repo had many unrelated modified/untracked files before this handoff, including graphify cache churn, pairs work, config/model changes, and deleted `docs/handoff.md`. Keep commits scoped carefully.
+Before SIP integration, the isolated baseline commit
+`ff87b10091b84cbd55fcc55491800830a22f92ed` passed the prescribed Python 3.12
+checks in a fresh checkout: Ruff passed; pytest reported 586 passed and one
+expected startup-reconciliation skip. The final integrated commit requires a
+new fresh-checkout run of the same command.

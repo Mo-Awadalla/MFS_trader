@@ -1,0 +1,24 @@
+# Unfrozen, read-only campaign prerequisite. This is not an Experiment config
+# and cannot submit orders or promote an Experiment.
+mode = "research"
+strategy_name = "etf_time_series_momentum_sip_campaign_preflight"
+strategy_version = "draft"
+
+[[brokers]]
+name = "alpaca"
+asset_class = "equity"
+api_key_env = "ALPACA_API_KEY"
+api_secret_env = "ALPACA_API_SECRET"
+base_url = "https://paper-api.alpaca.markets"
+data_url = "https://data.alpaca.markets"
+is_paper = true
+
+[[data]]
+symbols = ["SPY"]
+asset_class = "equity"
+bar_frequency_raw = "1d"
+target_frequencies = ["1d"]
+start_date = "2005-01-01"
+adjustment = "split_dividend"
+feed = "sip"
+storage_dir = "data/parquet/etf_tsm_sip_campaign_draft"

@@ -1,9 +1,10 @@
 from __future__ import annotations
 
+import pytest
 import responses
 from responses import matchers
 
-from data.alpaca_downloader import AlpacaDownloader
+from data.alpaca_downloader import AlpacaDownloader, effective_alpaca_adjustment
 from data.base import DownloadRequest
 
 
@@ -49,4 +50,13 @@ def test_alpaca_downloader_uses_iex_feed_by_default():
     )
 
     assert result.metadata["feed"] == "iex"
+    assert result.metadata["effective_alpaca_adjustment"] == "all"
     assert len(result.data) == 1
+
+
+@pytest.mark.parametrize(
+    ("configured", "effective"),
+    [("split_dividend", "all"), ("all", "all"), ("split", "split"), ("raw", "raw")],
+)
+def test_effective_alpaca_adjustment_maps_configured_values(configured: str, effective: str) -> None:
+    assert effective_alpaca_adjustment(configured) == effective

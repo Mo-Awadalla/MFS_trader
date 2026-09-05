@@ -1,52 +1,122 @@
 # ETF SIP paper-evidence campaign runbook
 
-Status on 2026-09-05: no SIP successor has been frozen. The read-only
-latest-SPY entitlement check returned HTTP 403 at
-`2026-09-05T21:12:16.148693+00:00`, but a separate historical SIP probe for
-all seven ETFs succeeded at `2026-09-05T21:18:56.184538+00:00` for
-`2026-09-03T00:00:00Z` through `2026-09-04T00:00:00Z` with `feed=sip` and
-`adjustment=all`. The limited historical probe is not a frozen data manifest
-or full panel-completeness result. Do not replace SIP with IEX. No SIP input
-manifest, frozen Experiment, validation report, broker session, order, or
-launchd job exists.
+## Status: blocked at the input-integrity gate
 
-The existing Yahoo Experiment `119131fa-0f67-48d7-ab87-f20d81c70c1f` remains
-historical evidence in `paper_ops`. Its identity and evidence must not be
-altered or reused for SIP inputs.
+No SIP successor is frozen. The canonical attempted snapshot is
+`sip-etf-daily-20260905t214300z`; its authoritative `acquired_at` is
+`2026-09-05T21:28:08.316145+00:00`, not the arbitrary identifier timestamp.
+Its immutable manifest is failed and its bundle is retained at:
 
-When entitlement has been provisioned, execute these gates in order:
+- `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z/manifest.json`
+- `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z/input-bundle.tar.gz`
 
-1. Run the full read-only historical seven-symbol panel check and retain its
-   feed, as-of time, requested history, universe, and completeness result.
-2. Freeze a new immutable SIP data manifest, checksums, execution policy, and
-   Experiment UUID/hash. The selection remains monthly using completed-session
-   information; daily target maintenance may execute only in the next regular
-   session's first five minutes.
-3. Reconcile research and deterministic runtime ledgers session by session,
-   including quantities, costs, risk reductions, corporate actions, cash, and
-   equity. The historical replay is operational evidence only: it ended at
-   `$27,759.42` versus `$50,944.37` in research, so it is not economic-parity
-   evidence.
-4. Run the unchanged validation gauntlet. Archive any failure without tuning
-   or automatic replacement.
-5. If validation passes, run fresh simulation drills, the tiny Alpaca
-   submit/cancel smoke, then the formal paper-evidence window. Keep the
-   Experiment in `paper_ops` pending independent operator confirmation.
+The bundle has 19 manifest-listed files, all hash-verified, covering DBC, GLD,
+IEF, IWM, QQQ, SHY, and SPY. Raw and adjusted panels each have 2,684 common
+completed sessions from `2016-01-04` through `2026-09-04`.
 
-Approved future campaign defaults, to freeze before validation:
+The failure is deliberate and remains blocking: 140 of 388 returned
+cash-dividend records lack `payable_date`. Those same 140 lack `record_date`;
+missing record date is recorded diagnostically, while missing payable date is
+the ledger gate. By symbol the missing-payable counts are DBC 3, IEF 47, IWM
+13, QQQ 16, SHY 47, SPY 14, and GLD 0. The report does not prove endpoint-wide
+corporate-action completeness, absence of splits, or raw/adjusted price-factor
+reconciliation. Do not infer dates or claim that adding the 140 values alone
+unblocks the campaign.
+
+The retained calendar initially had time-only closes. The append-only v2
+verification corrects their interpretation as session-date plus
+`America/New_York` time, then UTC:
+
+`docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-calendar-integrity-verification-v2.json`
+
+It verifies 6,709 retained calendar records, 2,684 completed panel sessions,
+2,663 regular 16:00 closes, 21 13:00 early closes, 902 EST closes, 1,782 EDT
+closes, zero duplicate dates, zero closes after acquisition, and exact index
+alignment across 14 panels. Its calendar verification passed; its source
+manifest status remains failed, its input gate is blocked, and it does not
+authorize campaign progression. The prior verification report and all four
+failed acquisition-attempt manifests are retained without overwrite.
+
+A latest-SPY SIP request received HTTP 403 for recent data. A bounded
+historical seven-ETF SIP query returned HTTP 200 with `feed=sip` and
+`adjustment=all`; historical access is therefore not blocked by the latest
+403. Do not substitute IEX.
+
+The historical Yahoo Experiment
+`119131fa-0f67-48d7-ab87-f20d81c70c1f` remains in `paper_ops` as historical
+evidence. It must not be reused for SIP provenance.
+
+## Read-only evidence commands
+
+Run these from a fresh checkout with Python 3.12. The environment file is read
+only into process memory. Each evidence output and snapshot identifier must be
+new because the writers reject overwrite.
+
+```bash
+python scripts/preflight_alpaca_sip_entitlement.py \
+  --config config/etf_tsm_sip_campaign_preflight.toml \
+  --env-file .env --feed sip \
+  --output docs/reports/etf_campaign_preflight/<new-preflight>.json
+
+python scripts/acquire_etf_tsm_sip_inputs.py --acquire \
+  --env-file .env --snapshot-id <new-unique-snapshot-id>
+
+python scripts/verify_etf_tsm_sip_snapshot.py \
+  --bundle docs/reports/etf_campaign_inputs/<snapshot>/input-bundle.tar.gz \
+  --manifest docs/reports/etf_campaign_inputs/<snapshot>/manifest.json \
+  --report docs/reports/etf_campaign_inputs/<snapshot>-calendar-integrity-verification.json
+```
+
+The verifier extracts the portable bundle to a temporary matching
+`data/parquet/...` layout before checking all manifest hashes and both strict
+panels; it does not need a pre-existing local data cache. The acquisition
+script's cutoff is fixed in its reviewed source and must be deliberately
+updated and re-reviewed before a later campaign snapshot.
+
+## Deferred work
+
+No successor UUID/hash, validation report, paper evidence packet, broker
+session, order, kill-switch drill, launchd job, or live promotion exists.
+Remaining paper identity/CLI normalization is unimplemented. Economic-parity
+work, qualification, and all paper-operation stages are deferred by the failed
+input gate.
+
+The historical runtime replay is not economic-parity evidence: its ending
+`$27,759.42` differs from research ending `$50,944.37` by `$23,184.95`. Timing,
+fixed sizing, holdings drift, risk reductions, and different cost treatment
+are recorded possible mechanisms, without a counterfactual attribution.
+
+## Recovery sequence
+
+1. Append a corporate-action completeness result and reconcile raw/adjusted
+   price-factor jumps; preserve the failed snapshot unchanged.
+2. Implement paper identity/policy/CLI handling and independent ledgers;
+   verify deterministic synthetic parity tests and commit the implementation
+   without candidate-performance claims.
+3. Only after complete inputs and committed implementation exist, freeze a new
+   data manifest, predeclared execution/validation protocol, and Experiment
+   UUID/hash.
+4. Prove candidate session parity tied to that frozen identity, then run the
+   unchanged validation gauntlet and archive any failed successor.
+5. A successor passing both parity and validation may then run the paper smoke
+   and qualification campaign before independent operator review.
+
+## Frozen future defaults
+
+When the gate is eventually passed, freeze these defaults before validation:
 
 - `$1,000` allocated paper capital; `$500` maximum per order; `$1,000`
   maximum gross exposure; `$100,000` cumulative campaign turnover.
 - A `$1` minimum adjustment, or the broker's higher minimum, with no
   percentage-change filter.
-- Existing percentage risk limits, validation thresholds, and tiny smoke caps
-  remain unchanged.
-- Qualification requires at least 30 calendar days, 20 market sessions, 100
-  unique reconciled filled orders, 99.5% cycle completion, acceptable
-  slippage, no unexplained missed cycles, no unresolved reconciliation, and
-  recorded kill-switch drills. These are observed records, never targets that
-  can be manufactured.
+- Existing percentage risk limits, validation thresholds, and tiny smoke caps.
+- Monthly selection from completed-session information with daily target
+  maintenance only in the next regular session's first five minutes.
+- Qualification measured from persistent evidence: at least 30 calendar days,
+  20 market sessions, 100 unique reconciled filled orders, 99.5% cycle
+  completion, acceptable slippage, no unexplained missed cycles, no unresolved
+  reconciliation, and recorded kill-switch drills.
 
-Install the separate engine and watchdog launchd jobs only after executable
-parity and validation pass. The jobs need process locking, logs, local
-notifications, sleep prevention while active, and heartbeats between sessions.
+Install separate engine and watchdog launchd jobs only after executable parity
+and validation pass. Use process locking, logs, local notifications, sleep
+prevention while active, and heartbeats between sessions.

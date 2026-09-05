@@ -16,6 +16,7 @@ import structlog
 from config.schema import AssetClass, DataConfig
 from data.alpaca_downloader import AlpacaDownloader
 from data.base import BaseDownloader, DownloadRequest
+from data.catalog import BarRequest, DataCatalog
 from data.ccxt_downloader import CCXTDownloader
 from data.resample import resample_to
 from data.validate import QualityResult, validate_ohlcv
@@ -27,7 +28,12 @@ log = structlog.get_logger(__name__)
 def build_downloader(data_config: DataConfig, api_key: str, api_secret: str, is_paper: bool = True) -> BaseDownloader:
     """Construct the appropriate downloader for an asset class."""
     if data_config.asset_class == AssetClass.EQUITY:
-        return AlpacaDownloader(api_key=api_key, api_secret=api_secret)
+        return AlpacaDownloader(
+            api_key=api_key,
+            api_secret=api_secret,
+            feed=data_config.feed,
+            adjustment=data_config.adjustment,
+        )
     elif data_config.asset_class == AssetClass.CRYPTO:
         return CCXTDownloader(
             exchange_id=data_config.exchange or "coinbase",
@@ -319,14 +325,14 @@ def load_bars(
     end: str | None = None,
 ) -> pd.DataFrame:
     """Load bars from Parquet for a symbol at a given frequency."""
-    from storage.parquet_io import read_bars
-
-    path = parquet_path(storage_dir, symbol, frequency, source=source)
-    if not path.exists():
-        raise FileNotFoundError(f"No Parquet file at {path}")
-    df = read_bars(path)
-    if start:
-        df = df[df.index >= pd.Timestamp(start, tz="UTC")]
-    if end:
-        df = df[df.index <= pd.Timestamp(end, tz="UTC")]
-    return df
+    loaded = DataCatalog().load(
+        BarRequest(
+            storage_dir=storage_dir,
+            symbols=(symbol,),
+            frequency=frequency,
+            source=source,
+            start=start,
+            end=end,
+        )
+    )
+    return loaded.frame

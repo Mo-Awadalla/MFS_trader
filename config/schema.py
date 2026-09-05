@@ -43,6 +43,7 @@ class DataConfig:
     start_date: str = "2020-01-01"
     end_date: str | None = None
     adjustment: str = "split_dividend"  # for equities
+    feed: str = "iex"  # explicit Alpaca equities feed; IEX preserves legacy behavior
     exchange: str | None = None  # for crypto venue tagging
     storage_dir: str = "data/parquet"
     min_volume: float = 0.0
