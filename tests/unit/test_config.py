@@ -41,6 +41,54 @@ class TestConfigLoader:
         assert "equity" in asset_classes
         assert "crypto" in asset_classes
 
+    def test_equity_data_defaults_round_trip_to_legacy_iex_and_split_dividend(self, tmp_path):
+        config_path = tmp_path / "defaults.toml"
+        config_path.write_text(
+            """
+mode = "research"
+[[brokers]]
+name = "alpaca"
+asset_class = "equity"
+api_key_env = "ALPACA_API_KEY"
+api_secret_env = "ALPACA_API_SECRET"
+base_url = "https://paper-api.alpaca.markets"
+
+[[data]]
+symbols = ["SPY"]
+asset_class = "equity"
+""",
+            encoding="utf-8",
+        )
+        cfg = load_config(config_path, load_env=False)
+
+        assert cfg.data[0].feed == "iex"
+        assert cfg.data[0].adjustment == "split_dividend"
+
+    def test_equity_data_explicit_sip_feed_round_trips(self, tmp_path):
+        config_path = tmp_path / "sip.toml"
+        config_path.write_text(
+            """
+mode = "research"
+[[brokers]]
+name = "alpaca"
+asset_class = "equity"
+api_key_env = "ALPACA_API_KEY"
+api_secret_env = "ALPACA_API_SECRET"
+base_url = "https://paper-api.alpaca.markets"
+
+[[data]]
+symbols = ["SPY"]
+asset_class = "equity"
+feed = "sip"
+adjustment = "all"
+""",
+            encoding="utf-8",
+        )
+        cfg = load_config(config_path, load_env=False)
+
+        assert cfg.data[0].feed == "sip"
+        assert cfg.data[0].adjustment == "all"
+
 
 class TestLiveConfigValidation:
     """Live mode must refuse to start without proper authorization and keys."""

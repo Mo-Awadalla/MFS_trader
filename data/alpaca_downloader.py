@@ -14,6 +14,27 @@ import requests
 
 from data.base import BaseDownloader, DownloadRequest, DownloadResult
 
+# `split_dividend` predates Alpaca's current API spelling.  Keep it stable in
+# configuration while recording and sending its unambiguous API equivalent.
+ALPACA_ADJUSTMENT_BY_CONFIG: dict[str, str] = {
+    "split_dividend": "all",
+    "all": "all",
+    "split": "split",
+    "dividend": "dividend",
+    "raw": "raw",
+}
+
+
+def effective_alpaca_adjustment(adjustment: str) -> str:
+    """Return the Alpaca API adjustment value for a configured adjustment."""
+    try:
+        return ALPACA_ADJUSTMENT_BY_CONFIG[adjustment]
+    except KeyError as exc:
+        supported = ", ".join(sorted(ALPACA_ADJUSTMENT_BY_CONFIG))
+        raise ValueError(
+            f"Unsupported Alpaca adjustment {adjustment!r}; expected one of: {supported}"
+        ) from exc
+
 
 class AlpacaDownloader(BaseDownloader):
     """Downloads 1-min (or other frequency) bars from Alpaca Historical Data API."""
@@ -24,11 +45,13 @@ class AlpacaDownloader(BaseDownloader):
         api_secret: str | None = None,
         data_url: str = "https://data.alpaca.markets",
         feed: str | None = "iex",
-    ):
+        adjustment: str = "all",
+    ) -> None:
         self._api_key = api_key or os.environ.get("ALPACA_API_KEY", "")
         self._api_secret = api_secret or os.environ.get("ALPACA_API_SECRET", "")
         self._data_url = data_url.rstrip("/")
         self._feed = feed
+        self._adjustment = effective_alpaca_adjustment(adjustment)
 
     @property
     def source_name(self) -> str:
@@ -75,7 +98,7 @@ class AlpacaDownloader(BaseDownloader):
                 "start": start.isoformat(),
                 "end": end.isoformat(),
                 "limit": 10000,
-                "adjustment": "all",  # split + dividend adjusted
+                "adjustment": self._adjustment,
             }
             if self._feed:
                 params["feed"] = self._feed
@@ -110,7 +133,8 @@ class AlpacaDownloader(BaseDownloader):
             data=df,
             metadata={
                 "frequency": request.frequency,
-                "adjustment": "split_dividend",
+                "adjustment": "split_dividend" if self._adjustment == "all" else self._adjustment,
+                "effective_alpaca_adjustment": self._adjustment,
                 "feed": self._feed,
                 "bar_count": len(df),
                 "start": str(start),

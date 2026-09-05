@@ -107,6 +107,7 @@ def _parse_data(raw_data: list[dict[str, Any]]) -> list[DataConfig]:
                 start_date=d.get("start_date", "2020-01-01"),
                 end_date=d.get("end_date"),
                 adjustment=d.get("adjustment", "split_dividend"),
+                feed=d.get("feed", "iex"),
                 exchange=d.get("exchange"),
                 storage_dir=d.get("storage_dir", "data/parquet"),
                 min_volume=d.get("min_volume", 0.0),

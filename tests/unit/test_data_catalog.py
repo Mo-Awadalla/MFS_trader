@@ -87,6 +87,27 @@ def test_catalog_strict_panel_rejects_missing_expected_session(tmp_path) -> None
                     source="alpaca_sip",
                 ),
                 expected_sessions=("2024-01-01", "2024-01-02", "2024-01-03"),
-                cutoff="2024-01-03",
+                expected_session_closes=("2024-01-01T21:00:00Z", "2024-01-02T21:00:00Z", "2024-01-03T21:00:00Z"),
+                cutoff="2024-01-04",
+            )
+        )
+
+
+def test_catalog_strict_panel_rejects_close_on_wrong_session(tmp_path) -> None:
+    for symbol in ("SPY", "TLT"):
+        write_bars(_bars("2024-01-01", 2), tmp_path / "alpaca_sip" / f"{symbol}_1d.parquet")
+
+    with pytest.raises(ValueError, match="closes do not align"):
+        DataCatalog().load_strict_panel(
+            StrictPanelRequest(
+                bars=BarRequest(
+                    storage_dir=tmp_path,
+                    symbols=("SPY", "TLT"),
+                    frequency="1d",
+                    source="alpaca_sip",
+                ),
+                expected_sessions=("2024-01-01", "2024-01-02"),
+                expected_session_closes=("2024-01-02T21:00:00Z", "2024-01-03T21:00:00Z"),
+                cutoff="2024-01-04",
             )
         )

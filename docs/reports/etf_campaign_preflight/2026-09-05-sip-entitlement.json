@@ -1,0 +1,50 @@
+{
+  "available": true,
+  "check": "alpaca_sip_entitlement_latest_bars",
+  "checked_at": "2026-09-05T21:22:26.391238+00:00",
+  "config": {
+    "path": "/Users/mohamedawadalla/Projects/untitled_project-etf-release/config/etf_tsm_sip_campaign_preflight.toml",
+    "sha256": "0b6eef3b7053712785612d0ad996c3542b80d21d36e98570229becf04c023071"
+  },
+  "data_configuration": {
+    "configured_adjustment": "split_dividend",
+    "effective_alpaca_adjustment": "all"
+  },
+  "endpoint": "https://data.alpaca.markets/v2/stocks/bars/latest",
+  "feed": "sip",
+  "historical_sip_access": {
+    "available": true,
+    "endpoint": "https://data.alpaca.markets/v2/stocks/bars",
+    "http": {
+      "message": "completed historical SIP bars returned for all campaign ETFs",
+      "status_code": 200
+    },
+    "request_parameters": {
+      "adjustment": "all",
+      "end": "2026-08-29T00:00:00Z",
+      "feed": "sip",
+      "start": "2026-08-28T00:00:00Z",
+      "symbols": "DBC,GLD,IEF,IWM,QQQ,SHY,SPY",
+      "timeframe": "1Day"
+    }
+  },
+  "http": {
+    "message": "{\"message\":\"subscription does not permit querying recent SIP data\"}",
+    "status_code": 403
+  },
+  "latest_sip_access": {
+    "available": false,
+    "endpoint": "https://data.alpaca.markets/v2/stocks/bars/latest",
+    "http": {
+      "message": "{\"message\":\"subscription does not permit querying recent SIP data\"}",
+      "status_code": 403
+    },
+    "request_parameters": {
+      "feed": "sip",
+      "symbols": "SPY"
+    }
+  },
+  "outcome": "available",
+  "schema_version": 1,
+  "symbol": "SPY"
+}
