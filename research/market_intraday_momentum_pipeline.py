@@ -94,6 +94,7 @@ def backtest_market_intraday_momentum(
     skipped = signals[("portfolio", "rebalance_skipped")].astype(bool)
     return CrossSectionalBacktestResult(
         strategy_name=STRATEGY_NAME,
+        template_version=f"{STRATEGY_NAME}:v1",
         params={
             **params_to_dict(params),
             "strategy_template_version": f"{STRATEGY_NAME}:v1",

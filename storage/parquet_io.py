@@ -5,6 +5,8 @@
 
 from __future__ import annotations
 
+import os
+import tempfile
 from pathlib import Path
 
 import pandas as pd
@@ -85,3 +87,33 @@ def read_artifact(path: str | Path) -> pd.DataFrame:
     """Read a generic Parquet artifact."""
     table = pq.read_table(str(path))  # type: ignore[no-untyped-call]
     return table.to_pandas()
+
+
+def write_timeseries(df: pd.DataFrame, path: str | Path, *, compression: str = "snappy") -> None:
+    """Atomically write a non-OHLCV UTC time series such as funding or open interest."""
+    path = Path(path)
+    if not isinstance(df.index, pd.DatetimeIndex):
+        raise ValueError("Time-series artifacts require a DatetimeIndex")
+    if df.index.tz is None:
+        raise ValueError("Time-series artifacts require timezone-aware timestamps")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    out = df.sort_index().reset_index()
+    if "index" in out.columns and "timestamp" not in out.columns:
+        out = out.rename(columns={"index": "timestamp"})
+    table = pa.Table.from_pandas(out, preserve_index=False)
+    fd, temporary_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    os.close(fd)
+    temporary_path = Path(temporary_name)
+    try:
+        pq.write_table(table, str(temporary_path), compression=compression)  # type: ignore[no-untyped-call]
+        os.replace(temporary_path, path)
+    finally:
+        temporary_path.unlink(missing_ok=True)
+
+
+def read_timeseries(path: str | Path) -> pd.DataFrame:
+    """Read a time-series artifact written by :func:`write_timeseries`."""
+    table = pq.read_table(str(path))  # type: ignore[no-untyped-call]
+    df = table.to_pandas()
+    df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
+    return df.set_index("timestamp").sort_index()

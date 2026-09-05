@@ -7,7 +7,7 @@ name = "mfs-trader"
 version = "0.1.0"
 description = "Medium-frequency trading system with honest validation gauntlet"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 license = { text = "Proprietary" }
 authors = [{ name = "Mohamed Awadalla" }]
 
@@ -66,7 +66,7 @@ markers = [
 
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py312"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "SIM", "C4"]
@@ -76,7 +76,7 @@ ignore = ["E501", "SIM102"]
 "tests/*" = ["B011"]
 
 [tool.mypy]
-python_version = "3.11"
+python_version = "3.12"
 strict = true
 warn_unused_ignores = true
 warn_redundant_casts = true

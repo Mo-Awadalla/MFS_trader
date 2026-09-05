@@ -118,6 +118,32 @@ def block_bootstrap_returns(
     return paths
 
 
+def cluster_bootstrap_returns(
+    returns: pd.Series,
+    cluster_labels: pd.Series,
+    num_paths: int,
+    seed: int = DEFAULT_SEED,
+) -> np.ndarray:
+    """Bootstrap whole event clusters, preserving cross-symbol settlement dependence."""
+    labels = cluster_labels.reindex(returns.index)
+    if labels.isna().any():
+        raise ValueError("Every return must have a cluster label")
+    clusters = [group.index.to_numpy() for _, group in labels.groupby(labels, sort=True)]
+    if not clusters:
+        return np.empty((num_paths, 0))
+    rng = np.random.default_rng(seed)
+    values = returns.to_numpy(dtype=float)
+    positions = pd.Series(np.arange(len(returns)), index=returns.index)
+    paths = np.empty((num_paths, len(returns)))
+    for path_index in range(num_paths):
+        sampled: list[float] = []
+        while len(sampled) < len(returns):
+            cluster = clusters[int(rng.integers(0, len(clusters)))]
+            sampled.extend(values[positions.loc[cluster].to_numpy(dtype=int)].tolist())
+        paths[path_index] = sampled[:len(returns)]
+    return paths
+
+
 def compute_path_metrics(
     returns: np.ndarray,
     initial_capital: float = 10000.0,
@@ -162,6 +188,8 @@ def run_monte_carlo(
     initial_capital: float = 10000.0,
     ruin_threshold: float = -0.50,
     seed: int = DEFAULT_SEED,
+    cluster_labels: pd.Series | None = None,
+    annualization_factor: float = 252.0,
 ) -> MCResult:
     """Run block-bootstrap Monte Carlo simulation on a return series.
 
@@ -176,17 +204,20 @@ def run_monte_carlo(
     Returns:
         MCResult with distributions and summary statistics.
     """
-    if returns.empty or len(returns) < block_size:
+    minimum_observations = 2 if cluster_labels is not None else block_size
+    if returns.empty or len(returns) < minimum_observations:
         log.warning("mc_insufficient_data", bars=len(returns), block_size=block_size)
         return MCResult(num_paths=0, block_size=block_size, seed=seed)
 
     log.info("mc_starting", paths=num_paths, block_size=block_size, bars=len(returns))
 
     # Generate block-bootstrap paths
-    paths = block_bootstrap_returns(returns, num_paths, block_size, seed)
+    paths = (cluster_bootstrap_returns(returns, cluster_labels, num_paths, seed)
+             if cluster_labels is not None
+             else block_bootstrap_returns(returns, num_paths, block_size, seed))
 
     # Compute metrics for each path (vectorized where possible)
-    ann_factor = 252
+    ann_factor = annualization_factor
     equity = initial_capital * np.cumprod(1 + paths, axis=1)
     terminal_wealth = equity[:, -1]
 
@@ -198,10 +229,13 @@ def run_monte_carlo(
     # Sortino per path
     downside_only = np.where(paths < 0, paths, 0.0)
     downside_stds = np.std(downside_only, axis=1)
-    sortinos = np.where(
-        (downside_stds > 0) & (path_stds > 0),
-        path_means * ann_factor / (downside_stds * np.sqrt(ann_factor)),
-        0.0,
+    sortinos = np.zeros_like(path_means)
+    valid_sortino = (downside_stds > 0) & (path_stds > 0)
+    np.divide(
+        path_means * ann_factor,
+        downside_stds * np.sqrt(ann_factor),
+        out=sortinos,
+        where=valid_sortino,
     )
 
     # Max drawdown per path (vectorized)

@@ -7,12 +7,35 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Any, Generic, TypeVar
+from typing import Any, Protocol, TypeVar, runtime_checkable
 
 import numpy as np
 import pandas as pd
 
 ParamsT = TypeVar("ParamsT")
+
+
+@runtime_checkable
+class StrategyExecution(Protocol[ParamsT]):
+    """Compact execution-facing interface for a Strategy.
+
+    ``StrategyTemplate`` remains the compatibility surface for research
+    sweeps, diagnostics, and metadata. Runtime and validation consumers that
+    only need to execute a Strategy should depend on this smaller interface.
+    """
+
+    name: str
+
+    @property
+    def strategy_template_version(self) -> str: ...
+
+    def generate_signals(self, df: pd.DataFrame, params: ParamsT) -> pd.DataFrame: ...
+
+    def validate_inputs(self, df: pd.DataFrame) -> None: ...
+
+    def required_columns(self) -> tuple[str, ...]: ...
+
+    def warmup_bars(self, params: ParamsT) -> int: ...
 
 
 @dataclass(frozen=True)
@@ -63,7 +86,7 @@ class StrategyDiagnostics:
         }
 
 
-class StrategyTemplate(ABC, Generic[ParamsT]):
+class StrategyTemplate[ParamsT](ABC):
     """Required surface — every strategy template implements this."""
 
     name: str

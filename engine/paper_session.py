@@ -19,8 +19,8 @@ from execution.base import (
 )
 from execution.sim_broker.broker import SimBroker, SimBrokerConfig
 from experiments.artifacts import ArtifactKind, ArtifactManager
+from experiments.authority import ExperimentAuthority
 from experiments.models import Experiment, PromotionStatus
-from experiments.operator_confirmations import verify_experiment_hash
 from experiments.registry import ExperimentRegistry
 from monitoring.reports import (
     build_operational_report,
@@ -138,7 +138,7 @@ def verify_paper_lifecycle_gates(
     experiment_uuid: str,
     experiment_hash: str,
 ) -> Experiment:
-    experiment = verify_experiment_hash(registry, experiment_uuid, experiment_hash)
+    experiment = ExperimentAuthority(registry).verify(experiment_uuid, experiment_hash)
     if experiment.promotion_status != PromotionStatus.PAPER_OPS:
         raise PaperSessionGateError(
             f"paper broker session requires paper_ops, got {experiment.promotion_status.value}"

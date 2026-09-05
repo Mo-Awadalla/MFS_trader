@@ -1,0 +1,47 @@
+{
+  "data_gate": {
+    "effective_end": "2026-06-30T16:00:00Z",
+    "effective_start": "2021-12-21T00:00:00Z",
+    "funding_threshold_bps_strictly_greater_than": 20.0,
+    "gap_exclusions": {
+      "BTCUSDT": {
+        "count": 25,
+        "rate": 0.005041
+      },
+      "ETHUSDT": {
+        "count": 25,
+        "rate": 0.005041
+      },
+      "SOLUSDT": {
+        "count": 44,
+        "rate": 0.008873
+      }
+    },
+    "maximum_funding_bps": {
+      "BTCUSDT": 8.8148,
+      "ETHUSDT": 10.1724,
+      "SOLUSDT": 11.9261
+    },
+    "qualifying_funding_events": 0,
+    "scheduled_events_per_symbol": 4959,
+    "scheduled_events_total": 14877
+  },
+  "dsr": null,
+  "failure_reasons": [
+    "Eligibility: 0 of 14,877 scheduled symbol-events have funding > 20 bps",
+    "WFA: no_valid_folds_generated",
+    "MC: no OOS returns available for simulation",
+    "DSR: no positive Sharpe to deflate",
+    "Stability: no sweep results to analyze"
+  ],
+  "monte_carlo": null,
+  "passed": false,
+  "stability": null,
+  "strategy_name": "funding_time_reversal",
+  "wfa": {
+    "frac_negative": 0.0,
+    "num_folds": 0,
+    "oos_sharpe": 0,
+    "passed": false
+  }
+}

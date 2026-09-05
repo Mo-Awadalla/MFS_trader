@@ -1,1 +1,1 @@
-"""Volatility-standardized intraday cross-sectional momentum strategy."""
+"""VS-ICSM strategy package."""

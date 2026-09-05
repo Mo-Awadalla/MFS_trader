@@ -17,17 +17,18 @@ Most trading repos show a backtest. This repo tries to show the harder engineeri
 ## Current status
 
 - Package: `mfs-trader`
-- Primary language: Python 3.11+
+- Primary language: Python 3.12+
 - Current strongest candidate: `ETFTimeSeriesMomentumVolTarget-v1-YahooAdjustedDaily-2005-2026`
-- Current promotion status: `validation_passed`
-- Paper/live status: not approved; next step is paper-ops evidence, not live deployment
+- Current promotion status: `paper_ops` (read from the immutable Experiment metadata)
+- Paper/live status: not approved. The historical Yahoo candidate is preserved, but it is not the proposed Alpaca SIP successor.
+- SIP successor status: no successor has been frozen. A latest-SPY SIP entitlement check received HTTP 403 at `2026-09-05T21:12:16.148693+00:00`, but a separate read-only historical SIP probe for all seven ETFs succeeded at `2026-09-05T21:18:56.184538+00:00` (`2026-09-03` to `2026-09-04`, `feed=sip`, `adjustment=all`). The 403 does not block historical acquisition; full common-history/provenance checks, validation, paper broker sessions, and order actions remain pending.
 - Latest mechanism scout: `CrossAssetCarryTrendScout-v1` passed all 13 frozen public-data gates; next evidence step is a five-market raw-contract replication, not paper/live promotion
 
 ## Validated candidate
 
 | Experiment | Data | Status | Sharpe | WFA OOS Sharpe | MC P(ruin) | DSR p-value | Max DD | Notes |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
-| `ETFTimeSeriesMomentumVolTarget-v1` | Yahoo adjusted daily ETFs, 2005-2026 | `validation_passed` | 0.7954 | 0.8386 | 0.0001 | 3.48e-07 | -17.30% | Source-backed ETF absolute momentum + inverse-volatility / volatility-targeting rules |
+| `ETFTimeSeriesMomentumVolTarget-v1` | Yahoo adjusted daily ETFs, 2005-2026 | `paper_ops` | 0.7954 | 0.8386 | 0.0001 | 3.48e-07 | -17.30% | Historical source-backed candidate; preserved as evidence, not reused for a SIP campaign |
 
 Evidence:
 
@@ -70,7 +71,7 @@ The validated candidate also has a no-credential runtime replay through the engi
 
 Report: `docs/reports/etf_tsm_engine_replay/etf_tsm_engine_replay.md`.
 
-Scope: this proves the validated ETF target weights can pass through runtime plumbing in simulation. It is still not Alpaca paper/live broker approval.
+Scope: this proves an historical target-weight adapter could pass through runtime plumbing in simulation. It does not establish economic parity or Alpaca paper/live broker approval: research ended at `$50,944.37` and the replay at `$27,759.42`, a `$23,184.95` gap. The replay used fixed `$10,000` sizing, adjustment thresholds, risk reductions, and distinct simulated-fill costs; a successor must reconcile these effects session by session before validation.
 
 ## Latest research scouts
 
@@ -285,7 +286,7 @@ Live mode is intentionally gated by `config/live.toml`; it refuses to start unle
 ## Known limitations / next serious work
 
 - The current public repo should be renamed from the old `untitled_project` remote before resume use.
-- ETF TSM has passed simulated runtime replay, but continuous Alpaca paper ops has not yet been run for the validation-passed candidate.
+- ETF TSM's historical Yahoo Experiment is in `paper_ops`, but it cannot establish SIP paper evidence. The proposed SIP successor is blocked by the recorded entitlement preflight; no new Experiment has been frozen and no continuous Alpaca paper operation has been run.
 - The runtime replay uses a target-weight adapter and simulated broker; real paper broker authority remains a separate evidence gate.
 
 ## License / reuse

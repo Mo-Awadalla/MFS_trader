@@ -192,6 +192,86 @@ class ArtifactManager:
         """Read one immutable paper session artifact."""
         return json.loads(self.paper_session_path(experiment_uuid, session_id).read_text(encoding="utf-8"))
 
+    def live_session_path(self, experiment_uuid: str, session_id: str) -> Path:
+        """Return the canonical immutable live-session summary path."""
+        safe_session_id = self._validate_session_id(session_id)
+        return self.experiment_dir(experiment_uuid) / "live" / "sessions" / safe_session_id / "session.json"
+
+    def write_live_session_json(
+        self,
+        experiment_uuid: str,
+        session_id: str,
+        payload: Any,
+    ) -> Path:
+        """Write one immutable live-session summary artifact."""
+        text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+        path = self.live_session_path(experiment_uuid, session_id)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            self._atomic_create(path, text)
+        except ArtifactExistsError as exc:
+            raise ArtifactImmutableError(
+                f"Live session artifact is immutable: {path}"
+            ) from exc
+        return path
+
+    def read_live_session_json(self, experiment_uuid: str, session_id: str) -> Any:
+        """Read one immutable live-session summary artifact."""
+        return json.loads(
+            self.live_session_path(experiment_uuid, session_id).read_text(encoding="utf-8")
+        )
+
+    def live_session_report_path(
+        self,
+        experiment_uuid: str,
+        session_id: str,
+        report_name: str,
+    ) -> Path:
+        """Return an immutable report path for one live session."""
+        safe_session_id = self._validate_session_id(session_id)
+        safe_report_name = self._validate_report_name(report_name)
+        return (
+            self.experiment_dir(experiment_uuid)
+            / "live"
+            / "sessions"
+            / safe_session_id
+            / safe_report_name
+        )
+
+    def write_live_session_report_json(
+        self,
+        experiment_uuid: str,
+        session_id: str,
+        report_name: str,
+        payload: Any,
+    ) -> Path:
+        """Write one immutable JSON report for a live session."""
+        if not report_name.endswith(".json"):
+            raise ArtifactError(f"Live session report must be JSON: {report_name}")
+        text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+        path = self.live_session_report_path(experiment_uuid, session_id, report_name)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            self._atomic_create(path, text)
+        except ArtifactExistsError as exc:
+            raise ArtifactImmutableError(
+                f"Live session report artifact is immutable: {path}"
+            ) from exc
+        return path
+
+    def read_live_session_report_json(
+        self,
+        experiment_uuid: str,
+        session_id: str,
+        report_name: str,
+    ) -> Any:
+        """Read one immutable JSON report for a live session."""
+        return json.loads(
+            self.live_session_report_path(
+                experiment_uuid, session_id, report_name
+            ).read_text(encoding="utf-8")
+        )
+
     def paper_session_report_path(
         self,
         experiment_uuid: str,

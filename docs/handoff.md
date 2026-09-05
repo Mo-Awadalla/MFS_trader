@@ -1,14 +1,32 @@
-# Handoff: Phase 1 Continuous Paper Ops
+# Handoff: ETF SIP Paper-Evidence Campaign
 
-Updated: 2026-06-28
+Updated: 2026-09-05
 
 ## Current Goal
 
-Implement Phase 1 Continuous Paper Ops:
+Produce a reproducible release and collect qualifying paper evidence for a
+new frozen Alpaca SIP ETF successor only after data entitlement, parity, and
+validation gates pass.
 
-- Paper Ops Smoke as a non-promoting evidence sub-gate under `promotion_status=paper_ops`.
-- Full immutable Paper Ops Pass gate before `paper_ops -> live_dry_run`.
-- Immutable paper session artifacts, bar-cycle tracking, order lifecycle persistence, multi-cycle reconciliation, slippage aggregation, drill reports, operator reports, and manual `confirm-paper-ops-pass`.
+The latest-SPY SIP entitlement preflight at `2026-09-05T21:12:16.148693+00:00`
+returned HTTP 403 for requested recent data. It does not block historical
+acquisition: a separate read-only historical SIP probe for all seven ETFs
+succeeded at `2026-09-05T21:18:56.184538+00:00` for
+`2026-09-03T00:00:00Z` through `2026-09-04T00:00:00Z` with `feed=sip` and
+`adjustment=all`. This limited probe is not a frozen input manifest or a full
+common-history/completeness result. Do not substitute IEX; freeze and validate
+only after the remaining historical-input, parity, and identity gates pass.
+
+The authoritative historical Yahoo Experiment remains
+`119131fa-0f67-48d7-ab87-f20d81c70c1f` /
+`8e584c2eb4ba20a90b0af3d62a8f28c1d753a83a3e57ca79deafb869af23270e` with
+promotion status `paper_ops`. Preserve it unchanged; it is not the SIP
+successor and cannot be reused for different data provenance.
+
+Perform the full read-only historical seven-symbol panel check and record feed,
+as-of time, requested range, universe, and completeness. Only then create the immutable input manifest and a new
+Experiment identity, run the unchanged gauntlet and session-level economic
+parity reconciliation, then execute the paper gates in sequence.
 
 ## Suggested Skills
 

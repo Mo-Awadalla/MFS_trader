@@ -69,3 +69,10 @@ htmlcov/
 .tox/
 .mypy_cache/
 .ruff_cache/
+
+# Local agent settings and generated codebase graph
+.claude/
+.codex/
+AGENTS.md
+CLAUDE.md
+graphify-out/
