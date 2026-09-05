@@ -1,0 +1,76 @@
+{
+  "experiment_uuid": "8876fbc6-7db3-4996-8fc7-b24b0e55c83c",
+  "gauntlet": {
+    "dsr": {
+      "m_eff": 1.0,
+      "m_raw": 4,
+      "method": "M_eff_corr",
+      "passed": false,
+      "pvalue": 0.006059546321613429
+    },
+    "failure_reasons": [
+      "DSR: DSR collapses under M_raw: p = 0.1367 >= 0.10"
+    ],
+    "monte_carlo": {
+      "mean_sharpe": 1.5631018028193158,
+      "pct_5_cagr": 0.10909991819905554,
+      "pct_95_max_dd": -0.07904953935369126,
+      "prob_loss": 0.0,
+      "prob_ruin": 0.0
+    },
+    "passed": false,
+    "stability": {
+      "has_isolated_peak": false,
+      "passed": true,
+      "plateau_within_pct": 1.0
+    },
+    "strategy_name": "etf_time_series_momentum",
+    "wfa": {
+      "frac_negative": 0.0,
+      "num_folds": 12,
+      "oos_sharpe": 1.5653005011444243,
+      "passed": true
+    }
+  },
+  "params": {
+    "fallback_symbol": "SHY",
+    "liquidity_lookback_days": 20,
+    "max_gross": 1.0,
+    "max_symbol_weight": 0.5,
+    "min_eligible_symbols": 1,
+    "min_gross": 0.25,
+    "min_history_days": 252,
+    "min_median_dollar_volume": 5000000.0,
+    "min_price": 5.0,
+    "momentum_lookback_days": 252,
+    "target_volatility_annual": 0.1,
+    "top_n": 3,
+    "vol_lookback_days": 63
+  },
+  "replay_attribution": {
+    "engine_replay_available": false,
+    "execution_alignment": "signals use data before rebalance; target weights are held from the next bar",
+    "mode": "vectorized_cross_sectional_replay",
+    "reason": "engine replay is currently single-symbol; ETF TSM evidence uses deterministic vectorized ETF target weights"
+  },
+  "research": {
+    "bar_count": 1255,
+    "metrics": {
+      "ann_volatility": 0.09760344256812398,
+      "cagr": 0.10019822713068338,
+      "final_equity": 16089.104327581896,
+      "max_drawdown": -0.10278658044329002,
+      "sharpe": 1.027216893205396,
+      "sortino": 1.2800220204596255,
+      "total_bars": 1255,
+      "total_return": 0.6089104327581896,
+      "win_rate": 0.5557809330628803
+    },
+    "rebalance_count": 61,
+    "skipped_rebalance_count": 13,
+    "trade_count": 137
+  },
+  "strategy": "etf_time_series_momentum",
+  "strategy_template_version": "etf_time_series_momentum:v1",
+  "sweep_rows": 4
+}

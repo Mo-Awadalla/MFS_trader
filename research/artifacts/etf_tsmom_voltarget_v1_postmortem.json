@@ -1,0 +1,311 @@
+{
+  "candidate": "ETFTimeSeriesMomentumVolTarget-v1",
+  "status": "validation_failed",
+  "verdict": "reject_for_paper_ops_pending_stability_failure",
+  "summary_metrics": {
+    "total_return": 0.8463296723194922,
+    "cagr": 0.13125210956931843,
+    "sharpe": 0.9849199958805828,
+    "sortino": 2.860216921006349,
+    "max_drawdown": -0.14277509488507045,
+    "ann_volatility": 0.13443524859816722,
+    "win_rate": 0.5695695695695696,
+    "total_bars": 1253.0,
+    "final_equity": 18463.296723194922
+  },
+  "gate_status": {
+    "wfa_primary": true,
+    "monte_carlo": true,
+    "dsr": true,
+    "stability": false
+  },
+  "data": {
+    "source": "Massive adjusted daily aggregates",
+    "symbols": [
+      "DBC",
+      "EEM",
+      "EFA",
+      "GLD",
+      "IEF",
+      "IWM",
+      "QQQ",
+      "SHY",
+      "SPY",
+      "TLT",
+      "VNQ"
+    ],
+    "rows": 1253,
+    "start": "2021-06-30 04:00:00+00:00",
+    "end": "2026-06-26 04:00:00+00:00"
+  },
+  "gross_vs_net": {
+    "gross": {
+      "total_return": 0.8513741489874038,
+      "cagr": 0.1318730390709335,
+      "sharpe": 0.9890112906983809,
+      "sortino": 2.872341671260181,
+      "max_drawdown": -0.14269587790847982,
+      "ann_volatility": 0.13443402114446235,
+      "win_rate": 0.5695695695695696,
+      "total_bars": 1253.0,
+      "final_equity": 18513.74148987404
+    },
+    "net": {
+      "total_return": 0.8463296723194922,
+      "cagr": 0.13125210956931843,
+      "sharpe": 0.9849199958805828,
+      "sortino": 2.860216921006349,
+      "max_drawdown": -0.14277509488507045,
+      "ann_volatility": 0.13443524859816722,
+      "win_rate": 0.5695695695695696,
+      "total_bars": 1253.0,
+      "final_equity": 18463.296723194922
+    },
+    "cost_drag_total_return": 0.0027287568997766964,
+    "total_cost_return": 0.0027287568997766414
+  },
+  "regime_split": {
+    "2021 H2": {
+      "total_return": 0.0,
+      "cagr": 0.0,
+      "sharpe": 0.0,
+      "sortino": 0.0,
+      "max_drawdown": 0.0,
+      "ann_volatility": 0.0,
+      "win_rate": 0.0,
+      "total_bars": 127.0,
+      "final_equity": 10000.0
+    },
+    "2022": {
+      "total_return": -0.04047821782160921,
+      "cagr": -0.040636163751299526,
+      "sharpe": -0.5236682548546393,
+      "sortino": -1.4525634547821387,
+      "max_drawdown": -0.051346800025023676,
+      "ann_volatility": 0.07399751781074398,
+      "win_rate": 0.5196850393700787,
+      "total_bars": 251.0,
+      "final_equity": 9595.217821783908
+    },
+    "2023": {
+      "total_return": 0.063642794309549,
+      "cagr": 0.06416793470929183,
+      "sharpe": 0.5314252835498293,
+      "sortino": 2.1393732384236928,
+      "max_drawdown": -0.13056088201688099,
+      "ann_volatility": 0.13382277158695563,
+      "win_rate": 0.524,
+      "total_bars": 250.0,
+      "final_equity": 10636.42794309549
+    },
+    "2024": {
+      "total_return": 0.2688399399299717,
+      "cagr": 0.2700441550715176,
+      "sharpe": 1.615852606815635,
+      "sortino": 4.879149928224969,
+      "max_drawdown": -0.10873517031509405,
+      "ann_volatility": 0.15551421261754178,
+      "win_rate": 0.5936254980079682,
+      "total_bars": 251.0,
+      "final_equity": 12688.399399299717
+    },
+    "2025": {
+      "total_return": 0.2956136082918266,
+      "cagr": 0.2996626175766832,
+      "sharpe": 1.7220496863846673,
+      "sortino": 5.123841738822806,
+      "max_drawdown": -0.14277509488507,
+      "ann_volatility": 0.15966537293444125,
+      "win_rate": 0.6024096385542169,
+      "total_bars": 249.0,
+      "final_equity": 12956.136082918267
+    },
+    "2026 YTD": {
+      "total_return": 0.09203000532387451,
+      "cagr": 0.20123789680323823,
+      "sharpe": 1.0596990400249466,
+      "sortino": 3.3234786582208393,
+      "max_drawdown": -0.11930410854973816,
+      "ann_volatility": 0.19005160588842415,
+      "win_rate": 0.6,
+      "total_bars": 121.0,
+      "final_equity": 10920.300053238745
+    }
+  },
+  "rolling_stability": {
+    "window_days": 60,
+    "min_sharpe": -3.4001762590668365,
+    "negative_fraction": 0.271,
+    "worst_windows": {
+      "2022-07-13 04:00:00+00:00": -3.4001762590668365,
+      "2022-07-12 04:00:00+00:00": -2.9250478753000877,
+      "2022-07-14 04:00:00+00:00": -2.8173954758339144,
+      "2022-07-05 04:00:00+00:00": -2.8042240671810084,
+      "2023-10-20 04:00:00+00:00": -2.6961812585246347,
+      "2022-07-06 04:00:00+00:00": -2.6751513153378994,
+      "2023-10-23 04:00:00+00:00": -2.5263379807968174,
+      "2023-10-25 04:00:00+00:00": -2.493563713659823,
+      "2023-03-14 04:00:00+00:00": -2.4811934722081412,
+      "2023-10-19 04:00:00+00:00": -2.4669569185608875
+    },
+    "negative_windows_by_year": {
+      "2022": 94,
+      "2023": 124,
+      "2024": 2,
+      "2025": 37,
+      "2026": 14
+    }
+  },
+  "drawdown_autopsy": {
+    "max_drawdown": -0.14277509488507056,
+    "peak": "2025-02-19 05:00:00+00:00",
+    "trough": "2025-04-04 04:00:00+00:00",
+    "recovery": "2025-06-10 04:00:00+00:00",
+    "drawdown_days": 43
+  },
+  "asset_attribution": {
+    "pnl_by_symbol": {
+      "IWM": -0.03733698488119212,
+      "DBC": -0.020019148982014685,
+      "IEF": 0.0,
+      "SHY": 0.0,
+      "TLT": 0.0,
+      "VNQ": 0.00015408458034376574,
+      "EFA": 0.010123674289859422,
+      "EEM": 0.052958438630403754,
+      "SPY": 0.16243639005920982,
+      "QQQ": 0.19793663213043833,
+      "GLD": 0.2921087376367476
+    },
+    "worst_symbols": {
+      "IWM": -0.03733698488119212,
+      "DBC": -0.020019148982014685,
+      "IEF": 0.0,
+      "SHY": 0.0,
+      "TLT": 0.0
+    },
+    "best_symbols": {
+      "GLD": 0.2921087376367476,
+      "QQQ": 0.19793663213043833,
+      "SPY": 0.16243639005920982,
+      "EEM": 0.052958438630403754,
+      "EFA": 0.010123674289859422
+    },
+    "average_weight": {
+      "SPY": 0.20476793244836003,
+      "QQQ": 0.17806422190647872,
+      "GLD": 0.17282709133785773,
+      "EFA": 0.07793416380078005,
+      "DBC": 0.0692369824379351,
+      "EEM": 0.046130302203715105,
+      "IWM": 0.027196260844000522,
+      "VNQ": 0.003977086047540788,
+      "IEF": 0.0,
+      "SHY": 0.0,
+      "TLT": 0.0
+    },
+    "max_weight": {
+      "GLD": 0.609943197235497,
+      "SPY": 0.6064808009555182,
+      "DBC": 0.5467186662276609,
+      "QQQ": 0.4926804967403494,
+      "EFA": 0.48128818334980933,
+      "EEM": 0.38979931519262717,
+      "IWM": 0.34563807325116297,
+      "VNQ": 0.237299467503267,
+      "IEF": 0.0,
+      "SHY": 0.0,
+      "TLT": 0.0
+    }
+  },
+  "selection_autopsy": {
+    "active_days": 1000,
+    "zero_weight_days": 253,
+    "shy_only_days": 0,
+    "skipped_rebalances": 13,
+    "selection_counts": {
+      "QQQ": 669.0,
+      "GLD": 623.0,
+      "SPY": 544.0,
+      "EFA": 231.0,
+      "DBC": 230.0,
+      "EEM": 183.0,
+      "IWM": 122.0,
+      "VNQ": 21.0,
+      "IEF": 0.0,
+      "SHY": 0.0,
+      "TLT": 0.0
+    }
+  },
+  "vol_target_autopsy": {
+    "average_gross": 0.7801340410266687,
+    "max_gross": 1.5,
+    "days_above_1x": 647.0,
+    "days_at_or_above_1_49x": 23.0,
+    "realized_vol_mean": 0.11855346425614736,
+    "realized_vol_max": 0.24261296103170618
+  },
+  "cost_turnover_autopsy": {
+    "trade_count": 153,
+    "turnover_per_year": 4.103821008561426,
+    "total_cost_return": 0.0027287568997766414,
+    "average_rebalance_turnover": 0.5129776260701782
+  },
+  "interpretation": [
+    "stability failure is broad enough to block paper ops",
+    "worst 12-week window is far below the -0.5 stability floor",
+    "worst calendar-year return contribution is 2022",
+    "largest negative symbol contribution is IWM",
+    "vol target uses leverage above 1x; review whether leverage scalar worsens unstable windows"
+  ],
+  "recommended_next_steps": [
+    "Do not paper trade Candidate 2 while stability gate is false.",
+    "Inspect worst 12-week windows against selected assets and gross exposure.",
+    "Design Candidate 3 only after deciding whether instability comes from vol-target leverage, asset universe, or absolute trend lag.",
+    "Do not tune Candidate 2 parameters in-place; freeze any alternative as a new hypothesis."
+  ],
+  "worst_window_holdings": {
+    "worst_2022_rolling_window": {
+      "window_end": "2022-07-13 04:00:00+00:00",
+      "window_return": -0.051346800025023676,
+      "symbol_contribution": {
+        "DBC": -0.03434209790573516,
+        "GLD": -0.01778341059398713
+      },
+      "average_weight": {
+        "GLD": 0.04790438454196129,
+        "DBC": 0.04790438454196127
+      }
+    },
+    "worst_2023_rolling_window": {
+      "window_end": "2023-10-20 04:00:00+00:00",
+      "window_return": -0.11346045808518856,
+      "symbol_contribution": {
+        "EFA": -0.047832428535771125,
+        "SPY": -0.043549569473525944,
+        "QQQ": -0.025049378722335345
+      },
+      "average_weight": {
+        "SPY": 0.5331995294642499,
+        "EFA": 0.41998288358992725,
+        "QQQ": 0.3575219278732157
+      }
+    },
+    "max_drawdown_trough_window": {
+      "window_end": "2025-04-04 04:00:00+00:00",
+      "window_return": -0.08663807377537636,
+      "symbol_contribution": {
+        "SPY": -0.06726828927035874,
+        "EEM": -0.04005592250570206,
+        "QQQ": -0.02744638091062404,
+        "GLD": 0.04892639662106591
+      },
+      "average_weight": {
+        "SPY": 0.4309892953953972,
+        "GLD": 0.3853474420158879,
+        "QQQ": 0.29038366381634595,
+        "EEM": 0.023435170303944892
+      }
+    }
+  }
+}

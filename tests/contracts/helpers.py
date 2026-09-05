@@ -30,6 +30,26 @@ def oscillating_ohlcv(n: int = 400, base: float = 100.0) -> pd.DataFrame:
     )
 
 
+def funding_event_ohlcv(n: int = 400) -> pd.DataFrame:
+    df = oscillating_ohlcv(n)
+    df.index = pd.date_range("2024-01-01", periods=n, freq="5min", tz="UTC")
+    defaults: dict[str, float | bool] = {
+        "funding_settlement": False,
+        "funding_rate": 0.0,
+        "oi_change_z": 0.0,
+        "perp_discount_z": 0.0,
+        "perp_taker_sell_ratio": 0.0,
+        "spot_taker_buy_ratio": 0.0,
+        "btc_return_60m": 0.0,
+        "perp_price_window_start": 100.0,
+        "spot_close": 100.0,
+        "spot_vwap_60m": 100.0,
+        "spot_atr_14": 1.0,
+        "perp_atr_14": 1.0,
+    }
+    return df.assign(**defaults)
+
+
 def trending_ohlcv(n: int = 300) -> pd.DataFrame:
     idx = pd.date_range("2024-01-01", periods=n, freq="1D", tz="UTC")
     close = [100.0 + 0.1 * i for i in range(n)]
@@ -102,7 +122,7 @@ def assert_deterministic_output(
     strategy: StrategyTemplate[Any],
     df: pd.DataFrame | None = None,
 ) -> None:
-    df = df or oscillating_ohlcv()
+    df = oscillating_ohlcv() if df is None else df
     params = strategy.default_params()
     a = strategy.generate_signals(df, params)
     b = strategy.generate_signals(df, params)
@@ -113,7 +133,7 @@ def assert_no_lookahead(
     strategy: StrategyTemplate[Any],
     df: pd.DataFrame | None = None,
 ) -> None:
-    df = df or oscillating_ohlcv(300)
+    df = oscillating_ohlcv(300) if df is None else df
     params = strategy.default_params()
     signals = strategy.generate_signals(df, params)
     if signals.empty:
@@ -134,7 +154,7 @@ def assert_signal_is_position_diff(
     strategy: StrategyTemplate[Any],
     df: pd.DataFrame | None = None,
 ) -> None:
-    df = df or oscillating_ohlcv()
+    df = oscillating_ohlcv() if df is None else df
     signals = strategy.generate_signals(df, strategy.default_params())
     if signals.empty:
         return
@@ -155,7 +175,7 @@ def assert_exit_exits(
     strategy: StrategyTemplate[Any],
     df: pd.DataFrame | None = None,
 ) -> None:
-    df = df or oscillating_ohlcv(500)
+    df = oscillating_ohlcv(500) if df is None else df
     signals = strategy.generate_signals(df, strategy.default_params())
     raw_exit_col = RAW_EXIT_COLUMNS[strategy.name]
     assert_exit_contract(signals, raw_exit_col=raw_exit_col)
@@ -178,7 +198,7 @@ def assert_diagnostics_consistent(
     strategy: StrategyTemplate[Any],
     df: pd.DataFrame | None = None,
 ) -> None:
-    df = df or oscillating_ohlcv()
+    df = oscillating_ohlcv() if df is None else df
     params = strategy.default_params()
     diag = strategy.diagnose_signals(df, params)
     assert diag.bars == len(df)
@@ -239,12 +259,15 @@ def run_contract_suite(strategy: StrategyTemplate[Any]) -> None:
         assert_cross_sectional_contract(strategy)
         return
 
+    fixture = funding_event_ohlcv() if strategy.metadata().get("data_shape") == "single_asset_funding_event" else None
+
     assert_required_surface(strategy)
     assert_validate_inputs_enforced(strategy)
-    assert_deterministic_output(strategy)
-    assert_no_lookahead(strategy)
-    assert_signal_is_position_diff(strategy)
-    assert_warmup_handled(strategy)
-    assert_exit_exits(strategy)
-    assert_diagnostics_consistent(strategy)
+    assert_deterministic_output(strategy, fixture)
+    assert_no_lookahead(strategy, fixture)
+    assert_signal_is_position_diff(strategy, fixture)
+    if fixture is None:
+        assert_warmup_handled(strategy)
+    assert_exit_exits(strategy, fixture)
+    assert_diagnostics_consistent(strategy, fixture)
     assert_params_roundtrip_bb(strategy)

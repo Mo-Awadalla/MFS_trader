@@ -15,7 +15,7 @@ from experiments.models import Experiment, ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
 from research.bb_defaults import default_cost_config
 from research.runner import compute_metrics
-from strategies.registry import strategy_template_version
+from strategies.registry import strategy_template_version as registered_strategy_template_version
 from validation.gauntlet import GauntletResult, run_gauntlet
 from validation.wfa.engine import PRESETS, WFATier
 
@@ -29,6 +29,7 @@ class CrossSectionalBacktestResult:
     """Container for one vectorized cross-sectional portfolio backtest."""
 
     strategy_name: str
+    template_version: str
     params: dict[str, Any]
     equity_curve: pd.Series
     returns: pd.Series
@@ -59,7 +60,7 @@ class CrossSectionalValidationReport:
         return {
             "experiment_uuid": self.experiment_uuid,
             "strategy": self.strategy_name,
-            "strategy_template_version": strategy_template_version(self.strategy_name),
+            "strategy_template_version": self.research.template_version,
             "params": self.params_dict,
             "research": {
                 "metrics": self.research.metrics,
@@ -83,20 +84,40 @@ def backtest_cross_sectional(
     params_to_dict: ParamsToDict,
     cost_config: CostModelConfig | None = None,
     initial_capital: float = 10000.0,
+    entry_on_open: bool = False,
+    template_version: str | None = None,
 ) -> CrossSectionalBacktestResult:
-    """Run a deterministic target-weight cross-sectional backtest."""
+    """Run a deterministic target-weight cross-sectional backtest.
+
+    With ``entry_on_open=False`` (the historical default), targets become
+    active on the following close-to-close bar.  ``entry_on_open=True`` is
+    for strategies whose signal is known at the current session's open: it
+    holds the current target from that open to that close and charges both
+    legs of the daily round trip.
+    """
     cost_config = cost_config or default_cost_config()
+    resolved_template_version = template_version or registered_strategy_template_version(strategy_name)
     signals = generate_signals(df, params)
     weights = signals.xs("weight", axis=1, level="field").astype(float)
     trades = signals.xs("trade", axis=1, level="field").astype(float)
     close = df.xs("close", axis=1, level=1).astype(float)
-
-    asset_returns = close.pct_change(fill_method=None).fillna(0.0)
-    held_weights = weights.shift(1).fillna(0.0)
-    executed_trades = trades.shift(1).fillna(0.0)
-
-    gross_returns = (held_weights * asset_returns).sum(axis=1)
-    costs = trade_costs(executed_trades, cost_config)
+    if entry_on_open:
+        open_prices = df.xs("open", axis=1, level=1).astype(float)
+        asset_returns = (close / open_prices - 1.0).replace([np.inf, -np.inf], np.nan)
+        asset_returns = asset_returns.fillna(0.0)
+        held_weights = weights.fillna(0.0)
+        # Same-session execution is flat overnight, so every nonzero target
+        # enters at the open and exits at the close.  Generic ``trade`` fields
+        # can be target deltas and therefore cannot determine this turnover.
+        executed_trades = held_weights
+        gross_returns = (held_weights * asset_returns).sum(axis=1)
+        costs = round_trip_trade_costs(executed_trades, cost_config)
+    else:
+        asset_returns = close.pct_change(fill_method=None).fillna(0.0)
+        held_weights = weights.shift(1).fillna(0.0)
+        executed_trades = trades.shift(1).fillna(0.0)
+        gross_returns = (held_weights * asset_returns).sum(axis=1)
+        costs = trade_costs(executed_trades, cost_config)
     borrow = borrow_costs(held_weights, cost_config)
     strategy_returns = gross_returns - costs - borrow
     equity = (1.0 + strategy_returns).cumprod() * initial_capital
@@ -107,9 +128,10 @@ def backtest_cross_sectional(
     skipped = signals[("portfolio", "rebalance_skipped")].astype(bool)
     return CrossSectionalBacktestResult(
         strategy_name=strategy_name,
+        template_version=resolved_template_version,
         params={
             **params_to_dict(params),
-            "strategy_template_version": strategy_template_version(strategy_name),
+            "strategy_template_version": resolved_template_version,
         },
         equity_curve=equity,
         returns=strategy_returns,
@@ -133,6 +155,8 @@ def run_no_tuning_sweep(
     sweep_metadata: dict[str, Any],
     cost_config: CostModelConfig | None = None,
     initial_capital: float = 10000.0,
+    entry_on_open: bool = False,
+    template_version: str | None = None,
 ) -> pd.DataFrame:
     """Return the single canonical result row for a frozen hypothesis."""
     result = backtest_cross_sectional(
@@ -143,6 +167,8 @@ def run_no_tuning_sweep(
         params_to_dict=params_to_dict,
         cost_config=cost_config,
         initial_capital=initial_capital,
+        entry_on_open=entry_on_open,
+        template_version=template_version,
     )
     return pd.DataFrame(
         [
@@ -165,6 +191,8 @@ def make_no_tuning_wfa_fns(
     params_to_dict: ParamsToDict,
     cost_config: CostModelConfig | None = None,
     initial_capital: float = 10000.0,
+    entry_on_open: bool = False,
+    template_version: str | None = None,
 ) -> tuple[Any, Any]:
     """Build WFA callables for a frozen no-tuning cross-sectional hypothesis."""
     cost_config = cost_config or default_cost_config()
@@ -176,6 +204,8 @@ def make_no_tuning_wfa_fns(
         params_to_dict=params_to_dict,
         cost_config=cost_config,
         initial_capital=initial_capital,
+        entry_on_open=entry_on_open,
+        template_version=template_version,
     )
 
     def train_fn(train_df: pd.DataFrame, **kwargs: Any) -> dict[str, Any]:
@@ -204,6 +234,8 @@ def build_returns_matrix(
     params_to_dict: ParamsToDict,
     cost_config: CostModelConfig | None = None,
     initial_capital: float = 10000.0,
+    entry_on_open: bool = False,
+    template_version: str | None = None,
 ) -> np.ndarray:
     result = backtest_cross_sectional(
         df,
@@ -213,6 +245,8 @@ def build_returns_matrix(
         params_to_dict=params_to_dict,
         cost_config=cost_config,
         initial_capital=initial_capital,
+        entry_on_open=entry_on_open,
+        template_version=template_version,
     )
     return cast(np.ndarray, result.returns.to_frame(f"{strategy_name}_v1").to_numpy())
 
@@ -241,6 +275,8 @@ def run_no_tuning_cross_sectional_validation(
     write_artifacts: bool = True,
     mc_num_paths: int = 10000,
     mc_block_size: int = 20,
+    entry_on_open: bool = False,
+    template_version: str | None = None,
 ) -> CrossSectionalValidationReport:
     """Run research, registry transitions, artifacts, and the Validation Gauntlet."""
     cost_config = cost_config or default_cost_config()
@@ -273,6 +309,8 @@ def run_no_tuning_cross_sectional_validation(
         params_to_dict=params_to_dict,
         cost_config=cost_config,
         initial_capital=initial_capital,
+        entry_on_open=entry_on_open,
+        template_version=template_version,
     )
     sweep_df = run_no_tuning_sweep(
         df,
@@ -283,6 +321,8 @@ def run_no_tuning_cross_sectional_validation(
         sweep_metadata=sweep_metadata,
         cost_config=cost_config,
         initial_capital=initial_capital,
+        entry_on_open=entry_on_open,
+        template_version=template_version,
     )
     train_fn, test_fn = make_no_tuning_wfa_fns(
         df,
@@ -292,6 +332,8 @@ def run_no_tuning_cross_sectional_validation(
         params_to_dict=params_to_dict,
         cost_config=cost_config,
         initial_capital=initial_capital,
+        entry_on_open=entry_on_open,
+        template_version=template_version,
     )
     returns_matrix = build_returns_matrix(
         df,
@@ -301,6 +343,8 @@ def run_no_tuning_cross_sectional_validation(
         params_to_dict=params_to_dict,
         cost_config=cost_config,
         initial_capital=initial_capital,
+        entry_on_open=entry_on_open,
+        template_version=template_version,
     )
     best_sharpe = float(sweep_df["sharpe"].max()) if not sweep_df.empty else None
 
@@ -452,6 +496,14 @@ def trade_costs(
         variable_cost = executed_trades.abs().sum(axis=1) * cost_config.slippage_fixed_pct
 
     return buy_notional * buy_cost_pct + sell_notional * sell_cost_pct + variable_cost
+
+
+def round_trip_trade_costs(
+    entry_weights: pd.DataFrame,
+    cost_config: CostModelConfig,
+) -> pd.Series:
+    """Charge entry and close-out costs for same-session open-to-close trades."""
+    return trade_costs(entry_weights, cost_config) + trade_costs(-entry_weights, cost_config)
 
 
 def borrow_costs(held_weights: pd.DataFrame, cost_config: CostModelConfig) -> pd.Series:

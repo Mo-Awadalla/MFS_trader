@@ -1,8 +1,10 @@
-"""VS-ICSM v1 signal construction.
+"""VS-ICSM signal construction.
 
-Frozen hypothesis: volatility-standardized 1-hour momentum persists across the
-liquid US equity cross-section because institutional parent orders are sliced
-through VWAP/TWAP execution schedules.
+Frozen Candidate 1:
+- hourly long-only cross-sectional momentum
+- rank top-200 liquid names by 6-hour return sum over 13-hour return volatility
+- buy top 15, inverse ATR-13 weighted to 98% gross
+- trailing stop at 3x ATR-13, time stop at 39 bars
 """
 
 from __future__ import annotations
@@ -15,144 +17,63 @@ import pandas as pd
 
 from strategies.cross_sectional import (
     empty_signal_result,
-    is_first_trading_session,
     panel_symbols,
     validate_panel_inputs,
-    write_signal_details,
-    write_skip,
-    write_weights,
 )
 
 
 @dataclass(frozen=True)
 class VSICSMParams:
-    """Frozen VS-ICSM v1 hypothesis parameters."""
-
+    liquidity_lookback_bars: int = 390
+    universe_size: int = 200
     momentum_lookback_bars: int = 6
     volatility_lookback_bars: int = 13
     atr_lookback_bars: int = 13
-    top_k: int = 15
-    universe_size: int = 200
-    transition_buffer_rank: int = 220
-    min_price: float = 5.0
-    price_lookback_sessions: int = 5
-    liquidity_lookback_sessions: int = 60
-    min_median_dollar_volume: float = 0.0
-    min_hourly_volume: float = 10_000.0
-    min_history_sessions: int = 60
-    min_eligible_symbols: int = 15
+    k_names: int = 15
     gross_exposure: float = 0.98
-    max_position_weight: float = 0.15
+    min_price: float = 5.0
+    min_history_bars: int = 390
     trailing_stop_atr_multiple: float = 3.0
-    max_holding_bars: int = 39
-
-
-def generate_signals(df: pd.DataFrame, params: VSICSMParams) -> pd.DataFrame:
-    """Generate hourly long-only VS-ICSM target weights.
-
-    Input columns must be a MultiIndex of ``(symbol, field)`` with each symbol
-    carrying open/high/low/close/volume. Signals at timestamp ``t`` use data
-    available at that bar close and are therefore held by the shared backtester
-    from the next bar via its one-bar target-weight shift.
-    """
-    validate_inputs(df)
-    symbols = panel_symbols(df)
-    result = empty_signal_result(df.index, symbols)
-    current_weights = pd.Series(0.0, index=symbols, dtype=float)
-    current_universe: tuple[str, ...] = ()
-    entry_bar: dict[str, int] = {}
-    peak_close: dict[str, float] = {}
-
-    close = df.xs("close", axis=1, level=1).astype(float)
-    high = df.xs("high", axis=1, level=1).astype(float)
-    low = df.xs("low", axis=1, level=1).astype(float)
-    volume = df.xs("volume", axis=1, level=1).astype(float)
-    score = _vs_icsm_score(close, params)
-    atr = _atr(high, low, close, params.atr_lookback_bars)
-    normalized_atr = atr / close.replace(0.0, np.nan)
-
-    for pos, ts in enumerate(df.index):
-        result.loc[ts, ("portfolio", "is_rebalance")] = True
-        _update_trailing_peaks(current_weights, close.loc[ts], peak_close)
-
-        if pos < warmup_bars(params):
-            write_skip(result, ts, current_weights, "insufficient_history", 0)
-            continue
-
-        if is_first_trading_session(ts, df.index, "monthly") or not current_universe:
-            prior = df.iloc[:pos]
-            next_universe = _build_monthly_universe(prior, current_universe, params)
-            if len(next_universe) >= params.min_eligible_symbols:
-                current_universe = next_universe
-
-        if len(current_universe) < params.min_eligible_symbols:
-            write_skip(result, ts, current_weights, "insufficient_eligible_universe", 0)
-            continue
-
-        stopped = _risk_exit_symbols(
-            current_weights,
-            pos,
-            entry_bar,
-            peak_close,
-            low.loc[ts],
-            atr.loc[ts],
-            params,
-        )
-        risk_adjusted_weights = _liquidate_symbols(current_weights, stopped)
-        eligible_score = _eligible_scores(
-            current_universe,
-            score.loc[ts],
-            close.loc[ts],
-            volume.loc[ts],
-            normalized_atr.loc[ts],
-            stopped,
-            params,
-        )
-        result.loc[ts, ("portfolio", "eligible_count")] = int(len(eligible_score))
-
-        if len(eligible_score) < params.top_k:
-            skip_weights = risk_adjusted_weights if stopped else current_weights
-            write_skip(
-                result,
-                ts,
-                skip_weights,
-                "insufficient_eligible_universe",
-                len(eligible_score),
-            )
-            if stopped:
-                trades = risk_adjusted_weights - current_weights
-                write_weights(result, ts, risk_adjusted_weights, trades)
-                _update_holding_state(current_weights, risk_adjusted_weights, pos, entry_bar, peak_close)
-                current_weights = risk_adjusted_weights
-            continue
-
-        selected = _rank_symbols(eligible_score).iloc[: params.top_k]
-        next_weights, ranks, buckets = _inverse_atr_weights(
-            selected.index,
-            eligible_score,
-            normalized_atr.loc[ts],
-            symbols,
-            params,
-        )
-        trades = next_weights - current_weights
-        write_weights(result, ts, next_weights, trades)
-        write_signal_details(result, ts, symbols, score.loc[ts], eligible_score, ranks, buckets)
-        _update_holding_state(current_weights, next_weights, pos, entry_bar, peak_close)
-        current_weights = next_weights
-
-    return result
-
-
-def validate_inputs(df: pd.DataFrame) -> None:
-    validate_panel_inputs(df, "VS-ICSM")
+    time_stop_bars: int = 39
 
 
 def default_params() -> VSICSMParams:
     return VSICSMParams()
 
 
+def params_to_dict(params: VSICSMParams) -> dict[str, int | float]:
+    return {
+        "liquidity_lookback_bars": params.liquidity_lookback_bars,
+        "universe_size": params.universe_size,
+        "momentum_lookback_bars": params.momentum_lookback_bars,
+        "volatility_lookback_bars": params.volatility_lookback_bars,
+        "atr_lookback_bars": params.atr_lookback_bars,
+        "k_names": params.k_names,
+        "gross_exposure": params.gross_exposure,
+        "min_price": params.min_price,
+        "min_history_bars": params.min_history_bars,
+        "trailing_stop_atr_multiple": params.trailing_stop_atr_multiple,
+        "time_stop_bars": params.time_stop_bars,
+    }
+
+
+def params_from_dict(data: dict[str, Any]) -> VSICSMParams:
+    return VSICSMParams(
+        liquidity_lookback_bars=int(data.get("liquidity_lookback_bars", 390)),
+        universe_size=int(data.get("universe_size", 200)),
+        momentum_lookback_bars=int(data.get("momentum_lookback_bars", 6)),
+        volatility_lookback_bars=int(data.get("volatility_lookback_bars", 13)),
+        atr_lookback_bars=int(data.get("atr_lookback_bars", 13)),
+        k_names=int(data.get("k_names", 15)),
+        gross_exposure=float(data.get("gross_exposure", 0.98)),
+        min_price=float(data.get("min_price", 5.0)),
+        min_history_bars=int(data.get("min_history_bars", 390)),
+        trailing_stop_atr_multiple=float(data.get("trailing_stop_atr_multiple", 3.0)),
+        time_stop_bars=int(data.get("time_stop_bars", 39)),
+    )
+
+
 def sweep_grid() -> list[VSICSMParams]:
-    """No tuning grid for v1; the report parameters are frozen."""
     return [default_params()]
 
 
@@ -160,73 +81,106 @@ def compact_sweep_grid() -> list[VSICSMParams]:
     return [default_params()]
 
 
-def params_to_dict(params: VSICSMParams) -> dict[str, int | float]:
-    return {
-        "momentum_lookback_bars": params.momentum_lookback_bars,
-        "volatility_lookback_bars": params.volatility_lookback_bars,
-        "atr_lookback_bars": params.atr_lookback_bars,
-        "top_k": params.top_k,
-        "universe_size": params.universe_size,
-        "transition_buffer_rank": params.transition_buffer_rank,
-        "min_price": params.min_price,
-        "price_lookback_sessions": params.price_lookback_sessions,
-        "liquidity_lookback_sessions": params.liquidity_lookback_sessions,
-        "min_median_dollar_volume": params.min_median_dollar_volume,
-        "min_hourly_volume": params.min_hourly_volume,
-        "min_history_sessions": params.min_history_sessions,
-        "min_eligible_symbols": params.min_eligible_symbols,
-        "gross_exposure": params.gross_exposure,
-        "max_position_weight": params.max_position_weight,
-        "trailing_stop_atr_multiple": params.trailing_stop_atr_multiple,
-        "max_holding_bars": params.max_holding_bars,
-    }
+def generate_signals(df: pd.DataFrame, params: VSICSMParams | None = None) -> pd.DataFrame:
+    """Generate hourly target weights for VS-ICSM."""
+    weights, trades, portfolio = generate_weight_signals(df, params)
+    symbols = tuple(weights.columns)
+    result = empty_signal_result(df.index, symbols)
+    for symbol in symbols:
+        result[(symbol, "weight")] = weights[symbol].to_numpy(dtype=float)
+        result[(symbol, "trade")] = trades[symbol].to_numpy(dtype=float)
+    result[("portfolio", "is_rebalance")] = portfolio["is_rebalance"].to_numpy(dtype=bool)
+    result[("portfolio", "rebalance_skipped")] = portfolio["rebalance_skipped"].to_numpy(dtype=bool)
+    result[("portfolio", "skip_reason")] = portfolio["skip_reason"].to_numpy(dtype=object)
+    result[("portfolio", "eligible_count")] = portfolio["eligible_count"].to_numpy(dtype=int)
+    return result
 
 
-def params_from_dict(data: dict[str, Any]) -> VSICSMParams:
-    return VSICSMParams(
-        momentum_lookback_bars=int(data.get("momentum_lookback_bars", 6)),
-        volatility_lookback_bars=int(data.get("volatility_lookback_bars", 13)),
-        atr_lookback_bars=int(data.get("atr_lookback_bars", 13)),
-        top_k=int(data.get("top_k", 15)),
-        universe_size=int(data.get("universe_size", 200)),
-        transition_buffer_rank=int(data.get("transition_buffer_rank", 220)),
-        min_price=float(data.get("min_price", 5.0)),
-        price_lookback_sessions=int(data.get("price_lookback_sessions", 5)),
-        liquidity_lookback_sessions=int(data.get("liquidity_lookback_sessions", 60)),
-        min_median_dollar_volume=float(data.get("min_median_dollar_volume", 0.0)),
-        min_hourly_volume=float(data.get("min_hourly_volume", 10_000.0)),
-        min_history_sessions=int(data.get("min_history_sessions", 60)),
-        min_eligible_symbols=int(data.get("min_eligible_symbols", 15)),
-        gross_exposure=float(data.get("gross_exposure", 0.98)),
-        max_position_weight=float(data.get("max_position_weight", 0.15)),
-        trailing_stop_atr_multiple=float(data.get("trailing_stop_atr_multiple", 3.0)),
-        max_holding_bars=int(data.get("max_holding_bars", 39)),
+def generate_weight_signals(
+    df: pd.DataFrame,
+    params: VSICSMParams | None = None,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Generate hourly target weights, trades, and portfolio flags for VS-ICSM."""
+    params = params or default_params()
+    validate_inputs(df)
+    symbols = panel_symbols(df)
+    symbol_list = list(symbols)
+    symbol_count = len(symbols)
+    bar_count = len(df.index)
+    close = df.xs("close", axis=1, level=1).astype(float)
+    high = df.xs("high", axis=1, level=1).astype(float)
+    low = df.xs("low", axis=1, level=1).astype(float)
+    volume = df.xs("volume", axis=1, level=1).astype(float)
+    returns = close.pct_change(fill_method=None)
+    score = returns.rolling(params.momentum_lookback_bars).sum() / returns.rolling(
+        params.volatility_lookback_bars
+    ).std()
+    atr = average_true_range(high, low, close, params.atr_lookback_bars)
+    dollar_volume = close * volume
+    median_dollar_volume = dollar_volume.rolling(params.liquidity_lookback_bars).median()
+    history_counts = close.notna().cumsum()
+    weights_out = np.zeros((bar_count, symbol_count), dtype=float)
+    trades_out = np.zeros((bar_count, symbol_count), dtype=float)
+    is_rebalance = np.ones(bar_count, dtype=bool)
+    rebalance_skipped = np.zeros(bar_count, dtype=bool)
+    skip_reason = np.full(bar_count, "", dtype=object)
+    eligible_count = np.zeros(bar_count, dtype=int)
+
+    current_weights = pd.Series(0.0, index=symbols)
+    entry_price = pd.Series(np.nan, index=symbols)
+    highest_close = pd.Series(np.nan, index=symbols)
+    bars_held = pd.Series(0, index=symbols, dtype=int)
+
+    for row_index, ts in enumerate(df.index):
+        eligible = _eligible_symbols(close, median_dollar_volume, history_counts, score, atr, ts, params)
+        eligible_count[row_index] = int(eligible.sum())
+        if int(eligible.sum()) < params.k_names:
+            rebalance_skipped[row_index] = True
+            skip_reason[row_index] = "insufficient_eligible_universe"
+            weights_out[row_index] = current_weights.reindex(symbol_list).to_numpy(dtype=float)
+            continue
+
+        ranked = score.loc[ts, eligible].sort_values(ascending=False, kind="mergesort")
+        selected = list(ranked.head(params.k_names).index)
+        desired = _inverse_atr_weights(atr.loc[ts, selected], symbols, params.gross_exposure)
+
+        previous_weights = current_weights.copy()
+        current_weights, entry_price, highest_close, bars_held = _apply_stops(
+            desired=desired,
+            current=current_weights,
+            close_row=close.loc[ts],
+            atr_row=atr.loc[ts],
+            entry_price=entry_price,
+            highest_close=highest_close,
+            bars_held=bars_held,
+            params=params,
+        )
+        trades = current_weights - previous_weights
+        weights_out[row_index] = current_weights.reindex(symbol_list).to_numpy(dtype=float)
+        trades_out[row_index] = trades.reindex(symbol_list).fillna(0.0).to_numpy(dtype=float)
+    weights = pd.DataFrame(weights_out, index=df.index, columns=symbols)
+    trades = pd.DataFrame(trades_out, index=df.index, columns=symbols)
+    portfolio = pd.DataFrame(
+        {
+            "is_rebalance": is_rebalance,
+            "rebalance_skipped": rebalance_skipped,
+            "skip_reason": skip_reason,
+            "eligible_count": eligible_count,
+        },
+        index=df.index,
     )
+    return weights, trades, portfolio
 
 
-def warmup_bars(params: VSICSMParams) -> int:
-    return max(
-        params.momentum_lookback_bars + 1,
-        params.volatility_lookback_bars + 1,
-        params.atr_lookback_bars + 1,
-        params.price_lookback_sessions,
-        params.liquidity_lookback_sessions,
-        params.min_history_sessions,
-    )
+def validate_inputs(df: pd.DataFrame) -> None:
+    validate_panel_inputs(df, "VS-ICSM")
 
 
-def _vs_icsm_score(close: pd.DataFrame, params: VSICSMParams) -> pd.DataFrame:
-    returns = np.log(close / close.shift(1))
-    momentum = returns.rolling(params.momentum_lookback_bars).sum()
-    realized_vol = returns.rolling(params.volatility_lookback_bars).std(ddof=1)
-    return momentum / realized_vol.replace(0.0, np.nan)
-
-
-def _atr(
+def average_true_range(
     high: pd.DataFrame,
     low: pd.DataFrame,
     close: pd.DataFrame,
-    lookback_bars: int,
+    window: int,
 ) -> pd.DataFrame:
     previous_close = close.shift(1)
     true_range = pd.concat(
@@ -235,176 +189,78 @@ def _atr(
             (high - previous_close).abs(),
             (low - previous_close).abs(),
         ],
-        keys=["range", "high_prev", "low_prev"],
+        axis=0,
+        keys=("hl", "hc", "lc"),
     ).groupby(level=1).max()
-    return true_range.rolling(lookback_bars).mean()
+    true_range.index = high.index
+    return true_range.rolling(window).mean()
 
 
-def _build_monthly_universe(
-    prior: pd.DataFrame,
-    current_universe: tuple[str, ...],
-    params: VSICSMParams,
-) -> tuple[str, ...]:
-    if prior.empty:
-        return current_universe
-
-    close = prior.xs("close", axis=1, level=1).astype(float)
-    volume = prior.xs("volume", axis=1, level=1).astype(float)
-    session_key = prior.index.normalize()
-    daily_close = close.groupby(session_key).last()
-    if len(daily_close) < params.min_history_sessions:
-        return current_universe
-
-    daily_dollar_volume = (close * volume).groupby(session_key).sum()
-    price_avg = daily_close.tail(params.price_lookback_sessions).mean()
-    median_dollar_volume = daily_dollar_volume.tail(params.liquidity_lookback_sessions).median()
-    history_count = daily_close.notna().sum()
-    candidates = pd.DataFrame(
-        {
-            "symbol": [str(symbol) for symbol in median_dollar_volume.index],
-            "median_dollar_volume": median_dollar_volume.to_numpy(dtype=float),
-            "price_avg": price_avg.reindex(median_dollar_volume.index).to_numpy(dtype=float),
-            "history_count": history_count.reindex(median_dollar_volume.index).to_numpy(dtype=float),
-        }
-    )
-    candidates = candidates[
-        (candidates["price_avg"] >= params.min_price)
-        & (candidates["median_dollar_volume"] >= params.min_median_dollar_volume)
-        & (candidates["history_count"] >= params.min_history_sessions)
-    ]
-    if candidates.empty:
-        return current_universe
-
-    ranked = candidates.sort_values(
-        ["median_dollar_volume", "symbol"],
-        ascending=[False, True],
-        kind="mergesort",
-    )["symbol"].tolist()
-    rank_map = {symbol: rank for rank, symbol in enumerate(ranked, start=1)}
-    selected: list[str] = []
-    for symbol in current_universe:
-        if rank_map.get(symbol, params.transition_buffer_rank + 1) <= params.transition_buffer_rank:
-            selected.append(symbol)
-    for symbol in ranked:
-        if symbol not in selected:
-            selected.append(symbol)
-        if len(selected) >= params.universe_size:
-            break
-    return tuple(selected[: params.universe_size])
-
-
-def _eligible_scores(
-    current_universe: tuple[str, ...],
-    score: pd.Series,
-    close: pd.Series,
-    volume: pd.Series,
-    normalized_atr: pd.Series,
-    excluded_symbols: set[str],
+def _eligible_symbols(
+    close: pd.DataFrame,
+    median_dollar_volume: pd.DataFrame,
+    history_counts: pd.DataFrame,
+    score: pd.DataFrame,
+    atr: pd.DataFrame,
+    ts: pd.Timestamp,
     params: VSICSMParams,
 ) -> pd.Series:
-    active = [symbol for symbol in current_universe if symbol in score.index and symbol not in excluded_symbols]
-    if not active:
-        return pd.Series(dtype=float)
-    active_score = score.reindex(active).replace([np.inf, -np.inf], np.nan)
-    mask = (
-        active_score.notna()
-        & (close.reindex(active) >= params.min_price)
-        & (volume.reindex(active) >= params.min_hourly_volume)
-        & normalized_atr.reindex(active).replace([np.inf, -np.inf], np.nan).gt(0.0)
-    )
-    return active_score[mask]
-
-
-def _rank_symbols(signal: pd.Series) -> pd.Series:
-    ranked = pd.DataFrame({"symbol": signal.index.astype(str), "score": signal.to_numpy(dtype=float)})
-    ranked = ranked.sort_values(["score", "symbol"], ascending=[False, True], kind="mergesort")
-    return pd.Series(ranked["score"].to_numpy(dtype=float), index=ranked["symbol"].tolist())
+    loc = close.index.get_loc(ts)
+    if not isinstance(loc, int):
+        raise ValueError("VS-ICSM index must not contain duplicate timestamps")
+    if loc < params.min_history_bars:
+        return pd.Series(False, index=close.columns)
+    history_ok = history_counts.loc[ts] >= params.min_history_bars
+    price_ok = close.loc[ts] >= params.min_price
+    liquid = median_dollar_volume.loc[ts].rank(
+        ascending=False,
+        method="first",
+    ) <= params.universe_size
+    valid_signal = score.loc[ts].replace([np.inf, -np.inf], np.nan).notna()
+    valid_atr = atr.loc[ts].replace([np.inf, -np.inf], np.nan).gt(0)
+    return history_ok & price_ok & liquid & valid_signal & valid_atr
 
 
 def _inverse_atr_weights(
-    selected_symbols: pd.Index,
-    eligible_score: pd.Series,
-    normalized_atr: pd.Series,
-    all_symbols: tuple[str, ...],
+    selected_atr: pd.Series,
+    symbols: tuple[str, ...],
+    gross_exposure: float,
+) -> pd.Series:
+    weights = pd.Series(0.0, index=symbols)
+    inv = 1.0 / selected_atr.replace(0.0, np.nan).dropna()
+    if inv.empty:
+        return weights
+    weights.loc[list(inv.index)] = gross_exposure * inv / inv.sum()
+    return weights
+
+
+def _apply_stops(
+    *,
+    desired: pd.Series,
+    current: pd.Series,
+    close_row: pd.Series,
+    atr_row: pd.Series,
+    entry_price: pd.Series,
+    highest_close: pd.Series,
+    bars_held: pd.Series,
     params: VSICSMParams,
-) -> tuple[pd.Series, pd.Series, pd.Series]:
-    selected = [str(symbol) for symbol in selected_symbols]
-    weights = pd.Series(0.0, index=all_symbols, dtype=float)
-    inverse_atr = 1.0 / normalized_atr.reindex(selected).astype(float)
-    raw_weights = inverse_atr / inverse_atr.sum() * params.gross_exposure
-    capped_weights = raw_weights.clip(upper=params.max_position_weight)
-    weights.loc[selected] = capped_weights
-
-    ranks = pd.Series(np.nan, index=all_symbols, dtype=float)
-    buckets = pd.Series("", index=all_symbols, dtype=object)
-    for rank, symbol in enumerate(_rank_symbols(eligible_score).index, start=1):
-        ranks.loc[str(symbol)] = rank
-        buckets.loc[str(symbol)] = "long" if str(symbol) in selected else "middle"
-    return weights, ranks, buckets
-
-
-def _update_trailing_peaks(
-    current_weights: pd.Series,
-    close: pd.Series,
-    peak_close: dict[str, float],
-) -> None:
-    held_symbols = current_weights[current_weights > 0.0].index
-    for symbol in held_symbols:
-        close_value = close.get(symbol, np.nan)
-        if pd.isna(close_value):
-            continue
-        peak_close[str(symbol)] = max(float(close_value), peak_close.get(str(symbol), float(close_value)))
-
-
-def _risk_exit_symbols(
-    current_weights: pd.Series,
-    pos: int,
-    entry_bar: dict[str, int],
-    peak_close: dict[str, float],
-    low: pd.Series,
-    atr: pd.Series,
-    params: VSICSMParams,
-) -> set[str]:
-    stopped: set[str] = set()
-    for symbol in current_weights[current_weights > 0.0].index:
-        symbol_str = str(symbol)
-        entry_pos = entry_bar.get(symbol_str)
-        if entry_pos is not None and pos - entry_pos + 1 > params.max_holding_bars:
-            stopped.add(symbol_str)
-            continue
-        atr_value = atr.get(symbol, np.nan)
-        low_value = low.get(symbol, np.nan)
-        peak_value = peak_close.get(symbol_str)
-        if peak_value is None or pd.isna(atr_value) or pd.isna(low_value):
-            continue
-        stop_price = peak_value - params.trailing_stop_atr_multiple * float(atr_value)
-        if float(low_value) < stop_price:
-            stopped.add(symbol_str)
-    return stopped
-
-
-def _liquidate_symbols(current_weights: pd.Series, symbols: set[str]) -> pd.Series:
-    next_weights = current_weights.copy()
-    for symbol in symbols:
-        if symbol in next_weights.index:
-            next_weights.loc[symbol] = 0.0
-    return next_weights
-
-
-def _update_holding_state(
-    current_weights: pd.Series,
-    next_weights: pd.Series,
-    pos: int,
-    entry_bar: dict[str, int],
-    peak_close: dict[str, float],
-) -> None:
-    for symbol in next_weights.index:
-        symbol_str = str(symbol)
-        was_held = current_weights.loc[symbol] > 0.0
-        will_hold = next_weights.loc[symbol] > 0.0
-        if not was_held and will_hold:
-            entry_bar[symbol_str] = pos + 1
-            peak_close.pop(symbol_str, None)
-        elif not will_hold:
-            entry_bar.pop(symbol_str, None)
-            peak_close.pop(symbol_str, None)
+) -> tuple[pd.Series, pd.Series, pd.Series, pd.Series]:
+    next_weights = desired.copy()
+    for symbol in current.index:
+        if current.loc[symbol] > 0:
+            bars_held.loc[symbol] += 1
+            highest_close.loc[symbol] = max(highest_close.loc[symbol], close_row.loc[symbol])
+            trail = highest_close.loc[symbol] - params.trailing_stop_atr_multiple * atr_row.loc[symbol]
+            stop_hit = close_row.loc[symbol] <= trail
+            time_hit = bars_held.loc[symbol] >= params.time_stop_bars
+            if stop_hit or time_hit:
+                next_weights.loc[symbol] = 0.0
+        if current.loc[symbol] <= 0 and next_weights.loc[symbol] > 0:
+            entry_price.loc[symbol] = close_row.loc[symbol]
+            highest_close.loc[symbol] = close_row.loc[symbol]
+            bars_held.loc[symbol] = 0
+        elif next_weights.loc[symbol] <= 0:
+            entry_price.loc[symbol] = np.nan
+            highest_close.loc[symbol] = np.nan
+            bars_held.loc[symbol] = 0
+    return next_weights, entry_price, highest_close, bars_held

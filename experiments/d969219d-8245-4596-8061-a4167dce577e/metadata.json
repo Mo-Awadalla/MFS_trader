@@ -1,0 +1,101 @@
+{
+  "config_version": "ftre_v1@1.0.0",
+  "cost_model": {
+    "borrow_cost_annual_pct": 0.0,
+    "commission_pct": 0.0,
+    "crypto_maker_fee_pct": 0.0002,
+    "crypto_taker_fee_pct": 0.00045,
+    "finra_taf_per_share_sold": 0.000119,
+    "sec_fee_per_dollar_sold": 5.1e-06
+  },
+  "created_at": "2026-07-21T16:48:17Z",
+  "data_version": {
+    "adjustment": "none",
+    "bar_frequency": "5min",
+    "data_version": "binance_vision:ftre_required_intersection:2021-12-21_2026-06-30",
+    "source": "binance_vision",
+    "storage_dir": "data/parquet/crypto_futures"
+  },
+  "date_range": {
+    "end": "2026-06-30 16:00:00+00:00",
+    "start": "2021-12-21 00:00:00+00:00"
+  },
+  "execution_mode": "settlement_close_signal_next_bar_open",
+  "experiment_hash": "6d395e9bae5013ca1028686566bfffd7c04413adbfd6e5c97d17b804adaf10a8",
+  "git_commit": "36106ed399383891f78589cf2cc3c51910d25ada",
+  "label": "FTRE v1",
+  "legacy_artifacts_path": null,
+  "legacy_experiment_id": null,
+  "paper_thresholds": {
+    "min_calendar_days": 30,
+    "min_trades": 30,
+    "target_trades": 50
+  },
+  "parameters": {
+    "btc_return_60m_threshold": -0.01,
+    "funding_threshold": 0.002,
+    "oi_collapse_z_threshold": -2.0,
+    "perp_discount_z_threshold": -1.5,
+    "perp_taker_sell_ratio_threshold": 0.55,
+    "position_size": 0.05,
+    "spot_failure_atr_multiple": 1.0,
+    "spot_taker_buy_ratio_threshold": 0.5,
+    "target_dislocation_fraction": 0.5,
+    "time_stop_bars": 18,
+    "vol_stop_atr_multiple": 1.5
+  },
+  "portfolio_config": {
+    "dollar_neutral": false,
+    "equal_weight": false,
+    "execution_mode": "signal_transition",
+    "min_notional_delta": 25.0,
+    "min_pct_position_delta": 0.05,
+    "min_qty_delta": 1e-06,
+    "per_position_risk_pct": 0.05,
+    "rebalance_frequency": "funding_event",
+    "sizing_method": "fixed_fraction"
+  },
+  "promotion_status": "validation_failed",
+  "random_seed": 42,
+  "risk_profile": {
+    "block_new_at_daily_loss_pct": 0.02,
+    "correlation_threshold": 0.7,
+    "max_beta_adjusted_net_pct": 0.1,
+    "max_correlated_cluster_gross_pct": 0.35,
+    "max_correlated_cluster_risk_pct": 0.03,
+    "max_daily_loss_pct": 0.03,
+    "max_gross_exposure_pct": 0.15,
+    "max_monthly_loss_pct": 0.15,
+    "max_net_exposure_pct": 0.15,
+    "max_open_positions": 3,
+    "max_open_positions_live_phase1": 10,
+    "max_sector_gross_pct": 0.35,
+    "max_sector_net_pct": 0.1,
+    "max_weekly_loss_pct": 0.06,
+    "per_position_pct": 0.05
+  },
+  "slippage_model": {
+    "slippage_fixed_pct": 0.0002,
+    "slippage_variable_coeff": 0.0
+  },
+  "strategy": "funding_time_reversal",
+  "strategy_template_version": "funding_time_reversal:v1",
+  "superseded_by": null,
+  "suspended_from_status": null,
+  "universe": {
+    "asset_class": "crypto_perp",
+    "filters": {
+      "cash_buffer_pct": 0.5,
+      "leverage": 1,
+      "long_only": true,
+      "venue": "binance_usdm"
+    },
+    "selection_rule": "fixed_binance_usdm_majors",
+    "symbols": [
+      "BTCUSDT",
+      "ETHUSDT",
+      "SOLUSDT"
+    ]
+  },
+  "uuid": "d969219d-8245-4596-8061-a4167dce577e"
+}

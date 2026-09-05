@@ -289,18 +289,15 @@ def _open_registry(args: argparse.Namespace):
 
 def cmd_confirm_paper_ops_pass(args: argparse.Namespace) -> int:
     """Operator confirmation: paper_ops -> live_dry_run."""
+    from experiments.authority import ExperimentAuthority
     from experiments.models import ExperimentNotFoundError
-    from experiments.operator_confirmations import (
-        ConfirmedExperimentError,
-        confirm_paper_ops_pass,
-    )
+    from experiments.operator_confirmations import ConfirmedExperimentError
 
     registry = _open_registry(args)
     try:
-        result = confirm_paper_ops_pass(
-            registry,
-            uuid=args.experiment_uuid,
-            expected_hash=args.experiment_hash,
+        result = ExperimentAuthority(registry).confirm_paper_ops_pass(
+            args.experiment_uuid,
+            args.experiment_hash,
             paper_session_id=args.paper_session_id,
             operator=args.operator,
         )
@@ -323,18 +320,15 @@ def cmd_confirm_paper_ops_pass(args: argparse.Namespace) -> int:
 
 def cmd_confirm_resume(args: argparse.Namespace) -> int:
     """Operator confirmation: suspended -> suspended_from_status (+ clear kill switch)."""
+    from experiments.authority import ExperimentAuthority
     from experiments.models import ExperimentNotFoundError
-    from experiments.operator_confirmations import (
-        ConfirmedExperimentError,
-        confirm_resume,
-    )
+    from experiments.operator_confirmations import ConfirmedExperimentError
 
     registry = _open_registry(args)
     try:
-        result = confirm_resume(
-            registry,
-            uuid=args.experiment_uuid,
-            expected_hash=args.experiment_hash,
+        result = ExperimentAuthority(registry).confirm_resume(
+            args.experiment_uuid,
+            args.experiment_hash,
             operator=args.operator,
         )
     except (ExperimentNotFoundError, ValueError) as exc:
@@ -354,18 +348,15 @@ def cmd_confirm_resume(args: argparse.Namespace) -> int:
 
 def cmd_confirm_retire(args: argparse.Namespace) -> int:
     """Operator confirmation: any non-terminal stage -> retired."""
+    from experiments.authority import ExperimentAuthority
     from experiments.models import ExperimentNotFoundError
-    from experiments.operator_confirmations import (
-        ConfirmedExperimentError,
-        confirm_retire,
-    )
+    from experiments.operator_confirmations import ConfirmedExperimentError
 
     registry = _open_registry(args)
     try:
-        result = confirm_retire(
-            registry,
-            uuid=args.experiment_uuid,
-            expected_hash=args.experiment_hash,
+        result = ExperimentAuthority(registry).confirm_retire(
+            args.experiment_uuid,
+            args.experiment_hash,
             operator=args.operator,
         )
     except (ExperimentNotFoundError, ValueError) as exc:

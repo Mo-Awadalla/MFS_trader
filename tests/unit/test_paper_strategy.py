@@ -5,6 +5,7 @@ from dataclasses import replace
 import pandas as pd
 
 from config.loader import load_config
+from data.catalog import DataCatalog
 from engine.paper_strategy import completed_daily_bars, prepare_paper_strategy
 from experiments.registry import ExperimentRegistry
 
@@ -180,3 +181,23 @@ def test_etf_paper_route_fails_closed_when_frozen_config_disagrees():
             raise AssertionError("mismatched frozen config was accepted")
     finally:
         registry.close()
+
+
+def test_paper_preparation_uses_catalog_for_default_reads(monkeypatch):
+    config = load_config("config/paper_etf_tsm.toml", load_env=False)
+    registry = ExperimentRegistry("experiments")
+    calls = []
+
+    class RecordingCatalog(DataCatalog):
+        def load(self, request):
+            calls.append(request)
+            return type("Loaded", (), {"frame": _bars(request.symbols[0])})()
+
+    try:
+        experiment = registry.get(EXPERIMENT_UUID)
+        prepared = prepare_paper_strategy(config, experiment, catalog=RecordingCatalog())
+    finally:
+        registry.close()
+
+    assert prepared.symbols == SYMBOLS
+    assert tuple(request.symbols[0] for request in calls) == SYMBOLS

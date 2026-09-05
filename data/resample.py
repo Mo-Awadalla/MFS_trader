@@ -44,6 +44,10 @@ def resample_to(df: pd.DataFrame, frequency: str) -> pd.DataFrame:
         "low": "min",
         "close": "last",
         "volume": "sum",
+        "quote_volume": "sum",
+        "trade_count": "sum",
+        "taker_buy_volume": "sum",
+        "taker_buy_quote_volume": "sum",
     }
     # Only aggregate columns that exist
     agg = {k: v for k, v in agg.items() if k in df.columns}

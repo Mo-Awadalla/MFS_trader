@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from strategies.bb.strategy import get_strategy as get_bb_strategy
-from strategies.contract import StrategyTemplate
+from strategies.contract import StrategyExecution, StrategyTemplate
 from strategies.csmr.strategy import get_strategy as get_csmr_strategy
 from strategies.etf_time_series_momentum.strategy import get_strategy as get_etf_tsm_strategy
 from strategies.ftre.strategy import get_strategy as get_ftre_strategy
@@ -60,8 +60,24 @@ def get_strategy(name: str) -> StrategyTemplate[Any]:
     return strategy
 
 
+def get_execution_strategy(name: str) -> StrategyExecution[Any]:
+    """Return the compact execution-facing Strategy interface.
+
+    The returned object is still the registered StrategyTemplate instance for
+    compatibility, but callers only need to depend on the execution seam.
+    """
+
+    return get_strategy(name)
+
+
 def registered_strategies() -> dict[str, StrategyTemplate[Any]]:
     return dict(_REGISTRY)
+
+
+def registered_execution_strategies() -> dict[str, StrategyExecution[Any]]:
+    """Return registered Strategies through the compact execution interface."""
+
+    return {name: get_execution_strategy(name) for name in _REGISTRY}
 
 
 def strategy_template_version(name: str) -> str:

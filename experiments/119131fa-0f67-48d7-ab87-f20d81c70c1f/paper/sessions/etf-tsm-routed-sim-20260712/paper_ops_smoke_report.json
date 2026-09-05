@@ -1,0 +1,29 @@
+{
+  "bar_cycle_report": {
+    "bar_cycle_completion": 1.0,
+    "completed_bar_cycles": 2,
+    "expected_bar_cycles": 2,
+    "passed": true,
+    "unexplained_missed_cycles": 0
+  },
+  "blockers": [
+    "paper ops pass window missing market_sessions",
+    "paper ops pass window missing calendar_days",
+    "Paper Ops Smoke kill-switch drill evidence missing.",
+    "Paper Ops Smoke kill-switch drill did not prove blocked new orders."
+  ],
+  "experiment_hash": "8e584c2eb4ba20a90b0af3d62a8f28c1d753a83a3e57ca79deafb869af23270e",
+  "experiment_uuid": "119131fa-0f67-48d7-ab87-f20d81c70c1f",
+  "paper_session_id": "etf-tsm-routed-sim-20260712",
+  "passed": false,
+  "promotion_unlocked": false,
+  "session_kind": "paper_ops_smoke",
+  "status": "PAPER_OPS_SMOKE_BLOCKED",
+  "window": {
+    "calendar_days": null,
+    "market_sessions": null,
+    "min_market_sessions": 5.0,
+    "min_wall_clock_days": 7.0,
+    "unplanned_interruptions": 0
+  }
+}

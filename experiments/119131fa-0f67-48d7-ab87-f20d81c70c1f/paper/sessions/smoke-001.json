@@ -1,0 +1,52 @@
+{
+  "blockers": [],
+  "broker": "alpaca",
+  "caps": {
+    "max_notional_per_order": 25.0,
+    "max_open_paper_exposure": 100.0,
+    "max_paper_session_notional": 100.0
+  },
+  "details": {
+    "cancel_ok": true,
+    "client_order_id": "paper_AAPL_e5355cf967",
+    "limit_price": 157.66,
+    "open_orders_after": [],
+    "open_orders_before": [],
+    "positions_after": [],
+    "positions_before": [],
+    "post_cancel_status": {
+      "avg_fill_price": null,
+      "broker_order_id": "2d40a5e2-347c-414f-a842-8c2368466657",
+      "client_order_id": "paper_AAPL_e5355cf967",
+      "filled_qty": 0.0,
+      "rejection_reason": null,
+      "remaining_qty": 0.079285,
+      "status": "CANCELLED"
+    },
+    "price": 315.32,
+    "qty": 0.079285,
+    "submit_response": {
+      "avg_fill_price": null,
+      "broker_order_id": "2d40a5e2-347c-414f-a842-8c2368466657",
+      "client_order_id": "paper_AAPL_e5355cf967",
+      "filled_qty": 0.0,
+      "rejection_reason": null,
+      "remaining_qty": 0.079285,
+      "status": "ACKNOWLEDGED"
+    },
+    "symbol": "AAPL"
+  },
+  "experiment_hash": "8e584c2eb4ba20a90b0af3d62a8f28c1d753a83a3e57ca79deafb869af23270e",
+  "experiment_uuid": "119131fa-0f67-48d7-ab87-f20d81c70c1f",
+  "lifecycle_gates": {
+    "hash_verified": true,
+    "kill_switch_clear": true,
+    "status_is_paper_ops": true
+  },
+  "operator": "Mohamed Awadalla",
+  "passed": true,
+  "promotion_status": "paper_ops",
+  "session_id": "smoke-001",
+  "session_kind": "paper_ops_smoke",
+  "session_type": "alpaca_paper_smoke"
+}

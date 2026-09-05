@@ -38,12 +38,12 @@ from experiments.artifacts import (
     ArtifactError,
     ArtifactManager,
 )
+from experiments.authority import ExperimentAuthority
 from experiments.models import (
     Experiment,
     ExperimentNotFoundError,
     PromotionStatus,
 )
-from experiments.operator_confirmations import verify_experiment_hash
 from experiments.registry import ExperimentRegistry
 from portfolio.state import PortfolioState as PortfolioStateAuthority
 from storage.schema import init_db
@@ -171,8 +171,7 @@ class PaperRunLoop:
     def _verify_experiment(self) -> Experiment:
         registry = self._open_registry()
         try:
-            experiment = verify_experiment_hash(
-                registry,
+            experiment = ExperimentAuthority(registry).verify(
                 self._run_config.experiment_uuid,
                 self._run_config.experiment_hash,
             )

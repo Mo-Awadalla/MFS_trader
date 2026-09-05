@@ -1,0 +1,48 @@
+{
+  "blockers": [],
+  "broker": "sim_broker",
+  "caps": {
+    "max_notional_per_order": 25.0,
+    "max_open_paper_exposure": 100.0,
+    "max_paper_session_notional": 100.0
+  },
+  "details": {
+    "drills": {
+      "reconciliation": {
+        "mismatch_detected": true,
+        "passed": true,
+        "positions": [
+          {
+            "avg_entry_price": 150.0,
+            "market_value": null,
+            "quantity": 2.0,
+            "side": "long",
+            "symbol": "AAPL"
+          }
+        ]
+      },
+      "reject": {
+        "passed": true,
+        "reason": "simulated_rejection",
+        "status": "REJECTED"
+      },
+      "timeout": {
+        "passed": true,
+        "status": "TIMEOUT"
+      }
+    }
+  },
+  "experiment_hash": "8e584c2eb4ba20a90b0af3d62a8f28c1d753a83a3e57ca79deafb869af23270e",
+  "experiment_uuid": "119131fa-0f67-48d7-ab87-f20d81c70c1f",
+  "lifecycle_gates": {
+    "hash_verified": true,
+    "kill_switch_clear": true,
+    "status_is_paper_ops": true
+  },
+  "operator": "codex",
+  "passed": true,
+  "promotion_status": "paper_ops",
+  "session_id": "etf-tsm-paper-ops-sim-drills-20260711",
+  "session_kind": "paper_ops_smoke",
+  "session_type": "simulated_drills"
+}

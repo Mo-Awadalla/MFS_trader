@@ -75,7 +75,71 @@ class GauntletResult:
         }
 
 
-def run_gauntlet(
+@dataclass(frozen=True)
+class ValidationPolicy:
+    """Frozen validation policy values used by the Gauntlet.
+
+    Defaults intentionally match the existing orchestration behavior. This
+    type names policy without changing any threshold or verdict semantics.
+    """
+
+    initial_capital: float = 10000.0
+    ruin_threshold: float = -0.50
+    max_dd_limit: float = -0.30
+    mc_num_paths: int = 10000
+    mc_block_size: int = 20
+    mc_annualization_factor: float = 252.0
+    seed: int = 42
+
+
+@dataclass(frozen=True)
+class ValidationRequest:
+    """Inputs for one Validation Gauntlet run."""
+
+    strategy_name: str
+    df: pd.DataFrame
+    train_fn: Callable[..., dict[str, Any]]
+    test_fn: Callable[..., dict[str, Any]]
+    sweep_results: pd.DataFrame
+    param_columns: list[str]
+    best_sharpe: float | None = None
+    returns_matrix: np.ndarray | pd.DataFrame | None = None
+    oos_returns: pd.Series | None = None
+    mc_cluster_labels: pd.Series | None = None
+    wfa_config: Any = None
+    policy: ValidationPolicy = field(default_factory=ValidationPolicy)
+    wfa_kwargs: dict[str, Any] = field(default_factory=dict)
+
+
+class ValidationGauntlet:
+    """Deep policy module coordinating the four validation check adapters."""
+
+    def run(self, request: ValidationRequest) -> GauntletResult:
+        policy = request.policy
+        return _run_gauntlet(
+            strategy_name=request.strategy_name,
+            df=request.df,
+            train_fn=request.train_fn,
+            test_fn=request.test_fn,
+            sweep_results=request.sweep_results,
+            param_columns=request.param_columns,
+            best_sharpe=request.best_sharpe,
+            returns_matrix=request.returns_matrix,
+            oos_returns=request.oos_returns,
+            initial_capital=policy.initial_capital,
+            ruin_threshold=policy.ruin_threshold,
+            max_dd_limit=policy.max_dd_limit,
+            mc_num_paths=policy.mc_num_paths,
+            mc_block_size=policy.mc_block_size,
+            mc_cluster_labels=request.mc_cluster_labels,
+            mc_annualization_factor=policy.mc_annualization_factor,
+            wfa_config=request.wfa_config,
+            seed=policy.seed,
+            **request.wfa_kwargs,
+        )
+
+
+def _run_gauntlet(
     strategy_name: str,
     df: pd.DataFrame,
     train_fn: Callable[..., dict[str, Any]],
@@ -91,6 +155,8 @@ def run_gauntlet(
     max_dd_limit: float = -0.30,
     mc_num_paths: int = 10000,
     mc_block_size: int = 20,
+    mc_cluster_labels: pd.Series | None = None,
+    mc_annualization_factor: float = 252.0,
     wfa_config: Any = None,
     seed: int = 42,
     **wfa_kwargs: Any,
@@ -151,6 +217,8 @@ def run_gauntlet(
             initial_capital=initial_capital,
             ruin_threshold=ruin_threshold,
             seed=seed,
+            cluster_labels=mc_cluster_labels,
+            annualization_factor=mc_annualization_factor,
         )
         result.mc_result = mc_result
 
@@ -210,3 +278,53 @@ def run_gauntlet(
         log.warning("gauntlet_failed", strategy=strategy_name, failures=failures)
 
     return result
+
+
+def run_gauntlet(
+    strategy_name: str,
+    df: pd.DataFrame,
+    train_fn: Callable[..., dict[str, Any]],
+    test_fn: Callable[..., dict[str, Any]],
+    sweep_results: pd.DataFrame,
+    param_columns: list[str],
+    *,
+    best_sharpe: float | None = None,
+    returns_matrix: np.ndarray | pd.DataFrame | None = None,
+    oos_returns: pd.Series | None = None,
+    initial_capital: float = 10000.0,
+    ruin_threshold: float = -0.50,
+    max_dd_limit: float = -0.30,
+    mc_num_paths: int = 10000,
+    mc_block_size: int = 20,
+    mc_cluster_labels: pd.Series | None = None,
+    mc_annualization_factor: float = 252.0,
+    wfa_config: Any = None,
+    seed: int = 42,
+    **wfa_kwargs: Any,
+) -> GauntletResult:
+    """Compatibility adapter for the historical wide Gauntlet interface."""
+
+    request = ValidationRequest(
+        strategy_name=strategy_name,
+        df=df,
+        train_fn=train_fn,
+        test_fn=test_fn,
+        sweep_results=sweep_results,
+        param_columns=param_columns,
+        best_sharpe=best_sharpe,
+        returns_matrix=returns_matrix,
+        oos_returns=oos_returns,
+        mc_cluster_labels=mc_cluster_labels,
+        wfa_config=wfa_config,
+        policy=ValidationPolicy(
+            initial_capital=initial_capital,
+            ruin_threshold=ruin_threshold,
+            max_dd_limit=max_dd_limit,
+            mc_num_paths=mc_num_paths,
+            mc_block_size=mc_block_size,
+            mc_annualization_factor=mc_annualization_factor,
+            seed=seed,
+        ),
+        wfa_kwargs=wfa_kwargs,
+    )
+    return ValidationGauntlet().run(request)
