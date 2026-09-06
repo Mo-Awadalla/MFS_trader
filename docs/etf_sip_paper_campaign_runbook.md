@@ -1,11 +1,12 @@
 # ETF SIP paper-evidence campaign runbook
 
-## Status: blocked at the input-integrity gate
+## Status: input-integrity gate passed; paper identity/CLI remains unimplemented
 
 No SIP successor is frozen. The canonical attempted snapshot is
 `sip-etf-daily-20260905t214300z`; its authoritative `acquired_at` is
 `2026-09-05T21:28:08.316145+00:00`, not the arbitrary identifier timestamp.
-Its immutable manifest is failed and its bundle is retained at:
+Its immutable manifest is failed and its bundle is retained unchanged as
+evidence at:
 
 - `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z/manifest.json`
 - `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z/input-bundle.tar.gz`
@@ -22,6 +23,23 @@ the ledger gate. By symbol the missing-payable counts are DBC 3, IEF 47, IWM
 corporate-action completeness, absence of splits, or raw/adjusted price-factor
 reconciliation. Do not infer dates or claim that adding the 140 values alone
 unblocks the campaign.
+
+Recovery step 1 is now done. The complete successor snapshot
+`sip-etf-daily-20260905t214300z-corporate-actions-complete` fills the 140
+missing `record_date`/`payable_date` pairs from issuer-published distribution
+histories (iShares for IEF/SHY/IWM, Invesco for QQQ/DBC, SSGA for SPY),
+matched on ticker, ex-date, and event type; no dates were inferred. Per-record
+provenance, issuer source files, and their SHA-256 hashes are retained in
+`docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-corporate-actions-complete/backfill_provenance.json`. The retained-bundle verifier passed on the complete snapshot
+(`...-corporate-actions-complete-calendar-integrity-verification.json`), and a
+full-history reconciliation found no missing dividends, no missing splits, and
+no unexplained raw/adjusted price-factor differences. Known caveat retained
+for review: for 94 records (IEF/SHY pre-2020) the issuer-page displayed amount
+differs from the Alpaca rate; dates are authoritative issuer declarations while
+the Alpaca rate remains the amount of record because it is consistent with the
+price panel. DBC paid twice in the week of 2018-12-24 (two distinct price-panel
+adjustment steps); Invesco lists one row and the 12-26 record is marked
+RESOLVED_WITH_NOTE.
 
 The retained calendar initially had time-only closes. The append-only v2
 verification corrects their interpretation as session-date plus
@@ -88,8 +106,10 @@ are recorded possible mechanisms, without a counterfactual attribution.
 
 ## Recovery sequence
 
-1. Append a corporate-action completeness result and reconcile raw/adjusted
-   price-factor jumps; preserve the failed snapshot unchanged.
+1. DONE 2026-09-06: corporate-action completeness appended (backfilled from
+   issuer-published histories) and raw/adjusted price-factor jumps reconciled;
+   the failed snapshot is preserved unchanged. See
+   `sip-etf-daily-20260905t214300z-corporate-actions-complete/`.
 2. Implement paper identity/policy/CLI handling and independent ledgers;
    verify deterministic synthetic parity tests and commit the implementation
    without candidate-performance claims.

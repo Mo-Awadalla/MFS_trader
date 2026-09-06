@@ -39,6 +39,27 @@ prove that every corporate action was returned or that raw/adjusted price
 factors reconcile, so filling those 140 fields alone would not authorize a
 successor.
 
+The complete successor snapshot is
+`sip-etf-daily-20260905t214300z-corporate-actions-complete`. It reuses the
+identical acquired bars, calendar, and assets payloads; only
+`http/corporate_actions.json` gains the 140 `record_date`/`payable_date`
+pairs (plus per-record `date_source`), matched from issuer-published
+distribution histories (iShares for IEF/SHY/IWM, Invesco for QQQ/DBC, SSGA
+for SPY) on ticker, ex-date, and event type; no dates were inferred. Its
+bundle SHA-256 is
+`9cf77ccdd38e636f76d07ab3c93f7b1e051da956532026729c42bad50de7235e`. The
+retained-bundle verifier passed
+(`docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-corporate-actions-complete-calendar-integrity-verification.json`),
+and the full-history reconciliation found no missing dividends, no missing
+splits, and no unexplained raw/adjusted price-factor differences. Per-record
+provenance and issuer-source hashes:
+`docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-corporate-actions-complete/backfill_provenance.json`.
+Caveats kept for review: 94 records (IEF/SHY pre-2020) have issuer-displayed
+amounts that differ from the Alpaca rate (dates are authoritative issuer
+declarations; the Alpaca rate remains the amount of record), and DBC paid
+twice in the week of 2018-12-24 (two price-panel adjustment steps; Invesco
+lists one row; the 12-26 record is RESOLVED_WITH_NOTE).
+
 The append-only corrected calendar verification is
 `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-calendar-integrity-verification-v2.json`.
 It verifies the retained panel using date plus `America/New_York` close time,
