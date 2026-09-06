@@ -21,7 +21,7 @@ Most trading repos show a backtest. This repo tries to show the harder engineeri
 - Current strongest candidate: `ETFTimeSeriesMomentumVolTarget-v1-YahooAdjustedDaily-2005-2026`
 - Current promotion status: `paper_ops` (read from the authoritative Experiment metadata)
 - Paper/live status: not approved. The historical Yahoo candidate is preserved, but it is not the proposed Alpaca SIP successor.
-- SIP successor status: no successor has been frozen. The historical SIP input snapshot `sip-etf-daily-20260905t214300z` retrieved all seven ETFs for 2,684 common completed sessions from `2016-01-04` through `2026-09-04`; its corrected calendar/panel verification passed. The snapshot failed its corporate-action ledger gate because 140 of the returned cash-dividend records lack `payable_date`. The latest-SPY SIP endpoint returned HTTP 403 for recent data, but bounded historical SIP access succeeded; the 403 is not the historical-input blocker. No successor UUID/hash, validation, paper broker session, or order action exists.
+- SIP successor status: no successor has been frozen. The historical SIP input snapshot `sip-etf-daily-20260905t214300z` retrieved all seven ETFs for 2,684 common completed sessions from `2016-01-04` through `2026-09-04`. It originally failed its corporate-action ledger gate because 140 of the returned cash-dividend records lacked `payable_date`; the complete successor snapshot `sip-etf-daily-20260905t214300z-corporate-actions-complete` backfilled those 140 `record_date`/`payable_date` pairs from issuer-published distribution histories (iShares, Invesco, SSGA), passed the retained-bundle verifier, and reconciled raw/adjusted price factors (no missing dividends, no missing splits, no unexplained adjustment steps). The failed snapshot is preserved unchanged as evidence. The latest-SPY SIP endpoint returned HTTP 403 for recent data, but bounded historical SIP access succeeded; the 403 is not the historical-input blocker. No successor UUID/hash, validation, paper broker session, or order action exists.
 - Latest mechanism scout: `CrossAssetCarryTrendScout-v1` passed all 13 frozen public-data gates; next evidence step is a five-market raw-contract replication, not paper/live promotion
 
 ## Validated candidate
@@ -37,7 +37,10 @@ Evidence:
 - Source memo: `docs/strategy_sources/ETFTimeSeriesMomentumVolTarget-v1.md`
 - SPY comparison: `docs/reports/etf_tsm_spy_comparison.md`
 - Runtime/sim-broker replay: `docs/reports/etf_tsm_engine_replay/etf_tsm_engine_replay.md`
-- Failed SIP snapshot manifest and portable inputs: `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z/manifest.json` and `input-bundle.tar.gz`
+- Failed SIP snapshot manifest and portable inputs (preserved unchanged): `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z/manifest.json` and `input-bundle.tar.gz`
+- Complete SIP snapshot (corporate actions backfilled; verifier passed): `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-corporate-actions-complete/manifest.json` and `input-bundle.tar.gz`
+- Corporate-action backfill provenance (140 records, issuer sources + hashes): `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-corporate-actions-complete/backfill_provenance.json`
+- Complete-snapshot verification: `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-corporate-actions-complete-calendar-integrity-verification.json`
 - Corrected retained-calendar verification: `docs/reports/etf_campaign_inputs/sip-etf-daily-20260905t214300z-calendar-integrity-verification-v2.json`
 
 ### ETF TSM vs SPY
