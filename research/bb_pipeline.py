@@ -144,17 +144,15 @@ def build_returns_matrix(
     cost_config: CostModelConfig | None = None,
     symbol: str = "AAPL",
     initial_capital: float = 10000.0,
-    max_trials: int = 50,
 ) -> np.ndarray:
-    """Build a returns matrix for DSR M_eff estimation from top sweep trials."""
+    """Build a full-sweep returns matrix for DSR trial-scope evidence."""
     if sweep_df.empty:
         return np.empty((0, 0))
 
     cost_config = cost_config or default_cost_config()
-    top = sweep_df.sort_values("sharpe", ascending=False).head(max_trials)
     series_list: list[pd.Series] = []
 
-    for _, row in top.iterrows():
+    for _, row in sweep_df.sort_values("sharpe", ascending=False, kind="stable").iterrows():
         params = params_from_dict(row.to_dict())
         result = backtest_bb(
             df,
@@ -163,14 +161,43 @@ def build_returns_matrix(
             cost_config=cost_config,
             initial_capital=initial_capital,
         )
-        if not result.returns.empty:
-            series_list.append(result.returns.rename(f"{params.window}_{params.std_mult}_{params.width_mode}"))
-
-    if not series_list:
-        return np.empty((0, 0))
+        returns = result.returns.reindex(df.index, fill_value=0.0).fillna(0.0)
+        series_list.append(returns.rename(f"{params.window}_{params.std_mult}_{params.width_mode}"))
 
     matrix = pd.concat(series_list, axis=1).fillna(0.0)
     return matrix.to_numpy()
+
+
+def _selected_sweep_trial_index(
+    sweep_df: pd.DataFrame,
+    params: BBParams,
+) -> tuple[int | None, str | None]:
+    """Locate the frozen parameter set in build_returns_matrix column order."""
+    if sweep_df.empty:
+        return None, "the BB sweep is empty"
+    target = params_to_dict(params)
+    missing = [name for name in target if name not in sweep_df.columns]
+    if missing:
+        return None, f"the BB sweep lacks frozen parameter fields: {', '.join(missing)}"
+
+    matches = pd.Series(True, index=sweep_df.index)
+    for name, value in target.items():
+        column = sweep_df[name]
+        if isinstance(value, float):
+            matches &= pd.to_numeric(column, errors="coerce").eq(value)
+        else:
+            matches &= column.eq(value)
+    match_count = int(matches.sum())
+    if match_count != 1:
+        return None, f"the frozen BB parameter set matches {match_count} sweep rows; expected exactly one"
+
+    selected_position = int(np.flatnonzero(matches.to_numpy())[0])
+    ordered_positions = (
+        sweep_df.assign(_dsr_position=np.arange(len(sweep_df)))
+        .sort_values("sharpe", ascending=False, kind="stable")["_dsr_position"]
+        .to_numpy()
+    )
+    return int(np.flatnonzero(ordered_positions == selected_position)[0]), None
 
 
 @dataclass
@@ -295,7 +322,11 @@ def run_bb_validation_gauntlet(
         symbol=symbol,
         initial_capital=initial_capital,
     )
-    best_sharpe = float(sweep_df["sharpe"].max()) if not sweep_df.empty else None
+    selected_trial_index, dsr_selection_error = _selected_sweep_trial_index(sweep_df, params)
+    selected_sharpe = float(research.metrics.get("sharpe", 0.0))
+    matrix_covers_sweep = returns_matrix.ndim == 2 and returns_matrix.shape[1] == len(sweep_df)
+    if dsr_selection_error is None and not matrix_covers_sweep:
+        dsr_selection_error = "returns_matrix does not contain exactly one column for every BB sweep row"
 
     gauntlet = run_gauntlet(
         STRATEGY_NAME,
@@ -304,8 +335,19 @@ def run_bb_validation_gauntlet(
         test_fn,
         sweep_df,
         PARAM_COLUMNS,
-        best_sharpe=best_sharpe,
+        best_sharpe=selected_sharpe,
         returns_matrix=returns_matrix,
+        dsr_selected_trial_index=selected_trial_index,
+        dsr_selected_returns=(
+            returns_matrix[:, selected_trial_index]
+            if selected_trial_index is not None
+            and matrix_covers_sweep
+            and selected_trial_index < returns_matrix.shape[1]
+            else None
+        ),
+        dsr_search_scope="complete Bollinger Bands parameter sweep used for this validation run",
+        dsr_selection_error=dsr_selection_error,
+        dsr_sharpe_annualization_factor=252.0,
         initial_capital=initial_capital,
         wfa_config=PRESETS[WFATier.PRIMARY],
         seed=seed,

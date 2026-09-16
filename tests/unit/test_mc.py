@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
+import pytest
 
 from validation.mc.engine import (
     block_bootstrap_returns,
@@ -42,6 +43,36 @@ class TestBlockBootstrap:
         paths2 = block_bootstrap_returns(returns, 50, 20, seed=99)
         assert not np.array_equal(paths1, paths2)
 
+    def test_includes_final_legal_block_start(self):
+        returns = pd.Series([0.0, 0.0, 0.0, 0.0, 0.0, -0.99])
+
+        paths = block_bootstrap_returns(returns, num_paths=1, block_size=5, seed=0)
+
+        np.testing.assert_array_equal(paths[0, :5], returns.to_numpy()[1:])
+
+    def test_can_sample_terminal_shock(self):
+        returns = pd.Series([0.0] * 19 + [-0.99])
+
+        paths = block_bootstrap_returns(returns, num_paths=100, block_size=5, seed=42)
+
+        assert np.any(paths == -0.99)
+
+    def test_accepts_a_block_equal_to_the_return_series_length(self):
+        returns = pd.Series([0.01, -0.02, 0.03])
+
+        paths = block_bootstrap_returns(returns, num_paths=3, block_size=len(returns), seed=42)
+
+        np.testing.assert_array_equal(paths, np.tile(returns.to_numpy(), (3, 1)))
+
+    @pytest.mark.parametrize("block_size", [-1, 0])
+    def test_rejects_non_positive_block_size(self, block_size):
+        with np.testing.assert_raises(ValueError):
+            block_bootstrap_returns(pd.Series([0.01]), num_paths=1, block_size=block_size)
+
+    def test_rejects_block_larger_than_return_series(self):
+        with np.testing.assert_raises(ValueError):
+            block_bootstrap_returns(pd.Series([0.01]), num_paths=1, block_size=2)
+
 
 class TestComputePathMetrics:
     def test_positive_returns_positive_wealth(self):
@@ -55,6 +86,17 @@ class TestComputePathMetrics:
         metrics = compute_path_metrics(returns, initial_capital=10000)
         assert metrics["terminal_wealth"] < 10000
         assert metrics["max_drawdown"] < 0
+
+    def test_initial_equity_is_the_peak_for_an_immediate_loss(self):
+        metrics = compute_path_metrics(np.array([-0.20, 0.10]), initial_capital=10000)
+
+        assert metrics["max_drawdown"] == -0.20
+
+    def test_one_return_path_keeps_one_return_for_cagr_annualization(self):
+        metrics = compute_path_metrics(np.array([-0.20]), initial_capital=10000)
+
+        assert metrics["max_drawdown"] == -0.20
+        assert metrics["cagr"] == (0.80**252) - 1
 
 
 class TestRunMonteCarlo:
@@ -89,7 +131,24 @@ class TestRunMonteCarlo:
         assert "prob_ruin" in summary
         assert "mean_sharpe" in summary
         assert "pct_5_cagr" in summary
-        assert "pct_95_max_dd" in summary
+        assert "pct_5_max_dd" in summary
+
+    def test_adverse_drawdown_summary_uses_signed_fifth_percentile(self):
+        result = run_monte_carlo(pd.Series([0.0]), num_paths=1, block_size=1)
+        result.max_drawdowns = np.array([-0.40] * 10 + [-0.10] * 90)
+        result.summarize(initial_capital=10000)
+
+        assert result.pct_5_max_dd == -0.40
+
+    def test_vectorized_metrics_include_initial_equity_without_extra_return(self):
+        returns = pd.Series([-0.20, 0.10])
+
+        result = run_monte_carlo(returns, num_paths=1, block_size=2, seed=42)
+        scalar_metrics = compute_path_metrics(returns.to_numpy())
+
+        assert result.max_drawdowns[0] == scalar_metrics["max_drawdown"]
+        assert result.cagrs[0] == scalar_metrics["cagr"]
+        assert result.terminal_wealth[0] == scalar_metrics["terminal_wealth"]
 
     def test_insufficient_data_returns_empty(self):
         returns = pd.Series([0.01, 0.02])  # only 2 bars
