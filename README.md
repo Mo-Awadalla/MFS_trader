@@ -4,6 +4,8 @@ Python systematic-trading research and execution platform built around one princ
 
 This is a portfolio/research engineering project, not trading advice and not live-trading approval.
 
+Numerical-correction notice: historical MC/DSR validation claims below require re-evaluation and are withdrawn as current validation claims. The corrected code does not retroactively approve any Experiment. Original evidence and stored lifecycle fields remain unchanged; see the [correction and evidence-migration note](docs/numerical-correctness-2026-09-16.md).
+
 ## Why this repo exists
 
 Most trading repos show a backtest. This repo tries to show the harder engineering loop:
@@ -18,12 +20,14 @@ Most trading repos show a backtest. This repo tries to show the harder engineeri
 
 - Package: `mfs-trader`
 - Primary language: Python 3.11+
-- Current strongest candidate: `ETFTimeSeriesMomentumVolTarget-v1-YahooAdjustedDaily-2005-2026`
-- Current promotion status: `validation_passed`
-- Paper/live status: not approved; next step is paper-ops evidence, not live deployment
+- Historical candidate: `ETFTimeSeriesMomentumVolTarget-v1-YahooAdjustedDaily-2005-2026`
+- Stored promotion status: `validation_passed` (historical metadata, not corrected validation approval)
+- Paper/live status: not approved; affected validation evidence requires re-evaluation before relying on its PASS
 - Latest mechanism scout: `CrossAssetCarryTrendScout-v1` passed all 13 frozen public-data gates; next evidence step is a five-market raw-contract replication, not paper/live promotion
 
-## Validated candidate
+## Historical candidate — requires re-evaluation
+
+The following are unchanged historical report values, not results from the corrected numerical implementation.
 
 | Experiment | Data | Status | Sharpe | WFA OOS Sharpe | MC P(ruin) | DSR p-value | Max DD | Notes |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
@@ -55,11 +59,11 @@ Using the same cached Yahoo adjusted daily data panel:
 
 ![ETF TSM drawdown vs SPY](docs/assets/etf_tsm_drawdown_vs_spy.png)
 
-Interpretation: SPY had higher absolute return over this sample, while the ETF TSM candidate had better risk-adjusted behavior and much smaller drawdowns. That is why the next question is portfolio utility and operational paper-readiness, not automatic live trading.
+Historical interpretation: SPY had higher absolute return over this sample, while the reported ETF TSM metrics showed better risk-adjusted behavior and smaller drawdowns. These comparisons are not a substitute for corrected validation or permission to proceed to paper/live operation.
 
 ### ETF TSM runtime replay
 
-The validated candidate also has a no-credential runtime replay through the engine, portfolio sizing, risk checks, OMS, SQLite order/position state, and simulated broker fills:
+The historical candidate also has a runtime replay through the engine, portfolio sizing, risk checks, OMS, SQLite order/position state, and simulated broker fills:
 
 | Check | Result |
 | --- | ---: |
@@ -70,7 +74,7 @@ The validated candidate also has a no-credential runtime replay through the engi
 
 Report: `docs/reports/etf_tsm_engine_replay/etf_tsm_engine_replay.md`.
 
-Scope: this proves the validated ETF target weights can pass through runtime plumbing in simulation. It is still not Alpaca paper/live broker approval.
+Scope: this historical PASS is an operational simulation result, not corrected statistical validation or Alpaca paper/live approval.
 
 ## Latest research scouts
 
@@ -285,7 +289,7 @@ Live mode is intentionally gated by `config/live.toml`; it refuses to start unle
 ## Known limitations / next serious work
 
 - The current public repo should be renamed from the old `untitled_project` remote before resume use.
-- ETF TSM has passed simulated runtime replay, but continuous Alpaca paper ops has not yet been run for the validation-passed candidate.
+- ETF TSM has a historical simulated runtime replay PASS, but continuous Alpaca paper ops has not yet been run for the historical candidate. Affected validation evidence requires corrected re-evaluation before relying on it for paper-ops progression.
 - The runtime replay uses a target-weight adapter and simulated broker; real paper broker authority remains a separate evidence gate.
 
 ## License / reuse
