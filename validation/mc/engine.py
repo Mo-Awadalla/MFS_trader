@@ -48,7 +48,7 @@ class MCResult:
     prob_loss: float = 0.0  # P(terminal wealth < initial)
     prob_ruin: float = 0.0  # P(max drawdown < ruin_threshold)
     pct_5_cagr: float = 0.0  # 5th percentile CAGR
-    pct_95_max_dd: float = 0.0  # 95th percentile max drawdown
+    pct_5_max_dd: float = 0.0  # Adverse signed 5th-percentile maximum drawdown
     pct_5_sharpe: float = 0.0
     pct_95_sharpe: float = 0.0
     mean_sharpe: float = 0.0
@@ -63,7 +63,7 @@ class MCResult:
         self.prob_loss = float(np.mean(self.terminal_wealth < initial_capital))
         self.prob_ruin = float(np.mean(self.max_drawdowns < ruin_threshold))
         self.pct_5_cagr = float(np.percentile(self.cagrs, 5))
-        self.pct_95_max_dd = float(np.percentile(self.max_drawdowns, 95))
+        self.pct_5_max_dd = float(np.percentile(self.max_drawdowns, 5))
         self.pct_5_sharpe = float(np.percentile(self.sharpes, 5))
         self.pct_95_sharpe = float(np.percentile(self.sharpes, 95))
         self.mean_sharpe = float(np.mean(self.sharpes))
@@ -81,7 +81,7 @@ class MCResult:
             "pct_5_sharpe": self.pct_5_sharpe,
             "pct_95_sharpe": self.pct_95_sharpe,
             "pct_5_cagr": self.pct_5_cagr,
-            "pct_95_max_dd": self.pct_95_max_dd,
+            "pct_5_max_dd": self.pct_5_max_dd,
         }
 
 
@@ -102,15 +102,21 @@ def block_bootstrap_returns(
     Returns:
         Array of shape (num_paths, len(returns)) with bootstrapped returns.
     """
+    if block_size <= 0:
+        raise ValueError("block_size must be positive")
+
     rng = np.random.default_rng(seed)
     n = len(returns)
+    if n < block_size:
+        raise ValueError("block_size cannot exceed the number of returns")
+
     rets = returns.values
-    num_blocks = n // block_size + 1
+    num_blocks = int(np.ceil(n / block_size))
 
     paths = np.empty((num_paths, n))
     for p in range(num_paths):
         # Sample block start indices
-        block_starts = rng.integers(0, max(n - block_size, 1), size=num_blocks)
+        block_starts = rng.integers(0, n - block_size + 1, size=num_blocks)
         # Concatenate blocks
         sampled = np.concatenate([rets[s : s + block_size] for s in block_starts])[:n]
         paths[p] = sampled
@@ -124,7 +130,7 @@ def compute_path_metrics(
     ann_factor: int = 252,
 ) -> dict[str, float]:
     """Compute terminal wealth, Sharpe, Sortino, max DD, CAGR for one path."""
-    equity = initial_capital * np.cumprod(1 + returns)
+    equity = initial_capital * np.concatenate(([1.0], np.cumprod(1 + returns)))
     terminal_wealth = float(equity[-1])
 
     # Sharpe
@@ -187,21 +193,32 @@ def run_monte_carlo(
 
     # Compute metrics for each path (vectorized where possible)
     ann_factor = 252
-    equity = initial_capital * np.cumprod(1 + paths, axis=1)
+    equity = initial_capital * np.concatenate(
+        (np.ones((num_paths, 1)), np.cumprod(1 + paths, axis=1)), axis=1
+    )
     terminal_wealth = equity[:, -1]
 
     # Sharpe per path (vectorized)
     path_means = np.mean(paths, axis=1)
     path_stds = np.std(paths, axis=1)
-    sharpes = np.where(path_stds > 0, path_means * ann_factor / (path_stds * np.sqrt(ann_factor)), 0.0)
+    sharpes = np.zeros_like(path_means)
+    np.divide(
+        path_means * ann_factor,
+        path_stds * np.sqrt(ann_factor),
+        out=sharpes,
+        where=path_stds > 0,
+    )
 
     # Sortino per path
     downside_only = np.where(paths < 0, paths, 0.0)
     downside_stds = np.std(downside_only, axis=1)
-    sortinos = np.where(
-        (downside_stds > 0) & (path_stds > 0),
-        path_means * ann_factor / (downside_stds * np.sqrt(ann_factor)),
-        0.0,
+    sortinos = np.zeros_like(path_means)
+    valid_sortino = (downside_stds > 0) & (path_stds > 0)
+    np.divide(
+        path_means * ann_factor,
+        downside_stds * np.sqrt(ann_factor),
+        out=sortinos,
+        where=valid_sortino,
     )
 
     # Max drawdown per path (vectorized)
@@ -230,7 +247,7 @@ def run_monte_carlo(
         prob_loss=result.prob_loss,
         prob_ruin=result.prob_ruin,
         pct_5_cagr=result.pct_5_cagr,
-        pct_95_max_dd=result.pct_95_max_dd,
+        pct_5_max_dd=result.pct_5_max_dd,
         mean_sharpe=result.mean_sharpe,
     )
 
