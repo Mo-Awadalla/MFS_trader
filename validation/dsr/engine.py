@@ -1,21 +1,18 @@
-"""Deflated Sharpe Ratio (DSR).
+"""Bailey--López de Prado Deflated Sharpe Ratio (DSR).
 
-Answers: "Given the number of trials/strategies/parameters tested,
-what's the probability the best Sharpe is just luck?"
+This implements Eq. (2) from Bailey & López de Prado (2014), pp. 8--10:
+https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf
 
-Three methods to estimate M (number of independent trials):
-  (A) M_raw:        count all parameter combos in the sweep (conservative upper bound)
-  (B) M_eff_corr:   use correlation/eigenvalue structure of strategy returns
-  (C) M_cluster:    cluster parameter space, count distinct regions (interpretability)
-
-Primary: B. Conservative upper bound: A. Interpretability check: C.
-
-Reference: Bailey & López de Prado, "The Deflated Sharpe Ratio" (2014).
+Sharpe values and their variance must use *per-observation*, non-annualized
+units. For daily data with 250 observations/year, convert annualized Sharpe
+``2.5`` to ``2.5 / sqrt(250)`` and annualized variance ``0.5`` to ``0.5 / 250``.
+Skewness is dimensionless; kurtosis is ordinary, non-excess kurtosis (Normal=3).
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from math import e
 
 import numpy as np
 import pandas as pd
@@ -23,62 +20,47 @@ import structlog
 from scipy import stats
 
 log = structlog.get_logger(__name__)
+_EULER_MASCHERONI = 0.5772156649015329
+_METHODS = {"M_raw", "M_eff_corr", "M_cluster"}
 
 
 @dataclass
 class DSRResult:
-    """Results of a Deflated Sharpe Ratio calculation."""
+    """Eq. (2) result; unavailable results are deliberately non-passing."""
 
     observed_sharpe: float
-    num_trials_raw: int  # M_raw — total parameter combos
-    num_trials_eff: float  # M_eff — effective independent trials
-    num_trials_cluster: int  # M_cluster — distinct parameter regions
-    track_record_length: int  # T (in bars)
-    dsr_pvalue: float  # p-value: probability this Sharpe is luck
-    dsr_statistic: float  # the deflated Sharpe ratio statistic
-    method: str  # which M estimation method was primary
+    num_trials_raw: int
+    num_trials_eff: float | None
+    num_trials_cluster: int | None
+    track_record_length: int
+    # Complementary tail probability. The paper's DSR is ``dsr_confidence``.
+    dsr_pvalue: float
+    dsr_statistic: float
+    method: str
+    dsr_confidence: float = 0.0
+    formula_version: str = "bailey_lopez_de_prado_eq2_v1"
+    expected_max_sharpe: float | None = None
+    selected_return_skewness: float | None = None
+    selected_return_kurtosis: float | None = None
+    trial_sharpe_variance: float | None = None
+    search_scope: str = ""
+    available: bool = True
+    unavailable_reason: str | None = None
     passed: bool = False
-    pvalue_m_raw: float = 0.0  # p-value using M_raw (conservative)
-    pvalue_m_eff: float = 0.0  # p-value using M_eff_corr (primary)
-    pvalue_m_cluster: float = 0.0  # p-value using M_cluster
+    pvalue_m_raw: float | None = None
+    pvalue_m_eff: float | None = None
+    pvalue_m_cluster: float | None = None
     failure_reasons: list[str] = field(default_factory=list)
 
 
 def estimate_m_eff_corr(returns_matrix: np.ndarray | pd.DataFrame) -> float:
-    """Estimate effective number of independent trials from correlation structure.
-
-    Uses the eigenvalue method: M_eff = (sum(eigenvalues))^2 / sum(eigenvalues^2)
-
-    This is the "participation ratio" — effectively the number of independent
-    dimensions in the strategy returns matrix.
-
-    Args:
-        returns_matrix: Array of shape (n_bars, n_trials) where each column is
-                        the return series of one parameter combination.
-
-    Returns:
-        M_eff — effective number of independent trials (float).
-    """
-    if isinstance(returns_matrix, pd.DataFrame):
-        returns_matrix = returns_matrix.values
-
-    if returns_matrix.size == 0 or returns_matrix.shape[1] < 2:
-        return float(returns_matrix.shape[1])
-
-    # Compute correlation matrix of strategy returns across parameter combos
-    # Each column is a strategy variant's returns
-    corr = np.corrcoef(returns_matrix.T)  # shape (n_trials, n_trials)
-
-    # Handle NaN correlations (constant returns)
-    corr = np.nan_to_num(corr, nan=0.0)
-
-    # Eigenvalue method: participation ratio
-    eigenvalues = np.linalg.eigvalsh(corr)
-    eigenvalues = np.maximum(eigenvalues, 1e-10)  # avoid division by zero
-
-    m_eff = float(np.sum(eigenvalues) ** 2 / np.sum(eigenvalues**2))
-
-    return max(m_eff, 1.0)
+    """Estimate effective independent trials from a finite ``(bars, trials)`` matrix."""
+    matrix = _as_returns_matrix(returns_matrix)
+    if matrix.shape[1] < 2:
+        return float(matrix.shape[1])
+    corr = np.nan_to_num(np.corrcoef(matrix.T), nan=0.0)
+    eigenvalues = np.maximum(np.linalg.eigvalsh(corr), 1e-10)
+    return max(float(np.sum(eigenvalues) ** 2 / np.sum(eigenvalues**2)), 1.0)
 
 
 def estimate_m_cluster(
@@ -86,182 +68,208 @@ def estimate_m_cluster(
     param_columns: list[str],
     n_clusters: int | None = None,
 ) -> int:
-    """Estimate M by clustering the parameter space.
-
-    Groups parameter combinations into distinct regions and counts clusters
-    that contain at least one "good" result (above median Sharpe).
-
-    Args:
-        param_results: DataFrame with parameter columns and a 'sharpe' column.
-        param_columns: Columns to use for clustering.
-        n_clusters: Number of clusters (auto-determined if None).
-
-    Returns:
-        M_cluster — number of distinct parameter regions.
-    """
+    """Estimate a parameter-space cluster count for a documented sweep."""
     if param_results.empty or not param_columns:
         return 1
-
     from sklearn.cluster import KMeans
     from sklearn.preprocessing import StandardScaler
 
-    features = param_results[param_columns].values
-    scaler = StandardScaler()
-    features_scaled = scaler.fit_transform(features)
+    features = StandardScaler().fit_transform(param_results[param_columns].values)
+    clusters = n_clusters or max(min(int(np.sqrt(len(param_results))), 20), 2)
+    clusters = min(clusters, len(param_results))
+    labels = KMeans(n_clusters=clusters, n_init=10, random_state=42).fit_predict(features)
+    median = param_results["sharpe"].median()
+    return max(len({int(label) for i, label in enumerate(labels) if param_results["sharpe"].iloc[i] >= median}), 1)
 
-    if n_clusters is None:
-        # Heuristic: sqrt(n_samples) clusters, capped at 20
-        n_clusters = min(int(np.sqrt(len(param_results))), 20)
-        n_clusters = max(n_clusters, 2)
 
-    if len(param_results) < n_clusters:
-        n_clusters = len(param_results)
-
-    km = KMeans(n_clusters=n_clusters, n_init=10, random_state=42)
-    labels = km.fit_predict(features_scaled)
-
-    # Count clusters that have at least one above-median result
-    median_sharpe = param_results["sharpe"].median()
-    good_clusters = set()
-    for i, label in enumerate(labels):
-        if param_results["sharpe"].iloc[i] >= median_sharpe:
-            good_clusters.add(int(label))
-
-    return max(len(good_clusters), 1)
+def expected_max_sharpe(trial_sharpe_variance: float, num_trials: float) -> float:
+    """Eq. (1)'s null expected maximum, in per-observation Sharpe units."""
+    if not np.isfinite(trial_sharpe_variance) or trial_sharpe_variance < 0.0:
+        raise ValueError("trial_sharpe_variance must be finite and non-negative")
+    if not np.isfinite(num_trials) or num_trials < 2.0:
+        raise ValueError("num_trials must be finite and at least 2 for Eq. (1)")
+    first = stats.norm.ppf(1.0 - 1.0 / num_trials)
+    second = stats.norm.ppf(1.0 - 1.0 / (num_trials * e))
+    return float(np.sqrt(trial_sharpe_variance) * ((1.0 - _EULER_MASCHERONI) * first + _EULER_MASCHERONI * second))
 
 
 def compute_dsr(
-    observed_sharpe: float,
-    returns_matrix: np.ndarray | pd.DataFrame | None,
-    num_trials_raw: int,
-    track_record_length: int,
+    observed_sharpe: float | None = None,
+    returns_matrix: np.ndarray | pd.DataFrame | None = None,
+    num_trials_raw: int = 1,
+    track_record_length: int | None = None,
     *,
+    selected_returns: pd.Series | np.ndarray | None = None,
+    trial_sharpe_variance: float | None = None,
+    selected_return_skewness: float | None = None,
+    selected_return_kurtosis: float | None = None,
     num_trials_cluster: int | None = None,
-    ann_factor: int = 252,
+    search_scope: str | None = None,
     method: str = "M_eff_corr",
 ) -> DSRResult:
-    """Compute the Deflated Sharpe Ratio.
+    """Compute Eq. (2), or return unavailable when required evidence is absent.
 
-    Args:
-        observed_sharpe: The best observed (annualized) Sharpe ratio.
-        returns_matrix: Array (n_bars, n_trials) for M_eff estimation.
-        num_trials_raw: M_raw — total number of parameter combinations tested.
-        track_record_length: T — number of bars in the track record.
-        num_trials_cluster: M_cluster — distinct parameter regions.
-        ann_factor: Annualization factor (252 for daily).
-        method: Primary method for p-value ("M_eff_corr", "M_raw", or "M_cluster").
-
-    Returns:
-        DSRResult with p-values for all three methods.
+    Prefer ``selected_returns``: the per-observation Sharpe, skewness,
+    ordinary kurtosis, and length are then calculated from one series. Scalar
+    inputs are supported for reference examples only when all Eq. (2) inputs
+    are explicit. ``trial_sharpe_variance`` is never inferred: it must describe
+    the full documented search represented by ``num_trials_raw``.
     """
-    # Estimate M_eff from correlation structure
+    if method not in _METHODS:
+        return _unavailable(observed_sharpe, num_trials_raw, track_record_length, method, f"unknown DSR method {method!r}", search_scope)
+    if not isinstance(search_scope, str) or not search_scope.strip():
+        return _unavailable(observed_sharpe, num_trials_raw, track_record_length, method, "DSR search_scope is required; document which trials were searched", search_scope)
+    if isinstance(num_trials_raw, bool) or not isinstance(num_trials_raw, (int, np.integer)) or num_trials_raw < 2:
+        return _unavailable(observed_sharpe, num_trials_raw, track_record_length, method, "Eq. (1) requires at least two documented trials; a single trial cannot evidence DSR selection deflation", search_scope)
+    if trial_sharpe_variance is None:
+        return _unavailable(observed_sharpe, num_trials_raw, track_record_length, method, "trial_sharpe_variance across the documented trials is required", search_scope)
+
+    selected = _selected_statistics(selected_returns, observed_sharpe, track_record_length, selected_return_skewness, selected_return_kurtosis)
+    if isinstance(selected, str):
+        return _unavailable(observed_sharpe, num_trials_raw, track_record_length, method, selected, search_scope)
+    sharpe, T, skewness, kurtosis = selected
+    if not np.isfinite(trial_sharpe_variance) or trial_sharpe_variance < 0.0:
+        return _unavailable(sharpe, num_trials_raw, T, method, "trial_sharpe_variance must be finite and non-negative", search_scope)
+
+    m_eff: float | None = None
     if returns_matrix is not None:
-        m_eff = estimate_m_eff_corr(returns_matrix)
-    else:
-        m_eff = float(num_trials_raw)
+        try:
+            matrix = _as_returns_matrix(returns_matrix)
+        except ValueError as exc:
+            return _unavailable(sharpe, num_trials_raw, T, method, str(exc), search_scope)
+        if matrix.shape[1] != num_trials_raw:
+            return _unavailable(sharpe, num_trials_raw, T, method, "returns_matrix columns must cover exactly num_trials_raw documented trials", search_scope)
+        if matrix.shape[0] != T:
+            return _unavailable(sharpe, num_trials_raw, T, method, "returns_matrix bars must match the selected track record length", search_scope)
+        m_eff = estimate_m_eff_corr(matrix)
 
-    m_cluster = num_trials_cluster or int(m_eff)
+    if method == "M_eff_corr" and m_eff is None:
+        return _unavailable(sharpe, num_trials_raw, T, method, "M_eff_corr requires a full returns_matrix for the documented trial scope", search_scope)
+    if method == "M_eff_corr" and m_eff < 2.0:
+        return _unavailable(sharpe, num_trials_raw, T, method, "M_eff_corr is below two; Eq. (1) has no no-selection benchmark", search_scope)
+    if method == "M_cluster" and (
+        isinstance(num_trials_cluster, bool)
+        or not isinstance(num_trials_cluster, (int, np.integer))
+        or num_trials_cluster < 2
+        or num_trials_cluster > num_trials_raw
+    ):
+        return _unavailable(sharpe, num_trials_raw, T, method, "M_cluster requires an explicit cluster count of at least two", search_scope)
 
-    log.info(
-        "dsr_estimates",
-        m_raw=num_trials_raw,
-        m_eff=m_eff,
-        m_cluster=m_cluster,
-        observed_sharpe=observed_sharpe,
-        T=track_record_length,
-    )
+    try:
+        confidence_raw, statistic_raw, threshold_raw = _eq2(
+            sharpe, T, skewness, kurtosis, trial_sharpe_variance, float(num_trials_raw)
+        )
+    except ValueError as exc:
+        return _unavailable(sharpe, num_trials_raw, T, method, str(exc), search_scope)
+    confidence_eff = statistic_eff = threshold_eff = None
+    # Eq. (1)'s extreme-value approximation has no N=1 form. A nearly
+    # collinear matrix can legitimately estimate 1 <= M_eff < 2; it supports
+    # neither an M_eff DSR nor an implicit PSR substitution. Raw DSR remains
+    # well-defined and must not be made to fail because this optional estimate
+    # is too small.
+    if m_eff is not None and m_eff >= 2.0:
+        try:
+            confidence_eff, statistic_eff, threshold_eff = _eq2(
+                sharpe, T, skewness, kurtosis, trial_sharpe_variance, m_eff
+            )
+        except ValueError as exc:
+            return _unavailable(sharpe, num_trials_raw, T, method, str(exc), search_scope)
+    confidence_cluster = statistic_cluster = threshold_cluster = None
+    if num_trials_cluster is not None and 2 <= num_trials_cluster <= num_trials_raw:
+        try:
+            confidence_cluster, statistic_cluster, threshold_cluster = _eq2(
+                sharpe, T, skewness, kurtosis, trial_sharpe_variance, float(num_trials_cluster)
+            )
+        except ValueError as exc:
+            return _unavailable(sharpe, num_trials_raw, T, method, str(exc), search_scope)
 
-    # Compute p-values for all three methods
-    pval_raw = _dsr_pvalue(observed_sharpe, num_trials_raw, track_record_length, ann_factor)
-    pval_eff = _dsr_pvalue(observed_sharpe, m_eff, track_record_length, ann_factor)
-    pval_cluster = _dsr_pvalue(observed_sharpe, m_cluster, track_record_length, ann_factor)
-
-    # Select primary p-value
     if method == "M_raw":
-        primary_pval = pval_raw
-    elif method == "M_cluster":
-        primary_pval = pval_cluster
-    else:  # M_eff_corr (default)
-        primary_pval = pval_eff
+        confidence, statistic, threshold = confidence_raw, statistic_raw, threshold_raw
+    elif method == "M_eff_corr":
+        assert confidence_eff is not None and statistic_eff is not None and threshold_eff is not None
+        confidence, statistic, threshold = confidence_eff, statistic_eff, threshold_eff
+    else:
+        assert confidence_cluster is not None and statistic_cluster is not None and threshold_cluster is not None
+        confidence, statistic, threshold = confidence_cluster, statistic_cluster, threshold_cluster
 
-    # DSR statistic (z-score of the deflated Sharpe)
-    dsr_stat = _dsr_statistic(observed_sharpe, m_eff, track_record_length, ann_factor)
-
-    # Pass if p < 0.05 using primary method, and doesn't collapse under M_raw
-    passed = primary_pval < 0.05 and pval_raw < 0.10  # M_raw is a sanity check
-
+    pvalue_raw = float(stats.norm.sf(statistic_raw))
+    pvalue_eff = None if statistic_eff is None else float(stats.norm.sf(statistic_eff))
+    pvalue_cluster = None if statistic_cluster is None else float(stats.norm.sf(statistic_cluster))
+    pvalue = float(stats.norm.sf(statistic))
+    # The existing 0.05 / 0.10 numeric gates are unchanged, just expressed as
+    # the complement of the paper's confidence statistic.
+    passed = pvalue < 0.05 and pvalue_raw < 0.10
     failures: list[str] = []
-    if primary_pval >= 0.05:
-        failures.append(f"DSR p-value ({method}) = {primary_pval:.4f} >= 0.05")
-    if pval_raw >= 0.10:
-        failures.append(f"DSR collapses under M_raw: p = {pval_raw:.4f} >= 0.10")
+    if pvalue >= 0.05:
+        failures.append(f"DSR confidence ({method}) = {confidence:.4f} <= 0.9500")
+    if pvalue_raw >= 0.10:
+        failures.append(f"DSR confidence under M_raw = {confidence_raw:.4f} <= 0.9000")
 
+    log.info("dsr_eq2", method=method, search_scope=search_scope, m_raw=num_trials_raw, m_eff=m_eff, observed_sharpe=sharpe, T=T, trial_sharpe_variance=trial_sharpe_variance, confidence=confidence)
     return DSRResult(
-        observed_sharpe=observed_sharpe,
-        num_trials_raw=num_trials_raw,
-        num_trials_eff=m_eff,
-        num_trials_cluster=m_cluster,
-        track_record_length=track_record_length,
-        dsr_pvalue=primary_pval,
-        dsr_statistic=dsr_stat,
-        method=method,
-        passed=passed,
-        pvalue_m_raw=pval_raw,
-        pvalue_m_eff=pval_eff,
-        pvalue_m_cluster=pval_cluster,
-        failure_reasons=failures,
+        observed_sharpe=sharpe, num_trials_raw=num_trials_raw, num_trials_eff=m_eff,
+        num_trials_cluster=num_trials_cluster, track_record_length=T, dsr_pvalue=pvalue,
+        dsr_statistic=statistic, method=method, dsr_confidence=confidence,
+        expected_max_sharpe=threshold, selected_return_skewness=skewness,
+        selected_return_kurtosis=kurtosis, trial_sharpe_variance=float(trial_sharpe_variance),
+        search_scope=search_scope, passed=passed, pvalue_m_raw=pvalue_raw,
+        pvalue_m_eff=pvalue_eff, pvalue_m_cluster=pvalue_cluster, failure_reasons=failures,
     )
 
 
-def _dsr_pvalue(sharpe: float, m: float, T: int, ann_factor: int = 252) -> float:
-    """Compute the DSR p-value for a given M and T.
-
-    Under the null hypothesis, the expected maximum Sharpe across M independent
-    trials is approximately:
-
-        E[max Sharpe] = sqrt(2 * ln(M)) / sqrt(ann_factor)
-
-    The p-value is the probability of observing a Sharpe >= observed under the null.
-    """
-    if T <= 1 or m <= 0:
-        return 1.0
-
-    # Expected max Sharpe under null (Bailey & López de Prado)
-    # The non-NaN variance of Sharpe estimator is (1 - skewness*sharpe + ...) / (T-1)
-    # Simplified: variance of Sharpe ~ 1/(T-1) * (1 + sharpe^2/2) for normal returns
-    # But for the DSR, we use the expected max under multiple testing
-
-    # Standard error of Sharpe: SE = 1/sqrt(T) (annualized)
-    # With annualization: SE_annual = sqrt(ann_factor / T)
-    se_sharpe = np.sqrt(ann_factor / T)
-
-    # Expected max Sharpe under M trials (extreme value distribution)
-    if m > 1:
-        expected_max = np.sqrt(2 * np.log(m)) * se_sharpe
-        # Variance of max also scales
-        se_max = np.pi / np.sqrt(6) * se_sharpe / np.sqrt(2 * np.log(m)) if m > 1 else se_sharpe
-    else:
-        expected_max = 0.0
-        se_max = se_sharpe
-
-    # Deflated Sharpe: how many std devs above the expected max?
-    z = (sharpe - expected_max) / se_max if se_max > 0 else 0.0
-
-    # One-sided p-value
-    pvalue = 1.0 - stats.norm.cdf(z)
-    return float(pvalue)
+def _selected_statistics(selected_returns: pd.Series | np.ndarray | None, observed_sharpe: float | None, track_record_length: int | None, skewness: float | None, kurtosis: float | None) -> tuple[float, int, float, float] | str:
+    if selected_returns is not None:
+        values = np.asarray(selected_returns, dtype=float)
+        if values.ndim != 1:
+            return "selected_returns must be a one-dimensional return series"
+        if len(values) < 4 or not np.isfinite(values).all():
+            return "selected_returns must contain at least four finite per-observation returns"
+        if track_record_length is not None and track_record_length != len(values):
+            return "track_record_length must equal len(selected_returns)"
+        volatility = float(np.std(values, ddof=1))
+        if volatility <= 0.0:
+            return "selected_returns must have positive sample volatility"
+        sharpe = float(np.mean(values) / volatility)
+        if observed_sharpe is not None and not np.isclose(observed_sharpe, sharpe, rtol=1e-12, atol=1e-12):
+            return "observed_sharpe must match selected_returns in the same per-observation unit"
+        return sharpe, len(values), float(stats.skew(values, bias=False)), float(stats.kurtosis(values, fisher=False, bias=False))
+    if observed_sharpe is None or track_record_length is None or skewness is None or kurtosis is None:
+        return "provide selected_returns, or observed_sharpe, track_record_length, selected_return_skewness, and selected_return_kurtosis"
+    if (
+        isinstance(track_record_length, bool)
+        or not isinstance(track_record_length, (int, np.integer))
+        or track_record_length <= 1
+        or not all(np.isfinite(value) for value in (observed_sharpe, skewness, kurtosis))
+    ):
+        return "scalar Eq. (2) inputs must be finite and track_record_length must exceed one"
+    if kurtosis < 1.0:
+        return "selected_return_kurtosis must be ordinary (non-excess) kurtosis and at least one"
+    return float(observed_sharpe), track_record_length, float(skewness), float(kurtosis)
 
 
-def _dsr_statistic(sharpe: float, m: float, T: int, ann_factor: int = 252) -> float:
-    """Compute the DSR z-statistic (not the p-value)."""
-    se_sharpe = np.sqrt(ann_factor / T)
-    if m > 1:
-        expected_max = np.sqrt(2 * np.log(m)) * se_sharpe
-        se_max = np.pi / np.sqrt(6) * se_sharpe / np.sqrt(2 * np.log(m))
-    else:
-        expected_max = 0.0
-        se_max = se_sharpe
+def _eq2(sharpe: float, T: int, skewness: float, kurtosis: float, variance: float, num_trials: float) -> tuple[float, float, float]:
+    threshold = expected_max_sharpe(variance, num_trials)
+    denominator_squared = 1.0 - skewness * sharpe + ((kurtosis - 1.0) / 4.0) * sharpe**2
+    if denominator_squared <= 0.0 or not np.isfinite(denominator_squared):
+        raise ValueError("Eq. (2) standard-error denominator is not positive and finite")
+    statistic = float((sharpe - threshold) * np.sqrt(T - 1.0) / np.sqrt(denominator_squared))
+    return float(stats.norm.cdf(statistic)), statistic, threshold
 
-    if se_max > 0:
-        return float((sharpe - expected_max) / se_max)
-    return 0.0
+
+def _unavailable(observed_sharpe: float | None, num_trials_raw: int, track_record_length: int | None, method: str, reason: str, search_scope: str | None) -> DSRResult:
+    return DSRResult(
+        observed_sharpe=0.0 if observed_sharpe is None else float(observed_sharpe),
+        num_trials_raw=num_trials_raw, num_trials_eff=None, num_trials_cluster=None,
+        track_record_length=track_record_length or 0, dsr_pvalue=1.0, dsr_statistic=0.0,
+        method=method, search_scope=search_scope or "", available=False,
+        unavailable_reason=reason, passed=False, failure_reasons=[f"DSR unavailable: {reason}"],
+    )
+
+
+def _as_returns_matrix(returns_matrix: np.ndarray | pd.DataFrame) -> np.ndarray:
+    matrix = returns_matrix.to_numpy(dtype=float) if isinstance(returns_matrix, pd.DataFrame) else np.asarray(returns_matrix, dtype=float)
+    if matrix.ndim != 2 or matrix.shape[0] < 4 or matrix.shape[1] < 1:
+        raise ValueError("returns_matrix must be a finite (bars, trials) matrix with at least four bars")
+    if not np.isfinite(matrix).all():
+        raise ValueError("returns_matrix must contain only finite values")
+    return matrix
