@@ -5,7 +5,16 @@ from dataclasses import replace
 import pandas as pd
 
 from config.loader import load_config
+from data.catalog import DataCatalog
 from engine.paper_strategy import completed_daily_bars, prepare_paper_strategy
+from experiments.models import (
+    DataVersionSpec,
+    DateRangeSpec,
+    Experiment,
+    ExperimentSnapshot,
+    PromotionStatus,
+    UniverseSpec,
+)
 from experiments.registry import ExperimentRegistry
 
 EXPERIMENT_UUID = "119131fa-0f67-48d7-ab87-f20d81c70c1f"
@@ -180,3 +189,49 @@ def test_etf_paper_route_fails_closed_when_frozen_config_disagrees():
             raise AssertionError("mismatched frozen config was accepted")
     finally:
         registry.close()
+
+
+def _config_and_experiment():
+    config = load_config("config/paper_etf_tsm.toml", load_env=False)
+    frozen = config.raw["frozen_experiment"]
+    snapshot = ExperimentSnapshot(
+        strategy=str(frozen["strategy"]),
+        strategy_template_version="etf_time_series_momentum:v1",
+        parameters=dict(frozen["parameters"]),
+        universe=UniverseSpec(symbols=tuple(frozen["universe"]), asset_class="equity"),
+        data_version=DataVersionSpec(source="synthetic", bar_frequency="1d", data_version="test"),
+        date_range=DateRangeSpec(),
+        execution_mode="paper",
+        cost_model={},
+        slippage_model={},
+        risk_profile={},
+        portfolio_config={},
+        paper_thresholds={},
+        git_commit="test",
+        config_version="test",
+        random_seed=1,
+    )
+    experiment = Experiment(
+        uuid=str(frozen["uuid"]),
+        label=str(frozen["label"]),
+        experiment_hash=str(frozen["hash"]),
+        snapshot=snapshot,
+        promotion_status=PromotionStatus.RESEARCH,
+        created_at="2026-01-01T00:00:00Z",
+    )
+    return config, experiment
+
+
+def test_paper_preparation_uses_catalog_for_default_reads():
+    config, experiment = _config_and_experiment()
+    calls = []
+
+    class RecordingCatalog(DataCatalog):
+        def load(self, request):
+            calls.append(request)
+            return type("Loaded", (), {"frame": _bars(request.symbols[0])})()
+
+    prepared = prepare_paper_strategy(config, experiment, catalog=RecordingCatalog())
+
+    assert prepared.symbols == SYMBOLS
+    assert tuple(request.symbols[0] for request in calls) == SYMBOLS
