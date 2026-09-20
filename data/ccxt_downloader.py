@@ -53,7 +53,7 @@ class CCXTDownloader(BaseDownloader):
         )
         if exchange_id == "coinbase":
             self._exchange.rateLimit = max(self._exchange.rateLimit, 100)
-        if is_testnet and "test" in self._exchange.urls:
+        if is_testnet and self._exchange.urls.get("test"):
             self._exchange.set_sandbox_mode(True)
 
     @property
