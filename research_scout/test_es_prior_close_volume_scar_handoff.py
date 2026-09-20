@@ -9,7 +9,6 @@ import databento as db
 import numpy as np
 import pandas as pd
 
-
 ROOT = Path("external_artifacts/databento_es_close/GLBX.MDP3")
 BAR_PATH = ROOT / "bars" / "es_ohlcv_1m_2021-01-01_2026-01-01.dbn.zst"
 SESSION_ROOT = ROOT / "sessions"
@@ -240,7 +239,7 @@ def stress_diagnostics(trades, dates):
         ),
         "best_month_pnl_by_year_usd": {
             str(year): round(value, 2)
-            for (year, _), value in zip(best_months, best_month_values)
+            for (year, _), value in zip(best_months, best_month_values, strict=True)
         },
         "rolling": rolling_diagnostics(trades, dates),
         "five_day_block_bootstrap": block_bootstrap_loss_probability(

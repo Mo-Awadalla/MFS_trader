@@ -20,7 +20,7 @@ import hashlib
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -30,7 +30,6 @@ if VENDOR_DIR.exists():
     sys.path.insert(0, str(VENDOR_DIR))
 
 import databento as db  # noqa: E402
-
 
 DEFAULT_ROOT = Path("external_artifacts/databento_fractional_etf")
 DEFAULT_BUDGET = Decimal("50.00")
@@ -170,7 +169,7 @@ def main() -> int:
     )
     protected = total * PROTECTION_MULTIPLIER
     preflight = {
-        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "created_at_utc": datetime.now(UTC).isoformat(),
         "mode": "EXECUTE" if args.execute else "DRY_RUN",
         "authorized_budget_usd": str(args.budget_usd),
         "protection_multiplier": str(PROTECTION_MULTIPLIER),
@@ -215,7 +214,7 @@ def main() -> int:
     ledger = {
         **preflight,
         "mode": "EXECUTED",
-        "completed_at_utc": datetime.now(timezone.utc).isoformat(),
+        "completed_at_utc": datetime.now(UTC).isoformat(),
         "results": results,
         "unspent_authorized_budget_estimate_usd": str(
             args.budget_usd - total

@@ -8,7 +8,6 @@ import databento as db
 import numpy as np
 import pandas as pd
 
-
 DATA_PATH = (
     "external_artifacts/databento_es_close/GLBX.MDP3/bars/"
     "es_ohlcv_1m_2021-01-01_2026-01-01.dbn.zst"
@@ -446,7 +445,7 @@ def bootstrap_diagnostics(trades, session_dates):
 
 def main():
     sessions = load_sessions()
-    session_map = {day: bars for day, bars in sessions}
+    session_map = dict(sessions)
     session_dates = pd.Series([day for day, _ in sessions])
     signals, features = build_signals(sessions)
     baseline, baseline_skips = simulate(signals, session_map)

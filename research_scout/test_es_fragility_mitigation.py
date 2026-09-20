@@ -5,12 +5,10 @@ import sys
 sys.path.insert(0, ".vendor")
 sys.path.insert(0, ".")
 
-import numpy as np
 import pandas as pd
 
 from research_scout import test_es_opening_dual_engine_robustness as dual_test
 from research_scout import test_es_three_engine_stress as triple_test
-
 
 EXTRA_COSTS = [0.0, 1.25, 2.5]
 
@@ -163,13 +161,14 @@ def risk_summary(trades, lo, hi):
 def skipped_summary(baseline, challenger):
     work = baseline.copy()
     work["selection_key"] = list(
-        zip(work.date.astype(str), work.engine, work.entry_idx)
+        zip(work.date.astype(str), work.engine, work.entry_idx, strict=True)
     )
     chosen_keys = set(
         zip(
             challenger.date.astype(str),
             challenger.engine,
             challenger.entry_idx,
+            strict=True,
         )
     )
     skipped = work[~work.selection_key.isin(chosen_keys)]
@@ -216,7 +215,7 @@ def evaluate(name, trades, session_dates, seed_offset):
 
 def main():
     sessions = dual_test.load_sessions()
-    session_map = {day: bars for day, bars in sessions}
+    session_map = dict(sessions)
     session_dates = pd.Series([day for day, _ in sessions])
     signals = triple_test.build_three_engine_signals(sessions)
     baseline, skipped_geometry = triple_test.simulate(signals, session_map)

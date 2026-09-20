@@ -10,7 +10,6 @@ import pandas as pd
 
 from research_scout import test_es_opening_dual_engine_robustness as dual_test
 
-
 TICK_SIZE = 0.25
 POINT_VALUE = 5.0
 COMMISSION = 1.24
@@ -297,7 +296,7 @@ def clustered_execution_stress(trades, session_dates, lo, hi):
 
 def main():
     sessions = dual_test.load_sessions()
-    session_map = {day: bars for day, bars in sessions}
+    session_map = dict(sessions)
     session_dates = pd.Series([day for day, _ in sessions])
     signals = build_three_engine_signals(sessions)
 

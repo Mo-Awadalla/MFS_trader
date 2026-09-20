@@ -8,7 +8,6 @@ import databento as db
 import numpy as np
 import pandas as pd
 
-
 DATA_PATH = (
     "external_artifacts/databento_es_close/GLBX.MDP3/bars/"
     "es_ohlcv_1m_2021-01-01_2026-01-01.dbn.zst"

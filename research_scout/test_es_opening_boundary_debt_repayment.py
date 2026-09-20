@@ -5,9 +5,7 @@ import sys
 sys.path.insert(0, ".vendor")
 
 import databento as db
-import numpy as np
 import pandas as pd
-
 
 DATA_PATH = (
     "external_artifacts/databento_es_close/GLBX.MDP3/bars/"
