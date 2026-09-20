@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 VENDOR_DIR = Path(__file__).resolve().parents[1] / ".vendor"
@@ -15,7 +15,6 @@ if VENDOR_DIR.exists():
 import databento as db  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
-
 
 DEFAULT_ROOT = Path("external_artifacts/databento_fractional_etf")
 ARCA_PATH = (
@@ -146,7 +145,7 @@ def main() -> int:
     arca = load(args.arca)
     mini = load(args.mini)
     payload = {
-        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "created_at_utc": datetime.now(UTC).isoformat(),
         "status": "valid",
         "expected_symbols": ["SH", "SPY"],
         "files": {

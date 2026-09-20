@@ -9,7 +9,6 @@ import databento as db
 import numpy as np
 import pandas as pd
 
-
 ROOT = Path("external_artifacts/databento_es_close/GLBX.MDP3")
 FEATURE_PATH = ROOT / "es_close_flow_features_2021_2025.parquet"
 SESSION_ROOT = ROOT / "sessions"

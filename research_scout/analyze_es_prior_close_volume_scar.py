@@ -13,7 +13,6 @@ import pandas as pd
 from research_scout import test_es_opening_dual_engine_robustness as dual_test
 from research_scout import test_es_three_engine_stress as three_test
 
-
 ROOT = Path("external_artifacts/databento_es_close/GLBX.MDP3")
 SESSION_ROOT = ROOT / "sessions"
 TICK_SIZE = 0.25
@@ -448,7 +447,7 @@ def main():
         all_dates.year.to_series(index=all_dates).between(2024, 2025)
     ]
 
-    session_map = {day: bars for day, bars in sessions}
+    session_map = dict(sessions)
     benchmark_signals = three_test.build_three_engine_signals(sessions)
     benchmark, benchmark_skipped = three_test.simulate(
         benchmark_signals, session_map
