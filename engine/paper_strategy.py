@@ -10,6 +10,7 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 
 from config.schema import Config, DataConfig
+from data.catalog import BarRequest, DataCatalog
 from experiments.models import Experiment
 from strategies.etf_time_series_momentum.signal import (
     generate_signals as generate_etf_tsm_signals,
@@ -59,13 +60,32 @@ def prepare_paper_strategy(
     experiment: Experiment,
     *,
     frequency: str = "1d",
-    load_symbol: Callable[..., pd.DataFrame],
+    load_symbol: Callable[..., pd.DataFrame] | None = None,
+    catalog: DataCatalog | None = None,
     ma_symbol: str = "AAPL",
     ma_params: dict[str, Any] | None = None,
 ) -> PreparedPaperStrategy:
     """Prepare the configured strategy only when config and Experiment agree."""
 
     strategy = config.strategy_name
+    if load_symbol is None:
+        data_catalog = catalog or DataCatalog()
+
+        def load_symbol(
+            storage_dir: Any,
+            symbol: str,
+            requested_frequency: str,
+            *,
+            source: str = "",
+        ) -> pd.DataFrame:
+            return data_catalog.load(
+                BarRequest(
+                    storage_dir=storage_dir,
+                    symbols=(symbol,),
+                    frequency=requested_frequency,
+                    source=source,
+                )
+            ).frame
     if ETF_TSM_STRATEGY in {strategy, experiment.snapshot.strategy} and strategy != experiment.snapshot.strategy:
         raise ValueError(
             f"Configured strategy {strategy!r} disagrees with frozen Experiment "
