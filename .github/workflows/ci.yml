@@ -33,3 +33,15 @@ jobs:
           RUN_LIVE_BROKER_TESTS: '0'
           MFS_TEST_LOAD_DOTENV: '0'
         run: python -m pytest tests/unit tests/contracts tests/integration/test_ma_shakedown.py
+
+      - name: Build wheel and run offline demo outside the checkout
+        shell: bash
+        run: |
+          python -m pip wheel --no-deps --wheel-dir "$RUNNER_TEMP/mfs-wheel" .
+          python -m venv "$RUNNER_TEMP/mfs-wheel-venv"
+          "$RUNNER_TEMP/mfs-wheel-venv/bin/python" -m pip install --upgrade pip
+          "$RUNNER_TEMP/mfs-wheel-venv/bin/python" -m pip install -r requirements-dev.txt
+          "$RUNNER_TEMP/mfs-wheel-venv/bin/python" -m pip install --no-deps "$RUNNER_TEMP/mfs-wheel"/*.whl
+          cd "$RUNNER_TEMP"
+          "$RUNNER_TEMP/mfs-wheel-venv/bin/mfs-engine" shakedown-ma --out-dir runs/ma_shakedown
+          "$RUNNER_TEMP/mfs-wheel-venv/bin/python" "$GITHUB_WORKSPACE/scripts/verify_offline_shakedown.py" --out-dir runs/ma_shakedown

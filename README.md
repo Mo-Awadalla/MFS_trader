@@ -187,9 +187,23 @@ Paper ops proves implementation behavior, not alpha. Live deployment still requi
 
 ### Reproducible dev setup
 
+The package metadata requires Python 3.11 or later; the locked development environment and CI use Python 3.12.
+
+macOS / Linux:
+
 ```bash
-python -m venv .venv
-source .venv/Scripts/activate  # Windows Git Bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
+python -m pip install -e . --no-deps
+```
+
+Windows PowerShell:
+
+```powershell
+py -3.12 -m venv .venv
+.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
 python -m pip install -e . --no-deps
@@ -210,9 +224,11 @@ mfs-data --config config/research.toml status
 mfs-engine --config config/paper.toml preflight
 mfs-engine shakedown-ma --out-dir runs/ma_shakedown
 mfs-engine report --db runs/ma_shakedown/baseline.sqlite --allow-blockers
+python scripts/verify_offline_shakedown.py --out-dir runs/ma_shakedown
 ```
 
 Expected result for the shakedown is `MA shakedown status: PASS`. It exercises synthetic data quality, research backtest, engine replay, sim-broker fills, rejection, timeout, partial-fill scenarios, and operational reports.
+The verifier checks the report and confirms baseline fills plus the rejection, timeout, and partial-fill scenarios.
 
 ### Regenerate the SPY comparison artifacts
 
