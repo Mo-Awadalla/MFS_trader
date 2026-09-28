@@ -37,8 +37,8 @@ jobs:
       - name: Ruff (once)
         if: matrix.python == '3.12'
         run: python -m ruff check .
-      - name: Offline unit, contract and shakedown tests
-        run: python -m pytest tests/unit tests/contracts tests/integration/test_ma_shakedown.py
+      - name: Offline unit, contract, integration, replay and property tests
+        run: python -m pytest tests
 
   installed-release:
     name: Python ${{ matrix.python }} runtime-only wheel
