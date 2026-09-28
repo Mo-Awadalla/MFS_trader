@@ -33,6 +33,7 @@ import numpy as np
 import pandas as pd
 
 from config.schema import Config, CostModelConfig
+from risk.engine import RiskDecision, RiskEvaluation
 
 ASSUMPTIONS_VERSION = "etf_tsm_execution_assumptions.v1"
 PARITY_REPORT_VERSION = "etf_tsm_execution_parity.v1"
@@ -69,6 +70,10 @@ MONEY_ATOL_PER_CAPITAL = 1e-8
 
 LEDGER_FIELDS = ("target_weight", "order_qty", "position", "cash", "fees", "equity")
 _SYMBOL_FIELDS = ("target_weight", "order_qty", "position")
+
+# All other non-approved risk decisions make analytical attribution unavailable,
+# even if today's risk implementation reports them without changing quantities.
+MODELED_RISK_CHECKS = frozenset({"per_position_risk", "max_open_positions", "gross_exposure"})
 
 # Declared mechanisms, in the order the attribution chain toggles them from the
 # research declaration to the runtime declaration. Each lists the declaration
@@ -633,6 +638,16 @@ def _toggle(base: ExecutionAssumptions, source: ExecutionAssumptions, mechanism:
     return replace(base, **{name: getattr(source, name) for name in names})
 
 
+def unmodeled_risk_checks(evaluation: RiskEvaluation | None) -> tuple[str, ...]:
+    """Observe actual risk results; unknown/reduced checks cannot silently pass."""
+    if evaluation is None:
+        return ("risk_evaluation_unavailable",)
+    return tuple(sorted({
+        check.check_name for check in evaluation.decisions
+        if check.decision != RiskDecision.APPROVED and check.check_name not in MODELED_RISK_CHECKS
+    }))
+
+
 def evaluate_execution_parity(
     *,
     close: pd.DataFrame,
@@ -642,11 +657,13 @@ def evaluate_execution_parity(
     research: ExecutionAssumptions,
     runtime: ExecutionAssumptions,
     initial_capital: float,
+    runtime_unmodeled_risk_checks: tuple[str, ...] | None = None,
 ) -> dict[str, Any]:
     """Check both paths against their declarations and attribute every difference."""
 
     diffs = diff_assumptions(research, runtime)
     unmodeled = [d["field"] for d in diffs if d["mechanism"] == "unmodeled"]
+    risk_coverage_verified = not runtime.risk.applied or runtime_unmodeled_risk_checks == ()
 
     def run(assumptions: ExecutionAssumptions) -> ExecutionLedger:
         return simulate_ledger(close, decision_weights, assumptions, initial_capital=initial_capital)
@@ -696,13 +713,13 @@ def evaluate_execution_parity(
         entry = dict(direct[name])
         if entry["within_tolerance"]:
             entry["status"] = "equal"
-        elif declarations_hold and not unmodeled and residual_ok:
+        elif declarations_hold and not unmodeled and residual_ok and risk_coverage_verified:
             entry["status"] = "attributed"
         else:
             entry["status"] = "unexplained"
         fields_report[name] = entry
 
-    if not declarations_hold or unmodeled or not residual_ok or not decisions_identical:
+    if not declarations_hold or unmodeled or not residual_ok or not decisions_identical or not risk_coverage_verified:
         status = FINANCIAL_PARITY_FAILED
     elif not diffs and all(item["status"] == "equal" for item in fields_report.values()):
         status = FINANCIAL_PARITY_ESTABLISHED
@@ -715,6 +732,13 @@ def evaluate_execution_parity(
         "financial_parity": status,
         "declared_differences": diffs,
         "unmodeled_differences": unmodeled,
+        "risk_model_coverage": {
+            "verified": risk_coverage_verified,
+            "modeled_checks": sorted(MODELED_RISK_CHECKS),
+            "unmodeled_triggered_checks": (
+                list(runtime_unmodeled_risk_checks) if runtime_unmodeled_risk_checks is not None else None
+            ),
+        },
         "decision_parity": {
             "research_vs_runtime_target_weights_max_abs_diff_after_declared_lag": decision_diff,
             "identical": decisions_identical,

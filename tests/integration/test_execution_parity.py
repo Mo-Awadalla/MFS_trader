@@ -16,13 +16,17 @@ from engine.etf_tsm_replay import declare_etf_tsm_execution, run_etf_tsm_engine_
 from engine.parity import (
     LEDGER_FIELDS,
     MECHANISMS,
+    ExecutionLedger,
     ParityDeclarationError,
     compare_ledgers,
     evaluate_execution_parity,
     simulate_ledger,
+    unmodeled_risk_checks,
     write_declaration,
 )
+from portfolio.sizing import PortfolioState, TargetPosition
 from research.universes.etf_tactical_v1 import all_symbols
+from risk.engine import DrawdownState, RiskEngine
 from storage.parquet_io import write_bars
 from strategies.etf_time_series_momentum.signal import default_params
 
@@ -108,6 +112,9 @@ def test_intermediate_ledger_corruption_cannot_hide_in_final_equity(replay_case,
         decision_weights=result.research_ledger.target_weight,
         research_actual=result.research_ledger, runtime_actual=damaged,
         research=declaration.research, runtime=declaration.runtime, initial_capital=10_000,
+        runtime_unmodeled_risk_checks=tuple(
+            result.execution_parity["risk_model_coverage"]["unmodeled_triggered_checks"]
+        ),
     )
     assert report["financial_parity"] == "failed"
     assert not report["runtime_declaration_check"][field]["within_tolerance"]
@@ -203,3 +210,90 @@ def test_predeclared_assumptions_cannot_be_overwritten(replay_case, tmp_path):
     with pytest.raises(FileExistsError):
         write_declaration(changed, path)
     assert path.read_bytes() == original
+
+
+def test_equal_assumptions_against_independent_nonflat_hand_ledgers():
+    """Conditional comparison contract, NOT qualification of an actual ETF mode."""
+    declaration = declare_etf_tsm_execution(load_config("config/research.toml"))
+    assumptions = replace(
+        declaration.research,
+        costs=replace(declaration.research.costs, buy_cost_pct=0, sell_cost_pct=0, borrow_cost_annual_pct=0),
+    )
+    index = pd.bdate_range("2020-01-01", periods=3, tz="UTC")
+    close = pd.DataFrame({"ETF": [100.0, 110.0, 99.0]}, index=index)
+    weights = pd.DataFrame({"ETF": [0.5, 0.5, 0.0]}, index=index)
+    # Weight-return identity: +5%, then -5%, followed by liquidation.
+    research = ExecutionLedger(
+        target_weight=weights,
+        order_qty=pd.DataFrame({"ETF": [5, -2.5 / 11, -52.5 / 11]}, index=index),
+        position=pd.DataFrame({"ETF": [5, 52.5 / 11, 0]}, index=index),
+        cash=pd.Series([500, 525, 997.5], index=index),
+        fees=pd.Series([0.0, 0.0, 0.0], index=index),
+        equity=pd.Series([1000, 1050, 997.5], index=index),
+    )
+    # Independently account for a buy, drift-rebalance sale, and exit in cash.
+    quantities = np.array([500 / 100, 525 / 110 - 500 / 100, -525 / 110])
+    positions = quantities.cumsum()
+    cash = 1000 - (quantities * close["ETF"].to_numpy()).cumsum()
+    runtime = ExecutionLedger(
+        target_weight=weights.copy(),
+        order_qty=pd.DataFrame({"ETF": quantities}, index=index),
+        position=pd.DataFrame({"ETF": positions}, index=index),
+        cash=pd.Series(cash, index=index),
+        fees=pd.Series(np.zeros(3), index=index),
+        equity=pd.Series(cash + positions * close["ETF"].to_numpy(), index=index),
+    )
+    kwargs = {
+        "close": close, "decision_weights": weights, "research_actual": research,
+        "runtime_actual": runtime, "research": assumptions,
+        "runtime": replace(assumptions, path="runtime"), "initial_capital": 1000,
+    }
+    report = evaluate_execution_parity(**kwargs)
+    assert report["financial_parity"] == "established"
+    assert all(field["within_tolerance"] for field in report["research_vs_runtime_fields"].values())
+    runtime.position.iloc[1, 0] += 0.01  # Same final equity cannot hide a mid-ledger error.
+    assert evaluate_execution_parity(**kwargs)["financial_parity"] == "failed"
+
+
+@pytest.mark.parametrize("mode", ["loss", "kill_switch", "strategy_halt", "exposure", "missing"])
+def test_unmodeled_actual_risk_checks_prevent_attribution(replay_case, mode):
+    config, panel, declaration, result = replay_case
+    engine = RiskEngine(config.risk_limits)  # Unmodified limits, real risk decisions.
+    if mode == "kill_switch":
+        engine.activate_kill_switch("fixture")
+    elif mode == "strategy_halt":
+        engine.halt_strategy("fixture", "risk coverage scenario")
+    symbols = ("A", "B", "C", "D")
+    targets = [TargetPosition(symbol, "equity", "long", 100, 10_000, 100) for symbol in symbols]
+    evaluation = None if mode == "missing" else engine.evaluate(
+        targets, PortfolioState(cash=10_000, equity=10_000, high_water_mark=10_000),
+        DrawdownState(
+            high_water_mark=10_000, current_equity=10_000,
+            daily_pnl=-10_000 if mode == "loss" else 0,
+            weekly_pnl=-10_000 if mode == "loss" else 0,
+            monthly_pnl=-10_000 if mode == "loss" else 0,
+        ),
+        strategy_name="fixture",
+        sector_map=dict.fromkeys(symbols, "same"),
+        correlation_matrix={symbol: dict.fromkeys(symbols, 1.0) for symbol in symbols},
+    )
+    unsupported = unmodeled_risk_checks(evaluation)
+    expected = {
+        "loss": {"daily_loss_block", "daily_loss_halt", "weekly_loss", "monthly_halt"},
+        "kill_switch": {"kill_switch"},
+        "strategy_halt": {"strategy_halt"},
+        "exposure": {"net_exposure", "sector_gross", "sector_net", "correlation_cluster"},
+        "missing": {"risk_evaluation_unavailable"},
+    }
+    assert expected[mode] <= set(unsupported)
+    report = evaluate_execution_parity(
+        close=panel.xs("close", axis=1, level="field"),
+        decision_weights=result.research_ledger.target_weight,
+        research_actual=result.research_ledger, runtime_actual=result.runtime_ledger,
+        research=declaration.research, runtime=declaration.runtime, initial_capital=10_000,
+        runtime_unmodeled_risk_checks=unsupported,
+    )
+    # Even matching quantities/equity cannot qualify an unsupported triggered check.
+    assert report["runtime_matches_runtime_declaration"]
+    assert report["financial_parity"] == "failed"
+    assert not report["risk_model_coverage"]["verified"]
