@@ -58,7 +58,12 @@ def estimate_m_eff_corr(returns_matrix: np.ndarray | pd.DataFrame) -> float:
     matrix = _as_returns_matrix(returns_matrix)
     if matrix.shape[1] < 2:
         return float(matrix.shape[1])
-    corr = np.nan_to_num(np.corrcoef(matrix.T), nan=0.0)
+    deviations = np.std(matrix, axis=0, ddof=1)
+    if not np.isfinite(deviations).all() or (deviations <= 0).any():
+        raise ValueError("every declared trial needs finite positive sample volatility")
+    corr = np.corrcoef(matrix.T)
+    if not np.isfinite(corr).all():
+        raise ValueError("trial correlation matrix is not finite")
     eigenvalues = np.maximum(np.linalg.eigvalsh(corr), 1e-10)
     return max(float(np.sum(eigenvalues) ** 2 / np.sum(eigenvalues**2)), 1.0)
 
@@ -141,7 +146,10 @@ def compute_dsr(
             return _unavailable(sharpe, num_trials_raw, T, method, "returns_matrix columns must cover exactly num_trials_raw documented trials", search_scope)
         if matrix.shape[0] != T:
             return _unavailable(sharpe, num_trials_raw, T, method, "returns_matrix bars must match the selected track record length", search_scope)
-        m_eff = estimate_m_eff_corr(matrix)
+        try:
+            m_eff = estimate_m_eff_corr(matrix)
+        except (ValueError, np.linalg.LinAlgError) as exc:
+            return _unavailable(sharpe, num_trials_raw, T, method, str(exc), search_scope)
 
     if method == "M_eff_corr" and m_eff is None:
         return _unavailable(sharpe, num_trials_raw, T, method, "M_eff_corr requires a full returns_matrix for the documented trial scope", search_scope)
@@ -219,7 +227,10 @@ def compute_dsr(
 
 def _selected_statistics(selected_returns: pd.Series | np.ndarray | None, observed_sharpe: float | None, track_record_length: int | None, skewness: float | None, kurtosis: float | None) -> tuple[float, int, float, float] | str:
     if selected_returns is not None:
-        values = np.asarray(selected_returns, dtype=float)
+        try:
+            values = np.asarray(selected_returns, dtype=float)
+        except (TypeError, ValueError):
+            return "selected_returns must contain numeric returns"
         if values.ndim != 1:
             return "selected_returns must be a one-dimensional return series"
         if len(values) < 4 or not np.isfinite(values).all():
@@ -227,8 +238,8 @@ def _selected_statistics(selected_returns: pd.Series | np.ndarray | None, observ
         if track_record_length is not None and track_record_length != len(values):
             return "track_record_length must equal len(selected_returns)"
         volatility = float(np.std(values, ddof=1))
-        if volatility <= 0.0:
-            return "selected_returns must have positive sample volatility"
+        if not np.isfinite(volatility) or volatility <= 0.0:
+            return "selected_returns must have finite positive sample volatility"
         sharpe = float(np.mean(values) / volatility)
         if observed_sharpe is not None and not np.isclose(observed_sharpe, sharpe, rtol=1e-12, atol=1e-12):
             return "observed_sharpe must match selected_returns in the same per-observation unit"
@@ -253,12 +264,18 @@ def _eq2(sharpe: float, T: int, skewness: float, kurtosis: float, variance: floa
     if denominator_squared <= 0.0 or not np.isfinite(denominator_squared):
         raise ValueError("Eq. (2) standard-error denominator is not positive and finite")
     statistic = float((sharpe - threshold) * np.sqrt(T - 1.0) / np.sqrt(denominator_squared))
+    if not np.isfinite(statistic) or not np.isfinite(threshold):
+        raise ValueError("Eq. (2) exceeds finite numeric range")
     return float(stats.norm.cdf(statistic)), statistic, threshold
 
 
 def _unavailable(observed_sharpe: float | None, num_trials_raw: int, track_record_length: int | None, method: str, reason: str, search_scope: str | None) -> DSRResult:
     return DSRResult(
-        observed_sharpe=0.0 if observed_sharpe is None else float(observed_sharpe),
+        observed_sharpe=(
+            float(observed_sharpe)
+            if observed_sharpe is not None and np.isfinite(observed_sharpe)
+            else 0.0
+        ),
         num_trials_raw=num_trials_raw, num_trials_eff=None, num_trials_cluster=None,
         track_record_length=track_record_length or 0, dsr_pvalue=1.0, dsr_statistic=0.0,
         method=method, search_scope=search_scope or "", available=False,

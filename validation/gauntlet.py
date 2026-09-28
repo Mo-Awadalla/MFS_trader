@@ -22,11 +22,18 @@ import pandas as pd
 import structlog
 
 from validation.dsr.engine import DSRResult, compute_dsr
-from validation.mc.engine import MCResult, run_monte_carlo
+from validation.mc.engine import DEFAULT_PERIODS_PER_YEAR, MCResult, run_monte_carlo
+from validation.search import DeclaredSearch
 from validation.stability.engine import StabilityResult, analyze_stability
 from validation.wfa.engine import WFAResult, run_wfa
 
 log = structlog.get_logger(__name__)
+
+# v2 (2026-09): Monte Carlo "pct_95_max_dd" was replaced by the recomputed
+# adverse signed "pct_5_max_dd"; MC/DSR availability, formula versions,
+# observation counts, and the declared DSR search scope are serialized.
+# A v1 report's MC drawdown or DSR value must never be relabeled as v2.
+GAUNTLET_REPORT_SCHEMA_VERSION = "gauntlet_report_v2"
 
 
 @dataclass
@@ -41,10 +48,13 @@ class GauntletResult:
     passed: bool = False
     failure_reasons: list[str] = field(default_factory=list)
     summary: dict[str, Any] = field(default_factory=dict)
+    search_evidence: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "report_schema_version": GAUNTLET_REPORT_SCHEMA_VERSION,
             "strategy_name": self.strategy_name,
+            "declared_search": self.search_evidence,
             "passed": self.passed,
             "failure_reasons": self.failure_reasons,
             "wfa": {
@@ -53,13 +63,7 @@ class GauntletResult:
                 "num_folds": self.wfa_result.num_folds if self.wfa_result else 0,
                 "frac_negative": self.wfa_result.frac_negative_folds if self.wfa_result else 0,
             } if self.wfa_result else None,
-            "monte_carlo": {
-                "prob_loss": self.mc_result.prob_loss if self.mc_result else 0,
-                "prob_ruin": self.mc_result.prob_ruin if self.mc_result else 0,
-                "pct_5_cagr": self.mc_result.pct_5_cagr if self.mc_result else 0,
-                "pct_5_max_dd": self.mc_result.pct_5_max_dd if self.mc_result else 0,
-                "mean_sharpe": self.mc_result.mean_sharpe if self.mc_result else 0,
-            } if self.mc_result else None,
+            "monte_carlo": _mc_to_dict(self.mc_result) if self.mc_result else None,
             "dsr": {
                 "passed": self.dsr_result.passed if self.dsr_result else False,
                 "available": self.dsr_result.available if self.dsr_result else False,
@@ -96,19 +100,14 @@ def run_gauntlet(
     sweep_results: pd.DataFrame,
     param_columns: list[str],
     *,
-    best_sharpe: float | None = None,
-    returns_matrix: np.ndarray | pd.DataFrame | None = None,
-    dsr_selected_trial_index: int | None = None,
-    dsr_selected_returns: pd.Series | np.ndarray | None = None,
-    dsr_search_scope: str | None = None,
-    dsr_selection_error: str | None = None,
-    dsr_sharpe_annualization_factor: float | None = None,
+    dsr_search: DeclaredSearch | None = None,
     oos_returns: pd.Series | None = None,
     initial_capital: float = 10000.0,
     ruin_threshold: float = -0.50,
     max_dd_limit: float = -0.30,
     mc_num_paths: int = 10000,
     mc_block_size: int = 20,
+    mc_periods_per_year: float = DEFAULT_PERIODS_PER_YEAR,
     wfa_config: Any = None,
     seed: int = 42,
     **wfa_kwargs: Any,
@@ -122,21 +121,18 @@ def run_gauntlet(
         test_fn: WFA testing function.
         sweep_results: DataFrame of parameter sweep results (for DSR + stability).
         param_columns: Parameter column names in sweep_results.
-        best_sharpe: Optional reported Sharpe for the selected trial; it is
-            checked only when dsr_sharpe_annualization_factor is supplied.
-        returns_matrix: Full returns matrix for DSR (n_bars x all searched trials).
-        dsr_selected_trial_index: Column for the frozen selected trial in returns_matrix.
-        dsr_selected_returns: Optional selected trial series; it must equal that column.
-        dsr_search_scope: Human-readable disclosure of every trial in returns_matrix.
-        dsr_selection_error: Reason the frozen candidate could not be mapped
-            to exactly one matrix column; makes DSR explicitly unavailable.
-        dsr_sharpe_annualization_factor: Required to compare legacy best_sharpe.
-        oos_returns: OOS returns series for Monte Carlo. Auto-extracted from WFA if None.
+        dsr_search: Every declared trial (one returns-matrix column per
+            ``sweep_results`` row, in row order), the frozen selected column,
+            and the search-scope disclosure. Missing evidence makes DSR
+            explicitly unavailable and the gauntlet non-passing.
+        oos_returns: OOS returns series for Monte Carlo. Taken from WFA if None.
         initial_capital: Starting capital for MC.
         ruin_threshold: Drawdown threshold for ruin (default -50%).
         max_dd_limit: Max acceptable adverse signed 5th-percentile drawdown.
         mc_num_paths: Number of MC paths.
         mc_block_size: MC block size.
+        mc_periods_per_year: Return observations per year of ``oos_returns``
+            (252 for daily bars; 252 * bars_per_session for intraday bars).
         wfa_config: WFA config (defaults to PRIMARY).
         seed: Random seed.
         **wfa_kwargs: Extra args for WFA train_fn.
@@ -145,6 +141,14 @@ def run_gauntlet(
         GauntletResult with all four checks and overall pass/fail.
     """
     result = GauntletResult(strategy_name=strategy_name)
+    if dsr_search is not None:
+        result.search_evidence = {
+            "scope": dsr_search.search_scope,
+            "selected_trial_index": dsr_search.selected_trial_index,
+            "selected_parameters": dsr_search.selected_parameters,
+            "trials": list(dsr_search.trial_parameters),
+            "observation_index_sha256": dsr_search.observation_index_sha256,
+        }
     failures: list[str] = []
 
     # ── 1. Walk-Forward Analysis ──────────────────────────────────────────
@@ -158,13 +162,6 @@ def run_gauntlet(
     # Extract OOS returns for MC
     if oos_returns is None:
         oos_returns = wfa_result.oos_returns
-    if oos_returns is None or (hasattr(oos_returns, "empty") and oos_returns.empty):
-        # Fallback: use the last fold's returns if available
-        if wfa_result.folds:
-            for fold in reversed(wfa_result.folds):
-                if "returns" in fold.test_metrics and isinstance(fold.test_metrics["returns"], pd.Series):
-                    oos_returns = fold.test_metrics["returns"]
-                    break
 
     # ── 2. Monte Carlo Simulation ─────────────────────────────────────────
     if oos_returns is not None and not oos_returns.empty:
@@ -176,20 +173,23 @@ def run_gauntlet(
             initial_capital=initial_capital,
             ruin_threshold=ruin_threshold,
             seed=seed,
+            periods_per_year=mc_periods_per_year,
         )
         result.mc_result = mc_result
 
-        # MC pass criteria
-        if mc_result.prob_ruin >= 0.05:
-            failures.append(f"MC: P(ruin) = {mc_result.prob_ruin:.3f} >= 0.05")
-        if mc_result.pct_5_cagr <= 0:
-            failures.append(f"MC: 5th pct CAGR = {mc_result.pct_5_cagr:.3f} <= 0")
-        if mc_result.pct_5_max_dd < max_dd_limit:
-            failures.append(
-                f"MC: adverse 5th pct max DD = {mc_result.pct_5_max_dd:.3f} < {max_dd_limit}"
-            )
+        if not mc_result.available:
+            failures.append(f"MC unavailable: {mc_result.unavailable_reason}")
+        else:
+            if mc_result.prob_ruin >= 0.05:
+                failures.append(f"MC: P(ruin) = {mc_result.prob_ruin:.3f} >= 0.05")
+            if mc_result.pct_5_cagr <= 0:
+                failures.append(f"MC: 5th pct CAGR = {mc_result.pct_5_cagr:.3f} <= 0")
+            if mc_result.pct_5_max_dd < max_dd_limit:
+                failures.append(
+                    f"MC: adverse 5th pct max DD = {mc_result.pct_5_max_dd:.3f} < {max_dd_limit}"
+                )
     else:
-        failures.append("MC: no OOS returns available for simulation")
+        failures.append("MC unavailable: no OOS returns available for simulation")
 
     # ── 3. Deflated Sharpe Ratio ──────────────────────────────────────────
     # Eq. (2) is an in-search selection statistic. Its selected Sharpe,
@@ -198,63 +198,10 @@ def run_gauntlet(
     # winner with the WFA OOS length used by Monte Carlo, or silently replace
     # the frozen selected candidate with another matrix column.
     num_trials_raw = len(sweep_results) if not sweep_results.empty else 0
-    search_scope = dsr_search_scope or ""
-    try:
-        matrix = None if returns_matrix is None else np.asarray(returns_matrix, dtype=float)
-    except (TypeError, ValueError):
-        matrix = None
-    input_error = _dsr_input_error(matrix, num_trials_raw, dsr_selected_trial_index, search_scope)
-    if dsr_selection_error:
-        dsr_result = _unavailable_dsr(num_trials_raw, search_scope, dsr_selection_error)
-    elif input_error:
-        dsr_result = _unavailable_dsr(num_trials_raw, search_scope, input_error)
+    if dsr_search is None:
+        dsr_result = _unavailable_dsr(num_trials_raw, "", "no declared trial-search evidence was supplied")
     else:
-        selected_returns = matrix[:, dsr_selected_trial_index]
-        if dsr_selected_returns is not None and not np.array_equal(
-            np.asarray(dsr_selected_returns, dtype=float), selected_returns
-        ):
-            dsr_result = compute_dsr(
-                num_trials_raw=num_trials_raw,
-                search_scope=search_scope,
-            )
-            dsr_result.unavailable_reason = (
-                "dsr_selected_returns does not match dsr_selected_trial_index in returns_matrix"
-            )
-            dsr_result.failure_reasons = [f"DSR unavailable: {dsr_result.unavailable_reason}"]
-        elif best_sharpe is not None and (
-            dsr_sharpe_annualization_factor is None
-            or dsr_sharpe_annualization_factor <= 0.0
-            or not np.isclose(
-                best_sharpe,
-                (selected_returns.mean() / selected_returns.std(ddof=1))
-                * np.sqrt(dsr_sharpe_annualization_factor),
-                rtol=1e-8,
-                atol=1e-10,
-            )
-        ):
-            dsr_result = compute_dsr(
-                num_trials_raw=num_trials_raw,
-                search_scope=search_scope,
-            )
-            dsr_result.unavailable_reason = (
-                "best_sharpe does not identify the selected DSR trial in the documented annualization unit"
-            )
-            dsr_result.failure_reasons = [f"DSR unavailable: {dsr_result.unavailable_reason}"]
-        else:
-            trial_volatility = matrix.std(axis=0, ddof=1)
-            trial_sharpes = np.divide(
-                matrix.mean(axis=0),
-                trial_volatility,
-                out=np.full(matrix.shape[1], np.nan),
-                where=trial_volatility > 0.0,
-            )
-            dsr_result = compute_dsr(
-                selected_returns=selected_returns,
-                returns_matrix=matrix,
-                trial_sharpe_variance=float(np.var(trial_sharpes, ddof=1)),
-                num_trials_raw=num_trials_raw,
-                search_scope=search_scope,
-            )
+        dsr_result = _declared_search_dsr(dsr_search, num_trials_raw)
     result.dsr_result = dsr_result
     if not dsr_result.passed:
         failures.extend([f"DSR: {reason}" for reason in dsr_result.failure_reasons])
@@ -283,12 +230,68 @@ def run_gauntlet(
     return result
 
 
+def _declared_search_dsr(search: DeclaredSearch, num_trials_raw: int) -> DSRResult:
+    """Eq. (2) on the declared search, or an explicit unavailable result."""
+    scope = search.search_scope
+    if search.selection_error:
+        return _unavailable_dsr(num_trials_raw, scope, search.selection_error)
+    matrix = search.returns_matrix
+    index = search.selected_trial_index
+    input_error = _dsr_input_error(matrix, num_trials_raw, index, scope)
+    if input_error:
+        return _unavailable_dsr(num_trials_raw, scope, input_error)
+    assert matrix is not None and index is not None
+    trial_volatility = matrix.std(axis=0, ddof=1)
+    if not (trial_volatility > 0.0).all():
+        flat = [int(i) for i in np.flatnonzero(~(trial_volatility > 0.0))]
+        return _unavailable_dsr(
+            num_trials_raw,
+            scope,
+            f"declared trials {flat} have zero return volatility; the cross-trial "
+            "Sharpe variance is undefined and trials may not be dropped from the search",
+        )
+    trial_sharpes = matrix.mean(axis=0) / trial_volatility
+    return compute_dsr(
+        selected_returns=matrix[:, index],
+        returns_matrix=matrix,
+        trial_sharpe_variance=float(np.var(trial_sharpes, ddof=1)) if num_trials_raw > 1 else 0.0,
+        num_trials_raw=num_trials_raw,
+        search_scope=scope,
+    )
+
+
 def _unavailable_dsr(num_trials_raw: int, search_scope: str, reason: str) -> DSRResult:
     """Return an explicitly unavailable DSR result without inventing evidence."""
     result = compute_dsr(num_trials_raw=num_trials_raw, search_scope=search_scope)
     result.unavailable_reason = reason
     result.failure_reasons = [f"DSR unavailable: {reason}"]
     return result
+
+
+def _mc_to_dict(mc: MCResult) -> dict[str, Any]:
+    """Serialize MC evidence; unavailable results carry no metric values."""
+    payload: dict[str, Any] = {
+        "formula_version": mc.formula_version,
+        "available": mc.available,
+        "unavailable_reason": mc.unavailable_reason,
+        "num_paths": mc.num_paths,
+        "block_size": mc.block_size,
+        "seed": mc.seed,
+        "observation_count": mc.observation_count,
+        "periods_per_year": mc.periods_per_year,
+    }
+    if not mc.available:
+        return payload
+    payload.update(
+        {
+            "prob_loss": mc.prob_loss,
+            "prob_ruin": mc.prob_ruin,
+            "pct_5_cagr": mc.pct_5_cagr,
+            "pct_5_max_dd": mc.pct_5_max_dd,
+            "mean_sharpe": mc.mean_sharpe,
+        }
+    )
+    return payload
 
 
 def _dsr_input_error(

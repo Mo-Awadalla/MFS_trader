@@ -106,6 +106,19 @@ class TestBaileyLopezDePradoEquationTwo:
         assert not result.available
         assert "must match" in result.unavailable_reason
 
+    def test_constant_unselected_trial_cannot_be_replaced_by_zero_correlation(self):
+        selected = np.array([0.01, -0.02, 0.03, 0.01, 0.02])
+        result = compute_dsr(
+            selected_returns=selected,
+            trial_sharpe_variance=0.01,
+            returns_matrix=np.column_stack((selected, np.zeros(5))),
+            num_trials_raw=2,
+            search_scope="two trials, including a flat rejected candidate",
+        )
+        assert result.available is False
+        assert result.passed is False
+        assert result.num_trials_eff is None
+
     def test_expected_max_rejects_invalid_trial_counts(self):
         with pytest.raises(ValueError, match="at least 2"):
             expected_max_sharpe(0.01, 1)

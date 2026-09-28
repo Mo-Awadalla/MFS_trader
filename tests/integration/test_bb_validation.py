@@ -13,14 +13,13 @@ import pandas as pd
 
 from research.bb_pipeline import (
     STRATEGY_NAME,
-    _selected_sweep_trial_index,
     backtest_bb,
     format_bb_gauntlet_report,
     run_bb_research_report,
     run_bb_sweep,
     run_bb_validation_gauntlet,
 )
-from strategies.bb.signal import BBParams, compact_sweep_grid, default_params, params_to_dict
+from strategies.bb.signal import BBParams, compact_sweep_grid, default_params
 
 
 def _make_ohlcv(n: int = 900, seed: int = 7) -> pd.DataFrame:
@@ -41,21 +40,16 @@ def _make_ohlcv(n: int = 900, seed: int = 7) -> pd.DataFrame:
 
 class TestBBValidationPipeline:
     def test_dsr_trial_index_uses_frozen_params_not_sweep_winner(self):
+        df = _make_ohlcv()
         grid = compact_sweep_grid()
-        # The frozen second configuration has the lowest score, while the
-        # first configuration is the sweep winner. Duplicate DataFrame labels
-        # ensure mapping is by stable position rather than index label.
-        sweep = pd.DataFrame(
-            [
-                {**params_to_dict(grid[0]), "sharpe": 3.0},
-                {**params_to_dict(grid[1]), "sharpe": 1.0},
-                {**params_to_dict(grid[2]), "sharpe": 2.0},
-            ],
-            index=[9, 9, 9],
-        )
-        selected_index, reason = _selected_sweep_trial_index(sweep, grid[1])
-        assert reason is None
-        assert selected_index == 2
+        _sweep, search = run_bb_sweep(df, grid=grid, selected_params=grid[1], symbol="AAPL")
+
+        assert search.selection_error is None
+        assert search.selected_trial_index == 1
+        assert search.returns_matrix.shape == (len(df), len(grid))
+        selected = backtest_bb(df, grid[1], symbol="AAPL").returns.to_numpy()
+        np.testing.assert_array_equal(search.returns_matrix[:, 1], selected)
+
     def test_research_report_runs(self):
         df = _make_ohlcv()
         result = run_bb_research_report(df, symbol="AAPL", params=default_params())
@@ -65,7 +59,7 @@ class TestBBValidationPipeline:
 
     def test_sweep_produces_rows(self):
         df = _make_ohlcv()
-        sweep = run_bb_sweep(df, grid=compact_sweep_grid(), symbol="AAPL")
+        sweep, _search = run_bb_sweep(df, grid=compact_sweep_grid(), symbol="AAPL")
         assert len(sweep) == 3
         assert "sharpe" in sweep.columns
         assert "window" in sweep.columns

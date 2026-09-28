@@ -134,7 +134,7 @@ class TestRunMonteCarlo:
         assert "pct_5_max_dd" in summary
 
     def test_adverse_drawdown_summary_uses_signed_fifth_percentile(self):
-        result = run_monte_carlo(pd.Series([0.0]), num_paths=1, block_size=1)
+        result = run_monte_carlo(pd.Series([0.0]), num_paths=100, block_size=1)
         result.max_drawdowns = np.array([-0.40] * 10 + [-0.10] * 90)
         result.summarize(initial_capital=10000)
 
@@ -149,11 +149,88 @@ class TestRunMonteCarlo:
         assert result.max_drawdowns[0] == scalar_metrics["max_drawdown"]
         assert result.cagrs[0] == scalar_metrics["cagr"]
         assert result.terminal_wealth[0] == scalar_metrics["terminal_wealth"]
+        assert result.sortinos[0] == pytest.approx(scalar_metrics["sortino"])
+        assert result.observation_count == 2
 
-    def test_insufficient_data_returns_empty(self):
+    def test_periods_per_year_sets_cagr_annualization_for_intraday_bars(self):
+        returns = pd.Series([0.01, -0.005] * 13)
+        per_year = 252.0 * 13
+
+        result = run_monte_carlo(returns, num_paths=1, block_size=26, periods_per_year=per_year)
+        scalar = compute_path_metrics(returns.to_numpy(), ann_factor=per_year)
+
+        growth = float(np.prod(1 + returns.to_numpy()))
+        assert result.cagrs[0] == pytest.approx(growth ** (per_year / 26) - 1)
+        assert result.cagrs[0] == pytest.approx(scalar["cagr"])
+        assert result.periods_per_year == per_year
+
+    def test_insufficient_data_is_explicitly_unavailable(self):
         returns = pd.Series([0.01, 0.02])  # only 2 bars
         result = run_monte_carlo(returns, block_size=20)
         assert result.num_paths == 0
+        assert result.available is False
+        assert "20-bar" in (result.unavailable_reason or "")
+        assert result.summarize(initial_capital=10000) == {}
+
+    @pytest.mark.parametrize(
+        "bad",
+        [
+            pd.Series(dtype=float),
+            pd.Series([0.01] * 19 + [np.nan]),
+            pd.Series([0.01] * 19 + [np.inf]),
+            pd.Series([0.01] * 19 + [-1.5]),
+            np.array(0.01),
+            pd.Series(["not a return"]),
+        ],
+        ids=["empty", "nan", "inf", "below_total_loss", "scalar", "nonnumeric"],
+    )
+    def test_unusable_returns_are_unavailable_not_favorable(self, bad):
+        result = run_monte_carlo(bad, num_paths=10, block_size=5)
+
+        assert result.available is False
+        assert result.unavailable_reason
+        assert len(result.max_drawdowns) == 0
+
+    def test_total_loss_return_is_valid_and_ruinous(self):
+        result = run_monte_carlo(pd.Series([0.0] * 9 + [-1.0]), num_paths=200, block_size=10)
+
+        assert result.available
+        assert result.pct_5_max_dd == -1.0
+        assert result.prob_ruin == 1.0
+
+    @pytest.mark.parametrize(
+        "kwargs",
+        [
+            {"num_paths": 0},
+            {"num_paths": 1.5},
+            {"block_size": 0},
+            {"initial_capital": 0.0},
+            {"initial_capital": float("nan")},
+            {"ruin_threshold": 0.5},
+            {"periods_per_year": 0.0},
+        ],
+    )
+    def test_invalid_configuration_raises(self, kwargs):
+        with pytest.raises(ValueError):
+            run_monte_carlo(_make_returns(60), **kwargs)
+
+    def test_scalar_metrics_reject_non_finite_returns(self):
+        with pytest.raises(ValueError):
+            compute_path_metrics(np.array([0.01, np.nan]))
+
+    def test_finite_inputs_that_overflow_cannot_pass(self):
+        returns = pd.Series([1e100] * 20)
+        with np.errstate(over="ignore", invalid="ignore"):
+            result = run_monte_carlo(returns, num_paths=2, block_size=20)
+            with pytest.raises(ValueError):
+                compute_path_metrics(returns.to_numpy())
+        assert result.available is False
+        assert result.summarize(initial_capital=10000) == {}
+
+    @pytest.mark.parametrize("returns", [[np.nan], [np.inf], [-1.01], [[0.01]]])
+    def test_bootstrap_rejects_invalid_simple_returns(self, returns):
+        with pytest.raises(ValueError):
+            block_bootstrap_returns(pd.Series(returns), num_paths=1, block_size=1)
 
 
 class TestParameterPerturbation:

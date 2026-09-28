@@ -29,6 +29,11 @@ log = structlog.get_logger(__name__)
 DEFAULT_BLOCK_SIZE = 20  # 20-day blocks for daily bars
 DEFAULT_NUM_PATHS = 10000
 DEFAULT_SEED = 42
+DEFAULT_PERIODS_PER_YEAR = 252.0
+# v2: starting capital is part of the running peak, the drawdown tail is the
+# adverse signed 5th percentile, the final block start is sampled, and invalid
+# inputs produce an explicit unavailable result instead of favorable zeros.
+MC_FORMULA_VERSION = "mc_block_bootstrap_v2"
 
 
 @dataclass
@@ -43,6 +48,11 @@ class MCResult:
     sortinos: np.ndarray = field(default_factory=lambda: np.array([]))
     max_drawdowns: np.ndarray = field(default_factory=lambda: np.array([]))
     cagrs: np.ndarray = field(default_factory=lambda: np.array([]))
+    observation_count: int = 0  # Returns per path; the annualization length
+    periods_per_year: float = DEFAULT_PERIODS_PER_YEAR
+    formula_version: str = MC_FORMULA_VERSION
+    available: bool = True
+    unavailable_reason: str | None = None
 
     # Summary statistics
     prob_loss: float = 0.0  # P(terminal wealth < initial)
@@ -57,7 +67,21 @@ class MCResult:
 
     def summarize(self, *, initial_capital: float, ruin_threshold: float = -0.50) -> dict[str, float]:
         """Compute summary statistics from the simulated paths."""
-        if len(self.terminal_wealth) == 0:
+        if not self.available:
+            return {}
+        if not np.isfinite(initial_capital) or initial_capital <= 0:
+            raise ValueError("initial_capital must be finite and positive")
+        if not np.isfinite(ruin_threshold) or not -1.0 < ruin_threshold < 0.0:
+            raise ValueError("ruin_threshold must be a drawdown fraction in (-1, 0)")
+        distributions = (
+            self.terminal_wealth, self.sharpes, self.sortinos, self.max_drawdowns, self.cagrs
+        )
+        if self.num_paths <= 0 or any(
+            values.ndim != 1 or len(values) != self.num_paths or not np.isfinite(values).all()
+            for values in distributions
+        ):
+            self.available = False
+            self.unavailable_reason = "path distributions must contain one finite metric per path"
             return {}
 
         self.prob_loss = float(np.mean(self.terminal_wealth < initial_capital))
@@ -102,15 +126,20 @@ def block_bootstrap_returns(
     Returns:
         Array of shape (num_paths, len(returns)) with bootstrapped returns.
     """
-    if block_size <= 0:
-        raise ValueError("block_size must be positive")
+    if isinstance(block_size, bool) or not isinstance(block_size, (int, np.integer)) or block_size <= 0:
+        raise ValueError("block_size must be a positive integer")
+    if isinstance(num_paths, bool) or not isinstance(num_paths, (int, np.integer)) or num_paths <= 0:
+        raise ValueError("num_paths must be a positive integer")
 
     rng = np.random.default_rng(seed)
     n = len(returns)
     if n < block_size:
         raise ValueError("block_size cannot exceed the number of returns")
 
-    rets = returns.values
+    rets = np.asarray(returns, dtype=float)
+    error = _input_error(rets, 1.0, DEFAULT_PERIODS_PER_YEAR)
+    if error:
+        raise ValueError(error)
     num_blocks = int(np.ceil(n / block_size))
 
     paths = np.empty((num_paths, n))
@@ -127,9 +156,16 @@ def block_bootstrap_returns(
 def compute_path_metrics(
     returns: np.ndarray,
     initial_capital: float = 10000.0,
-    ann_factor: int = 252,
+    ann_factor: float = DEFAULT_PERIODS_PER_YEAR,
 ) -> dict[str, float]:
-    """Compute terminal wealth, Sharpe, Sortino, max DD, CAGR for one path."""
+    """Compute terminal wealth, Sharpe, Sortino, max DD, CAGR for one path.
+
+    Uses the same definitions as the vectorized ``run_monte_carlo`` path.
+    """
+    returns = np.asarray(returns, dtype=float)
+    error = _input_error(returns, initial_capital, ann_factor)
+    if error:
+        raise ValueError(error)
     equity = initial_capital * np.concatenate(([1.0], np.cumprod(1 + returns)))
     terminal_wealth = float(equity[-1])
 
@@ -138,18 +174,20 @@ def compute_path_metrics(
     ann_vol = float(np.std(returns) * np.sqrt(ann_factor))
     sharpe = ann_return / ann_vol if ann_vol > 0 else 0.0
 
-    # Sortino
-    downside = returns[returns < 0]
-    sortino = ann_return / (float(np.std(downside) * np.sqrt(ann_factor))) if len(downside) > 0 and np.std(downside) > 0 else 0.0
+    # Sortino: downside deviation over every observation (non-negative -> 0).
+    downside_std = float(np.std(np.where(returns < 0, returns, 0.0)))
+    sortino = ann_return / (downside_std * np.sqrt(ann_factor)) if downside_std > 0 and ann_vol > 0 else 0.0
 
     # Max drawdown
     cummax = np.maximum.accumulate(equity)
     drawdown = (equity - cummax) / cummax
     max_dd = float(np.min(drawdown))
 
-    # CAGR
+    # CAGR over the actual number of return observations.
     years = len(returns) / ann_factor
-    cagr = float((terminal_wealth / initial_capital) ** (1 / years) - 1) if years > 0 else 0.0
+    cagr = float(np.power(terminal_wealth / initial_capital, 1 / years) - 1)
+    if not np.isfinite([terminal_wealth, sharpe, sortino, max_dd, cagr]).all():
+        raise ValueError("path metrics exceed finite numeric range")
 
     return {
         "terminal_wealth": terminal_wealth,
@@ -168,23 +206,55 @@ def run_monte_carlo(
     initial_capital: float = 10000.0,
     ruin_threshold: float = -0.50,
     seed: int = DEFAULT_SEED,
+    periods_per_year: float = DEFAULT_PERIODS_PER_YEAR,
 ) -> MCResult:
     """Run block-bootstrap Monte Carlo simulation on a return series.
 
     Args:
-        returns: Strategy daily returns (out-of-sample preferred).
+        returns: Strategy per-period returns (out-of-sample preferred).
         num_paths: Number of bootstrap paths (default 10k).
         block_size: Block size in bars (default 20).
         initial_capital: Starting capital for path simulation.
         ruin_threshold: Drawdown threshold for "ruin" (default -50%).
         seed: Random seed.
+        periods_per_year: Return observations per year (252 for daily bars).
 
     Returns:
-        MCResult with distributions and summary statistics.
+        MCResult with distributions and summary statistics. Configuration
+        errors raise ``ValueError``; unusable return data yields
+        ``available=False`` with a reason, never favorable default metrics.
     """
-    if returns.empty or len(returns) < block_size:
-        log.warning("mc_insufficient_data", bars=len(returns), block_size=block_size)
-        return MCResult(num_paths=0, block_size=block_size, seed=seed)
+    if isinstance(num_paths, bool) or not isinstance(num_paths, (int, np.integer)) or num_paths <= 0:
+        raise ValueError("num_paths must be a positive integer")
+    if isinstance(block_size, bool) or not isinstance(block_size, (int, np.integer)) or block_size <= 0:
+        raise ValueError("block_size must be a positive integer")
+    if not np.isfinite(initial_capital) or initial_capital <= 0:
+        raise ValueError("initial_capital must be finite and positive")
+    if not np.isfinite(ruin_threshold) or not -1.0 < ruin_threshold < 0.0:
+        raise ValueError("ruin_threshold must be a drawdown fraction in (-1, 0)")
+    if not np.isfinite(periods_per_year) or periods_per_year <= 0:
+        raise ValueError("periods_per_year must be finite and positive")
+
+    try:
+        values = np.asarray(returns, dtype=float)
+        reason = _input_error(values, initial_capital, periods_per_year)
+    except (TypeError, ValueError):
+        values = np.array([], dtype=float)
+        reason = "Monte Carlo requires numeric simple returns"
+    if reason is None and len(values) < block_size:
+        reason = f"{len(values)} returns cannot fill one {block_size}-bar bootstrap block"
+    if reason is not None:
+        count = len(values) if values.ndim == 1 else 0
+        log.warning("mc_unavailable", bars=count, block_size=block_size, reason=reason)
+        return MCResult(
+            num_paths=0,
+            block_size=block_size,
+            seed=seed,
+            observation_count=count,
+            periods_per_year=float(periods_per_year),
+            available=False,
+            unavailable_reason=reason,
+        )
 
     log.info("mc_starting", paths=num_paths, block_size=block_size, bars=len(returns))
 
@@ -192,7 +262,7 @@ def run_monte_carlo(
     paths = block_bootstrap_returns(returns, num_paths, block_size, seed)
 
     # Compute metrics for each path (vectorized where possible)
-    ann_factor = 252
+    ann_factor = float(periods_per_year)
     equity = initial_capital * np.concatenate(
         (np.ones((num_paths, 1)), np.cumprod(1 + paths, axis=1)), axis=1
     )
@@ -226,9 +296,9 @@ def run_monte_carlo(
     drawdowns = (equity - cummax) / cummax
     max_drawdowns = np.min(drawdowns, axis=1)
 
-    # CAGR per path
+    # CAGR per path over the actual number of return observations.
     years = paths.shape[1] / ann_factor
-    cagrs = (terminal_wealth / initial_capital) ** (1 / years) - 1 if years > 0 else np.zeros(num_paths)
+    cagrs = (terminal_wealth / initial_capital) ** (1 / years) - 1
 
     result = MCResult(
         num_paths=num_paths,
@@ -239,6 +309,8 @@ def run_monte_carlo(
         sortinos=sortinos,
         max_drawdowns=max_drawdowns,
         cagrs=cagrs,
+        observation_count=paths.shape[1],
+        periods_per_year=ann_factor,
     )
     result.summarize(initial_capital=initial_capital, ruin_threshold=ruin_threshold)
 
@@ -252,6 +324,21 @@ def run_monte_carlo(
     )
 
     return result
+
+
+def _input_error(returns: np.ndarray, initial_capital: float, periods_per_year: float) -> str | None:
+    """Explain why a return series cannot produce honest path metrics."""
+    if returns.ndim != 1 or len(returns) == 0:
+        return "Monte Carlo requires a non-empty one-dimensional return series"
+    if not np.isfinite(returns).all():
+        return "Monte Carlo returns must all be finite (NaN/inf present)"
+    if (returns < -1.0).any():
+        return "Monte Carlo returns below -100% are not valid simple returns"
+    if not np.isfinite(initial_capital) or initial_capital <= 0:
+        return "initial_capital must be finite and positive"
+    if not np.isfinite(periods_per_year) or periods_per_year <= 0:
+        return "periods_per_year must be finite and positive"
+    return None
 
 
 def run_parameter_perturbation(

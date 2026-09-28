@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from config.schema import CostModelConfig
@@ -19,9 +18,6 @@ from research.cross_sectional_pipeline import (
     make_no_tuning_wfa_fns,
     run_no_tuning_cross_sectional_validation,
     run_no_tuning_sweep,
-)
-from research.cross_sectional_pipeline import (
-    build_returns_matrix as build_cross_sectional_returns_matrix,
 )
 from research.pairs_experiment import STRATEGY_NAME, build_pairs_experiment_draft
 from strategies.pairs.signal import (
@@ -91,24 +87,6 @@ def make_pairs_wfa_fns(
 ) -> tuple[Any, Any]:
     """Build WFA train/test callables for no-tuning Pairs v1."""
     return make_no_tuning_wfa_fns(
-        df,
-        params or default_params(),
-        strategy_name=STRATEGY_NAME,
-        generate_signals=generate_signals,
-        params_to_dict=params_to_dict,
-        cost_config=cost_config,
-        initial_capital=initial_capital,
-    )
-
-
-def build_returns_matrix(
-    df: pd.DataFrame,
-    *,
-    params: PairsParams | None = None,
-    cost_config: CostModelConfig | None = None,
-    initial_capital: float = 10000.0,
-) -> np.ndarray:
-    return build_cross_sectional_returns_matrix(
         df,
         params or default_params(),
         strategy_name=STRATEGY_NAME,
