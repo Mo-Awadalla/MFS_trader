@@ -1,8 +1,8 @@
 # mfs-trader
 
-Python systematic-trading research and execution platform built around one principle: strategies are hypotheses, not assets. A hypothesis is frozen as an immutable Experiment, punished with realistic costs, validated through a statistical gauntlet, and only then allowed to move toward paper/live operational gates.
+Experimental Python strategy-research and validation workbench with simulated execution. Strategies are hypotheses, not assets: freeze the decision path, evaluate it with explicit costs and a statistical gauntlet, and preserve failed as well as successful evidence.
 
-This is a portfolio/research engineering project, not trading advice and not live-trading approval.
+The intended release surface is credential-free research and simulation—not a qualified broker-paper campaign, live-trading system, or investment recommendation. Paper-runtime engineering checks and any future broker qualification are separate evidence.
 
 Numerical-correction notice: historical MC/DSR validation claims below require re-evaluation and are withdrawn as current validation claims. The corrected code does not retroactively approve any Experiment. Original evidence and stored lifecycle fields remain unchanged; see the [correction and evidence-migration note](docs/numerical-correctness-2026-09-16.md).
 
@@ -70,11 +70,23 @@ The historical candidate also has a runtime replay through the engine, portfolio
 | Bars/cycles | 5,405 / 5,405 |
 | Orders submitted/filled/rejected/timed out | 1,072 / 1,072 / 0 / 0 |
 | Operational blockers | 0 |
-| Replay status | PASS |
+| Structural replay status | PASS (historical) |
 
 Report: `docs/reports/etf_tsm_engine_replay/etf_tsm_engine_replay.md`.
 
-Scope: this historical PASS is an operational simulation result, not corrected statistical validation or Alpaca paper/live approval.
+Scope: this historical PASS establishes completion of the operational simulation, **not financial execution parity**. Research final equity was $50,944.37 versus runtime $27,759.42, a $23,184.95 difference. The aggregate gap alone does not attribute timing, sizing, costs, rounding, or risk-control effects. It is neither corrected statistical validation nor Alpaca paper/live approval.
+
+### Evidence boundaries
+
+| Evidence | What it can establish | What it cannot establish |
+| --- | --- | --- |
+| Original validation report | What the historical implementation computed | Corrected MC/DSR qualification |
+| Versioned corrected evaluation | Corrected validation under recorded inputs, trials, costs, and source version | Automatic lifecycle transition or execution permission |
+| Structural replay | Runtime cycles, orders, reconciliation, and operational blockers | Research/runtime financial agreement |
+| Execution-parity comparison | Ledger agreement under explicitly identical assumptions, or attributed differences | Broker fill quality or elapsed paper qualification |
+| Offline paper safety tests | Tested evidence and recovery behavior under simulated faults | Real broker sessions, reconciled trades, slippage, or operator sign-off |
+
+Broker-paper qualification is **NOT ESTABLISHED**. Synthetic drills do not satisfy the required elapsed window, eligible exchange sessions, or observed broker fills. Publication remains an owner action; no remote release or deployment is implied.
 
 ## Latest research scouts
 
@@ -191,7 +203,7 @@ Paper ops proves implementation behavior, not alpha. Live deployment still requi
 
 ### Reproducible dev setup
 
-The package metadata requires Python 3.11 or later; the locked development environment and CI use Python 3.12.
+The package metadata requires Python 3.11 or later. Release checks target Python 3.11 and 3.12 independently: use `requirements-dev-py311.txt` for 3.11 and `requirements-dev.txt` for 3.12. Do not install the 3.12 NumPy/SciPy pins into 3.11. Commands below show 3.12.
 
 macOS / Linux:
 
@@ -233,6 +245,20 @@ python scripts/verify_offline_shakedown.py --out-dir runs/ma_shakedown
 
 Expected result for the shakedown is `MA shakedown status: PASS`. It exercises synthetic data quality, research backtest, engine replay, sim-broker fills, rejection, timeout, partial-fill scenarios, and operational reports.
 The verifier checks the report and confirms baseline fills plus the rejection, timeout, and partial-fill scenarios.
+
+### Installed wheel, runtime dependencies only
+
+Install the locally built wheel into a fresh environment without `requirements-dev.txt` or provider extras. From an empty working directory outside the checkout, with no `.env` or broker credentials:
+
+```bash
+python -m pip install /absolute/path/to/mfs_trader-0.1.0-py3-none-any.whl
+mfs-data --config builtin:research status
+mfs-engine --config builtin:paper preflight
+mfs-engine shakedown-ma --out-dir ./ma_shakedown
+mfs-engine report --db ./ma_shakedown/baseline.sqlite --allow-blockers
+```
+
+The [installable-release contract](docs/release/installable-release.md) gives constrained 3.11/3.12 builds and a verifier that checks installed provenance, rejects network access, exercises the corrected synthetic gauntlet, and checks missing optional-extra errors. Only declared runtime modules and explicit config templates are shipped; market data and historical Experiment evidence are not wheel assets.
 
 ### Regenerate the SPY comparison artifacts
 
@@ -277,7 +303,7 @@ The committed report used the frozen 133-stock research universe plus SPY. Raw S
 python -m engine.cli --config config/research.toml replay-etf-tsm --out-dir runs/etf_tsm_engine_replay
 ```
 
-Expected result is `ETF TSM engine replay status: PASS`. The command requires cached Yahoo ETF bars under `data/parquet/equity/yahoo_chart`; it does not require broker credentials and writes runtime/operational artifacts under the chosen output directory.
+The output separates structural replay status from `financial_parity`. Cached Yahoo ETF bars under `data/parquet/equity/yahoo_chart` are required; broker credentials are not. To compare ledgers, predeclare assumptions and follow the [execution-parity contract](docs/release/execution-parity-boundary.md). `--assert-financial-parity` fails when declarations are absent or financial equality is not established; `--allow-diffs` cannot override that assertion. Structural PASS alone is not financial parity.
 
 ## Quality gates
 
