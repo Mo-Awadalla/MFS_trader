@@ -10,7 +10,6 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from config.schema import AssetClass, CostModelConfig
@@ -28,11 +27,16 @@ from strategies.bb.signal import (
 )
 from strategies.registry import get_strategy, strategy_template_version
 from validation.gauntlet import GauntletResult, run_gauntlet
+from validation.search import DeclaredSearch, declared_search
 from validation.wfa.engine import PRESETS, WFATier
 
 STRATEGY_NAME = "bollinger_bands"
 _BB_STRATEGY = get_strategy(STRATEGY_NAME)
 PARAM_COLUMNS = ["window", "std_mult", "width_mode"]
+SEARCH_SCOPE = (
+    "complete Bollinger Bands parameter sweep used for this validation run "
+    "(every grid trial, declared order)"
+)
 
 
 def backtest_bb(
@@ -66,14 +70,19 @@ def run_bb_sweep(
     df: pd.DataFrame,
     *,
     grid: list[BBParams] | None = None,
+    selected_params: BBParams | None = None,
     symbol: str = "AAPL",
     cost_config: CostModelConfig | None = None,
     initial_capital: float = 10000.0,
-) -> pd.DataFrame:
-    """Sweep BB parameters and return a results DataFrame for DSR/stability."""
+) -> tuple[pd.DataFrame, DeclaredSearch]:
+    """Sweep BB parameters; returns stability rows and DSR search evidence.
+
+    Row ``i`` and DSR matrix column ``i`` both describe ``grid[i]``.
+    """
     cost_config = cost_config or default_cost_config()
     grid = grid or sweep_grid()
     rows: list[dict[str, Any]] = []
+    trial_returns: list[pd.Series] = []
 
     for params in grid:
         result = backtest_bb(
@@ -89,8 +98,15 @@ def run_bb_sweep(
             "trade_count": result.trade_count,
         }
         rows.append(row)
+        trial_returns.append(result.returns)
 
-    return pd.DataFrame(rows)
+    search = declared_search(
+        [params_to_dict(params) for params in grid],
+        trial_returns,
+        params_to_dict(selected_params or default_params()),
+        search_scope=SEARCH_SCOPE,
+    )
+    return pd.DataFrame(rows), search
 
 
 def make_bb_wfa_fns(
@@ -135,69 +151,6 @@ def make_bb_wfa_fns(
         return metrics
 
     return train_fn, test_fn
-
-
-def build_returns_matrix(
-    df: pd.DataFrame,
-    sweep_df: pd.DataFrame,
-    *,
-    cost_config: CostModelConfig | None = None,
-    symbol: str = "AAPL",
-    initial_capital: float = 10000.0,
-) -> np.ndarray:
-    """Build a full-sweep returns matrix for DSR trial-scope evidence."""
-    if sweep_df.empty:
-        return np.empty((0, 0))
-
-    cost_config = cost_config or default_cost_config()
-    series_list: list[pd.Series] = []
-
-    for _, row in sweep_df.sort_values("sharpe", ascending=False, kind="stable").iterrows():
-        params = params_from_dict(row.to_dict())
-        result = backtest_bb(
-            df,
-            params,
-            symbol=symbol,
-            cost_config=cost_config,
-            initial_capital=initial_capital,
-        )
-        returns = result.returns.reindex(df.index, fill_value=0.0).fillna(0.0)
-        series_list.append(returns.rename(f"{params.window}_{params.std_mult}_{params.width_mode}"))
-
-    matrix = pd.concat(series_list, axis=1).fillna(0.0)
-    return matrix.to_numpy()
-
-
-def _selected_sweep_trial_index(
-    sweep_df: pd.DataFrame,
-    params: BBParams,
-) -> tuple[int | None, str | None]:
-    """Locate the frozen parameter set in build_returns_matrix column order."""
-    if sweep_df.empty:
-        return None, "the BB sweep is empty"
-    target = params_to_dict(params)
-    missing = [name for name in target if name not in sweep_df.columns]
-    if missing:
-        return None, f"the BB sweep lacks frozen parameter fields: {', '.join(missing)}"
-
-    matches = pd.Series(True, index=sweep_df.index)
-    for name, value in target.items():
-        column = sweep_df[name]
-        if isinstance(value, float):
-            matches &= pd.to_numeric(column, errors="coerce").eq(value)
-        else:
-            matches &= column.eq(value)
-    match_count = int(matches.sum())
-    if match_count != 1:
-        return None, f"the frozen BB parameter set matches {match_count} sweep rows; expected exactly one"
-
-    selected_position = int(np.flatnonzero(matches.to_numpy())[0])
-    ordered_positions = (
-        sweep_df.assign(_dsr_position=np.arange(len(sweep_df)))
-        .sort_values("sharpe", ascending=False, kind="stable")["_dsr_position"]
-        .to_numpy()
-    )
-    return int(np.flatnonzero(ordered_positions == selected_position)[0]), None
 
 
 @dataclass
@@ -302,9 +255,10 @@ def run_bb_validation_gauntlet(
         cost_config=cost_config,
         initial_capital=initial_capital,
     )
-    sweep_df = run_bb_sweep(
+    sweep_df, search = run_bb_sweep(
         df,
         grid=sweep_grid_list,
+        selected_params=params,
         symbol=symbol,
         cost_config=cost_config,
         initial_capital=initial_capital,
@@ -315,18 +269,6 @@ def run_bb_validation_gauntlet(
         symbol=symbol,
         initial_capital=initial_capital,
     )
-    returns_matrix = build_returns_matrix(
-        df,
-        sweep_df,
-        cost_config=cost_config,
-        symbol=symbol,
-        initial_capital=initial_capital,
-    )
-    selected_trial_index, dsr_selection_error = _selected_sweep_trial_index(sweep_df, params)
-    selected_sharpe = float(research.metrics.get("sharpe", 0.0))
-    matrix_covers_sweep = returns_matrix.ndim == 2 and returns_matrix.shape[1] == len(sweep_df)
-    if dsr_selection_error is None and not matrix_covers_sweep:
-        dsr_selection_error = "returns_matrix does not contain exactly one column for every BB sweep row"
 
     gauntlet = run_gauntlet(
         STRATEGY_NAME,
@@ -335,19 +277,7 @@ def run_bb_validation_gauntlet(
         test_fn,
         sweep_df,
         PARAM_COLUMNS,
-        best_sharpe=selected_sharpe,
-        returns_matrix=returns_matrix,
-        dsr_selected_trial_index=selected_trial_index,
-        dsr_selected_returns=(
-            returns_matrix[:, selected_trial_index]
-            if selected_trial_index is not None
-            and matrix_covers_sweep
-            and selected_trial_index < returns_matrix.shape[1]
-            else None
-        ),
-        dsr_search_scope="complete Bollinger Bands parameter sweep used for this validation run",
-        dsr_selection_error=dsr_selection_error,
-        dsr_sharpe_annualization_factor=252.0,
+        dsr_search=search,
         initial_capital=initial_capital,
         wfa_config=PRESETS[WFATier.PRIMARY],
         seed=seed,

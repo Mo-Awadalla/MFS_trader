@@ -2,11 +2,10 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
-from typing import Any, cast
+from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from config.schema import CostModelConfig
@@ -17,7 +16,13 @@ from research.bb_defaults import default_cost_config
 from research.runner import compute_metrics
 from strategies.registry import strategy_template_version
 from validation.gauntlet import GauntletResult, run_gauntlet
+from validation.search import DeclaredSearch, declared_search
 from validation.wfa.engine import PRESETS, WFATier
+
+NO_TUNING_SEARCH_SCOPE = (
+    "single predeclared no-tuning hypothesis; no parameter sweep was recorded, "
+    "so selection deflation cannot be evidenced"
+)
 
 ParamsToDict = Callable[[Any], dict[str, Any]]
 GenerateSignals = Callable[[pd.DataFrame, Any], pd.DataFrame]
@@ -195,26 +200,55 @@ def make_no_tuning_wfa_fns(
     return train_fn, test_fn
 
 
-def build_returns_matrix(
+def run_declared_cross_sectional_search(
     df: pd.DataFrame,
-    params: Any,
+    grid: Sequence[Any],
+    selected_params: Any,
     *,
     strategy_name: str,
     generate_signals: GenerateSignals,
     params_to_dict: ParamsToDict,
+    sweep_metadata: dict[str, Any],
+    search_scope: str,
     cost_config: CostModelConfig | None = None,
     initial_capital: float = 10000.0,
-) -> np.ndarray:
-    result = backtest_cross_sectional(
-        df,
-        params,
-        strategy_name=strategy_name,
-        generate_signals=generate_signals,
-        params_to_dict=params_to_dict,
-        cost_config=cost_config,
-        initial_capital=initial_capital,
+) -> tuple[pd.DataFrame, DeclaredSearch]:
+    """Backtest every declared grid trial once, for stability rows and DSR evidence.
+
+    Row ``i`` of the sweep and column ``i`` of the DSR matrix describe
+    ``grid[i]``; the frozen ``selected_params`` is located by exact equality.
+    """
+    rows: list[dict[str, Any]] = []
+    trial_params: list[dict[str, Any]] = []
+    trial_returns: list[pd.Series] = []
+    for i, params in enumerate(grid):
+        result = backtest_cross_sectional(
+            df,
+            params,
+            strategy_name=strategy_name,
+            generate_signals=generate_signals,
+            params_to_dict=params_to_dict,
+            cost_config=cost_config,
+            initial_capital=initial_capital,
+        )
+        rows.append(
+            {
+                **params_to_dict(params),
+                "grid_index": i,
+                **sweep_metadata,
+                **result.metrics,
+                "trade_count": result.trade_count,
+            }
+        )
+        trial_params.append(params_to_dict(params))
+        trial_returns.append(result.returns)
+    search = declared_search(
+        trial_params,
+        trial_returns,
+        params_to_dict(selected_params),
+        search_scope=search_scope,
     )
-    return cast(np.ndarray, result.returns.to_frame(f"{strategy_name}_v1").to_numpy())
+    return pd.DataFrame(rows), search
 
 
 def run_no_tuning_cross_sectional_validation(
@@ -293,16 +327,12 @@ def run_no_tuning_cross_sectional_validation(
         cost_config=cost_config,
         initial_capital=initial_capital,
     )
-    returns_matrix = build_returns_matrix(
-        df,
-        params,
-        strategy_name=strategy_name,
-        generate_signals=generate_signals,
-        params_to_dict=params_to_dict,
-        cost_config=cost_config,
-        initial_capital=initial_capital,
+    search = declared_search(
+        [params_to_dict(params)],
+        [research.returns],
+        params_to_dict(params),
+        search_scope=NO_TUNING_SEARCH_SCOPE,
     )
-    best_sharpe = float(sweep_df["sharpe"].max()) if not sweep_df.empty else None
 
     gauntlet = run_gauntlet(
         strategy_name,
@@ -311,8 +341,7 @@ def run_no_tuning_cross_sectional_validation(
         test_fn,
         sweep_df,
         param_columns,
-        best_sharpe=best_sharpe,
-        returns_matrix=returns_matrix,
+        dsr_search=search,
         initial_capital=initial_capital,
         wfa_config=PRESETS[WFATier.PRIMARY],
         mc_num_paths=mc_num_paths,

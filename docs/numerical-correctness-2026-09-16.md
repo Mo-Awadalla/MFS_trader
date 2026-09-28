@@ -13,7 +13,7 @@ This change is separate from the completed public-history cleanup. It starts fro
 
 ## DSR interpretation and caller contract
 
-The calculation implements Equations (1) and (2) of [Bailey and López de Prado, *The Deflated Sharpe Ratio* (2014)](https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf), using a zero-mean null benchmark. Inputs include the selected trial's per-observation Sharpe, observation count, skewness, ordinary kurtosis (Normal = 3), cross-trial Sharpe variance, and trial count. Annualized Sharpe is divided by the square root of observations/year; its cross-trial variance is divided by observations/year. The reference test uses 250 observations/year; daily pipeline comparisons explicitly use 252.
+The calculation implements Equations (1) and (2) of [Bailey and López de Prado, *The Deflated Sharpe Ratio* (2014)](https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf), using a zero-mean null benchmark. Inputs include the selected trial's per-observation Sharpe, observation count, skewness, ordinary kurtosis (Normal = 3), cross-trial Sharpe variance, and trial count. Annualized Sharpe is divided by the square root of observations/year; its cross-trial variance is divided by observations/year. The primary-source equation and example were checked on rendered pages 8–10 during reconciliation: annualized SR 2.5, annualized variance 0.5, 250 observations/year, T=1250, N=100, skewness -3, kurtosis 10 give benchmark 0.113172001865 and confidence 0.900396834449 (complementary tail 0.099603165551). This fails the unchanged 95% confidence requirement. Neither statistic is a Bayesian probability that a strategy is “luck.”
 
 `dsr_confidence` is the paper's confidence statistic. `dsr_pvalue` is its complementary upper tail, calculated with the Normal survival function for numerical stability. These are not interchangeable values. This patch retains the existing strict tail-probability gates (`p < 0.05`, with raw-trial sensitivity `p_raw < 0.10`).
 
@@ -25,18 +25,30 @@ Trial-count methods must be distinguished:
 
 The pre-existing default method remains `M_eff_corr`. Its estimate and the raw-trial sensitivity remain visible. The implemented extreme-value approximation requires a count of at least two; a lower effective count is unavailable, not an automatic pass or an implicit switch to another statistic.
 
-The gauntlet requires a finite, complete `(observations, searched trials)` return matrix, an explicit selected column, and a meaningful `dsr_search_scope`. It calculates selected statistics and cross-trial Sharpe variance on that same observation window. It must not substitute the best column for the actual selected candidate or combine full-sample Sharpe with WFA OOS length. WFA/Monte Carlo remain separate checks.
+The gauntlet accepts `dsr_search=DeclaredSearch(...)`: a finite, complete `(observations, searched trials)` return matrix, explicit selected column, and meaningful search-scope disclosure. `validation.search.declared_search` maps exact selected parameters to columns and rejects ambiguous matches or non-identical, unordered, or duplicate observation indexes. Selected statistics and cross-trial Sharpe variance use that same observation window; neither best-column substitution nor combining full-sample Sharpe with WFA OOS length is allowed. WFA/Monte Carlo remain separate checks.
 
-The BB caller now supplies the full sweep, maps the exact selected parameter configuration into stable matrix-column order, and declares annualization explicitly. Missing/ambiguous configuration matches are unavailable. Empty or zero-volatility trials are not silently dropped to reduce the apparent search; insufficient statistics fail unavailable. The scope string describes this supplied sweep, not unrecorded exploratory research outside it.
+Supported direct callers:
 
-Other callers that do not yet supply complete scope and selection evidence receive a non-passing unavailable DSR result. This deliberate fail-closed behavior does not establish that their underlying strategies fail statistical validation; it establishes that the required evidence was not provided. No missing data or favorable result is invented to preserve an old PASS.
+| Caller | Declared evidence |
+| --- | --- |
+| `research/bb_pipeline.py` | All BB sweep trials, stable grid order, exact selected-parameter match |
+| `research/etf_time_series_momentum_pipeline.py` | All declared ETF TSM stability-grid trials |
+| `research/etf_tactical_pipeline.py` | All declared tactical stability-grid trials |
+| `research/global_dual_momentum_pipeline.py` | All declared global dual momentum stability-grid trials |
+| `research/cross_sectional_pipeline.py` | Shared no-tuning route: one documented trial, explicitly insufficient for DSR |
+| `research/market_intraday_momentum_pipeline.py` | One documented trial, insufficient for DSR |
+| `research/opening_range_breakout_pipeline.py` | One documented trial, insufficient for DSR |
+| `research/same_clock_intraday_seasonality_pipeline.py` | One documented trial, insufficient for DSR |
+
+The shared no-tuning route covers CSMR, momentum, pairs, residual reversal, and VS-ICSM. Single-trial results, frozen parameters outside a declared grid, flat trials, and missing search evidence are unavailable and non-passing; no trial is silently dropped. A scope declaration covers the supplied search only, not undocumented exploratory research. MC daily annualization is 252 observations/year; intraday callers explicitly use `252 * bars_per_session`.
 
 ## Report/API compatibility
 
 - `MCResult.pct_95_max_dd` and its serialized key are replaced by `pct_5_max_dd`. Do not relabel an old stored percentile: it must be recomputed from path drawdowns or by rerunning the simulation.
+- New reports use `gauntlet_report_v2` and MC formula `mc_block_bootstrap_v2`, recording actual observations, periods/year, path count, block length, and seed. Invalid or numerically overflowing MC data are unavailable, with no favorable metric payload. Bad configuration raises `ValueError`.
 - The corrected DSR formula is identified by `bailey_lopez_de_prado_eq2_v1`. Reports disclose availability/reason, method, search scope, per-observation units, confidence/tail probability, benchmark, track length, moments, and trial variance.
 - Previous DSR values came from a different expression and cannot be converted into corrected confidence by renaming a field. Missing evidence produces `available=False` and `passed=False`.
-- BB's returns-matrix builder no longer accepts a top-trials truncation limit; all declared sweep trials must be represented.
+- Sweep builders return `(sweep_dataframe, DeclaredSearch)` rather than a winner-truncated matrix. Reports retain selected-column identity, complete parameter descriptors supplied by the builder, and the shared observation-index hash. Old selected-trial keyword arguments and redundant one-column matrix wrappers are removed.
 
 ## Historical evidence and corrected evaluations
 
