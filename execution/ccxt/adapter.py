@@ -23,6 +23,7 @@ from typing import Any
 
 import structlog
 
+from config.optional_deps import require_extra
 from execution.base import (
     BrokerAccount,
     BrokerAdapter,
@@ -62,12 +63,7 @@ class CCXTBinanceAdapter(BrokerAdapter):
         api_secret: str = "",
         is_testnet: bool = True,
     ):
-        try:
-            import ccxt
-        except ImportError as e:
-            raise ImportError(
-                "ccxt is required for crypto trading. Install: pip install ccxt"
-            ) from e
+        ccxt = require_extra("ccxt", extra="crypto", purpose="The CCXT Binance adapter")
 
         self._ccxt = ccxt
         self._exchange = ccxt.binance(

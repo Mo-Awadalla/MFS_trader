@@ -1,0 +1,10 @@
+# The sdist carries the installable packages only (see [tool.setuptools] in
+# pyproject.toml). Research material, evidence, market data and secrets never ship.
+prune research_scout
+prune tests
+prune docs
+prune scripts
+prune experiments/*-*
+prune experiments/iren_two_month_reversal_v1
+prune portfolio/research_artifacts
+global-exclude .env .env.* *.parquet *.csv *.sqlite *.db *.bundle *.zip *.pkl

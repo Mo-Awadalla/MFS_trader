@@ -5,43 +5,81 @@ on:
   pull_request:
   workflow_dispatch:
 
+env:
+  RUN_LIVE_BROKER_TESTS: '0'
+  MFS_TEST_LOAD_DOTENV: '0'
+
 jobs:
   test:
-    name: lint and tests
+    name: Python ${{ matrix.python }} tests
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - python: '3.11'
+            lock: requirements-dev-py311.txt
+          - python: '3.12'
+            lock: requirements-dev.txt
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: ${{ matrix.python }}
           cache: pip
-
+          cache-dependency-path: ${{ matrix.lock }}
       - name: Install locked dev dependencies
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements-dev.txt
+          python -m pip install -r "${{ matrix.lock }}"
           python -m pip install -e . --no-deps
-
-      - name: Ruff
+      - name: Ruff (once)
+        if: matrix.python == '3.12'
         run: python -m ruff check .
-
-      - name: Unit and contract tests
-        env:
-          RUN_LIVE_BROKER_TESTS: '0'
-          MFS_TEST_LOAD_DOTENV: '0'
+      - name: Offline unit, contract and shakedown tests
         run: python -m pytest tests/unit tests/contracts tests/integration/test_ma_shakedown.py
 
-      - name: Build wheel and run offline demo outside the checkout
+  installed-release:
+    name: Python ${{ matrix.python }} runtime-only wheel
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - python: '3.11'
+            lock: requirements-dev-py311.txt
+          - python: '3.12'
+            lock: requirements-dev.txt
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Build wheel and sdist in a separate build environment
+        run: |
+          python -m venv "$RUNNER_TEMP/mfs-build"
+          "$RUNNER_TEMP/mfs-build/bin/python" -m pip install build
+          "$RUNNER_TEMP/mfs-build/bin/python" -m build --outdir "$RUNNER_TEMP/mfs-dist"
+          python scripts/inspect_release.py --archive "$RUNNER_TEMP"/mfs-dist/*.whl --archive "$RUNNER_TEMP"/mfs-dist/*.tar.gz --output "$RUNNER_TEMP/archive-inspection.json"
+      - name: Install only declared runtime dependencies and verify outside checkout
         shell: bash
         run: |
-          python -m pip wheel --no-deps --wheel-dir "$RUNNER_TEMP/mfs-wheel" .
-          python -m venv "$RUNNER_TEMP/mfs-wheel-venv"
-          "$RUNNER_TEMP/mfs-wheel-venv/bin/python" -m pip install --upgrade pip
-          "$RUNNER_TEMP/mfs-wheel-venv/bin/python" -m pip install -r requirements-dev.txt
-          "$RUNNER_TEMP/mfs-wheel-venv/bin/python" -m pip install --no-deps "$RUNNER_TEMP/mfs-wheel"/*.whl
+          python -m venv "$RUNNER_TEMP/mfs-runtime"
+          "$RUNNER_TEMP/mfs-runtime/bin/python" -m pip install -c "$GITHUB_WORKSPACE/${{ matrix.lock }}" "$RUNNER_TEMP"/mfs-dist/*.whl
+          "$RUNNER_TEMP/mfs-runtime/bin/python" -m pip freeze > "$RUNNER_TEMP/runtime-freeze.txt"
           cd "$RUNNER_TEMP"
-          "$RUNNER_TEMP/mfs-wheel-venv/bin/mfs-engine" shakedown-ma --out-dir runs/ma_shakedown
-          "$RUNNER_TEMP/mfs-wheel-venv/bin/python" "$GITHUB_WORKSPACE/scripts/verify_offline_shakedown.py" --out-dir runs/ma_shakedown
+          "$RUNNER_TEMP/mfs-runtime/bin/python" "$GITHUB_WORKSPACE/scripts/verify_release.py" --work-dir "$RUNNER_TEMP/release-check"
+      - name: Retain release evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: installed-release-py${{ matrix.python }}
+          path: |
+            ${{ runner.temp }}/mfs-dist/*
+            ${{ runner.temp }}/archive-inspection.json
+            ${{ runner.temp }}/runtime-freeze.txt
+            ${{ runner.temp }}/release-check/synthetic_gauntlet_report.json
+            ${{ runner.temp }}/release-check/ma_shakedown/ma_shakedown_report.*
