@@ -13,6 +13,8 @@ Reports separately expose `financial_parity`:
 
 `--assert-financial-parity` requires `--assumptions PATH` and succeeds only for `established`. Missing/mismatched declarations fail before replay writes. `--allow-diffs` cannot waive a financial-parity assertion failure. Ordinary structural replay never silently asserts financial parity.
 
+**Financial equality remains NOT ESTABLISHED for this ETF route.** There is no qualified, nontrivial equal-assumption actual-path mode: research compounds current equity and earns the next close-to-close return, while runtime fixes sizing equity and fills the lagged target at the current close. Cost and risk semantics also differ. Existing supported threshold knobs cannot remove those differences. A new equality-mode would require an explicit execution-semantic design change; disabling real risk controls, using a flat no-trade panel, or treating model self-comparison as real-path qualification is not acceptable. JSON separately records `financial_equality_qualification: not_established` and `equal_assumption_actual_path_mode: not_available`.
+
 ## Predeclared assumptions
 
 `engine.etf_tsm_replay.declare_etf_tsm_execution(config, params=...)` returns an `ExecutionAssumptionsDeclaration` before either path is run. `engine.parity.write_declaration(declaration, path)` atomically writes its JSON. The CLI reads that JSON using `--assumptions`; the complete declaration must match the requested replay configuration. Both declaration and report are versioned (`etf_tsm_execution_assumptions.v1`, `etf_tsm_execution_parity.v1`). Reports embed the field-level diff.
@@ -29,6 +31,8 @@ Reports separately expose `financial_parity`:
 | Risk | No runtime risk layer | Existing per-position, gross exposure and max-open-position constraints; no controls removed |
 
 The default research cost calculation includes its existing variable-slippage surrogate (another fixed-slippage term when the coefficient is nonzero) and sell-side constant. Those are declared as implemented, not corrected or silently harmonized here. SimBroker's account cash/equity is not updated on fills: reported financial cash/equity is reconstructed, not broker authority. The replay supplies constant equity and drawdown to the existing risk engine, so loss limits see zero loss. Net exposure checks can report reductions without changing quantities; sector/correlation inputs are absent. This work does not change those behaviors.
+
+Risk-model coverage is fail-closed and independent of numeric ledger agreement. The analytical model represents only `per_position_risk`, `max_open_positions` and `gross_exposure`. The replay observes each actual `RiskEvaluation`. Any non-approved **other** check prevents `attributed`/`established`, including `kill_switch`, `strategy_halt`, `daily_loss_block`, `daily_loss_halt`, `weekly_loss`, `monthly_halt`, `net_exposure`, `sector_gross`, `sector_net` and `correlation_cluster`. Unknown future check names and unavailable risk evaluations also fail coverage. Reporting-only reductions are not exempt merely because current quantities happen to agree. Calls directly evaluating ledgers with runtime risk enabled must supply the observed coverage result; omitted observations fail closed. No runtime state transitions or limits are altered.
 
 ## Ledger evidence and attribution
 
@@ -80,5 +84,7 @@ The local immutable artifact is `retained-yahoo-attribution-v1-20260928.json` in
 ## Offline verification
 
 `tests/integration/test_execution_parity.py` generates a multi-ETF OHLCV panel with several regimes in-test and uses the same unmodified frozen defaults on both real paths. It covers all per-bar fields, intermediate corruption, timing regression, missing values, supported threshold counterfactuals, pre-I/O declaration rejection and CLI assertion precedence. No broker endpoints, credentials, real Experiment evidence, or cache are needed by these tests.
+
+The conditional equal-assumption comparison contract has a separate, nonflat hand-ledger regression: three bars, a buy, drift-rebalance sale, and liquidation. Independently calculated weight-return and cash-flow ledgers must agree; corrupting an intermediate position must fail. This tests the comparator, **not** an available equal-assumption actual ETF mode. Additional real `RiskEngine` scenarios use unchanged limits to exercise loss/kill/strategy/sector/net/correlation coverage failures even when the supplied financial ledgers otherwise conform.
 
 Run with `RUN_LIVE_BROKER_TESTS=0 MFS_TEST_LOAD_DOTENV=0` on both supported Python environments. Full-suite/lint acceptance belongs to release integration; a local replay smoke is not a claim that those commands passed.

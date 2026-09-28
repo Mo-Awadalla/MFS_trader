@@ -36,6 +36,7 @@ from engine.parity import (
     research_ledger,
     runtime_assumptions,
     runtime_ledger,
+    unmodeled_risk_checks,
 )
 from engine.replay import ReplayResult
 from engine.runtime import TradingEngine
@@ -117,6 +118,8 @@ class ETFEngineReplayComparison:
             "structural_replay_status": "PASS" if self.passed else "BLOCKED",
             "financial_parity": self.financial_parity,
             "financial_parity_asserted": self.financial_parity_asserted,
+            "financial_equality_qualification": "not_established",
+            "equal_assumption_actual_path_mode": "not_available",
             "symbols": list(self.symbols),
             "bars_loaded": self.bars_loaded,
             "bars_start": self.bars_start,
@@ -223,6 +226,7 @@ def run_etf_tsm_engine_replay(
     held_weights = target_weights.shift(1).fillna(0.0)
     runtime_targets: dict[pd.Timestamp, dict[str, float]] = {}
     runtime_positions: dict[pd.Timestamp, dict[str, float]] = {}
+    unsupported_risk_checks: set[str] = set()
 
     conn = init_db(db_path)
     broker = SimBroker(
@@ -255,7 +259,7 @@ def run_etf_tsm_engine_replay(
             }
             for symbol, price in prices.items():
                 broker.set_price(symbol, price)
-            engine.process_bar(
+            evaluation = engine.process_bar(
                 bars=panel.iloc[: i + 1],
                 prices=prices,
                 bar_timestamp=str(ts),
@@ -269,6 +273,7 @@ def run_etf_tsm_engine_replay(
                     current_equity=initial_capital,
                 ),
             )
+            unsupported_risk_checks.update(unmodeled_risk_checks(evaluation))
             runtime_positions[ts] = {
                 str(position["symbol"]): float(position["quantity"])
                 for position in get_positions(conn, strategy=STRATEGY_NAME)
@@ -324,6 +329,7 @@ def run_etf_tsm_engine_replay(
             research=assumptions.research,
             runtime=assumptions.runtime,
             initial_capital=initial_capital,
+            runtime_unmodeled_risk_checks=tuple(sorted(unsupported_risk_checks)),
         )
         if replay.error or replay.bar_count != len(panel):
             parity["financial_parity"] = "failed"
@@ -444,6 +450,7 @@ def format_etf_tsm_replay_report(comparison: ETFEngineReplayComparison) -> str:
         "## What this proves",
         "",
         "This replay feeds the validation-passed ETF TSM target weights through the runtime engine, portfolio sizing, risk engine, OMS, SQLite state, and simulated broker fills. It is operational evidence, not a new validation pass and not live-trading approval.",
+        "Financial equality qualification: NOT ESTABLISHED. The supported ETF research and runtime routes have distinct execution assumptions; no nontrivial equal-assumption actual-path mode is qualified. Per-path ledger conformance and attribution do not make --assert-financial-parity succeed.",
         "",
         "## Research vs Runtime",
         "",
