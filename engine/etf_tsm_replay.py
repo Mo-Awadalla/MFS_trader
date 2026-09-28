@@ -4,6 +4,11 @@ This is a panel-aware operational replay for the validation-passed ETF TSM
 candidate. It is not another vectorized research backtest: precomputed frozen
 ETF target weights are fed through the runtime TradingEngine, portfolio sizing,
 risk checks, OMS, SQLite state, and simulated broker fills.
+
+Its PASS is scoped to ``structural_replay``. Financial parity with research is
+``not_established`` unless a caller supplies a predeclared execution
+assumptions declaration (``engine.parity``); the replay then checks both
+ledgers against it and attributes every research-vs-runtime difference.
 """
 
 from __future__ import annotations
@@ -17,10 +22,25 @@ from typing import Any
 import pandas as pd
 
 from config.schema import Config
+from engine.parity import (
+    ASSUMPTIONS_VERSION,
+    FINANCIAL_PARITY_ESTABLISHED,
+    FINANCIAL_PARITY_NOT_ESTABLISHED,
+    STRUCTURAL_SCOPE,
+    ExecutionAssumptionsDeclaration,
+    ExecutionLedger,
+    ParityDeclarationError,
+    atomic_write_text,
+    evaluate_execution_parity,
+    research_assumptions,
+    research_ledger,
+    runtime_assumptions,
+    runtime_ledger,
+)
 from engine.replay import ReplayResult
 from engine.runtime import TradingEngine
 from execution.sim_broker.broker import SimBroker, SimBrokerConfig
-from monitoring.reports import OperationalReport, build_operational_report, write_operational_report
+from monitoring.reports import OperationalReport, build_operational_report, format_operational_report
 from portfolio.sizing import PortfolioState
 from research.etf_time_series_momentum_experiment import STRATEGY_NAME
 from research.etf_time_series_momentum_pipeline import backtest_etf_time_series_momentum
@@ -39,6 +59,10 @@ from strategies.registry import strategy_template_version
 
 DEFAULT_CACHE_DIR = Path("data/parquet/equity/yahoo_chart")
 DEFAULT_REPORT_STEM = "etf_tsm_engine_replay"
+# Attribution-only runtime knobs callers may override (existing PortfolioConfig
+# fields); everything else in the replay config stays fixed.
+REBALANCE_THRESHOLD_KEYS = frozenset({"min_notional_delta", "min_pct_position_delta"})
+_DEFAULT_REBALANCE_THRESHOLDS = {"min_notional_delta": 25.0, "min_pct_position_delta": 0.05}
 
 
 @dataclass
@@ -65,14 +89,34 @@ class ETFEngineReplayComparison:
     operational_report: OperationalReport
     differences: list[str] = field(default_factory=list)
     assumption_gaps: list[str] = field(default_factory=list)
+    execution_assumptions: ExecutionAssumptionsDeclaration | None = None
+    execution_parity: dict[str, Any] | None = None
+    financial_parity_asserted: bool = False
+    research_ledger: ExecutionLedger | None = None
+    runtime_ledger: ExecutionLedger | None = None
 
     @property
     def passed(self) -> bool:
+        """Structural replay pass only; says nothing about financial parity."""
         return not self.differences and self.operational_report.passed
+
+    @property
+    def financial_parity(self) -> str:
+        if self.execution_parity is None:
+            return FINANCIAL_PARITY_NOT_ESTABLISHED
+        return str(self.execution_parity["financial_parity"])
+
+    @property
+    def financial_parity_assertion_failed(self) -> bool:
+        return self.financial_parity_asserted and self.financial_parity != FINANCIAL_PARITY_ESTABLISHED
 
     def to_dict(self) -> dict[str, Any]:
         return {
+            "scope": STRUCTURAL_SCOPE,
             "passed": self.passed,
+            "structural_replay_status": "PASS" if self.passed else "BLOCKED",
+            "financial_parity": self.financial_parity,
+            "financial_parity_asserted": self.financial_parity_asserted,
             "symbols": list(self.symbols),
             "bars_loaded": self.bars_loaded,
             "bars_start": self.bars_start,
@@ -104,6 +148,10 @@ class ETFEngineReplayComparison:
             "operational_report": self.operational_report.to_dict(),
             "differences": self.differences,
             "assumption_gaps": self.assumption_gaps,
+            "execution_assumptions": (
+                self.execution_assumptions.to_dict() if self.execution_assumptions is not None else None
+            ),
+            "execution_parity": self.execution_parity,
         }
 
 
@@ -117,17 +165,42 @@ def run_etf_tsm_engine_replay(
     params: ETFTimeSeriesMomentumParams | None = None,
     initial_capital: float = 10_000.0,
     max_bars: int | None = None,
+    assumptions: ExecutionAssumptionsDeclaration | None = None,
+    assert_financial_parity: bool = False,
+    rebalance_threshold_overrides: dict[str, float] | None = None,
 ) -> ETFEngineReplayComparison:
-    """Replay ETF TSM target weights through the runtime engine and sim broker."""
+    """Replay ETF TSM target weights through the runtime engine and sim broker.
 
+    The result's ``passed`` is a structural replay pass. Supplying
+    ``assumptions`` (a predeclared research/runtime declaration that must match
+    this run exactly) additionally evaluates execution parity and attribution.
+    ``assert_financial_parity`` without ``assumptions`` fails closed.
+    ``rebalance_threshold_overrides`` is an attribution-only knob for the
+    existing ``min_notional_delta`` / ``min_pct_position_delta`` settings.
+    """
+
+    if assert_financial_parity and assumptions is None:
+        raise ParityDeclarationError(
+            "financial parity cannot be asserted without a predeclared execution assumptions declaration"
+        )
     symbols = symbols or all_symbols()
     params = params or default_params()
+    replay_config = _runtime_replay_config(
+        config,
+        params=params,
+        rebalance_thresholds=_rebalance_thresholds(rebalance_threshold_overrides),
+    )
+    declaration = build_execution_assumptions(replay_config)
+    if assumptions is not None:
+        _require_matching_declaration(assumptions, declaration)
+
     panel = panel.copy() if panel is not None else load_cached_yahoo_panel(cache_dir, symbols=symbols)
     panel = panel.sort_index()
     if max_bars is not None:
         panel = panel.tail(max_bars)
     if panel.empty:
         raise ValueError("ETF TSM replay panel is empty")
+    close = panel.xs("close", axis=1, level="field").astype(float).reindex(columns=list(symbols))
 
     output = Path(out_dir)
     output.mkdir(parents=True, exist_ok=True)
@@ -139,7 +212,6 @@ def run_etf_tsm_engine_replay(
     if db_path.exists():
         db_path.unlink()
 
-    replay_config = _runtime_replay_config(config, params=params)
     research = backtest_etf_time_series_momentum(
         panel,
         params,
@@ -149,6 +221,8 @@ def run_etf_tsm_engine_replay(
     raw_signals = generate_signals(panel, params)
     target_weights = raw_signals.xs("weight", axis=1, level="field").astype(float)
     held_weights = target_weights.shift(1).fillna(0.0)
+    runtime_targets: dict[pd.Timestamp, dict[str, float]] = {}
+    runtime_positions: dict[pd.Timestamp, dict[str, float]] = {}
 
     conn = init_db(db_path)
     broker = SimBroker(
@@ -164,7 +238,7 @@ def run_etf_tsm_engine_replay(
         config=replay_config,
         conn=conn,
         broker=broker,
-        strategy_fn=_make_target_weight_strategy_fn(held_weights, symbols),
+        strategy_fn=_make_target_weight_strategy_fn(held_weights, symbols, recorder=runtime_targets),
         strategy_name=STRATEGY_NAME,
         strategy_params={"params": params_to_dict(params), "weight_source": "precomputed_frozen_targets"},
     )
@@ -173,7 +247,6 @@ def run_etf_tsm_engine_replay(
     if not engine.startup():
         replay.error = f"engine_startup_failed: {engine.state.halt_reason or 'unknown'}"
     else:
-        close = panel.xs("close", axis=1, level="field").astype(float)
         for i, ts in enumerate(panel.index):
             prices = {
                 str(symbol): float(price)
@@ -196,6 +269,10 @@ def run_etf_tsm_engine_replay(
                     current_equity=initial_capital,
                 ),
             )
+            runtime_positions[ts] = {
+                str(position["symbol"]): float(position["quantity"])
+                for position in get_positions(conn, strategy=STRATEGY_NAME)
+            }
             replay.bar_count += 1
             replay.cycle_count = engine.state.cycle_count
             if engine.state.halted:
@@ -228,8 +305,29 @@ def run_etf_tsm_engine_replay(
         initial_capital=initial_capital,
     )
     operational_report = build_operational_report(db_path)
-    write_operational_report(operational_report, operational_report_path, fmt="markdown")
-    write_operational_report(operational_report, operational_json_path, fmt="json")
+    atomic_write_text(operational_report_path, format_operational_report(operational_report))
+    atomic_write_text(operational_json_path, json.dumps(operational_report.to_dict(), indent=2, default=str))
+
+    research_book = research_ledger(research, close, initial_capital=initial_capital)
+    runtime_book = runtime_ledger(
+        db_path, close, pd.DataFrame.from_dict(runtime_targets, orient="index"),
+        observed_positions=pd.DataFrame.from_dict(runtime_positions, orient="index"),
+        initial_capital=initial_capital,
+    )
+    parity = None
+    if assumptions is not None:
+        parity = evaluate_execution_parity(
+            close=close,
+            decision_weights=research.decision_weights,
+            research_actual=research_book,
+            runtime_actual=runtime_book,
+            research=assumptions.research,
+            runtime=assumptions.runtime,
+            initial_capital=initial_capital,
+        )
+        if replay.error or replay.bar_count != len(panel):
+            parity["financial_parity"] = "failed"
+            parity["incomplete_runtime_replay"] = True
 
     comparison = ETFEngineReplayComparison(
         symbols=symbols,
@@ -239,7 +337,7 @@ def run_etf_tsm_engine_replay(
         params={
             **params_to_dict(params),
             "strategy_template_version": strategy_template_version(STRATEGY_NAME),
-            "runtime_config_overrides": _runtime_override_summary(params),
+            "runtime_config_overrides": _runtime_override_summary(params, replay_config),
         },
         db_path=str(db_path),
         report_path=str(report_path),
@@ -256,6 +354,11 @@ def run_etf_tsm_engine_replay(
         operational_report=operational_report,
         differences=_build_differences(replay, operational_report),
         assumption_gaps=_assumption_gaps(),
+        execution_assumptions=declaration,
+        execution_parity=parity,
+        financial_parity_asserted=assert_financial_parity,
+        research_ledger=research_book,
+        runtime_ledger=runtime_book,
     )
     write_etf_tsm_replay_reports(comparison)
     return comparison
@@ -321,11 +424,8 @@ def compute_replay_equity(
 
 
 def write_etf_tsm_replay_reports(comparison: ETFEngineReplayComparison) -> None:
-    Path(comparison.json_path).write_text(
-        json.dumps(comparison.to_dict(), indent=2, default=str),
-        encoding="utf-8",
-    )
-    Path(comparison.report_path).write_text(format_etf_tsm_replay_report(comparison), encoding="utf-8")
+    atomic_write_text(comparison.json_path, json.dumps(comparison.to_dict(), indent=2, default=str))
+    atomic_write_text(comparison.report_path, format_etf_tsm_replay_report(comparison))
 
 
 def format_etf_tsm_replay_report(comparison: ETFEngineReplayComparison) -> str:
@@ -333,7 +433,9 @@ def format_etf_tsm_replay_report(comparison: ETFEngineReplayComparison) -> str:
     lines = [
         "# ETF TSM Engine Replay",
         "",
-        f"Status: {status}",
+        f"Scope: `{STRUCTURAL_SCOPE}`",
+        f"structural_replay: {status}",
+        f"financial_parity: {comparison.financial_parity}",
         f"Symbols: `{', '.join(comparison.symbols)}`",
         f"Bars: {comparison.bars_loaded} ({comparison.bars_start} to {comparison.bars_end})",
         f"Replay DB: `{comparison.db_path}`",
@@ -378,11 +480,22 @@ def format_etf_tsm_replay_report(comparison: ETFEngineReplayComparison) -> str:
 
     lines.extend(["", "## Assumption gaps", ""])
     lines.extend(f"- {gap}" for gap in comparison.assumption_gaps)
+    if comparison.execution_assumptions is not None:
+        lines.extend(["", "## Execution assumptions (versioned)", "", "```json",
+                      json.dumps(comparison.execution_assumptions.to_dict(), indent=2), "```"])
+    if comparison.execution_parity is not None:
+        lines.extend(["", "## Execution attribution", "",
+                      "Attribution explains different outcomes; it does not establish financial equality.",
+                      "", "```json", json.dumps(comparison.execution_parity, indent=2), "```"])
     lines.append("")
     return "\n".join(lines)
 
 
-def _runtime_replay_config(config: Config, *, params: ETFTimeSeriesMomentumParams) -> Config:
+def _runtime_replay_config(
+    config: Config, *, params: ETFTimeSeriesMomentumParams,
+    rebalance_thresholds: dict[str, float] | None = None,
+) -> Config:
+    thresholds = rebalance_thresholds or _DEFAULT_REBALANCE_THRESHOLDS
     return replace(
         config,
         strategy_name=STRATEGY_NAME,
@@ -395,9 +508,9 @@ def _runtime_replay_config(config: Config, *, params: ETFTimeSeriesMomentumParam
             dollar_neutral=False,
             equal_weight=False,
             rebalance_frequency="monthly",
-            min_notional_delta=25.0,
+            min_notional_delta=thresholds["min_notional_delta"],
             min_qty_delta=1e-9,
-            min_pct_position_delta=0.05,
+            min_pct_position_delta=thresholds["min_pct_position_delta"],
         ),
         risk_limits=replace(
             config.risk_limits,
@@ -410,7 +523,7 @@ def _runtime_replay_config(config: Config, *, params: ETFTimeSeriesMomentumParam
     )
 
 
-def _runtime_override_summary(params: ETFTimeSeriesMomentumParams) -> dict[str, Any]:
+def _runtime_override_summary(params: ETFTimeSeriesMomentumParams, config: Config) -> dict[str, Any]:
     return {
         "portfolio.execution_mode": "continuous_rebalance",
         "portfolio.per_position_risk_pct": 0.05,
@@ -418,13 +531,16 @@ def _runtime_override_summary(params: ETFTimeSeriesMomentumParams) -> dict[str, 
         "risk_limits.max_gross_exposure_pct": params.max_gross,
         "risk_limits.max_net_exposure_pct": params.max_gross,
         "engine.startup_reconciliation_required": False,
-        "portfolio.min_notional_delta": 25.0,
-        "portfolio.min_pct_position_delta": 0.05,
-        "target_weight_timing": "weights shifted one bar to match vectorized research execution",
+        "portfolio.min_notional_delta": config.portfolio.min_notional_delta,
+        "portfolio.min_pct_position_delta": config.portfolio.min_pct_position_delta,
+        "target_weight_timing": "previous-bar signal filled at current close; research earns current-bar return",
     }
 
 
-def _make_target_weight_strategy_fn(held_weights: pd.DataFrame, symbols: tuple[str, ...]):
+def _make_target_weight_strategy_fn(
+    held_weights: pd.DataFrame, symbols: tuple[str, ...],
+    *, recorder: dict[pd.Timestamp, dict[str, float]],
+):
     def strategy_fn(bars: pd.DataFrame, _params: dict[str, Any]) -> dict[str, float]:
         if bars.empty:
             return {}
@@ -435,9 +551,49 @@ def _make_target_weight_strategy_fn(held_weights: pd.DataFrame, symbols: tuple[s
                 return dict.fromkeys(symbols, 0.0)
             ts = eligible[-1]
         row = held_weights.loc[ts].reindex(symbols).fillna(0.0)
-        return {str(symbol): float(row.loc[symbol]) for symbol in symbols}
+        targets = {str(symbol): float(row.loc[symbol]) for symbol in symbols}
+        recorder[bars.index[-1]] = targets
+        return targets
 
     return strategy_fn
+
+
+def _rebalance_thresholds(overrides: dict[str, float] | None) -> dict[str, float]:
+    thresholds = dict(_DEFAULT_REBALANCE_THRESHOLDS)
+    if overrides:
+        if set(overrides) - REBALANCE_THRESHOLD_KEYS:
+            raise ValueError("only existing rebalance thresholds may be overridden for attribution")
+        thresholds.update(overrides)
+    if any(not 0 <= value < float("inf") for value in thresholds.values()):
+        raise ValueError("rebalance thresholds must be finite and nonnegative")
+    return thresholds
+
+
+def build_execution_assumptions(replay_config: Config) -> ExecutionAssumptionsDeclaration:
+    """Declare an already-configured replay, without running either path."""
+    return ExecutionAssumptionsDeclaration(
+        version=ASSUMPTIONS_VERSION,
+        research=research_assumptions(replay_config.cost_model),
+        runtime=runtime_assumptions(replay_config, slippage_pct=replay_config.cost_model.slippage_fixed_pct),
+    )
+
+
+def declare_etf_tsm_execution(
+    config: Config, *, params: ETFTimeSeriesMomentumParams | None = None,
+    rebalance_threshold_overrides: dict[str, float] | None = None,
+) -> ExecutionAssumptionsDeclaration:
+    """Predeclare the frozen replay assumptions before observing its results."""
+    return build_execution_assumptions(_runtime_replay_config(
+        config, params=params or default_params(),
+        rebalance_thresholds=_rebalance_thresholds(rebalance_threshold_overrides),
+    ))
+
+
+def _require_matching_declaration(
+    supplied: ExecutionAssumptionsDeclaration, actual: ExecutionAssumptionsDeclaration,
+) -> None:
+    if supplied != actual:
+        raise ParityDeclarationError("execution assumptions declaration does not match this replay configuration")
 
 
 def _build_differences(replay: ReplayResult, operational_report: OperationalReport) -> list[str]:

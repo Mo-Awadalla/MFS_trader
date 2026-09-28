@@ -44,6 +44,13 @@ class CrossSectionalBacktestResult:
     rebalance_count: int = 0
     skipped_rebalance_count: int = 0
     trade_count: int = 0
+    # Additive ledger-export seam for execution-parity checks (engine/parity.py).
+    # decision_weights are the unshifted signal weights; the backtest holds them
+    # one bar later (``weights``). The return components below sum to ``returns``.
+    decision_weights: pd.DataFrame = field(default_factory=pd.DataFrame)
+    gross_returns: pd.Series = field(default_factory=lambda: pd.Series(dtype=float))
+    cost_returns: pd.Series = field(default_factory=lambda: pd.Series(dtype=float))
+    borrow_returns: pd.Series = field(default_factory=lambda: pd.Series(dtype=float))
 
 
 @dataclass
@@ -125,6 +132,10 @@ def backtest_cross_sectional(
         rebalance_count=int(rebalances.sum()),
         skipped_rebalance_count=int(skipped.sum()),
         trade_count=len(trade_frame),
+        decision_weights=weights,
+        gross_returns=gross_returns,
+        cost_returns=costs,
+        borrow_returns=borrow,
     )
 
 

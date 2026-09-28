@@ -144,6 +144,8 @@ def cmd_replay_etf_tsm(args: argparse.Namespace) -> int:
         print("replay-etf-tsm requires --config", file=sys.stderr)
         return 2
     try:
+        from engine.parity import load_declaration
+
         cfg = load_config(args.config)
         result = run_etf_tsm_engine_replay(
             config=cfg,
@@ -151,12 +153,15 @@ def cmd_replay_etf_tsm(args: argparse.Namespace) -> int:
             cache_dir=args.cache_dir,
             initial_capital=args.initial_capital,
             max_bars=args.max_bars,
+            assumptions=load_declaration(args.assumptions) if args.assumptions else None,
+            assert_financial_parity=args.assert_financial_parity,
         )
     except (ConfigError, FileNotFoundError, ValueError) as exc:
         print(f"ETF TSM replay error: {exc}", file=sys.stderr)
         return 1
 
-    print(f"ETF TSM engine replay status: {'PASS' if result.passed else 'BLOCKED'}")
+    print(f"structural_replay: {'PASS' if result.passed else 'BLOCKED'}")
+    print(f"financial_parity: {result.financial_parity}")
     print(f"Markdown: {result.report_path}")
     print(f"JSON:     {result.json_path}")
     print(f"Operational report: {result.operational_report_path}")
@@ -165,6 +170,8 @@ def cmd_replay_etf_tsm(args: argparse.Namespace) -> int:
         print("Differences:")
         for difference in result.differences:
             print(f"  - {difference}")
+    if result.financial_parity_assertion_failed:
+        return 1
     return 0 if result.passed or args.allow_diffs else 1
 
 
@@ -757,6 +764,11 @@ def build_parser() -> argparse.ArgumentParser:
         "--allow-diffs",
         action="store_true",
         help="Exit 0 even if replay structural differences are found",
+    )
+    p_etf_replay.add_argument("--assumptions", help="Predeclared execution assumptions JSON; evaluate attribution")
+    p_etf_replay.add_argument(
+        "--assert-financial-parity", action="store_true",
+        help="Require declared financial equality; attribution alone fails, even with --allow-diffs",
     )
     p_etf_replay.set_defaults(func=cmd_replay_etf_tsm)
 
