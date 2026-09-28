@@ -29,6 +29,10 @@ from config.schema import (
 )
 
 CONFIG_DIR = Path(__file__).resolve().parent
+BUILTIN_PREFIX = "builtin:"
+# Credential-free templates shipped as package data. live.toml is deliberately
+# not shipped: this release does not support live trading.
+BUNDLED_CONFIGS = frozenset({"research", "paper", "paper_shakedown", "paper_etf_tsm"})
 
 
 class ConfigError(Exception):
@@ -37,11 +41,13 @@ class ConfigError(Exception):
 
 def load_config(path: str | Path, *, load_env: bool = True) -> Config:
     """Load and validate a TOML config file, resolving secrets from env vars."""
-    path = Path(path)
+    path = resolve_config_path(path)
     if not path.exists():
         raise ConfigError(f"Config file not found: {path}")
     if load_env:
-        load_dotenv()  # pulls .env from CWD
+        # Only the working directory's .env; never search parent directories of
+        # the installed package or source checkout.
+        load_dotenv(Path.cwd() / ".env")
 
     with path.open("rb") as f:
         raw = tomllib.load(f)
@@ -208,9 +214,30 @@ def get_broker_creds(broker: BrokerConfig) -> tuple[str, str]:
     return key, secret
 
 
-def default_config_path(mode: str) -> Path:
-    """Return the path to a default config file for a given mode."""
-    return CONFIG_DIR / f"{mode}.toml"
+def bundled_config_names() -> tuple[str, ...]:
+    """Names of the config templates shipped inside the installed package."""
+    return tuple(sorted(name for name in BUNDLED_CONFIGS if (CONFIG_DIR / f"{name}.toml").is_file()))
+
+
+def resolve_config_path(value: str | Path) -> Path:
+    """Resolve a ``--config`` value to a file.
+
+    ``builtin:<name>`` selects a template shipped in the installed package
+    (see ``BUNDLED_CONFIGS``). Any other value is a filesystem path, relative to
+    the current working directory; there is no fallback to bundled templates or
+    to a source checkout.
+    """
+    text = str(value)
+    if not text.startswith(BUILTIN_PREFIX):
+        return Path(value)
+    name = text[len(BUILTIN_PREFIX) :]
+    path = CONFIG_DIR / f"{name}.toml"
+    if name not in BUNDLED_CONFIGS or not path.is_file():
+        available = ", ".join(f"{BUILTIN_PREFIX}{item}" for item in bundled_config_names())
+        raise ConfigError(
+            f"Unknown bundled config {text!r}; available: {available or '(none installed)'}"
+        )
+    return path
 
 
 if __name__ == "__main__":  # pragma: no cover

@@ -13,6 +13,7 @@ from typing import Any
 import pandas as pd
 
 from config.loader import ConfigError, get_broker_creds, load_config
+from config.optional_deps import MissingExtraError
 from engine.etf_tsm_replay import run_etf_tsm_engine_replay
 from engine.ma_replay import run_ma_real_data_replay
 from engine.paper_dry_run import run_ma_paper_dry_run
@@ -675,7 +676,11 @@ def cmd_paper_operator_report(args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="mfs-engine", description="MFS trading engine tools")
-    parser.add_argument("--config", "-c", help="Path to TOML config file for preflight")
+    parser.add_argument(
+        "--config",
+        "-c",
+        help="TOML config file path, or builtin:<name> for a bundled template",
+    )
     sub = parser.add_subparsers(dest="command")
 
     p_preflight = sub.add_parser("preflight", help="Validate config without placing orders")
@@ -1012,7 +1017,11 @@ def main(argv: list[str] | None = None) -> int:
         else:
             parser.print_help()
             return 0
-    return args.func(args)
+    try:
+        return args.func(args)
+    except MissingExtraError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":  # pragma: no cover

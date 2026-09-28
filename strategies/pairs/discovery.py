@@ -13,8 +13,8 @@ from itertools import combinations
 
 import numpy as np
 import pandas as pd
-from statsmodels.tsa.stattools import coint
 
+from config.optional_deps import require_extra
 from strategies.cross_sectional import validate_panel_inputs
 
 
@@ -184,7 +184,10 @@ def fit_pair_relationship(
         return None
 
     beta, intercept = _ols_hedge_ratio(log_y, log_x)
-    statistic, pvalue, _ = coint(log_y, log_x)
+    stattools = require_extra(
+        "statsmodels.tsa.stattools", extra="research", purpose="Pairs cointegration testing"
+    )
+    statistic, pvalue, _ = stattools.coint(log_y, log_x)
     if not np.isfinite(pvalue) or float(pvalue) > params.coint_pvalue_threshold:
         return None
 
