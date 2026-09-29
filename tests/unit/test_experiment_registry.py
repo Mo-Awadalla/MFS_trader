@@ -20,6 +20,7 @@ from experiments.models import (
     PromotionStatus,
 )
 from experiments.registry import ExperimentRegistry
+from tests.qualification import enter_paper_ops
 
 
 @pytest.fixture
@@ -143,7 +144,7 @@ class TestExperimentRegistry:
         exp = registry.create(_draft())
         registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
         registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
-        registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
+        enter_paper_ops(registry, exp.uuid)
         suspended = registry.suspend_experiment(exp.uuid)
         assert suspended.promotion_status == PromotionStatus.SUSPENDED
         assert suspended.suspended_from_status == PromotionStatus.PAPER_OPS
@@ -156,7 +157,7 @@ class TestExperimentRegistry:
         exp = registry.create(_draft())
         registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
         registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
-        registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
+        enter_paper_ops(registry, exp.uuid)
         registry.suspend_experiment(exp.uuid)
         with pytest.raises(IllegalPromotionTransitionError):
             # Cannot resume directly into LIVE_DRY_RUN — must resume into PAPER_OPS.
@@ -172,7 +173,7 @@ class TestExperimentRegistry:
         for exp in (first, second):
             registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
             registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
-            registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
+            enter_paper_ops(registry, exp.uuid)
             registry.transition_promotion_status(exp.uuid, PromotionStatus.LIVE_DRY_RUN)
             registry.transition_promotion_status(exp.uuid, PromotionStatus.LIVE_CANDIDATE)
         registry.transition_promotion_status(first.uuid, PromotionStatus.LIVE)

@@ -1,4 +1,4 @@
-"""Tiny MA paper trading shakedown."""
+"""Simulation-only MA execution diagnostic; not broker-paper qualification."""
 
 from __future__ import annotations
 
@@ -16,6 +16,7 @@ from data.pipeline import load_bars
 from engine.paper_dry_run import _find_data_config, _normalize_bars
 from execution.base import OrderSide, OrderType, TimeInForce
 from execution.oms import OMS, OrderIntent
+from execution.sim_broker.broker import SimBroker
 from monitoring.reports import build_operational_report
 from monitoring.watchdog import HeartbeatWatchdog, WatchdogConfig
 from portfolio.sizing import PortfolioState, compute_position_delta, compute_target_positions
@@ -79,8 +80,10 @@ def run_ma_paper_trade_once(
     slow_window: int = 100,
     trend_filter_active: bool = True,
 ) -> PaperTradeResult:
-    """Submit at most one tiny MA paper order."""
+    """Submit at most one simulated MA order; broker adapters are unsupported."""
 
+    if not isinstance(broker, SimBroker):
+        raise ValueError("Legacy MA diagnostics are simulation-only; use guarded paper-run for broker paper")
     _validate_submit_gate(config, symbol)
     strategy = config.strategy_name or "dual_ma_crossover"
     data_config = _find_data_config(config, symbol)

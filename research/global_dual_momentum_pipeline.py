@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from config.schema import CostModelConfig
@@ -18,10 +17,8 @@ from research.cross_sectional_pipeline import (
     backtest_cross_sectional,
     format_cross_sectional_gauntlet_report,
     make_no_tuning_wfa_fns,
+    run_declared_cross_sectional_search,
     write_validation_artifacts,
-)
-from research.cross_sectional_pipeline import (
-    build_returns_matrix as build_cross_sectional_returns_matrix,
 )
 from research.global_dual_momentum_experiment import (
     STRATEGY_NAME,
@@ -35,7 +32,14 @@ from strategies.global_dual_momentum.signal import (
     sweep_grid,
 )
 from validation.gauntlet import run_gauntlet
+from validation.search import DeclaredSearch
 from validation.wfa.engine import PRESETS, WFATier
+
+SEARCH_SCOPE = (
+    "the complete predeclared Global Dual Momentum v1 stability grid (strategies."
+    "global_dual_momentum.signal.sweep_grid, all trials, declared order); exploratory "
+    "research outside this grid was not recorded and is not represented"
+)
 
 PARAM_COLUMNS = [
     "momentum_lookback_days",
@@ -69,30 +73,27 @@ def backtest_global_dual_momentum(
 def run_global_dual_momentum_sweep(
     df: pd.DataFrame,
     *,
+    params: GlobalDualMomentumParams | None = None,
     cost_config: CostModelConfig | None = None,
     initial_capital: float = 10000.0,
-) -> pd.DataFrame:
-    """Run the predeclared stability grid."""
+) -> tuple[pd.DataFrame, DeclaredSearch]:
+    """Run the predeclared stability grid; returns sweep rows and DSR search evidence."""
 
-    rows: list[dict[str, Any]] = []
-    for i, params in enumerate(sweep_grid()):
-        result = backtest_global_dual_momentum(
-            df,
-            params,
-            cost_config=cost_config,
-            initial_capital=initial_capital,
-        )
-        rows.append(
-            {
-                **params_to_dict(params),
-                "grid_index": i,
-                "rebalance_frequency": "monthly",
-                "bucket_rule": "risk_top_positive_else_defensive_top",
-                **result.metrics,
-                "trade_count": result.trade_count,
-            }
-        )
-    return pd.DataFrame(rows)
+    return run_declared_cross_sectional_search(
+        df,
+        sweep_grid(),
+        params or default_params(),
+        strategy_name=STRATEGY_NAME,
+        generate_signals=generate_signals,
+        params_to_dict=params_to_dict,
+        sweep_metadata={
+            "rebalance_frequency": "monthly",
+            "bucket_rule": "risk_top_positive_else_defensive_top",
+        },
+        search_scope=SEARCH_SCOPE,
+        cost_config=cost_config or default_cost_config(),
+        initial_capital=initial_capital,
+    )
 
 
 def make_global_dual_momentum_wfa_fns(
@@ -105,24 +106,6 @@ def make_global_dual_momentum_wfa_fns(
     """Build WFA train/test callables for frozen Global Dual Momentum v1."""
 
     return make_no_tuning_wfa_fns(
-        df,
-        params or default_params(),
-        strategy_name=STRATEGY_NAME,
-        generate_signals=generate_signals,
-        params_to_dict=params_to_dict,
-        cost_config=cost_config or default_cost_config(),
-        initial_capital=initial_capital,
-    )
-
-
-def build_returns_matrix(
-    df: pd.DataFrame,
-    *,
-    params: GlobalDualMomentumParams | None = None,
-    cost_config: CostModelConfig | None = None,
-    initial_capital: float = 10000.0,
-) -> np.ndarray:
-    return build_cross_sectional_returns_matrix(
         df,
         params or default_params(),
         strategy_name=STRATEGY_NAME,
@@ -177,8 +160,9 @@ def run_global_dual_momentum_validation_gauntlet(
         cost_config=cost_config,
         initial_capital=initial_capital,
     )
-    sweep_df = run_global_dual_momentum_sweep(
+    sweep_df, search = run_global_dual_momentum_sweep(
         df,
+        params=params,
         cost_config=cost_config,
         initial_capital=initial_capital,
     )
@@ -188,13 +172,6 @@ def run_global_dual_momentum_validation_gauntlet(
         cost_config=cost_config,
         initial_capital=initial_capital,
     )
-    returns_matrix = build_returns_matrix(
-        df,
-        params=params,
-        cost_config=cost_config,
-        initial_capital=initial_capital,
-    )
-    best_sharpe = float(research.metrics.get("sharpe", 0.0))
     gauntlet = run_gauntlet(
         STRATEGY_NAME,
         df,
@@ -202,8 +179,7 @@ def run_global_dual_momentum_validation_gauntlet(
         test_fn,
         sweep_df,
         PARAM_COLUMNS,
-        best_sharpe=best_sharpe,
-        returns_matrix=returns_matrix,
+        dsr_search=search,
         initial_capital=initial_capital,
         wfa_config=PRESETS[WFATier.PRIMARY],
         mc_num_paths=mc_num_paths,

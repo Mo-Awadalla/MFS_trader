@@ -1,9 +1,9 @@
 """Data CLI — download and validate OHLCV data.
 
-Usage:
-    mfs-data download --config config/research.toml
-    mfs-data download --config config/research.toml --symbol AAPL
-    mfs-data status --config config/research.toml
+Usage (``--config`` takes a file path or ``builtin:<name>`` for a bundled template):
+    mfs-data --config config/research.toml download
+    mfs-data --config config/research.toml download --symbol AAPL
+    mfs-data --config builtin:research status
 """
 
 from __future__ import annotations
@@ -14,7 +14,8 @@ from pathlib import Path
 
 import structlog
 
-from config.loader import get_broker_creds, load_config
+from config.loader import ConfigError, get_broker_creds, load_config
+from config.optional_deps import MissingExtraError
 from data.pipeline import build_downloader, download_and_store, load_bars
 from storage.parquet_io import parquet_path
 
@@ -93,7 +94,12 @@ def cmd_status(args: argparse.Namespace) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="mfs-data", description="Data pipeline CLI")
-    parser.add_argument("--config", "-c", required=True, help="Path to TOML config file")
+    parser.add_argument(
+        "--config",
+        "-c",
+        required=True,
+        help="TOML config file path, or builtin:<name> for a bundled template",
+    )
     parser.add_argument("--db", action="store_true", default=True, help="Log to SQLite")
     sub = parser.add_subparsers(dest="command", required=True)
 
@@ -105,7 +111,11 @@ def main(argv: list[str] | None = None) -> int:
     p_status.set_defaults(func=cmd_status)
 
     args = parser.parse_args(argv)
-    return args.func(args)
+    try:
+        return args.func(args)
+    except (ConfigError, MissingExtraError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
 
 
 if __name__ == "__main__":  # pragma: no cover

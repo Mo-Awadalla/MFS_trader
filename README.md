@@ -1,8 +1,10 @@
 # mfs-trader
 
-Python systematic-trading research and execution platform built around one principle: strategies are hypotheses, not assets. A hypothesis is frozen as an immutable Experiment, punished with realistic costs, validated through a statistical gauntlet, and only then allowed to move toward paper/live operational gates.
+Experimental Python strategy-research and validation workbench with simulated execution. Strategies are hypotheses, not assets: freeze the decision path, evaluate it with explicit costs and a statistical gauntlet, and preserve failed as well as successful evidence.
 
-This is a portfolio/research engineering project, not trading advice and not live-trading approval.
+The intended release surface is credential-free research and simulation—not a qualified broker-paper campaign, live-trading system, or investment recommendation. Paper-runtime engineering checks and any future broker qualification are separate evidence.
+
+Numerical-correction notice: historical MC/DSR validation claims below require re-evaluation and are withdrawn as current validation claims. The corrected code does not retroactively approve any Experiment. Original evidence and stored lifecycle fields remain unchanged; see the [correction and evidence-migration note](docs/numerical-correctness-2026-09-16.md).
 
 ## Why this repo exists
 
@@ -18,12 +20,14 @@ Most trading repos show a backtest. This repo tries to show the harder engineeri
 
 - Package: `mfs-trader`
 - Primary language: Python 3.11+
-- Current strongest candidate: `ETFTimeSeriesMomentumVolTarget-v1-YahooAdjustedDaily-2005-2026`
-- Current promotion status: `validation_passed`
-- Paper/live status: not approved; next step is paper-ops evidence, not live deployment
+- Historical candidate: `ETFTimeSeriesMomentumVolTarget-v1-YahooAdjustedDaily-2005-2026`
+- Stored promotion status: `validation_passed` (historical metadata, not corrected validation approval)
+- Paper/live status: not approved; affected validation evidence requires re-evaluation before relying on its PASS
 - Latest mechanism scout: `CrossAssetCarryTrendScout-v1` passed all 13 frozen public-data gates; next evidence step is a five-market raw-contract replication, not paper/live promotion
 
-## Validated candidate
+## Historical candidate — requires re-evaluation
+
+The following are unchanged historical report values, not results from the corrected numerical implementation.
 
 | Experiment | Data | Status | Sharpe | WFA OOS Sharpe | MC P(ruin) | DSR p-value | Max DD | Notes |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- |
@@ -55,22 +59,34 @@ Using the same cached Yahoo adjusted daily data panel:
 
 ![ETF TSM drawdown vs SPY](docs/assets/etf_tsm_drawdown_vs_spy.png)
 
-Interpretation: SPY had higher absolute return over this sample, while the ETF TSM candidate had better risk-adjusted behavior and much smaller drawdowns. That is why the next question is portfolio utility and operational paper-readiness, not automatic live trading.
+Historical interpretation: SPY had higher absolute return over this sample, while the reported ETF TSM metrics showed better risk-adjusted behavior and smaller drawdowns. These comparisons are not a substitute for corrected validation or permission to proceed to paper/live operation.
 
 ### ETF TSM runtime replay
 
-The validated candidate also has a no-credential runtime replay through the engine, portfolio sizing, risk checks, OMS, SQLite order/position state, and simulated broker fills:
+The historical candidate also has a runtime replay through the engine, portfolio sizing, risk checks, OMS, SQLite order/position state, and simulated broker fills:
 
 | Check | Result |
 | --- | ---: |
 | Bars/cycles | 5,405 / 5,405 |
 | Orders submitted/filled/rejected/timed out | 1,072 / 1,072 / 0 / 0 |
 | Operational blockers | 0 |
-| Replay status | PASS |
+| Structural replay status | PASS (historical) |
 
 Report: `docs/reports/etf_tsm_engine_replay/etf_tsm_engine_replay.md`.
 
-Scope: this proves the validated ETF target weights can pass through runtime plumbing in simulation. It is still not Alpaca paper/live broker approval.
+Scope: this historical PASS establishes completion of the operational simulation, **not financial execution parity**. Research final equity was $50,944.37 versus runtime $27,759.42, a $23,184.95 difference. The aggregate gap alone does not attribute timing, sizing, costs, rounding, or risk-control effects. It is neither corrected statistical validation nor Alpaca paper/live approval.
+
+### Evidence boundaries
+
+| Evidence | What it can establish | What it cannot establish |
+| --- | --- | --- |
+| Original validation report | What the historical implementation computed | Corrected MC/DSR qualification |
+| Versioned corrected evaluation | Corrected validation under recorded inputs, trials, costs, and source version | Automatic lifecycle transition or execution permission |
+| Structural replay | Runtime cycles, orders, reconciliation, and operational blockers | Research/runtime financial agreement |
+| Execution-parity comparison | Ledger agreement under explicitly identical assumptions, or attributed differences | Broker fill quality or elapsed paper qualification |
+| Offline paper safety tests | Tested evidence and recovery behavior under simulated faults | Real broker sessions, reconciled trades, slippage, or operator sign-off |
+
+Broker-paper qualification is **NOT ESTABLISHED**. Synthetic drills do not satisfy the required elapsed window, eligible exchange sessions, or observed broker fills. Publication remains an owner action; no remote release or deployment is implied.
 
 ## Latest research scouts
 
@@ -183,13 +199,34 @@ The repo includes paper/live plumbing, but broker authority is intentionally gat
 
 Paper ops proves implementation behavior, not alpha. Live deployment still requires manual approval and capped capital.
 
+The release surface is research and simulation. Legacy `paper-trade-ma`,
+`paper-dry-run-ma`, and standalone `--alpaca-paper-smoke` broker routes are retired.
+Their underlying one-shot diagnostics are simulation-only; there is no substitute
+broker-smoke authority. Continuous paper safety repairs are verified offline, not
+a qualified campaign. Existing smoke, drill, window, activity, numerical and manual
+approval gates remain in force; future broker operation requires a separate review.
+
 ## Quickstart
 
 ### Reproducible dev setup
 
+The package metadata requires Python 3.11 or later. Release checks target Python 3.11 and 3.12 independently: use `requirements-dev-py311.txt` for 3.11 and `requirements-dev.txt` for 3.12. Do not install the 3.12 NumPy/SciPy pins into 3.11. Commands below show 3.12.
+
+macOS / Linux:
+
 ```bash
-python -m venv .venv
-source .venv/Scripts/activate  # Windows Git Bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements-dev.txt
+python -m pip install -e . --no-deps
+```
+
+Windows PowerShell:
+
+```powershell
+py -3.12 -m venv .venv
+.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip
 python -m pip install -r requirements-dev.txt
 python -m pip install -e . --no-deps
@@ -210,9 +247,25 @@ mfs-data --config config/research.toml status
 mfs-engine --config config/paper.toml preflight
 mfs-engine shakedown-ma --out-dir runs/ma_shakedown
 mfs-engine report --db runs/ma_shakedown/baseline.sqlite --allow-blockers
+python scripts/verify_offline_shakedown.py --out-dir runs/ma_shakedown
 ```
 
 Expected result for the shakedown is `MA shakedown status: PASS`. It exercises synthetic data quality, research backtest, engine replay, sim-broker fills, rejection, timeout, partial-fill scenarios, and operational reports.
+The verifier checks the report and confirms baseline fills plus the rejection, timeout, and partial-fill scenarios.
+
+### Installed wheel, runtime dependencies only
+
+Install the locally built wheel into a fresh environment without `requirements-dev.txt` or provider extras. From an empty working directory outside the checkout, with no `.env` or broker credentials:
+
+```bash
+python -m pip install /absolute/path/to/mfs_trader-0.1.0-py3-none-any.whl
+mfs-data --config builtin:research status
+mfs-engine --config builtin:paper preflight
+mfs-engine shakedown-ma --out-dir ./ma_shakedown
+mfs-engine report --db ./ma_shakedown/baseline.sqlite --allow-blockers
+```
+
+The [installable-release contract](docs/release/installable-release.md) gives constrained 3.11/3.12 builds and a verifier that checks installed provenance, rejects network access, exercises the corrected synthetic gauntlet, and checks missing optional-extra errors. Only declared runtime modules and explicit config templates are shipped; market data and historical Experiment evidence are not wheel assets.
 
 ### Regenerate the SPY comparison artifacts
 
@@ -257,7 +310,7 @@ The committed report used the frozen 133-stock research universe plus SPY. Raw S
 python -m engine.cli --config config/research.toml replay-etf-tsm --out-dir runs/etf_tsm_engine_replay
 ```
 
-Expected result is `ETF TSM engine replay status: PASS`. The command requires cached Yahoo ETF bars under `data/parquet/equity/yahoo_chart`; it does not require broker credentials and writes runtime/operational artifacts under the chosen output directory.
+The output separates structural replay status from `financial_parity`. Cached Yahoo ETF bars under `data/parquet/equity/yahoo_chart` are required; broker credentials are not. To compare ledgers, predeclare assumptions and follow the [execution-parity contract](docs/release/execution-parity-boundary.md). `--assert-financial-parity` fails when declarations are absent or financial equality is not established; `--allow-diffs` cannot override that assertion. Structural PASS alone is not financial parity.
 
 ## Quality gates
 
@@ -270,22 +323,21 @@ python -m pytest tests/unit tests/contracts tests/integration/test_ma_shakedown.
 
 GitHub Actions workflow: `.github/workflows/ci.yml`.
 
-Live broker tests are skipped unless explicitly enabled with `RUN_LIVE_BROKER_TESTS=1`. Test collection does not load `.env` by default; set `MFS_TEST_LOAD_DOTENV=1` only for explicit live-broker runs.
+Live broker tests are skipped unless explicitly enabled with `RUN_LIVE_BROKER_TESTS=1`. Offline tests reject dotenv reads even through application code. `MFS_TEST_LOAD_DOTENV=1` is honored only for explicitly enabled live-broker runs.
 
 ## Credentials and live mode
 
-Copy `.env.example` to `.env` only for local broker/data credentials. Never commit `.env`.
-
-```bash
-cp .env.example .env
-```
+Configuration parsing does not load `.env` by default. Supply broker/data credentials
+through explicitly exported environment variables, never tracked files. The Python
+loader supports deliberate `load_env=True` outside offline tests; this release's
+credential-free commands do not opt in. No release verification loads credentials.
 
 Live mode is intentionally gated by `config/live.toml`; it refuses to start unless `live_deployment.authorized = true` and live credentials/caps are configured.
 
 ## Known limitations / next serious work
 
 - The current public repo should be renamed from the old `untitled_project` remote before resume use.
-- ETF TSM has passed simulated runtime replay, but continuous Alpaca paper ops has not yet been run for the validation-passed candidate.
+- ETF TSM has a historical simulated runtime replay PASS, but continuous Alpaca paper ops has not yet been run for the historical candidate. Affected validation evidence requires corrected re-evaluation before relying on it for paper-ops progression.
 - The runtime replay uses a target-weight adapter and simulated broker; real paper broker authority remains a separate evidence gate.
 
 ## License / reuse

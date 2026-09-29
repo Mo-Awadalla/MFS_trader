@@ -120,6 +120,9 @@ def confirm_paper_ops_pass(
             f"confirm-paper-ops-pass requires PAPER_OPS, "
             f"got {experiment.promotion_status.value}"
         )
+    from experiments.corrected_evaluations import require_current_qualification
+
+    require_current_qualification(registry, uuid, expected_hash)
     evidence = _verify_paper_ops_evidence(registry, experiment, paper_session_id)
     confirmation_path = _write_paper_ops_confirmation(
         registry,
@@ -242,6 +245,7 @@ def _write_paper_ops_confirmation(
         "experiment_hash": experiment.experiment_hash,
         "paper_session_id": paper_session_id,
         "evidence_artifact_hashes": evidence["evidence_artifact_hashes"],
+        "paper_identity": evidence["identity"],
         "result": "confirmed",
         "next_allowed_status": PromotionStatus.LIVE_DRY_RUN.value,
     }

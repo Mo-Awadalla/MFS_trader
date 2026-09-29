@@ -39,6 +39,17 @@ def _make_ohlcv(n: int = 900, seed: int = 7) -> pd.DataFrame:
 
 
 class TestBBValidationPipeline:
+    def test_dsr_trial_index_uses_frozen_params_not_sweep_winner(self):
+        df = _make_ohlcv()
+        grid = compact_sweep_grid()
+        _sweep, search = run_bb_sweep(df, grid=grid, selected_params=grid[1], symbol="AAPL")
+
+        assert search.selection_error is None
+        assert search.selected_trial_index == 1
+        assert search.returns_matrix.shape == (len(df), len(grid))
+        selected = backtest_bb(df, grid[1], symbol="AAPL").returns.to_numpy()
+        np.testing.assert_array_equal(search.returns_matrix[:, 1], selected)
+
     def test_research_report_runs(self):
         df = _make_ohlcv()
         result = run_bb_research_report(df, symbol="AAPL", params=default_params())
@@ -48,7 +59,7 @@ class TestBBValidationPipeline:
 
     def test_sweep_produces_rows(self):
         df = _make_ohlcv()
-        sweep = run_bb_sweep(df, grid=compact_sweep_grid(), symbol="AAPL")
+        sweep, _search = run_bb_sweep(df, grid=compact_sweep_grid(), symbol="AAPL")
         assert len(sweep) == 3
         assert "sharpe" in sweep.columns
         assert "window" in sweep.columns

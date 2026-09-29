@@ -1,19 +1,20 @@
-"""Tests for the continuous paper trading loop.
-
-Tests use a SimBroker and an in-memory Experiment registry to verify lifecycle
-integration: kill switch gating, portfolio state awareness, experiment status
-checks, and graceful shutdown.
-"""
-
+"""Deterministic paper-loop recovery using fake brokers and real temporary SQLite."""
 from __future__ import annotations
 
-import copy
-import threading
+import json
+import multiprocessing
+import sqlite3
+import uuid
+from contextlib import closing
+from dataclasses import asdict, replace
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
 import pytest
+import responses
 
+from config.loader import load_config
 from config.schema import (
     AssetClass,
     BrokerConfig,
@@ -27,703 +28,947 @@ from config.schema import (
     PortfolioConfig,
     RiskLimits,
 )
+from engine.paper_binding import open_bound_paper_db
+from engine.paper_evidence import PaperLedger, digest
+from engine.paper_guard import PaperRunnerOwnership
 from engine.paper_run import PaperRunConfig, PaperRunLoop
-from engine.paper_session import PAPER_OPS_SMOKE_REPORT
-from execution.base import BrokerAccount, BrokerPosition
+from engine.paper_strategy import BROKER_PAPER_EXECUTION_MODE
+from execution.alpaca.adapter import AlpacaAdapter
+from execution.base import OrderSide, OrderType
+from execution.oms import OMS, OrderIntent
 from execution.sim_broker.broker import SimBroker
-from experiments.artifacts import ArtifactManager
-from experiments.backfill import build_bb_aapl_1d_default_snapshot
+from experiments.artifacts import ArtifactImmutableError, ArtifactManager
 from experiments.kill_switch import KillSwitchSeverity
 from experiments.models import ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
-from storage.repository import upsert_order
+from storage.event_logger import EventLogger
 from storage.schema import init_db
+from strategies.ma.signal import MAParams
+from tests.qualification import enter_paper_ops
+from tests.unit.test_paper_evidence import paper_experiment
+from tests.unit.test_paper_strategy import snapshot_for_config
 
 
-@pytest.fixture
-def registry(tmp_path):
-    reg = ExperimentRegistry(tmp_path / "experiments")
-    yield reg
-    reg.close()
+class Clock:
+    def __init__(self):
+        self.now = datetime(2024, 4, 9, 20, tzinfo=UTC)
+
+    def __call__(self):
+        return self.now
+
+    def advance(self, seconds):
+        self.now += timedelta(seconds=seconds)
 
 
-@pytest.fixture
-def experiment(registry):
-    snap = build_bb_aapl_1d_default_snapshot()
-    mutated = copy.deepcopy(snap)
-    object.__setattr__(mutated, "parameters", {**snap.parameters, "window": 20})
-    draft = ExperimentDraft(label="paper-run-test", snapshot=mutated)
-    exp = registry.create(draft)
-    registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
-    registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
-    registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
-    return exp
-
-
-def _make_config() -> Config:
+def _make_config():
     return Config(
         mode=Mode.PAPER,
-        brokers=[
-            BrokerConfig(
-                name="sim_broker",
-                asset_class=AssetClass.EQUITY,
-                api_key_env="SIM_API_KEY",
-                api_secret_env="SIM_API_SECRET",
-                base_url="sim",
-            )
-        ],
+        brokers=[BrokerConfig(name="sim_broker", asset_class=AssetClass.EQUITY,
+                              api_key_env="SIM_API_KEY", api_secret_env="SIM_API_SECRET", base_url="sim")],
         data=[DataConfig(symbols=["AAPL"], asset_class=AssetClass.EQUITY)],
-        risk_limits=RiskLimits(
-            per_position_pct=0.05,
-            max_daily_loss_pct=0.99,
-            max_monthly_loss_pct=0.99,
-            max_open_positions=10,
-        ),
-        portfolio=PortfolioConfig(per_position_risk_pct=0.05),
-        cost_model=CostModelConfig(),
-        monitoring=MonitoringConfig(),
-        engine=EngineConfig(startup_reconciliation_required=True),
-        live_deployment=LiveDeploymentConfig(),
-        strategy_name="dual_ma_crossover",
-        strategy_version="0.1.0",
-        strategies_enabled=["ma"],
+        risk_limits=RiskLimits(), portfolio=PortfolioConfig(), cost_model=CostModelConfig(),
+        monitoring=MonitoringConfig(), engine=EngineConfig(startup_reconciliation_required=True),
+        live_deployment=LiveDeploymentConfig(), strategy_name="dual_ma_crossover",
+        strategy_version="0.1.0", strategies_enabled=["ma"],
     )
 
 
-def _make_bars(n: int = 100) -> pd.DataFrame:
-    return pd.DataFrame(
-        {
-            "open": [150.0] * n,
-            "high": [151.0] * n,
-            "low": [149.0] * n,
-            "close": [150.5] * n,
-            "volume": [1_000_000] * n,
-        },
-        index=pd.date_range("2024-01-01", periods=n, freq="1D", tz="UTC"),
-    )
+def bars(day="2024-04-09"):
+    return pd.DataFrame({"open": [150.0], "high": [151.0], "low": [149.0],
+                         "close": [150.0], "volume": [1000000]}, index=[pd.Timestamp(day, tz="UTC")])
 
 
-def _strategy_fn(bars, params):
-    return {"AAPL": 0.0}
-
-
-def _make_run_config(
-    experiment,
-    *,
-    max_cycles: int | None = 2,
-    experiment_root: str | Path | None = None,
-) -> PaperRunConfig:
-    return PaperRunConfig(
-        experiment_uuid=experiment.uuid,
-        experiment_hash=experiment.experiment_hash,
-        experiment_root=experiment_root or experiment.uuid,
-        max_cycles=max_cycles,
-        sleep_between_bars_seconds=0.01,
-    )
-
-
-class _FixedSimBroker(SimBroker):
-    def get_account(self) -> BrokerAccount:
-        return BrokerAccount(
-            account_id="test",
-            cash=100000.0,
-            equity=100000.0,
-            currency="USD",
-            status="ACTIVE",
-        )
-
-    def get_positions(self) -> list[BrokerPosition]:
-        return []
-
-    def get_open_orders(self) -> list:
-        return []
-
-    def get_price(self, symbol: str) -> float | None:
-        return 150.0
-
-
-class TestPaperRunExperimentVerification:
-    def test_rejects_nonexistent_experiment(self, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        run_config = PaperRunConfig(
-            experiment_uuid="00000000-0000-0000-0000-000000000000",
-            experiment_hash="0" * 64,
-            experiment_root=tmp_path / "experiments",
-            max_cycles=1,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-        bars = _make_bars()
-        result = loop.run(bars, db_path=tmp_path / "run.sqlite")
-        assert result.halted or any("Experiment not found" in err for err in result.errors)
-
-    def test_rejects_experiment_not_in_paper_status(self, registry, tmp_path):
-        exp = registry.create(
-            ExperimentDraft(
-                label="not-paper",
-                snapshot=build_bb_aapl_1d_default_snapshot(),
-            )
-        )
-        config = _make_config()
-        broker = _FixedSimBroker()
-        run_config = _make_run_config(
-            exp,
-            experiment_root=registry.root,
-        )
-        run_config = PaperRunConfig(
-            experiment_uuid=exp.uuid,
-            experiment_hash=exp.experiment_hash,
-            experiment_root=registry.root,
-            max_cycles=1,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-        bars = _make_bars()
-        result = loop.run(bars, db_path=tmp_path / "run.sqlite")
-        assert result.halted or result.errors
-
-    def test_accepts_valid_experiment(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            max_cycles=1,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-        bars = _make_bars()
-        result = loop.run(bars, db_path=tmp_path / "run.sqlite")
-        assert not result.halted
-        assert not result.errors
-
-    def test_rejects_experiment_hash_mismatch(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash="0" * 64,
-            experiment_root=registry.root,
-            max_cycles=1,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-
-        result = loop.run(_make_bars(), db_path=tmp_path / "run.sqlite")
-
-        assert result.halted
-        assert result.errors
-        assert any("hash mismatch" in err for err in result.errors)
-
-
-class TestPaperRunKillSwitchGating:
-    def test_hard_kill_halts_loop(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            max_cycles=10,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-
-        registry.set_kill_switch(
-            experiment.uuid, KillSwitchSeverity.HARD, "test halt"
-        )
-
-        bars = _make_bars()
-        result = loop.run(bars, db_path=tmp_path / "run.sqlite")
-        assert result.halted
-        assert result.halt_reason is not None
-
-    def test_soft_kill_halts_loop(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            max_cycles=1,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-
-        registry.set_kill_switch(
-            experiment.uuid, KillSwitchSeverity.SOFT, "soft test"
-        )
-
-        bars = _make_bars()
-        result = loop.run(bars, db_path=tmp_path / "run.sqlite")
-        assert result.halted
-        assert result.cycle_count == 0
-        assert "active kill switch" in (result.halt_reason or "")
-
-
-class TestPaperRunLifecycle:
-    def test_counts_only_distinct_refreshed_market_sessions(self, experiment, registry, tmp_path):
-        initial = _make_bars()
-        refreshed = pd.concat(
-            [
-                initial,
-                pd.DataFrame(
-                    {
-                        "open": [151.0],
-                        "high": [152.0],
-                        "low": [150.0],
-                        "close": [151.5],
-                        "volume": [1_000_000],
-                    },
-                    index=[initial.index[-1] + pd.Timedelta(days=1)],
-                ),
-            ]
-        )
-        refreshes = iter([initial, refreshed])
-        loop = PaperRunLoop(
-            config=_make_config(),
-            broker=_FixedSimBroker(),
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=PaperRunConfig(
-                experiment_uuid=experiment.uuid,
-                experiment_hash=experiment.experiment_hash,
-                experiment_root=registry.root,
-                session_id="distinct-market-sessions",
-                max_cycles=2,
-                sleep_between_bars_seconds=0,
-            ),
-            bars_provider=lambda: next(refreshes),
-        )
-
-        result = loop.run(initial, db_path=tmp_path / "distinct.sqlite")
-
-        assert not result.halted
-        assert result.cycle_count == 2
-        assert [cycle["input_data_watermark"] for cycle in result.bar_cycles] == [
-            str(initial.index[-1]),
-            str(refreshed.index[-1]),
-        ]
-
-    def test_resumes_window_from_atomic_checkpoint(self, experiment, registry, tmp_path):
-        initial = _make_bars()
-        refreshed = initial.copy()
-        refreshed.loc[initial.index[-1] + pd.Timedelta(days=1)] = initial.iloc[-1]
-        db_path = tmp_path / "resumable.sqlite"
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            session_id="resumable-window",
-            window_market_sessions=2,
-            sleep_between_bars_seconds=0,
-        )
-        first: PaperRunLoop
-
-        def stop_after_first():
-            first._handle_sigterm(None, None)
-            return initial
-
-        first = PaperRunLoop(
-            config=_make_config(),
-            broker=_FixedSimBroker(),
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-            bars_provider=stop_after_first,
-        )
-
-        interrupted = first.run(initial, db_path=db_path)
-
-        assert interrupted.cycle_count == 1
-        assert db_path.with_suffix(".paper_run_checkpoint.json").exists()
-        assert interrupted.evidence_path is None
-
-        resumed = PaperRunLoop(
-            config=_make_config(),
-            broker=_FixedSimBroker(),
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-            bars_provider=lambda: refreshed,
-        ).run(initial, db_path=db_path)
-
-        assert resumed.cycle_count == 2
-        assert not db_path.with_suffix(".paper_run_checkpoint.json").exists()
-        assert resumed.evidence_path is not None
-
-    def test_runs_specified_number_of_cycles(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        db_path = tmp_path / "run.sqlite"
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            session_id="multi-cycle-session",
-            max_cycles=3,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-        bars = _make_bars()
-        result = loop.run(bars, db_path=db_path)
-        assert not result.halted
-        assert result.cycle_count == 3
-        payload = ArtifactManager(registry.root).read_paper_session_json(
-            experiment.uuid,
-            "multi-cycle-session",
-        )
-        assert [cycle["result"] for cycle in payload["bar_cycles"]] == [
-            "completed",
-            "completed",
-            "completed",
-        ]
-        assert all(cycle["broker_sync_record_id"] for cycle in payload["bar_cycles"])
-        conn = init_db(db_path)
-        try:
-            reconciliation_events = conn.execute(
-                "SELECT COUNT(*) FROM events WHERE event_type = 'RECONCILIATION_RUN'"
-            ).fetchone()[0]
-        finally:
-            conn.close()
-        assert reconciliation_events >= 8
-
-    def test_writes_non_promoting_paper_ops_smoke_report(self, experiment, registry, tmp_path):
-        config = _make_config()
-        loop = PaperRunLoop(
-            config=config,
-            broker=_FixedSimBroker(),
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=PaperRunConfig(
-                experiment_uuid=experiment.uuid,
-                experiment_hash=experiment.experiment_hash,
-                experiment_root=registry.root,
-                session_id="smoke-window-session",
-                window_calendar_days=7,
-                window_market_sessions=5,
-                kill_switch_drill={
-                    "kill_switch_drill_evidence_exists": True,
-                    "new_orders_blocked": True,
-                },
-                max_cycles=5,
-                sleep_between_bars_seconds=0.01,
-            ),
-        )
-        loop._session_started_at -= 8 * 86_400
-
-        result = loop.run(_make_bars(), db_path=tmp_path / "smoke.sqlite")
-
-        assert not result.halted
-        report = ArtifactManager(registry.root).read_paper_session_report_json(
-            experiment.uuid,
-            "smoke-window-session",
-            PAPER_OPS_SMOKE_REPORT,
-        )
-        assert report["status"] == "PAPER_OPS_SMOKE_PASSED"
-        assert report["passed"] is True
-        assert report["promotion_unlocked"] is False
-
-    def test_graceful_shutdown(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            max_cycles=None,
-            sleep_between_bars_seconds=0.5,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-
-        def _shutdown_after_delay():
-            import time
-
-            time.sleep(0.3)
-            loop._handle_sigterm(None, None)
-
-        t = threading.Thread(target=_shutdown_after_delay, daemon=True)
-        t.start()
-
-        bars = _make_bars()
-        result = loop.run(bars, db_path=tmp_path / "run.sqlite")
-        assert not result.halted
-        assert result.cycle_count < 5
-
-
-class TestPaperRunCleanup:
-    def test_engine_and_registry_are_closed(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            max_cycles=1,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-        bars = _make_bars()
-        result = loop.run(bars, db_path=tmp_path / "run.sqlite")
-        assert not result.halted
-        assert result.cycle_count == 1
-
-
-class TestPaperRunPortfolioStateAwareness:
-    def test_reports_portfolio_state(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            max_cycles=1,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-        bars = _make_bars()
-        result = loop.run(bars, db_path=tmp_path / "run.sqlite")
-        assert not result.halted
-        assert loop.engine is not None
-        assert loop.engine.state.portfolio_state_authority is not None
-
-    def test_refuses_when_portfolio_state_is_partial(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FixedSimBroker()
-        db_path = tmp_path / "run.sqlite"
-        conn = init_db(db_path)
-        upsert_order(
-            conn,
-            {
-                "client_order_id": "pending",
-                "broker_order_id": "sim_pending",
-                "broker": "sim_broker",
-                "account_id": "test",
-                "environment": "paper",
-                "strategy": "test",
-                "symbol": "AAPL",
-                "asset_class": "equity",
-                "side": "buy",
-                "order_type": "market",
-                "time_in_force": "day",
-                "limit_price": 150.0,
-                "stop_price": None,
-                "requested_qty": 1.0,
-                "filled_qty": 0.0,
-                "remaining_qty": 1.0,
-                "avg_fill_price": None,
-                "notional": 150.0,
-                "currency": "USD",
-                "order_state": "ACKNOWLEDGED",
-                "reconciliation_status": "NOT_CHECKED",
-                "bar_timestamp": "2024-01-01T00:00:00+00:00",
-                "correlation_id": "test",
-                "version": "0.1.0",
-            },
-        )
-        conn.close()
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            session_id="partial-state-session",
-            max_cycles=1,
-            sleep_between_bars_seconds=0.01,
-        )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-
-        result = loop.run(_make_bars(), db_path=db_path)
-
-        assert result.halted
-        assert result.cycle_count == 0
-        assert result.halt_reason == "portfolio_state PARTIAL"
-        payload = ArtifactManager(registry.root).read_paper_session_json(
-            experiment.uuid,
-            "partial-state-session",
-        )
-        assert payload["order_lifecycle"][0]["client_order_id"] == "pending"
-        assert payload["order_lifecycle"][0]["order_state"] == "ACKNOWLEDGED"
-
-    def test_writes_immutable_paper_session_evidence_once(self, experiment, registry, tmp_path):
-        config = _make_config()
-        first = PaperRunLoop(
-            config=config,
-            broker=_FixedSimBroker(),
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=PaperRunConfig(
-                experiment_uuid=experiment.uuid,
-                experiment_hash=experiment.experiment_hash,
-                experiment_root=registry.root,
-                session_id="fixed-session",
-                max_cycles=1,
-                sleep_between_bars_seconds=0.01,
-            ),
-        )
-
-        result = first.run(_make_bars(), db_path=tmp_path / "first.sqlite")
-
-        artifacts = ArtifactManager(registry.root)
-        assert not result.halted
-        assert result.evidence_path is not None
-        payload = artifacts.read_paper_session_json(experiment.uuid, "fixed-session")
-        assert payload["cycle_count"] == 1
-        assert payload["session_kind"] == "paper_ops_smoke"
-        assert payload["order_lifecycle"] == []
-        assert payload["bar_cycles"][0]["result"] == "completed"
-        assert payload["bar_cycle_report"]["bar_cycle_completion"] == 1.0
-
-        second = PaperRunLoop(
-            config=config,
-            broker=_FixedSimBroker(),
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=PaperRunConfig(
-                experiment_uuid=experiment.uuid,
-                experiment_hash=experiment.experiment_hash,
-                experiment_root=registry.root,
-                session_id="fixed-session",
-                max_cycles=1,
-                sleep_between_bars_seconds=0.01,
-            ),
-        )
-
-        second_result = second.run(_make_bars(), db_path=tmp_path / "second.sqlite")
-
-        assert second_result.halted
-        assert any("immutable" in err.lower() for err in second_result.errors)
-
-    def test_records_and_halts_unexplained_missed_cycle(self, experiment, registry, tmp_path):
-        class _NoPriceBroker(_FixedSimBroker):
-            def get_price(self, symbol: str) -> float | None:
-                return None
-
-        config = _make_config()
-        loop = PaperRunLoop(
-            config=config,
-            broker=_NoPriceBroker(),
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=PaperRunConfig(
-                experiment_uuid=experiment.uuid,
-                experiment_hash=experiment.experiment_hash,
-                experiment_root=registry.root,
-                session_id="no-price-session",
-                max_cycles=1,
-                sleep_between_bars_seconds=0.01,
-            ),
-        )
-
-        result = loop.run(_make_bars(), db_path=tmp_path / "no-price.sqlite")
-
-        assert result.halted
-        assert result.cycle_count == 1
-        payload = ArtifactManager(registry.root).read_paper_session_json(
-            experiment.uuid,
-            "no-price-session",
-        )
-        assert payload["bar_cycles"][0]["result"] == "missed_unexplained"
-        assert payload["bar_cycle_report"]["unexplained_missed_cycles"] == 1
-
-
-class _FailingBroker(_FixedSimBroker):
-    def __init__(self, fail_on_get_positions: bool = False):
+class FakeBroker(SimBroker):
+    def __init__(self):
         super().__init__()
-        self._fail_positions = fail_on_get_positions
+        self.set_price("AAPL", 150.0)
+        self.submissions = []
+        self.connections = 0
 
-    def get_positions(self) -> list[BrokerPosition]:
-        if self._fail_positions:
-            raise RuntimeError("broker unreachable (test)")
-        return []
+    def connect(self):
+        self.connections += 1
+        super().connect()
+
+    def submit_order(self, request):
+        self.submissions.append(request.client_order_id)
+        return super().submit_order(request)
 
 
-@pytest.mark.skip(reason="Requires startup reconciliation with failing broker")
+@pytest.fixture
+def setup(tmp_path):
+    registry = ExperimentRegistry(tmp_path / "experiments")
+    exp = paper_experiment(registry)
+    clock = Clock()
+    config = PaperRunConfig(experiment_uuid=exp.uuid, experiment_hash=exp.experiment_hash,
+                            experiment_root=registry.root, session_id="run", max_cycles=1,
+                            sleep_between_bars_seconds=0, data_grace_seconds=60)
+    yield registry, exp, clock, config, tmp_path / "run.sqlite"
+    registry.close()
+
+
+def make_loop(setup, *, broker=None, run_config=None, strategy=None, provider=None, config=None, sleeper=None):
+    _, _, clock, rc, _ = setup
+    return PaperRunLoop(config=config or _make_config(), broker=broker or FakeBroker(),
+                        strategy_fn=strategy or (lambda bars, params: {}), strategy_name="test",
+                        run_config=run_config or rc, bars_provider=provider, clock=clock,
+                        sleeper=sleeper or clock.advance)
+
+
+def _open_claimed_ledger(db, root, identity):
+    artifacts = ArtifactManager(root)
+    ownership = PaperRunnerOwnership(
+        db, artifacts.paper_session_path(identity["experiment_uuid"], identity["session_id"]),
+    )
+    ownership.acquire()
+    try:
+        conn = open_bound_paper_db(
+            db, artifacts, experiment_uuid=identity["experiment_uuid"],
+            experiment_hash=identity["experiment_hash"], session_id=identity["session_id"],
+            ownership=ownership,
+        )
+    except BaseException:
+        ownership.release()
+        raise
+    return conn, ownership
+
+
+def test_distinct_sessions_have_real_times_separate_from_watermarks(setup):
+    registry, exp, clock, rc, db = setup
+    def provider():
+        clock.advance(86400)
+        return bars("2024-04-10")
+    result = make_loop(setup, run_config=replace(rc, max_cycles=2), provider=provider).run(bars(), db)
+    assert not result.halted and result.cycle_count == 2
+    payload = ArtifactManager(registry.root).read_paper_session_json(exp.uuid, "run")
+    assert payload["window"]["market_sessions"] == 2
+    assert payload["window"]["trades"] == 0
+    assert payload["bar_cycle_report"]["bar_cycle_completion"] == 1
+    assert payload["bar_cycles"][0]["expected_at"] == "2024-04-09T20:00:00+00:00"
+    assert payload["bar_cycles"][0]["input_data_watermark"] == "2024-04-09 00:00:00+00:00"
+
+
+def test_repeated_static_bars_do_not_manufacture_cycles(setup):
+    registry, exp, _, rc, db = setup
+    result = make_loop(setup, run_config=replace(rc, max_cycles=3)).run(bars(), db)
+    assert result.cycle_count == 1
+    payload = ArtifactManager(registry.root).read_paper_session_json(exp.uuid, "run")
+    assert payload["window"]["market_sessions"] == 1
+    assert payload["observations"]["attempts"][0]["outcome"] == "stopped"
+
+
+def test_overdue_fresh_data_records_missed_cycle_without_sleeping_forever(setup):
+    registry, exp, clock, rc, db = setup
+    def provider():
+        clock.advance(86461)
+        return bars()
+    result = make_loop(setup, run_config=replace(rc, max_cycles=2), provider=provider).run(bars(), db)
+    assert result.halted and result.halt_reason == "fresh data overdue"
+    payload = ArtifactManager(registry.root).read_paper_session_json(exp.uuid, "run")
+    assert payload["bar_cycle_report"]["bar_cycle_completion"] == 0.5
+    assert payload["bar_cycles"][1]["result"] == "missed_overdue"
+
+
+def test_initial_stale_bar_is_not_completed(setup):
+    _, _, clock, _, db = setup
+    def provider():
+        clock.advance(61)
+        return bars("2024-04-08")
+    result = make_loop(setup, provider=provider).run(bars("2024-04-08"), db)
+    assert result.halted
+    assert [c["result"] for c in result.bar_cycles] == ["missed_overdue"]
+
+
+def test_holiday_and_weekend_do_not_count_as_sessions(setup):
+    _, _, clock, rc, db = setup
+    clock.now = datetime(2024, 7, 4, 20, tzinfo=UTC)
+    result = make_loop(setup, run_config=replace(rc, max_cycles=2)).run(bars("2024-07-04"), db)
+    assert result.cycle_count == 0
+    assert not result.halted
+
+
+@pytest.mark.parametrize("severity", [KillSwitchSeverity.SOFT, KillSwitchSeverity.HARD])
+def test_active_kill_switch_blocks_before_broker_activity(setup, severity):
+    registry, exp, _, _, db = setup
+    registry.set_kill_switch(exp.uuid, severity, "manual hold", set_by="ops")
+    broker = FakeBroker()
+    result = make_loop(setup, broker=broker).run(bars(), db)
+    assert result.halted and "manual hold" in result.halt_reason
+    assert broker.connections == 0 and not broker.submissions
+    conn = init_db(db)
+    assert conn.execute("SELECT outcome FROM paper_attempts").fetchone()[0] == "halted"
+    conn.close()
+
+
+def test_bad_hash_blocks_before_broker_connection(setup):
+    _, _, _, rc, db = setup
+    broker = FakeBroker()
+    result = make_loop(setup, broker=broker, run_config=replace(rc, experiment_hash="0"*64)).run(bars(), db)
+    assert result.halted and "hash mismatch" in result.halt_reason
+    assert broker.connections == 0
+
+
 class TestPaperRunErrorHandling:
-    def test_engine_startup_failure_halts(self, experiment, registry, tmp_path):
-        config = _make_config()
-        broker = _FailingBroker(fail_on_get_positions=True)
-        run_config = PaperRunConfig(
-            experiment_uuid=experiment.uuid,
-            experiment_hash=experiment.experiment_hash,
-            experiment_root=registry.root,
-            max_cycles=1,
-            sleep_between_bars_seconds=0.01,
+    def test_engine_startup_failure_halts(self, setup):
+        class FailingBroker(FakeBroker):
+            def get_positions(self):
+                raise RuntimeError("broker unreachable (offline)")
+        broker = FailingBroker()
+        result = make_loop(setup, broker=broker).run(bars(), setup[-1])
+        assert result.halted and result.cycle_count == 0
+        assert not broker.submissions
+        conn = init_db(setup[-1])
+        assert conn.execute("SELECT outcome FROM paper_attempts").fetchone()[0] == "halted"
+        conn.close()
+
+
+def test_disabled_startup_reconciliation_cannot_bypass_paper_guard(setup):
+    class FailingBroker(FakeBroker):
+        def get_positions(self):
+            raise RuntimeError("unavailable")
+    cfg = replace(_make_config(), engine=EngineConfig(startup_reconciliation_required=False))
+    result = make_loop(setup, broker=FailingBroker(), config=cfg).run(bars(), setup[-1])
+    assert result.halted and result.cycle_count == 0
+
+
+def test_broker_disconnect_mid_run_records_incomplete_window(setup):
+    registry, exp, _, rc, db = setup
+    broker = FakeBroker()
+    def provider():
+        broker.disconnect()
+        return bars("2024-04-10")
+    result = make_loop(setup, broker=broker, provider=provider,
+                       run_config=replace(rc, max_cycles=None, window_market_sessions=2)).run(bars(), db)
+    assert result.halted
+    payload = json.loads(Path(result.evidence_path).read_text())
+    assert payload["passed"] is False
+    assert payload["observations"]["attempts"][0]["outcome"] == "halted"
+    assert registry.get(exp.uuid).promotion_status.value == "paper_ops"
+
+
+def test_abrupt_restart_detects_unclosed_attempt_and_preserves_downtime(setup):
+    _, _, clock, _, db = setup
+    first = make_loop(setup)
+    conn, ownership = _open_claimed_ledger(db, setup[0].root, first._identity())
+    ledger = PaperLedger(conn, first._identity(), clock())
+    ledger.start_attempt(clock(), ownership)
+    ledger.bind_account("sim_account")
+    conn.close()  # Simulated process death: no close_attempt/finally.
+    ownership.release()
+    clock.advance(30)
+    result = make_loop(setup).run(bars(), db)
+    assert not result.halted
+    conn = init_db(db)
+    attempts = conn.execute("SELECT outcome,downtime_seconds FROM paper_attempts ORDER BY rowid").fetchall()
+    assert attempts[0]["outcome"] == "interrupted"
+    assert attempts[0]["downtime_seconds"] == 30
+    assert attempts[1]["outcome"] == "completed"
+    conn.close()
+    payload = json.loads(Path(result.evidence_path).read_text())
+    assert payload["window"]["unplanned_interruptions"] == 1
+
+
+def test_attempt_is_committed_before_connect_even_when_connect_fails(setup):
+    db = setup[-1]
+    class InspectingBroker(FakeBroker):
+        def connect(self):
+            conn = init_db(db)
+            row = conn.execute("SELECT outcome,ended_at FROM paper_attempts").fetchone()
+            conn.close()
+            assert row is not None and row["outcome"] is None and row["ended_at"] is None
+            raise RuntimeError("connect failed")
+    result = make_loop(setup, broker=InspectingBroker()).run(bars(), db)
+    assert result.halted and "connect failed" in result.halt_reason
+
+
+@pytest.mark.parametrize("damage", ["corrupt", "checksum", "experiment", "configuration", "session"])
+def test_checkpoint_corruption_and_identity_mismatch_fail_before_broker(setup, damage):
+    _, _, _, _, db = setup
+    loop = make_loop(setup)
+    identity = loop._identity()
+    payload = {"identity": identity, "halted": False, "halt_reason": None, "errors": []}
+    if damage == "experiment":
+        identity["experiment_uuid"] = "unrelated"
+    elif damage == "configuration":
+        identity["config_hash"] = "0"*64
+    elif damage == "session":
+        identity["session_id"] = "other"
+    envelope = {"payload": payload, "sha256": "wrong" if damage == "checksum" else digest(payload)}
+    db.with_suffix(".paper_run_checkpoint.json").write_text("{" if damage == "corrupt" else json.dumps(envelope))
+    broker = FakeBroker()
+    result = make_loop(setup, broker=broker).run(bars(), db)
+    assert result.halted and "checkpoint" in result.halt_reason
+    assert broker.connections == 0 and not broker.submissions
+
+
+def test_resume_preserves_halt_even_without_checkpoint(setup):
+    _, _, clock, rc, db = setup
+    config = replace(rc, max_cycles=None, window_market_sessions=2)
+    first = make_loop(setup, run_config=config)
+    conn, ownership = _open_claimed_ledger(db, setup[0].root, first._identity())
+    ledger = PaperLedger(conn, first._identity(), clock())
+    ledger.start_attempt(clock(), ownership)
+    ledger.close_attempt(clock(), "halted", "unresolved broker state")
+    conn.close()
+    ownership.release()
+    broker = FakeBroker()
+    result = make_loop(setup, broker=broker, run_config=config).run(bars(), db)
+    assert result.halted and "unresolved broker state" in result.halt_reason
+    assert broker.connections == 0
+
+
+def test_account_identity_mismatch_on_restart_blocks_execution(setup):
+    _, _, clock, _, db = setup
+    identity = make_loop(setup)._identity()
+    conn, ownership = _open_claimed_ledger(db, setup[0].root, identity)
+    ledger = PaperLedger(conn, identity, clock())
+    ledger.start_attempt(clock(), ownership)
+    ledger.bind_account("different-account")
+    conn.close()
+    ownership.release()
+    broker = FakeBroker()
+    result = make_loop(setup, broker=broker).run(bars(), db)
+    assert result.halted and "account identity mismatch" in result.halt_reason
+    assert not broker.submissions
+
+
+@pytest.mark.parametrize("repack_database", [False, True])
+def test_checkpoint_resume_keeps_incomplete_attempt_artifact(setup, repack_database):
+    _, _, clock, rc, db = setup
+    config = replace(rc, max_cycles=None, window_market_sessions=2)
+    first = make_loop(setup, run_config=config)
+    first._bars_provider = lambda: (first._handle_sigterm(None, None) or bars())
+    stopped = first.run(bars(), db)
+    assert stopped.cycle_count == 1 and stopped.evidence_path is not None
+    incomplete_path = stopped.evidence_path
+    assert db.with_suffix(".paper_run_checkpoint.json").exists()
+    claim = ArtifactManager(rc.experiment_root).paper_ledger_claim_path(rc.experiment_uuid, rc.session_id)
+    claim_bytes = claim.read_bytes()
+    if repack_database:
+        replacement = db.with_name("same-ledger.sqlite")
+        with closing(sqlite3.connect(db)) as source, closing(sqlite3.connect(replacement)) as destination:
+            source.backup(destination)
+        replacement.replace(db)  # Same durable identity, deliberately a different inode.
+    clock.advance(86400)
+    resumed = make_loop(setup, run_config=config).run(bars("2024-04-10"), db)
+    assert not resumed.halted and resumed.cycle_count == 2
+    assert claim.read_bytes() == claim_bytes
+    assert not db.with_suffix(".paper_run_checkpoint.json").exists()
+    assert json.loads(Path(incomplete_path).read_text())["passed"] is False
+    payload = json.loads(Path(resumed.evidence_path).read_text())
+    assert payload["window"]["unplanned_interruptions"] == 1
+    assert payload["observations"]["attempts"][0]["downtime_seconds"] == 86400
+
+
+def test_deterministic_order_ids_dedupe_resubmission_after_restart(tmp_path):
+    db = tmp_path / "orders.sqlite"
+    broker = FakeBroker()
+    broker.connect()
+    intent = OrderIntent(strategy="test", symbol="AAPL", asset_class="equity", side=OrderSide.BUY,
+                         order_type=OrderType.MARKET, quantity=1.0, bar_timestamp="2024-04-09T00:00:00+00:00",
+                         client_order_namespace="experiment-session-config")
+    conn = init_db(db)
+    first = OMS(broker, conn, EventLogger(conn, environment="paper")).create_and_submit(intent)
+    conn.close()
+    conn = init_db(db)
+    second = OMS(broker, conn, EventLogger(conn, environment="paper")).create_and_submit(intent)
+    assert first == second
+    assert broker.submissions == [first]
+    assert conn.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 1
+    conn.close()
+
+
+def test_immutable_completed_session_cannot_trade_again(setup):
+    _, _, _, _, db = setup
+    result = make_loop(setup).run(bars(), db)
+    assert not result.halted
+    broker = FakeBroker()
+    repeated = make_loop(setup, broker=broker).run(bars(), db)
+    assert repeated.halted and "immutable" in repeated.halt_reason
+    assert broker.connections == 0
+
+
+def test_operator_overrides_are_notes_not_trades_or_drill_proof(setup):
+    _, _, _, rc, db = setup
+    claimed = replace(rc, window_trades=1000, insufficient_activity_override_approved=True,
+                      kill_switch_drill={"new_orders_blocked": True, "kill_switch_drill_evidence_exists": True},
+                      slippage_samples=({"actual_slippage_bps": 1, "expected_slippage_bps": 5},))
+    result = make_loop(setup, run_config=claimed).run(bars(), db)
+    payload = json.loads(Path(result.evidence_path).read_text())
+    assert payload["window"]["trades"] == 0
+    assert payload["slippage_samples"] == []
+    assert payload["observations"]["drill_events"] == []
+
+
+def test_process_death_after_submission_does_not_resubmit_on_restart(setup):
+    _, _, clock, _, db = setup
+    broker = FakeBroker()
+    broker.connect()
+    initial = make_loop(setup, broker=broker)
+    conn, ownership = _open_claimed_ledger(db, setup[0].root, initial._identity())
+    ledger = PaperLedger(conn, initial._identity(), clock())
+    ledger.start_attempt(clock(), ownership)
+    ledger.bind_account("sim_account")
+    watermark = str(bars().index[-1])
+    decision_id = f"paper:{ledger.identity['binding_digest']}:{watermark}"
+    ledger.record_cycle({
+        "cycle_key": "2024-04-09", "market_session": "2024-04-09",
+        "expected_at": clock().isoformat(), "deadline_at": (clock()+timedelta(seconds=60)).isoformat(),
+        "started_at": clock().isoformat(), "input_data_watermark": watermark, "result": "started",
+        "decision_record_id": decision_id, "broker_sync_record_id": "sync-before-crash",
+    }, clock())
+    ledger.record_reference_prices("2024-04-09", {"AAPL": 150.0}, clock())
+    intent = OrderIntent(
+        strategy="test", symbol="AAPL", asset_class="equity", side=OrderSide.BUY,
+        order_type=OrderType.MARKET, quantity=1.0, bar_timestamp=watermark,
+        correlation_id=decision_id, client_order_namespace=ledger.identity["binding_digest"],
+    )
+    oid = OMS(broker, conn, EventLogger(conn, environment="paper")).create_and_submit(intent)
+    original_order = dict(conn.execute(
+        "SELECT * FROM orders_live WHERE client_order_id=?", (oid,),
+    ).fetchone())
+    assert original_order["reconciliation_status"] == "NOT_CHECKED"
+    conn.close()  # No ledger capture, checkpoint or attempt-close has happened.
+    ownership.release()
+    broker.disconnect()
+    connections_before_restart = broker.connections
+    clock.advance(10)
+    resumed = make_loop(setup, broker=broker).run(bars(), db)
+    assert resumed.halted and "unresolved paper order" in resumed.halt_reason
+    assert broker.submissions == [oid] and broker.connections == connections_before_restart
+    conn = init_db(db)
+    assert [row[0] for row in conn.execute(
+        "SELECT outcome FROM paper_attempts ORDER BY rowid",
+    )] == ["interrupted", "halted"]
+    assert conn.execute("SELECT result FROM paper_cycles").fetchone()[0] == "blocked"
+    assert dict(conn.execute(
+        "SELECT * FROM orders_live WHERE client_order_id=?", (oid,),
+    ).fetchone()) == original_order
+    conn.close()
+
+
+@pytest.mark.parametrize("separate_database", [False, True])
+def test_overlapping_runner_cannot_touch_active_attempt_or_finalize(setup, separate_database):
+    _, _, _, _, db = setup
+    contender = FakeBroker()
+    class OverlappingBroker(FakeBroker):
+        def connect(self):
+            other_db = db.with_name("other.sqlite") if separate_database else db
+            refused = make_loop(setup, broker=contender).run(bars(), other_db)
+            assert refused.halted and "already owns" in refused.halt_reason
+            assert refused.evidence_path is None
+            assert contender.connections == 0
+            conn = init_db(db)
+            attempts = conn.execute("SELECT outcome,ended_at FROM paper_attempts").fetchall()
+            assert [(r["outcome"], r["ended_at"]) for r in attempts] == [(None, None)]
+            conn.close()
+            super().connect()
+    result = make_loop(setup, broker=OverlappingBroker()).run(bars(), db)
+    assert not result.halted
+    conn = init_db(db)
+    assert [r[0] for r in conn.execute("SELECT outcome FROM paper_attempts")] == ["completed"]
+    assert conn.execute("SELECT result FROM paper_cycles").fetchone()[0] == "completed"
+    conn.close()
+
+
+def _hold_unclosed_attempt(db, root, identity, now, pipe):
+    conn, ownership = _open_claimed_ledger(db, root, identity)
+    ledger = PaperLedger(conn, identity, now)
+    ledger.start_attempt(now, ownership)
+    pipe.send(ledger.attempt_id)
+    pipe.recv()  # Parent kills this process; no Python cleanup runs.
+
+
+def test_process_death_releases_ownership_but_retains_unclosed_attempt(setup):
+    _, _, clock, _, db = setup
+    context = multiprocessing.get_context("spawn")
+    parent, child = context.Pipe()
+    process = context.Process(
+        target=_hold_unclosed_attempt, args=(db, setup[0].root, make_loop(setup)._identity(), clock(), child),
+    )
+    process.start()
+    child.close()
+    try:
+        assert parent.poll(15), "child never committed its attempt"
+        attempt_id = parent.recv()
+        broker = FakeBroker()
+        refused = make_loop(setup, broker=broker).run(bars(), db)
+        assert refused.halted and broker.connections == 0
+        process.kill()
+        process.join(15)
+        assert not process.is_alive()
+        other_db = db.with_name("replacement.sqlite")
+        refused = make_loop(setup, broker=broker).run(bars(), other_db)
+        assert refused.halted and "ledger" in refused.halt_reason
+        assert broker.connections == 0 and not other_db.exists()
+        clock.advance(30)
+        recovered = make_loop(setup).run(bars(), db)
+        assert not recovered.halted
+        conn = init_db(db)
+        prior = conn.execute("SELECT outcome,downtime_seconds FROM paper_attempts WHERE attempt_id=?", (attempt_id,)).fetchone()
+        assert tuple(prior) == ("interrupted", 30.0)
+        assert [r[0] for r in conn.execute("SELECT outcome FROM paper_attempts ORDER BY rowid")] == ["interrupted", "completed"]
+        conn.close()
+    finally:
+        if process.is_alive():
+            process.kill()
+            process.join(15)
+        parent.close()
+
+
+def capped_config(*, per_order=25.0, session=100.0, exposure=100.0):
+    return replace(
+        _make_config(),
+        portfolio=PortfolioConfig(min_notional_delta=0),
+        live_deployment=LiveDeploymentConfig(
+            max_notional_per_order=per_order, max_paper_session_notional=session,
+            max_open_paper_exposure=exposure,
+        ),
+    )
+
+
+def test_actual_risk_sized_order_cannot_bypass_tiny_cap(setup):
+    broker = FakeBroker()
+    result = make_loop(
+        setup, broker=broker, config=capped_config(), strategy=lambda bars, params: {"AAPL": 1.0},
+    ).run(bars(), setup[-1])
+    assert result.halted and "max_notional_per_order" in result.halt_reason
+    assert broker.submissions == []
+    conn = init_db(setup[-1])
+    assert conn.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+    assert conn.execute("SELECT COUNT(*) FROM paper_order_reservations").fetchone()[0] == 0
+    assert conn.execute("SELECT outcome FROM paper_attempts").fetchone()[0] == "halted"
+    conn.close()
+
+
+@pytest.mark.parametrize("cap_name", ["session", "exposure"])
+def test_durable_caps_block_second_order_before_oms(setup, cap_name):
+    _, _, clock, rc, db = setup
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0
+    config = capped_config(**{cap_name: 30.0})
+    config = replace(config, portfolio=replace(config.portfolio, execution_mode="continuous_rebalance"))
+    def strategy(frame, params):
+        return {"AAPL": 0.01 if frame.index[-1].day == 9 else 0.02}
+    def provider():
+        clock.advance(86400)
+        return bars("2024-04-10")
+    result = make_loop(
+        setup, broker=broker, config=config, strategy=strategy, provider=provider,
+        run_config=replace(rc, max_cycles=2),
+    ).run(bars(), db)
+    expected = "max_paper_session_notional" if cap_name == "session" else "max_open_paper_exposure"
+    assert result.halted and expected in result.halt_reason
+    assert len(broker.submissions) == 1
+    conn = init_db(db)
+    reservation = conn.execute("SELECT reserved_notional,observed_notional,client_order_id FROM paper_order_reservations").fetchall()
+    assert len(reservation) == 1
+    assert reservation[0]["reserved_notional"] == pytest.approx(20)
+    assert reservation[0]["observed_notional"] == pytest.approx(20)
+    assert reservation[0]["client_order_id"] == broker.submissions[0]
+    conn.close()
+
+
+def test_resumed_session_cannot_reset_cumulative_budget(setup):
+    _, _, clock, rc, db = setup
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0
+    config = capped_config(session=30.0)
+    run_config = replace(rc, max_cycles=None, window_market_sessions=2)
+    def strategy(frame, params):
+        return {"AAPL": 0.01 if frame.index[-1].day == 9 else 0.0}
+    first = make_loop(setup, broker=broker, config=config, strategy=strategy, run_config=run_config)
+    first._bars_provider = lambda: (first._handle_sigterm(None, None) or bars())
+    stopped = first.run(bars(), db)
+    assert not stopped.halted and len(broker.submissions) == 1
+    clock.advance(86400)
+    resumed = make_loop(
+        setup, broker=broker, config=config, strategy=strategy, run_config=run_config,
+    ).run(bars("2024-04-10"), db)
+    assert resumed.halted and "max_paper_session_notional" in resumed.halt_reason
+    assert len(broker.submissions) == 1
+    conn = init_db(db)
+    assert conn.execute("SELECT SUM(reserved_notional) FROM paper_order_reservations").fetchone()[0] == pytest.approx(20)
+    assert [r[0] for r in conn.execute("SELECT outcome FROM paper_attempts ORDER BY rowid")] == ["stopped", "halted"]
+    conn.close()
+
+
+def test_actual_fill_not_reference_quote_consumes_session_budget(setup):
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0.5
+    result = make_loop(
+        setup, broker=broker, config=capped_config(), strategy=lambda bars, params: {"AAPL": 0.01},
+    ).run(bars(), setup[-1])
+    assert result.halted and "observed fill" in result.halt_reason
+    conn = init_db(setup[-1])
+    row = conn.execute("SELECT reserved_notional,observed_notional FROM paper_order_reservations").fetchone()
+    assert row["reserved_notional"] == pytest.approx(20)
+    assert row["observed_notional"] == pytest.approx(30)
+    assert len(broker.submissions) == 1
+    conn.close()
+
+
+def test_durable_reservation_precedes_broker_effect_and_blocks_uncertain_resume(setup):
+    _, _, _, rc, db = setup
+    class CrashingBroker(FakeBroker):
+        def submit_order(self, request):
+            conn = init_db(db)
+            reservation = conn.execute("SELECT quantity,reference_price,client_order_id FROM paper_order_reservations").fetchone()
+            conn.close()
+            assert reservation["quantity"] == request.quantity
+            assert reservation["reference_price"] == 150
+            assert reservation["client_order_id"] is None
+            raise RuntimeError("unknown submission outcome")
+    broker = CrashingBroker()
+    run_config = replace(rc, max_cycles=None, window_market_sessions=2)
+    failed = make_loop(
+        setup, broker=broker, config=capped_config(), run_config=run_config,
+        strategy=lambda bars, params: {"AAPL": 0.01},
+    ).run(bars(), db)
+    assert failed.halted
+    replacement = FakeBroker()
+    resumed = make_loop(
+        setup, broker=replacement, config=capped_config(), run_config=run_config,
+        strategy=lambda bars, params: {"AAPL": 0.01},
+    ).run(bars(), db)
+    assert resumed.halted and replacement.connections == 0 and replacement.submissions == []
+
+
+@pytest.fixture
+def qualified_ma(tmp_path):
+    config = load_config("builtin:paper_shakedown", load_env=False)
+    config = replace(config, live_deployment=replace(
+        config.live_deployment, max_notional_per_order=25,
+        max_paper_session_notional=100, max_open_paper_exposure=100,
+    ))
+    parameters = asdict(MAParams())
+    snapshot = snapshot_for_config(config, parameters=parameters, symbols=("AAPL",))
+    snapshot = replace(snapshot, execution_mode=BROKER_PAPER_EXECUTION_MODE)
+    registry = ExperimentRegistry(tmp_path / "qualified-experiments")
+    exp = registry.create(ExperimentDraft(label="synthetic-runtime-admission", snapshot=snapshot))
+    for status in (PromotionStatus.VALIDATION_RUNNING, PromotionStatus.VALIDATION_PASSED):
+        exp = registry.transition_promotion_status(exp.uuid, status)
+    exp = enter_paper_ops(registry, exp.uuid)
+    run_config = PaperRunConfig(
+        experiment_uuid=exp.uuid, experiment_hash=exp.experiment_hash, experiment_root=registry.root,
+        session_id="qualified", max_cycles=1, data_grace_seconds=60,
+    )
+    yield config, parameters, run_config, Clock(), tmp_path / "qualified.sqlite"
+    registry.close()
+
+
+@pytest.mark.parametrize("mismatch", ["strategy", "parameters", "universe", "cost"])
+def test_direct_loop_binds_qualified_hypothesis_before_factory(qualified_ma, mismatch):
+    config, parameters, run_config, clock, db = qualified_ma
+    name = config.strategy_name
+    if mismatch == "strategy":
+        name = "unrelated"
+    elif mismatch == "parameters":
+        parameters = {**parameters, "fast_ma_window": parameters["fast_ma_window"] + 1}
+    elif mismatch == "universe":
+        run_config = replace(run_config, symbols=("MSFT",))
+    else:
+        config = replace(config, cost_model=replace(config.cost_model, commission_pct=0.123))
+    calls = []
+    def factory():
+        calls.append("credentials")
+        raise AssertionError("mismatched hypothesis reached credentials")
+    result = PaperRunLoop(
+        config=config, broker=None, broker_factory=factory, strategy_fn=lambda frame, params: {},
+        strategy_name=name, strategy_params=parameters, run_config=run_config, clock=clock,
+    ).run(bars(), db)
+    assert result.halted and calls == []
+    conn = init_db(db)
+    assert conn.execute("SELECT outcome FROM paper_attempts").fetchone()[0] == "halted"
+    conn.close()
+
+
+def test_deferred_simulation_cannot_be_labeled_as_broker_paper(qualified_ma):
+    config, parameters, run_config, clock, db = qualified_ma
+    broker = FakeBroker()
+    result = PaperRunLoop(
+        config=config, broker=None, broker_factory=lambda: broker,
+        strategy_fn=lambda frame, params: {}, strategy_name=config.strategy_name,
+        strategy_params=parameters, run_config=run_config, clock=clock,
+    ).run(bars(), db)
+    assert result.halted and "disagrees" in result.halt_reason
+    assert broker.connections == 0
+    conn = init_db(db)
+    assert conn.execute("SELECT account_fingerprint FROM paper_sessions").fetchone()[0] == "unverified"
+    conn.close()
+
+
+@responses.activate
+def test_real_adapter_position_http_failure_blocks_loop_with_durable_attempt(qualified_ma):
+    config, parameters, run_config, clock, db = qualified_ma
+    responses.get(
+        "https://paper-api.alpaca.markets/v2/account",
+        json={"id": "offline-account", "cash": "10000", "equity": "10000", "currency": "USD"},
+    )
+    responses.get("https://paper-api.alpaca.markets/v2/positions", status=500, json={"error": "offline"})
+    result = PaperRunLoop(
+        config=config,
+        broker=AlpacaAdapter(api_key="offline-key", api_secret="offline-secret"),
+        strategy_fn=lambda frame, params: {"AAPL": 1.0}, strategy_name=config.strategy_name,
+        strategy_params=parameters, run_config=run_config, clock=clock,
+    ).run(bars(), db)
+    assert result.halted and result.cycle_count == 0
+    assert any(call.request.url.endswith("/v2/positions") for call in responses.calls)
+    assert all(call.request.method == "GET" for call in responses.calls)
+    conn = init_db(db)
+    assert conn.execute("SELECT outcome FROM paper_attempts").fetchone()[0] == "halted"
+    assert conn.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+    conn.close()
+
+
+def test_reducing_position_does_not_double_count_open_exposure(setup):
+    _, _, clock, rc, db = setup
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0
+    def provider():
+        clock.advance(86400)
+        return bars("2024-04-10")
+    result = make_loop(
+        setup, broker=broker, config=capped_config(exposure=25), provider=provider,
+        run_config=replace(rc, max_cycles=2),
+        strategy=lambda frame, params: {"AAPL": 0.01 if frame.index[-1].day == 9 else 0},
+    ).run(bars(), db)
+    assert not result.halted and len(broker.submissions) == 2
+    assert broker.get_positions() == []
+
+
+def test_checkpoint_does_not_reuse_shared_temporary_name(setup):
+    _, _, _, rc, db = setup
+    shared_temp = db.with_suffix(".paper_run_checkpoint.json.tmp")
+    shared_temp.write_bytes(b"previous process temporary evidence")
+    loop = make_loop(setup, run_config=replace(rc, max_cycles=None, window_market_sessions=2))
+    loop._bars_provider = lambda: (loop._handle_sigterm(None, None) or bars())
+    result = loop.run(bars(), db)
+    assert not result.halted
+    checkpoint = json.loads(db.with_suffix(".paper_run_checkpoint.json").read_text())
+    assert checkpoint["sha256"] == digest(checkpoint["payload"])
+    assert shared_temp.read_bytes() == b"previous process temporary evidence"
+
+
+def test_qualified_loop_uses_canonical_strategy_not_injected_callback(qualified_ma):
+    config, parameters, run_config, clock, db = qualified_ma
+    class PaperBroker(FakeBroker):
+        _base_url = "https://paper-api.alpaca.markets"
+        _data_url = "https://data.alpaca.markets"
+
+        @property
+        def name(self):
+            return "alpaca"
+
+        def get_open_orders(self):
+            return []
+
+    called = []
+    def unrelated_strategy(frame, params):
+        called.append("unqualified strategy")
+        return {"AAPL": 1.0}
+    broker = PaperBroker()
+    result = PaperRunLoop(
+        config=config, broker=broker, strategy_fn=unrelated_strategy,
+        strategy_name=config.strategy_name, strategy_params=parameters,
+        run_config=run_config, clock=clock,
+    ).run(bars(), db)
+    # One bar is MA warmup, not an arbitrary caller's buy instruction.
+    assert not result.halted and result.cycle_count == 1
+    assert called == [] and broker.submissions == []
+
+
+def test_direct_broker_paper_runtime_cannot_submit_without_durable_guard(tmp_path):
+    from engine.runtime import TradingEngine
+
+    class PaperBroker(FakeBroker):
+        @property
+        def name(self):
+            return "alpaca"
+
+    broker = PaperBroker()
+    conn = init_db(tmp_path / "direct.sqlite")
+    engine = TradingEngine(
+        config=capped_config(), conn=conn, broker=broker,
+        strategy_fn=lambda frame, params: {"AAPL": 0.01}, strategy_name="test",
+    )
+    with pytest.raises(ValueError, match="requires durable paper admission"):
+        engine.process_bar(bars(), {"AAPL": 150.0}, bar_timestamp=str(bars().index[-1]))
+    assert broker.submissions == []
+    assert conn.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+    conn.close()
+
+
+def test_runner_ownership_extends_through_finalization_and_disconnect(setup):
+    _, _, _, _, db = setup
+    refused = []
+    class FinalizingBroker(FakeBroker):
+        def disconnect(self):
+            refused.append(make_loop(setup).run(bars(), db))
+            super().disconnect()
+    result = make_loop(setup, broker=FinalizingBroker()).run(bars(), db)
+    assert not result.halted
+    assert len(refused) == 1 and "already owns" in refused[0].halt_reason
+    assert refused[0].evidence_path is None
+    conn = init_db(db)
+    assert [r[0] for r in conn.execute("SELECT outcome FROM paper_attempts")] == ["completed"]
+    conn.close()
+
+
+def test_resume_budget_charges_actual_fill_not_only_reserved_quote(setup):
+    _, _, clock, rc, db = setup
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0.1
+    config = capped_config(session=41)
+    config = replace(config, portfolio=replace(config.portfolio, execution_mode="continuous_rebalance"))
+    run_config = replace(rc, max_cycles=None, window_market_sessions=2)
+    def strategy(frame, params):
+        return {"AAPL": 0.01 if frame.index[-1].day == 9 else 0.02}
+    first = make_loop(setup, broker=broker, config=config, strategy=strategy, run_config=run_config)
+    first._bars_provider = lambda: (first._handle_sigterm(None, None) or bars())
+    stopped = first.run(bars(), db)
+    assert not stopped.halted and len(broker.submissions) == 1
+    clock.advance(86400)
+    result = make_loop(
+        setup, broker=broker, config=config, strategy=strategy, run_config=run_config,
+    ).run(bars("2024-04-10"), db)
+    assert result.halted and "max_paper_session_notional" in result.halt_reason
+    assert len(broker.submissions) == 1
+    conn = init_db(db)
+    row = conn.execute("SELECT reserved_notional,observed_notional FROM paper_order_reservations").fetchone()
+    assert row["reserved_notional"] == pytest.approx(20)
+    assert row["observed_notional"] == pytest.approx(22)
+    conn.close()
+
+
+@pytest.mark.parametrize("replacement", [
+    "new_path", "initialized_path", "missing", "recreated", "changed_token",
+])
+def test_ledger_binding_refuses_fresh_authority_after_incomplete_window(setup, replacement):
+    registry, exp, clock, rc, db = setup
+    config = replace(rc, max_cycles=None, window_market_sessions=2)
+    first = make_loop(
+        setup, run_config=config, config=capped_config(),
+        strategy=lambda frame, params: {"AAPL": 0.01},
+    )
+    first._bars_provider = lambda: (first._handle_sigterm(None, None) or bars())
+    stopped = first.run(bars(), db)
+    assert not stopped.halted and stopped.cycle_count == 1
+    report = Path(stopped.evidence_path)
+    report_bytes = report.read_bytes()
+    artifacts = ArtifactManager(registry.root)
+    claim_path = artifacts.paper_ledger_claim_path(exp.uuid, rc.session_id)
+    claim_bytes = claim_path.read_bytes()
+    with sqlite3.connect(db) as conn:
+        assert conn.execute("SELECT SUM(reserved_notional) FROM paper_order_reservations").fetchone()[0] > 0
+        prior_attempts = conn.execute("SELECT * FROM paper_attempts").fetchall()
+    conn.close()
+    target = db
+    if replacement in {"new_path", "initialized_path"}:
+        target = db.with_name("replacement.sqlite")
+        if replacement == "initialized_path":
+            init_db(target).close()
+    elif replacement in {"missing", "recreated"}:
+        db.unlink()
+        if replacement == "recreated":
+            init_db(db).close()
+    else:
+        with sqlite3.connect(db) as conn:
+            conn.execute(
+                "UPDATE engine_state SET value=? WHERE key='paper_ledger_instance_id'",
+                (str(uuid.uuid4()),),
+            )
+        conn.close()
+    calls = []
+    def factory():
+        calls.append("credentials")
+        return FakeBroker()
+    clock.advance(30)
+    refused = PaperRunLoop(
+        config=capped_config(), broker=None, broker_factory=factory,
+        strategy_fn=lambda frame, params: {"AAPL": 0.01}, strategy_name="test",
+        run_config=config, clock=clock,
+    ).run(bars(), target)
+    assert refused.halted and "ledger" in refused.halt_reason
+    assert calls == [] and refused.evidence_path is None
+    assert claim_path.read_bytes() == claim_bytes and report.read_bytes() == report_bytes
+    if replacement in {"new_path", "missing"}:
+        assert not target.exists()
+    if replacement in {"new_path", "initialized_path", "changed_token"}:
+        with sqlite3.connect(db) as conn:
+            assert conn.execute("SELECT * FROM paper_attempts").fetchall() == prior_attempts
+        conn.close()
+
+
+def test_ledger_claim_survives_interruption_before_database_initialization(setup, monkeypatch):
+    registry, exp, _, rc, db = setup
+    import engine.paper_binding as binding
+
+    def interrupted(path):
+        raise RuntimeError("synthetic death after claim publication")
+
+    with monkeypatch.context() as patch:
+        patch.setattr(binding, "init_db", interrupted)
+        failed = make_loop(setup).run(bars(), db)
+    assert failed.halted and not db.exists()
+    claim = ArtifactManager(registry.root).paper_ledger_claim_path(exp.uuid, rc.session_id)
+    original = claim.read_bytes()
+    for target in (db, db.with_name("other.sqlite")):
+        broker = FakeBroker()
+        refused = make_loop(setup, broker=broker).run(bars(), target)
+        assert refused.halted and "ledger" in refused.halt_reason
+        assert broker.connections == 0 and not target.exists()
+        assert claim.read_bytes() == original
+
+
+@pytest.mark.parametrize("field", ["experiment_uuid", "experiment_hash", "session_id", "ledger_instance_id"])
+def test_ledger_claim_identity_mismatch_refuses_before_credentials(setup, field):
+    registry, exp, _, rc, db = setup
+    identity = make_loop(setup)._identity()
+    conn, ownership = _open_claimed_ledger(db, registry.root, identity)
+    conn.close()
+    ownership.release()
+    claim = ArtifactManager(registry.root).paper_ledger_claim_path(exp.uuid, rc.session_id)
+    payload = json.loads(claim.read_text())
+    payload[field] = str(uuid.uuid4()) if field != "experiment_hash" else "0" * 64
+    claim.write_text(json.dumps(payload))
+    original = claim.read_bytes()
+    broker = FakeBroker()
+    refused = make_loop(setup, broker=broker).run(bars(), db)
+    assert refused.halted and "ledger" in refused.halt_reason
+    assert broker.connections == 0 and claim.read_bytes() == original
+
+
+def test_ledger_claim_collision_never_overwrites_first_binding(setup):
+    registry, exp, _, rc, db = setup
+    artifacts = ArtifactManager(registry.root)
+    conn, ownership = _open_claimed_ledger(db, registry.root, make_loop(setup)._identity())
+    try:
+        claim = artifacts.paper_ledger_claim_path(exp.uuid, rc.session_id)
+        original = claim.read_bytes()
+        collision = json.loads(original)
+        collision["ledger_instance_id"] = str(uuid.uuid4())
+        with pytest.raises(ArtifactImmutableError):
+            artifacts.claim_paper_ledger(exp.uuid, rc.session_id, collision)
+        assert claim.read_bytes() == original
+    finally:
+        conn.close()
+        ownership.release()
+
+
+@pytest.mark.parametrize("evidence", ["attempt_report", "ledger"])
+def test_unclaimed_existing_paper_evidence_is_not_migrated(setup, evidence):
+    registry, exp, clock, rc, db = setup
+    artifacts = ArtifactManager(registry.root)
+    if evidence == "attempt_report":
+        artifacts.write_paper_session_report_json(
+            exp.uuid, rc.session_id, "attempt-legacy.json", {"outcome": "interrupted"},
         )
-        loop = PaperRunLoop(
-            config=config,
-            broker=broker,
-            strategy_fn=_strategy_fn,
-            strategy_name="test",
-            run_config=run_config,
-        )
-        bars = _make_bars()
-        result = loop.run(bars, db_path=tmp_path / "run.sqlite")
-        assert result.halted
+    else:
+        conn = init_db(db)
+        PaperLedger(conn, make_loop(setup)._identity(), clock())
+        conn.close()
+    broker = FakeBroker()
+    refused = make_loop(setup, broker=broker).run(bars(), db)
+    assert refused.halted and "claim missing" in refused.halt_reason
+    assert broker.connections == 0
+    assert not artifacts.paper_ledger_claim_path(exp.uuid, rc.session_id).exists()

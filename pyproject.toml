@@ -23,6 +23,7 @@ dependencies = [
     "pytz>=2024.1",
     "scipy>=1.12",
     "scikit-learn>=1.4",
+    "urllib3>=1.26",
 ]
 
 [project.optional-dependencies]
@@ -48,9 +49,34 @@ dev = [
 mfs-engine = "engine.cli:main"
 mfs-data = "data.cli:main"
 
+[tool.setuptools]
+# Ship only modules and the explicitly listed package data below; never pick up
+# evidence, market data, or research artifacts that happen to sit in a package dir.
+include-package-data = false
+
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["config*", "storage*", "data*", "strategies*", "research*", "validation*", "portfolio*", "risk*", "execution*", "engine*", "monitoring*", "experiments*", "research_scout*"]
+# research_scout/ is source-checkout research material (preregistrations, results,
+# data-dependent hypothesis checks). The runtime does not import it; it is not shipped.
+include = [
+    "config", "config.*",
+    "storage", "storage.*",
+    "data", "data.*",
+    "strategies", "strategies.*",
+    "research", "research.*",
+    "validation", "validation.*",
+    "portfolio", "portfolio.*",
+    "risk", "risk.*",
+    "execution", "execution.*",
+    "engine", "engine.*",
+    "monitoring", "monitoring.*",
+    "experiments", "experiments.*",
+]
+exclude = ["experiments.*", "portfolio.research_artifacts*", "*.__pycache__*"]
+
+[tool.setuptools.package-data]
+# Credential-free templates, addressable as `--config builtin:<name>`.
+config = ["research.toml", "paper.toml", "paper_shakedown.toml", "paper_etf_tsm.toml"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

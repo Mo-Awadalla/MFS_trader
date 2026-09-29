@@ -1,6 +1,6 @@
 """CCXT crypto data downloader — OHLCV candles from supported exchanges.
 
-Requires the `ccxt` package. Coinbase configs use COINBASE_API_KEY /
+Requires the `crypto` extra (`ccxt`). Coinbase configs use COINBASE_API_KEY /
 COINBASE_SECRET, but public historical data works without auth (read-only).
 """
 
@@ -12,6 +12,7 @@ from typing import Any
 import pandas as pd
 import structlog
 
+from config.optional_deps import require_extra
 from data.base import BaseDownloader, DownloadRequest, DownloadResult
 
 log = structlog.get_logger(__name__)
@@ -29,10 +30,7 @@ class CCXTDownloader(BaseDownloader):
         max_retries: int = 5,
         retry_backoff_seconds: float = 1.0,
     ):
-        try:
-            import ccxt
-        except ImportError as e:
-            raise ImportError("ccxt is required for crypto data. Install: pip install ccxt") from e
+        ccxt = require_extra("ccxt", extra="crypto", purpose="CCXT crypto data download")
 
         self._exchange_id = exchange_id
         self._ccxt = ccxt
@@ -53,7 +51,7 @@ class CCXTDownloader(BaseDownloader):
         )
         if exchange_id == "coinbase":
             self._exchange.rateLimit = max(self._exchange.rateLimit, 100)
-        if is_testnet and "test" in self._exchange.urls:
+        if is_testnet and self._exchange.urls.get("test"):
             self._exchange.set_sandbox_mode(True)
 
     @property

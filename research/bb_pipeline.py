@@ -10,7 +10,6 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from config.schema import AssetClass, CostModelConfig
@@ -28,11 +27,16 @@ from strategies.bb.signal import (
 )
 from strategies.registry import get_strategy, strategy_template_version
 from validation.gauntlet import GauntletResult, run_gauntlet
+from validation.search import DeclaredSearch, declared_search
 from validation.wfa.engine import PRESETS, WFATier
 
 STRATEGY_NAME = "bollinger_bands"
 _BB_STRATEGY = get_strategy(STRATEGY_NAME)
 PARAM_COLUMNS = ["window", "std_mult", "width_mode"]
+SEARCH_SCOPE = (
+    "complete Bollinger Bands parameter sweep used for this validation run "
+    "(every grid trial, declared order)"
+)
 
 
 def backtest_bb(
@@ -66,14 +70,19 @@ def run_bb_sweep(
     df: pd.DataFrame,
     *,
     grid: list[BBParams] | None = None,
+    selected_params: BBParams | None = None,
     symbol: str = "AAPL",
     cost_config: CostModelConfig | None = None,
     initial_capital: float = 10000.0,
-) -> pd.DataFrame:
-    """Sweep BB parameters and return a results DataFrame for DSR/stability."""
+) -> tuple[pd.DataFrame, DeclaredSearch]:
+    """Sweep BB parameters; returns stability rows and DSR search evidence.
+
+    Row ``i`` and DSR matrix column ``i`` both describe ``grid[i]``.
+    """
     cost_config = cost_config or default_cost_config()
     grid = grid or sweep_grid()
     rows: list[dict[str, Any]] = []
+    trial_returns: list[pd.Series] = []
 
     for params in grid:
         result = backtest_bb(
@@ -89,8 +98,15 @@ def run_bb_sweep(
             "trade_count": result.trade_count,
         }
         rows.append(row)
+        trial_returns.append(result.returns)
 
-    return pd.DataFrame(rows)
+    search = declared_search(
+        [params_to_dict(params) for params in grid],
+        trial_returns,
+        params_to_dict(selected_params or default_params()),
+        search_scope=SEARCH_SCOPE,
+    )
+    return pd.DataFrame(rows), search
 
 
 def make_bb_wfa_fns(
@@ -135,42 +151,6 @@ def make_bb_wfa_fns(
         return metrics
 
     return train_fn, test_fn
-
-
-def build_returns_matrix(
-    df: pd.DataFrame,
-    sweep_df: pd.DataFrame,
-    *,
-    cost_config: CostModelConfig | None = None,
-    symbol: str = "AAPL",
-    initial_capital: float = 10000.0,
-    max_trials: int = 50,
-) -> np.ndarray:
-    """Build a returns matrix for DSR M_eff estimation from top sweep trials."""
-    if sweep_df.empty:
-        return np.empty((0, 0))
-
-    cost_config = cost_config or default_cost_config()
-    top = sweep_df.sort_values("sharpe", ascending=False).head(max_trials)
-    series_list: list[pd.Series] = []
-
-    for _, row in top.iterrows():
-        params = params_from_dict(row.to_dict())
-        result = backtest_bb(
-            df,
-            params,
-            symbol=symbol,
-            cost_config=cost_config,
-            initial_capital=initial_capital,
-        )
-        if not result.returns.empty:
-            series_list.append(result.returns.rename(f"{params.window}_{params.std_mult}_{params.width_mode}"))
-
-    if not series_list:
-        return np.empty((0, 0))
-
-    matrix = pd.concat(series_list, axis=1).fillna(0.0)
-    return matrix.to_numpy()
 
 
 @dataclass
@@ -275,9 +255,10 @@ def run_bb_validation_gauntlet(
         cost_config=cost_config,
         initial_capital=initial_capital,
     )
-    sweep_df = run_bb_sweep(
+    sweep_df, search = run_bb_sweep(
         df,
         grid=sweep_grid_list,
+        selected_params=params,
         symbol=symbol,
         cost_config=cost_config,
         initial_capital=initial_capital,
@@ -288,14 +269,6 @@ def run_bb_validation_gauntlet(
         symbol=symbol,
         initial_capital=initial_capital,
     )
-    returns_matrix = build_returns_matrix(
-        df,
-        sweep_df,
-        cost_config=cost_config,
-        symbol=symbol,
-        initial_capital=initial_capital,
-    )
-    best_sharpe = float(sweep_df["sharpe"].max()) if not sweep_df.empty else None
 
     gauntlet = run_gauntlet(
         STRATEGY_NAME,
@@ -304,8 +277,7 @@ def run_bb_validation_gauntlet(
         test_fn,
         sweep_df,
         PARAM_COLUMNS,
-        best_sharpe=best_sharpe,
-        returns_matrix=returns_matrix,
+        dsr_search=search,
         initial_capital=initial_capital,
         wfa_config=PRESETS[WFATier.PRIMARY],
         seed=seed,
