@@ -39,8 +39,8 @@ class ConfigError(Exception):
     """Raised when a config is structurally invalid or unsafe."""
 
 
-def load_config(path: str | Path, *, load_env: bool = True) -> Config:
-    """Load and validate a TOML config file, resolving secrets from env vars."""
+def load_config(path: str | Path, *, load_env: bool = False) -> Config:
+    """Load TOML without reading credentials; dotenv loading is explicit opt-in."""
     path = resolve_config_path(path)
     if not path.exists():
         raise ConfigError(f"Config file not found: {path}")

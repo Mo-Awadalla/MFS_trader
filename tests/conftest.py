@@ -19,6 +19,22 @@ class BlockedNetworkError(RuntimeError):
 
 
 _ORIGINAL_NETWORK: dict[str, object] = {}
+_ORIGINAL_DOTENV: dict[str, object] = {}
+
+
+class BlockedCredentialReadError(RuntimeError):
+    """Offline tests must not open dotenv files, even through captured aliases."""
+
+
+def _install_dotenv_guard() -> None:
+    from dotenv.main import DotEnv
+
+    _ORIGINAL_DOTENV["get_stream"] = DotEnv._get_stream
+
+    def blocked_stream(*args, **kwargs):
+        raise BlockedCredentialReadError("Dotenv reads are forbidden in offline tests")
+
+    DotEnv._get_stream = blocked_stream
 
 
 def _live_network_allowed() -> bool:
@@ -108,6 +124,7 @@ def pytest_configure(config):
         _install_network_guard()
 
     if not _live_network_allowed() or os.environ.get("MFS_TEST_LOAD_DOTENV", "0") != "1":
+        _install_dotenv_guard()
         return
 
     from dotenv import load_dotenv
@@ -118,6 +135,10 @@ def pytest_configure(config):
 
 
 def pytest_unconfigure(config):
+    if _ORIGINAL_DOTENV:
+        from dotenv.main import DotEnv
+
+        DotEnv._get_stream = _ORIGINAL_DOTENV.pop("get_stream")
     if not _ORIGINAL_NETWORK:
         return
     socket.socket.connect = _ORIGINAL_NETWORK.pop("connect")
