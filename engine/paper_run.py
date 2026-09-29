@@ -29,6 +29,7 @@ import pandas as pd
 import structlog
 
 from config.schema import Config
+from engine.paper_binding import open_bound_paper_db
 from engine.paper_calendar import XNYS_PAPER_CALENDAR, default_data_grace
 from engine.paper_evidence import (
     PaperLedger,
@@ -346,7 +347,12 @@ class PaperRunLoop:
             if session_path.exists():
                 self._finalized = True
                 raise PaperRunHalt("paper session is immutable and already finalized")
-            self._conn = init_db(db_path)
+            self._conn = open_bound_paper_db(
+                db_path, ArtifactManager(self._run_config.experiment_root),
+                experiment_uuid=self._run_config.experiment_uuid,
+                experiment_hash=self._run_config.experiment_hash,
+                session_id=self._session_id, ownership=self._ownership,
+            )
             identity = self._identity()
             self._ledger = PaperLedger(self._conn, identity, self._clock())
             self._ledger.start_attempt(self._clock(), self._ownership)
@@ -518,7 +524,8 @@ class PaperRunLoop:
         uncertain = self._conn.execute(
             "SELECT 1 FROM orders_live WHERE order_state NOT IN "
             "('FILLED','CANCELLED','REJECTED','EXPIRED','BLOCKED_BY_RISK') "
-            "OR reconciliation_status IN ('MISMATCHED','UNRESOLVED') LIMIT 1"
+            "OR (order_state != 'BLOCKED_BY_RISK' "
+            "AND COALESCE(reconciliation_status,'') != 'MATCHED') LIMIT 1"
         ).fetchone()
         unclosed_reservation = self._conn.execute(
             "SELECT 1 FROM paper_order_reservations WHERE client_order_id IS NULL LIMIT 1"

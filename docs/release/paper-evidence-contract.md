@@ -44,6 +44,11 @@ Broker-paper submissions additionally pass a paper-only guard immediately before
 
 Session usage is the sum of each durable reservation's larger reserved or observed filled notional. Cancellation/rejection never refunds authority; restart never resets this sum. Missing/uncertain reservation outcomes block further submissions until reconciled outside the loop. Actual cumulative fill quantities and average prices are durably observed and checked after OMS execution and on recovery. Existing market-order semantics are unchanged: an adverse fill can exceed its pre-submit quote; that observed breach halts subsequent activity rather than claiming an impossible guaranteed market execution price. No compensating order or state-machine transition is introduced. Ordinary research/replay does not install this guard. Simulated paper diagnostics may opt into it by configuring caps, without acquiring broker qualification.
 
+After each guarded submission, fill capture and reconciliation run inside the
+guard's observation step, before a second order in the same cycle can use session
+authority. A fill without the affirmative, fully reconciled terminal observation
+cannot leave later submissions relying only on its lower reserved quote.
+
 Supplied totals, samples, drill booleans and insufficient-activity claims remain operator notes. They never replace observed trades, sessions, interruptions or fill-derived samples. Affirmative drill evidence requires identity-bound activation and observed new-order-blocked events, not absent or truthy flags. The kill-switch guard records these outcomes when it actually refuses execution. Such an operational halt is retained; drill proof does not erase interruption history or authorize automatic resume.
 
 ## Durability and recovery
@@ -52,7 +57,36 @@ Supplied totals, samples, drill booleans and insufficient-activity claims remain
 
 Nonblocking OS ownership is held from local preflight through attempt finalization, checkpoint publication, immutable reports and cleanup. Locks cover both the database (including different sessions sharing engine state) and the Experiment/session artifact path (including different databases claiming one session). Lock files are never unlinked or replaced, and process death releases ownership without stale-PID or heartbeat heuristics. Another runner cannot infer a still-owned attempt is dead, create a competing attempt or touch its checkpoint/report. Attempt ownership is generation-fenced; terminal outcomes cannot be rewritten, and cycle writes cannot replace terminal or other-attempt records. Continuous paper execution currently requires POSIX local-file locking; unsupported platforms refuse this surface explicitly without breaking research/CLI imports.
 
+The artifact-session lock also protects a durable create-if-absent
+`paper/sessions/<session-id>/ledger-claim.json`. Before attempt creation or any
+credential/broker access, this claim binds the Experiment UUID/full hash and
+session to the canonical database path and a unique initialized
+`engine_state.paper_ledger_instance_id` token. File and directory fsync protect
+claim publication; SQLite FULL commits protect the token. The claim is never
+removed on failure, interruption or process death. Resume opens an existing
+database without creation and requires both identities to match: selecting another
+database, deleting/recreating an empty database at the same path, or changing its
+token cannot reset attempts, halts, downtime or cumulative reservation authority.
+Identity does not depend on device/inode numbers. A database-path migration is
+explicitly outside this admission API and fails closed.
+
+A crash after claim publication but before database/token initialization leaves
+an immutable failed-closed reservation, not permission to create replacement
+authority. Existing session reports or ledger sessions without a claim are not
+silently migrated or rewritten in place; an explicit evidence-preserving recovery
+decision is required outside this release's runner.
+
 On restart, unclosed attempts become interrupted with downtime measured since their last durable heartbeat. In-flight cycles become blocked rather than fabricated completions. Graceful incomplete attempts and their resume downtime remain in the ledger too. Halt reasons and unresolved state are not cleared by a restart, even when a checkpoint is missing. Startup reconciliation is mandatory for the paper loop regardless of the general engine configuration flag, and unknown/partial portfolio authority blocks execution.
+
+A terminal OMS state alone is not affirmative reconciliation. Except for orders
+blocked locally by risk before broker submission, persisted orders require
+`MATCHED`; missing, `NOT_CHECKED`, `REPAIRED` or other status refuses restart before
+credentials or broker connection. An abrupt death after a fill but before
+reconciliation therefore preserves the original order/status, records interruption
+and a halted attempt, and does not resubmit. Manual reconciliation/repair is
+required before future execution; the runner neither invents `MATCHED` nor clears
+halt authority automatically. Fully matched same-ledger resumes still perform
+mandatory startup broker reconciliation.
 
 Checkpoints use unique temporary files, file and directory fsync, and atomic replacement; they contain an identity binding plus a SHA-256 integrity checksum. They are not the activity source of truth: the durable ledger is. Corrupt/mismatched checkpoints halt before credentials or broker activity and are not overwritten by the refused run. A checksum detects accidental corruption, not malicious modification by a user who can rewrite both the database and artifacts.
 

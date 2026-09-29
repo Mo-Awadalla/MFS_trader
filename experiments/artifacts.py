@@ -228,6 +228,32 @@ class ArtifactManager:
         safe_session_id = self._validate_session_id(session_id)
         return self.experiment_dir(experiment_uuid) / "paper" / "sessions" / f"{safe_session_id}.json"
 
+    def paper_ledger_claim_path(self, experiment_uuid: str, session_id: str) -> Path:
+        """Keep the immutable ledger claim separate from final session evidence."""
+        return self.paper_session_report_path(experiment_uuid, session_id, "ledger-claim.json")
+
+    def claim_paper_ledger(
+        self, experiment_uuid: str, session_id: str, payload: dict[str, Any],
+    ) -> Path:
+        """Durably publish a ledger binding once; callers hold session ownership."""
+        if os.name != "posix":
+            raise ArtifactError("Durable paper ledger claims require POSIX directory fsync")
+        path = self.paper_ledger_claim_path(experiment_uuid, session_id)
+        text = json.dumps(payload, indent=2, sort_keys=True, allow_nan=False) + "\n"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        directory = path.parent
+        boundary = self.experiment_dir(experiment_uuid)
+        while True:
+            self._sync_directory(directory)
+            if directory == boundary:
+                break
+            directory = directory.parent
+        try:
+            self._atomic_create(path, text)
+        except ArtifactExistsError as exc:
+            raise ArtifactImmutableError(f"Paper ledger claim is immutable: {path}") from exc
+        return path
+
     def write_paper_session_json(
         self,
         experiment_uuid: str,
