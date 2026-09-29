@@ -11,7 +11,6 @@ import copy
 
 import pytest
 
-from engine.paper_session import write_paper_ops_pass_report_set
 from experiments.artifacts import ArtifactKind, ArtifactManager
 from experiments.backfill import build_bb_aapl_1d_default_snapshot
 from experiments.kill_switch import KillSwitchSeverity
@@ -29,6 +28,7 @@ from experiments.operator_confirmations import (
     verify_experiment_hash,
 )
 from experiments.registry import ExperimentRegistry
+from tests.unit.test_paper_evidence import write_qualified_evidence
 
 
 @pytest.fixture
@@ -66,61 +66,7 @@ def _write_passing_paper_report(registry, exp) -> None:
 
 
 def _write_paper_ops_pass_evidence(registry, exp, session_id: str = "pass-session") -> str:
-    artifacts = ArtifactManager(registry.root)
-    artifacts.write_paper_session_json(
-        exp.uuid,
-        session_id,
-        {
-            "experiment_uuid": exp.uuid,
-            "experiment_hash": exp.experiment_hash,
-            "session_id": session_id,
-            "session_kind": "paper_ops_pass",
-            "session_type": "paper_ops_pass",
-            "passed": True,
-            "window": {
-                "calendar_days": 30,
-                "market_sessions": 20,
-                "trades": 100,
-            },
-        },
-    )
-    write_paper_ops_pass_report_set(
-        registry=registry,
-        experiment_uuid=exp.uuid,
-        session_id=session_id,
-        reports={
-            "operator_report.json": {
-                "passed": True,
-                "portfolio_state": "KNOWN",
-                "active_blockers": [],
-                "orders_total": 100,
-            },
-            "reconciliation_report.json": {
-                "passed": True,
-                "portfolio_state": "KNOWN",
-                "unresolved_count": 0,
-            },
-            "slippage_report.json": {
-                "passed": True,
-                "actual_vs_expected_ratio": 1.0,
-                "blocker_threshold": 2.0,
-                "blocker_triggered": False,
-                "sample_size": 100,
-                "trade_count": 100,
-            },
-            "bar_cycle_report.json": {
-                "passed": True,
-                "bar_cycle_completion": 0.995,
-                "unexplained_missed_cycles": 0,
-            },
-            "kill_switch_drill_report.json": {
-                "passed": True,
-                "kill_switch_drill_evidence_exists": True,
-                "new_orders_blocked": True,
-            },
-        },
-    )
-    return session_id
+    return write_qualified_evidence(registry, exp, session_id)
 
 
 class TestVerifyExperimentHash:

@@ -242,6 +242,7 @@ def _write_paper_ops_confirmation(
         "experiment_hash": experiment.experiment_hash,
         "paper_session_id": paper_session_id,
         "evidence_artifact_hashes": evidence["evidence_artifact_hashes"],
+        "paper_identity": evidence["identity"],
         "result": "confirmed",
         "next_allowed_status": PromotionStatus.LIVE_DRY_RUN.value,
     }

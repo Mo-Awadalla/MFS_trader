@@ -235,7 +235,7 @@ class ArtifactManager:
         payload: Any,
     ) -> Path:
         """Write one immutable paper session artifact under ``paper/sessions``."""
-        text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+        text = json.dumps(payload, indent=2, sort_keys=True, allow_nan=False) + "\n"
         path = self.paper_session_path(experiment_uuid, session_id)
         path.parent.mkdir(parents=True, exist_ok=True)
         try:
@@ -277,7 +277,7 @@ class ArtifactManager:
         """Write one immutable JSON report for a paper session."""
         if not report_name.endswith(".json"):
             raise ArtifactError(f"Paper session report must be JSON: {report_name}")
-        text = json.dumps(payload, indent=2, sort_keys=True) + "\n"
+        text = json.dumps(payload, indent=2, sort_keys=True, allow_nan=False) + "\n"
         path = self.paper_session_report_path(experiment_uuid, session_id, report_name)
         path.parent.mkdir(parents=True, exist_ok=True)
         try:

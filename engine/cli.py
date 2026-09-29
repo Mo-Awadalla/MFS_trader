@@ -17,20 +17,20 @@ from config.optional_deps import MissingExtraError
 from engine.etf_tsm_replay import run_etf_tsm_engine_replay
 from engine.ma_replay import run_ma_real_data_replay
 from engine.paper_dry_run import run_ma_paper_dry_run
-from engine.paper_run import PaperRunConfig, PaperRunLoop
+from engine.paper_run import PaperRunConfig, PaperRunLoop, verify_local_paper_prerequisites
 from engine.paper_session import (
     PaperSessionGateError,
     paper_caps_from_config,
     run_alpaca_paper_smoke,
     run_simulated_paper_drills,
     validate_tiny_paper_caps,
+    verify_paper_lifecycle_gates,
     write_paper_operator_report,
 )
 from engine.paper_trade import halt_paper_trading, run_ma_paper_trade_once
 from engine.shakedown import run_ma_shakedown
 from execution.alpaca.adapter import AlpacaAdapter
 from execution.sim_broker.broker import SimBroker
-from experiments.operator_confirmations import verify_experiment_hash
 from monitoring.reports import (
     build_operational_report,
     format_operational_report,
@@ -401,7 +401,7 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
 
     broker = None
     try:
-        cfg = load_config(args.config)
+        cfg = load_config(args.config, load_env=False)
         cfg = _apply_paper_caps_overrides(cfg, args)
         caps = paper_caps_from_config(cfg)
         if args.broker == "alpaca_paper" or args.run_sim_drills:
@@ -428,8 +428,8 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
 
         registry = _open_registry(args)
         try:
-            experiment = verify_experiment_hash(
-                registry, args.experiment_uuid, args.experiment_hash
+            experiment = verify_paper_lifecycle_gates(
+                registry, experiment_uuid=args.experiment_uuid, experiment_hash=args.experiment_hash
             )
         finally:
             registry.close()
@@ -438,6 +438,15 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
             broker_cfg = next((b for b in cfg.brokers if b.name == "alpaca"), None)
             if broker_cfg is None:
                 raise ConfigError("No alpaca broker configured")
+            if cfg.mode.value != "paper" or not broker_cfg.is_paper or broker_cfg.base_url.rstrip("/") != "https://paper-api.alpaca.markets":
+                raise PaperSessionGateError("paper-run requires the verified Alpaca paper environment")
+            if not args.confirm_paper_broker:
+                raise PaperSessionGateError("--confirm-paper-broker is required before broker activity")
+            if not cfg.live_deployment.paper_submit_enabled or cfg.live_deployment.dry_run_mode:
+                raise PaperSessionGateError("paper submission must be explicitly enabled and not dry-run")
+            if not cfg.engine.startup_reconciliation_required or not cfg.engine.kill_switch_persistent:
+                raise PaperSessionGateError("paper-run requires startup reconciliation and persistent kill state")
+            verify_local_paper_prerequisites(Path(args.out_dir) / "paper_run.sqlite")
             api_key, api_secret = get_broker_creds(broker_cfg)
             broker = AlpacaAdapter(
                 api_key=api_key,
@@ -475,11 +484,6 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
             broker.connect()
             if not broker.is_connected:
                 raise ConfigError("Sim broker did not connect")
-
-        if args.broker == "alpaca_paper" and not args.confirm_paper_broker:
-            raise PaperSessionGateError(
-                "--confirm-paper-broker is required for continuous alpaca_paper runs"
-            )
 
         from engine.paper_strategy import prepare_paper_strategy
 

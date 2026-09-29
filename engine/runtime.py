@@ -108,6 +108,7 @@ class TradingEngine:
         *,
         experiment_uuid: str | None = None,
         registry: Any | None = None,
+        paper_order_namespace: str | None = None,
     ):
         self._config = config
         self._conn = conn
@@ -117,6 +118,7 @@ class TradingEngine:
         self._strategy_params = strategy_params or {}
         self._experiment_uuid = experiment_uuid
         self._registry = registry
+        self._paper_order_namespace = paper_order_namespace
 
         self._logger = EventLogger(conn, environment=config.mode.value)
         self._oms = OMS(broker, conn, self._logger, environment=config.mode.value)
@@ -359,7 +361,10 @@ class TradingEngine:
         self._state.current_bar = pd.Timestamp(bar_ts)
         self._state.cycle_count += 1
 
-        cycle_id = f"cycle_{self._state.cycle_count}_{bar_ts}"
+        cycle_id = (
+            f"paper:{self._paper_order_namespace}:{bar_ts}"
+            if self._paper_order_namespace else f"cycle_{self._state.cycle_count}_{bar_ts}"
+        )
         self._logger.log(
             "ENGINE_HEARTBEAT",
             severity="INFO",
@@ -502,6 +507,7 @@ class TradingEngine:
                 bar_timestamp=bar_ts,
                 correlation_id=cycle_id,
                 version=self._config.strategy_version,
+                client_order_namespace=self._paper_order_namespace or "",
             )
 
             self._oms.create_and_submit(intent)
