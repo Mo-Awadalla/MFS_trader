@@ -170,10 +170,13 @@ The next distinct reviewed evaluation must start after the disposition.
 `check_current_qualification(registry, uuid, expected_hash)` returns `Qualification`
 with `qualified`, `status`, `reason`, and optional `evaluation_id`.
 `require_current_qualification(...)` raises `CorrectedQualificationError` when
-not qualified. Neither changes lifecycle state. Paper admission must call this
-before broker activity; the registry's transition into `PAPER_OPS` must enforce it
-before mutation, including explicit resume and matrix-bypass requests. Live
-promotion paths are outside this workflow and are not extended.
+not qualified. Neither changes lifecycle state. The registry enforces it before
+every transition into `PAPER_OPS`, including explicit resume and matrix-bypass
+requests. CLI broker admission, the non-simulation paper loop, one-shot Alpaca
+paper smoke, and manual paper-ops confirmation check it before broker activity
+or confirmation writes. Operator reports expose numerical qualification separately
+from operational checks and observed broker-paper evidence. No live authority is
+added; existing manual confirmation and downstream gates remain mandatory.
 
 Qualification accepts either a complete current canonical envelope produced by
 `run_current_evaluation`, or a complete corrected evaluation. It validates bound

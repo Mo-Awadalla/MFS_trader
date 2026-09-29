@@ -28,6 +28,7 @@ from experiments.operator_confirmations import (
     verify_experiment_hash,
 )
 from experiments.registry import ExperimentRegistry
+from tests.qualification import enter_paper_ops
 from tests.unit.test_paper_evidence import write_qualified_evidence
 
 
@@ -48,7 +49,7 @@ def _draft(label: str = "test-bb", window: int = 15) -> ExperimentDraft:
 def _walk_to_paper_ops(registry, uuid) -> None:
     registry.transition_promotion_status(uuid, PromotionStatus.VALIDATION_RUNNING)
     registry.transition_promotion_status(uuid, PromotionStatus.VALIDATION_PASSED)
-    registry.transition_promotion_status(uuid, PromotionStatus.PAPER_OPS)
+    enter_paper_ops(registry, uuid)
 
 
 def _write_passing_paper_report(registry, exp) -> None:

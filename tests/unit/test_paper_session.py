@@ -38,6 +38,7 @@ from experiments.artifacts import ArtifactKind, ArtifactManager
 from experiments.backfill import build_bb_aapl_1d_default_snapshot
 from experiments.models import ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
+from tests.qualification import enter_paper_ops
 from tests.unit.test_paper_evidence import qualified_session
 
 
@@ -81,7 +82,7 @@ def _paper_ops(registry: ExperimentRegistry):
     exp = registry.create(_draft())
     registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
     registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
-    return registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
+    return enter_paper_ops(registry, exp.uuid)
 
 
 class _FakeAlpacaPaper:

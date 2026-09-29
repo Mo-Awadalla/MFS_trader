@@ -120,6 +120,9 @@ def confirm_paper_ops_pass(
             f"confirm-paper-ops-pass requires PAPER_OPS, "
             f"got {experiment.promotion_status.value}"
         )
+    from experiments.corrected_evaluations import require_current_qualification
+
+    require_current_qualification(registry, uuid, expected_hash)
     evidence = _verify_paper_ops_evidence(registry, experiment, paper_session_id)
     confirmation_path = _write_paper_ops_confirmation(
         registry,

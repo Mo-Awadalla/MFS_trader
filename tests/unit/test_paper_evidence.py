@@ -8,7 +8,7 @@ from datetime import UTC, date, datetime, timedelta
 import pandas as pd
 import pytest
 
-from engine.paper_calendar import CalendarCoverageError, XNYS_PAPER_CALENDAR
+from engine.paper_calendar import XNYS_PAPER_CALENDAR, CalendarCoverageError
 from engine.paper_evidence import PaperLedger, derive_observations, digest
 from engine.paper_session import (
     PaperSessionGateError,
