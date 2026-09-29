@@ -1,10 +1,13 @@
 from __future__ import annotations
 
 import copy
+import json
+import sqlite3
+from dataclasses import asdict, replace
 
-import pandas as pd
 import pytest
 
+from config.loader import load_config
 from config.schema import (
     AssetClass,
     BrokerConfig,
@@ -19,11 +22,15 @@ from config.schema import (
     RiskLimits,
 )
 from engine import cli
+from engine.paper_evidence import digest
 from experiments.backfill import build_bb_aapl_1d_default_snapshot
 from experiments.models import ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
 from storage.event_logger import EventLogger
 from storage.schema import init_db
+from strategies.ma.signal import MAParams
+from tests.qualification import enter_paper_ops
+from tests.unit.test_paper_strategy import snapshot_for_config
 
 
 def test_engine_cli_help_exits_cleanly(capsys):
@@ -89,19 +96,6 @@ def _make_paper_config() -> Config:
     )
 
 
-def _make_bars() -> pd.DataFrame:
-    return pd.DataFrame(
-        {
-            "open": [150.0] * 140,
-            "high": [151.0] * 140,
-            "low": [149.0] * 140,
-            "close": [150.5] * 140,
-            "volume": [1_000_000] * 140,
-        },
-        index=pd.date_range("2024-01-01", periods=140, freq="1D", tz="UTC"),
-    )
-
-
 def _paper_ops_experiment(registry: ExperimentRegistry):
     snap = build_bb_aapl_1d_default_snapshot()
     mutated = copy.deepcopy(snap)
@@ -109,7 +103,7 @@ def _paper_ops_experiment(registry: ExperimentRegistry):
     exp = registry.create(ExperimentDraft(label="cli-paper-run", snapshot=mutated))
     registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
     registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
-    return registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
+    return enter_paper_ops(registry, exp.uuid)
 
 
 def test_paper_run_cli_refuses_alpaca_paper_before_broker_construction(
@@ -118,13 +112,13 @@ def test_paper_run_cli_refuses_alpaca_paper_before_broker_construction(
     registry = ExperimentRegistry(tmp_path / "experiments")
     try:
         exp = _paper_ops_experiment(registry)
-        monkeypatch.setattr(cli, "load_config", lambda path: _make_paper_config())
+        monkeypatch.setattr(cli, "load_config", lambda path, **kwargs: _make_paper_config())
 
         rc = cli.main(
             [
-                "paper-run",
                 "--config",
                 "unused.toml",
+                "paper-run",
                 "--experiment-root",
                 str(registry.root),
                 "--experiment-uuid",
@@ -146,70 +140,134 @@ def test_paper_run_cli_refuses_alpaca_paper_before_broker_construction(
         registry.close()
 
 
-def test_paper_run_cli_can_run_with_sim_broker(tmp_path, monkeypatch, capsys):
-    import data.pipeline
+@pytest.mark.parametrize("command", ["paper-trade-ma", "paper-dry-run-ma"])
+def test_retired_legacy_cli_cannot_load_configuration(command, monkeypatch):
+    def forbidden(*args, **kwargs):
+        raise AssertionError("retired route reached configuration or credentials")
+    monkeypatch.setattr(cli, "load_config", forbidden)
+    monkeypatch.setattr(cli, "get_broker_creds", forbidden)
+    with pytest.raises(SystemExit) as exc:
+        cli.main(["--config", "unused.toml", command])
+    assert exc.value.code == 2
 
+
+def test_retired_smoke_repeated_session_different_symbol_has_no_effects(tmp_path, monkeypatch):
+    def forbidden(*args, **kwargs):
+        raise AssertionError("retired smoke reached credentials or configuration")
+    monkeypatch.setattr(cli, "load_config", forbidden)
+    monkeypatch.setattr(cli, "get_broker_creds", forbidden)
+    monkeypatch.setattr(cli, "AlpacaAdapter", forbidden)
+    for symbol in ("AAPL", "MSFT"):
+        with pytest.raises(SystemExit) as exc:
+            cli.main(["--config", "unused.toml", "paper-run",
+                      "--experiment-root", str(tmp_path / "experiments"),
+                      "--experiment-uuid", "synthetic", "--experiment-hash", "a" * 64,
+                      "--broker", "alpaca_paper", "--confirm-paper-broker",
+                      "--alpaca-paper-smoke", "--session-id", "same-smoke", "--symbol", symbol])
+        assert exc.value.code == 2
+    assert not (tmp_path / "experiments").exists()
+
+
+@pytest.fixture
+def qualified_ma(tmp_path, monkeypatch, request):
+    config = load_config("builtin:paper_shakedown", load_env=False)
+    config = replace(config, live_deployment=replace(
+        config.live_deployment, max_notional_per_order=25.,
+        max_paper_session_notional=100., max_open_paper_exposure=100.,
+    ))
     registry = ExperimentRegistry(tmp_path / "experiments")
-    try:
-        exp = _paper_ops_experiment(registry)
-        monkeypatch.setattr(cli, "load_config", lambda path: _make_paper_config())
-        monkeypatch.setattr(data.pipeline, "load_bars", lambda *args, **kwargs: _make_bars())
-
-        rc = cli.main(
-            [
-                "paper-run",
-                "--config",
-                "unused.toml",
-                "--experiment-root",
-                str(registry.root),
-                "--experiment-uuid",
-                exp.uuid,
-                "--experiment-hash",
-                exp.experiment_hash,
-                "--broker",
-                "sim_broker",
-                "--session-id",
-                "sim-cli",
-                "--out-dir",
-                str(tmp_path / "paper-run"),
-                "--max-cycles",
-                "1",
-                "--sleep",
-                "0",
-            ]
-        )
-
-        assert rc == 0
-        out = capsys.readouterr().out
-        assert "Paper run completed: 1 cycles" in out
-        assert "evidence:" in out
-    finally:
-        registry.close()
+    from engine.paper_strategy import BROKER_PAPER_EXECUTION_MODE
+    experiment = registry.create(ExperimentDraft(
+        label="synthetic CLI MA", snapshot=snapshot_for_config(
+            config, parameters=asdict(MAParams()), symbols=("AAPL",),
+            execution_mode=getattr(request, "param", BROKER_PAPER_EXECUTION_MODE),
+        ),
+    ))
+    registry.transition_promotion_status(experiment.uuid, PromotionStatus.VALIDATION_RUNNING)
+    registry.transition_promotion_status(experiment.uuid, PromotionStatus.VALIDATION_PASSED)
+    experiment = enter_paper_ops(registry, experiment.uuid)
+    monkeypatch.setattr(cli, "load_config", lambda *a, **k: config)
+    from engine.shakedown import make_synthetic_bars
+    monkeypatch.setattr("data.pipeline.load_bars", lambda *a, **k: make_synthetic_bars(n=240, seed=21))
+    args = ["--config", "unused.toml", "paper-run",
+            "--experiment-root", str(registry.root), "--experiment-uuid", experiment.uuid,
+            "--experiment-hash", experiment.experiment_hash, "--broker", "alpaca_paper",
+            "--confirm-paper-broker", "--session-id", "admission",
+            "--out-dir", str(tmp_path / "output"), "--max-cycles", "1"]
+    yield config, registry, experiment, args
+    registry.close()
 
 
-def test_paper_run_cli_exposes_explicit_alpaca_smoke_mode():
-    parser = cli.build_parser()
+@pytest.mark.parametrize("url", ["https://attacker.invalid", "http://data.alpaca.markets", "https://data.alpaca.markets@attacker.invalid"])
+def test_cli_wrong_data_origin_precedes_credentials(qualified_ma, monkeypatch, url):
+    config, registry, experiment, args = qualified_ma
+    config = replace(config, brokers=[replace(config.brokers[0], data_url=url)])
+    monkeypatch.setattr(cli, "load_config", lambda *a, **k: config)
+    def forbidden(*args, **kwargs):
+        raise AssertionError("untrusted data origin reached credentials")
+    monkeypatch.setattr(cli, "get_broker_creds", forbidden)
+    monkeypatch.setattr(cli, "AlpacaAdapter", forbidden)
+    assert cli.main(args) == 1
 
-    args = parser.parse_args(
-        [
-            "paper-run",
-            "--config",
-            "unused.toml",
-            "--experiment-root",
-            "experiments",
-            "--experiment-uuid",
-            "fd42a55c-abc4-59f3-abd3-c70c0380482b",
-            "--experiment-hash",
-            "a" * 64,
-            "--broker",
-            "alpaca_paper",
-            "--confirm-paper-broker",
-            "--alpaca-paper-smoke",
-            "--session-id",
-            "smoke",
-        ]
-    )
 
-    assert args.broker == "alpaca_paper"
-    assert args.confirm_paper_broker is True
-    assert args.alpaca_paper_smoke is True
+def test_cli_wrong_checkpoint_precedes_credentials(qualified_ma, tmp_path, monkeypatch):
+    _, _, _, args = qualified_ma
+    output = tmp_path / "output"
+    output.mkdir()
+    payload = {"identity": {"session_id": "another-session"}, "halted": False, "halt_reason": None, "errors": []}
+    checkpoint = output / "paper_run.paper_run_checkpoint.json"
+    checkpoint.write_text(json.dumps({"payload": payload, "sha256": digest(payload)}))
+    before = checkpoint.read_bytes()
+    def forbidden(*args, **kwargs):
+        raise AssertionError("mismatched checkpoint reached credentials or broker")
+    monkeypatch.setattr(cli, "get_broker_creds", forbidden)
+    monkeypatch.setattr(cli, "AlpacaAdapter", forbidden)
+    assert cli.main(args) == 1
+    assert checkpoint.read_bytes() == before
+    with sqlite3.connect(output / "paper_run.sqlite") as conn:
+        outcome, reason = conn.execute("SELECT outcome,reason FROM paper_attempts").fetchone()
+    assert outcome == "halted"
+    assert "checkpoint" in reason
+
+
+def test_cli_durably_starts_attempt_before_credentials(qualified_ma, tmp_path, monkeypatch):
+    _, _, _, args = qualified_ma
+    calls = []
+    def unavailable_credentials(*args, **kwargs):
+        with sqlite3.connect(tmp_path / "output" / "paper_run.sqlite") as conn:
+            calls.append(conn.execute("SELECT ended_at FROM paper_attempts").fetchall())
+        raise ValueError("synthetic credential refusal")
+    monkeypatch.setattr(cli, "get_broker_creds", unavailable_credentials)
+    assert cli.main(args) == 1
+    assert calls == [[(None,)]]
+    with sqlite3.connect(tmp_path / "output" / "paper_run.sqlite") as conn:
+        outcome, reason = conn.execute("SELECT outcome,reason FROM paper_attempts").fetchone()
+    assert outcome == "halted"
+    assert reason == "synthetic credential refusal"
+
+
+@pytest.mark.parametrize("override", [
+    ["--fast-window", "7"], ["--symbol", "MSFT"],
+])
+def test_cli_wrong_ma_hypothesis_precedes_credentials(qualified_ma, monkeypatch, override):
+    _, _, _, args = qualified_ma
+    def forbidden(*args, **kwargs):
+        raise AssertionError("wrong MA hypothesis reached credentials or broker")
+    monkeypatch.setattr(cli, "get_broker_creds", forbidden)
+    monkeypatch.setattr(cli, "AlpacaAdapter", forbidden)
+    assert cli.main([*args, *override]) == 1
+
+
+@pytest.mark.parametrize("qualified_ma", [
+    "next_bar_open", "signals_after_t_minus_1_close_first_executable_price",
+], indirect=True)
+def test_cli_unsupported_frozen_timing_precedes_credentials(qualified_ma, monkeypatch, capsys):
+    _, registry, experiment, args = qualified_ma
+    before = (registry.root / experiment.uuid / "metadata.json").read_bytes()
+    def forbidden(*args, **kwargs):
+        raise AssertionError("unsupported frozen fill model reached credentials or broker")
+    monkeypatch.setattr(cli, "get_broker_creds", forbidden)
+    monkeypatch.setattr(cli, "AlpacaAdapter", forbidden)
+    assert cli.main(args) == 1
+    assert "Unsupported broker-paper execution mode" in capsys.readouterr().err
+    assert (registry.root / experiment.uuid / "metadata.json").read_bytes() == before

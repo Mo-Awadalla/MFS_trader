@@ -1,6 +1,15 @@
-# Handoff: Phase 1 Continuous Paper Ops
+# Historical handoff: Phase 1 Continuous Paper Ops
 
-Updated: 2026-06-28
+Original handoff: 2026-06-28. Retained for provenance, not current release verification.
+
+Release-reconciliation boundary (2026-09-28): the intended release is an experimental research/validation workbench with simulation. The test results and implementation claims below predate the audited numerical and paper-evidence repairs; they do not qualify the current source commit or a broker-paper campaign. In particular, loop iterations, repeated input bars, supplied trade counts, and missing drill proof cannot establish observed activity. Historical MC/DSR PASS requires corrected evidence before current readiness can rely on it. No real Experiment status, snapshot, or original report was changed during reconciliation.
+
+The release packet must bind the exact final source commit to its own verification logs. Broker-paper qualification remains **NOT ESTABLISHED**; publication is **PENDING OWNER ACTION**.
+
+The one-shot broker commands/flags described below are historical only:
+`paper-trade-ma`, `paper-dry-run-ma`, and `--alpaca-paper-smoke` are retired.
+Their old unbound execution paths are not part of the qualified release surface.
+Existing qualification gates are retained, not relaxed to compensate for retirement.
 
 ## Current Goal
 
