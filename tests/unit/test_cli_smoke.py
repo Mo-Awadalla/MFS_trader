@@ -109,9 +109,9 @@ def test_paper_run_cli_refuses_alpaca_paper_before_broker_construction(
 
         rc = cli.main(
             [
-                "paper-run",
                 "--config",
                 "unused.toml",
+                "paper-run",
                 "--experiment-root",
                 str(registry.root),
                 "--experiment-uuid",
@@ -138,9 +138,9 @@ def test_paper_run_cli_exposes_explicit_alpaca_smoke_mode():
 
     args = parser.parse_args(
         [
-            "paper-run",
             "--config",
             "unused.toml",
+            "paper-run",
             "--experiment-root",
             "experiments",
             "--experiment-uuid",

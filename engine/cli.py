@@ -901,7 +901,6 @@ def build_parser() -> argparse.ArgumentParser:
         "paper-run",
         help="Continuous paper trading loop with Experiment lifecycle checks",
     )
-    p_paper_run.add_argument("--config", "-c", required=True, help="Path to TOML config file")
     p_paper_run.add_argument("--experiment-root", required=True, help="Path to experiments registry root")
     p_paper_run.add_argument("--experiment-uuid", required=True, help="Explicit Experiment UUID to run")
     p_paper_run.add_argument(
