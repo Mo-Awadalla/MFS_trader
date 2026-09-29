@@ -1,12 +1,15 @@
-"""The test session must not reach broker or market-data hosts by accident."""
+"""Offline tests must neither reach providers nor load credential files."""
 
 from __future__ import annotations
 
+import os
 import socket
 
 import pytest
+from dotenv import dotenv_values
 
-from tests.conftest import BlockedNetworkError
+from config.loader import load_config
+from tests.conftest import BlockedCredentialReadError, BlockedNetworkError
 
 
 @pytest.mark.parametrize(
@@ -46,3 +49,27 @@ def test_external_datagrams_are_blocked():
 def test_legacy_dns_lookup_is_blocked():
     with pytest.raises(BlockedNetworkError):
         socket.gethostbyname("paper-api.alpaca.markets")
+
+
+def test_default_config_loading_leaves_dotenv_credentials_unread(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.delenv("MFS_OFFLINE_SENTINEL", raising=False)
+    (tmp_path / ".env").write_text("MFS_OFFLINE_SENTINEL=synthetic-value\n")
+
+    load_config("builtin:paper")
+
+    assert "MFS_OFFLINE_SENTINEL" not in os.environ
+
+
+def test_explicit_dotenv_loading_is_rejected_in_offline_suite(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / ".env").write_text("MFS_OFFLINE_SENTINEL=synthetic-value\n")
+    with pytest.raises(BlockedCredentialReadError):
+        load_config("builtin:paper", load_env=True)
+
+
+def test_dotenv_values_alias_cannot_bypass_offline_guard(tmp_path):
+    credential_file = tmp_path / "synthetic-credentials"
+    credential_file.write_text("MFS_OFFLINE_SENTINEL=synthetic-value\n")
+    with pytest.raises(BlockedCredentialReadError):
+        dotenv_values(credential_file)

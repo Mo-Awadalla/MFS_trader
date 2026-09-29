@@ -23,7 +23,7 @@ The CCXT **data downloader** is read-only. A requested testnet uses sandbox URLs
 
 `--config builtin:<name>` resolves a shipped template, never a similarly named file from a checkout. Available names are `research`, `paper`, `paper_shakedown`, and `paper_etf_tsm`. The live template is not shipped. Unknown names and traversal-like names fail. Explicit paths remain relative to the working directory; a missing path never silently falls back to a bundled template.
 
-Config loading can read `.env` in the current working directory, but does not search parent directories. Run credential-free checks from a fresh empty directory. Config-relative storage values are working-directory-relative; templates do not grant data rights or provide market data.
+Config loading does not read `.env` by default. Broker/data credentials must be supplied explicitly as environment variables; the Python loader's `load_env=True` opt-in reads only the current directory and is forbidden by the offline test guard. Config-relative storage values are working-directory-relative; templates do not grant data rights or provide market data.
 
 For a runtime-only installed environment, from an empty directory outside the source tree:
 

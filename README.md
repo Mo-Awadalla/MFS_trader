@@ -316,15 +316,14 @@ python -m pytest tests/unit tests/contracts tests/integration/test_ma_shakedown.
 
 GitHub Actions workflow: `.github/workflows/ci.yml`.
 
-Live broker tests are skipped unless explicitly enabled with `RUN_LIVE_BROKER_TESTS=1`. Test collection does not load `.env` by default; set `MFS_TEST_LOAD_DOTENV=1` only for explicit live-broker runs.
+Live broker tests are skipped unless explicitly enabled with `RUN_LIVE_BROKER_TESTS=1`. Offline tests reject dotenv reads even through application code. `MFS_TEST_LOAD_DOTENV=1` is honored only for explicitly enabled live-broker runs.
 
 ## Credentials and live mode
 
-Copy `.env.example` to `.env` only for local broker/data credentials. Never commit `.env`.
-
-```bash
-cp .env.example .env
-```
+Configuration parsing does not load `.env` by default. Supply broker/data credentials
+through explicitly exported environment variables, never tracked files. The Python
+loader supports deliberate `load_env=True` outside offline tests; this release's
+credential-free commands do not opt in. No release verification loads credentials.
 
 Live mode is intentionally gated by `config/live.toml`; it refuses to start unless `live_deployment.authorized = true` and live credentials/caps are configured.
 
