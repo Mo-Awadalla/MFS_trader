@@ -409,7 +409,7 @@ def _canonical_qualification(artifacts: ArtifactManager, experiment: Experiment)
                 and _provenance_valid(provenance, experiment)
                 and _gate_evidence_valid(payload["gauntlet"], provenance["prepared"], experiment)):
             return Qualification(True, "PASS", "Current canonical numerical evidence; manual approval and paper gates remain required")
-    except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError):
+    except (OSError, ValueError, KeyError, TypeError, AttributeError, subprocess.SubprocessError):
         pass
     return Qualification(False, "requiring_re_evaluation", "Historical PASS alone is insufficient; complete current numerical evidence is required")
 
@@ -509,7 +509,7 @@ def check_current_qualification(
                 or not _gate_evidence_valid(report, request["prepared"], experiment)):
             return blocked("Corrected PASS lacks complete current gauntlet evidence", eid)
         return Qualification(True, "PASS", "Numerical qualification only; manual approval and paper gates remain required", eid)
-    except (OSError, ValueError, KeyError, TypeError, subprocess.SubprocessError) as exc:
+    except (OSError, ValueError, KeyError, TypeError, AttributeError, subprocess.SubprocessError) as exc:
         return blocked(f"Incomplete or invalid corrected evaluation: {exc}")
 
 

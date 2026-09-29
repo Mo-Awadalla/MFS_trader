@@ -304,3 +304,17 @@ def test_explicit_abandonment_preserves_attempt_and_requires_new_complete_eviden
     assert qualified.qualified and qualified.evaluation_id == successor
     assert disposition.read_bytes() == disposition_bytes
     assert disposition.parent.is_dir()
+
+
+def test_malformed_disposition_is_unavailable_not_an_inspection_crash(environment):
+    registry, experiment, artifacts = environment
+    _historical(artifacts, experiment)
+    eid = str(uuid.uuid4())
+    artifacts.claim_corrected_evaluation(experiment.uuid, eid, "d" * 64)
+    artifacts.write_corrected_evaluation_json(experiment.uuid, eid, "disposition", {
+        "schema_version": "corrected_evaluation_v1", "uuid": experiment.uuid,
+        "experiment_hash": experiment.experiment_hash, "evaluation_id": eid,
+        "disposition": "abandoned", "operator": 123, "reason": "invalid operator type",
+    })
+    qualification = check_current_qualification(registry, experiment.uuid, experiment.experiment_hash)
+    assert not qualification.qualified and qualification.status == "requiring_re_evaluation"
