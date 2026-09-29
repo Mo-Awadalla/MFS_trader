@@ -199,6 +199,13 @@ The repo includes paper/live plumbing, but broker authority is intentionally gat
 
 Paper ops proves implementation behavior, not alpha. Live deployment still requires manual approval and capped capital.
 
+The release surface is research and simulation. Legacy `paper-trade-ma`,
+`paper-dry-run-ma`, and standalone `--alpaca-paper-smoke` broker routes are retired.
+Their underlying one-shot diagnostics are simulation-only; there is no substitute
+broker-smoke authority. Continuous paper safety repairs are verified offline, not
+a qualified campaign. Existing smoke, drill, window, activity, numerical and manual
+approval gates remain in force; future broker operation requires a separate review.
+
 ## Quickstart
 
 ### Reproducible dev setup

@@ -9,13 +9,14 @@ import pytest
 from engine.paper_dry_run import run_ma_paper_dry_run
 from engine.shakedown import make_replay_config, make_synthetic_bars
 from execution.base import BrokerAccount
+from execution.sim_broker.broker import SimBroker
 from storage.parquet_io import parquet_path, write_bars
 
 
-class FakeReadOnlyBroker:
-    name = "alpaca"
+class FakeReadOnlyBroker(SimBroker):
 
     def __init__(self, price=200.0):
+        super().__init__()
         self.submit_calls = 0
         self.price = price
 

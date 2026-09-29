@@ -1,5 +1,6 @@
 """Historical status alone must never admit a current broker-paper action."""
 from __future__ import annotations
+import sqlite3
 
 import pandas as pd
 import pytest
@@ -74,7 +75,7 @@ def test_historical_paper_resume_is_not_current_admission(tmp_path):
         registry.close()
 
 
-def test_loop_refuses_historical_paper_before_broker_or_ledger(tmp_path):
+def test_loop_records_historical_paper_refusal_without_broker_access(tmp_path):
     class Broker:
         name = "alpaca"
         is_connected = False
@@ -88,7 +89,7 @@ def test_loop_refuses_historical_paper_before_broker_or_ledger(tmp_path):
     try:
         experiment = _historical_paper(registry)
         broker = Broker()
-        db = tmp_path / "must-not-exist.sqlite"
+        db = tmp_path / "attempt.sqlite"
         loop = PaperRunLoop(
             config=load_config("builtin:paper_shakedown", load_env=False), broker=broker,
             strategy_fn=lambda frame, params: {}, strategy_name="test",
@@ -100,7 +101,10 @@ def test_loop_refuses_historical_paper_before_broker_or_ledger(tmp_path):
         state = loop.run(pd.DataFrame(), db)
         assert state.halted and state.halt_reason.startswith("requiring_re_evaluation:")
         assert broker.connections == 0
-        assert not db.exists()
+        with sqlite3.connect(db) as conn:
+            outcome, reason = conn.execute("SELECT outcome,reason FROM paper_attempts").fetchone()
+        assert outcome == "halted"
+        assert reason.startswith("requiring_re_evaluation:")
     finally:
         registry.close()
 

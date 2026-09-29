@@ -8,13 +8,14 @@ from config.schema import LiveDeploymentConfig, PortfolioConfig, RiskLimits
 from engine.paper_trade import run_ma_paper_trade_once
 from engine.shakedown import make_replay_config, make_synthetic_bars
 from execution.base import BrokerAccount, BrokerOrderResponse, BrokerPosition
+from execution.sim_broker.broker import SimBroker
 from storage.parquet_io import parquet_path, write_bars
 
 
-class FakePaperBroker:
-    name = "alpaca"
+class FakePaperBroker(SimBroker):
 
     def __init__(self, price: float):
+        super().__init__()
         self.price = price
         self.submit_calls = 0
         self.orders: dict[str, BrokerOrderResponse] = {}

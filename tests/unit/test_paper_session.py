@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+from dataclasses import replace
 
 import pytest
 
@@ -23,16 +24,10 @@ from engine.paper_session import (
     build_and_write_paper_ops_pass_report_set,
     build_paper_operator_report,
     evaluate_paper_ops_pass_session,
-    run_alpaca_paper_smoke,
     run_simulated_paper_drills,
     validate_tiny_paper_caps,
+    verify_paper_environment,
     write_paper_operator_report,
-)
-from execution.base import (
-    BrokerAccount,
-    BrokerOrderRequest,
-    BrokerOrderResponse,
-    BrokerPosition,
 )
 from experiments.artifacts import ArtifactKind, ArtifactManager
 from experiments.backfill import build_bb_aapl_1d_default_snapshot
@@ -85,66 +80,51 @@ def _paper_ops(registry: ExperimentRegistry):
     return enter_paper_ops(registry, exp.uuid)
 
 
-class _FakeAlpacaPaper:
-    name = "alpaca"
-
-    def __init__(self) -> None:
-        self.submitted: list[BrokerOrderRequest] = []
-        self.cancelled: list[str] = []
-        self._status: BrokerOrderResponse | None = None
-
-    @property
-    def is_connected(self) -> bool:
-        return True
-
-    def connect(self) -> None:
-        pass
-
-    def disconnect(self) -> None:
-        pass
-
-    def get_price(self, symbol: str) -> float | None:
-        return 100.0
-
-    def submit_order(self, request: BrokerOrderRequest) -> BrokerOrderResponse:
-        self.submitted.append(request)
-        self._status = BrokerOrderResponse(
-            client_order_id=request.client_order_id,
-            broker_order_id="paper-1",
-            status="ACKNOWLEDGED",
-            remaining_qty=request.quantity,
-        )
-        return self._status
-
-    def cancel_order(self, client_order_id: str) -> bool:
-        self.cancelled.append(client_order_id)
-        self._status = BrokerOrderResponse(
-            client_order_id=client_order_id,
-            broker_order_id="paper-1",
-            status="CANCELLED",
-            remaining_qty=0.0,
-        )
-        return True
-
-    def get_order_status(self, client_order_id: str) -> BrokerOrderResponse | None:
-        return self._status
-
-    def get_open_orders(self) -> list[BrokerOrderResponse]:
-        return []
-
-    def get_positions(self) -> list[BrokerPosition]:
-        return []
-
-    def get_account(self) -> BrokerAccount:
-        return BrokerAccount(account_id="fake", cash=1000.0, equity=1000.0)
-
-
 def test_validates_tiny_paper_caps() -> None:
     validate_tiny_paper_caps(PaperCaps(25.0, 100.0, 100.0))
     with pytest.raises(PaperSessionGateError, match="max_notional_per_order"):
         validate_tiny_paper_caps(PaperCaps(25.01, 100.0, 100.0))
     with pytest.raises(PaperSessionGateError, match="max_paper_session_notional"):
         validate_tiny_paper_caps(PaperCaps(25.0, 100.01, 100.0))
+
+
+@pytest.mark.parametrize("value", [float("nan"), float("inf"), -float("inf")])
+@pytest.mark.parametrize("field", range(3))
+def test_nonfinite_caps_cannot_admit_broker_paper(value, field):
+    values = [25., 100., 100.]
+    values[field] = value
+    with pytest.raises(PaperSessionGateError):
+        validate_tiny_paper_caps(PaperCaps(*values))
+
+
+@pytest.mark.parametrize("base_url,data_url", [
+    ("https://api.alpaca.markets", "https://data.alpaca.markets"),
+    ("https://paper-api.alpaca.markets", "https://attacker.invalid"),
+])
+def test_direct_environment_guard_rejects_adapter_origin_mismatch(base_url, data_url):
+    config = _config()
+    config = replace(config, live_deployment=replace(config.live_deployment, paper_submit_enabled=True))
+    class Broker:
+        name = "alpaca"
+        _base_url = base_url
+        _data_url = data_url
+    with pytest.raises(PaperSessionGateError):
+        verify_paper_environment(config, Broker())
+
+
+@pytest.mark.parametrize("diagnostic", ["trade", "dry_run"])
+def test_legacy_diagnostics_reject_direct_broker_before_reads(tmp_path, diagnostic):
+    from engine.paper_dry_run import run_ma_paper_dry_run
+    from engine.paper_trade import run_ma_paper_trade_once
+    class Broker:
+        name = "alpaca"
+        def __getattr__(self, name):
+            raise AssertionError("unqualified diagnostic touched broker")
+    function = run_ma_paper_trade_once if diagnostic == "trade" else run_ma_paper_dry_run
+    output = tmp_path / "diagnostic"
+    with pytest.raises(ValueError, match="simulation-only"):
+        function(config=_config(), broker=Broker(), out_dir=output)
+    assert not output.exists()
 
 
 def test_simulated_drills_write_passing_session(tmp_path):
@@ -170,61 +150,6 @@ def test_simulated_drills_write_passing_session(tmp_path):
         registry.close()
 
 
-def test_alpaca_smoke_requires_prior_sim_drills(tmp_path):
-    registry = ExperimentRegistry(tmp_path / "experiments")
-    try:
-        exp = _paper_ops(registry)
-        with pytest.raises(PaperSessionGateError, match="simulated paper drill"):
-            run_alpaca_paper_smoke(
-                registry=registry,
-                config=_config(),
-                broker=_FakeAlpacaPaper(),
-                experiment_uuid=exp.uuid,
-                experiment_hash=exp.experiment_hash,
-                operator="ops",
-                session_id="alpaca",
-                symbol="AAPL",
-                confirm_paper_broker=True,
-            )
-    finally:
-        registry.close()
-
-
-def test_alpaca_smoke_submits_far_limit_and_cancels_after_drills(tmp_path):
-    registry = ExperimentRegistry(tmp_path / "experiments")
-    try:
-        exp = _paper_ops(registry)
-        run_simulated_paper_drills(
-            registry=registry,
-            config=_config(),
-            experiment_uuid=exp.uuid,
-            experiment_hash=exp.experiment_hash,
-            operator="ops",
-            session_id="sim-drills",
-        )
-        broker = _FakeAlpacaPaper()
-
-        result = run_alpaca_paper_smoke(
-            registry=registry,
-            config=_config(),
-            broker=broker,
-            experiment_uuid=exp.uuid,
-            experiment_hash=exp.experiment_hash,
-            operator="ops",
-            session_id="alpaca",
-            symbol="AAPL",
-            confirm_paper_broker=True,
-        )
-
-        assert result.passed
-        assert len(broker.submitted) == 1
-        assert broker.submitted[0].order_type.value == "limit"
-        assert broker.submitted[0].time_in_force.value == "day"
-        assert broker.submitted[0].limit_price == 50.0
-        assert broker.cancelled == [broker.submitted[0].client_order_id]
-    finally:
-        registry.close()
-
 
 def test_operator_report_requires_sim_and_alpaca_passing_sessions(tmp_path):
     registry = ExperimentRegistry(tmp_path / "experiments")
@@ -241,7 +166,7 @@ def test_operator_report_requires_sim_and_alpaca_passing_sessions(tmp_path):
         registry.close()
 
 
-def test_operator_report_writes_passing_evidence(tmp_path):
+def test_operator_report_does_not_qualify_simulated_evidence(tmp_path):
     registry = ExperimentRegistry(tmp_path / "experiments")
     try:
         exp = _paper_ops(registry)
@@ -253,30 +178,19 @@ def test_operator_report_writes_passing_evidence(tmp_path):
             operator="ops",
             session_id="sim-drills",
         )
-        run_alpaca_paper_smoke(
-            registry=registry,
-            config=_config(),
-            broker=_FakeAlpacaPaper(),
-            experiment_uuid=exp.uuid,
-            experiment_hash=exp.experiment_hash,
-            operator="ops",
-            session_id="alpaca",
-            symbol="AAPL",
-            confirm_paper_broker=True,
-        )
 
         json_path, md_path, report = write_paper_operator_report(
             registry=registry,
             experiment_uuid=exp.uuid,
         )
 
-        assert report["passed"]
+        assert not report["passed"]
         assert json_path.name == "operator_report.json"
         assert md_path.name == "operator_report.md"
         payload = ArtifactManager(registry.root).read_json(
             exp.uuid, ArtifactKind.PAPER_OPERATOR_REPORT_JSON
         )
-        assert payload["passed"] is True
+        assert payload["broker_paper_qualified"] is False
     finally:
         registry.close()
 
