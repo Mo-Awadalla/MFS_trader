@@ -14,6 +14,7 @@ Alpaca-specific behavior handled here:
 
 from __future__ import annotations
 
+import math
 import time
 from typing import Any
 from urllib.parse import quote
@@ -92,6 +93,13 @@ class AlpacaAdapter(BrokerAdapter):
         base_url: str = "https://paper-api.alpaca.markets",
         data_url: str = "https://data.alpaca.markets",
     ):
+        if base_url.rstrip("/") not in {
+            "https://paper-api.alpaca.markets",
+            "https://api.alpaca.markets",
+        }:
+            raise ValueError("Alpaca trading URL must be an approved HTTPS origin")
+        if data_url.rstrip("/") != "https://data.alpaca.markets":
+            raise ValueError("Alpaca market-data URL must be https://data.alpaca.markets")
         self._api_key = api_key
         self._api_secret = api_secret
         self._base_url = base_url.rstrip("/")
@@ -121,6 +129,7 @@ class AlpacaAdapter(BrokerAdapter):
         try:
             resp = self._request("GET", "/v2/account")
             if resp.status_code == 200:
+                self._parse_account(resp.json())
                 self._connected = True
                 log.info("alpaca_connected", base_url=self._base_url)
             else:
@@ -140,6 +149,8 @@ class AlpacaAdapter(BrokerAdapter):
         """Make an HTTP request to the Alpaca API with retry logic."""
         url = f"{self._base_url}{path}"
         kwargs.setdefault("timeout", DEFAULT_TIMEOUT)
+        # requests preserves custom APCA headers on redirects, even across origins.
+        kwargs["allow_redirects"] = False
 
         for attempt in range(MAX_RETRIES):
             try:
@@ -282,65 +293,117 @@ class AlpacaAdapter(BrokerAdapter):
             log.warning("alpaca_status_failed", status=resp.status_code)
             return None
 
-    def get_open_orders(self) -> list[BrokerOrderResponse]:
-        """Fetch currently open Alpaca orders."""
+    def _read_truth(self, resource: str, path: str, **kwargs: Any) -> Any:
+        """Read broker truth without turning unavailable data into an empty account."""
         if not self.is_connected:
-            return []
-
+            raise RuntimeError(f"Alpaca {resource} unavailable: not connected")
         try:
-            resp = self._request("GET", "/v2/orders", params={"status": "open", "limit": 100})
-        except Exception as e:
-            log.error("alpaca_open_orders_error", error=str(e))
-            return []
+            resp = self._request("GET", path, **kwargs)
+            if resp.status_code != 200:
+                raise RuntimeError(f"HTTP {resp.status_code}")
+            return resp.json()
+        except Exception as exc:
+            raise RuntimeError(f"Alpaca {resource} unavailable: {exc}") from exc
 
-        if resp.status_code == 200:
-            return [
-                self._parse_order_response(order, order.get("client_order_id", ""))
-                for order in resp.json()
-            ]
-
-        log.warning("alpaca_open_orders_failed", status=resp.status_code)
-        return []
+    def get_open_orders(self) -> list[BrokerOrderResponse]:
+        """Fetch verified open orders; an incomplete or invalid snapshot raises."""
+        data = self._read_truth("open orders", "/v2/orders", params={"status": "open", "limit": 100})
+        try:
+            if not isinstance(data, list):
+                raise ValueError("expected a list")
+            if len(data) >= 100:
+                raise ValueError("open-order response reached the limit; completeness unavailable")
+            orders = []
+            identities = set()
+            for item in data:
+                client_id = self._required_text(item, "client_order_id")
+                broker_id = self._required_text(item, "id")
+                if client_id in identities:
+                    raise ValueError("duplicate client_order_id")
+                identities.add(client_id)
+                status = self._required_text(item, "status")
+                if status not in ALPACA_STATUS_MAP:
+                    raise ValueError("unrecognized order status")
+                quantity = self._finite_number(item, "qty")
+                filled = self._finite_number(item, "filled_qty")
+                if quantity <= 0 or not 0 <= filled <= quantity:
+                    raise ValueError("invalid order quantities")
+                price = item.get("filled_avg_price")
+                if price is not None:
+                    price = self._finite_number(item, "filled_avg_price")
+                    if price <= 0:
+                        raise ValueError("invalid filled_avg_price")
+                if filled > 0 and price is None:
+                    raise ValueError("missing filled_avg_price")
+                orders.append(BrokerOrderResponse(
+                    client_order_id=client_id,
+                    broker_order_id=broker_id,
+                    status=ALPACA_STATUS_MAP[status],
+                    filled_qty=filled,
+                    avg_fill_price=price,
+                    remaining_qty=quantity - filled,
+                    rejection_reason=item.get("reject_reason"),
+                    timestamp=item.get("submitted_at"),
+                ))
+            return orders
+        except (ValueError, TypeError, KeyError) as exc:
+            raise RuntimeError(f"Alpaca open orders unavailable: malformed response: {exc}") from exc
 
     def get_positions(self) -> list[BrokerPosition]:
-        """Fetch all open positions from Alpaca."""
-        if not self.is_connected:
-            return []
-
+        """Fetch verified positions; unavailable or malformed truth raises."""
+        data = self._read_truth("positions", "/v2/positions")
         try:
-            resp = self._request("GET", "/v2/positions")
-            if resp.status_code == 200:
-                positions = resp.json()
-                return [self._parse_position(p) for p in positions]
-            else:
-                log.warning("alpaca_positions_failed", status=resp.status_code)
-                return []
-        except Exception as e:
-            log.error("alpaca_positions_error", error=str(e))
-            return []
+            if not isinstance(data, list):
+                raise ValueError("expected a list")
+            positions = [self._parse_position(item) for item in data]
+            if len({position.symbol for position in positions}) != len(positions):
+                raise ValueError("duplicate position symbol")
+            return positions
+        except (ValueError, TypeError, KeyError) as exc:
+            raise RuntimeError(f"Alpaca positions unavailable: malformed response: {exc}") from exc
 
     def get_account(self) -> BrokerAccount:
-        """Fetch account state from Alpaca."""
-        if not self.is_connected:
-            return BrokerAccount(account_id="unknown", cash=0, equity=0)
-
+        """Fetch verified account state; fabricated zero balances are never returned."""
+        data = self._read_truth("account", "/v2/account")
         try:
-            resp = self._request("GET", "/v2/account")
-            if resp.status_code == 200:
-                data = resp.json()
-                return BrokerAccount(
-                    account_id=data.get("id", "unknown"),
-                    cash=float(data.get("cash", 0)),
-                    equity=float(data.get("equity", 0)),
-                    buying_power=float(data.get("buying_power", 0)) if data.get("buying_power") else None,
-                    currency="USD",
-                )
-            else:
-                log.warning("alpaca_account_failed", status=resp.status_code)
-                return BrokerAccount(account_id="unknown", cash=0, equity=0)
-        except Exception as e:
-            log.error("alpaca_account_error", error=str(e))
-            return BrokerAccount(account_id="unknown", cash=0, equity=0)
+            return self._parse_account(data)
+        except (ValueError, TypeError, KeyError) as exc:
+            raise RuntimeError(f"Alpaca account unavailable: malformed response: {exc}") from exc
+
+    @staticmethod
+    def _required_text(data: Any, field: str) -> str:
+        if not isinstance(data, dict):
+            raise ValueError("expected an object")
+        value = data.get(field)
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(f"missing or invalid {field}")
+        return value
+
+    @staticmethod
+    def _finite_number(data: dict[str, Any], field: str) -> float:
+        value = data[field]
+        if isinstance(value, bool) or not isinstance(value, (str, int, float)):
+            raise ValueError(f"invalid {field}")
+        try:
+            number = float(value)
+        except OverflowError as exc:
+            raise ValueError(f"nonfinite {field}") from exc
+        if not math.isfinite(number):
+            raise ValueError(f"nonfinite {field}")
+        return number
+
+    def _parse_account(self, data: Any) -> BrokerAccount:
+        account_id = self._required_text(data, "id")
+        return BrokerAccount(
+            account_id=account_id,
+            cash=self._finite_number(data, "cash"),
+            equity=self._finite_number(data, "equity"),
+            buying_power=(
+                self._finite_number(data, "buying_power")
+                if data.get("buying_power") is not None else None
+            ),
+            currency=self._required_text(data, "currency"),
+        )
 
     def get_price(self, symbol: str) -> float | None:
         """Get latest price for a symbol from Alpaca data API."""
@@ -349,7 +412,7 @@ class AlpacaAdapter(BrokerAdapter):
 
         try:
             url = f"{self._data_url}/v2/stocks/{symbol}/quotes/latest"
-            resp = self._session.get(url, timeout=DEFAULT_TIMEOUT)
+            resp = self._session.get(url, timeout=DEFAULT_TIMEOUT, allow_redirects=False)
             if resp.status_code == 200:
                 data = resp.json()
                 quote = data.get("quote", data)  # handle both wrapped and unwrapped
@@ -386,7 +449,7 @@ class AlpacaAdapter(BrokerAdapter):
             return None
         try:
             url = f"{self._data_url}/v2/stocks/{symbol}/trades/latest"
-            resp = self._session.get(url, timeout=DEFAULT_TIMEOUT)
+            resp = self._session.get(url, timeout=DEFAULT_TIMEOUT, allow_redirects=False)
             if resp.status_code != 200:
                 log.warning("alpaca_trade_price_failed", symbol=symbol, status=resp.status_code)
                 return None
@@ -424,17 +487,26 @@ class AlpacaAdapter(BrokerAdapter):
 
     def _parse_position(self, data: dict[str, Any]) -> BrokerPosition:
         """Parse Alpaca position JSON into BrokerPosition."""
-        qty = float(data.get("qty", 0))
+        symbol = self._required_text(data, "symbol")
+        qty = self._finite_number(data, "qty")
         side = "long" if qty > 0 else ("short" if qty < 0 else "flat")
-        avg_price = float(data.get("avg_entry_price", 0))
-        unrealized = data.get("unrealized_pl")
-        market_val = data.get("market_value")
+        avg_price = self._finite_number(data, "avg_entry_price")
+        if avg_price < 0 or (qty != 0 and avg_price == 0):
+            raise ValueError("invalid avg_entry_price")
+        unrealized = (
+            self._finite_number(data, "unrealized_pl")
+            if data.get("unrealized_pl") is not None else None
+        )
+        market_val = (
+            self._finite_number(data, "market_value")
+            if data.get("market_value") is not None else None
+        )
 
         return BrokerPosition(
-            symbol=data.get("symbol", ""),
+            symbol=symbol,
             quantity=qty,
             avg_entry_price=avg_price,
             side=side,
-            unrealized_pnl=float(unrealized) if unrealized is not None else None,
-            market_value=float(market_val) if market_val is not None else None,
+            unrealized_pnl=unrealized,
+            market_value=market_val,
         )
