@@ -1,21 +1,18 @@
-"""MA paper dry-run.
-
-Read real broker/account state and live quote, run MA sizing/risk logic, log
-the would-be order, and never submit anything to the broker.
-"""
+"""Simulation-only MA sizing/risk diagnostic with no broker authority."""
 
 from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Protocol
+from typing import Any
 
 import pandas as pd
 
 from config.schema import AssetClass, Config
 from data.pipeline import load_bars
-from execution.base import BrokerAccount, BrokerOrderResponse, BrokerPosition
+from execution.base import BrokerOrderResponse, BrokerPosition
+from execution.sim_broker.broker import SimBroker
 from monitoring.reports import build_operational_report
 from monitoring.watchdog import HeartbeatWatchdog, WatchdogConfig
 from portfolio.sizing import PortfolioState, compute_position_delta, compute_target_positions
@@ -24,18 +21,6 @@ from storage.event_logger import EventLogger
 from storage.schema import init_db
 from strategies.ma.signal import MAParams, generate_signals
 
-
-class ReadOnlyBroker(Protocol):
-    @property
-    def name(self) -> str: ...
-
-    def get_account(self) -> BrokerAccount: ...
-
-    def get_positions(self) -> list[BrokerPosition]: ...
-
-    def get_open_orders(self) -> list[BrokerOrderResponse]: ...
-
-    def get_price(self, symbol: str) -> float | None: ...
 
 
 @dataclass(frozen=True)
@@ -116,7 +101,7 @@ class PaperDryRunResult:
 def run_ma_paper_dry_run(
     *,
     config: Config,
-    broker: ReadOnlyBroker,
+    broker: SimBroker,
     symbol: str = "AAPL",
     frequency: str = "1d",
     source: str = "alpaca",
@@ -126,8 +111,10 @@ def run_ma_paper_dry_run(
     slow_window: int = 100,
     trend_filter_active: bool = True,
 ) -> PaperDryRunResult:
-    """Run one read-only MA dry-run cycle against paper broker state."""
+    """Run one read-only MA diagnostic against simulated broker state."""
 
+    if not isinstance(broker, SimBroker):
+        raise ValueError("Legacy MA diagnostics are simulation-only; use guarded paper-run for broker paper")
     strategy = config.strategy_name or "dual_ma_crossover"
     data_config = _find_data_config(config, symbol)
     if data_config.asset_class != AssetClass.EQUITY:

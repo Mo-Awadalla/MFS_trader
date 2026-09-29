@@ -16,18 +16,17 @@ from config.loader import ConfigError, get_broker_creds, load_config
 from config.optional_deps import MissingExtraError
 from engine.etf_tsm_replay import run_etf_tsm_engine_replay
 from engine.ma_replay import run_ma_real_data_replay
-from engine.paper_dry_run import run_ma_paper_dry_run
-from engine.paper_run import PaperRunConfig, PaperRunLoop, verify_local_paper_prerequisites
+from engine.paper_run import PaperRunConfig, PaperRunLoop
 from engine.paper_session import (
     PaperSessionGateError,
     paper_caps_from_config,
-    run_alpaca_paper_smoke,
     run_simulated_paper_drills,
     validate_tiny_paper_caps,
+    verify_paper_environment,
     verify_paper_lifecycle_gates,
     write_paper_operator_report,
 )
-from engine.paper_trade import halt_paper_trading, run_ma_paper_trade_once
+from engine.paper_trade import halt_paper_trading
 from engine.shakedown import run_ma_shakedown
 from execution.alpaca.adapter import AlpacaAdapter
 from execution.sim_broker.broker import SimBroker
@@ -174,113 +173,6 @@ def cmd_replay_etf_tsm(args: argparse.Namespace) -> int:
     if result.financial_parity_assertion_failed:
         return 1
     return 0 if result.passed or args.allow_diffs else 1
-
-
-def cmd_paper_dry_run_ma(args: argparse.Namespace) -> int:
-    """Run one read-only MA paper dry-run cycle against Alpaca."""
-
-    if not args.config:
-        print("paper-dry-run-ma requires --config", file=sys.stderr)
-        return 2
-    broker = None
-    try:
-        cfg = load_config(args.config)
-        broker_cfg = next((b for b in cfg.brokers if b.name == "alpaca"), None)
-        if broker_cfg is None:
-            raise ConfigError("No alpaca broker configured")
-        api_key, api_secret = get_broker_creds(broker_cfg)
-        broker = AlpacaAdapter(
-            api_key=api_key,
-            api_secret=api_secret,
-            base_url=broker_cfg.base_url,
-            data_url=broker_cfg.data_url or "https://data.alpaca.markets",
-        )
-        broker.connect()
-        if not broker.is_connected:
-            raise ConfigError("Alpaca broker did not connect")
-        result = run_ma_paper_dry_run(
-            config=cfg,
-            broker=broker,
-            symbol=args.symbol,
-            frequency=args.frequency,
-            source=args.source,
-            out_dir=args.out_dir,
-            fast_window=args.fast_window,
-            slow_window=args.slow_window,
-            trend_filter_active=not args.no_trend_filter,
-        )
-    except (ConfigError, FileNotFoundError, ValueError) as exc:
-        print(f"Paper dry-run error: {exc}", file=sys.stderr)
-        return 1
-    finally:
-        if broker is not None:
-            broker.disconnect()
-
-    print(f"MA paper dry-run status: {'PASS' if result.passed else 'BLOCKED'}")
-    print(f"Report: {result.report_path}")
-    print(f"JSON:   {result.json_path}")
-    print(f"DB:     {result.db_path}")
-    if result.blockers:
-        print("Blockers:")
-        for blocker in result.blockers:
-            print(f"  - {blocker}")
-    return 0 if result.passed or args.allow_blockers else 1
-
-
-def cmd_paper_trade_ma(args: argparse.Namespace) -> int:
-    """Submit at most one tiny MA paper order."""
-
-    if not args.config:
-        print("paper-trade-ma requires --config", file=sys.stderr)
-        return 2
-    broker = None
-    try:
-        cfg = load_config(args.config)
-        broker_cfg = next((b for b in cfg.brokers if b.name == "alpaca"), None)
-        if broker_cfg is None:
-            raise ConfigError("No alpaca broker configured")
-        api_key, api_secret = get_broker_creds(broker_cfg)
-        broker = AlpacaAdapter(
-            api_key=api_key,
-            api_secret=api_secret,
-            base_url=broker_cfg.base_url,
-            data_url=broker_cfg.data_url or "https://data.alpaca.markets",
-        )
-        broker.connect()
-        if not broker.is_connected:
-            raise ConfigError("Alpaca broker did not connect")
-        result = run_ma_paper_trade_once(
-            config=cfg,
-            broker=broker,
-            symbol=args.symbol,
-            frequency=args.frequency,
-            source=args.source,
-            out_dir=args.out_dir,
-            fast_window=args.fast_window,
-            slow_window=args.slow_window,
-            trend_filter_active=not args.no_trend_filter,
-        )
-    except (ConfigError, FileNotFoundError, ValueError) as exc:
-        print(f"Paper trade error: {exc}", file=sys.stderr)
-        return 1
-    finally:
-        if broker is not None:
-            broker.disconnect()
-
-    print(f"MA paper trade status: {'PASS' if result.passed else 'BLOCKED'}")
-    print(f"Submitted: {result.submitted}")
-    print(f"Duplicate skipped: {result.duplicate_skipped}")
-    print(f"Client order id: {result.client_order_id or 'n/a'}")
-    print(f"Order state: {result.order_state or 'n/a'}")
-    print(f"Broker status: {result.broker_status or 'n/a'}")
-    print(f"Report: {result.report_path}")
-    print(f"JSON:   {result.json_path}")
-    print(f"DB:     {result.db_path}")
-    if result.blockers:
-        print("Blockers:")
-        for blocker in result.blockers:
-            print(f"  - {blocker}")
-    return 0 if result.passed or args.allow_blockers else 1
 
 
 def cmd_paper_halt(args: argparse.Namespace) -> int:
@@ -438,103 +330,29 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
         finally:
             registry.close()
 
+        broker_factory = None
         if args.broker == "alpaca_paper":
-            broker_cfg = next((b for b in cfg.brokers if b.name == "alpaca"), None)
-            if broker_cfg is None:
-                raise ConfigError("No alpaca broker configured")
-            if cfg.mode.value != "paper" or not broker_cfg.is_paper or broker_cfg.base_url.rstrip("/") != "https://paper-api.alpaca.markets":
-                raise PaperSessionGateError("paper-run requires the verified Alpaca paper environment")
+            broker_cfg = verify_paper_environment(cfg)
             if not args.confirm_paper_broker:
                 raise PaperSessionGateError("--confirm-paper-broker is required before broker activity")
-            if not cfg.live_deployment.paper_submit_enabled or cfg.live_deployment.dry_run_mode:
-                raise PaperSessionGateError("paper submission must be explicitly enabled and not dry-run")
-            if not cfg.engine.startup_reconciliation_required or not cfg.engine.kill_switch_persistent:
-                raise PaperSessionGateError("paper-run requires startup reconciliation and persistent kill state")
-            verify_local_paper_prerequisites(Path(args.out_dir) / "paper_run.sqlite")
-            api_key, api_secret = get_broker_creds(broker_cfg)
-            broker = AlpacaAdapter(
-                api_key=api_key,
-                api_secret=api_secret,
-                base_url=broker_cfg.base_url,
-                data_url=broker_cfg.data_url or "https://data.alpaca.markets",
-            )
-            broker.connect()
-            if not broker.is_connected:
-                raise ConfigError("Alpaca paper broker did not connect")
-            if args.alpaca_paper_smoke:
-                registry = _open_registry(args)
-                try:
-                    result = run_alpaca_paper_smoke(
-                        registry=registry,
-                        config=cfg,
-                        broker=broker,
-                        experiment_uuid=args.experiment_uuid,
-                        experiment_hash=args.experiment_hash,
-                        operator=args.operator,
-                        session_id=args.session_id,
-                        symbol=args.symbol,
-                        confirm_paper_broker=args.confirm_paper_broker,
-                    )
-                    print(f"Alpaca paper smoke status: {'PASS' if result.passed else 'BLOCKED'}")
-                    print(f"Session:  {result.session_id}")
-                    print(f"Artifact: {result.artifact_path}")
-                    for blocker in result.blockers:
-                        print(f"  - {blocker}")
-                    return 0 if result.passed else 1
-                finally:
-                    registry.close()
+
+            def broker_factory():
+                nonlocal broker
+                api_key, api_secret = get_broker_creds(broker_cfg)
+                broker = AlpacaAdapter(
+                    api_key=api_key,
+                    api_secret=api_secret,
+                    base_url=broker_cfg.base_url,
+                    data_url=broker_cfg.data_url or "https://data.alpaca.markets",
+                )
+                return broker
         else:
             broker = SimBroker()
-            broker.connect()
-            if not broker.is_connected:
-                raise ConfigError("Sim broker did not connect")
 
         from engine.paper_strategy import prepare_paper_strategy
 
-        bars_provider = None
-        if cfg.strategy_name == "etf_time_series_momentum" and args.broker == "alpaca_paper":
-            from data.pipeline import build_downloader, download_and_store
-
-            data_cfg = replace(cfg.data[0], storage_dir="data/parquet/equity")
-            broker_cfg = next((b for b in cfg.brokers if b.name == "alpaca"), None)
-            if broker_cfg is None:
-                raise ConfigError("No alpaca broker configured for ETF panel refresh")
-            api_key, api_secret = get_broker_creds(broker_cfg)
-            downloader = build_downloader(data_cfg, api_key, api_secret, is_paper=True)
-            cfg = replace(
-                cfg,
-                data=[data_cfg],
-                raw={**cfg.raw, "paper_data_source": "alpaca"},
-            )
-
-            def refresh_and_prepare():
-                summary = download_and_store(data_cfg, downloader, environment="paper")
-                failed = [
-                    symbol
-                    for symbol, item in summary["symbols"].items()
-                    if item.get("status") == "error" or not item.get("stored", False)
-                ]
-                if failed:
-                    raise ConfigError(f"ETF panel refresh failed for: {', '.join(failed)}")
-                return prepare_paper_strategy(
-                    cfg,
-                    experiment,
-                    frequency=args.frequency,
-                    load_symbol=load_bars,
-                    ma_symbol=args.symbol,
-                    ma_params={
-                        "fast_ma_window": args.fast_window,
-                        "slow_ma_window": args.slow_window,
-                        "trend_filter_active": not args.no_trend_filter,
-                    },
-                )
-
-            prepared = refresh_and_prepare()
-
-            def bars_provider():
-                return refresh_and_prepare().bars
-        else:
-            prepared = prepare_paper_strategy(
+        def prepare():
+            return prepare_paper_strategy(
                 cfg,
                 experiment,
                 frequency=args.frequency,
@@ -546,6 +364,29 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
                     "trend_filter_active": not args.no_trend_filter,
                 },
             )
+
+        # Preparation uses local bars only; no credential-bearing data refresh
+        # may precede the loop's durable attempt and complete recovery checks.
+        prepared = prepare()
+        bars_provider = None
+        if cfg.strategy_name == "etf_time_series_momentum" and args.broker == "alpaca_paper":
+            from data.pipeline import build_downloader, download_and_store
+
+            if cfg.raw.get("paper_data_source") != "alpaca":
+                raise PaperSessionGateError("Broker refresh cannot substitute Alpaca for the frozen data source")
+            data_cfg = cfg.data[0]
+
+            def bars_provider():
+                api_key, api_secret = get_broker_creds(broker_cfg)
+                downloader = build_downloader(data_cfg, api_key, api_secret, is_paper=True)
+                summary = download_and_store(data_cfg, downloader, environment="paper")
+                failed = [
+                    symbol for symbol, item in summary["symbols"].items()
+                    if item.get("status") == "error" or not item.get("stored", False)
+                ]
+                if failed:
+                    raise ConfigError(f"ETF panel refresh failed for: {', '.join(failed)}")
+                return prepare().bars
 
         bars = prepared.bars
         if hasattr(broker, "set_price"):
@@ -586,6 +427,7 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
             run_config=run_config,
             strategy_params=prepared.strategy_params,
             bars_provider=bars_provider,
+            broker_factory=broker_factory,
         )
 
         out_dir = Path(args.out_dir)
@@ -788,42 +630,6 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_etf_replay.set_defaults(func=cmd_replay_etf_tsm)
 
-    p_dry = sub.add_parser(
-        "paper-dry-run-ma",
-        help="Run one read-only MA dry-run cycle against Alpaca paper",
-    )
-    p_dry.add_argument("--symbol", default="AAPL", help="Symbol to dry-run; Phase 3.5 allows AAPL only")
-    p_dry.add_argument("--frequency", default="1d", help="Stored bar frequency, e.g. 1d")
-    p_dry.add_argument("--source", default="alpaca", help="Stored data source directory")
-    p_dry.add_argument("--out-dir", default="runs/ma_paper_dry_run", help="Artifact directory")
-    p_dry.add_argument("--fast-window", type=int, default=20)
-    p_dry.add_argument("--slow-window", type=int, default=100)
-    p_dry.add_argument("--no-trend-filter", action="store_true")
-    p_dry.add_argument(
-        "--allow-blockers",
-        action="store_true",
-        help="Exit 0 even if the dry-run gate finds blockers",
-    )
-    p_dry.set_defaults(func=cmd_paper_dry_run_ma)
-
-    p_trade = sub.add_parser(
-        "paper-trade-ma",
-        help="Submit at most one tiny MA paper order against Alpaca paper",
-    )
-    p_trade.add_argument("--symbol", default="AAPL", help="Symbol to trade; Phase 3.6 allows AAPL only")
-    p_trade.add_argument("--frequency", default="1d", help="Stored bar frequency, e.g. 1d")
-    p_trade.add_argument("--source", default="alpaca", help="Stored data source directory")
-    p_trade.add_argument("--out-dir", default="runs/ma_paper_trade", help="Artifact directory")
-    p_trade.add_argument("--fast-window", type=int, default=20)
-    p_trade.add_argument("--slow-window", type=int, default=100)
-    p_trade.add_argument("--no-trend-filter", action="store_true")
-    p_trade.add_argument(
-        "--allow-blockers",
-        action="store_true",
-        help="Exit 0 even if the paper trade gate finds blockers",
-    )
-    p_trade.set_defaults(func=cmd_paper_trade_ma)
-
     p_halt = sub.add_parser("paper-halt", help="Persist a paper trading kill switch")
     p_halt.add_argument("--db", required=True, help="Paper trading SQLite DB")
     p_halt.add_argument("--reason", default="manual_halt")
@@ -928,11 +734,6 @@ def build_parser() -> argparse.ArgumentParser:
         "--confirm-paper-broker",
         action="store_true",
         help="Required to allow Alpaca paper broker authority",
-    )
-    p_paper_run.add_argument(
-        "--alpaca-paper-smoke",
-        action="store_true",
-        help="Run one-shot Alpaca paper submit/cancel smoke instead of the continuous loop",
     )
     p_paper_run.add_argument(
         "--run-sim-drills",

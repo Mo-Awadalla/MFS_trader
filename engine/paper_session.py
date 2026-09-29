@@ -11,12 +11,11 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, cast
 
-from config.schema import Config
+from config.schema import BrokerConfig, Config
 from engine.paper_evidence import PaperLedger, derive_observations, instant
 from execution.base import (
     BrokerAdapter,
     BrokerOrderRequest,
-    BrokerOrderResponse,
     OrderSide,
     OrderType,
     TimeInForce,
@@ -109,6 +108,32 @@ class PaperSessionResult:
         }
 
 
+def verify_paper_environment(config: Config, broker: BrokerAdapter | None = None) -> BrokerConfig:
+    """Validate both credential-bearing origins before any broker access."""
+    matches = [item for item in config.brokers if item.name == "alpaca"]
+    if len(matches) != 1:
+        raise PaperSessionGateError("Exactly one Alpaca paper broker must be configured")
+    configured = matches[0]
+    trading_url = configured.base_url.rstrip("/")
+    data_url = (configured.data_url or "https://data.alpaca.markets").rstrip("/")
+    if config.mode.value != "paper" or not configured.is_paper or trading_url != "https://paper-api.alpaca.markets":
+        raise PaperSessionGateError("paper-run requires the verified Alpaca paper environment")
+    if data_url != "https://data.alpaca.markets":
+        raise PaperSessionGateError("paper-run requires the verified Alpaca market-data origin")
+    if not config.live_deployment.paper_submit_enabled or config.live_deployment.dry_run_mode:
+        raise PaperSessionGateError("paper submission must be explicitly enabled and not dry-run")
+    if not config.engine.startup_reconciliation_required or not config.engine.kill_switch_persistent:
+        raise PaperSessionGateError("paper-run requires startup reconciliation and persistent kill state")
+    validate_tiny_paper_caps(paper_caps_from_config(config))
+    if broker is not None and (
+        broker.name != "alpaca"
+        or getattr(broker, "_base_url", None) != trading_url
+        or getattr(broker, "_data_url", None) != data_url
+    ):
+        raise PaperSessionGateError("Broker adapter disagrees with configured paper origins")
+    return configured
+
+
 def paper_caps_from_config(config: Config) -> PaperCaps:
     live = config.live_deployment
     return PaperCaps(
@@ -120,11 +145,11 @@ def paper_caps_from_config(config: Config) -> PaperCaps:
 
 def validate_tiny_paper_caps(caps: PaperCaps) -> None:
     failures: list[str] = []
-    if caps.max_notional_per_order <= 0 or caps.max_notional_per_order > MAX_ORDER_CAP:
+    if not math.isfinite(caps.max_notional_per_order) or caps.max_notional_per_order <= 0 or caps.max_notional_per_order > MAX_ORDER_CAP:
         failures.append(f"max_notional_per_order must be in (0, {MAX_ORDER_CAP}]")
-    if caps.max_paper_session_notional <= 0 or caps.max_paper_session_notional > MAX_SESSION_CAP:
+    if not math.isfinite(caps.max_paper_session_notional) or caps.max_paper_session_notional <= 0 or caps.max_paper_session_notional > MAX_SESSION_CAP:
         failures.append(f"max_paper_session_notional must be in (0, {MAX_SESSION_CAP}]")
-    if caps.max_open_paper_exposure <= 0 or caps.max_open_paper_exposure > MAX_OPEN_EXPOSURE_CAP:
+    if not math.isfinite(caps.max_open_paper_exposure) or caps.max_open_paper_exposure <= 0 or caps.max_open_paper_exposure > MAX_OPEN_EXPOSURE_CAP:
         failures.append(f"max_open_paper_exposure must be in (0, {MAX_OPEN_EXPOSURE_CAP}]")
     if caps.max_notional_per_order > caps.max_paper_session_notional:
         failures.append("max_notional_per_order cannot exceed max_paper_session_notional")
@@ -152,21 +177,6 @@ def verify_paper_lifecycle_gates(
         )
     return experiment
 
-
-def has_passing_sim_drill(artifacts: ArtifactManager, experiment_uuid: str) -> bool:
-    return any(
-        session.get("passed") is True
-        and session.get("session_type") == "simulated_drills"
-        for session in artifacts.list_paper_sessions(experiment_uuid)
-    )
-
-
-def has_passing_alpaca_smoke(artifacts: ArtifactManager, experiment_uuid: str) -> bool:
-    return any(
-        session.get("passed") is True
-        and session.get("session_type") == "alpaca_paper_smoke"
-        for session in artifacts.list_paper_sessions(experiment_uuid)
-    )
 
 
 def write_paper_ops_pass_report_set(
@@ -442,110 +452,6 @@ def run_simulated_paper_drills(
     )
 
 
-def run_alpaca_paper_smoke(
-    *,
-    registry: ExperimentRegistry,
-    config: Config,
-    broker: BrokerAdapter,
-    experiment_uuid: str,
-    experiment_hash: str,
-    operator: str | None,
-    session_id: str,
-    symbol: str,
-    confirm_paper_broker: bool,
-    artifacts: ArtifactManager | None = None,
-) -> PaperSessionResult:
-    experiment = verify_paper_lifecycle_gates(
-        registry, experiment_uuid=experiment_uuid, experiment_hash=experiment_hash
-    )
-    from experiments.corrected_evaluations import require_current_qualification
-
-    require_current_qualification(registry, experiment_uuid, experiment_hash)
-    if not confirm_paper_broker:
-        raise PaperSessionGateError("--confirm-paper-broker is required for alpaca_paper")
-    caps = paper_caps_from_config(config)
-    validate_tiny_paper_caps(caps)
-    artifacts = artifacts or ArtifactManager(registry.root)
-    if not has_passing_sim_drill(artifacts, experiment_uuid):
-        raise PaperSessionGateError("passing simulated paper drill evidence is required")
-
-    price = broker.get_price(symbol)
-    if price is None or price <= 0:
-        raise PaperSessionGateError(f"no valid broker price for {symbol}")
-    qty = round(caps.max_notional_per_order / price, 6)
-    if qty <= 0:
-        raise PaperSessionGateError("calculated paper order quantity is zero")
-    limit_price = round(price * 0.5, 2)
-    client_order_id = _client_order_id(experiment_uuid, session_id, symbol)
-
-    before_open = _orders_to_dicts(_get_open_orders(broker))
-    before_positions = _positions_to_dicts(broker.get_positions())
-    response = broker.submit_order(
-        BrokerOrderRequest(
-            client_order_id=client_order_id,
-            symbol=symbol,
-            side=OrderSide.BUY,
-            order_type=OrderType.LIMIT,
-            quantity=qty,
-            time_in_force=TimeInForce.DAY,
-            limit_price=limit_price,
-            asset_class="equity",
-        )
-    )
-    cancel_ok = False
-    post_cancel_status: BrokerOrderResponse | None = None
-    if response.status not in {"REJECTED", "TIMEOUT", "FILLED"}:
-        cancel_ok = broker.cancel_order(client_order_id)
-        post_cancel_status = broker.get_order_status(client_order_id)
-    after_open = _orders_to_dicts(_get_open_orders(broker))
-    after_positions = _positions_to_dicts(broker.get_positions())
-
-    blockers = _alpaca_smoke_blockers(
-        response=response,
-        cancel_ok=cancel_ok,
-        post_cancel_status=post_cancel_status,
-        before_positions=before_positions,
-        after_positions=after_positions,
-        after_open=after_open,
-    )
-    details = {
-        "symbol": symbol,
-        "price": price,
-        "limit_price": limit_price,
-        "qty": qty,
-        "client_order_id": client_order_id,
-        "submit_response": _order_response_to_dict(response),
-        "cancel_ok": cancel_ok,
-        "post_cancel_status": _order_response_to_dict(post_cancel_status),
-        "open_orders_before": before_open,
-        "open_orders_after": after_open,
-        "positions_before": before_positions,
-        "positions_after": after_positions,
-    }
-    payload = _base_session_payload(
-        experiment,
-        session_id=session_id,
-        operator=operator,
-        broker=broker.name,
-        session_type="alpaca_paper_smoke",
-        caps=caps,
-        passed=not blockers,
-        blockers=blockers,
-        details=details,
-    )
-    path = artifacts.write_paper_session_json(experiment_uuid, session_id, payload)
-    return PaperSessionResult(
-        experiment_uuid=experiment_uuid,
-        session_id=session_id,
-        broker=broker.name,
-        passed=not blockers,
-        session_type="alpaca_paper_smoke",
-        artifact_path=str(path),
-        blockers=blockers,
-        details=details,
-    )
-
-
 def build_paper_operator_report(
     *,
     registry: ExperimentRegistry,
@@ -723,26 +629,6 @@ def _base_session_payload(
     }
 
 
-def _client_order_id(experiment_uuid: str, session_id: str, symbol: str) -> str:
-    digest = hashlib.sha256(f"{experiment_uuid}:{session_id}:{symbol}".encode()).hexdigest()[:10]
-    return f"paper_{symbol}_{digest}"
-
-
-def _get_open_orders(broker: BrokerAdapter) -> list[BrokerOrderResponse]:
-    getter = getattr(broker, "get_open_orders", None)
-    if getter is None:
-        return []
-    return list(getter())
-
-
-def _orders_to_dicts(orders: list[BrokerOrderResponse]) -> list[dict[str, Any]]:
-    converted: list[dict[str, Any]] = []
-    for order in orders:
-        payload = _order_response_to_dict(order)
-        if payload is not None:
-            converted.append(payload)
-    return converted
-
 
 def _positions_to_dicts(positions: Any) -> list[dict[str, Any]]:
     return [
@@ -755,45 +641,6 @@ def _positions_to_dicts(positions: Any) -> list[dict[str, Any]]:
         }
         for pos in positions
     ]
-
-
-def _order_response_to_dict(order: BrokerOrderResponse | None) -> dict[str, Any] | None:
-    if order is None:
-        return None
-    return {
-        "client_order_id": order.client_order_id,
-        "broker_order_id": order.broker_order_id,
-        "status": order.status,
-        "filled_qty": order.filled_qty,
-        "avg_fill_price": order.avg_fill_price,
-        "remaining_qty": order.remaining_qty,
-        "rejection_reason": order.rejection_reason,
-    }
-
-
-def _alpaca_smoke_blockers(
-    *,
-    response: BrokerOrderResponse,
-    cancel_ok: bool,
-    post_cancel_status: BrokerOrderResponse | None,
-    before_positions: list[dict[str, Any]],
-    after_positions: list[dict[str, Any]],
-    after_open: list[dict[str, Any]],
-) -> list[str]:
-    blockers: list[str] = []
-    if response.status in {"REJECTED", "TIMEOUT"}:
-        blockers.append(f"paper order did not acknowledge: {response.status}")
-    if response.status == "FILLED" or response.filled_qty > 0:
-        blockers.append("far-limit paper order filled unexpectedly")
-    if response.status not in {"REJECTED", "TIMEOUT", "FILLED"} and not cancel_ok:
-        blockers.append("paper order cancel failed")
-    if post_cancel_status is not None and post_cancel_status.status not in {"CANCELLED", "CANCEL_REQUESTED"}:
-        blockers.append(f"unexpected post-cancel status: {post_cancel_status.status}")
-    if before_positions != after_positions:
-        blockers.append("broker positions changed during paper smoke")
-    if after_open:
-        blockers.append(f"open orders remain after paper smoke: {len(after_open)}")
-    return blockers
 
 
 def _paper_operator_blockers(

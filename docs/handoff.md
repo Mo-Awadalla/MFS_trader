@@ -6,6 +6,11 @@ Release-reconciliation boundary (2026-09-28): the intended release is an experim
 
 The release packet must bind the exact final source commit to its own verification logs. Broker-paper qualification remains **NOT ESTABLISHED**; publication is **PENDING OWNER ACTION**.
 
+The one-shot broker commands/flags described below are historical only:
+`paper-trade-ma`, `paper-dry-run-ma`, and `--alpaca-paper-smoke` are retired.
+Their old unbound execution paths are not part of the qualified release surface.
+Existing qualification gates are retained, not relaxed to compensate for retirement.
+
 ## Current Goal
 
 Implement Phase 1 Continuous Paper Ops:

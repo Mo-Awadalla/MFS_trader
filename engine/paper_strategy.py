@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from typing import Any
 from zoneinfo import ZoneInfo
 
@@ -55,6 +55,55 @@ class PreparedPaperStrategy:
     strategy_fn: Callable[[pd.DataFrame, dict[str, Any]], dict[str, float]]
 
 
+def verify_paper_strategy_identity(
+    config: Config,
+    experiment: Experiment,
+    *,
+    strategy_name: str,
+    strategy_params: dict[str, Any],
+    symbols: tuple[str, ...],
+    frequency: str,
+) -> None:
+    """Bind the complete executable hypothesis to its immutable qualification."""
+    snapshot = experiment.snapshot
+    if strategy_name not in MA_STRATEGIES | {ETF_TSM_STRATEGY}:
+        raise ValueError(f"Unsupported paper strategy {strategy_name!r}")
+    costs = asdict(config.cost_model)
+    slippage = {key: costs.pop(key) for key in ("slippage_fixed_pct", "slippage_variable_coeff")}
+    expected = {
+        "strategy": (strategy_name, snapshot.strategy),
+        "configured strategy": (config.strategy_name, snapshot.strategy),
+        "strategy version": (config.strategy_version, snapshot.strategy_template_version),
+        "parameters": (strategy_params, snapshot.parameters),
+        "universe": (symbols, snapshot.universe.symbols),
+        "frequency": (frequency, snapshot.data_version.bar_frequency),
+        "cost model": (costs, snapshot.cost_model),
+        "slippage model": (slippage, snapshot.slippage_model),
+        "risk profile": (asdict(config.risk_limits), snapshot.risk_profile),
+        "portfolio config": (asdict(config.portfolio), snapshot.portfolio_config),
+        "execution mode": (
+            "next_bar_open" if config.engine.bar_close_execution else "unsupported",
+            snapshot.execution_mode,
+        ),
+    }
+    disagreements = [name for name, (actual, frozen) in expected.items() if actual != frozen]
+    if strategy_name in MA_STRATEGIES:
+        if strategy_params != asdict(MAParams(**strategy_params)):
+            disagreements.append("complete MA parameters")
+    else:
+        if strategy_params != asdict(etf_tsm_params_from_dict(strategy_params)):
+            disagreements.append("complete ETF parameters")
+    data = [item for item in config.data if tuple(item.symbols) == symbols]
+    if len(data) != 1 or data[0].asset_class.value != snapshot.universe.asset_class:
+        disagreements.append("data universe")
+    elif data[0].adjustment != snapshot.data_version.adjustment:
+        disagreements.append("data adjustment")
+    if str(config.raw.get("paper_data_source", "alpaca")) != snapshot.data_version.source:
+        disagreements.append("data source")
+    if disagreements:
+        raise ValueError("Paper runtime disagrees with frozen Experiment: " + ", ".join(disagreements))
+
+
 def prepare_paper_strategy(
     config: Config,
     experiment: Experiment,
@@ -86,15 +135,24 @@ def prepare_paper_strategy(
                     source=source,
                 )
             ).frame
-    if ETF_TSM_STRATEGY in {strategy, experiment.snapshot.strategy} and strategy != experiment.snapshot.strategy:
+    if strategy != experiment.snapshot.strategy:
         raise ValueError(
             f"Configured strategy {strategy!r} disagrees with frozen Experiment "
             f"strategy {experiment.snapshot.strategy!r}"
         )
+    params = dict(experiment.snapshot.parameters)
+    symbols = experiment.snapshot.universe.symbols
+    if strategy in MA_STRATEGIES:
+        params = asdict(MAParams(**{**params, **(ma_params or {})}))
+        symbols = (ma_symbol,)
+    verify_paper_strategy_identity(
+        config, experiment, strategy_name=strategy, strategy_params=params,
+        symbols=symbols, frequency=frequency,
+    )
     if strategy == ETF_TSM_STRATEGY:
         return _prepare_etf_tsm(config, experiment, frequency, load_symbol)
     if strategy in MA_STRATEGIES:
-        return _prepare_ma(config, frequency, load_symbol, ma_symbol, ma_params or {})
+        return _prepare_ma(config, frequency, load_symbol, ma_symbol, params)
     raise ValueError(f"paper-run does not support configured strategy {strategy!r}")
 
 
@@ -186,15 +244,15 @@ def _prepare_ma(
     data_config = next((item for item in config.data if symbol in item.symbols), None)
     if data_config is None:
         raise ValueError(f"No data config contains symbol {symbol}")
-    bars = load_symbol(data_config.storage_dir, symbol, frequency, source="alpaca")
+    bars = load_symbol(
+        data_config.storage_dir, symbol, frequency,
+        source=str(config.raw.get("paper_data_source", "alpaca")),
+    )
 
     def strategy_fn(frame: pd.DataFrame, values: dict[str, Any]) -> dict[str, float]:
-        ma = MAParams(
-            fast_ma_window=int(values.get("fast_ma_window", 20)),
-            slow_ma_window=int(values.get("slow_ma_window", 100)),
-            trend_filter_active=bool(values.get("trend_filter_active", True)),
-            long_only=True,
-        )
+        if values != params:
+            raise ValueError("MA runtime parameters disagree with frozen Experiment")
+        ma = MAParams(**params)
         signals = generate_ma_signals(frame, ma)
         if signals.empty or "position" not in signals:
             return {}
