@@ -82,7 +82,10 @@ class AlpacaDownloader(BaseDownloader):
             if next_page_token:
                 params["page_token"] = next_page_token
 
-            resp = requests.get(url, headers=self._headers(), params=params, timeout=30)
+            # requests retains APCA custom headers across redirects.
+            resp = requests.get(url, headers=self._headers(), params=params, timeout=30, allow_redirects=False)
+            if 300 <= resp.status_code < 400:
+                raise RuntimeError("Alpaca data redirect refused")
             resp.raise_for_status()
             data = resp.json()
 
