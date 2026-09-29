@@ -7,7 +7,12 @@ import pytest
 
 from config.loader import load_config
 from data.catalog import DataCatalog
-from engine.paper_strategy import completed_daily_bars, prepare_paper_strategy
+from engine.paper_strategy import (
+    BROKER_PAPER_EXECUTION_MODE,
+    completed_daily_bars,
+    prepare_paper_strategy,
+    verify_broker_paper_execution_mode,
+)
 from experiments.models import DataVersionSpec, DateRangeSpec, ExperimentDraft, ExperimentSnapshot, UniverseSpec
 from experiments.registry import ExperimentRegistry
 from strategies.ma.signal import MAParams
@@ -15,14 +20,14 @@ from strategies.ma.signal import MAParams
 SYMBOLS = ("DBC", "GLD", "IEF", "IWM", "QQQ", "SHY", "SPY")
 
 
-def snapshot_for_config(config, *, parameters, symbols, source="alpaca"):
+def snapshot_for_config(config, *, parameters, symbols, source="alpaca", execution_mode=BROKER_PAPER_EXECUTION_MODE):
     costs = asdict(config.cost_model)
     slippage = {key: costs.pop(key) for key in ("slippage_fixed_pct", "slippage_variable_coeff")}
     return ExperimentSnapshot(
         strategy=config.strategy_name, strategy_template_version=config.strategy_version,
         parameters=parameters, universe=UniverseSpec(symbols=symbols, asset_class="equity"),
         data_version=DataVersionSpec(source=source, bar_frequency="1d", data_version="synthetic-test", adjustment="split_dividend"),
-        date_range=DateRangeSpec(), execution_mode="next_bar_open", cost_model=costs,
+        date_range=DateRangeSpec(), execution_mode=execution_mode, cost_model=costs,
         slippage_model=slippage, risk_profile=asdict(config.risk_limits), portfolio_config=asdict(config.portfolio),
         paper_thresholds={}, git_commit="synthetic", config_version="test", random_seed=1,
     )
@@ -140,22 +145,25 @@ def test_ma_rejects_hypothesis_substitution_before_data(tmp_path, mismatch):
         registry.close()
 
 
-def test_ma_executes_full_frozen_parameters_and_rejects_mutation(tmp_path, monkeypatch):
+def test_ma_executes_full_frozen_parameters_and_rejects_mutation(tmp_path):
     config = load_config("builtin:paper_shakedown", load_env=False)
-    parameters = asdict(MAParams(fast_ma_type="ema", trend_filter_window=17, trend_filter_active=False))
+    parameters = asdict(MAParams(
+        fast_ma_type="ema", fast_ma_window=2, slow_ma_window=3,
+        trend_filter_active=False,
+    ))
+    # Final EMA(2) crosses above SMA(3), whereas SMA(2) remains below.
+    bars = pd.DataFrame(
+        {"close": [3., 3., 3., 3., 1., 4.]},
+        index=pd.date_range("2024-01-01", periods=6, tz="UTC"),
+    )
     registry = ExperimentRegistry(tmp_path / "experiments")
     try:
         experiment = registry.create(ExperimentDraft(label="synthetic MA", snapshot=snapshot_for_config(config, parameters=parameters, symbols=("AAPL",))))
-        prepared = prepare_paper_strategy(config, experiment, load_symbol=lambda *a, **k: _bars("AAPL"))
-        seen = []
-        def signal(frame, params):
-            seen.append(params)
-            return pd.DataFrame({"position": [1.]}, index=frame.index[-1:])
-        monkeypatch.setattr("engine.paper_strategy.generate_ma_signals", signal)
+        prepared = prepare_paper_strategy(config, experiment, load_symbol=lambda *a, **k: bars)
         assert prepared.strategy_fn(prepared.bars, parameters) == {"AAPL": 1.}
-        assert asdict(seen[0]) == parameters
+        prepared.strategy_params["fast_ma_type"] = "sma"
         with pytest.raises(ValueError):
-            prepared.strategy_fn(prepared.bars, {**parameters, "trend_filter_window": 200})
+            prepared.strategy_fn(prepared.bars, prepared.strategy_params)
     finally:
         registry.close()
 
@@ -183,5 +191,29 @@ def test_alpaca_preparation_excludes_current_session(etf, tmp_path, monkeypatch)
         prepared = prepare_paper_strategy(config, experiment, load_symbol=load_symbol)
         assert current not in prepared.bars.index
         assert prepared.bars.index[-1] == _bars("SPY").index[-1]
+    finally:
+        registry.close()
+
+
+@pytest.mark.parametrize("execution_mode", [
+    "next_bar_open", "next_bar_close",
+    "signals_after_t_minus_1_close_first_executable_price",
+])
+def test_research_timing_remains_simulation_only(tmp_path, execution_mode):
+    config = load_config("builtin:paper_shakedown", load_env=False)
+    registry = ExperimentRegistry(tmp_path / "timing")
+    try:
+        experiment = registry.create(ExperimentDraft(
+            label="synthetic research timing",
+            snapshot=snapshot_for_config(
+                config, parameters=asdict(MAParams()), symbols=("AAPL",),
+                execution_mode=execution_mode,
+            ),
+        ))
+        prepared = prepare_paper_strategy(config, experiment, load_symbol=lambda *a, **k: _bars("AAPL"))
+        assert prepared.symbols == ("AAPL",)
+        with pytest.raises(ValueError, match="Unsupported broker-paper execution mode"):
+            verify_broker_paper_execution_mode(config, experiment)
+        assert registry.get(experiment.uuid).snapshot.execution_mode == execution_mode
     finally:
         registry.close()

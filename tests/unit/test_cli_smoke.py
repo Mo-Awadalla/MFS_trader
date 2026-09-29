@@ -169,16 +169,18 @@ def test_retired_smoke_repeated_session_different_symbol_has_no_effects(tmp_path
 
 
 @pytest.fixture
-def qualified_ma(tmp_path, monkeypatch):
+def qualified_ma(tmp_path, monkeypatch, request):
     config = load_config("builtin:paper_shakedown", load_env=False)
     config = replace(config, live_deployment=replace(
         config.live_deployment, max_notional_per_order=25.,
         max_paper_session_notional=100., max_open_paper_exposure=100.,
     ))
     registry = ExperimentRegistry(tmp_path / "experiments")
+    from engine.paper_strategy import BROKER_PAPER_EXECUTION_MODE
     experiment = registry.create(ExperimentDraft(
         label="synthetic CLI MA", snapshot=snapshot_for_config(
             config, parameters=asdict(MAParams()), symbols=("AAPL",),
+            execution_mode=getattr(request, "param", BROKER_PAPER_EXECUTION_MODE),
         ),
     ))
     registry.transition_promotion_status(experiment.uuid, PromotionStatus.VALIDATION_RUNNING)
@@ -254,3 +256,18 @@ def test_cli_wrong_ma_hypothesis_precedes_credentials(qualified_ma, monkeypatch,
     monkeypatch.setattr(cli, "get_broker_creds", forbidden)
     monkeypatch.setattr(cli, "AlpacaAdapter", forbidden)
     assert cli.main([*args, *override]) == 1
+
+
+@pytest.mark.parametrize("qualified_ma", [
+    "next_bar_open", "signals_after_t_minus_1_close_first_executable_price",
+], indirect=True)
+def test_cli_unsupported_frozen_timing_precedes_credentials(qualified_ma, monkeypatch, capsys):
+    _, registry, experiment, args = qualified_ma
+    before = (registry.root / experiment.uuid / "metadata.json").read_bytes()
+    def forbidden(*args, **kwargs):
+        raise AssertionError("unsupported frozen fill model reached credentials or broker")
+    monkeypatch.setattr(cli, "get_broker_creds", forbidden)
+    monkeypatch.setattr(cli, "AlpacaAdapter", forbidden)
+    assert cli.main(args) == 1
+    assert "Unsupported broker-paper execution mode" in capsys.readouterr().err
+    assert (registry.root / experiment.uuid / "metadata.json").read_bytes() == before

@@ -24,6 +24,7 @@ from strategies.ma.signal import generate_signals as generate_ma_signals
 ETF_TSM_STRATEGY = "etf_time_series_momentum"
 MA_STRATEGIES = frozenset({"dual_ma_crossover", "ma"})
 NEW_YORK = ZoneInfo("America/New_York")
+BROKER_PAPER_EXECUTION_MODE = "broker_market_after_completed_bar_observed_fill"
 
 
 def completed_daily_bars(
@@ -55,6 +56,19 @@ class PreparedPaperStrategy:
     strategy_fn: Callable[[pd.DataFrame, dict[str, Any]], dict[str, float]]
 
 
+def verify_broker_paper_execution_mode(config: Config, experiment: Experiment) -> None:
+    """Reject research fill models the continuous market-order loop cannot promise."""
+    if (
+        experiment.snapshot.execution_mode != BROKER_PAPER_EXECUTION_MODE
+        or not config.engine.bar_close_execution
+    ):
+        raise ValueError(
+            "Unsupported broker-paper execution mode: "
+            f"{experiment.snapshot.execution_mode!r}; continuous paper submits market orders "
+            "after a completed bar and records observed fills, not guaranteed next-open/close fills"
+        )
+
+
 def verify_paper_strategy_identity(
     config: Config,
     experiment: Experiment,
@@ -64,7 +78,7 @@ def verify_paper_strategy_identity(
     symbols: tuple[str, ...],
     frequency: str,
 ) -> None:
-    """Bind the complete executable hypothesis to its immutable qualification."""
+    """Bind strategy/data/cost/risk identity; broker timing is checked separately."""
     snapshot = experiment.snapshot
     if strategy_name not in MA_STRATEGIES | {ETF_TSM_STRATEGY}:
         raise ValueError(f"Unsupported paper strategy {strategy_name!r}")
@@ -81,10 +95,6 @@ def verify_paper_strategy_identity(
         "slippage model": (slippage, snapshot.slippage_model),
         "risk profile": (asdict(config.risk_limits), snapshot.risk_profile),
         "portfolio config": (asdict(config.portfolio), snapshot.portfolio_config),
-        "execution mode": (
-            "next_bar_open" if config.engine.bar_close_execution else "unsupported",
-            snapshot.execution_mode,
-        ),
     }
     disagreements = [name for name, (actual, frozen) in expected.items() if actual != frozen]
     if strategy_name in MA_STRATEGIES:
@@ -208,28 +218,7 @@ def _prepare_etf_tsm(
 
     panel = pd.concat(frames, axis=1, names=["symbol", "field"], join="inner").sort_index()
     params = dict(experiment.snapshot.parameters)
-    frozen_params = etf_tsm_params_from_dict(params)
-    def strategy_fn(bars: pd.DataFrame, runtime_params: dict[str, Any]) -> dict[str, float]:
-        if bars.empty:
-            return {}
-        if runtime_params != params:
-            raise ValueError("ETF TSM runtime parameters disagree with frozen Experiment")
-        runtime_symbols = tuple(str(symbol) for symbol in bars.columns.get_level_values(0).unique())
-        if runtime_symbols != symbols:
-            raise ValueError("ETF TSM runtime panel disagrees with frozen universe")
-        signals = generate_etf_tsm_signals(bars, frozen_params)
-        target_weights = signals.xs("weight", axis=1, level="field").astype(float)
-        held_weights = target_weights.shift(1).fillna(0.0)
-        eligible = held_weights.index[held_weights.index <= bars.index[-1]]
-        if len(eligible) == 0:
-            return dict.fromkeys(symbols, 0.0)
-        position = held_weights.index.get_loc(eligible[-1])
-        row = held_weights.iloc[position].reindex(symbols).fillna(0.0)
-        if position > 0 and row.equals(
-            held_weights.iloc[position - 1].reindex(symbols).fillna(0.0)
-        ):
-            return {}
-        return {symbol: float(row.loc[symbol]) for symbol in symbols}
+    strategy_fn = bind_paper_strategy_callable(ETF_TSM_STRATEGY, params, symbols)
 
     return PreparedPaperStrategy(panel, symbols, ETF_TSM_STRATEGY, params, strategy_fn)
 
@@ -249,16 +238,64 @@ def _prepare_ma(
         source=str(config.raw.get("paper_data_source", "alpaca")),
     )
 
-    def strategy_fn(frame: pd.DataFrame, values: dict[str, Any]) -> dict[str, float]:
-        if values != params:
-            raise ValueError("MA runtime parameters disagree with frozen Experiment")
-        ma = MAParams(**params)
-        signals = generate_ma_signals(frame, ma)
-        if signals.empty or "position" not in signals:
-            return {}
-        return {symbol: float(signals["position"].iloc[-1])}
+    strategy_fn = bind_paper_strategy_callable(config.strategy_name, params, (symbol,))
 
     return PreparedPaperStrategy(bars, (symbol,), config.strategy_name, params, strategy_fn)
+
+
+def bind_paper_strategy_callable(
+    strategy_name: str,
+    strategy_params: dict[str, Any],
+    symbols: tuple[str, ...],
+) -> Callable[[pd.DataFrame, dict[str, Any]], dict[str, float]]:
+    """Resolve the actual supported implementation, not a caller-declared label."""
+    params = dict(strategy_params)
+    if strategy_name in MA_STRATEGIES:
+        if len(symbols) != 1:
+            raise ValueError("MA paper execution requires exactly one frozen symbol")
+        frozen_ma = MAParams(**params)
+        if asdict(frozen_ma) != params:
+            raise ValueError("MA paper execution requires complete frozen parameters")
+        symbol = symbols[0]
+
+        def ma_strategy(frame: pd.DataFrame, values: dict[str, Any]) -> dict[str, float]:
+            if values != params:
+                raise ValueError("MA runtime parameters disagree with frozen Experiment")
+            signals = generate_ma_signals(frame, frozen_ma)
+            if signals.empty or "position" not in signals:
+                return {}
+            return {symbol: float(signals["position"].iloc[-1])}
+
+        return ma_strategy
+    if strategy_name != ETF_TSM_STRATEGY:
+        raise ValueError(f"Unsupported paper strategy {strategy_name!r}")
+    frozen_etf = etf_tsm_params_from_dict(params)
+    if asdict(frozen_etf) != params:
+        raise ValueError("ETF paper execution requires complete frozen parameters")
+
+    def etf_strategy(bars: pd.DataFrame, runtime_params: dict[str, Any]) -> dict[str, float]:
+        if runtime_params != params:
+            raise ValueError("ETF TSM runtime parameters disagree with frozen Experiment")
+        if bars.empty:
+            return {}
+        runtime_symbols = tuple(str(symbol) for symbol in bars.columns.get_level_values(0).unique())
+        if runtime_symbols != symbols:
+            raise ValueError("ETF TSM runtime panel disagrees with frozen universe")
+        signals = generate_etf_tsm_signals(bars, frozen_etf)
+        target_weights = signals.xs("weight", axis=1, level="field").astype(float)
+        held_weights = target_weights.shift(1).fillna(0.0)
+        eligible = held_weights.index[held_weights.index <= bars.index[-1]]
+        if len(eligible) == 0:
+            return dict.fromkeys(symbols, 0.0)
+        position = held_weights.index.get_loc(eligible[-1])
+        row = held_weights.iloc[position].reindex(symbols).fillna(0.0)
+        if position > 0 and row.equals(
+            held_weights.iloc[position - 1].reindex(symbols).fillna(0.0)
+        ):
+            return {}
+        return {symbol: float(row.loc[symbol]) for symbol in symbols}
+
+    return etf_strategy
 
 
 def _panel_data_config(config: Config, symbols: tuple[str, ...]) -> DataConfig:

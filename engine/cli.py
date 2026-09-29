@@ -332,6 +332,9 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
 
         broker_factory = None
         if args.broker == "alpaca_paper":
+            from engine.paper_strategy import verify_broker_paper_execution_mode
+
+            verify_broker_paper_execution_mode(cfg, experiment)
             broker_cfg = verify_paper_environment(cfg)
             if not args.confirm_paper_broker:
                 raise PaperSessionGateError("--confirm-paper-broker is required before broker activity")
