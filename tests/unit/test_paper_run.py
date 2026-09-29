@@ -3,6 +3,9 @@ from __future__ import annotations
 
 import json
 import multiprocessing
+import sqlite3
+import uuid
+from contextlib import closing
 from dataclasses import asdict, replace
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -25,6 +28,7 @@ from config.schema import (
     PortfolioConfig,
     RiskLimits,
 )
+from engine.paper_binding import open_bound_paper_db
 from engine.paper_evidence import PaperLedger, digest
 from engine.paper_guard import PaperRunnerOwnership
 from engine.paper_run import PaperRunConfig, PaperRunLoop
@@ -33,7 +37,7 @@ from execution.alpaca.adapter import AlpacaAdapter
 from execution.base import OrderSide, OrderType
 from execution.oms import OMS, OrderIntent
 from execution.sim_broker.broker import SimBroker
-from experiments.artifacts import ArtifactManager
+from experiments.artifacts import ArtifactImmutableError, ArtifactManager
 from experiments.kill_switch import KillSwitchSeverity
 from experiments.models import ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
@@ -108,6 +112,24 @@ def make_loop(setup, *, broker=None, run_config=None, strategy=None, provider=No
                         strategy_fn=strategy or (lambda bars, params: {}), strategy_name="test",
                         run_config=run_config or rc, bars_provider=provider, clock=clock,
                         sleeper=sleeper or clock.advance)
+
+
+def _open_claimed_ledger(db, root, identity):
+    artifacts = ArtifactManager(root)
+    ownership = PaperRunnerOwnership(
+        db, artifacts.paper_session_path(identity["experiment_uuid"], identity["session_id"]),
+    )
+    ownership.acquire()
+    try:
+        conn = open_bound_paper_db(
+            db, artifacts, experiment_uuid=identity["experiment_uuid"],
+            experiment_hash=identity["experiment_hash"], session_id=identity["session_id"],
+            ownership=ownership,
+        )
+    except BaseException:
+        ownership.release()
+        raise
+    return conn, ownership
 
 
 def test_distinct_sessions_have_real_times_separate_from_watermarks(setup):
@@ -226,10 +248,8 @@ def test_broker_disconnect_mid_run_records_incomplete_window(setup):
 def test_abrupt_restart_detects_unclosed_attempt_and_preserves_downtime(setup):
     _, _, clock, _, db = setup
     first = make_loop(setup)
-    conn = init_db(db)
+    conn, ownership = _open_claimed_ledger(db, setup[0].root, first._identity())
     ledger = PaperLedger(conn, first._identity(), clock())
-    ownership = PaperRunnerOwnership(db)
-    ownership.acquire()
     ledger.start_attempt(clock(), ownership)
     ledger.bind_account("sim_account")
     conn.close()  # Simulated process death: no close_attempt/finally.
@@ -284,10 +304,8 @@ def test_resume_preserves_halt_even_without_checkpoint(setup):
     _, _, clock, rc, db = setup
     config = replace(rc, max_cycles=None, window_market_sessions=2)
     first = make_loop(setup, run_config=config)
-    conn = init_db(db)
+    conn, ownership = _open_claimed_ledger(db, setup[0].root, first._identity())
     ledger = PaperLedger(conn, first._identity(), clock())
-    ownership = PaperRunnerOwnership(db)
-    ownership.acquire()
     ledger.start_attempt(clock(), ownership)
     ledger.close_attempt(clock(), "halted", "unresolved broker state")
     conn.close()
@@ -300,10 +318,9 @@ def test_resume_preserves_halt_even_without_checkpoint(setup):
 
 def test_account_identity_mismatch_on_restart_blocks_execution(setup):
     _, _, clock, _, db = setup
-    conn = init_db(db)
-    ledger = PaperLedger(conn, make_loop(setup)._identity(), clock())
-    ownership = PaperRunnerOwnership(db)
-    ownership.acquire()
+    identity = make_loop(setup)._identity()
+    conn, ownership = _open_claimed_ledger(db, setup[0].root, identity)
+    ledger = PaperLedger(conn, identity, clock())
     ledger.start_attempt(clock(), ownership)
     ledger.bind_account("different-account")
     conn.close()
@@ -314,7 +331,8 @@ def test_account_identity_mismatch_on_restart_blocks_execution(setup):
     assert not broker.submissions
 
 
-def test_checkpoint_resume_keeps_incomplete_attempt_artifact(setup):
+@pytest.mark.parametrize("repack_database", [False, True])
+def test_checkpoint_resume_keeps_incomplete_attempt_artifact(setup, repack_database):
     _, _, clock, rc, db = setup
     config = replace(rc, max_cycles=None, window_market_sessions=2)
     first = make_loop(setup, run_config=config)
@@ -323,9 +341,17 @@ def test_checkpoint_resume_keeps_incomplete_attempt_artifact(setup):
     assert stopped.cycle_count == 1 and stopped.evidence_path is not None
     incomplete_path = stopped.evidence_path
     assert db.with_suffix(".paper_run_checkpoint.json").exists()
+    claim = ArtifactManager(rc.experiment_root).paper_ledger_claim_path(rc.experiment_uuid, rc.session_id)
+    claim_bytes = claim.read_bytes()
+    if repack_database:
+        replacement = db.with_name("same-ledger.sqlite")
+        with closing(sqlite3.connect(db)) as source, closing(sqlite3.connect(replacement)) as destination:
+            source.backup(destination)
+        replacement.replace(db)  # Same durable identity, deliberately a different inode.
     clock.advance(86400)
     resumed = make_loop(setup, run_config=config).run(bars("2024-04-10"), db)
     assert not resumed.halted and resumed.cycle_count == 2
+    assert claim.read_bytes() == claim_bytes
     assert not db.with_suffix(".paper_run_checkpoint.json").exists()
     assert json.loads(Path(incomplete_path).read_text())["passed"] is False
     payload = json.loads(Path(resumed.evidence_path).read_text())
@@ -378,10 +404,8 @@ def test_process_death_after_submission_does_not_resubmit_on_restart(setup):
     broker = FakeBroker()
     broker.connect()
     initial = make_loop(setup, broker=broker)
-    conn = init_db(db)
+    conn, ownership = _open_claimed_ledger(db, setup[0].root, initial._identity())
     ledger = PaperLedger(conn, initial._identity(), clock())
-    ownership = PaperRunnerOwnership(db)
-    ownership.acquire()
     ledger.start_attempt(clock(), ownership)
     ledger.bind_account("sim_account")
     watermark = str(bars().index[-1])
@@ -399,17 +423,26 @@ def test_process_death_after_submission_does_not_resubmit_on_restart(setup):
         correlation_id=decision_id, client_order_namespace=ledger.identity["binding_digest"],
     )
     oid = OMS(broker, conn, EventLogger(conn, environment="paper")).create_and_submit(intent)
+    original_order = dict(conn.execute(
+        "SELECT * FROM orders_live WHERE client_order_id=?", (oid,),
+    ).fetchone())
+    assert original_order["reconciliation_status"] == "NOT_CHECKED"
     conn.close()  # No ledger capture, checkpoint or attempt-close has happened.
     ownership.release()
+    broker.disconnect()
+    connections_before_restart = broker.connections
     clock.advance(10)
     resumed = make_loop(setup, broker=broker).run(bars(), db)
-    assert not resumed.halted
-    assert broker.submissions == [oid]
+    assert resumed.halted and "unresolved paper order" in resumed.halt_reason
+    assert broker.submissions == [oid] and broker.connections == connections_before_restart
     conn = init_db(db)
-    assert conn.execute("SELECT outcome FROM paper_attempts ORDER BY rowid LIMIT 1").fetchone()[0] == "interrupted"
+    assert [row[0] for row in conn.execute(
+        "SELECT outcome FROM paper_attempts ORDER BY rowid",
+    )] == ["interrupted", "halted"]
     assert conn.execute("SELECT result FROM paper_cycles").fetchone()[0] == "blocked"
-    assert conn.execute("SELECT COUNT(*) FROM paper_session_orders").fetchone()[0] == 1
-    assert conn.execute("SELECT COUNT(*) FROM paper_fills").fetchone()[0] == 1
+    assert dict(conn.execute(
+        "SELECT * FROM orders_live WHERE client_order_id=?", (oid,),
+    ).fetchone()) == original_order
     conn.close()
 
 
@@ -437,10 +470,8 @@ def test_overlapping_runner_cannot_touch_active_attempt_or_finalize(setup, separ
     conn.close()
 
 
-def _hold_unclosed_attempt(db, identity, now, pipe):
-    ownership = PaperRunnerOwnership(db)
-    ownership.acquire()
-    conn = init_db(db)
+def _hold_unclosed_attempt(db, root, identity, now, pipe):
+    conn, ownership = _open_claimed_ledger(db, root, identity)
     ledger = PaperLedger(conn, identity, now)
     ledger.start_attempt(now, ownership)
     pipe.send(ledger.attempt_id)
@@ -452,7 +483,7 @@ def test_process_death_releases_ownership_but_retains_unclosed_attempt(setup):
     context = multiprocessing.get_context("spawn")
     parent, child = context.Pipe()
     process = context.Process(
-        target=_hold_unclosed_attempt, args=(db, make_loop(setup)._identity(), clock(), child),
+        target=_hold_unclosed_attempt, args=(db, setup[0].root, make_loop(setup)._identity(), clock(), child),
     )
     process.start()
     child.close()
@@ -465,6 +496,10 @@ def test_process_death_releases_ownership_but_retains_unclosed_attempt(setup):
         process.kill()
         process.join(15)
         assert not process.is_alive()
+        other_db = db.with_name("replacement.sqlite")
+        refused = make_loop(setup, broker=broker).run(bars(), other_db)
+        assert refused.halted and "ledger" in refused.halt_reason
+        assert broker.connections == 0 and not other_db.exists()
         clock.advance(30)
         recovered = make_loop(setup).run(bars(), db)
         assert not recovered.halted
@@ -803,3 +838,137 @@ def test_resume_budget_charges_actual_fill_not_only_reserved_quote(setup):
     assert row["reserved_notional"] == pytest.approx(20)
     assert row["observed_notional"] == pytest.approx(22)
     conn.close()
+
+
+@pytest.mark.parametrize("replacement", [
+    "new_path", "initialized_path", "missing", "recreated", "changed_token",
+])
+def test_ledger_binding_refuses_fresh_authority_after_incomplete_window(setup, replacement):
+    registry, exp, clock, rc, db = setup
+    config = replace(rc, max_cycles=None, window_market_sessions=2)
+    first = make_loop(
+        setup, run_config=config, config=capped_config(),
+        strategy=lambda frame, params: {"AAPL": 0.01},
+    )
+    first._bars_provider = lambda: (first._handle_sigterm(None, None) or bars())
+    stopped = first.run(bars(), db)
+    assert not stopped.halted and stopped.cycle_count == 1
+    report = Path(stopped.evidence_path)
+    report_bytes = report.read_bytes()
+    artifacts = ArtifactManager(registry.root)
+    claim_path = artifacts.paper_ledger_claim_path(exp.uuid, rc.session_id)
+    claim_bytes = claim_path.read_bytes()
+    with sqlite3.connect(db) as conn:
+        assert conn.execute("SELECT SUM(reserved_notional) FROM paper_order_reservations").fetchone()[0] > 0
+        prior_attempts = conn.execute("SELECT * FROM paper_attempts").fetchall()
+    conn.close()
+    target = db
+    if replacement in {"new_path", "initialized_path"}:
+        target = db.with_name("replacement.sqlite")
+        if replacement == "initialized_path":
+            init_db(target).close()
+    elif replacement in {"missing", "recreated"}:
+        db.unlink()
+        if replacement == "recreated":
+            init_db(db).close()
+    else:
+        with sqlite3.connect(db) as conn:
+            conn.execute(
+                "UPDATE engine_state SET value=? WHERE key='paper_ledger_instance_id'",
+                (str(uuid.uuid4()),),
+            )
+        conn.close()
+    calls = []
+    def factory():
+        calls.append("credentials")
+        return FakeBroker()
+    clock.advance(30)
+    refused = PaperRunLoop(
+        config=capped_config(), broker=None, broker_factory=factory,
+        strategy_fn=lambda frame, params: {"AAPL": 0.01}, strategy_name="test",
+        run_config=config, clock=clock,
+    ).run(bars(), target)
+    assert refused.halted and "ledger" in refused.halt_reason
+    assert calls == [] and refused.evidence_path is None
+    assert claim_path.read_bytes() == claim_bytes and report.read_bytes() == report_bytes
+    if replacement in {"new_path", "missing"}:
+        assert not target.exists()
+    if replacement in {"new_path", "initialized_path", "changed_token"}:
+        with sqlite3.connect(db) as conn:
+            assert conn.execute("SELECT * FROM paper_attempts").fetchall() == prior_attempts
+        conn.close()
+
+
+def test_ledger_claim_survives_interruption_before_database_initialization(setup, monkeypatch):
+    registry, exp, _, rc, db = setup
+    import engine.paper_binding as binding
+
+    def interrupted(path):
+        raise RuntimeError("synthetic death after claim publication")
+
+    with monkeypatch.context() as patch:
+        patch.setattr(binding, "init_db", interrupted)
+        failed = make_loop(setup).run(bars(), db)
+    assert failed.halted and not db.exists()
+    claim = ArtifactManager(registry.root).paper_ledger_claim_path(exp.uuid, rc.session_id)
+    original = claim.read_bytes()
+    for target in (db, db.with_name("other.sqlite")):
+        broker = FakeBroker()
+        refused = make_loop(setup, broker=broker).run(bars(), target)
+        assert refused.halted and "ledger" in refused.halt_reason
+        assert broker.connections == 0 and not target.exists()
+        assert claim.read_bytes() == original
+
+
+@pytest.mark.parametrize("field", ["experiment_uuid", "experiment_hash", "session_id", "ledger_instance_id"])
+def test_ledger_claim_identity_mismatch_refuses_before_credentials(setup, field):
+    registry, exp, _, rc, db = setup
+    identity = make_loop(setup)._identity()
+    conn, ownership = _open_claimed_ledger(db, registry.root, identity)
+    conn.close()
+    ownership.release()
+    claim = ArtifactManager(registry.root).paper_ledger_claim_path(exp.uuid, rc.session_id)
+    payload = json.loads(claim.read_text())
+    payload[field] = str(uuid.uuid4()) if field != "experiment_hash" else "0" * 64
+    claim.write_text(json.dumps(payload))
+    original = claim.read_bytes()
+    broker = FakeBroker()
+    refused = make_loop(setup, broker=broker).run(bars(), db)
+    assert refused.halted and "ledger" in refused.halt_reason
+    assert broker.connections == 0 and claim.read_bytes() == original
+
+
+def test_ledger_claim_collision_never_overwrites_first_binding(setup):
+    registry, exp, _, rc, db = setup
+    artifacts = ArtifactManager(registry.root)
+    conn, ownership = _open_claimed_ledger(db, registry.root, make_loop(setup)._identity())
+    try:
+        claim = artifacts.paper_ledger_claim_path(exp.uuid, rc.session_id)
+        original = claim.read_bytes()
+        collision = json.loads(original)
+        collision["ledger_instance_id"] = str(uuid.uuid4())
+        with pytest.raises(ArtifactImmutableError):
+            artifacts.claim_paper_ledger(exp.uuid, rc.session_id, collision)
+        assert claim.read_bytes() == original
+    finally:
+        conn.close()
+        ownership.release()
+
+
+@pytest.mark.parametrize("evidence", ["attempt_report", "ledger"])
+def test_unclaimed_existing_paper_evidence_is_not_migrated(setup, evidence):
+    registry, exp, clock, rc, db = setup
+    artifacts = ArtifactManager(registry.root)
+    if evidence == "attempt_report":
+        artifacts.write_paper_session_report_json(
+            exp.uuid, rc.session_id, "attempt-legacy.json", {"outcome": "interrupted"},
+        )
+    else:
+        conn = init_db(db)
+        PaperLedger(conn, make_loop(setup)._identity(), clock())
+        conn.close()
+    broker = FakeBroker()
+    refused = make_loop(setup, broker=broker).run(bars(), db)
+    assert refused.halted and "claim missing" in refused.halt_reason
+    assert broker.connections == 0
+    assert not artifacts.paper_ledger_claim_path(exp.uuid, rc.session_id).exists()

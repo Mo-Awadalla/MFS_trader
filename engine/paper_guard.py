@@ -116,7 +116,7 @@ class PaperSubmissionGuard:
                 order["symbol"] != reservation["symbol"] or order["side"] != reservation["side"]
                 or finite(order["requested_qty"]) != finite(reservation["quantity"])
                 or order["environment"] != "paper"
-                or order["reconciliation_status"] in {"MISMATCHED", "UNRESOLVED"}
+                or order["reconciliation_status"] != "MATCHED"
             ):
                 raise ValueError("paper reservation order identity or reconciliation mismatch")
             filled = finite(order["filled_qty"])
@@ -217,6 +217,10 @@ class PaperSubmissionGuard:
                 "UPDATE paper_order_reservations SET client_order_id=? WHERE reservation_id=? AND attempt_id=?",
                 (client_order_id, reservation_id, self.ledger.attempt_id),
             )
+        # A terminal OMS response is not reconciliation. Confirm this fill before
+        # another target in the same cycle can reserve or submit an order.
+        self.ledger.capture_orders(self.clock())
+        self.ledger.reconcile_orders(self.broker, self.clock())
         self._check_observed_orders()
         if self._open_exposure() > self.caps.max_open_paper_exposure:
             raise ValueError("paper max_open_paper_exposure exceeded by observed positions")
