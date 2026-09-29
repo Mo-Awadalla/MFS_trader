@@ -36,9 +36,11 @@ def test_loopback_connections_remain_available():
 
 
 def test_external_datagrams_are_blocked():
-    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as client:
-        with pytest.raises(BlockedNetworkError):
-            client.sendto(b"offline guard probe", ("192.0.2.10", 443))
+    with (
+        socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as client,
+        pytest.raises(BlockedNetworkError),
+    ):
+        client.sendto(b"offline guard probe", ("192.0.2.10", 443))
 
 
 def test_legacy_dns_lookup_is_blocked():

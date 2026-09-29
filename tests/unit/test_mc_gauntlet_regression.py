@@ -6,6 +6,7 @@ from types import SimpleNamespace
 
 import numpy as np
 import pandas as pd
+import pytest
 
 import validation.gauntlet as gauntlet
 from validation.mc.engine import MCResult
@@ -56,3 +57,17 @@ def test_gauntlet_fails_closed_when_oos_returns_are_non_finite(monkeypatch) -> N
     assert "MC unavailable: Monte Carlo returns must all be finite (NaN/inf present)" in result.failure_reasons
     assert mc["available"] is False
     assert "prob_ruin" not in mc and "pct_5_max_dd" not in mc
+
+
+@pytest.mark.parametrize("limit", [np.nan, np.inf, -np.inf, 0.1, -1.1])
+def test_invalid_drawdown_gate_cannot_disable_comparison(monkeypatch, limit):
+    def unexpected_wfa(*args, **kwargs):
+        raise AssertionError("invalid gate configuration reached evaluation")
+
+    monkeypatch.setattr(gauntlet, "run_wfa", unexpected_wfa)
+    with pytest.raises(ValueError):
+        gauntlet.run_gauntlet(
+            strategy_name="test", df=pd.DataFrame(), train_fn=lambda **_: {},
+            test_fn=lambda **_: {}, sweep_results=pd.DataFrame(), param_columns=[],
+            max_dd_limit=limit,
+        )

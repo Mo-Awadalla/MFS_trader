@@ -46,6 +46,7 @@ The shared no-tuning route covers CSMR, momentum, pairs, residual reversal, and 
 
 - `MCResult.pct_95_max_dd` and its serialized key are replaced by `pct_5_max_dd`. Do not relabel an old stored percentile: it must be recomputed from path drawdowns or by rerunning the simulation.
 - New reports use `gauntlet_report_v2` and MC formula `mc_block_bootstrap_v2`, recording actual observations, periods/year, path count, block length, and seed. Invalid or numerically overflowing MC data are unavailable, with no favorable metric payload. Bad configuration raises `ValueError`.
+- Non-finite or out-of-range drawdown-gate configuration is rejected before evaluation, so NaN comparisons cannot disable the sub-gate. The default signed limit remains -0.30.
 - The corrected DSR formula is identified by `bailey_lopez_de_prado_eq2_v1`. Reports disclose availability/reason, method, search scope, per-observation units, confidence/tail probability, benchmark, track length, moments, and trial variance.
 - Previous DSR values came from a different expression and cannot be converted into corrected confidence by renaming a field. Missing evidence produces `available=False` and `passed=False`.
 - Sweep builders return `(sweep_dataframe, DeclaredSearch)` rather than a winner-truncated matrix. Reports retain selected-column identity, complete parameter descriptors supplied by the builder, and the shared observation-index hash. Old selected-trial keyword arguments and redundant one-column matrix wrappers are removed.

@@ -41,7 +41,11 @@ from engine.parity import (
 from engine.replay import ReplayResult
 from engine.runtime import TradingEngine
 from execution.sim_broker.broker import SimBroker, SimBrokerConfig
-from monitoring.reports import OperationalReport, build_operational_report, format_operational_report
+from monitoring.reports import (
+    OperationalReport,
+    build_operational_report,
+    format_operational_report,
+)
 from portfolio.sizing import PortfolioState
 from research.etf_time_series_momentum_experiment import STRATEGY_NAME
 from research.etf_time_series_momentum_pipeline import backtest_etf_time_series_momentum
