@@ -60,6 +60,8 @@ class GauntletResult:
             "wfa": {
                 "passed": self.wfa_result.passed if self.wfa_result else False,
                 "oos_sharpe": self.wfa_result.aggregate_metrics.get("oos_sharpe", 0) if self.wfa_result else 0,
+                "oos_sortino": self.wfa_result.aggregate_metrics.get("oos_sortino_mean", 0),
+                "max_single_fold_profit_share": self.wfa_result.aggregate_metrics.get("max_single_fold_profit_share", 0),
                 "num_folds": self.wfa_result.num_folds if self.wfa_result else 0,
                 "frac_negative": self.wfa_result.frac_negative_folds if self.wfa_result else 0,
             } if self.wfa_result else None,
@@ -72,6 +74,7 @@ class GauntletResult:
                 "formula_version": self.dsr_result.formula_version if self.dsr_result else "",
                 "sharpe_unit": "per_observation",
                 "pvalue": self.dsr_result.dsr_pvalue if self.dsr_result else 1.0,
+                "pvalue_m_raw": self.dsr_result.pvalue_m_raw if self.dsr_result else None,
                 "confidence": self.dsr_result.dsr_confidence if self.dsr_result else 0.0,
                 "observed_sharpe": self.dsr_result.observed_sharpe if self.dsr_result else None,
                 "expected_max_sharpe": self.dsr_result.expected_max_sharpe if self.dsr_result else None,

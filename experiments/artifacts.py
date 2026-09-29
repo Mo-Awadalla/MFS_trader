@@ -165,6 +165,64 @@ class ArtifactManager:
         """Return whether the canonical artifact exists."""
         return self.path(experiment_uuid, kind).exists()
 
+    def corrected_evaluation_path(
+        self, experiment_uuid: str, evaluation_id: str, document: str
+    ) -> Path:
+        """Keep versioned corrections separate from original validation evidence."""
+        safe_id = self._validate_experiment_uuid(evaluation_id)
+        if document not in {"request", "result", "disposition"}:
+            raise ArtifactError(f"Unknown corrected evaluation document: {document}")
+        return (
+            self.experiment_dir(experiment_uuid)
+            / "corrected_evaluations" / "v1" / safe_id / f"{document}.json"
+        )
+
+    def write_corrected_evaluation_json(
+        self, experiment_uuid: str, evaluation_id: str, document: str, payload: Any
+    ) -> Path:
+        """Publish a complete correction document, never replacing existing bytes."""
+        path = self.corrected_evaluation_path(experiment_uuid, evaluation_id, document)
+        text = json.dumps(payload, indent=2, sort_keys=True, allow_nan=False) + "\n"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        self._sync_corrected_directories(experiment_uuid, path.parent)
+        try:
+            self._atomic_create(path, text)
+        except ArtifactExistsError as exc:
+            raise ArtifactImmutableError(f"Corrected evaluation is immutable: {path}") from exc
+        return path
+
+    def claim_corrected_evaluation(
+        self, experiment_uuid: str, evaluation_id: str, request_sha256: str
+    ) -> None:
+        """Reserve an attempt and its request identity, including interrupted attempts.
+
+        A claimed attempt is never removed after execution starts. A competing
+        request rejected before publication leaves no new attempt behind.
+        """
+        if len(request_sha256) != 64 or any(c not in "0123456789abcdef" for c in request_sha256):
+            raise ArtifactError("Request identity must be a SHA-256 digest")
+        if os.name != "posix":
+            raise ArtifactError("Durable corrected evaluation publication requires POSIX directory fsync")
+        path = self.corrected_evaluation_path(experiment_uuid, evaluation_id, "request")
+        path.parent.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            path.parent.mkdir()
+        except FileExistsError as exc:
+            raise ArtifactImmutableError(f"Corrected evaluation attempt exists: {path.parent}") from exc
+        claims = path.parent.parent / "requests"
+        claims.mkdir(exist_ok=True)
+        self._sync_corrected_directories(experiment_uuid, path.parent)
+        self._sync_directory(claims)
+        self._sync_directory(claims.parent)
+        try:
+            self._atomic_create(claims / f"{request_sha256}.json", json.dumps({
+                "evaluation_id": evaluation_id, "request_sha256": request_sha256,
+            }) + "\n")
+        except ArtifactExistsError as exc:
+            path.parent.rmdir()  # Our empty, unpublished losing reservation only.
+            self._sync_directory(path.parent.parent)
+            raise ArtifactImmutableError("Corrected evaluation request was already attempted") from exc
+
     def paper_session_path(self, experiment_uuid: str, session_id: str) -> Path:
         """Return the canonical immutable paper-session path."""
         safe_session_id = self._validate_session_id(session_id)
@@ -287,10 +345,30 @@ class ArtifactManager:
         tmp_path = self._write_temp(path.parent, text)
         try:
             os.link(tmp_path, path)
+            if os.name == "posix":
+                self._sync_directory(path.parent)
         except FileExistsError as exc:
             raise ArtifactExistsError(f"Artifact already exists: {path}") from exc
         finally:
             tmp_path.unlink(missing_ok=True)
+
+    def _sync_directory(self, directory: Path) -> None:
+        """Make published names durable on supported local POSIX filesystems."""
+        fd = os.open(directory, os.O_RDONLY)
+        try:
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+
+    def _sync_corrected_directories(self, experiment_uuid: str, directory: Path) -> None:
+        if os.name != "posix":
+            raise ArtifactError("Durable corrected evaluation publication requires POSIX directory fsync")
+        boundary = self.experiment_dir(experiment_uuid)
+        while True:
+            self._sync_directory(directory)
+            if directory == boundary:
+                break
+            directory = directory.parent
 
     def _atomic_replace(self, path: Path, text: str) -> None:
         tmp_path = self._write_temp(path.parent, text)
