@@ -7,7 +7,7 @@ import hashlib
 import json
 import math
 import sqlite3
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, cast
 
@@ -458,6 +458,9 @@ def run_alpaca_paper_smoke(
     experiment = verify_paper_lifecycle_gates(
         registry, experiment_uuid=experiment_uuid, experiment_hash=experiment_hash
     )
+    from experiments.corrected_evaluations import require_current_qualification
+
+    require_current_qualification(registry, experiment_uuid, experiment_hash)
     if not confirm_paper_broker:
         raise PaperSessionGateError("--confirm-paper-broker is required for alpaca_paper")
     caps = paper_caps_from_config(config)
@@ -552,6 +555,9 @@ def build_paper_operator_report(
 ) -> dict[str, Any]:
     experiment = registry.get(experiment_uuid)
     artifacts = artifacts or ArtifactManager(registry.root)
+    from experiments.corrected_evaluations import check_current_qualification
+
+    numerical = check_current_qualification(registry, experiment_uuid, experiment.experiment_hash)
     sessions = artifacts.list_paper_sessions(experiment_uuid)
     operational = build_operational_report(db_path).to_dict() if db_path is not None else None
     blockers = _paper_operator_blockers(
@@ -574,6 +580,7 @@ def build_paper_operator_report(
         "operational_passed": not blockers,
         "broker_paper_qualified": any(q["passed"] for q in qualifications),
         "broker_paper_qualification": qualifications,
+        "numerical_qualification": asdict(numerical),
         "promotion_unlocked": False,
         "blockers": blockers,
         "sessions": sessions,
@@ -616,6 +623,7 @@ def format_paper_operator_report(report: dict[str, Any]) -> str:
         f"Operational status: {status}",
         f"Broker-paper qualified: {report.get('broker_paper_qualified', False)}",
         "Operational PASS is not numerical qualification or trading authorization.",
+        f"Numerical qualification: {report.get('numerical_qualification', {}).get('status', 'not_established')}",
         "Promotion requires explicit manual confirmation.",
         f"Experiment: `{report['experiment_uuid']}`",
         f"Promotion status: `{report['promotion_status']}`",

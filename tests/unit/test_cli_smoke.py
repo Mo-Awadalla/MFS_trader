@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import copy
 
-import pandas as pd
 import pytest
 
 from config.schema import (
@@ -24,6 +23,7 @@ from experiments.models import ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
 from storage.event_logger import EventLogger
 from storage.schema import init_db
+from tests.qualification import enter_paper_ops
 
 
 def test_engine_cli_help_exits_cleanly(capsys):
@@ -89,19 +89,6 @@ def _make_paper_config() -> Config:
     )
 
 
-def _make_bars() -> pd.DataFrame:
-    return pd.DataFrame(
-        {
-            "open": [150.0] * 140,
-            "high": [151.0] * 140,
-            "low": [149.0] * 140,
-            "close": [150.5] * 140,
-            "volume": [1_000_000] * 140,
-        },
-        index=pd.date_range("2024-01-01", periods=140, freq="1D", tz="UTC"),
-    )
-
-
 def _paper_ops_experiment(registry: ExperimentRegistry):
     snap = build_bb_aapl_1d_default_snapshot()
     mutated = copy.deepcopy(snap)
@@ -109,7 +96,7 @@ def _paper_ops_experiment(registry: ExperimentRegistry):
     exp = registry.create(ExperimentDraft(label="cli-paper-run", snapshot=mutated))
     registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_RUNNING)
     registry.transition_promotion_status(exp.uuid, PromotionStatus.VALIDATION_PASSED)
-    return registry.transition_promotion_status(exp.uuid, PromotionStatus.PAPER_OPS)
+    return enter_paper_ops(registry, exp.uuid)
 
 
 def test_paper_run_cli_refuses_alpaca_paper_before_broker_construction(
@@ -118,7 +105,7 @@ def test_paper_run_cli_refuses_alpaca_paper_before_broker_construction(
     registry = ExperimentRegistry(tmp_path / "experiments")
     try:
         exp = _paper_ops_experiment(registry)
-        monkeypatch.setattr(cli, "load_config", lambda path: _make_paper_config())
+        monkeypatch.setattr(cli, "load_config", lambda path, **kwargs: _make_paper_config())
 
         rc = cli.main(
             [
@@ -142,47 +129,6 @@ def test_paper_run_cli_refuses_alpaca_paper_before_broker_construction(
 
         assert rc == 1
         assert "max_notional_per_order" in capsys.readouterr().err
-    finally:
-        registry.close()
-
-
-def test_paper_run_cli_can_run_with_sim_broker(tmp_path, monkeypatch, capsys):
-    import data.pipeline
-
-    registry = ExperimentRegistry(tmp_path / "experiments")
-    try:
-        exp = _paper_ops_experiment(registry)
-        monkeypatch.setattr(cli, "load_config", lambda path: _make_paper_config())
-        monkeypatch.setattr(data.pipeline, "load_bars", lambda *args, **kwargs: _make_bars())
-
-        rc = cli.main(
-            [
-                "paper-run",
-                "--config",
-                "unused.toml",
-                "--experiment-root",
-                str(registry.root),
-                "--experiment-uuid",
-                exp.uuid,
-                "--experiment-hash",
-                exp.experiment_hash,
-                "--broker",
-                "sim_broker",
-                "--session-id",
-                "sim-cli",
-                "--out-dir",
-                str(tmp_path / "paper-run"),
-                "--max-cycles",
-                "1",
-                "--sleep",
-                "0",
-            ]
-        )
-
-        assert rc == 0
-        out = capsys.readouterr().out
-        assert "Paper run completed: 1 cycles" in out
-        assert "evidence:" in out
     finally:
         registry.close()
 

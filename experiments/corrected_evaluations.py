@@ -10,10 +10,11 @@ import hashlib
 import inspect
 import json
 import subprocess
+from collections.abc import Callable
 from dataclasses import asdict, dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 from experiments.artifacts import ArtifactKind, ArtifactManager
 from experiments.hashing import compute_experiment_hash

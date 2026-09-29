@@ -431,6 +431,10 @@ def cmd_paper_run(args: argparse.Namespace) -> int:
             experiment = verify_paper_lifecycle_gates(
                 registry, experiment_uuid=args.experiment_uuid, experiment_hash=args.experiment_hash
             )
+            if args.broker == "alpaca_paper":
+                from experiments.corrected_evaluations import require_current_qualification
+
+                require_current_qualification(registry, args.experiment_uuid, args.experiment_hash)
         finally:
             registry.close()
 
@@ -670,7 +674,10 @@ def cmd_paper_operator_report(args: argparse.Namespace) -> int:
         return 1
     finally:
         registry.close()
-    print(f"Paper operator report status: {'PASS' if report['passed'] else 'BLOCKED'}")
+    print(f"Paper operational checks: {'PASS' if report['operational_passed'] else 'BLOCKED'}")
+    print(f"Numerical qualification: {report['numerical_qualification']['status']}")
+    print(f"Broker-paper qualified: {report['broker_paper_qualified']}")
+    print("No trading authority is granted by this report.")
     print(f"JSON: {json_path}")
     print(f"Markdown: {md_path}")
     for blocker in report["blockers"]:

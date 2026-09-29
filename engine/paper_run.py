@@ -343,6 +343,12 @@ class PaperRunLoop:
         try:
             experiment = self._verify_experiment()
             self._check_experiment_status(experiment)
+            if getattr(self._broker, "name", "") != "sim_broker":
+                from experiments.corrected_evaluations import require_current_qualification
+
+                require_current_qualification(
+                    self._registry, experiment.uuid, self._run_config.experiment_hash,
+                )
             if ArtifactManager(self._run_config.experiment_root).paper_session_path(
                 experiment.uuid, self._session_id
             ).exists():
