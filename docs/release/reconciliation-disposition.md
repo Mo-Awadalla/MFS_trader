@@ -41,6 +41,10 @@ The original checkout had 708 modified/untracked status paths and local main `df
 - Python metadata retained 3.11 support while the old NumPy development pin required 3.12. Separate compatible locks and runtime-only installation checks preserve both intended versions.
 - Structural ETF replay completed, but research/runtime timing, capital basis, thresholds, cost accounting, and risk exposure differ. Those differences are declared and attributed, not hidden behind a shared PASS.
 - A HARD kill switch also suspends the Experiment. Paper startup checks that switch before the generic lifecycle rejection so the original operator halt reason is retained.
+- Independent security review found ten additional authority/recovery gaps. Repairs in `d65888d`, `aeb8885`, `892263d`, `e165bcc`, and `85bb960` cover dotenv opt-in, broker truth/origins, frozen hypothesis binding, deferred credentials, durable tiny-cap reservations and exclusive runner ownership.
+- Legacy broker `paper-trade-ma`, `paper-dry-run-ma`, and standalone Alpaca smoke routes are retired, not qualified. Simulation diagnostics remain available. Existing smoke/qualification requirements are not relaxed; restoring a broker-smoke route requires separate reviewed engineering and authority.
+- A bar-close flag does not prove next-bar-open execution. Broker admission accepts only the explicitly declared observed-fill submission contract; existing real frozen execution identities are not relabeled.
+- Continuous paper ownership requires POSIX local file locks. Other research/simulation imports remain portable. Market-order admission limits use observed quotes; adverse actual fills persist a breach and halt, not a fictitious guaranteed fill-price cap.
 
 ## Verification authority
 

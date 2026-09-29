@@ -22,7 +22,6 @@ from storage.schema import init_db
 from strategies.ma.signal import MAParams, generate_signals
 
 
-
 @dataclass(frozen=True)
 class PaperDryRunDecision:
     mode: str

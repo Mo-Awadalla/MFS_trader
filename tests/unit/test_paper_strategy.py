@@ -13,7 +13,13 @@ from engine.paper_strategy import (
     prepare_paper_strategy,
     verify_broker_paper_execution_mode,
 )
-from experiments.models import DataVersionSpec, DateRangeSpec, ExperimentDraft, ExperimentSnapshot, UniverseSpec
+from experiments.models import (
+    DataVersionSpec,
+    DateRangeSpec,
+    ExperimentDraft,
+    ExperimentSnapshot,
+    UniverseSpec,
+)
 from experiments.registry import ExperimentRegistry
 from strategies.ma.signal import MAParams
 
@@ -39,8 +45,10 @@ def etf(tmp_path):
     snapshot = snapshot_for_config(config, parameters=dict(config.raw["frozen_experiment"]["parameters"]), symbols=SYMBOLS, source="yahoo_chart")
     registry = ExperimentRegistry(tmp_path / "experiments")
     experiment = registry.create(ExperimentDraft(label="synthetic ETF", snapshot=snapshot))
-    frozen = dict(uuid=experiment.uuid, hash=experiment.experiment_hash, label=experiment.label,
-                  strategy=snapshot.strategy, universe=list(SYMBOLS), parameters=snapshot.parameters)
+    frozen = {
+        "uuid": experiment.uuid, "hash": experiment.experiment_hash, "label": experiment.label,
+        "strategy": snapshot.strategy, "universe": list(SYMBOLS), "parameters": snapshot.parameters,
+    }
     config = replace(config, raw={**config.raw, "frozen_experiment": frozen})
     yield config, experiment
     registry.close()

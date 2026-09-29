@@ -1,5 +1,6 @@
 """Historical status alone must never admit a current broker-paper action."""
 from __future__ import annotations
+
 import sqlite3
 
 import pandas as pd
