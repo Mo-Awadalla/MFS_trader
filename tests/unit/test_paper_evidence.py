@@ -10,6 +10,7 @@ import pytest
 
 from engine.paper_calendar import XNYS_PAPER_CALENDAR, CalendarCoverageError
 from engine.paper_evidence import PaperLedger, derive_observations, digest
+from engine.paper_guard import PaperRunnerOwnership
 from engine.paper_session import (
     PaperSessionGateError,
     build_and_write_paper_ops_pass_report_set,
@@ -46,7 +47,9 @@ def qualified_session(registry, exp, db_path, session_id="pass-session", environ
         "data_grace_seconds": 64800.0, "expected_slippage_bps": 5.0,
     }
     ledger = PaperLedger(conn, identity, START)
-    ledger.start_attempt(START)
+    ownership = PaperRunnerOwnership(db_path)
+    ownership.acquire()
+    ledger.start_attempt(START, ownership)
     ledger.bind_account("fake-paper-account-never-exported")
     cycles = XNYS_PAPER_CALENDAR.expected_cycles("1d", START, END)
     for cycle in cycles:
@@ -87,6 +90,7 @@ def qualified_session(registry, exp, db_path, session_id="pass-session", environ
         "bar_cycle_report": observed["bar_cycle_report"], "slippage_samples": observed["slippage_samples"],
     }
     conn.close()
+    ownership.release()
     return session
 
 
@@ -271,3 +275,55 @@ def test_absent_expected_session_reduces_completion(campaign):
     observed = derive_observations(evidence, 5)
     assert observed["bar_cycle_report"]["unexplained_missed_cycles"] == 1
     assert observed["bar_cycle_report"]["bar_cycle_completion"] < 0.995
+
+
+def test_terminal_attempt_and_cycle_writes_are_fenced_after_takeover(campaign):
+    _, _, db, session = campaign
+    conn = init_db(db)
+    first_owner = PaperRunnerOwnership(db)
+    first_owner.acquire()
+    first = PaperLedger(conn, session["identity"], END)
+    first.start_attempt(END, first_owner)
+    cycle = {
+        "cycle_key": "2024-05-02", "market_session": "2024-05-02",
+        "expected_at": END.isoformat(), "deadline_at": END.isoformat(),
+        "started_at": END.isoformat(), "result": "started",
+    }
+    first.record_cycle(cycle, END)
+    old_attempt = first.attempt_id
+    first_owner.release()  # Represents ended OS ownership, not a heartbeat guess.
+    second_owner = PaperRunnerOwnership(db)
+    second_owner.acquire()
+    try:
+        second = PaperLedger(conn, session["identity"], END + timedelta(seconds=20))
+        second.start_attempt(END + timedelta(seconds=20), second_owner)
+        with pytest.raises(ValueError, match="ownership"):
+            first.close_attempt(END, "completed", None)
+        with pytest.raises(ValueError, match="ownership"):
+            first.record_cycle({**cycle, "result": "completed"}, END)
+        with pytest.raises(ValueError, match="terminal or owned"):
+            second.record_cycle({**cycle, "result": "completed"}, END)
+        assert conn.execute("SELECT outcome FROM paper_attempts WHERE attempt_id=?", (old_attempt,)).fetchone()[0] == "interrupted"
+        row = conn.execute("SELECT attempt_id,result FROM paper_cycles WHERE cycle_key='2024-05-02'").fetchone()
+        assert tuple(row) == (old_attempt, "blocked")
+        second.close_attempt(END + timedelta(seconds=20), "stopped", None)
+        with pytest.raises(ValueError, match="no longer active"):
+            second.close_attempt(END, "completed", None)
+        assert conn.execute("SELECT outcome FROM paper_attempts WHERE attempt_id=?", (second.attempt_id,)).fetchone()[0] == "stopped"
+    finally:
+        second_owner.release()
+        conn.close()
+
+
+def test_one_ownership_epoch_cannot_interrupt_its_own_active_attempt(campaign):
+    _, _, db, session = campaign
+    conn = init_db(db)
+    with PaperRunnerOwnership(db) as ownership:
+        first = PaperLedger(conn, session["identity"], END)
+        first.start_attempt(END, ownership)
+        second = PaperLedger(conn, session["identity"], END)
+        with pytest.raises(ValueError, match="already has an attempt"):
+            second.start_attempt(END, ownership)
+        assert conn.execute("SELECT outcome FROM paper_attempts WHERE attempt_id=?", (first.attempt_id,)).fetchone()[0] is None
+        first.close_attempt(END, "stopped", None)
+    conn.close()

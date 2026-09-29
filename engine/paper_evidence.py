@@ -8,11 +8,14 @@ import sqlite3
 import uuid
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import pandas as pd
 
 from engine.paper_calendar import resolve_calendar
+
+if TYPE_CHECKING:
+    from engine.paper_guard import PaperRunnerOwnership
 
 IDENTITY_KEYS = (
     "experiment_uuid", "experiment_hash", "session_id", "session_kind", "config_hash",
@@ -58,6 +61,8 @@ class PaperLedger:
         self.session_id = identity["session_id"]
         self.attempt_id: str | None = None
         self.identity = identity
+        self._ownership: PaperRunnerOwnership | None = None
+        self._ownership_token: str | None = None
         conn.execute("PRAGMA synchronous=FULL")
         old = conn.execute("SELECT * FROM paper_sessions WHERE session_id=?", (self.session_id,)).fetchone()
         if old is not None:
@@ -76,14 +81,20 @@ class PaperLedger:
             )
             conn.commit()
 
-    def start_attempt(self, now: datetime) -> None:
-        """Commit an attempt before any connection, reconciliation or execution."""
+    def start_attempt(self, now: datetime, ownership: PaperRunnerOwnership) -> None:
+        """Commit before broker effects, recovering only after exclusive takeover."""
+        ownership.assert_owned()
+        database = self.conn.execute("PRAGMA database_list").fetchone()["file"]
+        if Path(database).resolve() != ownership.db_path:
+            raise ValueError("paper ownership does not cover this database")
+        self._ownership = ownership
+        self._ownership_token = ownership.claim_attempt()
         with self.conn:
             for row in self.rows("paper_attempts"):
                 if row["ended_at"] is None:
                     downtime = max(0.0, (now - instant(row["last_heartbeat_at"])).total_seconds())
                     self.conn.execute(
-                        "UPDATE paper_attempts SET ended_at=?, outcome='interrupted', reason=?, downtime_seconds=? WHERE attempt_id=?",
+                        "UPDATE paper_attempts SET ended_at=?, outcome='interrupted', reason=?, downtime_seconds=? WHERE attempt_id=? AND ended_at IS NULL",
                         (now.isoformat(), "unclosed attempt detected on restart", downtime, row["attempt_id"]),
                     )
                     self.event("ATTEMPT_INTERRUPTED", now, {"downtime_seconds": downtime}, row["attempt_id"])
@@ -102,6 +113,19 @@ class PaperLedger:
                 (self.attempt_id, self.session_id, self.identity["experiment_uuid"], now.isoformat(), now.isoformat()),
             )
             self.event("ATTEMPT_STARTED", now, {})
+
+    def assert_active_attempt(self) -> None:
+        if self._ownership is None:
+            raise ValueError("paper attempt has no exclusive owner")
+        self._ownership.assert_owned()
+        if self._ownership.token != self._ownership_token:
+            raise ValueError("paper attempt ownership has expired")
+        row = self.conn.execute(
+            "SELECT 1 FROM paper_attempts WHERE attempt_id=? AND session_id=? AND ended_at IS NULL",
+            (self.attempt_id, self.session_id),
+        ).fetchone()
+        if row is None:
+            raise ValueError("paper attempt is no longer active")
 
     def event(self, kind: str, now: datetime, details: dict, attempt_id: str | None = None) -> None:
         self.conn.execute(
@@ -125,34 +149,46 @@ class PaperLedger:
     def close_attempt(self, now: datetime, outcome: str, reason: str | None) -> None:
         if self.attempt_id is None:
             return
+        self.assert_active_attempt()
         with self.conn:
-            self.conn.execute(
-                "UPDATE paper_attempts SET ended_at=?,outcome=?,reason=? WHERE attempt_id=?",
-                (now.isoformat(), outcome, reason, self.attempt_id),
+            changed = self.conn.execute(
+                "UPDATE paper_attempts SET ended_at=?,outcome=?,reason=? "
+                "WHERE attempt_id=? AND session_id=? AND ended_at IS NULL",
+                (now.isoformat(), outcome, reason, self.attempt_id, self.session_id),
             )
+            if changed.rowcount != 1:
+                raise ValueError("paper terminal attempt write lost ownership")
             self.conn.execute(
-                "UPDATE paper_cycles SET result='blocked',reason=? WHERE session_id=? AND result='started'",
-                (reason or "attempt ended before cycle completion", self.session_id),
+                "UPDATE paper_cycles SET result='blocked',reason=? "
+                "WHERE session_id=? AND attempt_id=? AND result='started'",
+                (reason or "attempt ended before cycle completion", self.session_id, self.attempt_id),
             )
             self.event("ATTEMPT_CLOSED", now, {"outcome": outcome, "reason": reason})
 
     def rows(self, table: str) -> list[dict[str, Any]]:
         allowed = {"paper_attempts", "paper_attempt_events", "paper_cycles", "paper_session_orders",
-                   "paper_fills", "paper_reference_prices", "paper_drill_events"}
+                   "paper_fills", "paper_reference_prices", "paper_drill_events", "paper_order_reservations"}
         if table not in allowed:
             raise ValueError("unsupported paper evidence table")
         return [dict(row) for row in self.conn.execute(f"SELECT * FROM {table} WHERE session_id=? ORDER BY rowid", (self.session_id,))]
 
     def record_cycle(self, cycle: dict[str, Any], now: datetime) -> None:
-        row = {"session_id": self.session_id, "attempt_id": self.attempt_id, **cycle}
+        self.assert_active_attempt()
+        row = {**cycle, "session_id": self.session_id, "attempt_id": self.attempt_id}
         keys = list(row)
         with self.conn:
-            self.conn.execute(
+            changed = self.conn.execute(
                 f"INSERT INTO paper_cycles ({','.join(keys)}) VALUES ({','.join('?' for _ in keys)}) "
-                f"ON CONFLICT(session_id,cycle_key) DO UPDATE SET {','.join(k+'=excluded.'+k for k in keys if k not in {'session_id', 'cycle_key'})}",
+                f"ON CONFLICT(session_id,cycle_key) DO UPDATE SET {','.join(k+'=excluded.'+k for k in keys if k not in {'session_id', 'cycle_key', 'attempt_id'})} "
+                "WHERE paper_cycles.attempt_id=excluded.attempt_id AND paper_cycles.result='started'",
                 tuple(row[k] for k in keys),
             )
-            self.conn.execute("UPDATE paper_attempts SET last_heartbeat_at=? WHERE attempt_id=?", (now.isoformat(), self.attempt_id))
+            if changed.rowcount != 1:
+                raise ValueError("paper cycle is terminal or owned by another attempt")
+            self.conn.execute(
+                "UPDATE paper_attempts SET last_heartbeat_at=? WHERE attempt_id=? AND ended_at IS NULL",
+                (now.isoformat(), self.attempt_id),
+            )
 
     def record_reference_prices(self, cycle_key: str, prices: dict[str, float], now: datetime) -> None:
         with self.conn:
@@ -239,6 +275,7 @@ class PaperLedger:
         return {"identity": dict(self.identity), "observed_until": now.isoformat(), "orders": orders,
                 "attempts": self.rows("paper_attempts"), "cycles": self.rows("paper_cycles"),
                 "order_links": self.rows("paper_session_orders"), "fills": self.rows("paper_fills"),
+                "order_reservations": self.rows("paper_order_reservations"),
                 "reference_prices": self.rows("paper_reference_prices"), "drill_events": self.rows("paper_drill_events")}
 
 

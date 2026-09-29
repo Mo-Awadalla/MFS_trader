@@ -8,11 +8,21 @@ A continuous paper session has a durable SQLite identity: Experiment UUID and fu
 
 The execution hash covers Python source in engine, execution, portfolio, risk, storage, strategies and config. It is a source-content identity (including local edits), not a claim that a published release or a corrected research evaluation passed. Corrected numerical-validation eligibility is a separate admission requirement owned by release integration.
 
-`sim_broker` and `alpaca_paper` are distinct environments. Continuous Alpaca paper admission requires paper mode, paper configuration, the exact paper trading endpoint and manual CLI broker confirmation. A simulated campaign cannot satisfy the broker-paper confirmation gate, even with sufficient simulated activity.
+`sim_broker` and `alpaca_paper` are distinct environments. Continuous Alpaca paper admission requires paper mode, the exact paper trading and market-data origins, adapter/configuration agreement, enabled submission, current numerical qualification and manual CLI broker confirmation. Every non-simulated loop binds the strategy name/version, full parameters, universe, cadence, costs, risk/portfolio assumptions and data declaration to the qualified frozen Experiment. It then uses the repository's canonical strategy callable, not an arbitrary caller-injected callback. Simulation retains injectable diagnostics but cannot satisfy broker-paper qualification.
+
+The continuous broker route accepts only an explicitly frozen
+`broker_market_after_completed_bar_observed_fill` execution mode with completed-bar
+execution enabled. Research `next_bar_open` and ETF first-executable-price assumptions
+are not relabeled as equivalent. Existing qualified research artifacts with those
+assumptions require a separate justified evaluation; this offline change neither
+rewrites them nor authorizes a broker campaign.
 
 Use the shared CLI configuration position: `mfs-engine --config CONFIG paper-run ...`.
-The subcommand does not define a second configuration option. Refused broker
-admission does not load dotenv or construct/connect an adapter.
+The subcommand does not define a second configuration option. CLI adapter construction
+and credential lookup are deferred into the loop, after exclusive local ownership,
+identity/finalization checks, a committed attempt, kill-switch/lifecycle/qualification
+checks and bound checkpoint/persisted-state admission. A SOFT or HARD kill switch
+leaves a durable halted attempt with its original reason and no broker activity.
 
 ## Calendar and cycles
 
@@ -30,15 +40,21 @@ Only unique orders with lifecycle `FILLED`, positive fully filled quantity, zero
 
 Fill increments have deterministic IDs based on order ID and cumulative quantity. Duplicate polls collapse. Each slippage sample is computed from an attributable fill and the pre-decision broker reference-price record, with order ID, fill ID, reference ID and reference source retained. Actual adverse slippage is signed by order side. Expected slippage is explicitly the effective configuration's fixed slippage component; it is not a claim of full variable-impact financial parity. Samples without an attributable reference price are rejected.
 
+Broker-paper submissions additionally pass a paper-only guard immediately before the OMS. It uses the actual risk-adjusted order quantity and a fresh broker quote, then commits a session/attempt-scoped reservation before any broker effect. Per-order, cumulative-session and projected gross-open-exposure caps retain their existing values and admission semantics; the guard refuses a violating intent rather than resizing it or changing strategy/risk rules. Exposure uses fresh prices for every observed position and the proposed signed quantity, so reducing an existing position is not double-counted. Unavailable positions/prices, non-finite values and outstanding orders fail closed.
+
+Session usage is the sum of each durable reservation's larger reserved or observed filled notional. Cancellation/rejection never refunds authority; restart never resets this sum. Missing/uncertain reservation outcomes block further submissions until reconciled outside the loop. Actual cumulative fill quantities and average prices are durably observed and checked after OMS execution and on recovery. Existing market-order semantics are unchanged: an adverse fill can exceed its pre-submit quote; that observed breach halts subsequent activity rather than claiming an impossible guaranteed market execution price. No compensating order or state-machine transition is introduced. Ordinary research/replay does not install this guard. Simulated paper diagnostics may opt into it by configuring caps, without acquiring broker qualification.
+
 Supplied totals, samples, drill booleans and insufficient-activity claims remain operator notes. They never replace observed trades, sessions, interruptions or fill-derived samples. Affirmative drill evidence requires identity-bound activation and observed new-order-blocked events, not absent or truthy flags. The kill-switch guard records these outcomes when it actually refuses execution. Such an operational halt is retained; drill proof does not erase interruption history or authorize automatic resume.
 
 ## Durability and recovery
 
-`paper_sessions`, `paper_attempts`, `paper_attempt_events`, `paper_cycles`, `paper_session_orders`, `paper_fills`, `paper_reference_prices` and `paper_drill_events` form the scoped ledger. SQLite uses FULL synchronous commits. An attempt-start row is committed before broker connection/reconciliation/execution. A process kill therefore leaves an unclosed attempt even if no `finally` executes.
+`paper_sessions`, `paper_attempts`, `paper_attempt_events`, `paper_cycles`, `paper_session_orders`, `paper_order_reservations`, `paper_fills`, `paper_reference_prices` and `paper_drill_events` form the scoped ledger. SQLite uses FULL synchronous commits. An attempt-start row is committed before broker construction/connection/reconciliation/execution. A process kill therefore leaves an unclosed attempt even if no `finally` executes.
+
+Nonblocking OS ownership is held from local preflight through attempt finalization, checkpoint publication, immutable reports and cleanup. Locks cover both the database (including different sessions sharing engine state) and the Experiment/session artifact path (including different databases claiming one session). Lock files are never unlinked or replaced, and process death releases ownership without stale-PID or heartbeat heuristics. Another runner cannot infer a still-owned attempt is dead, create a competing attempt or touch its checkpoint/report. Attempt ownership is generation-fenced; terminal outcomes cannot be rewritten, and cycle writes cannot replace terminal or other-attempt records. Continuous paper execution currently requires POSIX local-file locking; unsupported platforms refuse this surface explicitly without breaking research/CLI imports.
 
 On restart, unclosed attempts become interrupted with downtime measured since their last durable heartbeat. In-flight cycles become blocked rather than fabricated completions. Graceful incomplete attempts and their resume downtime remain in the ledger too. Halt reasons and unresolved state are not cleared by a restart, even when a checkpoint is missing. Startup reconciliation is mandatory for the paper loop regardless of the general engine configuration flag, and unknown/partial portfolio authority blocks execution.
 
-Checkpoints are atomically replaced after file fsync and contain an identity binding plus a SHA-256 integrity checksum. They are not the activity source of truth: the durable ledger is. Corrupt/mismatched checkpoints halt before broker activity. A checksum detects accidental corruption, not malicious modification by a user who can rewrite both the database and artifacts.
+Checkpoints use unique temporary files, file and directory fsync, and atomic replacement; they contain an identity binding plus a SHA-256 integrity checksum. They are not the activity source of truth: the durable ledger is. Corrupt/mismatched checkpoints halt before credentials or broker activity and are not overwritten by the refused run. A checksum detects accidental corruption, not malicious modification by a user who can rewrite both the database and artifacts.
 
 Incomplete windows receive immutable per-attempt reports, and their rows remain available on resume. A finalized session artifact is immutable and refuses another run before broker connection. Restart deduplication relies on the existing persisted OMS deterministic-client-ID check; this work does not change its state machine, reconciliation state machine, strategy rules or risk limits.
 
