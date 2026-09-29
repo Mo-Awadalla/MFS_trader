@@ -140,6 +140,8 @@ def run_gauntlet(
     Returns:
         GauntletResult with all four checks and overall pass/fail.
     """
+    if not np.isfinite(max_dd_limit) or not -1.0 <= max_dd_limit <= 0.0:
+        raise ValueError("max_dd_limit must be a finite signed drawdown fraction in [-1, 0]")
     result = GauntletResult(strategy_name=strategy_name)
     if dsr_search is not None:
         result.search_evidence = {
