@@ -387,6 +387,12 @@ def evaluate_paper_ops_pass_session(
             )
         )
 
+    prerequisite_blockers, prerequisite_hashes = _paper_prerequisites(
+        registry, experiment, artifacts, session,
+    )
+    blockers.extend(prerequisite_blockers)
+    evidence_hashes.update(prerequisite_hashes)
+
     return {
         "experiment_uuid": experiment.uuid,
         "experiment_hash": experiment.experiment_hash,
@@ -466,8 +472,10 @@ def build_paper_operator_report(
     numerical = check_current_qualification(registry, experiment_uuid, experiment.experiment_hash)
     sessions = artifacts.list_paper_sessions(experiment_uuid)
     operational = build_operational_report(db_path).to_dict() if db_path is not None else None
+    prerequisite_blockers, _ = _paper_prerequisites(registry, experiment, artifacts)
     blockers = _paper_operator_blockers(
         experiment=experiment,
+        prerequisite_blockers=prerequisite_blockers,
         sessions=sessions,
         operational=operational,
         active_kill_switch=registry.get_kill_switch(experiment_uuid),
@@ -484,7 +492,7 @@ def build_paper_operator_report(
         "promotion_status": experiment.promotion_status.value,
         "passed": not blockers,
         "operational_passed": not blockers,
-        "broker_paper_qualified": any(q["passed"] for q in qualifications),
+        "broker_paper_qualified": not blockers and any(q["passed"] for q in qualifications),
         "broker_paper_qualification": qualifications,
         "numerical_qualification": asdict(numerical),
         "promotion_unlocked": False,
@@ -646,25 +654,141 @@ def _positions_to_dicts(positions: Any) -> list[dict[str, Any]]:
 def _paper_operator_blockers(
     *,
     experiment: Experiment,
+    prerequisite_blockers: list[str],
     sessions: list[dict[str, Any]],
     operational: dict[str, Any] | None,
     active_kill_switch: Any,
 ) -> list[str]:
-    blockers: list[str] = []
+    blockers = list(prerequisite_blockers)
     if experiment.promotion_status != PromotionStatus.PAPER_OPS:
         blockers.append(f"Experiment status is {experiment.promotion_status.value}, not paper_ops.")
     if active_kill_switch is not None and active_kill_switch.is_active:
         blockers.append(f"Active kill switch: {active_kill_switch.reason}.")
-    if not any(s.get("passed") is True and s.get("session_type") == "simulated_drills" for s in sessions):
-        blockers.append("No passing simulated drill session.")
-    if not any(s.get("passed") is True and s.get("session_type") == "alpaca_paper_smoke" for s in sessions):
-        blockers.append("No passing Alpaca paper smoke session.")
-    failed_sessions = [s for s in sessions if s.get("passed") is not True]
+    failed_sessions = [s for s in sessions if not isinstance(s, dict) or s.get("passed") is not True]
     if failed_sessions:
         blockers.append(f"Failed paper sessions present: {len(failed_sessions)}.")
     if operational is not None and not operational.get("passed", False):
         blockers.extend(f"Operational report: {b}" for b in operational.get("blockers", []))
     return blockers
+
+
+def _paper_prerequisites(
+    registry: ExperimentRegistry,
+    experiment: Experiment,
+    artifacts: ArtifactManager,
+    pass_session: dict[str, Any] | None = None,
+) -> tuple[list[str], dict[str, str]]:
+    """Validate retained prerequisites; legacy PASS flags carry no authority."""
+    blockers: list[str] = []
+    hashes: dict[str, str] = {}
+    try:
+        sessions = artifacts.list_paper_sessions(experiment.uuid)
+    except (ValueError, TypeError) as exc:
+        return [f"Invalid paper prerequisite artifacts: {exc}"], hashes
+    for session_type, label in (
+        ("simulated_drills", "simulated drill"),
+        ("alpaca_paper_smoke", "Alpaca paper smoke"),
+    ):
+        failures = []
+        for session in sessions:
+            if not isinstance(session, dict) or session.get("session_type") != session_type:
+                continue
+            try:
+                session_id = session["session_id"]
+                path = artifacts.paper_session_path(experiment.uuid, session_id)
+                if artifacts.read_paper_session_json(experiment.uuid, session_id) != session:
+                    raise ValueError("session id does not identify its canonical artifact")
+                json.dumps(session, allow_nan=False)
+                if (session.get("experiment_uuid") != experiment.uuid
+                        or session.get("experiment_hash") != experiment.experiment_hash):
+                    raise ValueError("Experiment identity mismatch")
+                if session.get("session_kind") != PAPER_OPS_SMOKE_SESSION_KIND:
+                    raise ValueError("prerequisite must be a distinct paper_ops_smoke session")
+                if session.get("passed") is not True or session.get("blockers") != []:
+                    raise ValueError("prerequisite is not affirmatively passing")
+                if session_type == "simulated_drills":
+                    _validate_simulated_prerequisite(session)
+                else:
+                    _validate_broker_smoke_prerequisite(
+                        registry, experiment, artifacts, session, pass_session,
+                    )
+                    report_path = artifacts.paper_session_report_path(
+                        experiment.uuid, session_id, PAPER_OPS_SMOKE_REPORT,
+                    )
+                    hashes[f"prerequisites/{session_id}/{PAPER_OPS_SMOKE_REPORT}"] = _sha256_path(report_path)
+                hashes[f"prerequisites/{session_id}/session.json"] = _sha256_path(path)
+                break
+            except (OSError, ValueError, KeyError, TypeError, AttributeError, PaperSessionGateError) as exc:
+                failures.append(f"{session.get('session_id')}: {exc}")
+        else:
+            blockers.append(f"No passing {label} session.")
+            blockers.extend(f"Invalid {label} prerequisite: {failure}" for failure in failures)
+    return blockers, hashes
+
+
+def _validate_simulated_prerequisite(session: dict[str, Any]) -> None:
+    if session.get("broker") != "sim_broker":
+        raise ValueError("simulated drills require sim_broker")
+    gates = session["lifecycle_gates"]
+    if any(gates.get(key) is not True for key in (
+        "status_is_paper_ops", "hash_verified", "kill_switch_clear",
+    )):
+        raise ValueError("missing affirmative lifecycle proof")
+    caps = session["caps"]
+    if any(_number(caps.get(key)) is None for key in (
+        "max_notional_per_order", "max_paper_session_notional", "max_open_paper_exposure",
+    )):
+        raise ValueError("invalid simulated drill caps")
+    validate_tiny_paper_caps(PaperCaps(
+        caps["max_notional_per_order"], caps["max_paper_session_notional"],
+        caps["max_open_paper_exposure"],
+    ))
+    drills = session["details"]["drills"]
+    for name, status in (("reject", "REJECTED"), ("timeout", "TIMEOUT")):
+        result = drills[name]
+        if result.get("passed") is not True or result.get("status") != status:
+            raise ValueError(f"{name} drill lacks observed {status} outcome")
+    reconciliation = drills["reconciliation"]
+    if (reconciliation.get("passed") is not True
+            or reconciliation.get("mismatch_detected") is not True
+            or not any(position.get("symbol") == "AAPL" and _number(position.get("quantity")) == 2.0
+                       for position in reconciliation["positions"])):
+        raise ValueError("reconciliation drill lacks observed mismatch")
+
+
+def _validate_broker_smoke_prerequisite(
+    registry: ExperimentRegistry,
+    experiment: Experiment,
+    artifacts: ArtifactManager,
+    session: dict[str, Any],
+    pass_session: dict[str, Any] | None,
+) -> None:
+    _derive_session(session)
+    identity = session["identity"]
+    if identity["broker_environment"] != "alpaca_paper":
+        raise ValueError("simulation cannot satisfy broker smoke")
+    if pass_session is not None:
+        pass_identity = pass_session.get("identity")
+        if not isinstance(pass_identity, dict) or any(
+            identity[key] != pass_identity.get(key) for key in (
+                "config_hash", "code_version", "broker_environment", "account_fingerprint",
+                "calendar_id", "calendar_version", "bar_frequency", "data_grace_seconds",
+                "expected_slippage_bps",
+            )
+        ):
+            raise ValueError("broker smoke and pass session execution/account identities differ")
+    expected = build_paper_ops_smoke_report(
+        registry=registry, experiment_uuid=experiment.uuid,
+        session_id=session["session_id"], artifacts=artifacts,
+    )
+    report = artifacts.read_paper_session_report_json(
+        experiment.uuid, session["session_id"], PAPER_OPS_SMOKE_REPORT,
+    )
+    json.dumps(report, allow_nan=False)
+    if (expected["passed"] is not True or not isinstance(report, dict)
+            or report.get("passed") is not True
+            or json.dumps(report, sort_keys=True) != json.dumps(expected, sort_keys=True)):
+        raise ValueError("broker smoke report differs from passing attributable observations")
 
 
 def _derive_session(session: dict[str, Any]) -> dict[str, Any]:

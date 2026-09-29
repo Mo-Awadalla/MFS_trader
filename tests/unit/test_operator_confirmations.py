@@ -8,9 +8,11 @@ go through ``ExperimentRegistry`` which already enforces the matrix.
 from __future__ import annotations
 
 import copy
+import json
 
 import pytest
 
+from engine.paper_session import build_paper_operator_report
 from experiments.artifacts import ArtifactKind, ArtifactManager
 from experiments.backfill import build_bb_aapl_1d_default_snapshot
 from experiments.kill_switch import KillSwitchSeverity
@@ -29,7 +31,7 @@ from experiments.operator_confirmations import (
 )
 from experiments.registry import ExperimentRegistry
 from tests.qualification import enter_paper_ops
-from tests.unit.test_paper_evidence import write_qualified_evidence
+from tests.unit.test_paper_evidence import write_prerequisite_evidence, write_qualified_evidence
 
 
 @pytest.fixture
@@ -88,6 +90,8 @@ class TestConfirmPaperOpsPass:
         exp = registry.create(_draft("promote"))
         _walk_to_paper_ops(registry, exp.uuid)
         session_id = _write_paper_ops_pass_evidence(registry, exp)
+        report = build_paper_operator_report(registry=registry, experiment_uuid=exp.uuid)
+        assert report["broker_paper_qualified"] is True
         result = confirm_paper_ops_pass(
             registry,
             exp.uuid,
@@ -107,6 +111,127 @@ class TestConfirmPaperOpsPass:
             "paper_ops_pass_confirmation.json",
         )
         assert confirmation["result"] == "confirmed"
+
+        assert "prerequisites/sim-drills/session.json" in confirmation["evidence_artifact_hashes"]
+        assert "prerequisites/broker-smoke/session.json" in confirmation["evidence_artifact_hashes"]
+
+    @pytest.mark.parametrize("missing", ["simulated_drills", "alpaca_paper_smoke"])
+    def test_full_pass_without_each_prerequisite_cannot_report_or_confirm(self, registry, missing):
+        exp = registry.create(_draft("missing-prerequisite"))
+        _walk_to_paper_ops(registry, exp.uuid)
+        session_id = write_qualified_evidence(registry, exp, missing_prerequisite=missing)
+        # A retained, unbound operator PASS cannot fill the missing prerequisite.
+        _write_passing_paper_report(registry, exp)
+        artifacts = ArtifactManager(registry.root)
+        metadata = artifacts.experiment_dir(exp.uuid) / "metadata.json"
+        original = metadata.read_bytes()
+        report = build_paper_operator_report(registry=registry, experiment_uuid=exp.uuid)
+        assert report["broker_paper_qualified"] is False
+        assert report["broker_paper_qualification"][0]["passed"] is False
+        with pytest.raises(ConfirmedExperimentError):
+            confirm_paper_ops_pass(registry, exp.uuid, exp.experiment_hash, paper_session_id=session_id)
+        assert registry.get(exp.uuid).promotion_status == PromotionStatus.PAPER_OPS
+        assert metadata.read_bytes() == original
+        assert not artifacts.paper_session_report_path(
+            exp.uuid, session_id, "paper_ops_pass_confirmation.json",
+        ).exists()
+
+    @pytest.mark.parametrize("prerequisite,mutation", [
+        ("sim-drills", "experiment_uuid"),
+        ("sim-drills", "experiment_hash"),
+        ("sim-drills", "environment"),
+        ("sim-drills", "missing"),
+        ("sim-drills", "truthy"),
+        ("sim-drills", "nonfinite"),
+        ("sim-drills", "inconsistent"),
+        ("broker-smoke", "experiment_uuid"),
+        ("broker-smoke", "experiment_hash"),
+        ("broker-smoke", "environment"),
+        ("broker-smoke", "missing"),
+        ("broker-smoke", "truthy"),
+        ("broker-smoke", "nonfinite"),
+        ("broker-smoke", "inconsistent"),
+        ("broker-smoke", "unbound"),
+        ("broker-smoke", "report"),
+    ])
+    def test_invalid_prerequisite_cannot_report_or_confirm(self, registry, prerequisite, mutation):
+        exp = registry.create(_draft("invalid-prerequisite"))
+        _walk_to_paper_ops(registry, exp.uuid)
+        session_id = write_qualified_evidence(registry, exp)
+        artifacts = ArtifactManager(registry.root)
+        path = artifacts.paper_session_path(exp.uuid, prerequisite)
+        session = json.loads(path.read_text())
+        simulated = prerequisite == "sim-drills"
+        if mutation in {"experiment_uuid", "experiment_hash"}:
+            session[mutation] = "wrong"
+        elif mutation == "environment":
+            if simulated:
+                session["broker"] = "alpaca"
+            else:
+                session["identity"]["broker_environment"] = "sim_broker"
+        elif mutation == "missing":
+            if simulated:
+                del session["details"]["drills"]["timeout"]
+            else:
+                session["observations"]["drill_events"] = []
+        elif mutation == "truthy":
+            if simulated:
+                session["details"]["drills"]["reject"]["passed"] = "true"
+            else:
+                session["passed"] = 1
+        elif mutation == "nonfinite":
+            if simulated:
+                session["details"]["drills"]["reconciliation"]["positions"][0]["quantity"] = float("nan")
+            else:
+                session["observations"]["cycles"][0]["untrusted_extra"] = float("inf")
+        elif mutation == "inconsistent":
+            if simulated:
+                session["details"]["drills"]["timeout"]["status"] = "FILLED"
+            else:
+                session["window"]["market_sessions"] += 1
+        elif mutation == "unbound":
+            del session["observations"]
+        else:
+            report_path = artifacts.paper_session_report_path(
+                exp.uuid, prerequisite, "paper_ops_smoke_report.json",
+            )
+            report_path.write_text(json.dumps({"passed": True}))
+        # Deliberately corrupt only temporary synthetic imported artifacts.
+        path.write_text(json.dumps(session))
+        metadata = artifacts.experiment_dir(exp.uuid) / "metadata.json"
+        original = metadata.read_bytes()
+        report = build_paper_operator_report(registry=registry, experiment_uuid=exp.uuid)
+        assert report["broker_paper_qualified"] is False
+        with pytest.raises(ConfirmedExperimentError):
+            confirm_paper_ops_pass(registry, exp.uuid, exp.experiment_hash, paper_session_id=session_id)
+        assert registry.get(exp.uuid).promotion_status == PromotionStatus.PAPER_OPS
+        assert metadata.read_bytes() == original
+
+    @pytest.mark.parametrize("environment,account", [
+        ("sim_broker", "fake-paper-account-never-exported"),
+        ("alpaca_paper", "another-synthetic-account"),
+    ])
+    def test_consistent_smoke_from_wrong_environment_or_account_cannot_qualify(
+        self, registry, environment, account,
+    ):
+        exp = registry.create(_draft("unrelated-smoke"))
+        _walk_to_paper_ops(registry, exp.uuid)
+        session_id = write_qualified_evidence(
+            registry, exp, missing_prerequisite="alpaca_paper_smoke",
+        )
+        # This is internally consistent observed smoke, not merely a bad digest.
+        write_prerequisite_evidence(
+            registry, exp, missing="simulated_drills",
+            smoke_environment=environment, smoke_account=account,
+        )
+        metadata = ArtifactManager(registry.root).experiment_dir(exp.uuid) / "metadata.json"
+        original = metadata.read_bytes()
+        report = build_paper_operator_report(registry=registry, experiment_uuid=exp.uuid)
+        assert report["broker_paper_qualified"] is False
+        with pytest.raises(ConfirmedExperimentError):
+            confirm_paper_ops_pass(registry, exp.uuid, exp.experiment_hash, paper_session_id=session_id)
+        assert metadata.read_bytes() == original
+        assert registry.get(exp.uuid).promotion_status == PromotionStatus.PAPER_OPS
 
     def test_rejects_when_not_in_paper_ops(self, registry):
         exp = registry.create(_draft("not-po"))
