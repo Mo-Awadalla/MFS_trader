@@ -2,13 +2,17 @@
 
 from __future__ import annotations
 
+import contextlib
 import hashlib
+import json
+import math
 import sqlite3
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, cast
 
 from config.schema import Config
+from engine.paper_evidence import PaperLedger, derive_observations, instant
 from execution.base import (
     BrokerAdapter,
     BrokerOrderRequest,
@@ -61,8 +65,6 @@ PAPER_OPS_PASS_WINDOW = {
     "reconciliation_unresolved_allowed": 0,
     "portfolio_state_required_at_end": "KNOWN",
 }
-PAPER_OPS_TERMINAL_ORDER_STATES = {"FILLED", "CANCELLED", "REJECTED", "EXPIRED", "REPLACED"}
-PAPER_OPS_OPEN_ORDER_STATES = {"ACKNOWLEDGED", "PARTIALLY_FILLED", "SUBMITTING", "CANCEL_REQUESTED"}
 
 
 class PaperSessionGateError(Exception):
@@ -190,10 +192,10 @@ def write_paper_ops_pass_report_set(
         if report_name not in reports:
             raise PaperSessionGateError(f"missing paper ops report: {report_name}")
         payload = {
+            **reports[report_name],
             "experiment_uuid": experiment.uuid,
             "experiment_hash": experiment.experiment_hash,
             "paper_session_id": session_id,
-            **reports[report_name],
         }
         paths[report_name] = artifacts.write_paper_session_report_json(
             experiment.uuid,
@@ -217,9 +219,14 @@ def build_paper_ops_smoke_report(
         raise PaperSessionGateError(f"Experiment not found: {experiment_uuid}")
     artifacts = artifacts or ArtifactManager(registry.root)
     session = cast(dict[str, Any], artifacts.read_paper_session_json(experiment.uuid, session_id))
-    window = session.get("window") or {}
-    bar_cycle = session.get("bar_cycle_report") or {}
     blockers: list[str] = []
+    try:
+        observed = _derive_session(session)
+    except (ValueError, KeyError, TypeError) as exc:
+        blockers.append(f"Invalid observed paper evidence: {exc}")
+        observed = {"window": {}, "bar_cycle_report": {}, "drill_proved": False}
+    window = observed["window"]
+    bar_cycle = observed["bar_cycle_report"]
     if session.get("session_kind") != PAPER_OPS_SMOKE_SESSION_KIND:
         blockers.append("Paper Ops Smoke requires session_kind=paper_ops_smoke.")
     if session.get("passed") is not True:
@@ -232,11 +239,8 @@ def build_paper_ops_smoke_report(
     unplanned = _number(window.get("unplanned_interruptions"), default=0.0)
     if unplanned is not None and unplanned > 0:
         blockers.append("Paper Ops Smoke has unplanned interruptions.")
-    drill = session.get("kill_switch_drill") or {}
-    if drill.get("kill_switch_drill_evidence_exists") is not True:
-        blockers.append("Paper Ops Smoke kill-switch drill evidence missing.")
-    if drill.get("new_orders_blocked") is not True:
-        blockers.append("Paper Ops Smoke kill-switch drill did not prove blocked new orders.")
+    if observed["drill_proved"] is not True:
+        blockers.append("Paper Ops Smoke kill-switch drill lacks observed blocked-order proof.")
     return {
         "experiment_uuid": experiment.uuid,
         "experiment_hash": experiment.experiment_hash,
@@ -293,39 +297,18 @@ def build_paper_ops_pass_report_set(
         raise PaperSessionGateError(f"Experiment not found: {experiment_uuid}")
     artifacts = artifacts or ArtifactManager(registry.root)
     session = cast(dict[str, Any], artifacts.read_paper_session_json(experiment.uuid, session_id))
-    db = Path(db_path)
-    conn = sqlite3.connect(str(db))
-    conn.row_factory = sqlite3.Row
+    with contextlib.closing(sqlite3.connect(f"file:{Path(db_path).resolve()}?mode=ro", uri=True)) as conn:
+        conn.row_factory = sqlite3.Row
+        row = conn.execute("SELECT * FROM paper_sessions WHERE session_id=?", (session_id,)).fetchone()
+        if row is None or dict(row) != session.get("identity"):
+            raise PaperSessionGateError("paper session ledger identity missing or mismatched")
+        ledger = PaperLedger(conn, dict(row), instant(session["observations"]["observed_until"]))
+        if ledger.snapshot(instant(session["observations"]["observed_until"])) != session["observations"]:
+            raise PaperSessionGateError("paper observations differ from the durable session ledger")
     try:
-        orders = _db_rows(conn, "SELECT * FROM orders_live ORDER BY created_at, client_order_id")
-        events = _db_rows(conn, "SELECT * FROM events ORDER BY id")
-        positions = _db_rows(conn, "SELECT * FROM positions_live ORDER BY strategy, symbol")
-        operational = build_operational_report(conn).to_dict()
-    finally:
-        conn.close()
-
-    reports = {
-        "operator_report.json": _build_pass_operator_report(
-            experiment=experiment,
-            session=session,
-            orders=orders,
-            positions=positions,
-            operational=operational,
-            active_kill_switch=registry.get_kill_switch(experiment.uuid),
-        ),
-        "reconciliation_report.json": _build_pass_reconciliation_report(
-            session=session,
-            orders=orders,
-            events=events,
-        ),
-        "slippage_report.json": _build_pass_slippage_report(session=session, orders=orders),
-        "bar_cycle_report.json": _build_pass_bar_cycle_report(session=session),
-        "kill_switch_drill_report.json": _build_pass_kill_switch_drill_report(
-            session=session,
-            events=events,
-        ),
-    }
-    return reports
+        return _observed_reports(session)
+    except (ValueError, KeyError, TypeError) as exc:
+        raise PaperSessionGateError(f"invalid paper observations: {exc}") from exc
 
 
 def build_and_write_paper_ops_pass_report_set(
@@ -399,6 +382,7 @@ def evaluate_paper_ops_pass_session(
         "experiment_hash": experiment.experiment_hash,
         "paper_session_id": session_id,
         "session_kind": session.get("session_kind") if session else None,
+        "identity": session.get("identity") if session else None,
         "passed": not blockers,
         "blockers": blockers,
         "required_reports": list(PAPER_OPS_REQUIRED_REPORTS),
@@ -576,11 +560,21 @@ def build_paper_operator_report(
         operational=operational,
         active_kill_switch=registry.get_kill_switch(experiment_uuid),
     )
+    qualifications = [
+        evaluate_paper_ops_pass_session(
+            registry=registry, experiment=experiment, session_id=session["session_id"], artifacts=artifacts,
+        )
+        for session in sessions if session.get("session_kind") == PAPER_OPS_PASS_SESSION_KIND
+    ]
     return {
         "experiment_uuid": experiment_uuid,
         "experiment_hash": experiment.experiment_hash,
         "promotion_status": experiment.promotion_status.value,
         "passed": not blockers,
+        "operational_passed": not blockers,
+        "broker_paper_qualified": any(q["passed"] for q in qualifications),
+        "broker_paper_qualification": qualifications,
+        "promotion_unlocked": False,
         "blockers": blockers,
         "sessions": sessions,
         "operational_report": operational,
@@ -619,7 +613,10 @@ def format_paper_operator_report(report: dict[str, Any]) -> str:
     lines = [
         "# Paper Operator Report",
         "",
-        f"Status: {status}",
+        f"Operational status: {status}",
+        f"Broker-paper qualified: {report.get('broker_paper_qualified', False)}",
+        "Operational PASS is not numerical qualification or trading authorization.",
+        "Promotion requires explicit manual confirmation.",
         f"Experiment: `{report['experiment_uuid']}`",
         f"Promotion status: `{report['promotion_status']}`",
         "",
@@ -815,211 +812,83 @@ def _paper_operator_blockers(
     return blockers
 
 
-def _build_pass_operator_report(
-    *,
-    experiment: Experiment,
-    session: dict[str, Any],
-    orders: list[dict[str, Any]],
-    positions: list[dict[str, Any]],
-    operational: dict[str, Any],
-    active_kill_switch: Any,
-) -> dict[str, Any]:
-    blockers: list[str] = []
-    portfolio_state = str(session.get("portfolio_state") or _portfolio_state_from_orders(orders))
-    if experiment.promotion_status != PromotionStatus.PAPER_OPS:
-        blockers.append(f"Experiment status is {experiment.promotion_status.value}, not paper_ops.")
-    if active_kill_switch is not None and active_kill_switch.is_active:
-        blockers.append(f"Active kill switch: {active_kill_switch.reason}.")
-    if portfolio_state != "KNOWN":
-        blockers.append(f"portfolio_state is {portfolio_state}, not KNOWN.")
+def _derive_session(session: dict[str, Any]) -> dict[str, Any]:
+    json.dumps(session, allow_nan=False)
+    evidence = session["observations"]
+    identity = evidence["identity"]
+    if session.get("identity") != identity:
+        raise ValueError("session and observation identities differ")
+    for key in ("experiment_uuid", "experiment_hash", "session_id", "session_kind"):
+        if identity[key] != session.get(key):
+            raise ValueError(f"paper identity mismatch: {key}")
+    observed = derive_observations(evidence, session["expected_slippage_bps"])
+    for key in ("window", "bar_cycle_report", "slippage_samples"):
+        if session.get(key) != observed[key]:
+            raise ValueError(f"claimed {key} differs from observed activity")
+    if session.get("bar_cycles") != evidence["cycles"]:
+        raise ValueError("cycle records differ from observations")
+    return observed
+
+
+def _observed_reports(session: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    observed = _derive_session(session)
+    evidence = session["observations"]
+    orders = evidence["orders"]
+    unresolved = [
+        row for row in orders if row["order_state"] == "UNKNOWN"
+        or row["reconciliation_status"] not in {"MATCHED", "REPAIRED"}
+    ]
+    portfolio = session.get("portfolio_state")
+    operator_blockers = []
+    if portfolio != "KNOWN":
+        operator_blockers.append("portfolio_state is not KNOWN")
     if session.get("passed") is not True:
-        blockers.append("Paper session summary is not passing.")
-    if operational.get("passed") is not True:
-        blockers.extend(f"Operational report: {b}" for b in operational.get("blockers", []))
-    return {
-        "passed": not blockers,
-        "blockers": blockers,
-        "portfolio_state": portfolio_state,
-        "active_blockers": blockers,
-        "operational_report": operational,
-        "orders_total": len(orders),
-        "positions_total": len(positions),
-    }
-
-
-def _build_pass_reconciliation_report(
-    *,
-    session: dict[str, Any],
-    orders: list[dict[str, Any]],
-    events: list[dict[str, Any]],
-) -> dict[str, Any]:
-    blockers: list[str] = []
-    unresolved_orders = [
-        row for row in orders
-        if row.get("order_state") == "UNKNOWN"
-        or row.get("reconciliation_status") in {"MISMATCHED", "UNRESOLVED"}
-    ]
-    open_orders = [row for row in orders if row.get("order_state") in PAPER_OPS_OPEN_ORDER_STATES]
-    mismatch_events = [event for event in events if event.get("event_type") == "RECONCILIATION_MISMATCH"]
-    if unresolved_orders:
-        blockers.append(f"Unresolved order reconciliation rows: {len(unresolved_orders)}.")
-    if mismatch_events:
-        blockers.append(f"Reconciliation mismatch events recorded: {len(mismatch_events)}.")
-    portfolio_state = str(session.get("portfolio_state") or _portfolio_state_from_orders(orders))
-    if portfolio_state != "KNOWN":
-        blockers.append(f"portfolio_state is {portfolio_state}, not KNOWN.")
-    return {
-        "passed": not blockers,
-        "blockers": blockers,
-        "portfolio_state": portfolio_state,
-        "unresolved_count": len(unresolved_orders) + len(mismatch_events),
-        "open_order_count": len(open_orders),
-        "order_lifecycle": [_order_lifecycle_row(row) for row in orders],
-    }
-
-
-def _build_pass_slippage_report(
-    *,
-    session: dict[str, Any],
-    orders: list[dict[str, Any]],
-) -> dict[str, Any]:
-    samples = list(session.get("slippage_samples") or [])
-    filled_orders = [
-        row for row in orders
-        if float(row.get("filled_qty") or 0.0) > 0 and row.get("avg_fill_price") is not None
-    ]
-    blocker_threshold = float(
-        session.get("slippage_blocker_threshold")
-        or PAPER_OPS_SLIPPAGE_BLOCKER_THRESHOLD
-    )
-    warning_threshold = float(session.get("slippage_warning_threshold") or 1.5)
-    blockers: list[str] = []
-    ratios: list[float] = []
-    actual_values: list[float] = []
-    expected_values: list[float] = []
-    for sample in samples:
-        actual = _number(sample.get("actual_slippage_bps"))
-        expected = _number(sample.get("expected_slippage_bps"))
-        if actual is None or expected is None or expected <= 0:
-            blockers.append("Slippage sample missing positive expected/actual bps.")
-            continue
-        actual_values.append(actual)
-        expected_values.append(expected)
-        ratios.append(actual / expected)
-    if filled_orders and not samples:
-        blockers.append("Filled orders exist but no explicit slippage samples were recorded.")
+        operator_blockers.append("paper session is incomplete or halted")
+    if observed["window"]["unplanned_interruptions"]:
+        operator_blockers.append("paper window contains incomplete/interrupted attempts")
+    if evidence["identity"]["broker_environment"] != "alpaca_paper":
+        operator_blockers.append("simulation is not broker-paper qualification")
+    samples = observed["slippage_samples"]
+    ratios = [s["actual_slippage_bps"] / s["expected_slippage_bps"] for s in samples]
     ratio = max(ratios) if ratios else None
-    blocker_triggered = ratio is not None and ratio >= blocker_threshold
-    if blocker_triggered:
-        blockers.append("Slippage blocker threshold exceeded.")
-    return {
-        "passed": not blockers,
-        "blockers": blockers,
-        "slippage_unit": "basis_points",
-        "warning_threshold": warning_threshold,
-        "blocker_threshold": blocker_threshold,
-        "sample_size": len(samples),
-        "filled_order_count": len(filled_orders),
-        "trade_count": max(len(samples), len(filled_orders)),
-        "expected_slippage_bps": _mean(expected_values),
-        "actual_slippage_bps": _mean(actual_values),
-        "actual_vs_expected_ratio": ratio,
-        "p95_actual_slippage_bps": _percentile(actual_values, 0.95),
-        "blocker_triggered": blocker_triggered,
-        "samples": samples,
+    slippage_blockers = []
+    if not samples:
+        slippage_blockers.append("no attributable fill/reference-price samples")
+    if ratio is not None and ratio >= PAPER_OPS_SLIPPAGE_BLOCKER_THRESHOLD:
+        slippage_blockers.append("slippage blocker threshold exceeded")
+    cycle = observed["bar_cycle_report"]
+    cycle_blockers = []
+    if cycle["bar_cycle_completion"] < PAPER_OPS_BAR_CYCLE_COMPLETION_MIN:
+        cycle_blockers.append("bar-cycle completion below 99.5%")
+    if cycle["unexplained_missed_cycles"]:
+        cycle_blockers.append("unexplained missed cycles")
+    drill = observed["drill_proved"]
+    reports = {
+        "operator_report.json": {
+            "passed": not operator_blockers, "blockers": operator_blockers, "active_blockers": operator_blockers,
+            "portfolio_state": portfolio, "orders_total": len(orders), "window": observed["window"],
+        },
+        "reconciliation_report.json": {
+            "passed": not unresolved and portfolio == "KNOWN", "unresolved_count": len(unresolved),
+            "portfolio_state": portfolio, "order_lifecycle": orders,
+        },
+        "slippage_report.json": {
+            "passed": not slippage_blockers, "blockers": slippage_blockers,
+            "trade_count": observed["window"]["trades"], "sample_size": len(samples), "samples": samples,
+            "actual_vs_expected_ratio": ratio, "blocker_threshold": PAPER_OPS_SLIPPAGE_BLOCKER_THRESHOLD,
+            "warning_threshold": 1.5, "blocker_triggered": bool(slippage_blockers),
+        },
+        "bar_cycle_report.json": {
+            **cycle, "passed": not cycle_blockers, "blockers": cycle_blockers, "cycles": evidence["cycles"],
+        },
+        "kill_switch_drill_report.json": {
+            "passed": drill, "kill_switch_drill_evidence_exists": drill, "new_orders_blocked": drill,
+            "observed_events": evidence["drill_events"],
+        },
     }
-
-
-def _build_pass_bar_cycle_report(session: dict[str, Any]) -> dict[str, Any]:
-    report = dict(session.get("bar_cycle_report") or {})
-    cycles = list(session.get("bar_cycles") or [])
-    blockers: list[str] = list(report.get("blockers") or [])
-    completion = _number(report.get("bar_cycle_completion"))
-    unexplained = _number(report.get("unexplained_missed_cycles"), default=0.0)
-    if not cycles:
-        blockers.append("No bar-cycle records were persisted.")
-    if completion is None or completion < PAPER_OPS_BAR_CYCLE_COMPLETION_MIN:
-        blockers.append("Bar-cycle completion is below 99.5%.")
-    if unexplained is not None and unexplained > 0:
-        blockers.append("Unexplained missed cycles were recorded.")
-    report.update({
-        "passed": not blockers,
-        "blockers": blockers,
-        "cycles": cycles,
-    })
-    return report
-
-
-def _build_pass_kill_switch_drill_report(
-    *,
-    session: dict[str, Any],
-    events: list[dict[str, Any]],
-) -> dict[str, Any]:
-    drill = dict(session.get("kill_switch_drill") or {})
-    kill_events = [
-        event for event in events
-        if str(event.get("event_type") or "").startswith("KILL_SWITCH")
-        or event.get("event_type") in {"ENGINE_HALTED", "PORTFOLIO_STATE_BLOCK_NEW_ORDERS"}
-    ]
-    evidence_exists = bool(drill.get("kill_switch_drill_evidence_exists") or kill_events)
-    new_orders_blocked = bool(drill.get("new_orders_blocked"))
-    blockers: list[str] = list(drill.get("blockers") or [])
-    if not evidence_exists:
-        blockers.append("Kill-switch drill evidence missing.")
-    if not new_orders_blocked:
-        blockers.append("Kill-switch drill did not prove new orders were blocked.")
-    return {
-        "passed": not blockers,
-        "blockers": blockers,
-        "kill_switch_drill_evidence_exists": evidence_exists,
-        "new_orders_blocked": new_orders_blocked,
-        "events_considered": len(kill_events),
-        "drill": drill,
-    }
-
-
-def _portfolio_state_from_orders(orders: list[dict[str, Any]]) -> str:
-    if any(row.get("order_state") == "UNKNOWN" for row in orders):
-        return "UNKNOWN"
-    if any(row.get("reconciliation_status") in {"MISMATCHED", "UNRESOLVED"} for row in orders):
-        return "UNKNOWN"
-    if any(row.get("order_state") in PAPER_OPS_OPEN_ORDER_STATES for row in orders):
-        return "PARTIAL"
-    return "KNOWN"
-
-
-def _order_lifecycle_row(row: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "client_order_id": row.get("client_order_id"),
-        "broker_order_id": row.get("broker_order_id"),
-        "symbol": row.get("symbol"),
-        "side": row.get("side"),
-        "requested_qty": row.get("requested_qty"),
-        "filled_qty": row.get("filled_qty"),
-        "remaining_qty": row.get("remaining_qty"),
-        "avg_fill_price": row.get("avg_fill_price"),
-        "order_state": row.get("order_state"),
-        "reconciliation_status": row.get("reconciliation_status"),
-        "created_at": row.get("created_at"),
-        "updated_at": row.get("updated_at"),
-        "terminal": row.get("order_state") in PAPER_OPS_TERMINAL_ORDER_STATES,
-    }
-
-
-def _db_rows(conn: sqlite3.Connection, sql: str) -> list[dict[str, Any]]:
-    return [dict(row) for row in conn.execute(sql).fetchall()]
-
-
-def _mean(values: list[float]) -> float | None:
-    return sum(values) / len(values) if values else None
-
-
-def _percentile(values: list[float], q: float) -> float | None:
-    if not values:
-        return None
-    ordered = sorted(values)
-    index = min(len(ordered) - 1, max(0, int(round((len(ordered) - 1) * q))))
-    return ordered[index]
+    for report in reports.values():
+        report["identity"] = evidence["identity"]
+    return reports
 
 
 def _session_kind_for_type(session_type: str) -> str:
@@ -1035,12 +904,15 @@ def _read_required_session(
     blockers: list[str],
 ) -> dict[str, Any] | None:
     try:
-        return cast(
-            dict[str, Any],
-            artifacts.read_paper_session_json(experiment.uuid, session_id),
-        )
+        session = artifacts.read_paper_session_json(experiment.uuid, session_id)
+        if not isinstance(session, dict):
+            raise ValueError("paper session JSON must be an object")
+        return session
     except FileNotFoundError:
         blockers.append(f"missing paper session artifact: {session_id}")
+        return None
+    except (ValueError, TypeError) as exc:
+        blockers.append(f"invalid paper session artifact: {exc}")
         return None
 
 
@@ -1053,13 +925,15 @@ def _read_required_reports(
     reports: dict[str, dict[str, Any]] = {}
     for report_name in PAPER_OPS_REQUIRED_REPORTS:
         try:
-            reports[report_name] = artifacts.read_paper_session_report_json(
-                experiment.uuid,
-                session_id,
-                report_name,
-            )
+            report = artifacts.read_paper_session_report_json(experiment.uuid, session_id, report_name)
+            if not isinstance(report, dict):
+                raise ValueError("paper report JSON must be an object")
+            json.dumps(report, allow_nan=False)
+            reports[report_name] = report
         except FileNotFoundError:
             blockers.append(f"missing paper session report: {report_name}")
+        except (ValueError, TypeError) as exc:
+            blockers.append(f"invalid paper session report {report_name}: {exc}")
     return reports
 
 
@@ -1069,6 +943,18 @@ def _validate_pass_session_summary(
     session: dict[str, Any],
     blockers: list[str],
 ) -> None:
+    if session.get("experiment_uuid") != experiment.uuid:
+        blockers.append("paper session UUID does not match current Experiment")
+    identity = session.get("identity") or {}
+    if not isinstance(identity, dict):
+        blockers.append("invalid paper identity")
+        return
+    if identity.get("broker_environment") != "alpaca_paper":
+        blockers.append("broker-paper pass requires alpaca_paper; simulation cannot qualify")
+    try:
+        _derive_session(session)
+    except (ValueError, KeyError, TypeError) as exc:
+        blockers.append(f"invalid observed paper evidence: {exc}")
     if session.get("experiment_hash") != experiment.experiment_hash:
         blockers.append("paper session hash does not match current Experiment hash")
     if session.get("session_id") != session_id:
@@ -1078,18 +964,16 @@ def _validate_pass_session_summary(
     if session.get("passed") is not True:
         blockers.append("paper ops pass session summary is not passing")
 
-    window = session.get("window") or {}
+    window = session.get("window")
+    if not isinstance(window, dict):
+        window = {}
     _require_min(window, "calendar_days", PAPER_OPS_MIN_CALENDAR_DAYS, blockers)
     _require_min(window, "market_sessions", PAPER_OPS_MIN_MARKET_SESSIONS, blockers)
     trades = _number(window.get("trades"))
-    has_override = bool(window.get("insufficient_activity_override_approved"))
     if trades is None:
         blockers.append("paper ops pass window missing trades")
-    elif trades < PAPER_OPS_MIN_TRADES and not has_override:
-        blockers.append(
-            "paper ops pass requires at least 100 trades or an explicit "
-            "operator-approved insufficient-activity override"
-        )
+    elif trades < PAPER_OPS_MIN_TRADES:
+        blockers.append("paper ops pass requires at least 100 observed trades")
 
 
 def _validate_pass_reports(
@@ -1099,69 +983,24 @@ def _validate_pass_reports(
     reports: dict[str, dict[str, Any]],
     blockers: list[str],
 ) -> None:
+    try:
+        expected = _observed_reports(session)
+    except (ValueError, KeyError, TypeError) as exc:
+        blockers.append(f"cannot derive paper reports: {exc}")
+        return
     for report_name, report in reports.items():
-        if report.get("experiment_hash") != experiment.experiment_hash:
-            blockers.append(f"{report_name} hash does not match current Experiment hash")
+        if report.get("experiment_uuid") != experiment.uuid or report.get("experiment_hash") != experiment.experiment_hash:
+            blockers.append(f"{report_name} Experiment identity mismatch")
         if report.get("paper_session_id") != session_id:
-            blockers.append(f"{report_name} session id does not match requested session")
-        if report.get("passed") is not True:
+            blockers.append(f"{report_name} session identity mismatch")
+        body = {key: value for key, value in report.items()
+                if key not in {"experiment_uuid", "experiment_hash", "paper_session_id"}}
+        if body != expected[report_name]:
+            blockers.append(f"{report_name} differs from attributable observations")
+        if expected[report_name].get("passed") is not True:
             blockers.append(f"{report_name} is not passing")
-
-    operator = reports.get("operator_report.json", {})
-    if operator.get("portfolio_state") != "KNOWN":
-        blockers.append("paper operator report requires portfolio_state=KNOWN")
-    if operator.get("active_blockers"):
-        blockers.append("paper operator report has active blockers")
-
-    reconciliation = reports.get("reconciliation_report.json", {})
-    unresolved_count = _number(reconciliation.get("unresolved_count"), default=0.0)
-    if unresolved_count is not None and unresolved_count > 0:
-        blockers.append("reconciliation report has unresolved mismatches")
-    if reconciliation.get("portfolio_state") not in {None, "KNOWN"}:
-        blockers.append("reconciliation report portfolio_state is not KNOWN")
-
-    slippage = reports.get("slippage_report.json", {})
-    report_trade_count = _number(
-        slippage.get("trade_count"),
-        default=_number(operator.get("orders_total"), default=0.0),
-    )
-    insufficient_activity_override = bool(
-        (session.get("window") or {}).get("insufficient_activity_override_approved")
-    )
-    if (
-        report_trade_count is not None
-        and report_trade_count < PAPER_OPS_MIN_TRADES
-        and not insufficient_activity_override
-    ):
+    if expected["slippage_report.json"]["trade_count"] < PAPER_OPS_MIN_TRADES:
         blockers.append("paper ops pass reports do not prove at least 100 trades")
-    ratio = _number(slippage.get("actual_vs_expected_ratio"))
-    blocker_threshold = _number(
-        slippage.get("blocker_threshold"),
-        default=PAPER_OPS_SLIPPAGE_BLOCKER_THRESHOLD,
-    )
-    if ratio is not None and blocker_threshold is not None and ratio >= blocker_threshold:
-        blockers.append("slippage blocker threshold exceeded")
-    if slippage.get("blocker_triggered") is True:
-        blockers.append("slippage report triggered blocker")
-
-    bar_cycle = reports.get("bar_cycle_report.json", {})
-    completion = _number(bar_cycle.get("bar_cycle_completion"))
-    if completion is None:
-        blockers.append("bar-cycle report missing completion ratio")
-    elif completion < PAPER_OPS_BAR_CYCLE_COMPLETION_MIN:
-        blockers.append("bar-cycle completion below 99.5%")
-    unexplained_missed = _number(
-        bar_cycle.get("unexplained_missed_cycles"),
-        default=0.0,
-    )
-    if unexplained_missed is not None and unexplained_missed > 0:
-        blockers.append("bar-cycle report has unexplained missed cycles")
-
-    kill = reports.get("kill_switch_drill_report.json", {})
-    if kill.get("kill_switch_drill_evidence_exists") is not True:
-        blockers.append("kill-switch drill evidence missing")
-    if kill.get("new_orders_blocked") is False:
-        blockers.append("kill-switch drill did not block new orders")
 
 
 def _require_min(
@@ -1181,7 +1020,8 @@ def _number(value: Any, default: float | None = None) -> float | None:
     if value is None:
         return default
     try:
-        return float(value)
+        number = float(value)
+        return number if math.isfinite(number) and not isinstance(value, bool) else default
     except (TypeError, ValueError):
         return default
 
