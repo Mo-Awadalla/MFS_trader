@@ -21,6 +21,7 @@ from experiments.models import ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
 from storage.repository import upsert_order
 from storage.schema import init_db
+from tests.qualification import enter_paper_ops
 
 START = datetime(2024, 4, 1, 13, 30, tzinfo=UTC)
 END = datetime(2024, 5, 1, 20, 0, tzinfo=UTC)
@@ -28,9 +29,9 @@ END = datetime(2024, 5, 1, 20, 0, tzinfo=UTC)
 
 def paper_experiment(registry):
     exp = registry.create(ExperimentDraft(label="paper-evidence", snapshot=build_bb_aapl_1d_default_snapshot()))
-    for status in (PromotionStatus.VALIDATION_RUNNING, PromotionStatus.VALIDATION_PASSED, PromotionStatus.PAPER_OPS):
+    for status in (PromotionStatus.VALIDATION_RUNNING, PromotionStatus.VALIDATION_PASSED):
         exp = registry.transition_promotion_status(exp.uuid, status)
-    return exp
+    return enter_paper_ops(registry, exp.uuid)
 
 
 def qualified_session(registry, exp, db_path, session_id="pass-session", environment="alpaca_paper", order_count=100):

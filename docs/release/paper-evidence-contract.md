@@ -10,6 +10,10 @@ The execution hash covers Python source in engine, execution, portfolio, risk, s
 
 `sim_broker` and `alpaca_paper` are distinct environments. Continuous Alpaca paper admission requires paper mode, paper configuration, the exact paper trading endpoint and manual CLI broker confirmation. A simulated campaign cannot satisfy the broker-paper confirmation gate, even with sufficient simulated activity.
 
+Use the shared CLI configuration position: `mfs-engine --config CONFIG paper-run ...`.
+The subcommand does not define a second configuration option. Refused broker
+admission does not load dotenv or construct/connect an adapter.
+
 ## Calendar and cycles
 
 The declaration `XNYS-mfs / 2026.1` covers 2024-01-01 through 2026-12-31. It excludes weekends and the NYSE full-day holidays, including the 2025-01-09 mourning closure, and specifies 13:00 New York early closes. All exchange instants use `America/New_York`, including DST changes. Queries outside coverage fail closed; extending coverage requires a reviewed calendar declaration and regressions, not an implicit extrapolation.
