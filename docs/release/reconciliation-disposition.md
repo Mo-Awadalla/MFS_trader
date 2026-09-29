@@ -19,6 +19,9 @@ The original checkout had 708 modified/untracked status paths and local main `df
 | PR #3 offline wheel smoke `b2526f6` | Adopted as `103db33`, verification superseded by `8eea866` | Original wheel environment installed development requirements and could conceal runtime dependency omissions |
 | Isolated packaging `37b8994` | Adopted as `8eea866` | Runtime-only verifier, package assets, optional-import boundaries, offline guard, interpreter matrix, scoped constraints |
 | Isolated parity `a6121c0` | Adopted as `2525c4f` | Additive ledger observations and declared execution differences; structural PASS is not financial equality |
+| Corrected-evaluation work `7d5875f` / `6a3dbf3` | Adopted, admission integrated in `2aad4f5` | Separate immutable computation/provenance and recovery dispositions; historical PASS alone cannot grant current paper readiness |
+| Offline paper evidence/recovery `a41e069` | Adopted | Calendar-derived cycles, scoped observed fills, durable attempt/checkpoint recovery, mandatory startup reconciliation; no real broker campaign |
+| Paper integration `757c15b` | Adopted | Synthetic fixtures compute current numerical evidence; paper-run uses the shared pre-subcommand config option |
 | Diverged ETF-paper branch wholesale | Deliberately excluded | Contains unrelated strategy families, restricted input bundles, lifecycle transitions, and live-session development |
 | Live-session authority facades and new strategy/event-MC policy abstractions | Deliberately excluded | Not required for the research/simulation release; no second authority or trial-count method introduced |
 | Intraday annualization idea from diverged work | Adopted narrowly | MC callers record 252 × bars/session rather than silently treating each intraday bar as a day |
@@ -37,6 +40,7 @@ The original checkout had 708 modified/untracked status paths and local main `df
 - A simulated drill PASS is not the required 30-calendar-day, 20-market-session, 100-trade paper window.
 - Python metadata retained 3.11 support while the old NumPy development pin required 3.12. Separate compatible locks and runtime-only installation checks preserve both intended versions.
 - Structural ETF replay completed, but research/runtime timing, capital basis, thresholds, cost accounting, and risk exposure differ. Those differences are declared and attributed, not hidden behind a shared PASS.
+- A HARD kill switch also suspends the Experiment. Paper startup checks that switch before the generic lifecycle rejection so the original operator halt reason is retained.
 
 ## Verification authority
 

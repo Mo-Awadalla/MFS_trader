@@ -342,6 +342,8 @@ class PaperRunLoop:
         self._checkpoint_path = self._db_path.with_suffix(".paper_run_checkpoint.json")
         try:
             experiment = self._verify_experiment()
+            # HARD switches also suspend the Experiment; retain the original halt cause.
+            self._check_kill_switch()
             self._check_experiment_status(experiment)
             if getattr(self._broker, "name", "") != "sim_broker":
                 from experiments.corrected_evaluations import require_current_qualification
