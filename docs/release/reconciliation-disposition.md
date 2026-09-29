@@ -45,6 +45,7 @@ The original checkout had 708 modified/untracked status paths and local main `df
 - Legacy broker `paper-trade-ma`, `paper-dry-run-ma`, and standalone Alpaca smoke routes are retired, not qualified. Simulation diagnostics remain available. Existing smoke/qualification requirements are not relaxed; restoring a broker-smoke route requires separate reviewed engineering and authority.
 - A bar-close flag does not prove next-bar-open execution. Broker admission accepts only the explicitly declared observed-fill submission contract; existing real frozen execution identities are not relabeled.
 - Continuous paper ownership requires POSIX local file locks. Other research/simulation imports remain portable. Market-order admission limits use observed quotes; adverse actual fills persist a breach and halt, not a fictitious guaranteed fill-price cap.
+- Closure review also found terminal-but-unreconciled admission, sequential session rebinding to a fresh database, authenticated data redirects, and advisory-only smoke prerequisites. Terminal orders now require affirmative reconciliation before another submission or restart; immutable session claims bind the original ledger; data downloads refuse redirects; and attributable smoke/drill prerequisites gate both qualification reports and manual confirmation.
 
 ## Verification authority
 

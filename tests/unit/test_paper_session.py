@@ -34,7 +34,7 @@ from experiments.backfill import build_bb_aapl_1d_default_snapshot
 from experiments.models import ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
 from tests.qualification import enter_paper_ops
-from tests.unit.test_paper_evidence import qualified_session
+from tests.unit.test_paper_evidence import qualified_session, write_prerequisite_evidence
 
 
 def _config() -> Config:
@@ -160,8 +160,7 @@ def test_operator_report_requires_sim_and_alpaca_passing_sessions(tmp_path):
             experiment_uuid=exp.uuid,
         )
         assert not report["passed"]
-        assert "No passing simulated drill session." in report["blockers"]
-        assert "No passing Alpaca paper smoke session." in report["blockers"]
+        assert report["broker_paper_qualified"] is False
     finally:
         registry.close()
 
@@ -221,6 +220,7 @@ def test_builds_and_writes_full_paper_ops_pass_report_set(tmp_path):
             "bar_cycle_report.json",
             "kill_switch_drill_report.json",
         }
+        write_prerequisite_evidence(registry, exp)
         evidence = evaluate_paper_ops_pass_session(
             registry=registry,
             experiment=exp,

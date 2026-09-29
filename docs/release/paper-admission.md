@@ -8,6 +8,38 @@ This release is an experimental research/validation workbench with simulated exe
 
 The old `run_ma_paper_trade_once` and `run_ma_paper_dry_run` diagnostic functions accept simulation brokers only. They cannot be used for authenticated broker reads or submissions. Existing historical smoke artifacts remain readable and are not rewritten; a legacy smoke flag or simulated drill does not establish current broker-paper qualification.
 
+## Retained qualification prerequisites
+
+Both `simulated_drills` and `alpaca_paper_smoke` remain mandatory prerequisites in
+the common `evaluate_paper_ops_pass_session` evaluator used by operator reporting
+and manual confirmation. An otherwise complete 30-day pass session cannot
+qualify without either prerequisite. Numerical qualification and explicit manual
+confirmation remain separate, unchanged gates.
+
+The simulated prerequisite must identify the current Experiment UUID/hash and
+provide affirmative lifecycle checks and consistent reject, timeout, and
+reconciliation drill outcomes in the existing session format. Simulation proves
+only that prerequisite; it never substitutes for broker smoke.
+
+Broker smoke requires a distinct `paper_ops_smoke` session of type
+`alpaca_paper_smoke`, attributable Alpaca-paper observations, and its immutable
+`paper_ops_smoke_report.json`. The report must match recomputation from those
+observations, including the existing five-market-session/seven-day window,
+cycle/interruption checks and observed kill-switch drill. Its execution,
+configuration, calendar and account identity must match the candidate pass
+session. Missing, truthy-only, nonfinite, inconsistent, wrong-Experiment or
+wrong-environment evidence cannot satisfy either prerequisite. Unbound legacy
+PASS reports remain readable historical material, not current qualification.
+Confirmation records hashes of the accepted prerequisite artifacts alongside
+the full pass-session evidence.
+
+The retired one-shot smoke producer remains removed. This validator adds no
+broker access or replacement producer. In the absence of qualifying retained
+broker-smoke evidence, qualification remains blocked; no requirement is relaxed
+to work around that absence. Regression fixtures use explicitly synthetic
+temporary events and real temporary SQLite only, never real broker qualification
+or changes to real Experiment metadata.
+
 ## Guarded continuous boundary
 
 The retained `paper-run` continuous orchestration checks the requested Experiment and current numerical qualification. Both credential-bearing origins must match the Alpaca HTTPS paper trading origin and Alpaca market-data origin. A live trading origin, arbitrary data origin, disabled submission, dry-run mode, missing startup reconciliation, nonpersistent kill state, or nonfinite/out-of-bounds paper cap blocks admission.

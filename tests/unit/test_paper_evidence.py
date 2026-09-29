@@ -15,6 +15,7 @@ from engine.paper_session import (
     PaperSessionGateError,
     build_and_write_paper_ops_pass_report_set,
     evaluate_paper_ops_pass_session,
+    write_paper_ops_smoke_report,
 )
 from experiments.artifacts import ArtifactManager
 from experiments.backfill import build_bb_aapl_1d_default_snapshot
@@ -35,12 +36,14 @@ def paper_experiment(registry):
     return enter_paper_ops(registry, exp.uuid)
 
 
-def qualified_session(registry, exp, db_path, session_id="pass-session", environment="alpaca_paper", order_count=100):
-    """Seed a recorded fake-broker campaign, not precomputed activity totals."""
+def qualified_session(registry, exp, db_path, session_id="pass-session", environment="alpaca_paper",
+                      order_count=100, session_kind="paper_ops_pass",
+                      account_id="fake-paper-account-never-exported"):
+    """Synthetic temporary events only: never real broker-paper qualification."""
     conn = init_db(db_path)
     identity = {
         "experiment_uuid": exp.uuid, "experiment_hash": exp.experiment_hash,
-        "session_id": session_id, "session_kind": "paper_ops_pass",
+        "session_id": session_id, "session_kind": session_kind,
         "config_hash": digest({"fixture_config": 1}), "code_version": digest("fixture-execution"),
         "broker_environment": environment, "calendar_id": XNYS_PAPER_CALENDAR.calendar_id,
         "calendar_version": XNYS_PAPER_CALENDAR.version, "bar_frequency": "1d",
@@ -50,7 +53,7 @@ def qualified_session(registry, exp, db_path, session_id="pass-session", environ
     ownership = PaperRunnerOwnership(db_path)
     ownership.acquire()
     ledger.start_attempt(START, ownership)
-    ledger.bind_account("fake-paper-account-never-exported")
+    ledger.bind_account(account_id)
     cycles = XNYS_PAPER_CALENDAR.expected_cycles("1d", START, END)
     for cycle in cycles:
         watermark = f"{cycle.market_session} 00:00:00+00:00"
@@ -69,7 +72,7 @@ def qualified_session(registry, exp, db_path, session_id="pass-session", environ
         upsert_order(conn, {
             "client_order_id": f"{session_id}-order-{i}", "broker_order_id": f"broker-{i}",
             "broker": "alpaca" if environment == "alpaca_paper" else "sim_broker",
-            "account_id": "fake-paper-account-never-exported", "environment": "paper",
+            "account_id": account_id, "environment": "paper",
             "strategy": "test", "symbol": "AAPL", "asset_class": "equity", "side": "buy",
             "order_type": "market", "time_in_force": "day", "requested_qty": 1.0,
             "filled_qty": 1.0, "remaining_qty": 0.0, "avg_fill_price": 100.04,
@@ -84,7 +87,8 @@ def qualified_session(registry, exp, db_path, session_id="pass-session", environ
     observed = derive_observations(evidence, 5.0)
     session = {
         "experiment_uuid": exp.uuid, "experiment_hash": exp.experiment_hash, "session_id": session_id,
-        "session_kind": "paper_ops_pass", "session_type": "paper_run", "portfolio_state": "KNOWN", "passed": True,
+        "session_kind": session_kind, "session_type": "paper_run", "portfolio_state": "KNOWN",
+        "passed": True, "blockers": [],
         "identity": evidence["identity"], "observations": evidence, "expected_slippage_bps": 5.0,
         "bar_cycles": evidence["cycles"], "window": observed["window"],
         "bar_cycle_report": observed["bar_cycle_report"], "slippage_samples": observed["slippage_samples"],
@@ -94,13 +98,48 @@ def qualified_session(registry, exp, db_path, session_id="pass-session", environ
     return session
 
 
-def write_qualified_evidence(registry, exp, session_id="pass-session"):
+def write_qualified_evidence(registry, exp, session_id="pass-session", *, missing_prerequisite=None):
+    """Write synthetic test qualification, including both retained prerequisites."""
     db_path = registry.root / f"{session_id}.sqlite"
     session = qualified_session(registry, exp, db_path, session_id)
     ArtifactManager(registry.root).write_paper_session_json(exp.uuid, session_id, session)
     build_and_write_paper_ops_pass_report_set(registry=registry, experiment_uuid=exp.uuid,
                                             session_id=session_id, db_path=db_path)
+    write_prerequisite_evidence(registry, exp, missing=missing_prerequisite)
     return session_id
+
+
+def write_prerequisite_evidence(registry, exp, *, missing=None, smoke_environment="alpaca_paper",
+                                smoke_account="fake-paper-account-never-exported"):
+    """Existing artifact formats backed by synthetic events, never broker access."""
+    artifacts = ArtifactManager(registry.root)
+    if missing != "simulated_drills":
+        artifacts.write_paper_session_json(exp.uuid, "sim-drills", {
+            "experiment_uuid": exp.uuid, "experiment_hash": exp.experiment_hash,
+            "session_id": "sim-drills", "session_kind": "paper_ops_smoke",
+            "session_type": "simulated_drills", "broker": "sim_broker",
+            "passed": True, "blockers": [],
+            "lifecycle_gates": {"status_is_paper_ops": True, "hash_verified": True, "kill_switch_clear": True},
+            "caps": {"max_notional_per_order": 25.0, "max_paper_session_notional": 100.0,
+                     "max_open_paper_exposure": 100.0},
+            "details": {"drills": {
+                "reject": {"passed": True, "status": "REJECTED"},
+                "timeout": {"passed": True, "status": "TIMEOUT"},
+                "reconciliation": {"passed": True, "mismatch_detected": True,
+                                   "positions": [{"symbol": "AAPL", "quantity": 2.0}]},
+            }},
+        })
+    if missing != "alpaca_paper_smoke":
+        smoke = qualified_session(
+            registry, exp, registry.root / "broker-smoke.sqlite", "broker-smoke",
+            environment=smoke_environment, account_id=smoke_account,
+            order_count=0, session_kind="paper_ops_smoke",
+        )
+        smoke["session_type"] = "alpaca_paper_smoke"
+        artifacts.write_paper_session_json(exp.uuid, "broker-smoke", smoke)
+        write_paper_ops_smoke_report(
+            registry=registry, experiment_uuid=exp.uuid, session_id="broker-smoke",
+        )
 
 
 @pytest.fixture
@@ -242,6 +281,7 @@ def test_complete_observed_campaign_recommends_but_does_not_promote(campaign):
     artifacts.write_paper_session_json(exp.uuid, "pass-session", session)
     build_and_write_paper_ops_pass_report_set(registry=registry, experiment_uuid=exp.uuid,
                                             session_id="pass-session", db_path=db)
+    write_prerequisite_evidence(registry, exp)
     result = evaluate_paper_ops_pass_session(registry=registry, experiment=exp, session_id="pass-session")
     assert result["passed"] is True
     assert registry.get(exp.uuid).promotion_status == PromotionStatus.PAPER_OPS
