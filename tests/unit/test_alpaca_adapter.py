@@ -14,6 +14,7 @@ All HTTP calls are mocked via `responses` library — no real API keys needed.
 from __future__ import annotations
 
 import pytest
+import requests
 import responses
 
 from execution.alpaca.adapter import AlpacaAdapter
@@ -153,11 +154,6 @@ class TestGetAccount:
         assert account.buying_power == 15000.0
         assert account.currency == "USD"
 
-    @responses.activate
-    def test_account_not_connected_returns_zeros(self, adapter):
-        account = adapter.get_account()
-        assert account.cash == 0
-        assert account.equity == 0
 
 
 class TestGetPositions:
@@ -581,3 +577,194 @@ class TestIdempotencyClientOrderId:
         if isinstance(call_body, bytes):
             call_body = call_body.decode()
         assert "deterministic_id_abc123" in call_body
+
+
+@pytest.mark.parametrize("method", ["get_account", "get_positions", "get_open_orders"])
+def test_disconnected_truth_is_unavailable(adapter, method):
+    with pytest.raises(RuntimeError, match="unavailable: not connected"):
+        getattr(adapter, method)()
+
+
+@pytest.mark.parametrize(
+    ("method", "path"),
+    [
+        ("get_account", "/v2/account"),
+        ("get_positions", "/v2/positions"),
+        ("get_open_orders", "/v2/orders"),
+    ],
+)
+@pytest.mark.parametrize("failure", [401, 500, "disconnect", "invalid_json"])
+@responses.activate
+def test_failed_http_truth_is_unavailable(adapter, monkeypatch, method, path, failure):
+    responses.add(responses.GET, f"{PAPER_URL}/v2/account", json=ACCOUNT_RESPONSE)
+    adapter.connect()
+    responses.reset()
+    monkeypatch.setattr("execution.alpaca.adapter.time.sleep", lambda _: None)
+    if failure == "disconnect":
+        responses.add(
+            responses.GET, f"{PAPER_URL}{path}",
+            body=requests.exceptions.ConnectionError("synthetic disconnect"),
+        )
+    elif failure == "invalid_json":
+        responses.add(responses.GET, f"{PAPER_URL}{path}", body="{", status=200)
+    else:
+        responses.add(responses.GET, f"{PAPER_URL}{path}", status=failure)
+    with pytest.raises(RuntimeError, match="unavailable"):
+        getattr(adapter, method)()
+
+
+@pytest.mark.parametrize(
+    ("method", "path", "payload"),
+    [
+        ("get_positions", "/v2/positions", {}),
+        ("get_positions", "/v2/positions", None),
+        ("get_positions", "/v2/positions", [None]),
+        ("get_positions", "/v2/positions", [{}]),
+        ("get_positions", "/v2/positions", [POSITIONS_RESPONSE[0]] * 2),
+        ("get_open_orders", "/v2/orders", {}),
+        ("get_open_orders", "/v2/orders", None),
+        ("get_open_orders", "/v2/orders", [None]),
+        ("get_open_orders", "/v2/orders", [{}]),
+        ("get_open_orders", "/v2/orders", [ORDER_PARTIAL] * 2),
+        ("get_open_orders", "/v2/orders", [ORDER_PARTIAL] * 100),
+        ("get_open_orders", "/v2/orders", [{**ORDER_PARTIAL, "status": "surprise"}]),
+        ("get_open_orders", "/v2/orders", [{**ORDER_PARTIAL, "filled_qty": "101"}]),
+        ("get_open_orders", "/v2/orders", [{**ORDER_PARTIAL, "filled_avg_price": None}]),
+        ("get_account", "/v2/account", {}),
+        ("get_account", "/v2/account", []),
+        ("get_account", "/v2/account", {**ACCOUNT_RESPONSE, "id": ""}),
+    ],
+)
+@responses.activate
+def test_malformed_truth_is_unavailable(adapter, method, path, payload):
+    responses.add(responses.GET, f"{PAPER_URL}/v2/account", json=ACCOUNT_RESPONSE)
+    adapter.connect()
+    responses.reset()
+    responses.add(responses.GET, f"{PAPER_URL}{path}", json=payload)
+    with pytest.raises(RuntimeError, match="unavailable"):
+        getattr(adapter, method)()
+
+
+@pytest.mark.parametrize(
+    ("method", "path", "payload", "field"),
+    [
+        ("get_positions", "/v2/positions", POSITIONS_RESPONSE[0], field)
+        for field in ("qty", "avg_entry_price", "unrealized_pl", "market_value")
+    ] + [
+        ("get_open_orders", "/v2/orders", ORDER_PARTIAL, field)
+        for field in ("qty", "filled_qty", "filled_avg_price")
+    ] + [
+        ("get_account", "/v2/account", ACCOUNT_RESPONSE, field)
+        for field in ("cash", "equity", "buying_power")
+    ],
+)
+@pytest.mark.parametrize("value", ["NaN", "Infinity", "-Infinity", True])
+@responses.activate
+def test_invalid_numbers_cannot_establish_truth(adapter, method, path, payload, field, value):
+    responses.add(responses.GET, f"{PAPER_URL}/v2/account", json=ACCOUNT_RESPONSE)
+    adapter.connect()
+    responses.reset()
+    invalid = {**payload, field: value}
+    responses.add(
+        responses.GET, f"{PAPER_URL}{path}",
+        json=invalid if method == "get_account" else [invalid],
+    )
+    with pytest.raises(RuntimeError, match="unavailable"):
+        getattr(adapter, method)()
+
+
+@pytest.mark.parametrize("payload", [{}, [], {**ACCOUNT_RESPONSE, "equity": "NaN"}])
+@responses.activate
+def test_invalid_account_cannot_establish_connection(adapter, payload):
+    responses.add(responses.GET, f"{PAPER_URL}/v2/account", json=payload)
+    adapter.connect()
+    assert not adapter.is_connected
+    with pytest.raises(RuntimeError, match="not connected"):
+        adapter.get_account()
+
+
+@pytest.mark.parametrize(
+    ("method", "path"),
+    [("get_positions", "/v2/positions"), ("get_open_orders", "/v2/orders")],
+)
+@responses.activate
+def test_verified_empty_truth_remains_empty(adapter, method, path):
+    responses.add(responses.GET, f"{PAPER_URL}/v2/account", json=ACCOUNT_RESPONSE)
+    responses.add(responses.GET, f"{PAPER_URL}{path}", json=[])
+    adapter.connect()
+    assert getattr(adapter, method)() == []
+
+
+@pytest.mark.parametrize("argument", ["base_url", "data_url"])
+@pytest.mark.parametrize(
+    "url",
+    [
+        "https://attacker.invalid",
+        "http://paper-api.alpaca.markets",
+        "https://paper-api.alpaca.markets.attacker.invalid",
+        "https://paper-api.alpaca.markets@attacker.invalid",
+        "https://data.alpaca.markets:444",
+        "https://data.alpaca.markets/path",
+        "https://data.alpaca.markets?destination=attacker",
+        "https://data.alpaca.markets#fragment",
+    ],
+)
+def test_unapproved_origin_rejected_before_session(monkeypatch, argument, url):
+    def forbidden_session():
+        pytest.fail("unapproved origin reached credential-bearing session")
+
+    monkeypatch.setattr("execution.alpaca.adapter.requests.Session", forbidden_session)
+    with pytest.raises(ValueError, match="URL"):
+        AlpacaAdapter("synthetic-key", "synthetic-secret", **{argument: url})
+
+
+@pytest.mark.parametrize(
+    ("method", "path"),
+    [
+        ("get_positions", f"{PAPER_URL}/v2/positions"),
+        ("get_open_orders", f"{PAPER_URL}/v2/orders"),
+        ("get_account", f"{PAPER_URL}/v2/account"),
+        ("get_price", f"{DATA_URL}/v2/stocks/AAPL/quotes/latest"),
+        ("_get_latest_trade_price", f"{DATA_URL}/v2/stocks/AAPL/trades/latest"),
+    ],
+)
+@responses.activate
+def test_authenticated_reads_never_follow_redirects(adapter, method, path):
+    responses.add(responses.GET, f"{PAPER_URL}/v2/account", json=ACCOUNT_RESPONSE)
+    adapter.connect()
+    responses.reset()
+    responses.add(
+        responses.GET, path, status=302,
+        headers={"Location": "https://attacker.invalid/stolen"},
+    )
+    responses.add(responses.GET, "https://attacker.invalid/stolen", json={})
+    if method in {"get_price", "_get_latest_trade_price"}:
+        assert getattr(adapter, method)("AAPL") is None
+    else:
+        with pytest.raises(RuntimeError, match="HTTP 302"):
+            getattr(adapter, method)()
+    assert [call.request.url for call in responses.calls] == [
+        path + "?status=open&limit=100" if method == "get_open_orders" else path
+    ]
+
+
+@responses.activate
+def test_connect_redirect_cannot_transmit_credentials(adapter):
+    responses.add(
+        responses.GET, f"{PAPER_URL}/v2/account", status=302,
+        headers={"Location": "https://attacker.invalid/stolen"},
+    )
+    responses.add(responses.GET, "https://attacker.invalid/stolen", json=ACCOUNT_RESPONSE)
+    adapter.connect()
+    assert not adapter.is_connected
+    assert [call.request.url for call in responses.calls] == [f"{PAPER_URL}/v2/account"]
+
+
+@pytest.mark.parametrize("origin", [PAPER_URL, "https://api.alpaca.markets"])
+@responses.activate
+def test_approved_trading_origins_preserve_account_identity(origin):
+    responses.add(responses.GET, f"{origin}/v2/account", json=ACCOUNT_RESPONSE)
+    adapter = AlpacaAdapter("synthetic-key", "synthetic-secret", base_url=origin)
+    adapter.connect()
+    assert adapter.get_account().account_id == ACCOUNT_RESPONSE["id"]
+    assert all(call.request.url == f"{origin}/v2/account" for call in responses.calls)
