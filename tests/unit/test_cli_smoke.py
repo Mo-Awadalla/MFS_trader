@@ -7,6 +7,7 @@ from dataclasses import asdict, replace
 
 import pytest
 
+from config.loader import load_config
 from config.schema import (
     AssetClass,
     BrokerConfig,
@@ -22,14 +23,13 @@ from config.schema import (
 )
 from engine import cli
 from engine.paper_evidence import digest
-from config.loader import load_config
 from experiments.backfill import build_bb_aapl_1d_default_snapshot
 from experiments.models import ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
 from storage.event_logger import EventLogger
 from storage.schema import init_db
-from tests.qualification import enter_paper_ops
 from strategies.ma.signal import MAParams
+from tests.qualification import enter_paper_ops
 from tests.unit.test_paper_strategy import snapshot_for_config
 
 
