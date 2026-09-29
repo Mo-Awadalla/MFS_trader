@@ -2,13 +2,16 @@
 from __future__ import annotations
 
 import json
-from dataclasses import replace
+import multiprocessing
+from dataclasses import asdict, replace
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
 import pytest
+import responses
 
+from config.loader import load_config
 from config.schema import (
     AssetClass,
     BrokerConfig,
@@ -23,16 +26,23 @@ from config.schema import (
     RiskLimits,
 )
 from engine.paper_evidence import PaperLedger, digest
+from engine.paper_guard import PaperRunnerOwnership
 from engine.paper_run import PaperRunConfig, PaperRunLoop
+from engine.paper_strategy import BROKER_PAPER_EXECUTION_MODE
+from execution.alpaca.adapter import AlpacaAdapter
 from execution.base import OrderSide, OrderType
 from execution.oms import OMS, OrderIntent
 from execution.sim_broker.broker import SimBroker
 from experiments.artifacts import ArtifactManager
 from experiments.kill_switch import KillSwitchSeverity
+from experiments.models import ExperimentDraft, PromotionStatus
 from experiments.registry import ExperimentRegistry
 from storage.event_logger import EventLogger
 from storage.schema import init_db
+from strategies.ma.signal import MAParams
+from tests.qualification import enter_paper_ops
 from tests.unit.test_paper_evidence import paper_experiment
+from tests.unit.test_paper_strategy import snapshot_for_config
 
 
 class Clock:
@@ -218,9 +228,12 @@ def test_abrupt_restart_detects_unclosed_attempt_and_preserves_downtime(setup):
     first = make_loop(setup)
     conn = init_db(db)
     ledger = PaperLedger(conn, first._identity(), clock())
-    ledger.start_attempt(clock())
+    ownership = PaperRunnerOwnership(db)
+    ownership.acquire()
+    ledger.start_attempt(clock(), ownership)
     ledger.bind_account("sim_account")
     conn.close()  # Simulated process death: no close_attempt/finally.
+    ownership.release()
     clock.advance(30)
     result = make_loop(setup).run(bars(), db)
     assert not result.halted
@@ -273,9 +286,12 @@ def test_resume_preserves_halt_even_without_checkpoint(setup):
     first = make_loop(setup, run_config=config)
     conn = init_db(db)
     ledger = PaperLedger(conn, first._identity(), clock())
-    ledger.start_attempt(clock())
+    ownership = PaperRunnerOwnership(db)
+    ownership.acquire()
+    ledger.start_attempt(clock(), ownership)
     ledger.close_attempt(clock(), "halted", "unresolved broker state")
     conn.close()
+    ownership.release()
     broker = FakeBroker()
     result = make_loop(setup, broker=broker, run_config=config).run(bars(), db)
     assert result.halted and "unresolved broker state" in result.halt_reason
@@ -286,9 +302,12 @@ def test_account_identity_mismatch_on_restart_blocks_execution(setup):
     _, _, clock, _, db = setup
     conn = init_db(db)
     ledger = PaperLedger(conn, make_loop(setup)._identity(), clock())
-    ledger.start_attempt(clock())
+    ownership = PaperRunnerOwnership(db)
+    ownership.acquire()
+    ledger.start_attempt(clock(), ownership)
     ledger.bind_account("different-account")
     conn.close()
+    ownership.release()
     broker = FakeBroker()
     result = make_loop(setup, broker=broker).run(bars(), db)
     assert result.halted and "account identity mismatch" in result.halt_reason
@@ -361,7 +380,9 @@ def test_process_death_after_submission_does_not_resubmit_on_restart(setup):
     initial = make_loop(setup, broker=broker)
     conn = init_db(db)
     ledger = PaperLedger(conn, initial._identity(), clock())
-    ledger.start_attempt(clock())
+    ownership = PaperRunnerOwnership(db)
+    ownership.acquire()
+    ledger.start_attempt(clock(), ownership)
     ledger.bind_account("sim_account")
     watermark = str(bars().index[-1])
     decision_id = f"paper:{ledger.identity['binding_digest']}:{watermark}"
@@ -379,6 +400,7 @@ def test_process_death_after_submission_does_not_resubmit_on_restart(setup):
     )
     oid = OMS(broker, conn, EventLogger(conn, environment="paper")).create_and_submit(intent)
     conn.close()  # No ledger capture, checkpoint or attempt-close has happened.
+    ownership.release()
     clock.advance(10)
     resumed = make_loop(setup, broker=broker).run(bars(), db)
     assert not resumed.halted
@@ -388,4 +410,396 @@ def test_process_death_after_submission_does_not_resubmit_on_restart(setup):
     assert conn.execute("SELECT result FROM paper_cycles").fetchone()[0] == "blocked"
     assert conn.execute("SELECT COUNT(*) FROM paper_session_orders").fetchone()[0] == 1
     assert conn.execute("SELECT COUNT(*) FROM paper_fills").fetchone()[0] == 1
+    conn.close()
+
+
+@pytest.mark.parametrize("separate_database", [False, True])
+def test_overlapping_runner_cannot_touch_active_attempt_or_finalize(setup, separate_database):
+    _, _, _, _, db = setup
+    contender = FakeBroker()
+    class OverlappingBroker(FakeBroker):
+        def connect(self):
+            other_db = db.with_name("other.sqlite") if separate_database else db
+            refused = make_loop(setup, broker=contender).run(bars(), other_db)
+            assert refused.halted and "already owns" in refused.halt_reason
+            assert refused.evidence_path is None
+            assert contender.connections == 0
+            conn = init_db(db)
+            attempts = conn.execute("SELECT outcome,ended_at FROM paper_attempts").fetchall()
+            assert [(r["outcome"], r["ended_at"]) for r in attempts] == [(None, None)]
+            conn.close()
+            super().connect()
+    result = make_loop(setup, broker=OverlappingBroker()).run(bars(), db)
+    assert not result.halted
+    conn = init_db(db)
+    assert [r[0] for r in conn.execute("SELECT outcome FROM paper_attempts")] == ["completed"]
+    assert conn.execute("SELECT result FROM paper_cycles").fetchone()[0] == "completed"
+    conn.close()
+
+
+def _hold_unclosed_attempt(db, identity, now, pipe):
+    ownership = PaperRunnerOwnership(db)
+    ownership.acquire()
+    conn = init_db(db)
+    ledger = PaperLedger(conn, identity, now)
+    ledger.start_attempt(now, ownership)
+    pipe.send(ledger.attempt_id)
+    pipe.recv()  # Parent kills this process; no Python cleanup runs.
+
+
+def test_process_death_releases_ownership_but_retains_unclosed_attempt(setup):
+    _, _, clock, _, db = setup
+    context = multiprocessing.get_context("spawn")
+    parent, child = context.Pipe()
+    process = context.Process(
+        target=_hold_unclosed_attempt, args=(db, make_loop(setup)._identity(), clock(), child),
+    )
+    process.start()
+    child.close()
+    try:
+        assert parent.poll(15), "child never committed its attempt"
+        attempt_id = parent.recv()
+        broker = FakeBroker()
+        refused = make_loop(setup, broker=broker).run(bars(), db)
+        assert refused.halted and broker.connections == 0
+        process.kill()
+        process.join(15)
+        assert not process.is_alive()
+        clock.advance(30)
+        recovered = make_loop(setup).run(bars(), db)
+        assert not recovered.halted
+        conn = init_db(db)
+        prior = conn.execute("SELECT outcome,downtime_seconds FROM paper_attempts WHERE attempt_id=?", (attempt_id,)).fetchone()
+        assert tuple(prior) == ("interrupted", 30.0)
+        assert [r[0] for r in conn.execute("SELECT outcome FROM paper_attempts ORDER BY rowid")] == ["interrupted", "completed"]
+        conn.close()
+    finally:
+        if process.is_alive():
+            process.kill()
+            process.join(15)
+        parent.close()
+
+
+def capped_config(*, per_order=25.0, session=100.0, exposure=100.0):
+    return replace(
+        _make_config(),
+        portfolio=PortfolioConfig(min_notional_delta=0),
+        live_deployment=LiveDeploymentConfig(
+            max_notional_per_order=per_order, max_paper_session_notional=session,
+            max_open_paper_exposure=exposure,
+        ),
+    )
+
+
+def test_actual_risk_sized_order_cannot_bypass_tiny_cap(setup):
+    broker = FakeBroker()
+    result = make_loop(
+        setup, broker=broker, config=capped_config(), strategy=lambda bars, params: {"AAPL": 1.0},
+    ).run(bars(), setup[-1])
+    assert result.halted and "max_notional_per_order" in result.halt_reason
+    assert broker.submissions == []
+    conn = init_db(setup[-1])
+    assert conn.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+    assert conn.execute("SELECT COUNT(*) FROM paper_order_reservations").fetchone()[0] == 0
+    assert conn.execute("SELECT outcome FROM paper_attempts").fetchone()[0] == "halted"
+    conn.close()
+
+
+@pytest.mark.parametrize("cap_name", ["session", "exposure"])
+def test_durable_caps_block_second_order_before_oms(setup, cap_name):
+    _, _, clock, rc, db = setup
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0
+    config = capped_config(**{cap_name: 30.0})
+    config = replace(config, portfolio=replace(config.portfolio, execution_mode="continuous_rebalance"))
+    def strategy(frame, params):
+        return {"AAPL": 0.01 if frame.index[-1].day == 9 else 0.02}
+    def provider():
+        clock.advance(86400)
+        return bars("2024-04-10")
+    result = make_loop(
+        setup, broker=broker, config=config, strategy=strategy, provider=provider,
+        run_config=replace(rc, max_cycles=2),
+    ).run(bars(), db)
+    expected = "max_paper_session_notional" if cap_name == "session" else "max_open_paper_exposure"
+    assert result.halted and expected in result.halt_reason
+    assert len(broker.submissions) == 1
+    conn = init_db(db)
+    reservation = conn.execute("SELECT reserved_notional,observed_notional,client_order_id FROM paper_order_reservations").fetchall()
+    assert len(reservation) == 1
+    assert reservation[0]["reserved_notional"] == pytest.approx(20)
+    assert reservation[0]["observed_notional"] == pytest.approx(20)
+    assert reservation[0]["client_order_id"] == broker.submissions[0]
+    conn.close()
+
+
+def test_resumed_session_cannot_reset_cumulative_budget(setup):
+    _, _, clock, rc, db = setup
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0
+    config = capped_config(session=30.0)
+    run_config = replace(rc, max_cycles=None, window_market_sessions=2)
+    def strategy(frame, params):
+        return {"AAPL": 0.01 if frame.index[-1].day == 9 else 0.0}
+    first = make_loop(setup, broker=broker, config=config, strategy=strategy, run_config=run_config)
+    first._bars_provider = lambda: (first._handle_sigterm(None, None) or bars())
+    stopped = first.run(bars(), db)
+    assert not stopped.halted and len(broker.submissions) == 1
+    clock.advance(86400)
+    resumed = make_loop(
+        setup, broker=broker, config=config, strategy=strategy, run_config=run_config,
+    ).run(bars("2024-04-10"), db)
+    assert resumed.halted and "max_paper_session_notional" in resumed.halt_reason
+    assert len(broker.submissions) == 1
+    conn = init_db(db)
+    assert conn.execute("SELECT SUM(reserved_notional) FROM paper_order_reservations").fetchone()[0] == pytest.approx(20)
+    assert [r[0] for r in conn.execute("SELECT outcome FROM paper_attempts ORDER BY rowid")] == ["stopped", "halted"]
+    conn.close()
+
+
+def test_actual_fill_not_reference_quote_consumes_session_budget(setup):
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0.5
+    result = make_loop(
+        setup, broker=broker, config=capped_config(), strategy=lambda bars, params: {"AAPL": 0.01},
+    ).run(bars(), setup[-1])
+    assert result.halted and "observed fill" in result.halt_reason
+    conn = init_db(setup[-1])
+    row = conn.execute("SELECT reserved_notional,observed_notional FROM paper_order_reservations").fetchone()
+    assert row["reserved_notional"] == pytest.approx(20)
+    assert row["observed_notional"] == pytest.approx(30)
+    assert len(broker.submissions) == 1
+    conn.close()
+
+
+def test_durable_reservation_precedes_broker_effect_and_blocks_uncertain_resume(setup):
+    _, _, _, rc, db = setup
+    class CrashingBroker(FakeBroker):
+        def submit_order(self, request):
+            conn = init_db(db)
+            reservation = conn.execute("SELECT quantity,reference_price,client_order_id FROM paper_order_reservations").fetchone()
+            conn.close()
+            assert reservation["quantity"] == request.quantity
+            assert reservation["reference_price"] == 150
+            assert reservation["client_order_id"] is None
+            raise RuntimeError("unknown submission outcome")
+    broker = CrashingBroker()
+    run_config = replace(rc, max_cycles=None, window_market_sessions=2)
+    failed = make_loop(
+        setup, broker=broker, config=capped_config(), run_config=run_config,
+        strategy=lambda bars, params: {"AAPL": 0.01},
+    ).run(bars(), db)
+    assert failed.halted
+    replacement = FakeBroker()
+    resumed = make_loop(
+        setup, broker=replacement, config=capped_config(), run_config=run_config,
+        strategy=lambda bars, params: {"AAPL": 0.01},
+    ).run(bars(), db)
+    assert resumed.halted and replacement.connections == 0 and replacement.submissions == []
+
+
+@pytest.fixture
+def qualified_ma(tmp_path):
+    config = load_config("builtin:paper_shakedown", load_env=False)
+    config = replace(config, live_deployment=replace(
+        config.live_deployment, max_notional_per_order=25,
+        max_paper_session_notional=100, max_open_paper_exposure=100,
+    ))
+    parameters = asdict(MAParams())
+    snapshot = snapshot_for_config(config, parameters=parameters, symbols=("AAPL",))
+    snapshot = replace(snapshot, execution_mode=BROKER_PAPER_EXECUTION_MODE)
+    registry = ExperimentRegistry(tmp_path / "qualified-experiments")
+    exp = registry.create(ExperimentDraft(label="synthetic-runtime-admission", snapshot=snapshot))
+    for status in (PromotionStatus.VALIDATION_RUNNING, PromotionStatus.VALIDATION_PASSED):
+        exp = registry.transition_promotion_status(exp.uuid, status)
+    exp = enter_paper_ops(registry, exp.uuid)
+    run_config = PaperRunConfig(
+        experiment_uuid=exp.uuid, experiment_hash=exp.experiment_hash, experiment_root=registry.root,
+        session_id="qualified", max_cycles=1, data_grace_seconds=60,
+    )
+    yield config, parameters, run_config, Clock(), tmp_path / "qualified.sqlite"
+    registry.close()
+
+
+@pytest.mark.parametrize("mismatch", ["strategy", "parameters", "universe", "cost"])
+def test_direct_loop_binds_qualified_hypothesis_before_factory(qualified_ma, mismatch):
+    config, parameters, run_config, clock, db = qualified_ma
+    name = config.strategy_name
+    if mismatch == "strategy":
+        name = "unrelated"
+    elif mismatch == "parameters":
+        parameters = {**parameters, "fast_ma_window": parameters["fast_ma_window"] + 1}
+    elif mismatch == "universe":
+        run_config = replace(run_config, symbols=("MSFT",))
+    else:
+        config = replace(config, cost_model=replace(config.cost_model, commission_pct=0.123))
+    calls = []
+    def factory():
+        calls.append("credentials")
+        raise AssertionError("mismatched hypothesis reached credentials")
+    result = PaperRunLoop(
+        config=config, broker=None, broker_factory=factory, strategy_fn=lambda frame, params: {},
+        strategy_name=name, strategy_params=parameters, run_config=run_config, clock=clock,
+    ).run(bars(), db)
+    assert result.halted and calls == []
+    conn = init_db(db)
+    assert conn.execute("SELECT outcome FROM paper_attempts").fetchone()[0] == "halted"
+    conn.close()
+
+
+def test_deferred_simulation_cannot_be_labeled_as_broker_paper(qualified_ma):
+    config, parameters, run_config, clock, db = qualified_ma
+    broker = FakeBroker()
+    result = PaperRunLoop(
+        config=config, broker=None, broker_factory=lambda: broker,
+        strategy_fn=lambda frame, params: {}, strategy_name=config.strategy_name,
+        strategy_params=parameters, run_config=run_config, clock=clock,
+    ).run(bars(), db)
+    assert result.halted and "disagrees" in result.halt_reason
+    assert broker.connections == 0
+    conn = init_db(db)
+    assert conn.execute("SELECT account_fingerprint FROM paper_sessions").fetchone()[0] == "unverified"
+    conn.close()
+
+
+@responses.activate
+def test_real_adapter_position_http_failure_blocks_loop_with_durable_attempt(qualified_ma):
+    config, parameters, run_config, clock, db = qualified_ma
+    responses.get(
+        "https://paper-api.alpaca.markets/v2/account",
+        json={"id": "offline-account", "cash": "10000", "equity": "10000", "currency": "USD"},
+    )
+    responses.get("https://paper-api.alpaca.markets/v2/positions", status=500, json={"error": "offline"})
+    result = PaperRunLoop(
+        config=config,
+        broker=AlpacaAdapter(api_key="offline-key", api_secret="offline-secret"),
+        strategy_fn=lambda frame, params: {"AAPL": 1.0}, strategy_name=config.strategy_name,
+        strategy_params=parameters, run_config=run_config, clock=clock,
+    ).run(bars(), db)
+    assert result.halted and result.cycle_count == 0
+    assert any(call.request.url.endswith("/v2/positions") for call in responses.calls)
+    assert all(call.request.method == "GET" for call in responses.calls)
+    conn = init_db(db)
+    assert conn.execute("SELECT outcome FROM paper_attempts").fetchone()[0] == "halted"
+    assert conn.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+    conn.close()
+
+
+def test_reducing_position_does_not_double_count_open_exposure(setup):
+    _, _, clock, rc, db = setup
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0
+    def provider():
+        clock.advance(86400)
+        return bars("2024-04-10")
+    result = make_loop(
+        setup, broker=broker, config=capped_config(exposure=25), provider=provider,
+        run_config=replace(rc, max_cycles=2),
+        strategy=lambda frame, params: {"AAPL": 0.01 if frame.index[-1].day == 9 else 0},
+    ).run(bars(), db)
+    assert not result.halted and len(broker.submissions) == 2
+    assert broker.get_positions() == []
+
+
+def test_checkpoint_does_not_reuse_shared_temporary_name(setup):
+    _, _, _, rc, db = setup
+    shared_temp = db.with_suffix(".paper_run_checkpoint.json.tmp")
+    shared_temp.write_bytes(b"previous process temporary evidence")
+    loop = make_loop(setup, run_config=replace(rc, max_cycles=None, window_market_sessions=2))
+    loop._bars_provider = lambda: (loop._handle_sigterm(None, None) or bars())
+    result = loop.run(bars(), db)
+    assert not result.halted
+    checkpoint = json.loads(db.with_suffix(".paper_run_checkpoint.json").read_text())
+    assert checkpoint["sha256"] == digest(checkpoint["payload"])
+    assert shared_temp.read_bytes() == b"previous process temporary evidence"
+
+
+def test_qualified_loop_uses_canonical_strategy_not_injected_callback(qualified_ma):
+    config, parameters, run_config, clock, db = qualified_ma
+    class PaperBroker(FakeBroker):
+        _base_url = "https://paper-api.alpaca.markets"
+        _data_url = "https://data.alpaca.markets"
+
+        @property
+        def name(self):
+            return "alpaca"
+
+        def get_open_orders(self):
+            return []
+
+    called = []
+    def unrelated_strategy(frame, params):
+        called.append("unqualified strategy")
+        return {"AAPL": 1.0}
+    broker = PaperBroker()
+    result = PaperRunLoop(
+        config=config, broker=broker, strategy_fn=unrelated_strategy,
+        strategy_name=config.strategy_name, strategy_params=parameters,
+        run_config=run_config, clock=clock,
+    ).run(bars(), db)
+    # One bar is MA warmup, not an arbitrary caller's buy instruction.
+    assert not result.halted and result.cycle_count == 1
+    assert called == [] and broker.submissions == []
+
+
+def test_direct_broker_paper_runtime_cannot_submit_without_durable_guard(tmp_path):
+    from engine.runtime import TradingEngine
+
+    class PaperBroker(FakeBroker):
+        @property
+        def name(self):
+            return "alpaca"
+
+    broker = PaperBroker()
+    conn = init_db(tmp_path / "direct.sqlite")
+    engine = TradingEngine(
+        config=capped_config(), conn=conn, broker=broker,
+        strategy_fn=lambda frame, params: {"AAPL": 0.01}, strategy_name="test",
+    )
+    with pytest.raises(ValueError, match="requires durable paper admission"):
+        engine.process_bar(bars(), {"AAPL": 150.0}, bar_timestamp=str(bars().index[-1]))
+    assert broker.submissions == []
+    assert conn.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+    conn.close()
+
+
+def test_runner_ownership_extends_through_finalization_and_disconnect(setup):
+    _, _, _, _, db = setup
+    refused = []
+    class FinalizingBroker(FakeBroker):
+        def disconnect(self):
+            refused.append(make_loop(setup).run(bars(), db))
+            super().disconnect()
+    result = make_loop(setup, broker=FinalizingBroker()).run(bars(), db)
+    assert not result.halted
+    assert len(refused) == 1 and "already owns" in refused[0].halt_reason
+    assert refused[0].evidence_path is None
+    conn = init_db(db)
+    assert [r[0] for r in conn.execute("SELECT outcome FROM paper_attempts")] == ["completed"]
+    conn.close()
+
+
+def test_resume_budget_charges_actual_fill_not_only_reserved_quote(setup):
+    _, _, clock, rc, db = setup
+    broker = FakeBroker()
+    broker._config.slippage_pct = 0.1
+    config = capped_config(session=41)
+    config = replace(config, portfolio=replace(config.portfolio, execution_mode="continuous_rebalance"))
+    run_config = replace(rc, max_cycles=None, window_market_sessions=2)
+    def strategy(frame, params):
+        return {"AAPL": 0.01 if frame.index[-1].day == 9 else 0.02}
+    first = make_loop(setup, broker=broker, config=config, strategy=strategy, run_config=run_config)
+    first._bars_provider = lambda: (first._handle_sigterm(None, None) or bars())
+    stopped = first.run(bars(), db)
+    assert not stopped.halted and len(broker.submissions) == 1
+    clock.advance(86400)
+    result = make_loop(
+        setup, broker=broker, config=config, strategy=strategy, run_config=run_config,
+    ).run(bars("2024-04-10"), db)
+    assert result.halted and "max_paper_session_notional" in result.halt_reason
+    assert len(broker.submissions) == 1
+    conn = init_db(db)
+    row = conn.execute("SELECT reserved_notional,observed_notional FROM paper_order_reservations").fetchone()
+    assert row["reserved_notional"] == pytest.approx(20)
+    assert row["observed_notional"] == pytest.approx(22)
     conn.close()

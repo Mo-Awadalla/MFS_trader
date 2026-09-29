@@ -16,6 +16,7 @@ import json
 import os
 import signal
 import sqlite3
+import tempfile
 import time
 import uuid
 from collections.abc import Callable
@@ -37,13 +38,19 @@ from engine.paper_evidence import (
     finite,
     instant,
 )
+from engine.paper_guard import PaperRunnerOwnership, PaperSubmissionGuard
 from engine.paper_session import (
     PAPER_OPS_PASS_SESSION_KIND,
     PAPER_OPS_SMOKE_SESSION_KIND,
     build_and_write_paper_ops_pass_report_set,
     paper_caps_from_config,
-    validate_tiny_paper_caps,
+    verify_paper_environment,
     write_paper_ops_smoke_report,
+)
+from engine.paper_strategy import (
+    bind_paper_strategy_callable,
+    verify_broker_paper_execution_mode,
+    verify_paper_strategy_identity,
 )
 from engine.runtime import TradingEngine
 from experiments.artifacts import (
@@ -70,34 +77,6 @@ ALLOWED_PAPER_STATUSES = frozenset({
 
 class PaperRunHalt(Exception):
     """Raised when the paper run loop must stop (kill switch, suspension)."""
-
-
-def verify_local_paper_prerequisites(db_path: str | Path) -> None:
-    """Refuse persisted uncertainty without connecting to a broker."""
-    path = Path(db_path)
-    checkpoint = path.with_suffix(".paper_run_checkpoint.json")
-    if checkpoint.exists():
-        try:
-            envelope = json.loads(checkpoint.read_text(encoding="utf-8"))
-            payload = envelope["payload"]
-            if digest(payload) != envelope["sha256"] or payload["halted"] is not False:
-                raise ValueError("checkpoint integrity or persisted halt")
-        except (ValueError, KeyError, TypeError) as exc:
-            raise ValueError(f"paper checkpoint prerequisite failed: {exc}") from exc
-    if not path.exists():
-        return
-    try:
-        with contextlib.closing(sqlite3.connect(f"file:{path.resolve()}?mode=ro", uri=True)) as conn:
-            halted = conn.execute("SELECT value FROM engine_state WHERE key='halted'").fetchone()
-            uncertain = conn.execute(
-                "SELECT client_order_id FROM orders_live WHERE order_state IN "
-                "('UNKNOWN','SUBMITTING','ACKNOWLEDGED','PARTIALLY_FILLED','CANCEL_REQUESTED') "
-                "OR reconciliation_status IN ('MISMATCHED','UNRESOLVED') LIMIT 1"
-            ).fetchone()
-            if (halted and halted[0] == "true") or uncertain:
-                raise ValueError("persisted halt or unresolved paper order state")
-    except sqlite3.Error as exc:
-        raise ValueError(f"paper state cannot be verified: {exc}") from exc
 
 
 @dataclass(frozen=True)
@@ -164,9 +143,16 @@ class PaperRunLoop:
         bars_provider: Callable[[], pd.DataFrame] | None = None,
         clock: Callable[[], datetime] | None = None,
         sleeper: Callable[[float], None] = time.sleep,
+        broker_factory: Callable[[], Any] | None = None,
     ) -> None:
         self._config = config
         self._broker = broker
+        self._broker_factory = broker_factory
+        self._simulation = getattr(broker, "name", "") == "sim_broker"
+        self._broker_access_started = False
+        self._ownership: PaperRunnerOwnership | None = None
+        self._checkpoint_admitted = False
+        self._submission_guard: PaperSubmissionGuard | None = None
         self._strategy_fn = strategy_fn
         self._strategy_name = strategy_name
         self._strategy_params = strategy_params or {}
@@ -308,10 +294,19 @@ class PaperRunLoop:
         return target is None or self._clock().timestamp() - self._session_started_at >= target * 86_400
 
     def _connect_broker(self) -> None:
+        if self._broker is None:
+            if self._broker_factory is None:
+                raise PaperRunHalt("paper broker factory is required")
+            self._broker = self._broker_factory()
+        if not self._simulation:
+            verify_paper_environment(self._config, self._broker)
+        self._broker_access_started = True
         if not self._broker.is_connected:
             self._broker.connect()
 
     def _disconnect_broker(self) -> None:
+        if not self._broker_access_started:
+            return
         try:
             if self._broker.is_connected:
                 self._broker.disconnect()
@@ -331,6 +326,7 @@ class PaperRunLoop:
             experiment_uuid=self._run_config.experiment_uuid,
             registry=self._registry,
             paper_order_namespace=self._namespace,
+            paper_submission_guard=self._submission_guard,
         )
         self._engine = engine
         self._setup_signal_handlers()
@@ -341,30 +337,48 @@ class PaperRunLoop:
         self._db_path = Path(db_path)
         self._checkpoint_path = self._db_path.with_suffix(".paper_run_checkpoint.json")
         try:
+            session_path = ArtifactManager(self._run_config.experiment_root).paper_session_path(
+                self._run_config.experiment_uuid, self._session_id,
+            )
+            self._ownership = PaperRunnerOwnership(db_path, session_path)
+            self._ownership.acquire()
             experiment = self._verify_experiment()
-            # HARD switches also suspend the Experiment; retain the original halt cause.
-            self._check_kill_switch()
-            self._check_experiment_status(experiment)
-            if getattr(self._broker, "name", "") != "sim_broker":
-                from experiments.corrected_evaluations import require_current_qualification
-
-                require_current_qualification(
-                    self._registry, experiment.uuid, self._run_config.experiment_hash,
-                )
-            if ArtifactManager(self._run_config.experiment_root).paper_session_path(
-                experiment.uuid, self._session_id
-            ).exists():
+            if session_path.exists():
                 self._finalized = True
                 raise PaperRunHalt("paper session is immutable and already finalized")
             self._conn = init_db(db_path)
             identity = self._identity()
             self._ledger = PaperLedger(self._conn, identity, self._clock())
-            self._ledger.start_attempt(self._clock())
+            self._ledger.start_attempt(self._clock(), self._ownership)
+            # HARD also suspends the Experiment. Persist the original cause before
+            # checking lifecycle status, with no broker/credential activity.
+            self._check_kill_switch()
+            self._check_experiment_status(experiment)
+            if self._config.mode.value != "paper":
+                raise PaperRunHalt("paper loop requires paper mode")
+            if identity["broker_environment"] != "sim_broker":
+                from experiments.corrected_evaluations import require_current_qualification
+
+                require_current_qualification(
+                    self._registry, experiment.uuid, self._run_config.experiment_hash,
+                )
+                verify_paper_environment(self._config, self._broker)
+                verify_paper_strategy_identity(
+                    self._config, experiment, strategy_name=self._strategy_name,
+                    strategy_params=self._strategy_params, symbols=self._run_config.symbols,
+                    frequency=self._run_config.bar_frequency,
+                )
+                verify_broker_paper_execution_mode(self._config, experiment)
+                self._strategy_fn = bind_paper_strategy_callable(
+                    self._strategy_name, self._strategy_params, self._run_config.symbols,
+                )
             previous_halts = [a for a in self._ledger.rows("paper_attempts") if a["outcome"] in {"halted", "failed"}]
             if previous_halts:
                 raise PaperRunHalt(previous_halts[-1]["reason"] or "persisted paper halt")
             self._session_started_at = instant(self._ledger.identity["window_started_at"]).timestamp()
             self._restore_checkpoint()
+            self._checkpoint_admitted = True
+            self._verify_local_state()
             self._sync_cycles()
             self._check_kill_switch()
             if self._state.halted:
@@ -374,6 +388,9 @@ class PaperRunLoop:
                 raise PaperRunHalt("broker disconnected at startup")
             self._ledger.bind_account(self._broker.get_account().account_id)
             self._namespace = self._ledger.identity["binding_digest"]
+            caps = paper_caps_from_config(self._config)
+            if identity["broker_environment"] != "sim_broker" or caps.max_notional_per_order > 0:
+                self._submission_guard = PaperSubmissionGuard(self._ledger, self._broker, caps, self._clock)
             engine = self._init_engine(db_path)
             if not engine.startup():
                 raise PaperRunHalt("engine startup failed")
@@ -382,6 +399,8 @@ class PaperRunLoop:
             self._check_portfolio_state()
             self._ledger.capture_orders(self._clock())
             self._ledger.reconcile_orders(self._broker, self._clock())
+            if self._submission_guard is not None:
+                self._submission_guard.verify_recovery()
             self._write_checkpoint()
             first = True
             while not self._should_stop():
@@ -460,7 +479,7 @@ class PaperRunLoop:
                         self._ledger.capture_orders(self._clock())
                     except Exception as exc:
                         self._state.halted = True
-                        self._state.halt_reason = str(exc)
+                        self._state.halt_reason = self._state.halt_reason or str(exc)
                         self._state.record_error(str(exc))
                     complete = not self._state.halted and self._should_stop() and not self._shutdown_requested
                     outcome = "halted" if self._state.halted else ("completed" if complete else "stopped")
@@ -475,22 +494,7 @@ class PaperRunLoop:
         return self._state
 
     def _identity(self) -> dict[str, Any]:
-        name = getattr(self._broker, "name", "")
-        environment = "sim_broker" if name == "sim_broker" else "alpaca_paper"
-        if self._config.mode.value != "paper":
-            raise PaperRunHalt("paper loop requires paper mode")
-        if name != "sim_broker":
-            broker = next((b for b in self._config.brokers if b.name == "alpaca"), None)
-            if name != "alpaca" or broker is None or not broker.is_paper or broker.base_url.rstrip("/") != "https://paper-api.alpaca.markets":
-                raise PaperRunHalt("paper loop refuses unverified broker environment")
-            if getattr(self._broker, "_base_url", None) != "https://paper-api.alpaca.markets":
-                raise PaperRunHalt("adapter endpoint does not prove broker-paper environment")
-            validate_tiny_paper_caps(paper_caps_from_config(self._config))
-            deployment = self._config.live_deployment
-            if not deployment.paper_submit_enabled or deployment.dry_run_mode:
-                raise PaperRunHalt("paper submission is not explicitly enabled")
-            if not self._config.engine.startup_reconciliation_required or not self._config.engine.kill_switch_persistent:
-                raise PaperRunHalt("paper reconciliation/persistent kill prerequisites missing")
+        environment = "sim_broker" if self._simulation else "alpaca_paper"
         effective = {
             "config": asdict(self._config), "strategy": self._strategy_name, "parameters": self._strategy_params,
             "symbols": self._run_config.symbols, "frequency": self._run_config.bar_frequency,
@@ -507,6 +511,20 @@ class PaperRunLoop:
             "data_grace_seconds": self._grace.total_seconds(),
             "expected_slippage_bps": self._config.cost_model.slippage_fixed_pct * 10000,
         }
+
+    def _verify_local_state(self) -> None:
+        """Complete durable admission while ownership is held, before credentials."""
+        halted = self._conn.execute("SELECT value FROM engine_state WHERE key='halted'").fetchone()
+        uncertain = self._conn.execute(
+            "SELECT 1 FROM orders_live WHERE order_state NOT IN "
+            "('FILLED','CANCELLED','REJECTED','EXPIRED','BLOCKED_BY_RISK') "
+            "OR reconciliation_status IN ('MISMATCHED','UNRESOLVED') LIMIT 1"
+        ).fetchone()
+        unclosed_reservation = self._conn.execute(
+            "SELECT 1 FROM paper_order_reservations WHERE client_order_id IS NULL LIMIT 1"
+        ).fetchone()
+        if (halted and halted[0] == "true") or uncertain or unclosed_reservation:
+            raise PaperRunHalt("persisted halt or unresolved paper order state/reservation")
 
     def _sync_cycles(self) -> None:
         if self._ledger is None:
@@ -675,18 +693,28 @@ class PaperRunLoop:
 
     def _write_checkpoint(self) -> None:
         path = self._checkpoint_path
-        if path is None or self._ledger is None:
+        if path is None or self._ledger is None or not self._checkpoint_admitted:
             return
         payload = {
             "identity": self._identity(), "halted": self._state.halted,
             "halt_reason": self._state.halt_reason, "errors": self._state.errors,
         }
-        temporary = path.with_suffix(path.suffix + ".tmp")
-        with temporary.open("w", encoding="utf-8") as handle:
-            json.dump({"payload": payload, "sha256": digest(payload)}, handle, allow_nan=False)
-            handle.flush()
-            os.fsync(handle.fileno())
-        os.replace(temporary, path)
+        self._ownership.assert_owned()
+        descriptor, temporary_name = tempfile.mkstemp(prefix=path.name + ".", suffix=".tmp", dir=path.parent)
+        temporary = Path(temporary_name)
+        try:
+            with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+                json.dump({"payload": payload, "sha256": digest(payload)}, handle, allow_nan=False)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(temporary, path)
+            directory = os.open(path.parent, os.O_RDONLY)
+            try:
+                os.fsync(directory)
+            finally:
+                os.close(directory)
+        finally:
+            temporary.unlink(missing_ok=True)
 
     def _remove_checkpoint(self) -> None:
         if self._checkpoint_path is not None:
@@ -720,3 +748,5 @@ class PaperRunLoop:
         if self._registry is not None:
             with contextlib.suppress(Exception):
                 self._registry.close()
+        if self._ownership is not None:
+            self._ownership.release()

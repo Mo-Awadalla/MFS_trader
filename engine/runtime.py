@@ -31,7 +31,7 @@ import sqlite3
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from enum import StrEnum
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 import numpy as np
 import pandas as pd
@@ -60,6 +60,9 @@ from storage.repository import (
     set_engine_state,
     set_strategy_kill_switch,
 )
+
+if TYPE_CHECKING:
+    from engine.paper_guard import PaperSubmissionGuard
 
 log = structlog.get_logger(__name__)
 
@@ -109,6 +112,7 @@ class TradingEngine:
         experiment_uuid: str | None = None,
         registry: Any | None = None,
         paper_order_namespace: str | None = None,
+        paper_submission_guard: PaperSubmissionGuard | None = None,
     ):
         self._config = config
         self._conn = conn
@@ -119,6 +123,7 @@ class TradingEngine:
         self._experiment_uuid = experiment_uuid
         self._registry = registry
         self._paper_order_namespace = paper_order_namespace
+        self._paper_submission_guard = paper_submission_guard
 
         self._logger = EventLogger(conn, environment=config.mode.value)
         self._oms = OMS(broker, conn, self._logger, environment=config.mode.value)
@@ -510,7 +515,18 @@ class TradingEngine:
                 client_order_namespace=self._paper_order_namespace or "",
             )
 
-            self._oms.create_and_submit(intent)
+            if (
+                self._state.mode == EngineMode.PAPER and self._broker.name != "sim_broker"
+                and self._paper_submission_guard is None
+            ):
+                raise ValueError("broker-paper submission requires durable paper admission")
+            reservation = (
+                self._paper_submission_guard.reserve(intent)
+                if self._paper_submission_guard is not None else None
+            )
+            order_id = self._oms.create_and_submit(intent)
+            if self._paper_submission_guard is not None:
+                self._paper_submission_guard.observe(reservation, order_id)
 
         self._log_cycle_complete(cycle_id, bar_ts)
 

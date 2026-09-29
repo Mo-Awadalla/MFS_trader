@@ -336,6 +336,25 @@ CREATE TABLE IF NOT EXISTS paper_session_orders (
     PRIMARY KEY (session_id, client_order_id)
 );
 
+-- A paper-only authority reservation is committed before entering the OMS.
+-- Never delete/refund reservations: uncertain effects retain their budget.
+CREATE TABLE IF NOT EXISTS paper_order_reservations (
+    reservation_id        TEXT PRIMARY KEY,
+    session_id            TEXT NOT NULL REFERENCES paper_sessions(session_id),
+    attempt_id            TEXT NOT NULL REFERENCES paper_attempts(attempt_id),
+    symbol                TEXT NOT NULL,
+    side                  TEXT NOT NULL,
+    quantity              REAL NOT NULL,
+    reference_price       REAL NOT NULL,
+    reserved_notional     REAL NOT NULL,
+    reserved_at           TEXT NOT NULL,
+    client_order_id       TEXT UNIQUE,
+    observed_notional     REAL,
+    observed_at           TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_paper_reservations_session ON paper_order_reservations(session_id);
+
 -- Fill increments observed from broker order status; fill_id is deterministic
 -- over (client_order_id, cumulative filled qty) so duplicate reports collapse.
 CREATE TABLE IF NOT EXISTS paper_fills (
