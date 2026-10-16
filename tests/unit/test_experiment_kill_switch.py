@@ -20,6 +20,7 @@ from experiments.models import (
     PromotionStatus,
 )
 from experiments.registry import ExperimentRegistry
+from tests.qualification import enter_paper_ops
 
 
 @pytest.fixture
@@ -39,7 +40,7 @@ def _draft(label: str = "test-bb", window: int = 15) -> ExperimentDraft:
 def _walk_to_paper_ops(registry, uuid) -> None:
     registry.transition_promotion_status(uuid, PromotionStatus.VALIDATION_RUNNING)
     registry.transition_promotion_status(uuid, PromotionStatus.VALIDATION_PASSED)
-    registry.transition_promotion_status(uuid, PromotionStatus.PAPER_OPS)
+    enter_paper_ops(registry, uuid)
 
 
 class TestExperimentKillSwitch:
