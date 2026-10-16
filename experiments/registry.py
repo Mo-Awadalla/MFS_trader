@@ -163,6 +163,13 @@ class ExperimentRegistry:
             )
             self._enforce_single_strategy_first_live(experiment, new_status)
 
+        if new_status == PromotionStatus.PAPER_OPS:
+            # Replayed/imported history is preserved, but new paper admission
+            # (including resume) cannot rely on a historical numerical PASS.
+            from experiments.corrected_evaluations import require_current_qualification
+
+            require_current_qualification(self, uuid, experiment.experiment_hash)
+
         if new_status == PromotionStatus.SUSPENDED:
             captured_source = source_status
         elif source_status == PromotionStatus.SUSPENDED:

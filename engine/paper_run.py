@@ -16,10 +16,12 @@ import json
 import os
 import signal
 import sqlite3
+import tempfile
 import time
 import uuid
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
@@ -27,11 +29,29 @@ import pandas as pd
 import structlog
 
 from config.schema import Config
+from engine.paper_binding import open_bound_paper_db
+from engine.paper_calendar import XNYS_PAPER_CALENDAR, default_data_grace
+from engine.paper_evidence import (
+    PaperLedger,
+    derive_observations,
+    digest,
+    execution_version,
+    finite,
+    instant,
+)
+from engine.paper_guard import PaperRunnerOwnership, PaperSubmissionGuard
 from engine.paper_session import (
     PAPER_OPS_PASS_SESSION_KIND,
     PAPER_OPS_SMOKE_SESSION_KIND,
     build_and_write_paper_ops_pass_report_set,
+    paper_caps_from_config,
+    verify_paper_environment,
     write_paper_ops_smoke_report,
+)
+from engine.paper_strategy import (
+    bind_paper_strategy_callable,
+    verify_broker_paper_execution_mode,
+    verify_paper_strategy_identity,
 )
 from engine.runtime import TradingEngine
 from experiments.artifacts import (
@@ -80,6 +100,7 @@ class PaperRunConfig:
     sleep_between_bars_seconds: float = 60.0
     max_cycles: int | None = None
     write_evidence: bool = True
+    data_grace_seconds: float | None = None
 
 
 @dataclass
@@ -121,14 +142,36 @@ class PaperRunLoop:
         run_config: PaperRunConfig,
         strategy_params: dict[str, Any] | None = None,
         bars_provider: Callable[[], pd.DataFrame] | None = None,
+        clock: Callable[[], datetime] | None = None,
+        sleeper: Callable[[float], None] = time.sleep,
+        broker_factory: Callable[[], Any] | None = None,
     ) -> None:
         self._config = config
         self._broker = broker
+        self._broker_factory = broker_factory
+        self._simulation = getattr(broker, "name", "") == "sim_broker"
+        self._broker_access_started = False
+        self._ownership: PaperRunnerOwnership | None = None
+        self._checkpoint_admitted = False
+        self._submission_guard: PaperSubmissionGuard | None = None
         self._strategy_fn = strategy_fn
         self._strategy_name = strategy_name
         self._strategy_params = strategy_params or {}
         self._run_config = run_config
         self._bars_provider = bars_provider
+        self._clock = clock or (lambda: datetime.now(UTC))
+        self._sleeper = sleeper
+        self._ledger: PaperLedger | None = None
+        self._calendar = XNYS_PAPER_CALENDAR
+        self._grace = (
+            default_data_grace(run_config.bar_frequency)
+            if run_config.data_grace_seconds is None
+            else timedelta(seconds=finite(run_config.data_grace_seconds))
+        )
+        if self._grace.total_seconds() < 0:
+            raise ValueError("data grace must be non-negative")
+        self._namespace = ""
+        self._finalized = False
 
         self._state = PaperRunState()
         self._shutdown_requested = False
@@ -137,7 +180,7 @@ class PaperRunLoop:
         self._engine: TradingEngine | None = None
         self._db_path: Path | None = None
         self._experiment_verified = False
-        self._session_started_at = time.time()
+        self._session_started_at = self._clock().timestamp()
         self._checkpoint_path: Path | None = None
         self._session_id = run_config.session_id or f"paper-run-{uuid.uuid4().hex[:12]}"
         self._state.session_id = self._session_id
@@ -204,6 +247,8 @@ class PaperRunLoop:
             f"Experiment {self._run_config.experiment_uuid[:8]} has active "
             f"kill switch: {ks.reason} (severity={ks.severity.value})"
         )
+        if self._ledger is not None and self._namespace:
+            self._ledger.record_kill_switch_block(ks.reason, self._clock())
         log.warning("paper_run_kill_switch_active", reason=ks.reason, severity=ks.severity.value)
         raise PaperRunHalt(self._state.halt_reason)
 
@@ -242,17 +287,27 @@ class PaperRunLoop:
         target = self._run_config.window_market_sessions
         if target is None:
             target = self._run_config.max_cycles
-        return target is None or self._state.cycle_count >= target
+        sessions = {c["market_session"] for c in self._state.bar_cycles if c["result"] == "completed"}
+        return target is None or len(sessions) >= target
 
     def _calendar_target_reached(self) -> bool:
         target = self._run_config.window_calendar_days
-        return target is None or time.time() - self._session_started_at >= target * 86_400
+        return target is None or self._clock().timestamp() - self._session_started_at >= target * 86_400
 
     def _connect_broker(self) -> None:
+        if self._broker is None:
+            if self._broker_factory is None:
+                raise PaperRunHalt("paper broker factory is required")
+            self._broker = self._broker_factory()
+        if not self._simulation:
+            verify_paper_environment(self._config, self._broker)
+        self._broker_access_started = True
         if not self._broker.is_connected:
             self._broker.connect()
 
     def _disconnect_broker(self) -> None:
+        if not self._broker_access_started:
+            return
         try:
             if self._broker.is_connected:
                 self._broker.disconnect()
@@ -260,7 +315,7 @@ class PaperRunLoop:
             log.warning("paper_run_disconnect_error", error=str(e))
 
     def _init_engine(self, db_path: str | Path) -> TradingEngine:
-        conn = init_db(db_path)
+        conn = self._conn if self._conn is not None else init_db(db_path)
         self._conn = conn
         engine = TradingEngine(
             config=self._config,
@@ -271,148 +326,236 @@ class PaperRunLoop:
             strategy_params=self._strategy_params,
             experiment_uuid=self._run_config.experiment_uuid,
             registry=self._registry,
+            paper_order_namespace=self._namespace,
+            paper_submission_guard=self._submission_guard,
         )
         self._engine = engine
+        self._setup_signal_handlers()
         return engine
 
     def run(self, bars: pd.DataFrame, db_path: str | Path) -> PaperRunState:
-        """Run the continuous paper trading loop.
-
-        Args:
-            bars: OHLCV data to trade on.
-            db_path: Path to the engine SQLite database.
-
-        Returns:
-            Final PaperRunState after the loop terminates.
-        """
-        log.info(
-            "paper_run_starting",
-            experiment_uuid=self._run_config.experiment_uuid[:8],
-            cycles=self._run_config.max_cycles or "unlimited",
-        )
+        """Reconcile before execution; all attempts and cycles survive process death."""
         self._db_path = Path(db_path)
         self._checkpoint_path = self._db_path.with_suffix(".paper_run_checkpoint.json")
-        self._restore_checkpoint()
-
         try:
-            experiment = self._verify_experiment()
-            self._check_experiment_status(experiment)
-
-            self._connect_broker()
-            engine = self._init_engine(db_path)
-            started = engine.startup()
-            if not started:
-                self._state.halted = True
-                self._state.halt_reason = "engine startup failed"
-                log.error("paper_run_startup_failed")
-                return self._state
-            self._check_portfolio_state()
-
-            last_processed_bar_timestamp = (
-                str(self._state.bar_cycles[-1].get("input_data_watermark"))
-                if self._state.bar_cycles
-                else None
+            session_path = ArtifactManager(self._run_config.experiment_root).paper_session_path(
+                self._run_config.experiment_uuid, self._session_id,
             )
+            self._ownership = PaperRunnerOwnership(db_path, session_path)
+            self._ownership.acquire()
+            experiment = self._verify_experiment()
+            if session_path.exists():
+                self._finalized = True
+                raise PaperRunHalt("paper session is immutable and already finalized")
+            self._conn = open_bound_paper_db(
+                db_path, ArtifactManager(self._run_config.experiment_root),
+                experiment_uuid=self._run_config.experiment_uuid,
+                experiment_hash=self._run_config.experiment_hash,
+                session_id=self._session_id, ownership=self._ownership,
+            )
+            identity = self._identity()
+            self._ledger = PaperLedger(self._conn, identity, self._clock())
+            self._ledger.start_attempt(self._clock(), self._ownership)
+            # HARD also suspends the Experiment. Persist the original cause before
+            # checking lifecycle status, with no broker/credential activity.
+            self._check_kill_switch()
+            self._check_experiment_status(experiment)
+            if self._config.mode.value != "paper":
+                raise PaperRunHalt("paper loop requires paper mode")
+            if identity["broker_environment"] != "sim_broker":
+                from experiments.corrected_evaluations import require_current_qualification
+
+                require_current_qualification(
+                    self._registry, experiment.uuid, self._run_config.experiment_hash,
+                )
+                verify_paper_environment(self._config, self._broker)
+                verify_paper_strategy_identity(
+                    self._config, experiment, strategy_name=self._strategy_name,
+                    strategy_params=self._strategy_params, symbols=self._run_config.symbols,
+                    frequency=self._run_config.bar_frequency,
+                )
+                verify_broker_paper_execution_mode(self._config, experiment)
+                self._strategy_fn = bind_paper_strategy_callable(
+                    self._strategy_name, self._strategy_params, self._run_config.symbols,
+                )
+            previous_halts = [a for a in self._ledger.rows("paper_attempts") if a["outcome"] in {"halted", "failed"}]
+            if previous_halts:
+                raise PaperRunHalt(previous_halts[-1]["reason"] or "persisted paper halt")
+            self._session_started_at = instant(self._ledger.identity["window_started_at"]).timestamp()
+            self._restore_checkpoint()
+            self._checkpoint_admitted = True
+            self._verify_local_state()
+            self._sync_cycles()
+            self._check_kill_switch()
+            if self._state.halted:
+                raise PaperRunHalt(self._state.halt_reason or "persisted paper halt")
+            self._connect_broker()
+            if not self._broker.is_connected:
+                raise PaperRunHalt("broker disconnected at startup")
+            self._ledger.bind_account(self._broker.get_account().account_id)
+            self._namespace = self._ledger.identity["binding_digest"]
+            caps = paper_caps_from_config(self._config)
+            if identity["broker_environment"] != "sim_broker" or caps.max_notional_per_order > 0:
+                self._submission_guard = PaperSubmissionGuard(self._ledger, self._broker, caps, self._clock)
+            engine = self._init_engine(db_path)
+            if not engine.startup():
+                raise PaperRunHalt("engine startup failed")
+            # Paper recovery never allows the config flag to bypass reconciliation.
+            engine.reconcile_broker()
+            self._check_portfolio_state()
+            self._ledger.capture_orders(self._clock())
+            self._ledger.reconcile_orders(self._broker, self._clock())
+            if self._submission_guard is not None:
+                self._submission_guard.verify_recovery()
+            self._write_checkpoint()
+            first = True
             while not self._should_stop():
                 self._check_kill_switch()
-
-                if self._market_session_target_reached() and not self._calendar_target_reached():
-                    self._sleep_between_cycles()
-                    continue
-
-                if self._bars_provider is not None and last_processed_bar_timestamp is not None:
+                if not self._broker.is_connected:
+                    raise PaperRunHalt("broker disconnected mid-run")
+                if not first and self._bars_provider is not None:
                     bars = self._bars_provider()
-
+                first = False
+                if self._shutdown_requested:
+                    break
+                now = self._clock()
+                self._record_overdue(now)
+                if self._state.halted:
+                    break
                 bar_ts = str(bars.index[-1]) if not bars.empty else None
-                if (
-                    self._bars_provider is not None
-                    and bar_ts is not None
-                    and bar_ts == last_processed_bar_timestamp
-                ):
+                cycle = self._calendar.cycle_for_bar(self._run_config.bar_frequency, pd.Timestamp(bar_ts)) if bar_ts else None
+                known = {c["cycle_key"] for c in self._state.bar_cycles}
+                start = datetime.fromtimestamp(self._session_started_at, UTC)
+                eligible = (
+                    cycle is not None and cycle.cycle_key not in known
+                    and start <= cycle.expected_at <= now <= cycle.deadline(self._grace)
+                )
+                if not eligible:
+                    if self._bars_provider is None:
+                        break
                     self._sleep_between_cycles()
                     continue
-                broker_sync_record_id = f"{self._session_id}-reconciliation-{self._state.cycle_count + 1:06d}"
+                decision_id = f"paper:{self._namespace}:{bar_ts}"
+                row = {
+                    "cycle_key": cycle.cycle_key, "market_session": cycle.market_session,
+                    "expected_at": cycle.expected_at.isoformat(), "deadline_at": cycle.deadline(self._grace).isoformat(),
+                    "started_at": now.isoformat(), "completed_at": None,
+                    "input_data_watermark": bar_ts, "result": "started", "reason": None,
+                    "decision_record_id": decision_id,
+                    "broker_sync_record_id": f"{self._ledger.attempt_id}:{cycle.cycle_key}",
+                }
+                self._ledger.record_cycle(row, now)
                 engine.reconcile_broker()
-                try:
-                    self._check_portfolio_state()
-                except PaperRunHalt:
-                    self._state.cycle_count += 1
-                    self._record_cycle(
-                        result="blocked",
-                        bar_timestamp=bar_ts,
-                        reason=self._state.halt_reason,
-                        broker_sync_record_id=broker_sync_record_id,
-                    )
-                    raise
+                self._check_portfolio_state()
                 prices = self._fetch_prices(bars)
-
-                if not prices:
-                    self._state.cycle_count += 1
-                    self._record_cycle(
-                        result="missed_unexplained",
-                        bar_timestamp=bar_ts,
-                        reason="no valid broker prices available",
-                        broker_sync_record_id=broker_sync_record_id,
-                    )
-                    self._state.halted = True
-                    self._state.halt_reason = "missed bar cycle: no valid broker prices available"
-                    log.warning("paper_run_no_prices", message=self._state.halt_reason)
-                    break
-
-                evaluation = engine.process_bar(
-                    bars=bars,
-                    prices=prices,
-                    bar_timestamp=bar_ts,
-                )
-
-                self._state.cycle_count += 1
-                last_processed_bar_timestamp = bar_ts
-                self._record_cycle(
-                    result="completed",
-                    bar_timestamp=bar_ts,
-                    decision_record_id=getattr(evaluation, "correlation_id", None),
-                    broker_sync_record_id=broker_sync_record_id,
-                )
-                if evaluation is not None:
-                    self._state.total_orders_submitted += len(evaluation.adjusted_targets or [])
-
-                log.info(
-                    "paper_run_cycle_complete",
-                    cycle=self._state.cycle_count,
-                    orders_submitted=self._state.total_orders_submitted,
-                )
+                if len(prices) != len(self._run_config.symbols):
+                    row.update(result="missed_unexplained", reason="no valid broker prices available")
+                    self._ledger.record_cycle(row, self._clock())
+                    raise PaperRunHalt("missed bar cycle: no valid broker prices available")
+                self._ledger.record_reference_prices(cycle.cycle_key, prices, now)
+                engine.process_bar(bars=bars, prices=prices, bar_timestamp=bar_ts)
+                self._check_kill_switch()
+                if engine.state.halted or engine.oms.is_frozen or not self._broker.is_connected:
+                    raise PaperRunHalt("execution halted or broker disconnected during cycle")
+                engine.reconcile_broker()
+                self._check_portfolio_state()
+                self._ledger.capture_orders(self._clock())
+                self._ledger.bind_account(self._broker.get_account().account_id)
+                self._ledger.reconcile_orders(self._broker, self._clock())
+                done = self._clock()
+                if done > cycle.deadline(self._grace):
+                    row.update(result="missed_overdue", reason="cycle completion overdue")
+                    self._ledger.record_cycle(row, done)
+                    raise PaperRunHalt("cycle completion overdue")
+                row.update(result="completed", completed_at=done.isoformat())
+                self._ledger.record_cycle(row, done)
+                self._sync_cycles()
                 self._write_checkpoint()
-
-                if self._should_stop():
-                    break
-
-                self._sleep_between_cycles()
-
-        except PaperRunHalt:
+                if not self._should_stop():
+                    self._sleep_between_cycles()
+        except Exception as exc:
             self._state.halted = True
-            if not self._state.halt_reason:
-                self._state.halt_reason = "paper run halted"
-            log.warning("paper_run_halted", reason=self._state.halt_reason)
-        except ExperimentNotFoundError as e:
-            self._state.halted = True
-            self._state.halt_reason = str(e)
-            self._state.record_error(str(e))
-            log.error("paper_run_experiment_not_found", error=str(e))
-        except Exception as e:
-            self._state.halted = True
-            if self._state.halt_reason is None:
-                self._state.halt_reason = str(e)
-            self._state.record_error(str(e))
-            log.error("paper_run_error", error=str(e))
+            self._state.halt_reason = str(exc)
+            self._state.record_error(str(exc))
+            log.error("paper_run_halted", error=str(exc))
         finally:
-            if not self._has_window_targets() or (
-                self._market_session_target_reached() and self._calendar_target_reached()
-            ):
-                self._write_session_evidence()
-                self._remove_checkpoint()
-            self._cleanup()
-
+            try:
+                if self._ledger is not None:
+                    try:
+                        self._ledger.capture_orders(self._clock())
+                    except Exception as exc:
+                        self._state.halted = True
+                        self._state.halt_reason = self._state.halt_reason or str(exc)
+                        self._state.record_error(str(exc))
+                    complete = not self._state.halted and self._should_stop() and not self._shutdown_requested
+                    outcome = "halted" if self._state.halted else ("completed" if complete else "stopped")
+                    self._ledger.close_attempt(self._clock(), outcome, self._state.halt_reason)
+                    self._sync_cycles()
+                    self._write_checkpoint()
+                    self._write_session_evidence(final=complete or not self._has_window_targets())
+                    if complete:
+                        self._remove_checkpoint()
+            finally:
+                self._cleanup()
         return self._state
+
+    def _identity(self) -> dict[str, Any]:
+        environment = "sim_broker" if self._simulation else "alpaca_paper"
+        effective = {
+            "config": asdict(self._config), "strategy": self._strategy_name, "parameters": self._strategy_params,
+            "symbols": self._run_config.symbols, "frequency": self._run_config.bar_frequency,
+            "window_calendar_days": self._run_config.window_calendar_days,
+            "window_market_sessions": self._run_config.window_market_sessions,
+            "max_cycles": self._run_config.max_cycles,
+        }
+        return {
+            "experiment_uuid": self._run_config.experiment_uuid, "experiment_hash": self._run_config.experiment_hash,
+            "session_id": self._session_id, "session_kind": self._run_config.session_kind,
+            "config_hash": digest(effective), "code_version": execution_version(),
+            "broker_environment": environment, "calendar_id": self._calendar.calendar_id,
+            "calendar_version": self._calendar.version, "bar_frequency": self._run_config.bar_frequency,
+            "data_grace_seconds": self._grace.total_seconds(),
+            "expected_slippage_bps": self._config.cost_model.slippage_fixed_pct * 10000,
+        }
+
+    def _verify_local_state(self) -> None:
+        """Complete durable admission while ownership is held, before credentials."""
+        halted = self._conn.execute("SELECT value FROM engine_state WHERE key='halted'").fetchone()
+        uncertain = self._conn.execute(
+            "SELECT 1 FROM orders_live WHERE order_state NOT IN "
+            "('FILLED','CANCELLED','REJECTED','EXPIRED','BLOCKED_BY_RISK') "
+            "OR (order_state != 'BLOCKED_BY_RISK' "
+            "AND COALESCE(reconciliation_status,'') != 'MATCHED') LIMIT 1"
+        ).fetchone()
+        unclosed_reservation = self._conn.execute(
+            "SELECT 1 FROM paper_order_reservations WHERE client_order_id IS NULL LIMIT 1"
+        ).fetchone()
+        if (halted and halted[0] == "true") or uncertain or unclosed_reservation:
+            raise PaperRunHalt("persisted halt or unresolved paper order state/reservation")
+
+    def _sync_cycles(self) -> None:
+        if self._ledger is None:
+            return
+        self._state.bar_cycles = self._ledger.rows("paper_cycles")
+        self._state.cycle_count = len(self._state.bar_cycles)
+        self._state.total_orders_submitted = len(self._ledger.rows("paper_session_orders"))
+
+    def _record_overdue(self, now: datetime) -> None:
+        if self._ledger is None:
+            return
+        start = datetime.fromtimestamp(self._session_started_at, UTC)
+        known = {row["cycle_key"] for row in self._ledger.rows("paper_cycles")}
+        for cycle in self._calendar.expected_cycles(self._run_config.bar_frequency, start, now):
+            if cycle.cycle_key not in known and now > cycle.deadline(self._grace):
+                self._ledger.record_cycle({
+                    "cycle_key": cycle.cycle_key, "market_session": cycle.market_session,
+                    "expected_at": cycle.expected_at.isoformat(), "deadline_at": cycle.deadline(self._grace).isoformat(),
+                    "result": "missed_overdue", "reason": "fresh data did not arrive within cadence and grace",
+                    "overdue_detected_at": now.isoformat(),
+                }, now)
+                self._state.halted = True
+                self._state.halt_reason = "fresh data overdue"
+        self._sync_cycles()
 
     def _fetch_prices(self, bars: pd.DataFrame) -> dict[str, float]:
         prices: dict[str, float] = {}
@@ -421,15 +564,24 @@ class PaperRunLoop:
         for symbol in self._run_config.symbols:
             try:
                 price = self._broker.get_price(symbol)
-                if price is not None and price > 0:
+                if price is not None and finite(price) > 0:
                     prices[symbol] = float(price)
             except Exception:
                 pass
         return prices
 
-    def _write_session_evidence(self) -> None:
+    def _write_session_evidence(self, *, final: bool = True) -> None:
         if not self._run_config.write_evidence or not self._experiment_verified:
             return
+        if self._finalized or self._ledger is None:
+            return
+        evidence = self._ledger.snapshot(self._clock())
+        expected_bps = self._config.cost_model.slippage_fixed_pct * 10000
+        try:
+            observed = derive_observations(evidence, expected_bps)
+        except (ValueError, KeyError, TypeError) as exc:
+            observed = {"window": {}, "bar_cycle_report": {}, "slippage_samples": []}
+            self._state.record_error(f"incomplete paper evidence: {exc}")
         payload = {
             "experiment_uuid": self._run_config.experiment_uuid,
             "experiment_hash": self._run_config.experiment_hash,
@@ -438,24 +590,44 @@ class PaperRunLoop:
             "session_type": "paper_run",
             "operator": self._run_config.operator,
             "broker": getattr(self._broker, "name", "unknown"),
+            "identity": evidence["identity"],
+            "observations": evidence,
+            "expected_slippage_bps": expected_bps,
+            "calendar": self._calendar.declaration(),
             "bar_frequency": self._run_config.bar_frequency,
             "symbols": list(self._run_config.symbols),
             "cycle_count": self._state.cycle_count,
             "bar_cycles": list(self._state.bar_cycles),
-            "bar_cycle_report": self._build_bar_cycle_report(),
-            "window": self._build_window_summary(),
+            "bar_cycle_report": observed["bar_cycle_report"],
+            "window": observed["window"],
             "portfolio_state": self._current_portfolio_state(),
-            "slippage_samples": list(self._run_config.slippage_samples),
-            "kill_switch_drill": dict(self._run_config.kill_switch_drill),
+            "slippage_samples": observed["slippage_samples"],
+            "operator_notes": {
+                "claimed_trades": self._run_config.window_trades,
+                "claimed_interruptions": self._run_config.window_unplanned_interruptions,
+                "insufficient_activity_override_approved": self._run_config.insufficient_activity_override_approved,
+                "slippage_samples": list(self._run_config.slippage_samples),
+                "kill_switch_drill": self._run_config.kill_switch_drill,
+            },
             "halted": self._state.halted,
             "halt_reason": self._state.halt_reason,
             "total_orders_submitted": self._state.total_orders_submitted,
             "order_lifecycle": self._read_order_lifecycle_snapshot(),
             "errors": list(self._state.errors),
-            "passed": not self._state.halted and not self._state.errors,
+            "passed": (
+                final and not self._state.halted and not self._state.errors
+                and evidence["attempts"][-1]["outcome"] == "completed"
+            ),
             "blockers": list(self._state.errors) + ([self._state.halt_reason] if self._state.halt_reason else []),
         }
         try:
+            if not final:
+                path = ArtifactManager(self._run_config.experiment_root).write_paper_session_report_json(
+                    self._run_config.experiment_uuid, self._session_id,
+                    f"attempt-{self._ledger.attempt_id}.json", payload,
+                )
+                self._state.evidence_path = str(path)
+                return
             path = ArtifactManager(self._run_config.experiment_root).write_paper_session_json(
                 self._run_config.experiment_uuid,
                 self._session_id,
@@ -466,7 +638,7 @@ class PaperRunLoop:
                 self._write_pass_reports()
             elif self._run_config.session_kind == PAPER_OPS_SMOKE_SESSION_KIND:
                 self._write_smoke_report()
-        except ArtifactError as e:
+        except (ArtifactError, ValueError) as e:
             self._state.halted = True
             self._state.halt_reason = str(e)
             self._state.record_error(str(e))
@@ -509,89 +681,47 @@ class PaperRunLoop:
             self._state.record_error(str(e))
             log.error("paper_run_pass_report_write_failed", error=str(e))
 
-    def _record_cycle(
-        self,
-        *,
-        result: str,
-        bar_timestamp: str | None,
-        reason: str | None = None,
-        decision_record_id: str | None = None,
-        broker_sync_record_id: str | None = None,
-    ) -> None:
-        cycle_no = self._state.cycle_count
-        self._state.record_bar_cycle(
-            {
-                "cycle_id": f"{self._session_id}-{cycle_no:06d}",
-                "expected_at": bar_timestamp,
-                "started_at": bar_timestamp,
-                "completed_at": bar_timestamp if result in {"completed", "late_completed"} else None,
-                "market_session": None,
-                "bar_timeframe": self._run_config.bar_frequency,
-                "input_data_watermark": bar_timestamp,
-                "decision_record_id": decision_record_id,
-                "broker_sync_record_id": broker_sync_record_id,
-                "result": result,
-                "reason": reason,
-            }
-        )
-
-    def _build_bar_cycle_report(self) -> dict[str, Any]:
-        cycles = self._state.bar_cycles
-        expected = len(cycles)
-        completed = sum(1 for c in cycles if c.get("result") in {"completed", "late_completed"})
-        unexplained = sum(1 for c in cycles if c.get("result") == "missed_unexplained")
-        completion = (completed / expected) if expected else 0.0
-        return {
-            "passed": expected > 0 and unexplained == 0,
-            "expected_bar_cycles": expected,
-            "completed_bar_cycles": completed,
-            "bar_cycle_completion": completion,
-            "unexplained_missed_cycles": unexplained,
-        }
-
-    def _build_window_summary(self) -> dict[str, Any]:
-        elapsed_days = int((time.time() - self._session_started_at) // 86_400)
-        return {
-            "calendar_days": elapsed_days,
-            "market_sessions": self._state.cycle_count,
-            "trades": (
-                self._run_config.window_trades
-                if self._run_config.window_trades is not None
-                else self._state.total_orders_submitted
-            ),
-            "unplanned_interruptions": self._run_config.window_unplanned_interruptions,
-            "insufficient_activity_override_approved": (
-                self._run_config.insufficient_activity_override_approved
-            ),
-        }
-
     def _restore_checkpoint(self) -> None:
         path = self._checkpoint_path
         if path is None or not path.exists():
             return
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        if payload.get("session_id") != self._session_id:
-            raise PaperRunHalt("paper-run checkpoint session identity mismatch")
-        self._session_started_at = float(payload["session_started_at"])
-        self._state.cycle_count = int(payload.get("cycle_count", 0))
-        self._state.total_orders_submitted = int(payload.get("total_orders_submitted", 0))
-        self._state.bar_cycles = list(payload.get("bar_cycles", []))
+        try:
+            envelope = json.loads(path.read_text(encoding="utf-8"))
+            payload = envelope["payload"]
+            if digest(payload) != envelope["sha256"] or payload["identity"] != self._identity():
+                raise ValueError("checkpoint identity or checksum mismatch")
+            self._state.halted = payload["halted"]
+            self._state.halt_reason = payload["halt_reason"]
+            self._state.errors = payload["errors"]
+            if type(self._state.halted) is not bool or not isinstance(self._state.errors, list):
+                raise ValueError("checkpoint state is malformed")
+        except (ValueError, KeyError, TypeError) as exc:
+            raise PaperRunHalt(f"corrupt or mismatched paper checkpoint: {exc}") from exc
 
     def _write_checkpoint(self) -> None:
         path = self._checkpoint_path
-        if path is None:
+        if path is None or self._ledger is None or not self._checkpoint_admitted:
             return
         payload = {
-            "session_id": self._session_id,
-            "session_started_at": self._session_started_at,
-            "cycle_count": self._state.cycle_count,
-            "total_orders_submitted": self._state.total_orders_submitted,
-            "bar_cycles": self._state.bar_cycles,
+            "identity": self._identity(), "halted": self._state.halted,
+            "halt_reason": self._state.halt_reason, "errors": self._state.errors,
         }
-        path.parent.mkdir(parents=True, exist_ok=True)
-        temporary = path.with_suffix(path.suffix + ".tmp")
-        temporary.write_text(json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8")
-        os.replace(temporary, path)
+        self._ownership.assert_owned()
+        descriptor, temporary_name = tempfile.mkstemp(prefix=path.name + ".", suffix=".tmp", dir=path.parent)
+        temporary = Path(temporary_name)
+        try:
+            with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+                json.dump({"payload": payload, "sha256": digest(payload)}, handle, allow_nan=False)
+                handle.flush()
+                os.fsync(handle.fileno())
+            os.replace(temporary, path)
+            directory = os.open(path.parent, os.O_RDONLY)
+            try:
+                os.fsync(directory)
+            finally:
+                os.close(directory)
+        finally:
+            temporary.unlink(missing_ok=True)
 
     def _remove_checkpoint(self) -> None:
         if self._checkpoint_path is not None:
@@ -606,27 +736,13 @@ class PaperRunLoop:
     def _read_order_lifecycle_snapshot(self) -> list[dict[str, Any]]:
         if self._conn is None:
             return []
-        rows = self._conn.execute(
-            """
-            SELECT client_order_id, broker_order_id, broker, strategy, symbol,
-                   side, requested_qty, filled_qty, remaining_qty,
-                   avg_fill_price, order_state, reconciliation_status,
-                   bar_timestamp, correlation_id, created_at, updated_at
-            FROM orders_live
-            ORDER BY created_at, client_order_id
-            """
-        ).fetchall()
-        return [dict(row) for row in rows]
+        if self._ledger is None:
+            return []
+        return self._ledger.snapshot(self._clock())["orders"]
 
     def _sleep_between_cycles(self) -> None:
-        sleep_secs = self._run_config.sleep_between_bars_seconds
-        if sleep_secs <= 0:
-            return
-        interval = 0.25
-        elapsed = 0.0
-        while elapsed < sleep_secs and not self._should_stop():
-            time.sleep(interval)
-            elapsed += interval
+        if not self._should_stop():
+            self._sleeper(max(0.0, self._run_config.sleep_between_bars_seconds))
 
     def _cleanup(self) -> None:
         if self._engine is not None:
@@ -639,3 +755,5 @@ class PaperRunLoop:
         if self._registry is not None:
             with contextlib.suppress(Exception):
                 self._registry.close()
+        if self._ownership is not None:
+            self._ownership.release()

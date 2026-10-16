@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import pytest
 import responses
 from responses import matchers
 
@@ -50,3 +51,19 @@ def test_alpaca_downloader_uses_iex_feed_by_default():
 
     assert result.metadata["feed"] == "iex"
     assert len(result.data) == 1
+
+
+@pytest.mark.parametrize("location", [
+    "https://untrusted.example/bars", "http://data.alpaca.markets/bars",
+])
+@responses.activate
+def test_credential_bearing_download_refuses_redirect(location):
+    origin = "https://data.alpaca.markets/v2/stocks/AAPL/bars"
+    responses.get(origin, status=302, headers={"Location": location})
+    responses.get(location, json={"bars": []})
+    downloader = AlpacaDownloader(api_key="offline-key", api_secret="offline-secret")
+    with pytest.raises(RuntimeError, match="redirect"):
+        downloader.download(DownloadRequest(
+            symbol="AAPL", start_date="2024-01-02", end_date="2024-01-03", frequency="1d",
+        ))
+    assert [call.request.url.split("?")[0] for call in responses.calls] == [origin]

@@ -5,7 +5,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-import numpy as np
 import pandas as pd
 
 from config.schema import CostModelConfig
@@ -13,6 +12,7 @@ from experiments.artifacts import ArtifactKind, ArtifactManager
 from experiments.models import Experiment, PromotionStatus
 from experiments.registry import ExperimentRegistry
 from research.cross_sectional_pipeline import (
+    NO_TUNING_SEARCH_SCOPE,
     CrossSectionalBacktestResult,
     CrossSectionalValidationReport,
     format_cross_sectional_gauntlet_report,
@@ -36,6 +36,7 @@ from validation.intraday import (
     evaluate_intraday_constraints,
     intraday_performance_metrics,
 )
+from validation.search import declared_search
 from validation.wfa.engine import WFAConfig, WFATier
 
 PARAM_COLUMNS = [
@@ -173,22 +174,6 @@ def make_same_clock_intraday_seasonality_wfa_fns(
     return train_fn, test_fn
 
 
-def build_returns_matrix(
-    df: pd.DataFrame,
-    *,
-    params: SameClockIntradaySeasonalityParams | None = None,
-    cost_config: CostModelConfig | None = None,
-    initial_capital: float = 25_000.0,
-) -> np.ndarray:
-    result = backtest_same_clock_intraday_seasonality(
-        df,
-        params or default_params(),
-        cost_config=cost_config,
-        initial_capital=initial_capital,
-    )
-    return result.returns.to_frame(f"{STRATEGY_NAME}_v1").to_numpy()
-
-
 def run_same_clock_intraday_seasonality_validation_gauntlet(
     df: pd.DataFrame,
     *,
@@ -244,11 +229,11 @@ def run_same_clock_intraday_seasonality_validation_gauntlet(
         cost_config=cost_config,
         initial_capital=initial_capital,
     )
-    returns_matrix = build_returns_matrix(
-        df,
-        params=params,
-        cost_config=cost_config,
-        initial_capital=initial_capital,
+    search = declared_search(
+        [params_to_dict(params)],
+        [research.returns],
+        params_to_dict(params),
+        search_scope=NO_TUNING_SEARCH_SCOPE,
     )
     gauntlet = run_gauntlet(
         STRATEGY_NAME,
@@ -257,12 +242,12 @@ def run_same_clock_intraday_seasonality_validation_gauntlet(
         test_fn,
         sweep_df,
         PARAM_COLUMNS,
-        best_sharpe=float(research.metrics.get("sharpe", 0.0)),
-        returns_matrix=returns_matrix,
+        dsr_search=search,
         initial_capital=initial_capital,
         max_dd_limit=-0.20,
         mc_num_paths=mc_num_paths,
         mc_block_size=mc_block_size,
+        mc_periods_per_year=252.0 * params.bars_per_session,
         wfa_config=INTRADAY_WFA_CONFIG,
         seed=seed,
     )

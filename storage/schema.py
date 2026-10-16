@@ -255,6 +255,149 @@ CREATE TABLE IF NOT EXISTS strategy_kill_switches (
     consecutive_losses    INTEGER NOT NULL DEFAULT 0,
     updated_at            TEXT NOT NULL
 );
+
+-- ============================================================================
+-- Paper-run evidence ledger. Every row is scoped to one paper session id and
+-- Experiment; qualification evidence is derived from these rows only.
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS paper_sessions (
+    session_id            TEXT PRIMARY KEY,
+    experiment_uuid       TEXT NOT NULL,
+    experiment_hash       TEXT NOT NULL,
+    session_kind          TEXT NOT NULL,
+    config_hash           TEXT NOT NULL,
+    code_version          TEXT NOT NULL,
+    broker_environment    TEXT NOT NULL,           -- sim_broker|alpaca_paper
+    account_fingerprint   TEXT NOT NULL,           -- namespace-scoped hash, never raw id
+    calendar_id           TEXT NOT NULL,
+    calendar_version      TEXT NOT NULL,
+    bar_frequency         TEXT NOT NULL,
+    data_grace_seconds    REAL NOT NULL,
+    expected_slippage_bps REAL NOT NULL,
+    window_started_at     TEXT NOT NULL,
+    binding_digest        TEXT NOT NULL,           -- sha256 over the identity columns
+    created_at            TEXT NOT NULL
+);
+
+-- One row per process attempt. ended_at IS NULL means the attempt never closed
+-- (abrupt termination); the next start records it as interrupted.
+CREATE TABLE IF NOT EXISTS paper_attempts (
+    attempt_id            TEXT PRIMARY KEY,
+    session_id            TEXT NOT NULL REFERENCES paper_sessions(session_id),
+    experiment_uuid       TEXT NOT NULL,
+    started_at            TEXT NOT NULL,
+    last_heartbeat_at     TEXT NOT NULL,
+    ended_at              TEXT,
+    outcome               TEXT,                    -- completed|stopped|halted|failed|interrupted
+    reason                TEXT,
+    downtime_seconds      REAL
+);
+
+CREATE INDEX IF NOT EXISTS idx_paper_attempts_session ON paper_attempts(session_id, started_at);
+
+CREATE TABLE IF NOT EXISTS paper_attempt_events (
+    id                    INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id            TEXT NOT NULL,
+    attempt_id            TEXT,
+    event_type            TEXT NOT NULL,
+    occurred_at           TEXT NOT NULL,
+    details_json          TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_paper_attempt_events_session ON paper_attempt_events(session_id, id);
+
+-- One row per calendar-derived expected cycle that was observed, missed, or blocked.
+CREATE TABLE IF NOT EXISTS paper_cycles (
+    session_id            TEXT NOT NULL REFERENCES paper_sessions(session_id),
+    cycle_key             TEXT NOT NULL,
+    attempt_id            TEXT,
+    market_session        TEXT NOT NULL,
+    expected_at           TEXT NOT NULL,
+    deadline_at           TEXT NOT NULL,
+    started_at            TEXT,
+    completed_at          TEXT,
+    input_data_watermark  TEXT,                    -- bar timestamp, never a wall clock
+    result                TEXT NOT NULL,           -- started|completed|late_completed|blocked|missed_*
+    reason                TEXT,
+    decision_record_id    TEXT,
+    broker_sync_record_id TEXT,
+    overdue_detected_at   TEXT,
+    PRIMARY KEY (session_id, cycle_key)
+);
+
+CREATE TABLE IF NOT EXISTS paper_session_orders (
+    session_id            TEXT NOT NULL REFERENCES paper_sessions(session_id),
+    client_order_id       TEXT NOT NULL,
+    experiment_uuid       TEXT NOT NULL,
+    broker_environment    TEXT NOT NULL,
+    cycle_key             TEXT NOT NULL,
+    attempt_id            TEXT NOT NULL,
+    linked_at             TEXT NOT NULL,
+    PRIMARY KEY (session_id, client_order_id)
+);
+
+-- A paper-only authority reservation is committed before entering the OMS.
+-- Never delete/refund reservations: uncertain effects retain their budget.
+CREATE TABLE IF NOT EXISTS paper_order_reservations (
+    reservation_id        TEXT PRIMARY KEY,
+    session_id            TEXT NOT NULL REFERENCES paper_sessions(session_id),
+    attempt_id            TEXT NOT NULL REFERENCES paper_attempts(attempt_id),
+    symbol                TEXT NOT NULL,
+    side                  TEXT NOT NULL,
+    quantity              REAL NOT NULL,
+    reference_price       REAL NOT NULL,
+    reserved_notional     REAL NOT NULL,
+    reserved_at           TEXT NOT NULL,
+    client_order_id       TEXT UNIQUE,
+    observed_notional     REAL,
+    observed_at           TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_paper_reservations_session ON paper_order_reservations(session_id);
+
+-- Fill increments observed from broker order status; fill_id is deterministic
+-- over (client_order_id, cumulative filled qty) so duplicate reports collapse.
+CREATE TABLE IF NOT EXISTS paper_fills (
+    fill_id               TEXT PRIMARY KEY,
+    session_id            TEXT NOT NULL,
+    experiment_uuid       TEXT NOT NULL,
+    broker_environment    TEXT NOT NULL,
+    client_order_id       TEXT NOT NULL,
+    broker_order_id       TEXT,
+    symbol                TEXT NOT NULL,
+    side                  TEXT NOT NULL,
+    fill_qty              REAL NOT NULL,
+    cumulative_filled_qty REAL NOT NULL,
+    fill_price            REAL NOT NULL,
+    observed_at           TEXT NOT NULL,
+    source                TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_paper_fills_order ON paper_fills(session_id, client_order_id);
+
+CREATE TABLE IF NOT EXISTS paper_reference_prices (
+    reference_id          TEXT PRIMARY KEY,
+    session_id            TEXT NOT NULL,
+    experiment_uuid       TEXT NOT NULL,
+    client_order_id       TEXT NOT NULL,
+    symbol                TEXT NOT NULL,
+    price                 REAL NOT NULL,
+    source                TEXT NOT NULL,
+    observed_at           TEXT NOT NULL,
+    UNIQUE (session_id, client_order_id)
+);
+
+CREATE TABLE IF NOT EXISTS paper_drill_events (
+    id                    INTEGER PRIMARY KEY AUTOINCREMENT,
+    session_id            TEXT NOT NULL,
+    experiment_uuid       TEXT NOT NULL,
+    drill_id              TEXT NOT NULL,
+    event_type            TEXT NOT NULL,
+    occurred_at           TEXT NOT NULL,
+    details_json          TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_paper_drill_events_session ON paper_drill_events(session_id, drill_id, id);
 """
 
 
