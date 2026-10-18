@@ -6,6 +6,7 @@ import hashlib
 import json
 import sqlite3
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -15,14 +16,23 @@ from config.schema import AssetClass, Config
 from data.pipeline import load_bars
 from engine.paper_dry_run import _find_data_config, _normalize_bars
 from execution.base import OrderSide, OrderType, TimeInForce
+from execution.contracts import execution_contract_for
+from execution.evidence import merge_pending_orders
 from execution.oms import OMS, OrderIntent
+from execution.risk_guard import OutboundRiskGuard
 from execution.sim_broker.broker import SimBroker
 from monitoring.reports import build_operational_report
 from monitoring.watchdog import HeartbeatWatchdog, WatchdogConfig
+from portfolio.accounting import (
+    AccountRiskRepository,
+    PortfolioSnapshot,
+    broker_allows_new_risk_baseline,
+    broker_external_cash_flow,
+)
 from portfolio.sizing import PortfolioState, compute_position_delta, compute_target_positions
-from risk.engine import DrawdownState, RiskDecision, RiskEngine
+from risk.engine import RiskDecision, RiskEngine
 from storage.event_logger import EventLogger
-from storage.repository import get_engine_state, get_order, set_engine_state
+from storage.repository import get_engine_state, get_open_orders, get_order, set_engine_state
 from storage.schema import init_db
 from strategies.ma.signal import MAParams, generate_signals
 
@@ -104,7 +114,6 @@ def run_ma_paper_trade_once(
 
     conn = init_db(db_path)
     logger = EventLogger(conn, environment="paper")
-    oms = OMS(broker, conn, logger, environment="paper")
     bar_ts = str(bars.index[-1])
     cycle_id = f"paper-trade-{symbol}-{bar_ts}"
 
@@ -116,11 +125,17 @@ def run_ma_paper_trade_once(
 
         logger.log("ENGINE_HEARTBEAT", cycle_id=cycle_id, bar_timestamp=bar_ts, message=f"Processing bar {bar_ts}")
         account = broker.get_account()
-        positions_before = _positions_to_dicts(broker.get_positions())
+        broker_positions = broker.get_positions()
+        positions_before = _positions_to_dicts(broker_positions)
         open_orders_before = _orders_to_dicts(broker.get_open_orders())
-        latest_price = broker.get_price(symbol)
-        if latest_price is None or latest_price <= 0:
-            raise ValueError(f"No latest price available for {symbol}")
+        broker_orders = broker.get_open_orders_snapshot()
+        broker_orders.validate()
+        pending_orders = merge_pending_orders(broker_orders, get_open_orders(conn))
+        quote = broker.get_quote(symbol)
+        if quote is None:
+            raise ValueError(f"No timestamped quote evidence available for {symbol}")
+        quote.validate(expected_symbol=symbol)
+        latest_price = quote.price
 
         last_close = float(bars["close"].iloc[-1])
         if last_close > 0:
@@ -143,10 +158,30 @@ def run_ma_paper_trade_once(
         if exposure < 0 and not config.live_deployment.allow_short:
             exposure = 0.0
 
+        for order in pending_orders:
+            order["last_price"] = order.get("avg_fill_price") or order.get("limit_price") or 0.0
+            if not order["last_price"]:
+                pending_quote = broker.get_quote(str(order["symbol"]))
+                if pending_quote is None:
+                    raise ValueError("No timestamped quote evidence available for a pending order")
+                pending_quote.validate(expected_symbol=str(order["symbol"]))
+                order["last_price"] = pending_quote.price
+        snapshot_observed_at = datetime.now(UTC)
+        account_risk = AccountRiskRepository(conn).record(
+            PortfolioSnapshot.from_broker(
+                broker.name, account, broker_positions, pending_orders,
+                pending_orders_complete=broker_orders.complete,
+                pending_orders_observed_at=broker_orders.observed_at,
+                pending_orders_source=broker_orders.source,
+                observed_at=snapshot_observed_at,
+                external_cash_flow=broker_external_cash_flow(broker),
+                allow_new_baseline=broker_allows_new_risk_baseline(broker),
+            )
+        )
         state = PortfolioState(
             cash=account.cash,
-            equity=min(account.equity, _strategy_capital(config)),
-            high_water_mark=min(account.equity, _strategy_capital(config)),
+            equity=min(account.equity, _strategy_capital(config)) if _strategy_capital(config) > 0 else account.equity,
+            high_water_mark=account_risk.high_water_mark,
             positions=_portfolio_positions(positions_before),
         )
         targets = compute_target_positions(
@@ -156,12 +191,24 @@ def run_ma_paper_trade_once(
             config.portfolio,
             asset_classes={symbol: data_config.asset_class.value},
         )
-        risk = RiskEngine(config.risk_limits).evaluate(
+        risk_engine = RiskEngine(config.risk_limits)
+        risk_metadata_reader = getattr(broker, "get_risk_metadata", None)
+        if not callable(risk_metadata_reader):
+            raise ValueError("sector/correlation risk metadata provider is unavailable")
+        required_symbols = sorted(
+            {symbol, *state.positions, *(str(order["symbol"]) for order in pending_orders)}
+        )
+        risk_metadata = risk_metadata_reader(required_symbols)
+        risk_metadata.validate(required_symbols)
+        risk = risk_engine.evaluate(
             targets,
             state,
-            DrawdownState(high_water_mark=state.equity, current_equity=state.equity),
+            account_risk.drawdown(account.equity),
             strategy_name=strategy,
             current_positions=state.positions,
+            pending_orders=pending_orders,
+            sector_map=risk_metadata.sectors,
+            correlation_matrix=risk_metadata.correlations,
         )
         risk_target = risk.adjusted_targets[0] if risk.adjusted_targets else targets[0]
         current_qty = _current_qty(symbol, positions_before)
@@ -200,7 +247,22 @@ def run_ma_paper_trade_once(
                 abs(float(delta["delta_notional"])),
             )
             if notional_cap >= config.portfolio.min_notional_delta:
-                qty = notional_cap / (limit_price or float(latest_price))
+                reference_price = float(limit_price or latest_price)
+                available_cash = account.cash - sum(
+                    float(order.get("remaining_qty", 0.0) or 0.0)
+                    * float(order.get("last_price", 0.0) or 0.0)
+                    for order in open_orders_before
+                    if str(order.get("side", "")).lower().startswith("b")
+                )
+                contract = execution_contract_for(broker.name, data_config.asset_class.value)
+                qty = contract.constrain_quantity(
+                    notional_cap / reference_price,
+                    reference_price,
+                    available_cash=max(0.0, available_cash) if side == OrderSide.BUY else None,
+                )
+            else:
+                qty = 0.0
+            if qty > 0:
                 intent = OrderIntent(
                     strategy=strategy,
                     symbol=symbol,
@@ -208,6 +270,7 @@ def run_ma_paper_trade_once(
                     side=side,
                     order_type=order_type,
                     quantity=float(qty),
+                    reference_price=reference_price,
                     time_in_force=TimeInForce.DAY,
                     limit_price=limit_price,
                     bar_timestamp=bar_ts,
@@ -216,6 +279,20 @@ def run_ma_paper_trade_once(
                     version=config.strategy_version,
                 )
                 before_count = _order_count(conn)
+                outbound_guard = OutboundRiskGuard(
+                    broker=broker,
+                    conn=conn,
+                    risk_engine=risk_engine,
+                    strategy_name=strategy,
+                    risk_state_reader=lambda: (account_risk, snapshot_observed_at),
+                    metadata_reader=risk_metadata_reader,
+                    allow_short=config.live_deployment.allow_short,
+                    equity_cap=_strategy_capital(config) or None,
+                )
+                oms = OMS(
+                    broker, conn, logger, environment="paper",
+                    outbound_risk_guard=outbound_guard,
+                )
                 client_order_id = oms.create_and_submit(intent)
                 duplicate_skipped = client_order_id is not None and _order_count(conn) == before_count
                 if client_order_id is not None:
@@ -479,7 +556,12 @@ def _portfolio_positions(positions: list[dict[str, Any]]) -> dict[str, dict[str,
     return {
         p["symbol"]: {
             "qty": float(p["quantity"]),
-            "avg_price": float(p["avg_entry_price"]),
+            "avg_price": abs(float(p["market_value"]) / float(p["quantity"]))
+            if p.get("market_value") is not None and float(p["quantity"]) != 0
+            else float(p["avg_entry_price"]),
+            "mark_price": abs(float(p["market_value"]) / float(p["quantity"]))
+            if p.get("market_value") is not None and float(p["quantity"]) != 0
+            else float(p["avg_entry_price"]),
             "side": p["side"],
         }
         for p in positions

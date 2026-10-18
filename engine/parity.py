@@ -35,8 +35,8 @@ import pandas as pd
 from config.schema import Config, CostModelConfig
 from risk.engine import RiskDecision, RiskEvaluation
 
-ASSUMPTIONS_VERSION = "etf_tsm_execution_assumptions.v1"
-PARITY_REPORT_VERSION = "etf_tsm_execution_parity.v1"
+ASSUMPTIONS_VERSION = "etf_tsm_execution_assumptions.v2"
+PARITY_REPORT_VERSION = "etf_tsm_execution_parity.v2"
 STRUCTURAL_SCOPE = "structural_replay"
 
 FINANCIAL_PARITY_NOT_ESTABLISHED = "not_established"
@@ -73,7 +73,11 @@ _SYMBOL_FIELDS = ("target_weight", "order_qty", "position")
 
 # All other non-approved risk decisions make analytical attribution unavailable,
 # even if today's risk implementation reports them without changing quantities.
-MODELED_RISK_CHECKS = frozenset({"per_position_risk", "max_open_positions", "gross_exposure"})
+MODELED_RISK_CHECKS = frozenset({
+    "per_position_risk", "max_open_positions", "gross_exposure", "net_exposure",
+    "sector_gross", "sector_net", "correlation_cluster", "daily_loss_block",
+    "daily_loss_halt", "weekly_loss", "monthly_halt",
+})
 
 # Declared mechanisms, in the order the attribution chain toggles them from the
 # research declaration to the runtime declaration. Each lists the declaration
@@ -113,6 +117,16 @@ class RiskConstraintAssumptions:
     max_open_positions: int | None
     evaluated_against: str
     loss_limits: str
+    max_net_exposure: float | None = None
+    max_sector_gross_exposure: float | None = None
+    max_sector_net_exposure: float | None = None
+    max_correlated_cluster_gross: float | None = None
+    correlation_threshold: float | None = None
+    max_daily_loss: float | None = None
+    block_new_at_daily_loss: float | None = None
+    max_weekly_loss: float | None = None
+    max_monthly_loss: float | None = None
+    risk_metadata_model: str = "none"
 
 
 @dataclass(frozen=True)
@@ -260,6 +274,7 @@ def research_assumptions(cost: CostModelConfig) -> ExecutionAssumptions:
             max_open_positions=None,
             evaluated_against="not_applicable",
             loss_limits="not_modeled",
+            risk_metadata_model="none",
         ),
     )
 
@@ -286,11 +301,10 @@ def runtime_assumptions(replay_config: Config, *, slippage_pct: float) -> Execut
         fill_timing=FILL_NEXT_BAR_CLOSE,
         fill_lag_bars=1,
         fill_price="close",
-        sizing_basis=SIZING_FIXED_INITIAL_CAPITAL,
+        sizing_basis=SIZING_MARK_TO_MARKET,
         sizing_exposure_multiplier=portfolio.per_position_risk_pct / _RUNTIME_DEFAULT_STOP_FRACTION,
         cash_handling=(
-            "cash reconstructed as initial capital - signed fill notional; no interest; no financing; "
-            "may go negative; SimBroker account cash/equity itself is not updated"
+            "SimBroker cash and equity update from fills; buys are cash bounded; no interest or financing"
         ),
         rebalance_policy=REBALANCE_THRESHOLDED,
         min_notional_delta=float(portfolio.min_notional_delta),
@@ -312,8 +326,18 @@ def runtime_assumptions(replay_config: Config, *, slippage_pct: float) -> Execut
             per_position_notional_cap=limits.per_position_pct / _RUNTIME_DEFAULT_STOP_FRACTION,
             max_gross_exposure=float(limits.max_gross_exposure_pct),
             max_open_positions=int(limits.max_open_positions),
-            evaluated_against=SIZING_FIXED_INITIAL_CAPITAL,
-            loss_limits="evaluated with a constant DrawdownState (zero PnL); cannot trigger in replay",
+            evaluated_against=SIZING_MARK_TO_MARKET,
+            loss_limits="daily/weekly/monthly baselines follow the single local replay session; explicit cash flow is zero",
+            max_net_exposure=float(limits.max_net_exposure_pct),
+            max_sector_gross_exposure=float(limits.max_sector_gross_pct),
+            max_sector_net_exposure=float(limits.max_sector_net_pct),
+            max_correlated_cluster_gross=float(limits.max_correlated_cluster_gross_pct),
+            correlation_threshold=float(limits.correlation_threshold),
+            max_daily_loss=float(limits.max_daily_loss_pct),
+            block_new_at_daily_loss=float(limits.block_new_at_daily_loss_pct),
+            max_weekly_loss=float(limits.max_weekly_loss_pct),
+            max_monthly_loss=float(limits.max_monthly_loss_pct),
+            risk_metadata_model="SimBroker conservative single sector and fully correlated symbols",
         ),
     )
 
@@ -404,6 +428,8 @@ def simulate_ledger(
     fees_out = np.zeros(n_bars)
     equity_out = np.zeros(n_bars)
     risk_modified = 0
+    period_baseline = float(initial_capital)
+    high_water_mark = float(initial_capital)
 
     for t in range(n_bars):
         price = prices[t]
@@ -415,6 +441,7 @@ def simulate_ledger(
         fees = pending_cost
         pending_cost = 0.0
         equity_pre = cash + float(qty @ price)
+        high_water_mark = max(high_water_mark, equity_pre)
         sizing_equity = float(initial_capital) if fixed_sizing else equity_pre
         weights = fill_weights[t]
 
@@ -426,7 +453,15 @@ def simulate_ledger(
         active = np.ones(n_symbols, dtype=bool)
         if risk.applied:
             before = target.copy()
-            target, active = _apply_runtime_risk(target, price, qty, sizing_equity, risk)
+            target, active = _apply_runtime_risk(
+                target,
+                price,
+                qty,
+                sizing_equity,
+                risk,
+                current_equity=equity_pre,
+                period_baseline=period_baseline,
+            )
             if not np.array_equal(before, target) or not active.all():
                 risk_modified += 1
 
@@ -489,11 +524,29 @@ def _apply_runtime_risk(
     qty: np.ndarray,
     equity: float,
     risk: RiskConstraintAssumptions,
+    *,
+    current_equity: float,
+    period_baseline: float,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Declared runtime risk constraints, in RiskEngine.evaluate order."""
+    """Independent model of runtime risk constraints in RiskEngine order."""
 
     target = target.copy()
     active = np.ones(len(target), dtype=bool)
+
+    daily_pct = (current_equity - period_baseline) / period_baseline
+    weekly_pct = daily_pct
+    monthly_pct = daily_pct
+    if risk.block_new_at_daily_loss is not None and daily_pct <= -risk.block_new_at_daily_loss:
+        active[np.abs(target) >= _FLAT_QTY] = False
+        target[np.abs(target) >= _FLAT_QTY] = 0.0
+    if risk.max_daily_loss is not None and daily_pct <= -risk.max_daily_loss:
+        target[:] = 0.0
+    if risk.max_weekly_loss is not None and weekly_pct <= -risk.max_weekly_loss:
+        active[np.abs(target) >= _FLAT_QTY] = False
+        target[np.abs(target) >= _FLAT_QTY] = 0.0
+    if risk.max_monthly_loss is not None and monthly_pct <= -risk.max_monthly_loss:
+        target[:] = 0.0
+
     nonflat = np.abs(target) >= _FLAT_QTY
     if risk.per_position_notional_cap is not None:
         cap = risk.per_position_notional_cap * equity
@@ -507,12 +560,32 @@ def _apply_runtime_risk(
         if int(open_now.sum()) + len(new) > risk.max_open_positions:
             rejected = new if allowed <= 0 else new[allowed:]
             active[rejected] = False
-    if risk.max_gross_exposure is not None:
-        kept = nonflat & active
+    kept = nonflat & active
+
+    def scale_gross(limit_pct: float | None) -> None:
+        if limit_pct is None:
+            return
         gross = float((np.abs(target[kept]) * price[kept]).sum())
-        limit = risk.max_gross_exposure * equity
+        limit = limit_pct * equity
         if gross > limit:
             target[kept] *= limit / gross if gross > 0 else 0.0
+
+    scale_gross(risk.max_gross_exposure)
+
+    target_net = float((target[kept] * price[kept]).sum())
+    max_net = (risk.max_net_exposure or 0.0) * equity
+    if risk.max_net_exposure is not None and abs(target_net) > max_net:
+        target[kept] *= max_net / abs(target_net) if abs(target_net) > 0 else 0.0
+
+    # The replay fixture declares every instrument in one conservative sector
+    # and one fully correlated cluster, matching SimBroker's explicit fixture.
+    scale_gross(risk.max_sector_gross_exposure)
+    sector_net = float((target[kept] * price[kept]).sum())
+    if risk.max_sector_net_exposure is not None and abs(sector_net) > risk.max_sector_net_exposure * equity:
+        target[kept] *= risk.max_sector_net_exposure * equity / abs(sector_net)
+    if int(np.count_nonzero(kept)) > 1:
+        scale_gross(risk.max_correlated_cluster_gross)
+
     return target, active
 
 

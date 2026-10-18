@@ -125,11 +125,11 @@ class TestIdempotency:
         bars = _make_bars(50)
         prices = {"AAPL": 100.0}
         state = PortfolioState(cash=10000, equity=10000, high_water_mark=10000)
-        dd = DrawdownState(high_water_mark=10000, current_equity=10000)
+        dd = DrawdownState(daily_pnl=0, weekly_pnl=0, monthly_pnl=0, high_water_mark=10000, current_equity=10000)
 
         # Process same bar twice
-        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd)
-        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd)
+        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd, external_cash_flow=0.0)
+        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd, external_cash_flow=0.0)
 
         # Should only have ONE order (deterministic client_order_id)
         order_count = db.execute(
@@ -142,15 +142,15 @@ class TestIdempotency:
         bars = _make_bars(50)
         prices = {"AAPL": 100.0}
         state = PortfolioState(cash=10000, equity=10000, high_water_mark=10000)
-        dd = DrawdownState(high_water_mark=10000, current_equity=10000)
+        dd = DrawdownState(daily_pnl=0, weekly_pnl=0, monthly_pnl=0, high_water_mark=10000, current_equity=10000)
 
-        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd)
+        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd, external_cash_flow=0.0)
 
         positions_after_1 = get_positions(db, strategy="test_strategy")
         qty_1 = positions_after_1[0]["quantity"] if positions_after_1 else 0
 
         # Process same bar again
-        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd)
+        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd, external_cash_flow=0.0)
 
         positions_after_2 = get_positions(db, strategy="test_strategy")
         qty_2 = positions_after_2[0]["quantity"] if positions_after_2 else 0
@@ -179,9 +179,9 @@ class TestRejection:
         bars = _make_bars(50)
         prices = {"AAPL": 100.0}
         state = PortfolioState(cash=10000, equity=10000, high_water_mark=10000)
-        dd = DrawdownState(high_water_mark=10000, current_equity=10000)
+        dd = DrawdownState(daily_pnl=0, weekly_pnl=0, monthly_pnl=0, high_water_mark=10000, current_equity=10000)
 
-        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd)
+        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd, external_cash_flow=0.0)
 
         # No positions should exist
         positions = get_positions(db, strategy="test_strategy")
@@ -209,9 +209,9 @@ class TestTimeout:
         bars = _make_bars(50)
         prices = {"AAPL": 100.0}
         state = PortfolioState(cash=10000, equity=10000, high_water_mark=10000)
-        dd = DrawdownState(high_water_mark=10000, current_equity=10000)
+        dd = DrawdownState(daily_pnl=0, weekly_pnl=0, monthly_pnl=0, high_water_mark=10000, current_equity=10000)
 
-        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd)
+        engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd, external_cash_flow=0.0)
 
         # Order should be in TIMEOUT state
         orders = db.execute(
@@ -245,7 +245,7 @@ class TestPartialFills:
         bars = _make_bars(50)
         prices = {"AAPL": 100.0}
         state = PortfolioState(cash=10000, equity=10000, high_water_mark=10000)
-        dd = DrawdownState(high_water_mark=10000, current_equity=10000)
+        dd = DrawdownState(daily_pnl=0, weekly_pnl=0, monthly_pnl=0, high_water_mark=10000, current_equity=10000)
 
         engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd)
 
@@ -424,10 +424,10 @@ class TestUnknownStateNoBlindFlatten:
         bars = _make_bars(30)
         prices = {"AAPL": 100.0}
         state = PortfolioState(cash=10000, equity=10000, high_water_mark=10000)
-        dd = DrawdownState(high_water_mark=10000, current_equity=10000)
+        dd = DrawdownState(daily_pnl=0, weekly_pnl=0, monthly_pnl=0, high_water_mark=10000, current_equity=10000)
 
         # Process bar while halted — should NOT submit orders
-        result = engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd)
+        result = engine.process_bar(bars, prices, bar_timestamp="2024-01-01", portfolio_state=state, drawdown=dd, external_cash_flow=0.0)
 
         assert result is None  # halted, no action
 

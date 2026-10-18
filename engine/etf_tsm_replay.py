@@ -144,6 +144,7 @@ class ETFEngineReplayComparison:
                 "cycle_count": self.replay.cycle_count,
                 "orders_submitted": self.replay.orders_submitted,
                 "orders_filled": self.replay.orders_filled,
+                "orders_blocked": self.replay.orders_blocked,
                 "orders_rejected": self.replay.orders_rejected,
                 "orders_timed_out": self.replay.orders_timed_out,
                 "final_positions": self.replay.final_positions,
@@ -273,9 +274,13 @@ def run_etf_tsm_engine_replay(
                     high_water_mark=initial_capital,
                 ),
                 drawdown=DrawdownState(
+                    daily_pnl=0.0,
+                    weekly_pnl=0.0,
+                    monthly_pnl=0.0,
                     high_water_mark=initial_capital,
                     current_equity=initial_capital,
                 ),
+                external_cash_flow=0.0,
             )
             unsupported_risk_checks.update(unmodeled_risk_checks(evaluation))
             runtime_positions[ts] = {
@@ -290,7 +295,14 @@ def run_etf_tsm_engine_replay(
 
     positions = get_positions(conn, strategy=STRATEGY_NAME)
     replay.final_positions = {str(p["symbol"]): float(p["quantity"]) for p in positions}
-    replay.orders_submitted = _scalar(conn, "SELECT COUNT(*) FROM events WHERE event_type = 'ORDER_INTENT'")
+    replay.orders_blocked = _scalar(
+        conn,
+        "SELECT COUNT(*) FROM events WHERE event_type = 'ORDER_INTENT' AND order_state = 'BLOCKED_BY_RISK'",
+    )
+    replay.orders_submitted = _scalar(
+        conn,
+        "SELECT COUNT(*) FROM events WHERE event_type = 'ORDER_INTENT' AND COALESCE(order_state, '') != 'BLOCKED_BY_RISK'",
+    )
     replay.orders_filled = _scalar(conn, "SELECT COUNT(*) FROM events WHERE event_type = 'ORDER_FILLED'")
     replay.orders_rejected = _scalar(conn, "SELECT COUNT(*) FROM events WHERE event_type = 'BROKER_REJECT'")
     replay.orders_timed_out = _scalar(conn, "SELECT COUNT(*) FROM events WHERE event_type = 'BROKER_TIMEOUT'")
@@ -463,7 +475,7 @@ def format_etf_tsm_replay_report(comparison: ETFEngineReplayComparison) -> str:
         f"- Research max drawdown: {comparison.research_metrics.get('max_drawdown', 0.0):.6f}",
         f"- Research rebalances/trade rows: {comparison.research_rebalances}/{comparison.research_trade_rows}",
         f"- Replay bars/cycles: {comparison.replay.bar_count}/{comparison.replay.cycle_count}",
-        f"- Replay orders submitted/filled/rejected/timed out: {comparison.replay.orders_submitted}/{comparison.replay.orders_filled}/{comparison.replay.orders_rejected}/{comparison.replay.orders_timed_out}",
+        f"- Replay orders submitted/filled/outbound-blocked/broker-rejected/timed out: {comparison.replay.orders_submitted}/{comparison.replay.orders_filled}/{comparison.replay.orders_blocked}/{comparison.replay.orders_rejected}/{comparison.replay.orders_timed_out}",
         f"- Replay mark-to-market equity: {comparison.replay_final_equity:.6f}",
         f"- Replay final positions: {comparison.replay.final_positions}",
         "",
@@ -617,6 +629,8 @@ def _build_differences(replay: ReplayResult, operational_report: OperationalRepo
         differences.append("Replay submitted no orders; target weights did not exercise the OMS path.")
     if replay.orders_filled <= 0:
         differences.append("Replay filled no orders; simulated broker path was not exercised.")
+    if replay.orders_blocked:
+        differences.append(f"Replay had outbound risk blocks: {replay.orders_blocked}")
     if replay.orders_rejected:
         differences.append(f"Replay had rejected orders: {replay.orders_rejected}")
     if replay.orders_timed_out:

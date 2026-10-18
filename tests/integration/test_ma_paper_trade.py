@@ -17,6 +17,7 @@ class FakePaperBroker(SimBroker):
     def __init__(self, price: float):
         super().__init__()
         self.price = price
+        self.set_price("AAPL", price)
         self.submit_calls = 0
         self.orders: dict[str, BrokerOrderResponse] = {}
         self.position_qty = 0.0

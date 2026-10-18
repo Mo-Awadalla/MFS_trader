@@ -2,13 +2,14 @@ from __future__ import annotations
 
 import sqlite3
 from dataclasses import replace
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
 
 from engine.paper_dry_run import run_ma_paper_dry_run
 from engine.shakedown import make_replay_config, make_synthetic_bars
-from execution.base import BrokerAccount
+from execution.base import BrokerAccount, QuoteEvidence
 from execution.sim_broker.broker import SimBroker
 from storage.parquet_io import parquet_path, write_bars
 
@@ -19,6 +20,7 @@ class FakeReadOnlyBroker(SimBroker):
         super().__init__()
         self.submit_calls = 0
         self.price = price
+        self.set_price("AAPL", price)
 
     def get_account(self):
         return BrokerAccount(account_id="paper-test", cash=10000.0, equity=10000.0)
@@ -32,6 +34,11 @@ class FakeReadOnlyBroker(SimBroker):
     def get_price(self, symbol):
         assert symbol == "AAPL"
         return self.price
+
+    def get_quote(self, symbol):
+        assert symbol == "AAPL"
+        now = datetime.now(UTC)
+        return QuoteEvidence(symbol, self.price, now, now, "synthetic_readonly_fixture")
 
     def submit_order(self, request):  # pragma: no cover - failure path
         self.submit_calls += 1

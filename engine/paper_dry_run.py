@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -12,12 +13,20 @@ import pandas as pd
 from config.schema import AssetClass, Config
 from data.pipeline import load_bars
 from execution.base import BrokerOrderResponse, BrokerPosition
+from execution.evidence import merge_pending_orders
 from execution.sim_broker.broker import SimBroker
 from monitoring.reports import build_operational_report
 from monitoring.watchdog import HeartbeatWatchdog, WatchdogConfig
+from portfolio.accounting import (
+    AccountRiskRepository,
+    PortfolioSnapshot,
+    broker_allows_new_risk_baseline,
+    broker_external_cash_flow,
+)
 from portfolio.sizing import PortfolioState, compute_position_delta, compute_target_positions
-from risk.engine import DrawdownState, RiskDecision, RiskEngine
+from risk.engine import RiskDecision, RiskEngine
 from storage.event_logger import EventLogger
+from storage.repository import get_open_orders
 from storage.schema import init_db
 from strategies.ma.signal import MAParams, generate_signals
 
@@ -132,9 +141,6 @@ def run_ma_paper_dry_run(
     db_path = output / "paper_dry_run.sqlite"
     report_path = output / "paper_dry_run_report.md"
     json_path = output / "paper_dry_run_report.json"
-    if db_path.exists():
-        db_path.unlink()
-
     conn = init_db(db_path)
     logger = EventLogger(conn, environment="paper_dry_run")
     cycle_id = f"dryrun-{symbol}-{len(bars)}"
@@ -154,11 +160,17 @@ def run_ma_paper_dry_run(
         )
 
         account = broker.get_account()
-        positions_before = _positions_to_dicts(broker.get_positions())
+        broker_positions = broker.get_positions()
+        positions_before = _positions_to_dicts(broker_positions)
         open_orders_before = _orders_to_dicts(broker.get_open_orders())
-        latest_price = broker.get_price(symbol)
-        if latest_price is None or latest_price <= 0:
-            raise ValueError(f"No latest price available for {symbol}")
+        broker_orders = broker.get_open_orders_snapshot()
+        broker_orders.validate()
+        pending_orders = merge_pending_orders(broker_orders, get_open_orders(conn))
+        quote = broker.get_quote(symbol)
+        if quote is None:
+            raise ValueError(f"No timestamped quote evidence available for {symbol}")
+        quote.validate(expected_symbol=symbol)
+        latest_price = quote.price
         last_close = float(bars["close"].iloc[-1])
         if last_close > 0:
             price_ratio = float(latest_price) / last_close
@@ -166,6 +178,27 @@ def run_ma_paper_dry_run(
                 raise ValueError(
                     f"Latest broker price {latest_price:.4f} is inconsistent with last stored close {last_close:.4f}"
                 )
+
+        for order in pending_orders:
+            order["last_price"] = order.get("avg_fill_price") or order.get("limit_price") or 0.0
+            if not order["last_price"]:
+                pending_quote = broker.get_quote(str(order["symbol"]))
+                if pending_quote is None:
+                    raise ValueError("No timestamped quote evidence available for a pending order")
+                pending_quote.validate(expected_symbol=str(order["symbol"]))
+                order["last_price"] = pending_quote.price
+        snapshot_observed_at = datetime.now(UTC)
+        account_risk = AccountRiskRepository(conn).record(
+            PortfolioSnapshot.from_broker(
+                broker.name, account, broker_positions, pending_orders,
+                pending_orders_complete=broker_orders.complete,
+                pending_orders_observed_at=broker_orders.observed_at,
+                pending_orders_source=broker_orders.source,
+                observed_at=snapshot_observed_at,
+                external_cash_flow=broker_external_cash_flow(broker),
+                allow_new_baseline=broker_allows_new_risk_baseline(broker),
+            )
+        )
 
         signals = generate_signals(
             bars,
@@ -183,7 +216,7 @@ def run_ma_paper_dry_run(
         state = PortfolioState(
             cash=account.cash,
             equity=account.equity,
-            high_water_mark=account.equity,
+            high_water_mark=account_risk.high_water_mark,
             positions=_portfolio_positions(positions_before),
         )
 
@@ -195,12 +228,24 @@ def run_ma_paper_dry_run(
             asset_classes={symbol: data_config.asset_class.value},
         )
         target = targets[0]
-        risk = RiskEngine(config.risk_limits).evaluate(
+        risk_engine = RiskEngine(config.risk_limits)
+        metadata_reader = getattr(broker, "get_risk_metadata", None)
+        if not callable(metadata_reader):
+            raise ValueError("sector/correlation risk metadata provider is unavailable")
+        required_symbols = sorted(
+            {symbol, *state.positions, *(str(order["symbol"]) for order in pending_orders)}
+        )
+        metadata = metadata_reader(required_symbols)
+        metadata.validate(required_symbols)
+        risk = risk_engine.evaluate(
             targets,
             state,
-            DrawdownState(high_water_mark=account.equity, current_equity=account.equity),
+            account_risk.drawdown(account.equity),
             strategy_name=strategy,
             current_positions=state.positions,
+            pending_orders=pending_orders,
+            sector_map=metadata.sectors,
+            correlation_matrix=metadata.correlations,
         )
         risk_target = risk.adjusted_targets[0] if risk.adjusted_targets else target
         delta = compute_position_delta(
@@ -510,7 +555,12 @@ def _portfolio_positions(positions: list[dict[str, Any]]) -> dict[str, dict[str,
     return {
         p["symbol"]: {
             "qty": float(p["quantity"]),
-            "avg_price": float(p["avg_entry_price"]),
+            "avg_price": abs(float(p["market_value"]) / float(p["quantity"]))
+            if p.get("market_value") is not None and float(p["quantity"]) != 0
+            else float(p["avg_entry_price"]),
+            "mark_price": abs(float(p["market_value"]) / float(p["quantity"]))
+            if p.get("market_value") is not None and float(p["quantity"]) != 0
+            else float(p["avg_entry_price"]),
             "side": p["side"],
         }
         for p in positions
