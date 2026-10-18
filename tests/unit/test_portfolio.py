@@ -124,6 +124,16 @@ class TestComputeTargetPositions:
         )
         assert targets[0].target_qty > 0
 
+    def test_reserved_kelly_method_is_rejected(self, state):
+        config = PortfolioConfig(sizing_method="kelly")
+        with pytest.raises(ValueError, match="unsupported sizing_method"):
+            compute_target_positions({"AAPL": 1.0}, {"AAPL": 100.0}, state, config)
+
+    def test_vol_target_requires_explicit_volatility(self, state):
+        config = PortfolioConfig(sizing_method="vol_target")
+        with pytest.raises(ValueError, match="requires fresh volatility"):
+            compute_target_positions({"AAPL": 1.0}, {"AAPL": 100.0}, state, config)
+
 
 class TestPositionDelta:
     def test_no_change_is_hold(self):

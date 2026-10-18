@@ -23,11 +23,14 @@ def test_etf_tsm_engine_replay_smoke(tmp_path: Path) -> None:
         initial_capital=10_000.0,
     )
 
-    assert result.passed
+    assert not result.passed
+    assert any("outbound risk blocks" in item for item in result.differences)
     assert result.replay.bar_count == len(panel)
     assert result.replay.cycle_count == len(panel)
     assert result.replay.orders_submitted > 0
     assert result.replay.orders_filled > 0
+    assert result.replay.orders_blocked > 0
+    assert result.replay.orders_filled == result.replay.orders_submitted
     assert result.replay.orders_rejected == 0
     assert result.replay.orders_timed_out == 0
     assert result.operational_report.passed
