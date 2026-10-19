@@ -37,6 +37,7 @@ class ReplayResult:
     cycle_count: int = 0
     orders_submitted: int = 0
     orders_filled: int = 0
+    orders_blocked: int = 0
     orders_rejected: int = 0
     orders_timed_out: int = 0
     final_equity: float = 0.0
@@ -116,6 +117,9 @@ def run_replay(
         high_water_mark=initial_capital,
     )
     drawdown = DrawdownState(
+        daily_pnl=0.0,
+        weekly_pnl=0.0,
+        monthly_pnl=0.0,
         high_water_mark=initial_capital,
         current_equity=initial_capital,
     )
@@ -152,6 +156,7 @@ def run_replay(
             bar_timestamp=str(ts),
             portfolio_state=portfolio_state,
             drawdown=drawdown,
+            external_cash_flow=0.0,
         )
 
         result.bar_count += 1
@@ -164,8 +169,11 @@ def run_replay(
     result.final_positions = {p["symbol"]: p["quantity"] for p in positions}
 
     # Count orders from events
+    blocked_count = conn.execute(
+        "SELECT COUNT(*) FROM events WHERE event_type = 'ORDER_INTENT' AND order_state = 'BLOCKED_BY_RISK'"
+    ).fetchone()[0]
     order_count = conn.execute(
-        "SELECT COUNT(*) FROM events WHERE event_type = 'ORDER_INTENT'"
+        "SELECT COUNT(*) FROM events WHERE event_type = 'ORDER_INTENT' AND COALESCE(order_state, '') != 'BLOCKED_BY_RISK'"
     ).fetchone()[0]
     fill_count = conn.execute(
         "SELECT COUNT(*) FROM events WHERE event_type = 'ORDER_FILLED'"
@@ -179,6 +187,7 @@ def run_replay(
 
     result.orders_submitted = order_count
     result.orders_filled = fill_count
+    result.orders_blocked = blocked_count
     result.orders_rejected = reject_count
     result.orders_timed_out = timeout_count
 

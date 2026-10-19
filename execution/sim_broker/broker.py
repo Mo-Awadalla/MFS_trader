@@ -17,17 +17,23 @@ from __future__ import annotations
 
 import random
 import time
+from collections.abc import Sequence
 from dataclasses import dataclass
+from datetime import UTC, datetime
 
 from execution.base import (
     BrokerAccount,
     BrokerAdapter,
+    BrokerOpenOrder,
+    BrokerOpenOrdersSnapshot,
     BrokerOrderRequest,
     BrokerOrderResponse,
     BrokerPosition,
     OrderSide,
     OrderType,
+    QuoteEvidence,
 )
+from risk.inputs import RiskMetadataSnapshot
 
 
 @dataclass
@@ -58,6 +64,7 @@ class _SimOrder:
     side: OrderSide
     order_type: OrderType
     requested_qty: float
+    limit_price: float | None = None
     filled_qty: float = 0.0
     avg_fill_price: float | None = None
     status: str = "ACKNOWLEDGED"
@@ -86,6 +93,9 @@ class SimBroker(BrokerAdapter):
         self._broker_order_ids: dict[str, str] = {}  # broker_order_id → client_order_id
         self._positions: dict[str, BrokerPosition] = {}
         self._prices: dict[str, float] = {"AAPL": 150.0, "MSFT": 300.0, "GOOGL": 130.0}
+        self._price_updated_at: dict[str, datetime] = {
+            symbol: datetime.now(UTC) for symbol in self._prices
+        }
         self._cash = self._config.starting_cash
         self._equity = self._config.starting_cash
         self._order_counter = 0
@@ -107,6 +117,16 @@ class SimBroker(BrokerAdapter):
     def set_price(self, symbol: str, price: float) -> None:
         """Set the current price for a symbol (for testing)."""
         self._prices[symbol] = price
+        self._price_updated_at[symbol] = datetime.now(UTC)
+
+    def get_external_cash_flow(self) -> float:
+        """The simulator has no deposit or withdrawal operation."""
+        return 0.0
+
+    @property
+    def is_new_isolated_simulation(self) -> bool:
+        """Each SimBroker instance starts a distinct in-memory account."""
+        return True
 
     def submit_order(self, request: BrokerOrderRequest) -> BrokerOrderResponse:
         """Submit an order — may reject, timeout, or partially fill based on config."""
@@ -148,6 +168,7 @@ class SimBroker(BrokerAdapter):
                 side=request.side,
                 order_type=request.order_type,
                 requested_qty=request.quantity,
+                limit_price=request.limit_price,
                 status="REJECTED",
                 reject_reason="simulated_rejection",
             )
@@ -190,6 +211,7 @@ class SimBroker(BrokerAdapter):
             side=request.side,
             order_type=request.order_type,
             requested_qty=request.quantity,
+            limit_price=request.limit_price,
             filled_qty=filled_qty,
             avg_fill_price=fill_price,
             status=status,
@@ -248,6 +270,8 @@ class SimBroker(BrokerAdapter):
         if self._config.stale_data:
             return []  # report no positions (stale)
 
+        self._refresh_marks()
+
         if self._config.position_mismatch:
             # Report different quantities than internal state
             return [
@@ -264,6 +288,7 @@ class SimBroker(BrokerAdapter):
 
     def get_account(self) -> BrokerAccount:
         """Get account state."""
+        self._refresh_marks()
         return BrokerAccount(
             account_id="sim_account",
             cash=self._cash,
@@ -277,6 +302,56 @@ class SimBroker(BrokerAdapter):
             return None
         return self._prices.get(symbol)
 
+    def get_quote(self, symbol: str) -> QuoteEvidence | None:
+        """Return synthetic quote evidence with its fixture update timestamp."""
+        if self._config.stale_data or symbol not in self._prices:
+            return None
+        return QuoteEvidence(
+            symbol=symbol,
+            price=self._prices[symbol],
+            provider_timestamp=self._price_updated_at.get(symbol),
+            observed_at=datetime.now(UTC),
+            source="sim_broker.synthetic_price_fixture",
+        )
+
+    def get_open_orders_snapshot(self) -> BrokerOpenOrdersSnapshot:
+        """Return all in-memory nonterminal orders as a complete fixture."""
+        orders = tuple(
+            BrokerOpenOrder(
+                client_order_id=order.client_order_id,
+                symbol=order.symbol,
+                side=order.side.value,
+                remaining_qty=max(0.0, order.requested_qty - order.filled_qty),
+                limit_price=order.limit_price,
+                avg_fill_price=order.avg_fill_price,
+                broker_order_id=order.broker_order_id,
+                status=order.status,
+            )
+            for order in self._orders.values()
+            if not order.cancelled
+            and order.status not in {"FILLED", "REJECTED", "CANCELLED", "EXPIRED"}
+            and order.requested_qty - order.filled_qty > 1e-12
+        )
+        return BrokerOpenOrdersSnapshot(
+            orders=orders,
+            observed_at=datetime.now(UTC),
+            complete=True,
+            source="sim_broker.synthetic_order_fixture",
+        )
+
+    def get_risk_metadata(self, symbols: Sequence[str]) -> RiskMetadataSnapshot:
+        """Conservative all-correlated metadata, explicitly limited to simulation."""
+        ordered = sorted(set(symbols))
+        return RiskMetadataSnapshot(
+            sectors=dict.fromkeys(ordered, "simulated_unknown_sector"),
+            correlations={
+                left: dict.fromkeys(ordered, 1.0)
+                for left in ordered
+            },
+            observed_at=datetime.now(UTC),
+            source="sim_broker.synthetic_conservative_risk_fixture",
+        )
+
     def _update_position(self, order: _SimOrder) -> None:
         """Update internal position after a fill."""
         if order.filled_qty == 0:
@@ -284,6 +359,8 @@ class SimBroker(BrokerAdapter):
 
         sym = order.symbol
         delta = order.filled_qty if order.side == OrderSide.BUY else -order.filled_qty
+        fill_price = float(order.avg_fill_price or self._prices.get(sym, 0.0))
+        self._cash -= delta * fill_price
 
         if sym in self._positions:
             pos = self._positions[sym]
@@ -296,6 +373,8 @@ class SimBroker(BrokerAdapter):
                     quantity=new_qty,
                     avg_entry_price=order.avg_fill_price or pos.avg_entry_price,
                     side="long" if new_qty > 0 else "short",
+                    market_value=new_qty * self._prices.get(sym, fill_price),
+                    unrealized_pnl=(self._prices.get(sym, fill_price) - (order.avg_fill_price or pos.avg_entry_price)) * new_qty,
                 )
         else:
             self._positions[sym] = BrokerPosition(
@@ -303,7 +382,10 @@ class SimBroker(BrokerAdapter):
                 quantity=delta,
                 avg_entry_price=order.avg_fill_price or 0,
                 side="long" if delta > 0 else "short",
+                market_value=delta * self._prices.get(sym, fill_price),
+                unrealized_pnl=0.0,
             )
+        self._refresh_marks()
 
     def inject_position(self, symbol: str, quantity: float, avg_price: float) -> None:
         """Inject a position for testing reconciliation."""
@@ -315,8 +397,30 @@ class SimBroker(BrokerAdapter):
                 quantity=quantity,
                 avg_entry_price=avg_price,
                 side="long" if quantity > 0 else "short",
+                market_value=quantity * self._prices.get(symbol, avg_price),
+                unrealized_pnl=0.0,
             )
+        self._equity = self._cash + sum(float(pos.market_value or 0.0) for pos in self._positions.values())
 
     def clear_all_positions(self) -> None:
         """Clear all positions (simulate manual close)."""
         self._positions.clear()
+        self._equity = self._cash
+
+    def _refresh_marks(self) -> None:
+        """Keep simulated cash/equity and position marks internally coherent."""
+        marked: dict[str, BrokerPosition] = {}
+        for symbol, position in self._positions.items():
+            price = self._prices.get(symbol)
+            if price is None or price <= 0:
+                continue
+            marked[symbol] = BrokerPosition(
+                symbol=symbol,
+                quantity=position.quantity,
+                avg_entry_price=position.avg_entry_price,
+                side=position.side,
+                unrealized_pnl=(price - position.avg_entry_price) * position.quantity,
+                market_value=position.quantity * price,
+            )
+        self._positions = marked
+        self._equity = self._cash + sum(float(position.market_value or 0.0) for position in marked.values())

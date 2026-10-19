@@ -98,6 +98,24 @@ def compute_target_positions(
     asset_classes = asset_classes or {}
     stop_prices = stop_prices or {}
     volatilities = volatilities or {}
+    supported_methods = {
+        SizingMethod.FIXED_FRACTION.value,
+        SizingMethod.VOL_TARGET.value,
+    }
+    if config.sizing_method not in supported_methods:
+        raise ValueError(
+            f"unsupported sizing_method {config.sizing_method!r}; "
+            f"supported methods are {', '.join(sorted(supported_methods))}"
+        )
+
+    if config.sizing_method == SizingMethod.VOL_TARGET.value:
+        missing_volatility = set(exposures) - set(volatilities)
+        if missing_volatility:
+            raise ValueError(
+                "vol_target requires fresh volatility for every symbol; missing "
+                + ", ".join(sorted(missing_volatility))
+            )
+
     targets: list[TargetPosition] = []
 
     for symbol, exposure in exposures.items():
@@ -150,14 +168,8 @@ def compute_target_positions(
                 risk_pct=config.per_position_risk_pct,
                 volatility=volatilities.get(symbol, 0.20),
             )
-        else:
-            qty = _size_fixed_fraction(
-                exposure=exposure,
-                price=price,
-                equity=state.equity,
-                risk_pct=config.per_position_risk_pct,
-                stop_price=stop_prices.get(symbol),
-            )
+        else:  # guarded above; keep the dispatch exhaustive
+            raise ValueError(f"unsupported sizing_method {config.sizing_method!r}")
 
         notional = abs(qty) * price
         targets.append(

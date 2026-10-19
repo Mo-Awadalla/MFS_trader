@@ -187,6 +187,63 @@ def _open_registry(args: argparse.Namespace):
     return ExperimentRegistry(args.experiment_root)
 
 
+def cmd_experiment_status(args: argparse.Namespace) -> int:
+    """Print a read-only Experiment lifecycle and evidence assessment."""
+    from experiments.lifecycle import RuntimeObservationStatus
+    from experiments.models import ExperimentNotFoundError
+
+    root = Path(args.experiment_root)
+    if not root.is_dir() or not (root / "index.sqlite").is_file():
+        print(
+            f"experiment-status error: no existing registry at {root}",
+            file=sys.stderr,
+        )
+        return 1
+
+    registry = _open_registry(args)
+    try:
+        assessment = registry.inspect_lifecycle(args.experiment_uuid)
+    except ExperimentNotFoundError as exc:
+        print(f"experiment-status error: {exc}", file=sys.stderr)
+        return 1
+    finally:
+        registry.close()
+
+    experiment = assessment.experiment
+    qualification = assessment.qualification
+    runtime = assessment.runtime
+    print(f"Experiment: {experiment.uuid}")
+    print(f"  promotion_status: {experiment.promotion_status.value}")
+    qualification_result = "qualified" if qualification.qualified else "not qualified"
+    print(f"  numerical_qualification: {qualification_result} ({qualification.status})")
+    print(f"  qualification_detail: {qualification.reason}")
+    if qualification.evaluation_id:
+        print(f"  evaluation_id: {qualification.evaluation_id}")
+    print("  last_runtime_evidence:")
+    print(f"    status: {runtime.status.value}")
+    print(f"    session_id: {runtime.session_id or '(none)'}")
+    print(f"    observed_until: {runtime.observed_until or '(none)'}")
+    if runtime.reason:
+        print(f"    detail: {runtime.reason}")
+
+    blockers = []
+    if not qualification.qualified:
+        blockers.append(f"Numerical qualification: {qualification.reason}")
+    if runtime.status == RuntimeObservationStatus.UNOBSERVED:
+        blockers.append("No paper-run runtime evidence is recorded")
+    elif runtime.status != RuntimeObservationStatus.LAST_SESSION_COMPLETED:
+        blockers.append(f"Runtime evidence: {runtime.reason or runtime.status.value}")
+    print("  observed_blockers:")
+    if blockers:
+        for blocker in blockers:
+            print(f"    - {blocker}")
+    else:
+        print("    - none observed")
+    print("  scope: observed blockers only; this is not a complete readiness checklist")
+    print("  authority: read-only report; it does not authorize trading")
+    return 0
+
+
 def cmd_confirm_paper_ops_pass(args: argparse.Namespace) -> int:
     """Operator confirmation: paper_ops -> live_dry_run."""
     from experiments.models import ExperimentNotFoundError
@@ -637,6 +694,18 @@ def build_parser() -> argparse.ArgumentParser:
     p_halt.add_argument("--db", required=True, help="Paper trading SQLite DB")
     p_halt.add_argument("--reason", default="manual_halt")
     p_halt.set_defaults(func=cmd_paper_halt)
+
+    p_experiment_status = sub.add_parser(
+        "experiment-status",
+        help="Read-only Experiment lifecycle, qualification, runtime evidence, and blockers",
+    )
+    p_experiment_status.add_argument(
+        "--experiment-root", required=True, help="Path to experiments registry root"
+    )
+    p_experiment_status.add_argument(
+        "--experiment-uuid", required=True, help="Explicit Experiment UUID to inspect"
+    )
+    p_experiment_status.set_defaults(func=cmd_experiment_status)
 
     p_confirm_paper_ops = sub.add_parser(
         "confirm-paper-ops-pass",

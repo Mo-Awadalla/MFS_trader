@@ -20,18 +20,22 @@ from __future__ import annotations
 
 import hashlib
 import sqlite3
+from collections.abc import Callable
 from dataclasses import dataclass
 
 import structlog
 
 from execution.base import (
     BrokerAdapter,
+    BrokerOpenOrdersSnapshot,
     BrokerOrderRequest,
     BrokerOrderResponse,
     OrderSide,
     OrderType,
+    QuoteEvidence,
     TimeInForce,
 )
+from execution.contracts import execution_contract_for
 from execution.order_state_machine import (
     IllegalTransitionError,
     OrderState,
@@ -61,6 +65,7 @@ class OrderIntent:
     side: OrderSide
     order_type: OrderType
     quantity: float
+    reference_price: float | None = None
     time_in_force: TimeInForce = TimeInForce.DAY
     limit_price: float | None = None
     stop_price: float | None = None
@@ -87,11 +92,15 @@ class OMS:
         conn: sqlite3.Connection,
         event_logger: EventLogger,
         environment: str = "paper",
+        outbound_risk_guard: Callable[
+            [OrderIntent, QuoteEvidence, BrokerOpenOrdersSnapshot], None
+        ] | None = None,
     ):
         self._broker = broker
         self._conn = conn
         self._logger = event_logger
         self._environment = environment
+        self._outbound_risk_guard = outbound_risk_guard
         self._frozen = False  # freeze new orders on DB failure
 
     @property
@@ -145,6 +154,42 @@ class OMS:
                 symbol=intent.symbol,
                 order_state=OrderState.BLOCKED_BY_RISK.value,
                 message="OMS frozen — order blocked",
+            )
+            return None
+
+        try:
+            contract = execution_contract_for(self._broker.name, intent.asset_class)
+            if intent.quantity <= 0:
+                raise ValueError("outbound order quantity must be positive")
+            quote = self._broker.get_quote(intent.symbol)
+            if quote is None:
+                raise ValueError("fresh timestamped quote evidence is unavailable")
+            quote.validate(expected_symbol=intent.symbol)
+            open_orders = self._broker.get_open_orders_snapshot()
+            open_orders.validate()
+            if self._outbound_risk_guard is None:
+                raise ValueError("outbound portfolio risk validator is unavailable")
+            self._outbound_risk_guard(intent, quote, open_orders)
+            constrained = contract.constrain_quantity(intent.quantity, quote.price)
+            if constrained <= 0 or constrained != intent.quantity:
+                raise ValueError("outbound order quantity violates the broker precision or notional contract")
+            for price in (intent.limit_price, intent.stop_price):
+                if price is not None and (not float(price) > 0 or not float(price) < float("inf")):
+                    raise ValueError("outbound order price must be finite and positive")
+            if (
+                contract.fractional_orders_require_day
+                and not float(intent.quantity).is_integer()
+                and intent.time_in_force != TimeInForce.DAY
+            ):
+                raise ValueError("fractional outbound orders require DAY time in force")
+        except (ValueError, ArithmeticError, RuntimeError) as error:
+            self._logger.log(
+                "ORDER_INTENT",
+                severity="WARN",
+                strategy=intent.strategy,
+                symbol=intent.symbol,
+                order_state=OrderState.BLOCKED_BY_RISK.value,
+                message=f"Outbound execution contract blocked order: {error}",
             )
             return None
 

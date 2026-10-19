@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import uuid
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from experiments.hashing import compute_experiment_hash
 from experiments.kill_switch import (
@@ -22,6 +23,9 @@ from experiments.models import (
     is_legal_promotion_transition,
 )
 from experiments.storage import ExperimentStore, utc_now_iso
+
+if TYPE_CHECKING:
+    from experiments.lifecycle import ExperimentLifecycleAssessment
 
 
 class ExperimentRegistry:
@@ -91,6 +95,17 @@ class ExperimentRegistry:
         if experiment is None:
             raise ExperimentNotFoundError(f"Experiment not found: {uuid}")
         return experiment
+
+    def inspect_lifecycle(self, uuid: str) -> ExperimentLifecycleAssessment:
+        """Return a read-only view of lifecycle, science, and runtime evidence.
+
+        Promotion status remains the registry's lifecycle source of truth.
+        The assessment does not mutate lifecycle state or grant execution
+        authority; transition methods and their evidence gates remain decisive.
+        """
+        from experiments.lifecycle import assess_experiment_lifecycle
+
+        return assess_experiment_lifecycle(self, uuid)
 
     def get_by_hash(self, experiment_hash: str) -> Experiment | None:
         return self.store.get_by_hash(experiment_hash)

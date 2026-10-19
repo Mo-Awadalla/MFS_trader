@@ -41,6 +41,80 @@ def test_engine_cli_help_exits_cleanly(capsys):
     assert "mfs-engine" in capsys.readouterr().out
 
 
+def test_experiment_status_cli_rejects_unknown_uuid(tmp_path, capsys):
+    registry = ExperimentRegistry(tmp_path / "experiments")
+    root = registry.root
+    registry.close()
+
+    rc = cli.main([
+        "experiment-status",
+        "--experiment-root", str(root),
+        "--experiment-uuid", "missing-experiment",
+    ])
+
+    assert rc == 1
+    assert "experiment-status error" in capsys.readouterr().err
+
+
+def test_experiment_status_cli_reports_missing_evidence_without_mutation(tmp_path, capsys):
+    registry = ExperimentRegistry(tmp_path / "experiments")
+    experiment = registry.create(ExperimentDraft(
+        label="status-missing-evidence",
+        snapshot=build_bb_aapl_1d_default_snapshot(),
+        promotion_status=PromotionStatus.VALIDATION_PASSED,
+    ))
+    root = registry.root
+    metadata_path = registry.store.metadata_path_for(experiment.uuid)
+    metadata_before = metadata_path.read_bytes()
+    registry.close()
+
+    rc = cli.main([
+        "experiment-status",
+        "--experiment-root", str(root),
+        "--experiment-uuid", experiment.uuid,
+    ])
+
+    out = capsys.readouterr().out
+    assert rc == 0
+    assert "promotion_status: validation_passed" in out
+    assert "numerical_qualification: not qualified" in out
+    assert "status: unobserved" in out
+    assert "No paper-run runtime evidence is recorded" in out
+    assert "does not authorize trading" in out
+    assert metadata_path.read_bytes() == metadata_before
+    assert not (root / experiment.uuid / "paper" / "sessions").exists()
+
+
+def test_experiment_status_cli_reports_malformed_evidence_without_mutation(tmp_path, capsys):
+    registry = ExperimentRegistry(tmp_path / "experiments")
+    experiment = registry.create(ExperimentDraft(
+        label="status-malformed-evidence",
+        snapshot=build_bb_aapl_1d_default_snapshot(),
+        promotion_status=PromotionStatus.VALIDATION_PASSED,
+    ))
+    root = registry.root
+    metadata_path = registry.store.metadata_path_for(experiment.uuid)
+    metadata_before = metadata_path.read_bytes()
+    registry.close()
+    malformed_session = root / experiment.uuid / "paper" / "sessions" / "broken.json"
+    malformed_session.parent.mkdir(parents=True)
+    malformed_session.write_text("{not valid JSON", encoding="utf-8")
+    malformed_before = malformed_session.read_bytes()
+
+    rc = cli.main([
+        "experiment-status",
+        "--experiment-root", str(root),
+        "--experiment-uuid", experiment.uuid,
+    ])
+
+    out = capsys.readouterr().out
+    assert rc == 0
+    assert "status: invalid_evidence" in out
+    assert "Cannot read paper-session evidence" in out
+    assert metadata_path.read_bytes() == metadata_before
+    assert malformed_session.read_bytes() == malformed_before
+
+
 def test_engine_preflight_loads_paper_config(capsys):
     rc = cli.main(["--config", "config/paper.toml", "preflight"])
 

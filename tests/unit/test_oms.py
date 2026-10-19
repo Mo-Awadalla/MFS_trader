@@ -3,10 +3,17 @@
 from __future__ import annotations
 
 import sqlite3
+from datetime import UTC, datetime, timedelta
 
 import pytest
 
-from execution.base import OrderSide, OrderType
+from execution.base import (
+    BrokerOpenOrdersSnapshot,
+    OrderSide,
+    OrderType,
+    QuoteEvidence,
+    TimeInForce,
+)
 from execution.oms import OMS, OrderIntent
 from execution.sim_broker.broker import SimBroker, SimBrokerConfig
 from storage.event_logger import EventLogger
@@ -31,7 +38,13 @@ def broker() -> SimBroker:
 @pytest.fixture
 def oms(db, broker) -> OMS:
     logger = EventLogger(db, environment="paper", run_id="test_run")
-    return OMS(broker, db, logger, environment="paper")
+    return OMS(broker, db, logger, environment="paper", outbound_risk_guard=_test_guard)
+
+
+def _test_guard(intent, quote, open_orders):
+    """These OMS lifecycle tests isolate OMS mechanics; runtime risk is tested separately."""
+    quote.validate(expected_symbol=intent.symbol)
+    open_orders.validate()
 
 
 def _make_intent(client_order_id=None, strategy="ma", symbol="AAPL", qty=10):
@@ -42,11 +55,39 @@ def _make_intent(client_order_id=None, strategy="ma", symbol="AAPL", qty=10):
         side=OrderSide.BUY,
         order_type=OrderType.MARKET,
         quantity=qty,
+        reference_price=150.0,
         bar_timestamp="2024-01-01T16:00:00Z",
     )
 
 
 class TestCreateAndSubmit:
+    def test_stale_provider_quote_blocks_before_intent_or_submit(self, oms, broker, db, monkeypatch):
+        now = datetime.now(UTC)
+        quote = QuoteEvidence("AAPL", 150.0, now - timedelta(minutes=1), now, "synthetic_test")
+        monkeypatch.setattr(broker, "get_quote", lambda _symbol: quote)
+        assert oms.create_and_submit(_make_intent()) is None
+        assert broker._orders == {}
+        assert db.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+
+    def test_incomplete_open_order_evidence_blocks_before_intent_or_submit(self, oms, broker, db, monkeypatch):
+        now = datetime.now(UTC)
+        snapshot = BrokerOpenOrdersSnapshot((), now, False, "incomplete_test")
+        monkeypatch.setattr(broker, "get_open_orders_snapshot", lambda: snapshot)
+        assert oms.create_and_submit(_make_intent()) is None
+        assert broker._orders == {}
+        assert db.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+
+    def test_outbound_contract_blocks_unrounded_and_non_day_fractional_orders(self, oms, broker, db):
+        invalid_precision = _make_intent(qty=0.1234567)
+        assert oms.create_and_submit(invalid_precision) is None
+
+        non_day = _make_intent(qty=0.5)
+        non_day.time_in_force = TimeInForce.GTC
+        assert oms.create_and_submit(non_day) is None
+
+        assert broker._orders == {}
+        assert db.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+
     def test_successful_order(self, oms, db):
         intent = _make_intent()
         client_id = oms.create_and_submit(intent)
@@ -69,7 +110,7 @@ class TestCreateAndSubmit:
         reject_broker = SimBroker(SimBrokerConfig(reject_probability=1.0, seed=42))
         reject_broker.connect()
         logger = EventLogger(db, environment="paper")
-        reject_oms = OMS(reject_broker, db, logger, environment="paper")
+        reject_oms = OMS(reject_broker, db, logger, environment="paper", outbound_risk_guard=_test_guard)
 
         intent = _make_intent()
         client_id = reject_oms.create_and_submit(intent)
@@ -106,7 +147,7 @@ class TestTimeout:
         timeout_broker = SimBroker(SimBrokerConfig(timeout_probability=1.0, seed=42))
         timeout_broker.connect()
         logger = EventLogger(db, environment="paper")
-        timeout_oms = OMS(timeout_broker, db, logger, environment="paper")
+        timeout_oms = OMS(timeout_broker, db, logger, environment="paper", outbound_risk_guard=_test_guard)
 
         intent = _make_intent()
         client_id = timeout_oms.create_and_submit(intent)
@@ -117,7 +158,7 @@ class TestTimeout:
         timeout_broker = SimBroker(SimBrokerConfig(timeout_probability=1.0, seed=42))
         timeout_broker.connect()
         logger = EventLogger(db, environment="paper")
-        timeout_oms = OMS(timeout_broker, db, logger, environment="paper")
+        timeout_oms = OMS(timeout_broker, db, logger, environment="paper", outbound_risk_guard=_test_guard)
 
         intent = _make_intent()
         timeout_oms.create_and_submit(intent)
@@ -130,7 +171,7 @@ class TestTimeout:
         broker = SimBroker(SimBrokerConfig(seed=42))
         broker.connect()
         logger = EventLogger(db, environment="paper")
-        oms = OMS(broker, db, logger, environment="paper")
+        oms = OMS(broker, db, logger, environment="paper", outbound_risk_guard=_test_guard)
 
         # Submit and get filled
         intent = _make_intent()
@@ -148,7 +189,7 @@ class TestPartialFills:
         partial_broker = SimBroker(SimBrokerConfig(partial_fill_probability=1.0, seed=42))
         partial_broker.connect()
         logger = EventLogger(db, environment="paper")
-        partial_oms = OMS(partial_broker, db, logger, environment="paper")
+        partial_oms = OMS(partial_broker, db, logger, environment="paper", outbound_risk_guard=_test_guard)
 
         intent = _make_intent(qty=100)
         client_id = partial_oms.create_and_submit(intent)
@@ -181,6 +222,14 @@ class TestFreeze:
         intent = _make_intent()
         client_id = oms.create_and_submit(intent)
         assert client_id is not None
+
+    def test_missing_risk_guard_blocks_before_intent_or_submit(self, db):
+        broker = SimBroker()
+        broker.connect()
+        oms_without_guard = OMS(broker, db, EventLogger(db, environment="paper"))
+        assert oms_without_guard.create_and_submit(_make_intent()) is None
+        assert broker._orders == {}
+        assert db.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
 
 
 class TestDeterministicClientId:

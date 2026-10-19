@@ -7,6 +7,9 @@ truth, and ``process_bar`` freezes on UNKNOWN / blocks new orders on PARTIAL.
 
 from __future__ import annotations
 
+from dataclasses import replace
+from datetime import UTC, datetime
+
 import pandas as pd
 
 from config.schema import (
@@ -26,6 +29,8 @@ from engine.runtime import TradingEngine
 from execution.base import BrokerAccount, BrokerPosition
 from execution.sim_broker.broker import SimBroker, SimBrokerConfig
 from portfolio.state import PortfolioState as PortfolioStateAuthority
+from risk.inputs import RiskMetadataSnapshot
+from storage.repository import upsert_order
 from storage.schema import init_db
 
 
@@ -75,6 +80,44 @@ def _make_engine(config: Config, broker: SimBroker) -> TradingEngine:
 
 
 class TestRuntimePortfolioStateDerivation:
+    def test_missing_risk_metadata_blocks_before_order_intent(self) -> None:
+        broker = SimBroker(SimBrokerConfig())
+        broker.connect()
+        broker.set_price("AAPL", 100.0)
+        engine = _make_engine(_make_config(), broker)
+        engine._risk_metadata_provider = lambda _symbols: RiskMetadataSnapshot(
+            sectors={}, correlations={}, observed_at=datetime.now(UTC), source="incomplete_test_fixture"
+        )
+        bars = pd.DataFrame(
+            {"open": [100.0], "high": [101.0], "low": [99.0], "close": [100.5], "volume": [1_000_000.0]},
+            index=pd.DatetimeIndex(["2024-01-02"], name="timestamp"),
+        )
+        evaluation = engine.process_bar(
+            bars=bars, prices={"AAPL": 100.5}, bar_timestamp="2024-01-02T00:00:00Z"
+        )
+        assert evaluation is not None and evaluation.is_rejected
+        assert "risk_metadata_unavailable" in evaluation.rejection_reasons[0]
+        assert engine._conn.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 0
+
+    def test_small_account_does_not_bypass_sector_or_minimum_notional_limits(self) -> None:
+        broker = SimBroker(SimBrokerConfig(starting_cash=100.0, slippage_pct=0.0))
+        broker.connect()
+        broker.set_price("AAPL", 10.0)
+        config = _make_config()
+        config = replace(config, portfolio=replace(config.portfolio, per_position_risk_pct=0.05))
+        engine = _make_engine(config, broker)
+        bars = pd.DataFrame(
+            {"open": [10.0], "high": [10.1], "low": [9.9], "close": [10.0], "volume": [1_000_000.0]},
+            index=pd.DatetimeIndex(["2024-01-02"], name="timestamp"),
+        )
+        evaluation = engine.process_bar(bars=bars, prices={"AAPL": 10.0}, bar_timestamp="2024-01-02T00:00:00Z")
+        order = engine._conn.execute(
+            "SELECT requested_qty FROM orders_live WHERE strategy='test_strategy'"
+        ).fetchone()
+        assert evaluation is not None and evaluation.adjusted_targets[0].target_notional == 10.0
+        assert order is None  # Below the unchanged $25 minimum-notional rebalance threshold.
+        assert broker.get_account().equity == 100.0
+
     def test_reconcile_broker_unreachable_sets_unknown(self) -> None:
         broker = _FailingBroker()
         engine = _make_engine(_make_config(), broker)
@@ -107,7 +150,32 @@ class TestRuntimePortfolioStateDerivation:
     def test_process_bar_blocks_orders_on_partial(self) -> None:
         broker = _FailingBroker()
         engine = _make_engine(_make_config(), broker)
-        engine._state.portfolio_state_authority = PortfolioStateAuthority.PARTIAL
+        upsert_order(engine._conn, {
+            "client_order_id": "pending-test-order",
+            "broker_order_id": "broker-pending-test-order",
+            "broker": "sim_broker",
+            "account_id": "sim_account",
+            "environment": "paper",
+            "strategy": "other_strategy",
+            "symbol": "MSFT",
+            "asset_class": "equity",
+            "side": "buy",
+            "order_type": "limit",
+            "time_in_force": "day",
+            "limit_price": 100.0,
+            "stop_price": None,
+            "requested_qty": 1.0,
+            "filled_qty": 0.0,
+            "remaining_qty": 1.0,
+            "avg_fill_price": None,
+            "notional": 100.0,
+            "currency": "USD",
+            "order_state": "ACKNOWLEDGED",
+            "reconciliation_status": "NOT_CHECKED",
+            "bar_timestamp": None,
+            "correlation_id": None,
+            "version": None,
+        })
         bars = pd.DataFrame(
             {"open": [100.0], "high": [101.0], "low": [99.0], "close": [100.5], "volume": [1_000_000.0]},
             index=pd.DatetimeIndex(["2024-01-02"], name="timestamp"),
@@ -117,7 +185,52 @@ class TestRuntimePortfolioStateDerivation:
             prices={"AAPL": 100.5},
             bar_timestamp="2024-01-02T00:00:00Z",
         )
-        # Risk evaluation still runs (the bar is processed) but no orders are
-        # submitted — the OMS remains empty.
-        orders = engine._conn.execute("SELECT COUNT(*) AS n FROM orders_live").fetchone()
+        # A known small pending order makes the portfolio PARTIAL. It blocks
+        # entries until reconciliation and no unrelated order is submitted.
+        orders = engine._conn.execute(
+            "SELECT COUNT(*) AS n FROM orders_live WHERE strategy='test_strategy'"
+        ).fetchone()
         assert orders["n"] == 0
+
+    def test_partial_state_allows_only_confirmed_risk_reducing_exit(self) -> None:
+        broker = _FailingBroker()
+        broker.inject_position("AAPL", 1.0, 100.0)
+        engine = _make_engine(_make_config(), broker)
+        engine._strategy_fn = lambda bars, params: {"AAPL": 0.0}
+        upsert_order(engine._conn, {
+            "client_order_id": "pending-safe-exit-test",
+            "broker_order_id": "broker-pending-safe-exit-test",
+            "broker": "sim_broker",
+            "account_id": "sim_account",
+            "environment": "paper",
+            "strategy": "other_strategy",
+            "symbol": "MSFT",
+            "asset_class": "equity",
+            "side": "buy",
+            "order_type": "limit",
+            "time_in_force": "day",
+            "limit_price": 100.0,
+            "stop_price": None,
+            "requested_qty": 1.0,
+            "filled_qty": 0.0,
+            "remaining_qty": 1.0,
+            "avg_fill_price": None,
+            "notional": 100.0,
+            "currency": "USD",
+            "order_state": "ACKNOWLEDGED",
+            "reconciliation_status": "NOT_CHECKED",
+            "bar_timestamp": None,
+            "correlation_id": None,
+            "version": None,
+        })
+        bars = pd.DataFrame(
+            {"open": [100.0], "high": [101.0], "low": [99.0], "close": [100.5], "volume": [1_000_000.0]},
+            index=pd.DatetimeIndex(["2024-01-02"], name="timestamp"),
+        )
+        engine.process_bar(bars=bars, prices={"AAPL": 100.5}, bar_timestamp="2024-01-02T00:00:00Z")
+        exits = engine._conn.execute(
+            "SELECT symbol,side,requested_qty FROM orders_live WHERE strategy='test_strategy'"
+        ).fetchall()
+        assert [(row["symbol"], row["side"], row["requested_qty"]) for row in exits] == [
+            ("AAPL", "sell", 1.0)
+        ]
