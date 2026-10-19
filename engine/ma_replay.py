@@ -341,6 +341,9 @@ def run_compatibility_research(
         high_water_mark=initial_capital,
     )
     drawdown = DrawdownState(
+        daily_pnl=0.0,
+        weekly_pnl=0.0,
+        monthly_pnl=0.0,
         high_water_mark=initial_capital,
         current_equity=initial_capital,
     )

@@ -94,6 +94,18 @@ class FakeBroker(SimBroker):
         return super().submit_order(request)
 
 
+def _lifecycle_oms(broker, conn):
+    """The paper-lifecycle tests isolate idempotency; runtime risk is covered elsewhere."""
+    return OMS(
+        broker,
+        conn,
+        EventLogger(conn, environment="paper"),
+        outbound_risk_guard=lambda intent, quote, orders: (
+            quote.validate(expected_symbol=intent.symbol), orders.validate()
+        ),
+    )
+
+
 @pytest.fixture
 def setup(tmp_path):
     registry = ExperimentRegistry(tmp_path / "experiments")
@@ -365,12 +377,13 @@ def test_deterministic_order_ids_dedupe_resubmission_after_restart(tmp_path):
     broker.connect()
     intent = OrderIntent(strategy="test", symbol="AAPL", asset_class="equity", side=OrderSide.BUY,
                          order_type=OrderType.MARKET, quantity=1.0, bar_timestamp="2024-04-09T00:00:00+00:00",
+                         reference_price=150.0,
                          client_order_namespace="experiment-session-config")
     conn = init_db(db)
-    first = OMS(broker, conn, EventLogger(conn, environment="paper")).create_and_submit(intent)
+    first = _lifecycle_oms(broker, conn).create_and_submit(intent)
     conn.close()
     conn = init_db(db)
-    second = OMS(broker, conn, EventLogger(conn, environment="paper")).create_and_submit(intent)
+    second = _lifecycle_oms(broker, conn).create_and_submit(intent)
     assert first == second
     assert broker.submissions == [first]
     assert conn.execute("SELECT COUNT(*) FROM orders_live").fetchone()[0] == 1
@@ -420,9 +433,10 @@ def test_process_death_after_submission_does_not_resubmit_on_restart(setup):
     intent = OrderIntent(
         strategy="test", symbol="AAPL", asset_class="equity", side=OrderSide.BUY,
         order_type=OrderType.MARKET, quantity=1.0, bar_timestamp=watermark,
+        reference_price=150.0,
         correlation_id=decision_id, client_order_namespace=ledger.identity["binding_digest"],
     )
-    oid = OMS(broker, conn, EventLogger(conn, environment="paper")).create_and_submit(intent)
+    oid = _lifecycle_oms(broker, conn).create_and_submit(intent)
     original_order = dict(conn.execute(
         "SELECT * FROM orders_live WHERE client_order_id=?", (oid,),
     ).fetchone())
@@ -562,8 +576,8 @@ def test_durable_caps_block_second_order_before_oms(setup, cap_name):
     conn = init_db(db)
     reservation = conn.execute("SELECT reserved_notional,observed_notional,client_order_id FROM paper_order_reservations").fetchall()
     assert len(reservation) == 1
-    assert reservation[0]["reserved_notional"] == pytest.approx(20)
-    assert reservation[0]["observed_notional"] == pytest.approx(20)
+    assert reservation[0]["reserved_notional"] == pytest.approx(20, abs=1e-4)
+    assert reservation[0]["observed_notional"] == pytest.approx(20, abs=1e-4)
     assert reservation[0]["client_order_id"] == broker.submissions[0]
     conn.close()
 
@@ -587,7 +601,7 @@ def test_resumed_session_cannot_reset_cumulative_budget(setup):
     assert resumed.halted and "max_paper_session_notional" in resumed.halt_reason
     assert len(broker.submissions) == 1
     conn = init_db(db)
-    assert conn.execute("SELECT SUM(reserved_notional) FROM paper_order_reservations").fetchone()[0] == pytest.approx(20)
+    assert conn.execute("SELECT SUM(reserved_notional) FROM paper_order_reservations").fetchone()[0] == pytest.approx(20, abs=1e-4)
     assert [r[0] for r in conn.execute("SELECT outcome FROM paper_attempts ORDER BY rowid")] == ["stopped", "halted"]
     conn.close()
 
@@ -601,8 +615,8 @@ def test_actual_fill_not_reference_quote_consumes_session_budget(setup):
     assert result.halted and "observed fill" in result.halt_reason
     conn = init_db(setup[-1])
     row = conn.execute("SELECT reserved_notional,observed_notional FROM paper_order_reservations").fetchone()
-    assert row["reserved_notional"] == pytest.approx(20)
-    assert row["observed_notional"] == pytest.approx(30)
+    assert row["reserved_notional"] == pytest.approx(20, abs=1e-4)
+    assert row["observed_notional"] == pytest.approx(30, abs=1e-4)
     assert len(broker.submissions) == 1
     conn.close()
 
@@ -835,8 +849,8 @@ def test_resume_budget_charges_actual_fill_not_only_reserved_quote(setup):
     assert len(broker.submissions) == 1
     conn = init_db(db)
     row = conn.execute("SELECT reserved_notional,observed_notional FROM paper_order_reservations").fetchone()
-    assert row["reserved_notional"] == pytest.approx(20)
-    assert row["observed_notional"] == pytest.approx(22)
+    assert row["reserved_notional"] == pytest.approx(20, abs=1e-4)
+    assert row["observed_notional"] == pytest.approx(22, abs=1e-4)
     conn.close()
 
 

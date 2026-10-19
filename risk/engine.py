@@ -15,6 +15,7 @@ Unknown state → freeze + alert + manual review.
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass, field
 from enum import StrEnum
 from typing import Any
@@ -68,24 +69,30 @@ class RiskEvaluation:
 class DrawdownState:
     """Current drawdown tracking state."""
 
-    daily_pnl: float = 0.0
-    weekly_pnl: float = 0.0
-    monthly_pnl: float = 0.0
+    daily_pnl: float | None = None
+    weekly_pnl: float | None = None
+    monthly_pnl: float | None = None
     high_water_mark: float = 0.0
     current_equity: float = 0.0
+    daily_baseline: float | None = None
+    weekly_baseline: float | None = None
+    monthly_baseline: float | None = None
     consecutive_losses: int = 0
 
     @property
     def daily_loss_pct(self) -> float:
-        return self.daily_pnl / self.high_water_mark if self.high_water_mark > 0 else 0.0
+        baseline = self.daily_baseline if self.daily_baseline is not None else self.high_water_mark
+        return self.daily_pnl / baseline if self.daily_pnl is not None and baseline > 0 else float("nan")
 
     @property
     def weekly_loss_pct(self) -> float:
-        return self.weekly_pnl / self.high_water_mark if self.high_water_mark > 0 else 0.0
+        baseline = self.weekly_baseline if self.weekly_baseline is not None else self.high_water_mark
+        return self.weekly_pnl / baseline if self.weekly_pnl is not None and baseline > 0 else float("nan")
 
     @property
     def monthly_loss_pct(self) -> float:
-        return self.monthly_pnl / self.high_water_mark if self.high_water_mark > 0 else 0.0
+        baseline = self.monthly_baseline if self.monthly_baseline is not None else self.high_water_mark
+        return self.monthly_pnl / baseline if self.monthly_pnl is not None and baseline > 0 else float("nan")
 
     @property
     def drawdown_from_hwm(self) -> float:
@@ -153,6 +160,7 @@ class RiskEngine:
         *,
         strategy_name: str = "",
         current_positions: dict[str, dict[str, Any]] | None = None,
+        pending_orders: list[dict[str, Any]] | None = None,
         sector_map: dict[str, str] | None = None,
         correlation_matrix: dict[str, dict[str, float]] | None = None,
     ) -> RiskEvaluation:
@@ -172,7 +180,17 @@ class RiskEngine:
         """
         evaluation = RiskEvaluation()
         current_positions = current_positions or {}
+        pending_orders = pending_orders or []
         sector_map = sector_map or {}
+
+        invalid_input = _risk_input_error(targets, state, drawdown, current_positions, pending_orders)
+        if invalid_input:
+            evaluation.final_decision = RiskDecision.REJECTED
+            evaluation.rejection_reasons.append(f"risk_input_invalid: {invalid_input}")
+            evaluation.decisions.append(
+                RiskCheckResult("risk_input_validity", RiskDecision.REJECTED, invalid_input)
+            )
+            return evaluation
 
         # 1. Kill switch — blocks everything
         if self._kill_switch_active:
@@ -256,18 +274,26 @@ class RiskEngine:
         targets = self._check_max_open_positions(targets, current_positions, evaluation)
 
         # 9. Gross exposure
-        targets = self._check_gross_exposure(targets, state, evaluation)
+        targets = self._check_gross_exposure(
+            targets, state, evaluation, current_positions, pending_orders
+        )
 
         # 10. Net exposure
-        targets = self._check_net_exposure(targets, state, evaluation)
+        targets = self._check_net_exposure(
+            targets, state, evaluation, current_positions, pending_orders
+        )
 
         # 11. Sector exposure
         if sector_map:
-            targets = self._check_sector_exposure(targets, state, sector_map, evaluation)
+            targets = self._check_sector_exposure(
+                targets, state, sector_map, evaluation, current_positions, pending_orders
+            )
 
         # 12. Correlation cluster
         if correlation_matrix:
-            targets = self._check_correlation_cluster(targets, state, correlation_matrix, evaluation)
+            targets = self._check_correlation_cluster(
+                targets, state, correlation_matrix, evaluation, current_positions, pending_orders
+            )
 
         evaluation.adjusted_targets = targets
 
@@ -381,13 +407,24 @@ class RiskEngine:
         targets: list[TargetPosition],
         state: PortfolioState,
         evaluation: RiskEvaluation,
+        current_positions: dict[str, dict[str, Any]],
+        pending_orders: list[dict[str, Any]],
     ) -> list[TargetPosition]:
-        """Ensure total gross notional ≤ max_gross_exposure_pct of equity."""
-        total_gross = sum(t.target_notional for t in targets if not t.is_flat)
+        """Cap resulting gross exposure, including current and pending exposure."""
+        symbols = {t.symbol for t in targets}
+        current_gross = sum(
+            _position_notional(symbol, pos)
+            for symbol, pos in current_positions.items()
+            if symbol not in symbols
+        )
+        pending_gross = sum(_pending_notional(order) for order in pending_orders)
+        target_gross = sum(t.target_notional for t in targets if not t.is_flat)
+        total_gross = current_gross + pending_gross + target_gross
         max_gross = self.limits.max_gross_exposure_pct * state.equity
 
         if total_gross > max_gross:
-            scale = max_gross / total_gross if total_gross > 0 else 0.0
+            available = max(0.0, max_gross - current_gross - pending_gross)
+            scale = available / target_gross if target_gross > 0 else 0.0
             evaluation.decisions.append(
                 RiskCheckResult(
                     "gross_exposure",
@@ -408,20 +445,56 @@ class RiskEngine:
         targets: list[TargetPosition],
         state: PortfolioState,
         evaluation: RiskEvaluation,
+        current_positions: dict[str, dict[str, Any]],
+        pending_orders: list[dict[str, Any]],
     ) -> list[TargetPosition]:
-        """Ensure |net exposure| ≤ max_net_exposure_pct of equity."""
-        net = sum(t.target_qty * t.current_price for t in targets if not t.is_flat)
+        """Ensure |resulting net exposure| ≤ max_net_exposure_pct of equity."""
+        symbols = {t.symbol for t in targets}
+        fixed_net = sum(
+            _position_signed_notional(symbol, pos)
+            for symbol, pos in current_positions.items()
+            if symbol not in symbols
+        ) + sum(_pending_signed_notional(order) for order in pending_orders)
+        target_net = sum(t.target_qty * t.current_price for t in targets if not t.is_flat)
+        net = fixed_net + target_net
         max_net = self.limits.max_net_exposure_pct * state.equity
 
         if abs(net) > max_net:
+            # Find the largest scale in [0, 1] that satisfies both sides of
+            # the net bound. If the fixed book is already outside the limit,
+            # no target scaling can be assumed safe; reject instead.
+            if abs(fixed_net) > max_net or abs(target_net) < 1e-12:
+                evaluation.decisions.append(
+                    RiskCheckResult(
+                        "net_exposure",
+                        RiskDecision.REJECTED,
+                        f"fixed net exposure {fixed_net:.2f} cannot be brought within ±{max_net:.2f} by target scaling",
+                    )
+                )
+                evaluation.rejection_reasons.append("net_exposure: fixed or pending book exceeds limit")
+                return []
+
+            bounds = sorted(((-max_net - fixed_net) / target_net, (max_net - fixed_net) / target_net))
+            upper = min(1.0, bounds[1])
+            lower = max(0.0, bounds[0])
+            if lower > upper:
+                evaluation.decisions.append(
+                    RiskCheckResult("net_exposure", RiskDecision.REJECTED, "no safe target scale satisfies net limit")
+                )
+                evaluation.rejection_reasons.append("net_exposure: no safe target scale")
+                return []
+            scale = upper
             evaluation.decisions.append(
                 RiskCheckResult(
                     "net_exposure",
                     RiskDecision.REDUCED,
-                    f"net {net:.2f} > ±{max_net:.2f}",
+                    f"net {net:.2f} > ±{max_net:.2f}, scaling proposed targets by {scale:.2%}",
                 )
             )
             evaluation.reduction_reasons.append("net_exposure")
+            for target in targets:
+                target.target_qty *= scale
+                target.target_notional = abs(target.target_qty) * target.current_price
 
         return targets
 
@@ -431,6 +504,8 @@ class RiskEngine:
         state: PortfolioState,
         sector_map: dict[str, str],
         evaluation: RiskEvaluation,
+        current_positions: dict[str, dict[str, Any]],
+        pending_orders: list[dict[str, Any]],
     ) -> list[TargetPosition]:
         """Check per-sector gross and net exposure limits."""
         sector_gross: dict[str, float] = {}
@@ -446,27 +521,76 @@ class RiskEngine:
         max_sector_gross = self.limits.max_sector_gross_pct * state.equity
         max_sector_net = self.limits.max_sector_net_pct * state.equity
 
+        target_symbols = {t.symbol for t in targets}
+        fixed_sector_gross: dict[str, float] = {}
+        fixed_sector_net: dict[str, float] = {}
+        for symbol, pos in current_positions.items():
+            if symbol in target_symbols:
+                continue
+            sector = sector_map.get(symbol, "unknown")
+            fixed_sector_gross[sector] = fixed_sector_gross.get(sector, 0.0) + _position_notional(symbol, pos)
+            fixed_sector_net[sector] = fixed_sector_net.get(sector, 0.0) + _position_signed_notional(symbol, pos)
+        for order in pending_orders:
+            sector = sector_map.get(str(order.get("symbol", "")), "unknown")
+            fixed_sector_gross[sector] = fixed_sector_gross.get(sector, 0.0) + _pending_notional(order)
+            fixed_sector_net[sector] = fixed_sector_net.get(sector, 0.0) + _pending_signed_notional(order)
+
         for sector, gross in sector_gross.items():
-            if gross > max_sector_gross:
+            resulting = gross + fixed_sector_gross.get(sector, 0.0)
+            if resulting > max_sector_gross:
+                available = max(0.0, max_sector_gross - fixed_sector_gross.get(sector, 0.0))
+                scale = available / gross if gross > 0 else 0.0
                 evaluation.decisions.append(
                     RiskCheckResult(
                         "sector_gross",
                         RiskDecision.REDUCED,
-                        f"sector {sector}: gross {gross:.2f} > {max_sector_gross:.2f}",
+                        f"sector {sector}: resulting gross {resulting:.2f} > {max_sector_gross:.2f}; scaled by {scale:.2%}",
                     )
                 )
                 evaluation.reduction_reasons.append(f"sector_gross: {sector}")
+                for target in targets:
+                    if sector_map.get(target.symbol, "unknown") == sector:
+                        target.target_qty *= scale
+                        target.target_notional = abs(target.target_qty) * target.current_price
+
+        # Recalculate after gross reductions so net checks use the actual
+        # targets that will be returned to the caller.
+        sector_net = {}
+        for target in targets:
+            if not target.is_flat:
+                sector = sector_map.get(target.symbol, "unknown")
+                sector_net[sector] = sector_net.get(sector, 0.0) + target.target_qty * target.current_price
 
         for sector, net in sector_net.items():
-            if abs(net) > max_sector_net:
+            fixed = fixed_sector_net.get(sector, 0.0)
+            resulting = net + fixed
+            if abs(resulting) > max_sector_net:
+                if abs(fixed) > max_sector_net or abs(net) < 1e-12:
+                    evaluation.decisions.append(
+                        RiskCheckResult("sector_net", RiskDecision.REJECTED, f"sector {sector}: fixed exposure exceeds limit")
+                    )
+                    evaluation.rejection_reasons.append(f"sector_net: {sector} fixed exposure exceeds limit")
+                    continue
+                bounds = sorted(((-max_sector_net - fixed) / net, (max_sector_net - fixed) / net))
+                scale = min(1.0, bounds[1])
+                if scale < 0.0 or max(0.0, bounds[0]) > scale:
+                    evaluation.decisions.append(
+                        RiskCheckResult("sector_net", RiskDecision.REJECTED, f"sector {sector}: no safe target scale")
+                    )
+                    evaluation.rejection_reasons.append(f"sector_net: {sector} no safe target scale")
+                    continue
                 evaluation.decisions.append(
                     RiskCheckResult(
                         "sector_net",
                         RiskDecision.REDUCED,
-                        f"sector {sector}: net {net:.2f} > ±{max_sector_net:.2f}",
+                        f"sector {sector}: resulting net {resulting:.2f} > ±{max_sector_net:.2f}; scaled by {scale:.2%}",
                     )
                 )
                 evaluation.reduction_reasons.append(f"sector_net: {sector}")
+                for target in targets:
+                    if sector_map.get(target.symbol, "unknown") == sector:
+                        target.target_qty *= scale
+                        target.target_notional = abs(target.target_qty) * target.current_price
 
         return targets
 
@@ -476,13 +600,20 @@ class RiskEngine:
         state: PortfolioState,
         correlation_matrix: dict[str, dict[str, float]],
         evaluation: RiskEvaluation,
+        current_positions: dict[str, dict[str, Any]],
+        pending_orders: list[dict[str, Any]],
     ) -> list[TargetPosition]:
         """Check that correlated position clusters don't exceed limits."""
         threshold = self.limits.correlation_threshold
         max_cluster_gross = self.limits.max_correlated_cluster_gross_pct * state.equity
 
         # Build clusters: group symbols with correlation > threshold
-        active_symbols = [t.symbol for t in targets if not t.is_flat]
+        targeted_symbols = {t.symbol for t in targets}
+        active_symbols = list(
+            {t.symbol for t in targets if not t.is_flat}
+            | {symbol for symbol, pos in current_positions.items() if symbol not in targeted_symbols and _position_quantity(pos) != 0}
+            | {str(order.get("symbol", "")) for order in pending_orders if _pending_notional(order) > 0}
+        )
         clusters = self._find_correlation_clusters(active_symbols, correlation_matrix, threshold)
 
         for cluster_id, symbols in clusters.items():
@@ -491,15 +622,33 @@ class RiskEngine:
             cluster_gross = sum(
                 t.target_notional for t in targets if t.symbol in symbols and not t.is_flat
             )
+            cluster_gross += sum(
+                _position_notional(symbol, pos)
+                for symbol, pos in current_positions.items()
+                if symbol in symbols and symbol not in targeted_symbols
+            )
+            cluster_gross += sum(
+                _pending_notional(order)
+                for order in pending_orders
+                if str(order.get("symbol", "")) in symbols
+            )
             if cluster_gross > max_cluster_gross:
+                target_gross = sum(
+                    t.target_notional for t in targets if t.symbol in symbols and not t.is_flat
+                )
+                scale = max(0.0, max_cluster_gross - (cluster_gross - target_gross)) / target_gross if target_gross else 0.0
                 evaluation.decisions.append(
                     RiskCheckResult(
                         "correlation_cluster",
                         RiskDecision.REDUCED,
-                        f"cluster {cluster_id} ({symbols}): gross {cluster_gross:.2f} > {max_cluster_gross:.2f}",
+                        f"cluster {cluster_id} ({symbols}): gross {cluster_gross:.2f} > {max_cluster_gross:.2f}; scaled by {scale:.2%}",
                     )
                 )
                 evaluation.reduction_reasons.append(f"correlation_cluster: {cluster_id}")
+                for target in targets:
+                    if target.symbol in symbols:
+                        target.target_qty *= scale
+                        target.target_notional = abs(target.target_qty) * target.current_price
 
         return targets
 
@@ -536,6 +685,93 @@ class RiskEngine:
             clusters.setdefault(hash(root), []).append(s)
 
         return clusters
+
+
+def _position_quantity(position: dict[str, Any]) -> float:
+    quantity = position.get("quantity", position.get("qty", 0.0))
+    value = float(quantity)
+    if not math.isfinite(value):
+        raise ValueError("position quantity is not finite")
+    return value
+
+
+def _position_price(symbol: str, position: dict[str, Any]) -> float:
+    price = position.get(
+        "mark_price",
+        position.get("last_price", position.get("current_price", position.get("avg_price", position.get("avg_entry_price")))),
+    )
+    if price is None and position.get("notional") is not None:
+        qty = _position_quantity(position)
+        price = abs(float(position["notional"]) / qty) if qty else 0.0
+    value = float(price or 0.0)
+    if not math.isfinite(value) or (abs(_position_quantity(position)) > 1e-12 and value <= 0.0):
+        raise ValueError(f"position {symbol} has no finite positive mark price")
+    return value
+
+
+def _position_notional(symbol: str, position: dict[str, Any]) -> float:
+    return abs(_position_quantity(position) * _position_price(symbol, position))
+
+
+def _position_signed_notional(symbol: str, position: dict[str, Any]) -> float:
+    return _position_quantity(position) * _position_price(symbol, position)
+
+
+def _pending_notional(order: dict[str, Any]) -> float:
+    quantity = float(order.get("remaining_qty", order.get("quantity", 0.0)) or 0.0)
+    price = float(order.get("limit_price") or order.get("avg_fill_price") or order.get("last_price") or 0.0)
+    if not math.isfinite(quantity) or not math.isfinite(price) or (abs(quantity) > 1e-12 and price <= 0.0):
+        raise ValueError(f"pending order {order.get('client_order_id', '<unknown>')} has incomplete exposure")
+    return abs(quantity * price)
+
+
+def _pending_signed_notional(order: dict[str, Any]) -> float:
+    notional = _pending_notional(order)
+    return notional if str(order.get("side", "buy")).lower().startswith("b") else -notional
+
+
+def _risk_input_error(
+    targets: list[TargetPosition],
+    state: PortfolioState,
+    drawdown: DrawdownState,
+    current_positions: dict[str, dict[str, Any]],
+    pending_orders: list[dict[str, Any]],
+) -> str | None:
+    pnls = (drawdown.daily_pnl, drawdown.weekly_pnl, drawdown.monthly_pnl)
+    if any(value is None for value in pnls):
+        return "daily, weekly, and monthly P&L must all be explicitly supplied"
+    numbers = (
+        state.cash,
+        state.equity,
+        state.high_water_mark,
+        *pnls,
+        drawdown.high_water_mark,
+        drawdown.current_equity,
+    )
+    if any(not math.isfinite(float(value)) for value in numbers):
+        return "account or drawdown values are not finite"
+    if state.equity <= 0.0 or state.high_water_mark <= 0.0 or drawdown.high_water_mark <= 0.0:
+        return "equity and high-water marks must be positive"
+    for name, baseline in (
+        ("daily", drawdown.daily_baseline),
+        ("weekly", drawdown.weekly_baseline),
+        ("monthly", drawdown.monthly_baseline),
+    ):
+        if baseline is not None and (not math.isfinite(float(baseline)) or baseline <= 0.0):
+            return f"{name} loss baseline must be finite and positive"
+    for target in targets:
+        if any(not math.isfinite(float(value)) for value in (target.target_qty, target.target_notional, target.current_price)):
+            return f"target {target.symbol} contains a nonfinite value"
+        if not target.is_flat and target.current_price <= 0.0:
+            return f"target {target.symbol} has no positive current price"
+    try:
+        for symbol, position in current_positions.items():
+            _position_notional(symbol, position)
+        for order in pending_orders:
+            _pending_notional(order)
+    except (TypeError, ValueError, OverflowError) as error:
+        return str(error)
+    return None
 
 
 def classify_exception(error_type: str, context: dict[str, Any] | None = None) -> ExceptionSeverity:

@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import math
 import time
+from datetime import UTC, datetime
 from typing import Any
 from urllib.parse import quote
 
@@ -25,9 +26,12 @@ import structlog
 from execution.base import (
     BrokerAccount,
     BrokerAdapter,
+    BrokerOpenOrder,
+    BrokerOpenOrdersSnapshot,
     BrokerOrderRequest,
     BrokerOrderResponse,
     BrokerPosition,
+    QuoteEvidence,
 )
 
 log = structlog.get_logger(__name__)
@@ -348,6 +352,105 @@ class AlpacaAdapter(BrokerAdapter):
             return orders
         except (ValueError, TypeError, KeyError) as exc:
             raise RuntimeError(f"Alpaca open orders unavailable: malformed response: {exc}") from exc
+
+    def get_open_orders_snapshot(self) -> BrokerOpenOrdersSnapshot:
+        """Read a complete single-page open-order view; cap overflow is unknown."""
+        data = self._read_truth("open orders", "/v2/orders", params={"status": "open", "limit": 100})
+        observed_at = datetime.now(UTC)
+        try:
+            if not isinstance(data, list):
+                raise ValueError("expected a list")
+            if len(data) >= 100:
+                raise ValueError("open-order response reached the limit; completeness unavailable")
+            orders: list[BrokerOpenOrder] = []
+            ids: set[str] = set()
+            for item in data:
+                client_id = self._required_text(item, "client_order_id")
+                if client_id in ids:
+                    raise ValueError("duplicate client_order_id")
+                ids.add(client_id)
+                status = self._required_text(item, "status")
+                if status not in ALPACA_STATUS_MAP:
+                    raise ValueError("unrecognized order status")
+                symbol = self._required_text(item, "symbol")
+                side = self._required_text(item, "side").lower()
+                if side not in {"buy", "sell"}:
+                    raise ValueError("invalid order side")
+                quantity = self._finite_number(item, "qty")
+                filled = self._finite_number(item, "filled_qty")
+                if quantity <= 0 or not 0 <= filled <= quantity:
+                    raise ValueError("invalid order quantities")
+                limit_price = item.get("limit_price")
+                if limit_price is not None:
+                    limit_price = self._finite_number(item, "limit_price")
+                    if limit_price <= 0:
+                        raise ValueError("invalid limit_price")
+                average = item.get("filled_avg_price")
+                if average is not None:
+                    average = self._finite_number(item, "filled_avg_price")
+                    if average <= 0:
+                        raise ValueError("invalid filled_avg_price")
+                if filled > 0 and average is None:
+                    raise ValueError("missing filled_avg_price")
+                orders.append(BrokerOpenOrder(
+                    client_order_id=client_id,
+                    broker_order_id=self._required_text(item, "id"),
+                    symbol=symbol,
+                    side=side,
+                    remaining_qty=quantity - filled,
+                    limit_price=limit_price,
+                    avg_fill_price=average,
+                    status=ALPACA_STATUS_MAP[status],
+                ))
+            return BrokerOpenOrdersSnapshot(
+                orders=tuple(order for order in orders if order.remaining_qty > 0),
+                observed_at=observed_at,
+                complete=True,
+                source="alpaca.trading_api.open_orders",
+            )
+        except (ValueError, TypeError, KeyError) as exc:
+            raise RuntimeError(f"Alpaca open orders unavailable: malformed response: {exc}") from exc
+
+    @staticmethod
+    def _parse_provider_timestamp(value: Any) -> datetime | None:
+        if not isinstance(value, str) or not value.strip():
+            return None
+        try:
+            parsed = datetime.fromisoformat(value.strip().replace("Z", "+00:00"))
+        except ValueError:
+            return None
+        if parsed.tzinfo is None or parsed.utcoffset() is None:
+            return None
+        return parsed.astimezone(UTC)
+
+    def get_quote(self, symbol: str) -> QuoteEvidence | None:
+        """Get a quote with Alpaca's quote timestamp and local receive time."""
+        if not self.is_connected or not self._session:
+            return None
+        try:
+            response = self._session.get(
+                f"{self._data_url}/v2/stocks/{symbol}/quotes/latest",
+                timeout=DEFAULT_TIMEOUT,
+                allow_redirects=False,
+            )
+            observed_at = datetime.now(UTC)
+            if response.status_code != 200:
+                return None
+            data = response.json()
+            quote = data.get("quote", data)
+            bid = float(quote.get("bp", quote.get("bid_price", 0)))
+            ask = float(quote.get("ap", quote.get("ask_price", 0)))
+            price = (bid + ask) / 2.0 if bid > 0 and ask > 0 else max(bid, ask)
+            return QuoteEvidence(
+                symbol=symbol,
+                price=price,
+                provider_timestamp=self._parse_provider_timestamp(quote.get("t", quote.get("timestamp"))),
+                observed_at=observed_at,
+                source="alpaca.market_data.latest_quote",
+            )
+        except Exception as exc:
+            log.warning("alpaca_quote_evidence_unavailable", symbol=symbol, error=str(exc))
+            return None
 
     def get_positions(self) -> list[BrokerPosition]:
         """Fetch verified positions; unavailable or malformed truth raises."""

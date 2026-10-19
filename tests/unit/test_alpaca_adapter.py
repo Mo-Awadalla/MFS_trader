@@ -13,6 +13,8 @@ All HTTP calls are mocked via `responses` library — no real API keys needed.
 
 from __future__ import annotations
 
+from datetime import datetime
+
 import pytest
 import requests
 import responses
@@ -231,7 +233,7 @@ class TestGetOpenOrders:
         responses.add(
             responses.GET,
             f"{PAPER_URL}/v2/orders",
-            json=[ORDER_PARTIAL],
+            json=[{**ORDER_PARTIAL, "symbol": "AAPL", "side": "buy"}],
             status=200,
         )
         adapter.connect()
@@ -241,6 +243,57 @@ class TestGetOpenOrders:
         assert len(orders) == 1
         assert orders[0].client_order_id == "test_client_id_2"
         assert orders[0].status == "PARTIALLY_FILLED"
+
+    @responses.activate
+    def test_snapshot_carries_complete_order_evidence(self, adapter):
+        responses.add(responses.GET, f"{PAPER_URL}/v2/account", json=ACCOUNT_RESPONSE)
+        adapter.connect()
+        responses.reset()
+        responses.add(
+            responses.GET,
+            f"{PAPER_URL}/v2/orders?status=open&limit=100",
+            json=[{**ORDER_PARTIAL, "symbol": "AAPL", "side": "buy"}],
+        )
+        snapshot = adapter.get_open_orders_snapshot()
+        assert snapshot.complete
+        assert snapshot.source == "alpaca.trading_api.open_orders"
+        assert snapshot.observed_at.tzinfo is not None
+        assert len(snapshot.orders) == 1
+        assert snapshot.orders[0].remaining_qty > 0
+
+    @responses.activate
+    def test_snapshot_rejects_possible_pagination_truncation(self, adapter):
+        responses.add(responses.GET, f"{PAPER_URL}/v2/account", json=ACCOUNT_RESPONSE)
+        adapter.connect()
+        responses.reset()
+        responses.add(
+            responses.GET,
+            f"{PAPER_URL}/v2/orders?status=open&limit=100",
+            json=[
+                {**ORDER_PARTIAL, "client_order_id": f"order-{i}", "symbol": "AAPL", "side": "buy"}
+                for i in range(100)
+            ],
+        )
+        with pytest.raises(RuntimeError, match="completeness unavailable"):
+            adapter.get_open_orders_snapshot()
+
+
+@responses.activate
+def test_quote_evidence_separates_provider_and_local_timestamps(adapter):
+    responses.add(responses.GET, f"{PAPER_URL}/v2/account", json=ACCOUNT_RESPONSE)
+    adapter.connect()
+    responses.reset()
+    provider_time = "2026-10-18T12:34:56Z"
+    responses.add(
+        responses.GET,
+        f"{DATA_URL}/v2/stocks/AAPL/quotes/latest",
+        json={"quote": {"bp": 99.0, "ap": 101.0, "t": provider_time}},
+    )
+    quote = adapter.get_quote("AAPL")
+    assert quote is not None
+    assert quote.provider_timestamp == datetime.fromisoformat("2026-10-18T12:34:56+00:00")
+    assert quote.observed_at >= quote.provider_timestamp
+    assert quote.price == 100.0
 
 
 class TestSubmitOrder:
