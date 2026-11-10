@@ -1,0 +1,46 @@
+{
+  "specification_id": "Bitcoin-DeltaNeutral-Funding-Carry-Binance-v1",
+  "trade_count": 41,
+  "mean_holding_days": 7.0,
+  "mean_funding_events": 21.0,
+  "mean_realized_funding_sum_bps": 89.84145853658535,
+  "mean_basis_pnl_bps": 1.2757254164065543,
+  "mean_funding_pnl_bps": 46.913759454116416,
+  "mean_gross_bps": 48.18948487052297,
+  "mean_fee_cost_bps": 14.99525091970717,
+  "mean_slippage_cost_bps": 9.998362165662956,
+  "mean_fee_only_bps": 33.1942339508158,
+  "mean_conservative_bps": 23.195871785152843,
+  "conservative_accuracy": 0.7317073170731707,
+  "bootstrap_95_conservative_bps": [
+    13.79756064761284,
+    33.879245193681975
+  ],
+  "chronological_halves_conservative_bps": [
+    20.989155062577666,
+    25.29750675903396
+  ],
+  "trimmed_conservative_bps": 16.29469167978896,
+  "top_5pct_profit_contribution": 0.22044086898454252,
+  "conservative_total_return": 0.09941460319057693,
+  "conservative_max_drawdown": -0.0031120557427365414,
+  "gates": {
+    "minimum_trades": true,
+    "positive_mean_gross": true,
+    "positive_mean_fee_only": true,
+    "positive_mean_conservative": true,
+    "positive_each_chronological_half_conservative": true,
+    "bootstrap_lower_conservative_above_zero": true,
+    "drawdown_within_cap": true,
+    "positive_after_largest_5pct_absolute_removed": true,
+    "top_5pct_profit_contribution_within_cap": true,
+    "complete_cashflow_accounting": true
+  },
+  "passed": true,
+  "partition": "development",
+  "partition_bounds": {
+    "start": "2020-01-01",
+    "end": "2022-12-31"
+  },
+  "specification_sha256": "8b74690cfd2e4948309b75c2c997e6af82e1ce2346f1ec1240d348b4888a36aa"
+}

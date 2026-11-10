@@ -1,0 +1,100 @@
+{
+  "specification_id": "Bitcoin-Crowded-Long-Unwind-BinancePerp-v1",
+  "days": 849,
+  "selected_days": 15,
+  "exposure_fraction": 0.0176678445229682,
+  "mean_selected_short_gross_bps": 58.817126892655246,
+  "mean_selected_fee_only_bps": 48.81712689265524,
+  "mean_selected_conservative_bps": 38.817126892655224,
+  "short_directional_accuracy": 0.5333333333333333,
+  "chronological_halves_gross_bps": [
+    103.17065640708888,
+    20.007788567525804
+  ],
+  "bootstrap_95_gross_bps": [
+    -55.80925836194697,
+    176.64975706561054
+  ],
+  "trimmed_mean_gross_bps": 20.911315191707303,
+  "top_5pct_profit_contribution": 0.34011703095865203,
+  "controls": {
+    "funding_only": {
+      "days": 49,
+      "mean_short_gross_bps": 8.001754636756008,
+      "short_directional_accuracy": 0.40816326530612246
+    },
+    "oi_only": {
+      "days": 190,
+      "mean_short_gross_bps": 2.7545883078002817,
+      "short_directional_accuracy": 0.4842105263157895
+    },
+    "basis_only": {
+      "days": 12,
+      "mean_short_gross_bps": -31.840143041710068,
+      "short_directional_accuracy": 0.3333333333333333
+    }
+  },
+  "performance": {
+    "gross": {
+      "total_return": 0.0876963391180774,
+      "annualized_return": 0.03682637628019503,
+      "annualized_volatility": 0.060269148269346186,
+      "sharpe_zero_cash": 0.6297708368051651,
+      "max_drawdown": -0.04416935705526126
+    },
+    "fee_only": {
+      "total_return": 0.07158036127634548,
+      "annualized_return": 0.030189232507656705,
+      "annualized_volatility": 0.05969973724442934,
+      "sharpe_zero_cash": 0.5276835909365098,
+      "max_drawdown": -0.049934000794226496
+    },
+    "conservative": {
+      "total_return": 0.055687461207265754,
+      "annualized_return": 0.023588024144640896,
+      "annualized_volatility": 0.059232088471657736,
+      "sharpe_zero_cash": 0.4229023855385152,
+      "max_drawdown": -0.05566964481600756
+    }
+  },
+  "by_year": {
+    "2020": {
+      "days": 121,
+      "selected_days": 5,
+      "mean_selected_short_gross_bps": 151.21109144147414,
+      "mean_selected_conservative_bps": 131.21109144147414
+    },
+    "2021": {
+      "days": 364,
+      "selected_days": 10,
+      "mean_selected_short_gross_bps": 12.620144618245787,
+      "mean_selected_conservative_bps": -7.379855381754216
+    },
+    "2022": {
+      "days": 364,
+      "selected_days": 0,
+      "mean_selected_short_gross_bps": NaN,
+      "mean_selected_conservative_bps": NaN
+    }
+  },
+  "gates": {
+    "minimum_selected_days": false,
+    "positive_mean_short_gross": true,
+    "short_directional_accuracy_above_50pct": true,
+    "positive_each_chronological_half_gross": true,
+    "bootstrap_lower_above_zero": false,
+    "positive_after_conservative_costs": true,
+    "positive_after_top_5pct_absolute_removed": true,
+    "top_5pct_profit_contribution_within_cap": true,
+    "complete_timestamp_alignment": true,
+    "primary_incremental_vs_funding_only": true
+  },
+  "passed": false,
+  "partition": "development",
+  "partition_bounds": {
+    "start": "2020-09-01",
+    "end": "2022-12-31"
+  },
+  "specification_sha256": "42b399210c699e914cda970a79ada2f64eacd4cf4762440a5e00e854f212316b",
+  "data_manifest": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\manifest.json"
+}

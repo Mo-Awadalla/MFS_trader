@@ -1,0 +1,19 @@
+{
+  "candidate": "v74",
+  "source": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/dts/operating_cash_balance",
+  "publisher": "U.S. Treasury Bureau of the Fiscal Service",
+  "filter": "record_date:gte:2020-12-01,record_date:lte:2023-12-31",
+  "rows": 2749,
+  "record_dates": 774,
+  "first_record_date": "2020-12-01",
+  "last_record_date": "2023-12-29",
+  "api_total_count": 2749,
+  "output_sha256": "D7A7D58E4D3D33B1F48453FFE4FC9E7BB67C29EF50F1AAFEA5F9B398F731EE3F",
+  "flow_source": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/dts/deposits_withdrawals_operating_cash",
+  "flow_rows": 127363,
+  "flow_record_dates": 774,
+  "flow_api_total_count": 127363,
+  "flow_output_sha256": "C2BACDCCB523B58271C3F3DFE8C95CDB2C973595AA7D6F476EFF319354DAEF55",
+  "paid_data": false,
+  "databento_call": false
+}

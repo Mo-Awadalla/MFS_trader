@@ -1,0 +1,123 @@
+{
+  "purpose": "Free-source ES intraday data feasibility; not strategy evidence",
+  "sources": {
+    "firstratedata_sample": {
+      "path": "C:/Hazem/quant_project/untitled_project/external_artifacts/public_intraday_futures_samples/firstratedata/frd_sample_futures_ES.zip",
+      "sha256": "25a50487e645e2a24df726153dcb116e99a34c6a07ec98338570efb136dc85ef",
+      "archive_bytes": 230396,
+      "members": [
+        "ES_1day_sample.csv",
+        "ES_1hour_sample.csv",
+        "ES_1min_sample.csv",
+        "ES_30min_sample.csv",
+        "ES_5min_sample.csv",
+        "_readme_documentation.txt"
+      ],
+      "one_minute_rows": 16200,
+      "start": "2026-07-09T00:00:00",
+      "end": "2026-07-24T16:59:00",
+      "duplicate_timestamps": 0,
+      "columns": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "timezone_claim": "America/New_York",
+      "contract_identity": "continuous root only; raw contract not present",
+      "quote_fields": false,
+      "aggressor_side": false,
+      "license_reference_present": true
+    },
+    "github_carpethooligan_pa_sampledata": {
+      "path": "C:/Hazem/quant_project/untitled_project/external_artifacts/public_intraday_futures_samples/github_pa_sampledata/pa-sampledata-master.zip",
+      "sha256": "77157dacb49d0399b9f3117a02462572d15b91e36b0fca055de281926b51473b",
+      "archive_bytes": 218979,
+      "csv_files": 204,
+      "five_minute_rows": 16284,
+      "start": "2022-01-03T09:35:00",
+      "end": "2022-10-14T16:15:00",
+      "duplicate_timestamps": 0,
+      "columns": [
+        "timestamp",
+        "open",
+        "high",
+        "low",
+        "close"
+      ],
+      "timezone_claim": "not documented",
+      "contract_identity": "ES root only; raw contract not present",
+      "volume": false,
+      "quote_fields": false,
+      "aggressor_side": false,
+      "repository_license_present": false
+    },
+    "yahoo_es_f_recent": {
+      "path": "C:/Hazem/quant_project/untitled_project/external_artifacts/public_intraday_futures_samples/yahoo/ES_F_1m_2026-07-18_2026-07-25.json",
+      "sha256": "3ab8e160587d9303947609c798c7276b1db6b8292e9a151563130f9ec7566813",
+      "bytes": 335956,
+      "symbol": "ES=F",
+      "exchange": "CME",
+      "timezone": "America/New_York",
+      "rows_with_close": 6838,
+      "start": "2026-07-19T18:10:00",
+      "end": "2026-07-24T16:59:00",
+      "duplicate_timestamps": 0,
+      "columns": [
+        "open",
+        "low",
+        "close",
+        "high",
+        "volume"
+      ],
+      "contract_identity": "Yahoo continuous ticker; raw contract not present",
+      "quote_fields": false,
+      "aggressor_side": false
+    }
+  },
+  "cross_source_check": {
+    "overlap_rows": 6838,
+    "start": "2026-07-19T18:10:00",
+    "end": "2026-07-24T16:59:00",
+    "open": {
+      "exact_rows": 6829,
+      "exact_fraction": 0.9986838256800235,
+      "max_absolute_difference": 1.5,
+      "mean_absolute_difference": 0.0005484059666569172
+    },
+    "high": {
+      "exact_rows": 6836,
+      "exact_fraction": 0.999707516817783,
+      "max_absolute_difference": 2.25,
+      "mean_absolute_difference": 0.0005484059666569172
+    },
+    "low": {
+      "exact_rows": 6837,
+      "exact_fraction": 0.9998537584088915,
+      "max_absolute_difference": 0.25,
+      "mean_absolute_difference": 3.6560397777127814e-05
+    },
+    "close": {
+      "exact_rows": 6831,
+      "exact_fraction": 0.9989763088622404,
+      "max_absolute_difference": 3.5,
+      "mean_absolute_difference": 0.0007677683533196841
+    },
+    "volume": {
+      "exact_rows": 6250,
+      "exact_fraction": 0.9140099444281954,
+      "max_absolute_difference": 26180.0,
+      "mean_absolute_difference": 5.5046797309154725
+    },
+    "all_ohlc_exact_rows": 6822,
+    "all_ohlc_exact_fraction": 0.9976601345422638
+  },
+  "decision": {
+    "price_bar_plumbing": "pass",
+    "multi_year_price_test": "fail",
+    "aggressor_order_flow": "fail",
+    "executable_mes_quotes": "fail",
+    "promotion_quality_backtest": "fail"
+  }
+}

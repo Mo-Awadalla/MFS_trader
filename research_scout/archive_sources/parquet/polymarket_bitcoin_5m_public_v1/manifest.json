@@ -1,0 +1,270 @@
+{
+  "schema_version": "polymarket_bitcoin_5m_public:v1",
+  "generated_at": "2026-07-11T01:13:34.336535+00:00",
+  "requested_bounds": {
+    "start": "2025-12-18",
+    "end": "2026-07-11"
+  },
+  "series": {
+    "id": "10684",
+    "slug": "btc-up-or-down-5m"
+  },
+  "sources": {
+    "contracts": "https://gamma-api.polymarket.com/events",
+    "sampled_prices": "https://clob.polymarket.com/batch-prices-history",
+    "resolution": "Gamma outcomePrices on closed contracts"
+  },
+  "coverage": {
+    "contracts": 54626,
+    "resolved_contracts": 54338,
+    "first_event_start": "2025-12-18T04:25:00+00:00",
+    "last_event_start": "2026-07-11T23:55:00+00:00",
+    "sampled_price_rows": 1545307,
+    "sampled_price_partitions": 31,
+    "contracts_with_up_decision_price": 8920,
+    "contracts_with_down_decision_price": 8920
+  },
+  "artifacts": {
+    "contracts": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\contracts.parquet",
+      "rows": 54626,
+      "bytes": 10211046,
+      "sha256": "3b83cc150e625d187218ac00d067a6e818ca18d3113b03856dc4858228bfbc32"
+    },
+    "sampled_prices": {
+      "root": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices",
+      "rows": 1545307,
+      "partitions": [
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-11\\prices.parquet",
+          "rows": 51510,
+          "bytes": 143434,
+          "sha256": "4e3f8d4346a72973f25f3ef382ae09cbc84360e5594da265b4d7a9531add0c64",
+          "event_date": "2026-06-11"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-12\\prices.parquet",
+          "rows": 51498,
+          "bytes": 147553,
+          "sha256": "38b4f9394b7dbf0fc76b9af9fd4381a45fb8a2d3d503265b6388c4189ebab2e3",
+          "event_date": "2026-06-12"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-13\\prices.parquet",
+          "rows": 51468,
+          "bytes": 151017,
+          "sha256": "39361365987580a236a1a435ade23b8c701c7a3faeee13c55885e56ba73dbde4",
+          "event_date": "2026-06-13"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-14\\prices.parquet",
+          "rows": 51482,
+          "bytes": 156217,
+          "sha256": "1504631b59474567b97dc2414aa29d10c14d8e2802f2b7a8d1ae05df912ba87f",
+          "event_date": "2026-06-14"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-15\\prices.parquet",
+          "rows": 51438,
+          "bytes": 150894,
+          "sha256": "09516f224b6025a016681ba50aa7b3a82e632f0c02ffdb949265aaecc487c96c",
+          "event_date": "2026-06-15"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-16\\prices.parquet",
+          "rows": 52841,
+          "bytes": 148270,
+          "sha256": "ba8560e0701ed212db93bbdb388ac36f3198552d83efe4b015b1f7e76485a2b0",
+          "event_date": "2026-06-16"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-17\\prices.parquet",
+          "rows": 51568,
+          "bytes": 152689,
+          "sha256": "bb93db7348e5906b7452456d4c6dc7c9844fe6aba21da50b96f70b1e55ac37f3",
+          "event_date": "2026-06-17"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-18\\prices.parquet",
+          "rows": 51487,
+          "bytes": 147497,
+          "sha256": "f44403ef4ef83b32765bd045d7624e930615b45f7adb8c35d70a7958f0fd7cd5",
+          "event_date": "2026-06-18"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-19\\prices.parquet",
+          "rows": 50142,
+          "bytes": 141548,
+          "sha256": "9495b20cd7479a63aa5aa78966debcec4b30c5b28cf1fce5f4052797897638d1",
+          "event_date": "2026-06-19"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-20\\prices.parquet",
+          "rows": 51527,
+          "bytes": 144982,
+          "sha256": "090744be5ecf1b67ed51b73c9e486ba1ab128bbbef189c5c41a6816ebbbed6d8",
+          "event_date": "2026-06-20"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-21\\prices.parquet",
+          "rows": 51629,
+          "bytes": 149033,
+          "sha256": "b713eaf08972b36d7a061006b59ea2ebc1d6827c69bf37e13d2e4ed25424a5b7",
+          "event_date": "2026-06-21"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-22\\prices.parquet",
+          "rows": 51583,
+          "bytes": 143926,
+          "sha256": "c05d842915544f5a5b8e4c756de4832eb97ca411ca2e343ba24dc21044f55417",
+          "event_date": "2026-06-22"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-23\\prices.parquet",
+          "rows": 51474,
+          "bytes": 145193,
+          "sha256": "b2d3745841c45a01da5216fdc5668124419357bbbbb19c3cc8230713324cf63e",
+          "event_date": "2026-06-23"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-24\\prices.parquet",
+          "rows": 50355,
+          "bytes": 151635,
+          "sha256": "6424ee35e2638db51a38e976dd9a988d34423efd93fab1721795053433f8179c",
+          "event_date": "2026-06-24"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-25\\prices.parquet",
+          "rows": 51541,
+          "bytes": 154101,
+          "sha256": "a08fc362b8ea251d46df60d167bdaf76d14b0f87fe09317c53c36b73bb4ba76b",
+          "event_date": "2026-06-25"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-26\\prices.parquet",
+          "rows": 51533,
+          "bytes": 137884,
+          "sha256": "48991be6e26306f25bbfc6b783b1504bbe72a3194abe150ac21cb8d6b6f6077f",
+          "event_date": "2026-06-26"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-27\\prices.parquet",
+          "rows": 51466,
+          "bytes": 140519,
+          "sha256": "e676ad0d2f075c957cf1f9e1b1df0345d9c4b1af5db0697d40c63ff4ee18d361",
+          "event_date": "2026-06-27"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-28\\prices.parquet",
+          "rows": 51455,
+          "bytes": 146999,
+          "sha256": "b1ffdea57f8e2763656dc64fe7ac7806511ccf62bcb297a5002edfd887594fc1",
+          "event_date": "2026-06-28"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-29\\prices.parquet",
+          "rows": 51454,
+          "bytes": 156206,
+          "sha256": "3a984cbac772024119f2b3cdff341b26bc5784b6316103b8417dddac5bc795a4",
+          "event_date": "2026-06-29"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-30\\prices.parquet",
+          "rows": 51491,
+          "bytes": 156915,
+          "sha256": "d2a9f913676139b31bb0a533faef5b4c611ff0787b5e8024b10a5a04edc12187",
+          "event_date": "2026-06-30"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-01\\prices.parquet",
+          "rows": 50326,
+          "bytes": 155454,
+          "sha256": "dc41433137bddfb967b3a058525a9bc18d0d944584375e7226e1dd75484abfc0",
+          "event_date": "2026-07-01"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-02\\prices.parquet",
+          "rows": 51504,
+          "bytes": 150877,
+          "sha256": "ca4e7ea708bf950f6a4cbd7106e1148966df78bf94616b892797d813f55742e4",
+          "event_date": "2026-07-02"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-03\\prices.parquet",
+          "rows": 51490,
+          "bytes": 155128,
+          "sha256": "237ad0e52394a5cb7bffb7ef8fb53d20215bf92c022200c68eb27d4ec2e791e2",
+          "event_date": "2026-07-03"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-04\\prices.parquet",
+          "rows": 51503,
+          "bytes": 153388,
+          "sha256": "581afe52c10e2693adaf3ff05c1f927842bd949a665a59ffc09f1c25cb402d78",
+          "event_date": "2026-07-04"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-05\\prices.parquet",
+          "rows": 51556,
+          "bytes": 156169,
+          "sha256": "07911fd1ac14e14d4d2569af5d2cc71aa9a67226da57914a259d60c7a0a0a589",
+          "event_date": "2026-07-05"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-06\\prices.parquet",
+          "rows": 51547,
+          "bytes": 156672,
+          "sha256": "db3b01af3becb49be968584b74c70bc036527eb8aabf014eb8b3c3f0448af88f",
+          "event_date": "2026-07-06"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-07\\prices.parquet",
+          "rows": 51454,
+          "bytes": 162592,
+          "sha256": "919f7bd1c45d9ec54359a7b90c462213f3e29bc9403b28430345ccd7838098d0",
+          "event_date": "2026-07-07"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-08\\prices.parquet",
+          "rows": 51447,
+          "bytes": 157145,
+          "sha256": "78da4741d043cdfafe92c0c2704321873cd0d847d6a465a5792f3206f4caf2ea",
+          "event_date": "2026-07-08"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-09\\prices.parquet",
+          "rows": 51429,
+          "bytes": 156328,
+          "sha256": "9d6a021890c3574001bfe5cc3a152cf321b13813d421114ba41c6727540e7ad7",
+          "event_date": "2026-07-09"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-10\\prices.parquet",
+          "rows": 49521,
+          "bytes": 150420,
+          "sha256": "2eb6292e472c287b160028ec0a7e839351be646e8952d415e64cafbfb3da9ae1",
+          "event_date": "2026-07-10"
+        },
+        {
+          "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-07-11\\prices.parquet",
+          "rows": 4588,
+          "bytes": 41540,
+          "sha256": "9d415ff3d9317ba559d0f068a59e0f7d4a3f4c22f9f908a8ad8305068b8c0a08",
+          "event_date": "2026-07-11"
+        }
+      ]
+    },
+    "decision_snapshots": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\polymarket_bitcoin_5m_public_v1\\decision_snapshots.parquet",
+      "rows": 54626,
+      "bytes": 2756112,
+      "sha256": "518034a00b573f06a9b100a1757f2db12adc2db1804a72f31d7d71b9f6f94cef"
+    }
+  },
+  "limitations": [
+    "Sampled prices are Polymarket API history points, not historical executable bid/ask quotes.",
+    "Historical order-book depth, queue position, cancellations, and fill certainty are unavailable.",
+    "Resolution follows the contract's Chainlink BTC/USD stream, not Binance BTCUSDT perpetual bars.",
+    "Public trade history is not included in this v1 normalized dataset."
+  ]
+}

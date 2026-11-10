@@ -1,0 +1,236 @@
+{
+  "created_at_utc": "2026-07-26T16:24:12.375088+00:00",
+  "status": "valid",
+  "expected_symbols": [
+    "SPXU",
+    "UPRO"
+  ],
+  "files": {
+    "ARCX.PILLAR": {
+      "ohlcv-1m": {
+        "path": "external_artifacts/databento_leveraged_etf/ARCX.PILLAR/bars/upro_spxu_ohlcv_1m_2021-01-01_2026-01-01.dbn.zst",
+        "bytes": 21022433,
+        "rows": 1422883,
+        "symbols": [
+          "SPXU",
+          "UPRO"
+        ],
+        "instrument_ids": [
+          15140,
+          16573
+        ],
+        "by_symbol": {
+          "SPXU": {
+            "rows_all_hours": 589950,
+            "rows_rth": 399138,
+            "first_timestamp": "2021-01-04T04:00:00-05:00",
+            "last_timestamp": "2025-12-31T18:01:00-05:00",
+            "rth_session_dates": 1255,
+            "median_rth_rows_per_date": 337.0
+          },
+          "UPRO": {
+            "rows_all_hours": 832933,
+            "rows_rth": 475318,
+            "first_timestamp": "2021-01-04T04:00:00-05:00",
+            "last_timestamp": "2025-12-31T18:54:00-05:00",
+            "rth_session_dates": 1255,
+            "median_rth_rows_per_date": 385.0
+          }
+        },
+        "nonpositive_price_rows": 0,
+        "negative_volume_rows": 0
+      },
+      "bbo-1m": {
+        "path": "external_artifacts/databento_leveraged_etf/ARCX.PILLAR/bbo/upro_spxu_bbo_1m_2021-01-01_2026-01-01.dbn.zst",
+        "bytes": 69129255,
+        "rows": 2263029,
+        "symbols": [
+          "SPXU",
+          "UPRO"
+        ],
+        "instrument_ids": [
+          15140,
+          16573
+        ],
+        "by_symbol": {
+          "SPXU": {
+            "rows_all_hours": 1122267,
+            "rows_rth": 488686,
+            "first_timestamp": "2021-01-04T00:24:00-05:00",
+            "last_timestamp": "2025-12-31T18:59:00-05:00",
+            "rth_session_dates": 1255,
+            "median_rth_rows_per_date": 390.0
+          },
+          "UPRO": {
+            "rows_all_hours": 1140762,
+            "rows_rth": 488914,
+            "first_timestamp": "2021-01-04T00:24:00-05:00",
+            "last_timestamp": "2025-12-31T18:57:00-05:00",
+            "rth_session_dates": 1255,
+            "median_rth_rows_per_date": 390.0
+          }
+        },
+        "invalid_or_empty_quote_rows": 2559,
+        "crossed_quote_rows": 14,
+        "nonpositive_size_rows": 0,
+        "valid_rth_spread_bps": {
+          "median": 3.857281,
+          "p95": 10.065425,
+          "p99": 15.09434
+        },
+        "by_symbol_quote": {
+          "SPXU": {
+            "valid_rth_quotes": 488686,
+            "median_spread_bps": 6.24025,
+            "p95_spread_bps": 12.851407,
+            "p99_spread_bps": 16.406891,
+            "median_bid_size": 19217.0,
+            "median_ask_size": 17000.0
+          },
+          "UPRO": {
+            "valid_rth_quotes": 488914,
+            "median_spread_bps": 2.336722,
+            "p95_spread_bps": 5.295208,
+            "p99_spread_bps": 7.298382,
+            "median_bid_size": 600.0,
+            "median_ask_size": 600.0
+          }
+        }
+      }
+    },
+    "EQUS.MINI": {
+      "ohlcv-1m": {
+        "path": "external_artifacts/databento_leveraged_etf/EQUS.MINI/bars/upro_spxu_ohlcv_1m_2023-03-28_2026-01-01.dbn.zst",
+        "bytes": 7174991,
+        "rows": 488240,
+        "symbols": [
+          "SPXU",
+          "UPRO"
+        ],
+        "instrument_ids": [
+          15140,
+          16573
+        ],
+        "by_symbol": {
+          "SPXU": {
+            "rows_all_hours": 228243,
+            "rows_rth": 208749,
+            "first_timestamp": "2023-03-28T07:57:00-04:00",
+            "last_timestamp": "2025-12-31T15:59:00-05:00",
+            "rth_session_dates": 694,
+            "median_rth_rows_per_date": 311.0
+          },
+          "UPRO": {
+            "rows_all_hours": 259997,
+            "rows_rth": 222106,
+            "first_timestamp": "2023-03-28T07:36:00-04:00",
+            "last_timestamp": "2025-12-31T15:59:00-05:00",
+            "rth_session_dates": 694,
+            "median_rth_rows_per_date": 341.0
+          }
+        },
+        "nonpositive_price_rows": 0,
+        "negative_volume_rows": 0
+      },
+      "bbo-1m": {
+        "path": "external_artifacts/databento_leveraged_etf/EQUS.MINI/bbo/upro_spxu_bbo_1m_2023-03-28_2026-01-01.dbn.zst",
+        "bytes": 22073141,
+        "rows": 927437,
+        "symbols": [
+          "SPXU",
+          "UPRO"
+        ],
+        "instrument_ids": [
+          15140,
+          16573
+        ],
+        "by_symbol": {
+          "SPXU": {
+            "rows_all_hours": 460446,
+            "rows_rth": 269439,
+            "first_timestamp": "2023-03-28T05:34:00-04:00",
+            "last_timestamp": "2025-12-31T17:00:00-05:00",
+            "rth_session_dates": 694,
+            "median_rth_rows_per_date": 390.0
+          },
+          "UPRO": {
+            "rows_all_hours": 466991,
+            "rows_rth": 269410,
+            "first_timestamp": "2023-03-28T05:34:00-04:00",
+            "last_timestamp": "2025-12-31T16:55:00-05:00",
+            "rth_session_dates": 694,
+            "median_rth_rows_per_date": 390.0
+          }
+        },
+        "invalid_or_empty_quote_rows": 6139,
+        "crossed_quote_rows": 0,
+        "nonpositive_size_rows": 0,
+        "valid_rth_spread_bps": {
+          "median": 3.660992,
+          "p95": 11.580776,
+          "p99": 15.048909
+        },
+        "by_symbol_quote": {
+          "SPXU": {
+            "valid_rth_quotes": 269411,
+            "median_spread_bps": 6.449532,
+            "p95_spread_bps": 13.726836,
+            "p99_spread_bps": 15.302219,
+            "median_bid_size": 33600.0,
+            "median_ask_size": 31300.0
+          },
+          "UPRO": {
+            "valid_rth_quotes": 269383,
+            "median_spread_bps": 2.255046,
+            "p95_spread_bps": 5.249344,
+            "p99_spread_bps": 8.603208,
+            "median_bid_size": 750.0,
+            "median_ask_size": 700.0
+          }
+        }
+      }
+    }
+  },
+  "overlap": {
+    "bars": {
+      "rows": 407598,
+      "by_symbol": {
+        "SPXU": {
+          "overlapping_rth_minutes": 188461,
+          "median_absolute_close_difference_bps": 0.0,
+          "p99_absolute_close_difference_bps": 14.625942
+        },
+        "UPRO": {
+          "overlapping_rth_minutes": 219137,
+          "median_absolute_close_difference_bps": 1.380643,
+          "p99_absolute_close_difference_bps": 15.487646
+        }
+      }
+    },
+    "bbo": {
+      "rows": 538782,
+      "by_symbol": {
+        "SPXU": {
+          "overlapping_rth_minutes": 269404,
+          "median_absolute_midpoint_difference_bps": 0.0,
+          "p99_absolute_midpoint_difference_bps": 2.235136,
+          "median_arca_spread_bps": 6.437078,
+          "median_consolidated_spread_bps": 6.449532
+        },
+        "UPRO": {
+          "overlapping_rth_minutes": 269378,
+          "median_absolute_midpoint_difference_bps": 0.0,
+          "p99_absolute_midpoint_difference_bps": 1.607038,
+          "median_arca_spread_bps": 2.092707,
+          "median_consolidated_spread_bps": 2.255046
+        }
+      }
+    }
+  },
+  "known_limitations": [
+    "ARCX.PILLAR is a single exchange rather than the consolidated market.",
+    "EQUS.MINI begins on 2023-03-28.",
+    "One-minute BBO samples cannot reconstruct sub-minute quote paths.",
+    "Leveraged ETFs target daily returns and may not equal exactly three times the underlying intraday return."
+  ]
+}

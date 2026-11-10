@@ -1,0 +1,136 @@
+{
+  "specification_id": "Alpaca-IEX-OrderFlow-Predictiveness-v1",
+  "rows": 792,
+  "selected_rows": 370,
+  "selected_fraction": 0.4671717171717172,
+  "mean_signed_midpoint_bps": -11.418322930682443,
+  "directional_accuracy": 0.46216216216216216,
+  "mean_iex_crossing_bps": -39.938884515106025,
+  "mean_iex_crossing_net_bps": -41.93888451510603,
+  "bootstrap_95_bps": [
+    -21.808895116165406,
+    -2.162596228647117
+  ],
+  "trimmed_mean_signed_midpoint_bps": -10.81360438505575,
+  "removed_top_5pct_sessions": [
+    "2023-04-26",
+    "2023-05-31"
+  ],
+  "information_coefficients": {
+    "signed_trade_imbalance": {
+      "coefficient": -0.01972368797901862,
+      "pvalue": 0.5794070813638967,
+      "rows": 792
+    },
+    "terminal_quote_size_imbalance": {
+      "coefficient": -0.03528080463233256,
+      "pvalue": 0.3213778657312971,
+      "rows": 792
+    },
+    "composite_score": {
+      "coefficient": -0.03002780936911654,
+      "pvalue": 0.398717992293201,
+      "rows": 792
+    }
+  },
+  "by_symbol": {
+    "IWM": {
+      "selected_rows": 130,
+      "mean_signed_midpoint_bps": -7.220407457544051,
+      "directional_accuracy": 0.45384615384615384,
+      "mean_iex_crossing_bps": -28.351965123457525,
+      "mean_iex_crossing_net_bps": -30.351965123457532
+    },
+    "QQQ": {
+      "selected_rows": 134,
+      "mean_signed_midpoint_bps": -22.09902181656789,
+      "directional_accuracy": 0.44029850746268656,
+      "mean_iex_crossing_bps": -41.839940717320175,
+      "mean_iex_crossing_net_bps": -43.83994071732018
+    },
+    "SPY": {
+      "selected_rows": 106,
+      "mean_signed_midpoint_bps": -3.064694258978118,
+      "directional_accuracy": 0.5,
+      "mean_iex_crossing_bps": -51.746035362441944,
+      "mean_iex_crossing_net_bps": -53.74603536244195
+    }
+  },
+  "by_month": {
+    "2023-01": {
+      "selected_rows": 25,
+      "mean_signed_midpoint_bps": -17.45317206500534
+    },
+    "2023-02": {
+      "selected_rows": 26,
+      "mean_signed_midpoint_bps": -65.80997500736524
+    },
+    "2023-03": {
+      "selected_rows": 32,
+      "mean_signed_midpoint_bps": -32.56234441448146
+    },
+    "2023-04": {
+      "selected_rows": 34,
+      "mean_signed_midpoint_bps": -4.320159690297172
+    },
+    "2023-05": {
+      "selected_rows": 35,
+      "mean_signed_midpoint_bps": 2.5440945395600916
+    },
+    "2023-06": {
+      "selected_rows": 27,
+      "mean_signed_midpoint_bps": -13.129694466340602
+    },
+    "2023-07": {
+      "selected_rows": 30,
+      "mean_signed_midpoint_bps": -21.405759526923287
+    },
+    "2023-08": {
+      "selected_rows": 31,
+      "mean_signed_midpoint_bps": 2.5452654306278695
+    },
+    "2023-09": {
+      "selected_rows": 33,
+      "mean_signed_midpoint_bps": -2.735105534759557
+    },
+    "2023-10": {
+      "selected_rows": 29,
+      "mean_signed_midpoint_bps": 1.7703953008301723
+    },
+    "2023-11": {
+      "selected_rows": 31,
+      "mean_signed_midpoint_bps": -2.5207446882043048
+    },
+    "2023-12": {
+      "selected_rows": 37,
+      "mean_signed_midpoint_bps": 1.5480465302645212
+    }
+  },
+  "exclusions": {
+    "excluded_trade_condition_count": 0,
+    "excluded_quote_condition_count": 0,
+    "stale_or_unmatched_trade_count": 11,
+    "locked_quote_count": 0,
+    "crossed_quote_count": 0,
+    "one_sided_quote_count": 201,
+    "invalid_quote_count": 0,
+    "execution_quotes_missing": 0
+  },
+  "gates": {
+    "minimum_selected_rows": true,
+    "minimum_mean_signed_midpoint_bps": false,
+    "bootstrap_lower_above_zero": false,
+    "positive_each_symbol": false,
+    "positive_after_top_5pct_sessions_removed": false,
+    "positive_iex_crossing_after_extra_friction": false
+  },
+  "passed": false,
+  "partition": "development",
+  "panel_file": {
+    "path": "panel.parquet",
+    "rows": 792,
+    "bytes": 149873,
+    "sha256": "190aee98ac9502ee0f1919c85762e50c82ead2724b9b5fb1da17b9bbad8b0119"
+  },
+  "specification_sha256": "99091ca24fea4276aec67108bbe0a0929d6cd6e154effa433650fc33443e7080"
+}

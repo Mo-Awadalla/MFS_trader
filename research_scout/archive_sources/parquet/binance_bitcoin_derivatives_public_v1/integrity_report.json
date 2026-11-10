@@ -1,0 +1,135 @@
+{
+  "schema_version": "binance_bitcoin_derivatives_integrity:v1",
+  "dataset_manifest": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\manifest.json",
+  "archive_count": 2380,
+  "official_checksums_verified": true,
+  "products": {
+    "spot_klines_30m": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\spot_klines_30m.parquet",
+      "sha256": "000bf94db00b5fe50b2954b7c1a93b0fcef79d60d64e957f8b0e89dfc318c26f",
+      "rows": 105135,
+      "first_timestamp": "2020-01-01T00:00:00+00:00",
+      "last_timestamp": "2025-12-31T23:30:00+00:00",
+      "duplicate_timestamps": 0,
+      "off_grid_timestamps": 0,
+      "missing_30m_timestamps": 81,
+      "null_cells": 0
+    },
+    "perp_klines_30m": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\perp_klines_30m.parquet",
+      "sha256": "d72ddf9f72bf05cf2be2274bf9987e2ad5595fb5a2f379499b972258907abb5c",
+      "rows": 105216,
+      "first_timestamp": "2020-01-01T00:00:00+00:00",
+      "last_timestamp": "2025-12-31T23:30:00+00:00",
+      "duplicate_timestamps": 0,
+      "off_grid_timestamps": 0,
+      "missing_30m_timestamps": 0,
+      "null_cells": 0
+    },
+    "mark_price_klines_30m": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\mark_price_klines_30m.parquet",
+      "sha256": "61e458e5c94afbb36517c54ddfb49f406f67eb48a982922d8f32573dbc6279a3",
+      "rows": 104832,
+      "first_timestamp": "2020-01-01T00:00:00+00:00",
+      "last_timestamp": "2025-12-31T23:30:00+00:00",
+      "duplicate_timestamps": 0,
+      "off_grid_timestamps": 0,
+      "missing_30m_timestamps": 384,
+      "null_cells": 0
+    },
+    "index_price_klines_30m": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\index_price_klines_30m.parquet",
+      "sha256": "511d96c3f1493b2eea28436de93ed8f2bd884bc4740d033d6a6ccaf52f986d34",
+      "rows": 104640,
+      "first_timestamp": "2020-01-01T00:00:00+00:00",
+      "last_timestamp": "2025-12-31T23:30:00+00:00",
+      "duplicate_timestamps": 0,
+      "off_grid_timestamps": 0,
+      "missing_30m_timestamps": 576,
+      "null_cells": 0
+    },
+    "premium_index_klines_30m": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\premium_index_klines_30m.parquet",
+      "sha256": "055b15c02418a67e7f61c68b8461608fc0ff5d310f1066ec893203c219844c5d",
+      "rows": 104877,
+      "first_timestamp": "2020-01-01T00:00:00+00:00",
+      "last_timestamp": "2025-12-31T23:30:00+00:00",
+      "duplicate_timestamps": 0,
+      "off_grid_timestamps": 0,
+      "missing_30m_timestamps": 339,
+      "null_cells": 0
+    },
+    "funding_rate": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\funding_rate.parquet",
+      "sha256": "776c0610bc50d619ebb586acdf317acb1be9cb818bb12a3f31d0413417c99fdd",
+      "rows": 6576,
+      "first_timestamp": "2020-01-01T00:00:00+00:00",
+      "last_timestamp": "2025-12-31T16:00:00.001000+00:00",
+      "duplicate_timestamps": 0,
+      "null_rates": 0,
+      "funding_interval_hours": {
+        "8": 6576
+      },
+      "availability_policy": "A settled funding rate becomes usable at or after calc_time, never before."
+    },
+    "futures_metrics_5m": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\futures_metrics_5m.parquet",
+      "sha256": "2d18effbbe2c86d119e0afdb6750a2f5a6f285dbba4b648dde9ad7110b999ed2",
+      "rows": 560389,
+      "first_timestamp": "2020-09-01T00:00:00+00:00",
+      "last_timestamp": "2025-12-31T23:55:00+00:00",
+      "duplicate_timestamps": 0,
+      "exact_grid_timestamps": 557341,
+      "missing_exact_5m_grid_timestamps": 3683,
+      "off_grid_actual_timestamps": 3048,
+      "null_counts": {
+        "create_time": 0,
+        "symbol": 0,
+        "sum_open_interest": 0,
+        "sum_open_interest_value": 0,
+        "count_toptrader_long_short_ratio": 92226,
+        "sum_toptrader_long_short_ratio": 92192,
+        "count_long_short_ratio": 5797,
+        "sum_taker_long_short_vol_ratio": 37271
+      },
+      "availability_policy": "Use each observation only at or after its actual create_time; off-grid rows are not rounded backward."
+    },
+    "futures_metrics_30m": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\futures_metrics_30m.parquet",
+      "sha256": "e11b2477886f99068b8dfefa30451e65acbcaf25510743733a846d9c26c56a9a",
+      "rows": 93447,
+      "first_timestamp": "2020-09-01T00:00:00+00:00",
+      "last_timestamp": "2026-01-01T00:00:00+00:00",
+      "duplicate_timestamps": 0,
+      "null_counts": {
+        "create_time": 0,
+        "symbol": 0,
+        "count_long_short_ratio": 959,
+        "count_toptrader_long_short_ratio": 15359,
+        "sum_open_interest": 0,
+        "sum_open_interest_value": 0,
+        "sum_taker_long_short_vol_ratio": 6206,
+        "sum_toptrader_long_short_ratio": 15355
+      },
+      "aggregation": "Last observation in (t-30m, t], labeled t; no backward fill."
+    }
+  },
+  "synchronization": {
+    "five_product_union_timestamps": 105216,
+    "five_product_common_timestamps": 104316,
+    "timestamps_not_common_to_all": 900,
+    "common_coverage_fraction": 0.9914461678832117,
+    "first_common_timestamp": "2020-01-01T00:00:00+00:00",
+    "last_common_timestamp": "2025-12-31T23:30:00+00:00",
+    "policy": "Use only timestamps present in every required product; never fill prices."
+  },
+  "honest_limits": [
+    "The archive is Binance-only and does not represent consolidated global spot or derivatives markets.",
+    "Metrics ratio fields have substantial missing history; open interest fields are much more complete.",
+    "Historical liquidation snapshots are not present under the official BTCUSDT archive prefix.",
+    "Public bookTicker history is enormous and begins only in 2023-05; it was not needed or downloaded.",
+    "Public bookDepth is percentage-depth snapshots from 2023, not a reconstructable full order-event book.",
+    "Archive availability is free/public access, but the repository does not state an open-data license; Binance terms still apply.",
+    "No future-return relationship was calculated by this integrity audit."
+  ]
+}

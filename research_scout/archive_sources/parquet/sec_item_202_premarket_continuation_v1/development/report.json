@@ -1,0 +1,116 @@
+{
+  "specification_id": "SEC-Item-2.02-Premarket-Continuation-AlpacaIEX-v1",
+  "partition": "development",
+  "eligible_events": 806,
+  "complete_events": 787,
+  "complete_event_fraction": 0.9764267990074442,
+  "selected_events": 411,
+  "selected_sessions": 191,
+  "selection_fraction": 0.5222363405336722,
+  "mean_stock_gross_bps": 5.24188984596434,
+  "mean_stock_fixed_net_bps": -4.758110154035669,
+  "mean_residual_gross_bps": 9.09718867243451,
+  "mean_residual_fixed_net_bps": -0.9028113275654985,
+  "mean_residual_stress_net_bps": -10.902811327565503,
+  "directional_accuracy_residual": 0.5255474452554745,
+  "profit_factor_residual_fixed_net": 0.9854998898116315,
+  "chronological_halves_residual_fixed_net_bps": [
+    -25.080361709788196,
+    14.14444283323777
+  ],
+  "session_bootstrap_95_residual_fixed_net_bps": [
+    -26.725740931884182,
+    15.675817943006264
+  ],
+  "trimmed_mean_residual_fixed_net_bps": 2.287401098133483,
+  "top_5pct_profitable_session_contribution": 0.16607810853636648,
+  "maximum_single_issuer_absolute_pnl_share": 0.04116679380832631,
+  "by_year": {
+    "2020": {
+      "selected_events": 62,
+      "active_sessions": 30,
+      "mean_stock_net_bps": -27.590163928726962,
+      "mean_residual_net_bps": -30.510242704506844
+    },
+    "2021": {
+      "selected_events": 172,
+      "active_sessions": 82,
+      "mean_stock_net_bps": -13.008750191995992,
+      "mean_residual_net_bps": -14.405080897498587
+    },
+    "2022": {
+      "selected_events": 177,
+      "active_sessions": 79,
+      "mean_stock_net_bps": 11.257129510145324,
+      "mean_residual_net_bps": 22.589002861128595
+    }
+  },
+  "missing_input_counts": {
+    "stock_entry,stock_exit,stock_signal_close,stock_signal_open": 7,
+    "stock_entry": 4,
+    "stock_entry,stock_signal_close": 3,
+    "benchmark_entry,benchmark_exit,benchmark_signal_close,benchmark_signal_open,stock_entry,stock_exit,stock_signal_close,stock_signal_open": 1,
+    "stock_entry,stock_signal_close,stock_signal_open": 1,
+    "stock_signal_close": 1,
+    "stock_signal_open": 1,
+    "stock_exit": 1
+  },
+  "gates": {
+    "minimum_complete_event_fraction": false,
+    "minimum_selected_events": true,
+    "minimum_selected_sessions": true,
+    "positive_mean_gross_residual": true,
+    "minimum_mean_net_residual": false,
+    "positive_mean_stock_net": false,
+    "positive_each_chronological_half_net": false,
+    "session_bootstrap_lower_above_zero": false,
+    "minimum_profit_factor": false,
+    "positive_after_top_5pct_absolute_sessions_removed": true,
+    "positive_under_stress_costs": false,
+    "top_5pct_profitable_session_contribution_within_cap": true,
+    "single_issuer_absolute_pnl_share_within_cap": true,
+    "complete_timestamp_alignment": true
+  },
+  "passed": false,
+  "date_bounds": {
+    "start": "2020-07-28",
+    "end": "2022-12-31",
+    "minimum_selected_events": 250,
+    "minimum_selected_sessions": 100
+  },
+  "event_audit": {
+    "eligible_events": 806,
+    "symbols": 94,
+    "sessions": 256,
+    "first_acceptance": "2020-07-28T06:58:54-04:00",
+    "last_acceptance": "2022-12-16T06:49:03-05:00",
+    "events_by_year": {
+      "2020": 139,
+      "2021": 333,
+      "2022": 334
+    }
+  },
+  "specification_sha256": "68b4e2fa9cda02f0f4c9362806f7c7933c36a0feeb98754c6ba4ebd07691ecbb",
+  "files": {
+    "events": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\eligible_events.parquet",
+      "sha256": "1d5c61afaf66be682750d8e536c25be20d0892a24265ddbad8f0d2c3a43b2cb7",
+      "rows": 806
+    },
+    "bars": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\event_bars.parquet",
+      "sha256": "4eac6d5cb284395d219ff07276dba10cc9d0ca5449a71ddcd56e5241ca633c46",
+      "rows": 81268
+    },
+    "panel": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\panel.parquet",
+      "sha256": "affbea1f79f396f69f6ee9c2e86a9b9c95fab5ee681d2fc7ed4a0d7c737b9a3f",
+      "rows": 806
+    },
+    "session_returns": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\session_returns.parquet",
+      "sha256": "f9efb7689d1442cac57d97e1abbc757ec56a00b820d62eddf59e0f90788bcb35",
+      "rows": 247
+    }
+  }
+}

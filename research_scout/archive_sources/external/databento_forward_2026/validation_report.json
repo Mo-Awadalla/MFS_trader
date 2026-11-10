@@ -1,0 +1,94 @@
+{
+  "created_at_utc": "2026-07-26T17:59:15.210285+00:00",
+  "status": "valid",
+  "purpose": "Pre-outcome validation only; no strategy signal or P&L calculated",
+  "bars": {
+    "path": "external_artifacts/databento_forward_2026/ARCX.PILLAR/bars/spy_upro_spxu_ohlcv_1m_2026-01-02_2026-07-25.dbn.zst",
+    "bytes": 5428465,
+    "rows": 309606,
+    "symbols": [
+      "SPXU",
+      "SPY",
+      "UPRO"
+    ],
+    "by_symbol": {
+      "SPY": {
+        "rows_all_hours": 129237,
+        "rows_rth": 54600,
+        "first_timestamp": "2026-01-02 04:00:00-05:00",
+        "last_timestamp": "2026-07-24 19:59:00-04:00",
+        "rth_session_dates": 140,
+        "median_rth_rows_per_date": 390.0
+      },
+      "UPRO": {
+        "rows_all_hours": 99333,
+        "rows_rth": 52217,
+        "first_timestamp": "2026-01-02 04:00:00-05:00",
+        "last_timestamp": "2026-07-24 19:59:00-04:00",
+        "rth_session_dates": 140,
+        "median_rth_rows_per_date": 375.0
+      },
+      "SPXU": {
+        "rows_all_hours": 81036,
+        "rows_rth": 52960,
+        "first_timestamp": "2026-01-02 04:00:00-05:00",
+        "last_timestamp": "2026-07-24 19:58:00-04:00",
+        "rth_session_dates": 140,
+        "median_rth_rows_per_date": 383.5
+      }
+    },
+    "nonpositive_price_rows": 0,
+    "negative_volume_rows": 0
+  },
+  "bbo": {
+    "path": "external_artifacts/databento_forward_2026/ARCX.PILLAR/bbo/upro_spxu_bbo_1m_2026-01-02_2026-07-25.dbn.zst",
+    "bytes": 8281213,
+    "rows": 255503,
+    "symbols": [
+      "SPXU",
+      "UPRO"
+    ],
+    "by_symbol": {
+      "UPRO": {
+        "rows_all_hours": 128435,
+        "rows_rth": 54600,
+        "first_timestamp": "2026-01-02 02:02:00-05:00",
+        "last_timestamp": "2026-07-24 19:58:00-04:00",
+        "rth_session_dates": 140,
+        "median_rth_rows_per_date": 390.0
+      },
+      "SPXU": {
+        "rows_all_hours": 127068,
+        "rows_rth": 54600,
+        "first_timestamp": "2026-01-02 02:02:00-05:00",
+        "last_timestamp": "2026-07-24 19:59:00-04:00",
+        "rth_session_dates": 140,
+        "median_rth_rows_per_date": 390.0
+      }
+    },
+    "invalid_or_crossed_rows": 280,
+    "valid_spread_bps": {
+      "median": 2.6763013515316505,
+      "p95": 7.422775302379135,
+      "p99": 22.58355916892534
+    },
+    "exact_clock_observations": {
+      "UPRO": {
+        "11:01": 140,
+        "15:30": 140
+      },
+      "SPXU": {
+        "11:01": 140,
+        "15:30": 140
+      }
+    }
+  },
+  "dataset_condition": {
+    "path": "external_artifacts/databento_forward_2026/ARCX.PILLAR/dataset_condition_2026.json",
+    "condition_rows": 146,
+    "degraded_dates": [
+      "2026-06-24",
+      "2026-07-14"
+    ]
+  }
+}

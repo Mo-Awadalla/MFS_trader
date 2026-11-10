@@ -1,0 +1,132 @@
+{
+  "specification_id": "BTC-Confirmed-Short-Squeeze-Continuation-v1",
+  "specification_sha256": "acc2b10d97e80c7a5af1036b608622b8f843ec17e88bef1fc4c57c808fe103e4",
+  "mode": "non_return_feasibility",
+  "input_audit": {
+    "spot_5m": {
+      "rows": 561024,
+      "start": "2020-09-01T00:00:00+00:00",
+      "end": "2025-12-31T23:55:00+00:00",
+      "duplicate_timestamps": 0,
+      "nulls": {
+        "symbol": 0,
+        "interval": 0,
+        "open_time": 0,
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0,
+        "close_time": 0,
+        "quote_volume": 0,
+        "trade_count": 0,
+        "taker_buy_base_volume": 0,
+        "taker_buy_quote_volume": 0
+      },
+      "columns": [
+        "symbol",
+        "interval",
+        "open_time",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "close_time",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ]
+    },
+    "metrics_5m": {
+      "rows": 560389,
+      "start": "2020-09-01T00:00:00+00:00",
+      "end": "2025-12-31T23:55:00+00:00",
+      "duplicate_timestamps": 0,
+      "nulls": {
+        "create_time": 0,
+        "symbol": 0,
+        "sum_open_interest": 0,
+        "sum_open_interest_value": 0,
+        "count_toptrader_long_short_ratio": 92226,
+        "sum_toptrader_long_short_ratio": 92192,
+        "count_long_short_ratio": 5797,
+        "sum_taker_long_short_vol_ratio": 37271
+      },
+      "columns": [
+        "create_time",
+        "symbol",
+        "sum_open_interest",
+        "sum_open_interest_value",
+        "count_toptrader_long_short_ratio",
+        "sum_toptrader_long_short_ratio",
+        "count_long_short_ratio",
+        "sum_taker_long_short_vol_ratio"
+      ]
+    },
+    "funding": {
+      "rows": 6576,
+      "start": "2020-01-01T00:00:00+00:00",
+      "end": "2025-12-31T16:00:00.001000+00:00",
+      "duplicate_timestamps": 0,
+      "nulls": {
+        "calc_time": 0,
+        "funding_interval_hours": 0,
+        "last_funding_rate": 0,
+        "calc_time_raw": 0
+      },
+      "columns": [
+        "calc_time",
+        "funding_interval_hours",
+        "last_funding_rate",
+        "calc_time_raw"
+      ]
+    },
+    "premium_30m": {
+      "rows": 104877,
+      "start": "2020-01-01T00:00:00+00:00",
+      "end": "2025-12-31T23:30:00+00:00",
+      "duplicate_timestamps": 0,
+      "nulls": {
+        "symbol": 0,
+        "interval": 0,
+        "product": 0,
+        "open_time": 0,
+        "open": 0,
+        "high": 0,
+        "low": 0,
+        "close": 0,
+        "volume": 0,
+        "close_time": 0,
+        "quote_volume": 0,
+        "trade_count": 0,
+        "taker_buy_base_volume": 0,
+        "taker_buy_quote_volume": 0
+      },
+      "columns": [
+        "symbol",
+        "interval",
+        "product",
+        "open_time",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "close_time",
+        "quote_volume",
+        "trade_count",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume"
+      ]
+    }
+  },
+  "candidate_counts": {
+    "complete_decisions": 3869,
+    "rolling_ready": 3689,
+    "stage_1": 249,
+    "stage_2": 3
+  },
+  "timestamp_alignment_valid": true
+}
