@@ -1,0 +1,23 @@
+{
+  "status": "bounded_evidence_review_and_source_pilot_complete",
+  "strategy_edge_validated": false,
+  "new_strategy_backtests": 0,
+  "focused_tests": {
+    "passed": 4,
+    "failed": 0,
+    "command": "python -m pytest tests/unit/test_transcript_source_audit.py -q -p no:cacheprovider"
+  },
+  "targeted_ruff": "passed",
+  "all_saved_source_hashes_match": true,
+  "source_hashes_verified": 19,
+  "all_report_local_links_exist": true,
+  "code_hashes": {
+    "research_scout/probe_edge_sources_20260907.py": "6ed75445a05092b5ec775408a11114e5074e08a1f58ad528c5c02f93f3829621",
+    "research_scout/audit_transcript_pilot_20260907.py": "5ac78aaf6ad44d6078436f70b981791e4a7e411bd8bc08cf72e5aef29b24d7ee",
+    "research_scout/finalize_edge_discovery_20260907.py": "e0f09fcce7dddc436ea30f1108bfb8ea1fb0ba044d348162d44a2084d9017ea4",
+    "tests/unit/test_transcript_source_audit.py": "0b65d689f4b5c1590083a704bf303f8b78e5e404f256f5eef6a505b2fe95a086"
+  },
+  "verdict_hash": "c4dcd7024528a8bbc16670e76b23cb98d5bd7056f9958ad8df3fabd9e39cdeed",
+  "report_hash": "a531355fddbe7f8eec1aa39b19602383e4722099228f055c0d54d91f233dd4e7",
+  "no_paid_data_or_inference_calls": true
+}

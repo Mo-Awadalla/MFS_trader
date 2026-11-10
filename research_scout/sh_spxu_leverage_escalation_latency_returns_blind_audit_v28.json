@@ -1,0 +1,40 @@
+{
+  "status": "returns_blind_no_post_entry_prices_or_pnl_read",
+  "eligible_sessions": 738,
+  "valid_measurements": 713,
+  "measurement_coverage": 0.9661246612466124,
+  "executable_entries": 713,
+  "entries_per_week": 4.57051282051282,
+  "direction_counts": {
+    "UPRO": 388,
+    "SPXU": 325
+  },
+  "minority_direction_fraction": 0.45582047685834504,
+  "year_counts": {
+    "2021": 233,
+    "2022": 246,
+    "2023": 234
+  },
+  "median_matched_transitions": {
+    "bullish": 14.0,
+    "bearish": 14.0
+  },
+  "entry_quote_availability": 1.0,
+  "cross_feed": {
+    "overlap_dates": 666,
+    "both_signal_dates": 587,
+    "same_direction_fraction": 0.5570698466780238,
+    "same_action_fraction": 0.512012012012012
+  },
+  "gates": {
+    "valid_measurement_coverage_at_least_90_percent": true,
+    "at_least_two_entries_per_week": true,
+    "every_year_at_least_100_entries": true,
+    "minority_direction_at_least_20_percent": true,
+    "median_matches_at_least_five_each_direction": true,
+    "cross_feed_direction_agreement_at_least_65_percent": false,
+    "cross_feed_action_agreement_at_least_55_percent": false,
+    "entry_quote_availability_at_least_95_percent": true
+  },
+  "feasibility_passed": false
+}

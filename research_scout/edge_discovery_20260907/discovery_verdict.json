@@ -1,0 +1,41 @@
+{
+  "status": "new_research_lead_with_partial_source_feasibility",
+  "edge_validated": false,
+  "new_strategy_backtests": 0,
+  "new_trade_signals": 0,
+  "paid_data_or_inference_calls": 0,
+  "fixed_pilot_companies": 12,
+  "fixed_pilot_documents_retrieved": 11,
+  "complete_parser_checks": 10,
+  "parser_ok_and_no_version_induced_entry_change": [
+    "AAPL",
+    "CVX",
+    "JNJ",
+    "JPM",
+    "LIN",
+    "MSFT",
+    "NEE",
+    "PG",
+    "XOM"
+  ],
+  "same_date_timing_changes": [
+    "WMT"
+  ],
+  "known_price_source_hashes_unchanged": {
+    "data\\parquet\\equity\\alpaca_sip\\AAPL_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\CAT_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\CVX_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\JNJ_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\JPM_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\LIN_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\MSFT_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\NEE_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\PG_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\WMT_1d.parquet": true,
+    "data\\parquet\\equity\\alpaca_sip\\XOM_1d.parquet": true
+  },
+  "missing_pilot_price_files": [
+    "data\\parquet\\equity\\alpaca_sip\\AMT_1d.parquet"
+  ],
+  "readiness": "Pilot demonstrates structured public text retrieval. Broad historical coverage, original versions, signal definition, trading economics and independent confirmation remain unestablished. No new V-number or failed-PnL claim is assigned."
+}

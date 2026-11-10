@@ -1,0 +1,100 @@
+{
+  "specification_id": "BTC-Spot-Risk-Attention-Gate-SPY-Gap-v32",
+  "status": "preregistered_after_returns_blind_audit_and_before_any_post_entry_etf_return",
+  "preimplementation_critique": "research_scout/BTC_SPOT_RISK_ATTENTION_SPY_GAP_PREIMPLEMENTATION_CRITIQUE_V32.md",
+  "returns_blind_audit": "research_scout/btc_spot_risk_attention_spy_gap_returns_blind_audit_v32.json",
+  "scope": {
+    "sensor": "Binance BTCUSDT spot 30-minute klines only",
+    "direction_source": "SPY official cash gap",
+    "prohibited_signal_data": [
+      "futures",
+      "perpetuals",
+      "funding",
+      "margin",
+      "mark price",
+      "index price"
+    ],
+    "actuator": "Long fractional UPRO for bullish or SPXU for bearish",
+    "starting_cash_usd": 100.0,
+    "gross_notional_per_trade_usd": 100.0,
+    "maximum_positions": 1,
+    "maximum_trades_per_equity_session": 1,
+    "short_sales": false,
+    "overnight_etf_positions": false
+  },
+  "frozen_sensor": {
+    "timezone": "America/New_York",
+    "asia_cohort": "prior calendar day 16:00 through signal day 00:30; exactly eighteen 30-minute Binance BTCUSDT spot bars",
+    "europe_cohort": "signal day 01:00 through 08:30; exactly sixteen 30-minute spot bars",
+    "bar_signed_flow": "2 * taker_buy_quote_volume - quote_volume",
+    "cohort_imbalance": "sum(bar_signed_flow) / sum(quote_volume)",
+    "attention_on": "Asia and Europe cohort imbalance signs agree and neither is zero",
+    "attention_off": "opposite signs, an exact zero, or incomplete cohort",
+    "btc_direction_use": "discard after testing sign agreement; it never selects UPRO versus SPXU"
+  },
+  "frozen_direction": {
+    "prior_reference": "immediately prior SPY session's exact 15:59 close",
+    "current_reference": "current SPY exact 09:30 open",
+    "bullish": "attention on and current open strictly above prior close",
+    "bearish": "attention on and current open strictly below prior close",
+    "no_trade": "attention off, exact gap tie, or missing exact reference bar"
+  },
+  "execution": {
+    "primary_feed": "Databento ARCX.PILLAR UPRO/SPXU BBO-1m",
+    "independent_feed": "Databento EQUS.MINI SPY OHLCV-1m and UPRO/SPXU BBO-1m",
+    "entry": "09:31 observed ask",
+    "exit": "15:30 observed bid",
+    "invalid_quote": "skip; never forward-fill",
+    "baseline_cost": "full observed bid-ask spread at both fills",
+    "cost_stress": "one additional cent per share adverse at entry and exit",
+    "delay_stress": "09:36 observed ask with unchanged 15:30 exit"
+  },
+  "development": "2021-01-04 through 2023-12-29",
+  "secondary_holdout": "2024-01-02 through 2025-12-31",
+  "mechanism_contrasts": {
+    "unfiltered_spy_gap": "trade the same SPY cash-gap direction on every eligible session without the BTC attention gate",
+    "one_session_shifted_attention": "use the immediately prior eligible equity session's BTC attention state with the current SPY gap direction"
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "profit_factor_strictly_above": 1.0,
+    "each_of_2021_2022_2023_positive": true,
+    "UPRO_and_SPXU_pnl_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_ten_best_trades": true,
+    "mean_trade_above_unfiltered_spy_gap": true,
+    "winner_deleted_pnl_above_unfiltered_spy_gap": true,
+    "fixed_notional_pnl_above_one_session_shifted_attention": true,
+    "independent_feed_overlap_fixed_notional_pnl_positive": true
+  },
+  "holdout_gates": {
+    "development_must_pass_every_gate": true,
+    "2024_and_2025_each_positive": true,
+    "UPRO_and_SPXU_pnl_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_five_best_trades": true,
+    "mean_trade_above_unfiltered_spy_gap": true,
+    "winner_deleted_pnl_above_unfiltered_spy_gap": true,
+    "fixed_notional_pnl_above_one_session_shifted_attention": true,
+    "independent_feed_fixed_notional_pnl_positive": true
+  },
+  "prohibited_after_results": [
+    "use BTC flow sign to choose the ETF",
+    "change either BTC cohort or its clock",
+    "require BTC flow-price coherence after seeing outcomes",
+    "add a BTC imbalance or SPY gap magnitude threshold",
+    "add a weekday, month, year, volatility, spread, or price filter",
+    "drop UPRO or SPXU",
+    "invert the SPY gap direction",
+    "use any crypto derivative or futures field",
+    "change entry or exit",
+    "choose a favorable execution feed",
+    "combine v32 with another candidate based on historical P&L",
+    "open holdout after any development-gate failure"
+  ],
+  "evidence_warning": "The broader equity history is familywise contaminated by prior research. A historical survivor would remain a forward-paper candidate, not proof or a live-trading recommendation."
+}

@@ -1,0 +1,148 @@
+{
+  "scope": "Config/schema/downloader and representative recent scout implementations. Does not certify every V1-V95 or all formal engine paths.",
+  "direct_config_imports": {
+    "research_scout/daytrade_batch_v83_v92/backtest.py": [],
+    "research_scout/backtest_v40_mbp_20260907.py": [],
+    "research_scout/three_new_intraday_20260907.py": []
+  },
+  "date_boundary": {
+    "configured_end_date": "2025-12-31",
+    "request_end_utc": "2025-12-31T00:00:00+00:00",
+    "request_end_new_york": "2025-12-30T19:00:00-05:00",
+    "actual_last_bar_new_york": "2025-12-30 19:00:00-05:00",
+    "has_2025_12_31_regular_session": false
+  },
+  "cost_and_scale_invariants": {
+    "0": {
+      "flat_price_roundtrip_bps": 0.0,
+      "cash10000_return_equals_cash100": true
+    },
+    "0.0001": {
+      "flat_price_roundtrip_bps": -1.9998000199994426,
+      "cash10000_return_equals_cash100": true
+    },
+    "0.0003": {
+      "flat_price_roundtrip_bps": -5.998200539838461,
+      "cash10000_return_equals_cash100": true
+    },
+    "0.0005": {
+      "flat_price_roundtrip_bps": -9.995002498750516,
+      "cash10000_return_equals_cash100": true
+    },
+    "actual_ETF_price_up_1pct": {
+      "price_ratio_return": 0.010000000000000009,
+      "expected": 0.01
+    }
+  },
+  "existing_independent_cash_verification": {
+    "V40": true,
+    "V93_V95": true
+  },
+  "zero_extra_cost_diagnostics": {
+    "V40": {
+      "development": {
+        "ending_cash_decimal_reconstruction": 92.93997470005108,
+        "fixed_100_pnl_reconstruction": -7.286002619719742,
+        "frictionless_midpoint_ending_cash_diagnostic": 100.86077418459027,
+        "observed_ask_to_bid_before_extra_costs_ending_cash": 94.94872652201101,
+        "trades": 101
+      },
+      "contaminated_validation": {
+        "ending_cash_decimal_reconstruction": 82.17810913486689,
+        "fixed_100_pnl_reconstruction": -19.51271110946289,
+        "frictionless_midpoint_ending_cash_diagnostic": 99.36501451887754,
+        "observed_ask_to_bid_before_extra_costs_ending_cash": 86.95718018817982,
+        "trades": 270
+      },
+      "extension_complete_prefix": {
+        "ending_cash_decimal_reconstruction": 96.8156302973554,
+        "fixed_100_pnl_reconstruction": -3.2030122973873993,
+        "frictionless_midpoint_ending_cash_diagnostic": 100.54746259535021,
+        "observed_ask_to_bid_before_extra_costs_ending_cash": 98.06602005126732,
+        "trades": 62
+      }
+    },
+    "V93": {
+      "development": {
+        "verified_net_cash": 99.13461903659315,
+        "gross_bar_reference_cash": 99.67139398348814,
+        "trade_days": 9,
+        "mean_gross_bps": -3.631851023942787,
+        "mean_net_bps": -9.627873106703433
+      },
+      "later_exposed": {
+        "verified_net_cash": 99.44199083390887,
+        "gross_bar_reference_cash": 99.92045981115099,
+        "trade_days": 8,
+        "mean_gross_bps": -0.9802564219554832,
+        "mean_net_bps": -6.977868984332641
+      }
+    },
+    "V94": {
+      "development": {
+        "verified_net_cash": 62.74865228844242,
+        "gross_bar_reference_cash": 131.3856855170162,
+        "trade_days": 739,
+        "mean_gross_bps": 4.197917619992045,
+        "mean_net_bps": -5.8012806984676155
+      },
+      "later_exposed": {
+        "verified_net_cash": 53.714395295294395,
+        "gross_bar_reference_cash": 87.41623975788906,
+        "trade_days": 487,
+        "mean_gross_bps": -2.2860214120181035,
+        "mean_net_bps": -12.278739031795125
+      }
+    },
+    "V95": {
+      "development": {
+        "verified_net_cash": 88.18996803693885,
+        "gross_bar_reference_cash": 101.84919383937124,
+        "trade_days": 144,
+        "mean_gross_bps": 1.648830419360564,
+        "mean_net_bps": -8.347820085804944
+      },
+      "later_exposed": {
+        "verified_net_cash": 99.45401511199951,
+        "gross_bar_reference_cash": 108.27728437107857,
+        "trade_days": 85,
+        "mean_gross_bps": 9.592076177006462,
+        "mean_net_bps": -0.4125136042787414
+      }
+    }
+  },
+  "findings": [
+    {
+      "severity": "process",
+      "finding": "Recent scout economics are specified in standalone scripts/specifications, not driven by config/research.toml. No single central setting governs these outcomes.",
+      "effect": "Comparability and promotion require explicit per-run settings; changing central risk/cost config will not repair these tests."
+    },
+    {
+      "severity": "data_coverage",
+      "finding": "Date-only Alpaca end is midnight UTC; static20 runner requests2025-12-31 and omits that entire New York trading session.",
+      "effect": "Confirmed explanation for last-day unknowns in V94/V95. Not an explanation for multi-year losses. Preserve historical artifacts; future requests need explicit session-end semantics and completeness checks."
+    },
+    {
+      "severity": "assumption",
+      "finding": "Bar tests assume3bps each side for SPY and5bps for stocks; V40 crosses recorded bid/ask plus1bp each side and fixed fee approximations. These are not one calibrated historical fee schedule.",
+      "effect": "Absolute net results depend on execution assumptions. V40 observed ask/bid alone loses; the new stock-reversal later-period gross path also loses."
+    },
+    {
+      "severity": "measurement",
+      "finding": "Latest stock rules intentionally enter one hour after completed feature bars. Static universe and retrospective adjusted prices require separate PIT controls.",
+      "effect": "Tests of delayed rules, not proof against faster mechanisms; universe bias can overstate performance. Price adjustments within a day cancel in percentage returns, but cross-session features need care."
+    },
+    {
+      "severity": "protocol",
+      "finding": "Earlier version-specific frequency, every-year, every-side and action-agreement gates are not interchangeable with economic loss.",
+      "effect": "Rejected-gate counts cannot be represented as counts of money-losing hypotheses."
+    },
+    {
+      "severity": "guard_gap",
+      "finding": "Yahoo downloader falls back to raw close if adjusted-close field is absent.",
+      "effect": "Potential silent benchmark-definition change; no evidence established that this fallback occurred in the current cached SPY series. Current benchmark remains labeled a total-return proxy."
+    }
+  ],
+  "hypothesis_parameters_changed": false,
+  "account_changes": false
+}

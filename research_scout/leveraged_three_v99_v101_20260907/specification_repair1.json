@@ -1,0 +1,136 @@
+{
+  "created_utc": "2026-09-08T00:25:53.312358+00:00",
+  "status": "source-only parser correction before any candidate returns; original specification retained",
+  "objective": "Three new hypotheses, traded using actual UPRO/SPXU prices, fully funded and flat daily; beat SPY total wealth after costs.",
+  "period": [
+    "2021-01-04",
+    "2023-12-29"
+  ],
+  "later_history": "No candidate outcomes after 2023 will be evaluated by this experiment. 2021-2025 has extensive prior research exposure; this is falsification, not pristine confirmation.",
+  "V99": {
+    "name": "Cost relief versus demand destruction",
+    "mechanism": "A fall in business input-cost pressure has different equity implications when customer demand holds up than when demand deteriorates. A cross-company narrative may be incorporated into index risk more slowly than individual earnings headlines.",
+    "new_measurement": "Prepared-remarks demand and input-cost language changes versus the same issuer's preceding admitted transcript 45-200 calendar days earlier; no Q&A, fitted forecast, future language model, company return, or V98 prediction is used.",
+    "text_rule": "Split at sentence punctuation/newlines/semicolon and but/however/whereas/while. For each topic use cues within eight words of the topic span, excluding the topic itself. Abstain on conflicting directions or no/not/never/without within the local context. Average unambiguous clause signs within document. Demand + means stronger; cost + means greater pressure. Require at least one unambiguous clause in both current and earlier document for a topic delta.",
+    "topics": {
+      "demand": "\\b(?:demand|orders|order intake|bookings?|backlog|unit volumes?|sales volumes?|customer traffic|guest traffic)\\b",
+      "cost": "\\b(?:input costs?|freight costs?|raw material costs?|commodity costs?|transportation costs?|cost inflation|supply chain(?: costs?| disruptions?| constraints?| pressures?| bottlenecks?))\\b"
+    },
+    "cues": {
+      "demand": {
+        "1": "^(?:strong\\w*|strength\\w*|grow\\w*|grew|improv\\w*|robust|resilien\\w*|accelerat\\w*|healthy|recover\\w*|increas\\w*)$",
+        "-1": "^(?:slow\\w*|weak\\w*|declin\\w*|decreas\\w*|soft\\w*|contract\\w*|deteriorat\\w*|reduc\\w*|lower|fall\\w*|fell)$"
+      },
+      "cost": {
+        "1": "^(?:increas\\w*|rise|rises|rising|rose|higher|upward|elevated|worsen\\w*)$",
+        "-1": "^(?:declin\\w*|decreas\\w*|abat\\w*|moderat\\w*|eas\\w*|normaliz\\w*|improv\\w*|lower|reduc\\w*|fall\\w*|fell)$"
+      }
+    },
+    "availability": "Use existing admitted source day, never earlier than max(page published,page modified)+30 minutes, and require strictly before today's 09:30. Current website archive and static surviving issuer coverage are conditional sources, not certified historical publication vintages.",
+    "aggregation": "Latest eligible news per issuer in current and preceding four XNYS sessions. Equal weight issuer deltas separately by topic. At least two issuers in each topic, three in their union, and at least one newly available valid event today. Missing topic evidence causes deliberate abstention; known source archive incompleteness remains a source limitation.",
+    "action": "If mean cost-pressure delta<0 and demand delta>=0, UPRO. If mean cost-pressure delta<=0 and demand delta<0, SPXU. Otherwise cash. No threshold fitting.",
+    "entry": "09:32",
+    "exit": "15:55",
+    "controls": [
+      "Demand-delta direction only on primary active dates",
+      "UPRO on primary active dates"
+    ],
+    "novelty": "Related data domain to V73/V85 and V98, but those measured reporter price diffusion or learned Q&A forecasts for stocks. This measures a specified economic distinction in prepared language and trades the index. No previous outcome sign is flipped or old test reopened."
+  },
+  "V100": {
+    "name": "European closing-pressure unwind",
+    "mechanism": "Global baskets may transmit a temporary pressure pulse into US equities around the European closing auction. If it is deadline pressure, the displacement should partly reverse after the European close.",
+    "formation": "SPY exact 1-minute bars from 16:20 through16:39 Europe/London, with positive volume and all20 bars. Compare open-to-final-close log return with sample standard deviation of the previous20 eligible same-window returns, and volume with their median. Require abs(return)>=1sigma and volume>=median. Direction is opposite the displacement.",
+    "calendar": "Only full XNYS and full XLON sessions. The anchor follows Europe/London daylight saving, including US/UK mismatch weeks. First20 eligible windows are explicit warmup cash. A missing required window poisons dependent20-window history rather than disappearing from it.",
+    "available": "16:40:05 Europe/London",
+    "entry": "16:41 Europe/London",
+    "exit": "17:30 Europe/London",
+    "controls": [
+      "Same-signal continuation instead of reversal",
+      "UPRO on primary active dates",
+      "Identical rule at a placebo clock60 minutes later, with its own strictly lagged normalization"
+    ],
+    "novelty": "Calendar-linked cross-region pressure is distinct from prior SPY opening geometry and same-clock seasonality. London timings are observed; actual European hedger orders are not observed. Pressure transmission is a hypothesis, not an identified causal fact."
+  },
+  "V101": {
+    "name": "Disclosure congestion and delayed index discovery",
+    "mechanism": "A burst of firm disclosures competes for attention. On an unusually busy disclosure morning, a large index repricing may diffuse into remaining portfolios more slowly, creating later continuation.",
+    "congestion": "From prior actual XNYS close through today10:25, count distinct CIKs filing nonamended10-K/10-Q or8-K with exact Item2.02. Collapse accessions and issuer repeats; no sentiment or issuer price is used. Require count>=5 and strictly above75th percentile of preceding60 XNYS morning counts. Acceptance+5 minutes is a research dissemination allowance, not first news publication.",
+    "price": "SPY exact09:30-10:29 minute bars. Require abs(log(close/open))>= sample standard deviation of previous20 full-session opening-hour returns. Follow the sign.",
+    "available": "10:30:05",
+    "entry": "10:32",
+    "exit": "15:55",
+    "controls": [
+      "Identical opening shock without the congestion gate, over all eligible days",
+      "Same price shock with five-session-old congestion gate",
+      "UPRO on primary active dates"
+    ],
+    "novelty": "V73/V85 used the signed price response of reporting companies and peer links. This tests aggregate information-processing load, never reporter return direction. V96's individual filing earliness is also not reused."
+  },
+  "common": {
+    "capital": "$100, fractional research normalization, one100%-cash long ETF at a time, no additional leverage, cash interest0, no overnight. Each hypothesis has its own account; not three simultaneous100% allocations.",
+    "calendar": "All753 XNYS sessions retained in benchmark. Early closes are predeclared cash. Indicator warmup is cash; required market-data gaps are missing, never silently cash.",
+    "quotes": "Exact ARCX.PILLAR interval-end bbo-1m snapshots, positive finite noncrossed prices and positive displayed sizes, one unique row per symbol and interval. Never forward-fill or use future quotes to patch a target. ts_event is LAST TRADE time, not quote freshness; record it without imposing a false quote-age filter. Quote change timestamps, NBBO and exact arrival-time fills cannot be certified by these interval snapshots. This is a venue-quote execution scenario.",
+    "condition_policy": "Preserve dataset condition flags and report affected fills, but do not decide cash retrospectively from full-day condition metadata. Required interval validation still applies. Positive evidence would need event-level/independent-feed validation.",
+    "costs": {
+      "extra_bps_each_side": 1.0,
+      "sell_notional_rate": 5.1e-06,
+      "sell_per_share": 0.000119
+    },
+    "cost_note": "Buy observed ask and sell bid; add1bp each side and fixed existing research sell fees. No double leverage or double-counted spread. Fees are assumptions, not a dated historical regulatory schedule.",
+    "benchmark": "Existing Yahoo adjusted SPY proxy: initial day open-to-close then close-to-close over full calendar, zero benchmark friction.",
+    "stresses": "Double extra bps, delay entry1 minute keeping signal/exit fixed, remove five best primary trade days. Controls are diagnostics and cannot be promoted as new discoveries.",
+    "inference": "5000 paired five-session circular-block bootstrap draws, seed99100101, central98.333333% intervals for family of3; report index-excess and primary-minus-controls. This corrects this batch only, not the repository's full search history. No minimum-trade or positive-every-year veto.",
+    "stop": "Run all three primary backtests. A complete net result below full-calendar SPY is an economic failure; stop that candidate without retuning or opening later years. Missing data makes exact full-calendar result unknown. Positive candidates additionally require stress and incremental-control evidence; none may be called validated from these reused years."
+  },
+  "sources": {
+    "transcripts": {
+      "path": "research_scout/v98_earnings_answers_20260907/eligible_events.json",
+      "sha256": "aa5cdb8f317125897e7b4ab382b76060d6bfbe33b1abbf3a4a74107e30008040"
+    },
+    "sec": {
+      "path": "data/parquet/sec_filings/sec_filing_events.parquet",
+      "sha256": "f4ddb9b5883128069830301547989da76324ec98199681f4b95bc7aa12cf4891"
+    },
+    "spy_minutes": {
+      "path": "external_artifacts/databento_fractional_etf/ARCX.PILLAR/bars/spy_sh_ohlcv_1m_2021-01-01_2026-01-01.dbn.zst",
+      "sha256": "b112340b04514e979bf4ca6f16e7859f1e73661530f89ab8b1257b1514bcb543"
+    },
+    "etf_quotes": {
+      "path": "external_artifacts/databento_leveraged_etf/ARCX.PILLAR/bbo/upro_spxu_bbo_1m_2021-01-01_2026-01-01.dbn.zst",
+      "sha256": "af98e75527e68766b79e717e4483d464274f18632c6da2ae3a07ca6a7803771d"
+    },
+    "condition": {
+      "path": "external_artifacts/databento_fractional_etf/ARCX.PILLAR/dataset_condition_2021_2025.json",
+      "sha256": "dbba5f973b8253495e5ced36118fa724834a14594693fb7e2299d9abb3bda25a"
+    },
+    "benchmark": {
+      "path": "data/parquet/equity/yahoo_chart/SPY_1d.parquet",
+      "sha256": "c0418800014791cd41da1c667cf6f7a27c67108c854e875ef42cfec75b0212e0"
+    },
+    "archive": {
+      "path": "research_scout/postmortem_20260907/hypothesis_ledger.json",
+      "sha256": "3371ebcfa0a472f54f8d60f4026772961457c7835bcb588f47a7a919499d58c2"
+    }
+  },
+  "primary_documentation": [
+    "https://www.proshares.com/our-etfs/leveraged-and-inverse/upro",
+    "https://www.proshares.com/our-etfs/leveraged-and-inverse/spxu",
+    "https://docs.londonstockexchange.com/sites/default/files/documents/Service%20Technical%20Description-%2010.11.2020.pdf",
+    "https://www.sec.gov/info/edgar/specifications/pds-dissemination-spec022315.pdf",
+    "https://databento.com/docs/schemas-and-data-formats/bbo"
+  ],
+  "packages": {
+    "pandas": "3.0.5",
+    "numpy": "2.4.6",
+    "databento": "0.86.0",
+    "exchange_calendars": "4.13.2"
+  },
+  "repair": {
+    "original_sha256": "f77e87c28049dbffe86b865f6034792439c4d9bfd7030d91e5f002e62ba7cc7b",
+    "evidence": "Pre-2021 examples showed customer ordering workflow falsely matching demand, and consultant client supply-chain projects falsely matching costs. Remove singular order and bare traffic; require customer/guest traffic; require an explicit cost/stress noun after supply chain. No direction, threshold, holding period or outcome was inspected or optimized.",
+    "other_changes": "Equivalent exact-index membership implementation replaces a repeated large index conversion; zip strict=False lint clarification.",
+    "original_topic_scores_sha256": "1e24c1c3ce80d8faa11cfddde91d528fdd4d57c03c6705acc4b49a9374ed168d",
+    "original_examples_sha256": "b02e210eab5e7b612d3a448c6abdc6c44794978abb574114c1e0322516e6272e"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "status": "returns_blind_no_post_entry_return_or_pnl_computed",
+  "eligible_development_sessions": 738,
+  "complete_curve_states": 737,
+  "curve_state_coverage": 0.9986449864498645,
+  "candidate_signals": 736,
+  "executable_trades": 727,
+  "executable_trades_per_calendar_week": 4.651736745886654,
+  "primary_execution_coverage": 0.9877717391304348,
+  "year_counts": {
+    "2021": 248,
+    "2022": 243,
+    "2023": 236
+  },
+  "direction_counts": {
+    "UPRO": 430,
+    "SPXU": 297
+  },
+  "minority_direction_fraction": 0.40852819807427787,
+  "roll_policy_comparisons": 737,
+  "early_roll_action_agreement_including_cash": 0.9185888738127544,
+  "independent_candidate_signals": 181,
+  "independent_executable_signals": 179,
+  "independent_execution_coverage": 0.988950276243094,
+  "predeclared_feasibility_gates": {
+    "curve_state_coverage_at_least_98_percent": true,
+    "at_least_two_executable_trades_per_calendar_week": true,
+    "at_least_200_executable_trades_each_development_year": true,
+    "minority_direction_at_least_20_percent": true,
+    "primary_execution_coverage_at_least_95_percent": true,
+    "independent_execution_coverage_at_least_95_percent": true,
+    "early_roll_action_agreement_at_least_80_percent": true,
+    "strict_signal_before_trade_causality": true
+  },
+  "feasibility_passed": true
+}

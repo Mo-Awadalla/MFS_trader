@@ -1,0 +1,38 @@
+{
+  "status": "returns_blind_no_post_entry_etf_prices_or_pnl_read",
+  "eligible_development_sessions": 738,
+  "complete_btc_measurements": 733,
+  "btc_measurement_coverage": 0.9932249322493225,
+  "candidate_entries": 426,
+  "executable_entries": 426,
+  "entries_per_week": 2.730769230769231,
+  "direction_counts": {
+    "UPRO": 221,
+    "SPXU": 205
+  },
+  "minority_direction_fraction": 0.4812206572769953,
+  "year_counts": {
+    "2021": 145,
+    "2022": 135,
+    "2023": 146
+  },
+  "arca_entry_availability": 1.0,
+  "equs_overlap_entry_availability": 1.0,
+  "cross_feed": {
+    "overlap_dates": 658,
+    "both_signal_dates": 375,
+    "same_direction_fraction": 0.9946666666666667,
+    "same_action_fraction": 0.9969604863221885
+  },
+  "gates": {
+    "btc_measurement_coverage_at_least_98_percent": true,
+    "at_least_two_entries_per_week": true,
+    "every_development_year_at_least_100_entries": true,
+    "minority_direction_at_least_20_percent": true,
+    "arca_entry_availability_at_least_95_percent": true,
+    "equs_entry_availability_at_least_95_percent": true,
+    "cross_feed_direction_agreement_at_least_95_percent": true,
+    "cross_feed_action_agreement_at_least_90_percent": true
+  },
+  "feasibility_passed": true
+}

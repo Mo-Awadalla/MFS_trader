@@ -1,0 +1,94 @@
+{
+  "specification_id": "Creation-Conditioned-Wrapper-Discount-v62",
+  "saved_at": "2026-07-30",
+  "status": "preregistered_after_returns-blind-audit-before-post-signal-return-calculation",
+  "hypothesis": "A leveraged ETF with positive prior-session primary-market creation that trades below a SPY-implied, prior-NAV-anchored fair value after the next cash open will converge during the first hour.",
+  "source_audits": {
+    "inventory_history": "research_scout/proshares_inventory_history_audit_v59.json",
+    "primary_market_flow": "research_scout/proshares_primary_market_flow_audit_v60.json",
+    "v61_failure_postmortem": "research_scout/PRIMARY_MARKET_FLOW_RESEARCH_POSTMORTEM_V61.md",
+    "v62_construction": "research_scout/creation_conditioned_wrapper_discount_returns_blind_audit_v62.json"
+  },
+  "signal": {
+    "availability": "one US trading session after the creation source date",
+    "creation_condition": "selected fund's estimated flow dollars strictly greater than 0.01",
+    "prior_nav": "official ProShares source-day NAV converted back to point-in-time units by reversing every later official split",
+    "spy_anchor": "prior official ARCX SPY close",
+    "spy_observation": "close of the OHLCV-1m bar stamped 09:31 ET; the timestamp is interval start and the bar is complete at 09:32",
+    "wrapper_observation": "exact 09:32 ET BBO-1m midpoint",
+    "upro_residual": "(UPRO midpoint / prior UPRO NAV - 1) / 3 - (SPY bar close / prior SPY close - 1)",
+    "spxu_residual": "(SPXU midpoint / prior SPXU NAV - 1) / 3 + (SPY bar close / prior SPY close - 1)",
+    "upro_action": "UPRO creation positive and UPRO residual strictly negative",
+    "spxu_action": "SPXU creation positive and SPXU residual strictly negative",
+    "both_qualify": "select the strictly more negative residual in underlying units; exact tie is cash",
+    "otherwise": "cash",
+    "magnitude_threshold": null,
+    "corporate_action_absolute_return_cap": 0.25,
+    "max_actions_per_session": 1
+  },
+  "execution": {
+    "primary_feed": "existing Databento ARCX.PILLAR UPRO/SPXU BBO-1m already stored in the repo",
+    "independent_feed": "existing Databento EQUS.MINI SPY OHLCV-1m and UPRO/SPXU BBO-1m already stored in the repo",
+    "new_databento_purchase": false,
+    "entry": "observed ask at exactly 09:33 ET",
+    "exit": "observed bid at exactly 10:30 ET",
+    "delayed_entry_stress": "observed ask at exactly 09:38 ET with unchanged 10:30 exit",
+    "extra_cost_stress": "add one cent per share to entry and subtract one cent per share from exit",
+    "initial_cash_usd": 100.0,
+    "fixed_notional_per_trade_usd": 100.0,
+    "fractional_shares": true,
+    "overnight": false,
+    "stop": null,
+    "target": null
+  },
+  "development": {
+    "period": "2021-01-04 through 2023-12-29",
+    "audited_feature_signals": 315,
+    "holdout_lock": "Do not calculate a 2024-2025 feature, strategy, control, or benchmark outcome unless every development gate passes.",
+    "gates": {
+      "minimum_executed_trades_per_week": 2.0,
+      "minimum_signal_execution_coverage": 0.95,
+      "profit_factor_strictly_above": 1.1,
+      "fixed_notional_pnl_positive_each_year": true,
+      "both_upro_and_spxu_fixed_notional_pnl_positive": true,
+      "compounded_ending_cash_strictly_above_adjusted_spy": true,
+      "positive_after_one_extra_cent_each_fill": true,
+      "positive_after_five_minute_entry_delay": true,
+      "positive_after_removing_ten_best_sessions": true,
+      "session_block_bootstrap_95pct_lower_mean_return_above_zero": true,
+      "independent_feed_overlap_positive_and_profit_factor_above_one": true,
+      "mean_trade_return_above_every_control": true
+    }
+  },
+  "controls": {
+    "discount_only": "ignore flow and buy the fund with the more negative residual whenever at least one residual is negative",
+    "creation_only": "among funds with positive creation, buy the lower-residual fund even if that residual is positive",
+    "redemption_conditioned_discount": "apply the actual negative-residual selection to funds with negative flow",
+    "extra_lag_creation_discount": "replace current available creation signs with those from the preceding trading session while retaining current residuals",
+    "creation_conditioned_premium_continuation": "among positively created funds with positive residual, buy the strictly richer fund"
+  },
+  "benchmark": {
+    "asset": "adjusted buy-and-hold SPY",
+    "period": "same 2021-2023 development endpoints",
+    "requirement": "strategy compounded ending cash must be strictly greater"
+  },
+  "bootstrap": {
+    "unit": "trading session",
+    "block_length_sessions": 5,
+    "resamples": 5000,
+    "seed": 620062
+  },
+  "forbidden_repairs": [
+    "residual magnitude threshold or rank",
+    "sign inversion",
+    "alternate SPY or wrapper signal clock",
+    "alternate entry or exit search",
+    "replace NAV with prior market close after outcome inspection",
+    "creation magnitude or AUM threshold",
+    "UPRO or SPXU sleeve deletion",
+    "favorable year, weekday, volatility, or gap subset",
+    "short positions, futures, or options",
+    "opening 2024-2025 after any failed development gate"
+  ],
+  "critique": "research_scout/CREATION_CONDITIONED_WRAPPER_DISCOUNT_PREIMPLEMENTATION_CRITIQUE_V62.md"
+}

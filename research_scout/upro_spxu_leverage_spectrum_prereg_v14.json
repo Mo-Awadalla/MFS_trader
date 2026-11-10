@@ -1,0 +1,91 @@
+{
+  "specification_id": "UPRO-SPXU-Persistent-Leverage-Spectrum-Odd-Mode-v14",
+  "saved_at": "2026-07-26",
+  "status": "preregistered-before-outcome-calculation",
+  "implementation_audit": {
+    "superseded_first_run": "The initial implementation mistakenly required a trade bar in every minute of each 30-minute block, a condition absent from the frozen return definition. It left only 48 primary sessions and eight consolidated sessions.",
+    "correction": "Require the exact opening boundary bar and exact closing boundary bar for each instrument. Internal missing trade minutes do not enter an endpoint return.",
+    "unchanged_elements": "Signal formula, block boundaries, directions, entry, exit, placebos, partitions, and gates are unchanged.",
+    "bias_warning": "The sparse-run outcomes were visible before this implementation correction. The correction follows directly from the saved endpoint-return definition and is reported transparently."
+  },
+  "preimplementation_critique": "research_scout/UPRO_SPXU_LEVERAGE_SPECTRUM_PREIMPLEMENTATION_CRITIQUE_V14.md",
+  "objective": "Test whether persistent directional distortion in the +/-3 ETF odd mode relative to the +/-1 odd mode predicts executable S&P afternoon continuation.",
+  "institutional_interest": "The four ETFs form an overidentified leverage spectrum. The hypothesis isolates a replication residual rather than applying a conventional indicator to SPY.",
+  "data": {
+    "primary_signal": "Databento ARCX.PILLAR SPY, SH, UPRO, and SPXU OHLCV-1m",
+    "primary_execution": "Databento ARCX.PILLAR UPRO/SPXU BBO-1m",
+    "consolidated_rebuild": "Databento EQUS.MINI SPY, SH, UPRO, and SPXU OHLCV-1m plus UPRO/SPXU BBO-1m from 2023-03-28",
+    "primary_period": "2021-01-04 through 2025-12-31",
+    "2026_policy": "No strict 2026 extension because matching SH OHLCV-1m was not acquired. Do not substitute a different SH schema after outcomes."
+  },
+  "definitions": {
+    "block_one": "09:30-09:59 inclusive",
+    "block_two": "10:00-10:29 inclusive",
+    "instrument_block_log_return": "log(exact boundary-minute close / exact boundary-minute open): 09:59 close over 09:30 open for block one and 10:29 close over 10:00 open for block two; internal missing trade minutes are irrelevant to this endpoint return",
+    "low_leverage_odd_mode": "(SPY log return - SH log return) / 2",
+    "high_leverage_odd_mode": "(UPRO log return - SPXU log return) / 6",
+    "odd_residual": "high-leverage odd mode minus low-leverage odd mode",
+    "normalized_even_residual_diagnostic_only": "(UPRO log return + SPXU log return) / 18 - (SPY log return + SH log return) / 2"
+  },
+  "frozen_rule": {
+    "long": "Both block odd residuals are strictly positive; buy UPRO.",
+    "short": "Both block odd residuals are strictly negative; buy SPXU.",
+    "cash": "The block residual signs disagree or either residual equals zero.",
+    "decision": "after the 10:00-10:29 block is complete",
+    "dead_minute": "10:30",
+    "entry": "10:31 observed ask",
+    "exit": "15:55 observed bid",
+    "maximum_trades_per_day": 1,
+    "overnight": false
+  },
+  "account": {
+    "starting_cash_usd": 100.0,
+    "gross_notional_per_trade": "lesser of current cash and $100",
+    "fractional_shares": true,
+    "short_sales": false
+  },
+  "placebos": {
+    "low_leverage_market_direction": "On the exact residual-selected dates, trade the sign of the combined first-hour low-leverage odd mode.",
+    "sign_flipped_residual": "On the exact residual-selected dates, trade the opposite of the frozen residual direction.",
+    "purpose": "The candidate must add information beyond ordinary market direction and must beat the paired opposite action."
+  },
+  "development": "2021-01-04 through 2023-12-29",
+  "secondary_holdout": "2024-01-02 through 2025-12-31",
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "profit_factor_at_least": 1.0,
+    "each_development_year_positive": true,
+    "bullish_and_bearish_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_per_share_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_ten_best_sessions": true,
+    "mean_trade_pnl_above_low_leverage_market_direction_placebo": true,
+    "fixed_notional_pnl_above_sign_flipped_placebo": true
+  },
+  "holdout_gates": {
+    "development_gate_passed": true,
+    "2024_and_2025_each_positive": true,
+    "bullish_and_bearish_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_per_share_each_fill": true,
+    "positive_after_removing_five_best_sessions": true,
+    "mean_trade_pnl_above_low_leverage_market_direction_placebo": true,
+    "fixed_notional_pnl_above_sign_flipped_placebo": true,
+    "consolidated_rebuilt_signal_and_execution_positive": true,
+    "arca_consolidated_signal_agreement_at_least": 0.9
+  },
+  "prohibited_after_results": [
+    "change either 30-minute block",
+    "change entry or exit",
+    "invert the residual",
+    "add a residual magnitude threshold or rank",
+    "use the even residual as a filter",
+    "multiply the residual by volume",
+    "drop UPRO or SPXU trades",
+    "select dates, weekdays, years, volatility states, or venues",
+    "combine with a prior candidate",
+    "substitute BBO midpoints for missing 2026 SH trade bars"
+  ],
+  "evidence_warning": "The exact rule is frozen before calculation, but the broader research program has viewed 2021-2025 repeatedly. A survivor would remain a paper-trading hypothesis, not independent validation."
+}

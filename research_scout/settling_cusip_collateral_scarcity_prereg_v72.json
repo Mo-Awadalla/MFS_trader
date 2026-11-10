@@ -1,0 +1,78 @@
+{
+  "candidate": "v72",
+  "name": "Settling-CUSIP Collateral Scarcity",
+  "status": "preregistered_before_returns_blind_audit",
+  "development": ["2021-01-01", "2023-12-31"],
+  "sources": {
+    "treasury_auction_results": "external_artifacts/treasury_auction_results/auctions_2020_2023.json",
+    "treasury_auction_sha256": "E9F83E2EDC7B499234283A88430CB3AC936D9D26B3A270E0F196D2B36B09F8D2",
+    "nyfed_securities_lending": [
+      "external_artifacts/nyfed_securities_lending/seclending_details_2021.csv",
+      "external_artifacts/nyfed_securities_lending/seclending_details_2022.csv",
+      "external_artifacts/nyfed_securities_lending/seclending_details_2023.csv"
+    ],
+    "nyfed_sha256": {
+      "2021": "66FEA0E8271C1F6350BAB316506A04D3524A684768221C8826E699E73201DAAC",
+      "2022": "1B5BF226E7B89A19AB9093CB2CAA490FFA9C71E37CD6C97932CB28DD15827F24",
+      "2023": "A30AD2093157D706BE8F9745D16F577090E42EB808A389F8F8D1B2EF72BF5120"
+    },
+    "new_paid_data": false
+  },
+  "feature": {
+    "event": "official Treasury issue_date",
+    "matched_instrument": "exact auction CUSIP in same-day New York Fed securities-lending details",
+    "point_in_time": "retain only rows whose Last Updated timestamp is strictly before the 12:20 entry; later supplementary operations are unavailable",
+    "demand_pressure": "Par Amt Submitted divided by Actual Available To Borrow",
+    "within_cusip_change": "current demand pressure minus latest strictly prior same-CUSIP demand pressure",
+    "common_mode": "same-day median within-CUSIP demand change of all non-settling CUSIPs",
+    "settlement_scarcity": "sum across settling CUSIPs of within_cusip_change minus common_mode",
+    "positive": "SPXU",
+    "negative": "UPRO",
+    "zero": "CASH"
+  },
+  "execution_if_admitted": {
+    "entry": "12:20 exact ask",
+    "exit": "15:30 exact bid",
+    "notional_usd": 100,
+    "fractional_shares": true,
+    "overnight": false
+  },
+  "blind_gates": {
+    "minimum_signals_per_week": 2.0,
+    "minimum_signals_each_year": 100,
+    "minimum_minority_action_share": 0.3,
+    "minimum_switches_each_year": 20,
+    "minimum_event_amplification_ratio": 1.05,
+    "minimum_accepted_utilization_action_agreement": 0.7,
+    "maximum_raw_matched_sum_action_agreement": 0.85,
+    "maximum_v66_or_v71_action_agreement": 0.8,
+    "maximum_security_bucket_absolute_contribution": 0.6,
+    "maximum_cusip_absolute_contribution": 0.1,
+    "maximum_month_signal_share": 0.06,
+    "minimum_primary_entry_exit_quote_coverage": 0.95,
+    "minimum_independent_entry_exit_quote_coverage": 0.9
+  },
+  "return_gates": {
+    "minimum_profit_factor": 1.1,
+    "positive_every_year": true,
+    "positive_both_actions": true,
+    "ending_cash_above_adjusted_spy": true,
+    "positive_extra_cent": true,
+    "positive_12_25_delay": true,
+    "positive_delete_best_10": true,
+    "bootstrap_lower_mean_above_zero": true,
+    "month_cluster_permutation_p_below": 0.05,
+    "positive_independent_overlap_pf_above_one": true,
+    "mean_above_all_controls": true
+  },
+  "forbidden": [
+    "sign inversion",
+    "magnitude or fee thresholds",
+    "duration, issue-size, coupon, or security-type weights",
+    "security-type, CUSIP, date, year, month-end, or regime filtering",
+    "alternate common-mode statistic",
+    "selection of control agreement or disagreement states",
+    "alternate entry or exit clock",
+    "recent-year access after any development miss"
+  ]
+}

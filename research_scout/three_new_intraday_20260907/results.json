@@ -1,0 +1,680 @@
+{
+  "hypotheses": {
+    "V93": {
+      "development": {
+        "start": "2021-01-04",
+        "end": "2023-12-29",
+        "net": {
+          "sessions": 753,
+          "trade_days": 9,
+          "ending_cash": 99.13461903659322,
+          "total_return": -0.00865380963406781,
+          "fixed_100_pnl": -0.866508579603309,
+          "max_daily_drawdown": -0.00938641683919239,
+          "sharpe": -0.6907791224959939
+        },
+        "SPY": {
+          "sessions": 753,
+          "trade_days": 0,
+          "ending_cash": 132.3969124078269,
+          "total_return": 0.32396912407826894,
+          "fixed_100_pnl": 32.702665436638426,
+          "max_daily_drawdown": -0.24496380282076535,
+          "sharpe": 0.6212951379720983
+        },
+        "double_cost": {
+          "sessions": 753,
+          "trade_days": 9,
+          "ending_cash": 98.60073476654743,
+          "total_return": -0.013992652334525624,
+          "fixed_100_pnl": -1.4058269760139575,
+          "max_daily_drawdown": -0.014129969400743514,
+          "sharpe": -1.0004770127905536
+        },
+        "delay": {
+          "sessions": 753,
+          "trade_days": 9,
+          "ending_cash": 98.86516416220556,
+          "total_return": -0.011348358377944456,
+          "fixed_100_pnl": -1.135383253960387,
+          "max_daily_drawdown": -0.014001610305645507,
+          "sharpe": -0.6032008860337917
+        },
+        "delay_missing": [],
+        "remove_best_five": {
+          "sessions": 753,
+          "trade_days": 4,
+          "ending_cash": 98.78711110423883,
+          "total_return": -0.012128888957611661,
+          "fixed_100_pnl": -1.2182521137070301,
+          "max_daily_drawdown": -0.012128888957611661,
+          "sharpe": -1.103249338243997
+        },
+        "controls": {
+          "unconditional_FOMC": {
+            "metrics": {
+              "sessions": 753,
+              "trade_days": 24,
+              "ending_cash": 97.40643367145202,
+              "total_return": -0.025935663285479804,
+              "fixed_100_pnl": -2.6217894691644483,
+              "max_daily_drawdown": -0.027708489422457405,
+              "sharpe": -1.3897347699998006
+            },
+            "missing_dates": []
+          }
+        },
+        "mean_daily_excess_family_adjusted_CI": [
+          -0.0013489254418214635,
+          0.00048117485010917897
+        ],
+        "unknown_days": [],
+        "coverage_note": "Complete primary daily accounting.",
+        "gates": {
+          "beats_full_calendar_SPY": false,
+          "doubled_cost_positive": false,
+          "remove_five_positive": false,
+          "family_adjusted_excess_lower_bound_positive": false,
+          "no_unknown_primary_days": true
+        },
+        "passed": false,
+        "yearly": {
+          "2021": {
+            "sessions": 252,
+            "trade_days": 1,
+            "ending_cash": 100.07395489195565,
+            "total_return": 0.0007395489195565208,
+            "fixed_100_pnl": 0.07395489195565208,
+            "max_daily_drawdown": 0.0,
+            "sharpe": 1.0000000000000002
+          },
+          "2022": {
+            "sessions": 251,
+            "trade_days": 7,
+            "ending_cash": 99.11837066580344,
+            "total_return": -0.008816293341965653,
+            "fixed_100_pnl": -0.8829440134204614,
+            "max_daily_drawdown": -0.008816293341965653,
+            "sharpe": -1.2303374689483924
+          },
+          "2023": {
+            "sessions": 250,
+            "trade_days": 1,
+            "ending_cash": 99.9424805418615,
+            "total_return": -0.0005751945813849968,
+            "fixed_100_pnl": -0.05751945813849968,
+            "max_daily_drawdown": -0.0005751945813849968,
+            "sharpe": -1.0039920318408906
+          }
+        }
+      },
+      "later_exposed": {
+        "start": "2024-01-02",
+        "end": "2025-12-31",
+        "net": {
+          "sessions": 502,
+          "trade_days": 8,
+          "ending_cash": 99.44199083390896,
+          "total_return": -0.005580091660910447,
+          "fixed_100_pnl": -0.5582295187466113,
+          "max_daily_drawdown": -0.00845089146083644,
+          "sharpe": -0.7639027041665953
+        },
+        "SPY": {
+          "sessions": 502,
+          "trade_days": 0,
+          "ending_cash": 147.99598966571006,
+          "total_return": 0.4799598966571006,
+          "fixed_100_pnl": 41.85859668567026,
+          "max_daily_drawdown": -0.18755234489427297,
+          "sharpe": 1.2842929459015147
+        },
+        "double_cost": {
+          "sessions": 502,
+          "trade_days": 8,
+          "ending_cash": 98.96581291916566,
+          "total_return": -0.010341870808343478,
+          "fixed_100_pnl": -1.037750810961513,
+          "max_daily_drawdown": -0.01082775644159939,
+          "sharpe": -1.2218423398688778
+        },
+        "delay": {
+          "sessions": 502,
+          "trade_days": 8,
+          "ending_cash": 99.1627016557927,
+          "total_return": -0.008372983442072934,
+          "fixed_100_pnl": -0.8396620804547505,
+          "max_daily_drawdown": -0.008631133908637012,
+          "sharpe": -1.2377977546098753
+        },
+        "delay_missing": [],
+        "remove_best_five": {
+          "sessions": 502,
+          "trade_days": 3,
+          "ending_cash": 99.23414191383615,
+          "total_return": -0.007658580861638509,
+          "fixed_100_pnl": -0.7677903323311197,
+          "max_daily_drawdown": -0.007658580861638509,
+          "sharpe": -1.2104816064306931
+        },
+        "controls": {
+          "unconditional_FOMC": {
+            "metrics": {
+              "sessions": 502,
+              "trade_days": 16,
+              "ending_cash": 98.84842896229522,
+              "total_return": -0.011515710377047794,
+              "fixed_100_pnl": -1.156332740537136,
+              "max_daily_drawdown": -0.012513528789459771,
+              "sharpe": -1.326109688036547
+            },
+            "missing_dates": []
+          }
+        },
+        "mean_daily_excess_family_adjusted_CI": [
+          -0.0018456808330501691,
+          0.00013203577994595127
+        ],
+        "unknown_days": [],
+        "coverage_note": "Complete primary daily accounting.",
+        "gates": {
+          "beats_full_calendar_SPY": false,
+          "doubled_cost_positive": false,
+          "remove_five_positive": false,
+          "family_adjusted_excess_lower_bound_positive": false,
+          "no_unknown_primary_days": true
+        },
+        "passed": false,
+        "yearly": {
+          "2024": {
+            "sessions": 252,
+            "trade_days": 4,
+            "ending_cash": 100.28952673903923,
+            "total_return": 0.0028952673903923642,
+            "fixed_100_pnl": 0.28940335405670536,
+            "max_daily_drawdown": -0.000702291106987496,
+            "sharpe": 1.1919582099686135
+          },
+          "2025": {
+            "sessions": 250,
+            "trade_days": 4,
+            "ending_cash": 99.15491085391636,
+            "total_return": -0.00845089146083633,
+            "fixed_100_pnl": -0.8476328728033167,
+            "max_daily_drawdown": -0.00845089146083633,
+            "sharpe": -1.8702022666803557
+          }
+        }
+      }
+    },
+    "V94": {
+      "development": {
+        "start": "2021-01-04",
+        "end": "2023-12-29",
+        "net": {
+          "sessions": 747,
+          "trade_days": 739,
+          "ending_cash": 62.74865228845214,
+          "total_return": -0.37251347711547855,
+          "fixed_100_pnl": -42.87146436167569,
+          "max_daily_drawdown": -0.4840426327756491,
+          "sharpe": -0.9135478668544719
+        },
+        "SPY": {
+          "sessions": 753,
+          "trade_days": 0,
+          "ending_cash": 132.3969124078269,
+          "total_return": 0.32396912407826894,
+          "fixed_100_pnl": 32.702665436638426,
+          "max_daily_drawdown": -0.24496380282076535,
+          "sharpe": 0.6212951379720983
+        },
+        "double_cost": {
+          "sessions": 747,
+          "trade_days": 739,
+          "ending_cash": 29.968195497515882,
+          "total_return": -0.7003180450248412,
+          "fixed_100_pnl": -116.69171967978262,
+          "max_daily_drawdown": -0.7014610261877865,
+          "sharpe": -2.4887842840084895
+        },
+        "delay": {
+          "sessions": 747,
+          "trade_days": 739,
+          "ending_cash": 65.71635302255147,
+          "total_return": -0.34283646977448523,
+          "fixed_100_pnl": -39.558193711719376,
+          "max_daily_drawdown": -0.40202044192662023,
+          "sharpe": -1.0455855296707075
+        },
+        "delay_missing": [],
+        "remove_best_five": {
+          "sessions": 747,
+          "trade_days": 734,
+          "ending_cash": 51.65149892395748,
+          "total_return": -0.48348501076042516,
+          "fixed_100_pnl": -62.7223303625889,
+          "max_daily_drawdown": -0.5752901388943308,
+          "sharpe": -1.4179433142222213
+        },
+        "controls": {
+          "all_eligible_equal_weight": {
+            "metrics": {
+              "sessions": 743,
+              "trade_days": 735,
+              "ending_cash": 70.1466016145108,
+              "total_return": -0.29853398385489205,
+              "fixed_100_pnl": -33.33490094421367,
+              "max_daily_drawdown": -0.363438633539505,
+              "sharpe": -0.9434937158681007
+            },
+            "missing_dates": [
+              "2021-04-19",
+              "2021-10-25",
+              "2022-01-24",
+              "2022-01-26"
+            ]
+          },
+          "top_three_residuals": {
+            "metrics": {
+              "sessions": 745,
+              "trade_days": 737,
+              "ending_cash": 76.66600657192971,
+              "total_return": -0.23333993428070288,
+              "fixed_100_pnl": -23.31946518850178,
+              "max_daily_drawdown": -0.3375908737903357,
+              "sharpe": -0.5316346785893881
+            },
+            "missing_dates": [
+              "2021-10-25",
+              "2022-01-24"
+            ]
+          }
+        },
+        "mean_daily_excess_family_adjusted_CI": [
+          -0.002101576193549296,
+          4.565909127115207e-05
+        ],
+        "unknown_days": [
+          "2021-01-04",
+          "2021-04-20",
+          "2021-10-26",
+          "2022-01-25",
+          "2022-03-08",
+          "2022-03-09"
+        ],
+        "coverage_note": "Available-case strategy and paired inference if unknown days exist; full-calendar SPY still shown; automatic failure, not comparable complete equity.",
+        "gates": {
+          "beats_full_calendar_SPY": false,
+          "doubled_cost_positive": false,
+          "remove_five_positive": false,
+          "family_adjusted_excess_lower_bound_positive": false,
+          "no_unknown_primary_days": false
+        },
+        "passed": false,
+        "yearly": {
+          "2021": {
+            "sessions": 249,
+            "trade_days": 247,
+            "ending_cash": 83.768337746722,
+            "total_return": -0.16231662253278,
+            "fixed_100_pnl": -16.968667392204413,
+            "max_daily_drawdown": -0.1868047065577335,
+            "sharpe": -1.4054353718506076
+          },
+          "2022": {
+            "sessions": 248,
+            "trade_days": 246,
+            "ending_cash": 62.80414679061136,
+            "total_return": -0.3719585320938864,
+            "fixed_100_pnl": -44.381651242836874,
+            "max_daily_drawdown": -0.3875469638216429,
+            "sharpe": -2.1873362011026214
+          },
+          "2023": {
+            "sessions": 250,
+            "trade_days": 246,
+            "ending_cash": 119.27136371629304,
+            "total_return": 0.19271363716293033,
+            "fixed_100_pnl": 18.478854273365595,
+            "max_daily_drawdown": -0.0719524661650337,
+            "sharpe": 1.4185827008476373
+          }
+        }
+      },
+      "later_exposed": {
+        "start": "2024-01-02",
+        "end": "2025-12-31",
+        "net": {
+          "sessions": 499,
+          "trade_days": 487,
+          "ending_cash": 53.71439529529975,
+          "total_return": -0.46285604704700245,
+          "fixed_100_pnl": -59.79745908484227,
+          "max_daily_drawdown": -0.5462810833473404,
+          "sharpe": -1.9754789955121461
+        },
+        "SPY": {
+          "sessions": 502,
+          "trade_days": 0,
+          "ending_cash": 147.99598966571006,
+          "total_return": 0.4799598966571006,
+          "fixed_100_pnl": 41.85859668567026,
+          "max_daily_drawdown": -0.18755234489427297,
+          "sharpe": 1.2842929459015147
+        },
+        "double_cost": {
+          "sessions": 499,
+          "trade_days": 487,
+          "ending_cash": 33.005715727136646,
+          "total_return": -0.6699428427286336,
+          "fixed_100_pnl": -108.41337797427192,
+          "max_daily_drawdown": -0.7039532446073923,
+          "sharpe": -3.583575097833973
+        },
+        "delay": {
+          "sessions": 499,
+          "trade_days": 487,
+          "ending_cash": 56.616784849756954,
+          "total_return": -0.4338321515024305,
+          "fixed_100_pnl": -55.250047834526626,
+          "max_daily_drawdown": -0.48765470732219596,
+          "sharpe": -2.1901494339953476
+        },
+        "delay_missing": [],
+        "remove_best_five": {
+          "sessions": 499,
+          "trade_days": 482,
+          "ending_cash": 44.583352135376394,
+          "total_return": -0.5541664786462361,
+          "fixed_100_pnl": -78.83966773389426,
+          "max_daily_drawdown": -0.5998728580312641,
+          "sharpe": -2.903375066180552
+        },
+        "controls": {
+          "all_eligible_equal_weight": {
+            "metrics": {
+              "sessions": 499,
+              "trade_days": 487,
+              "ending_cash": 69.51121302192547,
+              "total_return": -0.30488786978074534,
+              "fixed_100_pnl": -35.09583325194841,
+              "max_daily_drawdown": -0.3364857254172846,
+              "sharpe": -1.5601004004444767
+            },
+            "missing_dates": []
+          },
+          "top_three_residuals": {
+            "metrics": {
+              "sessions": 499,
+              "trade_days": 487,
+              "ending_cash": 75.46454645310388,
+              "total_return": -0.24535453546896124,
+              "fixed_100_pnl": -25.399702456234763,
+              "max_daily_drawdown": -0.2773695867029421,
+              "sharpe": -0.7596512356137689
+            },
+            "missing_dates": []
+          }
+        },
+        "mean_daily_excess_family_adjusted_CI": [
+          -0.003184345502071466,
+          -0.000979739023274447
+        ],
+        "unknown_days": [
+          "2025-03-10",
+          "2025-03-11",
+          "2025-12-31"
+        ],
+        "coverage_note": "Available-case strategy and paired inference if unknown days exist; full-calendar SPY still shown; automatic failure, not comparable complete equity.",
+        "gates": {
+          "beats_full_calendar_SPY": false,
+          "doubled_cost_positive": false,
+          "remove_five_positive": false,
+          "family_adjusted_excess_lower_bound_positive": false,
+          "no_unknown_primary_days": false
+        },
+        "passed": false,
+        "yearly": {
+          "2024": {
+            "sessions": 252,
+            "trade_days": 246,
+            "ending_cash": 67.21089898516158,
+            "total_return": -0.3278910101483842,
+            "fixed_100_pnl": -38.89556451407529,
+            "max_daily_drawdown": -0.39000434434070397,
+            "sharpe": -3.0671999288593983
+          },
+          "2025": {
+            "sessions": 247,
+            "trade_days": 241,
+            "ending_cash": 79.91917398271752,
+            "total_return": -0.20080826017282472,
+            "fixed_100_pnl": -20.90189457076699,
+            "max_daily_drawdown": -0.268210624477601,
+            "sharpe": -1.2144002362521154
+          }
+        }
+      }
+    },
+    "V95": {
+      "development": {
+        "start": "2021-01-04",
+        "end": "2023-12-29",
+        "net": {
+          "sessions": 753,
+          "trade_days": 144,
+          "ending_cash": 88.18996803694044,
+          "total_return": -0.11810031963059553,
+          "fixed_100_pnl": -12.020860923559118,
+          "max_daily_drawdown": -0.16080714129753082,
+          "sharpe": -0.6653568262008003
+        },
+        "SPY": {
+          "sessions": 753,
+          "trade_days": 0,
+          "ending_cash": 132.3969124078269,
+          "total_return": 0.32396912407826894,
+          "fixed_100_pnl": 32.702665436638426,
+          "max_daily_drawdown": -0.24496380282076535,
+          "sharpe": 0.6212951379720983
+        },
+        "double_cost": {
+          "sessions": 753,
+          "trade_days": 144,
+          "ending_cash": 76.36260641045588,
+          "total_return": -0.2363739358954412,
+          "fixed_100_pnl": -26.4016568550681,
+          "max_daily_drawdown": -0.25098135969505986,
+          "sharpe": -1.4423756106565457
+        },
+        "delay": {
+          "sessions": 753,
+          "trade_days": 144,
+          "ending_cash": 88.62000751804946,
+          "total_return": -0.1137999248195054,
+          "fixed_100_pnl": -11.739705845016513,
+          "max_daily_drawdown": -0.15052348530091175,
+          "sharpe": -0.8228762658565325
+        },
+        "delay_missing": [],
+        "remove_best_five": {
+          "sessions": 753,
+          "trade_days": 139,
+          "ending_cash": 78.57069862798411,
+          "total_return": -0.21429301372015885,
+          "fixed_100_pnl": -23.716947405032094,
+          "max_daily_drawdown": -0.23689946387601135,
+          "sharpe": -1.5458686930238295
+        },
+        "controls": {
+          "equal_weight_both_classes": {
+            "metrics": {
+              "sessions": 753,
+              "trade_days": 144,
+              "ending_cash": 88.08291852946807,
+              "total_return": -0.1191708147053192,
+              "fixed_100_pnl": -12.149530197414594,
+              "max_daily_drawdown": -0.15864918261979832,
+              "sharpe": -0.6770418696688513
+            },
+            "missing_dates": []
+          }
+        },
+        "mean_daily_excess_family_adjusted_CI": [
+          -0.0015434424229410582,
+          0.00038868043605707296
+        ],
+        "unknown_days": [],
+        "coverage_note": "Complete primary daily accounting.",
+        "gates": {
+          "beats_full_calendar_SPY": false,
+          "doubled_cost_positive": false,
+          "remove_five_positive": false,
+          "family_adjusted_excess_lower_bound_positive": false,
+          "no_unknown_primary_days": true
+        },
+        "passed": false,
+        "yearly": {
+          "2021": {
+            "sessions": 252,
+            "trade_days": 47,
+            "ending_cash": 99.74979432745779,
+            "total_return": -0.0025020567254220305,
+            "fixed_100_pnl": -0.15046611645654906,
+            "max_daily_drawdown": -0.03776836829794583,
+            "sharpe": -0.033562014836372826
+          },
+          "2022": {
+            "sessions": 251,
+            "trade_days": 42,
+            "ending_cash": 91.17188459643602,
+            "total_return": -0.08828115403563985,
+            "fixed_100_pnl": -8.979241396473526,
+            "max_daily_drawdown": -0.1110718853323539,
+            "sharpe": -1.2442812989815721
+          },
+          "2023": {
+            "sessions": 250,
+            "trade_days": 55,
+            "ending_cash": 96.9719757470726,
+            "total_return": -0.03028024252927397,
+            "fixed_100_pnl": -2.8911534106290437,
+            "max_daily_drawdown": -0.06492157656118602,
+            "sharpe": -0.47732167787443
+          }
+        }
+      },
+      "later_exposed": {
+        "start": "2024-01-02",
+        "end": "2025-12-31",
+        "net": {
+          "sessions": 501,
+          "trade_days": 85,
+          "ending_cash": 99.45401511200048,
+          "total_return": -0.005459848879995288,
+          "fixed_100_pnl": -0.3506365636369302,
+          "max_daily_drawdown": -0.04456659341303604,
+          "sharpe": -0.03961388514850453
+        },
+        "SPY": {
+          "sessions": 502,
+          "trade_days": 0,
+          "ending_cash": 147.99598966571006,
+          "total_return": 0.4799598966571006,
+          "fixed_100_pnl": 41.85859668567026,
+          "max_daily_drawdown": -0.18755234489427297,
+          "sharpe": 1.2842929459015147
+        },
+        "double_cost": {
+          "sessions": 501,
+          "trade_days": 85,
+          "ending_cash": 91.34973008399339,
+          "total_return": -0.08650269916006603,
+          "fixed_100_pnl": -8.846042471822136,
+          "max_daily_drawdown": -0.09663201926388876,
+          "sharpe": -0.990812914974069
+        },
+        "delay": {
+          "sessions": 501,
+          "trade_days": 85,
+          "ending_cash": 93.68843161366944,
+          "total_return": -0.06311568386330568,
+          "fixed_100_pnl": -6.42051495927366,
+          "max_daily_drawdown": -0.06355401276318473,
+          "sharpe": -1.0249010014658029
+        },
+        "delay_missing": [],
+        "remove_best_five": {
+          "sessions": 501,
+          "trade_days": 80,
+          "ending_cash": 92.31046546914928,
+          "total_return": -0.07689534530850717,
+          "fixed_100_pnl": -7.862846899801957,
+          "max_daily_drawdown": -0.08594159655793021,
+          "sharpe": -1.0643951802075677
+        },
+        "controls": {
+          "equal_weight_both_classes": {
+            "metrics": {
+              "sessions": 501,
+              "trade_days": 85,
+              "ending_cash": 99.24758249865344,
+              "total_return": -0.007524175013465584,
+              "fixed_100_pnl": -0.5586817573141112,
+              "max_daily_drawdown": -0.04318108281092303,
+              "sharpe": -0.06316353395467408
+            },
+            "missing_dates": []
+          }
+        },
+        "mean_daily_excess_family_adjusted_CI": [
+          -0.0018034636509703722,
+          9.956367996530396e-05
+        ],
+        "unknown_days": [
+          "2025-12-31"
+        ],
+        "coverage_note": "Available-case strategy and paired inference if unknown days exist; full-calendar SPY still shown; automatic failure, not comparable complete equity.",
+        "gates": {
+          "beats_full_calendar_SPY": false,
+          "doubled_cost_positive": false,
+          "remove_five_positive": false,
+          "family_adjusted_excess_lower_bound_positive": false,
+          "no_unknown_primary_days": false
+        },
+        "passed": false,
+        "yearly": {
+          "2024": {
+            "sessions": 252,
+            "trade_days": 45,
+            "ending_cash": 98.51395522755342,
+            "total_return": -0.014860447724465708,
+            "fixed_100_pnl": -1.4309822744561496,
+            "max_daily_drawdown": -0.04456659341303604,
+            "sharpe": -0.3930679080074764
+          },
+          "2025": {
+            "sessions": 249,
+            "trade_days": 40,
+            "ending_cash": 100.95424032288183,
+            "total_return": 0.009542403228818275,
+            "fixed_100_pnl": 1.0803457108192194,
+            "max_daily_drawdown": -0.028873017489874364,
+            "sharpe": 0.21224600988492462
+          }
+        }
+      }
+    }
+  },
+  "execution_missing": {
+    "V93": {},
+    "V94": {
+      "2022-03-08": "entry_or_exit_missing"
+    },
+    "V95": {}
+  },
+  "inputs_existing_only": true,
+  "execution_quality": "bar-based scenario, no historical bid/ask validation",
+  "no_tuning": true
+}

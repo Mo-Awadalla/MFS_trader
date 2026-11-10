@@ -1,0 +1,62 @@
+{
+  "candidate": "v75",
+  "name": "Constituent Participation Acceleration",
+  "status": "preregistered_before_free_signal_data_acquisition",
+  "development": ["2021-01-01", "2023-12-31"],
+  "source": {
+    "universe": "research.universes.residual_reversal_v1.stock_symbols",
+    "bars": "free Alpaca IEX 30Min adjustment=all",
+    "paid_data": false,
+    "databento_purchase": false
+  },
+  "feature": {
+    "breadth_30": "count positive 09:30-bar returns minus count negative returns",
+    "breadth_60": "count positive 09:30-open to 10:00-bar-close returns minus count negative returns",
+    "trigger": "same nonzero sign and absolute breadth_60 strictly exceeds absolute breadth_30",
+    "positive": "UPRO",
+    "negative": "SPXU",
+    "otherwise": "CASH"
+  },
+  "execution_if_admitted": {
+    "entry": "10:31 exact ask",
+    "exit": "15:55 exact bid",
+    "notional_usd": 100,
+    "overnight": false
+  },
+  "blind_gates": {
+    "minimum_complete_session_fraction": 0.95,
+    "minimum_signals_per_week": 2.0,
+    "minimum_signals_each_year": 100,
+    "minimum_minority_action_share": 0.3,
+    "minimum_switches_each_year": 25,
+    "maximum_selection_share": 0.8,
+    "maximum_spy_momentum_action_agreement": 0.85,
+    "minimum_odd_even_action_agreement": 0.7,
+    "maximum_month_signal_share": 0.06,
+    "minimum_primary_quote_coverage": 0.95,
+    "minimum_independent_quote_coverage": 0.9
+  },
+  "return_gates": {
+    "minimum_profit_factor": 1.1,
+    "positive_every_year": true,
+    "positive_both_actions": true,
+    "ending_cash_above_adjusted_spy": true,
+    "positive_extra_cent": true,
+    "positive_10_36_delay": true,
+    "positive_delete_best_10": true,
+    "bootstrap_lower_mean_above_zero": true,
+    "month_permutation_p_below": 0.05,
+    "positive_independent_overlap_pf_above_one": true,
+    "mean_above_final_breadth_only_control": true,
+    "mean_above_spy_momentum_control": true
+  },
+  "forbidden": [
+    "breadth magnitude threshold",
+    "universe or sector deletion",
+    "market-cap or hand weights",
+    "sign inversion or UPRO-only",
+    "alternate signal, entry, or exit clock",
+    "date, volatility, trend, or regime filtering",
+    "recent-year access after any miss"
+  ]
+}

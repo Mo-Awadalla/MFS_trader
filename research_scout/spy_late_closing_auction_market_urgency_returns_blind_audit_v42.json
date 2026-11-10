@@ -1,0 +1,895 @@
+{
+  "status": "failed_returns_blind_feasibility_no_pnl_opened",
+  "returns_read": false,
+  "rule": {
+    "auction_type": "C",
+    "early_cutoff": "15:50:00",
+    "late_cutoff": "15:55:00",
+    "condition": "same regular-close side; positive market imbalance at both snapshots; late quantity strictly larger",
+    "actuator": "B -> SPY; A -> SH",
+    "entry_targets": [
+      "15:55:01",
+      "15:55:05",
+      "15:56:00"
+    ],
+    "primary_entry": "15:56:00",
+    "exit_target": "15:59:00",
+    "flat_before_16_00": true
+  },
+  "chronology": "Independent recommendation dispatched before V41 feasibility was read; no V37-V41 P&L existed.",
+  "degraded_dates_excluded_union": [
+    "2021-01-21",
+    "2022-07-18",
+    "2022-08-22",
+    "2022-12-05",
+    "2022-12-27",
+    "2023-06-26",
+    "2023-09-22",
+    "2023-11-21",
+    "2023-12-01",
+    "2023-12-04",
+    "2023-12-05",
+    "2023-12-06",
+    "2023-12-07",
+    "2023-12-08",
+    "2023-12-11",
+    "2024-04-19",
+    "2024-06-18",
+    "2024-11-19",
+    "2025-03-24",
+    "2025-04-04",
+    "2025-05-06",
+    "2025-06-04",
+    "2025-06-16",
+    "2025-07-09",
+    "2025-08-08",
+    "2025-08-13",
+    "2025-08-19",
+    "2025-08-25",
+    "2025-09-03",
+    "2025-09-08",
+    "2025-09-12",
+    "2025-10-10",
+    "2025-10-13",
+    "2026-06-24",
+    "2026-07-14"
+  ],
+  "feature_development_2021_2023": {
+    "signals": 45,
+    "signals_per_declared_week": 0.28767123287671237,
+    "side_counts": {
+      "A": 23,
+      "B": 22
+    },
+    "minority_share": 0.4888888888888889
+  },
+  "executable_development_2023_overlap": {
+    "signals": 5,
+    "signals_per_declared_week": 0.12544802867383514,
+    "side_counts": {
+      "B": 3,
+      "A": 2
+    },
+    "minority_share": 0.4
+  },
+  "all_overlap": {
+    "feature_signals": 30,
+    "executable_signals": 28,
+    "complete_quote_coverage_pct": 93.33333333333333,
+    "missing": {
+      "SH:15:55:01": 2,
+      "SH:15:55:05": 2
+    }
+  },
+  "by_year": {
+    "2021": {
+      "signals": 26,
+      "signals_per_declared_week": 0.4986301369863013,
+      "side_counts": {
+        "A": 14,
+        "B": 12
+      }
+    },
+    "2022": {
+      "signals": 10,
+      "signals_per_declared_week": 0.1917808219178082,
+      "side_counts": {
+        "B": 6,
+        "A": 4
+      }
+    },
+    "2023": {
+      "signals": 9,
+      "signals_per_declared_week": 0.17260273972602738,
+      "side_counts": {
+        "A": 5,
+        "B": 4
+      }
+    },
+    "2024": {
+      "signals": 15,
+      "signals_per_declared_week": 0.28688524590163933,
+      "side_counts": {
+        "B": 14,
+        "A": 1
+      }
+    },
+    "2025": {
+      "signals": 8,
+      "signals_per_declared_week": 0.15342465753424656,
+      "side_counts": {
+        "B": 3,
+        "A": 5
+      }
+    },
+    "2026": {
+      "signals": 0,
+      "signals_per_declared_week": 0.0,
+      "side_counts": {}
+    }
+  },
+  "adjacent_window_stability": {
+    "15:49:50_15:54:50": {
+      "signals": 106,
+      "joint_signal_days": 53,
+      "direction_agreement_on_joint_pct": 100.0,
+      "identical_action_including_cash_pct": 43.80165289256198
+    },
+    "15:50:10_15:55:10": {
+      "signals": 71,
+      "joint_signal_days": 46,
+      "direction_agreement_on_joint_pct": 100.0,
+      "identical_action_including_cash_pct": 49.46236559139785
+    }
+  },
+  "quantity_break": {
+    "postbreak_signals": 0,
+    "side_counts": {}
+  },
+  "returns_blind_controls": {
+    "baseline_eligible_days": 210,
+    "selected_signal_days": 68,
+    "selection_share_pct": 32.38095238095238,
+    "presignal_spy_momentum_available": 30,
+    "presignal_spy_momentum_coverage_pct": 44.11764705882353,
+    "presignal_spy_momentum_direction_agreement_pct": 53.333333333333336,
+    "monthend_or_third_friday_signals": 4,
+    "calendar_concentration_pct": 5.88235294117647
+  },
+  "timestamp_observability": {
+    "signals_before_cutoff": true,
+    "entries_after_signal": true,
+    "retained_exits_before_close": true
+  },
+  "gates": {
+    "at_least_two_feature_signals_per_week_overall_and_each_full_development_year": false,
+    "at_least_two_executable_primary_signals_per_week_2023_overlap": false,
+    "at_least_100_feature_signals_each_development_year": false,
+    "at_least_20_feature_signals_2026": false,
+    "minority_side_at_least_20pct_feature_and_executable_development_and_both_actuators": true,
+    "all_delay_plus_preclose_exit_quote_coverage_at_least_90pct": true,
+    "shifted_window_minus_10s_identical_action_at_least_60pct": false,
+    "shifted_window_plus_10s_identical_action_at_least_60pct": false,
+    "at_least_20_postbreak_signals_with_both_directions": false,
+    "presignal_spy_momentum_coverage_at_least_80pct_and_agreement_below_80pct": false,
+    "growth_condition_selects_no_more_than_80pct_baseline_days": true,
+    "signals_select_between_10_and_80pct_baseline_days": true,
+    "monthend_or_third_friday_concentration_no_more_than_25pct": true,
+    "signal_before_cutoff_entries_after_receipt_exits_before_close": true,
+    "tbbo_prefix_tail_dedup_and_fixed_degraded_dates": true
+  },
+  "gate_passed": false,
+  "signals": {
+    "2021-01-07": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 7777,
+      "late_market_imbalance_qty": 13804,
+      "growth_qty": 6027,
+      "late_total_imbalance_qty": 36219,
+      "signal_ts_event": "2021-01-07T20:54:59.043612672+00:00",
+      "signal_ts_recv": "2021-01-07T20:54:59.043672896+00:00"
+    },
+    "2021-01-11": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 113521,
+      "late_market_imbalance_qty": 126008,
+      "growth_qty": 12487,
+      "late_total_imbalance_qty": 176718,
+      "signal_ts_event": "2021-01-11T20:54:59.048297216+00:00",
+      "signal_ts_recv": "2021-01-11T20:54:59.048383392+00:00"
+    },
+    "2021-01-13": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 131179,
+      "late_market_imbalance_qty": 147937,
+      "growth_qty": 16758,
+      "late_total_imbalance_qty": 161993,
+      "signal_ts_event": "2021-01-13T20:54:59.035825152+00:00",
+      "signal_ts_recv": "2021-01-13T20:54:59.035885863+00:00"
+    },
+    "2021-01-28": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 406557,
+      "late_market_imbalance_qty": 421912,
+      "growth_qty": 15355,
+      "late_total_imbalance_qty": 430410,
+      "signal_ts_event": "2021-01-28T20:54:59.061658880+00:00",
+      "signal_ts_recv": "2021-01-28T20:54:59.061706691+00:00"
+    },
+    "2021-02-02": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 438263,
+      "late_market_imbalance_qty": 445265,
+      "growth_qty": 7002,
+      "late_total_imbalance_qty": 504426,
+      "signal_ts_event": "2021-02-02T20:54:59.039845632+00:00",
+      "signal_ts_recv": "2021-02-02T20:54:59.039931140+00:00"
+    },
+    "2021-02-18": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 39433,
+      "late_market_imbalance_qty": 194885,
+      "growth_qty": 155452,
+      "late_total_imbalance_qty": 232487,
+      "signal_ts_event": "2021-02-18T20:54:59.047282688+00:00",
+      "signal_ts_recv": "2021-02-18T20:54:59.047380626+00:00"
+    },
+    "2021-03-04": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 1369860,
+      "late_market_imbalance_qty": 1385059,
+      "growth_qty": 15199,
+      "late_total_imbalance_qty": 1442967,
+      "signal_ts_event": "2021-03-04T20:54:59.057363200+00:00",
+      "signal_ts_recv": "2021-03-04T20:54:59.057459473+00:00"
+    },
+    "2021-03-12": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 885479,
+      "late_market_imbalance_qty": 943182,
+      "growth_qty": 57703,
+      "late_total_imbalance_qty": 996262,
+      "signal_ts_event": "2021-03-12T20:54:59.055036672+00:00",
+      "signal_ts_recv": "2021-03-12T20:54:59.055126674+00:00"
+    },
+    "2021-03-18": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 301623,
+      "late_market_imbalance_qty": 452935,
+      "growth_qty": 151312,
+      "late_total_imbalance_qty": 470812,
+      "signal_ts_event": "2021-03-18T19:54:59.056193280+00:00",
+      "signal_ts_recv": "2021-03-18T19:54:59.056265041+00:00"
+    },
+    "2021-04-05": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 10394,
+      "late_market_imbalance_qty": 12063,
+      "growth_qty": 1669,
+      "late_total_imbalance_qty": 63230,
+      "signal_ts_event": "2021-04-05T19:54:59.043680768+00:00",
+      "signal_ts_recv": "2021-04-05T19:54:59.043752528+00:00"
+    },
+    "2021-04-21": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 806688,
+      "late_market_imbalance_qty": 907522,
+      "growth_qty": 100834,
+      "late_total_imbalance_qty": 957951,
+      "signal_ts_event": "2021-04-21T19:54:59.043399936+00:00",
+      "signal_ts_recv": "2021-04-21T19:54:59.043462343+00:00"
+    },
+    "2021-04-26": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 559890,
+      "late_market_imbalance_qty": 593910,
+      "growth_qty": 34020,
+      "late_total_imbalance_qty": 642716,
+      "signal_ts_event": "2021-04-26T19:54:59.045311744+00:00",
+      "signal_ts_recv": "2021-04-26T19:54:59.045370101+00:00"
+    },
+    "2021-04-28": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 11855,
+      "late_market_imbalance_qty": 223157,
+      "growth_qty": 211302,
+      "late_total_imbalance_qty": 246701,
+      "signal_ts_event": "2021-04-28T19:54:59.040215040+00:00",
+      "signal_ts_recv": "2021-04-28T19:54:59.040311984+00:00"
+    },
+    "2021-05-20": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 318951,
+      "late_market_imbalance_qty": 381023,
+      "growth_qty": 62072,
+      "late_total_imbalance_qty": 435243,
+      "signal_ts_event": "2021-05-20T19:54:59.040148224+00:00",
+      "signal_ts_recv": "2021-05-20T19:54:59.040204785+00:00"
+    },
+    "2021-06-09": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 190025,
+      "late_market_imbalance_qty": 243984,
+      "growth_qty": 53959,
+      "late_total_imbalance_qty": 271284,
+      "signal_ts_event": "2021-06-09T19:54:59.054551040+00:00",
+      "signal_ts_recv": "2021-06-09T19:54:59.054601848+00:00"
+    },
+    "2021-07-08": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 211889,
+      "late_market_imbalance_qty": 419214,
+      "growth_qty": 207325,
+      "late_total_imbalance_qty": 474547,
+      "signal_ts_event": "2021-07-08T19:54:59.061376+00:00",
+      "signal_ts_recv": "2021-07-08T19:54:59.061463296+00:00"
+    },
+    "2021-07-12": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 308736,
+      "late_market_imbalance_qty": 339308,
+      "growth_qty": 30572,
+      "late_total_imbalance_qty": 357791,
+      "signal_ts_event": "2021-07-12T19:54:59.055039232+00:00",
+      "signal_ts_recv": "2021-07-12T19:54:59.055097647+00:00"
+    },
+    "2021-07-15": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 51041,
+      "late_market_imbalance_qty": 87868,
+      "growth_qty": 36827,
+      "late_total_imbalance_qty": 138583,
+      "signal_ts_event": "2021-07-15T19:54:59.053195776+00:00",
+      "signal_ts_recv": "2021-07-15T19:54:59.053267598+00:00"
+    },
+    "2021-08-17": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 654888,
+      "late_market_imbalance_qty": 992066,
+      "growth_qty": 337178,
+      "late_total_imbalance_qty": 1044028,
+      "signal_ts_event": "2021-08-17T19:54:59.060359680+00:00",
+      "signal_ts_recv": "2021-08-17T19:54:59.060432687+00:00"
+    },
+    "2021-08-19": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 857192,
+      "late_market_imbalance_qty": 897976,
+      "growth_qty": 40784,
+      "late_total_imbalance_qty": 947531,
+      "signal_ts_event": "2021-08-19T19:54:59.044085504+00:00",
+      "signal_ts_recv": "2021-08-19T19:54:59.044168546+00:00"
+    },
+    "2021-09-22": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 25701,
+      "late_market_imbalance_qty": 93995,
+      "growth_qty": 68294,
+      "late_total_imbalance_qty": 143892,
+      "signal_ts_event": "2021-09-22T19:54:59.049549056+00:00",
+      "signal_ts_recv": "2021-09-22T19:54:59.049606189+00:00"
+    },
+    "2021-11-12": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 272662,
+      "late_market_imbalance_qty": 297903,
+      "growth_qty": 25241,
+      "late_total_imbalance_qty": 307581,
+      "signal_ts_event": "2021-11-12T20:54:59.046031872+00:00",
+      "signal_ts_recv": "2021-11-12T20:54:59.046098254+00:00"
+    },
+    "2021-12-08": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 20501,
+      "late_market_imbalance_qty": 28148,
+      "growth_qty": 7647,
+      "late_total_imbalance_qty": 38471,
+      "signal_ts_event": "2021-12-08T20:54:59.050695424+00:00",
+      "signal_ts_recv": "2021-12-08T20:54:59.050762996+00:00"
+    },
+    "2021-12-09": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 58841,
+      "late_market_imbalance_qty": 71446,
+      "growth_qty": 12605,
+      "late_total_imbalance_qty": 130031,
+      "signal_ts_event": "2021-12-09T20:54:59.054967552+00:00",
+      "signal_ts_recv": "2021-12-09T20:54:59.055028937+00:00"
+    },
+    "2021-12-20": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 418468,
+      "late_market_imbalance_qty": 498937,
+      "growth_qty": 80469,
+      "late_total_imbalance_qty": 513676,
+      "signal_ts_event": "2021-12-20T20:54:59.061914880+00:00",
+      "signal_ts_recv": "2021-12-20T20:54:59.061989679+00:00"
+    },
+    "2021-12-21": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 39455,
+      "late_market_imbalance_qty": 41690,
+      "growth_qty": 2235,
+      "late_total_imbalance_qty": 86200,
+      "signal_ts_event": "2021-12-21T20:54:59.066480384+00:00",
+      "signal_ts_recv": "2021-12-21T20:54:59.066567547+00:00"
+    },
+    "2022-01-07": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 7341,
+      "late_market_imbalance_qty": 34878,
+      "growth_qty": 27537,
+      "late_total_imbalance_qty": 39308,
+      "signal_ts_event": "2022-01-07T20:54:59.057477376+00:00",
+      "signal_ts_recv": "2022-01-07T20:54:59.057566724+00:00"
+    },
+    "2022-02-10": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 12267,
+      "late_market_imbalance_qty": 31413,
+      "growth_qty": 19146,
+      "late_total_imbalance_qty": 44068,
+      "signal_ts_event": "2022-02-10T20:54:59.053075712+00:00",
+      "signal_ts_recv": "2022-02-10T20:54:59.053162313+00:00"
+    },
+    "2022-02-14": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 530479,
+      "late_market_imbalance_qty": 532619,
+      "growth_qty": 2140,
+      "late_total_imbalance_qty": 556614,
+      "signal_ts_event": "2022-02-14T20:54:59.060367616+00:00",
+      "signal_ts_recv": "2022-02-14T20:54:59.060390867+00:00"
+    },
+    "2022-03-11": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 286670,
+      "late_market_imbalance_qty": 480077,
+      "growth_qty": 193407,
+      "late_total_imbalance_qty": 486100,
+      "signal_ts_event": "2022-03-11T20:54:59.068371456+00:00",
+      "signal_ts_recv": "2022-03-11T20:54:59.068441383+00:00"
+    },
+    "2022-03-30": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 53480,
+      "late_market_imbalance_qty": 138138,
+      "growth_qty": 84658,
+      "late_total_imbalance_qty": 165745,
+      "signal_ts_event": "2022-03-30T19:54:59.062157568+00:00",
+      "signal_ts_recv": "2022-03-30T19:54:59.062237001+00:00"
+    },
+    "2022-05-10": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 102841,
+      "late_market_imbalance_qty": 312448,
+      "growth_qty": 209607,
+      "late_total_imbalance_qty": 367587,
+      "signal_ts_event": "2022-05-10T19:54:59.057047552+00:00",
+      "signal_ts_recv": "2022-05-10T19:54:59.057128883+00:00"
+    },
+    "2022-05-17": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 101445,
+      "late_market_imbalance_qty": 122058,
+      "growth_qty": 20613,
+      "late_total_imbalance_qty": 132215,
+      "signal_ts_event": "2022-05-17T19:54:59.058226688+00:00",
+      "signal_ts_recv": "2022-05-17T19:54:59.058288045+00:00"
+    },
+    "2022-06-15": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 1684,
+      "late_market_imbalance_qty": 26890,
+      "growth_qty": 25206,
+      "late_total_imbalance_qty": 53723,
+      "signal_ts_event": "2022-06-15T19:54:59.056150016+00:00",
+      "signal_ts_recv": "2022-06-15T19:54:59.056263938+00:00"
+    },
+    "2022-11-14": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 13327,
+      "late_market_imbalance_qty": 35411,
+      "growth_qty": 22084,
+      "late_total_imbalance_qty": 35908,
+      "signal_ts_event": "2022-11-14T20:54:59.054861568+00:00",
+      "signal_ts_recv": "2022-11-14T20:54:59.054960109+00:00"
+    },
+    "2022-12-16": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 237218,
+      "late_market_imbalance_qty": 249400,
+      "growth_qty": 12182,
+      "late_total_imbalance_qty": 270428,
+      "signal_ts_event": "2022-12-16T20:54:59.052893696+00:00",
+      "signal_ts_recv": "2022-12-16T20:54:59.052944622+00:00"
+    },
+    "2023-01-30": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 8993,
+      "late_market_imbalance_qty": 246430,
+      "growth_qty": 237437,
+      "late_total_imbalance_qty": 253200,
+      "signal_ts_event": "2023-01-30T20:54:59.068987648+00:00",
+      "signal_ts_recv": "2023-01-30T20:54:59.069057479+00:00"
+    },
+    "2023-03-21": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 1681,
+      "late_market_imbalance_qty": 257749,
+      "growth_qty": 256068,
+      "late_total_imbalance_qty": 258110,
+      "signal_ts_event": "2023-03-21T19:54:59.049268736+00:00",
+      "signal_ts_recv": "2023-03-21T19:54:59.049337208+00:00"
+    },
+    "2023-04-20": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 12347,
+      "late_market_imbalance_qty": 40368,
+      "growth_qty": 28021,
+      "late_total_imbalance_qty": 44196,
+      "signal_ts_event": "2023-04-20T19:54:59.047578112+00:00",
+      "signal_ts_recv": "2023-04-20T19:54:59.047841029+00:00"
+    },
+    "2023-05-03": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 34941,
+      "late_market_imbalance_qty": 45988,
+      "growth_qty": 11047,
+      "late_total_imbalance_qty": 71891,
+      "signal_ts_event": "2023-05-03T19:54:59.058852352+00:00",
+      "signal_ts_recv": "2023-05-03T19:54:59.059093877+00:00"
+    },
+    "2023-06-08": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 410660,
+      "late_market_imbalance_qty": 415192,
+      "growth_qty": 4532,
+      "late_total_imbalance_qty": 415942,
+      "signal_ts_event": "2023-06-08T19:54:59.214358528+00:00",
+      "signal_ts_recv": "2023-06-08T19:54:59.214619419+00:00"
+    },
+    "2023-07-07": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 239249,
+      "late_market_imbalance_qty": 307902,
+      "growth_qty": 68653,
+      "late_total_imbalance_qty": 312289,
+      "signal_ts_event": "2023-07-07T19:54:59.056381952+00:00",
+      "signal_ts_recv": "2023-07-07T19:54:59.056626921+00:00"
+    },
+    "2023-07-27": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 12792,
+      "late_market_imbalance_qty": 15973,
+      "growth_qty": 3181,
+      "late_total_imbalance_qty": 26677,
+      "signal_ts_event": "2023-07-27T19:54:59.062032640+00:00",
+      "signal_ts_recv": "2023-07-27T19:54:59.062295408+00:00"
+    },
+    "2023-09-26": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 377859,
+      "late_market_imbalance_qty": 435807,
+      "growth_qty": 57948,
+      "late_total_imbalance_qty": 443529,
+      "signal_ts_event": "2023-09-26T19:54:59.046079864+00:00",
+      "signal_ts_recv": "2023-09-26T19:54:59.046357374+00:00"
+    },
+    "2023-10-31": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 144207,
+      "late_market_imbalance_qty": 245161,
+      "growth_qty": 100954,
+      "late_total_imbalance_qty": 317790,
+      "signal_ts_event": "2023-10-31T19:54:59.043962038+00:00",
+      "signal_ts_recv": "2023-10-31T19:54:59.044220467+00:00"
+    },
+    "2024-01-08": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 218391,
+      "late_market_imbalance_qty": 227568,
+      "growth_qty": 9177,
+      "late_total_imbalance_qty": 251377,
+      "signal_ts_event": "2024-01-08T20:54:59.828857183+00:00",
+      "signal_ts_recv": "2024-01-08T20:54:59.829163696+00:00"
+    },
+    "2024-01-19": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 376654,
+      "late_market_imbalance_qty": 554303,
+      "growth_qty": 177649,
+      "late_total_imbalance_qty": 561539,
+      "signal_ts_event": "2024-01-19T20:54:59.049477100+00:00",
+      "signal_ts_recv": "2024-01-19T20:54:59.049748364+00:00"
+    },
+    "2024-03-07": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 8495,
+      "late_market_imbalance_qty": 308236,
+      "growth_qty": 299741,
+      "late_total_imbalance_qty": 317905,
+      "signal_ts_event": "2024-03-07T20:54:59.041346324+00:00",
+      "signal_ts_recv": "2024-03-07T20:54:59.041628880+00:00"
+    },
+    "2024-04-18": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 5259,
+      "late_market_imbalance_qty": 7115,
+      "growth_qty": 1856,
+      "late_total_imbalance_qty": 9089,
+      "signal_ts_event": "2024-04-18T19:54:59.056949565+00:00",
+      "signal_ts_recv": "2024-04-18T19:54:59.057216909+00:00"
+    },
+    "2024-05-06": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 15641,
+      "late_market_imbalance_qty": 230602,
+      "growth_qty": 214961,
+      "late_total_imbalance_qty": 239037,
+      "signal_ts_event": "2024-05-06T19:54:59.057405863+00:00",
+      "signal_ts_recv": "2024-05-06T19:54:59.057667226+00:00"
+    },
+    "2024-06-11": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 10264,
+      "late_market_imbalance_qty": 19421,
+      "growth_qty": 9157,
+      "late_total_imbalance_qty": 22201,
+      "signal_ts_event": "2024-06-11T19:54:59.038757834+00:00",
+      "signal_ts_recv": "2024-06-11T19:54:59.039021941+00:00"
+    },
+    "2024-08-08": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 147178,
+      "late_market_imbalance_qty": 234048,
+      "growth_qty": 86870,
+      "late_total_imbalance_qty": 255878,
+      "signal_ts_event": "2024-08-08T19:54:59.048203308+00:00",
+      "signal_ts_recv": "2024-08-08T19:54:59.048446082+00:00"
+    },
+    "2024-08-26": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 142503,
+      "late_market_imbalance_qty": 167924,
+      "growth_qty": 25421,
+      "late_total_imbalance_qty": 187913,
+      "signal_ts_event": "2024-08-26T19:54:59.050921131+00:00",
+      "signal_ts_recv": "2024-08-26T19:54:59.051183200+00:00"
+    },
+    "2024-09-25": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 56583,
+      "late_market_imbalance_qty": 153755,
+      "growth_qty": 97172,
+      "late_total_imbalance_qty": 161144,
+      "signal_ts_event": "2024-09-25T19:54:59.054184473+00:00",
+      "signal_ts_recv": "2024-09-25T19:54:59.054428942+00:00"
+    },
+    "2024-09-26": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 12860,
+      "late_market_imbalance_qty": 31059,
+      "growth_qty": 18199,
+      "late_total_imbalance_qty": 34553,
+      "signal_ts_event": "2024-09-26T19:54:59.042005370+00:00",
+      "signal_ts_recv": "2024-09-26T19:54:59.042265450+00:00"
+    },
+    "2024-10-25": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 495841,
+      "late_market_imbalance_qty": 528895,
+      "growth_qty": 33054,
+      "late_total_imbalance_qty": 530839,
+      "signal_ts_event": "2024-10-25T19:54:59.048868604+00:00",
+      "signal_ts_recv": "2024-10-25T19:54:59.049096177+00:00"
+    },
+    "2024-10-30": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 51557,
+      "late_market_imbalance_qty": 142600,
+      "growth_qty": 91043,
+      "late_total_imbalance_qty": 147820,
+      "signal_ts_event": "2024-10-30T19:54:59.045146589+00:00",
+      "signal_ts_recv": "2024-10-30T19:54:59.045379469+00:00"
+    },
+    "2024-11-13": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 139887,
+      "late_market_imbalance_qty": 146969,
+      "growth_qty": 7082,
+      "late_total_imbalance_qty": 162790,
+      "signal_ts_event": "2024-11-13T20:54:59.055206094+00:00",
+      "signal_ts_recv": "2024-11-13T20:54:59.055457475+00:00"
+    },
+    "2024-12-09": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 47,
+      "late_market_imbalance_qty": 33286,
+      "growth_qty": 33239,
+      "late_total_imbalance_qty": 43747,
+      "signal_ts_event": "2024-12-09T20:54:59.043917109+00:00",
+      "signal_ts_recv": "2024-12-09T20:54:59.044183389+00:00"
+    },
+    "2024-12-20": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 331482,
+      "late_market_imbalance_qty": 881925,
+      "growth_qty": 550443,
+      "late_total_imbalance_qty": 915409,
+      "signal_ts_event": "2024-12-20T20:54:59.054887328+00:00",
+      "signal_ts_recv": "2024-12-20T20:54:59.055166962+00:00"
+    },
+    "2025-01-13": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 129122,
+      "late_market_imbalance_qty": 151482,
+      "growth_qty": 22360,
+      "late_total_imbalance_qty": 158079,
+      "signal_ts_event": "2025-01-13T20:54:59.053545709+00:00",
+      "signal_ts_recv": "2025-01-13T20:54:59.053782142+00:00"
+    },
+    "2025-01-21": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 460148,
+      "late_market_imbalance_qty": 473675,
+      "growth_qty": 13527,
+      "late_total_imbalance_qty": 523282,
+      "signal_ts_event": "2025-01-21T20:54:59.065406979+00:00",
+      "signal_ts_recv": "2025-01-21T20:54:59.065653403+00:00"
+    },
+    "2025-03-18": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 647061,
+      "late_market_imbalance_qty": 653417,
+      "growth_qty": 6356,
+      "late_total_imbalance_qty": 727391,
+      "signal_ts_event": "2025-03-18T19:54:59.063951214+00:00",
+      "signal_ts_recv": "2025-03-18T19:54:59.064195180+00:00"
+    },
+    "2025-03-26": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 171250,
+      "late_market_imbalance_qty": 253520,
+      "growth_qty": 82270,
+      "late_total_imbalance_qty": 306859,
+      "signal_ts_event": "2025-03-26T19:54:59.068467550+00:00",
+      "signal_ts_recv": "2025-03-26T19:54:59.068722124+00:00"
+    },
+    "2025-04-03": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 536642,
+      "late_market_imbalance_qty": 831863,
+      "growth_qty": 295221,
+      "late_total_imbalance_qty": 961957,
+      "signal_ts_event": "2025-04-03T19:54:59.089560208+00:00",
+      "signal_ts_recv": "2025-04-03T19:54:59.089826538+00:00"
+    },
+    "2025-05-13": {
+      "side": "A",
+      "symbol": "SH",
+      "early_market_imbalance_qty": 67576,
+      "late_market_imbalance_qty": 119664,
+      "growth_qty": 52088,
+      "late_total_imbalance_qty": 173944,
+      "signal_ts_event": "2025-05-13T19:54:59.082691525+00:00",
+      "signal_ts_recv": "2025-05-13T19:54:59.082954350+00:00"
+    },
+    "2025-10-24": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 643072,
+      "late_market_imbalance_qty": 649286,
+      "growth_qty": 6214,
+      "late_total_imbalance_qty": 651426,
+      "signal_ts_event": "2025-10-24T19:54:59.052563287+00:00",
+      "signal_ts_recv": "2025-10-24T19:54:59.052843288+00:00"
+    },
+    "2025-10-27": {
+      "side": "B",
+      "symbol": "SPY",
+      "early_market_imbalance_qty": 218616,
+      "late_market_imbalance_qty": 257333,
+      "growth_qty": 38717,
+      "late_total_imbalance_qty": 285256,
+      "signal_ts_event": "2025-10-27T19:54:59.057795108+00:00",
+      "signal_ts_recv": "2025-10-27T19:54:59.058079683+00:00"
+    }
+  },
+  "executable_signal_dates": [
+    "2023-04-20",
+    "2023-05-03",
+    "2023-07-27",
+    "2023-09-26",
+    "2023-10-31",
+    "2024-01-08",
+    "2024-01-19",
+    "2024-03-07",
+    "2024-04-18",
+    "2024-05-06",
+    "2024-06-11",
+    "2024-08-08",
+    "2024-08-26",
+    "2024-09-25",
+    "2024-09-26",
+    "2024-10-25",
+    "2024-10-30",
+    "2024-11-13",
+    "2024-12-09",
+    "2024-12-20",
+    "2025-01-13",
+    "2025-01-21",
+    "2025-03-18",
+    "2025-03-26",
+    "2025-04-03",
+    "2025-05-13",
+    "2025-10-24",
+    "2025-10-27"
+  ],
+  "warning": "No post-entry return, P&L, benchmark, profit factor, or placebo was calculated."
+}

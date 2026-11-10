@@ -1,0 +1,109 @@
+{
+  "specification_id": "PROSHARES-PLUS3-MINUS1-MINUS3-DELTA-NEUTRAL-TRIANGLE-V69",
+  "frozen_before_post_entry_return_read": true,
+  "development": {
+    "start": "2021-01-01",
+    "end": "2023-12-31"
+  },
+  "recent_partition": {
+    "start": "2024-01-01",
+    "end": "2025-12-31",
+    "locked_until_every_development_gate_passes": true
+  },
+  "signal": {
+    "nav": "official prior-session ProShares NAV, point-in-time split normalized",
+    "observation": "exact 09:32 midpoint",
+    "implied_underlying": {
+      "UPRO": "(UPRO/prior_NAV_UPRO - 1)/3",
+      "SH": "(SH/prior_NAV_SH - 1)/-1",
+      "SPXU": "(SPXU/prior_NAV_SPXU - 1)/-3"
+    },
+    "upro_sh_basis": "UPRO implied underlying minus SH implied underlying",
+    "spxu_sh_basis": "SPXU implied underlying minus SH implied underlying",
+    "threshold": null
+  },
+  "pair_mappings": {
+    "UPRO_SH": {
+      "basis_positive": "short UPRO and short SH",
+      "basis_negative": "long UPRO and long SH",
+      "basis_zero": "cash"
+    },
+    "SPXU_SH": {
+      "basis_positive": "long SPXU and short SH",
+      "basis_negative": "short SPXU and long SH",
+      "basis_zero": "cash"
+    }
+  },
+  "portfolio": {
+    "starting_cash_usd": 100.0,
+    "maximum_gross_exposure_usd": 100.0,
+    "gross_per_pair_usd": 50.0,
+    "three_x_weight_within_pair": 0.25,
+    "one_x_weight_within_pair": 0.75,
+    "first_order_index_delta_per_pair": 0.0,
+    "short_proceeds_rehypothecated": false,
+    "sh_legs_netted": false
+  },
+  "execution": {
+    "entry": "09:33",
+    "exit": "10:30",
+    "long_entry": "ask",
+    "long_exit": "bid",
+    "short_entry": "bid",
+    "short_cover": "ask",
+    "passive_fill_assumption": false,
+    "borrow_cost": "zero intraday in backtest; live use prohibited without locates and stock-loan cost",
+    "overnight": false
+  },
+  "returns_blind_gates": {
+    "eligible_session_coverage_minimum": 0.95,
+    "active_pair_trades_per_week_minimum": 2.0,
+    "active_pair_trades_each_year_minimum": 200,
+    "each_pair_each_basis_sign_minimum": 100,
+    "neighboring_09_31_and_09_33_sign_agreement_minimum": 0.85,
+    "primary_required_quote_coverage_minimum": 0.95,
+    "independent_required_quote_coverage_minimum": 0.90,
+    "independent_pair_action_agreement_minimum": 0.90,
+    "all_nav_source_dates_strictly_before_signal_dates": true,
+    "no_post_entry_return_or_recent_outcome_read": true
+  },
+  "development_gates": {
+    "active_pair_trades_per_week_minimum": 2.0,
+    "profit_factor_minimum": 1.10,
+    "portfolio_pnl_positive_each_year": true,
+    "both_pairs_positive": true,
+    "both_basis_signs_positive_within_each_pair": true,
+    "compounded_ending_cash_above_adjusted_spy": true,
+    "positive_after_one_extra_cent_each_leg_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_deleting_ten_best_sessions": true,
+    "moving_block_bootstrap_lower_mean_above_zero": true,
+    "independent_2023_overlap_positive": true,
+    "mean_above_equal_dollar_control": true,
+    "mean_above_sign_flipped_divergence_control": true,
+    "mean_above_one_session_shifted_basis_control": true
+  },
+  "controls": {
+    "equal_dollar_weights": "50/50 legs inside each $50 pair",
+    "sign_flipped_divergence": "reverse every long and short leg with unchanged 25/75 weights",
+    "one_session_shifted_basis": "apply the prior eligible session's two pair directions"
+  },
+  "stress": {
+    "extra_cost": "one adverse cent per share at every entry and exit",
+    "entry_delay": "09:38 with unchanged 10:30 exit",
+    "delete_best_sessions": 10,
+    "bootstrap_block_sessions": 5,
+    "bootstrap_samples": 10000,
+    "bootstrap_seed": 20260730
+  },
+  "prohibited_repairs": [
+    "netting SH legs after results",
+    "basis magnitude threshold",
+    "pair or basis-sign selection",
+    "changing 25/75 weights",
+    "midpoint or passive fills",
+    "clock or exit selection",
+    "SPY bar substitute hedge",
+    "opening recent years after any failed development gate"
+  ]
+}

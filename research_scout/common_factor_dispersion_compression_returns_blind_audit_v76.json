@@ -1,0 +1,6816 @@
+{
+  "status": "returns_blind_v76_audit",
+  "source_integrity": {
+    "sha256": "08C4106F7EF33BAD8547C7D653E428E2BDCA9ED67649032F320F0FB0427C73A2",
+    "manifest_sha256": "08C4106F7EF33BAD8547C7D653E428E2BDCA9ED67649032F320F0FB0427C73A2",
+    "valid_sessions": 749,
+    "session_fraction": 0.9946879150066401,
+    "paid_data": false
+  },
+  "development_2021_2023": {
+    "valid_sessions": 749,
+    "signals": 376,
+    "signals_per_week": 2.49667994687915,
+    "selection_share": 0.5020026702269693,
+    "by_year": {
+      "2021": 138,
+      "2022": 121,
+      "2023": 117
+    },
+    "upro": 211,
+    "spxu": 165,
+    "minority_share": 0.43882978723404253,
+    "switches_by_year": {
+      "2021": 57,
+      "2022": 59,
+      "2023": 57
+    },
+    "v75_signal_date_overlap": 0.6117021276595744
+  },
+  "agreement": {
+    "odd": {
+      "overlap": 364,
+      "agreement": 1.0
+    },
+    "even": {
+      "overlap": 371,
+      "agreement": 1.0
+    }
+  },
+  "max_month_signal_share": 0.0398936170212766,
+  "quotes": {
+    "primary": {
+      "active": 369,
+      "valid": 368,
+      "coverage": 0.997289972899729
+    },
+    "independent": {
+      "active": 95,
+      "valid": 94,
+      "coverage": 0.9894736842105263
+    }
+  },
+  "gates": {
+    "source_hash_matches": true,
+    "no_paid_data": true,
+    "complete_sessions_at_least_95_percent": true,
+    "at_least_2_signals_per_week": true,
+    "at_least_100_signals_each_year": true,
+    "minority_action_at_least_30_percent": true,
+    "at_least_25_switches_each_year": true,
+    "selection_share_between_20_and_80_percent": true,
+    "odd_action_agreement_at_least_70_percent": true,
+    "even_action_agreement_at_least_70_percent": true,
+    "v75_signal_date_overlap_at_most_80_percent": true,
+    "max_month_share_at_most_6_percent": true,
+    "primary_quote_coverage_at_least_95_percent": true,
+    "independent_quote_coverage_at_least_90_percent": true,
+    "no_post_entry_return_read": true
+  },
+  "gate_passed": true,
+  "decision": "authorize_frozen_development_pnl_only",
+  "new_databento_calls_or_purchases": false,
+  "states": [
+    {
+      "session_date": "2021-01-04",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005982105394982229,
+      "mad_second": 0.0032448266632180145
+    },
+    {
+      "session_date": "2021-01-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004848213815962454,
+      "mad_second": 0.0023645107680871913
+    },
+    {
+      "session_date": "2021-01-06",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.008440866654292112,
+      "mad_second": 0.0044143118200353215
+    },
+    {
+      "session_date": "2021-01-07",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006064655383909989,
+      "mad_second": 0.0020536642569324304
+    },
+    {
+      "session_date": "2021-01-08",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0049084518430622115,
+      "mad_second": 0.0032594119023382495
+    },
+    {
+      "session_date": "2021-01-11",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0063385116630979565,
+      "mad_second": 0.0025918574459620203
+    },
+    {
+      "session_date": "2021-01-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005281910861390182,
+      "mad_second": 0.00369131618371199
+    },
+    {
+      "session_date": "2021-01-13",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004832579712292784,
+      "mad_second": 0.002394138511746191
+    },
+    {
+      "session_date": "2021-01-14",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005079849219000732,
+      "mad_second": 0.002997277495686901
+    },
+    {
+      "session_date": "2021-01-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00431387305007469,
+      "mad_second": 0.003096621489324214
+    },
+    {
+      "session_date": "2021-01-19",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005026835084683823,
+      "mad_second": 0.0027884030577447483
+    },
+    {
+      "session_date": "2021-01-20",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005037554914436915,
+      "mad_second": 0.0031531796912165344
+    },
+    {
+      "session_date": "2021-01-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004536968530889363,
+      "mad_second": 0.002567963876467294
+    },
+    {
+      "session_date": "2021-01-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004646654657875504,
+      "mad_second": 0.002588785370044533
+    },
+    {
+      "session_date": "2021-01-25",
+      "action": "UPRO",
+      "odd_action": "CASH",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004937404856014904,
+      "mad_second": 0.004133721188138151
+    },
+    {
+      "session_date": "2021-01-26",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004183623447967744,
+      "mad_second": 0.002677215959753565
+    },
+    {
+      "session_date": "2021-01-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.007016755112035256,
+      "mad_second": 0.00488821795701222
+    },
+    {
+      "session_date": "2021-01-28",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004880032533550294,
+      "mad_second": 0.0028750100842596105
+    },
+    {
+      "session_date": "2021-01-29",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005429001481370599,
+      "mad_second": 0.0037577024074511023
+    },
+    {
+      "session_date": "2021-02-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005524604338463579,
+      "mad_second": 0.0030633291326418455
+    },
+    {
+      "session_date": "2021-02-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0058296790740282045,
+      "mad_second": 0.0032537960954446277
+    },
+    {
+      "session_date": "2021-02-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0050769021369267975,
+      "mad_second": 0.003852462947897539
+    },
+    {
+      "session_date": "2021-02-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00627400768245856,
+      "mad_second": 0.0028518803131618586
+    },
+    {
+      "session_date": "2021-02-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003717022646951562,
+      "mad_second": 0.002299258708140628
+    },
+    {
+      "session_date": "2021-02-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004815201058719798,
+      "mad_second": 0.0025894237792106756
+    },
+    {
+      "session_date": "2021-02-09",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004043524689462008,
+      "mad_second": 0.0027355010603082874
+    },
+    {
+      "session_date": "2021-02-10",
+      "action": "SPXU",
+      "odd_action": "CASH",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0035585494849657007,
+      "mad_second": 0.0030334181770266255
+    },
+    {
+      "session_date": "2021-02-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004767214848097501,
+      "mad_second": 0.0021339533597433125
+    },
+    {
+      "session_date": "2021-02-12",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0045497056995178475,
+      "mad_second": 0.0028516404848817345
+    },
+    {
+      "session_date": "2021-02-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006256810897353748,
+      "mad_second": 0.0030132768549082645
+    },
+    {
+      "session_date": "2021-02-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004641530586975362,
+      "mad_second": 0.0035625165420672955
+    },
+    {
+      "session_date": "2021-02-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0034451780838599677,
+      "mad_second": 0.004051383399209518
+    },
+    {
+      "session_date": "2021-02-19",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005373014156471401,
+      "mad_second": 0.0022666917471222403
+    },
+    {
+      "session_date": "2021-02-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005838484024671131,
+      "mad_second": 0.0037289435917797764
+    },
+    {
+      "session_date": "2021-02-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005979386917444263,
+      "mad_second": 0.006534865175136462
+    },
+    {
+      "session_date": "2021-02-24",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006854107568358803,
+      "mad_second": 0.0025144209436473997
+    },
+    {
+      "session_date": "2021-02-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0034266392951576297,
+      "mad_second": 0.0024783068532336916
+    },
+    {
+      "session_date": "2021-02-26",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00485632913719336,
+      "mad_second": 0.003920519778867815
+    },
+    {
+      "session_date": "2021-03-01",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00455713190575846,
+      "mad_second": 0.002145706534698144
+    },
+    {
+      "session_date": "2021-03-02",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0043063954553783645,
+      "mad_second": 0.0023687506429320715
+    },
+    {
+      "session_date": "2021-03-03",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00551923969173107,
+      "mad_second": 0.00324782925947531
+    },
+    {
+      "session_date": "2021-03-04",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00635860230438523,
+      "mad_second": 0.003450023907329458
+    },
+    {
+      "session_date": "2021-03-05",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0075649198262546236,
+      "mad_second": 0.004578097067606701
+    },
+    {
+      "session_date": "2021-03-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005571860692114905,
+      "mad_second": 0.0031214050757946143
+    },
+    {
+      "session_date": "2021-03-09",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005492163915552739,
+      "mad_second": 0.0032906445165570286
+    },
+    {
+      "session_date": "2021-03-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0047210830193453734,
+      "mad_second": 0.004545688662030645
+    },
+    {
+      "session_date": "2021-03-11",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004197597264288033,
+      "mad_second": 0.002327090881394822
+    },
+    {
+      "session_date": "2021-03-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003628228012441781,
+      "mad_second": 0.0030311859719844847
+    },
+    {
+      "session_date": "2021-03-15",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004981639282332917,
+      "mad_second": 0.0033838242266527874
+    },
+    {
+      "session_date": "2021-03-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0049806440367374805,
+      "mad_second": 0.0032446072952858618
+    },
+    {
+      "session_date": "2021-03-17",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0036280972243979415,
+      "mad_second": 0.0028299602308021754
+    },
+    {
+      "session_date": "2021-03-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004547193592618126,
+      "mad_second": 0.00462889802990496
+    },
+    {
+      "session_date": "2021-03-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004263600879700569,
+      "mad_second": 0.002749970166942284
+    },
+    {
+      "session_date": "2021-03-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005129563724076691,
+      "mad_second": 0.003759757016224774
+    },
+    {
+      "session_date": "2021-03-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005802101233030932,
+      "mad_second": 0.0035720588257648345
+    },
+    {
+      "session_date": "2021-03-24",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00476005499255483,
+      "mad_second": 0.0032337051274875517
+    },
+    {
+      "session_date": "2021-03-25",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004548068038132347,
+      "mad_second": 0.003331587171947259
+    },
+    {
+      "session_date": "2021-03-26",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004194992354834115,
+      "mad_second": 0.0027581025484916255
+    },
+    {
+      "session_date": "2021-03-29",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "CASH",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004379055063640003,
+      "mad_second": 0.003281804776307573
+    },
+    {
+      "session_date": "2021-03-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004496602973187769,
+      "mad_second": 0.002740902058062211
+    },
+    {
+      "session_date": "2021-03-31",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0039099000272386775,
+      "mad_second": 0.0031297274507259276
+    },
+    {
+      "session_date": "2021-04-01",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004792232024426579,
+      "mad_second": 0.002037469513782808
+    },
+    {
+      "session_date": "2021-04-05",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004011593439167349,
+      "mad_second": 0.0024982303009553064
+    },
+    {
+      "session_date": "2021-04-06",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003419436553425248,
+      "mad_second": 0.0021370996939198417
+    },
+    {
+      "session_date": "2021-04-07",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0030866960945157285,
+      "mad_second": 0.002141768556935597
+    },
+    {
+      "session_date": "2021-04-08",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0038509777291182434,
+      "mad_second": 0.002266668275604622
+    },
+    {
+      "session_date": "2021-04-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003721647003357531,
+      "mad_second": 0.0023636905090539395
+    },
+    {
+      "session_date": "2021-04-12",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0037604609021719693,
+      "mad_second": 0.0021571012862523498
+    },
+    {
+      "session_date": "2021-04-13",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0058842042570580455,
+      "mad_second": 0.002856247550204971
+    },
+    {
+      "session_date": "2021-04-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0044805495162845155,
+      "mad_second": 0.0027117462863252006
+    },
+    {
+      "session_date": "2021-04-15",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004982647658359818,
+      "mad_second": 0.002361033399554957
+    },
+    {
+      "session_date": "2021-04-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00385521575646397,
+      "mad_second": 0.0020885450895117286
+    },
+    {
+      "session_date": "2021-04-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004874508657280563,
+      "mad_second": 0.0025333675003380574
+    },
+    {
+      "session_date": "2021-04-21",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004255945720061938,
+      "mad_second": 0.002916438252462905
+    },
+    {
+      "session_date": "2021-04-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0044414086624956495,
+      "mad_second": 0.0023286641811705033
+    },
+    {
+      "session_date": "2021-04-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004242187170321043,
+      "mad_second": 0.0025336621131886172
+    },
+    {
+      "session_date": "2021-04-26",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005761301959784304,
+      "mad_second": 0.0017407042970682962
+    },
+    {
+      "session_date": "2021-04-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0033771055648476045,
+      "mad_second": 0.0017574477697763213
+    },
+    {
+      "session_date": "2021-04-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0039030906518017217,
+      "mad_second": 0.0026966080557078165
+    },
+    {
+      "session_date": "2021-04-29",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005437888733862972,
+      "mad_second": 0.0020337568690583785
+    },
+    {
+      "session_date": "2021-04-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004946888935214666,
+      "mad_second": 0.003969345348456943
+    },
+    {
+      "session_date": "2021-05-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004834347464257316,
+      "mad_second": 0.004576123437808277
+    },
+    {
+      "session_date": "2021-05-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005272728070052524,
+      "mad_second": 0.002900791790669599
+    },
+    {
+      "session_date": "2021-05-05",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003448962828005997,
+      "mad_second": 0.002518389333041493
+    },
+    {
+      "session_date": "2021-05-06",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003931769443083433,
+      "mad_second": 0.0027145585673230554
+    },
+    {
+      "session_date": "2021-05-07",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004570027761244599,
+      "mad_second": 0.00225590560088329
+    },
+    {
+      "session_date": "2021-05-10",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004514985939393812,
+      "mad_second": 0.0025903518376994006
+    },
+    {
+      "session_date": "2021-05-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.007676059747394159,
+      "mad_second": 0.006078844567019459
+    },
+    {
+      "session_date": "2021-05-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0037622262803157502,
+      "mad_second": 0.0026149735660281337
+    },
+    {
+      "session_date": "2021-05-13",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006937015345982123,
+      "mad_second": 0.0023796724952263038
+    },
+    {
+      "session_date": "2021-05-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003397555092241711,
+      "mad_second": 0.00262150434430819
+    },
+    {
+      "session_date": "2021-05-17",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0046281951097850715,
+      "mad_second": 0.002816231020142501
+    },
+    {
+      "session_date": "2021-05-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003169047109176537,
+      "mad_second": 0.0024563416446795605
+    },
+    {
+      "session_date": "2021-05-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004060797785229164,
+      "mad_second": 0.0026847023316054486
+    },
+    {
+      "session_date": "2021-05-20",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003957406348192194,
+      "mad_second": 0.0019346737665036917
+    },
+    {
+      "session_date": "2021-05-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003653527300105708,
+      "mad_second": 0.0020231367550486157
+    },
+    {
+      "session_date": "2021-05-24",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0034257464242533064,
+      "mad_second": 0.001979278445577992
+    },
+    {
+      "session_date": "2021-05-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0030269999741755482,
+      "mad_second": 0.0017643817132378947
+    },
+    {
+      "session_date": "2021-05-26",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003437988391744806,
+      "mad_second": 0.0020612279398362077
+    },
+    {
+      "session_date": "2021-05-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036208450960781846,
+      "mad_second": 0.0027235527420647054
+    },
+    {
+      "session_date": "2021-05-28",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0030561800527048044,
+      "mad_second": 0.0019938358850163374
+    },
+    {
+      "session_date": "2021-06-01",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003991110234854656,
+      "mad_second": 0.0024131048235203068
+    },
+    {
+      "session_date": "2021-06-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0037135146857649737,
+      "mad_second": 0.0018724161041889786
+    },
+    {
+      "session_date": "2021-06-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003961851133301553,
+      "mad_second": 0.002018902109800047
+    },
+    {
+      "session_date": "2021-06-04",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00404358154206641,
+      "mad_second": 0.0017790428749333564
+    },
+    {
+      "session_date": "2021-06-07",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0026404568547572227,
+      "mad_second": 0.0014936776844490796
+    },
+    {
+      "session_date": "2021-06-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00268872948615545,
+      "mad_second": 0.0034135983890670185
+    },
+    {
+      "session_date": "2021-06-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004215514488419392,
+      "mad_second": 0.0020406148316254313
+    },
+    {
+      "session_date": "2021-06-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005514558108528078,
+      "mad_second": 0.0021276861376871015
+    },
+    {
+      "session_date": "2021-06-11",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0031391545120227904,
+      "mad_second": 0.0016843295036841899
+    },
+    {
+      "session_date": "2021-06-14",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0029778268601686753,
+      "mad_second": 0.001781181722707026
+    },
+    {
+      "session_date": "2021-06-15",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0029382605168356557,
+      "mad_second": 0.002293264899113634
+    },
+    {
+      "session_date": "2021-06-16",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003043680060583087,
+      "mad_second": 0.0017436791630340842
+    },
+    {
+      "session_date": "2021-06-17",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005585851454038393,
+      "mad_second": 0.003726843768246335
+    },
+    {
+      "session_date": "2021-06-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004009295107051503,
+      "mad_second": 0.002516948689184506
+    },
+    {
+      "session_date": "2021-06-21",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0033677846354909224,
+      "mad_second": 0.0031761916287964542
+    },
+    {
+      "session_date": "2021-06-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0026084182884124063,
+      "mad_second": 0.0016006756930575516
+    },
+    {
+      "session_date": "2021-06-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002953294722257138,
+      "mad_second": 0.001946996777412835
+    },
+    {
+      "session_date": "2021-06-24",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0031404967941436324,
+      "mad_second": 0.001969319623362331
+    },
+    {
+      "session_date": "2021-06-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003079640748386625,
+      "mad_second": 0.0017172236923777007
+    },
+    {
+      "session_date": "2021-06-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004817881576700378,
+      "mad_second": 0.0023201785584794354
+    },
+    {
+      "session_date": "2021-06-29",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003453636302704899,
+      "mad_second": 0.001961615524806226
+    },
+    {
+      "session_date": "2021-06-30",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0030928052912122528,
+      "mad_second": 0.002140178803146431
+    },
+    {
+      "session_date": "2021-07-01",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0035610197678270783,
+      "mad_second": 0.002114797384432654
+    },
+    {
+      "session_date": "2021-07-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0027911395977010534,
+      "mad_second": 0.0016222186655447945
+    },
+    {
+      "session_date": "2021-07-06",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004236858397880794,
+      "mad_second": 0.0034145569455334424
+    },
+    {
+      "session_date": "2021-07-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0033656409052895686,
+      "mad_second": 0.0034690943086388426
+    },
+    {
+      "session_date": "2021-07-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003687982391274214,
+      "mad_second": 0.0035267094760692563
+    },
+    {
+      "session_date": "2021-07-09",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0031600915222096404,
+      "mad_second": 0.002132179671832324
+    },
+    {
+      "session_date": "2021-07-12",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004529946806913543,
+      "mad_second": 0.002183017721415381
+    },
+    {
+      "session_date": "2021-07-13",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "CASH",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0022903771323491418,
+      "mad_second": 0.002214664241081854
+    },
+    {
+      "session_date": "2021-07-14",
+      "action": "SPXU",
+      "odd_action": "CASH",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0029406492582199073,
+      "mad_second": 0.002808193863263586
+    },
+    {
+      "session_date": "2021-07-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0029306950344532567,
+      "mad_second": 0.0026457506777598505
+    },
+    {
+      "session_date": "2021-07-16",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0038577802371225767,
+      "mad_second": 0.0029039206287430064
+    },
+    {
+      "session_date": "2021-07-19",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005005550235886225,
+      "mad_second": 0.003213931448300178
+    },
+    {
+      "session_date": "2021-07-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004216113697219637,
+      "mad_second": 0.004309966521584219
+    },
+    {
+      "session_date": "2021-07-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006308947861909664,
+      "mad_second": 0.0021980092444754407
+    },
+    {
+      "session_date": "2021-07-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003807089575493694,
+      "mad_second": 0.001692957456751909
+    },
+    {
+      "session_date": "2021-07-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003812919607092735,
+      "mad_second": 0.0020837045180972513
+    },
+    {
+      "session_date": "2021-07-26",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004093072918983975,
+      "mad_second": 0.0021507754892524655
+    },
+    {
+      "session_date": "2021-07-27",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004004726005857773,
+      "mad_second": 0.0034226970169793924
+    },
+    {
+      "session_date": "2021-07-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0039187550068545685,
+      "mad_second": 0.003062414517487677
+    },
+    {
+      "session_date": "2021-07-29",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004022015241320842,
+      "mad_second": 0.0024940574571963303
+    },
+    {
+      "session_date": "2021-07-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0030531610697011047,
+      "mad_second": 0.002336867266268028
+    },
+    {
+      "session_date": "2021-08-02",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006201550387596844,
+      "mad_second": 0.0029890192595076748
+    },
+    {
+      "session_date": "2021-08-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0055498814033349,
+      "mad_second": 0.004169342057292802
+    },
+    {
+      "session_date": "2021-08-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0028368147596162796,
+      "mad_second": 0.004452440320983575
+    },
+    {
+      "session_date": "2021-08-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003252562065488407,
+      "mad_second": 0.002350235287728264
+    },
+    {
+      "session_date": "2021-08-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0023469533826971922,
+      "mad_second": 0.001873857044699223
+    },
+    {
+      "session_date": "2021-08-09",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.002942232053310734,
+      "mad_second": 0.001818516913962065
+    },
+    {
+      "session_date": "2021-08-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002721750698531089,
+      "mad_second": 0.0032335376821273076
+    },
+    {
+      "session_date": "2021-08-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003589758663496312,
+      "mad_second": 0.0019459404898163335
+    },
+    {
+      "session_date": "2021-08-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0032155445570173358,
+      "mad_second": 0.00223013799177596
+    },
+    {
+      "session_date": "2021-08-13",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0027032079669451203,
+      "mad_second": 0.0019224269472531974
+    },
+    {
+      "session_date": "2021-08-16",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004331526269033881,
+      "mad_second": 0.0028678084216838817
+    },
+    {
+      "session_date": "2021-08-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0034598609557086046,
+      "mad_second": 0.0025098607955322816
+    },
+    {
+      "session_date": "2021-08-18",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0037937036893830323,
+      "mad_second": 0.0022935634399840477
+    },
+    {
+      "session_date": "2021-08-19",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004145448424748288,
+      "mad_second": 0.002765967467769581
+    },
+    {
+      "session_date": "2021-08-20",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0031204814677486814,
+      "mad_second": 0.0020407281453687642
+    },
+    {
+      "session_date": "2021-08-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004274980257297112,
+      "mad_second": 0.002505696200827634
+    },
+    {
+      "session_date": "2021-08-24",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005724148258237083,
+      "mad_second": 0.0035120706295713733
+    },
+    {
+      "session_date": "2021-08-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0037020442416507704,
+      "mad_second": 0.0022030299840049006
+    },
+    {
+      "session_date": "2021-08-26",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003021621236218075,
+      "mad_second": 0.00177724646544819
+    },
+    {
+      "session_date": "2021-08-27",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0026258220386884412,
+      "mad_second": 0.0019495100993557335
+    },
+    {
+      "session_date": "2021-08-30",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00437447420482473,
+      "mad_second": 0.0019152761318421696
+    },
+    {
+      "session_date": "2021-08-31",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0034285747443073555,
+      "mad_second": 0.0020815939692717667
+    },
+    {
+      "session_date": "2021-09-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005455094394874793,
+      "mad_second": 0.002860732887281836
+    },
+    {
+      "session_date": "2021-09-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002884797688821328,
+      "mad_second": 0.00242001776381473
+    },
+    {
+      "session_date": "2021-09-03",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0032914626636733058,
+      "mad_second": 0.0017726426328124045
+    },
+    {
+      "session_date": "2021-09-07",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005230274904665322,
+      "mad_second": 0.002262583681028718
+    },
+    {
+      "session_date": "2021-09-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0035887730206072277,
+      "mad_second": 0.002160928608044621
+    },
+    {
+      "session_date": "2021-09-09",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003952030528683537,
+      "mad_second": 0.002364903847428379
+    },
+    {
+      "session_date": "2021-09-10",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0038155854609680517,
+      "mad_second": 0.0014509262324380323
+    },
+    {
+      "session_date": "2021-09-13",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005370832492370359,
+      "mad_second": 0.002369249386727501
+    },
+    {
+      "session_date": "2021-09-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0029352806348991733,
+      "mad_second": 0.002944757845465662
+    },
+    {
+      "session_date": "2021-09-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003630934944427122,
+      "mad_second": 0.002264928044457215
+    },
+    {
+      "session_date": "2021-09-16",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003003227511718498,
+      "mad_second": 0.002366758277920711
+    },
+    {
+      "session_date": "2021-09-17",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003597403259309351,
+      "mad_second": 0.0018501493197997654
+    },
+    {
+      "session_date": "2021-09-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0037459709033886845,
+      "mad_second": 0.0037209040150315564
+    },
+    {
+      "session_date": "2021-09-21",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004306719118919111,
+      "mad_second": 0.0016733620987386955
+    },
+    {
+      "session_date": "2021-09-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004400259046623667,
+      "mad_second": 0.0026240365857828074
+    },
+    {
+      "session_date": "2021-09-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0028644466145713032,
+      "mad_second": 0.0019597024671191843
+    },
+    {
+      "session_date": "2021-09-24",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0031890613232941067,
+      "mad_second": 0.002178934620241435
+    },
+    {
+      "session_date": "2021-09-27",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005842921857611705,
+      "mad_second": 0.0026386669314609756
+    },
+    {
+      "session_date": "2021-09-28",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00334817430276102,
+      "mad_second": 0.003194794115586763
+    },
+    {
+      "session_date": "2021-09-29",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0033986706291665447,
+      "mad_second": 0.0020144703111965034
+    },
+    {
+      "session_date": "2021-09-30",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0034215408653632817,
+      "mad_second": 0.001962005545453671
+    },
+    {
+      "session_date": "2021-10-01",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005424653681127378,
+      "mad_second": 0.0030445363116372026
+    },
+    {
+      "session_date": "2021-10-04",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005710181220423216,
+      "mad_second": 0.003886950104044329
+    },
+    {
+      "session_date": "2021-10-05",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0032731991586191778,
+      "mad_second": 0.003200689918953281
+    },
+    {
+      "session_date": "2021-10-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0027438350452826943,
+      "mad_second": 0.003054254384548427
+    },
+    {
+      "session_date": "2021-10-07",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0035280644971147357,
+      "mad_second": 0.001975402039415153
+    },
+    {
+      "session_date": "2021-10-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003412777973862191,
+      "mad_second": 0.0020302956923279325
+    },
+    {
+      "session_date": "2021-10-11",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0033574393418666637,
+      "mad_second": 0.0018022563378006784
+    },
+    {
+      "session_date": "2021-10-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003972365448761783,
+      "mad_second": 0.0027438227572114116
+    },
+    {
+      "session_date": "2021-10-13",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0037281543158296238,
+      "mad_second": 0.002393263838527393
+    },
+    {
+      "session_date": "2021-10-14",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002881879936204812,
+      "mad_second": 0.002080000496066048
+    },
+    {
+      "session_date": "2021-10-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0030426791450530732,
+      "mad_second": 0.0019831085858855735
+    },
+    {
+      "session_date": "2021-10-18",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004740087466656995,
+      "mad_second": 0.0018820893447156206
+    },
+    {
+      "session_date": "2021-10-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0028496050141771923,
+      "mad_second": 0.0020489665467087192
+    },
+    {
+      "session_date": "2021-10-20",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004094836175973449,
+      "mad_second": 0.0026206936248831525
+    },
+    {
+      "session_date": "2021-10-21",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0037309816974722687,
+      "mad_second": 0.0024791952767209136
+    },
+    {
+      "session_date": "2021-10-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0036214569104218164,
+      "mad_second": 0.0020537392704573776
+    },
+    {
+      "session_date": "2021-10-26",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0036806808881925113,
+      "mad_second": 0.0023104186641376145
+    },
+    {
+      "session_date": "2021-10-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004917892000688151,
+      "mad_second": 0.0026262882485335037
+    },
+    {
+      "session_date": "2021-10-28",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003720512756948846,
+      "mad_second": 0.002496977931903732
+    },
+    {
+      "session_date": "2021-10-29",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036428511751286363,
+      "mad_second": 0.002874182144315951
+    },
+    {
+      "session_date": "2021-11-01",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004499167932222714,
+      "mad_second": 0.00299477766345263
+    },
+    {
+      "session_date": "2021-11-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003795515148205697,
+      "mad_second": 0.0027294208003380005
+    },
+    {
+      "session_date": "2021-11-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005195469954671517,
+      "mad_second": 0.0034812755021824127
+    },
+    {
+      "session_date": "2021-11-04",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00514259589904742,
+      "mad_second": 0.0029562329500605333
+    },
+    {
+      "session_date": "2021-11-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0044149014152093935,
+      "mad_second": 0.001952297232233613
+    },
+    {
+      "session_date": "2021-11-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004917535143134477,
+      "mad_second": 0.0025417286422630414
+    },
+    {
+      "session_date": "2021-11-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004508924135877113,
+      "mad_second": 0.002852687284815192
+    },
+    {
+      "session_date": "2021-11-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004203384688807099,
+      "mad_second": 0.002475258551257742
+    },
+    {
+      "session_date": "2021-11-11",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0031235661566993977,
+      "mad_second": 0.002173457765171305
+    },
+    {
+      "session_date": "2021-11-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036577521728727858,
+      "mad_second": 0.002432091522137081
+    },
+    {
+      "session_date": "2021-11-15",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003334073919460445,
+      "mad_second": 0.0027815978406359188
+    },
+    {
+      "session_date": "2021-11-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036725775855028786,
+      "mad_second": 0.0019647540803881536
+    },
+    {
+      "session_date": "2021-11-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003973898341975091,
+      "mad_second": 0.0030309987013036332
+    },
+    {
+      "session_date": "2021-11-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0030088938138951304,
+      "mad_second": 0.0035492720333146766
+    },
+    {
+      "session_date": "2021-11-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005207056596541526,
+      "mad_second": 0.003231787627006155
+    },
+    {
+      "session_date": "2021-11-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005222074755917738,
+      "mad_second": 0.003561575697037078
+    },
+    {
+      "session_date": "2021-11-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0033469841829342206,
+      "mad_second": 0.003798019100306582
+    },
+    {
+      "session_date": "2021-11-24",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004646331025762118,
+      "mad_second": 0.0027791241057434357
+    },
+    {
+      "session_date": "2021-11-26",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005617055057098086,
+      "mad_second": 0.0035170019837479916
+    },
+    {
+      "session_date": "2021-11-29",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.006531072533518145,
+      "mad_second": 0.003096429564319547
+    },
+    {
+      "session_date": "2021-11-30",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004470008912822232,
+      "mad_second": 0.002520504752212105
+    },
+    {
+      "session_date": "2021-12-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005317481140537428,
+      "mad_second": 0.003073842383478853
+    },
+    {
+      "session_date": "2021-12-02",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004555972725255764,
+      "mad_second": 0.0035928839170729088
+    },
+    {
+      "session_date": "2021-12-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005272516872491362,
+      "mad_second": 0.00409108637506983
+    },
+    {
+      "session_date": "2021-12-06",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006863542012789825,
+      "mad_second": 0.0032286507576376744
+    },
+    {
+      "session_date": "2021-12-07",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004903711089477847,
+      "mad_second": 0.0028625429158086746
+    },
+    {
+      "session_date": "2021-12-08",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003635674749071227,
+      "mad_second": 0.002419528624569789
+    },
+    {
+      "session_date": "2021-12-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003231639682302334,
+      "mad_second": 0.0022509254213557983
+    },
+    {
+      "session_date": "2021-12-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00595606098209972,
+      "mad_second": 0.003157045716892626
+    },
+    {
+      "session_date": "2021-12-13",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005647043291771736,
+      "mad_second": 0.002656387007933192
+    },
+    {
+      "session_date": "2021-12-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0065605716659953295,
+      "mad_second": 0.003953528723451005
+    },
+    {
+      "session_date": "2021-12-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006915605397082802,
+      "mad_second": 0.0030030817629244644
+    },
+    {
+      "session_date": "2021-12-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004637730552090158,
+      "mad_second": 0.0029418885292149533
+    },
+    {
+      "session_date": "2021-12-17",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.007210900333338877,
+      "mad_second": 0.0032105720504564395
+    },
+    {
+      "session_date": "2021-12-20",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005235424882097717,
+      "mad_second": 0.0035856593291789807
+    },
+    {
+      "session_date": "2021-12-21",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.006543060093103792,
+      "mad_second": 0.0022914595384117
+    },
+    {
+      "session_date": "2021-12-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0032815964523281727,
+      "mad_second": 0.0020769933918958206
+    },
+    {
+      "session_date": "2021-12-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0030021057194422607,
+      "mad_second": 0.0017950993425410733
+    },
+    {
+      "session_date": "2021-12-27",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0026498181831218215,
+      "mad_second": 0.002131762914451496
+    },
+    {
+      "session_date": "2021-12-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036456398613957663,
+      "mad_second": 0.0023259583154919827
+    },
+    {
+      "session_date": "2021-12-29",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002808702696988963,
+      "mad_second": 0.001977295955765568
+    },
+    {
+      "session_date": "2021-12-30",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0029806259314454353,
+      "mad_second": 0.0016717622764950146
+    },
+    {
+      "session_date": "2021-12-31",
+      "action": "UPRO",
+      "odd_action": "CASH",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0017906026651251516,
+      "mad_second": 0.0017145881300439925
+    },
+    {
+      "session_date": "2022-01-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00812168483583342,
+      "mad_second": 0.0031995992292292996
+    },
+    {
+      "session_date": "2022-01-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005552254387336586,
+      "mad_second": 0.003527731145338997
+    },
+    {
+      "session_date": "2022-01-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00466309936444298,
+      "mad_second": 0.0026890170974647187
+    },
+    {
+      "session_date": "2022-01-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0049779948820810604,
+      "mad_second": 0.0032288090080573317
+    },
+    {
+      "session_date": "2022-01-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004816387851692083,
+      "mad_second": 0.004061770073160553
+    },
+    {
+      "session_date": "2022-01-10",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00554772024628597,
+      "mad_second": 0.002958393455108621
+    },
+    {
+      "session_date": "2022-01-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004447561928701216,
+      "mad_second": 0.0026408371460442392
+    },
+    {
+      "session_date": "2022-01-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0035595159632492157,
+      "mad_second": 0.0038157735950260507
+    },
+    {
+      "session_date": "2022-01-13",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004250434500147171,
+      "mad_second": 0.0033389106357418763
+    },
+    {
+      "session_date": "2022-01-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006023198214425707,
+      "mad_second": 0.0030339345667679263
+    },
+    {
+      "session_date": "2022-01-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0040669819568541765,
+      "mad_second": 0.003365751857224153
+    },
+    {
+      "session_date": "2022-01-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006033092336645285,
+      "mad_second": 0.0031999397148818054
+    },
+    {
+      "session_date": "2022-01-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004260476582539585,
+      "mad_second": 0.002310974445552616
+    },
+    {
+      "session_date": "2022-01-21",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00593284786021242,
+      "mad_second": 0.003136590254249505
+    },
+    {
+      "session_date": "2022-01-24",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004787120239623521,
+      "mad_second": 0.002926775850008112
+    },
+    {
+      "session_date": "2022-01-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036008902478488203,
+      "mad_second": 0.004189885228827572
+    },
+    {
+      "session_date": "2022-01-26",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00464734931225308,
+      "mad_second": 0.0030984482119911783
+    },
+    {
+      "session_date": "2022-01-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005474621137676161,
+      "mad_second": 0.0031015383186534518
+    },
+    {
+      "session_date": "2022-01-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005621912369533966,
+      "mad_second": 0.004083404371193589
+    },
+    {
+      "session_date": "2022-01-31",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005521050392989613,
+      "mad_second": 0.0037534624979265185
+    },
+    {
+      "session_date": "2022-02-01",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004821828535601758,
+      "mad_second": 0.00320197052897786
+    },
+    {
+      "session_date": "2022-02-02",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00680551532152518,
+      "mad_second": 0.0023298420493353955
+    },
+    {
+      "session_date": "2022-02-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00472559707478587,
+      "mad_second": 0.0030537614992441897
+    },
+    {
+      "session_date": "2022-02-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004752875180622618,
+      "mad_second": 0.004582433777265471
+    },
+    {
+      "session_date": "2022-02-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005495042139209316,
+      "mad_second": 0.00300294205801932
+    },
+    {
+      "session_date": "2022-02-08",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0038820982373987123,
+      "mad_second": 0.002645396398456845
+    },
+    {
+      "session_date": "2022-02-09",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004821905185160291,
+      "mad_second": 0.0025844320609572646
+    },
+    {
+      "session_date": "2022-02-10",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004768483540060986,
+      "mad_second": 0.002619194979943451
+    },
+    {
+      "session_date": "2022-02-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0045897398874401585,
+      "mad_second": 0.0036357498288943635
+    },
+    {
+      "session_date": "2022-02-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0060088469749390305,
+      "mad_second": 0.0021836968315657734
+    },
+    {
+      "session_date": "2022-02-15",
+      "action": "CASH",
+      "odd_action": "UPRO",
+      "even_action": "CASH",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0035105011066521308,
+      "mad_second": 0.003737586850842356
+    },
+    {
+      "session_date": "2022-02-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005250735652160277,
+      "mad_second": 0.0032454139769481083
+    },
+    {
+      "session_date": "2022-02-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0030824662730928876,
+      "mad_second": 0.003196288925478852
+    },
+    {
+      "session_date": "2022-02-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003681798733444097,
+      "mad_second": 0.0026577945282101334
+    },
+    {
+      "session_date": "2022-02-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006181758123165515,
+      "mad_second": 0.0029146260305495386
+    },
+    {
+      "session_date": "2022-02-23",
+      "action": "SPXU",
+      "odd_action": "CASH",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0033097045841901096,
+      "mad_second": 0.0027840526617739503
+    },
+    {
+      "session_date": "2022-02-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006955804684989242,
+      "mad_second": 0.0032406314324024965
+    },
+    {
+      "session_date": "2022-02-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004733693204415024,
+      "mad_second": 0.0036062286068541116
+    },
+    {
+      "session_date": "2022-03-01",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0065327118843400145,
+      "mad_second": 0.003637743757928469
+    },
+    {
+      "session_date": "2022-03-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004862984677227511,
+      "mad_second": 0.003306888815463427
+    },
+    {
+      "session_date": "2022-03-03",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004883188071912403,
+      "mad_second": 0.003606752908863531
+    },
+    {
+      "session_date": "2022-03-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004414594045918374,
+      "mad_second": 0.003775215760914552
+    },
+    {
+      "session_date": "2022-03-07",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.008262585980753856,
+      "mad_second": 0.007065340107982487
+    },
+    {
+      "session_date": "2022-03-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00512182778659076,
+      "mad_second": 0.002604785190051251
+    },
+    {
+      "session_date": "2022-03-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005903743600476297,
+      "mad_second": 0.002529736655272008
+    },
+    {
+      "session_date": "2022-03-11",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.006382876119591208,
+      "mad_second": 0.0031039030188416694
+    },
+    {
+      "session_date": "2022-03-14",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006006623259745492,
+      "mad_second": 0.0038147841576375296
+    },
+    {
+      "session_date": "2022-03-15",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006640018519361468,
+      "mad_second": 0.0026349725185166317
+    },
+    {
+      "session_date": "2022-03-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004346251096503551,
+      "mad_second": 0.005988504035707776
+    },
+    {
+      "session_date": "2022-03-17",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005065564968744107,
+      "mad_second": 0.002873956658765775
+    },
+    {
+      "session_date": "2022-03-18",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004110442812953918,
+      "mad_second": 0.003461495809768178
+    },
+    {
+      "session_date": "2022-03-21",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.006319342854869292,
+      "mad_second": 0.0037489638788597013
+    },
+    {
+      "session_date": "2022-03-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005079400448898319,
+      "mad_second": 0.004455636426016096
+    },
+    {
+      "session_date": "2022-03-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0038544339319134813,
+      "mad_second": 0.00211321682379495
+    },
+    {
+      "session_date": "2022-03-24",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003341193586169966,
+      "mad_second": 0.002663811678535022
+    },
+    {
+      "session_date": "2022-03-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004631632136281816,
+      "mad_second": 0.001774850884453727
+    },
+    {
+      "session_date": "2022-03-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004517733108076238,
+      "mad_second": 0.0033621151378934733
+    },
+    {
+      "session_date": "2022-03-29",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005403048455682624,
+      "mad_second": 0.0029408340427361512
+    },
+    {
+      "session_date": "2022-03-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003267072531444093,
+      "mad_second": 0.0033063847789928102
+    },
+    {
+      "session_date": "2022-03-31",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004278760043095575,
+      "mad_second": 0.0027291893831291603
+    },
+    {
+      "session_date": "2022-04-01",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004417721950710551,
+      "mad_second": 0.003573566509288084
+    },
+    {
+      "session_date": "2022-04-04",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00566531095084577,
+      "mad_second": 0.002825118888838851
+    },
+    {
+      "session_date": "2022-04-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005743465466431397,
+      "mad_second": 0.0034941939696125357
+    },
+    {
+      "session_date": "2022-04-06",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.006546302800401693,
+      "mad_second": 0.002492044250909209
+    },
+    {
+      "session_date": "2022-04-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006291568603454811,
+      "mad_second": 0.0025416733734758834
+    },
+    {
+      "session_date": "2022-04-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004738786787870319,
+      "mad_second": 0.004986272427284888
+    },
+    {
+      "session_date": "2022-04-11",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.007923620933521947,
+      "mad_second": 0.0035934107300698015
+    },
+    {
+      "session_date": "2022-04-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003863971788512166,
+      "mad_second": 0.002576375757974092
+    },
+    {
+      "session_date": "2022-04-13",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0038540609149133598,
+      "mad_second": 0.002769198425208008
+    },
+    {
+      "session_date": "2022-04-14",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005040299087882949,
+      "mad_second": 0.0021343873517786216
+    },
+    {
+      "session_date": "2022-04-18",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0043839709559022055,
+      "mad_second": 0.003224056370356332
+    },
+    {
+      "session_date": "2022-04-19",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0053247913285876525,
+      "mad_second": 0.0026589847081291418
+    },
+    {
+      "session_date": "2022-04-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004494186224067442,
+      "mad_second": 0.002627633145417696
+    },
+    {
+      "session_date": "2022-04-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004888738733435982,
+      "mad_second": 0.002988956510144858
+    },
+    {
+      "session_date": "2022-04-22",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005345091250139655,
+      "mad_second": 0.003194847131085088
+    },
+    {
+      "session_date": "2022-04-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005033814297494221,
+      "mad_second": 0.003787708751814556
+    },
+    {
+      "session_date": "2022-04-26",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0065462675126495284,
+      "mad_second": 0.002616184458844928
+    },
+    {
+      "session_date": "2022-04-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005416534143701246,
+      "mad_second": 0.004230963794840892
+    },
+    {
+      "session_date": "2022-04-28",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0053495061063761895,
+      "mad_second": 0.0028906676072624204
+    },
+    {
+      "session_date": "2022-04-29",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005861967279084168,
+      "mad_second": 0.003766908779341882
+    },
+    {
+      "session_date": "2022-05-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.007830067245948591,
+      "mad_second": 0.003842185360101835
+    },
+    {
+      "session_date": "2022-05-03",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004336809464192903,
+      "mad_second": 0.003005931427626285
+    },
+    {
+      "session_date": "2022-05-04",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00581363956589942,
+      "mad_second": 0.003624493260962258
+    },
+    {
+      "session_date": "2022-05-05",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005121740370272021,
+      "mad_second": 0.003794166917325925
+    },
+    {
+      "session_date": "2022-05-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.008053115149889378,
+      "mad_second": 0.003930063741483525
+    },
+    {
+      "session_date": "2022-05-09",
+      "action": "SPXU",
+      "odd_action": "CASH",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.006317016505914097,
+      "mad_second": 0.0046328693076918
+    },
+    {
+      "session_date": "2022-05-10",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0064943913733038205,
+      "mad_second": 0.0033625020453881826
+    },
+    {
+      "session_date": "2022-05-11",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005172347899231378,
+      "mad_second": 0.0033308980477539385
+    },
+    {
+      "session_date": "2022-05-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.007395779648184331,
+      "mad_second": 0.004610467952587349
+    },
+    {
+      "session_date": "2022-05-13",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006798275858294622,
+      "mad_second": 0.0030201918964350982
+    },
+    {
+      "session_date": "2022-05-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006161993946790456,
+      "mad_second": 0.0036325627780126046
+    },
+    {
+      "session_date": "2022-05-17",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005406193891517641,
+      "mad_second": 0.004043803788777112
+    },
+    {
+      "session_date": "2022-05-18",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005992844355595994,
+      "mad_second": 0.0027602800029480346
+    },
+    {
+      "session_date": "2022-05-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006162936769834482,
+      "mad_second": 0.003086194902180983
+    },
+    {
+      "session_date": "2022-05-20",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005973147965856684,
+      "mad_second": 0.0031931817504021742
+    },
+    {
+      "session_date": "2022-05-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005697781633837495,
+      "mad_second": 0.004031286812350987
+    },
+    {
+      "session_date": "2022-05-24",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.006792785022826875,
+      "mad_second": 0.0023965944402794537
+    },
+    {
+      "session_date": "2022-05-25",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "CASH",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004769014647254655,
+      "mad_second": 0.003572260792445936
+    },
+    {
+      "session_date": "2022-05-26",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005515933499929404,
+      "mad_second": 0.00262750290778907
+    },
+    {
+      "session_date": "2022-05-27",
+      "action": "UPRO",
+      "odd_action": "CASH",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003955626561431558,
+      "mad_second": 0.003447559786090071
+    },
+    {
+      "session_date": "2022-05-31",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005619539270032059,
+      "mad_second": 0.0021342356819278874
+    },
+    {
+      "session_date": "2022-06-01",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005675904898354733,
+      "mad_second": 0.0031649824831650464
+    },
+    {
+      "session_date": "2022-06-02",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.007368283283321064,
+      "mad_second": 0.003105315084987126
+    },
+    {
+      "session_date": "2022-06-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004299751226689408,
+      "mad_second": 0.002819653969436897
+    },
+    {
+      "session_date": "2022-06-06",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004408448548378685,
+      "mad_second": 0.003148501756143618
+    },
+    {
+      "session_date": "2022-06-07",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004186648301092111,
+      "mad_second": 0.0022441375739709057
+    },
+    {
+      "session_date": "2022-06-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036147945629699807,
+      "mad_second": 0.002710119266505162
+    },
+    {
+      "session_date": "2022-06-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004146081533435986,
+      "mad_second": 0.0029789912224292836
+    },
+    {
+      "session_date": "2022-06-10",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003849383846273924,
+      "mad_second": 0.0035264281576756207
+    },
+    {
+      "session_date": "2022-06-13",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005963279343732419,
+      "mad_second": 0.00318230203422315
+    },
+    {
+      "session_date": "2022-06-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005572341582425366,
+      "mad_second": 0.0032178813318972654
+    },
+    {
+      "session_date": "2022-06-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003956181291379313,
+      "mad_second": 0.0029336250339415115
+    },
+    {
+      "session_date": "2022-06-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005588721544865005,
+      "mad_second": 0.0034448494580960887
+    },
+    {
+      "session_date": "2022-06-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0062334488286388545,
+      "mad_second": 0.004438898666953517
+    },
+    {
+      "session_date": "2022-06-21",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.007142084890221501,
+      "mad_second": 0.003511704002013616
+    },
+    {
+      "session_date": "2022-06-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0048870235872156,
+      "mad_second": 0.003710610024562744
+    },
+    {
+      "session_date": "2022-06-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005188896958365552,
+      "mad_second": 0.003063855003874849
+    },
+    {
+      "session_date": "2022-06-24",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.007070124208035267,
+      "mad_second": 0.003653827359882955
+    },
+    {
+      "session_date": "2022-06-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005540867238932767,
+      "mad_second": 0.002843649262150194
+    },
+    {
+      "session_date": "2022-06-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004522500310197519,
+      "mad_second": 0.003186576545210984
+    },
+    {
+      "session_date": "2022-06-29",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005201053847275983,
+      "mad_second": 0.0034101907739088055
+    },
+    {
+      "session_date": "2022-06-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006196707168197313,
+      "mad_second": 0.002880442803348482
+    },
+    {
+      "session_date": "2022-07-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004978524409459784,
+      "mad_second": 0.0045911337445885825
+    },
+    {
+      "session_date": "2022-07-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006072188200946738,
+      "mad_second": 0.0051207785747832135
+    },
+    {
+      "session_date": "2022-07-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004315782810299262,
+      "mad_second": 0.003767155836160163
+    },
+    {
+      "session_date": "2022-07-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004453817867185572,
+      "mad_second": 0.0025702232194063646
+    },
+    {
+      "session_date": "2022-07-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005144331489627674,
+      "mad_second": 0.0031657654820609338
+    },
+    {
+      "session_date": "2022-07-11",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0058144434145108725,
+      "mad_second": 0.003051716112791647
+    },
+    {
+      "session_date": "2022-07-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.007727470463983255,
+      "mad_second": 0.0033141011584322255
+    },
+    {
+      "session_date": "2022-07-13",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005534557748692603,
+      "mad_second": 0.0026412185239530483
+    },
+    {
+      "session_date": "2022-07-14",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0046966526692793775,
+      "mad_second": 0.0026024357317555036
+    },
+    {
+      "session_date": "2022-07-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004036434496074381,
+      "mad_second": 0.004017977469878531
+    },
+    {
+      "session_date": "2022-07-18",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00516640111904465,
+      "mad_second": 0.0028967256988886025
+    },
+    {
+      "session_date": "2022-07-19",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0038807312269476535,
+      "mad_second": 0.0030351145262587087
+    },
+    {
+      "session_date": "2022-07-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004251886204257205,
+      "mad_second": 0.0031858875763519645
+    },
+    {
+      "session_date": "2022-07-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004134912042468852,
+      "mad_second": 0.0038713102431927604
+    },
+    {
+      "session_date": "2022-07-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005415962309823608,
+      "mad_second": 0.0027378561587567685
+    },
+    {
+      "session_date": "2022-07-25",
+      "action": "SPXU",
+      "odd_action": "CASH",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0035304077117624955,
+      "mad_second": 0.003271423591473366
+    },
+    {
+      "session_date": "2022-07-26",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0041666258721760885,
+      "mad_second": 0.0027358061882258866
+    },
+    {
+      "session_date": "2022-07-27",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0043820745579494225,
+      "mad_second": 0.0026240453921584916
+    },
+    {
+      "session_date": "2022-07-28",
+      "action": "SPXU",
+      "odd_action": "CASH",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005415139153464976,
+      "mad_second": 0.004825835116499699
+    },
+    {
+      "session_date": "2022-07-29",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005488050123342081,
+      "mad_second": 0.0026825062272466393
+    },
+    {
+      "session_date": "2022-08-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004762323570895566,
+      "mad_second": 0.0026443289615573073
+    },
+    {
+      "session_date": "2022-08-02",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004188097016332493,
+      "mad_second": 0.0032178089916511388
+    },
+    {
+      "session_date": "2022-08-03",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004224487283682354,
+      "mad_second": 0.0031201532229057083
+    },
+    {
+      "session_date": "2022-08-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004266503791271525,
+      "mad_second": 0.002792619591691803
+    },
+    {
+      "session_date": "2022-08-05",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004640420596300876,
+      "mad_second": 0.0036120277670755874
+    },
+    {
+      "session_date": "2022-08-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004061366739275096,
+      "mad_second": 0.0019504303139852852
+    },
+    {
+      "session_date": "2022-08-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004910215540575635,
+      "mad_second": 0.002387043976680714
+    },
+    {
+      "session_date": "2022-08-10",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004295058265386897,
+      "mad_second": 0.001627110160505152
+    },
+    {
+      "session_date": "2022-08-11",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0034261905318080377,
+      "mad_second": 0.0022040740833535466
+    },
+    {
+      "session_date": "2022-08-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0028236272071037183,
+      "mad_second": 0.0017886627812258027
+    },
+    {
+      "session_date": "2022-08-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0031701691504320006,
+      "mad_second": 0.002826669296996265
+    },
+    {
+      "session_date": "2022-08-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0030820737331858084,
+      "mad_second": 0.002166343583606123
+    },
+    {
+      "session_date": "2022-08-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002997446870077747,
+      "mad_second": 0.0026026930258556957
+    },
+    {
+      "session_date": "2022-08-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0028073843391254183,
+      "mad_second": 0.0013775559959411376
+    },
+    {
+      "session_date": "2022-08-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0033631301107112654,
+      "mad_second": 0.001990624388592821
+    },
+    {
+      "session_date": "2022-08-22",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003327622031936317,
+      "mad_second": 0.002869772816970595
+    },
+    {
+      "session_date": "2022-08-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0044911074981280885,
+      "mad_second": 0.0015011761662381828
+    },
+    {
+      "session_date": "2022-08-24",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0031456498833936086,
+      "mad_second": 0.001798703181667527
+    },
+    {
+      "session_date": "2022-08-25",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004547166196790631,
+      "mad_second": 0.0021910732185908
+    },
+    {
+      "session_date": "2022-08-26",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0024476491214562857,
+      "mad_second": 0.002848314850246836
+    },
+    {
+      "session_date": "2022-08-29",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003469411326803895,
+      "mad_second": 0.00220921868189905
+    },
+    {
+      "session_date": "2022-08-30",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0030364610342112908,
+      "mad_second": 0.0025242833505682016
+    },
+    {
+      "session_date": "2022-08-31",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003596661651991573,
+      "mad_second": 0.0028576392404420226
+    },
+    {
+      "session_date": "2022-09-01",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004858058351416283,
+      "mad_second": 0.002062993459636897
+    },
+    {
+      "session_date": "2022-09-02",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004006052728569631,
+      "mad_second": 0.002246909626689275
+    },
+    {
+      "session_date": "2022-09-06",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005712372496369467,
+      "mad_second": 0.003087997064886716
+    },
+    {
+      "session_date": "2022-09-07",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0038654763315292273,
+      "mad_second": 0.0027684658556426656
+    },
+    {
+      "session_date": "2022-09-08",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004522791315500152,
+      "mad_second": 0.002203827031311223
+    },
+    {
+      "session_date": "2022-09-09",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0035339442363697127,
+      "mad_second": 0.00208094596631081
+    },
+    {
+      "session_date": "2022-09-12",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0030053369531375385,
+      "mad_second": 0.001997799225860797
+    },
+    {
+      "session_date": "2022-09-13",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005011684152907536,
+      "mad_second": 0.0026203830637869796
+    },
+    {
+      "session_date": "2022-09-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003792935479334514,
+      "mad_second": 0.003886964623693423
+    },
+    {
+      "session_date": "2022-09-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00532673805943662,
+      "mad_second": 0.0031250251450745115
+    },
+    {
+      "session_date": "2022-09-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006201867828324992,
+      "mad_second": 0.003633571894732346
+    },
+    {
+      "session_date": "2022-09-19",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.007882006473546255,
+      "mad_second": 0.0024407639047895335
+    },
+    {
+      "session_date": "2022-09-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004290584174285517,
+      "mad_second": 0.0025994032332593564
+    },
+    {
+      "session_date": "2022-09-21",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004186793036338399,
+      "mad_second": 0.0022254585240139013
+    },
+    {
+      "session_date": "2022-09-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006028742689813793,
+      "mad_second": 0.002429993476227632
+    },
+    {
+      "session_date": "2022-09-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005875870009934003,
+      "mad_second": 0.0023609589622358707
+    },
+    {
+      "session_date": "2022-09-26",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005418485787796468,
+      "mad_second": 0.0022905268803135037
+    },
+    {
+      "session_date": "2022-09-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00320266482945597,
+      "mad_second": 0.0023707431412305358
+    },
+    {
+      "session_date": "2022-09-28",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005353142393149102,
+      "mad_second": 0.002943970417949471
+    },
+    {
+      "session_date": "2022-09-29",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0032762688453160105,
+      "mad_second": 0.0024446610127326074
+    },
+    {
+      "session_date": "2022-09-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0038954617339796993,
+      "mad_second": 0.0022253298654409948
+    },
+    {
+      "session_date": "2022-10-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005358805161521929,
+      "mad_second": 0.004195880329131874
+    },
+    {
+      "session_date": "2022-10-04",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004377516876014953,
+      "mad_second": 0.0026136138399225906
+    },
+    {
+      "session_date": "2022-10-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0039191208102826725,
+      "mad_second": 0.0026354004923674346
+    },
+    {
+      "session_date": "2022-10-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004128258690554831,
+      "mad_second": 0.002872307226141013
+    },
+    {
+      "session_date": "2022-10-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003847637601118392,
+      "mad_second": 0.002063024743890862
+    },
+    {
+      "session_date": "2022-10-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004944576581372706,
+      "mad_second": 0.0024776986901696163
+    },
+    {
+      "session_date": "2022-10-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005924570244038474,
+      "mad_second": 0.002724195574595023
+    },
+    {
+      "session_date": "2022-10-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004159772804036899,
+      "mad_second": 0.003118771038754631
+    },
+    {
+      "session_date": "2022-10-13",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004688678336776997,
+      "mad_second": 0.0031689166522551604
+    },
+    {
+      "session_date": "2022-10-14",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005254956688357959,
+      "mad_second": 0.0029851515099879045
+    },
+    {
+      "session_date": "2022-10-17",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006138048157019571,
+      "mad_second": 0.0026701148487976445
+    },
+    {
+      "session_date": "2022-10-18",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005317246091599281,
+      "mad_second": 0.0030269895927141355
+    },
+    {
+      "session_date": "2022-10-19",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004351953549982579,
+      "mad_second": 0.003939482170313924
+    },
+    {
+      "session_date": "2022-10-20",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00497980037596879,
+      "mad_second": 0.0031662748581674505
+    },
+    {
+      "session_date": "2022-10-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004446708501371632,
+      "mad_second": 0.0028099728579996652
+    },
+    {
+      "session_date": "2022-10-24",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0050741608118657355,
+      "mad_second": 0.0031041837716647147
+    },
+    {
+      "session_date": "2022-10-25",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004525576373246576,
+      "mad_second": 0.0034070720664498566
+    },
+    {
+      "session_date": "2022-10-26",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005058503728079866,
+      "mad_second": 0.0025592490302331905
+    },
+    {
+      "session_date": "2022-10-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00542705644661623,
+      "mad_second": 0.0035227057361625347
+    },
+    {
+      "session_date": "2022-10-28",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005426826644841731,
+      "mad_second": 0.0035324048828331844
+    },
+    {
+      "session_date": "2022-10-31",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0042786285022980985,
+      "mad_second": 0.0037877369897866275
+    },
+    {
+      "session_date": "2022-11-01",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004589117923671615,
+      "mad_second": 0.002574063630470913
+    },
+    {
+      "session_date": "2022-11-02",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004872071659075217,
+      "mad_second": 0.002450483111085422
+    },
+    {
+      "session_date": "2022-11-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005713819134457621,
+      "mad_second": 0.004444399938445476
+    },
+    {
+      "session_date": "2022-11-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006372747217977426,
+      "mad_second": 0.003372587022762108
+    },
+    {
+      "session_date": "2022-11-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005154456747054836,
+      "mad_second": 0.0028281400705467696
+    },
+    {
+      "session_date": "2022-11-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00354660553271402,
+      "mad_second": 0.0026254962300640283
+    },
+    {
+      "session_date": "2022-11-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0037921630868757994,
+      "mad_second": 0.0022936902863794906
+    },
+    {
+      "session_date": "2022-11-10",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.007040579131554425,
+      "mad_second": 0.0029391488021854872
+    },
+    {
+      "session_date": "2022-11-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006741808652034664,
+      "mad_second": 0.005629997281194565
+    },
+    {
+      "session_date": "2022-11-14",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004694313435749553,
+      "mad_second": 0.0025135738544018182
+    },
+    {
+      "session_date": "2022-11-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004007914318007788,
+      "mad_second": 0.0027592332518583396
+    },
+    {
+      "session_date": "2022-11-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004715896492956617,
+      "mad_second": 0.0031216309453106494
+    },
+    {
+      "session_date": "2022-11-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004266659485940183,
+      "mad_second": 0.003079784924638451
+    },
+    {
+      "session_date": "2022-11-18",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0040012206228408065,
+      "mad_second": 0.0028084009843128976
+    },
+    {
+      "session_date": "2022-11-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004273492611852836,
+      "mad_second": 0.003765619425872946
+    },
+    {
+      "session_date": "2022-11-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004087242784954093,
+      "mad_second": 0.0029296341634288403
+    },
+    {
+      "session_date": "2022-11-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0032312027751407735,
+      "mad_second": 0.001896726393459336
+    },
+    {
+      "session_date": "2022-11-25",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002492430899663889,
+      "mad_second": 0.001603117342614091
+    },
+    {
+      "session_date": "2022-11-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0037902715343612337,
+      "mad_second": 0.0025429458807421645
+    },
+    {
+      "session_date": "2022-11-29",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0030353117713059485,
+      "mad_second": 0.001965521242482282
+    },
+    {
+      "session_date": "2022-11-30",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004841934064934661,
+      "mad_second": 0.0026015236610770764
+    },
+    {
+      "session_date": "2022-12-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004510220798958686,
+      "mad_second": 0.0032141235517559874
+    },
+    {
+      "session_date": "2022-12-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0035477652035116325,
+      "mad_second": 0.0021567303382431513
+    },
+    {
+      "session_date": "2022-12-05",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00499599543748197,
+      "mad_second": 0.0027388047343013255
+    },
+    {
+      "session_date": "2022-12-06",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0045982562942626926,
+      "mad_second": 0.0024804722098502596
+    },
+    {
+      "session_date": "2022-12-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004182751201720514,
+      "mad_second": 0.002752761179062313
+    },
+    {
+      "session_date": "2022-12-08",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002949250284552729,
+      "mad_second": 0.0027364890617780357
+    },
+    {
+      "session_date": "2022-12-09",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003184557726862436,
+      "mad_second": 0.002148809647212535
+    },
+    {
+      "session_date": "2022-12-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003008870853142165,
+      "mad_second": 0.0023344356852532666
+    },
+    {
+      "session_date": "2022-12-13",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0044543359538978256,
+      "mad_second": 0.003110947681550069
+    },
+    {
+      "session_date": "2022-12-14",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004094118926284196,
+      "mad_second": 0.002270568850798904
+    },
+    {
+      "session_date": "2022-12-15",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0037189573584111013,
+      "mad_second": 0.002236298503659251
+    },
+    {
+      "session_date": "2022-12-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004218688616707489,
+      "mad_second": 0.0029024708478535
+    },
+    {
+      "session_date": "2022-12-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004126826088946822,
+      "mad_second": 0.002408705078394746
+    },
+    {
+      "session_date": "2022-12-20",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00435577168304202,
+      "mad_second": 0.0023244066091414606
+    },
+    {
+      "session_date": "2022-12-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0037275347063128184,
+      "mad_second": 0.002329059245633869
+    },
+    {
+      "session_date": "2022-12-22",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003170680781292845,
+      "mad_second": 0.002259474718452781
+    },
+    {
+      "session_date": "2022-12-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002575159122450321,
+      "mad_second": 0.0018234746693743809
+    },
+    {
+      "session_date": "2022-12-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0023526744771498187,
+      "mad_second": 0.0018577609046472876
+    },
+    {
+      "session_date": "2022-12-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003133540042671412,
+      "mad_second": 0.0015776832532895524
+    },
+    {
+      "session_date": "2022-12-29",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0034982034685681063,
+      "mad_second": 0.0015745801027515771
+    },
+    {
+      "session_date": "2022-12-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002423228094463714,
+      "mad_second": 0.0017554768832366285
+    },
+    {
+      "session_date": "2023-01-03",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "CASH",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.00424980918892115,
+      "mad_second": 0.003608437982587309
+    },
+    {
+      "session_date": "2023-01-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004227190585544438,
+      "mad_second": 0.0028119987006550162
+    },
+    {
+      "session_date": "2023-01-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005144509419092669,
+      "mad_second": 0.002635390549980743
+    },
+    {
+      "session_date": "2023-01-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004689910878566295,
+      "mad_second": 0.0022242293042364913
+    },
+    {
+      "session_date": "2023-01-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004914098648540033,
+      "mad_second": 0.00316869524384894
+    },
+    {
+      "session_date": "2023-01-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005292621567719646,
+      "mad_second": 0.0025506104141739816
+    },
+    {
+      "session_date": "2023-01-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004271786287534551,
+      "mad_second": 0.0034670626096591217
+    },
+    {
+      "session_date": "2023-01-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004453355522016256,
+      "mad_second": 0.0024472324845357107
+    },
+    {
+      "session_date": "2023-01-13",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003707360470161125,
+      "mad_second": 0.0021098899929788972
+    },
+    {
+      "session_date": "2023-01-17",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004712279802859487,
+      "mad_second": 0.0028241205904946387
+    },
+    {
+      "session_date": "2023-01-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004223418185986372,
+      "mad_second": 0.002481591946745021
+    },
+    {
+      "session_date": "2023-01-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004077298169792409,
+      "mad_second": 0.0025662959794695572
+    },
+    {
+      "session_date": "2023-01-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0035236417227271777,
+      "mad_second": 0.002002746765500274
+    },
+    {
+      "session_date": "2023-01-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0033188455915142967,
+      "mad_second": 0.0026604169935784405
+    },
+    {
+      "session_date": "2023-01-24",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005830065829119102,
+      "mad_second": 0.0027977677703137083
+    },
+    {
+      "session_date": "2023-01-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003988817818365076,
+      "mad_second": 0.002124085603130599
+    },
+    {
+      "session_date": "2023-01-26",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004289161203897107,
+      "mad_second": 0.0026136317229550343
+    },
+    {
+      "session_date": "2023-01-27",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003387949519489064,
+      "mad_second": 0.0020763507891746746
+    },
+    {
+      "session_date": "2023-01-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0028616978998026177,
+      "mad_second": 0.003109682303205963
+    },
+    {
+      "session_date": "2023-01-31",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003226298657262927,
+      "mad_second": 0.0023091403430650637
+    },
+    {
+      "session_date": "2023-02-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005185808233471145,
+      "mad_second": 0.0030338001568321338
+    },
+    {
+      "session_date": "2023-02-02",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006479598806593712,
+      "mad_second": 0.0038702119380503164
+    },
+    {
+      "session_date": "2023-02-03",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.006011950802081223,
+      "mad_second": 0.002929428965609937
+    },
+    {
+      "session_date": "2023-02-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036966999997218863,
+      "mad_second": 0.002236744149359926
+    },
+    {
+      "session_date": "2023-02-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036716111029519993,
+      "mad_second": 0.0026477129488475803
+    },
+    {
+      "session_date": "2023-02-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003754906980713457,
+      "mad_second": 0.0026036187341568207
+    },
+    {
+      "session_date": "2023-02-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0031655512623408044,
+      "mad_second": 0.0034193100995007497
+    },
+    {
+      "session_date": "2023-02-10",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003524499175695417,
+      "mad_second": 0.0022105554020447338
+    },
+    {
+      "session_date": "2023-02-13",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00283163925526686,
+      "mad_second": 0.0019200210855135902
+    },
+    {
+      "session_date": "2023-02-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004864635857949606,
+      "mad_second": 0.0022744188891281603
+    },
+    {
+      "session_date": "2023-02-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002618743448671468,
+      "mad_second": 0.0021701984827222076
+    },
+    {
+      "session_date": "2023-02-16",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0031714554102614256,
+      "mad_second": 0.002026402744080058
+    },
+    {
+      "session_date": "2023-02-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004717232145739381,
+      "mad_second": 0.0021360727991761586
+    },
+    {
+      "session_date": "2023-02-21",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004179241042470083,
+      "mad_second": 0.002854019679008224
+    },
+    {
+      "session_date": "2023-02-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003199143165439511,
+      "mad_second": 0.002915797902633299
+    },
+    {
+      "session_date": "2023-02-23",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0037970065302649347,
+      "mad_second": 0.0022204050017144428
+    },
+    {
+      "session_date": "2023-02-24",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0035140316003147154,
+      "mad_second": 0.0019324277390375677
+    },
+    {
+      "session_date": "2023-02-27",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002707486124153724,
+      "mad_second": 0.0015644212112381761
+    },
+    {
+      "session_date": "2023-02-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003399896224961285,
+      "mad_second": 0.0022296496778375086
+    },
+    {
+      "session_date": "2023-03-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003842135158736104,
+      "mad_second": 0.002704892251862323
+    },
+    {
+      "session_date": "2023-03-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0038982602615509343,
+      "mad_second": 0.0020112230623748895
+    },
+    {
+      "session_date": "2023-03-03",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0028804137703904442,
+      "mad_second": 0.001818786212760326
+    },
+    {
+      "session_date": "2023-03-06",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002492531631194783,
+      "mad_second": 0.002046370267998532
+    },
+    {
+      "session_date": "2023-03-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00314241123272635,
+      "mad_second": 0.0026393823007459516
+    },
+    {
+      "session_date": "2023-03-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0030292172289100305,
+      "mad_second": 0.002297937726455146
+    },
+    {
+      "session_date": "2023-03-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0051745171457116546,
+      "mad_second": 0.002032901847709545
+    },
+    {
+      "session_date": "2023-03-10",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.006761532758628008,
+      "mad_second": 0.0031328450061254287
+    },
+    {
+      "session_date": "2023-03-13",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.007819444572251366,
+      "mad_second": 0.004186023665996852
+    },
+    {
+      "session_date": "2023-03-14",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005672034631896361,
+      "mad_second": 0.00301587540771997
+    },
+    {
+      "session_date": "2023-03-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004483595044457167,
+      "mad_second": 0.0033993459089965983
+    },
+    {
+      "session_date": "2023-03-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005365144221524343,
+      "mad_second": 0.003407173735598956
+    },
+    {
+      "session_date": "2023-03-17",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004183733690597657,
+      "mad_second": 0.002685201866262643
+    },
+    {
+      "session_date": "2023-03-20",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004947011680040081,
+      "mad_second": 0.0029199627759908253
+    },
+    {
+      "session_date": "2023-03-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004544212922130586,
+      "mad_second": 0.0033612113168882685
+    },
+    {
+      "session_date": "2023-03-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002505833267362201,
+      "mad_second": 0.002306999330913495
+    },
+    {
+      "session_date": "2023-03-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003928911823009473,
+      "mad_second": 0.0022656747931872334
+    },
+    {
+      "session_date": "2023-03-24",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003383831564187645,
+      "mad_second": 0.0026664147390675907
+    },
+    {
+      "session_date": "2023-03-27",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003414989653684364,
+      "mad_second": 0.0022884209261899713
+    },
+    {
+      "session_date": "2023-03-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0029501895766386177,
+      "mad_second": 0.0016114510883367128
+    },
+    {
+      "session_date": "2023-03-29",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.002225282473880208,
+      "mad_second": 0.0015711735603324284
+    },
+    {
+      "session_date": "2023-03-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0026969438035062687,
+      "mad_second": 0.0017776477433781857
+    },
+    {
+      "session_date": "2023-03-31",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0032939019965169125,
+      "mad_second": 0.0015969494699068498
+    },
+    {
+      "session_date": "2023-04-03",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00391211608744102,
+      "mad_second": 0.0022168696018024514
+    },
+    {
+      "session_date": "2023-04-04",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004724293063901819,
+      "mad_second": 0.0021153830161051435
+    },
+    {
+      "session_date": "2023-04-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004107942716116031,
+      "mad_second": 0.0026750106946190066
+    },
+    {
+      "session_date": "2023-04-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0038895994589672744,
+      "mad_second": 0.002517218564043633
+    },
+    {
+      "session_date": "2023-04-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004961580122194886,
+      "mad_second": 0.0022842668513080033
+    },
+    {
+      "session_date": "2023-04-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0033682493391562485,
+      "mad_second": 0.0022030671176866967
+    },
+    {
+      "session_date": "2023-04-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003720619565855454,
+      "mad_second": 0.0026420617307682526
+    },
+    {
+      "session_date": "2023-04-13",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0035671869017404045,
+      "mad_second": 0.0020705980138814306
+    },
+    {
+      "session_date": "2023-04-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004111034113087442,
+      "mad_second": 0.00250087190689674
+    },
+    {
+      "session_date": "2023-04-17",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00319695240111173,
+      "mad_second": 0.0021330985794436597
+    },
+    {
+      "session_date": "2023-04-18",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003808627847364965,
+      "mad_second": 0.0024500908998743576
+    },
+    {
+      "session_date": "2023-04-19",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0028592423237472353,
+      "mad_second": 0.0014700030926372287
+    },
+    {
+      "session_date": "2023-04-20",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004571257332011469,
+      "mad_second": 0.0019314883957195494
+    },
+    {
+      "session_date": "2023-04-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003286410542370888,
+      "mad_second": 0.0022245840856719434
+    },
+    {
+      "session_date": "2023-04-24",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0027061913416350225,
+      "mad_second": 0.002063547963858825
+    },
+    {
+      "session_date": "2023-04-25",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003401734680020141,
+      "mad_second": 0.002389372500398057
+    },
+    {
+      "session_date": "2023-04-26",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004993712849655052,
+      "mad_second": 0.0025841918478577974
+    },
+    {
+      "session_date": "2023-04-27",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005217733635245081,
+      "mad_second": 0.0028964371774454767
+    },
+    {
+      "session_date": "2023-04-28",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004558439518648094,
+      "mad_second": 0.0031594820861083894
+    },
+    {
+      "session_date": "2023-05-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0028048400994202805,
+      "mad_second": 0.002295904502320645
+    },
+    {
+      "session_date": "2023-05-02",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004756591053774573,
+      "mad_second": 0.002948504596996804
+    },
+    {
+      "session_date": "2023-05-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0046469068666217805,
+      "mad_second": 0.002257220947594063
+    },
+    {
+      "session_date": "2023-05-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004020433217427177,
+      "mad_second": 0.0043311402729870885
+    },
+    {
+      "session_date": "2023-05-05",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004517658342083397,
+      "mad_second": 0.002664657756540123
+    },
+    {
+      "session_date": "2023-05-08",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004129341765483685,
+      "mad_second": 0.0022562362711652795
+    },
+    {
+      "session_date": "2023-05-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003802812734788108,
+      "mad_second": 0.002465398855732992
+    },
+    {
+      "session_date": "2023-05-10",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004676161713877747,
+      "mad_second": 0.0023732116345769327
+    },
+    {
+      "session_date": "2023-05-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0042206372620532395,
+      "mad_second": 0.002292952299055906
+    },
+    {
+      "session_date": "2023-05-12",
+      "action": "SPXU",
+      "odd_action": "CASH",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0025770625718184448,
+      "mad_second": 0.0024166319909926237
+    },
+    {
+      "session_date": "2023-05-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0032131487514252544,
+      "mad_second": 0.0018247423901530668
+    },
+    {
+      "session_date": "2023-05-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003567362735579671,
+      "mad_second": 0.002264934668858576
+    },
+    {
+      "session_date": "2023-05-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004000274407383486,
+      "mad_second": 0.002036540287398747
+    },
+    {
+      "session_date": "2023-05-18",
+      "action": "UPRO",
+      "odd_action": "CASH",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0033324043763814926,
+      "mad_second": 0.0030147026629360196
+    },
+    {
+      "session_date": "2023-05-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0035017177397388966,
+      "mad_second": 0.0016287714862071034
+    },
+    {
+      "session_date": "2023-05-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004441569932820633,
+      "mad_second": 0.003147666964516571
+    },
+    {
+      "session_date": "2023-05-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0045788934723113295,
+      "mad_second": 0.0025874753183680044
+    },
+    {
+      "session_date": "2023-05-24",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004845920912005586,
+      "mad_second": 0.002879499035037425
+    },
+    {
+      "session_date": "2023-05-25",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004577207989509946,
+      "mad_second": 0.002863211026266743
+    },
+    {
+      "session_date": "2023-05-26",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0042198895494861,
+      "mad_second": 0.0028517077443294125
+    },
+    {
+      "session_date": "2023-05-30",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005290231375475907,
+      "mad_second": 0.002434866492690646
+    },
+    {
+      "session_date": "2023-05-31",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0045003308767735395,
+      "mad_second": 0.0028396183427457644
+    },
+    {
+      "session_date": "2023-06-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003990758025767205,
+      "mad_second": 0.003024220236784725
+    },
+    {
+      "session_date": "2023-06-02",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004743409799352616,
+      "mad_second": 0.0023146899577000113
+    },
+    {
+      "session_date": "2023-06-05",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.005463183598924837,
+      "mad_second": 0.002630673045839138
+    },
+    {
+      "session_date": "2023-06-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006510570945737482,
+      "mad_second": 0.0033388661505787676
+    },
+    {
+      "session_date": "2023-06-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004572421758639589,
+      "mad_second": 0.0036354632364528072
+    },
+    {
+      "session_date": "2023-06-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00390323352151023,
+      "mad_second": 0.0023952545300818806
+    },
+    {
+      "session_date": "2023-06-09",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003982879532542616,
+      "mad_second": 0.0019472072163038145
+    },
+    {
+      "session_date": "2023-06-12",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004217931348524662,
+      "mad_second": 0.002065970575864551
+    },
+    {
+      "session_date": "2023-06-13",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004298685070574737,
+      "mad_second": 0.0021396958013243927
+    },
+    {
+      "session_date": "2023-06-14",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0033530353452847494,
+      "mad_second": 0.002341458512931993
+    },
+    {
+      "session_date": "2023-06-15",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002937101405885434,
+      "mad_second": 0.0020597998128085715
+    },
+    {
+      "session_date": "2023-06-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005233795537468999,
+      "mad_second": 0.002474748438853369
+    },
+    {
+      "session_date": "2023-06-20",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004399616519662697,
+      "mad_second": 0.002784450038510855
+    },
+    {
+      "session_date": "2023-06-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036934001907230063,
+      "mad_second": 0.0023270310806979833
+    },
+    {
+      "session_date": "2023-06-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005099547456372866,
+      "mad_second": 0.0020929295913862944
+    },
+    {
+      "session_date": "2023-06-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0029792144839329016,
+      "mad_second": 0.0018368427670373277
+    },
+    {
+      "session_date": "2023-06-26",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.006575667149921471,
+      "mad_second": 0.0028795723183124844
+    },
+    {
+      "session_date": "2023-06-27",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "CASH",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0026251997872421273,
+      "mad_second": 0.0025916900917495878
+    },
+    {
+      "session_date": "2023-06-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004370110054013887,
+      "mad_second": 0.0018515743014464459
+    },
+    {
+      "session_date": "2023-06-29",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003117125165433554,
+      "mad_second": 0.0024147713597293397
+    },
+    {
+      "session_date": "2023-06-30",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002953277983225311,
+      "mad_second": 0.0021266355665439107
+    },
+    {
+      "session_date": "2023-07-03",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003221830142743576,
+      "mad_second": 0.0024088397655734894
+    },
+    {
+      "session_date": "2023-07-05",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0035850366831746694,
+      "mad_second": 0.0022843268378540116
+    },
+    {
+      "session_date": "2023-07-06",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0032679313359527673,
+      "mad_second": 0.0019959814815337373
+    },
+    {
+      "session_date": "2023-07-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0031253937247541774,
+      "mad_second": 0.0020279716172945106
+    },
+    {
+      "session_date": "2023-07-10",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0036016559957710026,
+      "mad_second": 0.002305614087166341
+    },
+    {
+      "session_date": "2023-07-11",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003699001119191969,
+      "mad_second": 0.002872936895113365
+    },
+    {
+      "session_date": "2023-07-12",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003599413469150603,
+      "mad_second": 0.002134917302152206
+    },
+    {
+      "session_date": "2023-07-13",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003270635082841422,
+      "mad_second": 0.0026191992235106154
+    },
+    {
+      "session_date": "2023-07-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004434958013669443,
+      "mad_second": 0.002122186852119845
+    },
+    {
+      "session_date": "2023-07-17",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003734308823438226,
+      "mad_second": 0.0017083780271965887
+    },
+    {
+      "session_date": "2023-07-18",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00559580137819915,
+      "mad_second": 0.0021595845793220825
+    },
+    {
+      "session_date": "2023-07-19",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.00355572109160629,
+      "mad_second": 0.0022095959595958004
+    },
+    {
+      "session_date": "2023-07-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004164013761424723,
+      "mad_second": 0.002961095064862196
+    },
+    {
+      "session_date": "2023-07-21",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003821727325642066,
+      "mad_second": 0.0029531589728906127
+    },
+    {
+      "session_date": "2023-07-24",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004334365230628634,
+      "mad_second": 0.002643494280756664
+    },
+    {
+      "session_date": "2023-07-25",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.005049427539113249,
+      "mad_second": 0.002398448573656564
+    },
+    {
+      "session_date": "2023-07-26",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003660395299956376,
+      "mad_second": 0.0021439211146527803
+    },
+    {
+      "session_date": "2023-07-27",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004575144101811479,
+      "mad_second": 0.0038609055682878868
+    },
+    {
+      "session_date": "2023-07-28",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0037888952012763433,
+      "mad_second": 0.002332594838066915
+    },
+    {
+      "session_date": "2023-07-31",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036371713921411475,
+      "mad_second": 0.002266336946809111
+    },
+    {
+      "session_date": "2023-08-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0038341304108037155,
+      "mad_second": 0.0025533196588022333
+    },
+    {
+      "session_date": "2023-08-02",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004468832037813342,
+      "mad_second": 0.0026609146167997366
+    },
+    {
+      "session_date": "2023-08-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004218572429375789,
+      "mad_second": 0.0026724715202741667
+    },
+    {
+      "session_date": "2023-08-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004028245217999937,
+      "mad_second": 0.0028969336196028594
+    },
+    {
+      "session_date": "2023-08-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0027813628101552856,
+      "mad_second": 0.002059823514495962
+    },
+    {
+      "session_date": "2023-08-08",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0032053554364459558,
+      "mad_second": 0.00270569224922923
+    },
+    {
+      "session_date": "2023-08-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003628473446072311,
+      "mad_second": 0.0018372456159057027
+    },
+    {
+      "session_date": "2023-08-10",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002477607781660396,
+      "mad_second": 0.0012986169729237718
+    },
+    {
+      "session_date": "2023-08-11",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002652478877608,
+      "mad_second": 0.002282760811611051
+    },
+    {
+      "session_date": "2023-08-14",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004211771827308919,
+      "mad_second": 0.0016422121802717182
+    },
+    {
+      "session_date": "2023-08-15",
+      "action": "CASH",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0022831031634578114,
+      "mad_second": 0.00232219108428533
+    },
+    {
+      "session_date": "2023-08-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002351102788390791,
+      "mad_second": 0.0018572741952469496
+    },
+    {
+      "session_date": "2023-08-17",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0035589236332679297,
+      "mad_second": 0.0025283552534208775
+    },
+    {
+      "session_date": "2023-08-18",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0029181049964784878,
+      "mad_second": 0.0020114441516632664
+    },
+    {
+      "session_date": "2023-08-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003453001928579058,
+      "mad_second": 0.0023135815401100768
+    },
+    {
+      "session_date": "2023-08-22",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0030328127203524957,
+      "mad_second": 0.0019003726927396825
+    },
+    {
+      "session_date": "2023-08-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003648312919079355,
+      "mad_second": 0.002215629602778879
+    },
+    {
+      "session_date": "2023-08-24",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004192125606865105,
+      "mad_second": 0.002913055059008629
+    },
+    {
+      "session_date": "2023-08-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0026475312020855513,
+      "mad_second": 0.001704347818975882
+    },
+    {
+      "session_date": "2023-08-28",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0031521605610878023,
+      "mad_second": 0.0022573363431150906
+    },
+    {
+      "session_date": "2023-08-29",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0024697705644735057,
+      "mad_second": 0.0030528137575325243
+    },
+    {
+      "session_date": "2023-08-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002073953294977837,
+      "mad_second": 0.0020038206672047254
+    },
+    {
+      "session_date": "2023-08-31",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0022100630494943374,
+      "mad_second": 0.001839892566516399
+    },
+    {
+      "session_date": "2023-09-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003045342813306595,
+      "mad_second": 0.0017596480300167139
+    },
+    {
+      "session_date": "2023-09-05",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0035432566450427916,
+      "mad_second": 0.0019600360116313054
+    },
+    {
+      "session_date": "2023-09-06",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0038001746955911297,
+      "mad_second": 0.0024744940336753896
+    },
+    {
+      "session_date": "2023-09-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0027982893515227647,
+      "mad_second": 0.0027226238725444607
+    },
+    {
+      "session_date": "2023-09-08",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.00333148410391515,
+      "mad_second": 0.001980603342497833
+    },
+    {
+      "session_date": "2023-09-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004358885277838731,
+      "mad_second": 0.0025977127059673144
+    },
+    {
+      "session_date": "2023-09-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0041539409195159305,
+      "mad_second": 0.002376513908181388
+    },
+    {
+      "session_date": "2023-09-13",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0035923513564052323,
+      "mad_second": 0.0019796947970834866
+    },
+    {
+      "session_date": "2023-09-14",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003825182529238802,
+      "mad_second": 0.002301183048460498
+    },
+    {
+      "session_date": "2023-09-15",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003661425549248698,
+      "mad_second": 0.0026065713199580065
+    },
+    {
+      "session_date": "2023-09-18",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004029284644893383,
+      "mad_second": 0.0021617674332417014
+    },
+    {
+      "session_date": "2023-09-19",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0032286260999264127,
+      "mad_second": 0.0017572906603025573
+    },
+    {
+      "session_date": "2023-09-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003299871503014473,
+      "mad_second": 0.0022974002692441875
+    },
+    {
+      "session_date": "2023-09-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0038467885259567125,
+      "mad_second": 0.0020594773836614677
+    },
+    {
+      "session_date": "2023-09-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002969953608749354,
+      "mad_second": 0.0020962243925571333
+    },
+    {
+      "session_date": "2023-09-25",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002913597772213228,
+      "mad_second": 0.002070398997913059
+    },
+    {
+      "session_date": "2023-09-26",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0029626372842560533,
+      "mad_second": 0.0018111283341379902
+    },
+    {
+      "session_date": "2023-09-27",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0031890993061118866,
+      "mad_second": 0.0019686198119900356
+    },
+    {
+      "session_date": "2023-09-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0036744710486824594,
+      "mad_second": 0.002448966925016338
+    },
+    {
+      "session_date": "2023-09-29",
+      "action": "SPXU",
+      "odd_action": "CASH",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0035884715921105093,
+      "mad_second": 0.0028658304281716784
+    },
+    {
+      "session_date": "2023-10-02",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0039734472600605475,
+      "mad_second": 0.0030226029932844956
+    },
+    {
+      "session_date": "2023-10-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003944688772056337,
+      "mad_second": 0.0034483829718675585
+    },
+    {
+      "session_date": "2023-10-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0026957380791481356,
+      "mad_second": 0.0026090878514410942
+    },
+    {
+      "session_date": "2023-10-05",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0037306660402895986,
+      "mad_second": 0.002663220206885586
+    },
+    {
+      "session_date": "2023-10-06",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0039014380101029533,
+      "mad_second": 0.002851462766731594
+    },
+    {
+      "session_date": "2023-10-09",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0034814459403250675,
+      "mad_second": 0.002689023978562133
+    },
+    {
+      "session_date": "2023-10-10",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003041607474910779,
+      "mad_second": 0.0026345177745021875
+    },
+    {
+      "session_date": "2023-10-11",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.003924973219789796,
+      "mad_second": 0.0020131737883479772
+    },
+    {
+      "session_date": "2023-10-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0034271378998651514,
+      "mad_second": 0.0022128112240762388
+    },
+    {
+      "session_date": "2023-10-13",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004479982604960464,
+      "mad_second": 0.0026845478192444316
+    },
+    {
+      "session_date": "2023-10-16",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003452289299558098,
+      "mad_second": 0.0019659246806433828
+    },
+    {
+      "session_date": "2023-10-17",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004362428159602638,
+      "mad_second": 0.002552548543807598
+    },
+    {
+      "session_date": "2023-10-18",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004815234396072676,
+      "mad_second": 0.0022823223973378326
+    },
+    {
+      "session_date": "2023-10-19",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0035420774358612683,
+      "mad_second": 0.0031788212652929526
+    },
+    {
+      "session_date": "2023-10-20",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004390445282837274,
+      "mad_second": 0.0031587718130541287
+    },
+    {
+      "session_date": "2023-10-23",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0037605100895908294,
+      "mad_second": 0.002104352304672208
+    },
+    {
+      "session_date": "2023-10-24",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0038480157988844965,
+      "mad_second": 0.002070485606515571
+    },
+    {
+      "session_date": "2023-10-25",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004471431869654152,
+      "mad_second": 0.002863642531046817
+    },
+    {
+      "session_date": "2023-10-26",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005740781629498759,
+      "mad_second": 0.003566194044033466
+    },
+    {
+      "session_date": "2023-10-27",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.004835356109658795,
+      "mad_second": 0.002852017479204161
+    },
+    {
+      "session_date": "2023-10-30",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003621613029983317,
+      "mad_second": 0.0032740182631513237
+    },
+    {
+      "session_date": "2023-10-31",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.004217845160470413,
+      "mad_second": 0.002405189647963879
+    },
+    {
+      "session_date": "2023-11-01",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003904231452395601,
+      "mad_second": 0.0027665441579254324
+    },
+    {
+      "session_date": "2023-11-02",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0048578825218899,
+      "mad_second": 0.003008657634955947
+    },
+    {
+      "session_date": "2023-11-03",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005299873234930419,
+      "mad_second": 0.0037489057637032364
+    },
+    {
+      "session_date": "2023-11-06",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0038926278442344975,
+      "mad_second": 0.0025613743306809322
+    },
+    {
+      "session_date": "2023-11-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0030448802556194976,
+      "mad_second": 0.0019146686316844352
+    },
+    {
+      "session_date": "2023-11-08",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003298207914672169,
+      "mad_second": 0.002498605890110195
+    },
+    {
+      "session_date": "2023-11-09",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0033016491709116913,
+      "mad_second": 0.00311704280756675
+    },
+    {
+      "session_date": "2023-11-10",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0037136828675113365,
+      "mad_second": 0.0021640189213075756
+    },
+    {
+      "session_date": "2023-11-13",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0032168947880024668,
+      "mad_second": 0.001975845795506026
+    },
+    {
+      "session_date": "2023-11-14",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.004552226711645568,
+      "mad_second": 0.002198716955560176
+    },
+    {
+      "session_date": "2023-11-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.005858186064586102,
+      "mad_second": 0.003074406199717883
+    },
+    {
+      "session_date": "2023-11-16",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0039486410501316516,
+      "mad_second": 0.00274401671226987
+    },
+    {
+      "session_date": "2023-11-17",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003285013018839822,
+      "mad_second": 0.0018958972318144918
+    },
+    {
+      "session_date": "2023-11-20",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003175902631334049,
+      "mad_second": 0.0019129651403892445
+    },
+    {
+      "session_date": "2023-11-21",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0033689214135524947,
+      "mad_second": 0.0021975694020299197
+    },
+    {
+      "session_date": "2023-11-22",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003100364253241006,
+      "mad_second": 0.002026940776699737
+    },
+    {
+      "session_date": "2023-11-24",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0026433132433320017,
+      "mad_second": 0.0014009525396447842
+    },
+    {
+      "session_date": "2023-11-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0025773740826559033,
+      "mad_second": 0.0015937708677037365
+    },
+    {
+      "session_date": "2023-11-28",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0026765472155230174,
+      "mad_second": 0.0017549386220645502
+    },
+    {
+      "session_date": "2023-11-29",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003906889106332023,
+      "mad_second": 0.0025486970025721534
+    },
+    {
+      "session_date": "2023-11-30",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0047355753194393,
+      "mad_second": 0.0017519779553841763
+    },
+    {
+      "session_date": "2023-12-01",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003418842090328278,
+      "mad_second": 0.002045940918328437
+    },
+    {
+      "session_date": "2023-12-04",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.003777191684128267,
+      "mad_second": 0.0031135256594153615
+    },
+    {
+      "session_date": "2023-12-05",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0038128003494974916,
+      "mad_second": 0.0020918475690816507
+    },
+    {
+      "session_date": "2023-12-06",
+      "action": "SPXU",
+      "odd_action": "SPXU",
+      "even_action": "SPXU",
+      "spy_control_action": "SPXU",
+      "mad_first": 0.0037543066859612173,
+      "mad_second": 0.0022688830019459427
+    },
+    {
+      "session_date": "2023-12-07",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002982041037786487,
+      "mad_second": 0.0023238663131257553
+    },
+    {
+      "session_date": "2023-12-08",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0030887675274152704,
+      "mad_second": 0.0022857954142117
+    },
+    {
+      "session_date": "2023-12-11",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0038718894278850224,
+      "mad_second": 0.0019353065384128398
+    },
+    {
+      "session_date": "2023-12-12",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0030429960410449652,
+      "mad_second": 0.0020126696852621473
+    },
+    {
+      "session_date": "2023-12-13",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0029670647021294294,
+      "mad_second": 0.0020127435105775637
+    },
+    {
+      "session_date": "2023-12-14",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.008596922134803009,
+      "mad_second": 0.002841576732488582
+    },
+    {
+      "session_date": "2023-12-15",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0049696657044808745,
+      "mad_second": 0.0023937500052675365
+    },
+    {
+      "session_date": "2023-12-18",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003699737690227578,
+      "mad_second": 0.002334858058294531
+    },
+    {
+      "session_date": "2023-12-19",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0027185043406627862,
+      "mad_second": 0.0019335139911650367
+    },
+    {
+      "session_date": "2023-12-20",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.003108233235772806,
+      "mad_second": 0.0022110431145020426
+    },
+    {
+      "session_date": "2023-12-21",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.002942024720975711,
+      "mad_second": 0.0016496888727447478
+    },
+    {
+      "session_date": "2023-12-22",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0033717599123497255,
+      "mad_second": 0.001476746759962122
+    },
+    {
+      "session_date": "2023-12-26",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.0020649968616974768,
+      "mad_second": 0.0015317753679917612
+    },
+    {
+      "session_date": "2023-12-27",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0017984550165766056,
+      "mad_second": 0.00154199998901966
+    },
+    {
+      "session_date": "2023-12-28",
+      "action": "UPRO",
+      "odd_action": "UPRO",
+      "even_action": "UPRO",
+      "spy_control_action": "UPRO",
+      "mad_first": 0.002281542531879621,
+      "mad_second": 0.0011514973379561644
+    },
+    {
+      "session_date": "2023-12-29",
+      "action": "CASH",
+      "odd_action": "CASH",
+      "even_action": "CASH",
+      "spy_control_action": "CASH",
+      "mad_first": 0.0014153125251387122,
+      "mad_second": 0.0014842778313158278
+    }
+  ]
+}

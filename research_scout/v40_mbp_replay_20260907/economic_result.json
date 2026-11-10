@@ -1,0 +1,1158 @@
+{
+  "stages": {
+    "development": {
+      "start": "2023-03-28",
+      "end": "2023-12-29",
+      "primary": {
+        "sessions": 192,
+        "trades": 101,
+        "ending_cash": 92.93997470005175,
+        "total_return": -0.07060025299948247,
+        "fixed_100_pnl": -7.286002619719034,
+        "sharpe": -3.183254597084537,
+        "max_daily_drawdown": -0.07346118046878358,
+        "win_rate": 0.36633663366336633,
+        "profit_factor": 0.5021973110250336,
+        "mean_trade_bps": -7.213863979919836
+      },
+      "SPY_total_return_proxy": {
+        "sessions": 192,
+        "trades": 0,
+        "ending_cash": 121.4593065738178,
+        "total_return": 0.21459306573817805,
+        "fixed_100_pnl": 0.0,
+        "sharpe": 2.238170723907776,
+        "max_daily_drawdown": -0.09974320175214002,
+        "win_rate": null,
+        "profit_factor": null,
+        "mean_trade_bps": null
+      },
+      "cent_stress": {
+        "sessions": 192,
+        "trades": 101,
+        "ending_cash": 83.07547404134596,
+        "total_return": -0.16924525958654046,
+        "fixed_100_pnl": -18.482525771063017,
+        "sharpe": -6.6468888369867605,
+        "max_daily_drawdown": -0.16924525958654046,
+        "win_rate": 0.25742574257425743,
+        "profit_factor": 0.22076361078248152,
+        "mean_trade_bps": -18.29953046639903
+      },
+      "remove_top_ten": {
+        "sessions": 192,
+        "trades": 91,
+        "ending_cash": 89.43395628758272,
+        "total_return": -0.10566043712417283,
+        "fixed_100_pnl": -11.138955158369201,
+        "sharpe": -5.724203308179766,
+        "max_daily_drawdown": -0.10566043712417283,
+        "win_rate": 0.2967032967032967,
+        "profit_factor": 0.23895143611386874,
+        "mean_trade_bps": -12.240610064141979
+      },
+      "delays": {
+        "09:31:01": {
+          "delayed": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 92.36003636835184,
+            "total_return": -0.07639963631648161,
+            "fixed_100_pnl": -7.909558945601702,
+            "sharpe": -3.3522304205199798,
+            "max_daily_drawdown": -0.07882156298235932,
+            "win_rate": 0.32673267326732675,
+            "profit_factor": 0.47547612506743825,
+            "mean_trade_bps": -7.831246480793765
+          },
+          "matched_primary": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 92.93997470005175,
+            "total_return": -0.07060025299948247,
+            "fixed_100_pnl": -7.286002619719034,
+            "sharpe": -3.183254597084537,
+            "max_daily_drawdown": -0.07346118046878358,
+            "win_rate": 0.36633663366336633,
+            "profit_factor": 0.5021973110250336,
+            "mean_trade_bps": -7.213863979919836
+          }
+        },
+        "09:32:00": {
+          "delayed": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 91.8261081607481,
+            "total_return": -0.0817389183925189,
+            "fixed_100_pnl": -8.50125327392658,
+            "sharpe": -4.417925511726034,
+            "max_daily_drawdown": -0.08320378841556153,
+            "win_rate": 0.33663366336633666,
+            "profit_factor": 0.3528265736470789,
+            "mean_trade_bps": -8.417082449432257
+          },
+          "matched_primary": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 92.93997470005175,
+            "total_return": -0.07060025299948247,
+            "fixed_100_pnl": -7.286002619719034,
+            "sharpe": -3.183254597084537,
+            "max_daily_drawdown": -0.07346118046878358,
+            "win_rate": 0.36633663366336633,
+            "profit_factor": 0.5021973110250336,
+            "mean_trade_bps": -7.213863979919836
+          }
+        }
+      },
+      "controls": {
+        "same_window_SPY": {
+          "metrics": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 100.0860154661336,
+            "total_return": 0.0008601546613360433,
+            "fixed_100_pnl": 0.08909071907517996,
+            "sharpe": 0.1290420972125408,
+            "max_daily_drawdown": -0.004804108921939831,
+            "win_rate": 0.5346534653465347,
+            "profit_factor": 1.0284957669080337,
+            "mean_trade_bps": 0.08820863274770292
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "overnight_direction": {
+          "metrics": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 96.38208644140092,
+            "total_return": -0.03617913558599084,
+            "fixed_100_pnl": -3.654124696061012,
+            "sharpe": -1.6906712249281417,
+            "max_daily_drawdown": -0.03788161800646184,
+            "win_rate": 0.42574257425742573,
+            "profit_factor": 0.6934629183681957,
+            "mean_trade_bps": -3.617945243624764
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "opening_price_pair": {
+          "metrics": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 95.9388421254911,
+            "total_return": -0.040611578745088917,
+            "fixed_100_pnl": -4.1147082883627455,
+            "sharpe": -1.8955875622409781,
+            "max_daily_drawdown": -0.04412527162787938,
+            "win_rate": 0.42574257425742573,
+            "profit_factor": 0.6620581414589496,
+            "mean_trade_bps": -4.0739686023393515
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "raw_quantity_balance": {
+          "metrics": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 86.90206324279859,
+            "total_return": -0.13097936757201412,
+            "fixed_100_pnl": -13.997673885447181,
+            "sharpe": -5.963092133806515,
+            "max_daily_drawdown": -0.1327026227637843,
+            "win_rate": 0.25742574257425743,
+            "profit_factor": 0.24862822613629057,
+            "mean_trade_bps": -13.8590830548982
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "prior_session_consensus": {
+          "metrics": {
+            "sessions": 192,
+            "trades": 53,
+            "ending_cash": 97.68721350859458,
+            "total_return": -0.023127864914054164,
+            "fixed_100_pnl": -2.321220281807479,
+            "sharpe": -1.3760187944736146,
+            "max_daily_drawdown": -0.023552160486404627,
+            "win_rate": 0.39622641509433965,
+            "profit_factor": 0.6627722092944547,
+            "mean_trade_bps": -4.379660909070715
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [
+            "2023-04-04",
+            "2023-04-11",
+            "2023-04-14",
+            "2023-04-20",
+            "2023-04-24",
+            "2023-05-03",
+            "2023-05-09",
+            "2023-05-16",
+            "2023-05-23",
+            "2023-05-26",
+            "2023-06-07",
+            "2023-06-09",
+            "2023-06-14",
+            "2023-06-20",
+            "2023-06-28",
+            "2023-07-03",
+            "2023-07-07",
+            "2023-07-13",
+            "2023-07-17",
+            "2023-07-21",
+            "2023-07-27",
+            "2023-08-01",
+            "2023-08-08",
+            "2023-08-11",
+            "2023-08-18",
+            "2023-08-22",
+            "2023-08-25",
+            "2023-08-31",
+            "2023-09-13",
+            "2023-09-18",
+            "2023-09-27",
+            "2023-10-02",
+            "2023-10-04",
+            "2023-10-10",
+            "2023-10-13",
+            "2023-10-24",
+            "2023-11-01",
+            "2023-11-10",
+            "2023-11-14",
+            "2023-11-16",
+            "2023-11-20",
+            "2023-11-22",
+            "2023-11-28",
+            "2023-11-30",
+            "2023-12-12",
+            "2023-12-18",
+            "2023-12-20",
+            "2023-12-29"
+          ],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "leverage_1x": {
+          "metrics": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 94.46002103984222,
+            "total_return": -0.055399789601577876,
+            "fixed_100_pnl": -5.692639377765973,
+            "sharpe": -6.008271480596808,
+            "max_daily_drawdown": -0.055399789601577876,
+            "win_rate": 0.27722772277227725,
+            "profit_factor": 0.2576221143872296,
+            "mean_trade_bps": -5.636276611649479
+          },
+          "missing_executions": 0
+        },
+        "leverage_2x": {
+          "metrics": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 76.19314333987663,
+            "total_return": -0.23806856660123377,
+            "fixed_100_pnl": -24.87296349910587,
+            "sharpe": -1.4249880613030177,
+            "max_daily_drawdown": -0.2389968628720922,
+            "win_rate": 0.36633663366336633,
+            "profit_factor": 0.16320384510743807,
+            "mean_trade_bps": -24.62669653376819
+          },
+          "missing_executions": 0
+        },
+        "leverage_3x": {
+          "metrics": {
+            "sessions": 192,
+            "trades": 101,
+            "ending_cash": 92.93997470005175,
+            "total_return": -0.07060025299948247,
+            "fixed_100_pnl": -7.286002619719034,
+            "sharpe": -3.183254597084537,
+            "max_daily_drawdown": -0.07346118046878358,
+            "win_rate": 0.36633663366336633,
+            "profit_factor": 0.5021973110250336,
+            "mean_trade_bps": -7.213863979919836
+          },
+          "missing_executions": 0
+        }
+      },
+      "matched_session_SPY_close_to_close": {
+        "sessions": 192,
+        "trades": 0,
+        "ending_cash": 110.88522982318578,
+        "total_return": 0.10885229823185782,
+        "fixed_100_pnl": 0.0,
+        "sharpe": 1.5859313320252988,
+        "max_daily_drawdown": -0.04803250946870552,
+        "win_rate": null,
+        "profit_factor": null,
+        "mean_trade_bps": null
+      },
+      "bootstrap_mean_daily_excess_95": [
+        -0.002556710059267549,
+        -0.00031629476193610644
+      ],
+      "admission_gates": {
+        "beats_SPY_total_return": false,
+        "positive_lower95_mean_daily_excess": false,
+        "cent_stress_profitable": false,
+        "remove_top_ten_profitable": false
+      },
+      "passed": false,
+      "mean_midpoint_to_net_drag_bps": 8.092582317871376,
+      "max_entry_event_wait_seconds": 0.931057,
+      "max_exit_event_wait_seconds": 0.191754,
+      "directions": {
+        "UPRO": {
+          "sessions": 51,
+          "trades": 51,
+          "ending_cash": 101.51999705845395,
+          "total_return": 0.01519997058453959,
+          "fixed_100_pnl": 1.5254198393378937,
+          "sharpe": 1.8408590251699128,
+          "max_daily_drawdown": -0.009625870187877972,
+          "win_rate": 0.5294117647058824,
+          "profit_factor": 1.331258158675042,
+          "mean_trade_bps": 2.9910192928193995
+        },
+        "SPXU": {
+          "sessions": 50,
+          "trades": 50,
+          "ending_cash": 91.54844108844686,
+          "total_return": -0.08451558911553136,
+          "fixed_100_pnl": -8.811422459056928,
+          "sharpe": -13.22717851729663,
+          "max_daily_drawdown": -0.08591726288105828,
+          "win_rate": 0.2,
+          "profit_factor": 0.12161577136954208,
+          "mean_trade_bps": -17.622844918113856
+        }
+      },
+      "yearly": {
+        "2023": {
+          "sessions": 192,
+          "trades": 101,
+          "ending_cash": 92.93997470005175,
+          "total_return": -0.07060025299948247,
+          "fixed_100_pnl": -7.286002619719034,
+          "sharpe": -3.183254597084537,
+          "max_daily_drawdown": -0.07346118046878358,
+          "win_rate": 0.36633663366336633,
+          "profit_factor": 0.5021973110250336,
+          "mean_trade_bps": -7.213863979919836
+        }
+      }
+    },
+    "contaminated_validation": {
+      "start": "2024-01-02",
+      "end": "2025-12-31",
+      "primary": {
+        "sessions": 502,
+        "trades": 270,
+        "ending_cash": 82.17810913486782,
+        "total_return": -0.17821890865132173,
+        "fixed_100_pnl": -19.512711109461776,
+        "sharpe": -2.9256753121467147,
+        "max_daily_drawdown": -0.1846591921508961,
+        "win_rate": 0.3888888888888889,
+        "profit_factor": 0.5007202817987274,
+        "mean_trade_bps": -7.226930040541399
+      },
+      "SPY_total_return_proxy": {
+        "sessions": 502,
+        "trades": 0,
+        "ending_cash": 147.99598966571006,
+        "total_return": 0.4799598966571006,
+        "fixed_100_pnl": 0.0,
+        "sharpe": 1.2842929459015147,
+        "max_daily_drawdown": -0.18755234489427297,
+        "win_rate": null,
+        "profit_factor": null,
+        "mean_trade_bps": null
+      },
+      "cent_stress": {
+        "sessions": 502,
+        "trades": 270,
+        "ending_cash": 67.74366859550246,
+        "total_return": -0.3225633140449754,
+        "fixed_100_pnl": -38.796542527715225,
+        "sharpe": -5.344743071817866,
+        "max_daily_drawdown": -0.32443616482512083,
+        "win_rate": 0.3037037037037037,
+        "profit_factor": 0.27514377657879596,
+        "mean_trade_bps": -14.369089825079714
+      },
+      "remove_top_ten": {
+        "sessions": 502,
+        "trades": 260,
+        "ending_cash": 77.29631677956114,
+        "total_return": -0.22703683220438864,
+        "fixed_100_pnl": -25.65692401875703,
+        "sharpe": -4.313567904468161,
+        "max_daily_drawdown": -0.23183178478364974,
+        "win_rate": 0.36538461538461536,
+        "profit_factor": 0.3435057936267569,
+        "mean_trade_bps": -9.868047699521936
+      },
+      "delays": {
+        "09:31:01": {
+          "delayed": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 82.57388543013462,
+            "total_return": -0.1742611456986538,
+            "fixed_100_pnl": -19.036020494276695,
+            "sharpe": -2.9005507946119,
+            "max_daily_drawdown": -0.18305100025904242,
+            "win_rate": 0.37777777777777777,
+            "profit_factor": 0.5141203772021864,
+            "mean_trade_bps": -7.050377960843221
+          },
+          "matched_primary": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 82.17810913486782,
+            "total_return": -0.17821890865132173,
+            "fixed_100_pnl": -19.512711109461776,
+            "sharpe": -2.9256753121467147,
+            "max_daily_drawdown": -0.1846591921508961,
+            "win_rate": 0.3888888888888889,
+            "profit_factor": 0.5007202817987274,
+            "mean_trade_bps": -7.226930040541399
+          }
+        },
+        "09:32:00": {
+          "delayed": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 83.4659898866725,
+            "total_return": -0.16534010113327502,
+            "fixed_100_pnl": -17.990408986198293,
+            "sharpe": -3.1966183139510735,
+            "max_daily_drawdown": -0.1716452480996521,
+            "win_rate": 0.362962962962963,
+            "profit_factor": 0.4689454754485187,
+            "mean_trade_bps": -6.663114439332701
+          },
+          "matched_primary": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 82.17810913486782,
+            "total_return": -0.17821890865132173,
+            "fixed_100_pnl": -19.512711109461776,
+            "sharpe": -2.9256753121467147,
+            "max_daily_drawdown": -0.1846591921508961,
+            "win_rate": 0.3888888888888889,
+            "profit_factor": 0.5007202817987274,
+            "mean_trade_bps": -7.226930040541399
+          }
+        }
+      },
+      "controls": {
+        "same_window_SPY": {
+          "metrics": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 93.73144927013658,
+            "total_return": -0.0626855072986342,
+            "fixed_100_pnl": -6.460964566841665,
+            "sharpe": -2.9210219525873393,
+            "max_daily_drawdown": -0.06447298016170666,
+            "win_rate": 0.37407407407407406,
+            "profit_factor": 0.5024242136399623,
+            "mean_trade_bps": -2.3929498395709867
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "overnight_direction": {
+          "metrics": {
+            "sessions": 502,
+            "trades": 269,
+            "ending_cash": 79.24306337501879,
+            "total_return": -0.20756936624981204,
+            "fixed_100_pnl": -23.150600048837223,
+            "sharpe": -3.512482164311112,
+            "max_daily_drawdown": -0.21124043103517975,
+            "win_rate": 0.39776951672862454,
+            "profit_factor": 0.4277782735461789,
+            "mean_trade_bps": -8.606171021872573
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [
+            "2024-02-12"
+          ],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "opening_price_pair": {
+          "metrics": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 78.8499848189568,
+            "total_return": -0.21150015181043202,
+            "fixed_100_pnl": -23.647506909888584,
+            "sharpe": -3.5856252956570516,
+            "max_daily_drawdown": -0.21515300658745884,
+            "win_rate": 0.3962962962962963,
+            "profit_factor": 0.42089351541373476,
+            "mean_trade_bps": -8.758335892551326
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "raw_quantity_balance": {
+          "metrics": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 75.32867417524308,
+            "total_return": -0.24671325824756918,
+            "fixed_100_pnl": -28.20788465247841,
+            "sharpe": -4.165804913485679,
+            "max_daily_drawdown": -0.24739524251610145,
+            "win_rate": 0.3296296296296296,
+            "profit_factor": 0.37050862296819553,
+            "mean_trade_bps": -10.447364686103114
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "prior_session_consensus": {
+          "metrics": {
+            "sessions": 502,
+            "trades": 139,
+            "ending_cash": 91.08502382398314,
+            "total_return": -0.08914976176016864,
+            "fixed_100_pnl": -9.284010238540718,
+            "sharpe": -2.0230385775370006,
+            "max_daily_drawdown": -0.09910879598065103,
+            "win_rate": 0.41007194244604317,
+            "profit_factor": 0.5268214560329015,
+            "mean_trade_bps": -6.679144056504114
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [
+            "2024-01-03",
+            "2024-01-09",
+            "2024-01-12",
+            "2024-01-22",
+            "2024-02-02",
+            "2024-02-06",
+            "2024-02-09",
+            "2024-02-15",
+            "2024-02-21",
+            "2024-02-26",
+            "2024-02-28",
+            "2024-03-04",
+            "2024-03-08",
+            "2024-03-12",
+            "2024-03-14",
+            "2024-03-21",
+            "2024-04-01",
+            "2024-04-04",
+            "2024-04-15",
+            "2024-04-18",
+            "2024-04-24",
+            "2024-04-29",
+            "2024-05-02",
+            "2024-05-10",
+            "2024-05-14",
+            "2024-05-16",
+            "2024-05-23",
+            "2024-05-29",
+            "2024-06-07",
+            "2024-06-14",
+            "2024-06-24",
+            "2024-07-01",
+            "2024-07-05",
+            "2024-07-10",
+            "2024-07-18",
+            "2024-07-22",
+            "2024-07-25",
+            "2024-07-29",
+            "2024-07-31",
+            "2024-08-06",
+            "2024-08-08",
+            "2024-08-16",
+            "2024-08-21",
+            "2024-08-23",
+            "2024-08-27",
+            "2024-09-06",
+            "2024-09-12",
+            "2024-09-17",
+            "2024-09-19",
+            "2024-09-23",
+            "2024-09-27",
+            "2024-10-01",
+            "2024-10-04",
+            "2024-10-10",
+            "2024-10-15",
+            "2024-10-21",
+            "2024-10-30",
+            "2024-11-04",
+            "2024-11-08",
+            "2024-11-14",
+            "2024-11-18",
+            "2024-11-21",
+            "2024-11-26",
+            "2024-12-02",
+            "2024-12-04",
+            "2024-12-06",
+            "2024-12-10",
+            "2024-12-20",
+            "2024-12-30",
+            "2025-01-02",
+            "2025-01-10",
+            "2025-01-17",
+            "2025-01-23",
+            "2025-01-30",
+            "2025-02-03",
+            "2025-02-10",
+            "2025-02-25",
+            "2025-02-28",
+            "2025-03-11",
+            "2025-03-14",
+            "2025-03-18",
+            "2025-03-28",
+            "2025-04-02",
+            "2025-04-07",
+            "2025-04-09",
+            "2025-04-14",
+            "2025-04-16",
+            "2025-04-22",
+            "2025-04-29",
+            "2025-05-05",
+            "2025-05-07",
+            "2025-05-13",
+            "2025-05-15",
+            "2025-05-20",
+            "2025-05-27",
+            "2025-06-03",
+            "2025-06-06",
+            "2025-06-10",
+            "2025-06-13",
+            "2025-06-17",
+            "2025-06-20",
+            "2025-07-03",
+            "2025-07-08",
+            "2025-07-11",
+            "2025-07-23",
+            "2025-07-25",
+            "2025-07-30",
+            "2025-08-04",
+            "2025-08-07",
+            "2025-08-11",
+            "2025-08-15",
+            "2025-08-20",
+            "2025-08-27",
+            "2025-09-04",
+            "2025-09-10",
+            "2025-09-15",
+            "2025-09-17",
+            "2025-09-22",
+            "2025-09-30",
+            "2025-10-03",
+            "2025-10-07",
+            "2025-10-15",
+            "2025-10-21",
+            "2025-10-27",
+            "2025-10-30",
+            "2025-11-07",
+            "2025-11-14",
+            "2025-11-18",
+            "2025-11-20",
+            "2025-12-16",
+            "2025-12-22"
+          ],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "leverage_1x": {
+          "metrics": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 87.60085074837367,
+            "total_return": -0.12399149251626329,
+            "fixed_100_pnl": -13.221243032381647,
+            "sharpe": -5.412437473269644,
+            "max_daily_drawdown": -0.12494670131788554,
+            "win_rate": 0.2740740740740741,
+            "profit_factor": 0.2656571541375257,
+            "mean_trade_bps": -4.896756678659869
+          },
+          "missing_executions": 0
+        },
+        "leverage_2x": {
+          "metrics": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 80.31084899012633,
+            "total_return": -0.19689151009873673,
+            "fixed_100_pnl": -21.86270457435482,
+            "sharpe": -4.506808213405606,
+            "max_daily_drawdown": -0.20192878073335874,
+            "win_rate": 0.32592592592592595,
+            "profit_factor": 0.3290727445740717,
+            "mean_trade_bps": -8.097297990501785
+          },
+          "missing_executions": 0
+        },
+        "leverage_3x": {
+          "metrics": {
+            "sessions": 502,
+            "trades": 270,
+            "ending_cash": 82.17810913486782,
+            "total_return": -0.17821890865132173,
+            "fixed_100_pnl": -19.512711109461776,
+            "sharpe": -2.9256753121467147,
+            "max_daily_drawdown": -0.1846591921508961,
+            "win_rate": 0.3888888888888889,
+            "profit_factor": 0.5007202817987274,
+            "mean_trade_bps": -7.226930040541399
+          },
+          "missing_executions": 0
+        }
+      },
+      "matched_session_SPY_close_to_close": {
+        "sessions": 502,
+        "trades": 0,
+        "ending_cash": 132.14250429783186,
+        "total_return": 0.32142504297831853,
+        "fixed_100_pnl": 0.0,
+        "sharpe": 1.1696576350541075,
+        "max_daily_drawdown": -0.08457667960760773,
+        "win_rate": null,
+        "profit_factor": null,
+        "mean_trade_bps": null
+      },
+      "bootstrap_mean_daily_excess_95": [
+        -0.0020373900453997764,
+        -0.00040380468719787284
+      ],
+      "admission_gates": {
+        "beats_SPY_total_return": false,
+        "positive_lower95_mean_daily_excess": false,
+        "cent_stress_profitable": false,
+        "remove_top_ten_profitable": false
+      },
+      "passed": false,
+      "mean_midpoint_to_net_drag_bps": 7.030873422325018,
+      "max_entry_event_wait_seconds": 4.320173,
+      "max_exit_event_wait_seconds": 0.824748,
+      "directions": {
+        "UPRO": {
+          "sessions": 133,
+          "trades": 133,
+          "ending_cash": 93.41017679805155,
+          "total_return": -0.06589823201948453,
+          "fixed_100_pnl": -6.761170002636019,
+          "sharpe": -2.8207536131062634,
+          "max_daily_drawdown": -0.07499744674972653,
+          "win_rate": 0.45864661654135336,
+          "profit_factor": 0.6228933490208545,
+          "mean_trade_bps": -5.083586468147383
+        },
+        "SPXU": {
+          "sessions": 137,
+          "trades": 137,
+          "ending_cash": 87.97554180047543,
+          "total_return": -0.12024458199524579,
+          "fixed_100_pnl": -12.751541106825758,
+          "sharpe": -5.265489247994172,
+          "max_daily_drawdown": -0.12320656716582323,
+          "win_rate": 0.32116788321167883,
+          "profit_factor": 0.3971659586730621,
+          "mean_trade_bps": -9.307694238558948
+        }
+      },
+      "yearly": {
+        "2024": {
+          "sessions": 252,
+          "trades": 130,
+          "ending_cash": 89.93788486486856,
+          "total_return": -0.10062115135131433,
+          "fixed_100_pnl": -10.559875673153963,
+          "sharpe": -3.5963883624818465,
+          "max_daily_drawdown": -0.10748328374153115,
+          "win_rate": 0.38461538461538464,
+          "profit_factor": 0.42202464069199974,
+          "mean_trade_bps": -8.12298128704151
+        },
+        "2025": {
+          "sessions": 250,
+          "trades": 140,
+          "ending_cash": 91.37207224557281,
+          "total_return": -0.08627927754427189,
+          "fixed_100_pnl": -8.952835436307815,
+          "sharpe": -2.4242083357976996,
+          "max_daily_drawdown": -0.08853042377044185,
+          "win_rate": 0.39285714285714285,
+          "profit_factor": 0.5698081422865752,
+          "mean_trade_bps": -6.3948824545055825
+        }
+      }
+    },
+    "extension_complete_prefix": {
+      "start": "2026-01-02",
+      "end": "2026-06-11",
+      "primary": {
+        "sessions": 111,
+        "trades": 62,
+        "ending_cash": 96.81563029735575,
+        "total_return": -0.03184369702644252,
+        "fixed_100_pnl": -3.203012297387031,
+        "sharpe": -1.8790217779920835,
+        "max_daily_drawdown": -0.04328711779157979,
+        "win_rate": 0.3709677419354839,
+        "profit_factor": 0.6616682170555518,
+        "mean_trade_bps": -5.166148866753277
+      },
+      "SPY_total_return_proxy": {
+        "sessions": 111,
+        "trades": 0,
+        "ending_cash": 107.88450647698413,
+        "total_return": 0.07884506476984132,
+        "fixed_100_pnl": 0.0,
+        "sharpe": 1.299944653375072,
+        "max_daily_drawdown": -0.088849681755238,
+        "win_rate": null,
+        "profit_factor": null,
+        "mean_trade_bps": null
+      },
+      "cent_stress": {
+        "sessions": 111,
+        "trades": 62,
+        "ending_cash": 94.94253793601688,
+        "total_return": -0.0505746206398312,
+        "fixed_100_pnl": -5.1552800909145935,
+        "sharpe": -2.99516776332248,
+        "max_daily_drawdown": -0.05818556497318628,
+        "win_rate": 0.3225806451612903,
+        "profit_factor": 0.5201398431385049,
+        "mean_trade_bps": -8.314967888571925
+      },
+      "remove_top_ten": {
+        "sessions": 111,
+        "trades": 52,
+        "ending_cash": 92.44824802100209,
+        "total_return": -0.07551751978997912,
+        "fixed_100_pnl": -7.831511104536048,
+        "sharpe": -6.229510494494378,
+        "max_daily_drawdown": -0.07551751978997912,
+        "win_rate": 0.25,
+        "profit_factor": 0.17276336487734692,
+        "mean_trade_bps": -15.06059827795394
+      },
+      "delays": {
+        "09:31:01": {
+          "delayed": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 96.89481782372371,
+            "total_return": -0.031051821762762888,
+            "fixed_100_pnl": -3.117975276417273,
+            "sharpe": -1.7431821792320412,
+            "max_daily_drawdown": -0.04451169596425786,
+            "win_rate": 0.4032258064516129,
+            "profit_factor": 0.6789268702289376,
+            "mean_trade_bps": -5.028992381318182
+          },
+          "matched_primary": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 96.81563029735575,
+            "total_return": -0.03184369702644252,
+            "fixed_100_pnl": -3.203012297387031,
+            "sharpe": -1.8790217779920835,
+            "max_daily_drawdown": -0.04328711779157979,
+            "win_rate": 0.3709677419354839,
+            "profit_factor": 0.6616682170555518,
+            "mean_trade_bps": -5.166148866753277
+          }
+        },
+        "09:32:00": {
+          "delayed": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 96.09027461199882,
+            "total_return": -0.03909725388001173,
+            "fixed_100_pnl": -3.9656947786749552,
+            "sharpe": -2.8489643172039414,
+            "max_daily_drawdown": -0.0476315892324638,
+            "win_rate": 0.3709677419354839,
+            "profit_factor": 0.5255847998106888,
+            "mean_trade_bps": -6.396281901088637
+          },
+          "matched_primary": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 96.81563029735575,
+            "total_return": -0.03184369702644252,
+            "fixed_100_pnl": -3.203012297387031,
+            "sharpe": -1.8790217779920835,
+            "max_daily_drawdown": -0.04328711779157979,
+            "win_rate": 0.3709677419354839,
+            "profit_factor": 0.6616682170555518,
+            "mean_trade_bps": -5.166148866753277
+          }
+        }
+      },
+      "controls": {
+        "same_window_SPY": {
+          "metrics": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 98.48991774248275,
+            "total_return": -0.015100822575172534,
+            "fixed_100_pnl": -1.517983880792495,
+            "sharpe": -2.716989069751497,
+            "max_daily_drawdown": -0.015100822575172534,
+            "win_rate": 0.3870967741935484,
+            "profit_factor": 0.5426404645648851,
+            "mean_trade_bps": -2.4483610980524113
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "overnight_direction": {
+          "metrics": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 95.0769049482871,
+            "total_return": -0.04923095051712911,
+            "fixed_100_pnl": -5.014624667285316,
+            "sharpe": -2.9449702130977715,
+            "max_daily_drawdown": -0.05424778070304637,
+            "win_rate": 0.3387096774193548,
+            "profit_factor": 0.5195078803246662,
+            "mean_trade_bps": -8.088104302073091
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "opening_price_pair": {
+          "metrics": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 95.0769049482871,
+            "total_return": -0.04923095051712911,
+            "fixed_100_pnl": -5.014624667285316,
+            "sharpe": -2.9449702130977715,
+            "max_daily_drawdown": -0.05424778070304637,
+            "win_rate": 0.3387096774193548,
+            "profit_factor": 0.5195078803246662,
+            "mean_trade_bps": -8.088104302073091
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "raw_quantity_balance": {
+          "metrics": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 96.47454596525044,
+            "total_return": -0.03525454034749553,
+            "fixed_100_pnl": -3.5544696792161767,
+            "sharpe": -2.043273774487858,
+            "max_daily_drawdown": -0.04034511849193978,
+            "win_rate": 0.3870967741935484,
+            "profit_factor": 0.6306427661927836,
+            "mean_trade_bps": -5.7330156116389945
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "prior_session_consensus": {
+          "metrics": {
+            "sessions": 111,
+            "trades": 34,
+            "ending_cash": 98.402332290738,
+            "total_return": -0.015976677092619962,
+            "fixed_100_pnl": -1.5916130305713816,
+            "sharpe": -1.2298419675591628,
+            "max_daily_drawdown": -0.025491961902235794,
+            "win_rate": 0.4411764705882353,
+            "profit_factor": 0.6988740598281128,
+            "mean_trade_bps": -4.681214795798181
+          },
+          "missing_execution_dates": [],
+          "cash_or_undefined_dates": [
+            "2026-01-06",
+            "2026-01-08",
+            "2026-01-15",
+            "2026-01-21",
+            "2026-01-23",
+            "2026-01-28",
+            "2026-02-05",
+            "2026-02-10",
+            "2026-02-17",
+            "2026-02-19",
+            "2026-02-24",
+            "2026-03-04",
+            "2026-03-17",
+            "2026-03-24",
+            "2026-03-26",
+            "2026-03-31",
+            "2026-04-08",
+            "2026-04-16",
+            "2026-04-21",
+            "2026-04-27",
+            "2026-04-30",
+            "2026-05-04",
+            "2026-05-07",
+            "2026-05-12",
+            "2026-05-21",
+            "2026-05-27",
+            "2026-06-08",
+            "2026-06-10"
+          ],
+          "scope": "Matched primary signal dates; not standalone strategy test"
+        },
+        "leverage_1x": {
+          "metrics": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 97.60233349869331,
+            "total_return": -0.023976665013066834,
+            "fixed_100_pnl": -2.422881814861977,
+            "sharpe": -4.2073709835985476,
+            "max_daily_drawdown": -0.026106915274861087,
+            "win_rate": 0.3064516129032258,
+            "profit_factor": 0.3979070109591368,
+            "mean_trade_bps": -3.9078738949386724
+          },
+          "missing_executions": 0
+        },
+        "leverage_2x": {
+          "metrics": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 96.2132523218107,
+            "total_return": -0.03786747678189295,
+            "fixed_100_pnl": -3.84323886146426,
+            "sharpe": -3.1843921282490313,
+            "max_daily_drawdown": -0.043236748972786954,
+            "win_rate": 0.3225806451612903,
+            "profit_factor": 0.49442692481475403,
+            "mean_trade_bps": -6.198772357200419
+          },
+          "missing_executions": 0
+        },
+        "leverage_3x": {
+          "metrics": {
+            "sessions": 111,
+            "trades": 62,
+            "ending_cash": 96.81563029735575,
+            "total_return": -0.03184369702644252,
+            "fixed_100_pnl": -3.203012297387031,
+            "sharpe": -1.8790217779920835,
+            "max_daily_drawdown": -0.04328711779157979,
+            "win_rate": 0.3709677419354839,
+            "profit_factor": 0.6616682170555518,
+            "mean_trade_bps": -5.166148866753277
+          },
+          "missing_executions": 0
+        }
+      },
+      "matched_session_SPY_close_to_close": {
+        "sessions": 111,
+        "trades": 0,
+        "ending_cash": 105.72196320076988,
+        "total_return": 0.05721963200769875,
+        "fixed_100_pnl": 0.0,
+        "sharpe": 1.226085746722321,
+        "max_daily_drawdown": -0.07891679325683432,
+        "win_rate": null,
+        "profit_factor": null,
+        "mean_trade_bps": null
+      },
+      "bootstrap_mean_daily_excess_95": [
+        -0.0026583198817295584,
+        0.0006332818524833548
+      ],
+      "admission_gates": {
+        "beats_SPY_total_return": false,
+        "positive_lower95_mean_daily_excess": false,
+        "cent_stress_profitable": false,
+        "remove_top_ten_profitable": false
+      },
+      "passed": false,
+      "mean_midpoint_to_net_drag_bps": 6.098361396432609,
+      "max_entry_event_wait_seconds": 0.408148,
+      "max_exit_event_wait_seconds": 0.079037,
+      "directions": {
+        "UPRO": {
+          "sessions": 28,
+          "trades": 28,
+          "ending_cash": 98.74907218010782,
+          "total_return": -0.01250927819892178,
+          "fixed_100_pnl": -1.239645045534321,
+          "sharpe": -1.8783704525624454,
+          "max_daily_drawdown": -0.015423688816922021,
+          "win_rate": 0.32142857142857145,
+          "profit_factor": 0.7254166267109313,
+          "mean_trade_bps": -4.427303734051147
+        },
+        "SPXU": {
+          "sessions": 34,
+          "trades": 34,
+          "ending_cash": 98.04206577331108,
+          "total_return": -0.019579342266889177,
+          "fixed_100_pnl": -1.96336725185271,
+          "sharpe": -3.215753223328422,
+          "max_daily_drawdown": -0.030278381430502987,
+          "win_rate": 0.4117647058823529,
+          "profit_factor": 0.6035551643563788,
+          "mean_trade_bps": -5.774609564272677
+        }
+      },
+      "yearly": {
+        "2026": {
+          "sessions": 111,
+          "trades": 62,
+          "ending_cash": 96.81563029735575,
+          "total_return": -0.03184369702644252,
+          "fixed_100_pnl": -3.203012297387031,
+          "sharpe": -1.8790217779920835,
+          "max_daily_drawdown": -0.04328711779157979,
+          "win_rate": 0.3709677419354839,
+          "profit_factor": 0.6616682170555518,
+          "mean_trade_bps": -5.166148866753277
+        }
+      }
+    }
+  },
+  "unresolved_signal_dates": [
+    "2026-06-18",
+    "2026-06-22",
+    "2026-06-25",
+    "2026-07-01",
+    "2026-07-02",
+    "2026-07-07",
+    "2026-07-13",
+    "2026-07-16",
+    "2026-07-17",
+    "2026-07-20",
+    "2026-07-21",
+    "2026-07-23"
+  ],
+  "observed_signal_dates_after_complete_prefix_not_in_equity": [],
+  "decision": "reject_development_economics_no_tuning",
+  "later_stage_interpretation": "Descriptive contaminated history; cannot rescue development failure.",
+  "pnl_calculated": true
+}

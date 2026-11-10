@@ -1,0 +1,53 @@
+{
+  "created_utc": "2026-09-07T20:26:41.905047+00:00",
+  "cases": {
+    "V83": [
+      "calendar rebalancing",
+      "research_scout/daytrade_batch_v83_v92/artifacts/v83_result.json"
+    ],
+    "V56": [
+      "stock/bond transmission",
+      "research_scout/spy_ief_joint_macro_impulse_results_v56.json"
+    ],
+    "V76": [
+      "constituent dispersion",
+      "research_scout/common_factor_dispersion_compression_results_v76.json"
+    ],
+    "V45": [
+      "post-release macro response",
+      "research_scout/spy_official_macro_release_results_v45.json"
+    ],
+    "V49": [
+      "signal stability, original P&L gate preserved",
+      "research_scout/v49_mbp_replay_20260907/original_gate_result.json"
+    ],
+    "V94": [
+      "stock reversal, data-coverage stress case",
+      "research_scout/three_new_intraday_20260907/results.json"
+    ]
+  },
+  "selection_reason": "Different mechanisms and failure stages, fixed before standardized outcomes. Calendar positive, cross-asset positive, breadth positive, event negative, measurement gate, coverage-limited stock test. No outcome optimization.",
+  "primary_period": "Original exposed 2021-2023 development; V49 retains original full-period blind gates. V94 coverage case includes its original two partitions.",
+  "quoted_cost_profile": {
+    "extra_bps_each_side": 1.0,
+    "sell_notional_rate": 5.1e-06,
+    "sell_per_share": 0.000119
+  },
+  "bar_cost_profile": {
+    "extra_bps_each_side": 5,
+    "sell_notional_rate": 0,
+    "sell_per_share": 0
+  },
+  "capital": 100,
+  "economic_contract": "Separate reference movement, crossed spread, extra slippage/fees. Missing trade data blocks complete equity and formal economic pass. Sequential trades compound; simultaneous portfolio weights sum at most1. Actual ETF prices already include leverage.",
+  "benchmark_basis": "Existing Yahoo adjusted-price proxy with source-code provenance; not retroactively certified raw dividend ledger. Future Yahoo parser requires adjusted fields.",
+  "original_gate_policy": "Retain original admission status; shared economic measurements cannot overrule it. V49 remains signal-only. No new hypotheses and no heldout outcomes opened.",
+  "source_hashes": {
+    "research_scout/daytrade_batch_v83_v92/artifacts/v83_result.json": "7050afc96d9843ef6e2a8ff401975fcab36d8f43b5c45f313d31a13a794093b0",
+    "research_scout/spy_ief_joint_macro_impulse_results_v56.json": "f4a0ba2f1f003e577e71ba24dcc354c2dfe6d3bc84146b50bc83f42abe36a3b9",
+    "research_scout/common_factor_dispersion_compression_results_v76.json": "47fc4404459c6c70ad6acdeee5712e8426ff48e3ae1eaa5706577664a3c59f09",
+    "research_scout/spy_official_macro_release_results_v45.json": "e4b429ed0cffb9778a35029c8298d58f650d3c9f8e62b451829f85137ed67ae0",
+    "research_scout/v49_mbp_replay_20260907/original_gate_result.json": "ab205e2695b8a8197bef2a2cf65e27f13395586f61d364297a0a0934d05a9418",
+    "research_scout/three_new_intraday_20260907/results.json": "1576f0318c484d44568a53876b8d19a77c7821b23b117112ac9923c4b1c1d737"
+  }
+}

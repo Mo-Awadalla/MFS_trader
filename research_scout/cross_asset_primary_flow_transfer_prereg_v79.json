@@ -1,0 +1,82 @@
+{
+  "candidate": "V79 cross-asset primary-flow transfer",
+  "frozen_before_signal_extraction_and_post_entry_return_read": true,
+  "source": {
+    "issuer": "BlackRock iShares",
+    "endpoint_component": "fundDownload",
+    "funds": {
+      "HYG": "239565",
+      "IEF": "239456"
+    },
+    "sheet": "Historical",
+    "fields": ["As Of", "NAV per Share", "Shares Outstanding"],
+    "raw_responses_and_sha256_saved": true,
+    "paid_data": false,
+    "databento_call": false
+  },
+  "development": {
+    "warmup_start": "2020-01-01",
+    "start": "2021-01-04",
+    "end": "2023-12-29",
+    "post_2023_rows_prohibited_from_signal_calculation": true,
+    "recent_years_locked": true
+  },
+  "signal": {
+    "hyg_fractional_flow": "HYG shares_t / HYG shares_previous_official_observation - 1",
+    "ief_fractional_flow": "IEF shares_t / IEF shares_previous_official_observation - 1",
+    "relative_flow": "hyg_fractional_flow - ief_fractional_flow",
+    "availability": "next U.S. cash session after source as-of date",
+    "action": "UPRO if relative_flow > 0; SPXU if relative_flow < 0; otherwise CASH"
+  },
+  "execution": {
+    "entry": "observed ask at 09:31 ET",
+    "exit": "observed bid at 15:30 ET",
+    "starting_cash": 100.0,
+    "fractional_shares": true,
+    "overnight": false
+  },
+  "blind_gates": {
+    "source_coverage_min": 0.98,
+    "signals_per_week_min": 2.0,
+    "signals_each_year_min": 100,
+    "minority_action_share_min": 0.30,
+    "switches_each_year_min": 25,
+    "max_month_signal_share": 0.06,
+    "normalized_dollar_flow_action_agreement_min": 0.70,
+    "hyg_only_action_agreement_max": 0.80,
+    "ief_only_action_agreement_max": 0.80,
+    "prior_spy_action_agreement_max": 0.80,
+    "primary_quote_coverage_min": 0.95,
+    "independent_quote_coverage_min": 0.90
+  },
+  "controls": [
+    "HYG-only fractional shares flow",
+    "inverse-IEF-only fractional shares flow",
+    "normalized NAV-dollar relative flow",
+    "one-additional-session-lag relative flow",
+    "prior HYG-minus-IEF price return",
+    "prior SPY price direction"
+  ],
+  "development_gates": {
+    "profit_factor_strict_min": 1.10,
+    "each_year_pnl_positive": true,
+    "each_sleeve_pnl_positive": true,
+    "ending_cash_above_adjusted_spy": true,
+    "extra_cent_each_side_pnl_positive": true,
+    "five_minute_delay_pnl_positive": true,
+    "delete_ten_best_source_sessions_pnl_positive": true,
+    "five_session_block_bootstrap_95pct_lower_mean_positive": true,
+    "direction_permutation_p_value_max": 0.05,
+    "independent_overlap_pnl_positive": true,
+    "mean_return_above_every_control": true
+  },
+  "prohibited_repairs": [
+    "sign flip",
+    "magnitude or percentile threshold",
+    "fund substitution or additional fund vote",
+    "sleeve/year deletion",
+    "publication-lag shortening",
+    "alternate entry or exit",
+    "favorable subset promotion"
+  ]
+}

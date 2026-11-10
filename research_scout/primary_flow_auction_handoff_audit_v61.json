@@ -1,0 +1,57 @@
+{
+  "status": "returns_blind_cross_data_construction_audit",
+  "sources": {
+    "proshares_flow_audit": "research_scout\\proshares_primary_market_flow_audit_v60.json",
+    "spy_auction_states": "research_scout\\spy_auction_imbalance_states_v34.json",
+    "auction_source": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/imbalance/spy_imbalance_2021-01-01_2026-07-27.dbn.zst",
+    "auction_source_sha256": "f860e934a2ea3d93f99a6634b460c8dcd1fe9b04f98c67a43c6a7bdb78de84d9",
+    "new_databento_calls_or_purchases": false
+  },
+  "rule": {
+    "flow": "prior-session UPRO creation dollars minus SPXU creation dollars",
+    "flow_delay": "one US trading session",
+    "auction": "09:29:00 America/New_York; event timestamp strictly before cutoff",
+    "candidate": "act in the common direction only; disagreement is cash",
+    "magnitude_threshold": null
+  },
+  "development_2021_2023": {
+    "joint_eligible_sessions": 732,
+    "joint_coverage": 0.9721115537848606,
+    "aligned_sessions": 373,
+    "signals_per_week": 2.4767596281540505,
+    "upro_actions": 166,
+    "spxu_actions": 207,
+    "signals_by_year": {
+      "2021": 140,
+      "2022": 126,
+      "2023": 107
+    },
+    "joint_sessions_by_year": {
+      "2021": 246,
+      "2022": 247,
+      "2023": 239
+    },
+    "selection_share": 0.5095628415300546
+  },
+  "distinctness": {
+    "flow_only_action_agreement": 0.5095628415300546,
+    "auction_only_action_agreement": 0.5095628415300546,
+    "v34_buy_only_action_agreement": 0.4685792349726776
+  },
+  "gates": {
+    "underlying_flow_audit_passed": true,
+    "auction_source_has_clean_eof_and_hash": true,
+    "joint_coverage_at_least_95_percent": true,
+    "candidate_frequency_at_least_2_per_week": true,
+    "at_least_90_signals_each_year": true,
+    "both_sleeves_and_minority_at_least_25_percent": true,
+    "selection_share_between_35_and_65_percent": true,
+    "distinct_from_flow_only_below_80_percent_action_agreement": true,
+    "distinct_from_auction_only_below_80_percent_action_agreement": true,
+    "distinct_from_failed_v34_below_80_percent_action_agreement": true,
+    "flow_delayed_and_auction_timestamp_strictly_before_09_29": true,
+    "no_returns_pnl_or_recent_year_outcomes_read": true
+  },
+  "gate_passed": true,
+  "decision": "allow_formal_critique_and_preregistration_only"
+}

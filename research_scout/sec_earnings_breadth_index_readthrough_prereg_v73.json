@@ -1,0 +1,83 @@
+{
+  "candidate": "v73",
+  "name": "SEC Earnings-Breadth Index Read-Through",
+  "status": "preregistered_before_free_data_acquisition_and_returns_blind_audit",
+  "development": ["2021-01-01", "2023-12-31"],
+  "sources": {
+    "sec_events": "data/parquet/sec_filings/sec_filing_events.parquet",
+    "sec_events_sha256": "F4DDB9B5883128069830301547989DA76324EC98199681F4B95BC7AA12CF4891",
+    "session_calendar": "data/parquet/equity/alpaca_sip/SPY_1d.parquet",
+    "session_calendar_sha256": "5C5BB984C477FEED9B6B26FA7A46B60466D01836DF426E2121C43B6B2F05DFBF",
+    "signal_bars": "free Alpaca Historical Stock Bars API, IEX feed, 30Min, adjustment=all",
+    "new_paid_data": false,
+    "databento_purchase": false
+  },
+  "event": {
+    "forms": ["8-K", "8-K/A"],
+    "required_item": "2.02",
+    "universe": "research.universes.residual_reversal_v1.stock_symbols",
+    "window": "16:00:00 ET after the prior cash session through 09:25:00 ET on the assigned session",
+    "duplicate_policy": "earliest acceptance per symbol and assigned session",
+    "blind_expected_events": 1654,
+    "blind_expected_sessions": 447,
+    "blind_expected_sessions_by_year": {"2021": 147, "2022": 150, "2023": 150}
+  },
+  "feature": {
+    "issuer_return": "10:00 30-minute bar close divided by 09:30 30-minute bar open minus one",
+    "spy_return": "SPY over identical bars",
+    "issuer_residual": "issuer_return minus spy_return",
+    "earnings_breadth_shock": "median issuer_residual across assigned filers",
+    "positive": "UPRO",
+    "negative": "SPXU",
+    "zero": "CASH"
+  },
+  "execution_if_admitted": {
+    "entry": "10:31 exact ask",
+    "exit": "15:55 exact bid",
+    "notional_usd": 100,
+    "fractional_shares": true,
+    "overnight": false
+  },
+  "blind_gates": {
+    "minimum_signals_per_week": 2.0,
+    "minimum_signals_each_year": 100,
+    "minimum_minority_action_share": 0.3,
+    "minimum_switches_each_year": 25,
+    "minimum_complete_session_fraction": 0.95,
+    "maximum_single_issuer_session_share": 0.45,
+    "minimum_first30_action_agreement": 0.7,
+    "maximum_spy_momentum_action_agreement": 0.8,
+    "maximum_issuer_absolute_contribution": 0.1,
+    "maximum_month_signal_share": 0.08,
+    "minimum_primary_quote_coverage": 0.95,
+    "minimum_independent_quote_coverage": 0.9
+  },
+  "return_gates": {
+    "minimum_profit_factor": 1.1,
+    "positive_every_year": true,
+    "positive_both_actions": true,
+    "positive_single_and_multi_issuer_sleeves": true,
+    "ending_cash_above_adjusted_spy": true,
+    "positive_extra_cent": true,
+    "positive_10_36_delay": true,
+    "positive_delete_best_10": true,
+    "bootstrap_lower_mean_above_zero": true,
+    "month_cluster_permutation_p_below": 0.05,
+    "positive_independent_overlap_pf_above_one": true,
+    "mean_above_spy_first_hour_momentum_control": true,
+    "mean_above_premarket_only_control": true
+  },
+  "forbidden": [
+    "sign inversion",
+    "magnitude, residual, or filing-reaction threshold",
+    "issuer or sector deletion",
+    "market-cap, index, or hand-chosen issuer weights",
+    "minimum-filer filter",
+    "positive-only issuer selection",
+    "alternate filing window",
+    "alternate signal, entry, or exit clock",
+    "date, year, month-end, or regime filtering",
+    "single- versus multi-issuer selection",
+    "recent-year access after any development miss"
+  ]
+}

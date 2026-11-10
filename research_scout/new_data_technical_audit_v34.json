@@ -1,0 +1,2425 @@
+{
+  "created_at_utc": "2026-07-28T18:43:36.365065+00:00",
+  "returns_read": false,
+  "paid_api_calls_made": false,
+  "inventory": {
+    "purpose": "Canonical logical inventory for cash-ETF day-trading research",
+    "symbols": [
+      "SPY",
+      "SSO",
+      "SDS",
+      "UPRO",
+      "SPXU",
+      "SH"
+    ],
+    "auction_signal": {
+      "dataset": "ARCX.PILLAR",
+      "schema": "imbalance",
+      "symbol": "SPY",
+      "path": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/imbalance/spy_imbalance_2021-01-01_2026-07-27.dbn.zst",
+      "first_record_timestamp": "2021-01-04T08:30:01.007218807+00:00",
+      "last_record_timestamp": "2026-07-24T19:59:59.060333632+00:00",
+      "rows": 10838203,
+      "clean_eof": true
+    },
+    "tbbo_signal": {
+      "dataset": "EQUS.MINI",
+      "schema": "tbbo",
+      "logical_coverage": "2023-03-28 through 2026-07-24",
+      "segments": [
+        {
+          "path": "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/tbbo/cash_etf_tbbo_2023-03-28_2026-07-27.dbn.partial.dbn.zst",
+          "usage_rule": "Use records whose America/New_York session date is on or before 2024-10-02. Do not consume the truncated file through EOF.",
+          "reason": "The file ends with an incomplete record during 2024-10-03, but the earlier complete sessions are decodable and monotonic."
+        },
+        {
+          "path": "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/tbbo/cash_etf_tbbo_tail_2024-10-03_2026-07-27.dbn.zst",
+          "usage_rule": "Use all records beginning with the 2024-10-03 session.",
+          "first_record_timestamp": "2024-10-03T11:01:59.783976264+00:00",
+          "last_record_timestamp": "2026-07-24T21:12:35.656966460+00:00",
+          "rows": 18823909,
+          "clean_eof": true
+        }
+      ],
+      "deduplication_rule": "Partition by America/New_York session date: prefix <= 2024-10-02; tail >= 2024-10-03. Never concatenate both files without this cutoff.",
+      "required_quote_filter": "Reject records with nonpositive or crossed bid/ask quotes.",
+      "feed_limitation": "EQUS.MINI is a derived anonymized multi-venue feed and is not documented as official SIP NBBO."
+    },
+    "supporting_data": [
+      {
+        "dataset": "ARCX.PILLAR",
+        "schema": "statistics",
+        "path": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/statistics/cash_etf_statistics_2021-01-01_2026-07-27.dbn.zst",
+        "rows": 19578,
+        "clean_eof": true
+      },
+      {
+        "dataset": "ARCX.PILLAR",
+        "schema": "status",
+        "path": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/status/cash_etf_status_2021-01-01_2026-07-27.dbn.zst",
+        "rows": 48403,
+        "clean_eof": true
+      },
+      {
+        "dataset": "ARCX.PILLAR",
+        "schema": "definition",
+        "path": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/definition/cash_etf_arcx_definition_2021-01-01_2026-07-27.dbn.zst",
+        "rows": 8376,
+        "clean_eof": true
+      },
+      {
+        "dataset": "EQUS.MINI",
+        "schema": "definition",
+        "path": "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/definition/cash_etf_equs_definition_2023-03-28_2026-07-27.dbn.zst",
+        "rows": 5010,
+        "clean_eof": true
+      }
+    ],
+    "quality_conditions": {
+      "EQUS.MINI": {
+        "condition_file": "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/dataset_condition.json",
+        "available_dates": 855,
+        "degraded_dates": [
+          "2025-03-24",
+          "2025-04-04",
+          "2025-05-06",
+          "2025-06-04",
+          "2025-06-16",
+          "2025-07-09",
+          "2025-08-08",
+          "2025-08-13",
+          "2025-08-19",
+          "2025-08-25",
+          "2025-09-03",
+          "2025-09-08",
+          "2025-09-12",
+          "2025-10-10",
+          "2025-10-13"
+        ]
+      },
+      "ARCX.PILLAR": {
+        "condition_file": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/dataset_condition.json",
+        "available_dates": 1432,
+        "degraded_dates": [
+          "2021-01-21",
+          "2022-07-18",
+          "2022-08-22",
+          "2022-12-05",
+          "2022-12-27",
+          "2023-06-26",
+          "2023-09-22",
+          "2023-11-21",
+          "2023-12-01",
+          "2023-12-04",
+          "2023-12-05",
+          "2023-12-06",
+          "2023-12-07",
+          "2023-12-08",
+          "2023-12-11",
+          "2024-04-19",
+          "2024-06-18",
+          "2024-11-19",
+          "2026-06-24",
+          "2026-07-14"
+        ]
+      }
+    },
+    "cost": {
+      "hard_cap_usd": 40.0,
+      "user_observed_usage_before_tail_usd": 26.37,
+      "tail_and_definition_estimated_incremental_usd": 8.441818803549,
+      "estimated_total_usd": 34.811818803549,
+      "dashboard_confirmed_total_usd": 34.81,
+      "dashboard_confirmed_remaining_under_cap_usd": 5.19,
+      "note": "The user confirmed the final Databento dashboard usage after all downloads."
+    },
+    "validation_report": "external_artifacts/databento_cash_etf_budget_v1/validation_report.json"
+  },
+  "validation_report": {
+    "created_at_utc": "2026-07-27T13:29:49.997135+00:00",
+    "paid_api_calls_made": false,
+    "files_found": 7,
+    "all_clean_eof": false,
+    "partial_files": [
+      "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/tbbo/cash_etf_tbbo_2023-03-28_2026-07-27.dbn.partial.dbn.zst"
+    ],
+    "files": [
+      {
+        "path": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/definition/cash_etf_arcx_definition_2021-01-01_2026-07-27.dbn.zst",
+        "filename_marks_partial": false,
+        "bytes": 504896,
+        "sha256": "e2c6f318452abac0192d6806faad9e2ae9b2a66fa2493727702a96e6725ca356",
+        "dataset": "ARCX.PILLAR",
+        "schema": "definition",
+        "metadata_start": "2021-01-01T00:00:00+00:00",
+        "metadata_end": "2026-07-27T00:00:00+00:00",
+        "metadata_stype_in": "raw_symbol",
+        "metadata_stype_out": "instrument_id",
+        "mapping_keys": [
+          "SDS",
+          "SH",
+          "SPXU",
+          "SPY",
+          "SSO",
+          "UPRO"
+        ],
+        "rows_decoded": 8376,
+        "chunks_decoded": 1,
+        "columns": [
+          "ts_event",
+          "rtype",
+          "publisher_id",
+          "instrument_id",
+          "raw_symbol",
+          "security_update_action",
+          "instrument_class",
+          "min_price_increment",
+          "display_factor",
+          "expiration",
+          "activation",
+          "high_limit_price",
+          "low_limit_price",
+          "max_price_variation",
+          "trading_reference_price",
+          "unit_of_measure_qty",
+          "min_price_increment_amount",
+          "price_ratio",
+          "inst_attrib_value",
+          "underlying_id",
+          "raw_instrument_id",
+          "market_depth_implied",
+          "market_depth",
+          "market_segment_id",
+          "max_trade_vol",
+          "min_lot_size",
+          "min_lot_size_block",
+          "min_lot_size_round_lot",
+          "min_trade_vol",
+          "contract_multiplier",
+          "decay_quantity",
+          "original_contract_size",
+          "trading_reference_date",
+          "appl_id",
+          "maturity_year",
+          "decay_start_date",
+          "channel_id",
+          "currency",
+          "settl_currency",
+          "secsubtype",
+          "group",
+          "exchange",
+          "asset",
+          "cfi",
+          "security_type",
+          "unit_of_measure",
+          "underlying",
+          "strike_price_currency",
+          "strike_price",
+          "match_algorithm",
+          "md_security_trading_status",
+          "main_fraction",
+          "price_display_format",
+          "settl_price_type",
+          "sub_fraction",
+          "underlying_product",
+          "maturity_month",
+          "maturity_day",
+          "maturity_week",
+          "user_defined_instrument",
+          "contract_multiplier_unit",
+          "flow_schedule_type",
+          "tick_rule",
+          "symbol"
+        ],
+        "first_record_timestamp": "2021-01-04T05:23:12.064409144+00:00",
+        "last_record_timestamp": "2026-07-24T06:01:00.013468396+00:00",
+        "monotonic_timestamps": true,
+        "symbols": {
+          "SDS": 1396,
+          "SH": 1396,
+          "SPXU": 1396,
+          "SPY": 1396,
+          "SSO": 1396,
+          "UPRO": 1396
+        },
+        "instrument_ids": [
+          14410,
+          14553,
+          15140,
+          15144,
+          15239,
+          16573
+        ],
+        "sides": {},
+        "crossed_quotes": 0,
+        "nonpositive_quotes": 0,
+        "invalid_trade_prices": 0,
+        "nonpositive_trade_sizes": 0,
+        "warnings": [],
+        "iteration_error": null,
+        "clean_eof": true
+      },
+      {
+        "path": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/imbalance/spy_imbalance_2021-01-01_2026-07-27.dbn.zst",
+        "filename_marks_partial": false,
+        "bytes": 262217245,
+        "sha256": "f860e934a2ea3d93f99a6634b460c8dcd1fe9b04f98c67a43c6a7bdb78de84d9",
+        "dataset": "ARCX.PILLAR",
+        "schema": "imbalance",
+        "metadata_start": "2021-01-01T00:00:00+00:00",
+        "metadata_end": "2026-07-27T00:00:00+00:00",
+        "metadata_stype_in": "raw_symbol",
+        "metadata_stype_out": "instrument_id",
+        "mapping_keys": [
+          "SPY"
+        ],
+        "rows_decoded": 10838203,
+        "chunks_decoded": 11,
+        "columns": [
+          "ts_event",
+          "rtype",
+          "publisher_id",
+          "instrument_id",
+          "ref_price",
+          "auction_time",
+          "cont_book_clr_price",
+          "auct_interest_clr_price",
+          "ssr_filling_price",
+          "ind_match_price",
+          "upper_collar",
+          "lower_collar",
+          "paired_qty",
+          "total_imbalance_qty",
+          "market_imbalance_qty",
+          "unpaired_qty",
+          "auction_type",
+          "side",
+          "auction_status",
+          "freeze_status",
+          "num_extensions",
+          "unpaired_side",
+          "significant_imbalance",
+          "symbol"
+        ],
+        "first_record_timestamp": "2021-01-04T08:30:01.007218807+00:00",
+        "last_record_timestamp": "2026-07-24T19:59:59.060333632+00:00",
+        "monotonic_timestamps": true,
+        "symbols": {
+          "SPY": 10838203
+        },
+        "instrument_ids": [
+          15144
+        ],
+        "sides": {
+          "A": 5681402,
+          "B": 5147269,
+          "N": 9532
+        },
+        "crossed_quotes": 0,
+        "nonpositive_quotes": 0,
+        "invalid_trade_prices": 0,
+        "nonpositive_trade_sizes": 0,
+        "warnings": [],
+        "iteration_error": null,
+        "clean_eof": true
+      },
+      {
+        "path": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/statistics/cash_etf_statistics_2021-01-01_2026-07-27.dbn.zst",
+        "filename_marks_partial": false,
+        "bytes": 789862,
+        "sha256": "fa467f9ddf4619e071d0370a3f29f07386e8ab7fa247197de91a658e713fdfca",
+        "dataset": "ARCX.PILLAR",
+        "schema": "statistics",
+        "metadata_start": "2021-01-01T00:00:00+00:00",
+        "metadata_end": "2026-07-27T00:00:00+00:00",
+        "metadata_stype_in": "raw_symbol",
+        "metadata_stype_out": "instrument_id",
+        "mapping_keys": [
+          "SDS",
+          "SH",
+          "SPXU",
+          "SPY",
+          "SSO",
+          "UPRO"
+        ],
+        "rows_decoded": 19578,
+        "chunks_decoded": 1,
+        "columns": [
+          "ts_event",
+          "rtype",
+          "publisher_id",
+          "instrument_id",
+          "ts_ref",
+          "price",
+          "quantity",
+          "sequence",
+          "ts_in_delta",
+          "stat_type",
+          "channel_id",
+          "update_action",
+          "stat_flags",
+          "symbol"
+        ],
+        "first_record_timestamp": "2021-01-04T09:00:00.000823304+00:00",
+        "last_record_timestamp": "2026-07-24T20:00:00.278127704+00:00",
+        "monotonic_timestamps": true,
+        "symbols": {
+          "SDS": 2908,
+          "SH": 2954,
+          "SPXU": 3171,
+          "SPY": 4033,
+          "SSO": 3078,
+          "UPRO": 3434
+        },
+        "instrument_ids": [
+          14410,
+          14553,
+          15140,
+          15144,
+          15239,
+          16573
+        ],
+        "sides": {},
+        "crossed_quotes": 0,
+        "nonpositive_quotes": 0,
+        "invalid_trade_prices": 0,
+        "nonpositive_trade_sizes": 0,
+        "warnings": [],
+        "iteration_error": null,
+        "clean_eof": true
+      },
+      {
+        "path": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/status/cash_etf_status_2021-01-01_2026-07-27.dbn.zst",
+        "filename_marks_partial": false,
+        "bytes": 671097,
+        "sha256": "449413450166a0295638a5a5c89807fe1b8870ec303485175c46b5b4d2e101d2",
+        "dataset": "ARCX.PILLAR",
+        "schema": "status",
+        "metadata_start": "2021-01-01T00:00:00+00:00",
+        "metadata_end": "2026-07-27T00:00:00+00:00",
+        "metadata_stype_in": "raw_symbol",
+        "metadata_stype_out": "instrument_id",
+        "mapping_keys": [
+          "SDS",
+          "SH",
+          "SPXU",
+          "SPY",
+          "SSO",
+          "UPRO"
+        ],
+        "rows_decoded": 48403,
+        "chunks_decoded": 1,
+        "columns": [
+          "ts_event",
+          "rtype",
+          "publisher_id",
+          "instrument_id",
+          "action",
+          "reason",
+          "trading_event",
+          "is_trading",
+          "is_quoting",
+          "is_short_sell_restricted",
+          "symbol"
+        ],
+        "first_record_timestamp": "2021-01-04T05:23:12.064409144+00:00",
+        "last_record_timestamp": "2026-07-24T20:00:00.350389178+00:00",
+        "monotonic_timestamps": true,
+        "symbols": {
+          "SDS": 8063,
+          "SH": 8057,
+          "SPXU": 8070,
+          "SPY": 8055,
+          "SSO": 8059,
+          "UPRO": 8099
+        },
+        "instrument_ids": [
+          14410,
+          14553,
+          15140,
+          15144,
+          15239,
+          16573
+        ],
+        "sides": {},
+        "crossed_quotes": 0,
+        "nonpositive_quotes": 0,
+        "invalid_trade_prices": 0,
+        "nonpositive_trade_sizes": 0,
+        "warnings": [],
+        "iteration_error": null,
+        "clean_eof": true
+      },
+      {
+        "path": "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/definition/cash_etf_equs_definition_2023-03-28_2026-07-27.dbn.zst",
+        "filename_marks_partial": false,
+        "bytes": 219836,
+        "sha256": "55008b77c2bdb8690845adc2169a62c5dacd91e5d8dba9762968d3a34921de73",
+        "dataset": "EQUS.MINI",
+        "schema": "definition",
+        "metadata_start": "2023-03-28T00:00:00+00:00",
+        "metadata_end": "2026-07-27T00:00:00+00:00",
+        "metadata_stype_in": "raw_symbol",
+        "metadata_stype_out": "instrument_id",
+        "mapping_keys": [
+          "SDS",
+          "SH",
+          "SPXU",
+          "SPY",
+          "SSO",
+          "UPRO"
+        ],
+        "rows_decoded": 5010,
+        "chunks_decoded": 1,
+        "columns": [
+          "ts_event",
+          "rtype",
+          "publisher_id",
+          "instrument_id",
+          "raw_symbol",
+          "security_update_action",
+          "instrument_class",
+          "min_price_increment",
+          "display_factor",
+          "expiration",
+          "activation",
+          "high_limit_price",
+          "low_limit_price",
+          "max_price_variation",
+          "trading_reference_price",
+          "unit_of_measure_qty",
+          "min_price_increment_amount",
+          "price_ratio",
+          "inst_attrib_value",
+          "underlying_id",
+          "raw_instrument_id",
+          "market_depth_implied",
+          "market_depth",
+          "market_segment_id",
+          "max_trade_vol",
+          "min_lot_size",
+          "min_lot_size_block",
+          "min_lot_size_round_lot",
+          "min_trade_vol",
+          "contract_multiplier",
+          "decay_quantity",
+          "original_contract_size",
+          "trading_reference_date",
+          "appl_id",
+          "maturity_year",
+          "decay_start_date",
+          "channel_id",
+          "currency",
+          "settl_currency",
+          "secsubtype",
+          "group",
+          "exchange",
+          "asset",
+          "cfi",
+          "security_type",
+          "unit_of_measure",
+          "underlying",
+          "strike_price_currency",
+          "strike_price",
+          "match_algorithm",
+          "md_security_trading_status",
+          "main_fraction",
+          "price_display_format",
+          "settl_price_type",
+          "sub_fraction",
+          "underlying_product",
+          "maturity_month",
+          "maturity_day",
+          "maturity_week",
+          "user_defined_instrument",
+          "contract_multiplier_unit",
+          "flow_schedule_type",
+          "tick_rule",
+          "symbol"
+        ],
+        "first_record_timestamp": "2023-03-28T09:33:22.083287455+00:00",
+        "last_record_timestamp": "2026-07-24T05:58:11.793492633+00:00",
+        "monotonic_timestamps": true,
+        "symbols": {
+          "SDS": 835,
+          "SH": 835,
+          "SPXU": 835,
+          "SPY": 835,
+          "SSO": 835,
+          "UPRO": 835
+        },
+        "instrument_ids": [
+          14410,
+          14553,
+          15140,
+          15144,
+          15239,
+          16573
+        ],
+        "sides": {},
+        "crossed_quotes": 0,
+        "nonpositive_quotes": 0,
+        "invalid_trade_prices": 0,
+        "nonpositive_trade_sizes": 0,
+        "warnings": [],
+        "iteration_error": null,
+        "clean_eof": true
+      },
+      {
+        "path": "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/tbbo/cash_etf_tbbo_2023-03-28_2026-07-27.dbn.partial.dbn.zst",
+        "filename_marks_partial": true,
+        "bytes": 414768008,
+        "sha256": "167736583478acca6c89e67f088c6e25ab06f47a21069add77dc6255acc4b26a",
+        "dataset": "EQUS.MINI",
+        "schema": "tbbo",
+        "metadata_start": "2023-03-28T00:00:00+00:00",
+        "metadata_end": "2026-07-27T00:00:00+00:00",
+        "metadata_stype_in": "raw_symbol",
+        "metadata_stype_out": "instrument_id",
+        "mapping_keys": [
+          "SDS",
+          "SH",
+          "SPXU",
+          "SPY",
+          "SSO",
+          "UPRO"
+        ],
+        "rows_decoded": 18287017,
+        "chunks_decoded": 19,
+        "columns": [
+          "ts_event",
+          "rtype",
+          "publisher_id",
+          "instrument_id",
+          "action",
+          "side",
+          "depth",
+          "price",
+          "size",
+          "flags",
+          "ts_in_delta",
+          "sequence",
+          "bid_px_00",
+          "ask_px_00",
+          "bid_sz_00",
+          "ask_sz_00",
+          "bid_ct_00",
+          "ask_ct_00",
+          "symbol"
+        ],
+        "first_record_timestamp": "2023-03-28T11:06:28.189506479+00:00",
+        "last_record_timestamp": "2024-10-03T19:48:17.101515362+00:00",
+        "monotonic_timestamps": true,
+        "symbols": {
+          "SDS": 743237,
+          "SH": 403912,
+          "SPXU": 1022867,
+          "SPY": 14089701,
+          "SSO": 371215,
+          "UPRO": 1656085
+        },
+        "instrument_ids": [
+          14410,
+          14553,
+          15140,
+          15144,
+          15239,
+          16573
+        ],
+        "sides": {
+          "A": 6770033,
+          "B": 6629079,
+          "N": 4887905
+        },
+        "crossed_quotes": 40374,
+        "nonpositive_quotes": 0,
+        "invalid_trade_prices": 0,
+        "nonpositive_trade_sizes": 0,
+        "warnings": [
+          "DBN file is truncated or contains an incomplete record"
+        ],
+        "iteration_error": null,
+        "clean_eof": false
+      },
+      {
+        "path": "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/tbbo/cash_etf_tbbo_tail_2024-10-03_2026-07-27.dbn.zst",
+        "filename_marks_partial": false,
+        "bytes": 414770120,
+        "sha256": "2d90b0660d351245280d8c32abeae5d53d965019a82b3ab3171cecff7759bedd",
+        "dataset": "EQUS.MINI",
+        "schema": "tbbo",
+        "metadata_start": "2024-10-03T00:00:00+00:00",
+        "metadata_end": "2026-07-27T00:00:00+00:00",
+        "metadata_stype_in": "raw_symbol",
+        "metadata_stype_out": "instrument_id",
+        "mapping_keys": [
+          "SDS",
+          "SH",
+          "SPXU",
+          "SPY",
+          "SSO",
+          "UPRO"
+        ],
+        "rows_decoded": 18823909,
+        "chunks_decoded": 19,
+        "columns": [
+          "ts_event",
+          "rtype",
+          "publisher_id",
+          "instrument_id",
+          "action",
+          "side",
+          "depth",
+          "price",
+          "size",
+          "flags",
+          "ts_in_delta",
+          "sequence",
+          "bid_px_00",
+          "ask_px_00",
+          "bid_sz_00",
+          "ask_sz_00",
+          "bid_ct_00",
+          "ask_ct_00",
+          "symbol"
+        ],
+        "first_record_timestamp": "2024-10-03T11:01:59.783976264+00:00",
+        "last_record_timestamp": "2026-07-24T21:12:35.656966460+00:00",
+        "monotonic_timestamps": true,
+        "symbols": {
+          "SDS": 536572,
+          "SH": 403171,
+          "SPXU": 983589,
+          "SPY": 15704377,
+          "SSO": 381887,
+          "UPRO": 814313
+        },
+        "instrument_ids": [
+          14410,
+          14553,
+          15140,
+          15144,
+          15239,
+          16573
+        ],
+        "sides": {
+          "A": 4783374,
+          "B": 4679084,
+          "N": 9361451
+        },
+        "crossed_quotes": 17658,
+        "nonpositive_quotes": 0,
+        "invalid_trade_prices": 0,
+        "nonpositive_trade_sizes": 0,
+        "warnings": [],
+        "iteration_error": null,
+        "clean_eof": true
+      }
+    ]
+  },
+  "degraded_dates": {
+    "ARCX.PILLAR": [
+      "2021-01-21",
+      "2022-07-18",
+      "2022-08-22",
+      "2022-12-05",
+      "2022-12-27",
+      "2023-06-26",
+      "2023-09-22",
+      "2023-11-21",
+      "2023-12-01",
+      "2023-12-04",
+      "2023-12-05",
+      "2023-12-06",
+      "2023-12-07",
+      "2023-12-08",
+      "2023-12-11",
+      "2024-04-19",
+      "2024-06-18",
+      "2024-11-19",
+      "2026-06-24",
+      "2026-07-14"
+    ],
+    "EQUS.MINI": [
+      "2025-03-24",
+      "2025-04-04",
+      "2025-05-06",
+      "2025-06-04",
+      "2025-06-16",
+      "2025-07-09",
+      "2025-08-08",
+      "2025-08-13",
+      "2025-08-19",
+      "2025-08-25",
+      "2025-09-03",
+      "2025-09-08",
+      "2025-09-12",
+      "2025-10-10",
+      "2025-10-13"
+    ]
+  },
+  "definitions": {
+    "ARCX.PILLAR": {
+      "rows": 8376,
+      "symbols": {
+        "SDS": {
+          "rows": 1396,
+          "instrument_ids": [
+            14410
+          ],
+          "raw_symbols": [
+            "SDS"
+          ],
+          "update_actions": {
+            "A": 1396
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2021-01-04T00:23:14.535425536-05:00",
+          "last_event_utc": "2026-07-24T02:01:00.000213286-04:00",
+          "session_dates": 1395
+        },
+        "SH": {
+          "rows": 1396,
+          "instrument_ids": [
+            14553
+          ],
+          "raw_symbols": [
+            "SH"
+          ],
+          "update_actions": {
+            "A": 1396
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2021-01-04T00:23:14.535376896-05:00",
+          "last_event_utc": "2026-07-24T02:01:00.000419218-04:00",
+          "session_dates": 1395
+        },
+        "SPXU": {
+          "rows": 1396,
+          "instrument_ids": [
+            15140
+          ],
+          "raw_symbols": [
+            "SPXU"
+          ],
+          "update_actions": {
+            "A": 1396
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2021-01-04T00:23:17.044198144-05:00",
+          "last_event_utc": "2026-07-24T02:01:00.001020203-04:00",
+          "session_dates": 1395
+        },
+        "SPY": {
+          "rows": 1396,
+          "instrument_ids": [
+            15144
+          ],
+          "raw_symbols": [
+            "SPY"
+          ],
+          "update_actions": {
+            "A": 1396
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2021-01-04T00:23:12.064398848-05:00",
+          "last_event_utc": "2026-07-24T02:01:00.013267149-04:00",
+          "session_dates": 1395
+        },
+        "SSO": {
+          "rows": 1396,
+          "instrument_ids": [
+            15239
+          ],
+          "raw_symbols": [
+            "SSO"
+          ],
+          "update_actions": {
+            "A": 1396
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2021-01-04T00:23:14.535376896-05:00",
+          "last_event_utc": "2026-07-24T02:01:00.000615501-04:00",
+          "session_dates": 1395
+        },
+        "UPRO": {
+          "rows": 1396,
+          "instrument_ids": [
+            16573
+          ],
+          "raw_symbols": [
+            "UPRO"
+          ],
+          "update_actions": {
+            "A": 1396
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2021-01-04T00:23:17.260066048-05:00",
+          "last_event_utc": "2026-07-24T02:01:00.000219031-04:00",
+          "session_dates": 1395
+        }
+      },
+      "instrument_id_to_symbol": {
+        "14410": "SDS",
+        "14553": "SH",
+        "15140": "SPXU",
+        "15144": "SPY",
+        "15239": "SSO",
+        "16573": "UPRO"
+      }
+    },
+    "EQUS.MINI": {
+      "rows": 5010,
+      "symbols": {
+        "SDS": {
+          "rows": 835,
+          "instrument_ids": [
+            14410
+          ],
+          "raw_symbols": [
+            "SDS"
+          ],
+          "update_actions": {
+            "A": 835
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2023-03-28T05:33:22.083253491-04:00",
+          "last_event_utc": "2026-07-24T01:57:38.560404554-04:00",
+          "session_dates": 835
+        },
+        "SH": {
+          "rows": 835,
+          "instrument_ids": [
+            14553
+          ],
+          "raw_symbols": [
+            "SH"
+          ],
+          "update_actions": {
+            "A": 835
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2023-03-28T05:33:22.094698810-04:00",
+          "last_event_utc": "2026-07-24T01:57:38.572705450-04:00",
+          "session_dates": 835
+        },
+        "SPXU": {
+          "rows": 835,
+          "instrument_ids": [
+            15140
+          ],
+          "raw_symbols": [
+            "SPXU"
+          ],
+          "update_actions": {
+            "A": 835
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2023-03-28T05:33:26.135796098-04:00",
+          "last_event_utc": "2026-07-24T01:57:43.338085515-04:00",
+          "session_dates": 835
+        },
+        "SPY": {
+          "rows": 835,
+          "instrument_ids": [
+            15144
+          ],
+          "raw_symbols": [
+            "SPY"
+          ],
+          "update_actions": {
+            "A": 835
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2023-03-28T05:33:50.248399362-04:00",
+          "last_event_utc": "2026-07-24T01:58:11.793427077-04:00",
+          "session_dates": 835
+        },
+        "SSO": {
+          "rows": 835,
+          "instrument_ids": [
+            15239
+          ],
+          "raw_symbols": [
+            "SSO"
+          ],
+          "update_actions": {
+            "A": 835
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2023-03-28T05:33:26.142966318-04:00",
+          "last_event_utc": "2026-07-24T01:57:43.346513461-04:00",
+          "session_dates": 835
+        },
+        "UPRO": {
+          "rows": 835,
+          "instrument_ids": [
+            16573
+          ],
+          "raw_symbols": [
+            "UPRO"
+          ],
+          "update_actions": {
+            "A": 835
+          },
+          "min_price_increments": [],
+          "activation_min": null,
+          "activation_max": null,
+          "first_event_utc": "2023-03-28T05:33:34.234196840-04:00",
+          "last_event_utc": "2026-07-24T01:57:52.884847020-04:00",
+          "session_dates": 835
+        }
+      },
+      "instrument_id_to_symbol": {
+        "14410": "SDS",
+        "14553": "SH",
+        "15140": "SPXU",
+        "15144": "SPY",
+        "15239": "SSO",
+        "16573": "UPRO"
+      }
+    }
+  },
+  "status": {
+    "rows": 48403,
+    "action_encoding_note": "Names are resolved with databento_dbn enum metadata when integer-coded.",
+    "by_symbol": {
+      "SDS": {
+        "rows": 8063,
+        "session_dates": 1395,
+        "actions": {
+          "NONE": 1396,
+          "PRE_OPEN": 1396,
+          "TRADING": 4187,
+          "CLOSE": 10,
+          "QUOTING": 1066,
+          "SSR_CHANGE": 6,
+          "HALT": 2
+        },
+        "reasons": {
+          "NONE": 8059,
+          "CORPORATE_ACTION": 4
+        },
+        "trading_events": {
+          "NONE": 8063
+        },
+        "is_trading": {
+          "~": 1396,
+          "N": 2479,
+          "Y": 4188
+        },
+        "is_quoting": {
+          "~": 1396,
+          "N": 1412,
+          "Y": 5255
+        },
+        "is_short_sell_restricted": {
+          "~": 8039,
+          "Y": 14,
+          "N": 10
+        },
+        "flagged_dates": [],
+        "flagged_rows": 0,
+        "ssr_dates": [
+          "2022-11-10",
+          "2022-11-11",
+          "2025-04-09",
+          "2025-04-10"
+        ]
+      },
+      "SH": {
+        "rows": 8057,
+        "session_dates": 1395,
+        "actions": {
+          "NONE": 1396,
+          "PRE_OPEN": 1396,
+          "TRADING": 4187,
+          "CLOSE": 10,
+          "QUOTING": 1066,
+          "HALT": 2
+        },
+        "reasons": {
+          "NONE": 8053,
+          "CORPORATE_ACTION": 4
+        },
+        "trading_events": {
+          "NONE": 8057
+        },
+        "is_trading": {
+          "~": 1396,
+          "N": 2474,
+          "Y": 4187
+        },
+        "is_quoting": {
+          "~": 1396,
+          "N": 1408,
+          "Y": 5253
+        },
+        "is_short_sell_restricted": {
+          "~": 8057
+        },
+        "flagged_dates": [],
+        "flagged_rows": 0,
+        "ssr_dates": []
+      },
+      "SPXU": {
+        "rows": 8070,
+        "session_dates": 1395,
+        "actions": {
+          "NONE": 1396,
+          "PRE_OPEN": 1396,
+          "TRADING": 4187,
+          "CLOSE": 10,
+          "QUOTING": 1066,
+          "SSR_CHANGE": 13,
+          "HALT": 2
+        },
+        "reasons": {
+          "NONE": 8066,
+          "CORPORATE_ACTION": 4
+        },
+        "trading_events": {
+          "NONE": 8070
+        },
+        "is_trading": {
+          "~": 1396,
+          "N": 2483,
+          "Y": 4191
+        },
+        "is_quoting": {
+          "~": 1396,
+          "N": 1416,
+          "Y": 5258
+        },
+        "is_short_sell_restricted": {
+          "~": 8021,
+          "Y": 34,
+          "N": 15
+        },
+        "flagged_dates": [],
+        "flagged_rows": 0,
+        "ssr_dates": [
+          "2022-11-10",
+          "2022-11-11",
+          "2025-04-07",
+          "2025-04-08",
+          "2025-04-09",
+          "2025-04-10",
+          "2025-04-23",
+          "2025-04-24"
+        ]
+      },
+      "SPY": {
+        "rows": 8055,
+        "session_dates": 1395,
+        "actions": {
+          "NONE": 1396,
+          "PRE_OPEN": 1396,
+          "TRADING": 4185,
+          "CLOSE": 10,
+          "SSR_CHANGE": 2,
+          "QUOTING": 1066
+        },
+        "reasons": {
+          "NONE": 8055
+        },
+        "trading_events": {
+          "NONE": 8055
+        },
+        "is_trading": {
+          "~": 1396,
+          "N": 2472,
+          "Y": 4187
+        },
+        "is_quoting": {
+          "~": 1396,
+          "N": 1406,
+          "Y": 5253
+        },
+        "is_short_sell_restricted": {
+          "~": 8052,
+          "Y": 1,
+          "N": 2
+        },
+        "flagged_dates": [],
+        "flagged_rows": 0,
+        "ssr_dates": [
+          "2022-01-25"
+        ]
+      },
+      "SSO": {
+        "rows": 8059,
+        "session_dates": 1395,
+        "actions": {
+          "NONE": 1396,
+          "PRE_OPEN": 1396,
+          "TRADING": 4185,
+          "CLOSE": 10,
+          "QUOTING": 1066,
+          "SSR_CHANGE": 6
+        },
+        "reasons": {
+          "NONE": 8059
+        },
+        "trading_events": {
+          "NONE": 8059
+        },
+        "is_trading": {
+          "~": 1396,
+          "N": 2476,
+          "Y": 4187
+        },
+        "is_quoting": {
+          "~": 1396,
+          "N": 1410,
+          "Y": 5253
+        },
+        "is_short_sell_restricted": {
+          "~": 8035,
+          "Y": 14,
+          "N": 10
+        },
+        "flagged_dates": [],
+        "flagged_rows": 0,
+        "ssr_dates": [
+          "2025-04-04",
+          "2025-04-07",
+          "2025-04-10",
+          "2025-04-11"
+        ]
+      },
+      "UPRO": {
+        "rows": 8099,
+        "session_dates": 1395,
+        "actions": {
+          "NONE": 1396,
+          "PRE_OPEN": 1396,
+          "TRADING": 4185,
+          "CLOSE": 10,
+          "SSR_CHANGE": 46,
+          "QUOTING": 1066
+        },
+        "reasons": {
+          "NONE": 8099
+        },
+        "trading_events": {
+          "NONE": 8099
+        },
+        "is_trading": {
+          "~": 1396,
+          "N": 2502,
+          "Y": 4201
+        },
+        "is_quoting": {
+          "~": 1396,
+          "N": 1436,
+          "Y": 5267
+        },
+        "is_short_sell_restricted": {
+          "~": 7920,
+          "Y": 111,
+          "N": 68
+        },
+        "flagged_dates": [],
+        "flagged_rows": 0,
+        "ssr_dates": [
+          "2022-01-24",
+          "2022-01-25",
+          "2022-04-29",
+          "2022-05-02",
+          "2022-05-05",
+          "2022-05-06",
+          "2022-05-09",
+          "2022-05-10",
+          "2022-05-18",
+          "2022-05-19",
+          "2022-06-13",
+          "2022-06-14",
+          "2022-06-16",
+          "2022-06-17",
+          "2022-08-26",
+          "2022-08-29",
+          "2022-09-13",
+          "2022-09-14",
+          "2024-08-05",
+          "2024-08-06",
+          "2025-03-10",
+          "2025-03-11",
+          "2025-04-03",
+          "2025-04-04",
+          "2025-04-07",
+          "2025-04-08",
+          "2025-04-10",
+          "2025-04-11",
+          "2025-04-21",
+          "2025-04-22"
+        ]
+      }
+    }
+  },
+  "statistics": {
+    "rows": 19578,
+    "types": {
+      "CLOSE_PRICE": {
+        "rows": 8370,
+        "symbols": {
+          "UPRO": 1395,
+          "SSO": 1395,
+          "SH": 1395,
+          "SPXU": 1395,
+          "SDS": 1395,
+          "SPY": 1395
+        },
+        "session_dates": 1395,
+        "positive_price_rows": 8370,
+        "positive_quantity_rows": 8370,
+        "first_event_ny": "2021-01-04T16:00:00.020872704-05:00",
+        "last_event_ny": "2026-07-24T16:00:00.263125925-04:00"
+      },
+      "OPENING_PRICE": {
+        "rows": 8370,
+        "symbols": {
+          "UPRO": 1395,
+          "SPXU": 1395,
+          "SSO": 1395,
+          "SH": 1395,
+          "SDS": 1395,
+          "SPY": 1395
+        },
+        "session_dates": 1395,
+        "positive_price_rows": 8370,
+        "positive_quantity_rows": 8370,
+        "first_event_ny": "2021-01-04T09:30:00.081902080-05:00",
+        "last_event_ny": "2026-07-24T09:30:00.459484130-04:00"
+      },
+      "UNCROSSING_PRICE": {
+        "rows": 2838,
+        "symbols": {
+          "UPRO": 644,
+          "SSO": 288,
+          "SH": 164,
+          "SDS": 118,
+          "SPXU": 381,
+          "SPY": 1243
+        },
+        "session_dates": 1289,
+        "positive_price_rows": 2838,
+        "positive_quantity_rows": 2838,
+        "first_event_ny": "2021-01-04T04:00:00.000783104-05:00",
+        "last_event_ny": "2026-07-24T04:00:00.032586286-04:00"
+      }
+    },
+    "potentially_relevant_types": [
+      "CLOSE_PRICE",
+      "OPENING_PRICE",
+      "UNCROSSING_PRICE"
+    ],
+    "usage_decision": "Use only types with explicit opening/closing/uncrossing/collar semantics and adequate session coverage; venue-specific types remain excluded without venue documentation."
+  },
+  "imbalance": {
+    "rows": 10838203,
+    "degraded_rows": 158454,
+    "auction_type_counts": {
+      "O": 55602,
+      "M": 5821122,
+      "C": 4961479
+    },
+    "auction_type_session_counts": {
+      "O": 1395,
+      "M": 1395,
+      "C": 1395
+    },
+    "event_hour_counts_ny": {
+      "03": 55602,
+      "08": 3708009,
+      "09": 2113113,
+      "15": 4926298,
+      "12": 35069,
+      "16": 111,
+      "13": 1
+    },
+    "projected_auction_time_clock_counts_ny": {
+      "O": {
+        "04:00:00": 27292,
+        "09:00:00": 6550,
+        "08:00:00": 21760
+      },
+      "M": {
+        "09:30:00": 5051008,
+        "14:30:00": 350475,
+        "13:30:00": 419639
+      },
+      "C": {
+        "16:00:00": 4302556,
+        "13:00:00": 28221,
+        "21:00:00": 293881,
+        "18:00:00": 6849,
+        "20:00:00": 329972
+      }
+    },
+    "field_positive_counts_by_auction_type": {
+      "O": {
+        "ref_price": 55602,
+        "cont_book_clr_price": 378,
+        "auct_interest_clr_price": 0,
+        "ssr_filling_price": 0,
+        "ind_match_price": 49716,
+        "upper_collar": 0,
+        "lower_collar": 0,
+        "paired_qty": 26934,
+        "total_imbalance_qty": 54739,
+        "market_imbalance_qty": 0,
+        "unpaired_qty": 0
+      },
+      "M": {
+        "ref_price": 5821122,
+        "cont_book_clr_price": 11523,
+        "auct_interest_clr_price": 5821122,
+        "ssr_filling_price": 0,
+        "ind_match_price": 5821122,
+        "upper_collar": 5821122,
+        "lower_collar": 5821122,
+        "paired_qty": 5821122,
+        "total_imbalance_qty": 5814822,
+        "market_imbalance_qty": 400461,
+        "unpaired_qty": 0
+      },
+      "C": {
+        "ref_price": 4961479,
+        "cont_book_clr_price": 9859,
+        "auct_interest_clr_price": 4961479,
+        "ssr_filling_price": 0,
+        "ind_match_price": 4961479,
+        "upper_collar": 4961479,
+        "lower_collar": 4961479,
+        "paired_qty": 4961479,
+        "total_imbalance_qty": 4959110,
+        "market_imbalance_qty": 1655339,
+        "unpaired_qty": 0
+      }
+    },
+    "categorical_counts": {
+      "O:side": {
+        "N": 863,
+        "B": 25042,
+        "A": 29697
+      },
+      "O:auction_status": {
+        "0": 55602
+      },
+      "O:freeze_status": {
+        "0": 50518,
+        "1": 5084
+      },
+      "O:num_extensions": {
+        "0": 55602
+      },
+      "O:unpaired_side": {
+        "N": 55602
+      },
+      "O:significant_imbalance": {
+        " ": 55602
+      },
+      "M:side": {
+        "A": 3173550,
+        "B": 2641272,
+        "N": 6300
+      },
+      "M:auction_status": {
+        "0": 5821122
+      },
+      "M:freeze_status": {
+        "0": 5814428,
+        "1": 6694
+      },
+      "M:num_extensions": {
+        "0": 5821122
+      },
+      "M:unpaired_side": {
+        "N": 5821122
+      },
+      "M:significant_imbalance": {
+        " ": 5821122
+      },
+      "C:side": {
+        "A": 2478155,
+        "B": 2480955,
+        "N": 2369
+      },
+      "C:auction_status": {
+        "0": 4961479
+      },
+      "C:freeze_status": {
+        "0": 4877712,
+        "1": 83767
+      },
+      "C:num_extensions": {
+        "0": 4961479
+      },
+      "C:unpaired_side": {
+        "N": 4961479
+      },
+      "C:significant_imbalance": {
+        " ": 4961479
+      }
+    },
+    "receive_minus_event_latency_histogram_ns": {
+      "[0,1000)": 0,
+      "[1000,10000)": 0,
+      "[10000,100000)": 4257868,
+      "[100000,1000000)": 6580269,
+      "[1000000,10000000)": 43,
+      "[10000000,100000000)": 14,
+      "[100000000,1000000000)": 9,
+      "[1000000000,9223372036854775807)": 0
+    },
+    "negative_receive_latency_rows": 0,
+    "opening_snapshot_coverage": {
+      "09:28:00": {
+        "nondegraded_sessions": 1375,
+        "first_session": "2021-01-04",
+        "last_session": "2026-07-24",
+        "side_counts": {
+          "A": 702,
+          "B": 672,
+          "N": 1
+        },
+        "positive_ref_price": 1375,
+        "positive_ind_match_price": 1375,
+        "positive_paired_qty": 1375,
+        "positive_total_imbalance_qty": 1374
+      },
+      "09:29:00": {
+        "nondegraded_sessions": 1375,
+        "first_session": "2021-01-04",
+        "last_session": "2026-07-24",
+        "side_counts": {
+          "A": 729,
+          "B": 645,
+          "N": 1
+        },
+        "positive_ref_price": 1375,
+        "positive_ind_match_price": 1375,
+        "positive_paired_qty": 1375,
+        "positive_total_imbalance_qty": 1374
+      },
+      "09:29:30": {
+        "nondegraded_sessions": 1375,
+        "first_session": "2021-01-04",
+        "last_session": "2026-07-24",
+        "side_counts": {
+          "A": 712,
+          "B": 662,
+          "N": 1
+        },
+        "positive_ref_price": 1375,
+        "positive_ind_match_price": 1375,
+        "positive_paired_qty": 1375,
+        "positive_total_imbalance_qty": 1374
+      },
+      "09:29:50": {
+        "nondegraded_sessions": 1375,
+        "first_session": "2021-01-04",
+        "last_session": "2026-07-24",
+        "side_counts": {
+          "A": 742,
+          "B": 629,
+          "N": 4
+        },
+        "positive_ref_price": 1375,
+        "positive_ind_match_price": 1375,
+        "positive_paired_qty": 1375,
+        "positive_total_imbalance_qty": 1371
+      },
+      "09:29:59": {
+        "nondegraded_sessions": 1375,
+        "first_session": "2021-01-04",
+        "last_session": "2026-07-24",
+        "side_counts": {
+          "A": 768,
+          "B": 607
+        },
+        "positive_ref_price": 1375,
+        "positive_ind_match_price": 1375,
+        "positive_paired_qty": 1375,
+        "positive_total_imbalance_qty": 1375
+      }
+    },
+    "timestamp_interpretation": {
+      "ts_event": "Matching-engine-received timestamp; used for feature observability and ordering.",
+      "ts_recv": "Capture-server-received timestamp (DataFrame index before reset); audited but not used to make a signal earlier.",
+      "auction_time": "Projected auction timestamp, not publication timestamp or realized print."
+    }
+  },
+  "tbbo": {
+    "segments": {
+      "prefix_through_2024-10-02": {
+        "rows_consumed": 18255888,
+        "first_event_ny": "2023-03-28T07:06:28.189468015-04:00",
+        "last_event_ny": "2024-10-02T19:59:27.900310379-04:00"
+      },
+      "tail_from_2024-10-03": {
+        "rows_consumed": 18823909,
+        "first_event_ny": "2024-10-03T07:01:59.783861073-04:00",
+        "last_event_ny": "2026-07-24T17:12:35.656926411-04:00"
+      }
+    },
+    "prefix_boundary_seen_and_stopped": true,
+    "prefix_terminal_warning_observed": true,
+    "deduplication_rule_applied": "prefix New York dates <= 2024-10-02; tail dates >= 2024-10-03",
+    "symbols": {
+      "SPY": {
+        "rows_total": 29771271,
+        "rows_valid": 29714433,
+        "crossed_rows_rejected": 49645,
+        "nonpositive_rows_rejected": 7193,
+        "valid_rows_on_degraded_dates": 566085,
+        "valid_session_dates": 834,
+        "missing_rth_sessions_vs_spy": [],
+        "rth_session_coverage_vs_spy_pct": 100.0,
+        "windows": {
+          "premarket_07_00_09_30": {
+            "valid_rows": 251117,
+            "session_dates": 811,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "open_09_30_10_30": {
+            "valid_rows": 5527318,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "midday_10_30_15_00": {
+            "valid_rows": 15928957,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "close_15_00_16_00": {
+            "valid_rows": 7827913,
+            "session_dates": 827,
+            "coverage_vs_spy_same_window_pct": 100.0
+          }
+        },
+        "receive_minus_event_latency_histogram_ns": {
+          "[0,1000)": 3,
+          "[1000,10000)": 0,
+          "[10000,100000)": 22114468,
+          "[100000,1000000)": 7340292,
+          "[1000000,10000000)": 248725,
+          "[10000000,100000000)": 10467,
+          "[100000000,1000000000)": 478,
+          "[1000000000,9223372036854775807)": 0
+        }
+      },
+      "SSO": {
+        "rows_total": 752583,
+        "rows_valid": 751719,
+        "crossed_rows_rejected": 440,
+        "nonpositive_rows_rejected": 424,
+        "valid_rows_on_degraded_dates": 11359,
+        "valid_session_dates": 834,
+        "missing_rth_sessions_vs_spy": [],
+        "rth_session_coverage_vs_spy_pct": 100.0,
+        "windows": {
+          "premarket_07_00_09_30": {
+            "valid_rows": 28956,
+            "session_dates": 751,
+            "coverage_vs_spy_same_window_pct": 92.47842170160295
+          },
+          "open_09_30_10_30": {
+            "valid_rows": 178197,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "midday_10_30_15_00": {
+            "valid_rows": 377684,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "close_15_00_16_00": {
+            "valid_rows": 158907,
+            "session_dates": 826,
+            "coverage_vs_spy_same_window_pct": 99.87908101571946
+          }
+        },
+        "receive_minus_event_latency_histogram_ns": {
+          "[0,1000)": 0,
+          "[1000,10000)": 0,
+          "[10000,100000)": 522072,
+          "[100000,1000000)": 200828,
+          "[1000000,10000000)": 27907,
+          "[10000000,100000000)": 892,
+          "[100000000,1000000000)": 20,
+          "[1000000000,9223372036854775807)": 0
+        }
+      },
+      "UPRO": {
+        "rows_total": 2468230,
+        "rows_valid": 2461989,
+        "crossed_rows_rejected": 5347,
+        "nonpositive_rows_rejected": 894,
+        "valid_rows_on_degraded_dates": 44820,
+        "valid_session_dates": 834,
+        "missing_rth_sessions_vs_spy": [],
+        "rth_session_coverage_vs_spy_pct": 100.0,
+        "windows": {
+          "premarket_07_00_09_30": {
+            "valid_rows": 55634,
+            "session_dates": 753,
+            "coverage_vs_spy_same_window_pct": 92.84833538840937
+          },
+          "open_09_30_10_30": {
+            "valid_rows": 573809,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "midday_10_30_15_00": {
+            "valid_rows": 1345777,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "close_15_00_16_00": {
+            "valid_rows": 465407,
+            "session_dates": 826,
+            "coverage_vs_spy_same_window_pct": 99.87908101571946
+          }
+        },
+        "receive_minus_event_latency_histogram_ns": {
+          "[0,1000)": 0,
+          "[1000,10000)": 0,
+          "[10000,100000)": 1845470,
+          "[100000,1000000)": 558162,
+          "[1000000,10000000)": 55848,
+          "[10000000,100000000)": 2479,
+          "[100000000,1000000000)": 30,
+          "[1000000000,9223372036854775807)": 0
+        }
+      },
+      "SH": {
+        "rows_total": 805800,
+        "rows_valid": 805355,
+        "crossed_rows_rejected": 322,
+        "nonpositive_rows_rejected": 123,
+        "valid_rows_on_degraded_dates": 12613,
+        "valid_session_dates": 834,
+        "missing_rth_sessions_vs_spy": [],
+        "rth_session_coverage_vs_spy_pct": 100.0,
+        "windows": {
+          "premarket_07_00_09_30": {
+            "valid_rows": 7935,
+            "session_dates": 731,
+            "coverage_vs_spy_same_window_pct": 89.76572133168928
+          },
+          "open_09_30_10_30": {
+            "valid_rows": 165956,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "midday_10_30_15_00": {
+            "valid_rows": 478103,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "close_15_00_16_00": {
+            "valid_rows": 150504,
+            "session_dates": 826,
+            "coverage_vs_spy_same_window_pct": 99.87908101571946
+          }
+        },
+        "receive_minus_event_latency_histogram_ns": {
+          "[0,1000)": 0,
+          "[1000,10000)": 0,
+          "[10000,100000)": 577003,
+          "[100000,1000000)": 188127,
+          "[1000000,10000000)": 39388,
+          "[10000000,100000000)": 834,
+          "[100000000,1000000000)": 3,
+          "[1000000000,9223372036854775807)": 0
+        }
+      },
+      "SDS": {
+        "rows_total": 1277227,
+        "rows_valid": 1275993,
+        "crossed_rows_rejected": 997,
+        "nonpositive_rows_rejected": 237,
+        "valid_rows_on_degraded_dates": 17134,
+        "valid_session_dates": 834,
+        "missing_rth_sessions_vs_spy": [],
+        "rth_session_coverage_vs_spy_pct": 100.0,
+        "windows": {
+          "premarket_07_00_09_30": {
+            "valid_rows": 10426,
+            "session_dates": 766,
+            "coverage_vs_spy_same_window_pct": 93.09494451294698
+          },
+          "open_09_30_10_30": {
+            "valid_rows": 251934,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "midday_10_30_15_00": {
+            "valid_rows": 780062,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "close_15_00_16_00": {
+            "valid_rows": 229665,
+            "session_dates": 826,
+            "coverage_vs_spy_same_window_pct": 99.87908101571946
+          }
+        },
+        "receive_minus_event_latency_histogram_ns": {
+          "[0,1000)": 0,
+          "[1000,10000)": 0,
+          "[10000,100000)": 929598,
+          "[100000,1000000)": 280331,
+          "[1000000,10000000)": 64539,
+          "[10000000,100000000)": 1502,
+          "[100000000,1000000000)": 23,
+          "[1000000000,9223372036854775807)": 0
+        }
+      },
+      "SPXU": {
+        "rows_total": 2004686,
+        "rows_valid": 2003153,
+        "crossed_rows_rejected": 1175,
+        "nonpositive_rows_rejected": 358,
+        "valid_rows_on_degraded_dates": 35776,
+        "valid_session_dates": 834,
+        "missing_rth_sessions_vs_spy": [],
+        "rth_session_coverage_vs_spy_pct": 100.0,
+        "windows": {
+          "premarket_07_00_09_30": {
+            "valid_rows": 31991,
+            "session_dates": 820,
+            "coverage_vs_spy_same_window_pct": 98.27373612823675
+          },
+          "open_09_30_10_30": {
+            "valid_rows": 437913,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "midday_10_30_15_00": {
+            "valid_rows": 1161205,
+            "session_dates": 834,
+            "coverage_vs_spy_same_window_pct": 100.0
+          },
+          "close_15_00_16_00": {
+            "valid_rows": 357338,
+            "session_dates": 826,
+            "coverage_vs_spy_same_window_pct": 99.87908101571946
+          }
+        },
+        "receive_minus_event_latency_histogram_ns": {
+          "[0,1000)": 0,
+          "[1000,10000)": 0,
+          "[10000,100000)": 1485095,
+          "[100000,1000000)": 442181,
+          "[1000000,10000000)": 73272,
+          "[10000000,100000000)": 2592,
+          "[100000000,1000000000)": 13,
+          "[1000000000,9223372036854775807)": 0
+        }
+      }
+    },
+    "fixed_target_coverage": {
+      "09:30:01": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.041147864001686685,
+          "p95_event_wait_seconds": 0.4484353655985604,
+          "max_event_wait_seconds": 1.852240341999277
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 781,
+          "median_event_wait_seconds": 2.586091430996021,
+          "p95_event_wait_seconds": 28.372476427997753,
+          "max_event_wait_seconds": 59.564784446003614
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 816,
+          "median_event_wait_seconds": 0.854457443998399,
+          "p95_event_wait_seconds": 14.377455469248162,
+          "max_event_wait_seconds": 55.223155489999044
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 613,
+          "median_event_wait_seconds": 4.421751453999605,
+          "p95_event_wait_seconds": 51.1431847868007,
+          "max_event_wait_seconds": 59.8814375189977
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 748,
+          "median_event_wait_seconds": 3.594109108002158,
+          "p95_event_wait_seconds": 42.685637254548375,
+          "max_event_wait_seconds": 59.97573078699497
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 788,
+          "median_event_wait_seconds": 2.012489436499891,
+          "p95_event_wait_seconds": 27.960936592398863,
+          "max_event_wait_seconds": 59.80313765200117
+        }
+      },
+      "09:30:05": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.12787547300104052,
+          "p95_event_wait_seconds": 1.2786739270013578,
+          "max_event_wait_seconds": 5.2203703520062845
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 746,
+          "median_event_wait_seconds": 4.2906077964980796,
+          "p95_event_wait_seconds": 39.12887938699896,
+          "max_event_wait_seconds": 59.967752198994276
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 810,
+          "median_event_wait_seconds": 1.6005891205022635,
+          "p95_event_wait_seconds": 24.211213555350696,
+          "max_event_wait_seconds": 57.10889735299861
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 574,
+          "median_event_wait_seconds": 11.675743323499773,
+          "p95_event_wait_seconds": 53.56655845245297,
+          "max_event_wait_seconds": 59.71607450700685
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 724,
+          "median_event_wait_seconds": 5.012211582499731,
+          "p95_event_wait_seconds": 46.80153658074814,
+          "max_event_wait_seconds": 59.46101476500189
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 785,
+          "median_event_wait_seconds": 3.7850424270000076,
+          "p95_event_wait_seconds": 36.292484743599196,
+          "max_event_wait_seconds": 59.42418652199558
+        }
+      },
+      "09:31:00": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.13539975899766432,
+          "p95_event_wait_seconds": 1.7978188264016322,
+          "max_event_wait_seconds": 8.705166462001216
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 681,
+          "median_event_wait_seconds": 6.69580578100431,
+          "p95_event_wait_seconds": 47.73642151700187,
+          "max_event_wait_seconds": 59.70332350100216
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 793,
+          "median_event_wait_seconds": 3.8330067200004123,
+          "p95_event_wait_seconds": 29.74823853960257,
+          "max_event_wait_seconds": 57.28099051299796
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 522,
+          "median_event_wait_seconds": 17.34290444149883,
+          "p95_event_wait_seconds": 51.643841175450135,
+          "max_event_wait_seconds": 59.91305862599984
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 671,
+          "median_event_wait_seconds": 7.929306044999976,
+          "p95_event_wait_seconds": 46.88234117149477,
+          "max_event_wait_seconds": 59.78479867299757
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 763,
+          "median_event_wait_seconds": 5.32763618700119,
+          "p95_event_wait_seconds": 39.473993836999576,
+          "max_event_wait_seconds": 58.7722686690031
+        }
+      },
+      "09:31:01": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.2723832840056275,
+          "p95_event_wait_seconds": 1.8100879663026708,
+          "max_event_wait_seconds": 7.705166462001216
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 681,
+          "median_event_wait_seconds": 7.126091810998332,
+          "p95_event_wait_seconds": 48.145028287995956,
+          "max_event_wait_seconds": 59.739499037001224
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 793,
+          "median_event_wait_seconds": 4.061822116003896,
+          "p95_event_wait_seconds": 30.999483320800934,
+          "max_event_wait_seconds": 59.746949676999066
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 517,
+          "median_event_wait_seconds": 17.641858647002664,
+          "p95_event_wait_seconds": 50.991861789998076,
+          "max_event_wait_seconds": 59.996878804995504
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 666,
+          "median_event_wait_seconds": 8.753124454000499,
+          "p95_event_wait_seconds": 47.045905766248325,
+          "max_event_wait_seconds": 59.906440369995835
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 762,
+          "median_event_wait_seconds": 5.85870544899808,
+          "p95_event_wait_seconds": 40.53481223785165,
+          "max_event_wait_seconds": 59.096951872998034
+        }
+      },
+      "09:31:05": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.32439611600420903,
+          "p95_event_wait_seconds": 2.1547655164998973,
+          "max_event_wait_seconds": 6.705259870002919
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 671,
+          "median_event_wait_seconds": 10.06879171699984,
+          "p95_event_wait_seconds": 49.803585582998494,
+          "max_event_wait_seconds": 59.62730274400383
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 790,
+          "median_event_wait_seconds": 4.073060915499809,
+          "p95_event_wait_seconds": 31.814647182198676,
+          "max_event_wait_seconds": 58.66366767400177
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 523,
+          "median_event_wait_seconds": 17.56676318300015,
+          "p95_event_wait_seconds": 56.09700261519902,
+          "max_event_wait_seconds": 59.867879824996635
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 669,
+          "median_event_wait_seconds": 10.336838048002392,
+          "p95_event_wait_seconds": 49.08157706539933,
+          "max_event_wait_seconds": 59.93584250799904
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 753,
+          "median_event_wait_seconds": 6.550134420998802,
+          "p95_event_wait_seconds": 41.78072915080265,
+          "max_event_wait_seconds": 59.862806189994444
+        }
+      },
+      "09:32:00": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.30625370499910787,
+          "p95_event_wait_seconds": 2.235092062597685,
+          "max_event_wait_seconds": 8.327364762997604
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 619,
+          "median_event_wait_seconds": 10.001335113003734,
+          "p95_event_wait_seconds": 49.50299190750157,
+          "max_event_wait_seconds": 59.69607255899609
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 779,
+          "median_event_wait_seconds": 3.8010383959990577,
+          "p95_event_wait_seconds": 33.36530623270155,
+          "max_event_wait_seconds": 55.945050965005066
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 498,
+          "median_event_wait_seconds": 14.454164084003423,
+          "p95_event_wait_seconds": 50.08067815055074,
+          "max_event_wait_seconds": 59.996280776002095
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 631,
+          "median_event_wait_seconds": 8.5911571070028,
+          "p95_event_wait_seconds": 46.821457938502135,
+          "max_event_wait_seconds": 59.58219305300008
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 753,
+          "median_event_wait_seconds": 7.351215189999493,
+          "p95_event_wait_seconds": 42.25943567079812,
+          "max_event_wait_seconds": 59.88896929100156
+        }
+      },
+      "09:35:00": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.18827306399907684,
+          "p95_event_wait_seconds": 1.685271981099503,
+          "max_event_wait_seconds": 6.879046242000186
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 662,
+          "median_event_wait_seconds": 6.793283754996082,
+          "p95_event_wait_seconds": 49.23863440574931,
+          "max_event_wait_seconds": 59.92147831699549
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 784,
+          "median_event_wait_seconds": 2.6473629199972493,
+          "p95_event_wait_seconds": 34.515519662351906,
+          "max_event_wait_seconds": 59.12018912900385
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 536,
+          "median_event_wait_seconds": 11.096221919000527,
+          "p95_event_wait_seconds": 51.004966488746504,
+          "max_event_wait_seconds": 59.6767883959983
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 667,
+          "median_event_wait_seconds": 6.119537006001337,
+          "p95_event_wait_seconds": 46.2148069896,
+          "max_event_wait_seconds": 57.74628553000366
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 762,
+          "median_event_wait_seconds": 5.199997318999522,
+          "p95_event_wait_seconds": 40.551897233849736,
+          "max_event_wait_seconds": 58.021318521001376
+        }
+      },
+      "09:45:00": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.13083566600107588,
+          "p95_event_wait_seconds": 2.01846835559554,
+          "max_event_wait_seconds": 14.302476249999017
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 672,
+          "median_event_wait_seconds": 9.039135401002568,
+          "p95_event_wait_seconds": 50.05318570259623,
+          "max_event_wait_seconds": 59.523019227002806
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 779,
+          "median_event_wait_seconds": 2.4227750819991343,
+          "p95_event_wait_seconds": 34.78459132990246,
+          "max_event_wait_seconds": 58.17038146700361
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 538,
+          "median_event_wait_seconds": 11.14620404300149,
+          "p95_event_wait_seconds": 48.75526767695117,
+          "max_event_wait_seconds": 59.76537738300249
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 673,
+          "median_event_wait_seconds": 7.157045924002887,
+          "p95_event_wait_seconds": 46.88648484759905,
+          "max_event_wait_seconds": 58.17036072999326
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 751,
+          "median_event_wait_seconds": 4.465868405997753,
+          "p95_event_wait_seconds": 37.94399795349818,
+          "max_event_wait_seconds": 59.68653270100185
+        }
+      },
+      "10:01:01": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.6049461880029412,
+          "p95_event_wait_seconds": 3.521885218098745,
+          "max_event_wait_seconds": 18.67582739199861
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 559,
+          "median_event_wait_seconds": 14.283904779003933,
+          "p95_event_wait_seconds": 52.37441052690047,
+          "max_event_wait_seconds": 59.43797427100071
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 738,
+          "median_event_wait_seconds": 5.604349246503261,
+          "p95_event_wait_seconds": 42.10152563874653,
+          "max_event_wait_seconds": 59.98075260500627
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 525,
+          "median_event_wait_seconds": 14.277820866002003,
+          "p95_event_wait_seconds": 52.200740372198915,
+          "max_event_wait_seconds": 59.972281684000336
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 648,
+          "median_event_wait_seconds": 11.747756322503847,
+          "p95_event_wait_seconds": 48.88435770800315,
+          "max_event_wait_seconds": 59.871335724004894
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 740,
+          "median_event_wait_seconds": 8.308332003001851,
+          "p95_event_wait_seconds": 41.964485159904136,
+          "max_event_wait_seconds": 59.919651835996774
+        }
+      },
+      "10:01:05": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.7219430129989632,
+          "p95_event_wait_seconds": 4.761208200899999,
+          "max_event_wait_seconds": 18.37991630799661
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 562,
+          "median_event_wait_seconds": 15.950527635493927,
+          "p95_event_wait_seconds": 53.55128589784581,
+          "max_event_wait_seconds": 59.98172482899827
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 733,
+          "median_event_wait_seconds": 6.816361895995215,
+          "p95_event_wait_seconds": 42.523713619603946,
+          "max_event_wait_seconds": 59.951054981997004
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 531,
+          "median_event_wait_seconds": 16.779303884999536,
+          "p95_event_wait_seconds": 55.967881977001525,
+          "max_event_wait_seconds": 59.984686910000164
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 643,
+          "median_event_wait_seconds": 12.328472041001078,
+          "p95_event_wait_seconds": 50.30817790910296,
+          "max_event_wait_seconds": 59.78380784900219
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 742,
+          "median_event_wait_seconds": 8.562807128000713,
+          "p95_event_wait_seconds": 45.857410426949336,
+          "max_event_wait_seconds": 59.61116083500383
+        }
+      },
+      "10:02:00": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 819,
+          "median_event_wait_seconds": 0.43420932599838125,
+          "p95_event_wait_seconds": 3.4324590780008277,
+          "max_event_wait_seconds": 12.431252130001667
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 549,
+          "median_event_wait_seconds": 14.41638370900182,
+          "p95_event_wait_seconds": 51.690537747199436,
+          "max_event_wait_seconds": 59.83351564499753
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 731,
+          "median_event_wait_seconds": 6.0544670919989585,
+          "p95_event_wait_seconds": 39.34318373299902,
+          "max_event_wait_seconds": 58.578324889000214
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 510,
+          "median_event_wait_seconds": 15.410033385000133,
+          "p95_event_wait_seconds": 52.46715855379988,
+          "max_event_wait_seconds": 58.585283241998695
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 629,
+          "median_event_wait_seconds": 11.522137020998343,
+          "p95_event_wait_seconds": 47.501869425202315,
+          "max_event_wait_seconds": 58.932648273003
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 720,
+          "median_event_wait_seconds": 8.390350549499999,
+          "p95_event_wait_seconds": 46.90073422109999,
+          "max_event_wait_seconds": 59.954997717999504
+        }
+      },
+      "15:30:01": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 811,
+          "median_event_wait_seconds": 0.44025872200290905,
+          "p95_event_wait_seconds": 2.701185511003132,
+          "max_event_wait_seconds": 9.89744555100333
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 489,
+          "median_event_wait_seconds": 14.582532357002492,
+          "p95_event_wait_seconds": 53.97247916620544,
+          "max_event_wait_seconds": 59.884683687996585
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 674,
+          "median_event_wait_seconds": 7.256716803502059,
+          "p95_event_wait_seconds": 46.64933990794999,
+          "max_event_wait_seconds": 59.74462504099938
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 470,
+          "median_event_wait_seconds": 15.090520134497638,
+          "p95_event_wait_seconds": 55.08664279934783,
+          "max_event_wait_seconds": 59.96763885800465
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 623,
+          "median_event_wait_seconds": 10.832402339001419,
+          "p95_event_wait_seconds": 49.67662812910348,
+          "max_event_wait_seconds": 59.05894259600609
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 668,
+          "median_event_wait_seconds": 9.00132677199872,
+          "p95_event_wait_seconds": 49.50844701075075,
+          "max_event_wait_seconds": 59.876187471003504
+        }
+      },
+      "15:30:05": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 811,
+          "median_event_wait_seconds": 0.6968480159994215,
+          "p95_event_wait_seconds": 4.135994845499226,
+          "max_event_wait_seconds": 12.12602280399733
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 486,
+          "median_event_wait_seconds": 16.07643269649634,
+          "p95_event_wait_seconds": 54.77418780550397,
+          "max_event_wait_seconds": 59.825923013995634
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 668,
+          "median_event_wait_seconds": 10.14444732999982,
+          "p95_event_wait_seconds": 50.627248708897966,
+          "max_event_wait_seconds": 59.88259903299331
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 459,
+          "median_event_wait_seconds": 18.063772138004424,
+          "p95_event_wait_seconds": 55.518218149599114,
+          "max_event_wait_seconds": 59.74463912699866
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 608,
+          "median_event_wait_seconds": 11.81879542650131,
+          "p95_event_wait_seconds": 51.64191473414937,
+          "max_event_wait_seconds": 59.634938127004716
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 666,
+          "median_event_wait_seconds": 12.634991322502174,
+          "p95_event_wait_seconds": 52.20194286300102,
+          "max_event_wait_seconds": 59.965198995996616
+        }
+      },
+      "15:31:00": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 811,
+          "median_event_wait_seconds": 0.5498839209976722,
+          "p95_event_wait_seconds": 3.1848300689962343,
+          "max_event_wait_seconds": 11.302756633995159
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 491,
+          "median_event_wait_seconds": 17.834584211996116,
+          "p95_event_wait_seconds": 55.65340927699799,
+          "max_event_wait_seconds": 59.961293389002094
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 653,
+          "median_event_wait_seconds": 8.870394598998246,
+          "p95_event_wait_seconds": 45.96696597560075,
+          "max_event_wait_seconds": 59.49876001300436
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 445,
+          "median_event_wait_seconds": 17.066725867996865,
+          "p95_event_wait_seconds": 52.898825904002294,
+          "max_event_wait_seconds": 59.8048645999952
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 589,
+          "median_event_wait_seconds": 13.497853143999237,
+          "p95_event_wait_seconds": 51.84875955660101,
+          "max_event_wait_seconds": 59.707534392000525
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 643,
+          "median_event_wait_seconds": 11.321604859993386,
+          "p95_event_wait_seconds": 50.20513617510223,
+          "max_event_wait_seconds": 59.554301420997945
+        }
+      },
+      "15:59:00": {
+        "SPY": {
+          "nondegraded_sessions_with_event_within_60s": 812,
+          "median_event_wait_seconds": 0.01688256350098527,
+          "p95_event_wait_seconds": 0.08084298649991975,
+          "max_event_wait_seconds": 43.96406077899883
+        },
+        "SSO": {
+          "nondegraded_sessions_with_event_within_60s": 810,
+          "median_event_wait_seconds": 2.0033736475015758,
+          "p95_event_wait_seconds": 30.86662922825198,
+          "max_event_wait_seconds": 54.11288138799864
+        },
+        "UPRO": {
+          "nondegraded_sessions_with_event_within_60s": 811,
+          "median_event_wait_seconds": 0.19207215899950825,
+          "p95_event_wait_seconds": 14.015811802000826,
+          "max_event_wait_seconds": 45.02063632700447
+        },
+        "SH": {
+          "nondegraded_sessions_with_event_within_60s": 768,
+          "median_event_wait_seconds": 10.019335163997312,
+          "p95_event_wait_seconds": 49.46213431239956,
+          "max_event_wait_seconds": 59.741983701998834
+        },
+        "SDS": {
+          "nondegraded_sessions_with_event_within_60s": 810,
+          "median_event_wait_seconds": 4.040122619997419,
+          "p95_event_wait_seconds": 37.15317266379606,
+          "max_event_wait_seconds": 58.54010583199852
+        },
+        "SPXU": {
+          "nondegraded_sessions_with_event_within_60s": 810,
+          "median_event_wait_seconds": 2.9211403594999865,
+          "p95_event_wait_seconds": 33.031155424251835,
+          "max_event_wait_seconds": 57.02902799799631
+        }
+      }
+    },
+    "feed_semantics": {
+      "official_sip_nbbo": false,
+      "description": "Derived anonymized multi-venue EQUS.MINI TBBO; each record is a trade event with BBO immediately before the trade's effect.",
+      "standing_quote_age_observable": false,
+      "quote_age_policy": "The schema has no timestamp for when each standing bid/ask was established. Report event wait from order target and capture latency; do not claim true quote age. Reject simulations when no valid pre-trade BBO event appears within the preregistered maximum wait."
+    }
+  }
+}

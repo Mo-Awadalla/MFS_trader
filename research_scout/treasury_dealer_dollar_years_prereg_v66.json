@@ -1,0 +1,93 @@
+{
+  "specification_id": "TREASURY-DEALER-DOLLAR-YEARS-OVERHANG-V66",
+  "frozen_before_post_0933_return_read": true,
+  "development_partition": {
+    "start": "2021-01-01",
+    "end": "2023-12-31",
+    "expected_cash_sessions": 753,
+    "returns_blind_event_sessions": 572,
+    "returns_blind_feature_signals": 572
+  },
+  "recent_years": {
+    "status": "locked",
+    "unlock_rule": "every frozen 2021-2023 development gate must pass"
+  },
+  "source": {
+    "provider": "U.S. Treasury Bureau of the Fiscal Service",
+    "dataset": "Treasury Securities Auctions Data",
+    "local_snapshot": "external_artifacts/treasury_auction_results/auctions_2020_2023.json",
+    "source_sha256": "e9f83e2edc7b499234283a88430cb3ac936d9d26b3a270e0f196d2b36b09f8d2",
+    "availability": "first SPY cash session strictly after official auction_date",
+    "warmup": "2020 auction rows only; no 2020 return"
+  },
+  "feature": {
+    "dealer_share": "primary_dealer_accepted divided by comp_accepted",
+    "comparison_bucket": "security_type plus exact security_term plus floating-rate flag plus inflation-index flag",
+    "dealer_share_surprise": "current share minus immediately preceding share in comparison bucket",
+    "rate_exposure_years": "issue_date to maturity_date days divided by 365.25; floating-rate securities fixed at 0.25",
+    "auction_shock": "dealer_share_surprise times comp_accepted times rate_exposure_years",
+    "daily_shock": "sum auction_shock by auction_date, then sum again if multiple auction dates map to one next cash session",
+    "direction": "positive shock selects SPXU; negative shock selects UPRO; exact zero is cash",
+    "magnitude_threshold": null
+  },
+  "execution": {
+    "position": "long selected ETF only",
+    "notional_usd": 100.0,
+    "fractional_shares": true,
+    "entry": "exact 09:33 ask",
+    "exit": "exact 15:30 bid",
+    "stop": null,
+    "commission_usd": 0.0,
+    "overnight": false
+  },
+  "controls": {
+    "accepted_notional_only": "same share surprise and aggregation without rate-exposure years",
+    "fixed_coupon_only": "retain Note and Bond rows with floating_rate not Yes",
+    "extra_session_lag": "move the unchanged primary action one additional cash session later",
+    "flipped_direction": "same dates and clocks, opposite actuator"
+  },
+  "stress_tests": {
+    "adverse_cents_each_fill": 0.01,
+    "entry_delay_minutes": 5,
+    "delete_best_mapped_auction_clusters": 5,
+    "cluster_bootstrap": {
+      "unit": "mapped auction-event session",
+      "include_nonexecuted_event_sessions_as_zero": true,
+      "moving_block_events": 5,
+      "resamples": 10000,
+      "seed": 660066,
+      "lower_quantile": 0.025
+    },
+    "event_direction_permutation": {
+      "method": "shuffle primary overhang direction labels across mapped event sessions while preserving the quote-return panel",
+      "samples": 5000,
+      "seed": 660166,
+      "statistic": "mean fixed-notional trade PnL",
+      "alternative": "actual greater than permuted"
+    }
+  },
+  "development_gates": [
+    "more than 2.0 executed trades per 753/5 declared weeks",
+    "at least 95 percent execution coverage after degraded-session exclusions",
+    "profit factor greater than 1.10",
+    "positive fixed-notional PnL in 2021, 2022, and 2023",
+    "positive UPRO and SPXU fixed-notional PnL separately",
+    "compounded ending cash above adjusted SPY",
+    "positive after one extra cent adverse at entry and exit",
+    "positive after a five-minute entry delay",
+    "positive after deleting the five best mapped auction clusters",
+    "mapped-event moving-block-bootstrap 2.5th percentile above zero",
+    "one-sided event-direction-permutation p-value below 0.05",
+    "positive independent-feed overlap with profit factor above one and both sleeves represented",
+    "actual mean trade PnL above accepted-notional-only, fixed-coupon-only, and extra-session-lag controls"
+  ],
+  "prohibited_repairs": [
+    "delete bills, TIPS, FRNs, notes, bonds, a term, a year, or a side",
+    "change the dollar-years exposure rule",
+    "use when-issued yield or auction-tail data after seeing outcomes",
+    "change the next-session entry or exit clock",
+    "add a magnitude threshold, price confirmation, stop, weekday, or volatility filter",
+    "flip the sign or promote a control",
+    "read 2024-2025 after any development gate miss"
+  ]
+}

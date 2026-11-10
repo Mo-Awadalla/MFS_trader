@@ -1,0 +1,397 @@
+{
+  "status": "no_new_alpha_test_opened_returns_blind_gates_stopped_v35_and_v36",
+  "new_candidate_returns_viewed": false,
+  "new_candidate_pnl_calculated": false,
+  "paid_api_calls_made": false,
+  "technical_audit": {
+    "imbalance_rows": 10838203,
+    "imbalance_clean_eof": true,
+    "auction_type_counts": {
+      "O": 55602,
+      "M": 5821122,
+      "C": 4961479
+    },
+    "tbbo_segments": {
+      "prefix_through_2024-10-02": {
+        "rows_consumed": 18255888,
+        "first_event_ny": "2023-03-28T07:06:28.189468015-04:00",
+        "last_event_ny": "2024-10-02T19:59:27.900310379-04:00"
+      },
+      "tail_from_2024-10-03": {
+        "rows_consumed": 18823909,
+        "first_event_ny": "2024-10-03T07:01:59.783861073-04:00",
+        "last_event_ny": "2026-07-24T17:12:35.656926411-04:00"
+      }
+    },
+    "prefix_boundary_seen_and_stopped": true,
+    "prefix_terminal_warning_observed": true,
+    "tbbo_valid_rows_by_symbol": {
+      "SPY": 29714433,
+      "SSO": 751719,
+      "UPRO": 2461989,
+      "SH": 805355,
+      "SDS": 1275993,
+      "SPXU": 2003153
+    },
+    "degraded_dates": {
+      "ARCX.PILLAR": [
+        "2021-01-21",
+        "2022-07-18",
+        "2022-08-22",
+        "2022-12-05",
+        "2022-12-27",
+        "2023-06-26",
+        "2023-09-22",
+        "2023-11-21",
+        "2023-12-01",
+        "2023-12-04",
+        "2023-12-05",
+        "2023-12-06",
+        "2023-12-07",
+        "2023-12-08",
+        "2023-12-11",
+        "2024-04-19",
+        "2024-06-18",
+        "2024-11-19",
+        "2026-06-24",
+        "2026-07-14"
+      ],
+      "EQUS.MINI": [
+        "2025-03-24",
+        "2025-04-04",
+        "2025-05-06",
+        "2025-06-04",
+        "2025-06-16",
+        "2025-07-09",
+        "2025-08-08",
+        "2025-08-13",
+        "2025-08-19",
+        "2025-08-25",
+        "2025-09-03",
+        "2025-09-08",
+        "2025-09-12",
+        "2025-10-10",
+        "2025-10-13"
+      ]
+    },
+    "standing_quote_age_observable": false,
+    "quantity_semantic_break": "2025-11-13: paired/total/market quantities switch from ind_match_price basis to ref_price basis"
+  },
+  "v20_execution_fidelity": {
+    "status": "execution_fidelity_audit_only_v20_remains_rejected",
+    "rule_modified": false,
+    "orders_constructed": 822,
+    "orders_with_both_fills": 700,
+    "partitions": {
+      "development_overlap_2023": {
+        "1": {
+          "trades": 79,
+          "trades_per_calendar_week": 2.0256410256410255,
+          "fixed_100_pnl_usd": 9.05758600238412,
+          "profit_factor": 1.3952635885441447,
+          "win_rate": 0.26582278481012656,
+          "midpoint_pnl_usd": 12.818664185386508,
+          "spread_drag_usd": 3.7610781830023865,
+          "adverse_cent_pnl_usd": 1.5517046111156785,
+          "median_entry_event_wait_seconds": 5.376441378000891,
+          "p95_entry_event_wait_seconds": 27.971650358097374,
+          "median_exit_event_wait_seconds": 6.640144009994401,
+          "by_symbol_pnl_usd": {
+            "UPRO": 14.160566216477621,
+            "SPXU": -5.1029802140935
+          },
+          "by_year_pnl_usd": {
+            "2023": 9.057586002384122
+          }
+        },
+        "5": {
+          "trades": 79,
+          "trades_per_calendar_week": 2.0256410256410255,
+          "fixed_100_pnl_usd": 9.499626061445621,
+          "profit_factor": 1.424786335976732,
+          "win_rate": 0.25316455696202533,
+          "midpoint_pnl_usd": 13.265648517242767,
+          "spread_drag_usd": 3.7660224557971467,
+          "adverse_cent_pnl_usd": 1.9906545227660555,
+          "median_entry_event_wait_seconds": 7.60206557699712,
+          "p95_entry_event_wait_seconds": 28.56907195769744,
+          "median_exit_event_wait_seconds": 6.565544747994863,
+          "by_symbol_pnl_usd": {
+            "UPRO": 14.094062718008448,
+            "SPXU": -4.594436656562828
+          },
+          "by_year_pnl_usd": {
+            "2023": 9.499626061445621
+          }
+        },
+        "60": {
+          "trades": 69,
+          "trades_per_calendar_week": 1.7692307692307692,
+          "fixed_100_pnl_usd": 8.652191628859928,
+          "profit_factor": 1.3678524787403266,
+          "win_rate": 0.2608695652173913,
+          "midpoint_pnl_usd": 12.035106759655633,
+          "spread_drag_usd": 3.382915130795705,
+          "adverse_cent_pnl_usd": 1.8267640045870448,
+          "median_entry_event_wait_seconds": 3.6746512450044975,
+          "p95_entry_event_wait_seconds": 37.8667368843962,
+          "median_exit_event_wait_seconds": 6.758983861996967,
+          "by_symbol_pnl_usd": {
+            "UPRO": 14.749029300341842,
+            "SPXU": -6.096837671481914
+          },
+          "by_year_pnl_usd": {
+            "2023": 8.652191628859928
+          }
+        }
+      },
+      "historical_validation_2024_2025": {
+        "1": {
+          "trades": 162,
+          "trades_per_calendar_week": 1.5684647302904564,
+          "fixed_100_pnl_usd": 9.1459986952972,
+          "profit_factor": 1.1565496088840592,
+          "win_rate": 0.2839506172839506,
+          "midpoint_pnl_usd": 14.187585067648723,
+          "spread_drag_usd": 5.041586372351525,
+          "adverse_cent_pnl_usd": 0.11173875618732954,
+          "median_entry_event_wait_seconds": 5.958612325499416,
+          "p95_entry_event_wait_seconds": 37.400682149145716,
+          "median_exit_event_wait_seconds": 5.381050401501852,
+          "by_symbol_pnl_usd": {
+            "UPRO": 4.3348249017021505,
+            "SPXU": 4.811173793595048
+          },
+          "by_year_pnl_usd": {
+            "2024": 6.655814955535188,
+            "2025": 2.4901837397620086
+          }
+        },
+        "5": {
+          "trades": 165,
+          "trades_per_calendar_week": 1.5975103734439833,
+          "fixed_100_pnl_usd": 10.846516191862664,
+          "profit_factor": 1.1843546803724667,
+          "win_rate": 0.296969696969697,
+          "midpoint_pnl_usd": 15.96075089180845,
+          "spread_drag_usd": 5.1142346999457855,
+          "adverse_cent_pnl_usd": 1.680209278936795,
+          "median_entry_event_wait_seconds": 6.90743217599811,
+          "p95_entry_event_wait_seconds": 39.51017598420003,
+          "median_exit_event_wait_seconds": 5.482156723999651,
+          "by_symbol_pnl_usd": {
+            "UPRO": 5.555536910186365,
+            "SPXU": 5.2909792816763
+          },
+          "by_year_pnl_usd": {
+            "2024": 7.613652138649951,
+            "2025": 3.232864053212714
+          }
+        },
+        "60": {
+          "trades": 146,
+          "trades_per_calendar_week": 1.4374120956399439,
+          "fixed_100_pnl_usd": 7.176545840411802,
+          "profit_factor": 1.1256171479450507,
+          "win_rate": 0.3013698630136986,
+          "midpoint_pnl_usd": 11.680128562170733,
+          "spread_drag_usd": 4.503582721758937,
+          "adverse_cent_pnl_usd": -1.0017138940222048,
+          "median_entry_event_wait_seconds": 7.042998206001357,
+          "p95_entry_event_wait_seconds": 39.21466152425455,
+          "median_exit_event_wait_seconds": 4.492042203499295,
+          "by_symbol_pnl_usd": {
+            "UPRO": 3.997805442507185,
+            "SPXU": 3.1787403979046114
+          },
+          "by_year_pnl_usd": {
+            "2024": 2.688682710136703,
+            "2025": 4.487863130275094
+          }
+        }
+      },
+      "temporal_extension_2026": {
+        "1": {
+          "trades": 0
+        },
+        "5": {
+          "trades": 0
+        },
+        "60": {
+          "trades": 0
+        }
+      }
+    },
+    "standing_quote_age_observable": false,
+    "decision": "Historical execution audit only; V20 remains rejected by its original concentration gate."
+  },
+  "new_candidates": {
+    "V35": {
+      "status": "failed_returns_blind_feasibility_no_pnl_opened",
+      "returns_viewed": false,
+      "feature_development": {
+        "signals": 20,
+        "trades_per_calendar_week": 0.13513513513513514,
+        "side_counts": {
+          "A": 12,
+          "B": 8
+        },
+        "minority_side_share": 0.4
+      },
+      "executable_development_overlap": {
+        "signals": 7,
+        "trades_per_calendar_week": 0.2865497076023392,
+        "side_counts": {
+          "A": 6,
+          "B": 1
+        },
+        "minority_side_share": 0.14285714285714285
+      },
+      "failed_gates": [
+        "feature_frequency_at_least_two_per_week_2021_2023",
+        "executable_frequency_at_least_two_per_week_2023_overlap",
+        "prefer_100_feature_signals_each_full_development_year",
+        "minority_executable_side_at_least_20pct",
+        "cross_ladder_5s_availability_at_least_80pct",
+        "adjacent_09_29_30_identical_action_at_least_60pct",
+        "adjacent_09_29_59_identical_action_at_least_60pct"
+      ],
+      "signal_observability": {
+        "signals": 57,
+        "ts_recv_before_cutoff": 57,
+        "ts_recv_at_or_after_cutoff": 0,
+        "ts_recv_before_earliest_order": 57,
+        "ts_recv_at_or_after_earliest_order": 0,
+        "minimum_lead_to_earliest_order_seconds": 11.242693
+      },
+      "decision": "Terminal returns-blind rejection; no widening or P&L."
+    },
+    "V36": {
+      "status": "failed_returns_blind_feasibility_no_pnl_opened",
+      "returns_viewed": false,
+      "feature_development": {
+        "signals": 486,
+        "trades_per_calendar_week": 3.12396694214876,
+        "side_counts": {
+          "B": 302,
+          "A": 184
+        },
+        "minority_side_share": 0.3786008230452675
+      },
+      "executable_development_overlap": {
+        "signals": 111,
+        "trades_per_calendar_week": 2.8152173913043477,
+        "side_counts": {
+          "B": 65,
+          "A": 46
+        },
+        "minority_side_share": 0.4144144144144144
+      },
+      "all_overlap": {
+        "signals": 441,
+        "executable_signals": 399,
+        "quote_coverage_pct": 90.47619047619048,
+        "cross_ladder_5s_available_days": 244,
+        "quote_missing": {
+          "SPXU:09:30:01": 8,
+          "SPXU:09:30:05": 9,
+          "UPRO:09:35:00": 8,
+          "SPXU:09:35:00": 12,
+          "SPXU:09:31:00": 13,
+          "UPRO:09:31:00": 4
+        }
+      },
+      "by_year": {
+        "2021": {
+          "signals": 174,
+          "executable_signals": 0,
+          "side_counts": {
+            "B": 113,
+            "A": 61
+          }
+        },
+        "2022": {
+          "signals": 157,
+          "executable_signals": 0,
+          "side_counts": {
+            "B": 100,
+            "A": 57
+          }
+        },
+        "2023": {
+          "signals": 155,
+          "executable_signals": 111,
+          "side_counts": {
+            "A": 66,
+            "B": 89
+          }
+        },
+        "2024": {
+          "signals": 175,
+          "executable_signals": 165,
+          "side_counts": {
+            "A": 51,
+            "B": 124
+          }
+        },
+        "2025": {
+          "signals": 148,
+          "executable_signals": 123,
+          "side_counts": {
+            "A": 70,
+            "B": 78
+          }
+        },
+        "2026": {
+          "signals": 0,
+          "executable_signals": 0,
+          "side_counts": {}
+        }
+      },
+      "adjacent_cutoff_stability": {
+        "09:29:30": {
+          "signals": 770,
+          "joint_signal_days": 607,
+          "direction_agreement_on_joint_pct": 86.32619439868205,
+          "identical_action_including_cash_pct": 53.90946502057613
+        },
+        "09:29:59": {
+          "signals": 858,
+          "joint_signal_days": 586,
+          "direction_agreement_on_joint_pct": 82.25255972696246,
+          "identical_action_including_cash_pct": 44.588344125809435
+        }
+      },
+      "failed_gates": [
+        "cross_ladder_5s_availability_at_least_80pct",
+        "adjacent_09_29_30_identical_action_at_least_60pct",
+        "adjacent_09_29_59_identical_action_at_least_60pct"
+      ],
+      "signal_observability": {
+        "signals": 809,
+        "ts_recv_before_cutoff": 809,
+        "ts_recv_at_or_after_cutoff": 0,
+        "ts_recv_before_earliest_order": 809,
+        "ts_recv_at_or_after_earliest_order": 0,
+        "minimum_lead_to_earliest_order_seconds": 11.23416
+      },
+      "decision": "Terminal returns-blind rejection; preregistration not activated and no P&L."
+    }
+  },
+  "preregistration": {
+    "candidate": "V36",
+    "status": "not_activated_returns_blind_feasibility_failed",
+    "returns_authorized": false,
+    "failed_returns_blind_gates": {
+      "cross_ladder_5s_availability": "244 of 399 executable signal sessions, below 80%",
+      "09:29:30_identical_action_including_cash": 0.5390946502057613,
+      "09:29:59_identical_action_including_cash": 0.44588344125809437
+    }
+  },
+  "program_decision": {
+    "historical_survivor": false,
+    "production_ready": false,
+    "forward_paper_rule_activated": false,
+    "reason": "No new candidate passed all frozen returns-blind feasibility gates; opening P&L would create avoidable outcome exposure."
+  }
+}

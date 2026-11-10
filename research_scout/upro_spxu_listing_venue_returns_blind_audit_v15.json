@@ -1,0 +1,29 @@
+{
+  "status": "returns_blind_no_afternoon_prices_or_pnl_read",
+  "period": "2023-03-28 through 2025-12-31",
+  "eligible_sessions": 666,
+  "nonzero_signal_sessions": 666,
+  "signals_per_calendar_week": 4.620416253716551,
+  "volume_containment_fraction": 0.0,
+  "raw_vs_dollar_share_direction_agreement": 0.9984984984984985,
+  "direction_counts": {
+    "UPRO": 612,
+    "SPXU": 54
+  },
+  "year_counts": {
+    "2023": 182,
+    "2024": 249,
+    "2025": 235
+  },
+  "median_arca_volume_share": {
+    "UPRO": 2.838051347163214,
+    "SPXU": 1.3176002898180306
+  },
+  "predeclared_feasibility_gates": {
+    "at_least_two_signals_per_week": true,
+    "arca_volume_contained_at_least_99_percent": false,
+    "raw_and_dollar_share_direction_agree_at_least_90_percent": true,
+    "both_directions_at_least_100_sessions": false
+  },
+  "feasibility_passed": false
+}

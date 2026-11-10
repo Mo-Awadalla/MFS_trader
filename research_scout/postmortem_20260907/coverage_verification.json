@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "ledger_records": 232,
+  "numbered_versions_covered": 92,
+  "expanded_batch_children_covered": 46,
+  "formal_metadata_instances_covered": 19,
+  "linked_source_files": 447,
+  "manifest_files": 546,
+  "source_hash_changes_during_audit": [],
+  "missing_expanded_children": [],
+  "new_strategy_returns_computed": false,
+  "new_market_data_acquired": false,
+  "limits": [
+    "Artifact reconciliation, not a rerun of all historical engines.",
+    "No formal claim of 232 independent tests.",
+    "Literature-only examples and uninstantiated strategy factories are not counted as completed hypotheses.",
+    "Recorded parameter sweeps remain in source reports and the sweep-exposure appendix, not separate independent ledger hypotheses."
+  ]
+}

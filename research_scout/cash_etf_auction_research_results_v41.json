@@ -1,0 +1,342 @@
+{
+  "status": "v37_v41_all_failed_frozen_returns_blind_gates_no_new_pnl_opened",
+  "new_candidate_returns_viewed": false,
+  "new_candidate_pnl_calculated": false,
+  "paid_api_calls_made": false,
+  "prior_canonical_results": "research_scout/cash_etf_auction_research_results_v36.json",
+  "registry": "research_scout/CASH_ETF_HYPOTHESIS_REGISTRY_V34.md",
+  "candidates": {
+    "V37": {
+      "name": "SPY auction indicative leadership",
+      "audit": "spy_auction_indicative_leadership_returns_blind_audit_v37.json",
+      "status": "failed_returns_blind_feasibility_no_pnl_opened",
+      "feature_development": {
+        "signals": 643,
+        "trades_per_declared_calendar_week": 4.110502283105023,
+        "side_counts": {
+          "A": 347,
+          "B": 296
+        },
+        "minority_side_share": 0.4603421461897356
+      },
+      "executable_development": {
+        "signals": 140,
+        "trades_per_declared_calendar_week": 3.512544802867384,
+        "side_counts": {
+          "A": 52,
+          "B": 88
+        },
+        "minority_side_share": 0.37142857142857144
+      },
+      "all_overlap": {
+        "signals": 662,
+        "executable_signals": 585,
+        "actuator_quote_coverage_pct": 88.36858006042296,
+        "relevant_side_ladder_5s_available_days": 471,
+        "relevant_side_ladder_coverage_pct": 80.51282051282051,
+        "quote_missing": {
+          "UPRO:09:35:00": 18,
+          "SPXU:09:31:00": 21,
+          "SPXU:09:35:00": 16,
+          "UPRO:09:31:00": 15,
+          "SPXU:09:30:01": 12,
+          "SPXU:09:30:05": 14,
+          "UPRO:09:30:05": 4
+        },
+        "relevant_ladder_missing": {
+          "SSO:09:30:05": 27,
+          "SH:09:30:05": 70,
+          "SDS:09:30:05": 25
+        }
+      },
+      "adjacent_stability": {
+        "09:29:30": {
+          "signals": 1135,
+          "joint_signal_days": 1066,
+          "direction_agreement_on_joint_pct": 97.93621013133209,
+          "identical_action_including_cash_pct": 85.01628664495114
+        },
+        "09:29:59": {
+          "signals": 1199,
+          "joint_signal_days": 1114,
+          "direction_agreement_on_joint_pct": 98.65350089766606,
+          "identical_action_including_cash_pct": 88.34405144694534
+        }
+      },
+      "failed_gates": [
+        "actuator_quote_coverage_at_least_90pct"
+      ],
+      "decision": "terminal_no_pnl"
+    },
+    "V38": {
+      "name": "SPY Core-Open uncross overshoot rejection",
+      "audit": "spy_core_open_uncross_overshoot_rejection_returns_blind_audit_v38.json",
+      "status": "failed_returns_blind_feasibility_no_pnl_opened",
+      "development": {
+        "signals": 18,
+        "trades_per_declared_calendar_week": 0.4516129032258065,
+        "side_counts": {
+          "A": 15,
+          "B": 3
+        },
+        "minority_side_share": 0.16666666666666666,
+        "executable_signals": 15,
+        "executable_side_counts": {
+          "A": 12,
+          "B": 3
+        }
+      },
+      "all_overlap": {
+        "signals": 86,
+        "executable_signals": 71,
+        "actuator_quote_coverage_pct": 82.55813953488372,
+        "relevant_side_ladder_available_days": 47,
+        "relevant_side_ladder_coverage_pct": 66.19718309859155,
+        "side_counts": {
+          "A": 51,
+          "B": 35
+        },
+        "minority_side_share": 0.4069767441860465,
+        "quote_missing": {
+          "SPXU:09:31:05": 3,
+          "SPXU:09:32:00": 5,
+          "UPRO:09:35:00": 4,
+          "UPRO:09:32:00": 2,
+          "SPXU:09:35:00": 2,
+          "UPRO:09:31:01": 2,
+          "UPRO:09:31:05": 2
+        },
+        "relevant_ladder_missing": {
+          "SH:09:31:05": 12,
+          "SSO:09:31:05": 6,
+          "SDS:09:31:05": 8
+        }
+      },
+      "adjacent_stability": {
+        "preopen_indication_09_29_50": {
+          "signals": 194,
+          "joint_signal_days": 67,
+          "direction_agreement_on_joint_pct": 100.0,
+          "identical_action_including_cash_pct": 31.455399061032864
+        },
+        "continuous_observation_09_30_05": {
+          "signals": 68,
+          "joint_signal_days": 18,
+          "direction_agreement_on_joint_pct": 100.0,
+          "identical_action_including_cash_pct": 13.235294117647058
+        }
+      },
+      "failed_gates": [
+        "development_frequency_at_least_two_per_declared_week",
+        "at_least_80_development_signals",
+        "at_least_100_signals_each_2024_2025",
+        "minority_direction_at_least_20pct_development_and_all",
+        "actuator_quote_coverage_at_least_90pct",
+        "relevant_side_ladder_09_31_05_availability_at_least_80pct",
+        "adjacent_indication_09_29_50_identical_action_at_least_60pct",
+        "adjacent_continuous_09_30_05_identical_action_at_least_60pct"
+      ],
+      "decision": "terminal_no_pnl"
+    },
+    "V39": {
+      "name": "SPY late Core-Open market-order urgency",
+      "audit": "spy_late_market_order_urgency_returns_blind_audit_v39.json",
+      "status": "failed_returns_blind_feasibility_no_pnl_opened",
+      "feature_development": {
+        "signals": 0,
+        "trades_per_declared_calendar_week": 0.0,
+        "side_counts": {},
+        "minority_side_share": 0.0
+      },
+      "all_overlap": {
+        "signals": 7,
+        "executable_signals": 6,
+        "primary_quote_coverage_pct": 85.71428571428571,
+        "relevant_side_ladder_available_days": 6,
+        "relevant_side_ladder_coverage_pct": 100.0,
+        "delay_target_available_counts": {
+          "09:30:01": 6,
+          "09:31:00": 6
+        },
+        "quote_missing": {
+          "UPRO:09:35:00": 1
+        },
+        "relevant_ladder_missing": {}
+      },
+      "market_order_condition": {
+        "eligible_stable_side_days": 780,
+        "selected_signal_days": 7,
+        "selection_share_pct": 0.8974358974358974,
+        "post_2025_11_13_break_signals": 7
+      },
+      "failed_gates": [
+        "feature_frequency_at_least_two_per_declared_week_2021_2023",
+        "executable_frequency_at_least_two_per_declared_week_2023_overlap",
+        "at_least_100_feature_signals_each_development_year",
+        "at_least_20_feature_signals_2026_extension",
+        "minority_side_at_least_20pct_feature_and_executable_development",
+        "upro_and_spxu_each_executable_in_development",
+        "primary_entry_exit_quote_coverage_at_least_90pct",
+        "adjacent_09_29_30_identical_action_at_least_60pct",
+        "adjacent_09_29_59_identical_action_at_least_60pct",
+        "market_order_condition_selects_between_10_and_80pct_stable_side_days",
+        "at_least_20_signals_after_quantity_definition_break"
+      ],
+      "decision": "terminal_no_pnl"
+    },
+    "V40": {
+      "name": "leveraged/inverse official opening-auction demand consensus",
+      "audit": "leveraged_etf_opening_auction_demand_consensus_returns_blind_audit_v40.json",
+      "status": "failed_returns_blind_feasibility_no_pnl_opened",
+      "feature_development": {
+        "signals": 371,
+        "trades_per_declared_calendar_week": 2.371689497716895,
+        "side_counts": {
+          "B": 177,
+          "A": 194
+        },
+        "minority_side_share": 0.477088948787062
+      },
+      "executable_development": {
+        "signals": 94,
+        "trades_per_declared_calendar_week": 2.3584229390681006,
+        "side_counts": {
+          "B": 49,
+          "A": 45
+        },
+        "minority_side_share": 0.4787234042553192
+      },
+      "all_overlap": {
+        "signals": 445,
+        "executable_signals": 398,
+        "primary_quote_coverage_pct": 89.43820224719101,
+        "relevant_side_ladder_available_days": 278,
+        "relevant_side_ladder_coverage_pct": 69.84924623115577,
+        "delay_target_available_counts": {
+          "09:31:01": 396,
+          "09:32:00": 381
+        },
+        "quote_missing": {
+          "UPRO:09:31:05": 7,
+          "UPRO:09:35:00": 11,
+          "SPXU:09:35:00": 21,
+          "SPXU:09:31:05": 15
+        },
+        "relevant_ladder_missing": {
+          "SSO:09:31:05": 31,
+          "SH:09:31:05": 61,
+          "SDS:09:31:05": 37
+        }
+      },
+      "rolling_window_stability": {
+        "10": {
+          "signals": 733,
+          "joint_signal_days": 612,
+          "direction_agreement_on_joint_pct": 98.36601307189542,
+          "identical_action_including_cash_pct": 72.00956937799043
+        },
+        "40": {
+          "signals": 703,
+          "joint_signal_days": 603,
+          "direction_agreement_on_joint_pct": 98.50746268656717,
+          "identical_action_including_cash_pct": 72.88343558282209
+        }
+      },
+      "returns_blind_controls": {
+        "spy_official_overnight_direction_agreement_pct": 52.03366058906031,
+        "eligible_sessions_with_primary_history": 1340,
+        "selected_signal_sessions": 715,
+        "selection_share_pct": 53.35820895522389
+      },
+      "failed_gates": [
+        "primary_entry_exit_quote_coverage_at_least_90pct",
+        "relevant_side_ladder_09_31_05_availability_at_least_80pct"
+      ],
+      "decision": "terminal_no_pnl"
+    },
+    "V41": {
+      "name": "SPY Closing-auction market-urgency pre-close hedge window",
+      "audit": "spy_closing_auction_market_urgency_returns_blind_audit_v41.json",
+      "status": "failed_returns_blind_feasibility_no_pnl_opened",
+      "feature_development": {
+        "signals": 86,
+        "trades_per_declared_calendar_week": 0.5497716894977169,
+        "side_counts": {
+          "B": 56,
+          "A": 30
+        },
+        "minority_side_share": 0.3488372093023256
+      },
+      "executable_development": {
+        "signals": 11,
+        "trades_per_declared_calendar_week": 0.27598566308243727,
+        "side_counts": {
+          "A": 2,
+          "B": 9
+        },
+        "minority_side_share": 0.18181818181818182
+      },
+      "all_overlap": {
+        "signals": 85,
+        "executable_signals": 74,
+        "primary_quote_coverage_pct": 87.05882352941177,
+        "late_exit_rejected_count": 0,
+        "relevant_side_ladder_available_days": 38,
+        "relevant_side_ladder_coverage_pct": 51.35135135135135,
+        "delay_target_available_counts": {
+          "15:30:01": 73,
+          "15:31:00": 64
+        },
+        "quote_missing": {
+          "SPXU:15:30:05": 8,
+          "UPRO:15:30:05": 3
+        },
+        "relevant_ladder_missing": {
+          "SDS:15:30:05": 8,
+          "SSO:15:30:05": 14,
+          "SH:15:30:05": 20
+        }
+      },
+      "market_order_condition": {
+        "eligible_stable_side_days": 909,
+        "selected_signal_days": 160,
+        "selection_share_pct": 17.601760176017603,
+        "post_2025_11_13_break_signals": 33
+      },
+      "adjacent_stability": {
+        "15:29:30": {
+          "signals": 155,
+          "joint_signal_days": 135,
+          "direction_agreement_on_joint_pct": 100.0,
+          "identical_action_including_cash_pct": 75.0
+        },
+        "15:29:59": {
+          "signals": 157,
+          "joint_signal_days": 148,
+          "direction_agreement_on_joint_pct": 100.0,
+          "identical_action_including_cash_pct": 87.57396449704142
+        }
+      },
+      "failed_gates": [
+        "feature_frequency_at_least_two_per_declared_week_2021_2023",
+        "executable_frequency_at_least_two_per_declared_week_2023_overlap",
+        "at_least_100_feature_signals_each_development_year",
+        "minority_side_at_least_20pct_feature_and_executable_development",
+        "primary_entry_preclose_exit_quote_coverage_at_least_90pct",
+        "relevant_side_ladder_15_30_05_availability_at_least_80pct"
+      ],
+      "decision": "terminal_no_pnl"
+    }
+  },
+  "program_limitations_demonstrated": [
+    "V37 had strong cadence, balance, temporal participation, and cutoff stability but failed its frozen all-timing actuator coverage gate at 88.37% versus 90%.",
+    "V40 had coherent daily official-auction demand consensus but failed primary coverage at 89.44% and relevant-side ladder evidence at 69.85%.",
+    "V38 and V41 were too sparse for the required two trades per week; V39's selected opening market-order state was effectively absent before 2026.",
+    "The trade-event-conditioned EQUS.MINI feed repeatedly withholds complete same-session actuator and cross-ladder observations even when the causal feature is frequent and stable."
+  ],
+  "next_independent_evidence": {
+    "data": "Complete quote-update or official consolidated BBO history for SPY/SSO/UPRO/SH/SDS/SPXU, or prospective collection of that feed.",
+    "research": "A genuinely new mechanism must be frozen under a new number; V35-V41 conditions and gates cannot be repaired.",
+    "forward": "Prospective observation may measure V37/V40 quote availability, but their historical rules are not authorized for P&L or paper activation."
+  }
+}

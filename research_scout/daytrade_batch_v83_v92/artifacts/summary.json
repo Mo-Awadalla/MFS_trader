@@ -1,0 +1,126 @@
+[
+  {
+    "candidate": "v83",
+    "status": "failed_development",
+    "holm_adjusted_p": 1.0,
+    "trades": 107,
+    "ending_cash": 116.55571778146152,
+    "spy_ending_cash": 132.3697264399881,
+    "sharpe": 0.9098446470513736,
+    "max_daily_drawdown": -0.07168706397728819,
+    "failed_gates": [
+      "beat_spy",
+      "excess_ci"
+    ]
+  },
+  {
+    "candidate": "v84",
+    "status": "failed_development",
+    "holm_adjusted_p": 1.0,
+    "trades": 105,
+    "ending_cash": 85.03090695582183,
+    "spy_ending_cash": 121.43436649974682,
+    "sharpe": -3.9737872739652262,
+    "max_daily_drawdown": -0.15010070981501156,
+    "failed_gates": [
+      "beat_spy",
+      "sharpe",
+      "drawdown",
+      "profit_factor",
+      "years",
+      "directions",
+      "cost_stress",
+      "delay",
+      "delete_five",
+      "excess_ci",
+      "controls"
+    ]
+  },
+  {
+    "candidate": "v85",
+    "status": "failed_development",
+    "holm_adjusted_p": 1.0,
+    "trades": 335,
+    "ending_cash": 104.25632944773113,
+    "spy_ending_cash": 132.3697264399881,
+    "sharpe": 0.17911374041677408,
+    "max_daily_drawdown": -0.44767327863174955,
+    "failed_gates": [
+      "beat_spy",
+      "sharpe",
+      "drawdown",
+      "profit_factor",
+      "years",
+      "directions",
+      "cost_stress",
+      "delete_five",
+      "excess_ci"
+    ]
+  },
+  {
+    "candidate": "v86",
+    "status": "failed_development",
+    "holm_adjusted_p": 1.0,
+    "trades": 44,
+    "ending_cash": 88.02314644604722,
+    "spy_ending_cash": 132.3697264399881,
+    "sharpe": -1.241947075923374,
+    "max_daily_drawdown": -0.12170855088856602,
+    "failed_gates": [
+      "beat_spy",
+      "sharpe",
+      "profit_factor",
+      "years",
+      "cost_stress",
+      "delay",
+      "delete_five",
+      "excess_ci",
+      "controls"
+    ]
+  },
+  {
+    "candidate": "v87",
+    "status": "rejected_before_pnl",
+    "holm_adjusted_p": 1.0,
+    "reason": [
+      "side_balance",
+      "net_position_distinctness"
+    ],
+    "signals": 364
+  },
+  {
+    "candidate": "v88",
+    "status": "data_blocked",
+    "holm_adjusted_p": 1.0,
+    "reason": "historical Treasury result-publication timestamp unverified",
+    "signals": null
+  },
+  {
+    "candidate": "v89",
+    "status": "data_blocked",
+    "holm_adjusted_p": 1.0,
+    "reason": "NYFed historical first-publication/revision timing unverified",
+    "signals": null
+  },
+  {
+    "candidate": "v90",
+    "status": "data_blocked",
+    "holm_adjusted_p": 1.0,
+    "reason": "simultaneous front/next executable quotes absent",
+    "signals": null
+  },
+  {
+    "candidate": "v91",
+    "status": "data_blocked",
+    "holm_adjusted_p": 1.0,
+    "reason": "issuer buyback authorizations/policies and execution history absent",
+    "signals": null
+  },
+  {
+    "candidate": "v92",
+    "status": "data_blocked",
+    "holm_adjusted_p": 1.0,
+    "reason": "simultaneous binary outcome asks/depth absent",
+    "signals": null
+  }
+]

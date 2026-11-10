@@ -1,0 +1,53 @@
+{
+  "status": "returns_blind_no_post_signal_prices_or_pnl_read",
+  "definition": {
+    "early_window": "09:45-09:59 ET",
+    "late_window": "10:00-10:14 ET",
+    "per_wrapper_change": "late median proportional spread divided by early median proportional spread minus one",
+    "action": "UPRO if both changes are negative; SPXU if both are positive; otherwise no trade"
+  },
+  "arca_2021_2025": {
+    "eligible_feed_session_dates": 1237,
+    "valid_window_sessions": 1237,
+    "coverage_fraction": 1.0,
+    "nonzero_signal_sessions": 185,
+    "signals_per_calendar_week": 0.7107574094401756,
+    "direction_counts": {
+      "UPRO": 107,
+      "SPXU": 78,
+      "NO_TRADE": 1052
+    },
+    "minority_direction_fraction": 0.42162162162162165,
+    "year_signal_counts": {
+      "2021": 47,
+      "2022": 51,
+      "2023": 7,
+      "2024": 31,
+      "2025": 49
+    }
+  },
+  "cross_feed_overlap_2023_2025": {
+    "overlap_sessions": 666,
+    "both_signal_sessions": 34,
+    "conditional_direction_agreement": 0.8823529411764706,
+    "all_date_action_agreement": 0.8303303303303303,
+    "arca_direction_counts": {
+      "UPRO": 59,
+      "SPXU": 27,
+      "NO_TRADE": 580
+    },
+    "equs_direction_counts": {
+      "UPRO": 55,
+      "SPXU": 36,
+      "NO_TRADE": 575
+    }
+  },
+  "predeclared_feasibility_gates": {
+    "valid_window_coverage_at_least_95_percent": true,
+    "at_least_two_nonzero_signals_per_week": false,
+    "minority_direction_at_least_20_percent": true,
+    "conditional_cross_feed_direction_agreement_at_least_65_percent": true,
+    "all_date_cross_feed_action_agreement_at_least_55_percent": true
+  },
+  "feasibility_passed": false
+}

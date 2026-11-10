@@ -1,0 +1,28 @@
+# Research configuration audit
+
+**Implementation follow-up:** the date/session and adjusted-price guards are now repaired, a shared intraday accounting contract is implemented, and a six-family replay plus 47 focused tests are complete. The replay found no validated SPY-beating strategy. V56 also had a five-trade eligibility mismatch, and V45's session count was actually an event-trade count. See [the completed research reset](../research_reset_20260907/REPORT.md). The audit below records the original findings before repair.
+
+The representative recent backtests have configuration and data-contract weaknesses, but no single discovered setting explains the repeated failures. This audit covers the central research configuration, the Alpaca and Yahoo download paths, V83–V92, V40's replay, V93–V95, and a representative earlier leveraged-ETF sizing/P&L path. It is not a certification of all historical experiments.
+
+## Confirmed issues
+
+1. **Settings are fragmented.** The recent scout scripts use their own frozen assumptions rather than loading `config/research.toml`. That central configuration selects a moving-average strategy and contains risk limits and a cost model that do not govern the recent scout calculations. Per-experiment registration is appropriate, but the lack of a common audited execution/data contract complicates comparisons. Changing the central net-exposure limit or cost parameter would not change V40 or V93–V95.
+2. **The end-date convention drops the final session.** The static20 stock runner requests an end date of `2025-12-31`; the downloader interprets it as midnight UTC, which is December 30 at 19:00 New York time. The cached GOOG file ends exactly there. December 31 regular trading is absent. This explains the final-day unknowns in the latest stock tests; it does not explain their multi-year losses. Future date-only requests need a declared inclusive/exclusive convention and a session-completeness check.
+3. **Costs are assumed differently across engines.** V40 uses observed ask/bid plus 1bp each side and fixed fee approximations. V93 uses a 3bp-per-side all-in scenario, and V94/V95 use 5bp per side on bar opens. The central configuration specifies a different model with variable impact. These are not equivalent calibrated estimates of historical execution. Bar-based profitability should remain provisional and include zero-cost and cost-sensitivity diagnostics.
+4. **Observation and execution resolution restrict the tested mechanisms.** The latest stock rules deliberately wait one hour after feature completion before entry. This avoids boundary look-ahead but only tests a delayed effect. A fleeting opening effect cannot be evaluated convincingly with that configuration. The stock universe is static, and adjusted historical prices need explicit cross-session feature treatment.
+5. **Different gate failures have been conflated.** V49's 60% action-agreement rule stopped P&L. Earlier experiments also used frequency, every-year and every-direction gates. Such requirements may be intentional, but failing them does not establish negative profitability. They must be reported separately from economic rejection.
+6. **The benchmark loader has a guard gap.** The Yahoo downloader falls back to raw close if adjusted close is absent. That can silently change a total-return claim into a price-only calculation. This audit did not establish that the fallback happened in the cached SPY data; current results correctly remain labeled an adjusted-price total-return proxy.
+
+## Checks that did not reveal a universal failure
+
+- In the inspected actual UPRO/SPXU P&L paths, leverage is already embedded in ETF prices. Applying another 3x multiplier would be incorrect. The earlier `LEVERAGE_MULTIPLE` is used to translate a SPY stop distance into a position-risk budget, not to triple actual ETF returns again.
+- Basis-point arithmetic is consistent: 5bps each side produces approximately 9.995bps loss on a flat-price round trip, not a percentage-unit error. Percentage returns are invariant to scaling initial cash in these proportional-cost calculations.
+- Prior independent reconstruction reconciled V40's 433 trades and V93–V95's 1,472 portfolio trade-days. Those checks verify arithmetic and chronology, not market fill realism.
+- V40 development still ends at $94.95 when additional fees/slippage are removed and only observed ask/bid crossing remains. Its frictionless midpoint diagnostic ends at $100.86 versus SPY's $121.46. A cost-setting change alone cannot establish the required SPY outperformance for that tested period.
+- The latest stock-reversal later-period gross reference path loses before costs. Its unknown dates and static-universe caveats remain; it is not a complete validated equity curve.
+
+## Corrective order
+
+Before generating further strategies, define one audited data/execution contract that records the trading universe, leverage handling, complete sessions, timestamp semantics, actual versus adjusted prices, sizing, observed spread versus assumed slippage, benchmark definition, and failure stage for each run. Retain hypothesis-specific features and registered historical rules. Repair date-boundary and benchmark guards for future acquisition paths with focused tests; do not silently rewrite old datasets or favorable parameters. Verify bar-based candidates with quotes before claiming execution readiness.
+
+No historical strategy parameters, account settings, subscriptions, or orders were changed in this audit. Machine-readable evidence and numerical checks are in `audit.json`; the reproducer is `../audit_research_configuration_20260907.py`.

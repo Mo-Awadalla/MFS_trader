@@ -1,0 +1,99 @@
+{
+  "specification_id": "SAME-ISSUER-LEVERAGE-LADDER-DELTA-NEUTRAL-CONVERGENCE-V68",
+  "frozen_before_post_entry_return_read": true,
+  "development": {
+    "start": "2021-01-01",
+    "end": "2023-12-31"
+  },
+  "recent_partition": {
+    "start": "2024-01-01",
+    "end": "2025-12-31",
+    "locked_until_every_development_gate_passes": true
+  },
+  "signal": {
+    "nav": "official prior-session ProShares NAV, point-in-time split normalized",
+    "observation": "exact 09:32 midpoint",
+    "positive_basis": "(UPRO/prior_NAV_UPRO - 1)/3 - (SSO/prior_NAV_SSO - 1)/2",
+    "inverse_basis": "(SPXU/prior_NAV_SPXU - 1)/-3 - (SDS/prior_NAV_SDS - 1)/-2",
+    "positive_mapping": {
+      "basis_positive": "short UPRO, long SSO",
+      "basis_negative": "long UPRO, short SSO",
+      "basis_zero": "cash"
+    },
+    "inverse_mapping": {
+      "basis_positive": "long SPXU, short SDS",
+      "basis_negative": "short SPXU, long SDS",
+      "basis_zero": "cash"
+    },
+    "basis_threshold": null
+  },
+  "portfolio": {
+    "starting_cash_usd": 100.0,
+    "maximum_gross_exposure_usd": 100.0,
+    "gross_per_ladder_usd": 50.0,
+    "three_x_weight_within_ladder": 0.4,
+    "two_x_weight_within_ladder": 0.6,
+    "first_order_index_delta_per_ladder": 0.0,
+    "short_proceeds_rehypothecated": false
+  },
+  "execution": {
+    "entry": "09:33",
+    "exit": "10:30",
+    "long_entry": "ask",
+    "long_exit": "bid",
+    "short_entry": "bid",
+    "short_cover": "ask",
+    "passive_fill_assumption": false,
+    "borrow_cost": "zero intraday in backtest; live use prohibited without locates and stock-loan cost",
+    "overnight": false
+  },
+  "returns_blind_gates": {
+    "eligible_session_coverage_minimum": 0.95,
+    "active_pair_trades_per_week_minimum": 2.0,
+    "active_pair_trades_each_year_minimum": 200,
+    "each_ladder_each_basis_sign_minimum": 100,
+    "neighboring_09_31_and_09_33_sign_agreement_minimum": 0.85,
+    "primary_four_leg_entry_exit_quote_coverage_minimum": 0.95,
+    "independent_four_leg_entry_exit_quote_coverage_minimum": 0.90,
+    "independent_basis_sign_agreement_minimum": 0.90,
+    "all_nav_source_dates_strictly_before_signal_dates": true,
+    "no_post_entry_return_or_recent_outcome_read": true
+  },
+  "development_gates": {
+    "active_pair_trades_per_week_minimum": 2.0,
+    "profit_factor_minimum": 1.10,
+    "portfolio_pnl_positive_each_year": true,
+    "both_positive_and_inverse_ladders_positive": true,
+    "both_basis_signs_positive_within_each_ladder": true,
+    "compounded_ending_cash_above_adjusted_spy": true,
+    "positive_after_one_extra_cent_each_leg_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_deleting_ten_best_sessions": true,
+    "moving_block_bootstrap_lower_mean_above_zero": true,
+    "independent_2023_overlap_positive": true,
+    "delta_neutral_mean_above_equal_dollar_control": true,
+    "delta_neutral_mean_above_sign_flipped_divergence_control": true
+  },
+  "controls": {
+    "equal_dollar_weights": "50/50 legs inside each ladder",
+    "sign_flipped_divergence": "reverse every long and short leg with unchanged 40/60 weights",
+    "one_session_shifted_basis": "apply the prior eligible session's two ladder directions"
+  },
+  "stress": {
+    "extra_cost": "one adverse cent per share at every entry and exit",
+    "entry_delay": "09:38 with unchanged 10:30 exit",
+    "delete_best_sessions": 10,
+    "bootstrap_block_sessions": 5,
+    "bootstrap_samples": 10000,
+    "bootstrap_seed": 20260730
+  },
+  "prohibited_repairs": [
+    "basis magnitude threshold",
+    "ladder or basis-sign selection",
+    "changing 40/60 weights",
+    "midpoint or passive fills",
+    "clock or exit selection",
+    "creation/redemption condition",
+    "opening recent years after any failed development gate"
+  ]
+}

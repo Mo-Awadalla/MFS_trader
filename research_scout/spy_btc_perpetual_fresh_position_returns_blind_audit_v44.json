@@ -1,0 +1,42 @@
+{
+  "status": "returns_blind_no_post_entry_etf_prices_or_pnl_read",
+  "specification": "research_scout/spy_btc_perpetual_fresh_position_risk_transfer_prereg_v44.json",
+  "eligible_development_sessions_after_first": 737,
+  "complete_btc_measurements": 732,
+  "btc_measurement_coverage": 0.9932157394843962,
+  "candidate_signals": 460,
+  "executable_entries": 460,
+  "entries_per_calendar_week": 2.9568411386593203,
+  "direction_counts": {
+    "UPRO": 244,
+    "SPXU": 216
+  },
+  "minority_direction_fraction": 0.46956521739130436,
+  "year_counts": {
+    "2021": 170,
+    "2022": 146,
+    "2023": 144
+  },
+  "arca_entry_availability": 1.0,
+  "equs_overlap_signal_count": 107,
+  "equs_overlap_entry_availability": 1.0,
+  "btc_price_taker_flow_sign_agreement": 0.7695652173913043,
+  "adjacent_0830": {
+    "comparable_sessions": 732,
+    "identical_action_including_cash": 644,
+    "agreement_fraction": 0.8797814207650273
+  },
+  "timestamp_causality_fraction": 1.0,
+  "predeclared_feasibility_gates": {
+    "btc_measurement_coverage_at_least_98_percent": true,
+    "at_least_two_executable_entries_per_week": true,
+    "every_development_year_at_least_100_entries": true,
+    "minority_direction_at_least_20_percent": true,
+    "arca_entry_availability_at_least_95_percent": true,
+    "equs_overlap_entry_availability_at_least_95_percent": true,
+    "btc_price_taker_flow_sign_agreement_at_least_52_percent": true,
+    "adjacent_0830_action_agreement_at_least_75_percent": true,
+    "all_inputs_causal_by_0905": true
+  },
+  "feasibility_passed": true
+}

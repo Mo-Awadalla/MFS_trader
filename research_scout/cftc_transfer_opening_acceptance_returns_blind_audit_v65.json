@@ -1,0 +1,105 @@
+{
+  "status": "returns_blind_no_post_entry_returns_read",
+  "returns_read": false,
+  "recent_years_read": false,
+  "source_integrity": {
+    "market_name": "S&P 500 Consolidated - CHICAGO MERCANTILE EXCHANGE",
+    "market_code": "13874+",
+    "rows": 156,
+    "records_by_year": {
+      "2021": 52,
+      "2022": 52,
+      "2023": 52
+    },
+    "duplicate_report_date_rows": 0,
+    "rows_missing_required_changes": 0,
+    "archive_sha256": {
+      "fut_fin_txt_2021.zip": "5c929991038c70ae2501661b6d442b9e784d3c29d3166ceac2e21b45ac93d56a",
+      "fut_fin_txt_2022.zip": "94c9c1fdee9dfbe377a09923ddfe26b88d3460605dd076081f221ad367d88601",
+      "fut_fin_txt_2023.zip": "43c3dbdd4d01fceefad5e457003751cdc0974c7cf46097b322e26e9e2fe44d7a"
+    }
+  },
+  "availability_rule": "report_date_plus_7_calendar_days",
+  "development_2021_2023": {
+    "expected_sessions": 753,
+    "eligible_sessions": 743,
+    "eligible_coverage": 0.9867197875166003,
+    "signals": 381,
+    "signals_per_week": 2.5298804780876494,
+    "upro_signals": 209,
+    "spxu_signals": 172,
+    "minority_actuator_share": 0.45144356955380577,
+    "signals_by_year": {
+      "2021": 137,
+      "2022": 119,
+      "2023": 125
+    }
+  },
+  "cftc_state_diagnostics": {
+    "direction_switches_by_year": {
+      "2021": 24,
+      "2022": 29,
+      "2023": 20
+    },
+    "strict_collision_reports": 106,
+    "strict_collision_share": 0.6794871794871795,
+    "relative_transfer_zero_reports": 0
+  },
+  "adjacent_opening_stability": {
+    "four_minute": {
+      "overlap": 743,
+      "identical_actions": 656,
+      "identical_action_including_cash": 0.882907133243607
+    },
+    "six_minute": {
+      "overlap": 743,
+      "identical_actions": 657,
+      "identical_action_including_cash": 0.8842530282637954
+    }
+  },
+  "independent_spy_proxy_2023": {
+    "overlap": 190,
+    "identical_actions": 190,
+    "identical_action_including_cash": 1.0
+  },
+  "distinctness": {
+    "es_only_opening_momentum": {
+      "overlap": 743,
+      "identical_actions": 390,
+      "identical_action_including_cash": 0.5248990578734859
+    },
+    "cot_only_direction": {
+      "overlap": 743,
+      "identical_actions": 381,
+      "identical_action_including_cash": 0.5127860026917901
+    }
+  },
+  "entry_quote_evidence": {
+    "primary": {
+      "signals": 372,
+      "available": 372,
+      "coverage": 1.0
+    },
+    "independent": {
+      "signals": 125,
+      "available": 98,
+      "coverage": 0.784
+    }
+  },
+  "gates": {
+    "source_at_least_50_reports_each_year": true,
+    "source_unique_and_complete_required_fields": true,
+    "eligible_coverage_at_least_90_percent": true,
+    "at_least_two_signals_per_week": true,
+    "at_least_90_signals_each_year": true,
+    "minority_actuator_share_at_least_30_percent": true,
+    "at_least_15_state_switches_each_year": true,
+    "primary_entry_quote_coverage_at_least_90_percent": true,
+    "four_minute_action_stability_at_least_75_percent": true,
+    "six_minute_action_stability_at_least_75_percent": true,
+    "independent_spy_proxy_agreement_at_least_85_percent": true,
+    "es_only_control_agreement_below_80_percent": true,
+    "cot_only_control_agreement_below_80_percent": true
+  },
+  "gate_passed": true
+}

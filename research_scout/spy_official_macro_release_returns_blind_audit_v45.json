@@ -1,0 +1,52 @@
+{
+  "status": "returns_blind_no_post_entry_return_or_pnl_computed",
+  "specification": "research_scout/spy_official_macro_release_delayed_discovery_prereg_v45.json",
+  "scheduled_development_episodes": 387,
+  "non_market_date_clock_episodes": 0,
+  "complete_episodes": 380,
+  "complete_fraction": 0.9819121447028424,
+  "nonzero_signal_episodes": 378,
+  "executable_trades": 378,
+  "executable_trades_per_calendar_week": 2.4186471663619744,
+  "year_counts": {
+    "2021": 128,
+    "2022": 128,
+    "2023": 122
+  },
+  "release_clock_counts": {
+    "08:30:00": 168,
+    "10:00:00": 186,
+    "14:00:00": 24
+  },
+  "direction_counts": {
+    "UPRO": 197,
+    "SPXU": 181
+  },
+  "minority_direction_fraction": 0.47883597883597884,
+  "equs_overlap_comparisons": 92,
+  "arca_equs_direction_agreement": 0.9782608695652174,
+  "executable_family_record_counts": {
+    "advance_economic_indicators": 35,
+    "business_inventories": 36,
+    "construction_spending": 34,
+    "durable_goods": 36,
+    "factory_orders": 34,
+    "fomc_statement": 24,
+    "housing_starts": 35,
+    "housing_vacancies": 11,
+    "international_trade": 35,
+    "new_home_sales": 36,
+    "retail_sales": 36,
+    "wholesale_trade": 35
+  },
+  "predeclared_feasibility_gates": {
+    "complete_fraction_at_least_95_percent": true,
+    "at_least_two_executable_trades_per_calendar_week": true,
+    "at_least_100_executable_trades_each_development_year": true,
+    "all_release_clocks_represented": true,
+    "minority_direction_at_least_20_percent": true,
+    "arca_equs_direction_agreement_at_least_75_percent": true,
+    "strict_nonoverlapping_timestamp_causality": true
+  },
+  "feasibility_passed": true
+}

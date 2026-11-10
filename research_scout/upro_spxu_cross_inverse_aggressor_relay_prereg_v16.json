@@ -1,0 +1,73 @@
+{
+  "specification_id": "UPRO-SPXU-Cross-Inverse-Aggressor-Relay-v16",
+  "saved_at": "2026-07-26",
+  "status": "preregistered_after_returns-blind-audit_before-any-post-signal-return-calculation",
+  "objective": "Test whether timestamp-verified aggressor signs that propagate across inverse leveraged-ETF wrappers identify persistent intraday S&P inventory transfer.",
+  "research_history_warning": "Many other hypotheses have exposed the researcher to 2021-2026 market outcomes. The exact aggressor-relay rule is new and its post-signal returns have not been inspected, but 2024-2025 is only a rule-specific secondary holdout and any survivor still requires forward paper validation.",
+  "distinctness": {
+    "nearest_failed_strategy": "Paired Depth Reciprocity v4",
+    "why_not_a_repeat": "The failed rule used displayed bid and ask sizes. V16 ignores displayed depth and price direction, retains only fresh last trades, maps aggressor signs through the inverse wrapper, and measures temporal cross-wrapper confirmation."
+  },
+  "data": {
+    "primary_signal_and_execution": "Databento ARCX.PILLAR UPRO/SPXU BBO-1m",
+    "feed_rebuild": "Databento EQUS.MINI UPRO/SPXU BBO-1m from 2023-03-28",
+    "benchmark": "Databento ARCX.PILLAR SPY OHLCV-1m",
+    "primary_period": "2021-01-04 through 2025-12-31",
+    "diagnostic_extension": "2026-01-02 through 2026-07-24, opened only if development passes",
+    "excluded_sessions": "Dates marked degraded in the corresponding Databento dataset-condition file"
+  },
+  "signal": {
+    "window": "09:45 through 10:14 ET, inclusive",
+    "fresh_trade_rule": "A BBO-1m record contributes a trade only when side is A or B and ts_event lies strictly after ts_recv minus one minute and no later than ts_recv. This prevents counting forward-filled last sales.",
+    "aggressor_mapping": "Databento B means buy initiated and A means sell initiated. Map UPRO B/A to +1/-1 and SPXU B/A to -1/+1.",
+    "event_order": "Sort all retained UPRO and SPXU events by ts_event, breaking exact timestamp ties by symbol.",
+    "relay": "Two adjacent events form a relay when they come from different wrappers, are separated by more than zero and no more than 120 seconds, and have the same projected underlying sign.",
+    "score": "Sum the projected underlying signs of every relay.",
+    "decision": "Positive score buys UPRO; negative score buys SPXU; zero score holds cash.",
+    "filters": "None. No price, volatility, weekday, score-magnitude, or trend filter."
+  },
+  "execution": {
+    "account": "Start with $100 and deploy the available account in fractional shares, reinvesting realized equity.",
+    "entry": "Observed ask at 10:16 ET. Exact minute required; no forward fill.",
+    "exit": "Observed bid at 15:30 ET. Exact minute required; no forward fill.",
+    "positions": "Long UPRO, long SPXU, or cash; never short; at most one trade per session.",
+    "overnight": false,
+    "stop": null,
+    "rationale_for_no_stop": "The state has no defensible price anchor. Adding a price stop would introduce an unmotivated tunable parameter.",
+    "cash_settlement_warning": "The economic simulation assumes the account can be redeployed each eligible session; literal cash-account settlement restrictions require separate operational review."
+  },
+  "development": {
+    "period": "2021-01-04 through 2023-12-29",
+    "holdout_lock": "Do not calculate 2024-2025 post-signal returns unless every development gate passes.",
+    "gates": {
+      "minimum_trades_per_week": 2.0,
+      "profit_factor_strictly_above": 1.0,
+      "each_of_2021_2022_2023_fixed_notional_pnl_positive": true,
+      "both_UPRO_and_SPXU_fixed_notional_pnl_positive": true,
+      "ending_cash_above_price_only_SPY": true,
+      "positive_after_one_extra_cent_per_share_at_entry_and_exit": true,
+      "positive_after_five_minute_entry_delay": true,
+      "positive_after_removing_ten_best_sessions": true,
+      "outperform_sign_flipped_placebo": true,
+      "outperform_unconfirmed_all_event_sign_placebo": true
+    }
+  },
+  "secondary_holdout": {
+    "period": "2024-01-02 through 2025-12-31",
+    "requirements": [
+      "positive fixed-notional P&L in 2024 and 2025 separately",
+      "both UPRO and SPXU fixed-notional P&L positive",
+      "ending cash above price-only SPY",
+      "positive after one extra cent per share at both fills",
+      "positive after removing the five best sessions",
+      "EQUS.MINI holdout rebuild positive after observed BBO execution"
+    ]
+  },
+  "placebos": {
+    "sign_flipped": "Use the exact relay state but trade the opposite wrapper.",
+    "unconfirmed_all_event_sign": "Ignore cross-wrapper relay confirmation and trade the sign of all fresh projected events in the same window."
+  },
+  "returns_blind_audit": "research_scout/upro_spxu_cross_inverse_aggressor_relay_returns_blind_audit_v16.json",
+  "preimplementation_critique": "research_scout/UPRO_SPXU_CROSS_INVERSE_AGGRESSOR_RELAY_PREIMPLEMENTATION_CRITIQUE_V16.md",
+  "parameter_policy": "One hypothesis, one window, one relay horizon, and one implementation. No sign flip, threshold search, clock search, stop search, direction deletion, or post-result repair."
+}

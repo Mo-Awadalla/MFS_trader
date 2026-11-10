@@ -1,0 +1,41 @@
+{
+  "candidate": "v76",
+  "name": "Common-Factor Dispersion Compression",
+  "status": "preregistered_before_returns_blind_audit",
+  "development": ["2021-01-01", "2023-12-31"],
+  "source": "external_artifacts/alpaca_iex_breadth_v75/signal_bars_30min_2021_2023.parquet",
+  "feature": {
+    "first_half": "09:30 bar close/open return",
+    "second_half": "10:00 bar close divided by 09:30 bar close minus one",
+    "dispersion": "cross-sectional median absolute deviation about the median",
+    "trigger": "second-half dispersion strictly below first-half dispersion and both SPY half-hours have same nonzero sign",
+    "positive": "UPRO",
+    "negative": "SPXU"
+  },
+  "execution_if_admitted": {"entry": "10:31 exact ask", "exit": "15:55 exact bid"},
+  "blind_gates": {
+    "minimum_signals_per_week": 2.0,
+    "minimum_signals_each_year": 100,
+    "minority_action_share": 0.3,
+    "selection_share_range": [0.2, 0.8],
+    "minimum_odd_even_action_agreement": 0.7,
+    "maximum_v75_signal_date_overlap": 0.8,
+    "minimum_primary_quote_coverage": 0.95,
+    "minimum_independent_quote_coverage": 0.9
+  },
+  "return_gates": {
+    "minimum_profit_factor": 1.1,
+    "positive_every_year_and_action": true,
+    "ending_cash_above_adjusted_spy": true,
+    "positive_cost_delay_delete10_bootstrap_permutation_independent": true,
+    "mean_above_two_half_spy_momentum_control": true
+  },
+  "forbidden": [
+    "dispersion threshold or scaling",
+    "universe deletion or weighting",
+    "sign inversion or UPRO-only",
+    "alternate clock",
+    "date, volatility, or regime filter",
+    "recent-year access after any miss"
+  ]
+}

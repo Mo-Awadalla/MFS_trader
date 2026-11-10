@@ -1,0 +1,142 @@
+{
+  "specification": "research_scout/upro_spxu_signed_impact_asymmetry_prereg_v18.json",
+  "status": "rejected_in_development_holdout_locked",
+  "development": {
+    "observed_bbo": {
+      "sessions": 737,
+      "trades_per_week": 4.737373737373737,
+      "fixed_notional_pnl_usd": -5.083534057493283,
+      "ending_cash_usd": 79.52329693787688,
+      "return_pct": -20.47670306212312,
+      "mean_session_pnl_usd": -0.006897603877195771,
+      "win_rate": 0.4843962008141113,
+      "profit_factor": 0.9913438296013914,
+      "maximum_drawdown_usd": -52.69014942484178,
+      "worst_session_usd": -8.82002383790227,
+      "pnl_without_best_10_sessions_usd": -74.77108688622707,
+      "year_pnl_usd": {
+        "2021": -38.68822118386907,
+        "2022": 47.71323801312859,
+        "2023": -14.108550886752804
+      },
+      "instrument_pnl_usd": {
+        "SPXU": -53.43409808564289,
+        "UPRO": 48.350564028149556
+      },
+      "median_entry_spread_bps": 4.681647940073975
+    },
+    "one_extra_cent_each_fill": {
+      "sessions": 737,
+      "trades_per_week": 4.737373737373737,
+      "fixed_notional_pnl_usd": -67.6678173174154,
+      "ending_cash_usd": 42.49493977877983,
+      "return_pct": -57.50506022122017,
+      "mean_session_pnl_usd": -0.09181522024072646,
+      "win_rate": 0.47489823609226595,
+      "profit_factor": 0.8911901596035618,
+      "maximum_drawdown_usd": -67.77883083188709,
+      "worst_session_usd": -8.933889219773683,
+      "pnl_without_best_10_sessions_usd": -136.38633422844543,
+      "year_pnl_usd": {
+        "2021": -55.591544904707625,
+        "2022": 26.244043899561586,
+        "2023": -38.32031631226927
+      },
+      "instrument_pnl_usd": {
+        "SPXU": -101.97889071565459,
+        "UPRO": 34.31107339823924
+      },
+      "median_entry_spread_bps": 4.681647940073975
+    },
+    "five_minute_entry_delay": {
+      "sessions": 737,
+      "trades_per_week": 4.737373737373737,
+      "fixed_notional_pnl_usd": 10.207685180088669,
+      "ending_cash_usd": 93.12148774619129,
+      "return_pct": -6.878512253808708,
+      "mean_session_pnl_usd": 0.013850319104597922,
+      "win_rate": 0.5020352781546812,
+      "profit_factor": 1.0179044843189713,
+      "maximum_drawdown_usd": -48.823502005639654,
+      "worst_session_usd": -8.602150537634401,
+      "pnl_without_best_10_sessions_usd": -59.50174118375679,
+      "year_pnl_usd": {
+        "2021": -33.7224053507079,
+        "2022": 52.315512416020965,
+        "2023": -8.385421885224428
+      },
+      "instrument_pnl_usd": {
+        "SPXU": -38.620535136041504,
+        "UPRO": 48.82822031613016
+      },
+      "median_entry_spread_bps": 4.53617600362965
+    },
+    "sign_flipped_placebo": {
+      "sessions": 736,
+      "trades_per_week": 4.730945821854912,
+      "fixed_notional_pnl_usd": -65.8448971370463,
+      "ending_cash_usd": 42.93722509709785,
+      "return_pct": -57.06277490290215,
+      "mean_session_pnl_usd": -0.08946317545794334,
+      "win_rate": 0.4701086956521739,
+      "profit_factor": 0.8957244735171435,
+      "maximum_drawdown_usd": -98.15133215883938,
+      "worst_session_usd": -10.210341805433842,
+      "pnl_without_best_10_sessions_usd": -134.41667178738743,
+      "year_pnl_usd": {
+        "2021": 15.709768045932243,
+        "2022": -71.2336719141916,
+        "2023": -10.32099326878699
+      },
+      "instrument_pnl_usd": {
+        "UPRO": 21.327923136374988,
+        "SPXU": -87.17282027342137
+      },
+      "median_entry_spread_bps": 4.985668146023608
+    },
+    "raw_aggressor_count_placebo": {
+      "sessions": 702,
+      "trades_per_week": 4.520699172033119,
+      "fixed_notional_pnl_usd": 24.889672391869084,
+      "ending_cash_usd": 107.6252332484853,
+      "return_pct": 7.625233248485301,
+      "mean_session_pnl_usd": 0.03545537377759129,
+      "win_rate": 0.51994301994302,
+      "profit_factor": 1.0449780256763137,
+      "maximum_drawdown_usd": -62.83527857000084,
+      "worst_session_usd": -10.210341805433842,
+      "pnl_without_best_10_sessions_usd": -39.29296941356097,
+      "year_pnl_usd": {
+        "2021": 7.968994933100483,
+        "2022": 10.03854492428578,
+        "2023": 6.882132534482844
+      },
+      "instrument_pnl_usd": {
+        "UPRO": 59.360544111915225,
+        "SPXU": -34.47087172004615
+      },
+      "median_entry_spread_bps": 4.352558982621513
+    },
+    "spy_price_only_hurdle": {
+      "first_date": "2021-01-04",
+      "last_date": "2023-12-29",
+      "ending_cash_usd": 126.66133759658939,
+      "return_pct": 26.66133759658939,
+      "price_only": true
+    },
+    "gate": {
+      "minimum_two_trades_per_week": true,
+      "profit_factor_strictly_above_one": false,
+      "each_development_year_positive": false,
+      "both_upro_and_spxu_positive": false,
+      "ending_cash_above_spy": false,
+      "positive_after_one_extra_cent_each_fill": false,
+      "positive_after_five_minute_entry_delay": true,
+      "positive_after_removing_ten_best_sessions": false,
+      "outperform_sign_flipped_placebo": true,
+      "outperform_unconfirmed_event_sign_placebo": false
+    },
+    "gate_passed": false
+  },
+  "holdout_return_status": "not_calculated"
+}

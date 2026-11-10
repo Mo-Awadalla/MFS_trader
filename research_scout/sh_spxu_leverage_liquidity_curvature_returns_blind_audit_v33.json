@@ -1,0 +1,37 @@
+{
+  "status": "returns_blind_no_post_entry_prices_or_pnl_read",
+  "eligible_sessions": 738,
+  "valid_measurements": 738,
+  "measurement_coverage": 1.0,
+  "minimum_valid_rows_in_any_accepted_block": 15.0,
+  "executable_entries": 699,
+  "entries_per_week": 4.480769230769231,
+  "direction_counts": {
+    "UPRO": 339,
+    "SPXU": 360
+  },
+  "minority_direction_fraction": 0.48497854077253216,
+  "year_counts": {
+    "2021": 241,
+    "2022": 240,
+    "2023": 218
+  },
+  "entry_quote_availability": 1.0,
+  "cross_feed": {
+    "overlap_dates": 666,
+    "both_signal_dates": 610,
+    "same_direction_fraction": 0.9639344262295082,
+    "same_action_fraction": 0.9579579579579579
+  },
+  "gates": {
+    "valid_measurement_coverage_at_least_95_percent": true,
+    "at_least_twelve_rows_each_block": true,
+    "at_least_two_entries_per_week": true,
+    "every_year_at_least_100_entries": true,
+    "minority_direction_at_least_20_percent": true,
+    "cross_feed_direction_agreement_at_least_75_percent": true,
+    "cross_feed_action_agreement_at_least_65_percent": true,
+    "entry_quote_availability_at_least_95_percent": true
+  },
+  "feasibility_passed": true
+}

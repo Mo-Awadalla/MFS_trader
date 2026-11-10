@@ -1,0 +1,71 @@
+{
+  "specification_id": "spy_btc_perpetual_fresh_position_risk_transfer_v44",
+  "created_before_target_return_inspection": true,
+  "objective": {
+    "minimum_executable_trades_per_calendar_week": 2.0,
+    "benchmark": "same-period split-and-dividend-adjusted SPY",
+    "position_policy": "one fractional long UPRO or SPXU position, flat overnight"
+  },
+  "data": {
+    "btc_perpetual_30m": "data/parquet/binance_bitcoin_derivatives_public_v1/normalized/perp_klines_30m.parquet",
+    "btc_futures_metrics_5m": "data/parquet/binance_bitcoin_derivatives_public_v1/normalized/futures_metrics_5m.parquet",
+    "primary_execution_feed": "ARCX.PILLAR UPRO/SPXU bbo-1m",
+    "independent_execution_feed": "EQUS.MINI UPRO/SPXU bbo-1m",
+    "adjusted_spy_benchmark": "data/parquet/equity/alpaca_sip/SPY_1d.parquet",
+    "metrics_publication_lag_minutes": 5,
+    "maximum_metric_staleness_minutes": 10,
+    "missing_policy": "invalidate; never forward-fill"
+  },
+  "formation": {
+    "start": "immediately prior eligible SPY session at 16:00 America/New_York",
+    "primary_end": "current SPY session at 09:00 America/New_York",
+    "adjacent_end": "current SPY session at 08:30 America/New_York",
+    "decision": "09:05 America/New_York",
+    "price": "exact completed BTCUSDT perpetual 30-minute close at each boundary",
+    "open_interest": "latest positive BTC-denominated sum_open_interest timestamped at or before each boundary and public by decision"
+  },
+  "signal": {
+    "upro": "BTC close strictly rises and BTC-denominated open interest strictly rises",
+    "spxu": "BTC close strictly falls and BTC-denominated open interest strictly rises",
+    "cash": "all other states",
+    "magnitude_threshold": null
+  },
+  "execution": {
+    "entry": "observed ask at 09:31 America/New_York",
+    "exit": "observed bid at 15:30 America/New_York",
+    "entry_delay_stress_minutes": 5,
+    "adverse_fill_stress_usd_per_share_each_side": 0.01,
+    "starting_cash_usd": 100.0,
+    "fractional_shares": true
+  },
+  "partitions": {
+    "development": ["2021-01-04", "2023-12-29"],
+    "holdout": ["2024-01-02", "2025-12-31"]
+  },
+  "returns_blind_gates": {
+    "btc_measurement_coverage": 0.98,
+    "entries_per_week": 2.0,
+    "entries_per_full_development_year": 100,
+    "minority_direction_fraction": 0.2,
+    "arca_entry_availability": 0.95,
+    "equs_overlap_entry_availability": 0.95,
+    "btc_price_taker_flow_sign_agreement": 0.52,
+    "adjacent_endpoint_action_agreement_including_cash": 0.75,
+    "timestamp_causality": 1.0
+  },
+  "controls": [
+    "same BTC price sign without OI expansion gate",
+    "same BTC price sign on OI-decreasing days",
+    "current BTC price sign gated by prior equity session's OI-expansion state",
+    "exact sign flip"
+  ],
+  "forbidden_repairs": [
+    "invert direction",
+    "delete UPRO or SPXU sleeve",
+    "change clocks",
+    "add OI magnitude threshold",
+    "switch to USD-notional OI",
+    "add funding, premium, trader ratio, SPY gap, volatility, weekday, stop, or target filter",
+    "open holdout after any development gate failure"
+  ]
+}

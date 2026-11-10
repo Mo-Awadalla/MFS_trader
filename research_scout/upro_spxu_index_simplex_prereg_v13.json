@@ -1,0 +1,78 @@
+{
+  "specification_id": "UPRO-SPXU-Index-Simplex-Coherence-v13",
+  "saved_at": "2026-07-26",
+  "status": "preregistered-before-outcome-calculation",
+  "preimplementation_critique": "research_scout/UPRO_SPXU_INDEX_SIMPLEX_PREIMPLEMENTATION_CRITIQUE_V13.md",
+  "objective": "Test whether a parameter-free convex-hull relation among first-hour QQQ, SPY, and IWM returns identifies broad shocks that continue through UPRO or SPXU.",
+  "lineage": {
+    "allowed_lesson": "Independent equity-segment agreement may identify information diffusing into the SPY complex.",
+    "new_claim": "Agreement is economically coherent only when SPY lies between the growth-heavy QQQ return and the small-cap IWM return.",
+    "distinction_from_synthetic_index_catchup": "The failed catch-up rule traded the sign of an equal-weight QQQ/IWM return minus SPY on almost every session. This rule never trades a residual sign; it requires QQQ/IWM directional agreement and uses only whether SPY is contained in their interval.",
+    "distinction_from_breadth_consensus": "Breadth Consensus used only the signs of QQQ and IWM. Index-Simplex Coherence adds a predeclared cross-sectional geometry test whose necessity follows from the latent-common-shock claim."
+  },
+  "data": {
+    "signal": "Local Alpaca IEX SPY, QQQ, and IWM 30-minute regular-session bars",
+    "execution": "Databento ARCX.PILLAR UPRO/SPXU BBO-1m",
+    "consolidated_execution_audit": "Databento EQUS.MINI UPRO/SPXU BBO-1m where available",
+    "period": "2021-01-04 through 2026-06-29",
+    "excluded_sessions": "Databento dataset-condition dates marked degraded"
+  },
+  "frozen_rule": {
+    "returns": "For each of SPY, QQQ, and IWM, 10:29 close divided by 09:30 open minus one.",
+    "agreement": "QQQ and IWM returns must be nonzero and have identical signs.",
+    "coherence": "SPY return must be greater than or equal to the smaller of the QQQ/IWM returns and less than or equal to the larger.",
+    "trade": "Buy UPRO for positive QQQ/IWM agreement and SPXU for negative agreement; otherwise hold cash.",
+    "decision": "after the 10:00-10:29 bar is complete",
+    "dead_minute": "10:30",
+    "entry": "10:31 observed ask",
+    "exit": "15:55 observed bid",
+    "overnight": false
+  },
+  "account": {
+    "starting_cash_usd": 100.0,
+    "gross_notional_per_trade": "lesser of current cash and $100",
+    "fractional_shares": true,
+    "short_sales": false
+  },
+  "development": "2021-01-04 through 2023-12-29",
+  "secondary_holdout": "2024-01-02 through 2025-12-31",
+  "diagnostic_extension": "2026-01-02 through 2026-06-29",
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "profit_factor_at_least": 1.0,
+    "each_development_year_positive": true,
+    "bullish_and_bearish_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_per_share_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_ten_best_sessions": true,
+    "mean_trade_pnl_above_unfiltered_breadth_consensus": true,
+    "mean_trade_pnl_above_incoherent_same_sign_sessions": true
+  },
+  "holdout_gates": {
+    "development_gate_passed": true,
+    "2024_and_2025_each_positive": true,
+    "bullish_and_bearish_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_per_share_each_fill": true,
+    "positive_after_removing_five_best_sessions": true,
+    "mean_trade_pnl_above_unfiltered_breadth_consensus": true,
+    "mean_trade_pnl_above_incoherent_same_sign_sessions": true
+  },
+  "mechanism_contrasts": {
+    "unfiltered": "All same-sign QQQ/IWM first-hour sessions, identical to the frozen Breadth Consensus signal.",
+    "incoherent": "Same-sign QQQ/IWM sessions for which SPY is strictly outside their return interval.",
+    "required_interpretation": "A profitable coherent subset is insufficient if its mean fixed-$100 trade P&L does not exceed both contrasts in the same partition."
+  },
+  "prohibited_after_results": [
+    "change inclusive containment to a fitted band",
+    "standardize or beta-adjust returns",
+    "change the first-hour window, entry, or exit",
+    "invert the direction",
+    "drop bullish or bearish trades",
+    "select dates, weekdays, years, volatility states, or score magnitudes",
+    "combine this rule with a prior candidate",
+    "open a parameter grid around the interval boundaries"
+  ],
+  "evidence_warning": "This exact rule is frozen before its outcome, but all historical partitions have been viewed by the broader research program. A survivor would require future paper validation."
+}

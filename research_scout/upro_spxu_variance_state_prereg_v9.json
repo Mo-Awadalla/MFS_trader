@@ -1,0 +1,83 @@
+{
+  "specification_id": "UPRO-SPXU-Variance-State-v9",
+  "saved_at": "2026-07-26",
+  "status": "preregistered-before-outcome-calculation",
+  "objective": "Test three distinct, causal intraday mechanisms using a $100 account without reusing any previously rejected SPY, UPRO, SPXU, or SH signal family.",
+  "evidence_warning": "The repository has already exposed the researcher to 2021-2026 results from many other hypotheses. The 2024-2025 partition is a secondary holdout for these exact rules, but no historical partition is a pristine independent sample for the overall research program. Any survivor requires future paper validation.",
+  "account": {
+    "starting_cash_usd": 100.0,
+    "maximum_gross_exposure_usd": 100.0,
+    "fractional_shares": true,
+    "short_sales": false,
+    "overnight_positions": false,
+    "reinvest_realized_equity": true
+  },
+  "data": {
+    "signal": "Databento ARCX.PILLAR SPY OHLCV-1m",
+    "execution": "Databento ARCX.PILLAR UPRO/SPXU BBO-1m",
+    "consolidated_execution_audit": "Databento EQUS.MINI UPRO/SPXU BBO-1m where available",
+    "period": "2021-01-04 through 2026-07-24",
+    "excluded_sessions": "Databento dataset-condition dates marked degraded"
+  },
+  "shared_signal_definitions": {
+    "spy_minute_log_return": "log(current minute close / prior minute close), using 09:30-15:59 regular-session bars only",
+    "realized_variance": "sum of squared SPY minute log returns for a completed session",
+    "downside_variance_share": "sum of squared negative SPY minute log returns divided by realized variance",
+    "rolling_baseline": "median realized variance of the prior 20 eligible completed sessions; no current-session values",
+    "warmup": "20 eligible completed sessions",
+    "decision_time": "prior session close",
+    "entry_time": "09:31 observed ask on the next eligible session",
+    "exit_time": "15:55 observed bid",
+    "missing_quote": "cancel the affected trade; never forward-fill"
+  },
+  "candidates": {
+    "quiet_variance_carry": {
+      "economic_claim": "The positive equity risk premium is more compatible with 3x exposure after a quiet session, while high realized variance increases volatility drag and crash risk. Buy UPRO only when the prior session's realized variance is no greater than its trailing 20-session median; otherwise hold cash.",
+      "position": "100% UPRO or cash",
+      "expected_frequency": "approximately 2.5 trades per week"
+    },
+    "downside_variance_handoff": {
+      "economic_claim": "A high-variance session dominated by downside semivariance represents persistent deleveraging pressure rather than ordinary volatility. Buy SPXU on the next session only when prior realized variance is above its trailing median and downside variance share is above 0.5; buy UPRO otherwise.",
+      "position": "100% UPRO or 100% SPXU",
+      "expected_frequency": "approximately one trade per session"
+    },
+    "paired_variance_harvest": {
+      "economic_claim": "A constant-dollar mix of daily +3x and -3x exposure can harvest intraday oscillation by selling part of the relative winner and buying the relative loser, without predicting market direction.",
+      "entry": "At 09:31 buy $50 UPRO and $50 SPXU at observed asks.",
+      "rebalance": "At 12:31, value both legs at observed bid, sell the overweight leg at bid, and buy the underweight leg at ask until both legs have equal liquidation value after the rebalance.",
+      "exit": "At 15:55 sell both legs at observed bids.",
+      "position": "100% gross split between two long ETF legs",
+      "expected_frequency": "one round trip per session plus one rebalance on sessions requiring it"
+    }
+  },
+  "benchmarks": {
+    "passive_spy": "Price-only fractional SPY from the first 09:30 open to the final 15:59 close over identical dates",
+    "always_upro_intraday": "Buy UPRO at 09:31 ask and sell at 15:55 bid every eligible session"
+  },
+  "development": "2021-01-04 through 2023-12-29",
+  "secondary_holdout": "2024-01-02 through 2025-12-31",
+  "diagnostic_extension": "2026-01-02 through 2026-07-24; not described as pristine because other repository research has already inspected 2026",
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "observed_bbo_profit_factor_at_least": 1.0,
+    "each_of_2021_2022_2023_fixed_notional_pnl_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_per_share_at_every_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_ten_best_sessions": true
+  },
+  "holdout_gate": {
+    "rule": "Only candidates passing every development gate may be called development survivors.",
+    "requirements": [
+      "positive observed-BBO fixed-notional P&L in 2024 and 2025 separately",
+      "ending cash above price-only SPY over 2024-2025",
+      "positive after one extra cent per share at every fill",
+      "positive after removing the five best holdout sessions"
+    ]
+  },
+  "multiple_testing": {
+    "candidate_count": 3,
+    "policy": "Report every candidate. Do not select a variant by aggregate P&L. No parameter grid, threshold search, clock search, weekday filter, direction deletion, or strategy combination is permitted."
+  },
+  "cash_settlement_warning": "The economic simulation assumes the full account can be redeployed each eligible session. A literal US cash account could not always do this under historical T+2 settlement and may still face good-faith-violation constraints under T+1. Operational feasibility must be assessed separately."
+}

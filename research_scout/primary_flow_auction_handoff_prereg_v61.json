@@ -1,0 +1,85 @@
+{
+  "specification_id": "Primary-Flow-Opening-Auction-Handoff-v61",
+  "saved_at": "2026-07-30",
+  "status": "preregistered_after_returns-blind-audits-before-return-calculation",
+  "hypothesis": "A prior-session primary-market exposure transfer in UPRO/SPXU that agrees with fresh SPY Arca opening-auction pressure identifies persistent cross-market risk transfer during the first cash-session hour.",
+  "source_audits": {
+    "inventory_history": "research_scout/proshares_inventory_history_audit_v59.json",
+    "primary_market_flow": "research_scout/proshares_primary_market_flow_audit_v60.json",
+    "combined_construction": "research_scout/primary_flow_auction_handoff_audit_v61.json"
+  },
+  "signal": {
+    "source_day_fund_flow_dollars": "current NAV times split-adjusted current shares outstanding minus expected shares based on prior session",
+    "directional_flow_dollars": "UPRO flow dollars minus SPXU flow dollars",
+    "availability": "one US trading session after the source date",
+    "auction_message": "latest eligible SPY ARCX auction_type M message with ts_event strictly before 09:29:00 America/New_York",
+    "auction_eligibility": "positive ref_price and ind_match_price, positive paired_qty and total_imbalance_qty, side A or B",
+    "upro_action": "directional_flow_dollars greater than zero and auction side B",
+    "spxu_action": "directional_flow_dollars less than zero and auction side A",
+    "otherwise": "cash",
+    "magnitude_threshold": null,
+    "price_filter": null,
+    "volatility_filter": null
+  },
+  "execution": {
+    "primary_feed": "existing Databento ARCX.PILLAR UPRO/SPXU BBO-1m already stored in the repo",
+    "independent_feed": "existing Databento EQUS.MINI UPRO/SPXU BBO-1m already stored in the repo",
+    "new_databento_purchase": false,
+    "entry": "observed ask at exactly 09:31 ET",
+    "exit": "observed bid at exactly 10:30 ET",
+    "delayed_entry_stress": "observed ask at exactly 09:36 ET with unchanged 10:30 exit",
+    "extra_cost_stress": "add one cent per share to entry and subtract one cent per share from exit",
+    "position": "long UPRO, long SPXU, or cash",
+    "initial_cash_usd": 100.0,
+    "fractional_shares": true,
+    "max_trades_per_session": 1,
+    "overnight": false
+  },
+  "development": {
+    "period": "2021-01-04 through 2023-12-29",
+    "holdout_lock": "Do not calculate any 2024-2025 strategy or control return unless every development gate passes.",
+    "gates": {
+      "minimum_executed_trades_per_week": 2.0,
+      "profit_factor_strictly_above": 1.1,
+      "fixed_notional_pnl_positive_each_year": true,
+      "both_upro_and_spxu_fixed_notional_pnl_positive": true,
+      "compounded_ending_cash_strictly_above_adjusted_spy": true,
+      "positive_after_one_extra_cent_each_fill": true,
+      "positive_after_five_minute_entry_delay": true,
+      "positive_after_removing_ten_best_sessions": true,
+      "session_block_bootstrap_95pct_lower_mean_return_above_zero": true,
+      "independent_feed_overlap_positive": true,
+      "mean_trade_return_above_every_control": true
+    }
+  },
+  "controls": {
+    "flow_only": "trade UPRO or SPXU from lagged directional flow every eligible session",
+    "auction_only": "trade UPRO on side B and SPXU on side A every eligible session",
+    "failed_v34_buy_only": "trade UPRO on side B and otherwise cash",
+    "extra_lag_flow_alignment": "replace the one-session-delayed flow with the same state delayed one additional trading session, then require auction agreement",
+    "prior_spy_direction": "trade UPRO when the prior adjusted SPY close-to-close return is positive and SPXU when negative"
+  },
+  "benchmark": {
+    "asset": "adjusted buy-and-hold SPY",
+    "period": "same 2021-2023 development endpoints",
+    "requirement": "strategy compounded ending cash must be strictly greater"
+  },
+  "bootstrap": {
+    "unit": "trading session",
+    "block_length_sessions": 5,
+    "resamples": 5000,
+    "seed": 610061
+  },
+  "forbidden_repairs": [
+    "sign inversion",
+    "flow magnitude threshold",
+    "auction quantity threshold",
+    "alternate auction cutoff",
+    "alternate entry or exit search",
+    "UPRO or SPXU sleeve deletion",
+    "volatility or price-path filter",
+    "favorable-year or regime subset",
+    "opening 2024-2025 after any failed development gate"
+  ],
+  "critique": "research_scout/PRIMARY_FLOW_AUCTION_HANDOFF_PREIMPLEMENTATION_CRITIQUE_V61.md"
+}

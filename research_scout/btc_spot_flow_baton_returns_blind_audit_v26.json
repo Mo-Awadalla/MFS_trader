@@ -1,0 +1,35 @@
+{
+  "status": "returns_blind_no_post_entry_etf_prices_or_pnl_read",
+  "eligible_development_sessions": 738,
+  "complete_btc_measurements": 733,
+  "btc_measurement_coverage": 0.9932249322493225,
+  "executable_entries": 427,
+  "entries_per_week": 2.7371794871794872,
+  "direction_counts": {
+    "UPRO": 95,
+    "SPXU": 332
+  },
+  "minority_direction_fraction": 0.2224824355971897,
+  "year_counts": {
+    "2021": 146,
+    "2022": 135,
+    "2023": 146
+  },
+  "own_market_flow_price_coherence": {
+    "asia": 0.7175989085948158,
+    "europe": 0.654843110504775
+  },
+  "arca_entry_availability": 1.0,
+  "equs_overlap_entry_availability": 1.0,
+  "gates": {
+    "btc_measurement_coverage_at_least_98_percent": true,
+    "at_least_two_entries_per_week": true,
+    "minority_direction_at_least_20_percent": true,
+    "every_development_year_at_least_100_entries": true,
+    "asia_flow_price_coherence_at_least_52_percent": true,
+    "europe_flow_price_coherence_at_least_52_percent": true,
+    "arca_entry_availability_at_least_95_percent": true,
+    "equs_overlap_entry_availability_at_least_95_percent": true
+  },
+  "feasibility_passed": true
+}

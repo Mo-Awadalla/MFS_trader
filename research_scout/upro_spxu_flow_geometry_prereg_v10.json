@@ -1,0 +1,110 @@
+{
+  "specification_id": "UPRO-SPXU-Flow-Geometry-v10",
+  "saved_at": "2026-07-26",
+  "status": "preregistered-before-outcome-calculation",
+  "objective": "Test three unconventional morning information-flow geometries that are not parameter repairs of prior SPY/UPRO/SPXU failures.",
+  "research_lineage": {
+    "consumed_and_prohibited": [
+      "opening or closing directional momentum",
+      "opening-range breakout",
+      "morning or afternoon reversal",
+      "moving averages and return trend",
+      "VWAP or volume-center migration",
+      "raw within-day volume clock or volume-share acceleration",
+      "UPRO/SPXU tracking residual convergence",
+      "same-sign inverse-pair anomalies",
+      "path straightness, tortuosity, and record topology",
+      "quoted-spread ranking and quote-depth imbalance",
+      "binary activity masks, synchronization, silence entropy, and run lengths",
+      "nearest-neighbor analog memory",
+      "prior-session variance state"
+    ],
+    "new_information": "All v10 scores preserve temporal ordering between historically normalized dollar flow and price. Earlier rules either collapsed volume to a centroid/share, collapsed price to a return/path-efficiency statistic, or used unordered multivariate similarity."
+  },
+  "account_and_execution": {
+    "starting_cash_usd": 100.0,
+    "gross_notional_per_trade": "lesser of current cash and $100",
+    "fractional_shares": true,
+    "position": "long fractional UPRO for a positive score or long fractional SPXU for a negative score",
+    "short_sales": false,
+    "entry": "observed 10:31 ask",
+    "exit": "observed 15:55 bid",
+    "overnight": false,
+    "missing_quote": "cancel; never forward-fill",
+    "signal_delay": "09:30-10:29 is completed, 10:30 is a dead decision minute, and entry occurs at 10:31"
+  },
+  "data": {
+    "price_sensor": "Databento ARCX.PILLAR SPY OHLCV-1m and UPRO/SPXU BBO-1m",
+    "flow_sensor": "Databento ARCX.PILLAR UPRO/SPXU OHLCV-1m",
+    "execution": "Databento ARCX.PILLAR UPRO/SPXU BBO-1m",
+    "consolidated_execution_audit": "Databento EQUS.MINI UPRO/SPXU BBO-1m where available, with ARCA signals unchanged",
+    "period": "2021-01-04 through 2026-07-24",
+    "excluded_sessions": "Databento dataset-condition dates marked degraded",
+    "warmup": "20 prior eligible sessions"
+  },
+  "shared_definitions": {
+    "morning_minutes": "09:30 through 10:29 inclusive, represented on a fixed 60-minute clock",
+    "missing_trade_bar": "zero dollar flow for that exchange-minute",
+    "minute_dollar_flow": "typical price times reported volume",
+    "historical_scale": "median total morning dollar flow for the same ETF over the prior 20 eligible sessions",
+    "normalized_minute_flow": "minute dollar flow divided by historical scale",
+    "relative_flow": "(normalized UPRO flow - normalized SPXU flow) / (normalized UPRO flow + normalized SPXU flow), zero when the denominator is zero",
+    "spy_minute_return": "log current SPY close divided by prior SPY close within the morning window",
+    "etf_midpoint_return_path": "cumulative log BBO-midpoint return from 09:30; exact valid quotes required for all 60 minutes"
+  },
+  "candidates": {
+    "relative_dollar_flow_surprise": {
+      "score": "current UPRO total morning dollar flow / prior-20 median UPRO morning flow minus the analogous SPXU ratio",
+      "trade": "buy UPRO if score is positive and SPXU if negative; skip exact ties",
+      "economic_claim": "Unusually large capital participation relative to each vehicle's own recent baseline identifies which leveraged exposure is undergoing the stronger inventory transfer. Cross-session normalization removes persistent price, split, and liquidity differences that invalidated raw volume comparisons."
+    },
+    "price_volume_phase_compass": {
+      "per_etf_area": "For cumulative midpoint log return p and cumulative normalized flow share v, calculate the discrete signed area sum(p_previous * delta_v - v_previous * delta_p).",
+      "score": "SPXU signed area minus UPRO signed area, so the ETF with the more negative area is selected",
+      "trade": "buy UPRO if score is positive and SPXU if negative; skip exact ties",
+      "economic_claim": "A more negative price-volume area means capital arrived earlier than the corresponding price displacement. That ordering is interpreted as unfinished price response to inventory, unlike VWAP, volume centroid, or path straightness."
+    },
+    "lagged_flow_price_transfer": {
+      "score": "sum of prior-minute relative_flow times the next SPY minute log return across the completed morning",
+      "trade": "buy UPRO if score is positive and SPXU if negative; skip exact ties",
+      "economic_claim": "The sign measures whether relative UPRO participation consistently preceded upward SPY changes or relative SPXU participation preceded downward changes. It is a within-session causal-transfer statistic, not the sign of the morning return."
+    }
+  },
+  "benchmarks": {
+    "passive_spy": "price-only fractional SPY from first 09:30 open to final 15:59 close over identical calendar partitions",
+    "always_upro_same_window": "buy UPRO at 10:31 ask and sell at 15:55 bid every eligible session"
+  },
+  "development": "2021-01-04 through 2023-12-29",
+  "secondary_holdout": "2024-01-02 through 2025-12-31",
+  "diagnostic_extension": "2026-01-02 through 2026-07-24; not independent of the broader repository research program",
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "profit_factor_at_least": 1.0,
+    "each_of_2021_2022_2023_fixed_notional_pnl_positive": true,
+    "bullish_and_bearish_fixed_notional_pnl_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_per_share_at_entry_and_exit": true,
+    "positive_after_five_additional_minutes_entry_delay": true,
+    "positive_after_removing_ten_best_sessions": true
+  },
+  "secondary_holdout_gates": {
+    "development_gate_must_pass": true,
+    "2024_and_2025_fixed_notional_pnl_each_positive": true,
+    "bullish_and_bearish_fixed_notional_pnl_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_per_share_at_entry_and_exit": true,
+    "positive_after_removing_five_best_sessions": true
+  },
+  "multiple_testing_policy": {
+    "candidate_count": 3,
+    "requirements": [
+      "report every candidate",
+      "no threshold grid",
+      "no clock search",
+      "no sign inversion",
+      "no weekday, year, direction, volatility, spread, or score-magnitude filter",
+      "no combination of candidates after outcomes"
+    ]
+  },
+  "cash_settlement_warning": "The economic simulation assumes the full account can be redeployed each eligible session. Literal cash-account settlement and good-faith restrictions are an additional operational constraint."
+}

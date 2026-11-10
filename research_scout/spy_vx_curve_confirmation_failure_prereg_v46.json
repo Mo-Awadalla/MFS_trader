@@ -1,0 +1,81 @@
+{
+  "specification_id": "spy_vx_curve_confirmation_failure_v46",
+  "created_before_target_return_inspection": true,
+  "job": "SPY directional day-trading challenger",
+  "data": {
+    "vx_source_page": "https://www.cboe.com/markets/us/futures/market-statistics/historical-data/futures",
+    "vx_manifest": "data/raw/cboe_vx_monthly_v46/manifest.json",
+    "vx_contracts": "standard monthly VX only",
+    "weekly_contracts": "excluded",
+    "primary_spy_signal": "ARCX.PILLAR OHLCV-1m",
+    "primary_execution": "ARCA.PILLAR UPRO/SPXU BBO",
+    "independent_overlap": "EQUS.MINI SPY OHLCV-1m and UPRO/SPXU BBO"
+  },
+  "partitions": {
+    "development": ["2021-01-01", "2023-12-31"],
+    "holdout": ["2024-01-01", "2025-12-31"]
+  },
+  "curve": {
+    "front_policy": "nearest standard monthly VX expiration strictly after signal date",
+    "second_policy": "second-nearest standard monthly VX expiration strictly after signal date",
+    "field": "official settlement",
+    "slope": "(second_settle - front_settle) / front_settle",
+    "change": "current complete signal-session slope minus immediately previous complete signal-session slope"
+  },
+  "spy_signal": {
+    "return": "15:59 one-minute bar close / 09:30 one-minute bar open - 1",
+    "positive": "strictly greater than zero",
+    "negative": "strictly less than zero"
+  },
+  "action": {
+    "spy_positive_and_curve_change_negative": "SPXU next SPY session",
+    "spy_negative_and_curve_change_positive": "UPRO next SPY session",
+    "otherwise": "cash",
+    "thresholds": "none"
+  },
+  "execution": {
+    "entry": "next SPY session exact 09:31 observed ask",
+    "exit": "same session exact 15:30 observed bid",
+    "notional_usd": 100.0,
+    "overnight": false,
+    "primary_feed": "ARCA.PILLAR",
+    "independent_feed": "EQUS.MINI"
+  },
+  "returns_blind_gates": {
+    "signal_coverage_min": 0.98,
+    "trades_per_week_min": 2.0,
+    "trades_each_development_year_min": 100,
+    "minority_direction_fraction_min": 0.20,
+    "primary_execution_coverage_min": 0.95,
+    "independent_action_agreement_min": 0.90,
+    "roll_sensitivity_action_agreement_including_cash_min": 0.80,
+    "strict_causality_required": true
+  },
+  "development_gates": {
+    "trades_per_week_min": 2.0,
+    "profit_factor_min": 1.05,
+    "fixed_notional_pnl_positive": true,
+    "each_year_positive": true,
+    "both_directions_positive": true,
+    "ending_cash_above_spy_total_return": true,
+    "extra_cent_each_fill_positive": true,
+    "five_minute_delay_positive": true,
+    "delete_ten_best_positive": true,
+    "independent_overlap_positive": true,
+    "mean_trade_pnl_above_each_control": true
+  },
+  "controls": [
+    "prior-session SPY reversal without VX gate",
+    "VX curve-change direction without SPY disagreement gate",
+    "one-session-lagged VX curve change with current SPY sign",
+    "candidate action sign flipped"
+  ],
+  "prohibited_repairs": [
+    "invert after failure",
+    "add magnitude, volatility, level, volume, open-interest, weekday, gap, or regime threshold",
+    "change VX contract pair or roll policy after returns",
+    "change entry or exit after returns",
+    "inspect holdout unless every development gate passes",
+    "promote a profitable control without a new preregistered hypothesis"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "specification_id": "SH-SPXU-Inverse-Leverage-Liquidity-Curvature-v33",
+  "status": "preregistered_after_returns_blind_audit_and_before_any_post_entry_return",
+  "preimplementation_critique": "research_scout/SH_SPXU_LEVERAGE_LIQUIDITY_CURVATURE_PREIMPLEMENTATION_CRITIQUE_V33.md",
+  "returns_blind_audit": "research_scout/sh_spxu_leverage_liquidity_curvature_returns_blind_audit_v33.json",
+  "scope": {
+    "signal_instruments": "SH and SPXU cash ETFs",
+    "actuator": "Long fractional UPRO for bullish or SPXU for bearish",
+    "starting_cash_usd": 100.0,
+    "gross_notional_per_trade_usd": 100.0,
+    "maximum_positions": 1,
+    "maximum_trades_per_session": 1,
+    "futures": false,
+    "margin": false,
+    "short_sales": false,
+    "overnight_positions": false
+  },
+  "frozen_signal": {
+    "first_block": "09:45 through 09:59 ET",
+    "second_block": "10:00 through 10:14 ET",
+    "minute_proportional_spread": "(ask - bid) / ((ask + bid) / 2)",
+    "instrument_block_spread": "median of at least twelve valid one-minute proportional spreads",
+    "block_surcharge": "SPXU median proportional spread divided by SH median proportional spread",
+    "bullish": "second-block surcharge strictly below first-block surcharge",
+    "bearish": "second-block surcharge strictly above first-block surcharge",
+    "no_trade": "exact tie, invalid quote, or any incomplete block"
+  },
+  "execution": {
+    "primary_feed": "Databento ARCX.PILLAR BBO-1m",
+    "independent_feed": "Databento EQUS.MINI BBO-1m",
+    "entry": "10:16 observed selected-ETF ask",
+    "exit": "15:30 observed selected-ETF bid",
+    "invalid_quote": "skip; never forward-fill",
+    "baseline_cost": "full observed bid-ask spread at entry and exit",
+    "cost_stress": "one additional cent per share adverse at entry and exit",
+    "delay_stress": "10:21 observed ask with unchanged 15:30 exit"
+  },
+  "development": "2021-01-04 through 2023-12-29",
+  "secondary_holdout": "2024-01-02 through 2025-12-31",
+  "mechanism_contrasts": {
+    "sign_flipped": "trade the opposite ETF on every actual signal date",
+    "raw_sh_spread_change": "use contraction/expansion of SH proportional spread alone with the same sign map and clocks",
+    "raw_spxu_spread_change": "use contraction/expansion of SPXU proportional spread alone with the same sign map and clocks"
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "profit_factor_strictly_above": 1.0,
+    "each_of_2021_2022_2023_positive": true,
+    "UPRO_and_SPXU_pnl_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_ten_best_trades": true,
+    "fixed_notional_pnl_above_sign_flipped": true,
+    "fixed_notional_pnl_above_raw_sh_spread_change": true,
+    "fixed_notional_pnl_above_raw_spxu_spread_change": true,
+    "independent_feed_overlap_fixed_notional_pnl_positive": true
+  },
+  "holdout_gates": {
+    "development_must_pass_every_gate": true,
+    "2024_and_2025_each_positive": true,
+    "UPRO_and_SPXU_pnl_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_five_best_trades": true,
+    "fixed_notional_pnl_above_all_three_controls": true,
+    "independent_feed_fixed_notional_pnl_positive": true
+  },
+  "prohibited_after_results": [
+    "invert surcharge contraction or expansion",
+    "change either measurement block",
+    "add an absolute spread, ratio, or change threshold",
+    "use displayed size, price direction, volume, weekday, month, year, or volatility filters",
+    "drop UPRO or SPXU",
+    "select SH or SPXU raw spread after comparing controls",
+    "change entry or exit",
+    "assume midpoint or passive fills",
+    "choose a favorable feed",
+    "combine v33 with v17 or v28 based on outcomes",
+    "open holdout after any development-gate failure"
+  ],
+  "evidence_warning": "A historical survivor would remain a forward-paper candidate requiring new data; it would not guarantee live profitability."
+}

@@ -1,0 +1,63 @@
+{
+  "specification_id": "SPY-Auction-Value-Price-Phase-Lag-v29",
+  "status": "preregistered_after_returns_blind_audit_before_post_entry_return",
+  "critique": "research_scout/SPY_AUCTION_VALUE_PRICE_PHASE_LAG_PREIMPLEMENTATION_CRITIQUE_V29.md",
+  "audit": "research_scout/spy_auction_value_price_phase_lag_returns_blind_audit_v29.json",
+  "signal": {
+    "first_block": "SPY 09:30-09:59",
+    "second_block": "SPY 10:00-10:29",
+    "center": "volume-weighted mean one-minute typical price",
+    "phase_gap": "center minus terminal close",
+    "score": "second phase gap minus first phase gap",
+    "positive": "buy UPRO",
+    "negative": "buy SPXU",
+    "zero": "cash"
+  },
+  "execution": {
+    "notional_usd": 100.0,
+    "entry": "10:31 observed ask",
+    "exit": "15:30 observed bid",
+    "position_limit": 1,
+    "trades_per_day_limit": 1,
+    "shorting": false,
+    "futures_or_margin": false
+  },
+  "development": "2021-01-04 through 2023-12-29",
+  "holdout": "2024-01-02 through 2025-12-31",
+  "controls": {
+    "sign_flipped": "negative of exact phase-lag direction",
+    "price_momentum": "sign of 10:29 close minus 09:30 open",
+    "center_migration": "sign of second-block center minus first-block center"
+  },
+  "development_gates": [
+    "at least four trades per week",
+    "profit factor strictly above one",
+    "2021, 2022, and 2023 each positive",
+    "UPRO and SPXU each positive",
+    "ending cash above passive price-only SPY",
+    "positive after one extra cent at entry and exit",
+    "positive after five additional entry minutes",
+    "positive after removing ten best sessions",
+    "fixed-notional P&L above each frozen control"
+  ],
+  "holdout_gates": [
+    "development passes every gate",
+    "2024 and 2025 each positive",
+    "UPRO and SPXU each positive",
+    "ending cash above passive price-only SPY",
+    "positive after one extra cent each fill",
+    "positive after five additional entry minutes",
+    "positive after removing five best sessions",
+    "fixed-notional P&L above each frozen control",
+    "positive EQUS execution with unchanged ARCA signal"
+  ],
+  "prohibited_changes": [
+    "threshold or standardize score",
+    "change blocks, entry, or exit",
+    "invert after results",
+    "drop a side, year, weekday, month, or volatility state",
+    "select a favorable feed",
+    "combine with previous candidates based on P&L",
+    "open holdout after any development failure"
+  ]
+}

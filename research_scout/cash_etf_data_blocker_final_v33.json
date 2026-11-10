@@ -1,0 +1,47 @@
+{
+  "status": "genuine_data_imposed_blocker_documented",
+  "scope": "cash-only SPY, UPRO, SPXU, SH, cash cross-market, and BTC spot data; futures excluded by user constraint",
+  "actuator_diagnostic": "research_scout/cash_etf_actuator_hurdle_v30.json",
+  "capability_audit": "research_scout/CASH_ETF_DATA_CAPABILITY_AUDIT_V31.md",
+  "final_audit": "research_scout/CASH_ETF_DATA_BLOCKER_FINAL_V33.md",
+  "final_independent_challenges": {
+    "v31": {
+      "artifact": "research_scout/spy_closing_liquidity_memory_reset_returns_blind_audit_v31.json",
+      "decision": "rejected_returns_blind_frequency",
+      "entries_per_week": 0.6666666666666666,
+      "cross_feed_direction_agreement": 1.0
+    },
+    "v32": {
+      "artifact": "research_scout/btc_spot_risk_attention_spy_gap_results_v32.json",
+      "decision": "rejected_development_holdout_locked",
+      "entries_per_week": 2.736890524379025,
+      "fixed_notional_pnl_usd": -30.580691704301508,
+      "winner_deleted_pnl_usd": -85.61969968882403,
+      "independent_overlap_pnl_usd": -38.89203498060096
+    },
+    "v33": {
+      "artifact": "research_scout/sh_spxu_leverage_liquidity_curvature_results_v33.json",
+      "decision": "rejected_development_holdout_locked",
+      "entries_per_week": 4.477941176470589,
+      "fixed_notional_pnl_usd": -59.08461031320183,
+      "winner_deleted_pnl_usd": -128.1069117615275,
+      "independent_overlap_pnl_usd": -27.691852570262192
+    }
+  },
+  "blocker": "Available fields do not identify a frequent causal predictor that survives observed marketable execution, every-year and both-sleeve requirements, cross-feed replication, winner deletion, and passive-SPY outperformance.",
+  "not_claimed": [
+    "day trading is impossible",
+    "leveraged ETFs contain no ex-post opportunity",
+    "future data cannot reveal a strategy",
+    "historical failure guarantees future failure"
+  ],
+  "required_external_change": [
+    "new institutional ETF primary-market data",
+    "synchronized consolidated event-level market data",
+    "auction imbalance data",
+    "point-in-time constituent data",
+    "options dealer-positioning data",
+    "queue-aware order-book data",
+    "or a genuinely new preregistered forward sample"
+  ]
+}

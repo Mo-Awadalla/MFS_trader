@@ -1,0 +1,394 @@
+{
+  "V99": {
+    "name": "Cost relief versus demand destruction",
+    "status": "aborted_economic_failure",
+    "complete_equity": true,
+    "net_ending_cash": 85.88857788370689,
+    "reference_ending_cash": 87.52583202223964,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 87.52583202223964,
+        "total_return": -0.12474167977760364,
+        "fixed_initial_notional_pnl": -11.803626163538272,
+        "max_daily_drawdown": -0.18532026414107539,
+        "sharpe": -0.39301976069073896
+      },
+      "crossed": {
+        "ending_cash": 86.30704496588591,
+        "total_return": -0.13692955034114096,
+        "fixed_initial_notional_pnl": -13.193784781847938,
+        "max_daily_drawdown": -0.19249081740185103,
+        "sharpe": -0.4378645889694867
+      },
+      "net": {
+        "ending_cash": 85.88857788370689,
+        "total_return": -0.14111422116293115,
+        "fixed_initial_notional_pnl": -13.676955173987547,
+        "max_daily_drawdown": -0.19487808611782353,
+        "sharpe": -0.45357914512147085
+      },
+      "cost_stress": {
+        "ending_cash": 85.49439650219522,
+        "total_return": -0.14505603497804787,
+        "fixed_initial_notional_pnl": -14.134175489657718,
+        "max_daily_drawdown": -0.19712928156713405,
+        "sharpe": -0.4684205373489317
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "calendar_sessions": 753,
+    "trade_days": 23,
+    "missing_dates": [],
+    "directions": {
+      "SPXU": 16,
+      "UPRO": 7
+    },
+    "delay_ending_cash": 86.45730902344503,
+    "delay_missing_dates": [],
+    "remove_best_five_known_day_metrics": {
+      "ending_cash": 70.39282494685276,
+      "total_return": -0.2960717505314725,
+      "fixed_initial_notional_pnl": -34.14004702330422,
+      "max_daily_drawdown": -0.3020917881181999,
+      "sharpe": -1.4554971763140512
+    },
+    "removed_days": [
+      "2022-05-04",
+      "2022-07-27",
+      "2022-10-27",
+      "2022-08-19",
+      "2023-08-02"
+    ],
+    "family_adjusted_excess_interval": [
+      -0.0016176811862591654,
+      0.0003849078572927577
+    ],
+    "controls": {
+      "demand_only": {
+        "ending_cash": 94.23413523118494,
+        "available_case_ending_cash": 94.23413523118494,
+        "missing_dates": [],
+        "trade_days": 45,
+        "paired_known_days": 753,
+        "primary_minus_control_mean": -0.0001327019613688179,
+        "family_interval": [
+          -0.0005333038248337219,
+          0.0001659394149348235
+        ]
+      },
+      "UPRO": {
+        "ending_cash": 115.66015888139228,
+        "available_case_ending_cash": 115.66015888139228,
+        "missing_dates": [],
+        "trade_days": 23,
+        "paired_known_days": 753,
+        "primary_minus_control_mean": -0.00039444946790137086,
+        "family_interval": [
+          -0.0011737343571698164,
+          0.0001624496817037536
+        ]
+      }
+    },
+    "yearly_known_day_metrics": {
+      "2021": {
+        "ending_cash": 95.97216077336866,
+        "total_return": -0.04027839226631347,
+        "fixed_initial_notional_pnl": -4.050942614989095,
+        "max_daily_drawdown": -0.04027839226631347,
+        "sharpe": -1.1768145017530953
+      },
+      "2022": {
+        "ending_cash": 91.2949286886032,
+        "total_return": -0.08705071311396795,
+        "fixed_initial_notional_pnl": -7.73763338095973,
+        "max_daily_drawdown": -0.16273486881692478,
+        "sharpe": -0.4695560012871826
+      },
+      "2023": {
+        "ending_cash": 98.02649744898247,
+        "total_return": -0.019735025510175364,
+        "fixed_initial_notional_pnl": -1.8883791780387238,
+        "max_daily_drawdown": -0.04210573096057546,
+        "sharpe": -0.41823727755754586
+      }
+    },
+    "degraded_trade_days": []
+  },
+  "V100": {
+    "name": "European closing-pressure unwind",
+    "status": "aborted_economic_failure",
+    "complete_equity": true,
+    "net_ending_cash": 93.4072201575651,
+    "reference_ending_cash": 102.8118172579317,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 102.8118172579317,
+        "total_return": 0.028118172579316925,
+        "fixed_initial_notional_pnl": 3.6002982084637702,
+        "max_daily_drawdown": -0.11069268827081657,
+        "sharpe": 0.16109209220206938
+      },
+      "crossed": {
+        "ending_cash": 96.11687861752827,
+        "total_return": -0.038831213824717326,
+        "fixed_initial_notional_pnl": -3.1353923303002573,
+        "max_daily_drawdown": -0.11899761602327208,
+        "sharpe": -0.14053143206433744
+      },
+      "net": {
+        "ending_cash": 93.4072201575651,
+        "total_return": -0.06592779842434893,
+        "fixed_initial_notional_pnl": -5.994084722479053,
+        "max_daily_drawdown": -0.12651177881487963,
+        "sharpe": -0.2685939245835892
+      },
+      "cost_stress": {
+        "ending_cash": 90.90077935811797,
+        "total_return": -0.09099220641882022,
+        "fixed_initial_notional_pnl": -8.71262113309058,
+        "max_daily_drawdown": -0.14175070945717672,
+        "sharpe": -0.39020671269969975
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "calendar_sessions": 753,
+    "trade_days": 136,
+    "missing_dates": [],
+    "directions": {
+      "UPRO": 67,
+      "SPXU": 69
+    },
+    "delay_ending_cash": 90.9507803877023,
+    "delay_missing_dates": [],
+    "remove_best_five_known_day_metrics": {
+      "ending_cash": 79.03100211517318,
+      "total_return": -0.20968997884826823,
+      "fixed_initial_notional_pnl": -23.01932870229034,
+      "max_daily_drawdown": -0.21915087500779828,
+      "sharpe": -1.3203664067278937
+    },
+    "removed_days": [
+      "2022-03-08",
+      "2022-10-13",
+      "2022-05-11",
+      "2023-03-10",
+      "2021-03-04"
+    ],
+    "family_adjusted_excess_interval": [
+      -0.0014735833559016776,
+      0.0005162768527566368
+    ],
+    "controls": {
+      "continuation": {
+        "ending_cash": 87.94316614684827,
+        "available_case_ending_cash": 87.94316614684827,
+        "missing_dates": [],
+        "trade_days": 136,
+        "paired_known_days": 753,
+        "primary_minus_control_mean": 8.052132845523695e-05,
+        "family_interval": [
+          -0.0007008526546965816,
+          0.0008607783887477535
+        ]
+      },
+      "UPRO": {
+        "ending_cash": 79.83906308383476,
+        "available_case_ending_cash": 79.83906308383476,
+        "missing_dates": [],
+        "trade_days": 136,
+        "paired_known_days": 753,
+        "primary_minus_control_mean": 0.00020841033247432397,
+        "family_interval": [
+          -0.00025777595047836487,
+          0.0007599423961931123
+        ]
+      },
+      "later_clock": {
+        "ending_cash": 86.76463376050552,
+        "available_case_ending_cash": 86.76463376050552,
+        "missing_dates": [],
+        "trade_days": 140,
+        "paired_known_days": 753,
+        "primary_minus_control_mean": 0.00010220092965299135,
+        "family_interval": [
+          -0.00038933124314214165,
+          0.000634454073968631
+        ]
+      }
+    },
+    "yearly_known_day_metrics": {
+      "2021": {
+        "ending_cash": 94.82202030461549,
+        "total_return": -0.05177979695384505,
+        "fixed_initial_notional_pnl": -5.180795108233738,
+        "max_daily_drawdown": -0.06615230270555927,
+        "sharpe": -0.9922657985589907
+      },
+      "2022": {
+        "ending_cash": 95.67824609999866,
+        "total_return": -0.04321753900001335,
+        "fixed_initial_notional_pnl": -3.837386602434445,
+        "max_daily_drawdown": -0.12268302278014698,
+        "sharpe": -0.35455572131570395
+      },
+      "2023": {
+        "ending_cash": 102.95751163388293,
+        "total_return": 0.029575116338829366,
+        "fixed_initial_notional_pnl": 3.024096988189129,
+        "max_daily_drawdown": -0.037196127145610935,
+        "sharpe": 0.6459385306059607
+      }
+    },
+    "degraded_trade_days": [
+      "2023-09-22",
+      "2023-12-05",
+      "2023-12-06",
+      "2023-12-07"
+    ]
+  },
+  "V101": {
+    "name": "Disclosure congestion and delayed index discovery",
+    "status": "aborted_economic_failure",
+    "complete_equity": true,
+    "net_ending_cash": 121.6875336974452,
+    "reference_ending_cash": 126.09951472156075,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 126.09951472156075,
+        "total_return": 0.26099514721560757,
+        "fixed_initial_notional_pnl": 25.688381974113916,
+        "max_daily_drawdown": -0.16610843280449017,
+        "sharpe": 0.6627480475751274
+      },
+      "crossed": {
+        "ending_cash": 122.9752154042819,
+        "total_return": 0.2297521540428189,
+        "fixed_initial_notional_pnl": 23.163837254166086,
+        "max_daily_drawdown": -0.17158739172958903,
+        "sharpe": 0.5997138887350584
+      },
+      "net": {
+        "ending_cash": 121.6875336974452,
+        "total_return": 0.21687533697445205,
+        "fixed_initial_notional_pnl": 22.106431509265455,
+        "max_daily_drawdown": -0.1740180569055797,
+        "sharpe": 0.5729711665515483
+      },
+      "cost_stress": {
+        "ending_cash": 120.47671920951079,
+        "total_return": 0.20476719209510796,
+        "fixed_initial_notional_pnl": 21.102107908922907,
+        "max_daily_drawdown": -0.17632757709346125,
+        "sharpe": 0.5474939430118076
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "calendar_sessions": 753,
+    "trade_days": 50,
+    "missing_dates": [],
+    "directions": {
+      "UPRO": 22,
+      "SPXU": 28
+    },
+    "delay_ending_cash": 120.3556428508898,
+    "delay_missing_dates": [],
+    "remove_best_five_known_day_metrics": {
+      "ending_cash": 92.22233606901952,
+      "total_return": -0.07777663930980483,
+      "fixed_initial_notional_pnl": -6.510317130391208,
+      "max_daily_drawdown": -0.24413066266393835,
+      "sharpe": -0.2133797762597828
+    },
+    "removed_days": [
+      "2022-02-24",
+      "2022-04-29",
+      "2022-02-23",
+      "2022-04-22",
+      "2022-05-05"
+    ],
+    "family_adjusted_excess_interval": [
+      -0.0012827919879229118,
+      0.0010489195144615976
+    ],
+    "controls": {
+      "no_congestion": {
+        "ending_cash": 154.24431231679648,
+        "available_case_ending_cash": 154.24431231679648,
+        "missing_dates": [],
+        "trade_days": 231,
+        "paired_known_days": 753,
+        "primary_minus_control_mean": -0.00037348445424722365,
+        "family_interval": [
+          -0.0013504849735737792,
+          0.0005515901229081429
+        ]
+      },
+      "stale_congestion": {
+        "ending_cash": 79.61940678371556,
+        "available_case_ending_cash": 79.61940678371556,
+        "missing_dates": [],
+        "trade_days": 52,
+        "paired_known_days": 753,
+        "primary_minus_control_mean": 0.0005713877816509361,
+        "family_interval": [
+          -2.0922736978062165e-05,
+          0.0012442937965596553
+        ]
+      },
+      "UPRO": {
+        "ending_cash": 91.57649092902311,
+        "available_case_ending_cash": 91.57649092902311,
+        "missing_dates": [],
+        "trade_days": 50,
+        "paired_known_days": 753,
+        "primary_minus_control_mean": 0.00037561418641787406,
+        "family_interval": [
+          -0.0006681819311484527,
+          0.001467154615771231
+        ]
+      }
+    },
+    "yearly_known_day_metrics": {
+      "2021": {
+        "ending_cash": 93.88316015944415,
+        "total_return": -0.061168398405558544,
+        "fixed_initial_notional_pnl": -6.203240099108454,
+        "max_daily_drawdown": -0.08210769220089686,
+        "sharpe": -1.340300610000971
+      },
+      "2022": {
+        "ending_cash": 112.99856232824415,
+        "total_return": 0.12998562328244145,
+        "fixed_initial_notional_pnl": 14.315275018721296,
+        "max_daily_drawdown": -0.13959877330731207,
+        "sharpe": 0.6981955665329583
+      },
+      "2023": {
+        "ending_cash": 114.7058246038464,
+        "total_return": 0.14705824603846396,
+        "fixed_initial_notional_pnl": 13.994396589652613,
+        "max_daily_drawdown": -0.020359250243540572,
+        "sharpe": 1.8960509021839422
+      }
+    },
+    "degraded_trade_days": []
+  }
+}

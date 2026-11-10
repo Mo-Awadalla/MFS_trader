@@ -1,0 +1,18 @@
+[
+  {
+    "stage": "source discovery, before market data or model outcomes",
+    "issue": "Initial URL title filter omitted older conference-call and truncated slugs.",
+    "repair": "Enumerate all matching ticker URLs in the publisher earnings/call-transcripts path, as required by the frozen source specification.",
+    "initial_candidates": 1194,
+    "corrected_candidates": 3167,
+    "trading_rules_changed": false
+  },
+  {
+    "stage": "source attribution audit before candidate return inspection",
+    "issue": "Legacy non-analyst roster role was insufficient to establish management identity.",
+    "repair": "Additional explicit-management-role gate, no identity guessing; ambiguous documents rejected.",
+    "evidence": "training_prefetch/speaker_role_review.json",
+    "prior_freeze_preserved": true,
+    "trading_rules_changed": false
+  }
+]

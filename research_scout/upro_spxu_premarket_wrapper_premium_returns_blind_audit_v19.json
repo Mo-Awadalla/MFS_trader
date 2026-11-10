@@ -1,0 +1,29 @@
+{
+  "status": "returns_blind_no_post_open_returns_or_pnl_read",
+  "arca_2021_2025": {
+    "eligible_feed_sessions": 1237,
+    "exact_state_sessions": 1205,
+    "coverage": 0.9741309620048505,
+    "nonzero_signals": 942,
+    "signals_per_week": 3.6210873146622733,
+    "direction_counts": {
+      "UPRO": 436,
+      "SPXU": 506
+    },
+    "minority_fraction": 0.46284501061571126
+  },
+  "cross_feed": {
+    "overlap": 268,
+    "both_signal": 163,
+    "conditional_agreement": 1.0,
+    "all_action_agreement": 0.8208955223880597
+  },
+  "predeclared_feasibility_gates": {
+    "exact_observation_coverage_at_least_80_percent": true,
+    "at_least_two_signals_per_week": true,
+    "minority_direction_at_least_20_percent": true,
+    "conditional_cross_feed_agreement_at_least_70_percent": true,
+    "all_date_action_agreement_at_least_60_percent": true
+  },
+  "feasibility_passed": true
+}

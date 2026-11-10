@@ -1,0 +1,351 @@
+{
+  "status": "returns_blind_free_public_data_inventory_audit",
+  "fetched_at_utc": "2026-07-30T15:43:32.911000+00:00",
+  "databento_calls_or_purchases": false,
+  "source_metadata": {
+    "current_holdings": {
+      "url": "https://accounts.profunds.com/etfdata/psdlyhld.csv",
+      "status": 200,
+      "content_type": "text/csv",
+      "last_modified": "Thu, 30 Jul 2026 00:48:48 GMT",
+      "etag": "\"1c22b5-657c96f5ed6cf\"",
+      "bytes": 1843893,
+      "sha256": "7955bdd3feedc369e4b829a058742f455db192cae109afaae6b8c14b48bd9cf6",
+      "cache_fallback": false
+    },
+    "historical_nav": {
+      "url": "https://accounts.profunds.com/etfdata/historical_nav.csv",
+      "status": 200,
+      "content_type": "text/csv",
+      "last_modified": "Thu, 30 Jul 2026 00:20:34 GMT",
+      "etag": "\"31a36e4-657c90a689097\"",
+      "bytes": 52049636,
+      "sha256": "8c4e00cc9d5f057c0a6f5f8160375229e982bd4c109c4bbed167c696e1adffad",
+      "cache_fallback": false
+    },
+    "split_history": {
+      "url": "https://accounts.profunds.com/etfdata/etf_splits.csv",
+      "status": 200,
+      "content_type": "text/csv",
+      "last_modified": "Thu, 30 Jul 2026 09:00:25 GMT",
+      "etag": "\"60da-657d04d82b8cb\"",
+      "bytes": 24794,
+      "sha256": "c5e7c93c207b21940d182b1acabeb844500dc8e81afe45ee325ab2cf2aef6a50",
+      "cache_fallback": false
+    },
+    "wayback_cdx": {
+      "url": "https://web.archive.org/cdx/search/cdx?url=https%3A%2F%2Faccounts.profunds.com%2Fetfdata%2Fpsdlyhld.csv&from=2021&to=2023&output=json&filter=statuscode%3A200&fl=timestamp%2Coriginal%2Cstatuscode%2Cmimetype%2Cdigest%2Clength",
+      "status": 200,
+      "content_type": "application/json",
+      "last_modified": null,
+      "etag": null,
+      "bytes": 503,
+      "sha256": "edcc98a77892b6f41d100529246714c0108dff146cf0a6a5a63bd3be5a91df79",
+      "cache_fallback": false
+    },
+    "sec_upro_nport_atom": {
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=S000024919&type=NPORT-P&owner=exclude&count=100&output=atom",
+      "status": 200,
+      "content_type": "application/atom+xml",
+      "last_modified": null,
+      "etag": null,
+      "bytes": 38912,
+      "sha256": "d44cf3ca0187040b721ea66f7f5a3645eaf68c393e139d1df1c65ca6c1f15104",
+      "cache_fallback": false
+    },
+    "sec_spxu_nport_atom": {
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=S000024911&type=NPORT-P&owner=exclude&count=100&output=atom",
+      "status": 200,
+      "content_type": "application/atom+xml",
+      "last_modified": null,
+      "etag": null,
+      "bytes": 38884,
+      "sha256": "d22eea9486f592ed22809d8bcbe43438c9ea097f4327705bce1e661f1171ae15",
+      "cache_fallback": false
+    }
+  },
+  "historical_nav": {
+    "expected_sessions": 753,
+    "symbols": {
+      "UPRO": {
+        "sessions": 753,
+        "coverage": 1.0,
+        "missing_sessions": [],
+        "duplicate_dates": 0,
+        "nonpositive_nav_rows": 0,
+        "nonpositive_aum_rows": 0,
+        "missing_shares_rows": 0,
+        "aum_identity_median_relative_error": 0.0,
+        "aum_identity_max_relative_error": 2.2196358041776832e-16
+      },
+      "SPXU": {
+        "sessions": 753,
+        "coverage": 1.0,
+        "missing_sessions": [],
+        "duplicate_dates": 0,
+        "nonpositive_nav_rows": 0,
+        "nonpositive_aum_rows": 0,
+        "missing_shares_rows": 0,
+        "aum_identity_median_relative_error": 8.960672403407824e-07,
+        "aum_identity_max_relative_error": 3.433439869339176e-06
+      }
+    }
+  },
+  "split_history_2021_2023": [
+    {
+      "Symbol": "UPRO",
+      "Name": "UltraPro S&P500",
+      "Pre Split Cusip": "74347X864",
+      "Post Split Cusip": null,
+      "Split Type": "Forward",
+      "Ratio": 2,
+      "Date of Split": "2022-01-13T00:00:00"
+    },
+    {
+      "Symbol": "SPXU",
+      "Name": "UltraPro Short S&P500",
+      "Pre Split Cusip": "74347B268",
+      "Post Split Cusip": "74347B110",
+      "Split Type": "Reverse",
+      "Ratio": 5,
+      "Date of Split": "2021-01-21T00:00:00"
+    }
+  ],
+  "current_holdings_schema": {
+    "as_of": "7/29/2026",
+    "symbols": {
+      "UPRO": {
+        "rows": 520,
+        "swap_rows": 10,
+        "futures_rows": 1,
+        "has_exposure_value": true,
+        "has_market_value": true
+      },
+      "SPXU": {
+        "rows": 18,
+        "swap_rows": 10,
+        "futures_rows": 1,
+        "has_exposure_value": true,
+        "has_market_value": true
+      }
+    }
+  },
+  "historical_holdings_archive": {
+    "capture_count": 3,
+    "captures": [
+      {
+        "timestamp": "20211126181024",
+        "url": "https://web.archive.org/web/20211126181024id_/https://accounts.profunds.com/etfdata/psdlyhld.csv",
+        "status": 200,
+        "content_type": "application/octet-stream",
+        "last_modified": null,
+        "etag": null,
+        "bytes": 1478337,
+        "sha256": "7f4a2188386345e17c8d30b13cda755f8ee2919a5344aabfc8e0daffa4af7c2c",
+        "cache_fallback": false,
+        "as_of": "11/24/2021"
+      },
+      {
+        "timestamp": "20220523204414",
+        "url": "https://web.archive.org/web/20220523204414id_/https://accounts.profunds.com/etfdata/psdlyhld.csv",
+        "status": 200,
+        "content_type": "application/octet-stream",
+        "last_modified": null,
+        "etag": null,
+        "bytes": 1397836,
+        "sha256": "4bea565b0040487c08c2db1133db2debd97c495b9ee6489c313d282d9d7b35ed",
+        "cache_fallback": false,
+        "as_of": "5/20/2022"
+      },
+      {
+        "timestamp": "20230321161819",
+        "url": "https://web.archive.org/web/20230321161819id_/https://accounts.profunds.com/etfdata/psdlyhld.csv",
+        "status": 200,
+        "content_type": "text/csv",
+        "last_modified": null,
+        "etag": null,
+        "bytes": 1280104,
+        "sha256": "beb05f95bf6f42e5867648e75fcab690d7e53149a59621ccc9a7ebaccbde8137",
+        "cache_fallback": false,
+        "as_of": "3/20/2023"
+      }
+    ],
+    "distinct_as_of_dates": 3,
+    "as_of_dates": [
+      "11/24/2021",
+      "3/20/2023",
+      "5/20/2022"
+    ],
+    "session_coverage": 0.00398406374501992
+  },
+  "sec_nport": {
+    "UPRO": {
+      "all_returned_filing_count": 27,
+      "development_filing_count": 12,
+      "development_filings": [
+        {
+          "accession_number": "0001752724-23-240710",
+          "filing_date": "2023-10-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272423240710/0001752724-23-240710-index.htm"
+        },
+        {
+          "accession_number": "0001752724-23-164370",
+          "filing_date": "2023-07-26",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272423164370/0001752724-23-164370-index.htm"
+        },
+        {
+          "accession_number": "0001752724-23-085885",
+          "filing_date": "2023-04-24",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272423085885/0001752724-23-085885-index.htm"
+        },
+        {
+          "accession_number": "0001752724-23-011591",
+          "filing_date": "2023-01-25",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272423011591/0001752724-23-011591-index.htm"
+        },
+        {
+          "accession_number": "0001752724-22-232966",
+          "filing_date": "2022-10-21",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272422232966/0001752724-22-232966-index.htm"
+        },
+        {
+          "accession_number": "0001752724-22-167123",
+          "filing_date": "2022-07-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272422167123/0001752724-22-167123-index.htm"
+        },
+        {
+          "accession_number": "0001752724-22-096915",
+          "filing_date": "2022-04-28",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272422096915/0001752724-22-096915-index.htm"
+        },
+        {
+          "accession_number": "0001752724-22-014386",
+          "filing_date": "2022-01-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272422014386/0001752724-22-014386-index.htm"
+        },
+        {
+          "accession_number": "0001752724-21-230196",
+          "filing_date": "2021-10-28",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272421230196/0001752724-21-230196-index.htm"
+        },
+        {
+          "accession_number": "0001752724-21-158830",
+          "filing_date": "2021-07-28",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272421158830/0001752724-21-158830-index.htm"
+        },
+        {
+          "accession_number": "0001752724-21-085350",
+          "filing_date": "2021-04-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272421085350/0001752724-21-085350-index.htm"
+        },
+        {
+          "accession_number": "0001752724-21-013093",
+          "filing_date": "2021-01-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272421013093/0001752724-21-013093-index.htm"
+        }
+      ]
+    },
+    "SPXU": {
+      "all_returned_filing_count": 27,
+      "development_filing_count": 12,
+      "development_filings": [
+        {
+          "accession_number": "0001752724-23-240628",
+          "filing_date": "2023-10-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272423240628/0001752724-23-240628-index.htm"
+        },
+        {
+          "accession_number": "0001752724-23-164367",
+          "filing_date": "2023-07-26",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272423164367/0001752724-23-164367-index.htm"
+        },
+        {
+          "accession_number": "0001752724-23-085887",
+          "filing_date": "2023-04-24",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272423085887/0001752724-23-085887-index.htm"
+        },
+        {
+          "accession_number": "0001752724-23-011667",
+          "filing_date": "2023-01-25",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272423011667/0001752724-23-011667-index.htm"
+        },
+        {
+          "accession_number": "0001752724-22-233041",
+          "filing_date": "2022-10-21",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272422233041/0001752724-22-233041-index.htm"
+        },
+        {
+          "accession_number": "0001752724-22-167118",
+          "filing_date": "2022-07-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272422167118/0001752724-22-167118-index.htm"
+        },
+        {
+          "accession_number": "0001752724-22-096973",
+          "filing_date": "2022-04-28",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272422096973/0001752724-22-096973-index.htm"
+        },
+        {
+          "accession_number": "0001752724-22-014390",
+          "filing_date": "2022-01-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272422014390/0001752724-22-014390-index.htm"
+        },
+        {
+          "accession_number": "0001752724-21-230262",
+          "filing_date": "2021-10-28",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272421230262/0001752724-21-230262-index.htm"
+        },
+        {
+          "accession_number": "0001752724-21-158835",
+          "filing_date": "2021-07-28",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272421158835/0001752724-21-158835-index.htm"
+        },
+        {
+          "accession_number": "0001752724-21-085375",
+          "filing_date": "2021-04-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272421085375/0001752724-21-085375-index.htm"
+        },
+        {
+          "accession_number": "0001752724-21-013029",
+          "filing_date": "2021-01-27",
+          "period": null,
+          "filing_href": "https://www.sec.gov/Archives/edgar/data/1174610/000175272421013029/0001752724-21-013029-index.htm"
+        }
+      ]
+    }
+  },
+  "admission_gates": {
+    "daily_holdings_coverage_at_least_98_percent": false,
+    "historical_holdings_publication_timing_known": false,
+    "daily_nav_aum_coverage_at_least_98_percent": true,
+    "aum_reconciles_to_nav_times_shares": true,
+    "current_holdings_separate_derivative_exposure": true,
+    "split_history_available": true,
+    "sec_nport_validation_present": true,
+    "no_target_returns_or_strategy_pnl_read": true
+  },
+  "admission_passed": false,
+  "decision": "reject_before_strategy_returns"
+}

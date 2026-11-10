@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-09-07T22:41:22.679285+00:00",
+  "reason": "Source-only speaker audit found researchers/reporters classified as management when their role lacked the word analyst. Add conservative explicit-management attribution admission gate; preserve legacy pilot extractor and reject whole ambiguous documents.",
+  "previous_freeze_retained": "implementation_freeze.json",
+  "candidate_returns_or_forecasts_inspected": false,
+  "trading_rules_and_model_parameters_changed": false,
+  "hashes": {
+    "research_scout/v98_earnings_answers_20260907.py": "529bc4136d33a410ff031fb3cc951f8bb68d812ff3de612f04b0cb8a7cf14d70",
+    "research_scout/v98_market_data_20260907.py": "6712a5684c344a5a4d942c94c0f6a5df1339648daf3f7df6b5288be7e5cbba0a",
+    "research_scout/v98_backtest_20260907.py": "c3c761bc87d36e6c3823a842f9846a2e9c3feb7f76de796baddbb0c89b517d69",
+    "research_scout/v98_transcript_roles_20260907.py": "bb3de2ec241538fe5bfe903b3dabf0ab059e02762c26af153cb1d6763b5ce9f2"
+  }
+}
