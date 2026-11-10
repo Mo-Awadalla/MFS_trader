@@ -18,7 +18,7 @@ from data.alpaca_downloader import AlpacaDownloader
 from data.base import BaseDownloader, DownloadRequest
 from data.ccxt_downloader import CCXTDownloader
 from data.resample import resample_to
-from data.validate import QualityResult, validate_ohlcv
+from data.validate import QualityResult, ValidationIssue, validate_ohlcv
 from storage.parquet_io import append_bars, parquet_path, read_bars
 
 log = structlog.get_logger(__name__)
@@ -85,6 +85,13 @@ def download_and_store(
             frequency=data_config.bar_frequency_raw,
             is_live=(environment == "live"),
         )
+        coverage = result.metadata.get("session_coverage")
+        if coverage and not coverage["complete"]:
+            report.add(ValidationIssue(
+                "exchange_session_coverage", QualityResult.FAIL,
+                "Requested equity sessions are incomplete; refusing to publish the cache",
+                coverage,
+            ))
 
         log.info(
             "validated",

@@ -77,8 +77,8 @@ class AlpacaHistoricalL1Client:
         parsed_url = urlparse(self._data_url)
         if parsed_url.scheme != "https" or parsed_url.netloc != "data.alpaca.markets":
             raise ValueError("data_url must be https://data.alpaca.markets")
-        if feed != "iex":
-            raise ValueError("This feasibility client is restricted to the free IEX feed")
+        if feed not in {"iex", "sip"}:
+            raise ValueError("Historical Level-1 client supports only IEX or delayed SIP")
         self._feed = feed
         self._session = session or _retrying_session()
         self._max_total_bytes = max_total_bytes
@@ -138,6 +138,8 @@ class AlpacaHistoricalL1Client:
         end_ts = _utc_timestamp(end)
         if start_ts >= end_ts:
             raise ValueError("start must be earlier than end")
+        if self._feed == "sip" and end_ts > pd.Timestamp.now(tz="UTC") - pd.Timedelta(minutes=15):
+            raise ValueError("Free SIP historical requests must end at least 15 minutes ago")
 
         url = f"{self._data_url}/v2/stocks/{normalized_symbol}/{event_type}"
         page_token: str | None = None
@@ -218,7 +220,11 @@ class AlpacaHistoricalL1Client:
         metadata = {
             "provider": "alpaca",
             "feed": self._feed,
-            "feed_scope": "IEX venue-local Level 1; not consolidated SIP/NBBO",
+            "feed_scope": (
+                "IEX venue-local Level 1; not consolidated SIP/NBBO"
+                if self._feed == "iex"
+                else "historical consolidated SIP Level 1; delayed at least 15 minutes"
+            ),
             "event_type": event_type,
             "symbol": normalized_symbol,
             "requested_start": start_ts.isoformat(),

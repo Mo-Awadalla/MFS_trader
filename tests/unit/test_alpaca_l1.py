@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 
+import pandas as pd
 import pytest
 import responses
 from responses import matchers
@@ -122,3 +123,10 @@ def test_repeated_page_token_is_rejected():
             page_size=1,
             max_pages=3,
         )
+
+
+def test_free_sip_path_rejects_recent_requests_before_network():
+    client = AlpacaHistoricalL1Client(api_key="key", api_secret="secret", feed="sip")
+    now = pd.Timestamp.now(tz="UTC")
+    with pytest.raises(ValueError, match="at least 15 minutes ago"):
+        client.download_quotes("AAPL", now - pd.Timedelta(minutes=1), now)

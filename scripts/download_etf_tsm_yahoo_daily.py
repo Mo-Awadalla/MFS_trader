@@ -8,15 +8,16 @@ from __future__ import annotations
 
 import argparse
 import sys
-import time
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 import pandas as pd
 import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from data.equity_contract import equity_request_bounds, equity_session_coverage
 from data.validate import QualityResult, validate_ohlcv
 from research.universes.etf_tactical_v1 import all_symbols
 from storage.parquet_io import append_bars, parquet_path
@@ -31,9 +32,10 @@ def _epoch_seconds(date_text: str) -> int:
 
 
 def _download_yahoo_chart(symbol: str, start: str, end: str | None) -> pd.DataFrame:
+    first, last = equity_request_bounds(start, end)
     params: dict[str, Any] = {
-        "period1": _epoch_seconds(start),
-        "period2": _epoch_seconds(end) if end else int(time.time()),
+        "period1": int(first.timestamp()),
+        "period2": (last.value + 1_000_000_000 - 1) // 1_000_000_000,
         "interval": "1d",
         "events": "history|div|split",
         "includeAdjustedClose": "true",
@@ -53,7 +55,12 @@ def _download_yahoo_chart(symbol: str, start: str, end: str | None) -> pd.DataFr
     results = chart.get("result") or []
     if not results:
         raise RuntimeError(f"Yahoo chart returned no result for {symbol}")
-    return _parse_yahoo_chart_result(results[0], symbol)
+    frame = _parse_yahoo_chart_result(results[0], symbol)
+    coverage = equity_session_coverage(frame, first, last, "1d")
+    if not coverage["complete"]:
+        raise RuntimeError(f"Yahoo {symbol}: incomplete exchange sessions: {coverage['incomplete_sessions']}")
+    frame.attrs["session_coverage"] = coverage
+    return frame
 
 
 def _parse_yahoo_chart_result(result: dict[str, Any], symbol: str) -> pd.DataFrame:
@@ -74,10 +81,18 @@ def _parse_yahoo_chart_result(result: dict[str, Any], symbol: str) -> pd.DataFra
             "volume": quote.get("volume"),
         }
     )
-    if adjclose_list:
-        raw["adj_close"] = adjclose_list[0].get("adjclose")
-    else:
-        raw["adj_close"] = raw["close"]
+    if not adjclose_list or not isinstance(adjclose_list[0].get("adjclose"), list):
+        raise RuntimeError(f"Yahoo {symbol}: adjusted close is required; raw-close fallback is forbidden")
+    adjusted_values = adjclose_list[0]["adjclose"]
+    if len(adjusted_values) != len(timestamps):
+        raise RuntimeError(f"Yahoo {symbol}: adjusted-close length mismatch")
+    raw["adj_close"] = pd.to_numeric(adjusted_values, errors="coerce")
+    required = raw[["open", "high", "low", "close"]].notna().all(axis=1)
+    valid_adjusted = np.isfinite(raw["adj_close"]) & raw["adj_close"].gt(0)
+    if (required & ~valid_adjusted).any():
+        raise RuntimeError(f"Yahoo {symbol}: missing or invalid adjusted close on a priced bar")
+    if (required & raw["close"].le(0)).any():
+        raise RuntimeError(f"Yahoo {symbol}: nonpositive raw close")
 
     raw = raw.dropna(subset=["timestamp", "open", "high", "low", "close", "adj_close"])
     if raw.empty:
@@ -97,6 +112,8 @@ def _parse_yahoo_chart_result(result: dict[str, Any], symbol: str) -> pd.DataFra
     adjusted.index.name = "timestamp"
     adjusted = adjusted.astype(float).sort_index()
     adjusted = adjusted.loc[~adjusted.index.duplicated(keep="last")]
+    adjusted.attrs["price_basis"] = "split_dividend_adjusted"
+    adjusted.attrs["adjusted_close_required"] = True
     return adjusted
 
 
