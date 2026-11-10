@@ -30,8 +30,8 @@ def test_alpaca_downloader_uses_iex_feed_by_default():
             matchers.query_param_matcher(
                 {
                     "timeframe": "1Min",
-                    "start": "2024-01-02T00:00:00+00:00",
-                    "end": "2024-01-03T00:00:00+00:00",
+                    "start": "2024-01-02T05:00:00+00:00",
+                    "end": "2024-01-04T04:59:59.999999999+00:00",
                     "limit": "10000",
                     "adjustment": "all",
                     "feed": "iex",
@@ -46,11 +46,13 @@ def test_alpaca_downloader_uses_iex_feed_by_default():
             start_date="2024-01-02",
             end_date="2024-01-03",
             frequency="1min",
+            require_complete_sessions=False,
         )
     )
 
     assert result.metadata["feed"] == "iex"
     assert len(result.data) == 1
+    assert not result.metadata["session_coverage"]["complete"]
 
 
 @pytest.mark.parametrize("location", [

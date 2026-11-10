@@ -13,6 +13,7 @@ import pandas as pd
 import requests
 
 from data.base import BaseDownloader, DownloadRequest, DownloadResult
+from data.equity_contract import equity_request_bounds, equity_session_coverage
 
 
 class AlpacaDownloader(BaseDownloader):
@@ -61,8 +62,7 @@ class AlpacaDownloader(BaseDownloader):
             raise RuntimeError("Alpaca API credentials not configured")
 
         timeframe = self._freq_to_alpaca(request.frequency)
-        start = pd.Timestamp(request.start_date, tz="UTC")
-        end = pd.Timestamp(request.end_date, tz="UTC") if request.end_date else pd.Timestamp.now(tz="UTC")
+        start, end = equity_request_bounds(request.start_date, request.end_date)
 
         all_bars: list[dict[str, Any]] = []
         next_page_token: str | None = None
@@ -107,6 +107,16 @@ class AlpacaDownloader(BaseDownloader):
             df = df.set_index("timestamp").sort_index()
             df = df.astype(float)
 
+        if not df.empty and ((df.index < start) | (df.index > end)).any():
+            raise ValueError("Provider returned bars outside the requested bounds")
+        coverage = equity_session_coverage(df, start, end, request.frequency)
+        if request.require_complete_sessions and not coverage["complete"]:
+            raise ValueError(
+                "Incomplete requested equity sessions "
+                f"({coverage['missing_bars']} missing bars across "
+                f"{len(coverage['incomplete_sessions'])} sessions)"
+            )
+
         return DownloadResult(
             symbol=request.symbol,
             source=self.source_name,
@@ -118,5 +128,7 @@ class AlpacaDownloader(BaseDownloader):
                 "bar_count": len(df),
                 "start": str(start),
                 "end": str(end),
+                "date_bounds_contract": "Date-only values are inclusive New York dates; explicit timestamps are inclusive instants",
+                "session_coverage": coverage,
             },
         )

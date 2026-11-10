@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from data.alpaca_downloader import AlpacaDownloader
 from data.base import DownloadRequest
+from data.equity_contract import equity_request_bounds, equity_session_coverage
 from experiments.artifacts import ArtifactManager
 from experiments.models import DuplicateExperimentError
 from experiments.registry import ExperimentRegistry
@@ -63,6 +64,13 @@ def load_or_download(symbol: str, downloader: AlpacaDownloader, refresh: bool = 
     path = cache_path(symbol)
     if path.exists() and not refresh:
         df = read_bars(path)
+        first, last = equity_request_bounds(START, END)
+        coverage = equity_session_coverage(df, first, last, "1h")
+        if not coverage["complete"]:
+            raise ValueError(
+                f"Cached {symbol} is incomplete for the requested sessions; "
+                f"{coverage['missing_bars']} missing bars. Preserve this cache and repair a new data version."
+            )
         print(f"cache {symbol:5s} bars={len(df):6d} start={df.index.min()} end={df.index.max()}")
         return df
 

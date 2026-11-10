@@ -12,9 +12,10 @@ import pandas as pd
 @dataclass
 class DownloadRequest:
     symbol: str
-    start_date: str  # ISO date
+    start_date: str  # Equity: New York date or an explicit timestamp.
     end_date: str | None = None
     frequency: str = "1min"
+    require_complete_sessions: bool = True  # Equity only; partial requests are reported separately.
 
 
 @dataclass

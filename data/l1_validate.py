@@ -212,7 +212,7 @@ def validate_quotes(
         report.add(
             "quote_market_state",
             QualityResult.WARN,
-            f"Observed {locked_count} locked and {crossed_count} crossed IEX quotes",
+            f"Observed {locked_count} locked and {crossed_count} crossed quotes",
             {"locked": locked_count, "crossed": crossed_count},
         )
     if exact_duplicates:
