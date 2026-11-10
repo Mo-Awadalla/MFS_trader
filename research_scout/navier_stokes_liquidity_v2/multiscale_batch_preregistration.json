@@ -1,0 +1,40 @@
+{
+  "frozen_before_result": true,
+  "created_at": "2026-09-13",
+  "status": "exploratory_reuse_of_seen_clean_day_not_confirmation_or_trading_approval",
+  "hypotheses": [3, 6, 7, 16, 25, 27, 28, 29, 30, 93, 94],
+  "sources": [
+    "Tardis binance-futures book_snapshot_25 BTCUSDT 2020-09-01",
+    "Tardis binance-futures trades BTCUSDT 2020-09-01"
+  ],
+  "paid_requests_permitted": false,
+  "sampling": {
+    "decision_interval_seconds": 10,
+    "primary_future_outcome_seconds": 60,
+    "lead_time_outcomes_seconds": [10, 30, 60],
+    "split": [0.6, 0.2, 0.2],
+    "jump_threshold": "training-only 95th percentile at each horizon"
+  },
+  "locked_features": {
+    "h3_higher_norms": "L4/L2, L8/L2, L16/L2 and Linfinity/L2 of 50-cell local impact susceptibility, where each cell is absolute adjacent price distance in bps divided by displayed BTC",
+    "h6_h94_power_law": "five-minute trailing log-linear fits of 5-BTC sweep cost to A(T-t)^(-alpha), searching prospective T in 10,20,30,60,120,300 seconds; score is positive alpha times R-squared divided by T",
+    "h7_self_similarity": "negative trailing 60-second mean Euclidean change in profiles interpolated after price-width and total-depth normalization",
+    "h16_lead_time": "out-of-sample incremental average precision of higher-norm and gradient features beyond spread, depth, imbalance, realized volatility, activity and signed flow at 10, 30 and 60 seconds",
+    "h25_microbursts": "negative OLS slope of log inter-trade intervals over the most recent 50 trades",
+    "h27_fine_to_coarse": "log ratio of within-bin 100ms trade-price realized variance to squared 10-second trade-price return",
+    "h28_wavelet": "high-to-low Haar energy ratio over trailing 64 one-second signed-flow observations",
+    "h29_multifractal": "absolute difference between q=1 and q=4 generalized scaling exponents estimated at 1,2,4,8-second aggregation over a trailing five-minute window",
+    "h30_cross_scale": "trailing 60-second correlation between absolute one-second signed flow and absolute ten-second rolling signed flow",
+    "h93_regularity": "trailing 60-second integral of local gradient maximum; safe threshold is its training-only 20th percentile",
+    "h94_critical_time": "power-law score and fitted prospective critical time, evaluated without future inputs"
+  },
+  "baseline_features": [
+    "spread_bps", "total_depth", "imbalance", "realized_vol_60s",
+    "event_rate", "trade_count", "trade_volume", "signed_trade_imbalance"
+  ],
+  "primary_gate": "augmented test average-precision improvement greater than 0.02 and positive Brier improvement",
+  "targeted_gate": "positive Spearman correlation and strictly positive 95% interval for high-minus-low future excursion using 10-minute test blocks and 1000 deterministic bootstrap resamples",
+  "h3_gate": "higher-p norm ratios must show non-decreasing incremental average precision at both 30 and 60 seconds and the Linfinity ratio must improve over baseline at 10 seconds",
+  "h93_gate": "test jump rate in the training-defined safe region at most one quarter of the unsafe rate and Wilson 95% upper bound below the overall test event rate",
+  "interpretation": "Because this day has already been inspected, any positive finding is hypothesis generation only and requires a new untouched whole-day replication. A negative result rejects only these locked implementations."
+}

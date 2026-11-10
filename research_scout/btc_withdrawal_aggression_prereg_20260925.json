@@ -1,0 +1,50 @@
+{
+  "id": "BTCUSDT-BBO-Withdrawal-and-Aggression-v1",
+  "frozen_before_future_return_calculation": true,
+  "status": "exploratory_historical_test",
+  "source": "17 ordered BTCUSDT USD-M futures bookTicker and aggTrades days admitted by btc_microstructure_admission_20260925.json",
+  "interpretation": "Tests BBO withdrawal and taker-flow information. Does not identify cancellations, forced liquidations, or global BTC liquidity.",
+  "splits": {
+    "train": ["2023-08-15", "2023-09-15", "2023-10-15", "2023-11-15", "2023-12-15"],
+    "validation_diagnostics_only": ["2024-01-15", "2024-01-21", "2024-01-28", "2024-01-31"],
+    "historical_test": ["2024-03-03", "2024-03-06", "2024-03-10", "2024-03-15", "2024-03-17", "2024-03-20", "2024-03-24", "2024-03-27"]
+  },
+  "clock": {
+    "timezone": "UTC",
+    "decisions": "one per minute at second 00, starting 00:02 and ending 23:58",
+    "book_state": "latest BBO by event_time <= decision; ignore rows outside the archive UTC date",
+    "trade_state": "aggregate trades with transact_time in [decision-30s, decision)",
+    "features": "all quote and trade observations at or before decision; no same-second trades after decision",
+    "label": "midpoint at decision+60s versus midpoint at decision",
+    "quote_freshness": "book event age <= 1s at decision, decision-30s, decision-60s, decision+60s, entry, and exit",
+    "execution": "enter at decision+1s quote and exit at decision+61s quote; both require event age <= 1s"
+  },
+  "features": {
+    "shared_baseline": ["prior_mid_return_30s", "prior_abs_mid_return_60s", "current_spread_bps", "log_current_touch_depth", "current_depth_imbalance", "log_30s_taker_notional", "log_30s_book_update_count"],
+    "withdrawal_increment": ["negative_log_touch_depth_change_30s", "spread_change_bps_30s"],
+    "aggression_increment": ["signed_taker_notional_imbalance_30s"]
+  },
+  "withdrawal_test": {
+    "outcome": "next-60s absolute midpoint return exceeds the training-only 90th percentile",
+    "model": "standardized logistic regression, L2 C=1, class_weight=None, fixed seed 19",
+    "primary_metric": "historical-test average precision increment over shared baseline",
+    "secondary_metric": "Brier score increment; date-level average precision increments",
+    "pass_gate": "AP improvement > 0.02, Brier no worse, and positive AP increment on at least 6 of 8 historical-test dates"
+  },
+  "aggression_test": {
+    "outcome": "sign of next-60s midpoint return, excluding exact ties",
+    "model": "standardized logistic regression, L2 C=1, class_weight=None, fixed seed 19",
+    "primary_metric": "historical-test ROC AUC increment over shared baseline",
+    "secondary_metric": "Brier score increment; date-level AUC increments",
+    "pass_gate": "AUC improvement > 0.01, Brier no worse, and positive AUC increment on at least 6 of 8 historical-test dates"
+  },
+  "execution_diagnostic": {
+    "policy": "always choose direction from augmented aggressive-flow model probability >= 0.5, one decision per minute",
+    "entry": "buy at ask or sell at bid of fresh quote at decision+1s",
+    "exit": "sell at bid or buy at ask of fresh quote at decision+61s",
+    "fees": "subtract 5 bps per side from crossing return; extra stress subtracts another 5 bps per side",
+    "not_a_promotion_gate": "reported to distinguish information from executable value; no passive fills assumed"
+  },
+  "controls": ["same baseline with no withdrawal or aggression feature", "date-blocked split", "no parameter or horizon selection on validation/test", "binomial direction baseline", "same-day label eligibility and quote-freshness counts"],
+  "caveat": "All dates are historical and related BTC microstructure outcomes have been studied in this repository; even a passing result would need prospective confirmation."
+}

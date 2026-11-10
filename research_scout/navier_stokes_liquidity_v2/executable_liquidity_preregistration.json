@@ -1,0 +1,39 @@
+{
+  "frozen_before_result": true,
+  "created_at": "2026-09-13",
+  "status": "exploratory_single_clean_day_not_trading_approval",
+  "sources": {
+    "snapshot": "Tardis binance-futures book_snapshot_25 BTCUSDT 2020-09-01",
+    "trades": "Tardis binance-futures trades BTCUSDT 2020-09-01",
+    "paid_requests_permitted": false
+  },
+  "sampling": {
+    "decision_interval_seconds": 10,
+    "future_outcome_seconds": 60,
+    "split": [0.6, 0.2, 0.2],
+    "jump_threshold": "training-only 95th percentile of future maximum absolute midpoint excursion"
+  },
+  "baseline_features": [
+    "spread_bps", "total_depth", "imbalance", "realized_vol_60s",
+    "event_rate", "trade_count", "trade_volume", "signed_trade_imbalance"
+  ],
+  "corrected_features": {
+    "near_touch": "minimum displayed bid/ask quantity within 1, 2, 5, and 10 bps, sign-oriented as scarcity",
+    "sweep": "mean absolute buy/sell VWAP displacement for fixed 1, 3, and 5 BTC market orders",
+    "convexity": "change in sweep-cost slope from 1-3 BTC to 3-5 BTC",
+    "recovery": "current recovery from the trailing 60-second minimum in 5-bps minimum-side depth, sign-oriented as slow recovery",
+    "small_trade_amplification": "volume of individual trades no larger than 0.1 BTC divided by 5-bps minimum-side depth",
+    "flow_cost_interaction": "absolute signed trade volume multiplied by 5-BTC sweep cost"
+  },
+  "primary_gate": {
+    "test_average_precision_increment_strictly_greater_than": 0.02,
+    "test_brier_improvement_strictly_greater_than": 0.0
+  },
+  "targeted_tests": {
+    "orientation": "higher feature value means higher predicted future excursion",
+    "quantiles": "training-only 20th and 80th percentiles",
+    "dependence_control": "10-minute test blocks and 1000 deterministic block-bootstrap resamples",
+    "support_rule": "positive Spearman rho and strictly positive 95% block-bootstrap interval"
+  },
+  "interpretation": "One day can reject this implementation but cannot establish a deployable alpha. A pass requires another untouched whole-day replication. A failure closes this measurement-correction branch."
+}

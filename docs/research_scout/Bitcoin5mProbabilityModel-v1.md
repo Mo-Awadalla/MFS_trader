@@ -1,5 +1,8 @@
 # Bitcoin 5m Probability Model v1
 
+This experiment is preserved as legacy evidence. The repaired successor is documented in
+[Bitcoin5mExchangeModel-v2.md](Bitcoin5mExchangeModel-v2.md). The usual runner retains v1. Use `--exchange-v2` with a fresh output directory for the repaired model.
+
 ## Scope
 
 This is a research-only probability model for the next BTCUSDT perpetual five-minute bar. It estimates:

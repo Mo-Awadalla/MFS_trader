@@ -1,0 +1,20 @@
+{
+  "scope": "Audit of existing Bitcoin five-minute probability model; no orders or model promotion",
+  "date": "2026-09-30",
+  "sources": "Existing original 2020-2025 archives and previously acquired Jan-Aug 2026 archives; no new data acquisition",
+  "preservation": "Original source, model, predictions, panel, and prior experiment results remain unchanged",
+  "checks": ["causal feature perturbation", "tie-dependent decision eligibility", "gap lookback integrity", "input validation robustness", "source reproduction", "coverage", "base versus calibrated quality", "fine calibration buckets", "feature coefficients and dependence", "daily and monthly stability", "payoff asymmetry", "frozen feature-group mean replacement"],
+  "uncertainty": {"method": "circular seven-calendar-day bootstrap", "samples": 2000, "seed": 93027},
+  "audit_refits": {
+    "purpose": "Diagnose model age using two predetermined expanding-window refits; historical diagnostics, not independent confirmation or a strategy search",
+    "parameters": "Identical original 15 features, standardized logistic C=0.1, separate Platt C=1, seed42",
+    "runs": [
+      {"training_end": "2024-06-30", "calibration_start": "2024-07-01", "calibration_end": "2024-12-31", "evaluation": "2025"},
+      {"training_end": "2025-06-30", "calibration_start": "2025-07-01", "calibration_end": "2025-12-31", "evaluation": "2026-01-01 through 2026-08-31"}
+    ],
+    "ties": "Train/calibrate on original non-tie binary definition; evaluation predicts every causally eligible decision and accounts for zero-return ties",
+    "threshold": "Fixed long >=0.55, short <=0.45; no threshold optimization",
+    "economics": "Reuse prior fixed-horizon ledger with Binance bar-reference prices, funding, and 0/2/4/6bps round-trip sensitivities"
+  },
+  "limits": "All historical data are already exposed. Audit comparisons diagnose flaws and cannot establish a deployable or independently confirmed profitable model. Group mean replacement is a sensitivity diagnostic rather than retrained feature ablation. Actual publication latency and executable order books are unavailable."
+}

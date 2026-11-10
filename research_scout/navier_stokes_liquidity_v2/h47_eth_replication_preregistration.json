@@ -1,0 +1,28 @@
+{
+  "frozen_before_acquisition_and_results": true,
+  "created_at": "2026-09-13",
+  "status": "cross_symbol_replication_of_h47_not_live_execution_approval",
+  "hypothesis": 47,
+  "source": "Official Binance USD-M ETHUSDT bookTicker and aggTrades archives",
+  "paid_requests_permitted": false,
+  "dates": {
+    "training": ["2023-08-15", "2023-09-15", "2023-10-15", "2023-11-15"],
+    "validation": ["2023-12-15", "2024-01-15"],
+    "untouched_holdout": ["2024-02-15", "2024-03-15"]
+  },
+  "fill_and_markout": "unchanged conservative touch-qualified passive fill and mean 10-second BBO midpoint markout per bin",
+  "candidate": "six-bin mean of conventional-model absolute errors, lagged one bin so every component outcome is observable",
+  "competing_controls": [
+    "six-bin mean absolute passive markout lagged one bin",
+    "current trailing 60-second midpoint volatility",
+    "spread, displayed depth, imbalance, trade volume, signed trade imbalance and BBO event rate"
+  ],
+  "cross_fitting": "training-date conventional residuals are generated leave-one-training-day-out; validation and holdout residuals use a conventional model fit only on all four training dates",
+  "excess_residual": "lagged model-error signal minus a nonlinear training-fitted expectation using lagged absolute markout, volatility and conventional state",
+  "primary_gate": [
+    "validation-fixed top-versus-bottom excess-residual quintiles have negative high-minus-low holdout markout with a two-date cluster interval strictly below zero",
+    "both holdout dates have negative high-minus-low markout",
+    "adding lagged and excess model-error signals improves holdout MAE by at least 2% beyond the competing-control model"
+  ],
+  "interpretation": "A pass supports persistent model error beyond simple markout/volatility clustering, but remains a hypothetical-fill mechanism result rather than achievable PnL."
+}

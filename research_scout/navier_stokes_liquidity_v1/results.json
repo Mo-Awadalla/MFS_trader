@@ -1,0 +1,107 @@
+{
+  "created_at_utc": "2026-09-13T18:21:47.462131+00:00",
+  "status": "feasibility_only_not_trading_approval",
+  "source": "external_artifacts/databento_cash_etf_mbp1_open_v55/EQUS.MINI/mbp-1",
+  "files_requested": 806,
+  "panel_rows": 4657,
+  "sessions": 806,
+  "symbols": [
+    "SDS",
+    "SH",
+    "SPXU",
+    "SPY",
+    "SSO",
+    "UPRO"
+  ],
+  "rows_by_symbol": {
+    "SDS": 801,
+    "SH": 806,
+    "SPXU": 805,
+    "SPY": 782,
+    "SSO": 721,
+    "UPRO": 742
+  },
+  "signal_window_et": "09:25:00-09:29:59",
+  "outcome_window_et": "09:30:00-09:34:59",
+  "baseline_features": [
+    "spread_bps_mean",
+    "spread_bps_last",
+    "top_depth_mean",
+    "top_depth_min",
+    "top_imbalance_mean",
+    "top_imbalance_last",
+    "pre_realized_vol_bps",
+    "gross_trade_volume",
+    "signed_trade_imbalance",
+    "event_rate_per_second"
+  ],
+  "concentration_proxy_features": [
+    "u_linf_l2",
+    "u_l4_l2",
+    "u_l8_l2",
+    "u_shear_max",
+    "u_enstrophy",
+    "u_core_fraction",
+    "max_price_sensitivity",
+    "gross_to_net_flow",
+    "opposing_flow_stress",
+    "spectral_cascade_ratio",
+    "reynolds_proxy"
+  ],
+  "important_scope_limit": "MBP-1 is top-of-book; price-space gradients and full-depth core width are not tested.",
+  "temporal_folds": [
+    {
+      "train_through": 2024,
+      "test_year": 2025,
+      "train_rows": 2664,
+      "test_rows": 1321,
+      "jump_threshold_bps_from_training_only": 49.33810489022687,
+      "test_event_rate": 0.1809235427706283,
+      "models": {
+        "baseline": {
+          "average_precision": 0.48935579082737124,
+          "roc_auc": 0.8370907740972474,
+          "brier": 0.1983318096823952
+        },
+        "baseline_plus_concentration": {
+          "average_precision": 0.488215485872004,
+          "roc_auc": 0.8332005661296684,
+          "brier": 0.19823009501982214
+        }
+      },
+      "incremental": {
+        "average_precision": -0.0011403049553672662,
+        "roc_auc": -0.003890207967578996,
+        "brier_improvement": 0.00010171466257305473
+      }
+    },
+    {
+      "train_through": 2025,
+      "test_year": 2026,
+      "train_rows": 3985,
+      "test_rows": 672,
+      "jump_threshold_bps_from_training_only": 54.359781784611826,
+      "test_event_rate": 0.12202380952380952,
+      "models": {
+        "baseline": {
+          "average_precision": 0.4153780004196366,
+          "roc_auc": 0.8310458867300539,
+          "brier": 0.22521266070990073
+        },
+        "baseline_plus_concentration": {
+          "average_precision": 0.3870816569415486,
+          "roc_auc": 0.8152749069863581,
+          "brier": 0.21415984474362465
+        }
+      },
+      "incremental": {
+        "average_precision": -0.02829634347808796,
+        "roc_auc": -0.01577097974369579,
+        "brier_improvement": 0.01105281596627608
+      }
+    }
+  ],
+  "weighted_average_precision_increment": -0.010296781567142633,
+  "primary_gate_passed": false,
+  "verdict": "FAIL_STAGE_1_NO_INCREMENTAL_JUMP_RANKING_VALUE"
+}

@@ -1,0 +1,15 @@
+{
+  "status": "PASS audit evidence reconciled",
+  "checks": [
+    "Original predictions reproduced to less than 1e-10 maximum absolute error",
+    "All original causal feature values reproduced to 1e-12",
+    "Scaler mean exactly equals the training-only mean",
+    "Price and metric future perturbation checks passed",
+    "Future-dependent tie eligibility reproduced",
+    "Long-window gap and invalid-bar validator weaknesses reproduced",
+    "Three missing-metric raw source archives verified against official SHA256",
+    "Both diagnostic refits have strictly ordered train/calibration/evaluation dates",
+    "Original model unit test passed: 1 test; cache-write warning did not affect assertion execution",
+    "All original model and previous exchange experiment source hashes remain unchanged"
+  ]
+}

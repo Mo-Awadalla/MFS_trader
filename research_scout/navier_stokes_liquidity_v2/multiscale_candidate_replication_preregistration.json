@@ -1,0 +1,17 @@
+{
+  "frozen_before_result": true,
+  "created_at": "2026-09-13",
+  "status": "exploratory_replication_on_pre_quality_cutoff_day_not_trading_approval",
+  "source": "Tardis binance-futures BTCUSDT trades and reconstructed incremental L2, 2020-02-01",
+  "known_limitation": "date precedes Tardis 2020-05-14 collection-quality cutoff",
+  "paid_requests_permitted": false,
+  "candidates_frozen_from_2020_09_01": {
+    "h28": "high-to-low Haar energy ratio over trailing 64 one-second signed-flow observations",
+    "h30": "trailing 60-second correlation between absolute one-second signed flow and absolute ten-second rolling signed flow"
+  },
+  "sampling": "10-second observations, 60-second maximum midpoint excursion, contiguous 60/20/20 split, training-only 95th percentile jump threshold",
+  "baseline": "spread, total depth, imbalance, realized volatility, event rate, trade count, trade volume, signed trade imbalance",
+  "individual_replication_gate": "positive Spearman correlation and strictly positive 95% high-minus-low excursion interval over 10-minute test blocks",
+  "combined_gate": "test average-precision improvement greater than 0.02 and positive Brier improvement",
+  "interpretation": "Survival is only evidence to acquire a clean untouched day; failure removes the candidate."
+}

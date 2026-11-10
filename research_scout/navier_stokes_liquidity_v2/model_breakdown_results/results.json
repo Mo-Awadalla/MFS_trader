@@ -1,0 +1,99 @@
+{
+  "created_at_utc": "2026-09-13T20:31:51.272262+00:00",
+  "status": "exploratory_test_of_operational_model_error_not_evidence_of_market_beliefs",
+  "hypotheses_tested": [
+    46,
+    47,
+    48,
+    50
+  ],
+  "hypothesis_49": "not_testable_with_free_aggregate_data",
+  "paid_requests_made": false,
+  "rows": {
+    "train": 5181,
+    "validation": 1727,
+    "test": 1727
+  },
+  "metrics": {
+    "validation": {
+      "parametric": {
+        "mae": 3.5831625344395457,
+        "rmse": 11.451848146196959,
+        "mean_underprediction": 1.4119983278624246,
+        "tail_mae_top_actual_decile": 10.97570867797114
+      },
+      "nonlinear_regular": {
+        "mae": 3.220750373785215,
+        "rmse": 4.798573319391214,
+        "mean_underprediction": 1.6728771673913332,
+        "tail_mae_top_actual_decile": 10.878530186757573
+      },
+      "breakdown": {
+        "mae": 3.224397364943686,
+        "rmse": 4.819575058593206,
+        "mean_underprediction": 1.7463906104853828,
+        "tail_mae_top_actual_decile": 11.078592581687762
+      }
+    },
+    "test": {
+      "parametric": {
+        "mae": 2.987123508040101,
+        "rmse": 4.429083029571551,
+        "mean_underprediction": 1.4333947711932096,
+        "tail_mae_top_actual_decile": 10.470064681364645
+      },
+      "nonlinear_regular": {
+        "mae": 2.941432874029599,
+        "rmse": 4.312714140364645,
+        "mean_underprediction": 1.4257754954852355,
+        "tail_mae_top_actual_decile": 10.427434986400351
+      },
+      "breakdown": {
+        "mae": 3.1582058276834637,
+        "rmse": 4.356546019210177,
+        "mean_underprediction": 0.6195323838900957,
+        "tail_mae_top_actual_decile": 9.870973027072697
+      }
+    }
+  },
+  "breakdown_relative_mae_improvement_vs_nonlinear_regular": -0.07369637960049642,
+  "disagreement_tests": {
+    "validation_low_cutoff": 0.16584869052825546,
+    "validation_high_cutoff": 1.0058211706541584,
+    "h46_h50_conventional_error_high_minus_low": {
+      "mean": -0.30850995549049465,
+      "block_bootstrap_95pct_ci": [
+        -1.2406799957504497,
+        0.4684345652148968
+      ],
+      "eligible_blocks": 22,
+      "spearman_disagreement_vs_regular_error": 0.010199986073844853,
+      "naive_p_not_independence_adjusted": 0.6718671364645263
+    },
+    "h48_breakdown_advantage_high_minus_low": {
+      "mean": -0.17256137479247102,
+      "block_bootstrap_95pct_ci": [
+        -0.5501672807517192,
+        0.2676942669243129
+      ],
+      "eligible_blocks": 22
+    }
+  },
+  "h47_lagged_residual_test": {
+    "mean": 0.1007297383580626,
+    "block_bootstrap_95pct_ci": [
+      -1.4269160680715378,
+      1.5920661392043145
+    ],
+    "eligible_blocks": 20,
+    "validation_low_cutoff": 1.492383412160038,
+    "validation_high_cutoff": 4.448955263696163,
+    "spearman_rho_test": 0.13048708141077103,
+    "naive_p_not_independence_adjusted": 5.267604036299476e-08,
+    "supported": false
+  },
+  "validation_95pct_catastrophic_underprediction_bps": 9.435975936180544,
+  "disagreement_average_precision_for_test_catastrophic_underprediction": 0.06786686262638522,
+  "primary_gate_passed": false,
+  "verdict": "OPERATIONAL_WRONG_ASSUMPTION_TEST_FAILED"
+}

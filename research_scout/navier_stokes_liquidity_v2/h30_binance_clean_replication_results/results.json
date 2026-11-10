@@ -1,0 +1,58 @@
+{
+  "created_at_utc": "2026-09-13T20:07:24.667629+00:00",
+  "status": "clean_independent_date_replication_but_not_pristine_dataset_blindness",
+  "hypothesis": 30,
+  "paid_requests_made": false,
+  "rows": {
+    "panel": 8640,
+    "train": 5181,
+    "validation": 1727,
+    "test": 1727
+  },
+  "jump_threshold_bps": 11.860909164251364,
+  "models": {
+    "baseline": {
+      "validation": {
+        "average_precision": 0.32043050635489606,
+        "roc_auc": 0.758025716746647,
+        "brier": 0.3080245473861243
+      },
+      "test": {
+        "average_precision": 0.15183668272930864,
+        "roc_auc": 0.5603676093558947,
+        "brier": 0.25150070607471925
+      }
+    },
+    "augmented": {
+      "validation": {
+        "average_precision": 0.3194579404295542,
+        "roc_auc": 0.7569275255321767,
+        "brier": 0.3077139359861228
+      },
+      "test": {
+        "average_precision": 0.1518372183142851,
+        "roc_auc": 0.5620991598627381,
+        "brier": 0.25190256849922704
+      }
+    }
+  },
+  "test_incremental": {
+    "average_precision": 5.355849764521192e-07,
+    "roc_auc": 0.0017315505068433712,
+    "brier_improvement": -0.00040186242450779286
+  },
+  "incremental_model_gate_passed": false,
+  "targeted_test": {
+    "spearman_rho_test": 0.027393347678575937,
+    "naive_p_not_independence_adjusted": 0.2552124400704731,
+    "high_minus_low_excursion_bps": 0.1457342307332388,
+    "block_bootstrap_95pct_ci": [
+      -0.8115763657981273,
+      1.0270152764962992
+    ],
+    "eligible_blocks": 29,
+    "replicated": false
+  },
+  "h30_clean_date_replicated": false,
+  "verdict": "H30_REJECTED"
+}

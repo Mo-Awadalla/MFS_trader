@@ -1,0 +1,45 @@
+{
+  "created_at_utc": "2026-09-13T18:14:30.227798+00:00",
+  "status": "feasibility_only_not_trading_approval",
+  "source": "external_artifacts/databento_cash_etf_mbp1_open_v55/EQUS.MINI/mbp-1",
+  "files_requested": 10,
+  "panel_rows": 60,
+  "sessions": 10,
+  "symbols": [
+    "SDS",
+    "SH",
+    "SPXU",
+    "SPY",
+    "SSO",
+    "UPRO"
+  ],
+  "signal_window_et": "09:25:00-09:29:59",
+  "outcome_window_et": "09:30:00-09:34:59",
+  "baseline_features": [
+    "spread_bps_mean",
+    "spread_bps_last",
+    "top_depth_mean",
+    "top_depth_min",
+    "top_imbalance_mean",
+    "top_imbalance_last",
+    "pre_realized_vol_bps",
+    "gross_trade_volume",
+    "signed_trade_imbalance",
+    "event_rate_per_second"
+  ],
+  "concentration_proxy_features": [
+    "u_linf_l2",
+    "u_l4_l2",
+    "u_l8_l2",
+    "u_shear_max",
+    "u_enstrophy",
+    "u_core_fraction",
+    "max_price_sensitivity",
+    "gross_to_net_flow",
+    "opposing_flow_stress",
+    "spectral_cascade_ratio",
+    "reynolds_proxy"
+  ],
+  "important_scope_limit": "MBP-1 is top-of-book; price-space gradients and full-depth core width are not tested.",
+  "temporal_folds": []
+}

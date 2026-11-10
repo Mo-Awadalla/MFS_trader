@@ -1,0 +1,266 @@
+{
+  "created_at_utc": "2026-09-13T22:51:08.503182+00:00",
+  "status": "partial_free_scientific_screen_not_live_trading_approval",
+  "hypotheses": [
+    23,
+    28,
+    30
+  ],
+  "paid_requests_made": false,
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT"
+  ],
+  "dates": {
+    "training": [
+      "2023-08-15",
+      "2023-09-15",
+      "2023-10-15",
+      "2023-11-15"
+    ],
+    "validation": [
+      "2023-12-15",
+      "2024-01-15"
+    ],
+    "holdout": [
+      "2024-01-21",
+      "2024-01-28",
+      "2024-03-03",
+      "2024-03-10",
+      "2024-03-17",
+      "2024-03-24"
+    ]
+  },
+  "rows": {
+    "training": 69008,
+    "validation": 34504,
+    "holdout": 103512
+  },
+  "timestamp_rows_rejected": {
+    "BTCUSDT_2023-08-15": 0,
+    "BTCUSDT_2023-09-15": 0,
+    "BTCUSDT_2023-10-15": 0,
+    "BTCUSDT_2023-11-15": 0,
+    "BTCUSDT_2023-12-15": 0,
+    "BTCUSDT_2024-01-15": 0,
+    "BTCUSDT_2024-01-21": 0,
+    "BTCUSDT_2024-01-28": 0,
+    "BTCUSDT_2024-03-03": 0,
+    "BTCUSDT_2024-03-10": 0,
+    "BTCUSDT_2024-03-17": 0,
+    "BTCUSDT_2024-03-24": 0,
+    "ETHUSDT_2023-08-15": 0,
+    "ETHUSDT_2023-09-15": 0,
+    "ETHUSDT_2023-10-15": 0,
+    "ETHUSDT_2023-11-15": 0,
+    "ETHUSDT_2023-12-15": 0,
+    "ETHUSDT_2024-01-15": 0,
+    "ETHUSDT_2024-01-21": 0,
+    "ETHUSDT_2024-01-28": 0,
+    "ETHUSDT_2024-03-03": 0,
+    "ETHUSDT_2024-03-10": 0,
+    "ETHUSDT_2024-03-17": 0,
+    "ETHUSDT_2024-03-24": 0
+  },
+  "normalization": {
+    "BTCUSDT": {
+      "temporal_median": 7.001851942584012,
+      "temporal_iqr": 1.77050280529508,
+      "spatial_median": 0.003134330217982345,
+      "spatial_iqr": 0.28934672529380334
+    },
+    "ETHUSDT": {
+      "temporal_median": 7.2090544137816845,
+      "temporal_iqr": 1.5590032704033554,
+      "spatial_median": 0.002419334631413112,
+      "spatial_iqr": 0.299804907295393
+    }
+  },
+  "outcome_models": {
+    "future_max_excursion_bps": {
+      "thresholds": {
+        "BTCUSDT": 10.98528155379401,
+        "ETHUSDT": 10.54242429718289
+      },
+      "metrics": {
+        "validation": {
+          "baseline": {
+            "average_precision": 0.19999620908887186,
+            "roc_auc": 0.6475790603400752,
+            "brier": 0.0931802215227374
+          },
+          "main_effects": {
+            "average_precision": 0.2046626983416768,
+            "roc_auc": 0.6608499364436283,
+            "brier": 0.08983009753833157
+          },
+          "interaction": {
+            "average_precision": 0.20599995119396783,
+            "roc_auc": 0.6617545558443985,
+            "brier": 0.09028090115130984
+          }
+        },
+        "test": {
+          "baseline": {
+            "average_precision": 0.3458131184552493,
+            "roc_auc": 0.7287317506869881,
+            "brier": 0.1023659493027242
+          },
+          "main_effects": {
+            "average_precision": 0.35728184219466785,
+            "roc_auc": 0.7465904457745611,
+            "brier": 0.09890858837287102
+          },
+          "interaction": {
+            "average_precision": 0.3601869665459419,
+            "roc_auc": 0.7491695880775716,
+            "brier": 0.09912303693431605
+          }
+        }
+      }
+    },
+    "future_max_spread_widening_bps": {
+      "thresholds": {
+        "BTCUSDT": 0.01394679110055925,
+        "ETHUSDT": 0.021455030983853506
+      },
+      "metrics": {
+        "validation": {
+          "baseline": {
+            "average_precision": 0.17146604294962964,
+            "roc_auc": 0.4308976943805027,
+            "brier": 0.16805073219951394
+          },
+          "main_effects": {
+            "average_precision": 0.17325824342969687,
+            "roc_auc": 0.43229057860782744,
+            "brier": 0.16871255079163913
+          },
+          "interaction": {
+            "average_precision": 0.17457084874048556,
+            "roc_auc": 0.4331550537857283,
+            "brier": 0.1678747399517041
+          }
+        },
+        "test": {
+          "baseline": {
+            "average_precision": 0.2737426257162797,
+            "roc_auc": 0.7217784229776778,
+            "brier": 0.10427474213832554
+          },
+          "main_effects": {
+            "average_precision": 0.2770615972033851,
+            "roc_auc": 0.7258882299033673,
+            "brier": 0.10302665187828101
+          },
+          "interaction": {
+            "average_precision": 0.2850333259150131,
+            "roc_auc": 0.7338449545845549,
+            "brier": 0.1015441141600443
+          }
+        }
+      }
+    },
+    "future_max_touch_depth_depletion": {
+      "thresholds": {
+        "BTCUSDT": 0.3571246935009938,
+        "ETHUSDT": 0.3505804937121279
+      },
+      "metrics": {
+        "validation": {
+          "baseline": {
+            "average_precision": 0.4474461575429047,
+            "roc_auc": 0.8611984227384281,
+            "brier": 0.04827526233494822
+          },
+          "main_effects": {
+            "average_precision": 0.532084561469215,
+            "roc_auc": 0.8939975783264802,
+            "brier": 0.04222744994090857
+          },
+          "interaction": {
+            "average_precision": 0.5367772815534927,
+            "roc_auc": 0.8948192107399106,
+            "brier": 0.0419856436244555
+          }
+        },
+        "test": {
+          "baseline": {
+            "average_precision": 0.4232783789548387,
+            "roc_auc": 0.8598449409088459,
+            "brier": 0.041814071628857995
+          },
+          "main_effects": {
+            "average_precision": 0.4705018163688747,
+            "roc_auc": 0.8876641130443589,
+            "brier": 0.03994914657207201
+          },
+          "interaction": {
+            "average_precision": 0.4716839288985813,
+            "roc_auc": 0.8870987258780627,
+            "brier": 0.03986307372543179
+          }
+        }
+      }
+    }
+  },
+  "primary_interaction_over_main_effect_increment": {
+    "average_precision": 0.0029051243512740466,
+    "brier_improvement": -0.00021444856144503532,
+    "roc_auc": 0.0025791423030104843
+  },
+  "validation_joint_cutoffs": {
+    "low_20pct": 0.0,
+    "high_80pct": 0.0038443577805565756
+  },
+  "holdout_joint_cascade_effect": {
+    "mean": -0.569978305893518,
+    "block_bootstrap_95pct_ci": [
+      -0.8607295386837027,
+      -0.2569060703464559
+    ],
+    "eligible_blocks": 6,
+    "by_date": {
+      "2024-01-21": {
+        "high_minus_low_excursion_bps": -0.00898392564064654,
+        "low_bins": 12794,
+        "high_bins": 4344
+      },
+      "2024-01-28": {
+        "high_minus_low_excursion_bps": -0.2712578813493103,
+        "low_bins": 13412,
+        "high_bins": 3688
+      },
+      "2024-03-03": {
+        "high_minus_low_excursion_bps": -0.8155104292139521,
+        "low_bins": 14208,
+        "high_bins": 2925
+      },
+      "2024-03-10": {
+        "high_minus_low_excursion_bps": -0.8057974360760207,
+        "low_bins": 13927,
+        "high_bins": 3209
+      },
+      "2024-03-17": {
+        "high_minus_low_excursion_bps": -1.0906038284876445,
+        "low_bins": 14976,
+        "high_bins": 2160
+      },
+      "2024-03-24": {
+        "high_minus_low_excursion_bps": -0.42771633459353353,
+        "low_bins": 14581,
+        "high_bins": 2535
+      }
+    }
+  },
+  "signed_direction": {
+    "spearman_rho": -0.0022000600636963544,
+    "naive_p_not_dependence_adjusted": 0.4790546773254575,
+    "high_joint_state_hit_rate": 0.4892105402682785,
+    "high_joint_rows": 18861
+  },
+  "primary_gate_passed": false,
+  "verdict": "JOINT_CASCADE_FAILED",
+  "economic_gate_tested": false,
+  "claim_limit": "BBO touch-depth proxy only; no price-level curvature, cancellations, queue, latency, failed fills, fees, or live execution claim"
+}

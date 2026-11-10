@@ -1,0 +1,229 @@
+{
+  "created_at_utc": "2026-09-13T22:18:06.288524+00:00",
+  "status": "free_experiment_not_live_trading_approval",
+  "hypotheses": [
+    1,
+    2
+  ],
+  "paid_requests_made": false,
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT"
+  ],
+  "dates": {
+    "training": [
+      "2023-08-15",
+      "2023-09-15",
+      "2023-10-15",
+      "2023-11-15"
+    ],
+    "validation": [
+      "2023-12-15",
+      "2024-01-15"
+    ],
+    "holdout": [
+      "2024-01-31",
+      "2024-02-07",
+      "2024-02-21",
+      "2024-03-06",
+      "2024-03-20",
+      "2024-03-27"
+    ]
+  },
+  "rows": {
+    "training": 69048,
+    "validation": 34524,
+    "holdout": 90301,
+    "validation_ordinary": 5353,
+    "holdout_ordinary": 10273
+  },
+  "timestamp_rows_rejected": {
+    "BTCUSDT_2023-08-15": 0,
+    "BTCUSDT_2023-09-15": 0,
+    "BTCUSDT_2023-10-15": 0,
+    "BTCUSDT_2023-11-15": 0,
+    "BTCUSDT_2023-12-15": 0,
+    "BTCUSDT_2024-01-15": 0,
+    "BTCUSDT_2024-01-31": 0,
+    "BTCUSDT_2024-02-07": 9740376,
+    "BTCUSDT_2024-02-21": 13208398,
+    "BTCUSDT_2024-03-06": 0,
+    "BTCUSDT_2024-03-20": 0,
+    "BTCUSDT_2024-03-27": 0,
+    "ETHUSDT_2023-08-15": 0,
+    "ETHUSDT_2023-09-15": 0,
+    "ETHUSDT_2023-10-15": 0,
+    "ETHUSDT_2023-11-15": 0,
+    "ETHUSDT_2023-12-15": 0,
+    "ETHUSDT_2024-01-15": 0,
+    "ETHUSDT_2024-01-31": 0,
+    "ETHUSDT_2024-02-07": 13148222,
+    "ETHUSDT_2024-02-21": 22761675,
+    "ETHUSDT_2024-03-06": 0,
+    "ETHUSDT_2024-03-20": 0,
+    "ETHUSDT_2024-03-27": 0
+  },
+  "symbol_jump_threshold_bps": {
+    "BTCUSDT": 10.984281467562994,
+    "ETHUSDT": 10.541562032179998
+  },
+  "ordinary_state_training_bounds": {
+    "BTCUSDT": {
+      "pressure_rms_60s": [
+        1.4113058895631585,
+        197.91769820261771
+      ],
+      "trade_volume_60s": [
+        33.469999999999985,
+        214.35160000000008
+      ],
+      "realized_vol_60s": [
+        0.2061396282457236,
+        1.8593828833969357
+      ],
+      "depth_mean_60s": [
+        11.566207545457877,
+        41.21181611457804
+      ]
+    },
+    "ETHUSDT": {
+      "pressure_rms_60s": [
+        1.692981367297511,
+        350.6478551717432
+      ],
+      "trade_volume_60s": [
+        218.5118000000003,
+        1420.6016000000002
+      ],
+      "realized_vol_60s": [
+        0.2882442219078865,
+        1.9526634511609815
+      ],
+      "depth_mean_60s": [
+        72.846915246734,
+        313.6966843800482
+      ]
+    }
+  },
+  "validation_signal_cutoffs": {
+    "low_20pct": 5.814642253992625,
+    "high_80pct": 7.67009265710625
+  },
+  "metrics": {
+    "validation": {
+      "baseline": {
+        "average_precision": 0.20127470506050188,
+        "roc_auc": 0.6455765057339993,
+        "brier": 0.09485718439965113
+      },
+      "augmented": {
+        "average_precision": 0.2013563617062496,
+        "roc_auc": 0.651177768705548,
+        "brier": 0.09331936219066116
+      }
+    },
+    "test": {
+      "baseline": {
+        "average_precision": 0.6271627770308671,
+        "roc_auc": 0.7856458171241885,
+        "brier": 0.16247659245059015
+      },
+      "augmented": {
+        "average_precision": 0.6310046081360027,
+        "roc_auc": 0.7919856454666656,
+        "brier": 0.16063365123097928
+      }
+    }
+  },
+  "test_incremental": {
+    "average_precision": 0.0038418311051355847,
+    "brier_improvement": 0.0018429412196108719,
+    "roc_auc": 0.0063398283424771495
+  },
+  "ordinary_state_concentration_effect": {
+    "mean": 0.7448016822398538,
+    "block_bootstrap_95pct_ci": [
+      -1.0656817374780159,
+      3.4779049947275453
+    ],
+    "eligible_blocks": 6,
+    "by_date": {
+      "2024-01-31": {
+        "high_minus_low_excursion_bps": -0.8944811263117058,
+        "low_bins": 641,
+        "high_bins": 535
+      },
+      "2024-02-07": {
+        "high_minus_low_excursion_bps": -0.48413812511565535,
+        "low_bins": 1111,
+        "high_bins": 928
+      },
+      "2024-02-21": {
+        "high_minus_low_excursion_bps": -0.834940372811527,
+        "low_bins": 427,
+        "high_bins": 203
+      },
+      "2024-03-06": {
+        "high_minus_low_excursion_bps": -1.6727952139088398,
+        "low_bins": 6,
+        "high_bins": 6
+      },
+      "2024-03-20": {
+        "high_minus_low_excursion_bps": 7.507405785927963,
+        "low_bins": 4,
+        "high_bins": 1
+      },
+      "2024-03-27": {
+        "high_minus_low_excursion_bps": 0.8477591456588875,
+        "low_bins": 55,
+        "high_bins": 18
+      }
+    }
+  },
+  "data_quality": {
+    "invalid_holdout_dates": [
+      "2024-02-07",
+      "2024-02-21"
+    ],
+    "confirmatory_interpretation_valid": false,
+    "reason": "one or more symbols had timestamp rows rejected by the frozen monotonicity guard"
+  },
+  "posthoc_clean_minimum_cell_sensitivity": {
+    "mean": -0.8944811263117058,
+    "block_bootstrap_95pct_ci": [
+      null,
+      null
+    ],
+    "eligible_blocks": 1,
+    "by_date": {
+      "2024-01-31": {
+        "high_minus_low_excursion_bps": -0.8944811263117058,
+        "low_bins": 641,
+        "high_bins": 535,
+        "minimum_cell_count_met": true
+      },
+      "2024-03-06": {
+        "high_minus_low_excursion_bps": -1.6727952139088398,
+        "low_bins": 6,
+        "high_bins": 6,
+        "minimum_cell_count_met": false
+      },
+      "2024-03-20": {
+        "high_minus_low_excursion_bps": 7.507405785927963,
+        "low_bins": 4,
+        "high_bins": 1,
+        "minimum_cell_count_met": false
+      },
+      "2024-03-27": {
+        "high_minus_low_excursion_bps": 0.8477591456588875,
+        "low_bins": 55,
+        "high_bins": 18,
+        "minimum_cell_count_met": false
+      }
+    },
+    "inference_usable": false
+  },
+  "primary_gate_passed": false,
+  "verdict": "H1_H2_FAILED",
+  "claim_limit": "BBO and aggregate trades only; no L2/L3 cancellation, queue, latency, fees, or live execution claim"
+}

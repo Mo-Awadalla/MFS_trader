@@ -1,0 +1,62 @@
+{
+  "frozen_at_utc": "2026-09-13T22:25:00Z",
+  "status": "preregistered_before_holdout_acquisition",
+  "hypotheses": [23, 28, 30],
+  "description": "joint temporal concentration and touch-liquidity contraction",
+  "paid_requests_authorized": false,
+  "source": "free official Binance USD-M futures daily bookTicker and aggTrades archives",
+  "symbols": ["BTCUSDT", "ETHUSDT"],
+  "training_dates": [
+    "2023-08-15",
+    "2023-09-15",
+    "2023-10-15",
+    "2023-11-15"
+  ],
+  "validation_dates": ["2023-12-15", "2024-01-15"],
+  "untouched_holdout_dates": [
+    "2024-01-21",
+    "2024-01-28",
+    "2024-03-03",
+    "2024-03-10",
+    "2024-03-17",
+    "2024-03-24"
+  ],
+  "holdout_selection_rule": "remaining Sundays after validation in January plus first four Sundays in March; February excluded before selection due demonstrated month-level archive corruption",
+  "decision_interval_seconds": 10,
+  "trailing_window_seconds": 60,
+  "forward_window_seconds": 60,
+  "temporal_component": "trailing maximum one-second touch-normalized aggressive pressure divided by trailing RMS pressure",
+  "spatial_proxy": "negative log change in trailing mean BBO touch depth versus 60 seconds earlier",
+  "normalization": "within-symbol training median and interquartile range",
+  "joint_component": "positive_part(z_temporal) multiplied by positive_part(z_spatial_contraction)",
+  "baseline_features": [
+    "spread",
+    "mean touch depth",
+    "imbalance",
+    "realized volatility",
+    "trade volume",
+    "signed flow imbalance",
+    "quote-event rate",
+    "RMS touch-normalized pressure"
+  ],
+  "main_effect_control": [
+    "baseline features",
+    "z temporal concentration",
+    "z spatial contraction"
+  ],
+  "interaction_model": ["main-effect control", "joint component"],
+  "primary_outcome": "next-60-second maximum absolute BBO midpoint excursion above the within-symbol training 95th percentile",
+  "secondary_outcomes": [
+    "next-60-second maximum spread widening",
+    "next-60-second maximum smoothed-touch-depth depletion",
+    "signed 60-second midpoint return"
+  ],
+  "primary_gate": {
+    "interaction_over_main_effect_average_precision_improvement_strictly_greater_than": 0.02,
+    "interaction_over_main_effect_brier_score_must_improve": true,
+    "date_cluster_interval_for_high_minus_low_future_excursion_must_be_strictly_positive": true,
+    "all_six_date_effects_must_be_positive": true
+  },
+  "economic_gate_status": "not testable with BBO and aggregate trades; no queue, latency, failed-fill, or fee claim permitted",
+  "claim_limit": "partial scientific screen using touch-depth contraction as a spatial proxy, not full price-level or queue concentration"
+}

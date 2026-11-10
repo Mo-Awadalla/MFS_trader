@@ -1,0 +1,2241 @@
+{
+  "spec": {
+    "specification_id": "Bitcoin-5m-PayoffAware-v2-20260930",
+    "status": "research_only_repair_diagnostic",
+    "frozen_before_v2_results": "2026-09-30",
+    "data": "Existing Binance 5m price and optional OI archives, September 2020 through August 2026",
+    "features": "Prior completed price/flow bars; no trader-ratio dependencies; optional OI with training-only median imputation and explicit missing flags; longest lookback 289 completed bars",
+    "target": "Actual untrimmed next-open / current-open minus one; tied/zero-return outcomes retained",
+    "model": {
+      "direction": "Standardized L2 logistic C=0.1, max_iter1000, seed42",
+      "magnitudes": "Two conditional Ridge regressions alpha100 for positive and nonpositive return sizes using the same training-only preprocessing",
+      "calibration": "Separate Platt direction C=1 and conditional magnitude scale ratios on subsequent two calendar months",
+      "trials": 1
+    },
+    "updates": {
+      "frequency": "UTC calendar quarter start",
+      "training_months": 24,
+      "calibration_months": 2,
+      "admission_months": 1,
+      "strict_label_availability": "Each fit/calibration/admission partition requires target_end strictly earlier than next partition boundary",
+      "min_training_rows": 5000,
+      "min_calibration_rows": 1000,
+      "evaluation_start": "2024-01-01",
+      "evaluation_end_exclusive": "2026-09-01"
+    },
+    "trade_rule": {
+      "horizon_bars": 1,
+      "predicted_round_trip_cost_bps": 6,
+      "minimum_expected_net_edge_bps": 2,
+      "position_notional": "1x fixed initial notional diagnostic; no leverage optimization",
+      "admission": "At least100 candidate trades on at least20 active days in separate admission month, and seven-day-block bootstrap95% lower net6bps expectation >0",
+      "shadow": "Record ungated candidate diagnostics even when admission rejects; actionable signal stays flat",
+      "missing_model_or_admission": "flat; no trade"
+    },
+    "economics": {
+      "cost_scenarios_round_trip_bps": [
+        0,
+        2,
+        4,
+        6,
+        12
+      ],
+      "fees": "Applied to actual entry and exit notionals",
+      "funding": "Available Binance settled events with containing5m-open approximate mark; exact entry and exit-boundary events excluded",
+      "delays_bars": [
+        0,
+        1
+      ],
+      "entry_reference": "Bar open optimistic reference, not executable bid/ask",
+      "confidence_intervals": "2000 circular7-calendar-day bootstrap samples; seed93028"
+    },
+    "preserve": "All original v1 models, data, predictions, source code, audit, and previous result evidence",
+    "limitations": "Already exposed historical data. One fixed repaired design; no post-result tuning or profitability confirmation. No live orders, deployment or account access. Actual quote latency, cross-venue transfer, margin, and funding differences remain unverified."
+  },
+  "spec_sha256": "a80f85865b5a84a39200d5b76b25a950badd1f0855c1a117f56bbe9c3f2832b4",
+  "source_sha256": {
+    "data\\parquet\\bitcoin_5m_probability_binance_v1\\bars_5m.parquet": "84e65454c334885e9bf64dc7121ec3f208844fd40b64725911631444a3180299",
+    "data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\futures_metrics_5m.parquet": "2d18effbbe2c86d119e0afdb6750a2f5a6f285dbba4b648dde9ad7110b999ed2",
+    "data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\funding_rate.parquet": "776c0610bc50d619ebb586acdf317acb1be9cb818bb12a3f31d0413417c99fdd",
+    "research_scout\\bitcoin_5m_exchange_20260930\\later_data\\bars.parquet": "13c52e0cd089b41369e8dbf10128bd0de70242a7e775342090c90f37aa9b060d",
+    "research_scout\\bitcoin_5m_exchange_20260930\\later_data\\metrics.parquet": "e4710c7f695694e2eb568cc2c4a997e71607414261b03506510d0a0841369114",
+    "research_scout\\bitcoin_5m_exchange_20260930\\later_data\\funding.parquet": "145e1739d37f932041875d228c082a349cb3d7e54d7e5b4ab5c992849a491a98",
+    "data\\parquet\\bitcoin_5m_probability_binance_v1\\model.pkl": "874a9fd3a5e47e67e32f55e0f5020f4f865e847e1342ae3c0661ac7b323d82a2",
+    "data\\parquet\\bitcoin_5m_probability_binance_v1\\panel.parquet": "611ef81b34a024df4bb1cb2a430da1481d139729a224e3cf1e804c2e879ce380",
+    "data\\parquet\\bitcoin_5m_probability_binance_v1\\predictions.parquet": "aae8aeccccec8fd42180d4f451374375a19d97fc4bd269edac40690846721656",
+    "research\\bitcoin_5m_probability_model.py": "8df2a1ff5af16c1462786363f10d82101eaaf37c78dcb55164c8f41841c07193",
+    "research_scout\\bitcoin_5m_model_audit_20260930\\results.json": "aae1c10852e32b3a2d318a82d8661686d6ed4fd2829f4f4f2f20221aad469d37",
+    "research_scout\\bitcoin_5m_exchange_20260930\\results.json": "6f589a55f21def856ee735c5de510fa26d1a626bdfcf957e9d40db06663a2795"
+  },
+  "code_sha256": {
+    "scripts\\run_bitcoin_5m_exchange_model.py": "9132ed75c9f5513312bc8a9ad61be3763f2fd2afe64d2cd8f4d2d4ffb5aa5a61",
+    "research\\bitcoin_5m_exchange_model.py": "dcfeae62caf5d1e6296ddd1a8c928bcd803ea3eb9f20f3ce67ecd48eb49ae8e4",
+    "research\\bitcoin_5m_exchange_validation.py": "0f9f709fa21d0f753cb9c380ef9bfced23236d67668c3cb961aed810a1a1e2f3"
+  },
+  "source_preservation": "PASS all legacy and previous evidence unchanged",
+  "coverage": [
+    {
+      "year": 2020,
+      "source_price_bars": 35136,
+      "decisions": 34847,
+      "labeled_rows": 34847
+    },
+    {
+      "year": 2021,
+      "source_price_bars": 105120,
+      "decisions": 105107,
+      "labeled_rows": 105107
+    },
+    {
+      "year": 2022,
+      "source_price_bars": 105120,
+      "decisions": 105104,
+      "labeled_rows": 105104
+    },
+    {
+      "year": 2023,
+      "source_price_bars": 105120,
+      "decisions": 105094,
+      "labeled_rows": 105094
+    },
+    {
+      "year": 2024,
+      "source_price_bars": 105408,
+      "decisions": 105388,
+      "labeled_rows": 105388
+    },
+    {
+      "year": 2025,
+      "source_price_bars": 105120,
+      "decisions": 105111,
+      "labeled_rows": 105111
+    },
+    {
+      "year": 2026,
+      "source_price_bars": 69984,
+      "decisions": 69985,
+      "labeled_rows": 69983
+    }
+  ],
+  "folds": [
+    {
+      "update": "2024-01-01T00:00:00+00:00",
+      "evaluation_end": "2024-04-01T00:00:00+00:00",
+      "training_rows": 210218,
+      "calibration_rows": 17546,
+      "training_start": "2021-10-01T00:00:00+00:00",
+      "last_training_target": "2023-09-30T23:55:00+00:00",
+      "calibration_start": "2023-10-01T00:00:00+00:00",
+      "last_calibration_target": "2023-11-30T23:55:00+00:00",
+      "admission_start": "2023-12-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 1,
+        "active_days": 1,
+        "calendar_days": 31,
+        "gross_bps": 74.23542069534106,
+        "funding_bps": 0.0,
+        "win_rate": 1.0,
+        "net_bps": {
+          "0": 74.23542069534106,
+          "2": 72.22799715327153,
+          "4": 70.22057361120198,
+          "6": 68.21315006913245,
+          "12": 62.19087944292386
+        },
+        "gross_ci95_bps": [
+          74.23542069534106,
+          74.23542069534106
+        ],
+        "net_ci95_bps": {
+          "0": [
+            74.23542069534106,
+            74.23542069534106
+          ],
+          "2": [
+            72.22799715327153,
+            72.22799715327153
+          ],
+          "4": [
+            70.22057361120198,
+            70.22057361120198
+          ],
+          "6": [
+            68.21315006913245,
+            68.21315006913245
+          ],
+          "12": [
+            62.19087944292386,
+            62.19087944292386
+          ]
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": true
+      },
+      "shadow_economics": {
+        "trades": 22,
+        "active_days": 11,
+        "calendar_days": 91,
+        "gross_bps": 26.621983145064757,
+        "funding_bps": 0.0,
+        "win_rate": 0.6818181818181818,
+        "net_bps": {
+          "0": 26.621983145064757,
+          "2": 24.623453938225968,
+          "4": 22.624924731387175,
+          "6": 20.62639552454838,
+          "12": 14.630807904031995
+        },
+        "gross_ci95_bps": [
+          -6.433582381804012,
+          51.34038275131567
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -6.433582381804012,
+            51.34038275131567
+          ],
+          "2": [
+            -8.432857565479754,
+            49.341068164470386
+          ],
+          "4": [
+            -10.432132749155494,
+            47.341753577625106
+          ],
+          "6": [
+            -12.431407932831233,
+            45.342438990779804
+          ],
+          "12": [
+            -18.429233483858457,
+            39.34449523024395
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 91,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 22,
+        "active_days": 11,
+        "calendar_days": 91,
+        "gross_bps": 36.57179797603453,
+        "funding_bps": 0.0,
+        "win_rate": 0.6818181818181818,
+        "net_bps": {
+          "0": 36.57179797603453,
+          "2": 34.56964833162292,
+          "4": 32.56749868721132,
+          "6": 30.5653490427997,
+          "12": 24.558900109564874
+        },
+        "gross_ci95_bps": [
+          10.699210441179096,
+          67.3668387834206
+        ],
+        "net_ci95_bps": {
+          "0": [
+            10.699210441179096,
+            67.3668387834206
+          ],
+          "2": [
+            8.699170372540491,
+            65.36109881140074
+          ],
+          "4": [
+            6.699130303901888,
+            63.35535883938085
+          ],
+          "6": [
+            4.699090235263283,
+            61.349618867360974
+          ],
+          "12": [
+            -1.3010299706525312,
+            55.33239895130133
+          ]
+        }
+      },
+      "magnitude_scales": [
+        0.9915021246889033,
+        0.9712145866653831
+      ]
+    },
+    {
+      "update": "2024-04-01T00:00:00+00:00",
+      "evaluation_end": "2024-07-01T00:00:00+00:00",
+      "training_rows": 210197,
+      "calibration_rows": 17279,
+      "training_start": "2022-01-01T00:00:00+00:00",
+      "last_training_target": "2023-12-31T23:55:00+00:00",
+      "calibration_start": "2024-01-01T00:00:00+00:00",
+      "last_calibration_target": "2024-02-29T23:55:00+00:00",
+      "admission_start": "2024-03-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 14,
+        "active_days": 4,
+        "calendar_days": 31,
+        "gross_bps": 31.28220816023613,
+        "funding_bps": 0.0,
+        "win_rate": 0.6428571428571429,
+        "net_bps": {
+          "0": 31.28220816023613,
+          "2": 29.279079939420104,
+          "4": 27.275951718604084,
+          "6": 25.272823497788057,
+          "12": 19.263438835339983
+        },
+        "gross_ci95_bps": [
+          -16.676947757678917,
+          46.919566358881866
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -16.676947757678917,
+            46.919566358881866
+          ],
+          "2": [
+            -18.67528006290315,
+            44.91487440224598
+          ],
+          "4": [
+            -20.67361236812738,
+            42.91018244561009
+          ],
+          "6": [
+            -22.67194467335161,
+            40.905490488974195
+          ],
+          "12": [
+            -28.666941589024308,
+            34.89141461906654
+          ]
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": false
+      },
+      "shadow_economics": {
+        "trades": 12,
+        "active_days": 6,
+        "calendar_days": 91,
+        "gross_bps": -11.03406678853669,
+        "funding_bps": 0.0,
+        "win_rate": 0.6666666666666666,
+        "net_bps": {
+          "0": -11.03406678853669,
+          "2": -13.032423318911494,
+          "4": -15.030779849286278,
+          "6": -17.029136379661082,
+          "12": -23.024205970785474
+        },
+        "gross_ci95_bps": [
+          -26.2993415746287,
+          32.40377678095263
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -26.2993415746287,
+            32.40377678095263
+          ],
+          "2": [
+            -28.296326845621966,
+            30.407017158630726
+          ],
+          "4": [
+            -30.293312116615223,
+            28.410257536308823
+          ],
+          "6": [
+            -32.29029738760849,
+            26.413497913986916
+          ],
+          "12": [
+            -38.281253200588274,
+            20.423219047021202
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 91,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 12,
+        "active_days": 6,
+        "calendar_days": 91,
+        "gross_bps": 8.35503726597612,
+        "funding_bps": 0.0,
+        "win_rate": 0.5,
+        "net_bps": {
+          "0": 8.35503726597612,
+          "2": 6.35396966665446,
+          "4": 4.352902067332804,
+          "6": 2.3518344680111447,
+          "12": -3.651368329953834
+        },
+        "gross_ci95_bps": [
+          -4.108812820835526,
+          25.000460220247213
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -4.108812820835526,
+            25.000460220247213
+          ],
+          "2": [
+            -6.110235494754429,
+            22.997960174225184
+          ],
+          "4": [
+            -8.111658168673332,
+            20.995460128203163
+          ],
+          "6": [
+            -10.113080842592234,
+            18.992960082181135
+          ],
+          "12": [
+            -16.117348864348944,
+            12.985459944115064
+          ]
+        }
+      },
+      "magnitude_scales": [
+        1.0195108758188192,
+        1.029329893186213
+      ]
+    },
+    {
+      "update": "2024-07-01T00:00:00+00:00",
+      "evaluation_end": "2024-10-01T00:00:00+00:00",
+      "training_rows": 210485,
+      "calibration_rows": 17567,
+      "training_start": "2022-04-01T00:00:00+00:00",
+      "last_training_target": "2024-03-31T23:55:00+00:00",
+      "calibration_start": "2024-04-01T00:00:00+00:00",
+      "last_calibration_target": "2024-05-31T23:55:00+00:00",
+      "admission_start": "2024-06-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 4,
+        "active_days": 3,
+        "calendar_days": 30,
+        "gross_bps": 4.554699589054412,
+        "funding_bps": 0.0,
+        "win_rate": 0.25,
+        "net_bps": {
+          "0": 4.554699589054412,
+          "2": 2.5541611662632064,
+          "4": 0.5536227434720055,
+          "6": -1.4469156793191988,
+          "12": -7.44853094769281
+        },
+        "gross_ci95_bps": [
+          -24.417332222712584,
+          22.147593612447114
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -24.417332222712584,
+            22.147593612447114
+          ],
+          "2": [
+            -26.414890489490315,
+            20.145378853085873
+          ],
+          "4": [
+            -28.41244875626804,
+            18.143164093724625
+          ],
+          "6": [
+            -30.410007023045768,
+            16.14094933436338
+          ],
+          "12": [
+            -36.402681823378956,
+            10.134305056279649
+          ]
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": false
+      },
+      "shadow_economics": {
+        "trades": 50,
+        "active_days": 13,
+        "calendar_days": 92,
+        "gross_bps": 13.49926918892761,
+        "funding_bps": 0.0,
+        "win_rate": 0.66,
+        "net_bps": {
+          "0": 13.49926918892761,
+          "2": 11.499452427738055,
+          "4": 9.499635666548503,
+          "6": 7.499818905358948,
+          "12": 1.5003686217902863
+        },
+        "gross_ci95_bps": [
+          4.168051708605197,
+          38.287365820643025
+        ],
+        "net_ci95_bps": {
+          "0": [
+            4.168051708605197,
+            38.287365820643025
+          ],
+          "2": [
+            2.1673636247276375,
+            36.28772567600095
+          ],
+          "4": [
+            0.16667554085007827,
+            34.28808553135887
+          ],
+          "6": [
+            -1.8340125430274805,
+            32.288445386716795
+          ],
+          "12": [
+            -7.836076794660158,
+            26.289524952790565
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 92,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 50,
+        "active_days": 13,
+        "calendar_days": 92,
+        "gross_bps": 5.99753496734281,
+        "funding_bps": 0.0,
+        "win_rate": 0.5,
+        "net_bps": {
+          "0": 5.99753496734281,
+          "2": 3.996875204720348,
+          "4": 1.9962154420978897,
+          "6": -0.004444320524569145,
+          "12": -6.006423608391951
+        },
+        "gross_ci95_bps": [
+          -3.27373591040051,
+          38.19638988243617
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -3.27373591040051,
+            38.19638988243617
+          ],
+          "2": [
+            -5.27392682205717,
+            36.19271313968218
+          ],
+          "4": [
+            -7.274117733713831,
+            34.18903639692819
+          ],
+          "6": [
+            -9.27430864537049,
+            32.185359654174185
+          ],
+          "12": [
+            -15.274881380340473,
+            26.1743294259122
+          ]
+        }
+      },
+      "magnitude_scales": [
+        1.0158257813624663,
+        1.0389688935415586
+      ]
+    },
+    {
+      "update": "2024-10-01T00:00:00+00:00",
+      "evaluation_end": "2025-01-01T00:00:00+00:00",
+      "training_rows": 210501,
+      "calibration_rows": 17855,
+      "training_start": "2022-07-01T00:00:00+00:00",
+      "last_training_target": "2024-06-30T23:55:00+00:00",
+      "calibration_start": "2024-07-01T00:00:00+00:00",
+      "last_calibration_target": "2024-08-31T23:55:00+00:00",
+      "admission_start": "2024-09-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 1,
+        "active_days": 1,
+        "calendar_days": 30,
+        "gross_bps": 71.52234511284883,
+        "funding_bps": 0.0,
+        "win_rate": 1.0,
+        "net_bps": {
+          "0": 71.52234511284883,
+          "2": 69.51519287833754,
+          "4": 67.50804064382626,
+          "6": 65.50088840931497,
+          "12": 59.479431705781124
+        },
+        "gross_ci95_bps": [
+          71.52234511284883,
+          71.52234511284883
+        ],
+        "net_ci95_bps": {
+          "0": [
+            71.52234511284883,
+            71.52234511284883
+          ],
+          "2": [
+            69.51519287833754,
+            69.51519287833754
+          ],
+          "4": [
+            67.50804064382626,
+            67.50804064382626
+          ],
+          "6": [
+            65.50088840931497,
+            65.50088840931497
+          ],
+          "12": [
+            59.479431705781124,
+            59.479431705781124
+          ]
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": true
+      },
+      "shadow_economics": {
+        "trades": 3,
+        "active_days": 3,
+        "calendar_days": 92,
+        "gross_bps": 50.52099636418505,
+        "funding_bps": 0.0,
+        "win_rate": 0.6666666666666666,
+        "net_bps": {
+          "0": 50.52099636418505,
+          "2": 48.51656371023697,
+          "4": 46.51213105628889,
+          "6": 44.507698402340814,
+          "12": 38.49440044049657
+        },
+        "gross_ci95_bps": [
+          -18.046422867099565,
+          142.27130376751163
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -18.046422867099565,
+            142.27130376751163
+          ],
+          "2": [
+            -20.048227509386276,
+            140.25707663713487
+          ],
+          "4": [
+            -22.050032151672987,
+            138.24284950675812
+          ],
+          "6": [
+            -24.051836793959694,
+            136.22862237638137
+          ],
+          "12": [
+            -30.057250720819827,
+            130.1859409852511
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 92,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 3,
+        "active_days": 3,
+        "calendar_days": 92,
+        "gross_bps": -8.986380445497785,
+        "funding_bps": 0.0,
+        "win_rate": 0.3333333333333333,
+        "net_bps": {
+          "0": -8.986380445497785,
+          "2": -10.98958208425377,
+          "4": -12.992783723009756,
+          "6": -14.995985361765742,
+          "12": -21.0055902780337
+        },
+        "gross_ci95_bps": [
+          -40.13789961901493,
+          34.545010671547246
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -40.13789961901493,
+            34.545010671547246
+          ],
+          "2": [
+            -42.14191340897683,
+            32.54155617048009
+          ],
+          "4": [
+            -44.14592719893873,
+            30.53810166941294
+          ],
+          "6": [
+            -46.14994098890064,
+            28.53464716834579
+          ],
+          "12": [
+            -52.16198235878633,
+            22.524283665144324
+          ]
+        }
+      },
+      "magnitude_scales": [
+        1.0428024555633033,
+        1.052864036261384
+      ]
+    },
+    {
+      "update": "2025-01-01T00:00:00+00:00",
+      "evaluation_end": "2025-04-01T00:00:00+00:00",
+      "training_rows": 210501,
+      "calibration_rows": 17547,
+      "training_start": "2022-10-01T00:00:00+00:00",
+      "last_training_target": "2024-09-30T23:55:00+00:00",
+      "calibration_start": "2024-10-01T00:00:00+00:00",
+      "last_calibration_target": "2024-11-30T23:55:00+00:00",
+      "admission_start": "2024-12-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 1,
+        "active_days": 1,
+        "calendar_days": 31,
+        "gross_bps": 142.27130376751163,
+        "funding_bps": 0.0,
+        "win_rate": 1.0,
+        "net_bps": {
+          "0": 142.27130376751163,
+          "2": 140.25707663713487,
+          "4": 138.24284950675812,
+          "6": 136.22862237638137,
+          "12": 130.1859409852511
+        },
+        "gross_ci95_bps": [
+          142.27130376751163,
+          142.27130376751163
+        ],
+        "net_ci95_bps": {
+          "0": [
+            142.27130376751163,
+            142.27130376751163
+          ],
+          "2": [
+            140.25707663713487,
+            140.25707663713487
+          ],
+          "4": [
+            138.24284950675812,
+            138.24284950675812
+          ],
+          "6": [
+            136.22862237638137,
+            136.22862237638137
+          ],
+          "12": [
+            130.1859409852511,
+            130.18594098525114
+          ]
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": true
+      },
+      "shadow_economics": {
+        "trades": 2,
+        "active_days": 1,
+        "calendar_days": 90,
+        "gross_bps": -25.08165467963397,
+        "funding_bps": 0.0,
+        "win_rate": 0.5,
+        "net_bps": {
+          "0": -25.08165467963397,
+          "2": -27.079146514166005,
+          "4": -29.07663834869804,
+          "6": -31.074130183230075,
+          "12": -37.066605686826186
+        },
+        "gross_ci95_bps": [
+          -25.08165467963397,
+          -25.08165467963397
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -25.08165467963397,
+            -25.08165467963397
+          ],
+          "2": [
+            -27.079146514166005,
+            -27.079146514166005
+          ],
+          "4": [
+            -29.076638348698044,
+            -29.076638348698044
+          ],
+          "6": [
+            -31.07413018323008,
+            -31.07413018323008
+          ],
+          "12": [
+            -37.066605686826186,
+            -37.066605686826186
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 90,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 2,
+        "active_days": 1,
+        "calendar_days": 90,
+        "gross_bps": 106.04749810689596,
+        "funding_bps": 0.0,
+        "win_rate": 1.0,
+        "net_bps": {
+          "0": 106.04749810689596,
+          "2": 104.03689335708526,
+          "4": 102.02628860727457,
+          "6": 100.01568385746388,
+          "12": 93.98386960803181
+        },
+        "gross_ci95_bps": [
+          106.04749810689596,
+          106.04749810689596
+        ],
+        "net_ci95_bps": {
+          "0": [
+            106.04749810689596,
+            106.04749810689596
+          ],
+          "2": [
+            104.03689335708526,
+            104.03689335708526
+          ],
+          "4": [
+            102.02628860727458,
+            102.02628860727458
+          ],
+          "6": [
+            100.01568385746388,
+            100.01568385746388
+          ],
+          "12": [
+            93.98386960803181,
+            93.98386960803181
+          ]
+        }
+      },
+      "magnitude_scales": [
+        1.05804539942422,
+        1.0294753343340723
+      ]
+    },
+    {
+      "update": "2025-04-01T00:00:00+00:00",
+      "evaluation_end": "2025-07-01T00:00:00+00:00",
+      "training_rows": 210481,
+      "calibration_rows": 16987,
+      "training_start": "2023-01-01T00:00:00+00:00",
+      "last_training_target": "2024-12-31T23:55:00+00:00",
+      "calibration_start": "2025-01-01T00:00:00+00:00",
+      "last_calibration_target": "2025-02-28T23:55:00+00:00",
+      "admission_start": "2025-03-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 5,
+        "active_days": 3,
+        "calendar_days": 31,
+        "gross_bps": -13.768691383126752,
+        "funding_bps": 0.0,
+        "win_rate": 0.6,
+        "net_bps": {
+          "0": -13.768691383126752,
+          "2": -15.764651223941918,
+          "4": -17.760611064757086,
+          "6": -19.756570905572246,
+          "12": -25.74445042801775
+        },
+        "gross_ci95_bps": [
+          -45.14190269288602,
+          33.29112558151215
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -45.14190269288602,
+            33.29112558151215
+          ],
+          "2": [
+            -47.13738850261673,
+            31.2944546940703
+          ],
+          "4": [
+            -49.13287431234744,
+            29.297783806628452
+          ],
+          "6": [
+            -51.128360122078156,
+            27.3011129191866
+          ],
+          "12": [
+            -57.114817551270285,
+            21.311100256861053
+          ]
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": false
+      },
+      "shadow_economics": {
+        "trades": 8,
+        "active_days": 4,
+        "calendar_days": 91,
+        "gross_bps": 14.1902516216115,
+        "funding_bps": 0.0,
+        "win_rate": 0.5,
+        "net_bps": {
+          "0": 14.1902516216115,
+          "2": 12.19298064956312,
+          "4": 10.19570967751474,
+          "6": 8.19843870546636,
+          "12": 2.206625789321222
+        },
+        "gross_ci95_bps": [
+          -9.684672376496506,
+          38.349124779186724
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -9.684672376496506,
+            38.349124779186724
+          ],
+          "2": [
+            -11.685697928341698,
+            36.352959691664644
+          ],
+          "4": [
+            -13.686723480186892,
+            34.356794604142564
+          ],
+          "6": [
+            -15.687749032032084,
+            32.360629516620484
+          ],
+          "12": [
+            -21.690825687567663,
+            26.372134254054238
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 91,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 8,
+        "active_days": 4,
+        "calendar_days": 91,
+        "gross_bps": 19.980358395798454,
+        "funding_bps": 0.0,
+        "win_rate": 0.625,
+        "net_bps": {
+          "0": 19.980358395798454,
+          "2": 17.982626306953193,
+          "4": 15.984894218107927,
+          "6": 13.987162129262677,
+          "12": 7.993965862726892
+        },
+        "gross_ci95_bps": [
+          -39.21498792933242,
+          35.15362402941861
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -39.21498792933242,
+            35.15362402941861
+          ],
+          "2": [
+            -41.21890942812536,
+            33.157447820753156
+          ],
+          "4": [
+            -43.222830926918284,
+            31.16127161208771
+          ],
+          "6": [
+            -45.226752425711226,
+            29.165095403422267
+          ],
+          "12": [
+            -51.23851692209002,
+            23.176566777425926
+          ]
+        }
+      },
+      "magnitude_scales": [
+        1.027160682792276,
+        1.0439836995534832
+      ]
+    },
+    {
+      "update": "2025-07-01T00:00:00+00:00",
+      "evaluation_end": "2025-10-01T00:00:00+00:00",
+      "training_rows": 210477,
+      "calibration_rows": 17567,
+      "training_start": "2023-04-01T00:00:00+00:00",
+      "last_training_target": "2025-03-31T23:55:00+00:00",
+      "calibration_start": "2025-04-01T00:00:00+00:00",
+      "last_calibration_target": "2025-05-31T23:55:00+00:00",
+      "admission_start": "2025-06-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 30,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": false
+      },
+      "shadow_economics": {
+        "trades": 3,
+        "active_days": 3,
+        "calendar_days": 92,
+        "gross_bps": 33.340896920449616,
+        "funding_bps": 0.0,
+        "win_rate": 1.0,
+        "net_bps": {
+          "0": 33.340896920449616,
+          "2": 31.340136760388422,
+          "4": 29.339376600327217,
+          "6": 27.338616440266023,
+          "12": 21.336335960082433
+        },
+        "gross_ci95_bps": [
+          28.453951389690868,
+          38.60894446271579
+        ],
+        "net_ci95_bps": {
+          "0": [
+            28.453951389690868,
+            38.60894446271579
+          ],
+          "2": [
+            26.4511059945519,
+            36.61280535716206
+          ],
+          "4": [
+            24.44826059941293,
+            34.61666625160833
+          ],
+          "6": [
+            22.44541520427396,
+            32.620527146054606
+          ],
+          "12": [
+            16.436879018857052,
+            26.63210982939342
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 92,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 3,
+        "active_days": 3,
+        "calendar_days": 92,
+        "gross_bps": 14.99461756841643,
+        "funding_bps": 0.0,
+        "win_rate": 0.6666666666666666,
+        "net_bps": {
+          "0": 14.99461756841643,
+          "2": 12.994899714319121,
+          "4": 10.995181860221816,
+          "6": 8.995464006124509,
+          "12": 2.9963104438325847
+        },
+        "gross_ci95_bps": [
+          -26.153806679483083,
+          44.41354449172819
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -26.153806679483083,
+            44.41354449172819
+          ],
+          "2": [
+            -28.151191298815135,
+            42.40910313727901
+          ],
+          "4": [
+            -30.148575918147184,
+            40.40466178282984
+          ],
+          "6": [
+            -32.14596053747924,
+            38.40022042838066
+          ],
+          "12": [
+            -38.13811439547539,
+            32.386896365033145
+          ]
+        }
+      },
+      "magnitude_scales": [
+        1.02040570390302,
+        0.9970384882356392
+      ]
+    },
+    {
+      "update": "2025-10-01T00:00:00+00:00",
+      "evaluation_end": "2026-01-01T00:00:00+00:00",
+      "training_rows": 210477,
+      "calibration_rows": 17850,
+      "training_start": "2023-07-01T00:00:00+00:00",
+      "last_training_target": "2025-06-30T23:55:00+00:00",
+      "calibration_start": "2025-07-01T00:00:00+00:00",
+      "last_calibration_target": "2025-08-31T23:55:00+00:00",
+      "admission_start": "2025-09-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 30,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": false
+      },
+      "shadow_economics": {
+        "trades": 8,
+        "active_days": 2,
+        "calendar_days": 92,
+        "gross_bps": 25.66639947080812,
+        "funding_bps": 0.0,
+        "win_rate": 0.75,
+        "net_bps": {
+          "0": 25.66639947080812,
+          "2": 23.663832830861036,
+          "4": 21.661266190913963,
+          "6": 19.658699550966872,
+          "12": 13.650999631125643
+        },
+        "gross_ci95_bps": [
+          17.324077647627842,
+          84.06265223307008
+        ],
+        "net_ci95_bps": {
+          "0": [
+            17.324077647627842,
+            84.06265223307008
+          ],
+          "2": [
+            15.322345239863079,
+            82.05424596784677
+          ],
+          "4": [
+            13.320612832098314,
+            80.04583970262347
+          ],
+          "6": [
+            11.318880424333553,
+            78.03743343740015
+          ],
+          "12": [
+            5.3136832010392645,
+            72.01221464173024
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 92,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 8,
+        "active_days": 2,
+        "calendar_days": 92,
+        "gross_bps": 116.39862468698136,
+        "funding_bps": 0.0,
+        "win_rate": 0.875,
+        "net_bps": {
+          "0": 116.39862468698136,
+          "2": 114.38698482451267,
+          "4": 112.37534496204397,
+          "6": 110.36370509957528,
+          "12": 104.32878551216919
+        },
+        "gross_ci95_bps": [
+          33.09012507853204,
+          128.29983891675985
+        ],
+        "net_ci95_bps": {
+          "0": [
+            33.09012507853204,
+            128.29983891675985
+          ],
+          "2": [
+            31.086816066024184,
+            126.28700893286816
+          ],
+          "4": [
+            29.083507053516335,
+            124.27417894897648
+          ],
+          "6": [
+            27.08019804100848,
+            122.26134896508482
+          ],
+          "12": [
+            21.070271003484923,
+            116.22285901340979
+          ]
+        }
+      },
+      "magnitude_scales": [
+        0.9840239243373573,
+        0.972660020448232
+      ]
+    },
+    {
+      "update": "2026-01-01T00:00:00+00:00",
+      "evaluation_end": "2026-04-01T00:00:00+00:00",
+      "training_rows": 210477,
+      "calibration_rows": 17567,
+      "training_start": "2023-10-01T00:00:00+00:00",
+      "last_training_target": "2025-09-30T23:55:00+00:00",
+      "calibration_start": "2025-10-01T00:00:00+00:00",
+      "last_calibration_target": "2025-11-30T23:55:00+00:00",
+      "admission_start": "2025-12-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 31,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": false
+      },
+      "shadow_economics": {
+        "trades": 14,
+        "active_days": 5,
+        "calendar_days": 90,
+        "gross_bps": 13.839556184069687,
+        "funding_bps": 0.0,
+        "win_rate": 0.6428571428571429,
+        "net_bps": {
+          "0": 13.839556184069687,
+          "2": 11.839345271370856,
+          "4": 9.83913435867204,
+          "6": 7.838923445973221,
+          "12": 1.8382907078767519
+        },
+        "gross_ci95_bps": [
+          -24.043634251249834,
+          34.60230675026765
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -24.043634251249834,
+            34.60230675026765
+          ],
+          "2": [
+            -26.04603861467496,
+            32.60576698094268
+          ],
+          "4": [
+            -28.048442978100084,
+            30.609227211617704
+          ],
+          "6": [
+            -30.05084734152521,
+            28.612687442292735
+          ],
+          "12": [
+            -36.058060431800584,
+            22.623068134317815
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 90,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 14,
+        "active_days": 5,
+        "calendar_days": 90,
+        "gross_bps": 35.099415455752286,
+        "funding_bps": 0.0,
+        "win_rate": 0.6428571428571429,
+        "net_bps": {
+          "0": 35.099415455752286,
+          "2": 33.09579952130054,
+          "4": 31.092183586848815,
+          "6": 29.088567652397092,
+          "12": 23.077719849041895
+        },
+        "gross_ci95_bps": [
+          -21.893255879836815,
+          44.933691321433464
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -21.893255879836815,
+            44.933691321433464
+          ],
+          "2": [
+            -23.895445205424796,
+            42.92911539384176
+          ],
+          "4": [
+            -25.897634531012784,
+            40.92453946625006
+          ],
+          "6": [
+            -27.899823856600765,
+            38.91996353865836
+          ],
+          "12": [
+            -33.906391833364715,
+            32.90623575588326
+          ]
+        }
+      },
+      "magnitude_scales": [
+        1.004496442735068,
+        1.0005451025131586
+      ]
+    },
+    {
+      "update": "2026-04-01T00:00:00+00:00",
+      "evaluation_end": "2026-07-01T00:00:00+00:00",
+      "training_rows": 210498,
+      "calibration_rows": 16991,
+      "training_start": "2024-01-01T00:00:00+00:00",
+      "last_training_target": "2025-12-31T23:55:00+00:00",
+      "calibration_start": "2026-01-01T00:00:00+00:00",
+      "last_calibration_target": "2026-02-28T23:55:00+00:00",
+      "admission_start": "2026-03-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 2,
+        "active_days": 2,
+        "calendar_days": 31,
+        "gross_bps": 11.946837130868971,
+        "funding_bps": 0.0,
+        "win_rate": 0.5,
+        "net_bps": {
+          "0": 11.946837130868971,
+          "2": 9.948031814582055,
+          "4": 7.9492264982951415,
+          "6": 5.950421182008231,
+          "12": -0.0459947668525083
+        },
+        "gross_ci95_bps": [
+          -12.822902977915884,
+          36.71657723965382
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -12.822902977915884,
+            36.71657723965382
+          ],
+          "2": [
+            -14.824185268213677,
+            34.720248897377786
+          ],
+          "4": [
+            -16.82546755851147,
+            32.723920555101756
+          ],
+          "6": [
+            -18.82674984880926,
+            30.727592212825723
+          ],
+          "12": [
+            -24.830596719702633,
+            24.738607185997623
+          ]
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": false
+      },
+      "shadow_economics": {
+        "trades": 6,
+        "active_days": 3,
+        "calendar_days": 91,
+        "gross_bps": 19.7176123901166,
+        "funding_bps": 0.0,
+        "win_rate": 0.6666666666666666,
+        "net_bps": {
+          "0": 19.7176123901166,
+          "2": 17.718932880824834,
+          "4": 15.720253371533074,
+          "6": 13.721573862241307,
+          "12": 7.725535334366014
+        },
+        "gross_ci95_bps": [
+          -4.624264586070015,
+          54.00804379477098
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -4.624264586070015,
+            54.00804379477098
+          ],
+          "2": [
+            -6.624727012528622,
+            52.01344459915045
+          ],
+          "4": [
+            -8.62518943898723,
+            50.01884540352993
+          ],
+          "6": [
+            -10.625651865445835,
+            48.02424620790941
+          ],
+          "12": [
+            -16.627039144821655,
+            42.04044862104784
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 91,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 6,
+        "active_days": 3,
+        "calendar_days": 91,
+        "gross_bps": 28.664203015917877,
+        "funding_bps": 0.0,
+        "win_rate": 0.5,
+        "net_bps": {
+          "0": 28.664203015917877,
+          "2": 26.66026437518291,
+          "4": 24.656325734447943,
+          "6": 22.652387093712974,
+          "12": 16.640571171508075
+        },
+        "gross_ci95_bps": [
+          -29.980758078547165,
+          102.0759155483908
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -29.980758078547165,
+            102.0759155483908
+          ],
+          "2": [
+            -31.983756154355017,
+            100.06570795683595
+          ],
+          "4": [
+            -33.98675423016288,
+            98.05550036528112
+          ],
+          "6": [
+            -35.98975230597073,
+            96.04529277372627
+          ],
+          "12": [
+            -41.998746533394296,
+            90.01466999906177
+          ]
+        }
+      },
+      "magnitude_scales": [
+        0.9784287131608875,
+        1.012124634478794
+      ]
+    },
+    {
+      "update": "2026-07-01T00:00:00+00:00",
+      "evaluation_end": "2026-09-01T00:00:00+00:00",
+      "training_rows": 210210,
+      "calibration_rows": 17567,
+      "training_start": "2024-04-01T00:00:00+00:00",
+      "last_training_target": "2026-03-31T23:55:00+00:00",
+      "calibration_start": "2026-04-01T00:00:00+00:00",
+      "last_calibration_target": "2026-05-31T23:55:00+00:00",
+      "admission_start": "2026-06-01T00:00:00+00:00",
+      "admission_stats": {
+        "trades": 9,
+        "active_days": 4,
+        "calendar_days": 30,
+        "gross_bps": 20.620526586524345,
+        "funding_bps": 0.0,
+        "win_rate": 0.6666666666666666,
+        "net_bps": {
+          "0": 20.620526586524345,
+          "2": 18.62065936849719,
+          "4": 16.620792150470038,
+          "6": 14.620924932442882,
+          "12": 8.62132327836142
+        },
+        "gross_ci95_bps": [
+          -1.473661022084738,
+          54.00804379477098
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -1.473661022084738,
+            54.00804379477098
+          ],
+          "2": [
+            -3.4735136559825293,
+            52.01344459915045
+          ],
+          "4": [
+            -5.473366289880321,
+            50.01884540352993
+          ],
+          "6": [
+            -7.473218923778111,
+            48.02424620790941
+          ],
+          "12": [
+            -13.472776825471485,
+            42.04044862104784
+          ]
+        }
+      },
+      "admission": {
+        "admitted": false,
+        "minimum_trades_passed": false,
+        "minimum_active_days_passed": false,
+        "net_6bps_lower_bound_positive": false
+      },
+      "shadow_economics": {
+        "trades": 3,
+        "active_days": 2,
+        "calendar_days": 62,
+        "gross_bps": 42.90042100816034,
+        "funding_bps": 0.0,
+        "win_rate": 0.3333333333333333,
+        "net_bps": {
+          "0": 42.90042100816034,
+          "2": 40.90471105026116,
+          "4": 38.909001092361976,
+          "6": 36.91329113446279,
+          "12": 30.926161260765248
+        },
+        "gross_ci95_bps": [
+          -24.757455013496575,
+          178.2161730514742
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -24.757455013496575,
+            178.2161730514742
+          ],
+          "2": [
+            -26.75993075899793,
+            176.23399466877933
+          ],
+          "4": [
+            -28.76240650449928,
+            174.25181628608448
+          ],
+          "6": [
+            -30.764882250000625,
+            172.26963790338962
+          ],
+          "12": [
+            -36.772309486504675,
+            166.3231027553051
+          ]
+        }
+      },
+      "admitted_economics": {
+        "trades": 0,
+        "active_days": 0,
+        "calendar_days": 62,
+        "gross_bps": null,
+        "funding_bps": null,
+        "net_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        },
+        "gross_ci95_bps": null,
+        "net_ci95_bps": {
+          "0": null,
+          "2": null,
+          "4": null,
+          "6": null,
+          "12": null
+        }
+      },
+      "delayed_shadow_economics": {
+        "trades": 3,
+        "active_days": 2,
+        "calendar_days": 62,
+        "gross_bps": -8.340445296999288,
+        "funding_bps": 0.0,
+        "win_rate": 0.3333333333333333,
+        "net_bps": {
+          "0": -8.340445296999288,
+          "2": -10.341279341528988,
+          "4": -12.342113386058687,
+          "6": -14.342947430588387,
+          "12": -20.345449564177486
+        },
+        "gross_ci95_bps": [
+          -13.332696248961051,
+          1.644056606924238
+        ],
+        "net_ci95_bps": {
+          "0": [
+            -13.332696248961051,
+            1.644056606924238
+          ],
+          "2": [
+            -15.334029518585947,
+            -0.35577898741506986
+          ],
+          "4": [
+            -17.33536278821084,
+            -2.3556145817543777
+          ],
+          "6": [
+            -19.336696057835738,
+            -4.355450176093685
+          ],
+          "12": [
+            -25.340695866710423,
+            -10.354956959111608
+          ]
+        }
+      },
+      "magnitude_scales": [
+        0.9348057750135853,
+        0.9323213841650094
+      ]
+    }
+  ],
+  "periods": {
+    "2024": {
+      "rows": 105388,
+      "realized_rows": 105388,
+      "zero_return_outcomes": 117,
+      "directional_accuracy": 0.515874672638251,
+      "brier": 0.2495311041729548,
+      "auc": 0.5243128472140148,
+      "expected_return_rmse_bps": 16.670604604115628,
+      "economics": {
+        "shadow": {
+          "trades": 87,
+          "active_days": 33,
+          "calendar_days": 366,
+          "gross_bps": 14.710359497332414,
+          "funding_bps": 0.0,
+          "win_rate": 0.6666666666666666,
+          "net_bps": {
+            "0": 14.710359497332414,
+            "2": 12.710910567030426,
+            "4": 10.711461636728435,
+            "6": 8.712012706426451,
+            "12": 2.713665915520487
+          },
+          "gross_ci95_bps": [
+            2.1610361415220334,
+            32.945441483384165
+          ],
+          "net_ci95_bps": {
+            "0": [
+              2.1610361415220334,
+              32.945441483384165
+            ],
+            "2": [
+              0.16170618237907694,
+              30.945205815259527
+            ],
+            "4": [
+              -1.8376237767638797,
+              28.944970147134892
+            ],
+            "6": [
+              -3.836953735906836,
+              26.944734479010258
+            ],
+            "12": [
+              -9.834943613335705,
+              20.94402747463635
+            ]
+          }
+        },
+        "admitted": {
+          "trades": 0,
+          "active_days": 0,
+          "calendar_days": 366,
+          "gross_bps": null,
+          "funding_bps": null,
+          "net_bps": {
+            "0": null,
+            "2": null,
+            "4": null,
+            "6": null,
+            "12": null
+          },
+          "gross_ci95_bps": null,
+          "net_ci95_bps": {
+            "0": null,
+            "2": null,
+            "4": null,
+            "6": null,
+            "12": null
+          }
+        },
+        "delayed_shadow": {
+          "trades": 87,
+          "active_days": 33,
+          "calendar_days": 366,
+          "gross_bps": 13.537443789599084,
+          "funding_bps": 0.0,
+          "win_rate": 0.5402298850574713,
+          "net_bps": {
+            "0": 13.537443789599084,
+            "2": 11.536263371020855,
+            "4": 9.535082952442618,
+            "6": 7.533902533864383,
+            "12": 1.5303612781296823
+          },
+          "gross_ci95_bps": [
+            2.7791217769478953,
+            35.19312111236391
+          ],
+          "net_ci95_bps": {
+            "0": [
+              2.7791217769478953,
+              35.19312111236391
+            ],
+            "2": [
+              0.7786323020248679,
+              33.1906706672243
+            ],
+            "4": [
+              -1.2218571728981595,
+              31.188220222084688
+            ],
+            "6": [
+              -3.2223466478211864,
+              29.185769776945076
+            ],
+            "12": [
+              -9.223815072590268,
+              23.178418441526237
+            ]
+          }
+        }
+      }
+    },
+    "2025": {
+      "rows": 105111,
+      "realized_rows": 105111,
+      "zero_return_outcomes": 174,
+      "directional_accuracy": 0.5122013871050604,
+      "brier": 0.2496951443284427,
+      "auc": 0.5186452451647285,
+      "expected_return_rmse_bps": 14.140282860595313,
+      "economics": {
+        "shadow": {
+          "trades": 21,
+          "active_days": 10,
+          "calendar_days": 365,
+          "gross_bps": 17.55774238768752,
+          "funding_bps": 0.0,
+          "win_rate": 0.6666666666666666,
+          "net_bps": {
+            "0": 17.55774238768752,
+            "2": 15.557934528391739,
+            "4": 13.558126669095962,
+            "6": 11.55831880980018,
+            "12": 5.558895231912848
+          },
+          "gross_ci95_bps": [
+            2.0870168854111055,
+            35.72818430068449
+          ],
+          "net_ci95_bps": {
+            "0": [
+              2.0870168854111055,
+              35.72818430068449
+            ],
+            "2": [
+              0.08761766028378724,
+              33.728507971671704
+            ],
+            "4": [
+              -1.9117815648435308,
+              31.728831642658914
+            ],
+            "6": [
+              -3.9111807899708477,
+              29.729155313646125
+            ],
+            "12": [
+              -9.9093784653528,
+              23.730126326607753
+            ]
+          }
+        },
+        "admitted": {
+          "trades": 0,
+          "active_days": 0,
+          "calendar_days": 365,
+          "gross_bps": null,
+          "funding_bps": null,
+          "net_bps": {
+            "0": null,
+            "2": null,
+            "4": null,
+            "6": null,
+            "12": null
+          },
+          "gross_ci95_bps": null,
+          "net_ci95_bps": {
+            "0": null,
+            "2": null,
+            "4": null,
+            "6": null,
+            "12": null
+          }
+        },
+        "delayed_shadow": {
+          "trades": 21,
+          "active_days": 10,
+          "calendar_days": 365,
+          "gross_bps": 64.19574826577522,
+          "funding_bps": 0.0,
+          "win_rate": 0.7619047619047619,
+          "net_bps": {
+            "0": 64.19574826577522,
+            "2": 62.19120832899308,
+            "4": 60.186668392210954,
+            "6": 58.182128455428796,
+            "12": 52.168508645082376
+          },
+          "gross_ci95_bps": [
+            8.265930969123044,
+            104.94992015818127
+          ],
+          "net_ci95_bps": {
+            "0": [
+              8.265930969123044,
+              104.94992015818127
+            ],
+            "2": [
+              6.266002474553737,
+              102.9400878814935
+            ],
+            "4": [
+              4.266073979984431,
+              100.9302556048057
+            ],
+            "6": [
+              2.266145485415125,
+              98.9204233281179
+            ],
+            "12": [
+              -3.733639998292795,
+              92.89092649805451
+            ]
+          }
+        }
+      }
+    },
+    "2026": {
+      "rows": 69984,
+      "realized_rows": 69983,
+      "zero_return_outcomes": 219,
+      "directional_accuracy": 0.516396839232385,
+      "brier": 0.2495610435935965,
+      "auc": 0.5226112650953882,
+      "expected_return_rmse_bps": 14.066730858543872,
+      "economics": {
+        "shadow": {
+          "trades": 23,
+          "active_days": 10,
+          "calendar_days": 243,
+          "gross_bps": 19.16350973661549,
+          "funding_bps": 0.0,
+          "win_rate": 0.6086956521739131,
+          "net_bps": {
+            "0": 19.16350973661549,
+            "2": 17.16428540151846,
+            "4": 15.165061066421433,
+            "6": 13.165836731324404,
+            "12": 7.168163726033322
+          },
+          "gross_ci95_bps": [
+            2.847869655871075,
+            40.16295319471107
+          ],
+          "net_ci95_bps": {
+            "0": [
+              2.847869655871075,
+              40.16295319471107
+            ],
+            "2": [
+              0.8470379790696161,
+              38.166707353641904
+            ],
+            "4": [
+              -1.1537936977318426,
+              36.170461512572736
+            ],
+            "6": [
+              -3.1546253745332997,
+              34.174215671503575
+            ],
+            "12": [
+              -9.157120404937674,
+              28.185478148296077
+            ]
+          }
+        },
+        "admitted": {
+          "trades": 0,
+          "active_days": 0,
+          "calendar_days": 243,
+          "gross_bps": null,
+          "funding_bps": null,
+          "net_bps": {
+            "0": null,
+            "2": null,
+            "4": null,
+            "6": null,
+            "12": null
+          },
+          "gross_ci95_bps": null,
+          "net_ci95_bps": {
+            "0": null,
+            "2": null,
+            "4": null,
+            "6": null,
+            "12": null
+          }
+        },
+        "delayed_shadow": {
+          "trades": 23,
+          "active_days": 10,
+          "calendar_days": 243,
+          "gross_bps": 27.754595590653974,
+          "funding_bps": 0.0,
+          "win_rate": 0.5652173913043478,
+          "net_bps": {
+            "0": 27.754595590653974,
+            "2": 25.751258327161658,
+            "4": 23.74792106366935,
+            "6": 21.744583800177036,
+            "12": 15.73457200970011
+          },
+          "gross_ci95_bps": [
+            -10.838560546129933,
+            51.046504482423686
+          ],
+          "net_ci95_bps": {
+            "0": [
+              -10.838560546129933,
+              51.046504482423686
+            ],
+            "2": [
+              -12.839644402184549,
+              49.04223629085981
+            ],
+            "4": [
+              -14.84072825823916,
+              47.037968099295945
+            ],
+            "6": [
+              -16.84181211429377,
+              45.033699907732085
+            ],
+            "12": [
+              -22.845063682457607,
+              39.020895333040485
+            ]
+          }
+        }
+      }
+    }
+  },
+  "admitted_quarters": 0,
+  "admission_notice": "Separate one-month diagnostic admission is not live or regulatory approval",
+  "status": "COMPLETE historical repair diagnostic; no independent profitability confirmation"
+}

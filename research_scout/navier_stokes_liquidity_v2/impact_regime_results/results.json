@@ -1,0 +1,103 @@
+{
+  "created_at_utc": "2026-09-13T20:12:54.529703+00:00",
+  "status": "exploratory_reuse_of_seen_clean_day_not_confirmation_or_trading_approval",
+  "hypotheses": [
+    36,
+    37,
+    38,
+    41
+  ],
+  "paid_requests_made": false,
+  "rows": {
+    "panel": 8640,
+    "train": 5180,
+    "validation": 1727,
+    "test": 1727
+  },
+  "jump_threshold_bps": 12.49767285691362,
+  "models": {
+    "baseline": {
+      "validation": {
+        "average_precision": 0.18173617825906643,
+        "roc_auc": 0.689023395438379,
+        "brier": 0.20467430325628708
+      },
+      "test": {
+        "average_precision": 0.30473085687857565,
+        "roc_auc": 0.7383853642161798,
+        "brier": 0.11563746329606087
+      }
+    },
+    "augmented": {
+      "validation": {
+        "average_precision": 0.1808287482239353,
+        "roc_auc": 0.6800339348060168,
+        "brier": 0.2024497613516519
+      },
+      "test": {
+        "average_precision": 0.29073845276559923,
+        "roc_auc": 0.7221215172876804,
+        "brier": 0.12258004024519281
+      }
+    }
+  },
+  "test_incremental": {
+    "average_precision": -0.01399240411297642,
+    "roc_auc": -0.01626384692849947,
+    "brier_improvement": -0.0069425769491319456
+  },
+  "primary_gate_passed": false,
+  "direct_state_tests": {
+    "h36_susceptibility": {
+      "high_minus_low_mean": 0.6612825518213923,
+      "block_bootstrap_95pct_ci": [
+        0.23342192800974076,
+        1.1422264760182932
+      ],
+      "eligible_blocks": 21,
+      "supported": true
+    },
+    "h37_exponent": {
+      "high_minus_low_mean": -0.0073766333714311615,
+      "block_bootstrap_95pct_ci": [
+        -0.2854197043673012,
+        0.28760413640675675
+      ],
+      "eligible_blocks": 21,
+      "supported": false
+    },
+    "h37_convexity": {
+      "high_minus_low_mean": -0.12028969813373418,
+      "block_bootstrap_95pct_ci": [
+        -0.24100587972612644,
+        2.718370419846719e-05
+      ],
+      "eligible_blocks": 21,
+      "supported": false
+    },
+    "h41_permanence": {
+      "high_minus_low_mean": -0.01136513201607061,
+      "block_bootstrap_95pct_ci": [
+        -0.34807275836701945,
+        0.30006205717864726
+      ],
+      "eligible_blocks": 21,
+      "supported": false
+    }
+  },
+  "h38_exponent_change_test": {
+    "spearman_rho_test": -0.09097028255384192,
+    "naive_p_not_independence_adjusted": 0.00015334838244840065,
+    "high_minus_low_excursion_bps": 1.0573079505933756,
+    "block_bootstrap_95pct_ci": [
+      -1.2238664228857226,
+      4.722130582062572
+    ],
+    "eligible_blocks": 28,
+    "supported": false
+  },
+  "survivors_requiring_2024_replication": [
+    "h36_susceptibility"
+  ],
+  "verdict": "IMPACT_CANDIDATES_REQUIRE_REPLICATION"
+}
