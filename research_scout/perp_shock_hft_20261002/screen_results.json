@@ -1,0 +1,1853 @@
+{
+  "windows": [
+    {
+      "date": "2024-01-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 373593,
+        "book_messages": 373593,
+        "universe_book_messages": 363889
+      },
+      "symbols": 243,
+      "quote_rows": 56376,
+      "signal_rows": 55404,
+      "valid_endpoints": 25298,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 19074,
+        "displacement_gate": 25204,
+        "current_capture_freshness_gate": 9071,
+        "anchor_missing_book": 1416,
+        "current_native_clock_gate": 204,
+        "anchor_native_clock_gate": 341,
+        "spread_gate": 9,
+        "depth_gate": 85
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-01-01_0000.parquet",
+      "quotes_sha256": "e72be728b62808eaad16ae8cc19afadf476717fc56cc076455c21a4a6f34279d",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-01-01_0000.parquet",
+      "signals_sha256": "47b0113dcf743742b1f17be62b3d79df59e267aef86d6475a66ea6b33d471d99"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 285879,
+        "book_messages": 285879,
+        "universe_book_messages": 280112
+      },
+      "symbols": 243,
+      "quote_rows": 56376,
+      "signal_rows": 55404,
+      "valid_endpoints": 21758,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 10397,
+        "displacement_gate": 21694,
+        "anchor_capture_freshness_gate": 22879,
+        "anchor_missing_book": 98,
+        "anchor_native_clock_gate": 172,
+        "current_native_clock_gate": 100,
+        "depth_gate": 61,
+        "spread_gate": 3
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-01-01_0360.parquet",
+      "quotes_sha256": "cf185c2793c2c72bcd44b008540d9c786c730fc85add05cfbd02d8332deb1af3",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-01-01_0360.parquet",
+      "signals_sha256": "4cb73871bf907701501063a1266fb54413572697e5bad55312319c559d2dc142"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 270168,
+        "book_messages": 197181,
+        "universe_book_messages": 193596
+      },
+      "symbols": 243,
+      "quote_rows": 56376,
+      "signal_rows": 55404,
+      "valid_endpoints": 16423,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 16410,
+        "anchor_capture_freshness_gate": 28025,
+        "current_capture_freshness_gate": 10537,
+        "anchor_native_clock_gate": 146,
+        "anchor_missing_book": 206,
+        "current_native_clock_gate": 67,
+        "depth_gate": 13
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-01-01_0540.parquet",
+      "quotes_sha256": "ebfcf4142c4150162d9db023044d534461f93029ac10bb185f4af9343cf23656",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-01-01_0540.parquet",
+      "signals_sha256": "eaac1960b76860108b8d925415d6736c80421d070913e3b37506ccc0c6b1d926"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 240472,
+        "book_messages": 240472,
+        "universe_book_messages": 235038
+      },
+      "symbols": 243,
+      "quote_rows": 56376,
+      "signal_rows": 55404,
+      "valid_endpoints": 19326,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 19308,
+        "current_capture_freshness_gate": 10133,
+        "anchor_capture_freshness_gate": 25595,
+        "current_native_clock_gate": 107,
+        "anchor_native_clock_gate": 182,
+        "anchor_missing_book": 61,
+        "depth_gate": 18
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-01-01_0720.parquet",
+      "quotes_sha256": "87fdf4cc842d48a9d7918d551069cc7ae64ca4c7facd0d0bb11c50422743133c",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-01-01_0720.parquet",
+      "signals_sha256": "af6633b255c46efe490d15c87c5d4bf769e419182ca3e59e43d617df706c2f9e"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 230204,
+        "book_messages": 230204,
+        "universe_book_messages": 224133
+      },
+      "symbols": 243,
+      "quote_rows": 56376,
+      "signal_rows": 55404,
+      "valid_endpoints": 18764,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 18754,
+        "anchor_native_clock_gate": 137,
+        "current_capture_freshness_gate": 10254,
+        "anchor_capture_freshness_gate": 26031,
+        "anchor_missing_book": 141,
+        "current_native_clock_gate": 77,
+        "depth_gate": 10
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-01-01_1080.parquet",
+      "quotes_sha256": "1b82d7b298aefbf434bab07eb1814a47ce049577fb748a2352fcd1041f502b35",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-01-01_1080.parquet",
+      "signals_sha256": "735ed72c89c04e6d2e3733672d4c2d2ed00b68bd6afb9b9a1875a5e29bb1bba1"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 415674,
+        "book_messages": 415674,
+        "universe_book_messages": 400099
+      },
+      "symbols": 251,
+      "quote_rows": 58232,
+      "signal_rows": 57228,
+      "valid_endpoints": 24728,
+      "raw_shock_rows": 1,
+      "selected": [
+        {
+          "date": "2024-02-01",
+          "offset_minutes": 0,
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "valid_endpoints": true,
+          "supply": true,
+          "direction": -1,
+          "bid_return_bps": "-32.10272873194221508828250400",
+          "ask_return_bps": "-32.09628886659979939819458400",
+          "anchor_spread_bps": "2.006219279767278563546995686",
+          "current_spread_bps": "2.012679883264566770655127302",
+          "minimum_touch_usdt": "3824.14240",
+          "spread_gate": true,
+          "depth_gate": true,
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        }
+      ],
+      "reasons": {
+        "anchor_capture_freshness_gate": 21892,
+        "current_capture_freshness_gate": 9544,
+        "displacement_gate": 24701,
+        "current_native_clock_gate": 224,
+        "anchor_native_clock_gate": 419,
+        "anchor_missing_book": 421,
+        "depth_gate": 25,
+        "requires_native_trade_confirmation": 1,
+        "spread_gate": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-02-01_0000.parquet",
+      "quotes_sha256": "3a2d73a0a2be5f46c37068f341210ae41f1f7b5de500e30e02deb24a0be0d7c6",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-02-01_0000.parquet",
+      "signals_sha256": "1fc51ca472cf977800f50875b419ea5fffcc8da5bf9dc89d910016899936acc7"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 297908,
+        "book_messages": 297908,
+        "universe_book_messages": 287185
+      },
+      "symbols": 251,
+      "quote_rows": 58232,
+      "signal_rows": 57228,
+      "valid_endpoints": 19017,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 19017,
+        "current_capture_freshness_gate": 10504,
+        "anchor_capture_freshness_gate": 26959,
+        "current_native_clock_gate": 115,
+        "anchor_native_clock_gate": 209,
+        "anchor_missing_book": 424
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-02-01_0360.parquet",
+      "quotes_sha256": "3894caa48de48698240684282e19f68c84657bb449f335ddd47d6d865dcd5676",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-02-01_0360.parquet",
+      "signals_sha256": "bd803d6d9a0f26d87876098b96f2e624fa4b44ab3600f51c6e2a8e0f07f4162c"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 413331,
+        "book_messages": 297858,
+        "universe_book_messages": 290222
+      },
+      "symbols": 251,
+      "quote_rows": 58232,
+      "signal_rows": 57228,
+      "valid_endpoints": 20259,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 10832,
+        "displacement_gate": 20234,
+        "anchor_capture_freshness_gate": 25711,
+        "anchor_native_clock_gate": 265,
+        "depth_gate": 25,
+        "current_native_clock_gate": 130,
+        "anchor_missing_book": 31
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-02-01_0540.parquet",
+      "quotes_sha256": "78f157b82e866eefe4a963b01771b2e984af3b11d24ed5e090025b013db97f31",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-02-01_0540.parquet",
+      "signals_sha256": "48b598f12cc9c60c250debd1fbb4ad8b00dc64ea4c0c3c4abbc4f1da8ad48def"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 281140,
+        "book_messages": 281140,
+        "universe_book_messages": 267440
+      },
+      "symbols": 251,
+      "quote_rows": 58232,
+      "signal_rows": 57228,
+      "valid_endpoints": 20752,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 20739,
+        "anchor_capture_freshness_gate": 25315,
+        "current_capture_freshness_gate": 10709,
+        "current_native_clock_gate": 160,
+        "anchor_native_clock_gate": 265,
+        "depth_gate": 13,
+        "anchor_missing_book": 27
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-02-01_0720.parquet",
+      "quotes_sha256": "c7733a12e60e5125a7e7ba58e6183f37ecd4dd48e52868d87657d685931f456a",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-02-01_0720.parquet",
+      "signals_sha256": "591def7a85986e521eabb5fc20bb6644e2cb0ca09a6305734b131e84fb0f31d7"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 264918,
+        "book_messages": 264918,
+        "universe_book_messages": 252952
+      },
+      "symbols": 251,
+      "quote_rows": 58232,
+      "signal_rows": 57228,
+      "valid_endpoints": 19905,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 11080,
+        "anchor_capture_freshness_gate": 25788,
+        "displacement_gate": 19897,
+        "current_native_clock_gate": 173,
+        "anchor_native_clock_gate": 264,
+        "depth_gate": 8,
+        "anchor_missing_book": 18
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-02-01_1080.parquet",
+      "quotes_sha256": "349e2dbd2ad5d392edceab69f3eebfd62210e4d2b978ebad6b805671c3ba8211",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-02-01_1080.parquet",
+      "signals_sha256": "462a3ef8122c822af3fd03715466cf53492f112ede2145c14f83d8d85d98dbb0"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 502136,
+        "book_messages": 502136,
+        "universe_book_messages": 480695
+      },
+      "symbols": 260,
+      "quote_rows": 60320,
+      "signal_rows": 59280,
+      "valid_endpoints": 32957,
+      "raw_shock_rows": 1,
+      "selected": [
+        {
+          "date": "2024-03-01",
+          "offset_minutes": 0,
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "valid_endpoints": true,
+          "supply": true,
+          "direction": -1,
+          "bid_return_bps": "-36.93444136657433056325023100",
+          "ask_return_bps": "-36.90036900369003690036900400",
+          "anchor_spread_bps": "9.229349330872173511767420396",
+          "current_spread_bps": "9.263547938860583603520148216",
+          "minimum_touch_usdt": "5331.2204",
+          "spread_gate": true,
+          "depth_gate": true,
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        }
+      ],
+      "reasons": {
+        "anchor_capture_freshness_gate": 17012,
+        "current_capture_freshness_gate": 8609,
+        "anchor_native_clock_gate": 368,
+        "displacement_gate": 32901,
+        "current_native_clock_gate": 269,
+        "anchor_missing_book": 65,
+        "depth_gate": 50,
+        "requires_native_trade_confirmation": 1,
+        "spread_gate": 5
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-03-01_0000.parquet",
+      "quotes_sha256": "b2a99962667aded05f156d1fb105c24aaaa55718e38431186deee2d4e61af499",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-03-01_0000.parquet",
+      "signals_sha256": "6d22c7c3844fe589479d4e87922ba5829889a3f6b78ffd7b775ec20ea9cf2318"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 389329,
+        "book_messages": 389329,
+        "universe_book_messages": 368109
+      },
+      "symbols": 260,
+      "quote_rows": 60320,
+      "signal_rows": 59280,
+      "valid_endpoints": 26230,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 26220,
+        "current_native_clock_gate": 189,
+        "anchor_native_clock_gate": 313,
+        "current_capture_freshness_gate": 10583,
+        "anchor_capture_freshness_gate": 21928,
+        "anchor_missing_book": 37,
+        "depth_gate": 10
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-03-01_0360.parquet",
+      "quotes_sha256": "b23cb6fd8441faa616ca94f8942e5295e6a06d2c70493a3f3f5de4e4e2cad309",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-03-01_0360.parquet",
+      "signals_sha256": "469a6e4290833f416fffbab6cef99322d1dea6533c78911df72faf5456a63aa9"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 515586,
+        "book_messages": 395678,
+        "universe_book_messages": 369900
+      },
+      "symbols": 260,
+      "quote_rows": 60320,
+      "signal_rows": 59280,
+      "valid_endpoints": 26251,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 26223,
+        "current_capture_freshness_gate": 10459,
+        "anchor_capture_freshness_gate": 22066,
+        "current_native_clock_gate": 185,
+        "anchor_native_clock_gate": 300,
+        "anchor_missing_book": 19,
+        "depth_gate": 26,
+        "spread_gate": 2
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-03-01_0540.parquet",
+      "quotes_sha256": "74dfc6a862caec6d2bbe1da3cb679a69cc0110f8c71de0eabe84e224f88caea4",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-03-01_0540.parquet",
+      "signals_sha256": "c51c9aadd5adf9af605bb321d61ef1858f970975eb086d7f3f00054dc64ac40b"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 468264,
+        "book_messages": 468264,
+        "universe_book_messages": 443745
+      },
+      "symbols": 260,
+      "quote_rows": 60320,
+      "signal_rows": 59280,
+      "valid_endpoints": 29768,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 29735,
+        "anchor_capture_freshness_gate": 18871,
+        "current_capture_freshness_gate": 9990,
+        "current_native_clock_gate": 243,
+        "anchor_native_clock_gate": 385,
+        "depth_gate": 32,
+        "spread_gate": 1,
+        "anchor_missing_book": 23
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-03-01_0720.parquet",
+      "quotes_sha256": "4522271d30a75042e96f61fc9cb40aea1189633028229928fcd042e8b6cc464a",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-03-01_0720.parquet",
+      "signals_sha256": "c0d9b64e1c4d0af1ea8acc24e075fa3453c4a7ce6ecc2924539f6765f587ec74"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 429376,
+        "book_messages": 429376,
+        "universe_book_messages": 406695
+      },
+      "symbols": 262,
+      "quote_rows": 60784,
+      "signal_rows": 59736,
+      "valid_endpoints": 28909,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 28876,
+        "depth_gate": 32,
+        "current_capture_freshness_gate": 10366,
+        "anchor_capture_freshness_gate": 20016,
+        "anchor_native_clock_gate": 266,
+        "current_native_clock_gate": 161,
+        "anchor_missing_book": 18,
+        "spread_gate": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-03-01_1080.parquet",
+      "quotes_sha256": "f77f0a3d12a27c39caa4f9d10d336f7fe47123bf97cfa542141969bb37352bbd",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-03-01_1080.parquet",
+      "signals_sha256": "04530b41853fe8722c14a2bb6c0c67b2581b9d7901bdc7d18f6fe3848cfa1114"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 414745,
+        "book_messages": 414745,
+        "universe_book_messages": 396132
+      },
+      "symbols": 265,
+      "quote_rows": 61480,
+      "signal_rows": 60420,
+      "valid_endpoints": 29137,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 20662,
+        "displacement_gate": 29129,
+        "anchor_native_clock_gate": 917,
+        "current_capture_freshness_gate": 9301,
+        "current_native_clock_gate": 231,
+        "anchor_missing_book": 172,
+        "depth_gate": 8
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-04-01_0000.parquet",
+      "quotes_sha256": "a3247bc3ad3e93669a3338c43ab9bdbb1959edbac282cf4740dbe186414379f2",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-04-01_0000.parquet",
+      "signals_sha256": "aa922db78b9a08f13799855bb9f5031048a7b2ca84c4f4d30254b94be4071771"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 1167824,
+        "book_messages": 1167824,
+        "universe_book_messages": 1116431
+      },
+      "symbols": 265,
+      "quote_rows": 61480,
+      "signal_rows": 60420,
+      "valid_endpoints": 53434,
+      "raw_shock_rows": 1,
+      "selected": [
+        {
+          "date": "2024-04-01",
+          "offset_minutes": 360,
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "valid_endpoints": true,
+          "supply": true,
+          "direction": -1,
+          "bid_return_bps": "-32.96522169111587275424427200",
+          "ask_return_bps": "-32.95978905735003295978905700",
+          "anchor_spread_bps": "1.648125257519571487433044911",
+          "current_spread_bps": "1.653575857792476229847044233",
+          "minimum_touch_usdt": "5447.01666",
+          "spread_gate": true,
+          "depth_gate": true,
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        }
+      ],
+      "reasons": {
+        "displacement_gate": 53382,
+        "current_capture_freshness_gate": 2789,
+        "anchor_capture_freshness_gate": 3500,
+        "depth_gate": 47,
+        "current_native_clock_gate": 327,
+        "anchor_native_clock_gate": 369,
+        "spread_gate": 4,
+        "anchor_missing_book": 1,
+        "requires_native_trade_confirmation": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-04-01_0360.parquet",
+      "quotes_sha256": "c214ea209d69d61fad694b0b54e09e554116c012704da5280230de38852e6659",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-04-01_0360.parquet",
+      "signals_sha256": "c9be21c2809ef54313501ec2bc14238fb04c96672f4e792a289347916655c444"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 561553,
+        "book_messages": 421032,
+        "universe_book_messages": 408839
+      },
+      "symbols": 265,
+      "quote_rows": 61480,
+      "signal_rows": 60420,
+      "valid_endpoints": 29666,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 19137,
+        "displacement_gate": 29635,
+        "current_capture_freshness_gate": 10836,
+        "current_native_clock_gate": 150,
+        "anchor_native_clock_gate": 234,
+        "anchor_invalid_book": 378,
+        "depth_gate": 28,
+        "anchor_missing_book": 15,
+        "spread_gate": 3,
+        "current_invalid_book": 4
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-04-01_0540.parquet",
+      "quotes_sha256": "070098c3d6f34a09f5144a1a80154e1657363ca37049e402b92a82fae34bbaa3",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-04-01_0540.parquet",
+      "signals_sha256": "5a227fcdf3746d923b3df24e4ab14b7083f7f14500c8509aefad199096919926"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 421247,
+        "book_messages": 421247,
+        "universe_book_messages": 409672
+      },
+      "symbols": 262,
+      "quote_rows": 60784,
+      "signal_rows": 59736,
+      "valid_endpoints": 30903,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_missing_book": 218,
+        "displacement_gate": 30901,
+        "current_capture_freshness_gate": 10000,
+        "anchor_capture_freshness_gate": 18158,
+        "anchor_native_clock_gate": 277,
+        "current_native_clock_gate": 180,
+        "depth_gate": 2
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-04-01_0720.parquet",
+      "quotes_sha256": "59baaafad465019ea414312ac2074660692c74311b27fff8803006c1bb78171e",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-04-01_0720.parquet",
+      "signals_sha256": "d1262bb6ec1b4f668429ed582c177b4066d8a9ecddf4e0c4f4750ead236e11c7"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 392908,
+        "book_messages": 392908,
+        "universe_book_messages": 376632
+      },
+      "symbols": 262,
+      "quote_rows": 60784,
+      "signal_rows": 59736,
+      "valid_endpoints": 28756,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 20037,
+        "current_capture_freshness_gate": 10499,
+        "displacement_gate": 28753,
+        "current_native_clock_gate": 180,
+        "anchor_native_clock_gate": 256,
+        "anchor_missing_book": 8,
+        "depth_gate": 3
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-04-01_1080.parquet",
+      "quotes_sha256": "145227cc5eac5842c5e00c89028f0c8c43c5eaaa6d82168021a4989331e62aa5",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-04-01_1080.parquet",
+      "signals_sha256": "2ac2669d348eb6a2e2c21a19f38ada463bd00f6dfbd6349e79598717612db19c"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 518891,
+        "book_messages": 518891,
+        "universe_book_messages": 486887
+      },
+      "symbols": 269,
+      "quote_rows": 62408,
+      "signal_rows": 61332,
+      "valid_endpoints": 35822,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 15932,
+        "displacement_gate": 35777,
+        "current_capture_freshness_gate": 8596,
+        "anchor_missing_book": 362,
+        "current_native_clock_gate": 252,
+        "anchor_native_clock_gate": 368,
+        "depth_gate": 38,
+        "spread_gate": 7
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-05-01_0000.parquet",
+      "quotes_sha256": "eb568cb2b6b283e27c3de9d7827a50e3a54855359e119ece0ffd49841c86029e",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-05-01_0000.parquet",
+      "signals_sha256": "f5ec1fbeef309b2c4075a395312944b2d692db2b8530e835ad1a0164865a607c"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 468202,
+        "book_messages": 468202,
+        "universe_book_messages": 435528
+      },
+      "symbols": 269,
+      "quote_rows": 62408,
+      "signal_rows": 61332,
+      "valid_endpoints": 34512,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 16503,
+        "displacement_gate": 34512,
+        "current_capture_freshness_gate": 9649,
+        "current_native_clock_gate": 241,
+        "anchor_native_clock_gate": 341,
+        "anchor_missing_book": 86
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-05-01_0360.parquet",
+      "quotes_sha256": "a0237de9ea9b5c0712d3baf4999951d3412068893a0c43d42ae2b73c216fb424",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-05-01_0360.parquet",
+      "signals_sha256": "0f77542c674416352ef000f42aa5139095064e63acb0759ab4935c64c07a6e56"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 810692,
+        "book_messages": 645169,
+        "universe_book_messages": 597279
+      },
+      "symbols": 269,
+      "quote_rows": 62408,
+      "signal_rows": 61332,
+      "valid_endpoints": 40805,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 40798,
+        "current_capture_freshness_gate": 8091,
+        "anchor_capture_freshness_gate": 11734,
+        "current_native_clock_gate": 284,
+        "anchor_native_clock_gate": 404,
+        "anchor_missing_book": 14,
+        "depth_gate": 6,
+        "spread_gate": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-05-01_0540.parquet",
+      "quotes_sha256": "6760b158bc75c6a3066446384d0610114dd414af91a131017e3f0dcfe41ce119",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-05-01_0540.parquet",
+      "signals_sha256": "c5a63ecc6ae3c230ce7e88a3534e60d03b42620a64d31bb8cc1c59f87f4ec141"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 560556,
+        "book_messages": 560556,
+        "universe_book_messages": 522160
+      },
+      "symbols": 269,
+      "quote_rows": 62408,
+      "signal_rows": 61332,
+      "valid_endpoints": 36119,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 8343,
+        "anchor_native_clock_gate": 1923,
+        "anchor_capture_freshness_gate": 14542,
+        "displacement_gate": 36115,
+        "current_native_clock_gate": 376,
+        "anchor_missing_book": 29,
+        "depth_gate": 4
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-05-01_0720.parquet",
+      "quotes_sha256": "2d1b31f404e1a6e75ef2c16088ddde1febcbaf9f0d4c2c03ca1cca178d88cfd2",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-05-01_0720.parquet",
+      "signals_sha256": "413d432f911acff053b9ee0acb3669a1257bb8238084accc9171c6567fd634b0"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 981316,
+        "book_messages": 981316,
+        "universe_book_messages": 897672
+      },
+      "symbols": 269,
+      "quote_rows": 62408,
+      "signal_rows": 61332,
+      "valid_endpoints": 50082,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 50005,
+        "current_capture_freshness_gate": 4359,
+        "anchor_capture_freshness_gate": 6074,
+        "depth_gate": 72,
+        "current_native_clock_gate": 369,
+        "anchor_native_clock_gate": 448,
+        "spread_gate": 5
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-05-01_1080.parquet",
+      "quotes_sha256": "90fea9ec5a74b1019007be7ddf2c44783361cf7a298a1e875a33d85a96a5d027",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-05-01_1080.parquet",
+      "signals_sha256": "d04b50d4a48445e8b7c09445bfde2d29f7582c2a40a87a655245c455d8229248"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 386373,
+        "book_messages": 386373,
+        "universe_book_messages": 355499
+      },
+      "symbols": 262,
+      "quote_rows": 60784,
+      "signal_rows": 59736,
+      "valid_endpoints": 26619,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 10256,
+        "anchor_capture_freshness_gate": 21999,
+        "displacement_gate": 26612,
+        "anchor_native_clock_gate": 439,
+        "current_native_clock_gate": 274,
+        "anchor_missing_book": 149,
+        "depth_gate": 7
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-06-01_0000.parquet",
+      "quotes_sha256": "9fcac95f77685350ab88b2e3701d6ac87b81d6a5f9f126b1a74ebe49a3312217",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-06-01_0000.parquet",
+      "signals_sha256": "9dc0196d208ed8ddf378f85654c0697f465b1275df8789765ca7ca887e178e4d"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 355740,
+        "book_messages": 355740,
+        "universe_book_messages": 326463
+      },
+      "symbols": 262,
+      "quote_rows": 60784,
+      "signal_rows": 59736,
+      "valid_endpoints": 25857,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 10073,
+        "displacement_gate": 25855,
+        "anchor_capture_freshness_gate": 22887,
+        "current_native_clock_gate": 254,
+        "anchor_native_clock_gate": 444,
+        "anchor_missing_book": 221,
+        "depth_gate": 2
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-06-01_0360.parquet",
+      "quotes_sha256": "ef96c5f50156cca89123e72ca41869426f22f11c60340925c1232147d80e19bc",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-06-01_0360.parquet",
+      "signals_sha256": "0cca9ae2474bc19a19bcf655b9b910e9de90a35a24a592b500f6dea1110cf5c3"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 501747,
+        "book_messages": 396056,
+        "universe_book_messages": 363352
+      },
+      "symbols": 262,
+      "quote_rows": 60784,
+      "signal_rows": 59736,
+      "valid_endpoints": 27646,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 27645,
+        "current_capture_freshness_gate": 9962,
+        "anchor_capture_freshness_gate": 21158,
+        "current_native_clock_gate": 302,
+        "anchor_native_clock_gate": 529,
+        "anchor_missing_book": 139,
+        "depth_gate": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-06-01_0540.parquet",
+      "quotes_sha256": "2502c676ed12f7f2b963cd4072d3f5155b95c707ddf4c144825e5c5b1d558a5a",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-06-01_0540.parquet",
+      "signals_sha256": "9d59c5ad2f5febb368949654dcfff9584f99abb880a666d8371783196b281f86"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 353686,
+        "book_messages": 353686,
+        "universe_book_messages": 335257
+      },
+      "symbols": 262,
+      "quote_rows": 60784,
+      "signal_rows": 59736,
+      "valid_endpoints": 26642,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 10089,
+        "anchor_capture_freshness_gate": 22211,
+        "displacement_gate": 26642,
+        "current_native_clock_gate": 260,
+        "anchor_native_clock_gate": 431,
+        "anchor_missing_book": 103
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-06-01_0720.parquet",
+      "quotes_sha256": "865f92dc61d1e7b0ce6da47dfaec1c4e183a9b88976d2e0e9fb721bd3e4cd00d",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-06-01_0720.parquet",
+      "signals_sha256": "e7fd4e49159f466456c12d847c72e7f633bbb4514d661b4fff19dedae0e45b71"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 393914,
+        "book_messages": 393914,
+        "universe_book_messages": 363833
+      },
+      "symbols": 262,
+      "quote_rows": 60784,
+      "signal_rows": 59736,
+      "valid_endpoints": 28099,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 28099,
+        "current_capture_freshness_gate": 10167,
+        "anchor_capture_freshness_gate": 20739,
+        "current_native_clock_gate": 264,
+        "anchor_native_clock_gate": 447,
+        "anchor_missing_book": 20
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-06-01_1080.parquet",
+      "quotes_sha256": "1151974a1209052248bfd6351601dd3e22bf054258fd9a60055903b1ca169b53",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-06-01_1080.parquet",
+      "signals_sha256": "416bcf60b3488e1feccecb4bbc1e4dfd765cd00c6b4c8414da3b9ef1c0c0ea9a"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 358839,
+        "book_messages": 358839,
+        "universe_book_messages": 328397
+      },
+      "symbols": 264,
+      "quote_rows": 61248,
+      "signal_rows": 60192,
+      "valid_endpoints": 27369,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 21785,
+        "current_capture_freshness_gate": 9929,
+        "displacement_gate": 27369,
+        "current_native_clock_gate": 117,
+        "anchor_native_clock_gate": 192,
+        "anchor_missing_book": 800
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-07-01_0000.parquet",
+      "quotes_sha256": "9b20829526a9f3a6327999ff439f872320bf88c7a9672556b90c03296dbc8e15",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-07-01_0000.parquet",
+      "signals_sha256": "d535bfc06802a66246f7d83f30aaa66dfe70866acf7d7a3b281720425de463f7"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 259914,
+        "book_messages": 259914,
+        "universe_book_messages": 240402
+      },
+      "symbols": 264,
+      "quote_rows": 61248,
+      "signal_rows": 60192,
+      "valid_endpoints": 23386,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 23385,
+        "anchor_capture_freshness_gate": 25141,
+        "current_capture_freshness_gate": 11183,
+        "anchor_missing_book": 213,
+        "current_native_clock_gate": 93,
+        "anchor_native_clock_gate": 176,
+        "depth_gate": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-07-01_0360.parquet",
+      "quotes_sha256": "5504236189f267311d9d337d2544b505a2255e368a32a384243f210fa3d5675a",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-07-01_0360.parquet",
+      "signals_sha256": "1fe28db551d80f886ec22b9e8759c97220b7fa407c0d5c22c292b212bd69f411"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 390324,
+        "book_messages": 314289,
+        "universe_book_messages": 285223
+      },
+      "symbols": 264,
+      "quote_rows": 61248,
+      "signal_rows": 60192,
+      "valid_endpoints": 25273,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 25256,
+        "current_capture_freshness_gate": 11053,
+        "anchor_capture_freshness_gate": 23521,
+        "current_native_clock_gate": 94,
+        "anchor_native_clock_gate": 134,
+        "anchor_missing_book": 117,
+        "spread_gate": 15,
+        "depth_gate": 2
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-07-01_0540.parquet",
+      "quotes_sha256": "fb6a6eebccf3bf67972d57a53004427fcfcc2f3d7d5e25268ffdea78fdfb6570",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-07-01_0540.parquet",
+      "signals_sha256": "b06c80436d83e4dd87623ef809c83ca018dea346a7487541dd69a333dfdc08f1"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 401229,
+        "book_messages": 401229,
+        "universe_book_messages": 362456
+      },
+      "symbols": 264,
+      "quote_rows": 61248,
+      "signal_rows": 60192,
+      "valid_endpoints": 29768,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 29765,
+        "current_capture_freshness_gate": 10095,
+        "anchor_capture_freshness_gate": 19847,
+        "current_native_clock_gate": 115,
+        "anchor_native_clock_gate": 181,
+        "anchor_missing_book": 186,
+        "depth_gate": 3
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-07-01_0720.parquet",
+      "quotes_sha256": "095668534ae03315064c97d5762387b4c9406402f24324c8a87a01f415c15909",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-07-01_0720.parquet",
+      "signals_sha256": "e7d41dedd1b316eabc2ce8caacb1aa3af5a959c45f6a91e2b3adbf1a1e2b68e1"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 412535,
+        "book_messages": 412535,
+        "universe_book_messages": 369727
+      },
+      "symbols": 264,
+      "quote_rows": 61248,
+      "signal_rows": 60192,
+      "valid_endpoints": 30128,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 30112,
+        "current_capture_freshness_gate": 10029,
+        "anchor_capture_freshness_gate": 19707,
+        "depth_gate": 8,
+        "current_native_clock_gate": 124,
+        "anchor_native_clock_gate": 187,
+        "anchor_missing_book": 17,
+        "spread_gate": 8
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-07-01_1080.parquet",
+      "quotes_sha256": "b54189f30b604b5ae363c451364e140d14d371243cdfe7b8ee77fd8911c0041e",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-07-01_1080.parquet",
+      "signals_sha256": "e6b894e7c1855fbc6eba827ee11b123c1b2241209d051e81448c79bff2b4d40a"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 583291,
+        "book_messages": 583291,
+        "universe_book_messages": 533730
+      },
+      "symbols": 263,
+      "quote_rows": 61016,
+      "signal_rows": 59964,
+      "valid_endpoints": 33155,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_missing_book": 1996,
+        "displacement_gate": 33116,
+        "current_capture_freshness_gate": 8573,
+        "anchor_capture_freshness_gate": 15911,
+        "anchor_native_clock_gate": 192,
+        "current_native_clock_gate": 137,
+        "depth_gate": 29,
+        "spread_gate": 10
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-08-01_0000.parquet",
+      "quotes_sha256": "b21706067e3065e076f807c209cd60aa1e245bb718afb1b7ce01b2389de84d3f",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-08-01_0000.parquet",
+      "signals_sha256": "6c0be17fa1b7597104c7735ae7bd40216e3ccef116019c5b57c658aac637c04b"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 428000,
+        "book_messages": 428000,
+        "universe_book_messages": 392381
+      },
+      "symbols": 263,
+      "quote_rows": 61016,
+      "signal_rows": 59964,
+      "valid_endpoints": 27904,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 27886,
+        "current_capture_freshness_gate": 10134,
+        "anchor_capture_freshness_gate": 21590,
+        "current_native_clock_gate": 105,
+        "anchor_native_clock_gate": 166,
+        "anchor_missing_book": 65,
+        "spread_gate": 18
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-08-01_0360.parquet",
+      "quotes_sha256": "f22d33fb7b2e73c23b9e881edf16d7a685075ccc283e994c239761a3100c8bdb",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-08-01_0360.parquet",
+      "signals_sha256": "26c00252f8f46fb1a03aed751bfa62e1b5200878fd7d01ee304a10b36bfbddf9"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 375705,
+        "book_messages": 315618,
+        "universe_book_messages": 290484
+      },
+      "symbols": 263,
+      "quote_rows": 61016,
+      "signal_rows": 59964,
+      "valid_endpoints": 22756,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 22738,
+        "current_native_clock_gate": 101,
+        "anchor_native_clock_gate": 157,
+        "anchor_capture_freshness_gate": 25848,
+        "current_capture_freshness_gate": 10721,
+        "anchor_missing_book": 381,
+        "spread_gate": 17,
+        "depth_gate": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-08-01_0540.parquet",
+      "quotes_sha256": "262fcb9f6d94602fbbabb83d61d74b8538669d188cf2a9d0fd9ce62cb7a0c30c",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-08-01_0540.parquet",
+      "signals_sha256": "e50cb2495c0b1d6217aa9158004bcd35777ce2835f7d535f7ba4823df4f7831c"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 446742,
+        "book_messages": 446742,
+        "universe_book_messages": 408528
+      },
+      "symbols": 263,
+      "quote_rows": 61016,
+      "signal_rows": 59964,
+      "valid_endpoints": 27690,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 21203,
+        "current_capture_freshness_gate": 10470,
+        "displacement_gate": 27678,
+        "anchor_missing_book": 348,
+        "current_native_clock_gate": 98,
+        "anchor_native_clock_gate": 155,
+        "spread_gate": 8,
+        "depth_gate": 4
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-08-01_0720.parquet",
+      "quotes_sha256": "a91737a27191a68368a875c554785409f66c7b8e86f2c4accd897d92e7217443",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-08-01_0720.parquet",
+      "signals_sha256": "6eff2c68b3b4dffdda43d4a68bcd77624c79dd982ebf729653a602288ff1154c"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 681456,
+        "book_messages": 681456,
+        "universe_book_messages": 621777
+      },
+      "symbols": 263,
+      "quote_rows": 61016,
+      "signal_rows": 59964,
+      "valid_endpoints": 37991,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 37971,
+        "current_capture_freshness_gate": 8325,
+        "anchor_capture_freshness_gate": 13313,
+        "current_native_clock_gate": 113,
+        "anchor_native_clock_gate": 165,
+        "anchor_missing_book": 57,
+        "spread_gate": 20
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-08-01_1080.parquet",
+      "quotes_sha256": "8e1d449d159307c5d8e903a0b8d4ea4894510b7c2f2d4b8817eb2d6805b99db1",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-08-01_1080.parquet",
+      "signals_sha256": "99b4f6dec3e4af6284b90724eee25202854d3a6c1d990ddbc932838a95869bbb"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 327722,
+        "book_messages": 327722,
+        "universe_book_messages": 307772
+      },
+      "symbols": 277,
+      "quote_rows": 64264,
+      "signal_rows": 63156,
+      "valid_endpoints": 24502,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_missing_book": 2068,
+        "displacement_gate": 24486,
+        "current_capture_freshness_gate": 10308,
+        "anchor_capture_freshness_gate": 25980,
+        "anchor_native_clock_gate": 185,
+        "current_native_clock_gate": 113,
+        "spread_gate": 6,
+        "depth_gate": 10
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-09-01_0000.parquet",
+      "quotes_sha256": "42f42b8529d32600365ec85059255dc29b7a63c4d4ce6f33df6ecb34bed1947d",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-09-01_0000.parquet",
+      "signals_sha256": "8e5c29ff7328ed7638874c5df0cbba4a5e9f9f3b3600d8cb173df6649efee2be"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 512085,
+        "book_messages": 512085,
+        "universe_book_messages": 469517
+      },
+      "symbols": 277,
+      "quote_rows": 64264,
+      "signal_rows": 63156,
+      "valid_endpoints": 30273,
+      "raw_shock_rows": 4,
+      "selected": [
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 360,
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "valid_endpoints": true,
+          "supply": true,
+          "direction": -1,
+          "bid_return_bps": "-31.75863437872171496625645100",
+          "ask_return_bps": "-31.74603174603174603174603200",
+          "anchor_spread_bps": "3.969041476483429251835681682",
+          "current_spread_bps": "3.981684252438781604618753732",
+          "minimum_touch_usdt": "2029.3560",
+          "spread_gate": true,
+          "depth_gate": true,
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        }
+      ],
+      "reasons": {
+        "current_capture_freshness_gate": 10693,
+        "displacement_gate": 30229,
+        "anchor_capture_freshness_gate": 21833,
+        "current_native_clock_gate": 132,
+        "anchor_native_clock_gate": 204,
+        "anchor_missing_book": 21,
+        "depth_gate": 33,
+        "spread_gate": 7,
+        "requires_native_trade_confirmation": 4
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-09-01_0360.parquet",
+      "quotes_sha256": "b86e61709de580b1029c7f37624da35f445cc8b828332cf3ef535fa383fb76d2",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-09-01_0360.parquet",
+      "signals_sha256": "ef268dc41e75aea25f601fb2f66e22d497bd9561ead8c10d31724bb570934134"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 309967,
+        "book_messages": 264121,
+        "universe_book_messages": 248633
+      },
+      "symbols": 277,
+      "quote_rows": 64264,
+      "signal_rows": 63156,
+      "valid_endpoints": 20475,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_missing_book": 274,
+        "displacement_gate": 20466,
+        "current_capture_freshness_gate": 10839,
+        "anchor_capture_freshness_gate": 31125,
+        "anchor_native_clock_gate": 283,
+        "current_native_clock_gate": 160,
+        "depth_gate": 8,
+        "spread_gate": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-09-01_0540.parquet",
+      "quotes_sha256": "968233355a1dbebf82b4f7b0e63fb3007af199e8a82fc6b5b226d59ec4f80212",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-09-01_0540.parquet",
+      "signals_sha256": "dbb56f5635995531627855acb35703823a3c6bf28a398da87120d6a22b055187"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 459160,
+        "book_messages": 459160,
+        "universe_book_messages": 419055
+      },
+      "symbols": 277,
+      "quote_rows": 64264,
+      "signal_rows": 63156,
+      "valid_endpoints": 30090,
+      "raw_shock_rows": 1,
+      "selected": [
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 720,
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "valid_endpoints": true,
+          "supply": true,
+          "direction": 1,
+          "bid_return_bps": "33.17172748150038275070171000",
+          "ask_return_bps": "33.16326530612244897959184000",
+          "anchor_spread_bps": "2.551345834927924480163286134",
+          "current_spread_bps": "2.542911633820724729815638906",
+          "minimum_touch_usdt": "2508.16000000",
+          "spread_gate": true,
+          "depth_gate": true,
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        }
+      ],
+      "reasons": {
+        "anchor_missing_book": 514,
+        "displacement_gate": 30068,
+        "current_capture_freshness_gate": 10570,
+        "anchor_capture_freshness_gate": 21618,
+        "current_native_clock_gate": 139,
+        "anchor_native_clock_gate": 225,
+        "spread_gate": 19,
+        "depth_gate": 2,
+        "requires_native_trade_confirmation": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-09-01_0720.parquet",
+      "quotes_sha256": "ff66e54ec2b99f458b01f0ae361f9dee2599e28b12ec5754a321cd788a0c2bc0",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-09-01_0720.parquet",
+      "signals_sha256": "17516ef89e69d527f4028a521363d875c0d3750dfd31993617c0a0c274cb4f11"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 381882,
+        "book_messages": 381882,
+        "universe_book_messages": 352701
+      },
+      "symbols": 277,
+      "quote_rows": 64264,
+      "signal_rows": 63156,
+      "valid_endpoints": 26857,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 11274,
+        "displacement_gate": 26857,
+        "anchor_capture_freshness_gate": 24665,
+        "anchor_native_clock_gate": 198,
+        "current_native_clock_gate": 120,
+        "anchor_missing_book": 42
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-09-01_1080.parquet",
+      "quotes_sha256": "cde0c8e9eaa1948ffb0d6cf0dea2dc0def5551fb28e4cb878926e1c1ede460f5",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-09-01_1080.parquet",
+      "signals_sha256": "2bd38f146ff6b538f33cf0ad10da1d22b9a3c9e7c7c3d953cbc00012ce6c4106"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 581031,
+        "book_messages": 581031,
+        "universe_book_messages": 533608
+      },
+      "symbols": 295,
+      "quote_rows": 68440,
+      "signal_rows": 67260,
+      "valid_endpoints": 33715,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_missing_book": 2952,
+        "displacement_gate": 33687,
+        "current_capture_freshness_gate": 10275,
+        "anchor_capture_freshness_gate": 19979,
+        "anchor_native_clock_gate": 203,
+        "current_native_clock_gate": 136,
+        "depth_gate": 1,
+        "spread_gate": 27
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-10-01_0000.parquet",
+      "quotes_sha256": "9420728a9eeded1c07789686bf44b3e7c508be708d8abbb6ad73d2914f2aac1b",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-10-01_0000.parquet",
+      "signals_sha256": "ad9a8849af5bf80fa107b7cb91b16f26b3877d3fe7889525d10ef737a0bf33df"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 334526,
+        "book_messages": 334526,
+        "universe_book_messages": 313445,
+        "disconnects": 2
+      },
+      "symbols": 296,
+      "quote_rows": 68672,
+      "signal_rows": 67488,
+      "valid_endpoints": 23012,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 23008,
+        "current_missing_book": 673,
+        "disconnect_between_endpoints": 409,
+        "anchor_missing_book": 1837,
+        "current_capture_freshness_gate": 11280,
+        "anchor_capture_freshness_gate": 29833,
+        "current_native_clock_gate": 132,
+        "anchor_native_clock_gate": 246,
+        "depth_gate": 2,
+        "anchor_invalid_book": 66,
+        "spread_gate": 2
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-10-01_0360.parquet",
+      "quotes_sha256": "ae9a75f880b179e920506855e7ef81b68c7db3d6451086fce4d10cd98ac628c1",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-10-01_0360.parquet",
+      "signals_sha256": "71146a96d991be6410ab8ffd6076c15e91676ce603df7954f70c84d43ca9187d"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 395658,
+        "book_messages": 321503,
+        "universe_book_messages": 299084
+      },
+      "symbols": 296,
+      "quote_rows": 68672,
+      "signal_rows": 67488,
+      "valid_endpoints": 22712,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 22703,
+        "current_capture_freshness_gate": 11674,
+        "anchor_capture_freshness_gate": 32735,
+        "current_native_clock_gate": 111,
+        "anchor_native_clock_gate": 208,
+        "anchor_missing_book": 48,
+        "spread_gate": 5,
+        "depth_gate": 4
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-10-01_0540.parquet",
+      "quotes_sha256": "bdcc3e230f0c43e42857e44c44ea6b2d3a5f5600fada797312aaacc44c1380bb",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-10-01_0540.parquet",
+      "signals_sha256": "9a759addb027a2a96a4f5aac49fbe608ba3eb06c778f53ae446b291afb9fc892"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 377929,
+        "book_messages": 377929,
+        "universe_book_messages": 351709
+      },
+      "symbols": 296,
+      "quote_rows": 68672,
+      "signal_rows": 67488,
+      "valid_endpoints": 25498,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 29047,
+        "displacement_gate": 25497,
+        "current_capture_freshness_gate": 11813,
+        "anchor_native_clock_gate": 262,
+        "current_native_clock_gate": 159,
+        "anchor_missing_book": 709,
+        "depth_gate": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-10-01_0720.parquet",
+      "quotes_sha256": "cf225a600c0f5f39c7b51dd6d596234b12e03775b88187a16c59a3214661c72e",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-10-01_0720.parquet",
+      "signals_sha256": "95a4420c07104fc5d38b3e411239ebd7d74657b839f39d50a3defa03f4768369"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 896455,
+        "book_messages": 896455,
+        "universe_book_messages": 810480
+      },
+      "symbols": 296,
+      "quote_rows": 68672,
+      "signal_rows": 67488,
+      "valid_endpoints": 46915,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 46865,
+        "current_capture_freshness_gate": 8183,
+        "anchor_capture_freshness_gate": 12060,
+        "current_native_clock_gate": 141,
+        "anchor_native_clock_gate": 188,
+        "depth_gate": 17,
+        "spread_gate": 33,
+        "anchor_missing_book": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-10-01_1080.parquet",
+      "quotes_sha256": "cc0c8d333f0aead7bcf0844964c377b843e53aeb6d259f126bd7d96a8675d512",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-10-01_1080.parquet",
+      "signals_sha256": "1d6703586f674c696a1845ed8b900e1697f9b73153ea1a3d3d0d8c8f2ba600d7"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 441390,
+        "book_messages": 441390,
+        "universe_book_messages": 401957
+      },
+      "symbols": 302,
+      "quote_rows": 70064,
+      "signal_rows": 68856,
+      "valid_endpoints": 29451,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_missing_book": 2444,
+        "displacement_gate": 29426,
+        "current_capture_freshness_gate": 11777,
+        "anchor_capture_freshness_gate": 24813,
+        "current_native_clock_gate": 135,
+        "anchor_native_clock_gate": 236,
+        "spread_gate": 14,
+        "depth_gate": 11
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-11-01_0000.parquet",
+      "quotes_sha256": "44d8e2474a9a871502d3a65238a8da25bc1b20c3198378c4425f7d4db8613dd1",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-11-01_0000.parquet",
+      "signals_sha256": "890fd5ea86b3829cf99ec95ac401da2e17f28f546694aa40e1b521a247aa4ea6"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 318283,
+        "book_messages": 318283,
+        "universe_book_messages": 291871
+      },
+      "symbols": 302,
+      "quote_rows": 70064,
+      "signal_rows": 68856,
+      "valid_endpoints": 23370,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 12778,
+        "displacement_gate": 23368,
+        "anchor_capture_freshness_gate": 32265,
+        "current_native_clock_gate": 116,
+        "anchor_native_clock_gate": 216,
+        "anchor_missing_book": 111,
+        "spread_gate": 2
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-11-01_0360.parquet",
+      "quotes_sha256": "dde00b91ddbc687137261c2c97e3759221aa6b499601508155faca6ef70b0b90",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-11-01_0360.parquet",
+      "signals_sha256": "882a037cc4364b9aadbf477b4d4c76d34988ff2cc90f59b16b4726c7f45d9ec5"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 377603,
+        "book_messages": 322252,
+        "universe_book_messages": 296291
+      },
+      "symbols": 302,
+      "quote_rows": 70064,
+      "signal_rows": 68856,
+      "valid_endpoints": 24468,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 30857,
+        "displacement_gate": 24433,
+        "current_capture_freshness_gate": 13002,
+        "current_native_clock_gate": 112,
+        "anchor_native_clock_gate": 222,
+        "anchor_missing_book": 195,
+        "spread_gate": 27,
+        "depth_gate": 8
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-11-01_0540.parquet",
+      "quotes_sha256": "71b18673933cf67adbb751c55897a7eece6d298a09d9fcf0fa7e8c3f8c4874fe",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-11-01_0540.parquet",
+      "signals_sha256": "a868e2949b335d46498cf50f7ca099801f84e5786bdffb0b23b35ace8fa4a441"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 372741,
+        "book_messages": 372741,
+        "universe_book_messages": 344667
+      },
+      "symbols": 302,
+      "quote_rows": 70064,
+      "signal_rows": 68856,
+      "valid_endpoints": 26486,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 29318,
+        "displacement_gate": 26478,
+        "current_capture_freshness_gate": 12656,
+        "current_native_clock_gate": 144,
+        "anchor_native_clock_gate": 252,
+        "spread_gate": 5,
+        "depth_gate": 3
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-11-01_0720.parquet",
+      "quotes_sha256": "31a1aecde1fd278bf19a2e4ee98aacdc991d9269ef8d318fd1e87443e7f41409",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-11-01_0720.parquet",
+      "signals_sha256": "20d5225b71dc3733e63af5d6b383863274dc472a38c2942980c766d8458cf403"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 496982,
+        "book_messages": 496982,
+        "universe_book_messages": 444455
+      },
+      "symbols": 302,
+      "quote_rows": 70064,
+      "signal_rows": 68856,
+      "valid_endpoints": 32079,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 32076,
+        "current_capture_freshness_gate": 12238,
+        "anchor_capture_freshness_gate": 24180,
+        "current_native_clock_gate": 135,
+        "anchor_native_clock_gate": 213,
+        "anchor_missing_book": 11,
+        "spread_gate": 3
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-11-01_1080.parquet",
+      "quotes_sha256": "a1f3608f7564476f9f43ad118a06f868ab15123cfac631c974c24c7d25c9abad",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-11-01_1080.parquet",
+      "signals_sha256": "161656dfc8e3b2ff4f3008b90c5bbb94fbf842ddad9da73f9275803f9eef1f1f"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 612446,
+        "book_messages": 612446,
+        "universe_book_messages": 578789
+      },
+      "symbols": 323,
+      "quote_rows": 74936,
+      "signal_rows": 73644,
+      "valid_endpoints": 36468,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_missing_book": 4446,
+        "displacement_gate": 36404,
+        "current_capture_freshness_gate": 10598,
+        "anchor_capture_freshness_gate": 21063,
+        "current_native_clock_gate": 447,
+        "anchor_native_clock_gate": 622,
+        "depth_gate": 47,
+        "spread_gate": 17
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-12-01_0000.parquet",
+      "quotes_sha256": "42cfc3a1cb877fbb09a7b1512cc562ea22a4d83437e43a637deb636e40c6f780",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-12-01_0000.parquet",
+      "signals_sha256": "2180512499a73a6d99b99b5e3bb1dc49e50206008cb02ca53a3e6e14290f93a0"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 479712,
+        "book_messages": 479712,
+        "universe_book_messages": 451254
+      },
+      "symbols": 323,
+      "quote_rows": 74936,
+      "signal_rows": 73644,
+      "valid_endpoints": 32475,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "displacement_gate": 32474,
+        "current_capture_freshness_gate": 12777,
+        "anchor_capture_freshness_gate": 27973,
+        "current_native_clock_gate": 164,
+        "anchor_native_clock_gate": 255,
+        "depth_gate": 1
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-12-01_0360.parquet",
+      "quotes_sha256": "be5ab02a46015065cc5b3ca747c3ab3c9c12ea463d033e5b606d9ed401e27488",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-12-01_0360.parquet",
+      "signals_sha256": "2f212f3c592a3f6606d018d1adaa17693fb1c1ca46f2a44ccbc2c36123dd2085"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 811389,
+        "book_messages": 640167,
+        "universe_book_messages": 588426
+      },
+      "symbols": 323,
+      "quote_rows": 74936,
+      "signal_rows": 73644,
+      "valid_endpoints": 37266,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "current_capture_freshness_gate": 12585,
+        "anchor_capture_freshness_gate": 23459,
+        "displacement_gate": 37256,
+        "current_native_clock_gate": 132,
+        "anchor_native_clock_gate": 202,
+        "depth_gate": 7,
+        "spread_gate": 3
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-12-01_0540.parquet",
+      "quotes_sha256": "40cc11a40a4e25d3ffb6a802f6fdb02d5628998c6eec7eaf091d9141c053c0be",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-12-01_0540.parquet",
+      "signals_sha256": "091d56f6a5b5d91a16ea114d80d48c4aa7976a957e78a22715fb96663d857897"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 509006,
+        "book_messages": 509006,
+        "universe_book_messages": 480940
+      },
+      "symbols": 323,
+      "quote_rows": 74936,
+      "signal_rows": 73644,
+      "valid_endpoints": 32686,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_missing_book": 1529,
+        "current_capture_freshness_gate": 12764,
+        "displacement_gate": 32682,
+        "anchor_capture_freshness_gate": 26301,
+        "anchor_native_clock_gate": 221,
+        "current_native_clock_gate": 143,
+        "depth_gate": 4
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-12-01_0720.parquet",
+      "quotes_sha256": "64ab057b8eb9edd34daa14d9083f400af9e63472ecfff33289b207557c74d034",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-12-01_0720.parquet",
+      "signals_sha256": "6941ca63c0dd0c19bbcd864a7d87d1df4fa37831ecb2d25fa33fd1bd34947b09"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 500827,
+        "book_messages": 500827,
+        "universe_book_messages": 471185
+      },
+      "symbols": 323,
+      "quote_rows": 74936,
+      "signal_rows": 73644,
+      "valid_endpoints": 33153,
+      "raw_shock_rows": 0,
+      "selected": [],
+      "reasons": {
+        "anchor_capture_freshness_gate": 27106,
+        "displacement_gate": 33143,
+        "current_capture_freshness_gate": 13010,
+        "current_native_clock_gate": 145,
+        "anchor_native_clock_gate": 220,
+        "anchor_missing_book": 10,
+        "depth_gate": 10
+      },
+      "quotes_path": "research_scout\\perp_shock_hft_20261002\\quotes\\2024-12-01_1080.parquet",
+      "quotes_sha256": "7d38c7f501d134d0660ebff0b0be700ecf6265ec128cfbc42dac707afde5a11e",
+      "signals_path": "research_scout\\perp_shock_hft_20261002\\signals\\2024-12-01_1080.parquet",
+      "signals_sha256": "ced3e9e7756c76f79394e391ea72390a7f9be568a6fba2d3d18c95773a6cd5d1"
+    }
+  ],
+  "source_counts": {
+    "native_messages": 27502201,
+    "book_messages": 26299402,
+    "universe_book_messages": 24544390,
+    "disconnects": 2
+  },
+  "reasons": {
+    "current_capture_freshness_gate": 617684,
+    "displacement_gate": 1730655,
+    "anchor_capture_freshness_gate": 1326511,
+    "anchor_missing_book": 25934,
+    "anchor_native_clock_gate": 18425,
+    "current_native_clock_gate": 10461,
+    "depth_gate": 843,
+    "spread_gate": 309,
+    "requires_native_trade_confirmation": 8,
+    "anchor_invalid_book": 444,
+    "current_invalid_book": 4,
+    "current_missing_book": 673,
+    "disconnect_between_endpoints": 409
+  },
+  "source_minutes": 60,
+  "signal_rows": 3732360,
+  "quote_rows": 3797840,
+  "valid_endpoints": 1731815,
+  "raw_shock_rows": 8,
+  "selected_events": 5,
+  "selected_symbols": [
+    "ADAUSDT",
+    "BAKEUSDT",
+    "CELOUSDT",
+    "XRPUSDT",
+    "ZROUSDT"
+  ],
+  "selected_dates": 4,
+  "selected_sha256": "de7b648af834fa3b6bfb4ff9505abbcbacc452d8ff968476e488b90caa39781e",
+  "implementation_sha256": "3b5a3395865448717853a699771196f94b00839a98426e7b591bec870776bc35",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "independent_audit_complete": false,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

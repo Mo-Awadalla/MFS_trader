@@ -1,0 +1,73 @@
+{
+  "created_at_utc": "2026-09-30T15:23:04.287656+00:00",
+  "dates": [
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "configs": 8,
+  "event_source": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\liquidation_event_20260930\\strategy_specification.json",
+  "event_selection_unchanged": true,
+  "prior_exposure": "All six dates and original 124 events have prior taker and cross-venue research exposure. Trade-through outcomes are new; this is development, not clean holdout evidence.",
+  "rules": "Follow or oppose forced direction, 8/16bp passive offset from the capture-visible midpoint, 30/120-second holding time after entry cancellation acknowledgement. No quiet filter or event reselection.",
+  "clocks": "Signal at recorded event capture, extra 250ms processing then 1s outbound (3s stress). Physical exchange book determines post-only acceptance and exits. Five-second venue resting window; cancel then wait one return trip before holding; market exit incurs outbound and acknowledgement latency.",
+  "fills": "Baseline uses only correctly signed prints strictly through the resting limit and strictly inside activation/cancellation times, accumulating every partial up to intended quantity. Alternatives fill all on first-through, or accumulate touch-price volume. These are counterfactual sensitivities, not bounds or proven queue fills.",
+  "costs": "3bp maker entry; 6bp taker exit plus 1bp adverse allowance. Double fees 6/12bp; observed depth-weighted exit spread retained. No rebates or VIP discounts.",
+  "capital": "$10000 per isolated date, max $1000 intended notional, <=10% cash and predecision passive-side touch quantity, 0.001BTC step, 0.1USDT tick, $100 minimum initial order. Every partial retained. No position crossing any UTC hour plus one-minute buffer.",
+  "data_quality": "Raw capture and exchange clocks ordered; trade IDs strictly increasing. Fixed -35/+170-second event windows. Signal age <=1s, physical book age <=250ms. Invalid submitted-order states or unavailable exit depth stop the day; subtotals never become complete P&L.",
+  "scenarios": {
+    "base": {
+      "delay_us": 1000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "through_partial"
+    },
+    "double_fees": {
+      "delay_us": 1000000,
+      "maker_bps": 6.0,
+      "taker_bps": 12.0,
+      "fill_mode": "through_partial"
+    },
+    "latency_3s": {
+      "delay_us": 3000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "through_partial"
+    },
+    "first_through_full": {
+      "delay_us": 1000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "through_full"
+    },
+    "touch_partial": {
+      "delay_us": 1000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "touch_partial"
+    }
+  },
+  "progression": "Only complete positive results in every cost/latency/fill scenario and positive baseline after deleting the best date justify additional untouched dates. Sparse positive candidates are unresolved until more evidence. No frequency target is used as proof of negative economics.",
+  "limits": "Six calendar-selected historical dates. Throttled liquidation reports are not full forced flow. Hidden queue, self-impact, actual fills, price bands, rejects, disconnects and continuously funded portfolio returns remain unobserved.",
+  "sources": [
+    "https://docs.tardis.dev/downloadable-csv-files/data-types",
+    "https://www.binance.com/en-BH/fee/futureFee"
+  ],
+  "code_sha256": {
+    "research\\liquidation_passive.py": "8492b0af8764277a8820d1129d5d693fd5f8189926b422a9bb6420107598d0ae",
+    "research\\cross_venue_dual_clock.py": "722f25c19a02b81d1bafaa7edef151573cf604c34a7b3a8fb2c55b0d579f5fe6",
+    "research\\liquidation_event_replay.py": "45cf40d45caee7fb78771bd9a5322280fe85889bd6500029fb11085282b93088",
+    "research_scout\\run_liquidation_passive_20260930.py": "7f1113b553204a749cbc276b2f942f07d55dcff8933ebe702d81c6638c7c9e6c"
+  },
+  "event_sha256": {
+    "2024-07-01": "b454b79221498e956584097a310140df3061fd836423a2d3a5ab8058a9366add",
+    "2024-08-01": "7884eeba65441162871fd19073a5b8f15ca78e0f00591c34202e5425ed61a212",
+    "2024-09-01": "5626d440bdac2d24033e307d221acbd6127388113b59fe22456884429e0b2bcf",
+    "2024-10-01": "d3bc31bbc522bc63129d04a066e4a8bcc227383fc234083626ffa05078bfc4eb",
+    "2024-11-01": "7ff285bc94957040a6f2067d5ab4c5f3858eec5e4f0e4360b4a34fd7d63a4eb9",
+    "2024-12-01": "664fc479744975f6f8d990552af9284930ee68b5385f9fff872318099f6203c7"
+  }
+}

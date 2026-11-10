@@ -1,0 +1,155 @@
+{
+  "repair": {
+    "created_at_utc": "2026-09-30T13:46:39.236199+00:00",
+    "source": "https://docs.alpaca.markets/us/v1.1/changelog/marketdata-bid-and-ask-size-display-change",
+    "original_specification_sha256": "8ae773e59602e170731f59792b9fd76b0dcce152beb7b334d168a593e270878e",
+    "change": "Convert AAPL SIP bid/ask sizes before 2025-11-03 from 100-share round lots to shares; preserve dates, signal, clocks, threshold, costs and gate definitions",
+    "scope": "Unit-only historical repair; not a new independent hypothesis or untouched test",
+    "execution_audit": "Separately audit latest raw quote, freshness and displayed quantity; do not silently use an earlier valid quote when latest is crossed or locked"
+  },
+  "audit": [
+    {
+      "date": "2025-01-08",
+      "source_sha256": "71f583c9505fcc6c13f940888e03ea3ac554bbae2272a0727a091ecf56bf6fb4",
+      "source_rows": 9413,
+      "raw_median_ask_size": 2.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 0,
+      "corrected_signals": 9
+    },
+    {
+      "date": "2025-02-05",
+      "source_sha256": "c688cac14528b2d1ecf72c146b83678d86a22e77748fcb77ebe5bad888580612",
+      "source_rows": 7845,
+      "raw_median_ask_size": 2.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 0,
+      "corrected_signals": 9
+    },
+    {
+      "date": "2025-03-05",
+      "source_sha256": "2f4edc994d36bd6d68dc7e2124a520e7fe6e24a80cde5e7422f93b7c0041ef17",
+      "source_rows": 9737,
+      "raw_median_ask_size": 2.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 0,
+      "corrected_signals": 7
+    },
+    {
+      "date": "2025-04-02",
+      "source_sha256": "0414456ba4696cd733843d2b3013885c20cfd168e2c718c84d88d8bd85aae024",
+      "source_rows": 9037,
+      "raw_median_ask_size": 2.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 0,
+      "corrected_signals": 8
+    },
+    {
+      "date": "2025-05-07",
+      "source_sha256": "992d336cc078910ed4be1a631623f26afe0131cc523753ce1c9d711600a4eb47",
+      "source_rows": 15268,
+      "raw_median_ask_size": 1.0,
+      "normalized_median_ask_shares": 100.0,
+      "original_signals": 0,
+      "corrected_signals": 8
+    },
+    {
+      "date": "2025-06-04",
+      "source_sha256": "21a6280f25d5d9c72fdeca89d262bfb42f539edcf6a17aa4bb30862f4b738232",
+      "source_rows": 7154,
+      "raw_median_ask_size": 2.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 0,
+      "corrected_signals": 9
+    },
+    {
+      "date": "2025-07-02",
+      "source_sha256": "1e8890cca23fb7a886b8e9371e4153e855c119d886ec1eb5d421e9a024f70884",
+      "source_rows": 6677,
+      "raw_median_ask_size": 2.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 0,
+      "corrected_signals": 9
+    },
+    {
+      "date": "2025-08-06",
+      "source_sha256": "ee976343709452097592de86d2efcc206236903ecff2428ee8ba52ecabce6dc6",
+      "source_rows": 10005,
+      "raw_median_ask_size": 2.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 0,
+      "corrected_signals": 9
+    },
+    {
+      "date": "2025-09-03",
+      "source_sha256": "8554ff63e33375b5b92a53c530b726402e6687e680d430641b7b5839b5d708dc",
+      "source_rows": 14237,
+      "raw_median_ask_size": 2.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 0,
+      "corrected_signals": 9
+    },
+    {
+      "date": "2025-10-01",
+      "source_sha256": "c8f31fb2755ec379bc2310f03304f58df9256a26f88ffa93ea5d8ef800b4d8f2",
+      "source_rows": 5156,
+      "raw_median_ask_size": 2.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 0,
+      "corrected_signals": 8
+    },
+    {
+      "date": "2025-11-05",
+      "source_sha256": "cc4511b8ae701583919872e76dde140db238bb2a76c6669772ca32b8272bcc3e",
+      "source_rows": 8508,
+      "raw_median_ask_size": 100.0,
+      "normalized_median_ask_shares": 100.0,
+      "original_signals": 8,
+      "corrected_signals": 8
+    },
+    {
+      "date": "2025-12-03",
+      "source_sha256": "baa5285f5e172d10fd4945058a8266a03696a326b2a5ea42f7828d546252e611",
+      "source_rows": 11452,
+      "raw_median_ask_size": 200.0,
+      "normalized_median_ask_shares": 200.0,
+      "original_signals": 9,
+      "corrected_signals": 9
+    }
+  ],
+  "original_signals": 17,
+  "corrected_signals": 102,
+  "statistics": {
+    "unit_only_original_execution_proxy": {
+      "trades": 52,
+      "days": 12,
+      "mean_gross_bps": -1.2158819771818097,
+      "mean_net_bps": -3.102030290167392,
+      "mean_stress_net_bps": -7.1020302901673915,
+      "day_block_ci95_net_bps": [
+        -4.14903492752685,
+        -1.977472250199005
+      ],
+      "missing_executions_not_zero_profit": true
+    },
+    "strict_execution_audit": {
+      "trades": 52,
+      "days": 12,
+      "mean_gross_bps": -1.2158819771818097,
+      "mean_net_bps": -3.102030290167392,
+      "mean_stress_net_bps": -7.1020302901673915,
+      "day_block_ci95_net_bps": [
+        -4.14903492752685,
+        -1.977472250199005
+      ],
+      "missing_executions_not_zero_profit": true
+    }
+  },
+  "strict_status_counts": {
+    "priced_proxy": 52,
+    "entry_missing_or_stale": 37,
+    "exit_missing_or_stale": 13
+  },
+  "verdict": "NO_RELIABLE_EDGE_ESTABLISHED_BY_UNIT_REPAIR",
+  "limitations": "Only twelve five-minute AAPL windows. Conditional quote proxies, no complete portfolio result. Prior source report retained; missing executions cannot be dropped for a performance claim."
+}

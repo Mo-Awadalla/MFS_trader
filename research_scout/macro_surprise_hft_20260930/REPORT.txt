@@ -1,0 +1,155 @@
+CPI public-model error, strictly HFT: rejected for progression
+30 September 2026
+
+No reliable edge established. Neither frozen holding period advances to the
+2024-25 selection sample. Both full development results are UNKNOWN because of
+unresolved conflicting same-timestamp signal states. The priced portions lose
+money at baseline, and there are far too few completed trades for reliability.
+No live orders were submitted.
+
+Mechanism and fixed population
+------------------------------
+Test first-announced CPI content against the last strictly earlier dated public
+Cleveland Fed model forecast. This is a model forecast error, not measured Wall
+Street consensus surprise. It is different from the prior failed V45 ten-minute
+post-release price-direction experiment, but remains part of the full exposed
+research history. New independence is not claimed.
+
+All 84 monthly releases in 2017-2023 were retained. Headline and core monthly
+changes, announcement date, and 08:30 Eastern publication schedule were checked
+against all 84 official archived BLS releases. All matched. The March 2017
+release required the official PDF after the HTML source could not be read.
+The Cleveland Fed source provides dated historical forecasts and first actual
+values. Independent historical publication receipt/capture is not established.
+
+Buy SPY if core announced minus forecast <= -0.10 percentage points and the
+headline error is negative. Buy SH for core error >= +0.10 and positive headline
+error. Otherwise cash. Announced values use BLS one-decimal summary precision.
+The prior forecast must be no more than five calendar days old. Same-day
+Cleveland Fed updates are excluded. Two holding periods: 15 and 30 seconds.
+
+There were 33 content triggers: 19 SH and 14 SPY. Two were Good Friday exchange
+holidays (14 April 2017 and 10 April 2020), so no order could be submitted. They
+remain in the 84-release accounting. Signals are never moved to another day.
+The two failed source requests were retained in the manifest and classified by
+the known calendar, not removed according to subsequent returns.
+
+Historical SIP quote requests cover 08:29:45-08:31:00 Eastern for every trigger.
+31 successful source files contain 119,228 native quote records and 13,443,835
+response bytes. Pagination completed on each. The manifest's 53,443,835-byte
+figure is a conservative acquisition bound that charges each failed request
+its entire 20 MB allowance; it is not measured downloaded volume.
+
+Execution assumptions
+---------------------
+Baseline news decision: release +2 seconds; latest source quote strictly before
+decision -1 second, and after release. Valid regular two-sided quotes with
+spread <=20 bp only. A complete observed prefix is required; unchanged standing
+quotes do not expire merely because they are old. Conflicting tied states are
+unresolved, never selected optimistically.
+
+Daily reset cash $10,000. Integer quantity fixed from the decision quote, at
+most 10% of known ask depth, with cash buffer and $100 minimum ticket. Historical
+100-share round lots for SPY and SH are still an explicit conditional assumption.
+Native instrument-definition confirmation would be required before promotion.
+
+Entry is a hypothetical guarded FOK at known ask +10 bp, rounded down to cents.
+Arrival follows 250 ms processing plus one second outgoing delay. Entry ACK
+adds another second; the hold begins from that ACK. Sale follows the holding
+period, 250 ms processing and one second outgoing delay. Baseline entry is
+08:30:03.250; exits are 08:30:20.500 and 08:30:35.500.
+
+Quote envelopes include all tied predecessor states and every update within
+one millisecond of the target, requiring a successor beyond the window. Full
+quantity must fit every possible valid state. All asks above the limit imply a
+price rejection; mixed or shallow states are unresolved. Exit state and full
+depth must also be resolved. Before the first economic run, the CPI-specific
+envelope implementation was corrected to retain all tied predecessor states;
+the earlier halt module was not changed.
+
+Costs: $0.0075/share, minimum $1 per side; sale charge 0.30 bp plus $0.0002/share;
+one additional adverse basis point per side. These are assumed conservative
+benchmark costs, not a claim about competition rules. Exact venue receipt,
+premarket FOK support, smart routing, queue position and real fills are not
+verified. A quote-reference result is conditional even when all paths resolve.
+
+Observed results
+----------------
+Every full result below is UNKNOWN. Dollar figures are only the priced portion
+of the fixed $10,000 daily-reset benchmark; they are not total strategy P&L.
+
+Scenario                  15s closed interval    30s closed interval    Priced
+Base                      -5.7080, -5.7080       -6.1080, -6.1080       1
+Double fees               -7.8282, -7.8282       -8.2281, -8.2281       1
+3s outgoing and return    13.6936, 13.6936        12.3938, 12.3938       1
+Double adverse cost       -6.4959, -6.4959       -6.8959, -6.8959       1
+100ms alignment           -9.9075, 10.6931       -6.1080, 8.0934        1
+10s news delay            -78.7965, -77.9166     -67.5479, -66.0481     9
+
+The single baseline priced event is SPY on 12 January 2023, ten shares. It is
+negative for both holding periods. The isolated positive result under slower
+order latency is the same event at different prices, not a replication or a
+candidate that passes the frozen stress requirements.
+
+Baseline outcomes, identically for both holds:
+  51 no content trigger
+  16 no post-release quote before the decision's source cutoff
+   8 spread gate
+   3 guarded-limit price rejections
+   2 exchange holidays
+   2 invalid signal quotes
+   1 unresolved conflicting tied signal state (14 September 2021)
+   1 priced conditional round trip
+
+Under 10s news delay: 9 priced trades, 2 unresolved signal states, 11 invalid
+signal quotes, 7 spread-gated, 2 price rejections, 2 holidays and 51 non-triggers.
+The priced SH and SPY portions both lose under each holding period. The positive
+dates number only 2 (15s) and 3 (30s). No return or confidence bound is imputed to
+the unresolved paths.
+
+The predeclared progression rule requires a complete positive lower return in
+every stress, at least 12 trades on 12 release dates, positive SH and SPY sleeves,
+positive return after removing the best three dates and a positive adjusted
+date-block-bootstrap lower bound. Neither configuration meets the prerequisites.
+The controls and 2024-25 selection returns were therefore not opened. The rule
+was not retuned after this outcome.
+
+Verification and reproduction
+-----------------------------
+Independent verifier uses native raw_timestamp fields, separate bisect-based
+state selection and Decimal cashflow calculations. It verified all 31 quote
+hashes and source intervals, all 1,008 release/configuration/scenario outcomes,
+90 quote envelopes containing 1,005 states, and 28 priced cashflows across the
+12 ledgers. Largest cashflow difference: $1.05e-12. The 28 scenario cashflows are
+repeated observations of the same small event set, not 28 independent trades.
+
+11 focused tests pass: dated first-release extraction, forecast causality,
+precision, source/order/ACK clocks, no future resizing, real spreads and fees,
+standing quotes, guarded rejection and tied-predecessor ambiguity. Test success
+establishes implementation checks, not trading profitability.
+
+Run from workspace with its Python environment:
+  python -m research_scout.verify_cpi_releases_20260930
+  python -m research_scout.verify_cpi_benchmark_20260930
+  python -m pytest tests/unit/test_cpi_model_error.py
+    tests/unit/test_cpi_quote_benchmark.py -q -p no:cacheprovider
+
+Artifacts: specification.json; content_events.parquet; content_results.json;
+quote_manifest.json; source_audit/bls_verification.json;
+conditional_benchmark/specification.json, results.json, verification.json,
+quote_windows.parquet and all twelve native-clock ledgers. Frozen replay refuses
+to overwrite existing economic results.
+
+Official sources
+----------------
+https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting
+https://www.clevelandfed.org/-/media/files/webcharts/inflationnowcasting/nowcast_month.json?sc_lang=en
+https://www.bls.gov/bls/news-release/cpi.htm
+https://www.bls.gov/news.release/archives/cpi_03152017.pdf
+https://docs.alpaca.markets/us/docs/market-data-faq
+https://docs.alpaca.markets/us/v1.1/changelog/marketdata-bid-and-ask-size-display-change
+https://s2.q4cdn.com/154085107/files/doc_news/archive/313c9417-c6e3-46d3-b820-dbc7d9961ebd.pdf
+https://ir.theice.com/press/news-details/2017/NYSE-Group-Announces-2018-2019-and-2020-Holiday-and-Early-Closings-Calendar/default.aspx
+
+The active competition goal remains unachieved. This study establishes no
+deployable edge and no actual competition outperformance.

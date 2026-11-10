@@ -1,0 +1,2540 @@
+{
+  "results": {
+    "follow_8bp_30s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "net_dollars": -1.9176428800001304,
+          "closed_subtotal": -1.9176428800001304,
+          "gross_closed_subtotal": -0.9184000000000196,
+          "trades": 1,
+          "mean_net_bps": -19.203313438814536,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -1.9176428800001304,
+          "date_bootstrap_mean_ci95": [
+            -0.9588214400000652,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 115,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "priced": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -1.9176428800001304,
+              "closed_subtotal": -1.9176428800001304
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "net_dollars": -2.8169339199994283,
+          "closed_subtotal": -2.8169339199994283,
+          "gross_closed_subtotal": -0.9184000000000196,
+          "trades": 1,
+          "mean_net_bps": -28.208831564190064,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -2.8169339199994283,
+          "date_bootstrap_mean_ci95": [
+            -1.4084669599997142,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 115,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "priced": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -2.8169339199994283,
+              "closed_subtotal": -2.8169339199994283
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "net_dollars": -0.6520102199992834,
+          "closed_subtotal": -0.6520102199992834,
+          "gross_closed_subtotal": 1.3264000000001488,
+          "trades": 2,
+          "mean_net_bps": -3.146620994952677,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -0.6520102199992834,
+          "date_bootstrap_mean_ci95": [
+            -0.3260051099996417,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 114,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "priced": 2
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -0.6520102199992834,
+              "closed_subtotal": -0.6520102199992834
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "first_through_full": {
+          "complete": true,
+          "net_dollars": -1.9176428800001304,
+          "closed_subtotal": -1.9176428800001304,
+          "gross_closed_subtotal": -0.9184000000000196,
+          "trades": 1,
+          "mean_net_bps": -19.203313438814536,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -1.9176428800001304,
+          "date_bootstrap_mean_ci95": [
+            -0.9588214400000652,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 115,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "priced": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -1.9176428800001304,
+              "closed_subtotal": -1.9176428800001304
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "touch_partial": {
+          "complete": true,
+          "net_dollars": -1.9176428800001304,
+          "closed_subtotal": -1.9176428800001304,
+          "gross_closed_subtotal": -0.9184000000000196,
+          "trades": 1,
+          "mean_net_bps": -19.203313438814536,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -1.9176428800001304,
+          "date_bootstrap_mean_ci95": [
+            -0.9588214400000652,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 115,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "priced": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -1.9176428800001304,
+              "closed_subtotal": -1.9176428800001304
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        }
+      },
+      "needs_additional_evidence": false
+    },
+    "follow_8bp_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "net_dollars": -0.9409596799996507,
+          "closed_subtotal": -0.9409596799996507,
+          "gross_closed_subtotal": 0.057599999999979445,
+          "trades": 1,
+          "mean_net_bps": -9.422788704186067,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -0.9409596799996507,
+          "date_bootstrap_mean_ci95": [
+            -0.47047983999982534,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 112,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3,
+            "priced": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -0.9409596799996507,
+              "closed_subtotal": -0.9409596799996507
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "net_dollars": -1.8396651200000633,
+          "closed_subtotal": -1.8396651200000633,
+          "gross_closed_subtotal": 0.057599999999979445,
+          "trades": 1,
+          "mean_net_bps": -18.42244261966774,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -1.8396651200000633,
+          "date_bootstrap_mean_ci95": [
+            -0.9198325600000317,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 112,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3,
+            "priced": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -1.8396651200000633,
+              "closed_subtotal": -1.8396651200000633
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "net_dollars": -3.3604544600002555,
+          "closed_subtotal": -3.3604544600002555,
+          "gross_closed_subtotal": -1.3847999999999274,
+          "trades": 2,
+          "mean_net_bps": -17.061351157524,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -3.3604544600002555,
+          "date_bootstrap_mean_ci95": [
+            -1.6802272300001277,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 111,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3,
+            "priced": 2
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -3.3604544600002555,
+              "closed_subtotal": -3.3604544600002555
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "first_through_full": {
+          "complete": true,
+          "net_dollars": -0.9409596799996507,
+          "closed_subtotal": -0.9409596799996507,
+          "gross_closed_subtotal": 0.057599999999979445,
+          "trades": 1,
+          "mean_net_bps": -9.422788704186067,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -0.9409596799996507,
+          "date_bootstrap_mean_ci95": [
+            -0.47047983999982534,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 112,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3,
+            "priced": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -0.9409596799996507,
+              "closed_subtotal": -0.9409596799996507
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "touch_partial": {
+          "complete": true,
+          "net_dollars": -0.9409596799996507,
+          "closed_subtotal": -0.9409596799996507,
+          "gross_closed_subtotal": 0.057599999999979445,
+          "trades": 1,
+          "mean_net_bps": -9.422788704186067,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -0.9409596799996507,
+          "date_bootstrap_mean_ci95": [
+            -0.47047983999982534,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 112,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3,
+            "priced": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -0.9409596799996507,
+              "closed_subtotal": -0.9409596799996507
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        }
+      },
+      "needs_additional_evidence": false
+    },
+    "follow_16bp_30s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 116,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 116,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 116,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "first_through_full": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 116,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "touch_partial": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 116,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        }
+      },
+      "needs_additional_evidence": false
+    },
+    "follow_16bp_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 113,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 113,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 113,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "first_through_full": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 113,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "touch_partial": {
+          "complete": true,
+          "net_dollars": 0.0,
+          "closed_subtotal": 0.0,
+          "gross_closed_subtotal": 0.0,
+          "trades": 0,
+          "mean_net_bps": null,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": 0.0,
+          "date_bootstrap_mean_ci95": [
+            0.0,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 113,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        }
+      },
+      "needs_additional_evidence": false
+    },
+    "reverse_8bp_30s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "net_dollars": -8.670696519999183,
+          "closed_subtotal": -8.670696519999183,
+          "gross_closed_subtotal": -3.1327999999998895,
+          "trades": 7,
+          "mean_net_bps": -13.85594502051423,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -8.670696519999183,
+          "date_bootstrap_mean_ci95": [
+            -2.672335121666341,
+            -0.3970011983334795
+          ],
+          "outcomes": {
+            "no_proxy_fill": 108,
+            "priced": 7,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "post_only_rejected": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": -0.1271202900006756,
+              "closed_subtotal": -0.1271202900006756
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -3.7452172499997687,
+              "closed_subtotal": -3.7452172499997687
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -2.543472079998537,
+              "closed_subtotal": -2.543472079998537
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -2.2548869000002014,
+              "closed_subtotal": -2.2548869000002014
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "net_dollars": -13.654901170002631,
+          "closed_subtotal": -13.654901170002631,
+          "gross_closed_subtotal": -3.1327999999998895,
+          "trades": 7,
+          "mean_net_bps": -22.853059699108588,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -13.654901170002631,
+          "date_bootstrap_mean_ci95": [
+            -4.096556161667043,
+            -0.5716539983335073
+          ],
+          "outcomes": {
+            "no_proxy_fill": 108,
+            "priced": 7,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "post_only_rejected": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": -0.29850045000057435,
+              "closed_subtotal": -0.29850045000057435
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -5.462217899999814,
+              "closed_subtotal": -5.462217899999814
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -4.762759280001774,
+              "closed_subtotal": -4.762759280001774
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -3.131423540000469,
+              "closed_subtotal": -3.131423540000469
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "net_dollars": -10.052328390002003,
+          "closed_subtotal": -10.052328390002003,
+          "gross_closed_subtotal": -4.747299999999939,
+          "trades": 6,
+          "mean_net_bps": -19.265416061847933,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -10.052328390002003,
+          "date_bootstrap_mean_ci95": [
+            -3.8005137150009127,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 106,
+            "priced": 6,
+            "skipped_hour_boundary": 5,
+            "post_only_rejected": 4,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -6.375376950001737,
+              "closed_subtotal": -6.375376950001737
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -3.6769514400002663,
+              "closed_subtotal": -3.6769514400002663
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "first_through_full": {
+          "complete": true,
+          "net_dollars": -8.670696519999183,
+          "closed_subtotal": -8.670696519999183,
+          "gross_closed_subtotal": -3.1327999999998895,
+          "trades": 7,
+          "mean_net_bps": -13.85594502051423,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -8.670696519999183,
+          "date_bootstrap_mean_ci95": [
+            -2.672335121666341,
+            -0.3970011983334795
+          ],
+          "outcomes": {
+            "no_proxy_fill": 108,
+            "priced": 7,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "post_only_rejected": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": -0.1271202900006756,
+              "closed_subtotal": -0.1271202900006756
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -3.7452172499997687,
+              "closed_subtotal": -3.7452172499997687
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -2.543472079998537,
+              "closed_subtotal": -2.543472079998537
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -2.2548869000002014,
+              "closed_subtotal": -2.2548869000002014
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "touch_partial": {
+          "complete": true,
+          "net_dollars": -8.670696519999183,
+          "closed_subtotal": -8.670696519999183,
+          "gross_closed_subtotal": -3.1327999999998895,
+          "trades": 7,
+          "mean_net_bps": -13.85594502051423,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -8.670696519999183,
+          "date_bootstrap_mean_ci95": [
+            -2.672335121666341,
+            -0.3970011983334795
+          ],
+          "outcomes": {
+            "no_proxy_fill": 108,
+            "priced": 7,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "post_only_rejected": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": -0.1271202900006756,
+              "closed_subtotal": -0.1271202900006756
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -3.7452172499997687,
+              "closed_subtotal": -3.7452172499997687
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -2.543472079998537,
+              "closed_subtotal": -2.543472079998537
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -2.2548869000002014,
+              "closed_subtotal": -2.2548869000002014
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        }
+      },
+      "needs_additional_evidence": false
+    },
+    "reverse_8bp_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "net_dollars": -7.969157080000514,
+          "closed_subtotal": -7.969157080000514,
+          "gross_closed_subtotal": -2.429999999999893,
+          "trades": 7,
+          "mean_net_bps": -16.83184189360652,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -7.969157080000514,
+          "date_bootstrap_mean_ci95": [
+            -2.641295173333674,
+            -0.18628987500051153
+          ],
+          "outcomes": {
+            "no_proxy_fill": 105,
+            "skipped_hour_boundary": 8,
+            "priced": 7,
+            "predecision_size": 3,
+            "post_only_rejected": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": -0.6765045899992401,
+              "closed_subtotal": -0.6765045899992401
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -0.37257975000102306,
+              "closed_subtotal": -0.37257975000102306
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -2.9807657599994855,
+              "closed_subtotal": -2.9807657599994855
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -3.939306980000765,
+              "closed_subtotal": -3.939306980000765
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "net_dollars": -12.954442209998888,
+          "closed_subtotal": -12.954442209998888,
+          "gross_closed_subtotal": -2.429999999999893,
+          "trades": 7,
+          "mean_net_bps": -25.83211454533636,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -12.954442209998888,
+          "date_bootstrap_mean_ci95": [
+            -3.8923371683331425,
+            -0.4899699249999685
+          ],
+          "outcomes": {
+            "no_proxy_fill": 105,
+            "skipped_hour_boundary": 8,
+            "priced": 7,
+            "predecision_size": 3,
+            "post_only_rejected": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": -0.8482141500007856,
+              "closed_subtotal": -0.8482141500007856
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -2.0916053999990254,
+              "closed_subtotal": -2.0916053999990254
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -5.1997903999999835,
+              "closed_subtotal": -5.1997903999999835
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -4.814832259999093,
+              "closed_subtotal": -4.814832259999093
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "net_dollars": -7.825984170000083,
+          "closed_subtotal": -7.825984170000083,
+          "gross_closed_subtotal": -2.5178999999999405,
+          "trades": 6,
+          "mean_net_bps": -14.786659253082265,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -7.825984170000083,
+          "date_bootstrap_mean_ci95": [
+            -2.757425845000095,
+            0.0
+          ],
+          "outcomes": {
+            "no_proxy_fill": 103,
+            "skipped_hour_boundary": 8,
+            "priced": 6,
+            "post_only_rejected": 4,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -4.359285450000243,
+              "closed_subtotal": -4.359285450000243
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -3.4666987199998403,
+              "closed_subtotal": -3.4666987199998403
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "first_through_full": {
+          "complete": true,
+          "net_dollars": -7.969157080000514,
+          "closed_subtotal": -7.969157080000514,
+          "gross_closed_subtotal": -2.429999999999893,
+          "trades": 7,
+          "mean_net_bps": -16.83184189360652,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -7.969157080000514,
+          "date_bootstrap_mean_ci95": [
+            -2.641295173333674,
+            -0.18628987500051153
+          ],
+          "outcomes": {
+            "no_proxy_fill": 105,
+            "skipped_hour_boundary": 8,
+            "priced": 7,
+            "predecision_size": 3,
+            "post_only_rejected": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": -0.6765045899992401,
+              "closed_subtotal": -0.6765045899992401
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -0.37257975000102306,
+              "closed_subtotal": -0.37257975000102306
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -2.9807657599994855,
+              "closed_subtotal": -2.9807657599994855
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -3.939306980000765,
+              "closed_subtotal": -3.939306980000765
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "touch_partial": {
+          "complete": true,
+          "net_dollars": -7.969157080000514,
+          "closed_subtotal": -7.969157080000514,
+          "gross_closed_subtotal": -2.429999999999893,
+          "trades": 7,
+          "mean_net_bps": -16.83184189360652,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -7.969157080000514,
+          "date_bootstrap_mean_ci95": [
+            -2.641295173333674,
+            -0.18628987500051153
+          ],
+          "outcomes": {
+            "no_proxy_fill": 105,
+            "skipped_hour_boundary": 8,
+            "priced": 7,
+            "predecision_size": 3,
+            "post_only_rejected": 1
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": -0.6765045899992401,
+              "closed_subtotal": -0.6765045899992401
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -0.37257975000102306,
+              "closed_subtotal": -0.37257975000102306
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -2.9807657599994855,
+              "closed_subtotal": -2.9807657599994855
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -3.939306980000765,
+              "closed_subtotal": -3.939306980000765
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        }
+      },
+      "needs_additional_evidence": false
+    },
+    "reverse_16bp_30s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "net_dollars": -6.060161199999129,
+          "closed_subtotal": -6.060161199999129,
+          "gross_closed_subtotal": -3.1560000000001764,
+          "trades": 3,
+          "mean_net_bps": -20.99032733357046,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -6.060161199999129,
+          "date_bootstrap_mean_ci95": [
+            -2.0499004366662725,
+            -0.2434538933333291
+          ],
+          "outcomes": {
+            "no_proxy_fill": 113,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "priced": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -3.125985299999229,
+              "closed_subtotal": -3.125985299999229
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -1.4607233599999745,
+              "closed_subtotal": -1.4607233599999745
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -1.4734525399999256,
+              "closed_subtotal": -1.4734525399999256
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "net_dollars": -8.67400095999983,
+          "closed_subtotal": -8.67400095999983,
+          "gross_closed_subtotal": -3.1560000000001764,
+          "trades": 3,
+          "mean_net_bps": -29.983728517999413,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -8.67400095999983,
+          "date_bootstrap_mean_ci95": [
+            -2.7711793266668487,
+            -0.3912847733333062
+          ],
+          "outcomes": {
+            "no_proxy_fill": 113,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "priced": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -3.9765375000006316,
+              "closed_subtotal": -3.9765375000006316
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -2.347708639999837,
+              "closed_subtotal": -2.347708639999837
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -2.3497548199993616,
+              "closed_subtotal": -2.3497548199993616
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "net_dollars": -5.959076050001386,
+          "closed_subtotal": -5.959076050001386,
+          "gross_closed_subtotal": -2.564500000000237,
+          "trades": 4,
+          "mean_net_bps": -17.304666928934,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -5.959076050001386,
+          "date_bootstrap_mean_ci95": [
+            -1.6648037683338164,
+            -0.3269860533334092
+          ],
+          "outcomes": {
+            "no_proxy_fill": 112,
+            "skipped_hour_boundary": 5,
+            "priced": 4,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -1.9822864500001742,
+              "closed_subtotal": -1.9822864500001742
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -1.961916320000455,
+              "closed_subtotal": -1.961916320000455
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -2.0148732800007565,
+              "closed_subtotal": -2.0148732800007565
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "first_through_full": {
+          "complete": true,
+          "net_dollars": -6.060161199999129,
+          "closed_subtotal": -6.060161199999129,
+          "gross_closed_subtotal": -3.1560000000001764,
+          "trades": 3,
+          "mean_net_bps": -20.99032733357046,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -6.060161199999129,
+          "date_bootstrap_mean_ci95": [
+            -2.0499004366662725,
+            -0.2434538933333291
+          ],
+          "outcomes": {
+            "no_proxy_fill": 113,
+            "skipped_hour_boundary": 5,
+            "predecision_size": 3,
+            "priced": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -3.125985299999229,
+              "closed_subtotal": -3.125985299999229
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -1.4607233599999745,
+              "closed_subtotal": -1.4607233599999745
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -1.4734525399999256,
+              "closed_subtotal": -1.4734525399999256
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "touch_partial": {
+          "complete": true,
+          "net_dollars": -5.872236879999036,
+          "closed_subtotal": -5.872236879999036,
+          "gross_closed_subtotal": -2.477600000000166,
+          "trades": 4,
+          "mean_net_bps": -14.783949514538582,
+          "partial_entries": 0,
+          "positive_dates": 0,
+          "net_without_best_date": -5.872236879999036,
+          "date_bootstrap_mean_ci95": [
+            -1.9872589966662417,
+            -0.2121331733333136
+          ],
+          "outcomes": {
+            "no_proxy_fill": 112,
+            "skipped_hour_boundary": 5,
+            "priced": 4,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": -3.125985299999229,
+              "closed_subtotal": -3.125985299999229
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": -1.2727990399998816,
+              "closed_subtotal": -1.2727990399998816
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -1.4734525399999256,
+              "closed_subtotal": -1.4734525399999256
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        }
+      },
+      "needs_additional_evidence": false
+    },
+    "reverse_16bp_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "net_dollars": -0.6084800500011625,
+          "closed_subtotal": -0.6084800500011625,
+          "gross_closed_subtotal": 2.2994999999999663,
+          "trades": 3,
+          "mean_net_bps": -2.013810275531443,
+          "partial_entries": 0,
+          "positive_dates": 2,
+          "net_without_best_date": -1.923412370000733,
+          "date_bootstrap_mean_ci95": [
+            -1.3731929350002854,
+            0.8632095349997447
+          ],
+          "outcomes": {
+            "no_proxy_fill": 110,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3,
+            "priced": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 1.2344602499997563,
+              "closed_subtotal": 1.2344602499997563
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 1.3149323199995706,
+              "closed_subtotal": 1.3149323199995706
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -3.1578726200004894,
+              "closed_subtotal": -3.1578726200004894
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "net_dollars": -3.225593109998954,
+          "closed_subtotal": -3.225593109998954,
+          "gross_closed_subtotal": 2.2994999999999663,
+          "trades": 3,
+          "mean_net_bps": -11.018605345915391,
+          "partial_entries": 0,
+          "positive_dates": 2,
+          "net_without_best_date": -3.6518735899990133,
+          "date_bootstrap_mean_ci95": [
+            -1.9530334449997706,
+            0.27668856500016165
+          ],
+          "outcomes": {
+            "no_proxy_fill": 110,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3,
+            "priced": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.3812899500007916,
+              "closed_subtotal": 0.3812899500007916
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.42628048000005947,
+              "closed_subtotal": 0.42628048000005947
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -4.033163539999805,
+              "closed_subtotal": -4.033163539999805
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "net_dollars": -1.9254015999995318,
+          "closed_subtotal": -1.9254015999995318,
+          "gross_closed_subtotal": 1.4719999999998663,
+          "trades": 4,
+          "mean_net_bps": -6.002455472972271,
+          "partial_entries": 0,
+          "positive_dates": 2,
+          "net_without_best_date": -3.4850184799997805,
+          "date_bootstrap_mean_ci95": [
+            -1.7467812400000184,
+            0.7798084400001244
+          ],
+          "outcomes": {
+            "no_proxy_fill": 109,
+            "skipped_hour_boundary": 8,
+            "priced": 4,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 0.01281600000038452,
+              "closed_subtotal": 0.01281600000038452
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 1.5596168800002488,
+              "closed_subtotal": 1.5596168800002488
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -3.497834480000165,
+              "closed_subtotal": -3.497834480000165
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "first_through_full": {
+          "complete": true,
+          "net_dollars": -0.6084800500011625,
+          "closed_subtotal": -0.6084800500011625,
+          "gross_closed_subtotal": 2.2994999999999663,
+          "trades": 3,
+          "mean_net_bps": -2.013810275531443,
+          "partial_entries": 0,
+          "positive_dates": 2,
+          "net_without_best_date": -1.923412370000733,
+          "date_bootstrap_mean_ci95": [
+            -1.3731929350002854,
+            0.8632095349997447
+          ],
+          "outcomes": {
+            "no_proxy_fill": 110,
+            "skipped_hour_boundary": 8,
+            "predecision_size": 3,
+            "priced": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 1.2344602499997563,
+              "closed_subtotal": 1.2344602499997563
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 1.3149323199995706,
+              "closed_subtotal": 1.3149323199995706
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -3.1578726200004894,
+              "closed_subtotal": -3.1578726200004894
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        },
+        "touch_partial": {
+          "complete": true,
+          "net_dollars": -1.0145396500010975,
+          "closed_subtotal": -1.0145396500010975,
+          "gross_closed_subtotal": 2.3834999999999127,
+          "trades": 4,
+          "mean_net_bps": -3.582086977294944,
+          "partial_entries": 0,
+          "positive_dates": 2,
+          "net_without_best_date": -2.248999900000854,
+          "date_bootstrap_mean_ci95": [
+            -1.4274575233336388,
+            0.7687089116664841
+          ],
+          "outcomes": {
+            "no_proxy_fill": 109,
+            "skipped_hour_boundary": 8,
+            "priced": 4,
+            "predecision_size": 3
+          },
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-08-01",
+              "complete": true,
+              "net_dollars": 1.2344602499997563,
+              "closed_subtotal": 1.2344602499997563
+            },
+            {
+              "date": "2024-09-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            },
+            {
+              "date": "2024-10-01",
+              "complete": true,
+              "net_dollars": 0.9088727199996356,
+              "closed_subtotal": 0.9088727199996356
+            },
+            {
+              "date": "2024-11-01",
+              "complete": true,
+              "net_dollars": -3.1578726200004894,
+              "closed_subtotal": -3.1578726200004894
+            },
+            {
+              "date": "2024-12-01",
+              "complete": true,
+              "net_dollars": 0.0,
+              "closed_subtotal": 0.0
+            }
+          ]
+        }
+      },
+      "needs_additional_evidence": false
+    }
+  },
+  "source_audits": [
+    {
+      "date": "2024-07-01",
+      "kind": "book",
+      "raw_rows": 1268622,
+      "retained_rows": 64942,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "822df7ed98a2d578aba93a3b0833317076a51eb4350847095c0467fa034ea6d1",
+      "panel_sha256": "e07851d847e3c294fee0aae17d81565fb87419113f136d34cdeca510c98d57bb",
+      "events_sha256": "b454b79221498e956584097a310140df3061fd836423a2d3a5ab8058a9366add"
+    },
+    {
+      "date": "2024-07-01",
+      "kind": "trades",
+      "raw_rows": 2206156,
+      "retained_rows": 214014,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "58f06d337fae55be7fa1019ca4f62383ea2381bf69bc7a7e58497d96e34a0d0c",
+      "panel_sha256": "59f3aea8ac5cbc02fb51df2c6758ca814a1dc17f769c7026f431e4b1c1fbdfb5",
+      "events_sha256": "b454b79221498e956584097a310140df3061fd836423a2d3a5ab8058a9366add"
+    },
+    {
+      "date": "2024-08-01",
+      "kind": "book",
+      "raw_rows": 1447793,
+      "retained_rows": 110690,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "706c56900fa4a41e2f9edd122d7c31d718be22e9b51c13b58cebd174148c0702",
+      "panel_sha256": "88c29f40b83f18e36920aa0cfbf6fef93c4df2f1b3f3c54c9f59cb61c5f7107b",
+      "events_sha256": "7884eeba65441162871fd19073a5b8f15ca78e0f00591c34202e5425ed61a212"
+    },
+    {
+      "date": "2024-08-01",
+      "kind": "trades",
+      "raw_rows": 4147749,
+      "retained_rows": 622669,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "4ab6ac6462f3b4e20a87f2634958b73d92e95d08aeb1e97f034428b06354bd3d",
+      "panel_sha256": "950d9c349f84fdc569b636d3978f0f68f3d43533caaf7109176e60b9a10ec585",
+      "events_sha256": "7884eeba65441162871fd19073a5b8f15ca78e0f00591c34202e5425ed61a212"
+    },
+    {
+      "date": "2024-09-01",
+      "kind": "book",
+      "raw_rows": 1303118,
+      "retained_rows": 34306,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "b4ad62827b91999148669303694f8f6089ab7244a5f52e5e2543ea87012552f4",
+      "panel_sha256": "67b71a8dc5950bb665e8c76f2f13916f4b4aff299552099a3e3ea8a12a2fab9b",
+      "events_sha256": "5626d440bdac2d24033e307d221acbd6127388113b59fe22456884429e0b2bcf"
+    },
+    {
+      "date": "2024-09-01",
+      "kind": "trades",
+      "raw_rows": 2973388,
+      "retained_rows": 130156,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "d704f37d42ebf46b55a8f7dcaf0fea464e0915b333b167ce08811aa179274ed4",
+      "panel_sha256": "d135bfac93271804f7e42966dfd101d1fd6f68370dd702abd98b5f06de7a984a",
+      "events_sha256": "5626d440bdac2d24033e307d221acbd6127388113b59fe22456884429e0b2bcf"
+    },
+    {
+      "date": "2024-10-01",
+      "kind": "book",
+      "raw_rows": 1390566,
+      "retained_rows": 87941,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "d44556ff2551c9d27229e0a965f43bb3e005b0dd60a042811e6b5431df431916",
+      "panel_sha256": "24b75bedf0a2d90ae72656d4603501f932bbecb9302d89856dd8ed847cee805d",
+      "events_sha256": "d3bc31bbc522bc63129d04a066e4a8bcc227383fc234083626ffa05078bfc4eb"
+    },
+    {
+      "date": "2024-10-01",
+      "kind": "trades",
+      "raw_rows": 5090124,
+      "retained_rows": 917612,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "7b59454dbc5f8eac0b88d093b73adb016a7a4493940399a5ecd14d29d2cb3ec4",
+      "panel_sha256": "f973cc9ccdad779c7af4250ffa6a5206cf9a7e3899134ee8e4e3741f9db7477d",
+      "events_sha256": "d3bc31bbc522bc63129d04a066e4a8bcc227383fc234083626ffa05078bfc4eb"
+    },
+    {
+      "date": "2024-11-01",
+      "kind": "book",
+      "raw_rows": 1373696,
+      "retained_rows": 102648,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "68bc3c65d9f65844396917b404c0c92381ec198ac7c10d184eb2ca0f1558c113",
+      "panel_sha256": "e2c8174a3b073fae575870121788e7b9f58d467ecb0ac14e24ecf0db8bc8af29",
+      "events_sha256": "7ff285bc94957040a6f2067d5ab4c5f3858eec5e4f0e4360b4a34fd7d63a4eb9"
+    },
+    {
+      "date": "2024-11-01",
+      "kind": "trades",
+      "raw_rows": 4618172,
+      "retained_rows": 737915,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "25f250e32b91518939ffd62caa6573726c69e53ec2880bbea9ad89be757bd026",
+      "panel_sha256": "8b2aa5caf94769cdde4a33eda42c93efa638cbe30434860cf1da061e4b7e4006",
+      "events_sha256": "7ff285bc94957040a6f2067d5ab4c5f3858eec5e4f0e4360b4a34fd7d63a4eb9"
+    },
+    {
+      "date": "2024-12-01",
+      "kind": "book",
+      "raw_rows": 1287761,
+      "retained_rows": 46552,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "de8ae2d6ab998dff100562fcd8a7f4ac28de15be08693fb82b969c8596ffa705",
+      "panel_sha256": "810193710f8f41dfc401799bfbbb3a7cfa71e57a4c4afa3358545a0556f86bef",
+      "events_sha256": "664fc479744975f6f8d990552af9284930ee68b5385f9fff872318099f6203c7"
+    },
+    {
+      "date": "2024-12-01",
+      "kind": "trades",
+      "raw_rows": 1872343,
+      "retained_rows": 111892,
+      "capture_and_exchange_order_verified": true,
+      "windows": "Fixed -35s/+170s around every frozen event, selected without future price or fill conditions",
+      "source_sha256": "21e30e4b7fa691789eef1855ae5f7f67c75f0bbbfcfcdbead6ebb9be7c5c8ce2",
+      "panel_sha256": "69dc092921f45dabfdf7b2e9b892c6af83d69813172fd2a343689ceb46789279",
+      "events_sha256": "664fc479744975f6f8d990552af9284930ee68b5385f9fff872318099f6203c7"
+    }
+  ],
+  "candidates_for_additional_evidence": [],
+  "reliable_edge_established": false
+}

@@ -1,0 +1,38 @@
+PASSIVE LIQUIDATION HFT — 2026-09-30
+
+VERDICT: NO CANDIDATE PROGRESSES. Goal remains active; user requires strictly HFT.
+
+Eight frozen variants: follow/reverse the unchanged liquidation direction; 8/16bp passive offset; 30/120-second holds after cancellation acknowledgement.
+The 124 event clocks and reported-notional threshold are unchanged from the earlier study. This is development on exposed dates, not untouched validation.
+Six public trade files total 197,337,074 compressed bytes, acquired without authentication or paid data. Source raw capture clocks, exchange clocks and trade IDs validated.
+Book and trade audits cover 28,979,488 raw rows; fixed event windows preserve causal decisions and physical exchange-time execution.
+
+EXECUTION
+3bp maker entry, 6bp taker exit, 1bp extra adverse exit allowance; actual five-level exit prices. One-second outbound baseline, three-second stress; doubled fees, full-first-through and touch-price fill sensitivities.
+Orders are post-only with fixed five-second resting windows. All inferred partial inventory remains until cancel acknowledgement, hold and market exit. Unknown submitted execution invalidates the day.
+$10000 daily starting cash, $1000 maximum order, <=10% predecision touch quantity. Isolated-date P&L is not a continuous competition wealth path.
+
+BASELINE: rule | gross dollars | net dollars | completed trades
+follow_8bp_30s | -0.918400 | -1.917643 | 1
+follow_8bp_120s | +0.057600 | -0.940960 | 1
+follow_16bp_30s | +0.000000 | +0.000000 | 0
+follow_16bp_120s | +0.000000 | +0.000000 | 0
+reverse_8bp_30s | -3.132800 | -8.670697 | 7
+reverse_8bp_120s | -2.430000 | -7.969157 | 7
+reverse_16bp_30s | -3.156000 | -6.060161 | 3
+reverse_16bp_120s | +2.299500 | -0.608480 | 3
+
+Six baseline variants lose; two produce no modeled fills. Zero fills are an absence of executable evidence in these samples, not proof of universal negative profitability.
+The least-negative traded baseline is reverse/16bp/120s: +$2.2995 gross, -$0.6085 net on three trades. Doubled fees give -$3.2256; three-second delay -$1.9254; touch-price fills -$1.0145.
+Most posted quotes never traded. Lower entry fees did not overcome the sampled adverse price moves and exit costs.
+
+VERIFICATION AND LIMITS
+Independent audit checked 224 maker-fill records and 4450 no-fill attempts against the source tape across dependent scenarios. P&L reconciles within $0.
+Six focused tests cover strict trade-through boundaries and aggressor sides, partial inventory, cancellation timing, full-fill sensitivity, unknown executions and fixed event windows.
+Strict-through and touch-price assumptions are counterfactual models, not proof of actual queue priority or fills. No market-impact or live-routing evidence is available.
+Six calendar-selected dates cannot establish broad reliability. No later validation dates were opened after this failure; no candidate was rescued by cheaper costs or a changed event threshold.
+Current search: 68 configurations / 92 evaluated implementation versions, all dependent and retaining previous historical selection exposure. No reliable edge or competition win established.
+
+Official sources:
+https://docs.tardis.dev/downloadable-csv-files/data-types
+https://www.binance.com/en-BH/fee/futureFee

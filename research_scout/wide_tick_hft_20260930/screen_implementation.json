@@ -1,0 +1,13 @@
+{
+  "created_at_utc": "2026-09-30T19:26:10.224287+00:00",
+  "input_sha256": {
+    "specification.json": "0f737c46e2913447487fe06f1c3c609e0221198d38a998797d715d436b33f110",
+    "source_semantics_addendum.json": "c1ce91f72f3392a4ff54cd52758c1d6c3c7c92656afd81458be55d4db45cf411",
+    "complete_manifest_v1.json": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+  },
+  "implementation_sha256": {
+    "research/wide_tick_supply.py": "c9ba882e1b0c76874d804741dd61e04e406945652c7f6eaba3e63e99b488eb56",
+    "research_scout/screen_wide_tick_20260930.py": "016f993ca053f65fdad5949cbe85b22762e9c6baa66b8d199adcd266efcc774c"
+  },
+  "strategy_pnl_tested": false
+}

@@ -1,0 +1,17 @@
+FUTURES-TO-SPY HFT CATCH-UP SCREEN — NO ELIGIBLE OPPORTUNITY
+
+No reliable edge established. This is a contemporaneous cost-budget screen, not a future-return or P&L test. Futures are predictors only; SPY is the authorized traded asset.
+
+Source coverage: all 250 XNYS sessions in 2023; 248 complete cached Databento ES trade files covering 15:00–15:30 ET. The two scheduled early closes are excluded by calendar. All file hashes reconcile to the source ledger. The volume-front continuous symbol maps to a single actual contract each day. No futures position is proposed.
+
+Frozen signal: 250ms decisions, strict capture-time predecessor before decision minus 100ms and one second earlier; endpoint age at most 250ms; absolute one-second price change at least 4bp, at least 100 contracts, and aligned aggressor flow at least 75%. Invalid records, timestamp-lag violations and unsupported flags invalidate the window. Earliest eligible signal wins a 30-second cooldown. This selects 26 impulses on 17 dates from 5,255,266 raw trades and 1,724,096 decision grids.
+
+Execution-data screen: 26 complete SPY SIP windows, 436,267 raw quotes. Strict predecessors and conflicting tied timestamps are handled explicitly. Pre-2025 displayed sizes use 100-share round lots. Whole-share sizing is capped by $10,000 with a 1% reserve and 10% displayed touch size; minimum order $100. Costs include both sides of the spread, $0.0075/share with $1 minimum per order, sell levies, 1bp adverse allowance per execution and one calendar day of 5% annualized borrow for shorts.
+
+Results: 23 priced contemporaneous budgets, three invalid/tied quote states, zero orders above the frozen cost hurdle plus 3bp buffer. Maximum signed ES/SPY residual is 3.64972bp; even the best remaining budget is -1.71940bp before the extra buffer. No future price was used to rank these observations. No economic configuration was run in this screen.
+
+Independent validation: a separate moving-window implementation with exact integer price/flow thresholds reproduced every decision flag, all 26 impulses and all source hashes. An independent raw SIP parser and Decimal cash calculation verified all 23 budgets and three ambiguous states; maximum numeric difference 1.09e-12. Six impulse tests and four quote-budget tests passed.
+
+Limits: SIP quotes provide conditional execution evidence, not private fills or historical short permissions. An instantaneous residual is not a guarantee of later convergence. This negative result applies to this frozen screen, not all possible futures predictors. Family-specific 2024/2025 validation remains unopened; those years have been used elsewhere in the broader research.
+
+Evidence: specification.json, source_manifest.json, decisions/, es_impulses.parquet, quote_manifest.json, spy_budgets.parquet, spy_budget_results.json and independent_verification.json. The separately preregistered 15-second response extension is reported in ../futures_response_hft_20261002/REPORT.txt.

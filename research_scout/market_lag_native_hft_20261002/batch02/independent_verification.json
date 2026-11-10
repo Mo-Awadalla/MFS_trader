@@ -1,0 +1,38 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T21:47:36.029651+00:00",
+  "source_files_verified": 37,
+  "source_counts": {
+    "native_messages": 2324998,
+    "book_messages": 2324998,
+    "universe_book_messages": 2324998
+  },
+  "quote_rows_verified": 17168,
+  "marginal_signal_rows_verified": 16872,
+  "leader_grids_verified": 8436,
+  "diagnostic_coherent_grids": 4,
+  "causally_admitted_leader_grids": 4,
+  "excluded_by_causal_alignment": 0,
+  "target_acquisition_jobs": [
+    {
+      "date": "2024-10-01",
+      "offset": 987
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1016
+    }
+  ],
+  "admitted_leader_grids_sha256": "28cebf653b7372b75af5e3790270c6071b72233f34b515f177f2101e91d3c129",
+  "causal_selection_specification_sha256": "6a68330f1d314feb26693cfcd6e97912bedb49db57bb5a72e46cad38c1118a42",
+  "maximum_joint_numeric_difference": "4.9976E-24",
+  "results_sha256": "100b68a07d9221d686b0711de9f586a4990e37a42c90e3b4145abfec5af2801e",
+  "auditor_sha256": "f435f93074442f03110ebfe44735c79db245017e3b67ffffb119652e25be5096",
+  "independent_raw_reconstruction_helper_sha256": "d6c303e136dc8aa05564072a782c90b5e07799c7374cb72709d9c000b78ad223",
+  "audit_comparison_repair": "Inherits the first batch audit's NaN-versus-None comparison normalization for missing fields. No source, rule or numeric transformation changes.",
+  "scope": "Independent full native clock-bucket reconstruction reused from the frozen audited helper; every quote/marginal return/quality predicate, direct cross-product joint-leader gate and exact normalized acquisition-grid alignment verified. No production parser or signal calculation called by the audit. Ledger writer is serialization only.",
+  "target_eligibility_tested": false,
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "reliable_edge_established": false
+}

@@ -1,0 +1,178 @@
+{
+  "candidate_events": 1,
+  "component_checks": 3,
+  "selected_events": 1,
+  "source_counts": {
+    "native_messages": 27286,
+    "relevant_trade_messages": 27286
+  },
+  "windows": [
+    {
+      "date": "2024-10-01",
+      "offset": 987,
+      "source_counts": {
+        "native_messages": 27286,
+        "relevant_trade_messages": 27286
+      },
+      "bundles": [
+        {
+          "event": {
+            "date": "2024-10-01",
+            "offset_minutes": 987,
+            "decision_ns": 1727800077500000000,
+            "symbol": "TRXUSDT",
+            "direction": -1,
+            "common_move_bps": "24.30061169133848246458315100",
+            "target_supply": true,
+            "gap_bps": "20.41887526124208600990242400",
+            "budget_bps": "3.183445972958347112851489348",
+            "minimum_signed_target_return_bps": "1.940742657523612368999871000",
+            "reason": "requires_native_trade_confirmation",
+            "selected": true
+          },
+          "components": [
+            {
+              "event": {
+                "date": "2024-10-01",
+                "offset_minutes": 987,
+                "decision_ns": 1727800077500000000,
+                "symbol": "BTCUSDT",
+                "direction": -1,
+                "common_move_bps": "24.30061169133848246458315100",
+                "target_supply": true,
+                "gap_bps": "20.41887526124208600990242400",
+                "budget_bps": "3.183445972958347112851489348",
+                "minimum_signed_target_return_bps": "1.940742657523612368999871000",
+                "reason": "requires_native_trade_confirmation",
+                "selected": true
+              },
+              "result": {
+                "date": "2024-10-01",
+                "offset_minutes": 987,
+                "symbol": "BTCUSDT",
+                "decision_ns": 1727800077500000000,
+                "direction": -1,
+                "window_start_ns": 1727800076250000000,
+                "cutoff_ns": 1727800077250000000,
+                "native_market_trade_count": 5111,
+                "buy_notional_usdt": "1241040.36810",
+                "sell_notional_usdt": "39831902.57530",
+                "total_notional_usdt": "41072942.94340",
+                "aligned_notional_usdt": "39831902.57530",
+                "aligned_fraction": "0.9697844790471868917226305909",
+                "source_integrity_ok": true,
+                "integrity_problems": "",
+                "flow_gate": true,
+                "selected": true,
+                "reason": "requires_response_replay"
+              },
+              "ledger_path": "research_scout\\market_lag_flow_hft_20261002\\ledgers\\2024-10-01_BTCUSDT_1727800077500000000.parquet",
+              "ledger_sha256": "462e5b1ccb8f821050b1bc35d3d7ce33670322a55d558a0f408b4fdfc940e380"
+            },
+            {
+              "event": {
+                "date": "2024-10-01",
+                "offset_minutes": 987,
+                "decision_ns": 1727800077500000000,
+                "symbol": "ETHUSDT",
+                "direction": -1,
+                "common_move_bps": "24.30061169133848246458315100",
+                "target_supply": true,
+                "gap_bps": "20.41887526124208600990242400",
+                "budget_bps": "3.183445972958347112851489348",
+                "minimum_signed_target_return_bps": "1.940742657523612368999871000",
+                "reason": "requires_native_trade_confirmation",
+                "selected": true
+              },
+              "result": {
+                "date": "2024-10-01",
+                "offset_minutes": 987,
+                "symbol": "ETHUSDT",
+                "decision_ns": 1727800077500000000,
+                "direction": -1,
+                "window_start_ns": 1727800076250000000,
+                "cutoff_ns": 1727800077250000000,
+                "native_market_trade_count": 2090,
+                "buy_notional_usdt": "899491.42293",
+                "sell_notional_usdt": "6491715.23047",
+                "total_notional_usdt": "7391206.65340",
+                "aligned_notional_usdt": "6491715.23047",
+                "aligned_fraction": "0.8783024930690811524753030794",
+                "source_integrity_ok": true,
+                "integrity_problems": "",
+                "flow_gate": true,
+                "selected": true,
+                "reason": "requires_response_replay"
+              },
+              "ledger_path": "research_scout\\market_lag_flow_hft_20261002\\ledgers\\2024-10-01_ETHUSDT_1727800077500000000.parquet",
+              "ledger_sha256": "c49e2b35a0aba575ae5c694fd6e2fe4efac7a8c08cd0456894a7fce19ed9cb1b"
+            },
+            {
+              "event": {
+                "date": "2024-10-01",
+                "offset_minutes": 987,
+                "decision_ns": 1727800077500000000,
+                "symbol": "TRXUSDT",
+                "direction": -1,
+                "common_move_bps": "24.30061169133848246458315100",
+                "target_supply": true,
+                "gap_bps": "20.41887526124208600990242400",
+                "budget_bps": "3.183445972958347112851489348",
+                "minimum_signed_target_return_bps": "1.940742657523612368999871000",
+                "reason": "requires_native_trade_confirmation",
+                "selected": true
+              },
+              "result": {
+                "date": "2024-10-01",
+                "offset_minutes": 987,
+                "symbol": "TRXUSDT",
+                "decision_ns": 1727800077500000000,
+                "direction": -1,
+                "window_start_ns": 1727800076250000000,
+                "cutoff_ns": 1727800077250000000,
+                "native_market_trade_count": 57,
+                "buy_notional_usdt": "0",
+                "sell_notional_usdt": "24762.78212",
+                "total_notional_usdt": "24762.78212",
+                "aligned_notional_usdt": "24762.78212",
+                "aligned_fraction": "1",
+                "source_integrity_ok": true,
+                "integrity_problems": "",
+                "flow_gate": true,
+                "selected": true,
+                "reason": "requires_response_replay"
+              },
+              "ledger_path": "research_scout\\market_lag_flow_hft_20261002\\ledgers\\2024-10-01_TRXUSDT_1727800077500000000.parquet",
+              "ledger_sha256": "f14299a138985fc6889c0c09ff364850145f745907628779220374e75caf938d"
+            }
+          ],
+          "joint": {
+            "date": "2024-10-01",
+            "offset_minutes": 987,
+            "decision_ns": 1727800077500000000,
+            "symbol": "TRXUSDT",
+            "direction": -1,
+            "common_move_bps": "24.30061169133848246458315100",
+            "target_supply": true,
+            "gap_bps": "20.41887526124208600990242400",
+            "budget_bps": "3.183445972958347112851489348",
+            "minimum_signed_target_return_bps": "1.940742657523612368999871000",
+            "reason": "requires_response_replay",
+            "selected": true,
+            "source_integrity_ok": true,
+            "leader_activity_gate": true,
+            "leader_direction_gate": true,
+            "target_activity_gate": true
+          }
+        }
+      ]
+    }
+  ],
+  "implementation_sha256": "953612772cfef64536ca709df85dbf72858a0bab38edee3487ad317a1ec37b25",
+  "joint_sha256": "46749007689275c57dab8e01c7487105c76851a97944dc22a942fdb22f61a29a",
+  "selected_sha256": "46749007689275c57dab8e01c7487105c76851a97944dc22a942fdb22f61a29a",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

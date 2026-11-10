@@ -1,0 +1,86 @@
+{
+  "created_at_utc": "2026-09-30T17:53:10.944574+00:00",
+  "stage": "conditional allocation/observed-quote economics only",
+  "new_configurations": 2,
+  "holds_seconds": [
+    15,
+    30
+  ],
+  "scenarios": {
+    "base": {
+      "delay_s": 1,
+      "fee_multiplier": 1.0,
+      "adverse_bps": 1.0
+    },
+    "double_fees": {
+      "delay_s": 1,
+      "fee_multiplier": 2.0,
+      "adverse_bps": 1.0
+    },
+    "latency_3s": {
+      "delay_s": 3,
+      "fee_multiplier": 1.0,
+      "adverse_bps": 1.0
+    },
+    "extra_slippage": {
+      "delay_s": 1,
+      "fee_multiplier": 1.0,
+      "adverse_bps": 2.0
+    }
+  },
+  "dates": [
+    "2023-06-08",
+    "2023-07-10",
+    "2023-08-02",
+    "2023-09-01",
+    "2023-11-09",
+    "2024-02-01",
+    "2024-02-14",
+    "2024-02-23",
+    "2024-03-01",
+    "2024-03-21",
+    "2024-03-28",
+    "2024-04-01",
+    "2024-04-17",
+    "2024-04-29",
+    "2024-04-30",
+    "2024-09-30",
+    "2024-12-19",
+    "2025-01-27",
+    "2025-03-11",
+    "2025-03-26",
+    "2025-03-28",
+    "2025-04-03",
+    "2025-04-07",
+    "2025-04-08",
+    "2025-05-19",
+    "2025-06-30",
+    "2025-10-30",
+    "2025-11-14",
+    "2025-11-17",
+    "2025-11-24",
+    "2025-12-09",
+    "2025-12-18"
+  ],
+  "input_sha256": "aa280e40f7aade8a0bff6c92fc6545b911956f190b49b44116f1b6d32d2f44f7",
+  "statistics_sha256": "fa467f9ddf4619e071d0370a3f29f07386e8ab7fa247197de91a658e713fdfca",
+  "source_sha256": {
+    "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/imbalance/spy_imbalance_2021-01-01_2026-07-27.dbn.zst": "f860e934a2ea3d93f99a6634b460c8dcd1fe9b04f98c67a43c6a7bdb78de84d9",
+    "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/tbbo/cash_etf_tbbo_2023-03-28_2026-07-27.dbn.partial.dbn.zst": "167736583478acca6c89e67f088c6e25ab06f47a21069add77dc6255acc4b26a",
+    "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/tbbo/cash_etf_tbbo_tail_2024-10-03_2026-07-27.dbn.zst": "2d90b0660d351245280d8c32abeae5d53d965019a82b3ab3171cecff7759bedd"
+  },
+  "code_sha256": {
+    "research_scout/benchmark_close_auction_20260930.py": "1d134d59291006951dfbf67be16870ed2fa6805e0bed53c0df89471878ffa331",
+    "research/auction_hft_event.py": "747aa7a5c1ecd8c658ada4a86ebd2ed0cc3a9f200a4f877855b72710ef9c6550"
+  },
+  "entry": "Frozen predecision integer size and LOC limit. Send at15:58:55.25;1s/3s outbound arrives before15:59 freeze. No cancellation. Use unique native ARCX.PILLAR SPY ClosingPrice statistic, sourced from CrossTrade, timestamp within10s of16:00. If official price is above limit, no reference fill. If at/below limit and quantity<=reported auction quantity, conditionally assume full allocation for this economic diagnostic ONLY. Actual priority/rationing, auction impact and individual order acceptance are unverified; even strictly better-priced limits do not by themselves prove allocation.",
+  "exit": "ACK reference=max(auction capture,auction event+return delay). Hold15/30s after this reference, then250ms processing plus1s/3s outbound. Select first complete SPY TBBO event at/after that target; require wait<=1s, positive noncrossed book and displayed bid size>=fixed quantity. Retain invalid first states and insufficient depth as unknown. Use its bid as a conditional observed-price reference, not a guaranteed live after-hours fill. No fractional resizing, no carrying a missing exit at zero loss.",
+  "fees": "Original conservative$.0075/share minimum$1/side; sale.30bp +$.0002/share;1bp adverse each side. Stress doubled fees, doubled adverse allowance,3s network delay. Decisions fixed across stresses.",
+  "scope": "Do not call conditional P&L actual strategy profitability. Auction allocation and routable after-hours execution require separate evidence if economics pass. This stage avoids spending on those prerequisites for unprofitable reference economics. All dates are previously exposed discovery, not a holdout. No live orders or paid API.",
+  "advance": "Only if conditional totals are complete and positive in every scenario for BOTH2023-24 and2025, baselinepositive>=3 dates in each period and positive after removing its best3 dates; passing justifies allocation/venue evidence, never an edge claim. Otherwise retire this rule without changing clocks, caps or fees.",
+  "sources": [
+    "https://databento.com/docs/venues-and-datasets",
+    "https://databento.com/docs/schemas-and-data-formats/statistics",
+    "https://databento.com/docs/schemas-and-data-formats/tbbo"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-03T00:38:28.029864+00:00",
+  "source_rows_verified": 46428207,
+  "groups_verified": 563,
+  "selected_verified": 180,
+  "event_cases_verified": 2880,
+  "aggregates_verified": 32,
+  "screen_sha256": "57540479ffbfb46d538bc1d1eb681b9454efe35797875a18f65ae5dfe810fd8d",
+  "results_sha256": "57e6624de1b532c73f549545b4754e6905e9a8e32c7e78d66301a9f12323ee57",
+  "auditor_sha256": "7cc4c7ab6a196ec93c79038fb4bf206324692e5babc35be6def62df878ae1f70",
+  "group_auditor_sha256": "bdc88ce51ae2972fb7fb302df31de3ec5e0fe8d2bd71ed782fc11e509c21aa86",
+  "book_helper_sha256": "850b5c95be6dafbc9eb5d10a11552e3cd7412889cbb1cfec140c7f1959bc71c7",
+  "scope": "Independent DBN field/group,signal,ranking,fixed receive-clock reference,L1 fill bounds,cash and aggregate recalculation. Shared Databento SDK DBN decoder;no separate binary decoder. Earlier rejected group enumeration not independently rerun. No venue/NBBO/private fill proof.",
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

@@ -1,0 +1,8 @@
+{
+  "created_at_utc": "2026-09-30T13:46:39.236199+00:00",
+  "source": "https://docs.alpaca.markets/us/v1.1/changelog/marketdata-bid-and-ask-size-display-change",
+  "original_specification_sha256": "8ae773e59602e170731f59792b9fd76b0dcce152beb7b334d168a593e270878e",
+  "change": "Convert AAPL SIP bid/ask sizes before 2025-11-03 from 100-share round lots to shares; preserve dates, signal, clocks, threshold, costs and gate definitions",
+  "scope": "Unit-only historical repair; not a new independent hypothesis or untouched test",
+  "execution_audit": "Separately audit latest raw quote, freshness and displayed quantity; do not silently use an earlier valid quote when latest is crossed or locked"
+}

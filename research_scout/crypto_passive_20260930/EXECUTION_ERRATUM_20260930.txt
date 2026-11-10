@@ -1,0 +1,24 @@
+Execution erratum, 2026-09-30
+
+Preserve the original six-rule screen as historical evidence, not a reliable fill
+model or a conservative P&L bound. It waited for a sufficiently large single
+through-price print and therefore could ignore preceding partial inventory. It
+also conditioned admission on future arrival depth and did not fully separate
+exit cancellation, acknowledgement and replacement-order travel.
+
+The same six rules were rerun in ../crypto_passive_partial_20260930 with:
+- all qualifying through-price volume accumulated into partial inventory;
+- pre-decision sizing rather than arrival-depth-based entry selection;
+- cancellation acknowledgement before replacing outstanding entry/exit orders;
+- explicit forced liquidation of any remaining inventory, with costs;
+- incomplete paths marked unresolved rather than reported as total P&L;
+- separate full-first-through-print sensitivity, doubled fees and longer latency.
+
+All six corrected rules failed the development gate. The best complete baseline
+made $5.4649768 across five isolated dates from nine trades, on daily $10,000
+starting accounts with maximum $1,000 tickets. This is not a reliable edge.
+
+Both versions remain historical tape models. Through-price evidence cannot
+resolve every possible at-price fill, queue position, impact or real receipt
+latency. A new implementation does not make previously exposed dates pristine.
+Original raw data, original specification and original results were not rewritten.

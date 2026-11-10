@@ -1,0 +1,883 @@
+{
+  "completed_at_utc": "2026-10-03T01:43:49.163784+00:00",
+  "specification_sha256": "573611265bcab6dc8b1a3df47f89564593e85930ddf8686d9a3eb1968928e66e",
+  "source_prefix_rows": 349648,
+  "source_last_row": 349647,
+  "source_last_event_ns": 1758029509374384127,
+  "event": {
+    "decision_ns": 1758029503610000000,
+    "quote_source_row": 64482,
+    "bid_price_int": 176740000000,
+    "ask_price_int": 176870000000,
+    "quantity": 41,
+    "net_cash_units": 165584290000000,
+    "entry_notional_price_units": 7246340000000,
+    "projected_net_usd": "1.6558429",
+    "projected_net_bp": "2.285074810180035714581430074"
+  },
+  "cases": [
+    {
+      "case": "base_1ms",
+      "status": "no_entry_fill",
+      "unknown_reason": null,
+      "requested_quantity": 41,
+      "bought": 0,
+      "sold": 0,
+      "residual_known_inventory": 0,
+      "max_inventory_holding_ns": null,
+      "fills": [],
+      "cash": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "known_cash_component": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "ledger": [
+        {
+          "kind": "scheduled_action",
+          "action": "post_bid",
+          "event_ns": 1758029503611050000,
+          "source_before": 347871,
+          "source_after": 347872,
+          "native_before": 1758029503604081062,
+          "native_after": 1758029503622691955,
+          "relevant": true
+        },
+        {
+          "kind": "posted",
+          "order": "bid",
+          "arrival_ns": 1758029503611050000,
+          "side": "B",
+          "price_int": 176740000000,
+          "requested_quantity": 41,
+          "initial_ahead": {
+            "51793375": 30,
+            "51793395": 100,
+            "52007743": 300
+          },
+          "bid": [
+            176740000000,
+            430,
+            3
+          ],
+          "ask": [
+            176870000000,
+            410,
+            2
+          ]
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_bid",
+          "event_ns": 1758029504611050000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": true
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "post_ask",
+          "event_ns": 1758029504613100000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_ask",
+          "event_ns": 1758029508611050000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "force_exit",
+          "event_ns": 1758029508613100000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        }
+      ],
+      "conditional_on_unchanged_historical_flow_and_posting": true,
+      "actual_execution_verified": false
+    },
+    {
+      "case": "delay_5ms",
+      "status": "no_entry_fill",
+      "unknown_reason": null,
+      "requested_quantity": 41,
+      "bought": 0,
+      "sold": 0,
+      "residual_known_inventory": 0,
+      "max_inventory_holding_ns": null,
+      "fills": [],
+      "cash": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "known_cash_component": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "ledger": [
+        {
+          "kind": "scheduled_action",
+          "action": "post_bid",
+          "event_ns": 1758029503615050000,
+          "source_before": 347871,
+          "source_after": 347872,
+          "native_before": 1758029503604081062,
+          "native_after": 1758029503622691955,
+          "relevant": true
+        },
+        {
+          "kind": "posted",
+          "order": "bid",
+          "arrival_ns": 1758029503615050000,
+          "side": "B",
+          "price_int": 176740000000,
+          "requested_quantity": 41,
+          "initial_ahead": {
+            "51793375": 30,
+            "51793395": 100,
+            "52007743": 300
+          },
+          "bid": [
+            176740000000,
+            430,
+            3
+          ],
+          "ask": [
+            176870000000,
+            410,
+            2
+          ]
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_bid",
+          "event_ns": 1758029504615050000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": true
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "post_ask",
+          "event_ns": 1758029504625100000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_ask",
+          "event_ns": 1758029508615050000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "force_exit",
+          "event_ns": 1758029508625100000,
+          "source_before": 349547,
+          "source_after": 349548,
+          "native_before": 1758029508625062851,
+          "native_after": 1758029508625218218,
+          "relevant": false
+        }
+      ],
+      "conditional_on_unchanged_historical_flow_and_posting": true,
+      "actual_execution_verified": false
+    },
+    {
+      "case": "delay_25ms",
+      "status": "no_entry_fill",
+      "unknown_reason": null,
+      "requested_quantity": 41,
+      "bought": 0,
+      "sold": 0,
+      "residual_known_inventory": 0,
+      "max_inventory_holding_ns": null,
+      "fills": [],
+      "cash": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "known_cash_component": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "ledger": [
+        {
+          "kind": "scheduled_action",
+          "action": "post_bid",
+          "event_ns": 1758029503635050000,
+          "source_before": 347890,
+          "source_after": 347891,
+          "native_before": 1758029503632368721,
+          "native_after": 1758029503652057669,
+          "relevant": true
+        },
+        {
+          "kind": "posted",
+          "order": "bid",
+          "arrival_ns": 1758029503635050000,
+          "side": "B",
+          "price_int": 176740000000,
+          "requested_quantity": 41,
+          "initial_ahead": {
+            "51793375": 30,
+            "51793395": 100,
+            "52007743": 300
+          },
+          "bid": [
+            176740000000,
+            430,
+            3
+          ],
+          "ask": [
+            176870000000,
+            410,
+            2
+          ]
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_bid",
+          "event_ns": 1758029504635050000,
+          "source_before": 348108,
+          "source_after": 348109,
+          "native_before": 1758029504632572619,
+          "native_after": 1758029504636276950,
+          "relevant": true
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "post_ask",
+          "event_ns": 1758029504685100000,
+          "source_before": 348239,
+          "source_after": 348240,
+          "native_before": 1758029504676146288,
+          "native_after": 1758029504700021512,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_ask",
+          "event_ns": 1758029508635050000,
+          "source_before": 349550,
+          "source_after": 349551,
+          "native_before": 1758029508631630654,
+          "native_after": 1758029508693003269,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "force_exit",
+          "event_ns": 1758029508685100000,
+          "source_before": 349550,
+          "source_after": 349551,
+          "native_before": 1758029508631630654,
+          "native_after": 1758029508693003269,
+          "relevant": false
+        }
+      ],
+      "conditional_on_unchanged_historical_flow_and_posting": true,
+      "actual_execution_verified": false
+    },
+    {
+      "case": "delay_250ms",
+      "status": "no_entry_fill",
+      "unknown_reason": null,
+      "requested_quantity": 41,
+      "bought": 0,
+      "sold": 0,
+      "residual_known_inventory": 0,
+      "max_inventory_holding_ns": null,
+      "fills": [],
+      "cash": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "known_cash_component": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "ledger": [
+        {
+          "kind": "scheduled_action",
+          "action": "post_bid",
+          "event_ns": 1758029503860050000,
+          "source_before": 347992,
+          "source_after": 347993,
+          "native_before": 1758029503857573597,
+          "native_after": 1758029503884827568,
+          "relevant": true
+        },
+        {
+          "kind": "posted",
+          "order": "bid",
+          "arrival_ns": 1758029503860050000,
+          "side": "B",
+          "price_int": 176740000000,
+          "requested_quantity": 41,
+          "initial_ahead": {
+            "51793375": 30,
+            "51793395": 100,
+            "52007743": 300
+          },
+          "bid": [
+            176820000000,
+            100,
+            1
+          ],
+          "ask": [
+            176900000000,
+            700,
+            2
+          ]
+        },
+        {
+          "kind": "queue_cancel",
+          "order": "bid",
+          "source_row": 348167,
+          "order_id": 52007743,
+          "quantity": 300,
+          "ahead_after": 130
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_bid",
+          "event_ns": 1758029504860050000,
+          "source_before": 348259,
+          "source_after": 348260,
+          "native_before": 1758029504776805876,
+          "native_after": 1758029504887748332,
+          "relevant": true
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "post_ask",
+          "event_ns": 1758029505360100000,
+          "source_before": 348421,
+          "source_after": 348422,
+          "native_before": 1758029505355119513,
+          "native_after": 1758029505368499709,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_ask",
+          "event_ns": 1758029508860050000,
+          "source_before": 349563,
+          "source_after": 349564,
+          "native_before": 1758029508857931360,
+          "native_after": 1758029508935114966,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "force_exit",
+          "event_ns": 1758029509360100000,
+          "source_before": 349646,
+          "source_after": 349647,
+          "native_before": 1758029509347228085,
+          "native_after": 1758029509374384127,
+          "relevant": false
+        }
+      ],
+      "conditional_on_unchanged_historical_flow_and_posting": true,
+      "actual_execution_verified": false
+    },
+    {
+      "case": "fees_2x",
+      "status": "no_entry_fill",
+      "unknown_reason": null,
+      "requested_quantity": 41,
+      "bought": 0,
+      "sold": 0,
+      "residual_known_inventory": 0,
+      "max_inventory_holding_ns": null,
+      "fills": [],
+      "cash": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "known_cash_component": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "ledger": [
+        {
+          "kind": "scheduled_action",
+          "action": "post_bid",
+          "event_ns": 1758029503611050000,
+          "source_before": 347871,
+          "source_after": 347872,
+          "native_before": 1758029503604081062,
+          "native_after": 1758029503622691955,
+          "relevant": true
+        },
+        {
+          "kind": "posted",
+          "order": "bid",
+          "arrival_ns": 1758029503611050000,
+          "side": "B",
+          "price_int": 176740000000,
+          "requested_quantity": 41,
+          "initial_ahead": {
+            "51793375": 30,
+            "51793395": 100,
+            "52007743": 300
+          },
+          "bid": [
+            176740000000,
+            430,
+            3
+          ],
+          "ask": [
+            176870000000,
+            410,
+            2
+          ]
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_bid",
+          "event_ns": 1758029504611050000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": true
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "post_ask",
+          "event_ns": 1758029504613100000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_ask",
+          "event_ns": 1758029508611050000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "force_exit",
+          "event_ns": 1758029508613100000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        }
+      ],
+      "conditional_on_unchanged_historical_flow_and_posting": true,
+      "actual_execution_verified": false
+    },
+    {
+      "case": "adverse_2x",
+      "status": "no_entry_fill",
+      "unknown_reason": null,
+      "requested_quantity": 41,
+      "bought": 0,
+      "sold": 0,
+      "residual_known_inventory": 0,
+      "max_inventory_holding_ns": null,
+      "fills": [],
+      "cash": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "known_cash_component": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "ledger": [
+        {
+          "kind": "scheduled_action",
+          "action": "post_bid",
+          "event_ns": 1758029503611050000,
+          "source_before": 347871,
+          "source_after": 347872,
+          "native_before": 1758029503604081062,
+          "native_after": 1758029503622691955,
+          "relevant": true
+        },
+        {
+          "kind": "posted",
+          "order": "bid",
+          "arrival_ns": 1758029503611050000,
+          "side": "B",
+          "price_int": 176740000000,
+          "requested_quantity": 41,
+          "initial_ahead": {
+            "51793375": 30,
+            "51793395": 100,
+            "52007743": 300
+          },
+          "bid": [
+            176740000000,
+            430,
+            3
+          ],
+          "ask": [
+            176870000000,
+            410,
+            2
+          ]
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_bid",
+          "event_ns": 1758029504611050000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": true
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "post_ask",
+          "event_ns": 1758029504613100000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_ask",
+          "event_ns": 1758029508611050000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "force_exit",
+          "event_ns": 1758029508613100000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        }
+      ],
+      "conditional_on_unchanged_historical_flow_and_posting": true,
+      "actual_execution_verified": false
+    },
+    {
+      "case": "clock_minus_1ms",
+      "status": "no_entry_fill",
+      "unknown_reason": null,
+      "requested_quantity": 41,
+      "bought": 0,
+      "sold": 0,
+      "residual_known_inventory": 0,
+      "max_inventory_holding_ns": null,
+      "fills": [],
+      "cash": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "known_cash_component": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "ledger": [
+        {
+          "kind": "scheduled_action",
+          "action": "post_bid",
+          "event_ns": 1758029503610050000,
+          "source_before": 347871,
+          "source_after": 347872,
+          "native_before": 1758029503604081062,
+          "native_after": 1758029503622691955,
+          "relevant": true
+        },
+        {
+          "kind": "posted",
+          "order": "bid",
+          "arrival_ns": 1758029503610050000,
+          "side": "B",
+          "price_int": 176740000000,
+          "requested_quantity": 41,
+          "initial_ahead": {
+            "51793375": 30,
+            "51793395": 100,
+            "52007743": 300
+          },
+          "bid": [
+            176740000000,
+            430,
+            3
+          ],
+          "ask": [
+            176870000000,
+            410,
+            2
+          ]
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_bid",
+          "event_ns": 1758029504610050000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": true
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "post_ask",
+          "event_ns": 1758029504612100000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_ask",
+          "event_ns": 1758029508610050000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "force_exit",
+          "event_ns": 1758029508612100000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        }
+      ],
+      "conditional_on_unchanged_historical_flow_and_posting": true,
+      "actual_execution_verified": false
+    },
+    {
+      "case": "clock_plus_1ms",
+      "status": "no_entry_fill",
+      "unknown_reason": null,
+      "requested_quantity": 41,
+      "bought": 0,
+      "sold": 0,
+      "residual_known_inventory": 0,
+      "max_inventory_holding_ns": null,
+      "fills": [],
+      "cash": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "known_cash_component": {
+        "entry_notional": "0",
+        "sale_notional": "0",
+        "gross": "0",
+        "commissions": "0",
+        "adverse": "0.0000",
+        "sales_charges": "0.000000",
+        "net": "0.000000"
+      },
+      "ledger": [
+        {
+          "kind": "scheduled_action",
+          "action": "post_bid",
+          "event_ns": 1758029503612050000,
+          "source_before": 347871,
+          "source_after": 347872,
+          "native_before": 1758029503604081062,
+          "native_after": 1758029503622691955,
+          "relevant": true
+        },
+        {
+          "kind": "posted",
+          "order": "bid",
+          "arrival_ns": 1758029503612050000,
+          "side": "B",
+          "price_int": 176740000000,
+          "requested_quantity": 41,
+          "initial_ahead": {
+            "51793375": 30,
+            "51793395": 100,
+            "52007743": 300
+          },
+          "bid": [
+            176740000000,
+            430,
+            3
+          ],
+          "ask": [
+            176870000000,
+            410,
+            2
+          ]
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_bid",
+          "event_ns": 1758029504612050000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": true
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "post_ask",
+          "event_ns": 1758029504614100000,
+          "source_before": 348106,
+          "source_after": 348107,
+          "native_before": 1758029504606459541,
+          "native_after": 1758029504631174473,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "cancel_ask",
+          "event_ns": 1758029508612050000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        },
+        {
+          "kind": "scheduled_action",
+          "action": "force_exit",
+          "event_ns": 1758029508614100000,
+          "source_before": 349517,
+          "source_after": 349518,
+          "native_before": 1758029508607048552,
+          "native_after": 1758029508615112670,
+          "relevant": false
+        }
+      ],
+      "conditional_on_unchanged_historical_flow_and_posting": true,
+      "actual_execution_verified": false
+    }
+  ],
+  "economic_configurations_executed": 1,
+  "implementation_versions_executed": 1,
+  "independent_execution_cash_audit_verified": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "network_calls": 0,
+  "paid_calls": 0
+}

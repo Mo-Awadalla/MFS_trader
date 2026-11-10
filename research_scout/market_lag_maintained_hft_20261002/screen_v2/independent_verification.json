@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T22:11:23.718377+00:00",
+  "parent_quote_rows_hash_verified": 320624,
+  "causal_grids_verified": 7,
+  "target_checks_verified": 1953,
+  "acquisition_candidates_verified": 1,
+  "distinct_symbol_minutes_verified": 1,
+  "numeric_tolerance": "1e-18 bp",
+  "results_sha256": "5f7abef6ada64b1e89f2af16ffcace4332475eaf7219954c3a533fe5a8689ee8",
+  "auditor_sha256": "25fb8fc020800dee74206153e6075b68489cfbe527fee6c220c61e678e6c33c6",
+  "scope": "Independent as-of identity, native age/clock/integrity predicates and cross-product Decimal gap/cost arithmetic on all hash-verified parent ledgers. Parent raw-source audits pinned. No production gate import.",
+  "depth_confirmation_complete": false,
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "reliable_edge_established": false
+}

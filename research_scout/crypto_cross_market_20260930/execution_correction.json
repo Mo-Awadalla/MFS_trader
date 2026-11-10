@@ -1,0 +1,120 @@
+{
+  "created_at_utc": "2026-09-30T14:20:55.174706+00:00",
+  "correction": "An IOC larger than displayed arrival depth can execute at unobserved deeper prices within its collar. Mark this unresolved instead of assuming only a partial top-level fill and canceling the remainder.",
+  "original_engine_sha256": "d859cab5bb5a0972faf8aaa5fb7621238a0e62ad4d1f7197a6b0651c0106f724",
+  "corrected_engine_sha256": "546f9e2f6e153f677b94ea4c9c658c860b1c4ed7ed5baa3d5c4b9156d629ee29",
+  "original_sources": "code_snapshot/ preserves exact sources matching the frozen specification",
+  "refitted": false,
+  "retuned": false,
+  "all_recorded_results_unchanged": true,
+  "verified_scenarios": [
+    {
+      "name": "price_30s",
+      "scenario": "base",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "price_30s",
+      "scenario": "double_fees",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "price_30s",
+      "scenario": "latency_3s",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "own_flow_30s",
+      "scenario": "base",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "own_flow_30s",
+      "scenario": "double_fees",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "own_flow_30s",
+      "scenario": "latency_3s",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "cross_flow_30s",
+      "scenario": "base",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "cross_flow_30s",
+      "scenario": "double_fees",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "cross_flow_30s",
+      "scenario": "latency_3s",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "price_120s",
+      "scenario": "base",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "price_120s",
+      "scenario": "double_fees",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "price_120s",
+      "scenario": "latency_3s",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "own_flow_120s",
+      "scenario": "base",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "own_flow_120s",
+      "scenario": "double_fees",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "own_flow_120s",
+      "scenario": "latency_3s",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "cross_flow_120s",
+      "scenario": "base",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "cross_flow_120s",
+      "scenario": "double_fees",
+      "trades": 0,
+      "unchanged": true
+    },
+    {
+      "name": "cross_flow_120s",
+      "scenario": "latency_3s",
+      "trades": 0,
+      "unchanged": true
+    }
+  ]
+}

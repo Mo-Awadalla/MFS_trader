@@ -1,0 +1,23 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T20:08:37.998393+00:00",
+  "source_files_verified": 96,
+  "grid_decisions_verified": 654750,
+  "selected_events_verified": 1,
+  "source_counts": {
+    "spot_native_messages": 17937218,
+    "spot_book_messages": 17937218,
+    "perpetual_native_messages": 21768478,
+    "perpetual_book_messages": 21768478,
+    "perpetual_disconnects": 2
+  },
+  "maximum_numeric_difference": "5.000E-24",
+  "results_sha256": "f79c23dca8b5b4f6050230df27e930a65d2938c24b3605e9873c5fbfe9d2306c",
+  "auditor_sha256": "fba2987effe6da210a5544e62bd994afcec8285fd1d963d59066c49cc8091ac4",
+  "independent_formula_auditor_sha256": "3a5985059fb30019b4f6d59a33c8441ec86f69259b39027c231cfc5f5de098c7",
+  "scope": "All expanded native source hashes, exact capture/event clocks, independently bucketed quote grids, historical reference ratios, costs, gates and selected candidates reconciled. Imports independent formula audit only, no production parser or signal functions.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

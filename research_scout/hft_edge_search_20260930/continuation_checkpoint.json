@@ -1,0 +1,19 @@
+{
+  "status": "active",
+  "reliable_edge_found": false,
+  "configurations": 36,
+  "implementation_versions_including_execution_repairs": 42,
+  "fixed_confirmation_passed": false,
+  "confirmation_combined_pnl": {
+    "follow_16bps_base": -0.8065362400011509,
+    "follow_16bps_double_fees": -7.527354660000128,
+    "follow_16bps_latency_1s": -3.717420779998065,
+    "follow_16bps_full_first_print": -0.8065362400047889
+  },
+  "cross_crypto_candidates": [],
+  "quote_records_cross_crypto": 283867833,
+  "trade_records_cross_crypto": 12578067,
+  "paired_clocks": 77490,
+  "focused_tests_passed": 36,
+  "accounting_verified": true
+}

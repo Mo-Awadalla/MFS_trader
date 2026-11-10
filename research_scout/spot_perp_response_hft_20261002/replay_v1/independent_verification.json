@@ -1,0 +1,20 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T20:12:16.843079+00:00",
+  "source_counts": {
+    "native_messages": 2796,
+    "mark_messages": 60,
+    "book_messages": 2736
+  },
+  "intents_verified": 2,
+  "quote_envelopes_verified": 24,
+  "cash_rectangles_verified": 12,
+  "scenario_aggregates_verified": 12,
+  "maximum_numeric_difference": "0",
+  "results_sha256": "fda094f777cd61ef4255d145e9dfef43f3b1880e7c775e07cb165f9327ad47fd",
+  "auditor_sha256": "c9ab677fa870ddeb7ff54a8387781a1fc534a2755a70c842eb18cb4438ba5d8f",
+  "scope": "Independently parsed every native BBO/funding message, verified source order and matching clocks, predecision funding clearance and sizing, all compatible FOK/exit states and every observed distinct price-pair cash outcome. No production replay/parser imports.",
+  "actual_execution_verified": false,
+  "historical_lot_size_and_permissions_verified": false,
+  "reliable_edge_established": false
+}

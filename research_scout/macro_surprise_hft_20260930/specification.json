@@ -1,0 +1,76 @@
+{
+  "created_at_utc": "2026-09-30T18:27:45.201989+00:00",
+  "family": "CPI error against prior public Cleveland Fed model",
+  "relation_to_prior": "V45 used ten-minute price direction after announcement calendars, with minutes-to-hours holds, and failed. This test uses actual first-release CPI content against dated earlier public-model forecasts and holds seconds. It is still part of the global multi-search history; new independence is not claimed.",
+  "partition": {
+    "development_release_years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "selection_release_years": [
+      2024,
+      2025
+    ],
+    "selection_opened": false
+  },
+  "source": "Cleveland Fed historical monthly chart JSON. Extract first actual CPI/core CPI series on their dated release day; round to one decimal using decimal half-up to match announced summary precision. Last nonempty forecast strictly earlier date, at most5calendar days old, separately for headline/core. Do not use same-day10am updates. Independently reconcile first-announced CPI values/date/08:30ET with archived BLS releases before any market evaluation. Sourcevintages are supplied by the current official historical chart; independently archived dissemination/capture not established.",
+  "signal": "Core announced minus last prior forecast <=-0.10 percentage points AND headline error<0: buySPY. Core error>=+0.10 AND headline error>0: buySH. Otherwise cash. The comparator is a public statistical model, NOT observed street consensus or a market-implied surprise. No price-direction filter.",
+  "configurations": [
+    {
+      "hold_seconds": 15
+    },
+    {
+      "hold_seconds": 30
+    }
+  ],
+  "news_availability": "Nominal BLS08:30ET plus2seconds modeled publication/retrieval/parsing delay. This is a conditional latency assumption, not reconstructed historical receipt.10second news delay stress. Latest quote strictly before decision-1second source latency, must be post-release with valid regular two-sided uncrossed state, at most20bps ask/bid spread. Complete observed source prefix required; unchanged standing quotes not rejected for arbitrary age. Contradictory same-timestamp signal states are unknown, not optimistically selected.",
+  "sizing": "Daily reset$10000 cash. Fixed integer floor(min(10000/(knownask*1.01),0.10*known ask shares)); >=$100 ticket.100-share historical round lot is a conditional SPY/SH size assumption to verify if any candidate advances. No future resizing; one order per release per configuration.",
+  "entry": "Guarded FOK buy, limit floor-cent(knownask*1.001); arrival decision+250ms processing+1s outbound. Evaluate last quote strictly before target-1ms and all updates through target+1ms, including ties; require successor after window. Every quote must be valid. Allasks>limit implies rejected. Allasks<=limit with sufficient full quantity implies conditional fill; otherwise unresolved possible inventory. Premarket FOK support/routing is not established; this is a quote-reference benchmark.",
+  "exit": "Entry ACK arrival+1sreturn.15/30s hold then250msprocessing+1soutbound. Full-quantity sale at all possible valid regular bid states in +/-1ms; any missing/invalid/shallow state unknown. Joint cash bounds enumerate all entryask/exitsell combinations. No paper-fill guarantee, protected-NBBO assumption or auction fill.",
+  "costs": {
+    "commission_per_share": 0.0075,
+    "minimum_per_side": 1,
+    "sell_rate": 3e-05,
+    "sell_per_share": 0.0002,
+    "adverse_per_side": 0.0001
+  },
+  "scenarios": [
+    "base",
+    "double_fees",
+    "3s_outgoing_and_return",
+    "double_adverse",
+    "100ms_alignment",
+    "10s_news_delay"
+  ],
+  "controls": "If a configuration passes initial economics, evaluate unconditional same-timeSPY and next-trading-day same-clock direction controls; do not promote controls as new winners. Sign-flipped symbol control requires its own predeclared data acquisition. All comparisons remain within exposed development.",
+  "progression": "Complete lower net positive in every stress, >=12closedtrades on>=12release dates, bothSPY/SH sleeves positive, positive after removing best3dates, date-blockbootstrap97.5%lower bound positive (two configurations). Only then open2024-25 selection with unchanged rules. Require independent later profitability, uncertainty controls, source/routing confirmation and forward evidence before claiming reliability. Zero/unknown days remain in accounting; never remove bad paths or select date ranges to rescue P&L.",
+  "download": {
+    "window_et": [
+      "08:29:45",
+      "08:31:00"
+    ],
+    "feed": "sip",
+    "max_pages": 80,
+    "per_file_max_bytes": 20000000,
+    "total_max_bytes": 1000000000,
+    "max_seconds_per_file": 120,
+    "market_data_only": true,
+    "paid_fallback": false
+  },
+  "source_sha256": {
+    "source_audit/nowcast_month.json": "37c596f6be527d9b0547c6ccac31aa3ce353b5969a2386d790f2750d7134e68d",
+    "research/cpi_model_error.py": "538d216bab0892ab9fce9fcf5facafaa40014d6cfd9d0f892fa6ef0692c371ec"
+  },
+  "sources": [
+    "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
+    "https://www.bls.gov/bls/news-release/cpi.htm",
+    "https://docs.alpaca.markets/us/docs/market-data-faq"
+  ],
+  "execution_verified": false,
+  "reliable_edge_established": false
+}

@@ -1,0 +1,44 @@
+{
+  "files": 144,
+  "compressed_bytes": 218529624,
+  "raw_ticker_rows": 16053178,
+  "funding_pairs": 144,
+  "usable_pairs": 141,
+  "eligible_pairs": 0,
+  "maximum_quoted_funding_difference_bps": 3.1416275577187873,
+  "by_symbol": {
+    "BNBUSDT": {
+      "usable_pairs": 24,
+      "eligible_pairs": 0,
+      "maximum_quoted_funding_difference_bps": 3.1416275577187873
+    },
+    "BTCUSDT": {
+      "usable_pairs": 24,
+      "eligible_pairs": 0,
+      "maximum_quoted_funding_difference_bps": 2.580750034032221
+    },
+    "DOGEUSDT": {
+      "usable_pairs": 24,
+      "eligible_pairs": 0,
+      "maximum_quoted_funding_difference_bps": 2.49069660363244
+    },
+    "ETHUSDT": {
+      "usable_pairs": 24,
+      "eligible_pairs": 0,
+      "maximum_quoted_funding_difference_bps": 2.9095651768059145
+    },
+    "SOLUSDT": {
+      "usable_pairs": 24,
+      "eligible_pairs": 0,
+      "maximum_quoted_funding_difference_bps": 1.972263443883278
+    },
+    "XRPUSDT": {
+      "usable_pairs": 21,
+      "eligible_pairs": 0,
+      "maximum_quoted_funding_difference_bps": 1.9261936622721274
+    }
+  },
+  "missing_files": [],
+  "strategy_pnl_tested": false,
+  "edge_established": false
+}

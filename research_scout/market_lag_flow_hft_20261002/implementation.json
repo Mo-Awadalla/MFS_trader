@@ -1,0 +1,19 @@
+{
+  "frozen_at_utc": "2026-10-02T21:56:13.851771+00:00",
+  "specification_sha256": "7855469fdf6c2fe8931c43c682368d2f45fc7cc390730f303013025e8563e52d",
+  "source_manifest_sha256": "aca32950d37227010b8b819d25fcf00727ae6031b6f4dd5a757a99a3ecb06841",
+  "parent_audits_sha256": {
+    "research_scout\\market_lag_targets_hft_20261002\\batch01\\independent_verification.json": "1097112ad1e763ff8a752a23c0200ff4a783b9547d21cf74589a1a93ae129d53",
+    "research_scout\\market_lag_targets_hft_20261002\\batch02\\independent_verification.json": "454295cf0d4eb386bb12b12c56e6f2ea2992d3393817f1b2e187cfd83792163b"
+  },
+  "code_sha256": {
+    "research/perp_shock_flow.py": "bd3a5baf11a7da2300d5b5a22167560805cfcd450236dd616876b9015dbae398",
+    "research/market_lag_flow.py": "b139ff81f198348c7ef69dea1989945086e7b8b4bc5095140f6d20293bd557bd",
+    "research/precise_ledger.py": "f118f6c4f94afb51dcac3ce4a7c4891634763c29dd33f7d86443f54a9cff400c",
+    "research/spot_perp_supply.py": "cd918561a92d5475f20e6da44c79c3c76fc295b32c9146bfa7b7f0b6bb5174b7",
+    "tests/unit/test_market_lag_flow.py": "55b6c59c2576244806f8cd3fcd142f457e2084755e932cdd2dcf2a71bd9c5a69",
+    "research_scout/screen_market_lag_flow_20261002.py": "94f539aad33b96ab88cb59cc2e0821bceea4698554b634ae1916d17e17240482"
+  },
+  "new_focused_tests_passed": 4,
+  "economic_implementations": 0
+}

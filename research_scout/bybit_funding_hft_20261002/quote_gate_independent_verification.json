@@ -1,0 +1,31 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T19:05:02.770580+00:00",
+  "events": [
+    {
+      "date": "2024-03-01",
+      "hour": 16,
+      "symbol": "AXLUSDT",
+      "budget_per_unit": "-0.0006126956610556",
+      "budget_positive": false,
+      "conditional_quantity": 0,
+      "size_ok": false
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 8,
+      "symbol": "STEEMUSDT",
+      "budget_per_unit": "-0.0001264849066085",
+      "budget_positive": false,
+      "conditional_quantity": 10,
+      "size_ok": false
+    }
+  ],
+  "auditor_sha256": "88fbc8627ccc1fe2d96832c23c5a1cbc92f37c50d0e216d049adfa3a039063a2",
+  "independent_book_parser_sha256": "ea2effacfff729752f2a012e33792535f795efd33921e48a5812707eb9eec79a",
+  "quote_results_sha256": "9985b5d955e91c7b2b53d810f1fd27bff6c3ea2f9bbfdf857b12dc2d6efeb684",
+  "full_pairs_sha256": "7aba8a08605184cf54b917d45c9206e679a52de9079d9d12bf04c3934d98ca68",
+  "scope": "Both complete-screen candidates matched the original partial screen; native strict-as-of quotes, displayed size and Decimal payment budgets independently reconciled. This is not strategy P&L or actual execution.",
+  "strategy_pnl_tested": false,
+  "reliable_edge_established": false
+}

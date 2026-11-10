@@ -1,0 +1,71 @@
+{
+  "created_at_utc": "2026-10-02T16:47:35.585316+00:00",
+  "economic_configurations": 2,
+  "scenarios_per_configuration": 6,
+  "inputs_sha256": {
+    "replay_specification.json": "0db2a6f725ab7a1f6f414cf14f9ee28ea2ed4db854409acbee92c2d34085a405",
+    "replay_interval_clarification.json": "8957a5bd2eae2fcf0e747c9eb3f065a45b6e021ea207061387c3c932527696a7",
+    "replay_manifest.json": "1cfdad462d91b9584e2ca66ad4bd15758e67a4575e6a6bdd9e5826ebd9f2d94f",
+    "selected.parquet": "d7105b0b8bd3d03e8c5561521707b5fa0c89c4a936e124488d6aa19621eb3cb3",
+    "verification.json": "8e0a50bba23faf94c1e1ba84775a6c81798a1a8e859577a0819c31b3f416d1e2",
+    "pre_replay_review_20261002.json": "b43bc8826b20a70cf477e401ecf604a032d44135da17026635952d8b3f5d3c30"
+  },
+  "implementation_sha256": {
+    "research/wide_tick_replay.py": "684d531be39d99c62b2075b4cff6c925eb88845c48c1b8be6a550a4fd8d2466d",
+    "research/wide_tick_supply.py": "c9ba882e1b0c76874d804741dd61e04e406945652c7f6eaba3e63e99b488eb56",
+    "research_scout/run_wide_tick_replay_20261002.py": "c621aa7075caa2c793d41f20df6b34ac144cc34a64389b07a414f26ff0d9df1b",
+    "tests/unit/test_wide_tick_replay.py": "2981fceae32a7a1aed63eb469a1fd525476fe1f7345425228271d566d56f06ba"
+  },
+  "execution_scenarios": {
+    "base": {
+      "delay_ns": 1000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 1000000
+    },
+    "double_fees": {
+      "delay_ns": 1000000000,
+      "maker_bps": 6.0,
+      "taker_bps": 12.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 1000000
+    },
+    "outbound_and_ack_3s": {
+      "delay_ns": 3000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 1000000
+    },
+    "double_adverse": {
+      "delay_ns": 1000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 2.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 1000000
+    },
+    "queue_ahead_double": {
+      "delay_ns": 1000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 2.0,
+      "epsilon_ns": 1000000
+    },
+    "clock_envelope_100ms": {
+      "delay_ns": 1000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 100000000
+    }
+  },
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

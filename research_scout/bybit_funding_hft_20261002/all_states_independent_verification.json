@@ -1,0 +1,91 @@
+{
+  "verified_at_utc": "2026-10-02T18:48:37.743421+00:00",
+  "verified": true,
+  "auditor_sha256": "84432b6a268c8be4b88adb13db4f86b76753a029e17330ac3d768ebb2dbcfd1e",
+  "source_manifest_sha256": "ac468d62cdb1733c3ec2d2af32721f4e67e6258e6e27c9101bd79b415f1fe78f",
+  "pairs_sha256": "7aba8a08605184cf54b917d45c9206e679a52de9079d9d12bf04c3934d98ca68",
+  "csv_source_files": [
+    {
+      "date": "2024-01-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 6000000,
+      "states_verified": 592
+    },
+    {
+      "date": "2024-02-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 6600000,
+      "states_verified": 620
+    },
+    {
+      "date": "2024-03-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 10200000,
+      "states_verified": 636
+    },
+    {
+      "date": "2024-06-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 6600000,
+      "states_verified": 736
+    },
+    {
+      "date": "2024-05-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 10800000,
+      "states_verified": 692
+    },
+    {
+      "date": "2024-07-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 7800000,
+      "states_verified": 768
+    },
+    {
+      "date": "2024-04-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 11400000,
+      "states_verified": 667
+    },
+    {
+      "date": "2024-09-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 6600000,
+      "states_verified": 806
+    },
+    {
+      "date": "2024-08-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 8400000,
+      "states_verified": 784
+    },
+    {
+      "date": "2024-11-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 8700000,
+      "states_verified": 852
+    },
+    {
+      "date": "2024-10-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 9900000,
+      "states_verified": 825
+    },
+    {
+      "date": "2024-12-01",
+      "source_hash_verified": true,
+      "prefix_rows_scanned": 14100000,
+      "states_verified": 890
+    }
+  ],
+  "independent_csv_prefix_rows_scanned": 107100000,
+  "independent_csv_states_verified": 8868,
+  "native_messages_checked": 1861370,
+  "native_fields_reconciled": 10524,
+  "decisions_verified": 8857,
+  "fee_only_candidates_verified": 2,
+  "scope": "Independently reconstructed all CSV as-of states and native one-minute input fields; reconciled every screen availability/eligibility flag and paired funding calculation. Original source recovery reads EOF for gzip integrity; this audit scans each prefix through the final cutoff and verifies every entire compressed-file hash.",
+  "limits": "Normalized carried-field initialization and disconnect continuity before the one-minute native window are not independently established. No execution or credited funding cash flow has been tested.",
+  "strategy_pnl_tested": false,
+  "reliable_edge_established": false
+}

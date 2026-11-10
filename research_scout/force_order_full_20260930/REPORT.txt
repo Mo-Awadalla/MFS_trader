@@ -1,0 +1,64 @@
+NATIVE EXECUTED LIQUIDATION SIZE: STRICT HFT — 2026-09-30
+
+VERDICT: NO CANDIDATE PASSES THE FROZEN SCREEN. The competition goal remains active; no reliable edge or win is established.
+
+MATERIAL DATA FINDING
+Recovered every ten-minute slice on twelve first-of-month 2024 sample days: 1,728 public unauthenticated requests, 7,492,990 decoded bytes. No paid API or account used.
+All 29,828 historical CSV reports match native messages one-to-one by instrument and capture timestamp; trade timestamp and side also match.
+These CSV exports use order limit price p and last fill quantity l. In 9,370 reports, l differs from cumulative filled quantity z. Actual executed order value is z times average fill price ap.
+The current Tardis source mapper uses z; this finding applies to these archived exports and must not be generalized to every version. Original results remain intact as tests of the original proxy.
+All observed raw statuses are FILLED. Neither q nor z measures future residual liquidation demand, and the one-second report throttle still omits orders.
+
+FROZEN TEST
+January–June visible completed orders set the 99th-percentile executed-notional threshold. July–December prices were already exposed in prior studies: this is discovery, not fresh confirmation.
+First large report after a five-minute refractory window. Five-minute startup and post-recovery cooldowns. No future disconnect deletes an earlier submitted position.
+24 configurations: BTC/SOL, follow/reverse, 30/120-second holds, taker entry or passive entry 8/16bp from the signal midpoint.
+Capture-clock decisions, 250ms processing, one-second outbound/return latency, physical exchange-clock fills with <=250ms book age. Entry/exit acknowledgments and partial inventory remain explicit.
+Taker fees 6bp plus 1bp adverse allowance EACH side. Passive entry 3bp, taker exit 6bp plus 1bp exit allowance. Observed spread/depth crossing adds to costs. Doubled fees, three-second delays and alternate passive fill assumptions are recorded.
+$10,000 daily cash reset and maximum $1,000 order; <=10% predecision visible size. Results are summed isolated-day P&L, not continuous wealth or an allocated multi-asset portfolio.
+
+BTCUSDT: threshold $112,560.681679; 81 events versus 124 prior proxy events; 31 exact trigger clocks overlap.
+SOLUSDT: threshold $50,404.900656; 66 events versus 86 prior proxy events; 21 exact trigger clocks overlap.
+
+BASELINE: instrument / rule | gross $ | net $ | completed trades
+BTCUSDT/taker_follow_30s | -10.854300 | -106.928280 | 74
+BTCUSDT/passive_follow_8bp_30s | -0.438900 | -3.606057 | 4
+BTCUSDT/passive_follow_16bp_30s | +0.000000 | +0.000000 | 0
+BTCUSDT/taker_follow_120s | -14.197400 | -108.905837 | 73
+BTCUSDT/passive_follow_8bp_120s | +2.775200 | -0.389707 | 4
+BTCUSDT/passive_follow_16bp_120s | +0.000000 | +0.000000 | 0
+BTCUSDT/taker_reverse_30s | +8.576600 | -89.378108 | 74
+BTCUSDT/passive_reverse_8bp_30s | +1.162800 | -4.490007 | 7
+BTCUSDT/passive_reverse_16bp_30s | -0.475200 | -1.460723 | 1
+BTCUSDT/taker_reverse_120s | +13.986900 | -82.609810 | 73
+BTCUSDT/passive_reverse_8bp_120s | +1.975500 | -3.678420 | 7
+BTCUSDT/passive_reverse_16bp_120s | +2.302400 | +1.314932 | 1
+SOLUSDT/taker_follow_30s | -12.095400 | UNKNOWN (closed subtotal -64.959253) | 42
+SOLUSDT/passive_follow_8bp_30s | -0.769300 | -3.675980 | 5
+SOLUSDT/passive_follow_16bp_30s | +0.584100 | -0.411228 | 1
+SOLUSDT/taker_follow_120s | -1.062400 | -59.770370 | 48
+SOLUSDT/passive_follow_8bp_120s | +2.867100 | -0.038339 | 5
+SOLUSDT/passive_follow_16bp_120s | -0.831900 | -1.828219 | 1
+SOLUSDT/taker_reverse_30s | +7.135700 | UNKNOWN (closed subtotal -41.918213) | 41
+SOLUSDT/passive_reverse_8bp_30s | -2.280900 | -12.604091 | 13
+SOLUSDT/passive_reverse_16bp_30s | +2.448500 | -1.019519 | 5
+SOLUSDT/taker_reverse_120s | -0.593200 | -58.045134 | 52
+SOLUSDT/passive_reverse_8bp_120s | -7.400300 | -17.711713 | 13
+SOLUSDT/passive_reverse_16bp_120s | +1.304500 | -2.164129 | 5
+
+Baseline outcomes: {'negative': 19, 'positive': 1, 'zero_no_fills': 2, 'incomplete': 2}.
+The only positive baseline is BTC passive reverse/16bp/120s: +$1.314932 on ONE trade. Deleting that date leaves $0. Doubled fees give +$0.426280; three-second delay +$0.099953 on two trades, with -$1.854531 after deleting its best date. This is not reliable outperformance.
+Two SOL 30-second taker variants have unresolved exits. Their closed losses are subtotals, not complete net returns. Unknown inventory is not erased or assigned a zero outcome.
+No candidate qualified to open independent later validation dates. The field repair materially changes event selection but does not rescue the strategy family in this sample.
+
+INDEPENDENT VERIFICATION
+Reconstructed 147 events directly from cumulative fills and calibration quantiles; verified raw/panel/code hashes and causal cooldowns.
+Reconciled 1,750 priced trades across dependent scenarios, 768 maker-fill records and 4,718 no-fill attempts against the underlying tapes.
+Maximum cash arithmetic difference: $1.14e-13. Fourteen focused current-module tests pass, including seven new native-field, clock, inventory and recovery-boundary tests.
+Trade-through models cannot prove actual queue priority or live fills. No market-impact or private-order acceptance evidence is claimed. Monthly samples and prior selection do not establish statistical reliability.
+Current session: 100 configurations / 124 evaluated implementation versions; these are dependent trials. 72 accumulated focused tests support implementation correctness, not profitability.
+
+SOURCE REFERENCES
+https://docs.tardis.dev/api/http-api-reference.md
+https://github.com/tardis-dev/tardis-node/blob/master/src/mappers/binance.ts
+https://docs.tardis.dev/historical-data-details/binance-futures

@@ -1,0 +1,14 @@
+{
+  "frozen_at_utc": "2026-10-02T21:50:13.810606+00:00",
+  "specification_sha256": "fefe3a1e856e9668c34d2c5eac9098a7ab0e640d1470e0d9df8059f835ef99f2",
+  "source_manifest_sha256": "765f4b04b77358bb6c48c74766cf1c0d699def338661e566809465d3c4d7b8cc",
+  "code_sha256": {
+    "research/perp_shock_supply.py": "c06153cb4a88b334445a344ccf59fe95311861587fa940f8bf70ab0c981266e3",
+    "research/spot_perp_supply.py": "cd918561a92d5475f20e6da44c79c3c76fc295b32c9146bfa7b7f0b6bb5174b7",
+    "research/market_lag_supply.py": "c17126fe22960f0a3de77459ef9953896a74a08f4ac4140a328e7fda79015af3",
+    "research/precise_ledger.py": "f118f6c4f94afb51dcac3ce4a7c4891634763c29dd33f7d86443f54a9cff400c",
+    "research_scout/screen_market_lag_targets_batch02_20261002.py": "619d72ab2a7f93d1c86d146878ccc1e87c3b0d6bb500c2bcf054e030464ed5e8"
+  },
+  "economic_implementations": 0,
+  "validation": "Unchanged previously tested native signal and lag gate engines; full independent source and target audit follows."
+}

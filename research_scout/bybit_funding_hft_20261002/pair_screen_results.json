@@ -1,0 +1,21 @@
+{
+  "routed_events": 60,
+  "recovered_symbol_dates": 52,
+  "source_symbol_dates": 52,
+  "normalized_rows": 2752684,
+  "compressed_bytes": 33670781,
+  "usable_pairs": 16,
+  "pairs_above_cost_before_execution": 2,
+  "outcomes": {
+    "missing_exact_binance_symbol": 40,
+    "payment_difference_below_cost_hurdle": 14,
+    "stale_invalid_or_wrong_bybit_funding_time": 4,
+    "requires_lifecycle_and_execution_review": 2
+  },
+  "pairs_sha256": "23f4e40e94a0de6f65998499c29dd0ce44330f01911eb6afa422870246d3391c",
+  "lifecycle_checked": false,
+  "actual_execution_verified": false,
+  "strategy_pnl_tested": false,
+  "reliable_edge_established": false,
+  "coverage_limit": "5,519 native observations lacked a funding-rate field and remain unresolved; this conditional recovery does not exhaust the full Bybit universe."
+}

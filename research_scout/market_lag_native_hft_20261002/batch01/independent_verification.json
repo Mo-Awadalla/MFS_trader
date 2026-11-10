@@ -1,0 +1,42 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T21:37:08.793367+00:00",
+  "source_files_verified": 12,
+  "source_counts": {
+    "native_messages": 603350,
+    "book_messages": 603350,
+    "universe_book_messages": 603350
+  },
+  "quote_rows_verified": 5568,
+  "marginal_signal_rows_verified": 5472,
+  "leader_grids_verified": 2736,
+  "diagnostic_coherent_grids": 3,
+  "causally_admitted_leader_grids": 3,
+  "excluded_by_causal_alignment": 0,
+  "target_acquisition_jobs": [
+    {
+      "date": "2024-07-01",
+      "offset": 131
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 325
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 901
+    }
+  ],
+  "admitted_leader_grids_sha256": "71e3e81e96cda652d7e31b6dc963622359287a260f0059b349eafa05bcd6d8bd",
+  "causal_selection_specification_sha256": "5ed1b2146d577b4eab156bccddfd95ebddf178a258f4a2d4a0b8e78d1627b1db",
+  "maximum_joint_numeric_difference": "4.979E-24",
+  "results_sha256": "bf70703c352cc4de69c81601b0d61037aef6f1d3e7124d9224a3c3c80c98c591",
+  "auditor_sha256": "edc7ae16ea9403e5065aea9c8b7e05bd6ee42eea9807b44f4c1c16ae246d876f",
+  "independent_raw_reconstruction_helper_sha256": "d6c303e136dc8aa05564072a782c90b5e07799c7374cb72709d9c000b78ad223",
+  "audit_comparison_repair": "First audit completed all native/joint checks but the final Parquet comparison rejected NaN versus JSON None for absent common_move_bps. Only missing-value comparison was normalized; no source, rule, numeric value or result changed.",
+  "scope": "Independent full native clock-bucket reconstruction reused from the frozen audited helper; every quote/marginal return/quality predicate, direct cross-product joint-leader gate and exact normalized acquisition-grid alignment verified. No production parser or signal calculation called by the audit. Ledger writer is serialization only.",
+  "target_eligibility_tested": false,
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "reliable_edge_established": false
+}

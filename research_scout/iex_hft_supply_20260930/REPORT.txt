@@ -1,0 +1,19 @@
+IEX HFT DATA SUPPLY AUDIT — 2026-09-30
+
+All 72 already-local 2023 IWM/QQQ/SPY sessions reconciled to source hashes and complete pagination. This is data admission, not a profitability test.
+Total quotes: 22,112,438; trades: 100,878; duplicate within-session trade IDs: 0.
+All exchange codes are V. Quote and trade event timestamps are ordered and agree with their stored raw timestamp strings. Capture times and native order queues are unavailable.
+
+One-second clock audit; retain the last state even if invalid; valid regular two-sided quote age <=250ms:
+IWM: fresh valid coverage 92.33%; median spread 1.746bp; <=3bp on 89.41% of valid seconds; 51.47% of fresh-quote-matched trades occur strictly inside the displayed spread.
+QQQ: fresh valid coverage 99.19%; median spread 1.063bp; <=3bp on 87.81% of valid seconds; 53.14% of fresh-quote-matched trades occur strictly inside the displayed spread.
+SPY: fresh valid coverage 95.34%; median spread 1.171bp; <=3bp on 64.71% of valid seconds; 55.58% of fresh-quote-matched trades occur strictly inside the displayed spread.
+
+SPY and QQQ have extremely wide venue-local quote tails. Their displayed midpoint can be unrepresentative of executable market value. The 2023 five-minute order-flow study already failed; no historical failure is erased by this admission audit.
+Any new HFT rule must use causal spread/age eligibility, retain invalid state transitions and model the actual venue. A displayed midpoint or an interior print is not an executable fill.
+Quote-size units require a separate documented IEX mapping; the existing SIP-only adapter is deliberately not reused. No strategy return, dollar profit, queue priority or post-only acceptance claim is made.
+
+Separate mechanism under source review: second-scale ETF auction-versus-continuous-market dislocations. Existing auction studies mainly held several minutes, so those frozen slower rules remain outside the user scope. Any new design must hold only seconds, establish historical order acceptance/cancel restrictions and residual-inventory handling, and resolve trade-conditioned EQUS.MINI execution limits before evaluating P&L.
+Primary current auction source: https://www.nyse.com/trade/auctions
+The NYSE Arca section allows only offsetting MOC/LOC orders during the 15:59 freeze and rejects cancellation. This is an order-acceptance constraint, not permission to assume filled auction exits. Historical applicable rules still require verification.
+No additional strategy configurations or profitable outcomes have been evaluated in this admission work.

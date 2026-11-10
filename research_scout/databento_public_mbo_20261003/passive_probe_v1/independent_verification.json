@@ -1,0 +1,87 @@
+{
+  "verified": true,
+  "completed_at_utc": "2026-10-03T01:45:48.693040+00:00",
+  "original_csv_rows": 349648,
+  "cases": [
+    {
+      "case": "base_1ms",
+      "start": 1758029503611050000,
+      "stop": 1758029504611050000,
+      "initial_ahead_quantity": 430,
+      "remaining_ahead_at_cancel": 430,
+      "resting_bid_fills": 2,
+      "reaching_fills": 0
+    },
+    {
+      "case": "delay_5ms",
+      "start": 1758029503615050000,
+      "stop": 1758029504615050000,
+      "initial_ahead_quantity": 430,
+      "remaining_ahead_at_cancel": 430,
+      "resting_bid_fills": 2,
+      "reaching_fills": 0
+    },
+    {
+      "case": "delay_25ms",
+      "start": 1758029503635050000,
+      "stop": 1758029504635050000,
+      "initial_ahead_quantity": 430,
+      "remaining_ahead_at_cancel": 430,
+      "resting_bid_fills": 2,
+      "reaching_fills": 0
+    },
+    {
+      "case": "delay_250ms",
+      "start": 1758029503860050000,
+      "stop": 1758029504860050000,
+      "initial_ahead_quantity": 430,
+      "remaining_ahead_at_cancel": 130,
+      "resting_bid_fills": 3,
+      "reaching_fills": 0
+    },
+    {
+      "case": "fees_2x",
+      "start": 1758029503611050000,
+      "stop": 1758029504611050000,
+      "initial_ahead_quantity": 430,
+      "remaining_ahead_at_cancel": 430,
+      "resting_bid_fills": 2,
+      "reaching_fills": 0
+    },
+    {
+      "case": "adverse_2x",
+      "start": 1758029503611050000,
+      "stop": 1758029504611050000,
+      "initial_ahead_quantity": 430,
+      "remaining_ahead_at_cancel": 430,
+      "resting_bid_fills": 2,
+      "reaching_fills": 0
+    },
+    {
+      "case": "clock_minus_1ms",
+      "start": 1758029503610050000,
+      "stop": 1758029504610050000,
+      "initial_ahead_quantity": 430,
+      "remaining_ahead_at_cancel": 430,
+      "resting_bid_fills": 2,
+      "reaching_fills": 0
+    },
+    {
+      "case": "clock_plus_1ms",
+      "start": 1758029503612050000,
+      "stop": 1758029504612050000,
+      "initial_ahead_quantity": 430,
+      "remaining_ahead_at_cancel": 430,
+      "resting_bid_fills": 2,
+      "reaching_fills": 0
+    }
+  ],
+  "specification_sha256": "573611265bcab6dc8b1a3df47f89564593e85930ddf8686d9a3eb1968928e66e",
+  "results_sha256": "56e8f691c6c5e6271f185431b023e4683e9346c651055192b79a8547c3658739",
+  "audit_code_sha256": "acb75f4e9d06fe43d745d17d8a3369eb9f7cb7058f277960fdc220c7d34382b5",
+  "source_sha256": "d055eb1e2f40f10aaa018b65831f90ef924793d39a15afe686cdcd4d3ac89953",
+  "scope": "Independent stdlib original-CSV clock/price parsing and plain-dictionary book. Every posted queue, native action bracket and queue cancellation matches. No resting-side F with either display or execution price at/below our bid occurs during ANY entry lifetime, so zero entry follows even without a queue model. Empty cash flows, fees and inventory independently verified. This audits these no-fill observations; it is not an independent validation of unused filled-entry/exit branches or actual posting.",
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "paid_calls": 0
+}

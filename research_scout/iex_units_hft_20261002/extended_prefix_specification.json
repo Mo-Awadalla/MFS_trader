@@ -1,0 +1,23 @@
+{
+  "created_at_utc": "2026-10-02T23:06:08.009880+00:00",
+  "purpose": "Extend the same chronological source for quote-unit and vendor/native-clock matching; no returns",
+  "selected_date": "2023-01-11",
+  "selection": "First chronological cached IEX development date, independent of returns",
+  "symbols": [
+    "IWM",
+    "QQQ",
+    "SPY"
+  ],
+  "compressed_prefix_bytes": 33554432,
+  "source": {
+    "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230111%2F20230111_IEXTP1_TOPS1.6.pcap.gz?generation=1673482242493394&alt=media",
+    "date": "20230111",
+    "feed": "TOPS",
+    "version": "1.6",
+    "protocol": "IEXTP1",
+    "size": "3732744103"
+  },
+  "not_full_session": true,
+  "not_full_gzip_checksum_verified": true,
+  "parent_prefix_sha256": "69d218656be6ad9c32f344b104573b26d460b61230581f30a31b64a50ac1335a"
+}

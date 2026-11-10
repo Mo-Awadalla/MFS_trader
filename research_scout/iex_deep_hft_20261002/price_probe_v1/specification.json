@@ -1,0 +1,1140 @@
+{
+  "policy": "Buy the original signal bid with fixed causal quantity; cancel remainder at local decision+5s; after cancel acknowledgement, offer bought shares at the original signal ask; cancel target at local decision+15s; wait for acknowledgement, then market-sell residual inventory. Long only; one signal per date.",
+  "timing": "One-way delay L. Entry arrival d+50ms+L. Entry cancellation arrival d+5s+L; acknowledgement d+5s+2L. Target sell arrival d+5.05s+3L. Target cancellation arrival d+15s+L; acknowledgement d+15s+2L. Forced residual sale arrival d+15.05s+3L. Maximum planned exposure under 30 seconds in every case.",
+  "order_type": "Ordinary non-routable limits. Post Only was implemented February 15, 2024, so its protections are not assumed in 2023. Reject/reprice/hidden liquidity and NBBO price-slide behavior are unresolved in this proxy and must be verified for promotion.",
+  "post_only_history_source": "https://www.sec.gov/files/rules/sro/iex/2024/34-99471.pdf",
+  "entry_proxy": "At arrival, if valid observed venue ask<=buy limit, assume the intended quantity fills at the limit, ignoring future depth. Otherwise allocate sequential eligible native prints at/below limit, up to intended quantity, strictly between arrival and cancel arrival. Preserve partial quantity. No queue priority assumed to be proven.",
+  "exit_proxy": "At target arrival, if valid observed venue bid>=sell limit, assume all inventory fills at the limit. Otherwise allocate eligible native prints at/above limit until target cancellation. Force remaining shares at maintained valid observed bid at forced-sale arrival, ignoring execution depth. Charge separate commissions on partial target and forced sell orders.",
+  "fill_models": [
+    "touch",
+    "strict_trade_through"
+  ],
+  "strict_model": "Change passive buy print price<=limit to <limit and sell >=limit to >limit. This removes equality/queue claims but is still a conditional price proxy; acceptance, repricing and private fills remain unverified.",
+  "eligible_trades": "Native T with positive price/size and flags & 0x58 ==0. Ignore causally known broken prints; any break referring to a used fill by the fixed source endpoint makes that case unknown. Prints at exact order boundaries make the case unknown, rather than assigned by tie-breaking.",
+  "costs": "Per nonempty order max(1 USD,0.005 USD per executed share), 1bp adverse each actual bought/sold notional, 0.00003 sell-notional plus0.000166 per sold share. Costs apply also to aggressive proxy fills; zero rebates.",
+  "cases": [
+    {
+      "name": "base",
+      "latency_ns": 1000000000,
+      "fee_factor": 1,
+      "adverse_factor": 1
+    },
+    {
+      "name": "fees_2x",
+      "latency_ns": 1000000000,
+      "fee_factor": 2,
+      "adverse_factor": 1
+    },
+    {
+      "name": "adverse_2x",
+      "latency_ns": 1000000000,
+      "fee_factor": 1,
+      "adverse_factor": 2
+    },
+    {
+      "name": "latency_250ms",
+      "latency_ns": 250000000,
+      "fee_factor": 1,
+      "adverse_factor": 1
+    },
+    {
+      "name": "latency_3s",
+      "latency_ns": 3000000000,
+      "fee_factor": 1,
+      "adverse_factor": 1
+    }
+  ],
+  "acquisition": "Extend existing pinned native prefixes only to a fixed decision+35-second publication endpoint, capped 256MiB total per date; no outcome-based extension. Only selected symbols need parsing. Never modify original screen sources or hashes.",
+  "portfolio_scope": "Independent 10000 USD event budgets, no compounding or capital-return claim. All no-fill classifications conditional on the proxy assumptions. Unknown inventory/cash is not zero.",
+  "promotion": "Any positive sum is exploratory. Require native source and cash audit, actual historical order-acceptance/price-sliding constraints, queue and hidden-liquidity uncertainty, clock sensitivity, execution depth, cost/latency stability, temporal holdout and concentration/multiple-search tests before claiming an edge.",
+  "created_at_utc": "2026-10-02T23:52:07.299394+00:00",
+  "dates": [
+    "2023-01-11",
+    "2023-01-25",
+    "2023-02-08",
+    "2023-02-22",
+    "2023-03-08",
+    "2023-03-29",
+    "2023-04-12",
+    "2023-04-26",
+    "2023-05-10",
+    "2023-05-31",
+    "2023-06-14",
+    "2023-06-28",
+    "2023-07-12",
+    "2023-07-26",
+    "2023-08-09",
+    "2023-08-30",
+    "2023-09-13",
+    "2023-09-27",
+    "2023-10-11",
+    "2023-10-25",
+    "2023-11-08",
+    "2023-11-29",
+    "2023-12-13",
+    "2023-12-27"
+  ],
+  "parent_screen_sha256": "0df3e703a3c6875b33004f79d7bf0e54f39e8bf8316ef399540cedee5b7a8674",
+  "parent_audit_sha256": "c9fb10e43cc79621f8c060d4f25183fd81f5ac6694778d85baf415c4e4c02ba4",
+  "prior_tops_policy_sha256": "26635c93ed9aacf619277e6c864add4e77dcd4632972317e228d95542d88f1a3",
+  "selected_events": [
+    {
+      "date": "2023-01-11",
+      "symbol": "DDOG",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "DDOG",
+        "bid_price": 666700,
+        "ask_price": 669500,
+        "bid_size": 200,
+        "ask_size": 290,
+        "event_ns": 1673447459705599932,
+        "capture_ns": 1673447459705636000,
+        "send_ns": 1673447459705623763,
+        "sequence": 1133965,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1673447459705599932,
+          "symbol": "DDOG",
+          "size": 290,
+          "price": 669500,
+          "capture_ns": 1673447459705636000,
+          "send_ns": 1673447459705623763,
+          "sequence": 1133965
+        }
+      },
+      "quantity": 20,
+      "prior_trade_count": 16,
+      "prior_trade_notional_usd": "39936.99",
+      "spread_bps": "41.90989372848375991618021254",
+      "quoted_net_budget_usd": "3.289270",
+      "quoted_net_budget_bps": "24.61659931148031731776680138",
+      "last_trade": {
+        "type": "T",
+        "flags": 160,
+        "event_ns": 1673447458585304199,
+        "symbol": "DDOG",
+        "size": 25,
+        "price": 667000,
+        "trade_id": 60882080,
+        "capture_ns": 1673447458585618000,
+        "send_ns": 1673447458585578269,
+        "sequence": 1124353
+      }
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": "LMT",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "LMT",
+        "bid_price": 4470000,
+        "ask_price": 4487600,
+        "bid_size": 130,
+        "ask_size": 100,
+        "event_ns": 1674657050245441692,
+        "capture_ns": 1674657050245497000,
+        "send_ns": 1674657050245482888,
+        "sequence": 1052515,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1674657050245441692,
+          "symbol": "LMT",
+          "size": 0,
+          "price": 4476200,
+          "capture_ns": 1674657050245497000,
+          "send_ns": 1674657050245482888,
+          "sequence": 1052515
+        }
+      },
+      "quantity": 10,
+      "prior_trade_count": 11,
+      "prior_trade_notional_usd": "85587.61",
+      "spread_bps": "39.29624006430293828704117174",
+      "quoted_net_budget_usd": "14.567952",
+      "quoted_net_budget_bps": "32.52646244529784763776011432",
+      "last_trade": {
+        "type": "T",
+        "flags": 160,
+        "event_ns": 1674657049931206764,
+        "symbol": "LMT",
+        "size": 10,
+        "price": 4481300,
+        "trade_id": 44835840,
+        "capture_ns": 1674657049933864000,
+        "send_ns": 1674657049933631919,
+        "sequence": 1050038
+      }
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": "LRCX",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "LRCX",
+        "bid_price": 5288800,
+        "ask_price": 5306800,
+        "bid_size": 100,
+        "ask_size": 100,
+        "event_ns": 1675866659305501597,
+        "capture_ns": 1675866659305568000,
+        "send_ns": 1675866659305555458,
+        "sequence": 1039527,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1675866659305501597,
+          "symbol": "LRCX",
+          "size": 100,
+          "price": 5288800,
+          "capture_ns": 1675866659305568000,
+          "send_ns": 1675866659305555458,
+          "sequence": 1039527
+        }
+      },
+      "quantity": 10,
+      "prior_trade_count": 13,
+      "prior_trade_notional_usd": "294599.86",
+      "spread_bps": "33.97636754879383895201781872",
+      "quoted_net_budget_usd": "14.779576",
+      "quoted_net_budget_bps": "27.89757257729623617350598362",
+      "last_trade": {
+        "type": "T",
+        "flags": 32,
+        "event_ns": 1675866657810767898,
+        "symbol": "LRCX",
+        "size": 3,
+        "price": 5296000,
+        "trade_id": 44488216,
+        "capture_ns": 1675866657810839000,
+        "send_ns": 1675866657810823310,
+        "sequence": 1029781
+      }
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": "TQQQ",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 225100,
+        "ask_price": 225300,
+        "bid_size": 3600,
+        "ask_size": 4300,
+        "event_ns": 1677076259625445625,
+        "capture_ns": 1677076259625528000,
+        "send_ns": 1677076259625515854,
+        "sequence": 909782,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1677076259625445625,
+          "symbol": "TQQQ",
+          "size": 3600,
+          "price": 225100,
+          "capture_ns": 1677076259625528000,
+          "send_ns": 1677076259625515854,
+          "sequence": 909782
+        }
+      },
+      "quantity": 360,
+      "prior_trade_count": 15,
+      "prior_trade_notional_usd": "172587.765",
+      "spread_bps": "8.880994671403197158081705151",
+      "quoted_net_budget_usd": "1.675476",
+      "quoted_net_budget_bps": "2.066651865008880994671403197",
+      "last_trade": {
+        "type": "T",
+        "flags": 32,
+        "event_ns": 1677076256570733428,
+        "symbol": "TQQQ",
+        "size": 1,
+        "price": 225250,
+        "trade_id": 39086105,
+        "capture_ns": 1677076256570797000,
+        "send_ns": 1677076256570782953,
+        "sequence": 883940
+      }
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": "BABA",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "BABA",
+        "bid_price": 870000,
+        "ask_price": 872000,
+        "bid_size": 1000,
+        "ask_size": 400,
+        "event_ns": 1678285859712143489,
+        "capture_ns": 1678285859712205000,
+        "send_ns": 1678285859712194646,
+        "sequence": 1104980,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1678285859712143489,
+          "symbol": "BABA",
+          "size": 400,
+          "price": 872000,
+          "capture_ns": 1678285859712205000,
+          "send_ns": 1678285859712194646,
+          "sequence": 1104980
+        }
+      },
+      "quantity": 40,
+      "prior_trade_count": 15,
+      "prior_trade_notional_usd": "123247.71",
+      "spread_bps": "22.96211251435132032146957520",
+      "quoted_net_budget_usd": "5.191920",
+      "quoted_net_budget_bps": "14.90218140068886337543053961",
+      "last_trade": {
+        "type": "T",
+        "flags": 32,
+        "event_ns": 1678285859692049289,
+        "symbol": "BABA",
+        "size": 2,
+        "price": 871600,
+        "trade_id": 49505963,
+        "capture_ns": 1678285859692101000,
+        "send_ns": 1678285859692089605,
+        "sequence": 1104901
+      }
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": "PH",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "PH",
+        "bid_price": 3310700,
+        "ask_price": 3323600,
+        "bid_size": 200,
+        "ask_size": 200,
+        "event_ns": 1680096657844998343,
+        "capture_ns": 1680096657845126000,
+        "send_ns": 1680096657845112590,
+        "sequence": 845587,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1680096657844998343,
+          "symbol": "PH",
+          "size": 200,
+          "price": 3323600,
+          "capture_ns": 1680096657845126000,
+          "send_ns": 1680096657845112590,
+          "sequence": 845587
+        }
+      },
+      "quantity": 20,
+      "prior_trade_count": 18,
+      "prior_trade_notional_usd": "202035.3",
+      "spread_bps": "38.88880514899838716970893689",
+      "quoted_net_budget_usd": "22.270404",
+      "quoted_net_budget_bps": "33.56858146300287897743544911",
+      "last_trade": {
+        "type": "T",
+        "flags": 0,
+        "event_ns": 1680096655087065814,
+        "symbol": "PH",
+        "size": 100,
+        "price": 3316200,
+        "trade_id": 35991199,
+        "capture_ns": 1680096655087234000,
+        "send_ns": 1680096655087223765,
+        "sequence": 826615
+      }
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": "FDX",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "FDX",
+        "bid_price": 2245100,
+        "ask_price": 2253300,
+        "bid_size": 133,
+        "ask_size": 265,
+        "event_ns": 1682515858772554293,
+        "capture_ns": 1682515858772649000,
+        "send_ns": 1682515858772634404,
+        "sequence": 975160,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1682515858772554293,
+          "symbol": "FDX",
+          "size": 265,
+          "price": 2253300,
+          "capture_ns": 1682515858772649000,
+          "send_ns": 1682515858772634404,
+          "sequence": 975160
+        }
+      },
+      "quantity": 13,
+      "prior_trade_count": 10,
+      "prior_trade_notional_usd": "124959.685",
+      "spread_bps": "36.45740707807220345011559666",
+      "quoted_net_budget_usd": "7.9851713",
+      "quoted_net_budget_bps": "27.30944096362467338814484466",
+      "last_trade": {
+        "type": "T",
+        "flags": 128,
+        "event_ns": 1682515845475338702,
+        "symbol": "FDX",
+        "size": 100,
+        "price": 2249600,
+        "trade_id": 45437123,
+        "capture_ns": 1682515845475409000,
+        "send_ns": 1682515845475393313,
+        "sequence": 879822
+      }
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": "BDX",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "BDX",
+        "bid_price": 2500500,
+        "ask_price": 2511100,
+        "bid_size": 200,
+        "ask_size": 200,
+        "event_ns": 1683725448703909458,
+        "capture_ns": 1683725448703990000,
+        "send_ns": 1683725448703978626,
+        "sequence": 1016743,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1683725448703909458,
+          "symbol": "BDX",
+          "size": 200,
+          "price": 2511100,
+          "capture_ns": 1683725448703990000,
+          "send_ns": 1683725448703978626,
+          "sequence": 1016743
+        }
+      },
+      "quantity": 20,
+      "prior_trade_count": 10,
+      "prior_trade_notional_usd": "47605.45",
+      "spread_bps": "42.30185968552957139436507303",
+      "quoted_net_budget_usd": "18.043694",
+      "quoted_net_budget_bps": "36.00385904701093463165456142",
+      "last_trade": {
+        "type": "T",
+        "flags": 32,
+        "event_ns": 1683725434367598638,
+        "symbol": "BDX",
+        "size": 10,
+        "price": 2505550,
+        "trade_id": 47134154,
+        "capture_ns": 1683725434367640000,
+        "send_ns": 1683725434367625967,
+        "sequence": 920279
+      }
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": "V",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "V",
+        "bid_price": 2188600,
+        "ask_price": 2192500,
+        "bid_size": 200,
+        "ask_size": 210,
+        "event_ns": 1685539859734630200,
+        "capture_ns": 1685539859734730000,
+        "send_ns": 1685539859734716322,
+        "sequence": 866018,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1685539859734630200,
+          "symbol": "V",
+          "size": 200,
+          "price": 2188600,
+          "capture_ns": 1685539859734730000,
+          "send_ns": 1685539859734716322,
+          "sequence": 866018
+        }
+      },
+      "quantity": 20,
+      "prior_trade_count": 46,
+      "prior_trade_notional_usd": "1066449.15",
+      "spread_bps": "17.80374791718974686722512611",
+      "quoted_net_budget_usd": "4.788910",
+      "quoted_net_budget_bps": "10.93083928693707059870808701",
+      "last_trade": {
+        "type": "T",
+        "flags": 160,
+        "event_ns": 1685539858733808033,
+        "symbol": "V",
+        "size": 9,
+        "price": 2191500,
+        "trade_id": 37380147,
+        "capture_ns": 1685539858733964000,
+        "send_ns": 1685539858733950599,
+        "sequence": 860773
+      }
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": "CRM",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "CRM",
+        "bid_price": 2058300,
+        "ask_price": 2068600,
+        "bid_size": 100,
+        "ask_size": 100,
+        "event_ns": 1686749458331504089,
+        "capture_ns": 1686749458331565000,
+        "send_ns": 1686749458331552800,
+        "sequence": 858384,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1686749458331504089,
+          "symbol": "CRM",
+          "size": 100,
+          "price": 2069000,
+          "capture_ns": 1686749458331565000,
+          "send_ns": 1686749458331552800,
+          "sequence": 858384
+        }
+      },
+      "quantity": 10,
+      "prior_trade_count": 11,
+      "prior_trade_notional_usd": "181997.94",
+      "spread_bps": "49.91640214204366473624270033",
+      "quoted_net_budget_usd": "7.823592",
+      "quoted_net_budget_bps": "37.91510334633744457098548547",
+      "last_trade": {
+        "type": "T",
+        "flags": 0,
+        "event_ns": 1686749458088562445,
+        "symbol": "CRM",
+        "size": 100,
+        "price": 2067300,
+        "trade_id": 41809183,
+        "capture_ns": 1686749458088616000,
+        "send_ns": 1686749458088605145,
+        "sequence": 857086
+      }
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": "CME",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "CME",
+        "bid_price": 1800600,
+        "ask_price": 1807800,
+        "bid_size": 200,
+        "ask_size": 300,
+        "event_ns": 1687959051521959574,
+        "capture_ns": 1687959051521995000,
+        "send_ns": 1687959051521982813,
+        "sequence": 712719,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1687959051521959574,
+          "symbol": "CME",
+          "size": 300,
+          "price": 1807800,
+          "capture_ns": 1687959051521995000,
+          "send_ns": 1687959051521982813,
+          "sequence": 712719
+        }
+      },
+      "quantity": 20,
+      "prior_trade_count": 10,
+      "prior_trade_notional_usd": "95646.45",
+      "spread_bps": "39.90688393747921516461589624",
+      "quoted_net_budget_usd": "11.566532",
+      "quoted_net_budget_bps": "32.05446181132912094002882164",
+      "last_trade": {
+        "type": "T",
+        "flags": 0,
+        "event_ns": 1687959056354411435,
+        "symbol": "CME",
+        "size": 100,
+        "price": 1804200,
+        "trade_id": 32363651,
+        "capture_ns": 1687959056354539000,
+        "send_ns": 1687959056354460657,
+        "sequence": 733533
+      }
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": "HUM",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "HUM",
+        "bid_price": 4375800,
+        "ask_price": 4391200,
+        "bid_size": 100,
+        "ask_size": 33,
+        "event_ns": 1689168659199822156,
+        "capture_ns": 1689168659199897000,
+        "send_ns": 1689168659199886884,
+        "sequence": 1230071,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1689168659199822156,
+          "symbol": "HUM",
+          "size": 100,
+          "price": 4375800,
+          "capture_ns": 1689168659199897000,
+          "send_ns": 1689168659199886884,
+          "sequence": 1230071
+        }
+      },
+      "quantity": 3,
+      "prior_trade_count": 10,
+      "prior_trade_notional_usd": "463365.03",
+      "spread_bps": "35.13174404015056461731493099",
+      "quoted_net_budget_usd": "2.3169712",
+      "quoted_net_budget_bps": "17.61888293220790084027223299",
+      "last_trade": {
+        "type": "T",
+        "flags": 160,
+        "event_ns": 1689168654927264574,
+        "symbol": "HUM",
+        "size": 3,
+        "price": 4377600,
+        "trade_id": 55329317,
+        "capture_ns": 1689168654927349000,
+        "send_ns": 1689168654927334978,
+        "sequence": 1202217
+      }
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": "META",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "META",
+        "bid_price": 3002600,
+        "ask_price": 3008500,
+        "bid_size": 100,
+        "ask_size": 100,
+        "event_ns": 1690378258728224440,
+        "capture_ns": 1690378258728261000,
+        "send_ns": 1690378258728247904,
+        "sequence": 776951,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1690378258728224440,
+          "symbol": "META",
+          "size": 100,
+          "price": 3002600,
+          "capture_ns": 1690378258728261000,
+          "send_ns": 1690378258728247904,
+          "sequence": 776951
+        }
+      },
+      "quantity": 10,
+      "prior_trade_count": 49,
+      "prior_trade_notional_usd": "779103.55",
+      "spread_bps": "19.63035051820798190015138660",
+      "quoted_net_budget_usd": "3.206975",
+      "quoted_net_budget_bps": "10.67017683951356656851491408",
+      "last_trade": {
+        "type": "T",
+        "flags": 128,
+        "event_ns": 1690378258694637532,
+        "symbol": "META",
+        "size": 100,
+        "price": 3003300,
+        "trade_id": 36005530,
+        "capture_ns": 1690378258694703000,
+        "send_ns": 1690378258694688512,
+        "sequence": 776752
+      }
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "RBLX",
+        "bid_price": 318700,
+        "ask_price": 320000,
+        "bid_size": 200,
+        "ask_size": 300,
+        "event_ns": 1691587859229186717,
+        "capture_ns": 1691587859229246000,
+        "send_ns": 1691587859229235577,
+        "sequence": 835233,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1691587859229186717,
+          "symbol": "RBLX",
+          "size": 300,
+          "price": 320000,
+          "capture_ns": 1691587859229246000,
+          "send_ns": 1691587859229235577,
+          "sequence": 835233
+        }
+      },
+      "quantity": 20,
+      "prior_trade_count": 87,
+      "prior_trade_notional_usd": "251234.375",
+      "spread_bps": "40.70768749021449819946766870",
+      "quoted_net_budget_usd": "0.449740",
+      "quoted_net_budget_bps": "7.041490527634257084703303585",
+      "last_trade": {
+        "type": "T",
+        "flags": 32,
+        "event_ns": 1691587859423908905,
+        "symbol": "RBLX",
+        "size": 10,
+        "price": 319000,
+        "trade_id": 29548159,
+        "capture_ns": 1691587859423958000,
+        "send_ns": 1691587859423946878,
+        "sequence": 836260
+      }
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": "SPY",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "SPY",
+        "bid_price": 4498000,
+        "ask_price": 4504100,
+        "bid_size": 200,
+        "ask_size": 1000,
+        "event_ns": 1693402259747347640,
+        "capture_ns": 1693402259747477000,
+        "send_ns": 1693402259747385183,
+        "sequence": 916321,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1693402259747347640,
+          "symbol": "SPY",
+          "size": 200,
+          "price": 4498000,
+          "capture_ns": 1693402259747477000,
+          "send_ns": 1693402259747385183,
+          "sequence": 916321
+        }
+      },
+      "quantity": 20,
+      "prior_trade_count": 16,
+      "prior_trade_notional_usd": "823038.3",
+      "spread_bps": "13.55239333044511836127125893",
+      "quoted_net_budget_usd": "8.126014",
+      "quoted_net_budget_bps": "9.026798191533086724208795725",
+      "last_trade": {
+        "type": "T",
+        "flags": 128,
+        "event_ns": 1693402259746430400,
+        "symbol": "SPY",
+        "size": 130,
+        "price": 4498100,
+        "trade_id": 33362605,
+        "capture_ns": 1693402259746602000,
+        "send_ns": 1693402259746466629,
+        "sequence": 916295
+      }
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": "ARKK",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "ARKK",
+        "bid_price": 438100,
+        "ask_price": 440200,
+        "bid_size": 700,
+        "ask_size": 700,
+        "event_ns": 1694611858255428201,
+        "capture_ns": 1694611858255513000,
+        "send_ns": 1694611858255480009,
+        "sequence": 1251793,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1694611858255428201,
+          "symbol": "ARKK",
+          "size": 0,
+          "price": 439100,
+          "capture_ns": 1694611858255513000,
+          "send_ns": 1694611858255480009,
+          "sequence": 1251793
+        }
+      },
+      "quantity": 70,
+      "prior_trade_count": 10,
+      "prior_trade_notional_usd": "40240.95",
+      "spread_bps": "47.81965159968120232266879198",
+      "quoted_net_budget_usd": "11.981128",
+      "quoted_net_budget_bps": "38.97505896130511865454368016",
+      "last_trade": {
+        "type": "T",
+        "flags": 128,
+        "event_ns": 1694611856157833917,
+        "symbol": "ARKK",
+        "size": 100,
+        "price": 439200,
+        "trade_id": 42081869,
+        "capture_ns": 1694611856157893000,
+        "send_ns": 1694611856157881598,
+        "sequence": 1236451
+      }
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": "SPY",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "SPY",
+        "bid_price": 4266400,
+        "ask_price": 4279500,
+        "bid_size": 1000,
+        "ask_size": 1000,
+        "event_ns": 1695821459748702274,
+        "capture_ns": 1695821459748768000,
+        "send_ns": 1695821459748733927,
+        "sequence": 755235,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1695821459748702274,
+          "symbol": "SPY",
+          "size": 0,
+          "price": 4272800,
+          "capture_ns": 1695821459748768000,
+          "send_ns": 1695821459748733927,
+          "sequence": 755235
+        }
+      },
+      "quantity": 23,
+      "prior_trade_count": 13,
+      "prior_trade_notional_usd": "598187.5",
+      "spread_bps": "30.65797633953123720146503001",
+      "quoted_net_budget_usd": "25.8653395",
+      "quoted_net_budget_bps": "26.31858501178037574082054095",
+      "last_trade": {
+        "type": "T",
+        "flags": 128,
+        "event_ns": 1695821459338746574,
+        "symbol": "SPY",
+        "size": 100,
+        "price": 4273100,
+        "trade_id": 27051913,
+        "capture_ns": 1695821459338864000,
+        "send_ns": 1695821459338795905,
+        "sequence": 752892
+      }
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": "MBB",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "MBB",
+        "bid_price": 884300,
+        "ask_price": 888300,
+        "bid_size": 200,
+        "ask_size": 200,
+        "event_ns": 1697031059200663349,
+        "capture_ns": 1697031059200720000,
+        "send_ns": 1697031059200706328,
+        "sequence": 1119413,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1697031059200663349,
+          "symbol": "MBB",
+          "size": 0,
+          "price": 887700,
+          "capture_ns": 1697031059200720000,
+          "send_ns": 1697031059200706328,
+          "sequence": 1119413
+        }
+      },
+      "quantity": 20,
+      "prior_trade_count": 10,
+      "prior_trade_notional_usd": "71959.385",
+      "spread_bps": "45.13144533453683854225431569",
+      "quoted_net_budget_usd": "5.588862",
+      "quoted_net_budget_bps": "31.52917747940877806611756742",
+      "last_trade": {
+        "type": "T",
+        "flags": 32,
+        "event_ns": 1697031058998659938,
+        "symbol": "MBB",
+        "size": 41,
+        "price": 886200,
+        "trade_id": 35141149,
+        "capture_ns": 1697031058998831000,
+        "send_ns": 1697031058998693243,
+        "sequence": 1118135
+      }
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": "ARKK",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "ARKK",
+        "bid_price": 366200,
+        "ask_price": 368000,
+        "bid_size": 700,
+        "ask_size": 700,
+        "event_ns": 1698240659568123203,
+        "capture_ns": 1698240659568205000,
+        "send_ns": 1698240659568192517,
+        "sequence": 976901,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1698240659568123203,
+          "symbol": "ARKK",
+          "size": 0,
+          "price": 367500,
+          "capture_ns": 1698240659568205000,
+          "send_ns": 1698240659568192517,
+          "sequence": 976901
+        }
+      },
+      "quantity": 70,
+      "prior_trade_count": 10,
+      "prior_trade_notional_usd": "146732.75",
+      "spread_bps": "49.03296104603650231544538273",
+      "quoted_net_budget_usd": "9.997160",
+      "quoted_net_budget_bps": "38.90399657547573646729190178",
+      "last_trade": {
+        "type": "T",
+        "flags": 128,
+        "event_ns": 1698240658047433193,
+        "symbol": "ARKK",
+        "size": 1250,
+        "price": 367300,
+        "trade_id": 32342637,
+        "capture_ns": 1698240658047473000,
+        "send_ns": 1698240658047459422,
+        "sequence": 964827
+      }
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": "ADBE",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "ADBE",
+        "bid_price": 5889100,
+        "ask_price": 5910000,
+        "bid_size": 33,
+        "ask_size": 88,
+        "event_ns": 1699453859703876339,
+        "capture_ns": 1699453859703905000,
+        "send_ns": 1699453859703894270,
+        "sequence": 921136,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1699453859703876339,
+          "symbol": "ADBE",
+          "size": 33,
+          "price": 5889100,
+          "capture_ns": 1699453859703905000,
+          "send_ns": 1699453859703894270,
+          "sequence": 921136
+        }
+      },
+      "quantity": 3,
+      "prior_trade_count": 21,
+      "prior_trade_notional_usd": "854700.78",
+      "spread_bps": "35.42643082947004432541465027",
+      "quoted_net_budget_usd": "3.862339",
+      "quoted_net_budget_bps": "21.82278874377424266822610764",
+      "last_trade": {
+        "type": "T",
+        "flags": 0,
+        "event_ns": 1699453852319357191,
+        "symbol": "ADBE",
+        "size": 100,
+        "price": 5890000,
+        "trade_id": 28000416,
+        "capture_ns": 1699453852319652000,
+        "send_ns": 1699453852319637884,
+        "sequence": 872844
+      }
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": "ALB",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "ALB",
+        "bid_price": 1308800,
+        "ask_price": 1313800,
+        "bid_size": 300,
+        "ask_size": 100,
+        "event_ns": 1702477859527097258,
+        "capture_ns": 1702477859527215000,
+        "send_ns": 1702477859527130341,
+        "sequence": 930517,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1702477859527097258,
+          "symbol": "ALB",
+          "size": 300,
+          "price": 1308800,
+          "capture_ns": 1702477859527215000,
+          "send_ns": 1702477859527130341,
+          "sequence": 930517
+        }
+      },
+      "quantity": 10,
+      "prior_trade_count": 17,
+      "prior_trade_notional_usd": "172729.73",
+      "spread_bps": "38.13009990086174025775947533",
+      "quoted_net_budget_usd": "2.696666",
+      "quoted_net_budget_bps": "20.56482879585144513078624266",
+      "last_trade": {
+        "type": "T",
+        "flags": 128,
+        "event_ns": 1702477858439676585,
+        "symbol": "ALB",
+        "size": 100,
+        "price": 1313500,
+        "trade_id": 31226218,
+        "capture_ns": 1702477858439787000,
+        "send_ns": 1702477858439772927,
+        "sequence": 924816
+      }
+    }
+  ],
+  "unknown_admission_dates": [
+    "2023-11-29"
+  ],
+  "instrument_identities": {
+    "ADBE": {
+      "classification": "Adobe common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/796343/000079634324000006/adbe-20231201.htm"
+    },
+    "ALB": {
+      "classification": "Albemarle common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/915913/000091591323000166/alb-20230630.htm"
+    },
+    "ARKK": {
+      "classification": "ARK Innovation ETF",
+      "primary_source": "https://www.ark-funds.com/funds/arkk"
+    },
+    "BABA": {
+      "classification": "Alibaba American depositary shares",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1577552/000095017023033752/baba-20230331.htm"
+    },
+    "BDX": {
+      "classification": "Becton Dickinson common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/10795/000001079523000098/bdx-20230930.htm"
+    },
+    "CME": {
+      "classification": "CME Group Class A common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1156375/000115637524000010/cme-20231231.htm"
+    },
+    "CRM": {
+      "classification": "Salesforce common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1108524/000110852423000011/crm-20230131.htm"
+    },
+    "DDOG": {
+      "classification": "Datadog Class A common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1561550/000156155023000055/ddog-20230930.htm"
+    },
+    "FDX": {
+      "classification": "FedEx common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1048911/000095017023033201/fdx-20230531.htm"
+    },
+    "HUM": {
+      "classification": "Humana common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/49071/000004907124000012/hum-20231231.htm"
+    },
+    "LMT": {
+      "classification": "Lockheed Martin common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/936468/000093646824000010/lmt-20231231.htm"
+    },
+    "LRCX": {
+      "classification": "Lam Research common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/707549/000070754923000102/lrcx-20230625.htm"
+    },
+    "MBB": {
+      "classification": "iShares MBS ETF",
+      "primary_source": "https://www.ishares.com/us/products/239465/ishares-mbs-etf"
+    },
+    "META": {
+      "classification": "Meta Platforms Class A common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1326801/000132680123000103/meta-20230930.htm"
+    },
+    "PH": {
+      "classification": "Parker-Hannifin common shares",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/76334/000007633423000028/ph-20230331.htm"
+    },
+    "RBLX": {
+      "classification": "Roblox Class A common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1315098/000131509824000026/rblx-20231231.htm"
+    },
+    "SPY": {
+      "classification": "SPDR S&P 500 ETF Trust",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/884394/000119312523017928/d449477d497.htm"
+    },
+    "TQQQ": {
+      "classification": "ProShares UltraPro QQQ ETF",
+      "primary_source": "https://www.proshares.com/our-etfs/leveraged-and-inverse/tqqq"
+    },
+    "V": {
+      "classification": "Visa Class A common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1403161/000119312523290300/d541456dars.pdf"
+    }
+  },
+  "economic_policy_variant_count": 1,
+  "variant": "Same order timings, costs and touch/strict-through price proxies, but DEEP-derived displayed best prices/sizes determine causal ranking, quantity and execution reference. Count this changed signal-data variant as another exploratory economic configuration.",
+  "quote_reference": "Signal quotes are committed atomic DEEP books in capture order, before d-250ms. For venue-clock execution, order selected-symbol price-level updates by exact native event time then native sequence, commit only at EventFlags1, and collapse equal-event-time states to their final state. Do not use intermediate states. No Q/H/O at exact order arrival is resolved by tie-breaking. Require a subsequent complete native quote beyond a forced reference. Preserve original levels and derived quotes.",
+  "depth_limit": "Future aggressive/forced reference fills still ignore execution depth under the inherited conditional probe. Book levels are retained for review, not used to increase order size. A positive result is never promoted without actual depth, queue, NBBO and acceptance modeling.",
+  "source_incomplete_scope": "2023-11-29 DEEP starts at sequence45296, missing the opening book history. It remains an unknown admission and unknown full-calendar cash outcome in every case. Known no-candidate dates count as no-signal, not missing. Observed selected-event totals must be separately labeled.",
+  "selection_scope": "2023 exploratory development after prior TOPS result; no temporal holdout or reliability claim. Source classification only, no company financial performance enters selection.",
+  "source_implementation_sha256": "50da6d9449771c8c05b16719985bd7ff062959238b1d687ba58151ec4253e9eb",
+  "deep_book_sha256": "16eca5b71071c3a949e9c4b421b08cd1a152438c362b26142a8652e7a158367f",
+  "packet_decoder_sha256": "cb1594166f66925e19645ceb20854260a8ab5f3fe44ee2f0ec57bb18a8aa2d0e",
+  "price_proxy_sha256": "a9b46193779168bb26abb2a7c9ba47a9a622be884a41d369592ded882286b533",
+  "aggregator_sha256": "f9d26e0493804df84c4568506f86775b661ac42117d007395dab17d2356998ad"
+}

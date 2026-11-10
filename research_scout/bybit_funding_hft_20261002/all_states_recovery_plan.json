@@ -1,0 +1,19 @@
+{
+  "created_at_utc": "2026-10-02T18:30:11.350381+00:00",
+  "reason": "Complete source recovery for all predeclared 2024 native symbol/windows, including the 5,519 funding-rate observations missing from one-minute deltas. Original partial screens remain intact; no rate, fee, date or horizon threshold changes.",
+  "preflight_sha256": "3e57b6f015313f4161601854c83b06c47f5294249c6b33a44f0d654e894be064",
+  "native_states_sha256": "9604af14e269deac43708fe24d86b524a1ec3279c4598edbcb5bf230677955a4",
+  "expected_total_compressed_bytes": 3274038156,
+  "aggregate_cap": 4000000000,
+  "per_file_cap": 512000000,
+  "workers": 3,
+  "extraction": "Read every full source to validate capture ordering and gzip integrity. For each original cutoff, retain the last strictly earlier full CSV state per USDT symbol; no future values and no forward filling of explicitly unknown fields.",
+  "code_sha256": {
+    "research_scout/recover_all_bybit_states_20261002.py": "4df5a798e6d563678e355c5d8d91a2bcde91b7f7a7da1b1762526dd98ed1cdc2",
+    "research/bybit_full_state_recovery.py": "4317dff6efd464596d2fa71233042ea2568548a27a722bd640593c70f68289e0",
+    "tests/unit/test_bybit_full_state_recovery.py": "3ed8004d5950a4c4a734e617e65a0c99d620c1d5cd40174c2d0967bc3b3d4301"
+  },
+  "authenticated": false,
+  "paid_fallback": false,
+  "strategy_pnl_tested": false
+}

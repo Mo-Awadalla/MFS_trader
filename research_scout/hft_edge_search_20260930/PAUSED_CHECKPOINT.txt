@@ -1,0 +1,42 @@
+USER-REQUESTED PAUSE — 2026-09-30
+
+Goal: a reliable HFT edge for the competition, judged by raw outperformance
+and actual reliability. Stocks, ETFs and crypto remain in scope. Conservative
+fees and strictly HFT remain mandatory. No live trading is authorized.
+
+No reliable edge or competition win has been established.
+
+Most recent completed research
+  Broad native funding screen: 348 symbols, 6,552 as-of observations and
+  18 large-rate events. Zero qualified opportunities after lifecycle checks.
+  The apparent 109.89 bp DGB funding difference was on a contract already
+  settled and delisted. Native feed freshness did not establish tradability.
+  Independent reconstruction passed. Full report:
+  research_scout/funding_universe_hft_20260930/REPORT.txt
+
+Current promising research direction, not a profitable strategy
+  Wider-spread crypto passive quoting: 26 contract/dates selected by a frozen
+  causal spread/depth/flow screen. Independent audit passed on all 163,750
+  grid decisions from 5.7 million native messages. Quoted spreads approximately
+  13-42 bp leave an economic reason to test fills under conservative costs.
+  All selected native replay data are downloaded and hashed.
+
+Resume from
+  research_scout/wide_tick_hft_20260930/STATUS.txt
+  research_scout/wide_tick_hft_20260930/replay_specification.json
+  research_scout/wide_tick_hft_20260930/replay_interval_clarification.json
+  research/wide_tick_replay.py
+
+The execution module is a draft that passed lint only. Do not call it tested,
+freeze it as validated, or present any P&L as already computed. Complete the
+targeted execution/accounting tests and source audit before running it.
+
+Search ledger
+  120 economic configurations; 170 implementation versions already tested.
+  The two newly planned quoting schedules have not been run and do not count.
+  171 focused tests cumulatively passed, including nine for the new screen.
+  Preserve all prior failures, unknown outcomes and dependent family variations.
+  No native replay P&L results or 2025 validation have been opened for this family.
+
+All known download, screening and audit processes have finished. No scheduled
+continuation or live-order process was created. Resume only when the user asks.

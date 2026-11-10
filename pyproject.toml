@@ -31,6 +31,7 @@ dependencies = [
 alpaca = ["alpaca-py>=0.20"]
 crypto = ["ccxt>=4.2,<4.5"]
 research = ["vectorbt>=0.26", "statsmodels>=0.14"]
+microstructure = ["databento>=0.86,<0.87", "numba>=0.65.1,<0.66"]
 monitoring = ["streamlit>=1.32"]
 alerts = ["python-telegram-bot>=21.0"]
 dev = [

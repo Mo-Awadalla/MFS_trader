@@ -1,0 +1,159 @@
+Same-index ETF HFT pair screen: no qualifying supply
+30 September 2026
+
+No candidate advances to an economic replay. Across 21,600 frozen decision slots,
+zero had an observable convergence budget meeting the cost and uncertainty
+hurdle. Every one of the 17,606 sized cases had a negative budget even under
+immediate full convergence to the causal reference. This is a feasibility
+finding under the stated rules, not a realized loss, an execution backtest or
+proof that every possible ETF-pair strategy fails. No reliable edge established.
+
+The three fixed pairs were SPY/IVV (S&P 500), QQQ/QQQM (Nasdaq-100), and IWM/VTWO
+(Russell 2000). These funds have related benchmark exposure; their shares are
+not interchangeable and their NAVs, distributions and tracking can differ.
+Mean reversion of their relative prices is a hypothesis, not riskless arbitrage.
+The study belongs to the already-exposed cross-ETF research family. Different
+securities and a paired payoff do not create statistical independence from the
+broader search.
+
+Frozen sample and calculation
+-----------------------------
+First XNYS trading session of each month in 2023: 3 Jan, 1 Feb, 1 Mar, 3 Apr,
+1 May, 1 Jun, 3 Jul, 1 Aug, 1 Sep, 2 Oct, 1 Nov, 1 Dec. These dates were fixed
+before market-data acquisition. All 72 historical SIP files completed, with
+5,836,428 native quotes and 658,772,201 response bytes. No paid fallback, billing
+change or live order was used.
+
+Quotes were acquired for 09:30:00-09:35:20 Eastern. Each pair has 600 decisions
+per date on a 250ms grid from 09:32:00 inclusive to 09:34:30 exclusive. A decision
+uses only quotes strictly earlier than its time minus 100ms. This is an explicit
+conditional source-delay assumption, not verified receipt latency. Historical
+SIP access does not establish a free real-time consolidated feed.
+
+The reference ratio is the exponentiated median log midpoint ratio of 60 causal
+samples, at offsets 5-64 seconds before the current source cutoff. At least 45
+joint valid samples are required. Dispersion is the median absolute log-ratio
+deviation. No prior-day close, future observations or full-day calibration enter
+the reference. Same-day calibration does not carry an unadjusted prior-day ratio
+across the funds' potentially different distribution dates.
+
+Quotes must have positive prices and sizes, be uncrossed and unlocked, and carry
+regular R conditions and exchange fields. Current spreads must be <=20bp.
+Conflicting same-timestamp states explicitly mean no order. Unchanged standing
+quotes do not expire by age alone within the complete acquired prefix.
+
+Each proposed book has $10,000 benchmark equity and <=$5,000/1.01 notional per
+leg. Quantities are integers determined by known prices and <=10% of known
+directional depth. Both legs must be >=$100. The hedge quantity follows the
+causal ratio with <=2.5% unit mismatch. The highest common notional fitting both
+legs is chosen. No aggregate shared-capital portfolio result is claimed.
+
+Historical SIP sizes are treated as 100-share lots. This remains conditional
+until instrument-definition confirmation; no actual fill or capacity is verified.
+Short locates, availability and competition permission are also unverified.
+
+Both orientations are evaluated. The hypothetical convergence point is the
+geometric common price satisfying the reference ratio. Entry crosses the known
+ask/bid; projected exit crosses current half-spreads around that reference.
+The budget subtracts all four commissions ($0.0075/share, $1 minimum per order),
+both sale charges (0.30bp plus $0.0002/share), 1bp adverse cost per execution,
+and a full calendar day of short borrow at 5% annualized. Eligibility requires
+remaining budget >= smaller-leg notional times (5bp + twice the log-ratio MAD).
+
+This convergence budget is a conditional calculation, not expected realized
+profit or a mathematical upper bound on future market movement. The screen
+does not assume convergence actually occurs, fills are atomic, or a broker
+provides these cost terms.
+
+Results
+-------
+Pair        Decision slots   Eligible slots   Distinct attempts   Best budget
+SPY/IVV          7,200              0                0              -14.5426bp
+QQQ/QQQM         7,200              0                0              -15.1500bp
+IWM/VTWO         7,200              0                0              -14.6944bp
+
+The best budgets are normalized by the smaller leg's entry notional, not by
+total gross exposure or portfolio equity. They already include projected
+convergence, entry/exit spreads and the assumed costs. They are not returns.
+
+All 21,600 dispositions:
+  17,606 sized cases below the cost and uncertainty hurdle
+   3,174 missing, invalid or conflicting current states
+     797 fewer than 45 valid historical reference samples
+      23 no integer hedge satisfying notional, depth and mismatch constraints
+
+The lack of qualifying supply is not solely a side effect of the positive
+5bp uncertainty cushion: every sized budget is already negative before adding
+that cushion. This does not make the invalid observations economically priced.
+Their exclusions remain visible.
+
+In particular, seven symbol/date windows have fewer than 300 valid current
+states out of 600. Their dominant issue is conflicting tied timestamps:
+QQQ on 3 Apr, 1 May and 1 Jun; VTWO on the same dates; QQQM on 1 Jun.
+For example, QQQ has 452, 477 and 503 conflicting selected timestamp groups on
+those three dates. All selected conditions there are R; this is not a change
+to the regular-condition filter. The raw conflicting records remain intact.
+No undocumented ordering within those timestamps is assumed.
+
+The frozen supply gate requires at least 12 distinct proposed attempts across
+six of the twelve dates, counted with a 60-second cooldown. All pairs fail.
+The six proposed 15s/30s execution configurations were therefore not run.
+There are zero new economic implementations from this screen. No future return
+labels, controls, or 2024-25 selection results were evaluated.
+
+Had supply passed, the planned replay would have needed separate leg receipts,
+guarded limits, one-leg failure and unwind accounting, unresolved inventory,
+250ms/1s latency stresses, wider timestamp bounds and doubled costs. None of
+those unrun checks are represented as passed.
+
+Verification
+------------
+Independent code reparsed native raw timestamps and checked all 72 source
+hashes, ordered source intervals and completed pagination. It reconstructed
+all 21,600 decisions using separate prefix lookup and statistics routines,
+and independently calculated every 17,606 chosen convergence budget. Maximum
+numeric difference was 3.82e-12. It confirmed zero hypothetical attempts.
+The source-state diagnostic did not alter any frozen rule or open future P&L.
+
+Seven focused tests pass: no invented profit at equal prices; correct
+orientation for a relative gap; future-price/depth invariance; conservative
+tied-state treatment; both-leg integer/depth sizing; all four costs plus
+borrow; missing venue/size rejection. Test and audit success do not establish
+investment performance. Ruff passes on the added modules.
+
+Artifacts and reproduction
+--------------------------
+specification.json: rule and source-acquisition freeze.
+quote_manifest.json and quotes/: all source files, hashes and pagination.
+supply_implementation.json: code hashes frozen before the screen.
+supply_decisions.parquet: every evaluated decision and diagnostic budget.
+supply_attempts.parquet: empty under the frozen rule.
+supply_results.json: daily and pair summaries.
+verification.json: independent full-screen audit.
+source_gate_diagnostics.json: all symbol/date quote-quality counts.
+
+From the workspace Python environment:
+  python -m research_scout.verify_same_index_supply_20260930
+  python -m research_scout.diagnose_same_index_sources_20260930
+  python -m pytest tests/unit/test_same_index_supply.py -q -p no:cacheprovider
+
+Source references
+-----------------
+https://www.ishares.com/us/products/239726/ishares-core-sp-500-etf-ivv
+https://www.invesco.com/us/financial-products/etfs/product-detail?audienceType=investors&productId=QQQ&ticker=QQQ
+https://www.sec.gov/Archives/edgar/data/1378872/0001193125-23-299209-index.htm
+https://www.sec.gov/Archives/edgar/data/1378872/000119312524187596/d747000d497k.htm
+https://advisors.vanguard.com/investments/products/vtwo/vanguard-russell-2000-etf
+https://regulated-documents.saytechnologies.com/proxy-events/5275fa5b-ec10-452b-a252-bc5680facd7b-8cc378e8-2fb8-4699-886a-d994cc4ccd27.pdf
+https://docs.alpaca.markets/us/docs/market-data-faq
+https://docs.alpaca.markets/us/v1.1/changelog/marketdata-bid-and-ask-size-display-change
+
+Issuer descriptions and historical prospectus references establish the intended
+benchmark relationship; they do not establish historical fund positions or
+intraday price equivalence. Some SEC document retrievals failed or exceeded the
+web tool size limit. No failed retrieval is represented as a verified full file.
+The Vanguard prospectus inspected is dated 22 December 2023 with fiscal data
+through August 2023. None of these documents supplies a trading signal here.
+
+The active competition goal remains unachieved. No deployable edge, reliable
+raw outperformance or actual competition win is claimed.

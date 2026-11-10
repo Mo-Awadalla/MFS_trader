@@ -1,0 +1,245 @@
+{
+  "verified": true,
+  "raw_messages": 29828,
+  "csv_reports": 29828,
+  "matched_csv_reports": 29828,
+  "last_fill_quantity_matches": 29828,
+  "cumulative_quantity_matches": 20458,
+  "limit_price_matches": 29828,
+  "average_price_matches": 225,
+  "order_T_timestamp_matches": 29828,
+  "side_matches": 29828,
+  "actual_to_csv_proxy_quantiles": {
+    "0.0": 0.9922129739568578,
+    "0.25": 0.9962750924795677,
+    "0.5": 1.0039724072631313,
+    "0.75": 1.549489151106912,
+    "0.9": 6.029860827874213,
+    "0.99": 73.60164125764513,
+    "1.0": 20770.427769434526
+  },
+  "status_counts": {
+    "FILLED": 29828
+  },
+  "disconnect_slices": [
+    {
+      "date": "2024-02-01",
+      "minute_offset": 450,
+      "count": 1
+    },
+    {
+      "date": "2024-03-01",
+      "minute_offset": 750,
+      "count": 1
+    },
+    {
+      "date": "2024-03-01",
+      "minute_offset": 930,
+      "count": 1
+    },
+    {
+      "date": "2024-05-01",
+      "minute_offset": 420,
+      "count": 4
+    },
+    {
+      "date": "2024-10-01",
+      "minute_offset": 360,
+      "count": 2
+    },
+    {
+      "date": "2024-10-01",
+      "minute_offset": 600,
+      "count": 1
+    },
+    {
+      "date": "2024-10-01",
+      "minute_offset": 610,
+      "count": 1
+    },
+    {
+      "date": "2024-11-01",
+      "minute_offset": 720,
+      "count": 1
+    }
+  ],
+  "recovery_warmups": [
+    {
+      "date": "2024-02-01",
+      "recovery_local_timestamp": 1706772844335112,
+      "warmup_end_local_timestamp": 1706773144335112
+    },
+    {
+      "date": "2024-03-01",
+      "recovery_local_timestamp": 1709296442582544,
+      "warmup_end_local_timestamp": 1709296742582544
+    },
+    {
+      "date": "2024-03-01",
+      "recovery_local_timestamp": 1709307072967815,
+      "warmup_end_local_timestamp": 1709307372967815
+    },
+    {
+      "date": "2024-05-01",
+      "recovery_local_timestamp": 1714547286415036,
+      "warmup_end_local_timestamp": 1714547586415036
+    },
+    {
+      "date": "2024-05-01",
+      "recovery_local_timestamp": 1714547336575607,
+      "warmup_end_local_timestamp": 1714547636575607
+    },
+    {
+      "date": "2024-05-01",
+      "recovery_local_timestamp": 1714547343026429,
+      "warmup_end_local_timestamp": 1714547643026429
+    },
+    {
+      "date": "2024-10-01",
+      "recovery_local_timestamp": 1727762823401464,
+      "warmup_end_local_timestamp": 1727763123401464
+    },
+    {
+      "date": "2024-10-01",
+      "recovery_local_timestamp": 1727777303232167,
+      "warmup_end_local_timestamp": 1727777603232167
+    },
+    {
+      "date": "2024-10-01",
+      "recovery_local_timestamp": 1727780413134650,
+      "warmup_end_local_timestamp": 1727780713134650
+    },
+    {
+      "date": "2024-11-01",
+      "recovery_local_timestamp": 1730463237052942,
+      "warmup_end_local_timestamp": 1730463537052942
+    }
+  ],
+  "csv_sources": [
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-01-01\\BTCUSDT.csv.gz",
+      "sha256": "b1acbb349ce22dbb082e954d4cb5195f65b0e006a864c87c150071f8f9a5ad41",
+      "rows": 1206
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-02-01\\BTCUSDT.csv.gz",
+      "sha256": "55644c942dd2042dd8d3a707d4ac2db770a864fae1cea78f20ea04073db03aa7",
+      "rows": 1169
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-03-01\\BTCUSDT.csv.gz",
+      "sha256": "1d3cffe952f15c8735941e26b76f3957eefc930fddcd3e0b993991532b93ebc9",
+      "rows": 2010
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-04-01\\BTCUSDT.csv.gz",
+      "sha256": "8acca79ed4f97dee6f69eb6723ee464fd3d82d57cc35609c4478ec2ed9b99e32",
+      "rows": 1557
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-05-01\\BTCUSDT.csv.gz",
+      "sha256": "3f1b855e3ad38a9254cc7af7de0399c374dc0b30e1727ea8932b884ff996a60c",
+      "rows": 2850
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-06-01\\BTCUSDT.csv.gz",
+      "sha256": "fab31d23e5d2a0b95e49ed4959e3937a61efd7641f39ffe19871c65169c06fd5",
+      "rows": 201
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-07-01\\BTCUSDT.csv.gz",
+      "sha256": "ae5d38afe03fb231020656b507111aacaa2300dcf4042b6326cd3749b585a213",
+      "rows": 854
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-08-01\\BTCUSDT.csv.gz",
+      "sha256": "17ff8b8116648e85ab0e1244c90973666deb7ccba48d46190b08676b97c6f095",
+      "rows": 2030
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-09-01\\BTCUSDT.csv.gz",
+      "sha256": "efd289a08e5c53a4e6a388f015e077f778c6b50ca0c389b9025d058f05c24b7e",
+      "rows": 1232
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-10-01\\BTCUSDT.csv.gz",
+      "sha256": "da8b40c2a17eb9fbd7d1418907fc853384165e522c250ca078f26125cb19562d",
+      "rows": 2124
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-11-01\\BTCUSDT.csv.gz",
+      "sha256": "c27cc66ee754b98d158a0d2fe2117d126150cf9ee70b1471f22b6ae367a333cb",
+      "rows": 1881
+    },
+    {
+      "path": "research_scout\\liquidation_event_20260930\\raw\\liquidations\\2024-12-01\\BTCUSDT.csv.gz",
+      "sha256": "df836c1d853bc1c96b1948cb8b6f2e13b72ab0888cb88f190f3b253156ace9bc",
+      "rows": 919
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-01-01\\SOLUSDT.csv.gz",
+      "sha256": "13e44c7e708f709345f4b17bbfbf4faea9440b95ba9f4e93cb38a5721ff204b0",
+      "rows": 958
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-02-01\\SOLUSDT.csv.gz",
+      "sha256": "f6bcefeea38acfb71281b1e0de65a21fd403f9fdf7a14d0a900629680799fb69",
+      "rows": 965
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-03-01\\SOLUSDT.csv.gz",
+      "sha256": "d11dd6be576e68e5aec58e08929823df0afbe8373c5ded70a49628e73401c07c",
+      "rows": 1624
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-04-01\\SOLUSDT.csv.gz",
+      "sha256": "5e036a633011972e62f1e4e10ab0db7a9f1eafe2a9be0bf8dfb403aa5f5d309f",
+      "rows": 1043
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-05-01\\SOLUSDT.csv.gz",
+      "sha256": "347b874c607cd6c7c4023664d0beaa1e5e16942f8330e7acae333f18442abbd1",
+      "rows": 1680
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-06-01\\SOLUSDT.csv.gz",
+      "sha256": "e033f8ab3f1ec9c80131f290df335043c74e9321b11a2744c553441a2fb1058f",
+      "rows": 123
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-07-01\\SOLUSDT.csv.gz",
+      "sha256": "c348c05954f7512dd8f85c1f582d5160c2e91ecf822b009e6924b51ed23a1fa5",
+      "rows": 421
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-08-01\\SOLUSDT.csv.gz",
+      "sha256": "8c2e5c056e6269c4899f5e087b74c47b3a89eb8257dd37c6158a31fcefd2179c",
+      "rows": 1407
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-09-01\\SOLUSDT.csv.gz",
+      "sha256": "362ad322f09cbf0b3b30acaa7e80deb1587cb8559355292ec1c74377d58d744d",
+      "rows": 936
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-10-01\\SOLUSDT.csv.gz",
+      "sha256": "943078d5bb0655a4dda8609287fbda19076df66d7aaf16ebf8c0df9550cc2c0d",
+      "rows": 1259
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-11-01\\SOLUSDT.csv.gz",
+      "sha256": "b94e0e1a584cfedbaf03c080671b13286b943c644317d840539e2edcd2276ab3",
+      "rows": 904
+    },
+    {
+      "path": "research_scout\\sol_hft_replication_20260930\\raw\\liquidations\\2024-12-01\\SOLUSDT.csv.gz",
+      "sha256": "fb1cdccacb59c74fc2eae39237ea60cfcc83b00db3be863f744dde94f81a3be1",
+      "rows": 475
+    }
+  ],
+  "orders_sha256": "66791692e6e275247d10af7026667aee6f953b35657e7300f8c8cedde4cb0a43",
+  "download_manifest_sha256": "bb3ce380d7cd5d564b0b2de9f0873593ea343acdabd6b090b6725a9111fc947a",
+  "returns_examined": false,
+  "interpretation": "These historical CSV exports store limit p and last filled l. Cumulative executed notional is z times ap for the reported order. The stream is throttled and is not a complete liquidation tape. Current Tardis open-source mapper uses z, so this observation must not be generalized to every version/export.",
+  "normalizer_source": "https://github.com/tardis-dev/tardis-node/blob/master/src/mappers/binance.ts"
+}

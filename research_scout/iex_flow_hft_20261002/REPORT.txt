@@ -1,0 +1,35 @@
+IEX TWO-SIDED ACTIVITY: NO PROFITABLE CONDITIONAL CASE
+Updated 2026-10-03T00:13:39.290994+00:00
+
+The added past-activity filter did not produce an edge worth promotion.
+Causal admission: all 52 parent DEEP budget candidates across 23 intact 2023 dates. A candidate needed at least 3 distinct native trade-event times at/below its current bid and at least 3 at/above its current ask during the previous 30 seconds, with at least 5 times its fixed order quantity printed on each side. Native capture, event and send cutoffs, trade flags and causally known breaks were enforced. Unchanged daily ranking; no future return used in admission.
+Independent source/count/ranking audit: 20,472,349 native messages, 1,150 retained trade/break records, all 52 candidate checks. Two candidates qualified: TQQQ on 2023-01-11 and RBLX on 2023-08-09. Six focused causal-activity tests passed.
+TQQQ: planned quantity 410 shares; prior buy-limit activity 16 distinct timestamps / 5,905 shares; sell-limit activity 12 timestamps / 4,400 shares; required quantity 2,050 each side. These are past prints, not proof of executable queue position.
+The policy remained fixed: buy at the original bid, cancel entry remainder after 5s, offer at original ask after acknowledgement, cancel target after 15s, then force residual inventory. Same fees, adverse allowance and 250ms/1s/3s delay cases; same touch and strict-through assumptions. Holdings remain under 30s.
+RBLX's exact event, policy and ten previously audited no-entry outcomes were reused. TQQQ was newly replayed from a previously cached native DEEP prefix. Reuse is not independent temporal validation.
+Fresh replay audit: 1,489,879 native messages; 28,885 selected-symbol rows; 28,424 derived atomic venue-clock quotes; 10 fresh event-case calculations. A further 10 prior audited outcomes were reused exactly. All 240 calendar rows and 20 aggregate calculations independently verified.
+
+Model | case | known conditional USD | observed two-event cohort USD | full-calendar USD
+touch | base | -34.632454 | -34.632454 | None
+touch | fees_2x | -39.030278 | -39.030278 | None
+touch | adverse_2x | -36.167084 | -36.167084 | None
+touch | latency_250ms | 0 | 0 | None
+touch | latency_3s | -42.831388 | -42.831388 | None
+strict_trade_through | base | -34.632454 | -34.632454 | None
+strict_trade_through | fees_2x | -39.030278 | -39.030278 | None
+strict_trade_through | adverse_2x | -36.167084 | -36.167084 | None
+strict_trade_through | latency_250ms | 0 | 0 | None
+strict_trade_through | latency_3s | -42.831388 | -42.831388 | None
+
+Both models: baseline TQQQ loses $34.632454; doubled fees loses $39.030278; doubled adverse allowance loses $36.167084; 3s delay loses $42.831388. The 250ms case has no entry. RBLX has no entry in every case. Thus eight priced cases lose and two cases have no entry; these are scenarios of the same event, not independent trades.
+The observed selected cohort is complete under the conditional model. Full-calendar cash is unknown in every case because 2023-11-29 lacks the initial DEEP source/book history. No missing date was assigned zero. The other 21 dates have no selected signal under the fixed filter.
+LIMITS: No private fill, queue, hidden liquidity, historical NBBO protection/routing or acceptance is proven. The inherited probe ignores future execution depth. It is not a funded portfolio or a universal profit bound. Positive past activity did not prevent the price moving against the assumed TQQQ fill. No actual orders or paid API calls occurred.
+The current delay assumptions do not settle millisecond HFT feasibility. Any faster model must be separately frozen and clearly conditional on venue/simulator access. A future positive strategy still needs untouched temporal replication, execution/cost/latency stress, concentration and multiple-search assessment.
+Global search ledger: 139 economic configurations, 191 implementation versions, 411 focused tests. No reliable edge established; goal remains active.
+Data provided for free by IEX. By accessing or using IEX Historical Data, you agree to the IEX Historical Data Terms of Use. https://www.iex.io/legal/hist-data-terms
+
+Flow specification SHA256: c93a3fea06f8392c0246c314730843d665c537a149e2915b3dff6dba34e043b8
+Flow results SHA256: b52fd44c2810e3ac3444aa3721891489a0194a4290fe50a120978de5a4f7ecb3
+Price specification SHA256: 606c9c60659a860e01f0ec7f7597b88d50a54f1d9f4668947dcf631790a604ec
+Price results SHA256: 2edf3f31cd72925f3cafc49f7df6c74e7abdbdc1de9966d8bfe3ac10be41ccca
+Price audit SHA256: 30c4350c15a16fcba14d136409ee73152a4a720bd8028d7b25dff847a21c15d8

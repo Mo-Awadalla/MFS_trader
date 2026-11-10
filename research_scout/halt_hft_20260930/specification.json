@@ -1,0 +1,100 @@
+{
+  "created_at_utc": "2026-09-30T18:11:10.468465+00:00",
+  "purpose": "Conditional source-clock economics after a stock volatility halt; no auction fill assumed.",
+  "dates": [
+    "2023-01-03",
+    "2023-02-01",
+    "2023-03-01",
+    "2023-04-03",
+    "2023-05-01",
+    "2023-06-01",
+    "2023-07-03",
+    "2023-08-01",
+    "2023-09-01",
+    "2023-10-02",
+    "2023-11-01",
+    "2023-12-01",
+    "2024-01-02",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-03",
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-03",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-02"
+  ],
+  "cohort_events": 152,
+  "cohort": "First LULD halt per historical common/ordinary-share symbol per first XNYS session of each month in 2023/2024. Listing venue Nasdaq,NYSE,NYSE American; symbol A-Z 1-5 letters, excludes names indicating warrant,preferred,depositary,unit. First halt selected before time/duration filters. Halt >=09:35 and <=close-10min, same-day resume <=close-5min, archived duration295..900s. Existing and delisted symbols retained; no current ticker universe.",
+  "development": "2023; fetch/evaluate first. Selection2024 stays closed unless development passes.2025/2026 outcomes not used.",
+  "prior_exposure": "Source metadata and total cohort counts inspected; no quote/trade outcomes opened. Extensive other HFT searches remain part of selection history. Registry search found no exact LULD rule but novelty is not established exhaustively.",
+  "configurations": [
+    {
+      "family": "up_continuation",
+      "hold_seconds": 15
+    },
+    {
+      "family": "up_continuation",
+      "hold_seconds": 30
+    },
+    {
+      "family": "down_rebound",
+      "hold_seconds": 15
+    },
+    {
+      "family": "down_rebound",
+      "hold_seconds": 30
+    }
+  ],
+  "reopening": "First primary-listing-venue trade carrying condition5 within archive resume +/-5s; positive price/size, no late/sold/average/prior-reference flags. A reported reopening is a signal anchor only, never our entry. Archive used for cohort/quality alignment; live administrative publication timing is unverified.",
+  "signal": "Prehalt mid return from halt-30s to halt-1s >=100bp for up_continuation or <=-100bp for down_rebound. Both require reopening price >=last prehalt mid*1.005. Latest strictly-prior quotes at those times must be valid and no more than5s old. Reopening trade availability is modeled as source time+1s; decision5s later. Latest quote strictly before decision-1s must be post-reopening, valid, <=1s old relative to cutoff, bid>=reopening price, ask2..500, spread<=50bp. No outcome-dependent signal changes.",
+  "size": "Fixed integer floor(min(10000/(ask*1.01),10% known ask depth)); >=$100 ticket.100-share historical round lot for this price range and dates is a stated conditional assumption requiring source verification. No future resizing. One position globally per rule/scenario, $10000 reset each date; do not enter while pending or inventory open; require current cash to cover frozen quantity at limit plus fees. Stop that date on unknown possible inventory.",
+  "entry": "FOK limit floor-to-cent(known ask*1.001), arrival decision+250ms processing+1s outbound. Model all quote states across +/-1ms around arrival. All states over limit: no fill; all valid with ask<=limit and enough depth: conditional full fill at each possible ask. Mixed/inadequate/invalid states: unknown possible inventory. No liquidity or fill guarantee follows from SIP quotes.",
+  "exit": "Entry ACK at entry arrival+1s return latency; hold15/30s then250ms processing+1s outbound. Sell full frozen quantity across all SIP states in +/-1ms. Require positive regular noncrossed quote and full bid depth in every state. Any subsequent halt interval intersecting entry-to-exit path, expanded1s for archive precision, leaves inventory unresolved; no forced sale through a pause. Exit ACK adds1s return. No future quantity clipping.",
+  "quote_windows": "Last quote strictly before low endpoint plus all updates through high endpoint inclusive; keep ties. Require successor after high to bracket the observed stream. No arbitrary standing quote age gate for execution. Missing feed state is unknown, not no-fill.",
+  "costs": {
+    "commission_per_share": 0.0075,
+    "minimum_per_side": 1.0,
+    "sell_notional_rate": 3e-05,
+    "sell_per_share": 0.0002,
+    "adverse_per_side": 0.0001
+  },
+  "scenarios": [
+    "base",
+    "double_fees",
+    "3s_outgoing_and_return",
+    "double_adverse",
+    "100ms_alignment"
+  ],
+  "gate": "Proceed only if development is fully resolved, positive lower net in every scenario, >=20 priced trades on>=6 dates, >=3 positive dates, positive lower net after removing best3 dates, and a positive95% date-block bootstrap lower bound after multiplicity adjustment for4 configurations. Selection2024 must independently pass the same gate. Economics never establishes actual routing/fills; source capture and venue evidence would still be required. Do not drop unknown inventory paths or retune failed rules.",
+  "download": {
+    "feed": "sip",
+    "initial_year": "2023",
+    "per_file_max_bytes": 20000000,
+    "max_pages": 40,
+    "max_total_response_bytes": 1000000000,
+    "max_seconds_per_file": 120,
+    "workers": 2,
+    "datasets": [
+      "quotes",
+      "trades"
+    ],
+    "access": "Existing Alpaca credentials for read-only historical data.alpaca.markets endpoints; free historical access, no upgrade, account calls or orders."
+  },
+  "source_sha256": {
+    "nyse_halts.csv": "b8a32dcb0ba90c7818acf01e40aef891ce26c5b68918c3acdbaac299ebab846c",
+    "cohort.parquet": "641e7bdde35342d35639322d51b8de95bb1d304dc77bb13e5bdcade1f18179e9"
+  },
+  "sources": [
+    "https://www.nyse.com/trade/trading-halts",
+    "https://www.nyse.com/api/trade-halts/historical/download",
+    "https://www.nasdaqtrader.com/content/technicalsupport/specifications/utp/utdfspecification.pdf",
+    "https://docs.alpaca.markets/us/docs/market-data-faq",
+    "https://docs.alpaca.markets/us/v1.1/changelog/marketdata-bid-and-ask-size-display-change"
+  ],
+  "strategy_execution_verified": false,
+  "reliable_edge_established": false
+}

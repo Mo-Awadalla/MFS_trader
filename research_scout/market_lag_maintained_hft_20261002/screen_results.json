@@ -1,0 +1,66 @@
+{
+  "admitted_grids": 7,
+  "target_checks": 1953,
+  "acquisition_candidates": 0,
+  "distinct_symbol_minutes": 0,
+  "original_fresh_candidates": 0,
+  "reasons": {
+    "anchor_missing_epoch": 1953
+  },
+  "parents": [
+    {
+      "batch": "batch01",
+      "date": "2024-07-01",
+      "offset": 131,
+      "quotes_path": "research_scout\\market_lag_targets_hft_20261002\\batch01\\quotes\\2024-07-01_0131.parquet",
+      "quotes_sha256": "f5689f6addcc08f86b083d8f5891a2096718ff0de73d95f2c21530516534d5e7",
+      "symbols": 261,
+      "admitted_grids": 1
+    },
+    {
+      "batch": "batch01",
+      "date": "2024-08-01",
+      "offset": 325,
+      "quotes_path": "research_scout\\market_lag_targets_hft_20261002\\batch01\\quotes\\2024-08-01_0325.parquet",
+      "quotes_sha256": "4bd528f317bec74020bd1265197c57ce5fa74adaab75dd87f36c74330a815090",
+      "symbols": 260,
+      "admitted_grids": 1
+    },
+    {
+      "batch": "batch01",
+      "date": "2024-08-01",
+      "offset": 901,
+      "quotes_path": "research_scout\\market_lag_targets_hft_20261002\\batch01\\quotes\\2024-08-01_0901.parquet",
+      "quotes_sha256": "490d0667f5570c9d3ff9f73ba06ccd7723a820688bb78697198c1fcae31e75ba",
+      "symbols": 260,
+      "admitted_grids": 1
+    },
+    {
+      "batch": "batch02",
+      "date": "2024-10-01",
+      "offset": 987,
+      "quotes_path": "research_scout\\market_lag_targets_hft_20261002\\batch02\\quotes\\2024-10-01_0987.parquet",
+      "quotes_sha256": "a4150ec3fe83fe74ecb9a590224a22b00db1fc3fe22f60dc67b8bfcacdafe51f",
+      "symbols": 293,
+      "admitted_grids": 3
+    },
+    {
+      "batch": "batch02",
+      "date": "2024-10-01",
+      "offset": 1016,
+      "quotes_path": "research_scout\\market_lag_targets_hft_20261002\\batch02\\quotes\\2024-10-01_1016.parquet",
+      "quotes_sha256": "46df58f35ac764ed598229bc8cb0953e18e698dddcb53021d12006aafcac15ae",
+      "symbols": 293,
+      "admitted_grids": 1
+    }
+  ],
+  "jobs": [],
+  "clues_sha256": "832179cd698ff1041d465510b8b13dcfcd2f804d16c4de573b4817842b75b0a4",
+  "candidates_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+  "implementation_sha256": "ec9010a8f07a819f7daba5bbe0edd5a48c646ba08799dab0c666fc433a68f0e6",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "depth_confirmed_events": 0,
+  "selected_trading_events": [],
+  "reliable_edge_established": false
+}

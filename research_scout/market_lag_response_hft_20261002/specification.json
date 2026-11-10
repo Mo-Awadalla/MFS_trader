@@ -1,0 +1,106 @@
+{
+  "created_at_utc": "2026-10-02T22:01:27.827495+00:00",
+  "family": "Fifteen-second response in a lagging perpetual after a coherent major-coin shock",
+  "relationship": "Both follow_common_move and fade_common_move were declared before the source/target/flow screens. One TRX event survives exactly 49 preselected native BTC/ETH minutes from six full cached BTC days; retain the separate earlier 60 sparse windows. This is dependent development research, not independent validation or a chosen post-return winner. One event is inadequate for reliability.",
+  "events_path": "research_scout\\market_lag_flow_hft_20261002\\selected.parquet",
+  "events_sha256": "46749007689275c57dab8e01c7487105c76851a97944dc22a942fdb22f61a29a",
+  "flow_results_sha256": "8c5b9f177c7e51fda59b8cc34dd0180e263b4026533e5ff29137cafbff3c4157",
+  "flow_audit_sha256": "f8df2237c9854a01e7168bec73f3f6ddeba1c2887cfe88704f8a03ceab38ecd0",
+  "target_results_sha256": "f378fdee4bdcde4360dfa1e228f27d05fea176d623265d9ead872a273b895954",
+  "target_audit_sha256": "454295cf0d4eb386bb12b12c56e6f2ea2992d3393817f1b2e187cfd83792163b",
+  "rules": {
+    "follow_common_move": "Sell the lagging target after the common down move, or buy after an up move.",
+    "fade_common_move": "Opposite direction control, with identical causal inputs, timing, quantity constraints and costs."
+  },
+  "engine_rule_mapping": {
+    "follow_common_move": "follow_shock",
+    "fade_common_move": "fade_shock"
+  },
+  "entry_signal": "Latest native TRX full BBO strictly before decision minus 250ms, with capture/T/E age in (0,250ms] of that cutoff and consistent native clocks. Match full price, quantity, ID and capture/T/E fields to the independently audited original all-symbol signal. Do not change the quote or quantity across scenarios.",
+  "quantity": "Reuse the unchanged tested causal planner: floor(min(200/(1.01*directional quote),10% of directional displayed quantity)/10)*10 base units. Minimum 100 USDT entry notional. Fixed before transmission, no future-depth resizing. Reserve full notional plus 2% from an independent 10000-USDT daily account; no leverage. Ten-unit increment and minimum are conditional sizing assumptions, not verified historical exchange filters.",
+  "grids": {
+    "TRXUSDT": "0.00001"
+  },
+  "historical_price_grid_verified": false,
+  "historical_lot_size_verified": false,
+  "grid_evidence": "The assumed 0.00001 increment is consistent with the already observed causal native TRX quotes. All replay prices must lie on it. No current exchangeInfo is substituted for historical order permissions or filters; these remain unverified and forbid deployment/reliability promotion.",
+  "timing": "Processing 50ms plus outbound delay. Entry ACK after another outbound delay. Exit decision 15 seconds after that ACK, then 50ms processing plus outbound. Planned inventory below 30 seconds including clock stress. An unresolved exit has unknown actual duration.",
+  "entry_order": "Fixed-quantity FOK with 10bp collar from the causal directional quote, rounded inward to the assumed price increment. Every compatible native transaction-clock state must offer sufficient entire touch size inside the limit to establish a conditional fill. All prices outside means no fill; mixed prices or inadequate touch depth means unknown.",
+  "exit_order": "Full-quantity marketable exit; all compatible native states need sufficient entire touch depth. No deeper or passive fills invented. Unknown submitted inventory invalidates full P&L and halts later same-date events. There is one selected event in this cohort.",
+  "execution_clock": "Use native T for matching, E for publication and capture for information availability. Include the entire predecessor T tie group and all states in arrival +/-1ms, or +/-100ms stress; require a later successor. Source clock/ID regression makes execution evidence unknown, not a retroactive no-order. Overlapping disconnect makes an envelope unknown. Public-book execution remains conditional, not a private-fill assertion.",
+  "funding": "Native markPrice captured before the cutoff and at most five seconds old in capture/publication must show next funding later than decision+24.2 seconds+1 second. No funding income credited. Missing clearance prevents entry.",
+  "costs": {
+    "taker_bps_each_side": 6,
+    "adverse_bps_each_side": 1
+  },
+  "scenarios": [
+    {
+      "name": "base",
+      "delay_ms": 1000,
+      "clock_ms": 1,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "fees_2x",
+      "delay_ms": 1000,
+      "clock_ms": 1,
+      "fee_multiple": 2,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "adverse_2x",
+      "delay_ms": 1000,
+      "clock_ms": 1,
+      "fee_multiple": 1,
+      "adverse_multiple": 2
+    },
+    {
+      "name": "latency_250ms",
+      "delay_ms": 250,
+      "clock_ms": 1,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "latency_3s",
+      "delay_ms": 3000,
+      "clock_ms": 1,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "clock_100ms",
+      "delay_ms": 1000,
+      "clock_ms": 100,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    }
+  ],
+  "jobs": [
+    {
+      "date": "2024-10-01",
+      "offset": 987,
+      "symbol": "TRXUSDT"
+    }
+  ],
+  "download": {
+    "exchange": "binance-futures",
+    "slice_minutes": 2,
+    "channels": [
+      "bookTicker",
+      "markPrice"
+    ],
+    "workers": 1,
+    "per_slice_decoded_cap": 32000000,
+    "request_deadline_seconds": 120,
+    "authenticated": false,
+    "paid_fallback": false
+  },
+  "progression": "Retain both controls and all stresses. No tuning signal thresholds, exit duration or side on this event. Even a positive conditional result needs historical filter verification, a prospective broader coverage plan and truly later validation; a single event cannot establish reliability. No 2025 selection data in this replay.",
+  "economic_implementations_run": 0,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "ed9ebf3220ffb15960fdc3a22a7f953f2d29643cb5f0daf34db5f1c6f5d2af3d"
+}

@@ -1,0 +1,62 @@
+{
+  "created_at_utc": "2026-09-30T13:27:04.144953+00:00",
+  "objective": "Raw profit after costs on equal $10,000 starting capital; reliability gates before ranking.",
+  "status": "Exploratory research on previously exposed history, not competition or live approval.",
+  "competition": "Name, eligible instruments, benchmark, scoring period and execution rules unresolved.",
+  "train": "2023-03-28 through 2024-12-31",
+  "selection": "2025-01-01 through 2025-12-31",
+  "historical_evaluation": "2026 files only after selection gate; not pristine confirmation",
+  "untouched_confirmation": "Required, not yet available",
+  "families": [
+    "price_ridge",
+    "book_ridge",
+    "book_histboost"
+  ],
+  "horizons_seconds": [
+    5,
+    30,
+    120
+  ],
+  "trials": 9,
+  "ridge_alpha": 100.0,
+  "boost": {
+    "iterations": 100,
+    "leaf_nodes": 15,
+    "min_samples_leaf": 200,
+    "l2": 10
+  },
+  "feature_clock": "Completed F_LAST messages with ts_recv strictly before decision; exclude bad receive timestamps",
+  "decisions": "Every 5 seconds, 09:30:30 to 09:37:30 ET; max exit 09:39:33",
+  "latency_ms": [
+    250,
+    1000,
+    3000
+  ],
+  "max_quote_age_seconds": 1,
+  "execution": "Marketable long positions, one at a time, no leverage, buy ask/sell bid, integer shares",
+  "sizing": "$10,000 start; maximum available cash and 10% of decision/arrival ask size; exit cannot exceed displayed bid size",
+  "costs": "1 bp adverse slippage each side + $0.005/share each side + 0.0000051 sell notional + $0.000119/share sell; assumptions, not verified competition fees",
+  "action": "Largest predicted crossing return minus current estimated costs exceeds 1 bp; fixed threshold",
+  "selection_gate": "Complete; >=100 trades and >=60 trade days; 9-trial adjusted 5-day-block bootstrap lower mean daily P&L >0; positive under extra 1bp/side and 1s latency; positive excluding best 5 days",
+  "known_degraded_dates": [
+    "2025-03-24",
+    "2025-04-04",
+    "2025-05-06",
+    "2025-06-04",
+    "2025-06-16",
+    "2025-07-09",
+    "2025-08-08",
+    "2025-08-13",
+    "2025-08-19",
+    "2025-08-25",
+    "2025-09-03",
+    "2025-09-08",
+    "2025-09-12",
+    "2025-10-10",
+    "2025-10-13"
+  ],
+  "degraded_policy": "Prespecified historical data-quality exclusions; results conditional on these exclusions, not deployable calendar returns",
+  "feed_limit": "EQUS.MINI anonymized aggregated component-venue BBO; not full NBBO, no venue routing, no queue or actual fill guarantee",
+  "trial_accounting": "Nine new candidates; prior repository searches remain unquantified dependent selection exposure; correction does not erase them",
+  "source": "https://databento.com/docs/venues-and-datasets/equs-mini"
+}

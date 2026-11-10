@@ -1,0 +1,21 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-03T01:30:30.375876+00:00",
+  "counts": {
+    "grid_cells": 2336501,
+    "quote_age_rejected": 2116553,
+    "computed_budgets": 218359,
+    "positive_budgets": 3,
+    "quantity_rejected": 1567,
+    "eligible_cells": 1,
+    "invalid_or_incomplete_book": 22
+  },
+  "csv_rows_verified": 2400522,
+  "source_sha256": "a876882b114a940e6d8570d1c4215dd8fd671c1e3f7b443e5e6c6a467599ab85",
+  "results_sha256": "249e1d09044e704257f555931a0c5c485a12241840d316e0208e00a90f62afb1",
+  "auditor_sha256": "d6b8dca31753ef573079d869e83a3f7103b96ce79e70c5441f6791584f2c09bf",
+  "scope": "Independent full-grid recomputation from original CSV with stdlib capture-clock parsing, whole-integer prices and Decimal fees. No Arrow, NumPy, production snapshot helper or production budget function used for admission.",
+  "returns_calculated": false,
+  "actual_execution_verified": false,
+  "paid_calls": 0
+}

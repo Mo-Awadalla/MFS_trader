@@ -1,0 +1,40 @@
+{
+  "created_at_utc": "2026-10-03T01:28:11.527815+00:00",
+  "grid_cells": 2336501,
+  "invalid_or_incomplete_book": 22,
+  "quote_age_rejected": 2116553,
+  "spread_rejected": 0,
+  "quantity_rejected": 1567,
+  "computed_budgets": 218359,
+  "positive_budgets": 3,
+  "eligible_cells": 1,
+  "best_budget": {
+    "decision_ns": 1758029503610000000,
+    "quote_source_row": 64482,
+    "bid_price_int": 176740000000,
+    "ask_price_int": 176870000000,
+    "quantity": 41,
+    "net_cash_units": 165584290000000,
+    "entry_notional_price_units": 7246340000000,
+    "projected_net_usd": "1.6558429",
+    "projected_net_bp": "2.285074810180035714581430074"
+  },
+  "eligible": [
+    {
+      "decision_ns": 1758029503610000000,
+      "quote_source_row": 64482,
+      "bid_price_int": 176740000000,
+      "ask_price_int": 176870000000,
+      "quantity": 41,
+      "net_cash_units": 165584290000000,
+      "entry_notional_price_units": 7246340000000,
+      "projected_net_usd": "1.6558429",
+      "projected_net_bp": "2.285074810180035714581430074"
+    }
+  ],
+  "specification_sha256": "c55c4efc14893a76ab436464e7c47e9145be322a8327db978876219e59dadec2",
+  "economic_configurations_executed": 0,
+  "returns_calculated": false,
+  "paid_calls": 0,
+  "reliable_edge_established": false
+}

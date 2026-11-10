@@ -1,0 +1,37 @@
+SPOT/PERPETUAL HFT RESPONSE — BOTH CONTROLS FAIL AFTER COSTS
+
+No reliable edge or promoted candidate. All twelve conditional scenario results are complete and negative. They are twelve tests of one event, not twelve independent observations.
+
+Supply: 49,391,684 native messages and 818,500 causal symbol/time checks across 60 paired minute windows on twelve 2024 dates selected one ENAUSDT event, September 1 at 00:00:16 UTC. Selection was independently reconciled before P&L. All failed and missing-source states remain in the screens.
+
+Frozen controls: fade the observed relative-price deviation, or follow it. Trade only ENAUSDT perpetual; spot is a predictor. Both plans use 800 ENA, about 189.5 USDT notional, fixed from the causal quote. The verified price tick is 0.0001; the coarse 100-ENA quantity increment and historical account permissions remain conditional. Full notional is reserved, with no leverage.
+
+Timing: 250ms signal feed delay, 50ms processing, one-second outbound and ACK in base. Exit decision fifteen seconds after entry ACK. The native next-funding timestamp was observed before entry and lies safely beyond the latest stressed exit. No funding or rebate is credited.
+
+Execution uses native transaction time T, publication E and capture time separately. Every compatible quote, including tied predecessor states, must fit the entire quantity inside the fixed 10bp entry collar. Exit requires full touch depth. No passive queue or deeper liquidity is invented. Unknown outcomes would remain unknown; this cohort has no submitted unknowns.
+
+CONDITIONAL RESULTS (USDT; scenarios are alternatives, never summed)
+fade_basis / base: -0.58544000000 to -0.58544000000; conditional_complete.
+fade_basis / fees_2x: -0.81296000000 to -0.81296000000; conditional_complete.
+fade_basis / adverse_2x: -0.62336000000 to -0.62336000000; conditional_complete.
+fade_basis / latency_250ms: -0.58544000000 to -0.58544000000; conditional_complete.
+fade_basis / latency_3s: -0.58544000000 to -0.58544000000; conditional_complete.
+fade_basis / clock_100ms: -0.58544000000 to -0.58544000000; conditional_complete.
+follow_basis / base: -0.10544000000 to -0.10544000000; conditional_complete.
+follow_basis / fees_2x: -0.33296000000 to -0.33296000000; conditional_complete.
+follow_basis / adverse_2x: -0.14336000000 to -0.14336000000; conditional_complete.
+follow_basis / latency_250ms: -0.10544000000 to -0.10544000000; conditional_complete.
+follow_basis / latency_3s: -0.10544000000 to -0.10544000000; conditional_complete.
+follow_basis / clock_100ms: -0.10544000000 to -0.10544000000; conditional_complete.
+
+Base fade: gross -0.32 USDT; total fees/adverse allowance 0.26544; net -0.58544. Base follow: gross +0.16; the same 0.26544 cost; net -0.10544. Both also lose with 250ms or three-second order latency, doubled fees, doubled adverse allowance and 100ms clock uncertainty. The convergence budget did not materialize within the frozen holding interval.
+
+Independent execution and cash verification passed: all 2,796 selected-contract messages (2,736 BBOs and 60 funding-clock updates), two intents, 24 quote envelopes and 12 cash rectangles/aggregates, with zero numeric difference. Eight focused execution tests passed. Together with the two supply stages, 21 new focused tests passed.
+
+Limits: these are conditional historical quote executions, not private fills. Exact historical LOT_SIZE and account permissions are unverified. A launch notice and subsequent tick-size update establish relevant public contract facts but are not a complete historical exchange-rule archive. Even a profitable outcome on this one event would not establish reliability. No 2025 validation was opened, and no real orders or paid data purchases occurred.
+
+Primary contract references:
+https://www.binance.com/en/support/announcement/detail/db4b4fc4fd0349a892eca0c47293d136
+https://www.binance.com/en/support/announcement/detail/aa2bfe791cca4fbc9db2764249b19592
+
+Frozen evidence: specification.json; source_manifest.json; ena_native.ndjson.gz; replay_v1/implementation.json; intents.json; all twelve scenario files; results.json; independent_verification.json. Original result audit flags remain as frozen; separate verification artifacts record the completed checks.

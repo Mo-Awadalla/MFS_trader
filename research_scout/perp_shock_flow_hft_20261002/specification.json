@@ -1,0 +1,159 @@
+{
+  "created_at_utc": "2026-10-02T21:04:28.880047+00:00",
+  "family": "Native aggressive-trade confirmation of the frozen two-sided price shocks",
+  "relationship": "All parent quote-selected events, no ranking or return filtering. The parent already froze five trades, 5000 USDT and 75% aligned notional; this document specifies integrity and acquisition before these additional trade records are read.",
+  "parent_results_sha256": "48603ab7ca3d146e3adb25317cf1db889aebf81d1a0200524dba102ed49441da",
+  "parent_selection_sha256": "de7b648af834fa3b6bfb4ff9505abbcbacc452d8ff968476e488b90caa39781e",
+  "parent_independent_audit_required_before_return_test": true,
+  "events": [
+    {
+      "date": "2024-02-01",
+      "offset_minutes": 0,
+      "symbol": "ADAUSDT",
+      "decision_ns": 1706745634500000000,
+      "valid_endpoints": true,
+      "supply": true,
+      "direction": -1,
+      "bid_return_bps": "-32.10272873194221508828250400",
+      "ask_return_bps": "-32.09628886659979939819458400",
+      "anchor_spread_bps": "2.006219279767278563546995686",
+      "current_spread_bps": "2.012679883264566770655127302",
+      "minimum_touch_usdt": "3824.14240",
+      "spread_gate": true,
+      "depth_gate": true,
+      "reason": "requires_native_trade_confirmation",
+      "selected": true
+    },
+    {
+      "date": "2024-03-01",
+      "offset_minutes": 0,
+      "symbol": "CELOUSDT",
+      "decision_ns": 1709251252250000000,
+      "valid_endpoints": true,
+      "supply": true,
+      "direction": -1,
+      "bid_return_bps": "-36.93444136657433056325023100",
+      "ask_return_bps": "-36.90036900369003690036900400",
+      "anchor_spread_bps": "9.229349330872173511767420396",
+      "current_spread_bps": "9.263547938860583603520148216",
+      "minimum_touch_usdt": "5331.2204",
+      "spread_gate": true,
+      "depth_gate": true,
+      "reason": "requires_native_trade_confirmation",
+      "selected": true
+    },
+    {
+      "date": "2024-04-01",
+      "offset_minutes": 360,
+      "symbol": "XRPUSDT",
+      "decision_ns": 1711951228000000000,
+      "valid_endpoints": true,
+      "supply": true,
+      "direction": -1,
+      "bid_return_bps": "-32.96522169111587275424427200",
+      "ask_return_bps": "-32.95978905735003295978905700",
+      "anchor_spread_bps": "1.648125257519571487433044911",
+      "current_spread_bps": "1.653575857792476229847044233",
+      "minimum_touch_usdt": "5447.01666",
+      "spread_gate": true,
+      "depth_gate": true,
+      "reason": "requires_native_trade_confirmation",
+      "selected": true
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 360,
+      "symbol": "BAKEUSDT",
+      "decision_ns": 1725170446000000000,
+      "valid_endpoints": true,
+      "supply": true,
+      "direction": -1,
+      "bid_return_bps": "-31.75863437872171496625645100",
+      "ask_return_bps": "-31.74603174603174603174603200",
+      "anchor_spread_bps": "3.969041476483429251835681682",
+      "current_spread_bps": "3.981684252438781604618753732",
+      "minimum_touch_usdt": "2029.3560",
+      "spread_gate": true,
+      "depth_gate": true,
+      "reason": "requires_native_trade_confirmation",
+      "selected": true
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 720,
+      "symbol": "ZROUSDT",
+      "decision_ns": 1725192036250000000,
+      "valid_endpoints": true,
+      "supply": true,
+      "direction": 1,
+      "bid_return_bps": "33.17172748150038275070171000",
+      "ask_return_bps": "33.16326530612244897959184000",
+      "anchor_spread_bps": "2.551345834927924480163286134",
+      "current_spread_bps": "2.542911633820724729815638906",
+      "minimum_touch_usdt": "2508.16000000",
+      "spread_gate": true,
+      "depth_gate": true,
+      "reason": "requires_native_trade_confirmation",
+      "selected": true
+    }
+  ],
+  "jobs": [
+    {
+      "date": "2024-02-01",
+      "offset": 0,
+      "symbols": [
+        "ADAUSDT"
+      ]
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 0,
+      "symbols": [
+        "CELOUSDT"
+      ]
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 360,
+      "symbols": [
+        "XRPUSDT"
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 360,
+      "symbols": [
+        "BAKEUSDT"
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 720,
+      "symbols": [
+        "ZROUSDT"
+      ]
+    }
+  ],
+  "counting": "Capture strictly before d-250ms and native matching T in [d-1.25s,d-250ms). Count raw trade IDs once. Price*quantity is native USDT notional, preserving multiplier-prefixed contract identity. Use MARKET executions only; insurance-fund, ADL or other X labels are separately excluded, never interpreted as ordinary aggressive demand.",
+  "gate": "At least five unique MARKET executions, at least 5000 USDT total notional, and at least 75% of total notional in the shock direction. m=true is seller-aggressed, false buyer-aggressed. Keep every parent event, including unknown source evidence and insufficient activity.",
+  "integrity": "Native capture order and requested minute must hold. Inspect only records available before each event cutoff for its decision. Exact symbol/ID fingerprints (T,E,p,q,m,X) are deduplicated. Conflicting duplicate IDs, regressing previously unseen IDs or interior ID gaps in that pre-cutoff symbol prefix invalidate the event. Any explicit pre-cutoff disconnect also invalidates it. No data repair, cross-stream aggregate/raw combination or future-dependent deletion.",
+  "clocks": "For matching-window executions require positive finite price/quantity; native integer t/T/E and boolean m; T<=E+1ms, both T/E<=capture+1ms, capture-T<=250ms. An invalid would-be window observation makes the event unknown, not zero volume. A complete empty source proves only lack of confirming evidence, not absence of trading globally.",
+  "acquisition": "The native API returns whole minutes. These are the same minutes whose BBOs were already acquired in earlier studies; no extra future minute is requested and no post-event return is computed here. Records captured at/after an event cutoff cannot affect that event's flow or source-integrity decision. Preserve full source files and exact prefix row references for audit.",
+  "download": {
+    "channel": "trade",
+    "slice_minutes": 1,
+    "workers": 3,
+    "per_slice_decoded_cap": 16000000,
+    "total_decoded_cap": 960000000,
+    "request_deadline_seconds": 75,
+    "automatic_retries": 0
+  },
+  "next_stage": "After both source audits pass, freeze both 15-second follow and fade execution implementations with conservative costs and historical order/funding checks before any post-event response calculation.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "1b07f16dc3cfaf31f0e068d915bb5caf7975b8eba50796ac66c17bf7eb37b329",
+  "primary_native_source": "https://docs.tardis.dev/historical-data-details/binance-futures"
+}

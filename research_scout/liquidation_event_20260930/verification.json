@@ -1,0 +1,19 @@
+{
+  "verified": true,
+  "priced_trades_across_dependent_scenarios": 4460,
+  "maximum_pnl_error_dollars": 1.092459456231154e-13,
+  "predecision_direction_agreement": {
+    "immediate": {
+      "eligible_events": 124,
+      "same_direction": 121,
+      "agreement_fraction": 0.9758064516129032,
+      "zero_return_events": 0
+    },
+    "quiet": {
+      "eligible_events": 78,
+      "same_direction": 74,
+      "agreement_fraction": 0.9487179487179487,
+      "zero_return_events": 0
+    }
+  }
+}

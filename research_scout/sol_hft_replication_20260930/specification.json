@@ -1,0 +1,105 @@
+{
+  "created_at_utc": "2026-09-30T15:33:02.673043+00:00",
+  "symbol": "SOLUSDT",
+  "configs": 8,
+  "calibration": [
+    "2024-01-01",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-01"
+  ],
+  "dates": [
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "threshold_reported_notional": 9164.312272,
+  "calibration_audits": [
+    {
+      "date": "2024-01-01",
+      "rows": 958,
+      "source_sha256": "13e44c7e708f709345f4b17bbfbf4faea9440b95ba9f4e93cb38a5721ff204b0"
+    },
+    {
+      "date": "2024-02-01",
+      "rows": 965,
+      "source_sha256": "f6bcefeea38acfb71281b1e0de65a21fd403f9fdf7a14d0a900629680799fb69"
+    },
+    {
+      "date": "2024-03-01",
+      "rows": 1624,
+      "source_sha256": "d11dd6be576e68e5aec58e08929823df0afbe8373c5ded70a49628e73401c07c"
+    },
+    {
+      "date": "2024-04-01",
+      "rows": 1043,
+      "source_sha256": "5e036a633011972e62f1e4e10ab0db7a9f1eafe2a9be0bf8dfb403aa5f5d309f"
+    },
+    {
+      "date": "2024-05-01",
+      "rows": 1680,
+      "source_sha256": "347b874c607cd6c7c4023664d0beaa1e5e16942f8330e7acae333f18442abbd1"
+    },
+    {
+      "date": "2024-06-01",
+      "rows": 123,
+      "source_sha256": "e033f8ab3f1ec9c80131f290df335043c74e9321b11a2744c553441a2fb1058f"
+    }
+  ],
+  "btc_template_sha256": "0df61e18c70f7d6db47cea39960094229fec729924ef84581ba0131d83cd7222",
+  "rules": "Same fixed follow/reverse, 8/16bp passive offsets and 30/120-second holds as BTC; five-second order lifetime, 250ms processing, one-second outbound baseline. SOL Jan-Jun 99th-percentile reported liquidation notional sets the trigger; first report after a five-minute refractory window.",
+  "instrument_units": {
+    "price_tick_usdt": 0.001,
+    "quantity_step_sol": 0.1,
+    "note": "Linear SOLUSDT prices in USDT, amounts in SOL; observed trade-grid consistency is checked. Historical exchange acceptance and private fills are not established by a quote replay."
+  },
+  "scenarios": {
+    "base": {
+      "delay_us": 1000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "through_partial"
+    },
+    "double_fees": {
+      "delay_us": 1000000,
+      "maker_bps": 6.0,
+      "taker_bps": 12.0,
+      "fill_mode": "through_partial"
+    },
+    "latency_3s": {
+      "delay_us": 3000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "through_partial"
+    },
+    "first_through_full": {
+      "delay_us": 1000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "through_full"
+    },
+    "touch_partial": {
+      "delay_us": 1000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "touch_partial"
+    }
+  },
+  "capital": "$10000 daily cash, max $1000 order, <=10% predecision visible size; exact partial inventory and independent exit depth retained.",
+  "costs": "3bp maker entry and 6bp taker exit plus 1bp extra adverse exit cost. No rebate/VIP assumption. Existing doubled-fee, three-second delay and fill-model stresses are unchanged.",
+  "clocks": "Capture-time signal information; physical exchange-time acceptance and exits. Cancel acknowledgement precedes hold/exit. Any unknown submitted path invalidates its entire day. No position over a UTC hour plus one-minute buffer.",
+  "prior_exposure": "SOL is preselected before inspecting its price outcomes. Same calendar dates have prior BTC exposure, and the underlying rule family is already researched; this does not reset multiplicity or create forward evidence.",
+  "progression": "Require complete positive outcomes under every scenario and positive baseline after deleting the best date before opening independent later dates. This is a screening condition, not an edge or win declaration.",
+  "scope": "Strictly HFT, as explicitly confirmed by user; exclude slower intraday candidates.",
+  "code_sha256": {
+    "research\\liquidation_passive.py": "4fedfbd2a3a855dfcb1b09ee4f1829a273fe1086539934bc6696281696bcdf84",
+    "research\\cross_venue_dual_clock.py": "722f25c19a02b81d1bafaa7edef151573cf604c34a7b3a8fb2c55b0d579f5fe6",
+    "research\\liquidation_event_replay.py": "45cf40d45caee7fb78771bd9a5322280fe85889bd6500029fb11085282b93088",
+    "research_scout\\run_sol_hft_20260930.py": "9f474ef66ebfe55b2e569c8948acae8590e20940a6b539c7d41c979917ba51f1"
+  }
+}

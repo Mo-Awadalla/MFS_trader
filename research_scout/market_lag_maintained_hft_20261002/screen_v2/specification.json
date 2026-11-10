@@ -1,0 +1,47 @@
+{
+  "created_at_utc": "2026-10-02T22:06:29.870461+00:00",
+  "family": "Coherent BTC/ETH shocks with independently maintained target top-of-book state",
+  "relationship": "Dependent model-extension research after the fresh-BBO branch failed. All seven causal leader grids from all 49 native minutes remain fixed. Include the losing TRX quote if it passes this acquisition filter. Preserve all prior results and search multiplicity; no 2025 selection data.",
+  "parents": [
+    {
+      "batch": "batch01",
+      "native_path": "research_scout\\market_lag_native_hft_20261002\\batch01",
+      "native_audit_sha256": "3d5d14b92285bd6c112fe14ac22552529863a707332bd0ac2300a838c97591d1",
+      "events_sha256": "71e3e81e96cda652d7e31b6dc963622359287a260f0059b349eafa05bcd6d8bd",
+      "target_path": "research_scout\\market_lag_targets_hft_20261002\\batch01",
+      "target_results_sha256": "7439b1c3e67262cefd37bf0d91f2c8deb2366cd955d7c61b7c010cef1d301f82",
+      "target_audit_sha256": "1097112ad1e763ff8a752a23c0200ff4a783b9547d21cf74589a1a93ae129d53"
+    },
+    {
+      "batch": "batch02",
+      "native_path": "research_scout\\market_lag_native_hft_20261002\\batch02",
+      "native_audit_sha256": "8c2162534f0cf249447bf3a4bba57481759e40b2d7b62f53f228c7e8f0e95a84",
+      "events_sha256": "28cebf653b7372b75af5e3790270c6071b72233f34b515f177f2101e91d3c129",
+      "target_path": "research_scout\\market_lag_targets_hft_20261002\\batch02",
+      "target_results_sha256": "f378fdee4bdcde4360dfa1e228f27d05fea176d623265d9ead872a273b895954",
+      "target_audit_sha256": "454295cf0d4eb386bb12b12c56e6f2ea2992d3393817f1b2e187cfd83792163b"
+    }
+  ],
+  "parent_hypothesis_sha256": "0ae27a4a34f358b09231ab387d239dfe6d7aaba67fdd350c1569ef72ee77db13",
+  "rationale": "BBO messages are emitted on price/quantity changes; a resting unchanged quote need not expire solely because no new BBO message arrived. This is a hypothesis about a possible quality-filter false negative, not permission to assume old liquidity is available.",
+  "acquisition_filter": "Use hash-verified audited full BBO ledgers at exactly the same anchor/current cutoffs. Require original ID/order/disconnect integrity and clock consistency; permit endpoint capture/T/E ages in (0,5 seconds] solely to identify depth data worth acquiring. Keep <=5bp endpoint spreads, >=2000 USDT each touch, signed target return floor -5bp, gap>=20bp and gap-14bp-both endpoint spreads>2bp. No ranking or cooldown until final depth proof. Do not call this filter an eligible trading signal.",
+  "final_confirmation": "Both endpoint states require native depth captured strictly before their own cutoff, with latest capture/T/E ages in (0,250ms], no clock inconsistency and an uninterrupted pu/u chain. Bridge an initial snapshot to depth U<=snapshot_update_id<=u and retain only the known snapshot range. A full generated REST snapshot may seed the book; an independently audited full-BBO quote may seed a bounded one-level snapshot only if the overlap is verified and both reconstructed top prices/quantities remain proven within the original known boundaries. Never infer deeper levels after range exhaustion. Independently reconstruct each endpoint and match all four BBO fields. Any missing bridge, gap, disconnect, regression, unknown boundary or disagreement is not confirmed. Freeze exact depth implementation and bounded acquisition before parsing new depth.",
+  "selection_and_flow": "After depth confirmation, unchanged descending budget/symbol ranking and global 30-second cooldown per disjoint minute. Both leaders require >=5 MARKET trades, >=5000 USDT and >=75% aligned notional in the causal one-second window; target requires >=5 trades and >=5000 USDT. Freeze/reuse source acquisition and integrity checks. Do not drop known losing observations.",
+  "response_if_confirmed": "Both follow_common_move and fade_common_move; retain fixed <=200-USDT, <=10% causal touch, >=100-USDT minimum, full reserve, inward 10bp FOK collar, 15-second exit after ACK, strict <30-second planned inventory. 6bp fees +1bp adverse per leg, fee/adverse doubles, 250ms/1s/3s delay and 100ms clock stress. Fresh depth can certify the signal but cannot manufacture execution fills; missing execution state remains unknown. All future outcome work requires separate frozen mechanics and independent audit.",
+  "primary_references": [
+    "https://github.com/binance/binance-futures-connector-python/blob/main/binance/websocket/um_futures/websocket_client.py",
+    "https://developers.binance.com/en/docs/products/derivatives-trading-usds-futures/websocket-market-streams/How-to-manage-a-local-order-book-correctly",
+    "https://docs.tardis.dev/historical-data-details/binance-futures"
+  ],
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "68f3cf350657ec4ecb865e71a074c5b7a52a7f061b2ba76f7e14a0f9bc2e2765",
+  "reader_repair_frozen_at_utc": "2026-10-02T22:10:17.552782+00:00",
+  "original_specification_sha256": "40bc07bd35dfa648c8450b349a7633ec84c2dd710ffc9741133ee4522156d7e5",
+  "superseded_results_sha256": "643c3a731bcbe33bc2ab80bc08b2ebe3e99ea264a361dc2206fa17fcc2fb7384",
+  "superseded_audit_sha256": "114ec125e60fcb1337192ae2b9bccedb2e795eaf82b05f92c861bc37e5370eb7",
+  "repair": "V1 rejected all 1953 rows because the audited parquet's nullable epoch/update_id metadata loaded as float64. Accept exactly integral, finite metadata below 2**53; do not cast or round any timestamp. All native nanosecond fields must remain original integers. Full parent raw audits already verify these identities. V1's independent predicate copied the same over-strict type assumption, so its zero-candidate result is superseded, not a financial rejection. Add a mandatory retention check for the original qualifying TRX quote. No economics or thresholds changed.",
+  "repair_preparation_sha256": "12da6ab78e4d8627a69b6f231a3c11bf135b0eddbb38b683a145794b52e1da51"
+}

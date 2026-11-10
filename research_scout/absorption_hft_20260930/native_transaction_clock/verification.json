@@ -1,0 +1,23 @@
+{
+  "verified": true,
+  "native_targets_checked": 20527,
+  "native_raw_files_hashed": 1224,
+  "unique_raw_proof_lines_reconciled": 48605,
+  "target_tie_branches": 377,
+  "formerly_stale_targets_with_continuous_native_state": 187,
+  "targets_with_any_native_state_different_from_E_asof_snapshot": 1470,
+  "source_E_minus_T_us_percentiles": {
+    "0": 0.0,
+    "50": 2000.0,
+    "90": 10000.0,
+    "99": 29740.0000000016,
+    "100": 133000.0
+  },
+  "bounded_attempts": 19406,
+  "unresolved_attempts": 41,
+  "rejected_fok": 41,
+  "maximum_cash_error_dollars": 1.141309269314661e-13,
+  "candidates": [],
+  "scope": "All requested native targets and every submitted cash branch independently reconciled. Raw proof lines matched to original compressed files; every source file hashed. Conditional feed-state execution only, no live-fill guarantee; globally exposed discovery dates.",
+  "reliable_edge_established": false
+}

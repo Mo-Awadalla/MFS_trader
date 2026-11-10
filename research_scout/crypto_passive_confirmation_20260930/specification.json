@@ -1,0 +1,74 @@
+{
+  "created_at_utc": "2026-09-30T14:15:28.755096+00:00",
+  "source_specification": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\crypto_passive_partial_20260930\\specification.json",
+  "candidate": "follow_16bps",
+  "scenarios": {
+    "follow_16bps_base": {
+      "direction": "follow",
+      "offset_bps": 16.0,
+      "hold_ms": 120000,
+      "quote_lifetime_ms": 5000,
+      "feed_delay_ms": 250,
+      "order_delay_ms": 250,
+      "maker_fee_bps": 2.0,
+      "taker_fee_bps": 5.0,
+      "taker_slippage_bps": 1.0,
+      "ticket_dollars": 1000.0,
+      "full_on_first_through": false
+    },
+    "follow_16bps_double_fees": {
+      "direction": "follow",
+      "offset_bps": 16.0,
+      "hold_ms": 120000,
+      "quote_lifetime_ms": 5000,
+      "feed_delay_ms": 250,
+      "order_delay_ms": 250,
+      "maker_fee_bps": 4,
+      "taker_fee_bps": 10,
+      "taker_slippage_bps": 1.0,
+      "ticket_dollars": 1000.0,
+      "full_on_first_through": false
+    },
+    "follow_16bps_latency_1s": {
+      "direction": "follow",
+      "offset_bps": 16.0,
+      "hold_ms": 120000,
+      "quote_lifetime_ms": 5000,
+      "feed_delay_ms": 250,
+      "order_delay_ms": 1000,
+      "maker_fee_bps": 2.0,
+      "taker_fee_bps": 5.0,
+      "taker_slippage_bps": 1.0,
+      "ticket_dollars": 1000.0,
+      "full_on_first_through": false
+    },
+    "follow_16bps_full_first_print": {
+      "direction": "follow",
+      "offset_bps": 16.0,
+      "hold_ms": 120000,
+      "quote_lifetime_ms": 5000,
+      "feed_delay_ms": 250,
+      "order_delay_ms": 250,
+      "maker_fee_bps": 2.0,
+      "taker_fee_bps": 5.0,
+      "taker_slippage_bps": 1.0,
+      "ticket_dollars": 1000.0,
+      "full_on_first_through": true
+    }
+  },
+  "selection": [
+    "2024-01-15",
+    "2024-01-21",
+    "2024-01-28",
+    "2024-01-31"
+  ],
+  "purpose": "Distinguish a negative economic result from insufficient observations. This rule failed its development evidence gate but was positive under every frozen stress. Test the same parameters on later dates without claiming promotion or changing the historical gate.",
+  "history": "Nine development trades, two positive dates, all four scenario totals positive; inadequate evidence and low absolute profit. This choice is outcome-conditioned among six rules; it does not reset multiplicity or prior historical exposure.",
+  "gate": "Every scenario must be complete and have positive total P&L to merit considering further data. Even then this is not an edge pass: original count, uncertainty and reliability requirements remain unmet unless separately demonstrated.",
+  "later_march_data": "Not opened by this confirmation. A failure ends this confirmation without tuning.",
+  "code_sha256": {
+    "research\\crypto_passive_partial.py": "f82f820b97d8dc04082022ba8ed5d80525e8599c15b36c0cba57a06fa5d681c1",
+    "research\\crypto_passive_replay.py": "304fe1a6a9df3068060cae812f64eede90c264ed462c1b34b9a72627ff9b8113",
+    "research_scout\\run_crypto_passive_partial_20260930.py": "e3f83e8b372aeda2e1b8230114503f515a68fa3222b1c2b5ceec5a605cb0abd5"
+  }
+}

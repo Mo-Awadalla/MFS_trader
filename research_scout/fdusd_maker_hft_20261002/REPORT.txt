@@ -1,0 +1,18 @@
+FDUSD MAKER HFT — VERIFIED SPREAD SUPPLY, NO CANDIDATE AFTER ACTIVITY FILTER
+
+No reliable edge, execution claim or P&L result. A wide quote is not a profitable fill.
+
+All contemporaneously recorded FDUSD spot symbols were screened in sixty cached one-minute Binance slices: five fixed clock times on each first-of-month date in 2024. The native source contains 21,889,483 messages, including 1,972,743 relevant FDUSD or FDUSD/USDT books. There are 117 symbols, 5,083 symbol/windows and 254,150 one-second grid decisions.
+
+The frozen gate requires a spread of 8 through 100bp, both touch notionals >=2000 FDUSD, and sufficient persistence: at least 40 valid and 30 qualifying decisions out of 50. 48 symbol/windows across 16 symbols and ten dates pass. They are supply candidates only.
+
+Published exchange notices describe zero FDUSD maker fees during this historical sample. Even so, the screen reserves 1bp fee plus 1bp adverse allowance on each maker leg, separately doubles either allowance, and budgets a 10bp taker fee plus 1bp adverse allowance for forced cleanup. No VIP eligibility or zero taker fee is assumed. FDUSD/USDT quotes are retained separately; FDUSD is never assumed to equal USDT or one US dollar.
+
+Independent verification reconciles every source envelope, all 254,150 decisions, 3,000 FX observations, exact cash budgets and the complete selection with zero numeric difference. Seven focused tests passed. The audit detected optional nanosecond timestamps serialized as float64. Exact clocks were rebuilt from raw integers: maximum prior rounding 128ns, 219,065 affected values, with every non-clock observation and selection unchanged. Use precise_grids_v2/ and precise_fx_v2/ with clock_serialization_repair.json. Original tables and unsuccessful repair/audit evidence remain preserved.
+
+The follow-up activity test rejects all 48 candidates; see ../fdusd_activity_hft_20261002/REPORT.txt. No future-minute return, order queue, pair-specific historical order-grid or actual-fill claim is made. Family-specific 2025 validation remains unopened.
+
+Primary fee notices:
+https://www.binance.com/en/support/announcement/detail/0e4155610e6f4e8bbaaa332545dc43a2
+https://www.binance.com/en/support/announcement/detail/f7c6bd7931db40aa83931556b5a43565
+https://www.binance.com/en/support/announcement/detail/3d8514bbc817423eba52fb23483bcbed

@@ -1,0 +1,56 @@
+{
+  "created_at_utc": "2026-09-30T14:42:31.344432+00:00",
+  "calibration": [
+    "2024-01-01",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-01"
+  ],
+  "evaluation": [
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "threshold_reported_notional": 41419.20793679999,
+  "threshold_definition": "99th percentile of individual reported order notional in Jan-Jun samples; no future-return fitting",
+  "events": "First above-threshold report after a five-minute refractory period; never retrospectively choose burst maximum or end. Quiet mode additionally requires no further report in the next two seconds, known before its delayed decision.",
+  "directions": [
+    "follow",
+    "reverse",
+    "price_follow",
+    "price_reverse"
+  ],
+  "modes": [
+    "immediate",
+    "quiet"
+  ],
+  "horizons_seconds": [
+    30,
+    120
+  ],
+  "controls": "Price directions use the prior 30-second midpoint move at the SAME liquidation event clocks; they do not establish an independent event-timing control.",
+  "configs": 16,
+  "primary_event_configs": 8,
+  "price_controls": 8,
+  "session_version_correction": 64,
+  "clocks": "Native microsecond capture order and exact strictly-prior book lookup. Decision 250ms after receipt, or after a two-second quiet wait. One-second order latency; three-second stress. Quote age<=1s; receive-exchange delay between -1ms and 2s.",
+  "execution": "FOK entry with a causal 5bp tick-rounded collar; known five-level volume-weighted fills. Insufficient unknown deeper liquidity or missing submitted-order state invalidates day. Forced market exit at fixed horizon. No funding-boundary position, overlapping position or free inventory deletion.",
+  "capital": "$10000 each isolated date, max $1000 ticket, <=10% pre-decision top quantity, 0.001 BTC increments; summed daily P&L, not continuous-calendar compounded wealth",
+  "costs": "5bp taker fee plus 1bp adverse execution-cost allowance on EACH side, plus observed spread and depth crossing. Double-fee stress uses 10bp each side.",
+  "gate": "Every scenario complete and profitable; >=50 baseline trades, >=5/6 positive dates, 64-version-adjusted date bootstrap lower>0, positive after deleting best day. Any survivor needs further independent dates and execution validation.",
+  "limitations": "Public liquidation snapshots are throttled, not complete forced volume. Calendar-selected monthly first days are not ordinary continuous coverage. Reconstructed books remove crossed levels and CSV lacks disconnect events. Receive-clock historical replay does not measure actual order fills or impact. Freshly downloaded does not mean genuinely forward evidence.",
+  "sources": [
+    "https://docs.tardis.dev/downloadable-csv-files/data-types",
+    "https://docs.tardis.dev/faq/data",
+    "https://developers.binance.com/zh-CN/docs/products/derivatives-trading-usds-futures/common-definition"
+  ],
+  "code_sha256": {
+    "research\\liquidation_event_replay.py": "45cf40d45caee7fb78771bd9a5322280fe85889bd6500029fb11085282b93088",
+    "research_scout\\run_liquidation_event_20260930.py": "a5041464d52ae8bfe0f22655575742ca47852c8a3fb9d1b8ce4d31472dab54ce"
+  }
+}

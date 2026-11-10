@@ -1,0 +1,37 @@
+{
+  "created_at_utc": "2026-09-30T15:14:29.963006+00:00",
+  "original_spec_sha256": "4e158076040d91bdf6137d7b0dfec21e935aa9075065385eee1849ef71c26d13",
+  "evaluation": [
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "directions": [
+    "follow",
+    "reverse",
+    "price_follow",
+    "price_reverse"
+  ],
+  "modes": [
+    "immediate",
+    "quiet"
+  ],
+  "horizons_seconds": [
+    30,
+    120
+  ],
+  "configs": 16,
+  "correction": "All original signals, costs, quantities, collars, holding periods and delays preserved. Decisions and prior30 controls use capture time; submitted-order fills use strictly-prior exchange-time states. No re-fitting or new dates.",
+  "freshness": "Original one-second quote-age threshold remains, now measured against exchange timestamps for fills. Capture skew below -1ms or a locally ambiguous exchange timestamp invalidates the submitted outcome. Raw actual capture delay is retained.",
+  "prior_exposure": "All original 16 liquidation/control outcomes have been seen; this is an implementation correction, not new untouched validation.",
+  "reliability": "No confidence improvement is inferred from the replay. Six dependent-date samples, historical tuning and prior failed rules remain. Original 64-version intervals are reproduced as diagnostics only; any new promotion requires a full current-exposure correction and independent data.",
+  "code_sha256": {
+    "research\\cross_venue_dual_clock.py": "722f25c19a02b81d1bafaa7edef151573cf604c34a7b3a8fb2c55b0d579f5fe6",
+    "research\\liquidation_event_replay.py": "45cf40d45caee7fb78771bd9a5322280fe85889bd6500029fb11085282b93088",
+    "research_scout\\run_liquidation_event_20260930.py": "a5041464d52ae8bfe0f22655575742ca47852c8a3fb9d1b8ce4d31472dab54ce",
+    "research_scout\\replay_liquidation_dual_clock_20260930.py": "c49b9f380b8ab8a578bfc59927a855875336ff27baae17380924761eda75b60b"
+  }
+}

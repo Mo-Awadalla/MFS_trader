@@ -1,0 +1,34 @@
+{
+  "specification_id": "IEX-Stock-Offer-Depletion-Seconds-v1",
+  "source": "IEX venue-local Level 1; no consolidated NBBO or queue identity",
+  "coverage": [
+    {
+      "date": "2026-07-08",
+      "status": "loaded",
+      "quotes": 226223,
+      "signals": 0
+    }
+  ],
+  "signals": 0,
+  "crossing_proxies": 0,
+  "distinct_trading_sessions": 0,
+  "mean_gross_bps": null,
+  "mean_net_bps": null,
+  "mean_stress_net_bps": null,
+  "calendar_half_mean_net_bps": [
+    null,
+    null
+  ],
+  "day_block_bootstrap_95_bps": [
+    null,
+    null
+  ],
+  "verdict": "PLUMBING_ONLY",
+  "limitations": [
+    "IEX only; no consolidated NBBO, queue identity, or broker fill evidence.",
+    "Crossing displayed quotes is a latency-stressed proxy, not an observed fill.",
+    "AAPL is a fixed scout symbol, not a diversified or survivorship-safe stock universe."
+  ],
+  "mode": "pilot",
+  "spec_sha256": "02a7be937ed9e19664e4c851538f7195942f4bd28d68155aa2b0f741ac886d94"
+}

@@ -1,0 +1,32 @@
+{
+  "message_types": {
+    "delta": 9788
+  },
+  "needed_field_occurrences": {
+    "fundingRate": 9788,
+    "nextFundingTime": 0,
+    "markPrice": 1423
+  },
+  "symbols": 293,
+  "fields_observed_for_complete_state": 0,
+  "examples": {
+    "delta": {
+      "topic": "tickers.1000PEPEUSDT",
+      "type": "delta",
+      "data": {
+        "symbol": "1000PEPEUSDT",
+        "price24hPcnt": "-0.033097",
+        "markPrice": "0.0012998",
+        "indexPrice": "0.0012974",
+        "openInterestValue": "24675038.35",
+        "fundingRate": "0.000321",
+        "bid1Price": "0.0012999",
+        "bid1Size": "77500",
+        "ask1Price": "0.0013000",
+        "ask1Size": "42100"
+      },
+      "cs": 79160591997,
+      "ts": 1704095939977
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "futures_events": 26,
+  "source_quote_files": 26,
+  "complete_quote_files": 26,
+  "source_quote_rows": 436267,
+  "priced_budgets": 23,
+  "eligible_events": 0,
+  "outcomes": {
+    "lag_below_cost_and_buffer": 23,
+    "missing_invalid_or_tied_spy_state": 3
+  },
+  "maximum_remaining_budget_bps": -1.7194030084399532,
+  "maximum_signed_residual_bps": 3.649720616803366,
+  "budgets_sha256": "2e9b897183edb29b7990d29ff0b05ce86fddf8aea7361a6457224460844ac619",
+  "implementation_sha256": "3f07f939e2f35107b09b1d3bd4d5a3683268ea9d179469f0ae63820a53aa3c6e",
+  "future_returns_evaluated": false,
+  "economic_implementations": 0,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

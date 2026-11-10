@@ -1,0 +1,338 @@
+{
+  "native_counts": {
+    "delta": 315826,
+    "with_cts": 316327,
+    "snapshot": 501,
+    "disconnect": 2
+  },
+  "decoded_bytes": 66622083,
+  "sources": 30,
+  "symbols": [
+    {
+      "date": "2024-02-01",
+      "symbol": "XEMUSDT",
+      "delta": 3771,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 3770,
+      "snapshot": 64,
+      "u_repeat": 64,
+      "first_positive_bid": "2024-02-01T09:00:00.1150401Z",
+      "first_positive_ask": "2024-02-01T09:00:00.1556699Z"
+    },
+    {
+      "date": "2024-02-01",
+      "symbol": "LINAUSDT",
+      "delta": 4810,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 4809,
+      "snapshot": 80,
+      "u_repeat": 80,
+      "first_positive_bid": "2024-02-01T09:00:00.1610370Z",
+      "first_positive_ask": "2024-02-01T09:00:00.1610370Z"
+    },
+    {
+      "date": "2024-02-01",
+      "symbol": "FLOWUSDT",
+      "delta": 3927,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 3926,
+      "snapshot": 75,
+      "u_repeat": 75,
+      "first_positive_bid": "2024-02-01T09:00:00.2687733Z",
+      "first_positive_ask": "2024-02-01T09:00:00.1691606Z"
+    },
+    {
+      "date": "2024-04-01",
+      "symbol": "XEMUSDT",
+      "delta": 6025,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 6024,
+      "snapshot": 73,
+      "u_repeat": 73,
+      "first_positive_bid": "2024-04-01T09:00:00.1620278Z",
+      "first_positive_ask": "2024-04-01T09:00:00.1719987Z"
+    },
+    {
+      "date": "2024-04-01",
+      "symbol": "CRVUSDT",
+      "delta": 13468,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 13467,
+      "first_positive_bid": "2024-04-01T09:00:00.1872718Z",
+      "first_positive_ask": "2024-04-01T09:00:00.1782248Z"
+    },
+    {
+      "date": "2024-05-01",
+      "symbol": "ENAUSDT",
+      "delta": 41270,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 41269,
+      "first_positive_bid": "2024-05-01T09:00:00.1004934Z",
+      "first_positive_ask": "2024-05-01T09:00:00.0573579Z"
+    },
+    {
+      "date": "2024-05-01",
+      "symbol": "EOSUSDT",
+      "delta": 24521,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 24520,
+      "first_positive_bid": "2024-05-01T09:00:00.0656883Z",
+      "first_positive_ask": "2024-05-01T09:00:00.0854885Z"
+    },
+    {
+      "date": "2024-05-01",
+      "symbol": "TNSRUSDT",
+      "delta": 11809,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 11808,
+      "snapshot": 13,
+      "u_repeat": 13,
+      "first_positive_bid": "2024-05-01T09:00:00.0792987Z",
+      "first_positive_ask": "2024-05-01T09:00:00.1594650Z"
+    },
+    {
+      "date": "2024-05-01",
+      "symbol": "LINAUSDT",
+      "delta": 15266,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 15265,
+      "snapshot": 12,
+      "u_repeat": 12,
+      "first_positive_bid": "2024-05-01T09:00:00.0948006Z",
+      "first_positive_ask": "2024-05-01T09:00:00.0948006Z"
+    },
+    {
+      "date": "2024-06-01",
+      "symbol": "CRVUSDT",
+      "delta": 4305,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 4304,
+      "snapshot": 12,
+      "u_repeat": 12,
+      "first_positive_bid": "2024-06-01T09:00:00.0696161Z",
+      "first_positive_ask": "2024-06-01T09:00:00.0696161Z"
+    },
+    {
+      "date": "2024-07-01",
+      "symbol": "CRVUSDT",
+      "delta": 14807,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 14806,
+      "first_positive_bid": "2024-07-01T09:00:00.2356011Z",
+      "first_positive_ask": "2024-07-01T09:00:00.2356011Z"
+    },
+    {
+      "date": "2024-08-01",
+      "symbol": "CRVUSDT",
+      "delta": 19055,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 19054,
+      "first_positive_bid": "2024-08-01T09:00:00.3707561Z",
+      "first_positive_ask": "2024-08-01T09:00:00.0615636Z"
+    },
+    {
+      "date": "2024-08-01",
+      "symbol": "XEMUSDT",
+      "delta": 6602,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 6601,
+      "snapshot": 20,
+      "u_repeat": 20,
+      "first_positive_bid": "2024-08-01T09:00:00.0910572Z",
+      "first_positive_ask": "2024-08-01T09:00:00.0798037Z"
+    },
+    {
+      "date": "2024-08-01",
+      "symbol": "EOSUSDT",
+      "delta": 9118,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 9117,
+      "snapshot": 6,
+      "u_repeat": 6,
+      "first_positive_bid": "2024-08-01T09:00:00.8084643Z",
+      "first_positive_ask": "2024-08-01T09:00:00.1573309Z"
+    },
+    {
+      "date": "2024-08-01",
+      "symbol": "FLOWUSDT",
+      "delta": 8523,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 8522,
+      "snapshot": 20,
+      "u_repeat": 20,
+      "first_positive_bid": "2024-08-01T09:00:00.4037637Z",
+      "first_positive_ask": "2024-08-01T09:00:00.1627956Z"
+    },
+    {
+      "date": "2024-09-01",
+      "symbol": "CRVUSDT",
+      "delta": 13351,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 13350,
+      "first_positive_bid": "2024-09-01T09:00:00.0754247Z",
+      "first_positive_ask": "2024-09-01T09:00:00.0644135Z"
+    },
+    {
+      "date": "2024-09-01",
+      "symbol": "CELOUSDT",
+      "delta": 4322,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 4321,
+      "snapshot": 60,
+      "u_repeat": 60,
+      "first_positive_bid": "2024-09-01T09:00:00.3572592Z",
+      "first_positive_ask": "2024-09-01T09:00:00.0674513Z"
+    },
+    {
+      "date": "2024-09-01",
+      "symbol": "REEFUSDT",
+      "delta": 15050,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 15049,
+      "snapshot": 1,
+      "u_repeat": 1,
+      "first_positive_bid": "2024-09-01T09:00:00.5615443Z",
+      "first_positive_ask": "2024-09-01T09:00:00.6424697Z"
+    },
+    {
+      "date": "2024-09-01",
+      "symbol": "STMXUSDT",
+      "delta": 8358,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 8357,
+      "snapshot": 10,
+      "u_repeat": 10,
+      "first_positive_bid": "2024-09-01T09:00:01.1236142Z",
+      "first_positive_ask": "2024-09-01T09:00:01.2738033Z"
+    },
+    {
+      "date": "2024-10-01",
+      "symbol": "NEIROETHUSDT",
+      "delta": 16265,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 16264,
+      "snapshot": 2,
+      "u_repeat": 2,
+      "first_positive_bid": "2024-10-01T09:00:00.0602467Z",
+      "first_positive_ask": "2024-10-01T09:00:00.0602467Z"
+    },
+    {
+      "date": "2024-10-01",
+      "symbol": "CELOUSDT",
+      "delta": 13498,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 13497,
+      "snapshot": 5,
+      "u_repeat": 5,
+      "first_positive_bid": "2024-10-01T09:00:00.1769174Z",
+      "first_positive_ask": "2024-10-01T09:00:00.1978141Z"
+    },
+    {
+      "date": "2024-11-01",
+      "symbol": "SCRUSDT",
+      "delta": 4698,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 4697,
+      "snapshot": 37,
+      "u_repeat": 37,
+      "first_positive_bid": "2024-11-01T09:00:00.4193344Z",
+      "first_positive_ask": "2024-11-01T09:00:00.2290597Z"
+    },
+    {
+      "date": "2024-11-01",
+      "symbol": "CRVUSDT",
+      "delta": 8145,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 8144,
+      "snapshot": 3,
+      "u_repeat": 1,
+      "u_gap": 2,
+      "first_positive_bid": "2024-11-01T09:00:00.2956340Z",
+      "first_positive_ask": "2024-11-01T09:00:00.4543228Z"
+    },
+    {
+      "date": "2024-11-01",
+      "symbol": "LINAUSDT",
+      "delta": 10950,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 10949,
+      "snapshot": 5,
+      "u_repeat": 5,
+      "first_positive_bid": "2024-11-01T09:00:00.3192584Z",
+      "first_positive_ask": "2024-11-01T09:00:00.7591221Z"
+    },
+    {
+      "date": "2024-11-01",
+      "symbol": "NEIROETHUSDT",
+      "delta": 15598,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 15597,
+      "snapshot": 2,
+      "u_repeat": 2,
+      "first_positive_bid": "2024-11-01T09:00:00.3509024Z",
+      "first_positive_ask": "2024-11-01T09:00:00.3703687Z"
+    },
+    {
+      "date": "2024-12-01",
+      "symbol": "CRVUSDT",
+      "delta": 18314,
+      "b_max_positive": 1,
+      "a_max_positive": 1,
+      "u_plus_one": 18313,
+      "snapshot": 1,
+      "u_repeat": 1,
+      "first_positive_bid": "2024-12-01T09:00:00.1208014Z",
+      "first_positive_ask": "2024-12-01T09:00:00.0912774Z"
+    }
+  ],
+  "examples": {
+    "snapshot": {
+      "topic": "orderbook.1.LINAUSDT",
+      "type": "snapshot",
+      "ts": 1706778009147,
+      "data": {
+        "s": "LINAUSDT",
+        "b": [
+          [
+            "0.007450",
+            "85720"
+          ]
+        ],
+        "a": [
+          [
+            "0.007451",
+            "30"
+          ]
+        ],
+        "u": 4112987,
+        "seq": 85821117831
+      },
+      "cts": 1706778008657
+    }
+  }
+}

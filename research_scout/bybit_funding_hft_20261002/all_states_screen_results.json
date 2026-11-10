@@ -1,0 +1,35 @@
+{
+  "events": 8857,
+  "unique_symbols": 481,
+  "source_files": 12,
+  "source_rows_inspected": 159983313,
+  "source_compressed_bytes": 3274038156,
+  "recovered_observations": 8857,
+  "bybit_valid": 5952,
+  "large_bybit_rates": 90,
+  "usable_pairs": 19,
+  "pairs_above_cost_before_execution": 2,
+  "outcomes": {
+    "rate_below_prescreen_hurdle": 5862,
+    "stale_invalid_or_wrong_bybit_funding_time": 1984,
+    "stale_or_invalid_native_state": 921,
+    "missing_exact_binance_symbol": 71,
+    "payment_difference_below_cost_hurdle": 17,
+    "requires_native_lifecycle_and_execution_review": 2
+  },
+  "original_missing_rate_outcomes": {
+    "rate_below_prescreen_hurdle": 4081,
+    "stale_invalid_or_wrong_bybit_funding_time": 1404,
+    "missing_exact_binance_symbol": 31,
+    "payment_difference_below_cost_hurdle": 3
+  },
+  "pairs_sha256": "7aba8a08605184cf54b917d45c9206e679a52de9079d9d12bf04c3934d98ca68",
+  "source_manifest_sha256": "ac468d62cdb1733c3ec2d2af32721f4e67e6258e6e27c9101bd79b415f1fe78f",
+  "implementation_sha256": "5f18fe22b01fe074348884be1df5e019ce0c53c2ebbbeefe9da630741defd754",
+  "native_full_field_provenance_verified": false,
+  "lifecycle_checked": false,
+  "actual_execution_verified": false,
+  "strategy_pnl_tested": false,
+  "reliable_edge_established": false,
+  "selection_2025_opened": false
+}

@@ -1,0 +1,121 @@
+{
+  "source_minutes": 12,
+  "unique_symbols": 348,
+  "symbol_dates": 3275,
+  "grid_states": 163750,
+  "valid_grid_states": 162857,
+  "supply_grid_states": 4717,
+  "qualified_symbol_dates": 29,
+  "selected_symbol_dates": 26,
+  "grid_outcomes": {
+    "spread_or_depth_below_gate": 158140,
+    "supply": 4717,
+    "stale_or_inconsistent_book_clock": 804,
+    "invalid_book_values": 89
+  },
+  "symbol_date_outcomes": {
+    "insufficient_spread_and_depth_persistence": 3172,
+    "insufficient_two_sided_executions": 66,
+    "qualified": 29,
+    "insufficient_valid_book_coverage": 8
+  },
+  "diagnostics": [
+    {
+      "date": "2024-01-01",
+      "native_messages": 270168,
+      "book_messages": 193596,
+      "excluded_non_usdt": 3672,
+      "trade_messages": 72900
+    },
+    {
+      "date": "2024-02-01",
+      "native_messages": 413331,
+      "book_messages": 290222,
+      "trade_messages": 115255,
+      "excluded_non_usdt": 7854,
+      "excluded_off_book_or_unknown_type": 7
+    },
+    {
+      "date": "2024-03-01",
+      "native_messages": 515586,
+      "book_messages": 369900,
+      "excluded_non_usdt": 26453,
+      "trade_messages": 119233
+    },
+    {
+      "date": "2024-04-01",
+      "native_messages": 561553,
+      "book_messages": 408839,
+      "trade_messages": 139622,
+      "excluded_non_usdt": 13092
+    },
+    {
+      "date": "2024-05-01",
+      "native_messages": 810692,
+      "book_messages": 597279,
+      "trade_messages": 161119,
+      "excluded_non_usdt": 52294
+    },
+    {
+      "date": "2024-06-01",
+      "native_messages": 501747,
+      "book_messages": 363352,
+      "trade_messages": 100964,
+      "excluded_non_usdt": 37431
+    },
+    {
+      "date": "2024-07-01",
+      "native_messages": 390324,
+      "excluded_non_usdt": 31559,
+      "book_messages": 285223,
+      "trade_messages": 73542
+    },
+    {
+      "date": "2024-08-01",
+      "native_messages": 375705,
+      "book_messages": 290484,
+      "trade_messages": 58424,
+      "excluded_non_usdt": 26797
+    },
+    {
+      "date": "2024-09-01",
+      "native_messages": 309967,
+      "excluded_non_usdt": 16234,
+      "book_messages": 248633,
+      "trade_messages": 45100
+    },
+    {
+      "date": "2024-10-01",
+      "native_messages": 395658,
+      "book_messages": 299084,
+      "trade_messages": 72938,
+      "excluded_non_usdt": 23636,
+      "excluded_off_book_or_unknown_type": 8
+    },
+    {
+      "date": "2024-11-01",
+      "native_messages": 377603,
+      "book_messages": 296291,
+      "trade_messages": 54310,
+      "excluded_non_usdt": 27002,
+      "excluded_off_book_or_unknown_type": 2
+    },
+    {
+      "date": "2024-12-01",
+      "native_messages": 811389,
+      "excluded_non_usdt": 54692,
+      "book_messages": 588426,
+      "trade_messages": 168271,
+      "excluded_off_book_or_unknown_type": 20
+    }
+  ],
+  "source_decoded_bytes": 1177354351,
+  "source_compressed_bytes": 162158787,
+  "output_sha256": {
+    "grid_states.parquet": "3d2ad81c11ef61ca790ae4877d92e9d2dba1197fb7c93c83045f938a6b9b5050",
+    "symbol_date_supply.parquet": "3479d1fb44a1b261f1eeaa93a6ea6394b37c589051f1ba4602699c3694f6e79c",
+    "selected.parquet": "d7105b0b8bd3d03e8c5561521707b5fa0c89c4a936e124488d6aa19621eb3cb3"
+  },
+  "strategy_pnl_tested": false,
+  "reliable_edge_established": false
+}

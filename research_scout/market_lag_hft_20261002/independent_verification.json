@@ -1,0 +1,16 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T21:25:35.870649+00:00",
+  "source_windows_verified": 60,
+  "leader_grids_verified": 13680,
+  "coherent_leader_grids": 0,
+  "selected_events_verified": 0,
+  "maximum_coherent_same_direction_move_bps": "6.844054815132152951563940000",
+  "maximum_numeric_difference": "0",
+  "results_sha256": "ff49b61f8d36029b4840276566b2f4eb4470e3cab3defdf9d6be2204dcdc4987",
+  "auditor_sha256": "aa7ab6cfc9bd3e0cd3bfd477cd3390699aa55a19bbc0e579eb45f934b7ca09bc",
+  "scope": "Independent leader quality and all-four-return predicates on every grid from the hash-verified parent ledgers, whose native clocks/returns were already independently audited. Complete observed zero-supply branch verified; no new raw replay or future-return calculation.",
+  "economic_implementations": 0,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

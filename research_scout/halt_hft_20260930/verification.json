@@ -1,0 +1,33 @@
+{
+  "verified": true,
+  "source_files_verified": 154,
+  "original_failed_files": 2,
+  "events_independently_reconciled": 78,
+  "provider_empty_responses_verified": 2,
+  "native_records": {
+    "trades": 145043,
+    "quotes": 90743
+  },
+  "screen_outcomes": {
+    "no_reopening_concession_and_support": 17,
+    "missing_stale_invalid_or_ambiguous_signal_quote": 53,
+    "price_or_spread_gate": 2,
+    "no_primary_reopening_print": 6
+  },
+  "nonexclusive_quote_failure_counts": {
+    "prehalt": 33,
+    "30s_anchor": 34,
+    "decision": 38
+  },
+  "reopening_archive_offset_seconds_range": [
+    0.008151154,
+    0.995228536
+  ],
+  "round_lot_assumption_affects_any_candidate": false,
+  "eligible_orders": 0,
+  "profitability_tested": false,
+  "venue_mapping_compatibility_independently_confirmed": false,
+  "strategy_execution_verified": false,
+  "reliable_edge_established": false,
+  "scope": "All preserved successful source files, both explicit empty recovery responses,72 reopening anchors and78 conditional feasibility dispositions verified. No entry/exit economics evaluated; empty vendor data does not prove no actual trades."
+}

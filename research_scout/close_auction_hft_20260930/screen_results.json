@@ -1,0 +1,151 @@
+{
+  "dates": 658,
+  "eligible_dates": 5,
+  "outcomes": {
+    "invalid_or_frozen_auction": 326,
+    "missing_stale_or_noncausal_quote": 309,
+    "no_sell_imbalance": 15,
+    "eligible_for_execution_study": 5,
+    "discount_below_cost_and_margin_gate": 3
+  },
+  "by_year": {
+    "2023": {
+      "dates": 180,
+      "eligible_dates": 0
+    },
+    "2024": {
+      "dates": 246,
+      "eligible_dates": 0
+    },
+    "2025": {
+      "dates": 232,
+      "eligible_dates": 5
+    }
+  },
+  "eligible": [
+    {
+      "date": "2025-11-14",
+      "close_ns": 1763154000000000000,
+      "decision_ns": 1763153935000000000,
+      "eligible": true,
+      "reason": "eligible_for_execution_study",
+      "quantity": 14.0,
+      "bid": 671.3,
+      "ask": 671.31,
+      "indicative": 670.76,
+      "discount_bps": 8.05056950324845,
+      "limit": 670.86,
+      "hypothetical_gain": 7.559999999999491,
+      "hypothetical_fees": 2.284746,
+      "hypothetical_adverse": 1.878884,
+      "hypothetical_net": 3.3963699999994903,
+      "minimum_margin": 1.878128
+    },
+    {
+      "date": "2025-11-17",
+      "close_ns": 1763413200000000000,
+      "decision_ns": 1763413135000000000,
+      "eligible": true,
+      "reason": "eligible_for_execution_study",
+      "quantity": 8.0,
+      "bid": 665.46,
+      "ask": 665.47,
+      "indicative": 664.45,
+      "discount_bps": 15.200541801489997,
+      "limit": 664.92,
+      "hypothetical_gain": 8.079999999999927,
+      "hypothetical_fees": 2.1613104,
+      "hypothetical_adverse": 1.0639280000000002,
+      "hypothetical_net": 4.854761599999927,
+      "minimum_margin": 1.06312
+    },
+    {
+      "date": "2025-11-24",
+      "close_ns": 1764018000000000000,
+      "decision_ns": 1764017935000000000,
+      "eligible": true,
+      "reason": "eligible_for_execution_study",
+      "quantity": 14.0,
+      "bid": 668.94,
+      "ask": 668.95,
+      "indicative": 666.0,
+      "discount_bps": 44.1441441441448,
+      "limit": 668.5,
+      "hypothetical_gain": 41.160000000000764,
+      "hypothetical_fees": 2.2837548,
+      "hypothetical_adverse": 1.868916,
+      "hypothetical_net": 37.00732920000077,
+      "minimum_margin": 1.8648
+    },
+    {
+      "date": "2025-12-09",
+      "close_ns": 1765314000000000000,
+      "decision_ns": 1765313935000000000,
+      "eligible": true,
+      "reason": "eligible_for_execution_study",
+      "quantity": 14.0,
+      "bid": 682.64,
+      "ask": 682.65,
+      "indicative": 675.82,
+      "discount_bps": 100.91444467461574,
+      "limit": 682.2,
+      "hypothetical_gain": 95.47999999999911,
+      "hypothetical_fees": 2.2895088,
+      "hypothetical_adverse": 1.9018440000000003,
+      "hypothetical_net": 91.28864719999912,
+      "minimum_margin": 1.8922960000000004
+    },
+    {
+      "date": "2025-12-18",
+      "close_ns": 1766091600000000000,
+      "decision_ns": 1766091535000000000,
+      "eligible": true,
+      "reason": "eligible_for_execution_study",
+      "quantity": 12.0,
+      "bid": 676.54,
+      "ask": 676.55,
+      "indicative": 675.31,
+      "discount_bps": 18.21385733959291,
+      "limit": 676.08,
+      "hypothetical_gain": 14.760000000000218,
+      "hypothetical_fees": 2.2459544,
+      "hypothetical_adverse": 1.62222,
+      "hypothetical_net": 10.891825600000217,
+      "minimum_margin": 1.620744
+    }
+  ],
+  "auction_audit": {
+    "external_artifacts\\databento_cash_etf_budget_v1\\ARCX.PILLAR\\imbalance\\spy_imbalance_2021-01-01_2026-07-27.dbn.zst": {
+      "rows_scanned_before_boundary": 9716405,
+      "warnings": [
+        "unclosed file <_io.BufferedReader name='C:\\\\Hazem\\\\quant_project\\\\untitled_project\\\\external_artifacts\\\\databento_cash_etf_budget_v1\\\\ARCX.PILLAR\\\\imbalance\\\\spy_imbalance_2021-01-01_2026-07-27.dbn.zst'>"
+      ],
+      "stopped_before_2026_or_partial_tail": true
+    }
+  },
+  "quote_audit": {
+    "external_artifacts\\databento_cash_etf_budget_v1\\EQUS.MINI\\tbbo\\cash_etf_tbbo_2023-03-28_2026-07-27.dbn.partial.dbn.zst": {
+      "rows_scanned_before_boundary": 18255888,
+      "warnings": [
+        "DBN file is truncated or contains an incomplete record",
+        "unclosed file <_io.BufferedReader name='C:\\\\Hazem\\\\quant_project\\\\untitled_project\\\\external_artifacts\\\\databento_cash_etf_budget_v1\\\\EQUS.MINI\\\\tbbo\\\\cash_etf_tbbo_2023-03-28_2026-07-27.dbn.partial.dbn.zst'>"
+      ],
+      "stopped_before_2026_or_partial_tail": true
+    },
+    "external_artifacts\\databento_cash_etf_budget_v1\\EQUS.MINI\\tbbo\\cash_etf_tbbo_tail_2024-10-03_2026-07-27.dbn.zst": {
+      "rows_scanned_before_boundary": 13538223,
+      "warnings": [
+        "unclosed file <_io.BufferedReader name='C:\\\\Hazem\\\\quant_project\\\\untitled_project\\\\external_artifacts\\\\databento_cash_etf_budget_v1\\\\EQUS.MINI\\\\tbbo\\\\cash_etf_tbbo_tail_2024-10-03_2026-07-27.dbn.zst'>"
+      ],
+      "stopped_before_2026_or_partial_tail": true
+    }
+  },
+  "source_panel_sha256": {
+    "calendar.parquet": "84efc9b8f718096e7a3b07c5c976029ea9b74be6d9c6d46760da4fba3153dacd",
+    "auction_inputs.parquet": "fb1e58385c74aadb834b93cba94865ac58a0836c7e35cff8c4d1c7dc10dfc827",
+    "quote_inputs.parquet": "dea3a57b743f6987f87f82bc241722ce1d1a6a26dbffb8da7dcd6fe9fe7fe203",
+    "screen.parquet": "a5f06aca03ca9fca20a0735d7abfb0e19ca8adfeba6bd8f8ccb2c71541cc97df"
+  },
+  "profitability_tested": false,
+  "reliable_edge_established": false
+}

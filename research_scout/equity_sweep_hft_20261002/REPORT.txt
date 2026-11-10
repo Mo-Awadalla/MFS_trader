@@ -1,0 +1,41 @@
+EQUITY MULTI-PRICE SWEEPS — NO POSITIVE PRICE-PROXY RESULT
+
+Goal ACTIVE. No reliable edge, actual portfolio return, execution or competition win established.
+192 local 2023 sessions, 46,428,207 native records and 359,650 trade-bearing event groups.
+563 groups met the frozen directional multi-price sweep predicates. After a fixed delayed
+signal, displaced valid book, costs eligibility, ranking and cooldowns: 172 selected events
+on 107 dates (84 buy-sweep continuation longs and 88 sell-sweep reversal longs).
+
+The separate economic screen gives each event an independent $10,000 budget, limits intended
+quantity by causal displayed size, then uses favorable future displayed quote extrema and
+unlimited execution depth. It is deliberately optimistic, not a funded portfolio or an
+executable-return estimate. Hold is about 15 seconds; the intended order collar is 10bp.
+Each leg costs max($1, $0.005/share), plus 1bp adverse movement and a conservative sell levy.
+Doubling fees/adverse costs and changing timing are separate diagnostic cases.
+
+Complete observed-cohort diagnostics (USD):
+  buy_sweep_continuation_long, latency_250ms: -363.8789480
+  sell_sweep_reversal_long, latency_250ms: -365.0517460
+  sell_sweep_reversal_long, latency_3s: -382.4987829
+All other cases have unknown references and negative known components. No unknown was zeroed.
+The full calendar remains unassessable because SPY 2023-03-28 and UPRO 2023-07-31 contain
+BAD_TS_RECV source errors. The negative observed sample does not prove universal absence of an edge.
+
+Independent checks reconstructed all 563 REPORTED qualifying groups, their fixed signal
+decisions and the final 172-event ledger from native records. Earlier group rejection
+enumeration was not independently repeated. A separate exact accounting audit verified
+1,032 event/case rows, 982 priced cash rows and all 12 aggregates; maximum cash difference zero.
+Forward favorable-quote extrema were NOT independently rebuilt from raw sources. This scope
+is sufficient to record a negative exploratory lead, not to promote a profitable strategy.
+No realistic replay or untouched selection-period outcome test was run for this family.
+
+The first price writer failed on a NumPy int64 quote index. Its artifacts are preserved.
+V2 repairs exact integer JSON encoding only; signals, quantities, timing and economics match.
+Eight sweep tests and two exact serialization tests passed. The frozen candidate auditor
+retains a Ruff B905 adjacent-pair zip style warning; all other audited lint checks passed.
+
+Cumulative: 136 executed economic configurations, 188 implementation versions, 376 focused tests.
+No active research processes remain at finalization. Two configurations and their failed/fixed
+implementations are counted; signal-only screens are not counted as economic experiments.
+Next: investigate IEX historical quote-size provenance and executable passive-fill evidence
+before deciding whether that distinct data source supports a new strict-HFT experiment.

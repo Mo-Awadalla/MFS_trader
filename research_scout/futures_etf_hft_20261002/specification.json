@@ -1,0 +1,1790 @@
+{
+  "created_at_utc": "2026-10-02T19:16:33.927314+00:00",
+  "family": "CME impulse leading a delayed SPY response over 15 seconds",
+  "scope": "Trade only SPY if subsequent execution is justified. Cached ES trades are a predictor, never a futures position. This is another dependent hypothesis in the global exposed search, not independent discovery.",
+  "dates": "Every 2023 XNYS session; known early closes outside the 15:00-15:30 ET window are excluded by calendar, not returns. Missing/degraded/corrupt inputs remain unknown.",
+  "signal": "250ms decisions from 15:00:02 inclusive to 15:29:00 exclusive. Strictly earlier Databento receive times than decision-100ms. Compare last ES trade prices at that cutoff and exactly one second earlier, each no older than 250ms. Same instrument only; no interpolation across a roll.",
+  "gates": "Absolute one-second return >=4bp; at least 100 contracts in that second; signed aggressor volume aligns with price direction at >=75% of total. All records in the window and both endpoint trades must have positive price/size, side A/B, flags only 0 or F_LAST, and capture-event lag between -1ms and 100ms. Keep every decision and rejection. Earliest qualifying event wins a fixed 30-second cooldown.",
+  "spy_supply_next": "Acquire bounded historical SIP windows for every selected event. Use strictly causal SPY standing quotes and their one-second change at the same cutoff. The signed ES-minus-SPY one-second return gap must exceed the full SPY round-trip spread/fee/adverse/borrow budget plus 3bp before any execution replay. This is a convergence opportunity screen, not a profit or guaranteed bound.",
+  "spy_size": "One whole-share SPY position at a time, notional <=10000/1.01 and <=10% of directional displayed size; minimum 100 USDT-equivalent dollars. Fixed from the pre-decision quote. No leverage, future resizing or futures exposure.",
+  "costs": {
+    "commission_per_share": 0.0075,
+    "minimum_per_order": 1.0,
+    "sell_rate": 3e-05,
+    "sell_per_share": 0.0002,
+    "adverse_per_execution": 0.0001,
+    "short_annual_rate": 0.05,
+    "minimum_borrow_days": 1
+  },
+  "if_supply": "Freeze economic implementation before reading future SPY returns. Conditional FOK entry collar 10bp from known quote; 50ms processing, 100ms outbound/ACK base, 250ms and 1s delays in stress. Exit decision 15 seconds after entry ACK, complete inventory horizon <=30s. Keep ambiguous fills/depth and carry unknown positions; charge both commissions, sell charges, adverse cost and one calendar-day short borrow. Test doubled fees/adverse and +/-100ms clock alignment. Actual historical SIP receipt/routing and stock-borrow eligibility remain conditional.",
+  "feed_caution": "EQUS.MINI is a derived anonymized multi-venue BBO, not official SIP NBBO; do not treat its subset quotes as guaranteed market-wide executable prices. Cached ETF opening MBP-1 does not overlap this futures window, so the first screen uses only cached futures. SIP source quotes will be requested only for selected events.",
+  "volume_roll": "ES.v.0 uses previous-day volume according to Databento. Read actual mapped instrument IDs and compare within the same contract. Do not splice unadjusted rollover price levels into returns.",
+  "data_only": true,
+  "strategy_pnl_tested": false,
+  "selection_2024_2025_opened_by_this_family": false,
+  "prior_exposure": "These historical periods and futures close studies were used in earlier research. A new family-specific holdout is not globally pristine forward evidence.",
+  "sources": [
+    "https://databento.com/docs/schemas-and-data-formats/trades",
+    "https://databento.com/docs/standards-and-conventions/symbology",
+    "https://databento.com/docs/venues-and-datasets"
+  ],
+  "jobs": [
+    {
+      "date": "2023-01-03",
+      "start_ns": 1672776000000000000,
+      "end_ns": 1672777800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-03\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-04",
+      "start_ns": 1672862400000000000,
+      "end_ns": 1672864200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-04\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-05",
+      "start_ns": 1672948800000000000,
+      "end_ns": 1672950600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-05\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-06",
+      "start_ns": 1673035200000000000,
+      "end_ns": 1673037000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-09",
+      "start_ns": 1673294400000000000,
+      "end_ns": 1673296200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-09\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-10",
+      "start_ns": 1673380800000000000,
+      "end_ns": 1673382600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-10\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-11",
+      "start_ns": 1673467200000000000,
+      "end_ns": 1673469000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-11\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-12",
+      "start_ns": 1673553600000000000,
+      "end_ns": 1673555400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-12\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-13",
+      "start_ns": 1673640000000000000,
+      "end_ns": 1673641800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-17",
+      "start_ns": 1673985600000000000,
+      "end_ns": 1673987400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-17\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-18",
+      "start_ns": 1674072000000000000,
+      "end_ns": 1674073800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-18\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-19",
+      "start_ns": 1674158400000000000,
+      "end_ns": 1674160200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-19\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-20",
+      "start_ns": 1674244800000000000,
+      "end_ns": 1674246600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-20\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-23",
+      "start_ns": 1674504000000000000,
+      "end_ns": 1674505800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-23\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-24",
+      "start_ns": 1674590400000000000,
+      "end_ns": 1674592200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-24\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-25",
+      "start_ns": 1674676800000000000,
+      "end_ns": 1674678600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-25\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-26",
+      "start_ns": 1674763200000000000,
+      "end_ns": 1674765000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-26\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-27",
+      "start_ns": 1674849600000000000,
+      "end_ns": 1674851400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-30",
+      "start_ns": 1675108800000000000,
+      "end_ns": 1675110600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-30\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-01-31",
+      "start_ns": 1675195200000000000,
+      "end_ns": 1675197000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-01-31\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-01",
+      "start_ns": 1675281600000000000,
+      "end_ns": 1675283400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-01\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-02",
+      "start_ns": 1675368000000000000,
+      "end_ns": 1675369800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-02\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-03",
+      "start_ns": 1675454400000000000,
+      "end_ns": 1675456200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-03\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-06",
+      "start_ns": 1675713600000000000,
+      "end_ns": 1675715400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-07",
+      "start_ns": 1675800000000000000,
+      "end_ns": 1675801800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-07\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-08",
+      "start_ns": 1675886400000000000,
+      "end_ns": 1675888200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-08\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-09",
+      "start_ns": 1675972800000000000,
+      "end_ns": 1675974600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-09\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-10",
+      "start_ns": 1676059200000000000,
+      "end_ns": 1676061000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-10\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-13",
+      "start_ns": 1676318400000000000,
+      "end_ns": 1676320200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-14",
+      "start_ns": 1676404800000000000,
+      "end_ns": 1676406600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-14\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-15",
+      "start_ns": 1676491200000000000,
+      "end_ns": 1676493000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-15\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-16",
+      "start_ns": 1676577600000000000,
+      "end_ns": 1676579400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-16\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-17",
+      "start_ns": 1676664000000000000,
+      "end_ns": 1676665800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-17\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-21",
+      "start_ns": 1677009600000000000,
+      "end_ns": 1677011400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-21\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-22",
+      "start_ns": 1677096000000000000,
+      "end_ns": 1677097800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-22\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-23",
+      "start_ns": 1677182400000000000,
+      "end_ns": 1677184200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-23\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-24",
+      "start_ns": 1677268800000000000,
+      "end_ns": 1677270600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-24\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-27",
+      "start_ns": 1677528000000000000,
+      "end_ns": 1677529800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-02-28",
+      "start_ns": 1677614400000000000,
+      "end_ns": 1677616200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-02-28\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-01",
+      "start_ns": 1677700800000000000,
+      "end_ns": 1677702600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-01\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-02",
+      "start_ns": 1677787200000000000,
+      "end_ns": 1677789000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-02\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-03",
+      "start_ns": 1677873600000000000,
+      "end_ns": 1677875400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-03\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-06",
+      "start_ns": 1678132800000000000,
+      "end_ns": 1678134600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-07",
+      "start_ns": 1678219200000000000,
+      "end_ns": 1678221000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-07\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-08",
+      "start_ns": 1678305600000000000,
+      "end_ns": 1678307400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-08\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-09",
+      "start_ns": 1678392000000000000,
+      "end_ns": 1678393800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-09\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-10",
+      "start_ns": 1678478400000000000,
+      "end_ns": 1678480200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-10\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-13",
+      "start_ns": 1678734000000000000,
+      "end_ns": 1678735800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-14",
+      "start_ns": 1678820400000000000,
+      "end_ns": 1678822200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-14\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-15",
+      "start_ns": 1678906800000000000,
+      "end_ns": 1678908600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-15\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-16",
+      "start_ns": 1678993200000000000,
+      "end_ns": 1678995000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-16\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-17",
+      "start_ns": 1679079600000000000,
+      "end_ns": 1679081400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-17\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-20",
+      "start_ns": 1679338800000000000,
+      "end_ns": 1679340600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-20\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-21",
+      "start_ns": 1679425200000000000,
+      "end_ns": 1679427000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-21\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-22",
+      "start_ns": 1679511600000000000,
+      "end_ns": 1679513400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-22\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-23",
+      "start_ns": 1679598000000000000,
+      "end_ns": 1679599800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-23\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-24",
+      "start_ns": 1679684400000000000,
+      "end_ns": 1679686200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-24\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-27",
+      "start_ns": 1679943600000000000,
+      "end_ns": 1679945400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-28",
+      "start_ns": 1680030000000000000,
+      "end_ns": 1680031800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-28\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-29",
+      "start_ns": 1680116400000000000,
+      "end_ns": 1680118200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-29\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-30",
+      "start_ns": 1680202800000000000,
+      "end_ns": 1680204600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-30\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-03-31",
+      "start_ns": 1680289200000000000,
+      "end_ns": 1680291000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-03-31\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-03",
+      "start_ns": 1680548400000000000,
+      "end_ns": 1680550200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-03\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-04",
+      "start_ns": 1680634800000000000,
+      "end_ns": 1680636600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-04\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-05",
+      "start_ns": 1680721200000000000,
+      "end_ns": 1680723000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-05\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-06",
+      "start_ns": 1680807600000000000,
+      "end_ns": 1680809400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-10",
+      "start_ns": 1681153200000000000,
+      "end_ns": 1681155000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-10\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-11",
+      "start_ns": 1681239600000000000,
+      "end_ns": 1681241400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-11\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-12",
+      "start_ns": 1681326000000000000,
+      "end_ns": 1681327800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-12\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-13",
+      "start_ns": 1681412400000000000,
+      "end_ns": 1681414200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-14",
+      "start_ns": 1681498800000000000,
+      "end_ns": 1681500600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-14\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-17",
+      "start_ns": 1681758000000000000,
+      "end_ns": 1681759800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-17\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-18",
+      "start_ns": 1681844400000000000,
+      "end_ns": 1681846200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-18\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-19",
+      "start_ns": 1681930800000000000,
+      "end_ns": 1681932600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-19\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-20",
+      "start_ns": 1682017200000000000,
+      "end_ns": 1682019000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-20\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-21",
+      "start_ns": 1682103600000000000,
+      "end_ns": 1682105400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-21\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-24",
+      "start_ns": 1682362800000000000,
+      "end_ns": 1682364600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-24\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-25",
+      "start_ns": 1682449200000000000,
+      "end_ns": 1682451000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-25\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-26",
+      "start_ns": 1682535600000000000,
+      "end_ns": 1682537400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-26\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-27",
+      "start_ns": 1682622000000000000,
+      "end_ns": 1682623800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-04-28",
+      "start_ns": 1682708400000000000,
+      "end_ns": 1682710200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-04-28\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-01",
+      "start_ns": 1682967600000000000,
+      "end_ns": 1682969400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-01\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-02",
+      "start_ns": 1683054000000000000,
+      "end_ns": 1683055800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-02\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-03",
+      "start_ns": 1683140400000000000,
+      "end_ns": 1683142200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-03\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-04",
+      "start_ns": 1683226800000000000,
+      "end_ns": 1683228600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-04\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-05",
+      "start_ns": 1683313200000000000,
+      "end_ns": 1683315000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-05\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-08",
+      "start_ns": 1683572400000000000,
+      "end_ns": 1683574200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-08\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-09",
+      "start_ns": 1683658800000000000,
+      "end_ns": 1683660600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-09\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-10",
+      "start_ns": 1683745200000000000,
+      "end_ns": 1683747000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-10\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-11",
+      "start_ns": 1683831600000000000,
+      "end_ns": 1683833400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-11\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-12",
+      "start_ns": 1683918000000000000,
+      "end_ns": 1683919800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-12\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-15",
+      "start_ns": 1684177200000000000,
+      "end_ns": 1684179000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-15\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-16",
+      "start_ns": 1684263600000000000,
+      "end_ns": 1684265400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-16\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-17",
+      "start_ns": 1684350000000000000,
+      "end_ns": 1684351800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-17\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-18",
+      "start_ns": 1684436400000000000,
+      "end_ns": 1684438200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-18\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-19",
+      "start_ns": 1684522800000000000,
+      "end_ns": 1684524600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-19\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-22",
+      "start_ns": 1684782000000000000,
+      "end_ns": 1684783800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-22\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-23",
+      "start_ns": 1684868400000000000,
+      "end_ns": 1684870200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-23\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-24",
+      "start_ns": 1684954800000000000,
+      "end_ns": 1684956600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-24\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-25",
+      "start_ns": 1685041200000000000,
+      "end_ns": 1685043000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-25\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-26",
+      "start_ns": 1685127600000000000,
+      "end_ns": 1685129400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-26\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-30",
+      "start_ns": 1685473200000000000,
+      "end_ns": 1685475000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-30\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-05-31",
+      "start_ns": 1685559600000000000,
+      "end_ns": 1685561400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-05-31\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-01",
+      "start_ns": 1685646000000000000,
+      "end_ns": 1685647800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-01\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-02",
+      "start_ns": 1685732400000000000,
+      "end_ns": 1685734200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-02\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-05",
+      "start_ns": 1685991600000000000,
+      "end_ns": 1685993400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-05\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-06",
+      "start_ns": 1686078000000000000,
+      "end_ns": 1686079800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-07",
+      "start_ns": 1686164400000000000,
+      "end_ns": 1686166200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-07\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-08",
+      "start_ns": 1686250800000000000,
+      "end_ns": 1686252600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-08\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-09",
+      "start_ns": 1686337200000000000,
+      "end_ns": 1686339000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-09\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-12",
+      "start_ns": 1686596400000000000,
+      "end_ns": 1686598200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-12\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-13",
+      "start_ns": 1686682800000000000,
+      "end_ns": 1686684600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-14",
+      "start_ns": 1686769200000000000,
+      "end_ns": 1686771000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-14\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-15",
+      "start_ns": 1686855600000000000,
+      "end_ns": 1686857400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-15\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-16",
+      "start_ns": 1686942000000000000,
+      "end_ns": 1686943800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-16\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-20",
+      "start_ns": 1687287600000000000,
+      "end_ns": 1687289400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-20\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-21",
+      "start_ns": 1687374000000000000,
+      "end_ns": 1687375800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-21\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-22",
+      "start_ns": 1687460400000000000,
+      "end_ns": 1687462200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-22\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-23",
+      "start_ns": 1687546800000000000,
+      "end_ns": 1687548600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-23\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-26",
+      "start_ns": 1687806000000000000,
+      "end_ns": 1687807800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-26\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-27",
+      "start_ns": 1687892400000000000,
+      "end_ns": 1687894200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-28",
+      "start_ns": 1687978800000000000,
+      "end_ns": 1687980600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-28\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-29",
+      "start_ns": 1688065200000000000,
+      "end_ns": 1688067000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-29\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-06-30",
+      "start_ns": 1688151600000000000,
+      "end_ns": 1688153400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-06-30\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-03",
+      "start_ns": 1688410800000000000,
+      "end_ns": 1688412600000000000,
+      "cash_market_open_through_window": false,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-03\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-05",
+      "start_ns": 1688583600000000000,
+      "end_ns": 1688585400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-05\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-06",
+      "start_ns": 1688670000000000000,
+      "end_ns": 1688671800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-07",
+      "start_ns": 1688756400000000000,
+      "end_ns": 1688758200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-07\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-10",
+      "start_ns": 1689015600000000000,
+      "end_ns": 1689017400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-10\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-11",
+      "start_ns": 1689102000000000000,
+      "end_ns": 1689103800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-11\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-12",
+      "start_ns": 1689188400000000000,
+      "end_ns": 1689190200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-12\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-13",
+      "start_ns": 1689274800000000000,
+      "end_ns": 1689276600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-14",
+      "start_ns": 1689361200000000000,
+      "end_ns": 1689363000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-14\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-17",
+      "start_ns": 1689620400000000000,
+      "end_ns": 1689622200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-17\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-18",
+      "start_ns": 1689706800000000000,
+      "end_ns": 1689708600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-18\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-19",
+      "start_ns": 1689793200000000000,
+      "end_ns": 1689795000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-19\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-20",
+      "start_ns": 1689879600000000000,
+      "end_ns": 1689881400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-20\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-21",
+      "start_ns": 1689966000000000000,
+      "end_ns": 1689967800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-21\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-24",
+      "start_ns": 1690225200000000000,
+      "end_ns": 1690227000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-24\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-25",
+      "start_ns": 1690311600000000000,
+      "end_ns": 1690313400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-25\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-26",
+      "start_ns": 1690398000000000000,
+      "end_ns": 1690399800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-26\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-27",
+      "start_ns": 1690484400000000000,
+      "end_ns": 1690486200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-28",
+      "start_ns": 1690570800000000000,
+      "end_ns": 1690572600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-28\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-07-31",
+      "start_ns": 1690830000000000000,
+      "end_ns": 1690831800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-07-31\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-01",
+      "start_ns": 1690916400000000000,
+      "end_ns": 1690918200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-01\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-02",
+      "start_ns": 1691002800000000000,
+      "end_ns": 1691004600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-02\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-03",
+      "start_ns": 1691089200000000000,
+      "end_ns": 1691091000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-03\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-04",
+      "start_ns": 1691175600000000000,
+      "end_ns": 1691177400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-04\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-07",
+      "start_ns": 1691434800000000000,
+      "end_ns": 1691436600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-07\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-08",
+      "start_ns": 1691521200000000000,
+      "end_ns": 1691523000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-08\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-09",
+      "start_ns": 1691607600000000000,
+      "end_ns": 1691609400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-09\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-10",
+      "start_ns": 1691694000000000000,
+      "end_ns": 1691695800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-10\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-11",
+      "start_ns": 1691780400000000000,
+      "end_ns": 1691782200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-11\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-14",
+      "start_ns": 1692039600000000000,
+      "end_ns": 1692041400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-14\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-15",
+      "start_ns": 1692126000000000000,
+      "end_ns": 1692127800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-15\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-16",
+      "start_ns": 1692212400000000000,
+      "end_ns": 1692214200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-16\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-17",
+      "start_ns": 1692298800000000000,
+      "end_ns": 1692300600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-17\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-18",
+      "start_ns": 1692385200000000000,
+      "end_ns": 1692387000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-18\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-21",
+      "start_ns": 1692644400000000000,
+      "end_ns": 1692646200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-21\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-22",
+      "start_ns": 1692730800000000000,
+      "end_ns": 1692732600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-22\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-23",
+      "start_ns": 1692817200000000000,
+      "end_ns": 1692819000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-23\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-24",
+      "start_ns": 1692903600000000000,
+      "end_ns": 1692905400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-24\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-25",
+      "start_ns": 1692990000000000000,
+      "end_ns": 1692991800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-25\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-28",
+      "start_ns": 1693249200000000000,
+      "end_ns": 1693251000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-28\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-29",
+      "start_ns": 1693335600000000000,
+      "end_ns": 1693337400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-29\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-30",
+      "start_ns": 1693422000000000000,
+      "end_ns": 1693423800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-30\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-08-31",
+      "start_ns": 1693508400000000000,
+      "end_ns": 1693510200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-08-31\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-01",
+      "start_ns": 1693594800000000000,
+      "end_ns": 1693596600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-01\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-05",
+      "start_ns": 1693940400000000000,
+      "end_ns": 1693942200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-05\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-06",
+      "start_ns": 1694026800000000000,
+      "end_ns": 1694028600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-07",
+      "start_ns": 1694113200000000000,
+      "end_ns": 1694115000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-07\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-08",
+      "start_ns": 1694199600000000000,
+      "end_ns": 1694201400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-08\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-11",
+      "start_ns": 1694458800000000000,
+      "end_ns": 1694460600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-11\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-12",
+      "start_ns": 1694545200000000000,
+      "end_ns": 1694547000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-12\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-13",
+      "start_ns": 1694631600000000000,
+      "end_ns": 1694633400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-14",
+      "start_ns": 1694718000000000000,
+      "end_ns": 1694719800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-14\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-15",
+      "start_ns": 1694804400000000000,
+      "end_ns": 1694806200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-15\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-18",
+      "start_ns": 1695063600000000000,
+      "end_ns": 1695065400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-18\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-19",
+      "start_ns": 1695150000000000000,
+      "end_ns": 1695151800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-19\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-20",
+      "start_ns": 1695236400000000000,
+      "end_ns": 1695238200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-20\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-21",
+      "start_ns": 1695322800000000000,
+      "end_ns": 1695324600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-21\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-22",
+      "start_ns": 1695409200000000000,
+      "end_ns": 1695411000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-22\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-25",
+      "start_ns": 1695668400000000000,
+      "end_ns": 1695670200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-25\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-26",
+      "start_ns": 1695754800000000000,
+      "end_ns": 1695756600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-26\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-27",
+      "start_ns": 1695841200000000000,
+      "end_ns": 1695843000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-28",
+      "start_ns": 1695927600000000000,
+      "end_ns": 1695929400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-28\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-09-29",
+      "start_ns": 1696014000000000000,
+      "end_ns": 1696015800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-09-29\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-02",
+      "start_ns": 1696273200000000000,
+      "end_ns": 1696275000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-02\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-03",
+      "start_ns": 1696359600000000000,
+      "end_ns": 1696361400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-03\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-04",
+      "start_ns": 1696446000000000000,
+      "end_ns": 1696447800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-04\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-05",
+      "start_ns": 1696532400000000000,
+      "end_ns": 1696534200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-05\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-06",
+      "start_ns": 1696618800000000000,
+      "end_ns": 1696620600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-09",
+      "start_ns": 1696878000000000000,
+      "end_ns": 1696879800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-09\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-10",
+      "start_ns": 1696964400000000000,
+      "end_ns": 1696966200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-10\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-11",
+      "start_ns": 1697050800000000000,
+      "end_ns": 1697052600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-11\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-12",
+      "start_ns": 1697137200000000000,
+      "end_ns": 1697139000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-12\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-13",
+      "start_ns": 1697223600000000000,
+      "end_ns": 1697225400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-16",
+      "start_ns": 1697482800000000000,
+      "end_ns": 1697484600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-16\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-17",
+      "start_ns": 1697569200000000000,
+      "end_ns": 1697571000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-17\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-18",
+      "start_ns": 1697655600000000000,
+      "end_ns": 1697657400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-18\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-19",
+      "start_ns": 1697742000000000000,
+      "end_ns": 1697743800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-19\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-20",
+      "start_ns": 1697828400000000000,
+      "end_ns": 1697830200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-20\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-23",
+      "start_ns": 1698087600000000000,
+      "end_ns": 1698089400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-23\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-24",
+      "start_ns": 1698174000000000000,
+      "end_ns": 1698175800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-24\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-25",
+      "start_ns": 1698260400000000000,
+      "end_ns": 1698262200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-25\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-26",
+      "start_ns": 1698346800000000000,
+      "end_ns": 1698348600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-26\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-27",
+      "start_ns": 1698433200000000000,
+      "end_ns": 1698435000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-30",
+      "start_ns": 1698692400000000000,
+      "end_ns": 1698694200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-30\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-10-31",
+      "start_ns": 1698778800000000000,
+      "end_ns": 1698780600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-10-31\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-01",
+      "start_ns": 1698865200000000000,
+      "end_ns": 1698867000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-01\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-02",
+      "start_ns": 1698951600000000000,
+      "end_ns": 1698953400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-02\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-03",
+      "start_ns": 1699038000000000000,
+      "end_ns": 1699039800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-03\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-06",
+      "start_ns": 1699300800000000000,
+      "end_ns": 1699302600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-07",
+      "start_ns": 1699387200000000000,
+      "end_ns": 1699389000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-07\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-08",
+      "start_ns": 1699473600000000000,
+      "end_ns": 1699475400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-08\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-09",
+      "start_ns": 1699560000000000000,
+      "end_ns": 1699561800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-09\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-10",
+      "start_ns": 1699646400000000000,
+      "end_ns": 1699648200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-10\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-13",
+      "start_ns": 1699905600000000000,
+      "end_ns": 1699907400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-14",
+      "start_ns": 1699992000000000000,
+      "end_ns": 1699993800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-14\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-15",
+      "start_ns": 1700078400000000000,
+      "end_ns": 1700080200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-15\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-16",
+      "start_ns": 1700164800000000000,
+      "end_ns": 1700166600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-16\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-17",
+      "start_ns": 1700251200000000000,
+      "end_ns": 1700253000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-17\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-20",
+      "start_ns": 1700510400000000000,
+      "end_ns": 1700512200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-20\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-21",
+      "start_ns": 1700596800000000000,
+      "end_ns": 1700598600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-21\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-22",
+      "start_ns": 1700683200000000000,
+      "end_ns": 1700685000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-22\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-24",
+      "start_ns": 1700856000000000000,
+      "end_ns": 1700857800000000000,
+      "cash_market_open_through_window": false,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-24\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-27",
+      "start_ns": 1701115200000000000,
+      "end_ns": 1701117000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-28",
+      "start_ns": 1701201600000000000,
+      "end_ns": 1701203400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-28\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-29",
+      "start_ns": 1701288000000000000,
+      "end_ns": 1701289800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-29\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-11-30",
+      "start_ns": 1701374400000000000,
+      "end_ns": 1701376200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-11-30\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-01",
+      "start_ns": 1701460800000000000,
+      "end_ns": 1701462600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-01\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-04",
+      "start_ns": 1701720000000000000,
+      "end_ns": 1701721800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-04\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-05",
+      "start_ns": 1701806400000000000,
+      "end_ns": 1701808200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-05\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-06",
+      "start_ns": 1701892800000000000,
+      "end_ns": 1701894600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-06\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-07",
+      "start_ns": 1701979200000000000,
+      "end_ns": 1701981000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-07\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-08",
+      "start_ns": 1702065600000000000,
+      "end_ns": 1702067400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-08\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-11",
+      "start_ns": 1702324800000000000,
+      "end_ns": 1702326600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-11\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-12",
+      "start_ns": 1702411200000000000,
+      "end_ns": 1702413000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-12\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-13",
+      "start_ns": 1702497600000000000,
+      "end_ns": 1702499400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-13\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-14",
+      "start_ns": 1702584000000000000,
+      "end_ns": 1702585800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-14\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-15",
+      "start_ns": 1702670400000000000,
+      "end_ns": 1702672200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-15\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-18",
+      "start_ns": 1702929600000000000,
+      "end_ns": 1702931400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-18\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-19",
+      "start_ns": 1703016000000000000,
+      "end_ns": 1703017800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-19\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-20",
+      "start_ns": 1703102400000000000,
+      "end_ns": 1703104200000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-20\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-21",
+      "start_ns": 1703188800000000000,
+      "end_ns": 1703190600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-21\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-22",
+      "start_ns": 1703275200000000000,
+      "end_ns": 1703277000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-22\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-26",
+      "start_ns": 1703620800000000000,
+      "end_ns": 1703622600000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-26\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-27",
+      "start_ns": 1703707200000000000,
+      "end_ns": 1703709000000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-27\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-28",
+      "start_ns": 1703793600000000000,
+      "end_ns": 1703795400000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-28\\es_trades.dbn.zst"
+    },
+    {
+      "date": "2023-12-29",
+      "start_ns": 1703880000000000000,
+      "end_ns": 1703881800000000000,
+      "cash_market_open_through_window": true,
+      "path": "external_artifacts\\databento_es_close\\GLBX.MDP3\\sessions\\2023\\2023-12-29\\es_trades.dbn.zst"
+    }
+  ],
+  "code_sha256": {
+    "research_scout/screen_futures_etf_20261002.py": "6c06139665528ea6c5b186b0ce872eb14adad6c8238eaaa88b96e2cea58b71c1",
+    "research/futures_etf_impulse.py": "0b950cef8550271663c9fc45a90f5d991a1ee2f2eb475b7eb06131e3e4712f7d",
+    "tests/unit/test_futures_etf_impulse.py": "58e54f0d53cda8c89d28827a81168541a39084c1475b44eaf4bdc9055524b4ea"
+  },
+  "source_conditions_sha256": "5f5ff3fc981e184a591682d6bf8723145a388705063e8d2ca3247320e3f14acc",
+  "download_ledger_sha256": "64adf00017704a87eeb1e0ed65cb625bb5e6283bd00c4c7eb902ee6a7a8d532b"
+}

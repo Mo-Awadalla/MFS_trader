@@ -1,0 +1,10 @@
+{
+  "created_at_utc": "2026-10-02T21:45:04.273358+00:00",
+  "reason": "Apply the same exact acquisition-grid alignment already frozen before batch02 retrieval. This file binds that unchanged rule to the second batch specification.",
+  "rule": "Admit a native coherent-leader grid only when the exact (date, offset_minutes, decision_ns) also passed the already frozen and audited normalized acquisition prefilter. Do not admit other grids merely because they share an acquired minute. Native thresholds, costs and target selection remain unchanged.",
+  "parent_native_specification_sha256": "ed348bee24a4283004b6733d967356b59c362cdba340919eb534b7a06b59f3c5",
+  "coverage_results_sha256": "aea108418ea873194c86c6d67212d565611e31721e9d3628c7ec29420433e31e",
+  "economic_implementations": 0,
+  "target_quotes_opened": false,
+  "future_returns_evaluated": false
+}

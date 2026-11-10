@@ -1,0 +1,31 @@
+{
+  "verified": true,
+  "source_hashes_checked": 144,
+  "calendar_selected_csv_snapshots_checked": 24,
+  "all_snapshot_eligibility_checks": 288,
+  "paired_economic_gate_checks": 144,
+  "unusable_snapshots": [
+    {
+      "date": "2024-01-01",
+      "symbol": "XRPUSDT",
+      "exchange": "bybit",
+      "capture_age_seconds": 8.273386
+    },
+    {
+      "date": "2024-01-01",
+      "symbol": "XRPUSDT",
+      "exchange": "bybit",
+      "capture_age_seconds": 8.373305
+    },
+    {
+      "date": "2024-06-01",
+      "symbol": "XRPUSDT",
+      "exchange": "bybit",
+      "capture_age_seconds": 7.798077
+    }
+  ],
+  "native_websocket_field_mapping_verified": false,
+  "scope": "All funding arithmetic and eligibility checks; raw normalized CSV as-of checks on 24 first-January snapshots. No fills, settled funding cashflows or future-return labels tested. Native WebSocket normalization remains an admission requirement before any profitable strategy claim.",
+  "strategy_pnl_tested": false,
+  "edge_established": false
+}

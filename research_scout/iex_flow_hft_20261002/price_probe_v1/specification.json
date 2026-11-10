@@ -1,0 +1,203 @@
+{
+  "policy": "Buy the original signal bid with fixed causal quantity; cancel remainder at local decision+5s; after cancel acknowledgement, offer bought shares at the original signal ask; cancel target at local decision+15s; wait for acknowledgement, then market-sell residual inventory. Long only; one signal per date.",
+  "timing": "One-way delay L. Entry arrival d+50ms+L. Entry cancellation arrival d+5s+L; acknowledgement d+5s+2L. Target sell arrival d+5.05s+3L. Target cancellation arrival d+15s+L; acknowledgement d+15s+2L. Forced residual sale arrival d+15.05s+3L. Maximum planned exposure under 30 seconds in every case.",
+  "order_type": "Ordinary non-routable limits. Post Only was implemented February 15, 2024, so its protections are not assumed in 2023. Reject/reprice/hidden liquidity and NBBO price-slide behavior are unresolved in this proxy and must be verified for promotion.",
+  "post_only_history_source": "https://www.sec.gov/files/rules/sro/iex/2024/34-99471.pdf",
+  "entry_proxy": "At arrival, if valid observed venue ask<=buy limit, assume the intended quantity fills at the limit, ignoring future depth. Otherwise allocate sequential eligible native prints at/below limit, up to intended quantity, strictly between arrival and cancel arrival. Preserve partial quantity. No queue priority assumed to be proven.",
+  "exit_proxy": "At target arrival, if valid observed venue bid>=sell limit, assume all inventory fills at the limit. Otherwise allocate eligible native prints at/above limit until target cancellation. Force remaining shares at maintained valid observed bid at forced-sale arrival, ignoring execution depth. Charge separate commissions on partial target and forced sell orders.",
+  "fill_models": [
+    "touch",
+    "strict_trade_through"
+  ],
+  "strict_model": "Change passive buy print price<=limit to <limit and sell >=limit to >limit. This removes equality/queue claims but is still a conditional price proxy; acceptance, repricing and private fills remain unverified.",
+  "eligible_trades": "Native T with positive price/size and flags & 0x58 ==0. Ignore causally known broken prints; any break referring to a used fill by the fixed source endpoint makes that case unknown. Prints at exact order boundaries make the case unknown, rather than assigned by tie-breaking.",
+  "costs": "Per nonempty order max(1 USD,0.005 USD per executed share), 1bp adverse each actual bought/sold notional, 0.00003 sell-notional plus0.000166 per sold share. Costs apply also to aggressive proxy fills; zero rebates.",
+  "cases": [
+    {
+      "name": "base",
+      "latency_ns": 1000000000,
+      "fee_factor": 1,
+      "adverse_factor": 1
+    },
+    {
+      "name": "fees_2x",
+      "latency_ns": 1000000000,
+      "fee_factor": 2,
+      "adverse_factor": 1
+    },
+    {
+      "name": "adverse_2x",
+      "latency_ns": 1000000000,
+      "fee_factor": 1,
+      "adverse_factor": 2
+    },
+    {
+      "name": "latency_250ms",
+      "latency_ns": 250000000,
+      "fee_factor": 1,
+      "adverse_factor": 1
+    },
+    {
+      "name": "latency_3s",
+      "latency_ns": 3000000000,
+      "fee_factor": 1,
+      "adverse_factor": 1
+    }
+  ],
+  "portfolio_scope": "Independent 10000 USD event budgets, no compounding or capital-return claim. All no-fill classifications conditional on the proxy assumptions. Unknown inventory/cash is not zero.",
+  "promotion": "Any positive sum is exploratory. Require native source and cash audit, actual historical order-acceptance/price-sliding constraints, queue and hidden-liquidity uncertainty, clock sensitivity, execution depth, cost/latency stability, temporal holdout and concentration/multiple-search tests before claiming an edge.",
+  "quote_reference": "Signal quotes are committed atomic DEEP books in capture order, before d-250ms. For venue-clock execution, order selected-symbol price-level updates by exact native event time then native sequence, commit only at EventFlags1, and collapse equal-event-time states to their final state. Do not use intermediate states. No Q/H/O at exact order arrival is resolved by tie-breaking. Require a subsequent complete native quote beyond a forced reference. Preserve original levels and derived quotes.",
+  "depth_limit": "Future aggressive/forced reference fills still ignore execution depth under the inherited conditional probe. Book levels are retained for review, not used to increase order size. A positive result is never promoted without actual depth, queue, NBBO and acceptance modeling.",
+  "source_incomplete_scope": "2023-11-29 DEEP starts at sequence45296, missing the opening book history. It remains an unknown admission and unknown full-calendar cash outcome in every case. Known no-candidate dates count as no-signal, not missing. Observed selected-event totals must be separately labeled.",
+  "created_at_utc": "2026-10-03T00:08:18.503850+00:00",
+  "selected_events": [
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 187500,
+        "ask_price": 187700,
+        "bid_size": 4100,
+        "ask_size": 7600,
+        "event_ns": 1673447459686798753,
+        "capture_ns": 1673447459686861000,
+        "send_ns": 1673447459686850786,
+        "sequence": 1133729,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1673447459686798753,
+          "symbol": "TQQQ",
+          "size": 0,
+          "price": 187600,
+          "capture_ns": 1673447459686861000,
+          "send_ns": 1673447459686850786,
+          "sequence": 1133729
+        }
+      },
+      "quantity": 410,
+      "prior_trade_count": 35,
+      "prior_trade_notional_usd": "212007.7",
+      "spread_bps": "10.66098081023454157782515991",
+      "quoted_net_budget_usd": "2.262749",
+      "quoted_net_budget_bps": "2.941844349680170575692963753",
+      "last_trade": {
+        "type": "T",
+        "flags": 0,
+        "event_ns": 1673447458755225126,
+        "symbol": "TQQQ",
+        "size": 500,
+        "price": 187500,
+        "trade_id": 60941000,
+        "capture_ns": 1673447458755275000,
+        "send_ns": 1673447458755264349,
+        "sequence": 1125900
+      }
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "quote": {
+        "type": "derived_deep_bbo",
+        "flags": 0,
+        "symbol": "RBLX",
+        "bid_price": 318700,
+        "ask_price": 320000,
+        "bid_size": 200,
+        "ask_size": 300,
+        "event_ns": 1691587859229186717,
+        "capture_ns": 1691587859229246000,
+        "send_ns": 1691587859229235577,
+        "sequence": 835233,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1691587859229186717,
+          "symbol": "RBLX",
+          "size": 300,
+          "price": 320000,
+          "capture_ns": 1691587859229246000,
+          "send_ns": 1691587859229235577,
+          "sequence": 835233
+        }
+      },
+      "quantity": 20,
+      "prior_trade_count": 87,
+      "prior_trade_notional_usd": "251234.375",
+      "spread_bps": "40.70768749021449819946766870",
+      "quoted_net_budget_usd": "0.449740",
+      "quoted_net_budget_bps": "7.041490527634257084703303585",
+      "last_trade": {
+        "type": "T",
+        "flags": 32,
+        "event_ns": 1691587859423908905,
+        "symbol": "RBLX",
+        "size": 10,
+        "price": 319000,
+        "trade_id": 29548159,
+        "capture_ns": 1691587859423958000,
+        "send_ns": 1691587859423946878,
+        "sequence": 836260
+      }
+    }
+  ],
+  "dates": [
+    "2023-01-11",
+    "2023-01-25",
+    "2023-02-08",
+    "2023-02-22",
+    "2023-03-08",
+    "2023-03-29",
+    "2023-04-12",
+    "2023-04-26",
+    "2023-05-10",
+    "2023-05-31",
+    "2023-06-14",
+    "2023-06-28",
+    "2023-07-12",
+    "2023-07-26",
+    "2023-08-09",
+    "2023-08-30",
+    "2023-09-13",
+    "2023-09-27",
+    "2023-10-11",
+    "2023-10-25",
+    "2023-11-08",
+    "2023-11-29",
+    "2023-12-13",
+    "2023-12-27"
+  ],
+  "unknown_admission_dates": [
+    "2023-11-29"
+  ],
+  "parent_flow_sha256": "b52fd44c2810e3ac3444aa3721891489a0194a4290fe50a120978de5a4f7ecb3",
+  "parent_flow_audit_sha256": "b7dc9012aa094de26501956572ae57f185fbe28ce9afee3f2c23723dba4ca135",
+  "prior_specification_sha256": "ed8ce013d96f6ae2aca969a64e4d9b7eb58dfbb9fdd361f7930ef05db92b9f61",
+  "prior_results_sha256": "4809cfb7ed701918d2f25e76a10a4a0f634b599ea5ed73f43c635818a65593be",
+  "prior_audit_sha256": "43cf7bf0e4e6fddaa39c5704c770a307100b5c289816e082bdc8eae852854c7d",
+  "instrument_identities": {
+    "TQQQ": {
+      "classification": "ProShares UltraPro QQQ ETF",
+      "primary_source": "https://www.proshares.com/our-etfs/leveraged-and-inverse/tqqq"
+    },
+    "RBLX": {
+      "classification": "Roblox Class A common stock",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1315098/000131509824000026/rblx-20231231.htm"
+    }
+  },
+  "variant": "Causal two-sided activity changes selection only. Order policy, quantity formula, conservative fees and all timing cases remain fixed. This is one additional exploratory economic configuration.",
+  "reuse": "If the full original candidate/event and policy are exactly identical to a prior independently audited event, reuse its immutable ten outcomes and provenance hashes. Replay only newly selected events. Reused outcomes are not independent validation.",
+  "acquisition": "Use the existing same-date, generation-pinned DEEP probe prefix covering the fixed decision+35s endpoint. No new data, no paid API. Preserve original hashes and all unknown dates.",
+  "implementation_sha256": "1d626bc98aca2204cf0a00a4dea8ed929651494a0557c6c20f44184343bb946d",
+  "source_implementation_sha256": "50da6d9449771c8c05b16719985bd7ff062959238b1d687ba58151ec4253e9eb",
+  "deep_book_sha256": "16eca5b71071c3a949e9c4b421b08cd1a152438c362b26142a8652e7a158367f",
+  "packet_decoder_sha256": "cb1594166f66925e19645ceb20854260a8ab5f3fe44ee2f0ec57bb18a8aa2d0e",
+  "price_proxy_sha256": "a9b46193779168bb26abb2a7c9ba47a9a622be884a41d369592ded882286b533",
+  "aggregator_sha256": "f9d26e0493804df84c4568506f86775b661ac42117d007395dab17d2356998ad",
+  "economic_configurations_executed": 0,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

@@ -1,0 +1,14 @@
+{
+  "frozen_at_utc": "2026-10-02T21:45:13.470664+00:00",
+  "specification_sha256": "ed348bee24a4283004b6733d967356b59c362cdba340919eb534b7a06b59f3c5",
+  "source_manifest_sha256": "6d668973d3a8cde6da7d2cc4b909a9d40d1ac4e3b3c9aa5647513d566c2d45a5",
+  "code_sha256": {
+    "research/perp_shock_supply.py": "c06153cb4a88b334445a344ccf59fe95311861587fa940f8bf70ab0c981266e3",
+    "research/spot_perp_supply.py": "cd918561a92d5475f20e6da44c79c3c76fc295b32c9146bfa7b7f0b6bb5174b7",
+    "research/market_lag_supply.py": "c17126fe22960f0a3de77459ef9953896a74a08f4ac4140a328e7fda79015af3",
+    "research/precise_ledger.py": "f118f6c4f94afb51dcac3ce4a7c4891634763c29dd33f7d86443f54a9cff400c",
+    "research_scout/screen_market_lag_native_batch02_20261002.py": "ca3f4bf2e43612e4de0f09b74a459284e9b20ec4829ad87cc7c6500cdea9f10f"
+  },
+  "economic_implementations": 0,
+  "validation": "Reuses unchanged parent signal and leader-gate engines with nine and six previously passed focused tests; independent native audit follows."
+}

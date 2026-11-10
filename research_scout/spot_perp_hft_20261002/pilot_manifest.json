@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "date": "2024-01-01",
+      "path": "research_scout\\spot_perp_hft_20261002\\native\\spot_2024-01-01_0900.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-01-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 25567370,
+      "compressed_bytes": 4199063,
+      "compressed_sha256": "a85cac87d6492c27460ac05d2cca08a24f38f165cd74da35b0a0ec40741b1eb4"
+    }
+  ],
+  "expected_files": 1,
+  "complete": true,
+  "specification_sha256": "ef09df33ae6b5383795127f38ee9d76d5e6a4332886b9c6733641c09f93f899e",
+  "acquisition_sha256": "101b549788b70403ab8dcb7918ca777285fc26773dcd535fbdc229648a818df6",
+  "decoded_bytes": 25567370
+}

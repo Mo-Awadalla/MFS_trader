@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "date": "2024-10-01",
+      "offset": 987,
+      "symbol": "TRXUSDT",
+      "path": "research_scout\\market_lag_response_hft_20261002\\native\\2024-10-01_0987_TRXUSDT.ndjson.gz",
+      "params": {
+        "from": "2024-10-01",
+        "offset": 987,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"trxusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"trxusdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 415869,
+      "compressed_bytes": 53698,
+      "compressed_sha256": "e6df204addfe09a7c8340699e63e1e5c83a5ff86956e288ef80b5dca326dd7c2"
+    }
+  ],
+  "complete": true,
+  "specification_sha256": "1f5691f294ae5cd09fbe152be1ed581728b373b6ab4c70c492658220c1d17d22",
+  "acquisition_sha256": "994d0524f66499c6572742ec036a6fe7c971aa324cb11ba21672c05010728821"
+}

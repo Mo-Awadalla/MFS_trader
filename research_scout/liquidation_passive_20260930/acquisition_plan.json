@@ -1,0 +1,41 @@
+{
+  "public_unauthenticated": true,
+  "no_paid_fallback": true,
+  "samples": [
+    {
+      "date": "2024-07-01",
+      "bytes": 21281017,
+      "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/07/01/BTCUSDT.csv.gz"
+    },
+    {
+      "date": "2024-08-01",
+      "bytes": 39694804,
+      "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/08/01/BTCUSDT.csv.gz"
+    },
+    {
+      "date": "2024-09-01",
+      "bytes": 28371011,
+      "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/09/01/BTCUSDT.csv.gz"
+    },
+    {
+      "date": "2024-10-01",
+      "bytes": 47881495,
+      "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/10/01/BTCUSDT.csv.gz"
+    },
+    {
+      "date": "2024-11-01",
+      "bytes": 42700288,
+      "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/11/01/BTCUSDT.csv.gz"
+    },
+    {
+      "date": "2024-12-01",
+      "bytes": 17408459,
+      "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/12/01/BTCUSDT.csv.gz"
+    }
+  ],
+  "expected_bytes": 197337074,
+  "aggregate_cap": 1000000000,
+  "mechanism": "Provide passive liquidity at 8/16bp from the observed midpoint following the unchanged 124 recorded large-liquidation events. Both event direction and its opposite, 30/120-second holds. No event/threshold re-selection; development outcomes are already exposed.",
+  "costs": "3bp maker entry, 6bp taker exit plus 1bp adverse exit cost; doubled fee stress and three-second outbound delay; exact partial inventory retained.",
+  "limits": "Strict trade-through prints provide counterfactual fill evidence, not actual queue/fill validation. Fixed five-second order lifetime then cancel acknowledgement before holding and market exit. Any unpriceable submitted outcome invalidates the day."
+}

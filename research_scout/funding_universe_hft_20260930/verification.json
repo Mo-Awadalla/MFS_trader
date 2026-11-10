@@ -1,0 +1,28 @@
+{
+  "verified_at_utc": "2026-09-30T19:20:02.655507+00:00",
+  "native_slices_verified": 24,
+  "native_messages_examined": 428520,
+  "native_decoded_bytes": 91925162,
+  "native_compressed_bytes": 17129667,
+  "binance_asof_snapshots_verified": 6552,
+  "bybit_normalized_files_verified": 15,
+  "bybit_normalized_rows_examined": 1419702,
+  "paired_events_verified": 18,
+  "maximum_payment_gap_reconstruction_error_bps": 1.2434497875801753e-14,
+  "known_closed_contract_events": 2,
+  "eligible_after_lifecycle_correction": 0,
+  "corrected_outcomes": {
+    "payment_difference_below_cost_hurdle": 14,
+    "known_new_positions_prohibited": 2,
+    "stale_invalid_or_wrong_funding_time_counterpart": 1,
+    "unknown_counterpart_source": 1
+  },
+  "implementation_sha256": "07c3437fddb30c95f8d9c212bbf2c84d01c7df80b5b8345f8ae03dea55e42b13",
+  "lifecycle_facts_sha256": "4dde471d93c700f43e3b9477ee6b36b1355ce111d6a84dd4740f0824cb07d208",
+  "corrected_pairs_sha256": "637c4fc42231955532a1abdb7ac9a6933fd23737b527c8516c26c090a31b728b",
+  "original_pairs_sha256": "0a4a12260ee07e07ab4c154cc703e28d9ede4bcb07fd0753c5a39bf973a14959",
+  "bybit_native_normalization_verified": false,
+  "all_contract_lifecycles_verified": false,
+  "strategy_pnl_tested": false,
+  "reliable_edge_established": false
+}

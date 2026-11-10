@@ -1,0 +1,54 @@
+{
+  "created_at_utc": "2026-10-02T19:55:36.698892+00:00",
+  "family": "Uniform clock expansion of the same spot/perpetual HFT discrepancy screen",
+  "relationship": "Dependent coverage expansion after zero entries in twelve 09:00 minutes. It is not a new economic hypothesis or an independent replication. The preceding original one-second quote-freshness, ten-point median/MAD anchor, 25bp gap, 2000-USDT depth, 5bp net convergence budget and two consecutive observations are unchanged.",
+  "parent_specification": "research_scout\\spot_perp_hft_20261002\\specification.json",
+  "parent_specification_sha256": "ef09df33ae6b5383795127f38ee9d76d5e6a4332886b9c6733641c09f93f899e",
+  "parent_results_sha256": "366f87ecb9e39fdd7cbc28890b30dba259a52ebb9818ef605d03dbdacb43602b",
+  "dates": [
+    "2024-01-01",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-01",
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "offset_minutes": [
+    0,
+    360,
+    720,
+    1080
+  ],
+  "coverage": "Four fixed equally spaced clock minutes per date: 00:00, 06:00, 12:00 and 18:00 UTC. Original 09:00 results stay intact and are reported alongside this expansion. No time is selected by subsequent returns, volatility, known events or surviving symbols.",
+  "decisions": "Seconds 10 through 59, as of each decision minus 250ms, with ten preceding one-second historical grid states. Earliest qualifying event per symbol/date/clock-window retained for source review. Any subsequent economic replay must enforce account and inventory continuity across all same-day windows.",
+  "future_stage": "Before reading subsequent native paths, freeze two controls: fade the basis deviation and follow it, both with a 15-second post-ACK exit decision, <=30-second planned inventory, 250ms feed delay, 50ms processing and 1-second outbound/ACK base. Include 250ms and 3-second order latency, doubled fees/adverse allowance and source-clock uncertainty. Fixed causal quantities, IOC/FOK guards, full actual depth, unresolved exits/unknown states and same-date inventory halts are mandatory. Verify native clocks, contract lifecycle, lot/tick/minimum order rules and funding boundary avoidance before promotion. No funding payments, rebates or free fills assumed. Midnight signals occur after the first ten seconds; actual funding-cycle and contract-lifecycle evidence is still required before entry and no forecast payment may be credited.",
+  "download": {
+    "exchanges": {
+      "spot": "binance",
+      "perpetual": "binance-futures"
+    },
+    "channels": [
+      "bookTicker"
+    ],
+    "slice_minutes": 1,
+    "workers": 3,
+    "per_slice_decoded_cap": 512000000,
+    "total_decoded_cap": 12000000000,
+    "request_deadline_seconds": 180,
+    "authenticated": false,
+    "paid_fallback": false
+  },
+  "implementation_preservation": "Use a separately frozen reader with the clock-window start parameter. Original production code and all source/result hashes remain unchanged. Independent audit must check each shifted clock against the raw timestamps.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "f2dab37c1c8d1002e3bd1198dba92491bfb9cab7e6ec443d5f52b717627eb031"
+}

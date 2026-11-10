@@ -1,0 +1,194 @@
+{
+  "source_slices": 24,
+  "native_symbol_event_states": 6552,
+  "unique_symbols": 348,
+  "usable_states": 6552,
+  "large_binance_rate_events": 18,
+  "counterpart_symbol_dates": 16,
+  "outcomes": {
+    "usable": 6552
+  },
+  "diagnostics": [
+    {
+      "date": "2024-01-01",
+      "hour": 8,
+      "native_messages_before_decision": 7440,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 243
+    },
+    {
+      "date": "2024-01-01",
+      "hour": 16,
+      "native_messages_before_decision": 7440,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 243
+    },
+    {
+      "date": "2024-02-01",
+      "hour": 8,
+      "native_messages_before_decision": 7860,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 251
+    },
+    {
+      "date": "2024-02-01",
+      "hour": 16,
+      "native_messages_before_decision": 7860,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 251
+    },
+    {
+      "date": "2024-03-01",
+      "hour": 8,
+      "native_messages_before_decision": 8220,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 260
+    },
+    {
+      "date": "2024-03-01",
+      "hour": 16,
+      "native_messages_before_decision": 8280,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 262
+    },
+    {
+      "date": "2024-04-01",
+      "hour": 8,
+      "native_messages_before_decision": 8490,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 265
+    },
+    {
+      "date": "2024-04-01",
+      "hour": 16,
+      "native_messages_before_decision": 8490,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 265
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 8,
+      "native_messages_before_decision": 8910,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 269
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 16,
+      "native_messages_before_decision": 8910,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 269
+    },
+    {
+      "date": "2024-06-01",
+      "hour": 8,
+      "native_messages_before_decision": 8790,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 262
+    },
+    {
+      "date": "2024-06-01",
+      "hour": 16,
+      "native_messages_before_decision": 8790,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 262
+    },
+    {
+      "date": "2024-07-01",
+      "hour": 8,
+      "native_messages_before_decision": 8850,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 264
+    },
+    {
+      "date": "2024-07-01",
+      "hour": 16,
+      "native_messages_before_decision": 8850,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 264
+    },
+    {
+      "date": "2024-08-01",
+      "hour": 8,
+      "native_messages_before_decision": 8850,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 263
+    },
+    {
+      "date": "2024-08-01",
+      "hour": 16,
+      "native_messages_before_decision": 8850,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 263
+    },
+    {
+      "date": "2024-09-01",
+      "hour": 8,
+      "native_messages_before_decision": 9270,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 277
+    },
+    {
+      "date": "2024-09-01",
+      "hour": 16,
+      "native_messages_before_decision": 9270,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 277
+    },
+    {
+      "date": "2024-10-01",
+      "hour": 8,
+      "native_messages_before_decision": 9810,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 296
+    },
+    {
+      "date": "2024-10-01",
+      "hour": 16,
+      "native_messages_before_decision": 9810,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 296
+    },
+    {
+      "date": "2024-11-01",
+      "hour": 8,
+      "native_messages_before_decision": 9990,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 302
+    },
+    {
+      "date": "2024-11-01",
+      "hour": 16,
+      "native_messages_before_decision": 9990,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 302
+    },
+    {
+      "date": "2024-12-01",
+      "hour": 8,
+      "native_messages_before_decision": 10620,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 323
+    },
+    {
+      "date": "2024-12-01",
+      "hour": 16,
+      "native_messages_before_decision": 10620,
+      "disconnect_markers": 0,
+      "observed_usdt_symbols": 323
+    }
+  ],
+  "failed_sources": [],
+  "maximum_absolute_quoted_binance_rate_bps": 109.6915,
+  "snapshots_sha256": "026ac1e0ff021b27d652fd083c15d48fb19f1686486fc2b2c4bbccf295d84925",
+  "large_rates_sha256": "4d200ca507d709fb45c0abfdc7ca4efbd7c2874d7489bc84b9081753e0ef42fd",
+  "strategy_pnl_tested": false,
+  "edge_established": false,
+  "sources": [
+    "https://docs.tardis.dev/api/http-api-reference.md",
+    "https://docs.tardis.dev/historical-data-details/binance-futures.md",
+    "https://developers.binance.com/en/docs/products/derivatives-trading-usds-futures/websocket-market-streams/Mark-Price-Stream",
+    "https://bybit-exchange.github.io/docs/v5/websocket/public/ticker",
+    "https://www.bybit.com/en/help-center/article/Funding-fee-calculation"
+  ]
+}

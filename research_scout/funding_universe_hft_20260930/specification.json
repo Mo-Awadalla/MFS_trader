@@ -1,0 +1,50 @@
+{
+  "created_at_utc": "2026-09-30T19:06:10.282167+00:00",
+  "family": "Large imminent Binance funding payments hedged against Bybit over seconds",
+  "relation_to_prior": "The earlier six-contract2024Binance/Bybit funding screen had zero eligible28bp differences. This broadens the instrument universe using contemporaneously recorded native Binance messages. It is a dependent research-family variation, not a new independent discovery or reduced-cost rescue.",
+  "dates": [
+    "2024-01-01",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-01",
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "settlement_hours_utc": [
+    8,
+    16
+  ],
+  "scope": "All native Binance symbols endingUSDT, excluding dated suffixes, whose full markPrice messages identify upcoming funding. No current-survivor instrument list or chosen profitable symbols. This is specifically a large-Binance-rate universe: it does not cover extreme Bybit-only rates when Binance absrate<14bp. Native symbol/data absence remains visible.",
+  "stage_a": "Last full native markPrice update received strictly before settlement-30seconds. Require positive finite mark, finite upcoming funding rate, nextfundingT equal target, both receive/event agespositive<=5s, event-to-capturelagbetween-1msand5s. Use nativeE as publication clock only, never as physical book transaction clock. Full snapshots supersede prior state; disconnect markers clear state. Absupcomingrate>=14bp is the fixed broad-universe prescreen. Do not use realized settlements or subsequent prices to choose contracts.",
+  "stage_b": "Fetch full-day free Bybit derivative_ticker files for every stageA contract/date, exact symbol names only. Last received state beforeT-30s; positivefinite mark/rate; receive/event age<=5s; next fundingtimestamp=T. For equal contract units, quoted payment difference=abs(rB*mB-rY*mY)/max(mB,mY)*10000; require>28bp for four6bpfeesplusfour1bpadverseallowances, before spreads. Unit/underlying equivalence and native Bybit normalization must be independently established before any P&L; unmatched names, stale states and source failures remain unknown. No favorable deletion or negative-rate truncation.",
+  "next_stage": "Only stageB supply justifies fixed paired execution replay: entry atT-30s, exit aboutT+30s, separate source/order/ACK clocks, native book transaction time, actual funding rates and mark cashflows, eligibility uncertainty, basis repricing, partial or missed legs and unwind, collateral, margin, conservative fees and latency. No overnight/multiday carry. Until then no strategy P&L or winning edge claim.",
+  "download": {
+    "native_exchange": "binance-futures",
+    "channel": "markPrice",
+    "slice_minutes": 1,
+    "minute_before_target": 1,
+    "per_slice_decoded_cap": 20000000,
+    "total_decoded_cap": 600000000,
+    "workers": 4,
+    "counterpart_per_file_compressed_cap": 32000000,
+    "counterpart_total_compressed_cap": 600000000,
+    "authenticated": false,
+    "paid_fallback": false
+  },
+  "sources": [
+    "https://docs.tardis.dev/api/http-api-reference.md",
+    "https://docs.tardis.dev/historical-data-details/binance-futures.md",
+    "https://developers.binance.com/en/docs/products/derivatives-trading-usds-futures/websocket-market-streams/Mark-Price-Stream",
+    "https://bybit-exchange.github.io/docs/v5/websocket/public/ticker",
+    "https://www.bybit.com/en/help-center/article/Funding-fee-calculation"
+  ],
+  "selection_opened": false,
+  "strategy_pnl_tested": false,
+  "reliable_edge_established": false
+}

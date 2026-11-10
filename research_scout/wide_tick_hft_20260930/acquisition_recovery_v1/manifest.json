@@ -1,0 +1,39 @@
+{
+  "files": [
+    {
+      "date": "2024-05-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\acquisition_recovery_v1\\native\\2024-05-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 166072824,
+      "compressed_bytes": 23711084,
+      "decoded_sha256": "29458b3a8b9b46cd88dc6d7a9286e5274e9b9fc4ac8ad97d1c129e8f0dede9a6",
+      "compressed_sha256": "182088e6e8ac694f7ba6114dbb263302d59adae12bb25a5378a4f28dff9222c3"
+    },
+    {
+      "date": "2024-12-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\acquisition_recovery_v1\\native\\2024-12-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 166768118,
+      "compressed_bytes": 22644829,
+      "decoded_sha256": "ed6dd1203c0f76d9c23abba03bb9ef282218b459b780fa9f03b31bdf540b3d38",
+      "compressed_sha256": "21eca129f4606bc68d50c526081837b0b121d027d5b56a19ffdc085ee99a8e56"
+    }
+  ],
+  "expected_files": 2
+}

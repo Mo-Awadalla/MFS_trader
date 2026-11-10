@@ -1,0 +1,18 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T20:37:11.366493+00:00",
+  "native_messages_verified": 148,
+  "counted_past_executions_verified": 127,
+  "source_files_verified": 32,
+  "candidate_windows_verified": 48,
+  "selected_windows_verified": 0,
+  "source_decoded_bytes_verified": 29294,
+  "maximum_numeric_difference": "0",
+  "results_sha256": "181ab4d491f458ec48f1e5cc9e2ff4ddd5a3c76725470beb670dafa901f43aa1",
+  "auditor_sha256": "49575d58b4993512cf9d7f91e72734b38d8dcfd2c39cbc74720ea0d5630e426a",
+  "scope": "Independent raw parsing, all ledger fields/clocks, complete expected candidate set, exact direction-specific native notional/count aggregation, selection and observed source-integrity checks. No production signal/parser import. Empty responses do not prove an instrument could not trade.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

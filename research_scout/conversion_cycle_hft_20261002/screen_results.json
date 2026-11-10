@@ -1,0 +1,1678 @@
+{
+  "windows": [
+    {
+      "date": "2024-01-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 243392,
+        "relevant_book_messages": 185020
+      },
+      "cycles": 434,
+      "route_rows": 43400,
+      "quote_rows": 36650,
+      "valid_books": 9500,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 8721,
+        "leg1_capture_freshness_gate": 13840,
+        "leg0_capture_freshness_gate": 19358,
+        "net_budget_gate": 779,
+        "leg1_missing_book": 556,
+        "leg0_missing_book": 50,
+        "leg2_capture_freshness_gate": 96
+      },
+      "best_depth_eligible_budget_bps": "-28.91333235189971522909823000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-01-01_0000.parquet",
+      "quotes_sha256": "7e067fa275f8da88a23dc2ab5baf2d57fbb9968e9fc51c63882307368ffc5aab",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-01-01_0000.parquet",
+      "routes_sha256": "da7d4035d872c0bfaee9d1714bc154936a89cddaaeade5da5d02e396e477e025"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 211231,
+        "relevant_book_messages": 170925
+      },
+      "cycles": 427,
+      "route_rows": 42700,
+      "quote_rows": 36050,
+      "valid_books": 8224,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 13334,
+        "depth_gate": 7342,
+        "net_budget_gate": 882,
+        "leg0_capture_freshness_gate": 20290,
+        "leg0_missing_book": 160,
+        "leg1_missing_book": 612,
+        "leg2_capture_freshness_gate": 80
+      },
+      "best_depth_eligible_budget_bps": "-30.46288187487930641353948000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-01-01_0360.parquet",
+      "quotes_sha256": "716a1af5f8191e7026352a1d512b8c33c87883c828d4bc6035825fe15167d133",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-01-01_0360.parquet",
+      "routes_sha256": "419b945255b28d453c0eebfdee7060255bbb6768d9e8ee5a53a9cb9c4045c272"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 148935,
+        "relevant_book_messages": 122074
+      },
+      "cycles": 427,
+      "route_rows": 42700,
+      "quote_rows": 36050,
+      "valid_books": 6236,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 12390,
+        "depth_gate": 5645,
+        "leg0_capture_freshness_gate": 22478,
+        "net_budget_gate": 591,
+        "leg0_missing_book": 674,
+        "leg1_missing_book": 868,
+        "leg2_capture_freshness_gate": 54
+      },
+      "best_depth_eligible_budget_bps": "-31.65115241966024685438568000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-01-01_0540.parquet",
+      "quotes_sha256": "e5d70568645e0c4c6b4ba30d7f15ff7419367735ed236c9e03e93c0005b770f0",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-01-01_0540.parquet",
+      "routes_sha256": "6a3c06eb90df78eb464dbbf5cbe889bf1942ff06cffc5f42459cf5ca7b7642dc"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 190622,
+        "relevant_book_messages": 157025
+      },
+      "cycles": 429,
+      "route_rows": 42900,
+      "quote_rows": 36250,
+      "valid_books": 6890,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 6177,
+        "leg1_capture_freshness_gate": 12842,
+        "leg0_capture_freshness_gate": 22432,
+        "leg1_missing_book": 508,
+        "net_budget_gate": 713,
+        "leg0_missing_book": 228
+      },
+      "best_depth_eligible_budget_bps": "-32.07757887141861624729388500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-01-01_0720.parquet",
+      "quotes_sha256": "9fcd25bef471f86a1b039543737c852fd65e8a7599ea4d06eb4b8ba81b211e35",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-01-01_0720.parquet",
+      "routes_sha256": "cb277f3db787c26f58c5dd372f74531357b19c9c8ceef1563aab91a8970b86b4"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 172539,
+        "relevant_book_messages": 141643
+      },
+      "cycles": 416,
+      "route_rows": 41600,
+      "quote_rows": 35100,
+      "valid_books": 6474,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 11792,
+        "depth_gate": 5985,
+        "leg0_capture_freshness_gate": 22224,
+        "leg0_missing_book": 492,
+        "net_budget_gate": 489,
+        "leg1_missing_book": 450,
+        "leg2_capture_freshness_gate": 168
+      },
+      "best_depth_eligible_budget_bps": "-32.07614264992456091870897000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-01-01_1080.parquet",
+      "quotes_sha256": "c96e8d18b92ed0723c36084f736959b2824cbe0ec59ae5ebf180582812b502a8",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-01-01_1080.parquet",
+      "routes_sha256": "91b99428f9ab7c52d82dce83000d1634845df9dd4d3e87fbb0747795dca49fb2"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 251009,
+        "relevant_book_messages": 185128
+      },
+      "cycles": 419,
+      "route_rows": 41900,
+      "quote_rows": 35700,
+      "valid_books": 9066,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 8300,
+        "leg0_capture_freshness_gate": 16764,
+        "leg1_capture_freshness_gate": 15118,
+        "net_budget_gate": 766,
+        "leg1_missing_book": 596,
+        "leg0_missing_book": 326,
+        "leg2_capture_freshness_gate": 30
+      },
+      "best_depth_eligible_budget_bps": "-31.91347333215595824860811000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-02-01_0000.parquet",
+      "quotes_sha256": "173042c12572094efe34eb0e6a0545e76d7b6d949aacd40b50096dd82b436acd",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-02-01_0000.parquet",
+      "routes_sha256": "677bc89f206ef01d0a30df2c2a0e631b46cf5af0f981073eefd15e8957860e53"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 202644,
+        "relevant_book_messages": 153497
+      },
+      "cycles": 415,
+      "route_rows": 41500,
+      "quote_rows": 35350,
+      "valid_books": 7554,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 18742,
+        "depth_gate": 6780,
+        "leg1_capture_freshness_gate": 13708,
+        "net_budget_gate": 774,
+        "leg0_missing_book": 626,
+        "leg1_missing_book": 790,
+        "leg2_capture_freshness_gate": 80
+      },
+      "best_depth_eligible_budget_bps": "-31.43837734152596859109975000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-02-01_0360.parquet",
+      "quotes_sha256": "30c28742fdb00e6a6efe12f1e9485d9c1fee238dba7286bc3dce141c38838311",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-02-01_0360.parquet",
+      "routes_sha256": "a208a5d784457d41e97713557335222d7337781cebcd6e4c4679dffbe5be6cfa"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 230316,
+        "relevant_book_messages": 180485
+      },
+      "cycles": 414,
+      "route_rows": 41400,
+      "quote_rows": 35150,
+      "valid_books": 6646,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 20168,
+        "depth_gate": 6014,
+        "leg1_capture_freshness_gate": 13304,
+        "net_budget_gate": 632,
+        "leg0_missing_book": 406,
+        "leg1_missing_book": 782,
+        "leg2_capture_freshness_gate": 94
+      },
+      "best_depth_eligible_budget_bps": "-31.08502300760122244541820500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-02-01_0540.parquet",
+      "quotes_sha256": "92e833124270ac65ac0c3107f5beb7c89e1da6458f8d8e7230cb585cbfd72090",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-02-01_0540.parquet",
+      "routes_sha256": "db97f03a27edb6d665956a2c25f00d82820ede7ebcf99c5b7c3a33b41195f537"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 206992,
+        "relevant_book_messages": 150289
+      },
+      "cycles": 415,
+      "route_rows": 41500,
+      "quote_rows": 35450,
+      "valid_books": 7206,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 6491,
+        "leg1_capture_freshness_gate": 13394,
+        "leg0_capture_freshness_gate": 20080,
+        "net_budget_gate": 715,
+        "leg0_missing_book": 336,
+        "leg1_missing_book": 416,
+        "leg2_capture_freshness_gate": 68
+      },
+      "best_depth_eligible_budget_bps": "-31.30255024450538530649368000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-02-01_0720.parquet",
+      "quotes_sha256": "5b4a595007427176f0502c49106506d13b809cd792b0e9b10aaa2dc1581b3f09",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-02-01_0720.parquet",
+      "routes_sha256": "2c53ff6b40c940e71ea068e8322da4e81271918f11e5f1b43453eb953c850ead"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 179242,
+        "relevant_book_messages": 133408
+      },
+      "cycles": 408,
+      "route_rows": 40800,
+      "quote_rows": 35050,
+      "valid_books": 6000,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 12144,
+        "depth_gate": 5225,
+        "leg0_capture_freshness_gate": 21204,
+        "net_budget_gate": 775,
+        "leg0_missing_book": 422,
+        "leg1_missing_book": 930,
+        "leg2_capture_freshness_gate": 100
+      },
+      "best_depth_eligible_budget_bps": "-30.59417186917117542072042000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-02-01_1080.parquet",
+      "quotes_sha256": "60f8936dd22ff360400e8c09dba63846b364d7d72a8e77aa2c082529366907c3",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-02-01_1080.parquet",
+      "routes_sha256": "0b485c4bdc30e2f43e974bf67dc57d7c0c1f24b0e0d777752e8940755786948b"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 377448,
+        "relevant_book_messages": 282179
+      },
+      "cycles": 414,
+      "route_rows": 41400,
+      "quote_rows": 35500,
+      "valid_books": 11002,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 9951,
+        "leg1_capture_freshness_gate": 17718,
+        "leg0_capture_freshness_gate": 12390,
+        "net_budget_gate": 1051,
+        "leg0_missing_book": 4,
+        "leg1_missing_book": 286
+      },
+      "best_depth_eligible_budget_bps": "-28.50632806124061123759856500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-03-01_0000.parquet",
+      "quotes_sha256": "96dd9332cc48a2bd8e3b03d8557c0402e838516bbca116b80b352271fde36a48",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-03-01_0000.parquet",
+      "routes_sha256": "d31ae3f16889b6df94f9c2c12a1b3a9d844816b2c2a4a25fa35685590f01fb2b"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 310456,
+        "relevant_book_messages": 233016
+      },
+      "cycles": 413,
+      "route_rows": 41300,
+      "quote_rows": 35450,
+      "valid_books": 10040,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 15690,
+        "depth_gate": 9065,
+        "leg0_capture_freshness_gate": 14448,
+        "net_budget_gate": 975,
+        "leg1_missing_book": 912,
+        "leg0_missing_book": 210
+      },
+      "best_depth_eligible_budget_bps": "-31.75509746001346966325894500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-03-01_0360.parquet",
+      "quotes_sha256": "b2dd741409faaeee8c9cf1916f08e06e956e00615211672fd830d30b6e606bf5",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-03-01_0360.parquet",
+      "routes_sha256": "e5068c597b67b7b8c36da49d93330d4d4a214eda436f401811401153b8f7a3e3"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 287851,
+        "relevant_book_messages": 214642
+      },
+      "cycles": 404,
+      "route_rows": 40400,
+      "quote_rows": 34600,
+      "valid_books": 8644,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 7806,
+        "leg0_capture_freshness_gate": 15358,
+        "leg1_capture_freshness_gate": 15840,
+        "leg1_missing_book": 468,
+        "net_budget_gate": 838,
+        "leg0_missing_book": 90
+      },
+      "best_depth_eligible_budget_bps": "-32.30195637283552866059741500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-03-01_0540.parquet",
+      "quotes_sha256": "f007140f49132919debffd55ba61f520893f5ef556ca10642e45ff2bb711a8e2",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-03-01_0540.parquet",
+      "routes_sha256": "6cc05a54e7305bb8f6d6e5c46685e9754766ddee5b5fa6e22e2c9d403ebc9c25"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 369917,
+        "relevant_book_messages": 279666
+      },
+      "cycles": 410,
+      "route_rows": 41000,
+      "quote_rows": 35150,
+      "valid_books": 10560,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 17326,
+        "depth_gate": 9378,
+        "leg0_capture_freshness_gate": 12448,
+        "net_budget_gate": 1182,
+        "leg1_missing_book": 622,
+        "leg0_missing_book": 44
+      },
+      "best_depth_eligible_budget_bps": "-30.02100358583627846047086500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-03-01_0720.parquet",
+      "quotes_sha256": "65c6c2b0409d908933c3e7dc842bb21c80aabac8df76b453f42c665c146bcb1d",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-03-01_0720.parquet",
+      "routes_sha256": "043d670c60550f655cf9c2921ae312beff78274a8d0106dc9d11587b417ec664"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 286338,
+        "relevant_book_messages": 211624
+      },
+      "cycles": 403,
+      "route_rows": 40300,
+      "quote_rows": 34650,
+      "valid_books": 7814,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 14588,
+        "leg1_capture_freshness_gate": 17206,
+        "depth_gate": 6779,
+        "net_budget_gate": 1035,
+        "leg0_missing_book": 48,
+        "leg1_missing_book": 564,
+        "leg2_capture_freshness_gate": 80
+      },
+      "best_depth_eligible_budget_bps": "-29.23390818102364966526640000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-03-01_1080.parquet",
+      "quotes_sha256": "51a1d275b324a80fd7ca16814266fe83a3a9e817f483799f2a1d31c8fbd7e4ff",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-03-01_1080.parquet",
+      "routes_sha256": "63343e25bf03f685702eebef26780b5f5ee8b05a6435222fe12d755f3974a1c8"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 419577,
+        "relevant_book_messages": 322150
+      },
+      "cycles": 414,
+      "route_rows": 41400,
+      "quote_rows": 35700,
+      "valid_books": 9660,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 19208,
+        "leg0_capture_freshness_gate": 12296,
+        "depth_gate": 8617,
+        "net_budget_gate": 1043,
+        "leg1_missing_book": 236
+      },
+      "best_depth_eligible_budget_bps": "-30.28709048111368215645476000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-04-01_0000.parquet",
+      "quotes_sha256": "1a2e1f2eb33d0818b2432d28d7c8e22a70cc34721a0b835a4215a287cd186754",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-04-01_0000.parquet",
+      "routes_sha256": "3409fb23e47da1f348deb7ba8bcc1916604d3cc877dfa977e44a2c11bfd2f7e3"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 962153,
+        "relevant_book_messages": 763564
+      },
+      "cycles": 414,
+      "route_rows": 41400,
+      "quote_rows": 35700,
+      "valid_books": 20146,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 19255,
+        "leg1_capture_freshness_gate": 17848,
+        "leg0_capture_freshness_gate": 3204,
+        "net_budget_gate": 891,
+        "leg1_missing_book": 202
+      },
+      "best_depth_eligible_budget_bps": "-29.75858353870640082706020000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-04-01_0360.parquet",
+      "quotes_sha256": "2e61bb080378746f40c35bf465283318c7b3dde7b3cbd83edc2f0cd98fa703eb",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-04-01_0360.parquet",
+      "routes_sha256": "2c1a02b21800809e549e18882fc5f5789dbc76ab39b2ae67c328eb6cdf152fa4"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 424524,
+        "relevant_book_messages": 333556
+      },
+      "cycles": 409,
+      "route_rows": 40900,
+      "quote_rows": 35200,
+      "valid_books": 11106,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 9954,
+        "leg1_capture_freshness_gate": 17444,
+        "leg0_capture_freshness_gate": 11656,
+        "leg1_missing_book": 532,
+        "net_budget_gate": 1152,
+        "leg0_missing_book": 96,
+        "leg2_capture_freshness_gate": 66
+      },
+      "best_depth_eligible_budget_bps": "-31.07623676968692732853288500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-04-01_0540.parquet",
+      "quotes_sha256": "db8256d7774e4255e2995ad90c8d92be4730b6abc0db1578a8bf5b5aa5333e04",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-04-01_0540.parquet",
+      "routes_sha256": "7496967bcdfba7c87c1a23b6d5fe91269ce5097d324b34eab35eb6ef04391c46"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 398346,
+        "relevant_book_messages": 313421
+      },
+      "cycles": 408,
+      "route_rows": 40800,
+      "quote_rows": 35150,
+      "valid_books": 9438,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 11876,
+        "depth_gate": 8380,
+        "leg1_capture_freshness_gate": 18756,
+        "net_budget_gate": 1058,
+        "leg1_missing_book": 728,
+        "leg0_missing_book": 2
+      },
+      "best_depth_eligible_budget_bps": "-30.42109809133568706969763500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-04-01_0720.parquet",
+      "quotes_sha256": "9b6cdb41b5ab6cc299f40aeda0075be9eecfc05dcdf34a7343f3fe7c2997cc1c",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-04-01_0720.parquet",
+      "routes_sha256": "c202dc5918f6a64bcacba346254c876c55e43b8813eb8bf26835ad6bad566963"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 416579,
+        "relevant_book_messages": 312575
+      },
+      "cycles": 411,
+      "route_rows": 41100,
+      "quote_rows": 35400,
+      "valid_books": 10142,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 9139,
+        "leg1_capture_freshness_gate": 18472,
+        "leg0_capture_freshness_gate": 11876,
+        "net_budget_gate": 1003,
+        "leg0_missing_book": 44,
+        "leg1_missing_book": 566
+      },
+      "best_depth_eligible_budget_bps": "-27.80508525215891482378721000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-04-01_1080.parquet",
+      "quotes_sha256": "1a59968f5fb1394f75995dbf3f070cdb2ead8d4acb9ff54bf314a9ec43f5a26c",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-04-01_1080.parquet",
+      "routes_sha256": "a30821c9fc46d5f360491771aae10bb0207ee5eceb5dbb5bc97ed7a2c4d6869e"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 362955,
+        "relevant_book_messages": 277377
+      },
+      "cycles": 415,
+      "route_rows": 41500,
+      "quote_rows": 35800,
+      "valid_books": 10562,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_missing_book": 560,
+        "depth_gate": 9792,
+        "leg0_capture_freshness_gate": 11134,
+        "leg1_capture_freshness_gate": 19236,
+        "net_budget_gate": 770,
+        "leg0_missing_book": 8
+      },
+      "best_depth_eligible_budget_bps": "-30.96138668536010066936941500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-05-01_0000.parquet",
+      "quotes_sha256": "04679837abda9562b59eff3f9da79e7ce36b7549018c24e763e4f285bc5db997",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-05-01_0000.parquet",
+      "routes_sha256": "5b336f58d52c340aa428b149d232b45cf603e51ee30f9e497f02da4f67ad1898"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 367195,
+        "relevant_book_messages": 261185
+      },
+      "cycles": 411,
+      "route_rows": 41100,
+      "quote_rows": 35550,
+      "valid_books": 8888,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 18760,
+        "leg0_capture_freshness_gate": 12782,
+        "depth_gate": 8165,
+        "net_budget_gate": 723,
+        "leg1_missing_book": 622,
+        "leg0_missing_book": 30,
+        "leg2_capture_freshness_gate": 18
+      },
+      "best_depth_eligible_budget_bps": "-31.50290060860674338536737000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-05-01_0360.parquet",
+      "quotes_sha256": "0abdeb5054e87c9ecc1beb6071e1ee12c46fa98ff588d52cc2ab7cfb8bebf04c",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-05-01_0360.parquet",
+      "routes_sha256": "ba31c1569632fa7fd67e1b43d8ead62446f3b10bf3015221f4b51b35f7331052"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 507311,
+        "relevant_book_messages": 363269
+      },
+      "cycles": 416,
+      "route_rows": 41600,
+      "quote_rows": 35850,
+      "valid_books": 12528,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 19588,
+        "leg0_capture_freshness_gate": 8832,
+        "depth_gate": 11678,
+        "net_budget_gate": 850,
+        "leg0_missing_book": 44,
+        "leg1_missing_book": 608
+      },
+      "best_depth_eligible_budget_bps": "-30.50762950283329832455075000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-05-01_0540.parquet",
+      "quotes_sha256": "4be70558340a8e642d59f67d776968cd08a4696667f7671004e0884a04a6bfef",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-05-01_0540.parquet",
+      "routes_sha256": "7cfa88cb8c27b56eba1e5b68ae3fd56f5f750754e7fc4832aec088ed4d49830f"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 409495,
+        "relevant_book_messages": 310672
+      },
+      "cycles": 412,
+      "route_rows": 41200,
+      "quote_rows": 35500,
+      "valid_books": 9024,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 10914,
+        "leg1_missing_book": 760,
+        "depth_gate": 8179,
+        "leg1_capture_freshness_gate": 20462,
+        "net_budget_gate": 845,
+        "leg0_missing_book": 40
+      },
+      "best_depth_eligible_budget_bps": "-29.83949929210749577221469000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-05-01_0720.parquet",
+      "quotes_sha256": "c4cd0eb180191ec005794bf908a118a7f1e0fb971f35a36e688336368ac6b41e",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-05-01_0720.parquet",
+      "routes_sha256": "21dc04ac83b93d8bd89eaa2c757acbfb20625228bc1fec9fb015a2357836f6e5"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 742122,
+        "relevant_book_messages": 545681
+      },
+      "cycles": 416,
+      "route_rows": 41600,
+      "quote_rows": 35900,
+      "valid_books": 15936,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 15208,
+        "leg0_capture_freshness_gate": 6394,
+        "leg1_capture_freshness_gate": 19056,
+        "net_budget_gate": 728,
+        "leg0_missing_book": 10,
+        "leg1_missing_book": 204
+      },
+      "best_depth_eligible_budget_bps": "-27.66588866615980315863310500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-05-01_1080.parquet",
+      "quotes_sha256": "cb22c9fdeb7e8dfa6d339c5a17928e51190e26b4f573bc984061c4fa122bfbce",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-05-01_1080.parquet",
+      "routes_sha256": "dcde2a02f68a00f2a60edf43721d9c80da1b456843f2dd826c2e86c11385e8ee"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 248231,
+        "relevant_book_messages": 188468
+      },
+      "cycles": 406,
+      "route_rows": 40600,
+      "quote_rows": 35150,
+      "valid_books": 6788,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 14826,
+        "leg1_capture_freshness_gate": 18516,
+        "depth_gate": 5975,
+        "net_budget_gate": 813,
+        "leg1_missing_book": 416,
+        "leg0_missing_book": 36,
+        "leg2_capture_freshness_gate": 18
+      },
+      "best_depth_eligible_budget_bps": "-28.26879622428036547507596500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-06-01_0000.parquet",
+      "quotes_sha256": "0baf570e76a439cb2f7f030be38513074c1465f4eec0f0da04dcaf295cfb93ca",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-06-01_0000.parquet",
+      "routes_sha256": "c45a233140058e65dd3457914b012b79505facf4a494c89c2d2d629222ce4cab"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 274983,
+        "relevant_book_messages": 203649
+      },
+      "cycles": 403,
+      "route_rows": 40300,
+      "quote_rows": 34850,
+      "valid_books": 5908,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 16548,
+        "depth_gate": 5223,
+        "leg0_capture_freshness_gate": 17186,
+        "net_budget_gate": 685,
+        "leg1_missing_book": 524,
+        "leg0_missing_book": 98,
+        "leg2_capture_freshness_gate": 36
+      },
+      "best_depth_eligible_budget_bps": "-29.21034755681759379671926000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-06-01_0360.parquet",
+      "quotes_sha256": "9ca1bd7a23da057bca893051907ceb6a3f917d0dbb6888e17077cea4e60a2dce",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-06-01_0360.parquet",
+      "routes_sha256": "e009854fd25caecde393c60469bdf942b4438835aa54a83cd1758a6c64b6b623"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 292983,
+        "relevant_book_messages": 221052
+      },
+      "cycles": 404,
+      "route_rows": 40400,
+      "quote_rows": 35050,
+      "valid_books": 6256,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 15974,
+        "depth_gate": 5387,
+        "leg1_capture_freshness_gate": 17032,
+        "leg1_missing_book": 1052,
+        "net_budget_gate": 869,
+        "leg2_capture_freshness_gate": 70,
+        "leg0_missing_book": 16
+      },
+      "best_depth_eligible_budget_bps": "-29.98908084079110380618378000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-06-01_0540.parquet",
+      "quotes_sha256": "d205904bfaed9e2fcbf5adbfd00574d20aab187736cb72f69331c589ebbf0f36",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-06-01_0540.parquet",
+      "routes_sha256": "96b78c27c282ce9ff45677aefad485617fe4dc6637b4741c971d345c05d31905"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 265662,
+        "relevant_book_messages": 205568
+      },
+      "cycles": 396,
+      "route_rows": 39600,
+      "quote_rows": 34150,
+      "valid_books": 5594,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 16442,
+        "leg1_capture_freshness_gate": 16838,
+        "depth_gate": 4964,
+        "net_budget_gate": 630,
+        "leg1_missing_book": 642,
+        "leg0_missing_book": 6,
+        "leg2_capture_freshness_gate": 78
+      },
+      "best_depth_eligible_budget_bps": "-30.75190640425959701305767500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-06-01_0720.parquet",
+      "quotes_sha256": "770a3f4adf23b6b2da57930f6017fbf7931bb613a1a6a5716462555d98e18fbd",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-06-01_0720.parquet",
+      "routes_sha256": "4092daabd1796000982eb380d534b728baa4317a0b0ab80088c709f1f86b3e1a"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 288833,
+        "relevant_book_messages": 214636
+      },
+      "cycles": 402,
+      "route_rows": 40200,
+      "quote_rows": 34750,
+      "valid_books": 5536,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 17074,
+        "leg0_capture_freshness_gate": 17056,
+        "depth_gate": 4801,
+        "net_budget_gate": 735,
+        "leg1_missing_book": 406,
+        "leg0_missing_book": 8,
+        "leg2_capture_freshness_gate": 120
+      },
+      "best_depth_eligible_budget_bps": "-30.96046978625172436230221000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-06-01_1080.parquet",
+      "quotes_sha256": "7807a1c4789b9745731e7228451aa51a539c09264bf03d73151fb7749da1329a",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-06-01_1080.parquet",
+      "routes_sha256": "161b2921784ee6cf38f277d6e00dae958d986d1c2522a0f425a031de5956c6d7"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 235393,
+        "relevant_book_messages": 175430
+      },
+      "cycles": 395,
+      "route_rows": 39500,
+      "quote_rows": 34400,
+      "valid_books": 5806,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 16698,
+        "leg0_capture_freshness_gate": 16656,
+        "depth_gate": 5053,
+        "net_budget_gate": 753,
+        "leg1_missing_book": 288,
+        "leg0_missing_book": 16,
+        "leg2_capture_freshness_gate": 36
+      },
+      "best_depth_eligible_budget_bps": "-28.76919465924192191171619000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-07-01_0000.parquet",
+      "quotes_sha256": "2ccfa590c29f03194a8f441c041bc1e064997f36ddb42fd13f5cc9b2d4c31c89",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-07-01_0000.parquet",
+      "routes_sha256": "d9d68d516f8eb99cd0c4da2e2615e2c170d006cf1d9b3ff37632ffd36c6f6bf9"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 194354,
+        "relevant_book_messages": 145158
+      },
+      "cycles": 379,
+      "route_rows": 37900,
+      "quote_rows": 32850,
+      "valid_books": 3756,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 18548,
+        "leg1_capture_freshness_gate": 14810,
+        "depth_gate": 3355,
+        "net_budget_gate": 401,
+        "leg1_missing_book": 720,
+        "leg0_missing_book": 40,
+        "leg2_capture_freshness_gate": 26
+      },
+      "best_depth_eligible_budget_bps": "-30.56646682913616068603923000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-07-01_0360.parquet",
+      "quotes_sha256": "da0328de8ea2cefc27b2a6e8d369c0d3b0caa252bda01885cc3ee4d84671842e",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-07-01_0360.parquet",
+      "routes_sha256": "17f1dc286fd8c5ad096e3b149086ea2c7f13d67a756e54024f10b63809b600a3"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 246364,
+        "relevant_book_messages": 185113
+      },
+      "cycles": 397,
+      "route_rows": 39700,
+      "quote_rows": 34550,
+      "valid_books": 5060,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 15562,
+        "depth_gate": 4386,
+        "leg0_capture_freshness_gate": 17534,
+        "leg1_missing_book": 1256,
+        "net_budget_gate": 674,
+        "leg2_capture_freshness_gate": 88,
+        "leg0_missing_book": 200
+      },
+      "best_depth_eligible_budget_bps": "-30.69616968968660630284044000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-07-01_0540.parquet",
+      "quotes_sha256": "111d273c740579dfc57bcd51f79024710a1be577ef6c51b1d0e8253c495b1253",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-07-01_0540.parquet",
+      "routes_sha256": "b6fdb8b06a9354250db691f391853e0ba9953afa2cdb84fcf51b2d20d0849771"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 311560,
+        "relevant_book_messages": 235095
+      },
+      "cycles": 395,
+      "route_rows": 39500,
+      "quote_rows": 34250,
+      "valid_books": 6562,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 14942,
+        "leg1_capture_freshness_gate": 16982,
+        "depth_gate": 5702,
+        "net_budget_gate": 860,
+        "leg1_missing_book": 970,
+        "leg0_missing_book": 18,
+        "leg2_capture_freshness_gate": 26
+      },
+      "best_depth_eligible_budget_bps": "-30.86628522528193831924170500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-07-01_0720.parquet",
+      "quotes_sha256": "90c17a6c31b2aae883042cbdbc8528c3d736a8a532da93e7f1bcbfce5c1828c0",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-07-01_0720.parquet",
+      "routes_sha256": "aa5ae2565a971c580453af7b1114634c6a72ec29ed471dd292edf1008b1f5496"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 276165,
+        "relevant_book_messages": 199881
+      },
+      "cycles": 380,
+      "route_rows": 38000,
+      "quote_rows": 32950,
+      "valid_books": 5382,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 4614,
+        "leg1_capture_freshness_gate": 14900,
+        "leg0_capture_freshness_gate": 16096,
+        "net_budget_gate": 768,
+        "leg1_missing_book": 1442,
+        "leg0_missing_book": 164,
+        "leg2_capture_freshness_gate": 16
+      },
+      "best_depth_eligible_budget_bps": "-29.91247524386987999381566000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-07-01_1080.parquet",
+      "quotes_sha256": "19a2e0ac7a93199119186c69419e47d8d3be9632c94c0d668e825b8af02d8abb",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-07-01_1080.parquet",
+      "routes_sha256": "1f58786ca6617dde36cf360516a63920af71a6dbc4ad369ea57211fc89fb6fad"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 385187,
+        "relevant_book_messages": 281120
+      },
+      "cycles": 381,
+      "route_rows": 38100,
+      "quote_rows": 33000,
+      "valid_books": 7592,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 6553,
+        "leg1_capture_freshness_gate": 17248,
+        "leg0_capture_freshness_gate": 12376,
+        "leg1_missing_book": 876,
+        "net_budget_gate": 1039,
+        "leg0_missing_book": 8
+      },
+      "best_depth_eligible_budget_bps": "-26.87037588102113216038489500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-08-01_0000.parquet",
+      "quotes_sha256": "e7f73fa689b0fbf134cc60b3190a2b18fb65c5089ad5ce734ee4f988c6f9b17c",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-08-01_0000.parquet",
+      "routes_sha256": "db15ae2a591d8afd948b5bc5aa1b0fb8e08145666650ff95f221d70355633e41"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 334429,
+        "relevant_book_messages": 251792
+      },
+      "cycles": 381,
+      "route_rows": 38100,
+      "quote_rows": 33150,
+      "valid_books": 6448,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 13654,
+        "depth_gate": 5516,
+        "leg1_capture_freshness_gate": 17306,
+        "leg1_missing_book": 662,
+        "net_budget_gate": 932,
+        "leg0_missing_book": 30
+      },
+      "best_depth_eligible_budget_bps": "-30.53790114902138788374052500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-08-01_0360.parquet",
+      "quotes_sha256": "564b789f639831316f6aeca2c8a59553662d20a1140f37d0eec8a70f516f58ba",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-08-01_0360.parquet",
+      "routes_sha256": "78970244629fb148846110b36061d081d3c555dc9c7dd956f417d0ac392f411b"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 220068,
+        "relevant_book_messages": 157864
+      },
+      "cycles": 369,
+      "route_rows": 36900,
+      "quote_rows": 32150,
+      "valid_books": 4494,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 3689,
+        "leg1_capture_freshness_gate": 14688,
+        "leg0_capture_freshness_gate": 17082,
+        "leg1_missing_book": 606,
+        "net_budget_gate": 805,
+        "leg0_missing_book": 30
+      },
+      "best_depth_eligible_budget_bps": "-29.62571050290180070518323000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-08-01_0540.parquet",
+      "quotes_sha256": "5faa08bfd8e58efa14f797a4d420dde71b49072632763d50f3b450cf0c153c40",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-08-01_0540.parquet",
+      "routes_sha256": "f630fe0c9d16b936ede190f6529fa09b68d882743ba3ff2377aeac9e155cb6da"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 331270,
+        "relevant_book_messages": 247369
+      },
+      "cycles": 370,
+      "route_rows": 37000,
+      "quote_rows": 31950,
+      "valid_books": 6254,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 17488,
+        "depth_gate": 5308,
+        "leg0_capture_freshness_gate": 12898,
+        "net_budget_gate": 946,
+        "leg0_missing_book": 38,
+        "leg1_missing_book": 322
+      },
+      "best_depth_eligible_budget_bps": "-28.12798279938859296819489500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-08-01_0720.parquet",
+      "quotes_sha256": "d0fe16aa7e044ee338b377ce5518fca2d3134d488d74e54826b6b4c04013f997",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-08-01_0720.parquet",
+      "routes_sha256": "377671efeeab30a600534b1d8076736b19bfaf756169d62ed7c278aa37f05c7b"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 492150,
+        "relevant_book_messages": 356780
+      },
+      "cycles": 383,
+      "route_rows": 38300,
+      "quote_rows": 33200,
+      "valid_books": 10656,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 9330,
+        "leg0_capture_freshness_gate": 9102,
+        "leg1_capture_freshness_gate": 18146,
+        "net_budget_gate": 1326,
+        "leg1_missing_book": 392,
+        "leg0_missing_book": 4
+      },
+      "best_depth_eligible_budget_bps": "-29.96870792431089078352036000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-08-01_1080.parquet",
+      "quotes_sha256": "e650fb4449f192640e00dbb8edccde6496bbf083f218b2d5f34965f6bf08925a",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-08-01_1080.parquet",
+      "routes_sha256": "69d159647d8e0b842fe02739d94d03c8976018ca98a87c79095c040e0376c546"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 185525,
+        "relevant_book_messages": 140487
+      },
+      "cycles": 355,
+      "route_rows": 35500,
+      "quote_rows": 30850,
+      "valid_books": 3902,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 3251,
+        "leg1_capture_freshness_gate": 13978,
+        "leg0_capture_freshness_gate": 17064,
+        "net_budget_gate": 651,
+        "leg1_missing_book": 506,
+        "leg0_missing_book": 26,
+        "leg2_capture_freshness_gate": 24
+      },
+      "best_depth_eligible_budget_bps": "-30.08294406530182860767358000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-09-01_0000.parquet",
+      "quotes_sha256": "e12d6e38a0018d7ac54d54766fe041864a7437ccfbeba8fd55311d68bd23db64",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-09-01_0000.parquet",
+      "routes_sha256": "f089c4574951bcd75d571e2ad820bd1978ca3581c9e8cb0534aef634e644563b"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 377624,
+        "relevant_book_messages": 287065
+      },
+      "cycles": 380,
+      "route_rows": 38000,
+      "quote_rows": 33100,
+      "valid_books": 7002,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 12774,
+        "leg1_capture_freshness_gate": 17546,
+        "depth_gate": 5946,
+        "leg1_missing_book": 556,
+        "net_budget_gate": 1056,
+        "leg0_missing_book": 122
+      },
+      "best_depth_eligible_budget_bps": "-32.35579200538889970207314500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-09-01_0360.parquet",
+      "quotes_sha256": "73e5129ec6152ff7f0d1b588a4a04bf79ce5ef5dc0b26ebd0b963cdc96c8df2e",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-09-01_0360.parquet",
+      "routes_sha256": "b9f4e79e93c678fba4761bfece6272d5901942e08e58af47953075c1ece76133"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 166221,
+        "relevant_book_messages": 126674
+      },
+      "cycles": 348,
+      "route_rows": 34800,
+      "quote_rows": 30200,
+      "valid_books": 3114,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 18616,
+        "leg1_capture_freshness_gate": 11752,
+        "depth_gate": 2699,
+        "leg2_capture_freshness_gate": 76,
+        "leg1_missing_book": 1106,
+        "net_budget_gate": 415,
+        "leg0_missing_book": 136
+      },
+      "best_depth_eligible_budget_bps": "-32.30338874788130543539817000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-09-01_0540.parquet",
+      "quotes_sha256": "abeb03abf6481f149d9cc55ffd48f4a6cac83eaca6327e27a8c5bddf9d08e3f6",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-09-01_0540.parquet",
+      "routes_sha256": "d5cd66cc288efea401ba55e7e16f79a7490f23d93f1086177c41b7ec4e1049c2"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 325616,
+        "relevant_book_messages": 241430
+      },
+      "cycles": 374,
+      "route_rows": 37400,
+      "quote_rows": 32650,
+      "valid_books": 6424,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 16440,
+        "leg0_capture_freshness_gate": 13562,
+        "depth_gate": 5234,
+        "leg1_missing_book": 918,
+        "net_budget_gate": 1190,
+        "leg0_missing_book": 56
+      },
+      "best_depth_eligible_budget_bps": "-31.43674095671901161504483000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-09-01_0720.parquet",
+      "quotes_sha256": "f2adccdf0984170af78c522e5952f4a05af8e97aad89e5719659969dc37e6855",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-09-01_0720.parquet",
+      "routes_sha256": "2c7e16b82763dc38af3c8c4d5db9e6e9938dc16d8d5bd352beb1bd3c8507e71b"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 266925,
+        "relevant_book_messages": 205299
+      },
+      "cycles": 367,
+      "route_rows": 36700,
+      "quote_rows": 32100,
+      "valid_books": 5760,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 14964,
+        "leg0_capture_freshness_gate": 14904,
+        "depth_gate": 4850,
+        "leg1_missing_book": 856,
+        "net_budget_gate": 910,
+        "leg0_missing_book": 200,
+        "leg2_capture_freshness_gate": 16
+      },
+      "best_depth_eligible_budget_bps": "-30.73648877546716683249105500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-09-01_1080.parquet",
+      "quotes_sha256": "faf96837001c82259e4cb2020de8709286533ef72b9b7e70a9b39abebd9f42b9",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-09-01_1080.parquet",
+      "routes_sha256": "fab05c73215615f1d383739c5e2d5f3b5957039726c142bf8f445685151f89fc"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 516723,
+        "relevant_book_messages": 383635
+      },
+      "cycles": 371,
+      "route_rows": 37100,
+      "quote_rows": 32500,
+      "valid_books": 8624,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 7677,
+        "leg1_capture_freshness_gate": 18098,
+        "leg0_capture_freshness_gate": 9522,
+        "net_budget_gate": 947,
+        "leg1_missing_book": 836,
+        "leg0_missing_book": 20
+      },
+      "best_depth_eligible_budget_bps": "-30.61543449926139741319985500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-10-01_0000.parquet",
+      "quotes_sha256": "a4b56370c76e13ff58ec40df3047f5483fd8989989945f5fba65c36cd4d1026f",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-10-01_0000.parquet",
+      "routes_sha256": "c6cb10892b69430c574ad93a5bf0ccc00f44b0572f9116829d886159fb40d69a"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 377831,
+        "relevant_book_messages": 291431
+      },
+      "cycles": 338,
+      "route_rows": 33800,
+      "quote_rows": 29900,
+      "valid_books": 4044,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 14632,
+        "leg0_capture_freshness_gate": 14384,
+        "depth_gate": 3614,
+        "net_budget_gate": 430,
+        "leg1_missing_book": 698,
+        "leg0_missing_book": 28,
+        "leg2_capture_freshness_gate": 14
+      },
+      "best_depth_eligible_budget_bps": "-30.03985465907821293707806000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-10-01_0360.parquet",
+      "quotes_sha256": "94f539a89a2c8775031ec9006cb8c55b08066b3e6583e0f6b0c9d606b64697d5",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-10-01_0360.parquet",
+      "routes_sha256": "cb33d70e6eb1f57d3d0b9b61c0d115c4c5cc09d1ad083fd2af2879de57df892f"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 325240,
+        "relevant_book_messages": 242085
+      },
+      "cycles": 345,
+      "route_rows": 34500,
+      "quote_rows": 30200,
+      "valid_books": 4026,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 14058,
+        "leg0_capture_freshness_gate": 15854,
+        "depth_gate": 3515,
+        "net_budget_gate": 511,
+        "leg1_missing_book": 552,
+        "leg0_missing_book": 10
+      },
+      "best_depth_eligible_budget_bps": "-31.58601453584495431275455500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-10-01_0540.parquet",
+      "quotes_sha256": "a49ab340391429e4730c150299a3482e00ac8fa37eb57d49238c0dd8aef9bdd0",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-10-01_0540.parquet",
+      "routes_sha256": "e619de404d3054bd9ba2a381c985677f80cc6c452e92c39b3dd5f02e96f570d6"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 419405,
+        "relevant_book_messages": 312947
+      },
+      "cycles": 363,
+      "route_rows": 36300,
+      "quote_rows": 32050,
+      "valid_books": 5916,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 15314,
+        "leg0_capture_freshness_gate": 14038,
+        "depth_gate": 5101,
+        "net_budget_gate": 815,
+        "leg1_missing_book": 948,
+        "leg0_missing_book": 84
+      },
+      "best_depth_eligible_budget_bps": "-31.62910254724994706767736500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-10-01_0720.parquet",
+      "quotes_sha256": "4d7b383ba8cb5603c24dd318401bcabdcc399776654eeee9759362c38b028aa8",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-10-01_0720.parquet",
+      "routes_sha256": "a58e0327464b3f7e4a38401f2e0aa0644d834500e509e5c916472e947b606ef4"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 1008256,
+        "relevant_book_messages": 788024
+      },
+      "cycles": 378,
+      "route_rows": 37800,
+      "quote_rows": 33050,
+      "valid_books": 14366,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 17684,
+        "depth_gate": 12923,
+        "leg0_capture_freshness_gate": 5514,
+        "net_budget_gate": 1443,
+        "leg0_missing_book": 8,
+        "leg1_missing_book": 228
+      },
+      "best_depth_eligible_budget_bps": "-30.24136108947298359280386000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-10-01_1080.parquet",
+      "quotes_sha256": "a4e18760eb530311b26ed29ad4657bc5cda4f972cac8f64492fda8d44e47abb7",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-10-01_1080.parquet",
+      "routes_sha256": "3770d50d64ea5b4ac5f00f6cc274500e4b6b416360746c7db99ae6f5fb79a443"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 318501,
+        "relevant_book_messages": 227109
+      },
+      "cycles": 352,
+      "route_rows": 35200,
+      "quote_rows": 31150,
+      "valid_books": 5202,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 12470,
+        "depth_gate": 4364,
+        "leg1_capture_freshness_gate": 16280,
+        "net_budget_gate": 838,
+        "leg1_missing_book": 1210,
+        "leg0_missing_book": 38
+      },
+      "best_depth_eligible_budget_bps": "-30.26521518402586638754615500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-11-01_0000.parquet",
+      "quotes_sha256": "79ba2d08e59eebc6aad37cad7e8eb260bd5915edeb8a1d922631616344985b66",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-11-01_0000.parquet",
+      "routes_sha256": "748ae937025af57290edcc80e8ec4ee3afd279ccac13b63e144dd1ea61d674a2"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 276047,
+        "relevant_book_messages": 215883
+      },
+      "cycles": 324,
+      "route_rows": 32400,
+      "quote_rows": 28400,
+      "valid_books": 3462,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 14202,
+        "leg1_capture_freshness_gate": 13970,
+        "depth_gate": 2930,
+        "leg0_missing_book": 38,
+        "leg1_missing_book": 728,
+        "net_budget_gate": 532
+      },
+      "best_depth_eligible_budget_bps": "-30.66547255245677165557433000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-11-01_0360.parquet",
+      "quotes_sha256": "fb67ee8a762f8ceb9d3cc5dc184980b7be10971d79aeaf543ed31b327a539f1c",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-11-01_0360.parquet",
+      "routes_sha256": "4895ca35f6ead7de34bd48b24d2fe9d70aeed2c576727f500cc6410d85e21b62"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 275494,
+        "relevant_book_messages": 211035
+      },
+      "cycles": 335,
+      "route_rows": 33500,
+      "quote_rows": 29500,
+      "valid_books": 4350,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 14660,
+        "leg0_capture_freshness_gate": 13266,
+        "depth_gate": 3577,
+        "leg1_missing_book": 1174,
+        "net_budget_gate": 773,
+        "leg0_missing_book": 30,
+        "leg2_capture_freshness_gate": 20
+      },
+      "best_depth_eligible_budget_bps": "-30.34264138615621914206518500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-11-01_0540.parquet",
+      "quotes_sha256": "9f36ad28ac2d30add2ed6890283912f27e537d80083e720635091bc14591b5ee",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-11-01_0540.parquet",
+      "routes_sha256": "ad204b96cf253bc9c95d9c7247ef4c3c19e0cb918422c3987916e4d3c126136c"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 327552,
+        "relevant_book_messages": 246147
+      },
+      "cycles": 341,
+      "route_rows": 34100,
+      "quote_rows": 30100,
+      "valid_books": 4684,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 13512,
+        "leg1_capture_freshness_gate": 14998,
+        "depth_gate": 3715,
+        "net_budget_gate": 969,
+        "leg1_missing_book": 874,
+        "leg0_missing_book": 28,
+        "leg2_capture_freshness_gate": 4
+      },
+      "best_depth_eligible_budget_bps": "-32.13165485617411515571603500",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-11-01_0720.parquet",
+      "quotes_sha256": "25253e5072e876b8dede9a8293b758389bef9aa2811e68de597684396d54b1a3",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-11-01_0720.parquet",
+      "routes_sha256": "39258a2d58ff5fc5c16cfc1a815703ae54c1d6e98cc2a60596a2fae1a5e932e9"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 424493,
+        "relevant_book_messages": 308531
+      },
+      "cycles": 349,
+      "route_rows": 34900,
+      "quote_rows": 30600,
+      "valid_books": 6090,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 10490,
+        "leg1_capture_freshness_gate": 16878,
+        "depth_gate": 5051,
+        "leg1_missing_book": 1392,
+        "net_budget_gate": 1039,
+        "leg0_missing_book": 50
+      },
+      "best_depth_eligible_budget_bps": "-31.05067896856668349486791000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-11-01_1080.parquet",
+      "quotes_sha256": "72e3675517e3f48d7700c4470f70d67857b515b81000fc551f2dc6eae4bd9a00",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-11-01_1080.parquet",
+      "routes_sha256": "9a911d06d2c61bd8579d35e68e6a89137c956453ee27448036e85e8f517c5535"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 660427,
+        "relevant_book_messages": 501900
+      },
+      "cycles": 354,
+      "route_rows": 35400,
+      "quote_rows": 30950,
+      "valid_books": 9900,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "net_budget_gate": 1615,
+        "leg0_capture_freshness_gate": 7462,
+        "leg1_capture_freshness_gate": 17236,
+        "depth_gate": 8285,
+        "leg0_missing_book": 28,
+        "leg1_missing_book": 774
+      },
+      "best_depth_eligible_budget_bps": "-29.76214574505819664777057000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-12-01_0000.parquet",
+      "quotes_sha256": "05c9289708c2dadda9b1e57515de571b990aca2c3faf5eaaeecc0c6b65497d0c",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-12-01_0000.parquet",
+      "routes_sha256": "579bad224d925ba9082d1f7e321073204f9eecb22c11d315267bc5e4c281f267"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 592976,
+        "relevant_book_messages": 450442
+      },
+      "cycles": 351,
+      "route_rows": 35100,
+      "quote_rows": 30800,
+      "valid_books": 6968,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 5680,
+        "leg0_capture_freshness_gate": 10460,
+        "leg1_capture_freshness_gate": 16376,
+        "leg1_missing_book": 1266,
+        "net_budget_gate": 1288,
+        "leg0_missing_book": 20,
+        "leg2_capture_freshness_gate": 10
+      },
+      "best_depth_eligible_budget_bps": "-30.63585003634356645578666000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-12-01_0360.parquet",
+      "quotes_sha256": "1d534643ee851650453edb81bac21698ff5aba780b2a071a2470df3ccf3e92f0",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-12-01_0360.parquet",
+      "routes_sha256": "7244991d198d4cb291949b54139cfc0270af23d21a17e809ca42b5c3c057868e"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 826958,
+        "relevant_book_messages": 602672
+      },
+      "cycles": 352,
+      "route_rows": 35200,
+      "quote_rows": 30750,
+      "valid_books": 9674,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg0_capture_freshness_gate": 7652,
+        "leg1_capture_freshness_gate": 17156,
+        "depth_gate": 7878,
+        "net_budget_gate": 1796,
+        "leg1_missing_book": 718
+      },
+      "best_depth_eligible_budget_bps": "-30.49066878778027632586737000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-12-01_0540.parquet",
+      "quotes_sha256": "5c0e6599941da6db5851665cc693d65539c7942d872f079ebbb260afb38ddf6b",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-12-01_0540.parquet",
+      "routes_sha256": "84c07a8b166e660af0efc5ce207da6167a03c0beb51720dc2a31ed41735f249b"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 592577,
+        "relevant_book_messages": 450914
+      },
+      "cycles": 343,
+      "route_rows": 34300,
+      "quote_rows": 30200,
+      "valid_books": 7798,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "depth_gate": 6300,
+        "leg1_capture_freshness_gate": 16384,
+        "leg0_capture_freshness_gate": 8954,
+        "net_budget_gate": 1498,
+        "leg1_missing_book": 1160,
+        "leg0_missing_book": 4
+      },
+      "best_depth_eligible_budget_bps": "-29.59100601948814855796442000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-12-01_0720.parquet",
+      "quotes_sha256": "93e7d5c1be3c12841f0b6e151ca76d16b5aeb0c5eb120bb5233668de0b3da4c5",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-12-01_0720.parquet",
+      "routes_sha256": "b2bd07ba609bf0b55d888a80ba8b4f17045adafc25c473e6de19486df0545e7f"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 548271,
+        "relevant_book_messages": 422508
+      },
+      "cycles": 349,
+      "route_rows": 34900,
+      "quote_rows": 30500,
+      "valid_books": 7536,
+      "supply_rows": 0,
+      "selected": [],
+      "reasons": {
+        "leg1_capture_freshness_gate": 16738,
+        "depth_gate": 6127,
+        "leg0_capture_freshness_gate": 9792,
+        "leg1_missing_book": 818,
+        "net_budget_gate": 1409,
+        "leg0_missing_book": 16
+      },
+      "best_depth_eligible_budget_bps": "-31.57281691492351040563423000",
+      "quotes_path": "research_scout\\conversion_cycle_hft_20261002\\quotes\\2024-12-01_1080.parquet",
+      "quotes_sha256": "6b003f0b63ebe86e2daf1f9f8c438ddec8404c4c37b43090208f15f038b2639c",
+      "routes_path": "research_scout\\conversion_cycle_hft_20261002\\routes\\2024-12-01_1080.parquet",
+      "routes_sha256": "1b45d82485aabd63bf310b8d57ba1ddb468662e53f3b66390bd1a01e076da7df"
+    }
+  ],
+  "source_counts": {
+    "native_messages": 21889483,
+    "relevant_book_messages": 16529264
+  },
+  "reasons": {
+    "leg1_capture_freshness_gate": 969454,
+    "depth_gate": 406599,
+    "net_budget_gate": 53621,
+    "leg0_capture_freshness_gate": 848800,
+    "leg0_missing_book": 6044,
+    "leg1_missing_book": 42270,
+    "leg2_capture_freshness_gate": 1612
+  },
+  "source_minutes": 60,
+  "route_rows": 2328400,
+  "quote_rows": 2013850,
+  "valid_books": 460220,
+  "supply_rows": 0,
+  "selected_events": 0,
+  "best_depth_eligible_budget_bps": "-26.87037588102113216038489500",
+  "selected_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+  "implementation_sha256": "e39de22a0846672a9bd80357f6a34ab2c505ccd7e63b33683f599645644c5244",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "independent_audit_complete": false,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

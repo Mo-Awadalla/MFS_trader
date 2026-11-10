@@ -1,0 +1,11 @@
+{
+  "frozen_at_utc": "2026-10-02T19:50:12.598554+00:00",
+  "specification_sha256": "ef09df33ae6b5383795127f38ee9d76d5e6a4332886b9c6733641c09f93f899e",
+  "runner_sha256": "25aea11ad036c55ee8b413c5beb9c4e2a34501d6a40db6187750b7738011b0b4",
+  "module_sha256": "cd918561a92d5475f20e6da44c79c3c76fc295b32c9146bfa7b7f0b6bb5174b7",
+  "tests_sha256": "88042670ad8bcfa95ac615a160748edb98ee13e2fa98d240347b6164b914e14c",
+  "spot_manifest_sha256": "f1d8f6221b1ca5982499eaec515ff0944efeb05edcff979314545a19d36f1906",
+  "perpetual_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c",
+  "clock_clarification": "All age gates are evaluated at each original grid decision, including its 250ms feed delay. Blank disconnect markers lack a timestamp; pending unobserved grid states are conservatively cleared until the next native update.",
+  "future_returns_evaluated": false
+}

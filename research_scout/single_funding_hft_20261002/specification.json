@@ -1,0 +1,354 @@
+{
+  "created_at_utc": "2026-10-02T18:47:18.258076+00:00",
+  "family": "Single-venue imminent funding payment versus settlement price adjustment",
+  "relationship": "Dependent extension using the same Bybit source screen and 2024 development sample. Different exposure: one outright perpetual position rather than a two-venue hedge. No claim of independent discovery.",
+  "selection": "All 90 original native/normalized-fresh Bybit events with abs(upcoming rate)>=14bp and next funding time equal to target. Include events with absent Binance counterpart; no selection by future prices or realized funding. All source failures remain unknown.",
+  "parent_pairs_sha256": "7aba8a08605184cf54b917d45c9206e679a52de9079d9d12bf04c3934d98ca68",
+  "events_sha256": "3f999c13b702180d148b75d51e9f465ff1e29efc5092fc64e9ab290e84d26b4b",
+  "signal_cutoff": "Funding target T minus 10.25 seconds; last strictly earlier capture only, <=5-second capture/publication/transaction freshness.",
+  "entry": "At T-10 seconds, buy if the quoted rate is negative and sell if positive. Base outbound and acknowledgement delay one second each; three-second stress. One entry per symbol/window; no leverage assumed.",
+  "exit": "Fixed exit decision T+10 seconds, same outbound delay. Maximum inventory horizon 30 seconds including clock ambiguity. Do not optimize the exit from observed returns.",
+  "pretrade_gate": "Projected payment abs(rate)*signal mark minus one displayed full spread minus 7bp*(bid+ask) must be positive. This is only a payment budget; subsequent repricing can eliminate it. Positive, uncrossed native quotes, coherent sequence and source clocks are required.",
+  "size": "Common multiple of ten whole contract quantity units, at most 200 USDT entry notional and 10% of both displayed touch quantities, and at least 100 USDT bid notional. Historical contract grid and trading permissions remain conditional until checked; keep every rejected event.",
+  "portfolio": "10,000 USDT capital per date, fully collateralized aggregate entries including fees/adverse allowances. Sort simultaneous orders by symbol; no netting of contingent receipts to finance orders.",
+  "cashflow": "Use the exchange's realized funding history at the exact target, not a future forecast substituted into the signal. Bound settlement mark over T-5 through T+5 seconds; account for the worst and best cash outcomes over that timing window. A missing historical payment or unresolved book/mark state makes that event unknown, never zero.",
+  "execution": "Reconstruct native level-one physical matching-time states. Compare executable entry and exit prices at order arrival, not midprices. Require enough displayed size throughout clock-uncertainty bounds; include price movement, both taker fees and per-execution adverse cost. Quote replay remains conditional on fills and funding eligibility until private execution is independently validated.",
+  "scenario_grid": [
+    {
+      "name": "base",
+      "latency_seconds": 1,
+      "taker_bps": 6,
+      "adverse_bps": 1,
+      "clock_ms": 1
+    },
+    {
+      "name": "double_fees",
+      "latency_seconds": 1,
+      "taker_bps": 12,
+      "adverse_bps": 1,
+      "clock_ms": 1
+    },
+    {
+      "name": "latency_3s",
+      "latency_seconds": 3,
+      "taker_bps": 6,
+      "adverse_bps": 1,
+      "clock_ms": 1
+    },
+    {
+      "name": "double_adverse",
+      "latency_seconds": 1,
+      "taker_bps": 6,
+      "adverse_bps": 2,
+      "clock_ms": 1
+    },
+    {
+      "name": "clock_100ms",
+      "latency_seconds": 1,
+      "taker_bps": 6,
+      "adverse_bps": 1,
+      "clock_ms": 100
+    }
+  ],
+  "historical_state_limits": "Full normalized states restore missing native fields, but native initialization/disconnect continuity and exact historical contract permissions still require validation before reliability claims.",
+  "download": {
+    "jobs": [
+      {
+        "date": "2024-01-01",
+        "hour": 8,
+        "symbols": [
+          "MULTIUSDT",
+          "ONTUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-01-01",
+        "hour": 16,
+        "symbols": [
+          "ONTUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-02-01",
+        "hour": 8,
+        "symbols": [
+          "10000WENUSDT",
+          "WSMUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-02-01",
+        "hour": 16,
+        "symbols": [
+          "1000BTTUSDT",
+          "CEEKUSDT",
+          "SILLYUSDT",
+          "WSMUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-03-01",
+        "hour": 8,
+        "symbols": [
+          "1000TURBOUSDT",
+          "AXLUSDT",
+          "METISUSDT",
+          "MULTIUSDT",
+          "TAOUSDT",
+          "WIFUSDT",
+          "XRDUSDT",
+          "YFIIUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-03-01",
+        "hour": 16,
+        "symbols": [
+          "1000TURBOUSDT",
+          "AIUSDT",
+          "AXLUSDT",
+          "MULTIUSDT",
+          "OGUSDT",
+          "PAXGUSDT",
+          "TAOUSDT",
+          "WIFUSDT",
+          "YFIIUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-04-01",
+        "hour": 8,
+        "symbols": [
+          "ORNUSDT",
+          "POPCATUSDT",
+          "TAOUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-04-01",
+        "hour": 16,
+        "symbols": [
+          "AKROUSDT",
+          "DEGENUSDT",
+          "POPCATUSDT",
+          "YFIIUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-05-01",
+        "hour": 8,
+        "symbols": [
+          "CEEKUSDT",
+          "COVALUSDT",
+          "CVCUSDT",
+          "STEEMUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-05-01",
+        "hour": 16,
+        "symbols": [
+          "AEVOUSDT",
+          "CEEKUSDT",
+          "COVALUSDT",
+          "DAOUSDT",
+          "FLRUSDT",
+          "MTLUSDT",
+          "SAFEUSDT",
+          "STEEMUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-06-01",
+        "hour": 8,
+        "symbols": [
+          "ALICEUSDT",
+          "BEAMUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-07-01",
+        "hour": 8,
+        "symbols": [
+          "MBLUSDT",
+          "PHAUSDT",
+          "SNTUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-07-01",
+        "hour": 16,
+        "symbols": [
+          "BALUSDT",
+          "LFTUSDT",
+          "MBLUSDT",
+          "PHAUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-08-01",
+        "hour": 8,
+        "symbols": [
+          "DEXEUSDT",
+          "JSTUSDT",
+          "L3USDT",
+          "XEMUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-08-01",
+        "hour": 16,
+        "symbols": [
+          "DEXEUSDT",
+          "DOP1USDT",
+          "L3USDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-09-01",
+        "hour": 8,
+        "symbols": [
+          "ATHUSDT",
+          "CLOUDUSDT",
+          "STMXUSDT",
+          "SUNUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-09-01",
+        "hour": 16,
+        "symbols": [
+          "CLOUDUSDT",
+          "MAPOUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-10-01",
+        "hour": 8,
+        "symbols": [
+          "ALEOUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-10-01",
+        "hour": 16,
+        "symbols": [
+          "ORBSUSDT",
+          "SNTUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-11-01",
+        "hour": 8,
+        "symbols": [
+          "OGUSDT",
+          "SPXUSDT",
+          "XCNUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-11-01",
+        "hour": 16,
+        "symbols": [
+          "SPXUSDT",
+          "XCNUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-12-01",
+        "hour": 8,
+        "symbols": [
+          "GFTUSDT",
+          "ORCAUSDT",
+          "RENUSDT",
+          "XEMUSDT"
+        ],
+        "offset": 479,
+        "slice_minutes": 2
+      },
+      {
+        "date": "2024-12-01",
+        "hour": 16,
+        "symbols": [
+          "1000BTTUSDT",
+          "1000MUMUUSDT",
+          "AEROUSDT",
+          "BILLYUSDT",
+          "GFTUSDT",
+          "GLMRUSDT",
+          "GNOUSDT",
+          "MOBILEUSDT",
+          "ORCAUSDT",
+          "XCHUSDT",
+          "XEMUSDT"
+        ],
+        "offset": 959,
+        "slice_minutes": 2
+      }
+    ],
+    "exchange": "bybit",
+    "channels": [
+      "tickers",
+      "orderbook.1"
+    ],
+    "workers": 3,
+    "per_file_decoded_cap": 96000000,
+    "aggregate_decoded_cap": 2304000000,
+    "funding_history_request_cap": 90,
+    "funding_history_response_cap": 65536,
+    "authenticated": false,
+    "paid_fallback": false
+  },
+  "format_pilot": "Use the first chronological selected event to verify the public historical-payment API before fetching all 90 payment observations. Public API errors remain explicit.",
+  "validation": "One economic rule, five frozen scenarios. Preserve all event outcomes; group inference by date, inspect concentration and remove best events/dates. Advance to untouched 2025 only if development and cost/latency stress survive. Any later revision counts as another dependent hypothesis.",
+  "source_documents": [
+    "https://bybit-exchange.github.io/docs/v5/market/history-fund-rate",
+    "https://www.bybit.com/en/help-center/article/Funding-fee-calculation"
+  ],
+  "implementation_sha256": "cfaae9ab74324ef970c582fe65c7aeb152179125774a5a7461e5d4b60ebd667f",
+  "selection_2025_opened": false,
+  "economic_configurations_run": 0,
+  "reliable_edge_established": false
+}

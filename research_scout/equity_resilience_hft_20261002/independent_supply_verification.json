@@ -1,0 +1,4376 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T22:27:02.699956+00:00",
+  "source_sessions_verified": 192,
+  "source_rows_verified": 46428207,
+  "counters": {
+    "unassessable_symbol_sessions": 2,
+    "assessable_symbol_sessions": 1150,
+    "decision_grids": 6498650,
+    "fresh_endpoint_grids": 4025232,
+    "fresh_tight_endpoint_grids": 2952820,
+    "continuous_clean_book_grids": 1079213,
+    "held_bid_grids": 43455,
+    "held_ask_grids": 43654,
+    "held_grids_with_no_completed_trades": 53973,
+    "held_grids_with_valid_trade_volume": 3231,
+    "bid_fails_five_distinct_clocks": 2141,
+    "ask_fails_five_distinct_clocks": 2182,
+    "ask_fails_minimum_notional": 5,
+    "ask_fails_five_times_displayed_size": 5,
+    "bid_fails_directional_share": 3,
+    "bid_fails_five_times_displayed_size": 8
+  },
+  "maximum_at_level_volume_multiple": {
+    "bid": "19",
+    "ask": "5.086666666666666666666666667"
+  },
+  "resilience_seeds": 0,
+  "economic_replays_with_orders": 0,
+  "scope": "Every source file and fixed-point book/trade window independently reconciled using prefix counts and direct trade aggregation, without importing the production detector or cash engine. Zero resilience seeds establish zero possible later-break entries. Two unassessable symbol-sessions remain unknown, never zero P&L.",
+  "results_sha256": "b1949aa02c7eb272e9aa558242bb39a25aca92bc8de52ea62b2b270eb01acfb2",
+  "auditor_sha256": "e27fdd37067798810775915f4ca3b0e7e8ed29e7198c9edc301c11e5ca39785d",
+  "session_diagnostics": [
+    {
+      "date": "2023-03-28",
+      "source_rows": 364670,
+      "counters": {
+        "unassessable_symbol_sessions": 1,
+        "assessable_symbol_sessions": 5,
+        "decision_grids": 28255,
+        "fresh_endpoint_grids": 20592,
+        "fresh_tight_endpoint_grids": 11912,
+        "continuous_clean_book_grids": 3495,
+        "held_bid_grids": 360,
+        "held_ask_grids": 310,
+        "held_grids_with_no_completed_trades": 497,
+        "held_grids_with_valid_trade_volume": 18,
+        "bid_fails_five_distinct_clocks": 7,
+        "ask_fails_five_distinct_clocks": 15
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.97",
+        "ask": "0"
+      },
+      "unassessable": [
+        {
+          "symbol": "SPY",
+          "reason": "BAD_TS_RECV record: no removal or timestamp repair"
+        }
+      ],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-03-29",
+      "source_rows": 245847,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22373,
+        "fresh_tight_endpoint_grids": 16345,
+        "continuous_clean_book_grids": 6261,
+        "held_bid_grids": 210,
+        "held_ask_grids": 252,
+        "held_grids_with_no_completed_trades": 319,
+        "held_grids_with_valid_trade_volume": 19,
+        "ask_fails_five_distinct_clocks": 18,
+        "bid_fails_five_distinct_clocks": 10
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.3333333333333333333333333333"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-03-30",
+      "source_rows": 254558,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23446,
+        "fresh_tight_endpoint_grids": 17263,
+        "continuous_clean_book_grids": 6645,
+        "held_bid_grids": 322,
+        "held_ask_grids": 455,
+        "held_grids_with_no_completed_trades": 534,
+        "held_grids_with_valid_trade_volume": 9,
+        "ask_fails_five_distinct_clocks": 6,
+        "bid_fails_five_distinct_clocks": 3
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-03-31",
+      "source_rows": 279028,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22012,
+        "fresh_tight_endpoint_grids": 15678,
+        "continuous_clean_book_grids": 5658,
+        "held_bid_grids": 232,
+        "held_ask_grids": 268,
+        "held_grids_with_no_completed_trades": 294,
+        "held_grids_with_valid_trade_volume": 24,
+        "ask_fails_five_distinct_clocks": 13,
+        "bid_fails_five_distinct_clocks": 14
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.02631578947368421052631578947"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-03",
+      "source_rows": 218693,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20932,
+        "fresh_tight_endpoint_grids": 15851,
+        "continuous_clean_book_grids": 5822,
+        "held_bid_grids": 222,
+        "held_ask_grids": 259,
+        "held_grids_with_valid_trade_volume": 39,
+        "ask_fails_five_distinct_clocks": 37,
+        "held_grids_with_no_completed_trades": 273,
+        "bid_fails_five_distinct_clocks": 7
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "4"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-04",
+      "source_rows": 249378,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21492,
+        "fresh_tight_endpoint_grids": 16180,
+        "continuous_clean_book_grids": 6786,
+        "held_bid_grids": 356,
+        "held_ask_grids": 341,
+        "held_grids_with_no_completed_trades": 495,
+        "held_grids_with_valid_trade_volume": 9,
+        "bid_fails_five_distinct_clocks": 8,
+        "ask_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.0002563445270443476031786721353",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-05",
+      "source_rows": 282257,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23054,
+        "fresh_tight_endpoint_grids": 16874,
+        "continuous_clean_book_grids": 7041,
+        "held_bid_grids": 319,
+        "held_ask_grids": 357,
+        "held_grids_with_no_completed_trades": 427,
+        "held_grids_with_valid_trade_volume": 34,
+        "bid_fails_five_distinct_clocks": 17,
+        "ask_fails_five_distinct_clocks": 34
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "19",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-06",
+      "source_rows": 259747,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21225,
+        "fresh_tight_endpoint_grids": 16200,
+        "continuous_clean_book_grids": 6212,
+        "held_bid_grids": 519,
+        "held_ask_grids": 490,
+        "held_grids_with_no_completed_trades": 571,
+        "held_grids_with_valid_trade_volume": 53,
+        "ask_fails_five_distinct_clocks": 43,
+        "bid_fails_five_distinct_clocks": 47
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.025",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-10",
+      "source_rows": 254815,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22305,
+        "fresh_tight_endpoint_grids": 15201,
+        "continuous_clean_book_grids": 6381,
+        "held_bid_grids": 308,
+        "held_ask_grids": 191,
+        "held_grids_with_no_completed_trades": 395,
+        "held_grids_with_valid_trade_volume": 8,
+        "ask_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-11",
+      "source_rows": 255662,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21870,
+        "fresh_tight_endpoint_grids": 16479,
+        "continuous_clean_book_grids": 7055,
+        "held_bid_grids": 448,
+        "held_ask_grids": 422,
+        "held_grids_with_no_completed_trades": 531,
+        "held_grids_with_valid_trade_volume": 21,
+        "bid_fails_five_distinct_clocks": 13,
+        "ask_fails_five_distinct_clocks": 21
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.3333333333333333333333333333",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-12",
+      "source_rows": 327820,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 25414,
+        "fresh_tight_endpoint_grids": 18210,
+        "continuous_clean_book_grids": 8336,
+        "held_bid_grids": 451,
+        "held_ask_grids": 545,
+        "held_grids_with_no_completed_trades": 644,
+        "held_grids_with_valid_trade_volume": 22,
+        "ask_fails_five_distinct_clocks": 22
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-13",
+      "source_rows": 290243,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24007,
+        "fresh_tight_endpoint_grids": 17855,
+        "continuous_clean_book_grids": 7762,
+        "held_bid_grids": 403,
+        "held_ask_grids": 435,
+        "held_grids_with_no_completed_trades": 561,
+        "held_grids_with_valid_trade_volume": 2,
+        "bid_fails_five_distinct_clocks": 2,
+        "ask_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-14",
+      "source_rows": 294681,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22583,
+        "fresh_tight_endpoint_grids": 16408,
+        "continuous_clean_book_grids": 6515,
+        "held_bid_grids": 282,
+        "held_ask_grids": 339,
+        "held_grids_with_no_completed_trades": 407,
+        "held_grids_with_valid_trade_volume": 17,
+        "bid_fails_five_distinct_clocks": 17,
+        "ask_fails_five_distinct_clocks": 9
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.0625",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-17",
+      "source_rows": 220918,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23430,
+        "fresh_tight_endpoint_grids": 16298,
+        "continuous_clean_book_grids": 6847,
+        "held_bid_grids": 311,
+        "held_ask_grids": 432,
+        "held_grids_with_no_completed_trades": 485,
+        "held_grids_with_valid_trade_volume": 1,
+        "bid_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.02682926829268292682926829268",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-18",
+      "source_rows": 229829,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19746,
+        "fresh_tight_endpoint_grids": 14567,
+        "continuous_clean_book_grids": 5599,
+        "held_bid_grids": 279,
+        "held_ask_grids": 255,
+        "held_grids_with_valid_trade_volume": 17,
+        "ask_fails_five_distinct_clocks": 7,
+        "held_grids_with_no_completed_trades": 362,
+        "bid_fails_five_distinct_clocks": 10
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.2873563218390804597701149425",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-19",
+      "source_rows": 239311,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20801,
+        "fresh_tight_endpoint_grids": 15414,
+        "continuous_clean_book_grids": 6164,
+        "held_bid_grids": 265,
+        "held_ask_grids": 248,
+        "held_grids_with_no_completed_trades": 346,
+        "held_grids_with_valid_trade_volume": 8,
+        "bid_fails_five_distinct_clocks": 8,
+        "ask_fails_five_distinct_clocks": 5
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-20",
+      "source_rows": 118936,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 12566,
+        "fresh_tight_endpoint_grids": 9337,
+        "continuous_clean_book_grids": 2838,
+        "held_bid_grids": 16,
+        "held_ask_grids": 25,
+        "held_grids_with_valid_trade_volume": 14,
+        "ask_fails_five_distinct_clocks": 14,
+        "held_grids_with_no_completed_trades": 21
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.08333333333333333333333333333"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-21",
+      "source_rows": 256358,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21563,
+        "fresh_tight_endpoint_grids": 15774,
+        "continuous_clean_book_grids": 6555,
+        "held_bid_grids": 466,
+        "held_ask_grids": 397,
+        "held_grids_with_valid_trade_volume": 10,
+        "bid_fails_five_distinct_clocks": 5,
+        "ask_fails_five_distinct_clocks": 9,
+        "held_grids_with_no_completed_trades": 576
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.5"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-24",
+      "source_rows": 245554,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20283,
+        "fresh_tight_endpoint_grids": 13876,
+        "continuous_clean_book_grids": 5446,
+        "held_bid_grids": 144,
+        "held_ask_grids": 209,
+        "held_grids_with_no_completed_trades": 268
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-25",
+      "source_rows": 230222,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20662,
+        "fresh_tight_endpoint_grids": 15562,
+        "continuous_clean_book_grids": 6213,
+        "held_bid_grids": 451,
+        "held_ask_grids": 456,
+        "held_grids_with_valid_trade_volume": 34,
+        "bid_fails_five_distinct_clocks": 28,
+        "held_grids_with_no_completed_trades": 525,
+        "ask_fails_five_distinct_clocks": 6
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-26",
+      "source_rows": 328639,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24514,
+        "fresh_tight_endpoint_grids": 15904,
+        "continuous_clean_book_grids": 7325,
+        "held_bid_grids": 232,
+        "held_ask_grids": 229,
+        "held_grids_with_no_completed_trades": 304,
+        "held_grids_with_valid_trade_volume": 7,
+        "bid_fails_five_distinct_clocks": 7
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.01265822784810126582278481013",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-27",
+      "source_rows": 297650,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24145,
+        "fresh_tight_endpoint_grids": 17541,
+        "continuous_clean_book_grids": 7519,
+        "held_bid_grids": 460,
+        "held_ask_grids": 450,
+        "held_grids_with_no_completed_trades": 610,
+        "held_grids_with_valid_trade_volume": 19,
+        "bid_fails_five_distinct_clocks": 16,
+        "ask_fails_five_distinct_clocks": 14
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.1349572086899275839368005267",
+        "ask": "5.086666666666666666666666667"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-04-28",
+      "source_rows": 232225,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23440,
+        "fresh_tight_endpoint_grids": 16186,
+        "continuous_clean_book_grids": 6498,
+        "held_bid_grids": 187,
+        "held_ask_grids": 278,
+        "held_grids_with_no_completed_trades": 329,
+        "held_grids_with_valid_trade_volume": 2,
+        "bid_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-01",
+      "source_rows": 190114,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20463,
+        "fresh_tight_endpoint_grids": 15469,
+        "continuous_clean_book_grids": 5603,
+        "held_bid_grids": 353,
+        "held_ask_grids": 272,
+        "held_grids_with_valid_trade_volume": 23,
+        "bid_fails_five_distinct_clocks": 23,
+        "held_grids_with_no_completed_trades": 382,
+        "ask_fails_five_distinct_clocks": 13
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.3492",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-02",
+      "source_rows": 238491,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20919,
+        "fresh_tight_endpoint_grids": 15246,
+        "continuous_clean_book_grids": 5894,
+        "held_bid_grids": 161,
+        "held_ask_grids": 190,
+        "held_grids_with_no_completed_trades": 231,
+        "held_grids_with_valid_trade_volume": 14,
+        "bid_fails_five_distinct_clocks": 13,
+        "ask_fails_five_distinct_clocks": 12
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.5",
+        "ask": "0.4827586206896551724137931034"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-03",
+      "source_rows": 271334,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24042,
+        "fresh_tight_endpoint_grids": 16812,
+        "continuous_clean_book_grids": 6780,
+        "held_bid_grids": 273,
+        "held_ask_grids": 241,
+        "held_grids_with_no_completed_trades": 355
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-04",
+      "source_rows": 434633,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 28200,
+        "fresh_tight_endpoint_grids": 19556,
+        "continuous_clean_book_grids": 10283,
+        "held_bid_grids": 330,
+        "held_ask_grids": 352,
+        "held_grids_with_no_completed_trades": 440,
+        "held_grids_with_valid_trade_volume": 25,
+        "bid_fails_five_distinct_clocks": 24,
+        "ask_fails_five_distinct_clocks": 9
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.0025",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-05",
+      "source_rows": 315255,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24040,
+        "fresh_tight_endpoint_grids": 17837,
+        "continuous_clean_book_grids": 7230,
+        "held_bid_grids": 277,
+        "held_ask_grids": 286,
+        "held_grids_with_valid_trade_volume": 40,
+        "ask_fails_five_distinct_clocks": 10,
+        "bid_fails_five_distinct_clocks": 30,
+        "held_grids_with_no_completed_trades": 383
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.04109589041095890410958904110"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-08",
+      "source_rows": 188414,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20188,
+        "fresh_tight_endpoint_grids": 13348,
+        "continuous_clean_book_grids": 5061,
+        "held_bid_grids": 140,
+        "held_ask_grids": 183,
+        "held_grids_with_no_completed_trades": 224
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-09",
+      "source_rows": 207850,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19551,
+        "fresh_tight_endpoint_grids": 13510,
+        "continuous_clean_book_grids": 5054,
+        "held_bid_grids": 217,
+        "held_ask_grids": 245,
+        "held_grids_with_no_completed_trades": 314
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-10",
+      "source_rows": 284055,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23565,
+        "fresh_tight_endpoint_grids": 16404,
+        "continuous_clean_book_grids": 5888,
+        "held_bid_grids": 241,
+        "held_ask_grids": 265,
+        "held_grids_with_no_completed_trades": 335,
+        "held_grids_with_valid_trade_volume": 21,
+        "bid_fails_five_distinct_clocks": 20,
+        "ask_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.01754385964912280701754385965",
+        "ask": "0.03880952380952380952380952381"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-11",
+      "source_rows": 284677,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23221,
+        "fresh_tight_endpoint_grids": 16824,
+        "continuous_clean_book_grids": 6148,
+        "held_bid_grids": 172,
+        "held_ask_grids": 248,
+        "held_grids_with_no_completed_trades": 325,
+        "held_grids_with_valid_trade_volume": 6,
+        "bid_fails_five_distinct_clocks": 6,
+        "ask_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.2427184466019417475728155340",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-12",
+      "source_rows": 204501,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20523,
+        "fresh_tight_endpoint_grids": 14885,
+        "continuous_clean_book_grids": 4759,
+        "held_bid_grids": 189,
+        "held_ask_grids": 159,
+        "held_grids_with_no_completed_trades": 201,
+        "held_grids_with_valid_trade_volume": 8,
+        "ask_fails_five_distinct_clocks": 8,
+        "bid_fails_five_distinct_clocks": 3
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.375"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-15",
+      "source_rows": 212578,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20290,
+        "fresh_tight_endpoint_grids": 14846,
+        "continuous_clean_book_grids": 4856,
+        "held_bid_grids": 285,
+        "held_ask_grids": 272,
+        "held_grids_with_no_completed_trades": 331,
+        "held_grids_with_valid_trade_volume": 9,
+        "bid_fails_five_distinct_clocks": 9,
+        "ask_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.96",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-16",
+      "source_rows": 185493,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19381,
+        "fresh_tight_endpoint_grids": 13034,
+        "continuous_clean_book_grids": 4485,
+        "held_bid_grids": 94,
+        "held_ask_grids": 107,
+        "held_grids_with_no_completed_trades": 119,
+        "held_grids_with_valid_trade_volume": 8,
+        "bid_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-17",
+      "source_rows": 194005,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17114,
+        "fresh_tight_endpoint_grids": 11918,
+        "continuous_clean_book_grids": 4124,
+        "held_bid_grids": 188,
+        "held_ask_grids": 141,
+        "held_grids_with_valid_trade_volume": 29,
+        "ask_fails_five_distinct_clocks": 24,
+        "held_grids_with_no_completed_trades": 196,
+        "bid_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.79",
+        "ask": "0.36"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-18",
+      "source_rows": 176050,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18056,
+        "fresh_tight_endpoint_grids": 13187,
+        "continuous_clean_book_grids": 4231,
+        "held_bid_grids": 181,
+        "held_ask_grids": 180,
+        "held_grids_with_no_completed_trades": 237,
+        "held_grids_with_valid_trade_volume": 12,
+        "bid_fails_five_distinct_clocks": 11,
+        "ask_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.75",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-19",
+      "source_rows": 210274,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19546,
+        "fresh_tight_endpoint_grids": 15391,
+        "continuous_clean_book_grids": 5026,
+        "held_bid_grids": 143,
+        "held_ask_grids": 141,
+        "held_grids_with_no_completed_trades": 224,
+        "held_grids_with_valid_trade_volume": 8,
+        "ask_fails_five_distinct_clocks": 5,
+        "bid_fails_five_distinct_clocks": 3
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-22",
+      "source_rows": 222451,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20876,
+        "fresh_tight_endpoint_grids": 16733,
+        "continuous_clean_book_grids": 5391,
+        "held_bid_grids": 432,
+        "held_ask_grids": 430,
+        "held_grids_with_no_completed_trades": 560,
+        "held_grids_with_valid_trade_volume": 17,
+        "bid_fails_five_distinct_clocks": 13,
+        "ask_fails_five_distinct_clocks": 6
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-23",
+      "source_rows": 242625,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21615,
+        "fresh_tight_endpoint_grids": 15316,
+        "continuous_clean_book_grids": 5544,
+        "held_bid_grids": 137,
+        "held_ask_grids": 170,
+        "held_grids_with_no_completed_trades": 187,
+        "held_grids_with_valid_trade_volume": 21,
+        "ask_fails_five_distinct_clocks": 18,
+        "bid_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.04761904761904761904761904762",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-24",
+      "source_rows": 211778,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18939,
+        "fresh_tight_endpoint_grids": 13878,
+        "continuous_clean_book_grids": 4422,
+        "held_bid_grids": 105,
+        "held_ask_grids": 87,
+        "held_grids_with_no_completed_trades": 124,
+        "held_grids_with_valid_trade_volume": 8,
+        "ask_fails_five_distinct_clocks": 7,
+        "bid_fails_five_distinct_clocks": 6
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-25",
+      "source_rows": 253658,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23159,
+        "fresh_tight_endpoint_grids": 16351,
+        "continuous_clean_book_grids": 5943,
+        "held_bid_grids": 102,
+        "held_ask_grids": 105,
+        "held_grids_with_no_completed_trades": 124,
+        "held_grids_with_valid_trade_volume": 8,
+        "bid_fails_five_distinct_clocks": 8,
+        "ask_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.0002086375964948883788858752347",
+        "ask": "0.3307692307692307692307692308"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-26",
+      "source_rows": 292003,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23628,
+        "fresh_tight_endpoint_grids": 16916,
+        "continuous_clean_book_grids": 6245,
+        "held_bid_grids": 169,
+        "held_ask_grids": 151,
+        "held_grids_with_valid_trade_volume": 10,
+        "bid_fails_five_distinct_clocks": 6,
+        "held_grids_with_no_completed_trades": 249,
+        "ask_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.03030303030303030303030303030"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-30",
+      "source_rows": 301481,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23049,
+        "fresh_tight_endpoint_grids": 17234,
+        "continuous_clean_book_grids": 6204,
+        "held_bid_grids": 164,
+        "held_ask_grids": 137,
+        "held_grids_with_no_completed_trades": 207,
+        "held_grids_with_valid_trade_volume": 3,
+        "ask_fails_five_distinct_clocks": 3,
+        "bid_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "1"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-05-31",
+      "source_rows": 266651,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23202,
+        "fresh_tight_endpoint_grids": 16754,
+        "continuous_clean_book_grids": 5804,
+        "held_bid_grids": 130,
+        "held_ask_grids": 139,
+        "held_grids_with_no_completed_trades": 204,
+        "held_grids_with_valid_trade_volume": 8,
+        "bid_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.01874233666141180592047644071",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-01",
+      "source_rows": 254985,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21296,
+        "fresh_tight_endpoint_grids": 14356,
+        "continuous_clean_book_grids": 4791,
+        "held_bid_grids": 105,
+        "held_ask_grids": 102,
+        "held_grids_with_no_completed_trades": 162
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-02",
+      "source_rows": 230162,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22030,
+        "fresh_tight_endpoint_grids": 16073,
+        "continuous_clean_book_grids": 5214,
+        "held_bid_grids": 164,
+        "held_ask_grids": 162,
+        "held_grids_with_no_completed_trades": 182,
+        "held_grids_with_valid_trade_volume": 31,
+        "ask_fails_five_distinct_clocks": 31,
+        "bid_fails_five_distinct_clocks": 16
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.1639344262295081967213114754",
+        "ask": "0.5238095238095238095238095238"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-05",
+      "source_rows": 162758,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 15437,
+        "fresh_tight_endpoint_grids": 11803,
+        "continuous_clean_book_grids": 2798,
+        "held_bid_grids": 51,
+        "held_ask_grids": 51,
+        "held_grids_with_no_completed_trades": 65
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-06",
+      "source_rows": 174045,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18363,
+        "fresh_tight_endpoint_grids": 13700,
+        "continuous_clean_book_grids": 4114,
+        "held_bid_grids": 143,
+        "held_ask_grids": 110,
+        "held_grids_with_valid_trade_volume": 13,
+        "ask_fails_five_distinct_clocks": 7,
+        "bid_fails_five_distinct_clocks": 6,
+        "held_grids_with_no_completed_trades": 168
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "1.37",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-07",
+      "source_rows": 233326,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21042,
+        "fresh_tight_endpoint_grids": 16104,
+        "continuous_clean_book_grids": 5036,
+        "held_bid_grids": 195,
+        "held_ask_grids": 183,
+        "held_grids_with_no_completed_trades": 282,
+        "held_grids_with_valid_trade_volume": 11,
+        "ask_fails_five_distinct_clocks": 11,
+        "bid_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-08",
+      "source_rows": 289948,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23331,
+        "fresh_tight_endpoint_grids": 17418,
+        "continuous_clean_book_grids": 6203,
+        "held_bid_grids": 187,
+        "held_ask_grids": 192,
+        "held_grids_with_no_completed_trades": 233,
+        "held_grids_with_valid_trade_volume": 4,
+        "bid_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-09",
+      "source_rows": 238503,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20189,
+        "fresh_tight_endpoint_grids": 16526,
+        "continuous_clean_book_grids": 5614,
+        "held_bid_grids": 169,
+        "held_ask_grids": 212,
+        "held_grids_with_no_completed_trades": 261,
+        "held_grids_with_valid_trade_volume": 9,
+        "bid_fails_five_distinct_clocks": 9,
+        "ask_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.01086956521739130434782608696"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-12",
+      "source_rows": 244513,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22986,
+        "fresh_tight_endpoint_grids": 16442,
+        "continuous_clean_book_grids": 5751,
+        "held_bid_grids": 339,
+        "held_ask_grids": 289,
+        "held_grids_with_no_completed_trades": 356,
+        "held_grids_with_valid_trade_volume": 3,
+        "bid_fails_five_distinct_clocks": 3,
+        "ask_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.003225806451612903225806451613",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-13",
+      "source_rows": 276436,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23429,
+        "fresh_tight_endpoint_grids": 15299,
+        "continuous_clean_book_grids": 5803,
+        "held_bid_grids": 270,
+        "held_ask_grids": 298,
+        "held_grids_with_no_completed_trades": 319,
+        "held_grids_with_valid_trade_volume": 10,
+        "bid_fails_five_distinct_clocks": 10,
+        "ask_fails_minimum_notional": 5,
+        "ask_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.0145",
+        "ask": "0.72"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-14",
+      "source_rows": 212896,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19532,
+        "fresh_tight_endpoint_grids": 15030,
+        "continuous_clean_book_grids": 4673,
+        "held_bid_grids": 177,
+        "held_ask_grids": 210,
+        "held_grids_with_no_completed_trades": 206,
+        "held_grids_with_valid_trade_volume": 18,
+        "bid_fails_five_distinct_clocks": 18,
+        "ask_fails_five_distinct_clocks": 18
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "1"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-15",
+      "source_rows": 253154,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22668,
+        "fresh_tight_endpoint_grids": 15360,
+        "continuous_clean_book_grids": 5613,
+        "held_bid_grids": 132,
+        "held_ask_grids": 132,
+        "held_grids_with_no_completed_trades": 150,
+        "held_grids_with_valid_trade_volume": 5,
+        "bid_fails_five_distinct_clocks": 5
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-16",
+      "source_rows": 320275,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24426,
+        "fresh_tight_endpoint_grids": 17548,
+        "continuous_clean_book_grids": 7210,
+        "held_bid_grids": 111,
+        "held_ask_grids": 89,
+        "held_grids_with_no_completed_trades": 145,
+        "held_grids_with_valid_trade_volume": 6,
+        "bid_fails_five_distinct_clocks": 6
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-20",
+      "source_rows": 183608,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18996,
+        "fresh_tight_endpoint_grids": 14728,
+        "continuous_clean_book_grids": 4758,
+        "held_bid_grids": 79,
+        "held_ask_grids": 79,
+        "held_grids_with_no_completed_trades": 113,
+        "held_grids_with_valid_trade_volume": 4,
+        "bid_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-21",
+      "source_rows": 218975,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20063,
+        "fresh_tight_endpoint_grids": 14418,
+        "continuous_clean_book_grids": 5180,
+        "held_bid_grids": 120,
+        "held_ask_grids": 143,
+        "held_grids_with_no_completed_trades": 157,
+        "held_grids_with_valid_trade_volume": 5,
+        "ask_fails_five_distinct_clocks": 5
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-22",
+      "source_rows": 216179,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19228,
+        "fresh_tight_endpoint_grids": 14226,
+        "continuous_clean_book_grids": 5191,
+        "held_bid_grids": 134,
+        "held_ask_grids": 152,
+        "held_grids_with_no_completed_trades": 144,
+        "held_grids_with_valid_trade_volume": 29,
+        "bid_fails_five_distinct_clocks": 27,
+        "ask_fails_five_distinct_clocks": 24
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "3.745",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-23",
+      "source_rows": 236564,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20095,
+        "fresh_tight_endpoint_grids": 15099,
+        "continuous_clean_book_grids": 5326,
+        "held_bid_grids": 110,
+        "held_ask_grids": 119,
+        "held_grids_with_valid_trade_volume": 8,
+        "bid_fails_five_distinct_clocks": 8,
+        "held_grids_with_no_completed_trades": 150
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.28",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-26",
+      "source_rows": 164708,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18559,
+        "fresh_tight_endpoint_grids": 13835,
+        "continuous_clean_book_grids": 4869,
+        "held_bid_grids": 98,
+        "held_ask_grids": 67,
+        "held_grids_with_no_completed_trades": 102,
+        "held_grids_with_valid_trade_volume": 4,
+        "bid_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-27",
+      "source_rows": 226026,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20678,
+        "fresh_tight_endpoint_grids": 15509,
+        "continuous_clean_book_grids": 4716,
+        "held_bid_grids": 111,
+        "held_ask_grids": 94,
+        "held_grids_with_no_completed_trades": 134,
+        "held_grids_with_valid_trade_volume": 8,
+        "bid_fails_five_distinct_clocks": 8,
+        "ask_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.006147540983606557377049180328",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-28",
+      "source_rows": 222106,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20125,
+        "fresh_tight_endpoint_grids": 14482,
+        "continuous_clean_book_grids": 4617,
+        "held_bid_grids": 166,
+        "held_ask_grids": 194,
+        "held_grids_with_valid_trade_volume": 15,
+        "ask_fails_five_distinct_clocks": 14,
+        "bid_fails_five_distinct_clocks": 8,
+        "held_grids_with_no_completed_trades": 195
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "4",
+        "ask": "0.2325581395348837209302325581"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-29",
+      "source_rows": 277302,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21819,
+        "fresh_tight_endpoint_grids": 16928,
+        "continuous_clean_book_grids": 5099,
+        "held_bid_grids": 160,
+        "held_ask_grids": 112,
+        "held_grids_with_valid_trade_volume": 2,
+        "ask_fails_five_distinct_clocks": 2,
+        "held_grids_with_no_completed_trades": 183
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-06-30",
+      "source_rows": 216398,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21151,
+        "fresh_tight_endpoint_grids": 15097,
+        "continuous_clean_book_grids": 4107,
+        "held_bid_grids": 72,
+        "held_ask_grids": 71,
+        "held_grids_with_no_completed_trades": 86,
+        "held_grids_with_valid_trade_volume": 1,
+        "bid_fails_five_distinct_clocks": 1,
+        "ask_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "1",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-03",
+      "source_rows": 185208,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17331,
+        "fresh_tight_endpoint_grids": 13023,
+        "continuous_clean_book_grids": 4370,
+        "held_bid_grids": 178,
+        "held_ask_grids": 177,
+        "held_grids_with_no_completed_trades": 186,
+        "held_grids_with_valid_trade_volume": 40,
+        "bid_fails_five_distinct_clocks": 31,
+        "ask_fails_five_distinct_clocks": 9
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.4366812227074235807860262009",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-05",
+      "source_rows": 199238,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18983,
+        "fresh_tight_endpoint_grids": 13892,
+        "continuous_clean_book_grids": 4299,
+        "held_bid_grids": 80,
+        "held_ask_grids": 75,
+        "held_grids_with_valid_trade_volume": 17,
+        "bid_fails_five_distinct_clocks": 2,
+        "held_grids_with_no_completed_trades": 89,
+        "ask_fails_five_distinct_clocks": 15
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.028",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-06",
+      "source_rows": 287550,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21520,
+        "fresh_tight_endpoint_grids": 15005,
+        "continuous_clean_book_grids": 4542,
+        "held_bid_grids": 220,
+        "held_ask_grids": 188,
+        "held_grids_with_valid_trade_volume": 10,
+        "ask_fails_five_distinct_clocks": 4,
+        "held_grids_with_no_completed_trades": 270,
+        "bid_fails_five_distinct_clocks": 6
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.635"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-07",
+      "source_rows": 324320,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 25901,
+        "fresh_tight_endpoint_grids": 18206,
+        "continuous_clean_book_grids": 7500,
+        "held_bid_grids": 285,
+        "held_ask_grids": 222,
+        "held_grids_with_no_completed_trades": 382,
+        "held_grids_with_valid_trade_volume": 7,
+        "ask_fails_five_distinct_clocks": 4,
+        "bid_fails_five_distinct_clocks": 3
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-10",
+      "source_rows": 196602,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19596,
+        "fresh_tight_endpoint_grids": 14380,
+        "continuous_clean_book_grids": 4403,
+        "held_bid_grids": 139,
+        "held_ask_grids": 122,
+        "held_grids_with_no_completed_trades": 145,
+        "held_grids_with_valid_trade_volume": 11,
+        "bid_fails_five_distinct_clocks": 11,
+        "ask_fails_five_distinct_clocks": 10
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-11",
+      "source_rows": 215169,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18182,
+        "fresh_tight_endpoint_grids": 13208,
+        "continuous_clean_book_grids": 4362,
+        "held_bid_grids": 63,
+        "held_ask_grids": 53,
+        "held_grids_with_valid_trade_volume": 7,
+        "bid_fails_five_distinct_clocks": 7,
+        "held_grids_with_no_completed_trades": 81,
+        "ask_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "1.5",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-12",
+      "source_rows": 265140,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23524,
+        "fresh_tight_endpoint_grids": 16879,
+        "continuous_clean_book_grids": 5456,
+        "held_bid_grids": 111,
+        "held_ask_grids": 77,
+        "held_grids_with_no_completed_trades": 135,
+        "held_grids_with_valid_trade_volume": 2,
+        "bid_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-13",
+      "source_rows": 248166,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20000,
+        "fresh_tight_endpoint_grids": 15678,
+        "continuous_clean_book_grids": 5260,
+        "held_bid_grids": 213,
+        "held_ask_grids": 222,
+        "held_grids_with_valid_trade_volume": 2,
+        "ask_fails_five_distinct_clocks": 2,
+        "held_grids_with_no_completed_trades": 258
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.3294892915980230642504118616"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-14",
+      "source_rows": 174328,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18470,
+        "fresh_tight_endpoint_grids": 13975,
+        "continuous_clean_book_grids": 4545,
+        "held_bid_grids": 63,
+        "held_ask_grids": 77,
+        "held_grids_with_no_completed_trades": 93,
+        "held_grids_with_valid_trade_volume": 6,
+        "bid_fails_five_distinct_clocks": 4,
+        "ask_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-17",
+      "source_rows": 251571,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22058,
+        "fresh_tight_endpoint_grids": 17564,
+        "continuous_clean_book_grids": 6156,
+        "held_bid_grids": 285,
+        "held_ask_grids": 322,
+        "held_grids_with_no_completed_trades": 370,
+        "held_grids_with_valid_trade_volume": 16,
+        "ask_fails_five_distinct_clocks": 4,
+        "bid_fails_five_distinct_clocks": 14,
+        "ask_fails_five_times_displayed_size": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "1.567030784508440913604766634"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-18",
+      "source_rows": 224703,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18741,
+        "fresh_tight_endpoint_grids": 15866,
+        "continuous_clean_book_grids": 4994,
+        "held_bid_grids": 122,
+        "held_ask_grids": 148,
+        "held_grids_with_valid_trade_volume": 18,
+        "ask_fails_five_distinct_clocks": 11,
+        "held_grids_with_no_completed_trades": 169,
+        "bid_fails_five_distinct_clocks": 14
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.6666666666666666666666666667"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-19",
+      "source_rows": 242503,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19957,
+        "fresh_tight_endpoint_grids": 15909,
+        "continuous_clean_book_grids": 4570,
+        "held_bid_grids": 171,
+        "held_ask_grids": 191,
+        "held_grids_with_valid_trade_volume": 34,
+        "ask_fails_five_distinct_clocks": 28,
+        "held_grids_with_no_completed_trades": 239,
+        "bid_fails_five_distinct_clocks": 9
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.06666666666666666666666666667",
+        "ask": "0.1428571428571428571428571429"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-20",
+      "source_rows": 207523,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19275,
+        "fresh_tight_endpoint_grids": 15790,
+        "continuous_clean_book_grids": 4789,
+        "held_bid_grids": 74,
+        "held_ask_grids": 154,
+        "held_grids_with_no_completed_trades": 158,
+        "held_grids_with_valid_trade_volume": 26,
+        "bid_fails_five_distinct_clocks": 26,
+        "ask_fails_five_distinct_clocks": 21
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.1696703296703296703296703297",
+        "ask": "0.2296043656207366984993178718"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-21",
+      "source_rows": 245121,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21513,
+        "fresh_tight_endpoint_grids": 17548,
+        "continuous_clean_book_grids": 5174,
+        "held_bid_grids": 161,
+        "held_ask_grids": 180,
+        "held_grids_with_no_completed_trades": 243,
+        "held_grids_with_valid_trade_volume": 14,
+        "bid_fails_five_distinct_clocks": 14
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-24",
+      "source_rows": 212440,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19993,
+        "fresh_tight_endpoint_grids": 15730,
+        "continuous_clean_book_grids": 4805,
+        "held_bid_grids": 134,
+        "held_ask_grids": 168,
+        "held_grids_with_no_completed_trades": 205,
+        "held_grids_with_valid_trade_volume": 24,
+        "bid_fails_five_distinct_clocks": 17,
+        "ask_fails_five_distinct_clocks": 14
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.3466666666666666666666666667",
+        "ask": "0.03225806451612903225806451613"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-25",
+      "source_rows": 196415,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17646,
+        "fresh_tight_endpoint_grids": 14846,
+        "continuous_clean_book_grids": 4289,
+        "held_bid_grids": 159,
+        "held_ask_grids": 128,
+        "held_grids_with_valid_trade_volume": 14,
+        "bid_fails_five_distinct_clocks": 8,
+        "bid_fails_directional_share": 3,
+        "held_grids_with_no_completed_trades": 198,
+        "ask_fails_five_distinct_clocks": 3
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "11.10526315789473684210526316",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-26",
+      "source_rows": 234545,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21619,
+        "fresh_tight_endpoint_grids": 17112,
+        "continuous_clean_book_grids": 5629,
+        "held_bid_grids": 88,
+        "held_ask_grids": 115,
+        "held_grids_with_no_completed_trades": 166,
+        "held_grids_with_valid_trade_volume": 5,
+        "ask_fails_five_distinct_clocks": 5
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-27",
+      "source_rows": 213807,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20617,
+        "fresh_tight_endpoint_grids": 16931,
+        "continuous_clean_book_grids": 5324,
+        "held_bid_grids": 154,
+        "held_ask_grids": 105,
+        "held_grids_with_valid_trade_volume": 14,
+        "bid_fails_five_distinct_clocks": 14,
+        "held_grids_with_no_completed_trades": 193
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-28",
+      "source_rows": 214919,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21315,
+        "fresh_tight_endpoint_grids": 16814,
+        "continuous_clean_book_grids": 5780,
+        "held_bid_grids": 141,
+        "held_ask_grids": 191,
+        "held_grids_with_no_completed_trades": 204,
+        "held_grids_with_valid_trade_volume": 15,
+        "ask_fails_five_distinct_clocks": 15,
+        "bid_fails_five_distinct_clocks": 6
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.075"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-07-31",
+      "source_rows": 186885,
+      "counters": {
+        "assessable_symbol_sessions": 5,
+        "decision_grids": 28255,
+        "fresh_endpoint_grids": 15550,
+        "fresh_tight_endpoint_grids": 11884,
+        "continuous_clean_book_grids": 4717,
+        "held_bid_grids": 75,
+        "held_ask_grids": 41,
+        "held_grids_with_valid_trade_volume": 2,
+        "bid_fails_five_distinct_clocks": 2,
+        "ask_fails_five_distinct_clocks": 2,
+        "held_grids_with_no_completed_trades": 77,
+        "unassessable_symbol_sessions": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.6666666666666666666666666667",
+        "ask": "0"
+      },
+      "unassessable": [
+        {
+          "symbol": "UPRO",
+          "reason": "BAD_TS_RECV record: no removal or timestamp repair"
+        }
+      ],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-01",
+      "source_rows": 169661,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18290,
+        "fresh_tight_endpoint_grids": 15319,
+        "continuous_clean_book_grids": 4738,
+        "held_bid_grids": 187,
+        "held_ask_grids": 173,
+        "held_grids_with_valid_trade_volume": 13,
+        "bid_fails_five_distinct_clocks": 3,
+        "held_grids_with_no_completed_trades": 225,
+        "ask_fails_five_distinct_clocks": 10
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-02",
+      "source_rows": 222981,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19845,
+        "fresh_tight_endpoint_grids": 15848,
+        "continuous_clean_book_grids": 5109,
+        "held_bid_grids": 164,
+        "held_ask_grids": 181,
+        "held_grids_with_valid_trade_volume": 11,
+        "ask_fails_five_distinct_clocks": 8,
+        "held_grids_with_no_completed_trades": 213,
+        "bid_fails_five_distinct_clocks": 5
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.5172413793103448275862068966",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-03",
+      "source_rows": 277060,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23032,
+        "fresh_tight_endpoint_grids": 18533,
+        "continuous_clean_book_grids": 6341,
+        "held_bid_grids": 231,
+        "held_ask_grids": 196,
+        "held_grids_with_no_completed_trades": 311,
+        "held_grids_with_valid_trade_volume": 6,
+        "bid_fails_five_distinct_clocks": 6
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-04",
+      "source_rows": 261310,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21089,
+        "fresh_tight_endpoint_grids": 17235,
+        "continuous_clean_book_grids": 6152,
+        "held_bid_grids": 299,
+        "held_ask_grids": 277,
+        "held_grids_with_no_completed_trades": 338,
+        "held_grids_with_valid_trade_volume": 19,
+        "ask_fails_five_distinct_clocks": 15,
+        "bid_fails_five_distinct_clocks": 18
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-07",
+      "source_rows": 234572,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20015,
+        "fresh_tight_endpoint_grids": 15387,
+        "continuous_clean_book_grids": 4980,
+        "held_bid_grids": 97,
+        "held_ask_grids": 98,
+        "held_grids_with_no_completed_trades": 132,
+        "held_grids_with_valid_trade_volume": 2,
+        "bid_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-08",
+      "source_rows": 204877,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20433,
+        "fresh_tight_endpoint_grids": 16514,
+        "continuous_clean_book_grids": 5255,
+        "held_bid_grids": 260,
+        "held_ask_grids": 286,
+        "held_grids_with_valid_trade_volume": 15,
+        "bid_fails_five_distinct_clocks": 6,
+        "held_grids_with_no_completed_trades": 310,
+        "ask_fails_five_distinct_clocks": 9
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "3.22"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-09",
+      "source_rows": 193231,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21002,
+        "fresh_tight_endpoint_grids": 16574,
+        "continuous_clean_book_grids": 5191,
+        "held_bid_grids": 310,
+        "held_ask_grids": 241,
+        "held_grids_with_no_completed_trades": 339,
+        "held_grids_with_valid_trade_volume": 8,
+        "bid_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-10",
+      "source_rows": 271119,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24681,
+        "fresh_tight_endpoint_grids": 17256,
+        "continuous_clean_book_grids": 8586,
+        "held_bid_grids": 294,
+        "held_ask_grids": 264,
+        "held_grids_with_no_completed_trades": 357,
+        "held_grids_with_valid_trade_volume": 16,
+        "bid_fails_five_distinct_clocks": 9,
+        "ask_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.09318181818181818181818181818",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-11",
+      "source_rows": 199410,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20760,
+        "fresh_tight_endpoint_grids": 14516,
+        "continuous_clean_book_grids": 5597,
+        "held_bid_grids": 360,
+        "held_ask_grids": 310,
+        "held_grids_with_no_completed_trades": 371,
+        "held_grids_with_valid_trade_volume": 12,
+        "bid_fails_five_distinct_clocks": 12,
+        "ask_fails_five_distinct_clocks": 12
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.009672861645473318117595913488",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-14",
+      "source_rows": 205478,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20929,
+        "fresh_tight_endpoint_grids": 14248,
+        "continuous_clean_book_grids": 5820,
+        "held_bid_grids": 130,
+        "held_ask_grids": 109,
+        "held_grids_with_no_completed_trades": 157,
+        "held_grids_with_valid_trade_volume": 1,
+        "ask_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.8684210526315789473684210526"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-15",
+      "source_rows": 209037,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24189,
+        "fresh_tight_endpoint_grids": 15086,
+        "continuous_clean_book_grids": 5493,
+        "held_bid_grids": 289,
+        "held_ask_grids": 298,
+        "held_grids_with_valid_trade_volume": 33,
+        "bid_fails_five_distinct_clocks": 32,
+        "held_grids_with_no_completed_trades": 335,
+        "ask_fails_five_distinct_clocks": 29
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-16",
+      "source_rows": 161081,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20108,
+        "fresh_tight_endpoint_grids": 13919,
+        "continuous_clean_book_grids": 4878,
+        "held_bid_grids": 369,
+        "held_ask_grids": 373,
+        "held_grids_with_no_completed_trades": 433,
+        "held_grids_with_valid_trade_volume": 6,
+        "bid_fails_five_distinct_clocks": 6,
+        "ask_fails_five_distinct_clocks": 5
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-17",
+      "source_rows": 144306,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20150,
+        "fresh_tight_endpoint_grids": 14807,
+        "continuous_clean_book_grids": 3223,
+        "held_bid_grids": 104,
+        "held_ask_grids": 79,
+        "held_grids_with_no_completed_trades": 102,
+        "held_grids_with_valid_trade_volume": 13,
+        "bid_fails_five_distinct_clocks": 13,
+        "ask_fails_five_distinct_clocks": 7
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "1",
+        "ask": "0.1923774954627949183303085299"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-18",
+      "source_rows": 238566,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 26623,
+        "fresh_tight_endpoint_grids": 15792,
+        "continuous_clean_book_grids": 7343,
+        "held_bid_grids": 366,
+        "held_ask_grids": 290,
+        "held_grids_with_valid_trade_volume": 19,
+        "bid_fails_five_distinct_clocks": 19,
+        "held_grids_with_no_completed_trades": 408,
+        "ask_fails_five_distinct_clocks": 3
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.02",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-21",
+      "source_rows": 148495,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18149,
+        "fresh_tight_endpoint_grids": 11244,
+        "continuous_clean_book_grids": 4076,
+        "held_bid_grids": 167,
+        "held_ask_grids": 119,
+        "held_grids_with_no_completed_trades": 170
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-22",
+      "source_rows": 165985,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18277,
+        "fresh_tight_endpoint_grids": 13999,
+        "continuous_clean_book_grids": 4512,
+        "held_bid_grids": 209,
+        "held_ask_grids": 181,
+        "held_grids_with_no_completed_trades": 261,
+        "held_grids_with_valid_trade_volume": 1,
+        "bid_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-23",
+      "source_rows": 170304,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21859,
+        "fresh_tight_endpoint_grids": 13930,
+        "continuous_clean_book_grids": 5179,
+        "held_bid_grids": 122,
+        "held_ask_grids": 168,
+        "held_grids_with_no_completed_trades": 195
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-24",
+      "source_rows": 161354,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19225,
+        "fresh_tight_endpoint_grids": 13133,
+        "continuous_clean_book_grids": 4525,
+        "held_bid_grids": 172,
+        "held_ask_grids": 199,
+        "held_grids_with_no_completed_trades": 189,
+        "held_grids_with_valid_trade_volume": 26,
+        "ask_fails_five_distinct_clocks": 26,
+        "bid_fails_five_distinct_clocks": 16
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.4205714285714285714285714286"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-25",
+      "source_rows": 165672,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19584,
+        "fresh_tight_endpoint_grids": 14296,
+        "continuous_clean_book_grids": 4190,
+        "held_bid_grids": 99,
+        "held_ask_grids": 99,
+        "held_grids_with_no_completed_trades": 118
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-28",
+      "source_rows": 190042,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22666,
+        "fresh_tight_endpoint_grids": 14781,
+        "continuous_clean_book_grids": 5354,
+        "held_bid_grids": 210,
+        "held_ask_grids": 187,
+        "held_grids_with_no_completed_trades": 235
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-29",
+      "source_rows": 145090,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18511,
+        "fresh_tight_endpoint_grids": 12122,
+        "continuous_clean_book_grids": 4349,
+        "held_bid_grids": 99,
+        "held_ask_grids": 82,
+        "held_grids_with_no_completed_trades": 124
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-30",
+      "source_rows": 163439,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21319,
+        "fresh_tight_endpoint_grids": 12111,
+        "continuous_clean_book_grids": 4300,
+        "held_bid_grids": 145,
+        "held_ask_grids": 145,
+        "held_grids_with_no_completed_trades": 163,
+        "held_grids_with_valid_trade_volume": 7,
+        "ask_fails_five_distinct_clocks": 7
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-08-31",
+      "source_rows": 160131,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20809,
+        "fresh_tight_endpoint_grids": 12797,
+        "continuous_clean_book_grids": 4655,
+        "held_bid_grids": 24,
+        "held_ask_grids": 23,
+        "held_grids_with_no_completed_trades": 32
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-01",
+      "source_rows": 217180,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22809,
+        "fresh_tight_endpoint_grids": 14464,
+        "continuous_clean_book_grids": 6269,
+        "held_bid_grids": 201,
+        "held_ask_grids": 143,
+        "held_grids_with_no_completed_trades": 190,
+        "held_grids_with_valid_trade_volume": 11,
+        "bid_fails_five_distinct_clocks": 11
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-05",
+      "source_rows": 185535,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20579,
+        "fresh_tight_endpoint_grids": 12961,
+        "continuous_clean_book_grids": 4551,
+        "held_bid_grids": 107,
+        "held_ask_grids": 126,
+        "held_grids_with_valid_trade_volume": 9,
+        "ask_fails_five_distinct_clocks": 9,
+        "bid_fails_five_distinct_clocks": 5,
+        "held_grids_with_no_completed_trades": 146
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "2"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-06",
+      "source_rows": 166099,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18261,
+        "fresh_tight_endpoint_grids": 14226,
+        "continuous_clean_book_grids": 4789,
+        "held_bid_grids": 100,
+        "held_ask_grids": 103,
+        "held_grids_with_valid_trade_volume": 9,
+        "bid_fails_five_distinct_clocks": 5,
+        "held_grids_with_no_completed_trades": 112,
+        "ask_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "1",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-07",
+      "source_rows": 213568,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23232,
+        "fresh_tight_endpoint_grids": 17636,
+        "continuous_clean_book_grids": 5934,
+        "held_bid_grids": 206,
+        "held_ask_grids": 150,
+        "held_grids_with_no_completed_trades": 222,
+        "held_grids_with_valid_trade_volume": 1,
+        "bid_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-08",
+      "source_rows": 182440,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20191,
+        "fresh_tight_endpoint_grids": 14717,
+        "continuous_clean_book_grids": 4793,
+        "held_bid_grids": 88,
+        "held_ask_grids": 102,
+        "held_grids_with_no_completed_trades": 153
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-11",
+      "source_rows": 206514,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22428,
+        "fresh_tight_endpoint_grids": 17042,
+        "continuous_clean_book_grids": 6144,
+        "held_bid_grids": 387,
+        "held_ask_grids": 422,
+        "held_grids_with_valid_trade_volume": 17,
+        "ask_fails_five_distinct_clocks": 17,
+        "held_grids_with_no_completed_trades": 483,
+        "bid_fails_five_distinct_clocks": 13
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.02"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-12",
+      "source_rows": 213742,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21609,
+        "fresh_tight_endpoint_grids": 16106,
+        "continuous_clean_book_grids": 6725,
+        "held_bid_grids": 547,
+        "held_ask_grids": 568,
+        "held_grids_with_no_completed_trades": 575,
+        "held_grids_with_valid_trade_volume": 32,
+        "bid_fails_five_distinct_clocks": 32,
+        "ask_fails_five_distinct_clocks": 32
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.2383333333333333333333333333",
+        "ask": "2.25"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-13",
+      "source_rows": 232486,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23630,
+        "fresh_tight_endpoint_grids": 15422,
+        "continuous_clean_book_grids": 6952,
+        "held_bid_grids": 173,
+        "held_ask_grids": 168,
+        "held_grids_with_no_completed_trades": 208,
+        "held_grids_with_valid_trade_volume": 28,
+        "bid_fails_five_distinct_clocks": 26,
+        "ask_fails_five_distinct_clocks": 25
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-14",
+      "source_rows": 258859,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 25162,
+        "fresh_tight_endpoint_grids": 15040,
+        "continuous_clean_book_grids": 7044,
+        "held_bid_grids": 465,
+        "held_ask_grids": 445,
+        "held_grids_with_no_completed_trades": 541,
+        "held_grids_with_valid_trade_volume": 31,
+        "ask_fails_five_distinct_clocks": 6,
+        "bid_fails_five_distinct_clocks": 25
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-15",
+      "source_rows": 216659,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20451,
+        "fresh_tight_endpoint_grids": 14912,
+        "continuous_clean_book_grids": 5084,
+        "held_bid_grids": 211,
+        "held_ask_grids": 180,
+        "held_grids_with_no_completed_trades": 232,
+        "held_grids_with_valid_trade_volume": 16,
+        "ask_fails_five_distinct_clocks": 15,
+        "bid_fails_five_distinct_clocks": 3
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.007241379310344827586206896552"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-18",
+      "source_rows": 202668,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22045,
+        "fresh_tight_endpoint_grids": 16315,
+        "continuous_clean_book_grids": 6024,
+        "held_bid_grids": 409,
+        "held_ask_grids": 412,
+        "held_grids_with_no_completed_trades": 472,
+        "held_grids_with_valid_trade_volume": 2,
+        "ask_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-19",
+      "source_rows": 227241,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21118,
+        "fresh_tight_endpoint_grids": 16592,
+        "continuous_clean_book_grids": 5241,
+        "held_bid_grids": 198,
+        "held_ask_grids": 179,
+        "held_grids_with_no_completed_trades": 204,
+        "held_grids_with_valid_trade_volume": 4,
+        "bid_fails_five_distinct_clocks": 4,
+        "ask_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.01886792452830188679245283019",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-20",
+      "source_rows": 171223,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18984,
+        "fresh_tight_endpoint_grids": 16109,
+        "continuous_clean_book_grids": 4883,
+        "held_bid_grids": 204,
+        "held_ask_grids": 208,
+        "held_grids_with_valid_trade_volume": 37,
+        "ask_fails_five_distinct_clocks": 32,
+        "held_grids_with_no_completed_trades": 222,
+        "bid_fails_five_distinct_clocks": 13
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.007558139534883720930232558140",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-21",
+      "source_rows": 372243,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 25274,
+        "fresh_tight_endpoint_grids": 19033,
+        "continuous_clean_book_grids": 5765,
+        "held_bid_grids": 333,
+        "held_ask_grids": 256,
+        "held_grids_with_no_completed_trades": 364,
+        "held_grids_with_valid_trade_volume": 26,
+        "ask_fails_five_distinct_clocks": 15,
+        "bid_fails_five_distinct_clocks": 25
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.32"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-22",
+      "source_rows": 290726,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22130,
+        "fresh_tight_endpoint_grids": 17786,
+        "continuous_clean_book_grids": 4786,
+        "held_bid_grids": 196,
+        "held_ask_grids": 227,
+        "held_grids_with_valid_trade_volume": 17,
+        "ask_fails_five_distinct_clocks": 16,
+        "held_grids_with_no_completed_trades": 260,
+        "bid_fails_five_distinct_clocks": 13
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-25",
+      "source_rows": 293681,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23992,
+        "fresh_tight_endpoint_grids": 17888,
+        "continuous_clean_book_grids": 6286,
+        "held_bid_grids": 108,
+        "held_ask_grids": 128,
+        "held_grids_with_no_completed_trades": 188,
+        "held_grids_with_valid_trade_volume": 3,
+        "bid_fails_five_distinct_clocks": 3,
+        "ask_fails_five_distinct_clocks": 3
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.015625"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-26",
+      "source_rows": 220371,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23565,
+        "fresh_tight_endpoint_grids": 17824,
+        "continuous_clean_book_grids": 5712,
+        "held_bid_grids": 230,
+        "held_ask_grids": 294,
+        "held_grids_with_no_completed_trades": 337,
+        "held_grids_with_valid_trade_volume": 5,
+        "bid_fails_five_distinct_clocks": 3,
+        "ask_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.8",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-27",
+      "source_rows": 175927,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22992,
+        "fresh_tight_endpoint_grids": 14994,
+        "continuous_clean_book_grids": 4633,
+        "held_bid_grids": 276,
+        "held_ask_grids": 209,
+        "held_grids_with_no_completed_trades": 305,
+        "held_grids_with_valid_trade_volume": 18,
+        "bid_fails_five_distinct_clocks": 18,
+        "ask_fails_five_distinct_clocks": 17
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-28",
+      "source_rows": 371945,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 26780,
+        "fresh_tight_endpoint_grids": 15984,
+        "continuous_clean_book_grids": 6857,
+        "held_bid_grids": 110,
+        "held_ask_grids": 187,
+        "held_grids_with_no_completed_trades": 200,
+        "held_grids_with_valid_trade_volume": 8,
+        "ask_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-09-29",
+      "source_rows": 281282,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 26687,
+        "fresh_tight_endpoint_grids": 18839,
+        "continuous_clean_book_grids": 6648,
+        "held_bid_grids": 130,
+        "held_ask_grids": 114,
+        "held_grids_with_no_completed_trades": 173,
+        "held_grids_with_valid_trade_volume": 6,
+        "bid_fails_five_distinct_clocks": 3,
+        "ask_fails_five_distinct_clocks": 5
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.3333333333333333333333333333"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-02",
+      "source_rows": 361180,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23546,
+        "fresh_tight_endpoint_grids": 13851,
+        "continuous_clean_book_grids": 4813,
+        "held_bid_grids": 92,
+        "held_ask_grids": 78,
+        "held_grids_with_valid_trade_volume": 12,
+        "bid_fails_five_distinct_clocks": 12,
+        "held_grids_with_no_completed_trades": 135
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-03",
+      "source_rows": 244757,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23192,
+        "fresh_tight_endpoint_grids": 14215,
+        "continuous_clean_book_grids": 5769,
+        "held_bid_grids": 92,
+        "held_ask_grids": 90,
+        "held_grids_with_no_completed_trades": 124,
+        "held_grids_with_valid_trade_volume": 16,
+        "bid_fails_five_distinct_clocks": 16,
+        "ask_fails_five_distinct_clocks": 13
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-04",
+      "source_rows": 248538,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22911,
+        "fresh_tight_endpoint_grids": 11757,
+        "continuous_clean_book_grids": 5241,
+        "held_bid_grids": 216,
+        "held_ask_grids": 255,
+        "held_grids_with_no_completed_trades": 245,
+        "held_grids_with_valid_trade_volume": 35,
+        "bid_fails_five_distinct_clocks": 17,
+        "ask_fails_five_distinct_clocks": 27
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-05",
+      "source_rows": 291302,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23695,
+        "fresh_tight_endpoint_grids": 17075,
+        "continuous_clean_book_grids": 7119,
+        "held_bid_grids": 309,
+        "held_ask_grids": 299,
+        "held_grids_with_no_completed_trades": 375,
+        "held_grids_with_valid_trade_volume": 54,
+        "bid_fails_five_distinct_clocks": 53,
+        "ask_fails_five_distinct_clocks": 40
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-06",
+      "source_rows": 421174,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 27939,
+        "fresh_tight_endpoint_grids": 17830,
+        "continuous_clean_book_grids": 11149,
+        "held_bid_grids": 211,
+        "held_ask_grids": 213,
+        "held_grids_with_no_completed_trades": 247,
+        "held_grids_with_valid_trade_volume": 37,
+        "bid_fails_five_distinct_clocks": 28,
+        "ask_fails_five_distinct_clocks": 26
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-09",
+      "source_rows": 267837,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24784,
+        "fresh_tight_endpoint_grids": 14878,
+        "continuous_clean_book_grids": 7746,
+        "held_bid_grids": 259,
+        "held_ask_grids": 286,
+        "held_grids_with_no_completed_trades": 367,
+        "held_grids_with_valid_trade_volume": 41,
+        "ask_fails_five_distinct_clocks": 24,
+        "bid_fails_five_distinct_clocks": 28
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.1890243902439024390243902439",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-10",
+      "source_rows": 258094,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22932,
+        "fresh_tight_endpoint_grids": 14757,
+        "continuous_clean_book_grids": 6682,
+        "held_bid_grids": 268,
+        "held_ask_grids": 208,
+        "held_grids_with_no_completed_trades": 292,
+        "held_grids_with_valid_trade_volume": 40,
+        "bid_fails_five_distinct_clocks": 20,
+        "ask_fails_five_distinct_clocks": 27
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.1578947368421052631578947368"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-11",
+      "source_rows": 198119,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19866,
+        "fresh_tight_endpoint_grids": 13406,
+        "continuous_clean_book_grids": 4992,
+        "held_bid_grids": 62,
+        "held_ask_grids": 67,
+        "held_grids_with_no_completed_trades": 87
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-12",
+      "source_rows": 260700,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23845,
+        "fresh_tight_endpoint_grids": 15592,
+        "continuous_clean_book_grids": 7060,
+        "held_bid_grids": 245,
+        "held_ask_grids": 209,
+        "held_grids_with_no_completed_trades": 307,
+        "held_grids_with_valid_trade_volume": 7,
+        "ask_fails_five_distinct_clocks": 7,
+        "bid_fails_five_distinct_clocks": 5
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-13",
+      "source_rows": 272053,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24292,
+        "fresh_tight_endpoint_grids": 15820,
+        "continuous_clean_book_grids": 6824,
+        "held_bid_grids": 230,
+        "held_ask_grids": 176,
+        "held_grids_with_no_completed_trades": 286
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-16",
+      "source_rows": 261618,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21512,
+        "fresh_tight_endpoint_grids": 15556,
+        "continuous_clean_book_grids": 5417,
+        "held_bid_grids": 243,
+        "held_ask_grids": 229,
+        "held_grids_with_no_completed_trades": 264,
+        "held_grids_with_valid_trade_volume": 20,
+        "bid_fails_five_distinct_clocks": 20,
+        "ask_fails_five_distinct_clocks": 18
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.5145797598627787307032590051",
+        "ask": "0.4526315789473684210526315789"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-17",
+      "source_rows": 306668,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24242,
+        "fresh_tight_endpoint_grids": 16687,
+        "continuous_clean_book_grids": 6829,
+        "held_bid_grids": 287,
+        "held_ask_grids": 264,
+        "held_grids_with_no_completed_trades": 328,
+        "held_grids_with_valid_trade_volume": 9,
+        "bid_fails_five_distinct_clocks": 8,
+        "ask_fails_five_distinct_clocks": 3
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-18",
+      "source_rows": 297713,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 24679,
+        "fresh_tight_endpoint_grids": 16350,
+        "continuous_clean_book_grids": 7707,
+        "held_bid_grids": 206,
+        "held_ask_grids": 181,
+        "held_grids_with_no_completed_trades": 256,
+        "held_grids_with_valid_trade_volume": 21,
+        "bid_fails_five_distinct_clocks": 21,
+        "ask_fails_five_distinct_clocks": 6
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.01041666666666666666666666667"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-19",
+      "source_rows": 350302,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 25454,
+        "fresh_tight_endpoint_grids": 16646,
+        "continuous_clean_book_grids": 8666,
+        "held_bid_grids": 629,
+        "held_ask_grids": 565,
+        "held_grids_with_no_completed_trades": 719,
+        "held_grids_with_valid_trade_volume": 25,
+        "ask_fails_five_distinct_clocks": 21,
+        "bid_fails_five_distinct_clocks": 20
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.01513513513513513513513513514",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-20",
+      "source_rows": 382415,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 26985,
+        "fresh_tight_endpoint_grids": 18460,
+        "continuous_clean_book_grids": 9748,
+        "held_bid_grids": 485,
+        "held_ask_grids": 477,
+        "held_grids_with_no_completed_trades": 572,
+        "held_grids_with_valid_trade_volume": 27,
+        "ask_fails_five_distinct_clocks": 27,
+        "bid_fails_five_distinct_clocks": 21
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.3911750899702706931622594273"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-23",
+      "source_rows": 334394,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 25514,
+        "fresh_tight_endpoint_grids": 14747,
+        "continuous_clean_book_grids": 7756,
+        "held_bid_grids": 485,
+        "held_ask_grids": 483,
+        "held_grids_with_no_completed_trades": 614,
+        "held_grids_with_valid_trade_volume": 5,
+        "bid_fails_five_distinct_clocks": 5,
+        "ask_fails_five_distinct_clocks": 2
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-24",
+      "source_rows": 339526,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 25719,
+        "fresh_tight_endpoint_grids": 17273,
+        "continuous_clean_book_grids": 7325,
+        "held_bid_grids": 522,
+        "held_ask_grids": 629,
+        "held_grids_with_no_completed_trades": 700,
+        "held_grids_with_valid_trade_volume": 61,
+        "bid_fails_five_distinct_clocks": 42,
+        "ask_fails_five_distinct_clocks": 54
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "8",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-25",
+      "source_rows": 326013,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23584,
+        "fresh_tight_endpoint_grids": 16350,
+        "continuous_clean_book_grids": 7918,
+        "held_bid_grids": 530,
+        "held_ask_grids": 519,
+        "held_grids_with_no_completed_trades": 589,
+        "held_grids_with_valid_trade_volume": 33,
+        "ask_fails_five_distinct_clocks": 23,
+        "bid_fails_five_distinct_clocks": 24
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.2"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-26",
+      "source_rows": 422706,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 28153,
+        "fresh_tight_endpoint_grids": 15764,
+        "continuous_clean_book_grids": 10229,
+        "held_bid_grids": 420,
+        "held_ask_grids": 476,
+        "held_grids_with_no_completed_trades": 522,
+        "held_grids_with_valid_trade_volume": 32,
+        "ask_fails_five_distinct_clocks": 32,
+        "bid_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.834"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-27",
+      "source_rows": 430036,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 28050,
+        "fresh_tight_endpoint_grids": 16894,
+        "continuous_clean_book_grids": 11145,
+        "held_bid_grids": 797,
+        "held_ask_grids": 792,
+        "held_grids_with_no_completed_trades": 921,
+        "held_grids_with_valid_trade_volume": 53,
+        "bid_fails_five_distinct_clocks": 34,
+        "ask_fails_five_distinct_clocks": 31
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.2",
+        "ask": "0.5"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-30",
+      "source_rows": 248811,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23981,
+        "fresh_tight_endpoint_grids": 18104,
+        "continuous_clean_book_grids": 7423,
+        "held_bid_grids": 799,
+        "held_ask_grids": 802,
+        "held_grids_with_valid_trade_volume": 34,
+        "ask_fails_five_distinct_clocks": 20,
+        "bid_fails_five_distinct_clocks": 19,
+        "held_grids_with_no_completed_trades": 917
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.7633587786259541984732824427"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-10-31",
+      "source_rows": 317612,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 25405,
+        "fresh_tight_endpoint_grids": 18204,
+        "continuous_clean_book_grids": 7791,
+        "held_bid_grids": 468,
+        "held_ask_grids": 530,
+        "held_grids_with_no_completed_trades": 653,
+        "held_grids_with_valid_trade_volume": 13,
+        "ask_fails_five_distinct_clocks": 13,
+        "bid_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.69",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-01",
+      "source_rows": 307043,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 25929,
+        "fresh_tight_endpoint_grids": 18987,
+        "continuous_clean_book_grids": 9133,
+        "held_bid_grids": 683,
+        "held_ask_grids": 752,
+        "held_grids_with_no_completed_trades": 821,
+        "held_grids_with_valid_trade_volume": 15,
+        "bid_fails_five_distinct_clocks": 14,
+        "ask_fails_five_distinct_clocks": 14
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.326",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-02",
+      "source_rows": 262494,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23319,
+        "fresh_tight_endpoint_grids": 18520,
+        "continuous_clean_book_grids": 7447,
+        "held_bid_grids": 619,
+        "held_ask_grids": 725,
+        "held_grids_with_no_completed_trades": 810,
+        "held_grids_with_valid_trade_volume": 76,
+        "ask_fails_five_distinct_clocks": 75,
+        "bid_fails_five_distinct_clocks": 44
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.1247401247401247401247401247",
+        "ask": "0.8055248618784530386740331492"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-03",
+      "source_rows": 265611,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23274,
+        "fresh_tight_endpoint_grids": 18407,
+        "continuous_clean_book_grids": 7248,
+        "held_bid_grids": 556,
+        "held_ask_grids": 483,
+        "held_grids_with_no_completed_trades": 648,
+        "held_grids_with_valid_trade_volume": 87,
+        "bid_fails_five_distinct_clocks": 59,
+        "ask_fails_five_distinct_clocks": 61,
+        "bid_fails_five_times_displayed_size": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "1.200498753117206982543640898",
+        "ask": "0.585"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-06",
+      "source_rows": 240377,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 22151,
+        "fresh_tight_endpoint_grids": 18079,
+        "continuous_clean_book_grids": 6025,
+        "held_bid_grids": 501,
+        "held_ask_grids": 408,
+        "held_grids_with_no_completed_trades": 540,
+        "held_grids_with_valid_trade_volume": 11,
+        "bid_fails_five_distinct_clocks": 8,
+        "ask_fails_five_distinct_clocks": 9
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "3.72"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-07",
+      "source_rows": 279304,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21768,
+        "fresh_tight_endpoint_grids": 18047,
+        "continuous_clean_book_grids": 5960,
+        "held_bid_grids": 477,
+        "held_ask_grids": 501,
+        "held_grids_with_no_completed_trades": 552,
+        "held_grids_with_valid_trade_volume": 39,
+        "ask_fails_five_distinct_clocks": 32,
+        "bid_fails_five_distinct_clocks": 16
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.1983333333333333333333333333",
+        "ask": "0.1"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-08",
+      "source_rows": 233403,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17275,
+        "fresh_tight_endpoint_grids": 14208,
+        "continuous_clean_book_grids": 4570,
+        "held_bid_grids": 185,
+        "held_ask_grids": 175,
+        "held_grids_with_no_completed_trades": 170,
+        "held_grids_with_valid_trade_volume": 28,
+        "bid_fails_five_distinct_clocks": 22,
+        "ask_fails_five_distinct_clocks": 17
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.3960396039603960396039603960"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-09",
+      "source_rows": 244983,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17886,
+        "fresh_tight_endpoint_grids": 14780,
+        "continuous_clean_book_grids": 4029,
+        "held_bid_grids": 96,
+        "held_ask_grids": 127,
+        "held_grids_with_no_completed_trades": 113,
+        "held_grids_with_valid_trade_volume": 21,
+        "bid_fails_five_distinct_clocks": 17,
+        "ask_fails_five_distinct_clocks": 21
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.8333333333333333333333333333"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-10",
+      "source_rows": 264646,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21783,
+        "fresh_tight_endpoint_grids": 17520,
+        "continuous_clean_book_grids": 6609,
+        "held_bid_grids": 271,
+        "held_ask_grids": 287,
+        "held_grids_with_no_completed_trades": 330,
+        "held_grids_with_valid_trade_volume": 73,
+        "ask_fails_five_distinct_clocks": 45,
+        "bid_fails_five_distinct_clocks": 45
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.4159014557670772676371780515"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-13",
+      "source_rows": 248213,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20139,
+        "fresh_tight_endpoint_grids": 16146,
+        "continuous_clean_book_grids": 5353,
+        "held_bid_grids": 168,
+        "held_ask_grids": 153,
+        "held_grids_with_no_completed_trades": 204,
+        "held_grids_with_valid_trade_volume": 12,
+        "bid_fails_five_distinct_clocks": 10,
+        "ask_fails_five_distinct_clocks": 9
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "1",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-14",
+      "source_rows": 338876,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 23782,
+        "fresh_tight_endpoint_grids": 18200,
+        "continuous_clean_book_grids": 7185,
+        "held_bid_grids": 188,
+        "held_ask_grids": 213,
+        "held_grids_with_no_completed_trades": 236,
+        "held_grids_with_valid_trade_volume": 24,
+        "ask_fails_five_distinct_clocks": 12,
+        "bid_fails_five_distinct_clocks": 19
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.277"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-15",
+      "source_rows": 248138,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18605,
+        "fresh_tight_endpoint_grids": 14329,
+        "continuous_clean_book_grids": 5444,
+        "held_bid_grids": 154,
+        "held_ask_grids": 153,
+        "held_grids_with_valid_trade_volume": 10,
+        "ask_fails_five_distinct_clocks": 10,
+        "held_grids_with_no_completed_trades": 196
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-16",
+      "source_rows": 252522,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 19280,
+        "fresh_tight_endpoint_grids": 15420,
+        "continuous_clean_book_grids": 4579,
+        "held_bid_grids": 77,
+        "held_ask_grids": 121,
+        "held_grids_with_valid_trade_volume": 2,
+        "bid_fails_five_distinct_clocks": 2,
+        "held_grids_with_no_completed_trades": 138,
+        "ask_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-17",
+      "source_rows": 269179,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17049,
+        "fresh_tight_endpoint_grids": 13556,
+        "continuous_clean_book_grids": 4495,
+        "held_bid_grids": 91,
+        "held_ask_grids": 82,
+        "held_grids_with_no_completed_trades": 87,
+        "held_grids_with_valid_trade_volume": 18,
+        "ask_fails_five_distinct_clocks": 15,
+        "bid_fails_five_distinct_clocks": 13
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.03333333333333333333333333333",
+        "ask": "0.01875"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-20",
+      "source_rows": 214537,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 14647,
+        "fresh_tight_endpoint_grids": 12408,
+        "continuous_clean_book_grids": 3843,
+        "held_bid_grids": 74,
+        "held_ask_grids": 80,
+        "held_grids_with_no_completed_trades": 88
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-21",
+      "source_rows": 171294,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 14475,
+        "fresh_tight_endpoint_grids": 12427,
+        "continuous_clean_book_grids": 3931,
+        "held_bid_grids": 92,
+        "held_ask_grids": 102,
+        "held_grids_with_valid_trade_volume": 20,
+        "ask_fails_five_distinct_clocks": 16,
+        "bid_fails_five_distinct_clocks": 5,
+        "held_grids_with_no_completed_trades": 116
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-22",
+      "source_rows": 202309,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 16491,
+        "fresh_tight_endpoint_grids": 13948,
+        "continuous_clean_book_grids": 4142,
+        "held_bid_grids": 127,
+        "held_ask_grids": 96,
+        "held_grids_with_no_completed_trades": 113,
+        "held_grids_with_valid_trade_volume": 34,
+        "bid_fails_five_distinct_clocks": 34,
+        "ask_fails_five_distinct_clocks": 13
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.5"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-24",
+      "source_rows": 160532,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 12816,
+        "fresh_tight_endpoint_grids": 11717,
+        "continuous_clean_book_grids": 4368,
+        "held_bid_grids": 66,
+        "held_ask_grids": 64,
+        "held_grids_with_valid_trade_volume": 17,
+        "ask_fails_five_distinct_clocks": 9,
+        "held_grids_with_no_completed_trades": 73,
+        "bid_fails_five_distinct_clocks": 8
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-27",
+      "source_rows": 228390,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 15790,
+        "fresh_tight_endpoint_grids": 13081,
+        "continuous_clean_book_grids": 4785,
+        "held_bid_grids": 60,
+        "held_ask_grids": 72,
+        "held_grids_with_no_completed_trades": 79,
+        "held_grids_with_valid_trade_volume": 9,
+        "bid_fails_five_distinct_clocks": 9
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-28",
+      "source_rows": 218612,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 15131,
+        "fresh_tight_endpoint_grids": 12829,
+        "continuous_clean_book_grids": 4292,
+        "held_bid_grids": 86,
+        "held_ask_grids": 77,
+        "held_grids_with_no_completed_trades": 91,
+        "held_grids_with_valid_trade_volume": 4,
+        "bid_fails_five_distinct_clocks": 4,
+        "ask_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.85",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-29",
+      "source_rows": 243697,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17164,
+        "fresh_tight_endpoint_grids": 14337,
+        "continuous_clean_book_grids": 4233,
+        "held_bid_grids": 101,
+        "held_ask_grids": 98,
+        "held_grids_with_no_completed_trades": 117
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-11-30",
+      "source_rows": 232230,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18918,
+        "fresh_tight_endpoint_grids": 15938,
+        "continuous_clean_book_grids": 4817,
+        "held_bid_grids": 74,
+        "held_ask_grids": 67,
+        "held_grids_with_no_completed_trades": 86,
+        "held_grids_with_valid_trade_volume": 1,
+        "bid_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-01",
+      "source_rows": 189514,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17652,
+        "fresh_tight_endpoint_grids": 15276,
+        "continuous_clean_book_grids": 4431,
+        "held_bid_grids": 172,
+        "held_ask_grids": 171,
+        "held_grids_with_valid_trade_volume": 16,
+        "ask_fails_five_distinct_clocks": 5,
+        "held_grids_with_no_completed_trades": 187,
+        "bid_fails_five_distinct_clocks": 15
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.01"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-04",
+      "source_rows": 222653,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 16313,
+        "fresh_tight_endpoint_grids": 13914,
+        "continuous_clean_book_grids": 4231,
+        "held_bid_grids": 89,
+        "held_ask_grids": 80,
+        "held_grids_with_valid_trade_volume": 10,
+        "ask_fails_five_distinct_clocks": 10,
+        "held_grids_with_no_completed_trades": 87,
+        "bid_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.5",
+        "ask": "0.009562841530054644808743169399"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-05",
+      "source_rows": 268896,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17525,
+        "fresh_tight_endpoint_grids": 15244,
+        "continuous_clean_book_grids": 4487,
+        "held_bid_grids": 90,
+        "held_ask_grids": 123,
+        "held_grids_with_no_completed_trades": 129,
+        "held_grids_with_valid_trade_volume": 4,
+        "bid_fails_five_distinct_clocks": 4
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-06",
+      "source_rows": 258885,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18865,
+        "fresh_tight_endpoint_grids": 16068,
+        "continuous_clean_book_grids": 5050,
+        "held_bid_grids": 204,
+        "held_ask_grids": 192,
+        "held_grids_with_no_completed_trades": 228,
+        "held_grids_with_valid_trade_volume": 17,
+        "ask_fails_five_distinct_clocks": 15,
+        "bid_fails_five_distinct_clocks": 5
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "1",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-07",
+      "source_rows": 173984,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 16926,
+        "fresh_tight_endpoint_grids": 14299,
+        "continuous_clean_book_grids": 4254,
+        "held_bid_grids": 149,
+        "held_ask_grids": 209,
+        "held_grids_with_no_completed_trades": 208,
+        "held_grids_with_valid_trade_volume": 19,
+        "ask_fails_five_distinct_clocks": 19
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.7339366515837104072398190045"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-08",
+      "source_rows": 354320,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 21629,
+        "fresh_tight_endpoint_grids": 18285,
+        "continuous_clean_book_grids": 5603,
+        "held_bid_grids": 202,
+        "held_ask_grids": 238,
+        "held_grids_with_no_completed_trades": 286,
+        "held_grids_with_valid_trade_volume": 3,
+        "ask_fails_five_distinct_clocks": 3,
+        "bid_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.1304347826086956521739130435",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-11",
+      "source_rows": 365404,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20762,
+        "fresh_tight_endpoint_grids": 15826,
+        "continuous_clean_book_grids": 5979,
+        "held_bid_grids": 237,
+        "held_ask_grids": 245,
+        "held_grids_with_no_completed_trades": 320,
+        "held_grids_with_valid_trade_volume": 5,
+        "bid_fails_five_distinct_clocks": 5,
+        "ask_fails_five_distinct_clocks": 1
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.008421052631578947368421052632",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-12",
+      "source_rows": 297176,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20085,
+        "fresh_tight_endpoint_grids": 16575,
+        "continuous_clean_book_grids": 6119,
+        "held_bid_grids": 243,
+        "held_ask_grids": 276,
+        "held_grids_with_no_completed_trades": 323,
+        "held_grids_with_valid_trade_volume": 14,
+        "bid_fails_five_distinct_clocks": 14,
+        "ask_fails_five_distinct_clocks": 13
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-13",
+      "source_rows": 199163,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 14843,
+        "fresh_tight_endpoint_grids": 13127,
+        "continuous_clean_book_grids": 4360,
+        "held_bid_grids": 265,
+        "held_ask_grids": 303,
+        "held_grids_with_valid_trade_volume": 34,
+        "ask_fails_five_distinct_clocks": 25,
+        "bid_fails_five_distinct_clocks": 9,
+        "held_grids_with_no_completed_trades": 341
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.2",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-14",
+      "source_rows": 281437,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18557,
+        "fresh_tight_endpoint_grids": 14746,
+        "continuous_clean_book_grids": 4950,
+        "held_bid_grids": 348,
+        "held_ask_grids": 301,
+        "held_grids_with_valid_trade_volume": 70,
+        "bid_fails_five_distinct_clocks": 42,
+        "ask_fails_five_distinct_clocks": 42,
+        "held_grids_with_no_completed_trades": 338
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.1666666666666666666666666667",
+        "ask": "0.4345"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-15",
+      "source_rows": 287011,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 17965,
+        "fresh_tight_endpoint_grids": 13487,
+        "continuous_clean_book_grids": 5975,
+        "held_bid_grids": 76,
+        "held_ask_grids": 65,
+        "held_grids_with_no_completed_trades": 117
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-18",
+      "source_rows": 240431,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 16451,
+        "fresh_tight_endpoint_grids": 14352,
+        "continuous_clean_book_grids": 4309,
+        "held_bid_grids": 351,
+        "held_ask_grids": 314,
+        "held_grids_with_valid_trade_volume": 21,
+        "ask_fails_five_distinct_clocks": 2,
+        "held_grids_with_no_completed_trades": 386,
+        "bid_fails_five_distinct_clocks": 19
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-19",
+      "source_rows": 186004,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 15191,
+        "fresh_tight_endpoint_grids": 12769,
+        "continuous_clean_book_grids": 3731,
+        "held_bid_grids": 140,
+        "held_ask_grids": 222,
+        "held_grids_with_valid_trade_volume": 29,
+        "ask_fails_five_distinct_clocks": 29,
+        "held_grids_with_no_completed_trades": 222,
+        "bid_fails_five_distinct_clocks": 11
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0.3558620689655172413793103448"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-20",
+      "source_rows": 163215,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 15063,
+        "fresh_tight_endpoint_grids": 12261,
+        "continuous_clean_book_grids": 3369,
+        "held_bid_grids": 306,
+        "held_ask_grids": 295,
+        "held_grids_with_no_completed_trades": 272,
+        "held_grids_with_valid_trade_volume": 99,
+        "bid_fails_five_distinct_clocks": 64,
+        "ask_fails_five_distinct_clocks": 57
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "12",
+        "ask": "0.4545454545454545454545454545"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-21",
+      "source_rows": 291428,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 20552,
+        "fresh_tight_endpoint_grids": 16376,
+        "continuous_clean_book_grids": 5860,
+        "held_bid_grids": 214,
+        "held_ask_grids": 216,
+        "held_grids_with_no_completed_trades": 263,
+        "held_grids_with_valid_trade_volume": 37,
+        "ask_fails_five_distinct_clocks": 37,
+        "bid_fails_five_distinct_clocks": 6
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.02747504350215221174100192325",
+        "ask": "0.4350649350649350649350649351"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-22",
+      "source_rows": 204545,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 18098,
+        "fresh_tight_endpoint_grids": 14902,
+        "continuous_clean_book_grids": 3967,
+        "held_bid_grids": 256,
+        "held_ask_grids": 180,
+        "held_grids_with_no_completed_trades": 251,
+        "held_grids_with_valid_trade_volume": 47,
+        "bid_fails_five_distinct_clocks": 36,
+        "ask_fails_five_distinct_clocks": 29
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.6666666666666666666666666667",
+        "ask": "1.44"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-26",
+      "source_rows": 148249,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 14709,
+        "fresh_tight_endpoint_grids": 13293,
+        "continuous_clean_book_grids": 3298,
+        "held_bid_grids": 255,
+        "held_ask_grids": 234,
+        "held_grids_with_valid_trade_volume": 30,
+        "bid_fails_five_distinct_clocks": 19,
+        "ask_fails_five_distinct_clocks": 11,
+        "held_grids_with_no_completed_trades": 263
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.5940594059405940594059405941",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-27",
+      "source_rows": 180704,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 15636,
+        "fresh_tight_endpoint_grids": 13633,
+        "continuous_clean_book_grids": 3414,
+        "held_bid_grids": 78,
+        "held_ask_grids": 55,
+        "held_grids_with_no_completed_trades": 71,
+        "held_grids_with_valid_trade_volume": 7,
+        "bid_fails_five_distinct_clocks": 7,
+        "ask_fails_five_distinct_clocks": 7
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-28",
+      "source_rows": 118632,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 12591,
+        "fresh_tight_endpoint_grids": 9715,
+        "continuous_clean_book_grids": 2704,
+        "held_bid_grids": 6,
+        "held_ask_grids": 20,
+        "held_grids_with_no_completed_trades": 23
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0",
+        "ask": "0"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    },
+    {
+      "date": "2023-12-29",
+      "source_rows": 120576,
+      "counters": {
+        "assessable_symbol_sessions": 6,
+        "decision_grids": 33906,
+        "fresh_endpoint_grids": 11147,
+        "fresh_tight_endpoint_grids": 9650,
+        "continuous_clean_book_grids": 2724,
+        "held_bid_grids": 52,
+        "held_ask_grids": 91,
+        "held_grids_with_valid_trade_volume": 70,
+        "ask_fails_five_distinct_clocks": 48,
+        "bid_fails_five_distinct_clocks": 32,
+        "ask_fails_five_times_displayed_size": 3,
+        "held_grids_with_no_completed_trades": 45
+      },
+      "maximum_at_level_volume_multiple": {
+        "bid": "0.6990099009900990099009900990",
+        "ask": "1.666666666666666666666666667"
+      },
+      "unassessable": [],
+      "resilience_seeds": 0
+    }
+  ],
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

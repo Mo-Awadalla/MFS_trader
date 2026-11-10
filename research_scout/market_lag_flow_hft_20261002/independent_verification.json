@@ -1,0 +1,22 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T21:56:21.190876+00:00",
+  "source_files_verified": 1,
+  "source_counts": {
+    "native_messages": 27286,
+    "relevant_trade_messages": 27286
+  },
+  "precutoff_prefix_rows_verified": 20592,
+  "counted_window_executions_verified": 7258,
+  "components_verified": 3,
+  "selected_events_verified": 1,
+  "maximum_numeric_difference": "0",
+  "results_sha256": "8c5b9f177c7e51fda59b8cc34dd0180e263b4026533e5ff29137cafbff3c4157",
+  "auditor_sha256": "82acf9ac1d0a1c1d627bd4341d497071b3a1ea35b93628f18e69793ab928fdca",
+  "independent_prefix_helper_sha256": "34a89003d4609c5f29c6d35cf6882f25e4ee0c8ea47df60a661bfd5983b63ea1",
+  "scope": "Independent native source and every pre-cutoff execution/ID/clock/integrity record, exact Decimal directional notional, both leaders' activity/imbalance and target's activity-only gate. No production flow or joint-gate function called.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

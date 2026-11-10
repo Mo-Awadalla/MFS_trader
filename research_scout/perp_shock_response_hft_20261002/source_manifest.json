@@ -1,0 +1,97 @@
+{
+  "files": [
+    {
+      "date": "2024-02-01",
+      "offset": 0,
+      "symbol": "ADAUSDT",
+      "path": "research_scout\\perp_shock_response_hft_20261002\\native\\2024-02-01_0000_ADAUSDT.ndjson.gz",
+      "params": {
+        "from": "2024-02-01",
+        "offset": 0,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"adausdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"adausdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 1606614,
+      "compressed_bytes": 187119,
+      "compressed_sha256": "e1ebd21557ddb4356d42be81584bf7a041010b0b66065ffdde2abec27f846cd8"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 0,
+      "symbol": "CELOUSDT",
+      "path": "research_scout\\perp_shock_response_hft_20261002\\native\\2024-03-01_0000_CELOUSDT.ndjson.gz",
+      "params": {
+        "from": "2024-03-01",
+        "offset": 0,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"celousdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"celousdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 2765142,
+      "compressed_bytes": 325305,
+      "compressed_sha256": "611d39b5e14ee23e05a8f12242d024f622b7d841764c1f5b33ed59079f62745d"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 360,
+      "symbol": "XRPUSDT",
+      "path": "research_scout\\perp_shock_response_hft_20261002\\native\\2024-04-01_0360_XRPUSDT.ndjson.gz",
+      "params": {
+        "from": "2024-04-01",
+        "offset": 360,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"xrpusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"xrpusdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 4377007,
+      "compressed_bytes": 516113,
+      "compressed_sha256": "39bfcf2fa5b4c469dd70dca48d6f9dfb8670fca6fdbff0c06b5fb6c01a328701"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 360,
+      "symbol": "BAKEUSDT",
+      "path": "research_scout\\perp_shock_response_hft_20261002\\native\\2024-09-01_0360_BAKEUSDT.ndjson.gz",
+      "params": {
+        "from": "2024-09-01",
+        "offset": 360,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"bakeusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"bakeusdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 4251474,
+      "compressed_bytes": 465622,
+      "compressed_sha256": "c54a842459b444e5137ad41955bf44899f66e83fb7885261b0c623eddc2e24ac"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 720,
+      "symbol": "ZROUSDT",
+      "path": "research_scout\\perp_shock_response_hft_20261002\\native\\2024-09-01_0720_ZROUSDT.ndjson.gz",
+      "params": {
+        "from": "2024-09-01",
+        "offset": 720,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"zrousdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"zrousdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 1339535,
+      "compressed_bytes": 156594,
+      "compressed_sha256": "638c4a1629e86f692a9e6bd22156a75b858e8443f72f47df68fc9b78dc1cfd33"
+    }
+  ],
+  "complete": true,
+  "specification_sha256": "83854d92a8ac81ea4f8c3ca311c21eff8f90e043f13a7a3d75b8a2ccfe0c6912",
+  "acquisition_sha256": "8bf1aa590e117b7beab9eb7d162b288b9a3529ef078e9501291ec41d97f483bc"
+}

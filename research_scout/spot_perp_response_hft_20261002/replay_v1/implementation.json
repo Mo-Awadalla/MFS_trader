@@ -1,0 +1,17 @@
+{
+  "frozen_at_utc": "2026-10-02T20:09:46.799438+00:00",
+  "specification_sha256": "8c9be2a9678385ffa4bfebdf5e993de14a1181c2c4a0b3f764ec08e47abac54a",
+  "source_manifest_sha256": "ccdc7608e71ed9f53dfb3392c136d54ced2956c166dc4da9374131c5c4efa2a3",
+  "source_screen_audit_sha256": "98df87d5342c4ebea113a37cdc847c66c9f1858c021823e4d9640b80b455d147",
+  "events_sha256": "fce59ff2c8838ecdf0d326652ded2da17da24719fe2fc95c8a6fcedcd2d6c0ea",
+  "code_sha256": {
+    "research/spot_perp_response.py": "c4135141c1a2ba0a75f2389c897a46361955c48c47904818506a6e1d0553deba",
+    "research/futures_response_hft.py": "38ae3e092f683441e46b0dc54bf43d83c856325b23dbf5b1592051a06304b783",
+    "research/spot_perp_supply.py": "cd918561a92d5475f20e6da44c79c3c76fc295b32c9146bfa7b7f0b6bb5174b7",
+    "tests/unit/test_spot_perp_response.py": "eac25ed6dd810994bd8dcc8dfaadd3062f290eb1100940f582a81a749612f872",
+    "research_scout/run_spot_perp_replay_20261002.py": "967fe11c0c3c9dd394ce903b89ed66564ac9b82406a0c8dd2903033eb50125d5"
+  },
+  "focused_tests_passed": 8,
+  "economic_rules": 2,
+  "scenarios": 12
+}

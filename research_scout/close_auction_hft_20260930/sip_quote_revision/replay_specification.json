@@ -1,0 +1,55 @@
+{
+  "created_at_utc": "2026-09-30T17:59:53.723232+00:00",
+  "new_hypotheses": 0,
+  "execution_reference_revisions": 2,
+  "prior_benchmark_specification_sha256": "7924e6e41289c69b0163ff606e9f2353122230e8a774cd03060a1d398676e057",
+  "manifest_sha256": "cf3b8e0cb986797dc1f8162525798a3e9f7fceffda4dda0d0df8410996db624b",
+  "source_definition_sha256": "e2c6f318452abac0192d6806faad9e2ae9b2a66fa2493727702a96e6725ca356",
+  "scenarios": {
+    "base": {
+      "delay_s": 1,
+      "fee_multiplier": 1.0,
+      "adverse_bps": 1.0,
+      "radius_ns": 1000000
+    },
+    "double_fees": {
+      "delay_s": 1,
+      "fee_multiplier": 2.0,
+      "adverse_bps": 1.0,
+      "radius_ns": 1000000
+    },
+    "latency_3s": {
+      "delay_s": 3,
+      "fee_multiplier": 1.0,
+      "adverse_bps": 1.0,
+      "radius_ns": 1000000
+    },
+    "extra_slippage": {
+      "delay_s": 1,
+      "fee_multiplier": 1.0,
+      "adverse_bps": 2.0,
+      "radius_ns": 1000000
+    },
+    "alignment_100ms": {
+      "delay_s": 1,
+      "fee_multiplier": 1.0,
+      "adverse_bps": 1.0,
+      "radius_ns": 100000000
+    }
+  },
+  "invariants": "All32 predecision signals, quantities, LOC caps, official auction prices, conditional full-allocation assumption, fees, delayed ACK/holds and exit-target clocks unchanged. Original trade-conditioned result retained. Historical SIP quotes acquired for all10 price-eligible dates, not only gaps or losers.",
+  "quote_reference": "Complete historical SIP quote stream, fixed original exit target. Base includes standing state strictly before target-1ms and every update through target+1ms inclusive; stress alignment to+/-100ms. Require a predecessor and successor bracketing the whole window. Last invalid state cannot be replaced with an older quote. No arbitrary standing-quote age expiry. Positive noncrossed R-condition quotes with enough known bid shares required in EVERY observed state, otherwise conditional P&L remains unknown with possible inventory.",
+  "units": "Point-in-time native ARCX.PILLAR SPY definitions must establish100-share round lots for each pre2025-11-03 date. Apply the documented Alpaca SIP lot-to-share change; preserve source quantities and timestamps. No double normalization or future definition.",
+  "bounds": "Evaluate net cash at min/max bid in the observed envelope, including actual notional-dependent fees and adverse allowances. Bounds are conditional on full auction allocation and the specified observed-price set, not bounds on real physical fills. SIP timestamps are not strategy receipts or guaranteed matching-engine times. Quote routing, auction rationing and market impact remain unverified.",
+  "advance": "Only if conditional totals are complete and positive in every scenario for BOTH2023-24 and2025, baselinepositive>=3 dates in each period and positive after removing its best3 dates; passing justifies allocation/venue evidence, never an edge claim. Otherwise retire this rule without changing clocks, caps or fees.",
+  "historical_scope": "All2023-25 dates exposed discovery. No independent confirmation or live trading. Two execution-reference versions, not two new alpha hypotheses.",
+  "sources": [
+    "https://docs.alpaca.markets/us/docs/market-data-faq",
+    "https://docs.alpaca.markets/us/v1.1/changelog/marketdata-bid-and-ask-size-display-change"
+  ],
+  "code_sha256": {
+    "research/sip_quote_envelope.py": "f971ed1f0680e920b5974a103c89d1c06c292980dcf922114d5b32b27d75840e",
+    "research_scout/run_close_auction_sip_20260930.py": "46b3e61bab537df54549a441ef5b42f05ac6cd8433123beb6efcb3e0a44ddc67",
+    "research/alpaca_quote_units.py": "df84da4227c18fedc08a3d63761f278f7d6c0a860b8981a18ceadb2b989d09a8"
+  }
+}

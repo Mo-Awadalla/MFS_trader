@@ -1,0 +1,35 @@
+{
+  "created_at_utc": "2026-10-02T18:19:59.051172+00:00",
+  "pairs_sha256": "23f4e40e94a0de6f65998499c29dd0ce44330f01911eb6afa422870246d3391c",
+  "events": [
+    {
+      "date": "2024-03-01",
+      "hour": 16,
+      "symbol": "AXLUSDT",
+      "decision_ns": 1709308789750000000,
+      "settlement_ns": 1709308800000000000
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 8,
+      "symbol": "STEEMUSDT",
+      "decision_ns": 1714550389750000000,
+      "settlement_ns": 1714550400000000000
+    }
+  ],
+  "rule": "Use only fresh positive uncrossed native best quotes captured before the original funding-signal cutoff. Subtract both full displayed spreads and 7bp times the sum of the four bid/ask prices from the projected funding payment per matched underlying unit. This is the payment-alone budget assuming unchanged quotes, not strategy P&L or a guarantee. A candidate must have positive remaining budget and sufficient known size before an execution replay is justified.",
+  "size": "Common multiple of ten whole underlying units, <=200 USDT per leg and <=10% of all four touch quantities. Require >=100 USDT bid notional per venue. Historical order grid remains conditional.",
+  "known_lifecycle_fact": {
+    "symbol": "AXLUSDT",
+    "binance_launch_utc": "2024-03-01T15:30:00Z",
+    "first_funding_utc": "2024-03-01T16:00:00Z",
+    "tick_size": "0.0001",
+    "source": "https://www.binance.com/en/support/announcement/detail/4ec6916d881444c0949ab906352043cc"
+  },
+  "code_sha256": {
+    "research_scout/funding_quote_gate_20261002.py": "dbc15b0816bb82c2335a5ce39917b3d859cae7ab097d169e970c032a2e5f6bb9",
+    "research/external_quote_hft.py": "09267cffe35b63866d4902c0c8839b692ff88bc3b38642a293acf1354e31e276",
+    "research/wide_tick_replay.py": "684d531be39d99c62b2075b4cff6c925eb88845c48c1b8be6a550a4fd8d2466d"
+  },
+  "strategy_pnl_tested": false
+}

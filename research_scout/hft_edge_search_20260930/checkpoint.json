@@ -1,0 +1,311 @@
+{
+  "created_at_utc": "2026-09-30T13:49:15.230627+00:00",
+  "goal_status": "active_not_achieved",
+  "user_constraints": {
+    "instruments": [
+      "stocks",
+      "ETFs",
+      "crypto"
+    ],
+    "objective": "raw outperformance and reliable edge",
+    "fees": "conservative assumptions explicitly requested"
+  },
+  "new_configurations": 24,
+  "survivors": 0,
+  "original_rule_repairs": 1,
+  "records": [
+    {
+      "family": "own_price_and_book",
+      "candidate": "price_ridge_5s",
+      "source": "hft_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": false,
+      "trades": 5,
+      "net_dollars_if_complete": null,
+      "priced_subtotal_if_incomplete": -10.530698593274792,
+      "status": "incomplete_exit_evidence",
+      "passed": false
+    },
+    {
+      "family": "own_price_and_book",
+      "candidate": "book_ridge_5s",
+      "source": "hft_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 28,
+      "net_dollars_if_complete": -160.81329281269245,
+      "priced_subtotal_if_incomplete": null,
+      "status": "failed_gates",
+      "passed": false
+    },
+    {
+      "family": "own_price_and_book",
+      "candidate": "book_histboost_5s",
+      "source": "hft_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 30,
+      "net_dollars_if_complete": -42.010269363798216,
+      "priced_subtotal_if_incomplete": null,
+      "status": "failed_gates",
+      "passed": false
+    },
+    {
+      "family": "own_price_and_book",
+      "candidate": "price_ridge_30s",
+      "source": "hft_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 19,
+      "net_dollars_if_complete": -39.45613706990116,
+      "priced_subtotal_if_incomplete": null,
+      "status": "failed_gates",
+      "passed": false
+    },
+    {
+      "family": "own_price_and_book",
+      "candidate": "book_ridge_30s",
+      "source": "hft_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": false,
+      "trades": 0,
+      "net_dollars_if_complete": null,
+      "priced_subtotal_if_incomplete": 0.0,
+      "status": "incomplete_exit_evidence",
+      "passed": false
+    },
+    {
+      "family": "own_price_and_book",
+      "candidate": "book_histboost_30s",
+      "source": "hft_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": false,
+      "trades": 14,
+      "net_dollars_if_complete": null,
+      "priced_subtotal_if_incomplete": -18.52096680161958,
+      "status": "incomplete_exit_evidence",
+      "passed": false
+    },
+    {
+      "family": "own_price_and_book",
+      "candidate": "price_ridge_120s",
+      "source": "hft_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 12,
+      "net_dollars_if_complete": 112.23425210919231,
+      "priced_subtotal_if_incomplete": null,
+      "status": "failed_gates",
+      "passed": false
+    },
+    {
+      "family": "own_price_and_book",
+      "candidate": "book_ridge_120s",
+      "source": "hft_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 17,
+      "net_dollars_if_complete": -32.954966211231294,
+      "priced_subtotal_if_incomplete": null,
+      "status": "failed_gates",
+      "passed": false
+    },
+    {
+      "family": "own_price_and_book",
+      "candidate": "book_histboost_120s",
+      "source": "hft_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": false,
+      "trades": 9,
+      "net_dollars_if_complete": null,
+      "priced_subtotal_if_incomplete": 31.74567716549791,
+      "status": "incomplete_exit_evidence",
+      "passed": false
+    },
+    {
+      "family": "cross_etf",
+      "candidate": "cross_ridge_5s",
+      "source": "hft_cross_etf_20260930/results.json",
+      "complete_quote_proxy_path": false,
+      "trades": 5,
+      "net_dollars_if_complete": null,
+      "priced_subtotal_if_incomplete": -53.8216525022508,
+      "status": "incomplete_exit_evidence",
+      "passed": false
+    },
+    {
+      "family": "cross_etf",
+      "candidate": "cross_histboost_5s",
+      "source": "hft_cross_etf_20260930/results.json",
+      "complete_quote_proxy_path": false,
+      "trades": 31,
+      "net_dollars_if_complete": null,
+      "priced_subtotal_if_incomplete": -112.83676988028128,
+      "status": "incomplete_exit_evidence",
+      "passed": false
+    },
+    {
+      "family": "cross_etf",
+      "candidate": "cross_ridge_30s",
+      "source": "hft_cross_etf_20260930/results.json",
+      "complete_quote_proxy_path": false,
+      "trades": 34,
+      "net_dollars_if_complete": null,
+      "priced_subtotal_if_incomplete": -92.24187143664312,
+      "status": "incomplete_exit_evidence",
+      "passed": false
+    },
+    {
+      "family": "cross_etf",
+      "candidate": "cross_histboost_30s",
+      "source": "hft_cross_etf_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 41,
+      "net_dollars_if_complete": -126.96381695446689,
+      "priced_subtotal_if_incomplete": null,
+      "status": "failed_gates",
+      "passed": false
+    },
+    {
+      "family": "cross_etf",
+      "candidate": "cross_ridge_120s",
+      "source": "hft_cross_etf_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 23,
+      "net_dollars_if_complete": -119.53751356092835,
+      "priced_subtotal_if_incomplete": null,
+      "status": "failed_gates",
+      "passed": false
+    },
+    {
+      "family": "cross_etf",
+      "candidate": "cross_histboost_120s",
+      "source": "hft_cross_etf_20260930/results.json",
+      "complete_quote_proxy_path": false,
+      "trades": 34,
+      "net_dollars_if_complete": null,
+      "priced_subtotal_if_incomplete": -44.07706640262586,
+      "status": "incomplete_exit_evidence",
+      "passed": false
+    },
+    {
+      "family": "crypto_cost_aware",
+      "candidate": "price_ridge_margin0",
+      "source": "crypto_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 0,
+      "net_dollars_if_complete": 0.0,
+      "priced_subtotal_if_incomplete": null,
+      "status": "no_trades",
+      "passed": false
+    },
+    {
+      "family": "crypto_cost_aware",
+      "candidate": "price_ridge_margin5",
+      "source": "crypto_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 0,
+      "net_dollars_if_complete": 0.0,
+      "priced_subtotal_if_incomplete": null,
+      "status": "no_trades",
+      "passed": false
+    },
+    {
+      "family": "crypto_cost_aware",
+      "candidate": "price_ridge_margin10",
+      "source": "crypto_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 0,
+      "net_dollars_if_complete": 0.0,
+      "priced_subtotal_if_incomplete": null,
+      "status": "no_trades",
+      "passed": false
+    },
+    {
+      "family": "crypto_cost_aware",
+      "candidate": "book_ridge_margin0",
+      "source": "crypto_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 0,
+      "net_dollars_if_complete": 0.0,
+      "priced_subtotal_if_incomplete": null,
+      "status": "no_trades",
+      "passed": false
+    },
+    {
+      "family": "crypto_cost_aware",
+      "candidate": "book_ridge_margin5",
+      "source": "crypto_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 0,
+      "net_dollars_if_complete": 0.0,
+      "priced_subtotal_if_incomplete": null,
+      "status": "no_trades",
+      "passed": false
+    },
+    {
+      "family": "crypto_cost_aware",
+      "candidate": "book_ridge_margin10",
+      "source": "crypto_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 0,
+      "net_dollars_if_complete": 0.0,
+      "priced_subtotal_if_incomplete": null,
+      "status": "no_trades",
+      "passed": false
+    },
+    {
+      "family": "crypto_cost_aware",
+      "candidate": "book_boost_margin0",
+      "source": "crypto_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 0,
+      "net_dollars_if_complete": 0.0,
+      "priced_subtotal_if_incomplete": null,
+      "status": "no_trades",
+      "passed": false
+    },
+    {
+      "family": "crypto_cost_aware",
+      "candidate": "book_boost_margin5",
+      "source": "crypto_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 0,
+      "net_dollars_if_complete": 0.0,
+      "priced_subtotal_if_incomplete": null,
+      "status": "no_trades",
+      "passed": false
+    },
+    {
+      "family": "crypto_cost_aware",
+      "candidate": "book_boost_margin10",
+      "source": "crypto_edge_search_20260930/results.json",
+      "complete_quote_proxy_path": true,
+      "trades": 0,
+      "net_dollars_if_complete": 0.0,
+      "priced_subtotal_if_incomplete": null,
+      "status": "no_trades",
+      "passed": false
+    }
+  ],
+  "stock_repair": {
+    "unit_only_original_execution_proxy": {
+      "trades": 52,
+      "days": 12,
+      "mean_gross_bps": -1.2158819771818097,
+      "mean_net_bps": -3.102030290167392,
+      "mean_stress_net_bps": -7.1020302901673915,
+      "day_block_ci95_net_bps": [
+        -4.14903492752685,
+        -1.977472250199005
+      ],
+      "missing_executions_not_zero_profit": true
+    },
+    "strict_execution_audit": {
+      "trades": 52,
+      "days": 12,
+      "mean_gross_bps": -1.2158819771818097,
+      "mean_net_bps": -3.102030290167392,
+      "mean_stress_net_bps": -7.1020302901673915,
+      "day_block_ci95_net_bps": [
+        -4.14903492752685,
+        -1.977472250199005
+      ],
+      "missing_executions_not_zero_profit": true
+    }
+  },
+  "later_history": "No 2026 equity evaluation or March crypto evaluation by these new batches; those periods have prior research exposure and are not pristine",
+  "next_research_direction": "Audit broader stock quote coverage and prioritize mechanisms with measured gross edge comfortably above execution costs; do not tune rejected candidates on their selection dates",
+  "needed_for_reliability": "More independent days, untouched confirmation, venue-specific execution evidence, cost and latency robustness, full-calendar accounting and appropriate benchmark"
+}

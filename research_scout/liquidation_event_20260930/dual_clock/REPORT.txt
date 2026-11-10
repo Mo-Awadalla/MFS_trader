@@ -1,0 +1,33 @@
+LIQUIDATION REPLAY: EXCHANGE-TIME EXECUTION CORRECTION
+
+VERDICT: NO RELIABLE EDGE. No frozen rule is complete and profitable across all scenarios.
+
+All 124 frozen events, directions, timing, sizing, price collars and costs are unchanged. No new date or parameter was selected.
+Signals and prior-30-second controls retain exactly the same capture-time data. Order fills instead use the strictly preceding exchange-time book.
+The original receive-time artifacts remain unchanged and are superseded for execution evidence by this directory.
+
+rule | original net dollars | corrected net dollars | complete
+follow_immediate_30s | -128.99548136000158 | None | False
+follow_immediate_120s | -132.79681372000414 | -132.84029916001055 | True
+follow_quiet_30s | -85.24100627999542 | -85.27408641999682 | True
+follow_quiet_120s | -81.76917524000055 | -81.80875148000086 | True
+reverse_immediate_30s | -144.60257533999174 | -144.65842559999328 | True
+reverse_immediate_120s | -141.26963630000682 | -141.25272714000312 | True
+reverse_quiet_30s | None | None | False
+reverse_quiet_120s | None | None | False
+price_follow_immediate_30s | -131.89528388000144 | None | False
+price_follow_immediate_120s | -137.14841624000292 | -137.19190168000932 | True
+price_follow_quiet_30s | -85.92180627999551 | -85.95488641999691 | True
+price_follow_quiet_120s | -78.76057523999953 | -78.80015147999984 | True
+price_reverse_immediate_30s | -141.70277281999188 | -141.7586230799934 | True
+price_reverse_immediate_120s | -136.91803378000805 | -136.90112462000434 | True
+price_reverse_quiet_30s | None | None | False
+price_reverse_quiet_120s | None | None | False
+
+Best complete baseline liquidation rule remains follow/quiet/120s: gross $+8.5894; net $-81.8088; 78 trades.
+The price-follow quiet/120s control remains negative too. Some former complete paths become incomplete when the physical execution book cannot support a full exit; closed subtotals are not portfolio returns.
+Independent verification reconciled 4432 priced trades across dependent scenarios, maximum P&L error $1.09e-13; 496 decision-input snapshots are exactly unchanged.
+These are implementation repairs, not new independent validation. The reproduced old 64-version bootstrap fields are historical diagnostics and do not account for the full current search; no candidate is promoted using them.
+Public exchange timestamps and historical books remain execution proxies. Market impact, actual routing, disconnects and fill acceptance are not proven.
+
+The search remains active at 60 configurations / 84 evaluated implementation versions, including this 16-rule repair. No reliable edge or competition win established.

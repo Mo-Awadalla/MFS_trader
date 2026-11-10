@@ -1,0 +1,128 @@
+SPY CLOSING-AUCTION HFT RESEARCH -- 2026-09-30
+
+VERDICT: NO QUALIFYING EDGE. Neither fixed 15-second nor 30-second rule
+advances. No actual auction allocation or live execution has been verified.
+All economic figures below assume full allocation when the official closing
+price is within the precommitted LOC limit. They are conditional diagnostics,
+not achieved trading returns, executable arbitrage, or physical P&L bounds.
+
+HYPOTHESIS AND FROZEN DESIGN
+Buy a price-protected closing-auction discount during a sell imbalance, then
+sell seconds after a modeled auction-fill acknowledgement. This is related
+to earlier auction research, with a different entry and seconds-long exit;
+it is not independent evidence from an untouched strategy family.
+
+658 full 16:00 New York sessions, 2023-03-28 through 2025-12-31, after the
+previously identified ARCX/EQUS quality exclusions. All are exposed discovery
+data. No 2026 outcomes were opened for selection. Decision: 15:58:55, using
+strictly earlier quote and imbalance captures. Quote event/capture age <=250ms;
+imbalance age <=2s, closing auction, valid status, not frozen, sell imbalance,
+positive paired volume and valid prices. A frozen integer quantity uses
+$10,000 reset cash, <=10% observed bid depth and <=1% paired auction volume,
+with a $100 minimum ticket. Future liquidity never resizes the order.
+
+The LOC cap covers estimated round-trip costs plus 2bp using only the current
+bid as the prospective exit reference. This is a signal, not a future fill.
+Fees: $0.0075/share, minimum $1 per side; sell 0.30bp plus $0.0002/share;
+1bp adverse allowance on each side. Submit after 250ms processing plus 1s
+outbound latency, also checked at 3s, before the 15:59 freeze. Exit after
+15s or 30s from modeled fill ACK, plus processing and outbound latency.
+
+SOURCE CLOCK REPAIR
+The saved ARCX scheduled auction_time has two encodings: 619 selected states
+encode New York 16:00 as UTC 16:00; 39 are already correct UTC. A documented
+NYSE UTC bug fix supports repairing only the exact recognizable legacy
+encoding. The corrected feasibility screen has 32 eligible dates, versus 5
+under the preserved original UTC assumption. Neither ts_recv nor ts_event
+was changed. See CLOCK_ERRATUM.txt for exact scope and limitations.
+
+CONDITIONAL ENTRY AND EXIT EVIDENCE
+Of 32 eligible orders, 22 official auction prices exceed the frozen buy cap;
+10 meet the price condition. Official price eligibility does not establish
+allocation, priority, auction impact, broker acceptance, or routing.
+
+The first exit study used trade-triggered EQUS.MINI TBBO. Missing or invalid
+states left both full-sample totals unresolved. It is preserved in
+conditional_benchmark. We then recovered all ten price-eligible dates from
+historical Alpaca SIP, not just missing or profitable paths: 114,478 quotes,
+12,956,475 response bytes, complete pagination, one minute after each close.
+This used existing historical-data access with no paid API or orders.
+
+The revised exit benchmark includes the last quote strictly before each
+target-1ms and every update through target+1ms, including all timestamp ties.
+A successor beyond the window establishes observed coverage. Every possible
+state must have valid prices, regular condition, venue identifiers and depth
+for the full frozen quantity. Any invalid branch remains unknown inventory.
+There is no arbitrary expiry of an unchanged standing SIP quote. Legacy SIP
+sizes are converted using the historical 100-share SPY round lot, independently
+verified from causal native ARCX definitions on all ten dates. These quote
+envelopes do not prove the matching-engine state or physical execution.
+
+RESULTS, DOLLARS WITH DAILY RESET CAPITAL
+30s baseline: complete conditional total -13.7459318 over ten assumed full
+allocations; gross +25.35, fees and adverse allowance 39.0959318.
+  2023-24: -27.9997644, six allocations, zero positive dates.
+  2025: +14.2538326, four allocations, only two positive dates.
+  2025 after deleting its best three dates: -6.7397602.
+  Full sample after deleting its best three dates: -34.7395246.
+30s stresses, all conditionally complete:
+  Double fees: -36.2641666.
+  3s latency: -16.5855626.
+  Double adverse allowance: -30.3236288.
+  +/-100ms quote alignment: [-15.2757329, -12.8660462].
+
+15s baseline: full total UNKNOWN. Nine priced conditional paths sum to
+-18.1118641, but the invalid quote branch on 2025-06-30 is retained. That
+subtotal must not be presented as full strategy performance.
+  2023-24: conditionally complete -23.5403442; zero positive dates.
+  2025: UNKNOWN, with three priced paths summing to +5.4284801.
+  3s latency: conditionally complete -15.5456978 for all ten allocations.
+  Double fees, double adverse allowance, +/-100ms alignment: UNKNOWN.
+
+Both rules fail the frozen progression conditions. Selecting only the positive
+2025 segment would ignore development losses and extremely sparse evidence.
+No significance or reliability claim is made from these exposed outcomes.
+
+VERIFICATION
+Original as-of screen: all 1,316 native predecision quote/auction states.
+Clock repair: all 658 mappings and unchanged non-schedule fields checked.
+Initial benchmark: 32 native official prices and 40 native exit references;
+25 dependent cashflows reconciled, maximum cash error zero.
+SIP revision: all ten source hashes and pagination records, all 114,478 raw
+quote times/order, 100 independently reconstructed envelopes, 729 dependent
+states and 93 dependent cashflows. Maximum cash error zero. Seven unknown
+conditional paths and 220 outside-limit dependent paths retained across
+the ten rule/scenario ledgers. No eligible configuration advances.
+
+Eighteen ancillary optional source-clock annotations in the original envelope
+panel were float-promoted (<=128ns). Exact raw indices repaired them in
+sip_quote_revision/precise_quote_envelopes.parquet. Prices, sizes, target/ACK
+integer clocks, decisions and P&L never depended on those annotations and
+are unchanged. Original panel retained; verification.json records the scope.
+
+18 focused tests passed across screen, clock repair, initial benchmark and
+SIP envelope modules. New files passed Ruff. Frozen specifications record
+source and implementation hashes; independent verification files are saved.
+
+SEARCH ACCOUNTING
+Two new configurations (15s, 30s); four implementation versions (initial
+conditional TBBO and revised conditional SIP, two each). Clock repair and
+feasibility diagnostics are not independent alpha configurations. Cumulative
+current-search totals: 118 configurations, 168 implementation versions,
+130 focused tests. These are bookkeeping counts, not independent experiments.
+Earlier postmortem searches are additional selection exposure.
+
+NEXT DISPOSITION
+Reject these frozen rules for progression. Do not rescue them by retuning
+the exposed dates, fees or holding periods. Keep the scheduled-clock repair
+available for future causal auction research. No active data or replay jobs
+remain from this study. Competition win and reliable edge remain unachieved.
+
+PRIMARY SOURCES
+https://www.nyse.com/trade/auctions
+https://databento.com/docs/release-notes (2025-11-09 NYSE auction_time UTC fix)
+https://databento.com/docs/venues-and-datasets
+https://databento.com/docs/schemas-and-data-formats/statistics
+https://databento.com/docs/schemas-and-data-formats/tbbo
+https://docs.alpaca.markets/us/docs/market-data-faq
+https://docs.alpaca.markets/us/v1.1/changelog/marketdata-bid-and-ask-size-display-change

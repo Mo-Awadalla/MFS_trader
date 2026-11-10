@@ -1,0 +1,21 @@
+SAME-VENUE THREE-MARKET HFT CONVERSION — NO SUPPLY AFTER COSTS
+
+No qualifying route, P&L test or reliable edge. The displayed conversion budgets are not executions.
+
+A separately frozen cash-identity screen reuses sixty native Binance spot minutes: 00:00, 06:00, 09:00, 12:00 and 18:00 UTC on the first day of each 2024 month. Every contemporaneously recorded BASE/BTC, BASE/ETH or BASE/BNB market with the corresponding BASE/USDT and bridge/USDT books is considered. There is no current-survivor list or return-based coin selection.
+
+Each direction starts with 200 USDT and converts through all three actual bid/ask sides back to USDT. Every leg charges 10bp in the received asset plus 1bp adverse execution allowance; fee and adverse stress budgets are separately doubled. Each gross base-asset quantity must fit within 10% of that leg's displayed touch. A positive result would still require historical quantity/tick validation and sequential execution with partial-inventory cleanup.
+
+All books must be captured strictly before decision minus 250ms, with capture age no more than one second. Exact duplicates cannot refresh age; invalid latest states are retained. Two consecutive positive budgets above 2bp would be required before selection. This deliberately avoids treating a single asynchronous observation as a tradable cycle.
+
+Coverage: 21,889,483 native messages; 16,529,264 relevant books; 2,013,850 saved quote observations; 2,328,400 directed route/time checks. These highly dependent checks are not independent statistical trials.
+
+All three books pass validity/freshness in 460,220 route/time checks. Of these, 406,599 fail directional depth; the remaining 53,621 all fail the net cash hurdle. Best depth-eligible displayed budget: -26.870376bp. No route passes even once, so none can pass the confirmation rule. No later native execution data were acquired.
+
+Independent verification re-parsed every native envelope and reconstructed every saved quote/route state. A separate algebraic product calculation checked base and stressed cash, and independently computed each leg's gross quantity. It reconciled source clocks, rejection reasons, confirmation/cooldown state and aggregate selection. Maximum Decimal difference: 2.000E-23. Seven focused tests and Ruff passed.
+
+Limits: the budget relaxes exchange order grids, does not establish historical account eligibility and does not model actual sequential fills. Spot bookTicker supplies no matching-engine timestamp. Freshness rejection does not prove an older standing order expired. The result rejects this frozen screen in these sampled periods; it does not prove that all triangular trading is unprofitable. Previously exposed source history is not pristine validation. Family-specific 2025 validation remains unopened.
+
+Evidence: specification.json; screen_implementation.json; quotes/; routes/; selected.parquet; screen_results.json; independent_verification.json. Original results retain their pre-audit flag; the separate verification artifact records completion. An initial audit invocation occurred before the final result file existed, exited without reading outcomes and was rerun unchanged after screen completion.
+
+Primary book-field reference: https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams

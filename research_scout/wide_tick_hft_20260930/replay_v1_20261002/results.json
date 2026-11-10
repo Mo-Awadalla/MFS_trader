@@ -1,0 +1,262 @@
+{
+  "completed_at_utc": "2026-10-02T16:49:18.308434+00:00",
+  "configurations_run": 2,
+  "scenario_results": [
+    {
+      "rest_seconds": 10,
+      "scenario": "base",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -68.774015873596,
+      "net_high": -68.774015873596,
+      "net_low_over_reference_capital_bps": -68.774015873596,
+      "closed_portion_net_low": -68.774015873596,
+      "closed_portion_net_high": -68.774015873596,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 151,
+      "definitely_profitable_cycles": 9,
+      "definitely_losing_cycles": 142,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "double_fees",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -93.57826190569176,
+      "net_high": -93.57826190569176,
+      "net_low_over_reference_capital_bps": -93.57826190569176,
+      "closed_portion_net_low": -93.57826190569176,
+      "closed_portion_net_high": -93.57826190569176,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 151,
+      "definitely_profitable_cycles": 1,
+      "definitely_losing_cycles": 150,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "outbound_and_ack_3s",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -51.90673557050286,
+      "net_high": -51.90673557050286,
+      "net_low_over_reference_capital_bps": -51.90673557050286,
+      "closed_portion_net_low": -51.90673557050286,
+      "closed_portion_net_high": -51.90673557050286,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 124,
+      "definitely_profitable_cycles": 7,
+      "definitely_losing_cycles": 117,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "double_adverse",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -74.37839671510119,
+      "net_high": -74.37839671510119,
+      "net_low_over_reference_capital_bps": -74.37839671510119,
+      "closed_portion_net_low": -74.37839671510119,
+      "closed_portion_net_high": -74.37839671510119,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 151,
+      "definitely_profitable_cycles": 9,
+      "definitely_losing_cycles": 142,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "queue_ahead_double",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -64.79393966479438,
+      "net_high": -64.79393966479438,
+      "net_low_over_reference_capital_bps": -64.79393966479438,
+      "closed_portion_net_low": -64.79393966479438,
+      "closed_portion_net_high": -64.79393966479438,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 142,
+      "definitely_profitable_cycles": 8,
+      "definitely_losing_cycles": 134,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "clock_envelope_100ms",
+      "complete": false,
+      "complete_dates": 9,
+      "selected_dates": 10,
+      "net_low": null,
+      "net_high": null,
+      "net_low_over_reference_capital_bps": null,
+      "closed_portion_net_low": -65.89033852359717,
+      "closed_portion_net_high": -59.06514962359506,
+      "submitted_cycles": 661,
+      "cycles_with_possible_fills": 139,
+      "definitely_profitable_cycles": 6,
+      "definitely_losing_cycles": 121,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 660,
+        "signal_spread_or_depth_below_gate": 7,
+        "insufficient_forced_exit_depth": 1,
+        "halted_after_unknown_inventory": 60
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "base",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -116.27227743300682,
+      "net_high": -116.27227743300682,
+      "net_low_over_reference_capital_bps": -116.27227743300682,
+      "closed_portion_net_low": -116.27227743300682,
+      "closed_portion_net_high": -116.27227743300682,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 256,
+      "definitely_profitable_cycles": 21,
+      "definitely_losing_cycles": 235,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "double_fees",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -158.79672065099658,
+      "net_high": -158.79672065099658,
+      "net_low_over_reference_capital_bps": -158.79672065099658,
+      "closed_portion_net_low": -158.79672065099658,
+      "closed_portion_net_high": -158.79672065099658,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 256,
+      "definitely_profitable_cycles": 3,
+      "definitely_losing_cycles": 253,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "outbound_and_ack_3s",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -95.65561168701606,
+      "net_high": -95.65561168701606,
+      "net_low_over_reference_capital_bps": -95.65561168701606,
+      "closed_portion_net_low": -95.65561168701606,
+      "closed_portion_net_high": -95.65561168701606,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 226,
+      "definitely_profitable_cycles": 21,
+      "definitely_losing_cycles": 205,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "double_adverse",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -125.97826164799517,
+      "net_high": -125.97826164799517,
+      "net_low_over_reference_capital_bps": -125.97826164799517,
+      "closed_portion_net_low": -125.97826164799517,
+      "closed_portion_net_high": -125.97826164799517,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 256,
+      "definitely_profitable_cycles": 20,
+      "definitely_losing_cycles": 236,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "queue_ahead_double",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -114.31697432800684,
+      "net_high": -114.31697432800684,
+      "net_low_over_reference_capital_bps": -114.31697432800684,
+      "closed_portion_net_low": -114.31697432800684,
+      "closed_portion_net_high": -114.31697432800684,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 248,
+      "definitely_profitable_cycles": 18,
+      "definitely_losing_cycles": 230,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "clock_envelope_100ms",
+      "complete": true,
+      "complete_dates": 10,
+      "selected_dates": 10,
+      "net_low": -117.99330443300641,
+      "net_high": -112.29858303300534,
+      "net_low_over_reference_capital_bps": -117.99330443300641,
+      "closed_portion_net_low": -117.99330443300641,
+      "closed_portion_net_high": -112.29858303300534,
+      "submitted_cycles": 715,
+      "cycles_with_possible_fills": 258,
+      "definitely_profitable_cycles": 20,
+      "definitely_losing_cycles": 230,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 715,
+        "signal_spread_or_depth_below_gate": 13
+      }
+    }
+  ],
+  "source_native_messages": 2212109,
+  "ledger_files": 120,
+  "counterfactual_public_tape_model": true,
+  "order_grid_assumption_verified": false,
+  "actual_execution_verified": false,
+  "independent_accounting_verified": false,
+  "reliable_edge_established": false,
+  "selection_2025_opened": false,
+  "artifacts_sha256": {
+    "implementation.json": "3393e4c843e37d29bc535794e06ec87cf103ef8c0a70171564a91769b8b7a0bb",
+    "source_diagnostics.json": "da36c25292011838087eb761884eb2bb30efa92dc1a7488050e14720e135c901",
+    "daily_results.json": "3159a672199ddc0644e8b019543efe3a942c9c1cc6ccdcebe912f10fd4987eb4",
+    "ledger_manifest.json": "a57c7c2b252e97b623723ca9da12712f63cb6f56b7dbb15580d67b247e3976e1"
+  }
+}

@@ -1,0 +1,54 @@
+LIQUIDATION EVENT HFT SCREEN — 2026-09-30
+
+VERDICT: NO_LIQUIDATION_SURVIVOR. Goal remains active; no reliable edge or competition win established.
+
+SOURCE AND CAUSALITY
+New public Tardis first-of-month BTCUSDT liquidation samples: twelve dates in 2024.
+January-June calibrated only the reported-size distribution: the 99th-percentile threshold was $41,419.21.
+July-December evaluated frozen rules using exact strictly-prior top-five book snapshots and microsecond capture timestamps.
+Six books contain 8,071,556 rows; the trigger produces 124 first-report events after five-minute refractory periods.
+The order-book files total 164,789,261 compressed bytes. All requests were unauthenticated public samples; no paid API was called.
+
+RULES AND EXECUTION
+Follow or reverse reported liquidation direction; act immediately or after a causally known two-second quiet interval; hold 30 or 120 seconds.
+Eight fixed liquidation configurations and eight price-direction controls use the same event clocks.
+Baseline crosses observed depth after one-second order delay: 5bp fees plus 1bp extra adverse cost on each side. Doubled fees and three-second delay are separate stresses.
+Entry is FOK with a causal 5bp price collar. Five-level weighted prices are used when sufficient; unobserved deeper liquidity or unknown submitted-order execution invalidates the day.
+Daily initial account $10000; max ticket $1000 and 10% pre-decision touch quantity. No funding-boundary exposure. Isolated-date summed P&L is not continuous calendar wealth.
+
+BASELINE RESULTS: name | gross dollars | net dollars | priced trades | mean net bp
+follow_immediate_30s | $+2.91 | $-129.00 | 116 | -11.699
+follow_immediate_120s | $-0.89 | $-132.80 | 116 | -11.928
+follow_quiet_30s | $+5.16 | $-85.24 | 78 | -11.325
+follow_quiet_120s | $+8.63 | $-81.77 | 78 | -10.901
+reverse_immediate_30s | $-7.63 | $-144.60 | 119 | -12.635
+reverse_immediate_120s | $-4.30 | $-141.27 | 119 | -12.305
+reverse_quiet_30s | $-1.58 | INCOMPLETE (closed subtotal $-73.55) | 62 | -12.248
+reverse_quiet_120s | $-3.41 | INCOMPLETE (closed subtotal $-81.22) | 67 | -12.488
+price_follow_immediate_30s | $+0.01 | $-131.90 | 116 | -11.954
+price_follow_immediate_120s | $-5.24 | $-137.15 | 116 | -12.308
+price_follow_quiet_30s | $+4.48 | $-85.92 | 78 | -11.415
+price_follow_quiet_120s | $+11.64 | $-78.76 | 78 | -10.503
+price_reverse_immediate_30s | $-4.73 | $-141.70 | 119 | -12.386
+price_reverse_immediate_120s | $+0.05 | $-136.92 | 119 | -11.934
+price_reverse_quiet_30s | $-0.90 | INCOMPLETE (closed subtotal $-72.87) | 62 | -12.135
+price_reverse_quiet_120s | $-6.42 | INCOMPLETE (closed subtotal $-84.23) | 67 | -12.951
+
+INTERPRETATION
+The largest complete gross liquidation-rule total is +$8.63 (follow, quiet, 120s), versus -$81.77 after costs. It is not a viable edge under the authorized conservative costs.
+The best complete price-control gross total is +$11.64, also negative after costs. New liquidation information did not produce a reliable net-profit alternative.
+immediate: liquidation direction agrees with the prior 30-second price move on 121/124 comparable predecision events (97.6%).
+quiet: liquidation direction agrees with the prior 30-second price move on 74/78 comparable predecision events (94.9%).
+This agreement is descriptive; it does not prove the two signals are identical. Controls retain liquidation timing and are not a matched non-liquidation-event study.
+
+VERIFICATION AND LIMITS
+Independent verification reconciled 4460 priced trades across dependent stress scenarios; maximum trade-P&L discrepancy 1.09e-13 dollars.
+Six new focused tests pass: event chronology, quiet/refractory behavior, strict as-of lookup, invalid latest books, depth-weighted FOK fills, unknown liquidity and both-side costs.
+The current search totals 58 configurations and 64 evaluated implementation versions including prior repairs; these are dependent and do not erase historical research exposure.
+Public liquidation snapshots are throttled; reported notional is not total forced flow. Calendar-selected first days are not continuous or representative ordinary-date coverage.
+Reconstructed books remove crossed levels; CSV data omit disconnect events. Historical receive-clock replay cannot prove actual fills or market impact. Freshly acquired history is not forward evidence.
+No later 2025 liquidation test was opened. All candidates failed the frozen progression gate.
+
+Official source documentation:
+https://docs.tardis.dev/downloadable-csv-files/data-types
+https://docs.tardis.dev/faq/data

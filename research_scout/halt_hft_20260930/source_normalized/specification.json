@@ -1,0 +1,15 @@
+{
+  "created_at_utc": "2026-09-30T18:16:20.206138+00:00",
+  "original_specification_sha256": "c6c283827150424071c01e3675e440df767c5d8f2c25075212b6194852026782",
+  "implementation_sha256": "b613941a59a14a1edd3e9131089d89a77d1cdfcbac0e28fbb922034ae76376fc",
+  "scope": "For Nasdaq-listed events only, treat Alpaca exchangeT (NASDAQ Int) andQ (NASDAQ OMX) as Nasdaq venue identifiers when locating a condition5 reopening print. No trade price/time, quote, family, threshold, fee or hold changes. Original feed preserved. Original strict-Q result superseded for this compatibility interpretation.",
+  "evidence": "Alpaca official SDK and OpenAPI name both codes as Nasdaq. Nasdaq confirms T is its CTS identifier. In these files,48 first-half2023 TapeC reopening reports carryT, while later reports carryQ. The provider's exact historical normalization transition and venue identity have not been independently confirmed; all revised economics remain conditional on compatibility interpretation.",
+  "empty_source_recovery": "GWII2023-02-01 andMSSA2023-07-03 HTTP200 bodies explicitly contain matching symbol,trades:null,next_page_token:null. Interpret as no provider trade records, not evidence that no real trades took place. Full raw bodies/hashes saved; original client failures preserved.",
+  "sources": [
+    "https://github.com/alpacahq/alpaca-py/blob/master/alpaca/data/enums.py",
+    "https://github.com/alpacahq/alpaca-docs/blob/master/oas/data/openapi.yaml",
+    "https://www.nasdaqtrader.com/TraderNews.aspx?id=hta2007-007"
+  ],
+  "source_clock_capture_verified": false,
+  "strategy_execution_verified": false
+}

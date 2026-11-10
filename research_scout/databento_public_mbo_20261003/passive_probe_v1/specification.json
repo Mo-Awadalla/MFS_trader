@@ -1,0 +1,201 @@
+{
+  "created_at_utc": "2026-10-03T01:43:23.340608+00:00",
+  "hypothesis_count": 1,
+  "kind": "Conditional displayed-queue passive buy then passive sell with mandatory IOC exit; strict HFT.",
+  "source": {
+    "schema": "mbo",
+    "rows": 6480679,
+    "source_sha256": "d055eb1e2f40f10aaa018b65831f90ef924793d39a15afe686cdcd4d3ac89953",
+    "counts": {
+      "action": {
+        "R": 1,
+        "A": 2965279,
+        "C": 3006568,
+        "T": 287059,
+        "F": 221772
+      },
+      "side": {
+        "N": 65297,
+        "A": 3091366,
+        "B": 3324016
+      },
+      "symbol": {
+        "NVDA": 6480679
+      },
+      "publisher_id": {
+        "2": 6480679
+      },
+      "instrument_id": {
+        "11667": 6480679
+      },
+      "rtype": {
+        "160": 6480679
+      },
+      "flags": {
+        "8": 1,
+        "128": 4397642,
+        "0": 2083036
+      }
+    },
+    "first": {
+      "ts_recv": 1758006306677677658,
+      "ts_event": 1758006306677514564,
+      "sequence": 0
+    },
+    "last": {
+      "ts_recv": 1758067199748544733,
+      "ts_event": 1758067199748381803,
+      "sequence": 566540756
+    },
+    "clock_checks": {
+      "receive_backwards": 0,
+      "event_backwards": 0,
+      "sequence_backwards": 0,
+      "timestamp_delta_mismatches": 0
+    },
+    "first_quality_flagged_rows": [
+      {
+        "source_row": 0,
+        "ts_recv": 1758006306677677658,
+        "ts_event": 1758006306677514564,
+        "rtype": 160,
+        "publisher_id": 2,
+        "instrument_id": 11667,
+        "action": "R",
+        "side": "N",
+        "price": null,
+        "size": 0,
+        "channel_id": 0,
+        "order_id": 0,
+        "flags": 8,
+        "ts_in_delta": 0,
+        "sequence": 0,
+        "symbol": "NVDA"
+      }
+    ],
+    "first_resets": [
+      {
+        "source_row": 0,
+        "ts_recv": 1758006306677677658,
+        "ts_event": 1758006306677514564,
+        "rtype": 160,
+        "publisher_id": 2,
+        "instrument_id": 11667,
+        "action": "R",
+        "side": "N",
+        "price": null,
+        "size": 0,
+        "channel_id": 0,
+        "order_id": 0,
+        "flags": 8,
+        "ts_in_delta": 0,
+        "sequence": 0,
+        "symbol": "NVDA"
+      }
+    ],
+    "typed_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\databento_public_mbo_20261003\\typed\\mbo.parquet",
+    "typed_sha256": "8a5bfe91bd4c0cdb6767d27227444e8d10ceaab7d4200ab518209cd658b70277",
+    "typed_bytes": 147642191,
+    "timestamp_unit": "integer epoch nanoseconds",
+    "price_unit": "integer billionths of USD, null preserved",
+    "order_ids": "native uint64",
+    "returns_calculated": false
+  },
+  "events": [
+    {
+      "decision_ns": 1758029503610000000,
+      "quote_source_row": 64482,
+      "bid_price_int": 176740000000,
+      "ask_price_int": 176870000000,
+      "quantity": 41,
+      "net_cash_units": 165584290000000,
+      "entry_notional_price_units": 7246340000000,
+      "projected_net_usd": "1.6558429",
+      "projected_net_bp": "2.285074810180035714581430074"
+    }
+  ],
+  "cases": [
+    {
+      "name": "base_1ms",
+      "latency_ns": 1000000,
+      "clock_ns": 0,
+      "fee_multiplier": 1,
+      "adverse_multiplier": 1
+    },
+    {
+      "name": "delay_5ms",
+      "latency_ns": 5000000,
+      "clock_ns": 0,
+      "fee_multiplier": 1,
+      "adverse_multiplier": 1
+    },
+    {
+      "name": "delay_25ms",
+      "latency_ns": 25000000,
+      "clock_ns": 0,
+      "fee_multiplier": 1,
+      "adverse_multiplier": 1
+    },
+    {
+      "name": "delay_250ms",
+      "latency_ns": 250000000,
+      "clock_ns": 0,
+      "fee_multiplier": 1,
+      "adverse_multiplier": 1
+    },
+    {
+      "name": "fees_2x",
+      "latency_ns": 1000000,
+      "clock_ns": 0,
+      "fee_multiplier": 2,
+      "adverse_multiplier": 1
+    },
+    {
+      "name": "adverse_2x",
+      "latency_ns": 1000000,
+      "clock_ns": 0,
+      "fee_multiplier": 1,
+      "adverse_multiplier": 2
+    },
+    {
+      "name": "clock_minus_1ms",
+      "latency_ns": 1000000,
+      "clock_ns": -1000000,
+      "fee_multiplier": 1,
+      "adverse_multiplier": 1
+    },
+    {
+      "name": "clock_plus_1ms",
+      "latency_ns": 1000000,
+      "clock_ns": 1000000,
+      "fee_multiplier": 1,
+      "adverse_multiplier": 1
+    }
+  ],
+  "pinned_sha256": {
+    "research_scout\\databento_public_mbo_20261003\\inventory.json": "b781e3fc6b822312d67f3b164431726d049a95028ca0e723d4d42ad635470d6b",
+    "research_scout\\databento_public_mbo_20261003\\book_verification_v3.json": "00e0fda4f7799d44f292a95cb6e45158615357ec26f2551bef608fed377b6dd5",
+    "research_scout\\databento_public_mbo_20261003\\spread_supply\\specification.json": "c55c4efc14893a76ab436464e7c47e9145be322a8327db978876219e59dadec2",
+    "research_scout\\databento_public_mbo_20261003\\spread_supply\\results.json": "249e1d09044e704257f555931a0c5c485a12241840d316e0208e00a90f62afb1",
+    "research_scout\\databento_public_mbo_20261003\\spread_supply\\independent_verification.json": "e39ded5836b41060c3b49f3c682e3df43a4e2d309e50429f97b3d3d662342f58",
+    "research\\nasdaq_mbo_book.py": "0f1136f1eb7aa13347abbe10c987ed5667b3151dfc58d7ab2521dc64dc8c065e",
+    "research\\nasdaq_passive_probe.py": "198df2c43ecd133fb2f4fe73273ede50a0747d8fdf9cb0811e12567fd4b3cc5d",
+    "research_scout\\audit_databento_public_book_20261003.py": "950cedb092d4fb9c337461055cd84cb7ed8b39e623ef65e67e7cae0e7d1bbb4d",
+    "research_scout\\prepare_databento_fast_20261002.py": "9a2e7419d7e8879a94931739ccc35f09381e2b98179451c8b57e5b1d0ca49fe5",
+    "tests\\unit\\test_nasdaq_passive_probe.py": "85be5ee33f8c9b8d2a07944e69b5ca7c59f2d133c06c6e8dc44e5fa700aadb45",
+    "research_scout\\databento_public_passive_probe_20261003.py": "b787cfdaf50f7f2e621bdaa8d69880008d4dd304e2e018d38435359da77ff2ce"
+  },
+  "entry": "At decision+50us+one-way latency, post the fixed signal bid and quantity. All existing displayed IDs at that price are ahead. No quote-touch fill or later quantity enlargement.",
+  "exit": "Send entry cancel at decision+1s+50us; exchange arrival adds outbound latency. Wait for cancellation acknowledgement and earlier reliable ordered fill reports, each with the same one-way latency; process50us and send a fixed signal-ask limit for the final entry-filled quantity. Never overlap active entry and exit orders.",
+  "flatten": "Send ask cancel at decision+5s+50us; exchange arrival adds latency. After its acknowledgement plus50us and outbound latency, sell remaining inventory by IOC against displayed bids down to floor(0.98*initial_bid_cents) cents. Insufficient depth preserves unknown residual inventory and unknown PnL. All complete holdings must be<30s.",
+  "exact_schedule": "With d=decision,p=50000ns,L=one-way latency,delta=native-minus-client clock shift: post_bid=d+p+L+delta;cancel_bid=d+1s+p+L+delta;post_ask=d+1s+2p+3L+delta;cancel_ask=d+5s+p+L+delta;force=d+5s+2p+3L+delta.",
+  "queue": "Only a resting-side F at our price or worse can support a conditional fill after every initial same-price ID is gone and no better displayed price remains. T/non-displayed prints and C alone never fill us. F of an ahead ID leaves queue unchanged until its C; C reduces once. M price change or size increase loses priority. Off-display execution reaching our level, unresolved priority, active reset, invalid book, relevant equal-native-clock action, truncated lifecycle or marketable passive posting is unknown.",
+  "cash": "Exact Decimal cash. For each submitted order that actually fills, commission=max(1USD,0.005USD/share), aggregated across its partial fills. Bid, passive ask and forced IOC are separate orders and may incur three minimums. Adverse cost1bp each filled notional; sales cost0.00003notional+0.000166/share. fees2x doubles commissions; adverse2x doubles adverse costs. No rebates. Unknown inventory is never valued as zero.",
+  "counterfactual": "Virtual orders do not mutate the historical book. Matching assumes the same subsequent incoming flow despite our additional displayed order and displacement of historical fills. This is a conditional scenario, not an actual-execution guarantee or a rigorous PnL bound. Posting at the intended price, own order acceptance, routing/NBBO compliance, hidden liquidity interactions and client/private-notification latency are not verified by this public source.",
+  "stress": "Eight predeclared scenarios reuse this ONE event:1/5/25/250ms latency,2x commissions,2x adverse costs,clock-1ms,+1ms. They are not eight independent observations.",
+  "selection": "One vendor-selected NVDA date and one event; cannot establish reliability even if every conditional case profits. Do not retune this event from forward outcomes. Additional independent dates and actual-execution evidence are required before promotion.",
+  "validation": "14 focused queue, cost, clock, cancellation and unknown-state tests and Ruff passed before freeze. Independent original-CSV execution/cash audit required after replay.",
+  "network_calls": 0,
+  "paid_calls": 0,
+  "actual_execution_verified": false
+}

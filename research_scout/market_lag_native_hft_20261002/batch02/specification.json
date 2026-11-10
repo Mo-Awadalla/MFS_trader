@@ -1,0 +1,184 @@
+{
+  "created_at_utc": "2026-10-02T21:43:34.108285+00:00",
+  "relationship": "Complete the other 37 minutes already queued by the fixed whole-day normalized prefilter. All queued minutes, chronological order, unchanged BTC/ETH native thresholds and target gates. No selection based on the first batch's target budgets or any trading outcome.",
+  "hypothesis_specification_sha256": "0ae27a4a34f358b09231ab387d239dfe6d7aaba67fdd350c1569ef72ee77db13",
+  "coverage_results_sha256": "aea108418ea873194c86c6d67212d565611e31721e9d3628c7ec29420433e31e",
+  "coverage_audit_sha256": "3fc12228dbf6bd080ce400bba88f79a27b1e04e621a32b2f7b38ece53f1b9bcc",
+  "first_batch_specification_sha256": "fde8b9ffe3424c4b615c1ca46ec844c24d35cbcdc68eed78ee62d1134e81d0a7",
+  "causal_alignment_specification_sha256": "5ed1b2146d577b4eab156bccddfd95ebddf178a258f4a2d4a0b8e78d1627b1db",
+  "jobs": [
+    {
+      "date": "2024-08-01",
+      "offset": 1070
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1071
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1072
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1078
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1081
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1229
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1231
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1235
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1237
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1242
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1249
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1308
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 324
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 328
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 830
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 854
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 855
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 72
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 73
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 892
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 910
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 987
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1016
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1040
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1065
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1208
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1210
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1219
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1225
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 817
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 863
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 942
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1056
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1176
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1190
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 130
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 506
+    }
+  ],
+  "queued_jobs": [],
+  "download": {
+    "exchange": "binance-futures",
+    "slice_minutes": 1,
+    "symbols": [
+      "btcusdt",
+      "ethusdt"
+    ],
+    "channels": [
+      "bookTicker"
+    ],
+    "workers": 2,
+    "per_slice_decoded_cap": 96000000,
+    "request_deadline_seconds": 180,
+    "authenticated": false,
+    "paid_fallback": false
+  },
+  "screen": "Reconstruct native full books on the original quarter-second information grid; apply the unchanged complete BTC/ETH 20bp same-direction, 5bp spread, 2000-USDT depth and 250ms freshness gates. Preserve all grids, IDs, T/E/capture clocks and source lines. No normalized candidate is assumed to be a valid native signal. Independently audit native eligibility before target or execution promotion.",
+  "causal_alignment": "As in the audited first batch, native-positive grids are diagnostic only until joined to the exact same (date, offset_minutes, decision_ns) normalized prefilter candidate. A selected minute never authorizes earlier or other grid times. Any all-symbol target acquisition and final target selection must use only this causally aligned set.",
+  "progression": "Native leader qualification first, then independently audited all-symbol target budgets only in causally positive minutes. Native trade confirmation and separately frozen response replay follow only if targets survive. Do not read later outcomes to rank, stop or select candidate minutes.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "5417f292af636babf8e22157e299e0f7e88dc445b2de0297b36ba9d07ced94b0"
+}

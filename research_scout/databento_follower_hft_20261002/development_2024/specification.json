@@ -1,0 +1,1629 @@
+{
+  "symbols": [
+    "SPY",
+    "SSO",
+    "UPRO",
+    "SH",
+    "SDS",
+    "SPXU"
+  ],
+  "hold_ms": [
+    1000,
+    5000
+  ],
+  "cases": [
+    {
+      "name": "base_1ms",
+      "delay_ms": 1,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "delay_5ms",
+      "delay_ms": 5,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "delay_25ms",
+      "delay_ms": 25,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "delay_250ms",
+      "delay_ms": 250,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "fees_2x",
+      "delay_ms": 1,
+      "fee_multiple": 2,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "adverse_2x",
+      "delay_ms": 1,
+      "fee_multiple": 1,
+      "adverse_multiple": 2
+    },
+    {
+      "name": "clock_minus_1ms",
+      "delay_ms": 1,
+      "clock_shift_ms": -1,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    },
+    {
+      "name": "clock_plus_1ms",
+      "delay_ms": 1,
+      "clock_shift_ms": 1,
+      "fee_multiple": 1,
+      "adverse_multiple": 1
+    }
+  ],
+  "costs": "Each leg pays max(1 USD,0.005 USD/share) commission and 1bp adverse allowance; sell leg additionally pays 0.00003*notional +0.000166 USD/share. Frozen conservative assumptions, not asserted historical or competition fees. Observed spread is in entry/exit prices.",
+  "bad_data": "Any BAD_TS_RECV record makes that symbol-session's screen unassessable; do not silently delete it and resurrect a prior quote. Invalid completed books remain in the path. Matching timestamps may differ across anonymized component venues, so do not invent a global matching sequence or venue mapping. Clock consistency permits at most 1ms event-ahead-of-capture and at most 1s capture delay per input; endpoints have the stricter 250ms ages. Unassessable sessions and unknown reference windows are never zero P&L.",
+  "feed_limits": "EQUS.MINI is an anonymized aggregated component-venue BBO, not SIP NBBO or private fills. Native side denotes initiating trade side when supplied. No passive queue inference. A positive candidate needs routeable quote corroboration and realistic execution before reliability testing.",
+  "timing": "Entry reference=decision+50us processing+assumed one-way delay+fixed scenario clock shift. Exit reference=entry reference+holding period. Same deterministic timeline per scenario and event; no favorable future timestamp selection. Latency is an explicit research assumption, not measured client access. This aggregated feed does not identify IEX or justify applying an IEX-specific speed bump.",
+  "reference": "Use last completed book strictly before each fixed RECEIVE-clock arrival,with a later quote bracketing it. Exact equal-capture boundary unknown. Require valid maintained book,receive and native event age<=250ms and native event<=arrival. EQUS.MINI receive chronology is a proxy timeline,not an invented unified matching-engine book.",
+  "conditional_fills": "Aggressive IOC buy at observed ask if<=fixed limit;assumed filled shares=min(fixed requested quantity,future displayed ask size). Unfilled remainder canceled. Force sell assumed filled quantity at observed bid at fixed exit time only if displayed bid size covers it;otherwise remaining inventory and PnL unknown. Commission applies even to partial fill. Hidden liquidity,routeability,NBBO protection,actual acceptance and private fills are unproven.",
+  "created_at_utc": "2026-10-03T00:53:52.839128+00:00",
+  "family": "SPY source sweep followed by a causal projected price gap in an index follower",
+  "relationship": "Unchanged signal and cost thresholds applied to all252cached2024sessions after the2023supply screen was empty. Further discovery across a different period,not validation of an established edge. Prior unrelated work has used2024data;do not claim a globally untouched holdout.",
+  "leader": "Enumerate all completed SPY trade-bearing groups in each local2024session with the EXACT frozen research/equity_sweep.py predicate used in2023. Preserve accepted and rejected groups,counts and raw indexes. Any BAD_TS_RECV SPY session stays unassessable;other follower source errors remain explicit.",
+  "decision": "First whole millisecond strictly after SPY burst capture+1ms;cutoff decision-1ms;09:30:05..09:39:30ET. Common reference cutoff exactly1s earlier. Latest F_LAST quote strictly before each cutoff,positive uncrossed cent prices,spread<=5bp,no fallback from invalid latest state. Current SPY capture/event ages<=5ms;all other snapshots<=250ms;native event<=its own cutoff. Current SPY book must include completed burst;both SPY bid and ask must move in burst direction since1s reference.",
+  "multipliers": {
+    "SSO": 2,
+    "UPRO": 3,
+    "SH": -1,
+    "SDS": -2,
+    "SPXU": -3
+  },
+  "targets": "After a buy SPY burst,only longSSO/UPRO are eligible. After a sell SPY burst,only longSH/SDS/SPXU are eligible. No short sale or borrowed share. Both target snapshots obey the same completed-book/clock gates.",
+  "projection": "Let L0,L1 be common-anchor/current SPY mids;T0 target anchor mid;beta the named fund's daily multiplier. Projected target mid=T0*(1+beta*(L1/L0-1)). Subtract the CURRENT target half-spread and round DOWN to cents to form hypothetical liquidation price. This daily-beta local response is an unverified one-second model,not guaranteed convergence,NAV equivalence or actual arbitrage.",
+  "sizing": "Buy limit102%of current target ask rounded UP to cents. Quantity=min(floor10000USD/limit,floor10%current target bid quantity,floor10%current target ask quantity). Fixed before future references; no future resizing.",
+  "admission": "Current ask-to-current bid cost<=12bp. Hypothetical ask-to-projected-bid cash must net>=2bp of entry notional after unchanged conservative per-order commissions,levy and adverse allowance. Use exact Decimal arithmetic and integer prices. Do not use future follower prices to select candidates.",
+  "ranking": "One shared long slot. Order all qualifying candidates by decision time,descending projected net USD,descending projected net bp,symbol,leader source index. Require6s global and60s symbol cooldown;selected event starts cooldown independent of later fills. Same selected cohort for1s and5s horizons.",
+  "aggregation": "Twoeconomic hold configurations,8cases each only if admission exists. Keep inherited unknown symbol/date conditions as full-calendar unknown. Report known components and observed selected-cohort results separately. No zero for unresolved inventory,unknown entry or missing signal. Diagnostic sums are not an executed portfolio.",
+  "validation": "Eight new focused causal/clock/model/selection tests passed. Independently verify every leader group,reference clock,model price,cost and ranking. A positive realized conditional result needs complete rejection enumeration,execution/NBBO corroboration,concentration/multiple-search controls and newly frozen temporal validation. Do not lower thresholds after seeing this screen.",
+  "network": "Local immutable DBN reads only,no Databento API client,paid call,new download,account mutation or order.",
+  "sources_for_daily_objectives": {
+    "SSO": "https://www.proshares.com/our-etfs/leveraged-and-inverse/sso",
+    "UPRO": "https://www.proshares.com/our-etfs/leveraged-and-inverse/upro",
+    "SH": "https://www.proshares.com/our-etfs/leveraged-and-inverse/sh",
+    "SDS": "https://www.proshares.com/our-etfs/leveraged-and-inverse/sds",
+    "SPXU": "https://www.proshares.com/our-etfs/leveraged-and-inverse/spxu"
+  },
+  "objective_source_scope": "Issuer pages checked2026-10-03UTC for fund identity and daily objectives only. Their definitions do not guarantee second-scale beta;historical product details remain necessary if a candidate survives.",
+  "economic_configurations_executed": 0,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "sources": [
+    {
+      "date": "2024-01-02",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-02.dbn.zst",
+      "bytes": 6976224,
+      "sha256": "b04e9c39bb98aa785cb9233dbbd3c48510c9b9cc102cbd4c7a84ec6ccab1b8e5"
+    },
+    {
+      "date": "2024-01-03",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-03.dbn.zst",
+      "bytes": 5028263,
+      "sha256": "1c369de305f079b909cde8a1950e3068c0b22c88c4d96c2eeef2a2378d478af3"
+    },
+    {
+      "date": "2024-01-04",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-04.dbn.zst",
+      "bytes": 4643905,
+      "sha256": "73925b0aa911d707a5bcc64e12b313b628405f097c01e0c82e5b52cfa4f7efb5"
+    },
+    {
+      "date": "2024-01-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-05.dbn.zst",
+      "bytes": 5019843,
+      "sha256": "dadb792513f165da59635f55a2eb7aa1895096be6ced997a400b4f76d47d9953"
+    },
+    {
+      "date": "2024-01-08",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-08.dbn.zst",
+      "bytes": 3730334,
+      "sha256": "a7801974a6fd0c6fddf73ac3d92f2f68a5c8302c4c51735fda33d2e7755cda05"
+    },
+    {
+      "date": "2024-01-09",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-09.dbn.zst",
+      "bytes": 3661256,
+      "sha256": "bb2951425422d08371297432fe8c2bf2f6f27b948b4dd5a83277c0ba71a07854"
+    },
+    {
+      "date": "2024-01-10",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-10.dbn.zst",
+      "bytes": 3156780,
+      "sha256": "b6c5851e5e15124f1c8b201a9c6a81f2bf278926cba6bbec734ff281c257257e"
+    },
+    {
+      "date": "2024-01-11",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-11.dbn.zst",
+      "bytes": 5833727,
+      "sha256": "d8fc7465cea845c140558e3f2655b635880d75a1d558b63c18c41954623ce722"
+    },
+    {
+      "date": "2024-01-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-12.dbn.zst",
+      "bytes": 4214965,
+      "sha256": "fca76a9a9558857ede6fc38bb00274a1a1b4998b9b2e3a1698e43fc2b0a5e9ee"
+    },
+    {
+      "date": "2024-01-16",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-16.dbn.zst",
+      "bytes": 5295410,
+      "sha256": "13f600acae198a7da99af3b9316105aa537cf48497c2e79f126297b1deb9a8ef"
+    },
+    {
+      "date": "2024-01-17",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-17.dbn.zst",
+      "bytes": 4131773,
+      "sha256": "1f9e510fc0121b44b70cc9d20906f33855d63e405e8d6046fbde10bd5235c12f"
+    },
+    {
+      "date": "2024-01-18",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-18.dbn.zst",
+      "bytes": 4889607,
+      "sha256": "c9312fa6457754556055934a91af02f989b5773c34dff6e46226fed3de5e2d6c"
+    },
+    {
+      "date": "2024-01-19",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-19.dbn.zst",
+      "bytes": 4321010,
+      "sha256": "07846cbcb4a7276562f3a1864eba7f0ffba772587a721ab55e4e37b3ad54ecd1"
+    },
+    {
+      "date": "2024-01-22",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-22.dbn.zst",
+      "bytes": 4165249,
+      "sha256": "ac9bcc964f959f466cb77f4bbb2290a5f1e7cbafa70849390c789d6571eecba2"
+    },
+    {
+      "date": "2024-01-23",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-23.dbn.zst",
+      "bytes": 4139787,
+      "sha256": "ca650a288d7b534315d700ca7735d4727a18188269a7cc7f8325e7877757f665"
+    },
+    {
+      "date": "2024-01-24",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-24.dbn.zst",
+      "bytes": 4037247,
+      "sha256": "e35f22040376147e943f3af06c692cca6281fb7b8e0912f8625abc65762cbbc3"
+    },
+    {
+      "date": "2024-01-25",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-25.dbn.zst",
+      "bytes": 5402481,
+      "sha256": "c4a00401d36d81b8b7ef29de9c7697dc807bd79f96ead73400d210d34bbf7a27"
+    },
+    {
+      "date": "2024-01-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-26.dbn.zst",
+      "bytes": 5087843,
+      "sha256": "2ae36d2847136d2de42d1c28b077fa31ebc3c030c38074573f06294873e07f9c"
+    },
+    {
+      "date": "2024-01-29",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-29.dbn.zst",
+      "bytes": 3701480,
+      "sha256": "fb97ab62b3f3ca4c8a72c0e6c71f62ae8d4496e26aac9a8fd3a7b122e9cc7fd9"
+    },
+    {
+      "date": "2024-01-30",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-30.dbn.zst",
+      "bytes": 3783119,
+      "sha256": "fae244dc694cbce250d8856c6ecfe5fe529b372bb30215c52b2d6bb790d13560"
+    },
+    {
+      "date": "2024-01-31",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-01-31.dbn.zst",
+      "bytes": 6427329,
+      "sha256": "bae017e952852f05faa4eac66fe796e84b39afef68348cda03ef87184eb67739"
+    },
+    {
+      "date": "2024-02-01",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-01.dbn.zst",
+      "bytes": 6885962,
+      "sha256": "26118bf614c3a85586a3d47d561aec4cff3161ad202e9c003e4d1483cdd8e5af"
+    },
+    {
+      "date": "2024-02-02",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-02.dbn.zst",
+      "bytes": 7257154,
+      "sha256": "1c173c0edafa8d092a0af900599db8d88f5ea3d7e329210d2f62cd5087ec0926"
+    },
+    {
+      "date": "2024-02-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-05.dbn.zst",
+      "bytes": 5465332,
+      "sha256": "91ab669a060e5f20deebcbda65d0a04d0d89f63e68e032ae901c72f2d76e1e74"
+    },
+    {
+      "date": "2024-02-06",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-06.dbn.zst",
+      "bytes": 5472740,
+      "sha256": "5e62c60c6ea2afcd23355973d0cf581845fb0c06528c63d8b1862865631af0f0"
+    },
+    {
+      "date": "2024-02-07",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-07.dbn.zst",
+      "bytes": 4031946,
+      "sha256": "2dea2c9244c3209f15a073a3a806904384766c559461e0c5ad768c221accf270"
+    },
+    {
+      "date": "2024-02-08",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-08.dbn.zst",
+      "bytes": 2486438,
+      "sha256": "80b06e4813327e5caadbf1dcc74300b4ca0275c64ac64b49a81260227ba4aa43"
+    },
+    {
+      "date": "2024-02-09",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-09.dbn.zst",
+      "bytes": 3438910,
+      "sha256": "9791c32ddea1ba65fc733069bdc48d62074f62c02e486accabfeb08d017b2993"
+    },
+    {
+      "date": "2024-02-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-12.dbn.zst",
+      "bytes": 3075402,
+      "sha256": "dc22c1bc37137f879237236553a3567ad6f0898c175b73256bdc510901559288"
+    },
+    {
+      "date": "2024-02-13",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-13.dbn.zst",
+      "bytes": 8438408,
+      "sha256": "0c869e162922db63057614f4005ed562cba53418dc756d09a8ac7af8883ed102"
+    },
+    {
+      "date": "2024-02-14",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-14.dbn.zst",
+      "bytes": 5696140,
+      "sha256": "6733c86dee3f03d8b5b8857df32070eb978851b675e5a80c3bbaed81c4ba1f46"
+    },
+    {
+      "date": "2024-02-15",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-15.dbn.zst",
+      "bytes": 5004843,
+      "sha256": "864894a6037f11a82568affb55399cdecf67dc215b15a88f6cda5cc50cf7efe2"
+    },
+    {
+      "date": "2024-02-16",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-16.dbn.zst",
+      "bytes": 5536540,
+      "sha256": "6b79d36464056295362fb4f2e4080edfa7efa90c60fb06a5e5710ce48359722b"
+    },
+    {
+      "date": "2024-02-20",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-20.dbn.zst",
+      "bytes": 6185971,
+      "sha256": "873cda301d2da03448d72ad2a830dcfc1231e4ea49b47d4f61e87c0cadefa1f8"
+    },
+    {
+      "date": "2024-02-21",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-21.dbn.zst",
+      "bytes": 5232733,
+      "sha256": "d80770191e7df7da42772340c14bfcec9a56f6fa2b5c62d99c736fbfecf1e153"
+    },
+    {
+      "date": "2024-02-22",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-22.dbn.zst",
+      "bytes": 6168304,
+      "sha256": "38cbce4d476061740860885da413191194b3d7f40bde40282b54ceae64ce31a5"
+    },
+    {
+      "date": "2024-02-23",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-23.dbn.zst",
+      "bytes": 4067616,
+      "sha256": "15b0da0932d7909533800eeebec2e79d8b83b6d719759f1cc501f01be3b6a793"
+    },
+    {
+      "date": "2024-02-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-26.dbn.zst",
+      "bytes": 3895167,
+      "sha256": "bed1d0fef11f32cb07747f08c911e0d5d17fd075cb7ae87b350b5e9742f2924f"
+    },
+    {
+      "date": "2024-02-27",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-27.dbn.zst",
+      "bytes": 4885285,
+      "sha256": "460d70fa7b361b890073f5084d1168281d111120b871259b1299402a451de2df"
+    },
+    {
+      "date": "2024-02-28",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-28.dbn.zst",
+      "bytes": 5787237,
+      "sha256": "0792dbdd4d514bdada717497decba13671d90b4622a8a6fee8ae28fb5b80836a"
+    },
+    {
+      "date": "2024-02-29",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-02-29.dbn.zst",
+      "bytes": 4091943,
+      "sha256": "c8c518814609f2e9b3401bb8c271a8da7019fd5801c7a62eb2512642d2daef11"
+    },
+    {
+      "date": "2024-03-01",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-01.dbn.zst",
+      "bytes": 5546738,
+      "sha256": "52d01ee4324f84c4c25520b12f443c22ebe8337f78c5ed50b9583bfe92ad0eb8"
+    },
+    {
+      "date": "2024-03-04",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-04.dbn.zst",
+      "bytes": 3809664,
+      "sha256": "7045541b0c19177551aa8e5412e77778f9beee41089bc86aa9d83dd30d5e3a31"
+    },
+    {
+      "date": "2024-03-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-05.dbn.zst",
+      "bytes": 6052609,
+      "sha256": "3f143444c62da1a481345a03e9d753de0d743b5bd1f0e3ccf7856f790a758bd9"
+    },
+    {
+      "date": "2024-03-06",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-06.dbn.zst",
+      "bytes": 5582824,
+      "sha256": "b45df2ac19df777b1b5ca6a44cf4be641726775435ab8065b336fa633a698db1"
+    },
+    {
+      "date": "2024-03-07",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-07.dbn.zst",
+      "bytes": 5356602,
+      "sha256": "f91a711628c4dfde9b43269283f9114db1f5bd35c3694dae64be2e19899c56da"
+    },
+    {
+      "date": "2024-03-08",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-08.dbn.zst",
+      "bytes": 9879474,
+      "sha256": "a93e024f1bbb8f0298e41273742abf9dfb48609a00950d4f66e55fe0c923693f"
+    },
+    {
+      "date": "2024-03-11",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-11.dbn.zst",
+      "bytes": 9756879,
+      "sha256": "2465d7e891cd74ed87ff140378a6cec4485754ffe9d7f3a785b80a42df2c575e"
+    },
+    {
+      "date": "2024-03-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-12.dbn.zst",
+      "bytes": 11327803,
+      "sha256": "aa0e34ac03132950bbd01788de042bfdabfddaa47b215b494583669bf6f64161"
+    },
+    {
+      "date": "2024-03-13",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-13.dbn.zst",
+      "bytes": 6472622,
+      "sha256": "7c535005bc6249f90f7a0720cce5508622a54b0ec20f07bf1070e794ae594a0d"
+    },
+    {
+      "date": "2024-03-14",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-14.dbn.zst",
+      "bytes": 6291859,
+      "sha256": "29b4c42070ab49bbe7e4cca67f1bb5559eac047301f32bbebaf5cb0062856926"
+    },
+    {
+      "date": "2024-03-15",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-15.dbn.zst",
+      "bytes": 9608711,
+      "sha256": "aaa0959e708a9f1f382b3d2e3c6d628f76d019b468ad30100ecb15191858cfb3"
+    },
+    {
+      "date": "2024-03-18",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-18.dbn.zst",
+      "bytes": 5504453,
+      "sha256": "4352e45ce3fd3463231172c5713205f3fe00c1fec44f1fd6e2a9a192f9e33978"
+    },
+    {
+      "date": "2024-03-19",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-19.dbn.zst",
+      "bytes": 5724212,
+      "sha256": "e5a71c9e0e9aa1ca051afcf0bd55d914fb604c8b6dd90e79c7bcfc01bac3d19e"
+    },
+    {
+      "date": "2024-03-20",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-20.dbn.zst",
+      "bytes": 4135714,
+      "sha256": "72dadb00a1de6f3bb015894b892fb1b059f618ea2c4518a2c9f6a367dc3b0d53"
+    },
+    {
+      "date": "2024-03-21",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-21.dbn.zst",
+      "bytes": 4501590,
+      "sha256": "02eb7c18f2c0f4342c51d8ce2bb148444538c913f96c276689c7a72c71bba2bb"
+    },
+    {
+      "date": "2024-03-22",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-22.dbn.zst",
+      "bytes": 4910244,
+      "sha256": "41e6a63a0a7b24ea730615764a32e70f1c3daaa8d3579213f698b4d7ebdbf0b1"
+    },
+    {
+      "date": "2024-03-25",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-25.dbn.zst",
+      "bytes": 3853603,
+      "sha256": "0706c74ee2e2ad1f4aacd900ea67f35588ccfb7f65562e640f20d2adf9357a3a"
+    },
+    {
+      "date": "2024-03-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-26.dbn.zst",
+      "bytes": 3640621,
+      "sha256": "6c88e3168c7d0a26fcf8390df15695e6572b0a4483ffe4f9b1bd33a81545df5b"
+    },
+    {
+      "date": "2024-03-27",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-27.dbn.zst",
+      "bytes": 3760810,
+      "sha256": "71f20723a6a8a3541133ef8f5bf085b0108ec7a19a09e198fb7c7de3845696fb"
+    },
+    {
+      "date": "2024-03-28",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-03-28.dbn.zst",
+      "bytes": 3153743,
+      "sha256": "a8681b5e3b5e6b45394041d9205e2fb7c6fe16a9cc6683c192f7c9a8946033a5"
+    },
+    {
+      "date": "2024-04-01",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-01.dbn.zst",
+      "bytes": 4238529,
+      "sha256": "764dcda9096efa0d130aceb5ddb748d6548e28e9d44846097307565748a7c006"
+    },
+    {
+      "date": "2024-04-02",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-02.dbn.zst",
+      "bytes": 5629100,
+      "sha256": "8fcae82d7ba73a183c42731fb30d39668ff373ba386ee6c1e3025acc4c2b75ee"
+    },
+    {
+      "date": "2024-04-03",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-03.dbn.zst",
+      "bytes": 5195000,
+      "sha256": "1be3f992f429c5702a15569fbd6c004a78988ab0c81832fe538de2fad2d64cd5"
+    },
+    {
+      "date": "2024-04-04",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-04.dbn.zst",
+      "bytes": 4150487,
+      "sha256": "e03566b6ef8e91fae456c9a9da154d7150ec2f6124617e49dcc6bfe949324af6"
+    },
+    {
+      "date": "2024-04-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-05.dbn.zst",
+      "bytes": 7281375,
+      "sha256": "1c17e28f96f0da2f75b9d839b80514e0ad21b93e6c9c354a74cdeef78235729a"
+    },
+    {
+      "date": "2024-04-08",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-08.dbn.zst",
+      "bytes": 6240317,
+      "sha256": "de0f2550af139b7dba84f0d516f1882c5044cd2e0ccf5a6455dcde9759fe9ed4"
+    },
+    {
+      "date": "2024-04-09",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-09.dbn.zst",
+      "bytes": 5171378,
+      "sha256": "e24e89b87e05e92f392da1f3d63eecaa65b1304d72b57defb88c063868b3f3d3"
+    },
+    {
+      "date": "2024-04-10",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-10.dbn.zst",
+      "bytes": 10439023,
+      "sha256": "13e694038f30e4194e12928b4e0d98bea09ed25efd6619d10d8cd318a3b25792"
+    },
+    {
+      "date": "2024-04-11",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-11.dbn.zst",
+      "bytes": 7850732,
+      "sha256": "eb2c6420ecb3a68f979d34d7c02c12c07440c397e79c39d6927cfda0b060235c"
+    },
+    {
+      "date": "2024-04-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-12.dbn.zst",
+      "bytes": 7066253,
+      "sha256": "50437529c5041b2784c8489a848ab52815be210cbfd06fcc794dbac38cba5c5c"
+    },
+    {
+      "date": "2024-04-15",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-15.dbn.zst",
+      "bytes": 7165661,
+      "sha256": "c8174ee2ef6c66fd22881736510271400ad0a53b6fd926743e2b2b2988b01b47"
+    },
+    {
+      "date": "2024-04-16",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-16.dbn.zst",
+      "bytes": 9281558,
+      "sha256": "efd89eec093f4981bd4408064ab6c3213d1db68357bf06af34e35414329d8582"
+    },
+    {
+      "date": "2024-04-17",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-17.dbn.zst",
+      "bytes": 6496030,
+      "sha256": "3a2f92f8de11d739761b815e0b2b4a9719b2d53327a1c6794e64ce69d00c8379"
+    },
+    {
+      "date": "2024-04-18",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-18.dbn.zst",
+      "bytes": 6359000,
+      "sha256": "134c89146b5b34be63120c2cadb01fd7ee01734362d9bf042c075b5a6cd9f5cb"
+    },
+    {
+      "date": "2024-04-19",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-19.dbn.zst",
+      "bytes": 6939952,
+      "sha256": "f498fc0efee0833f45304ca72af3aa9182f7136493cf229f7758cbacace3c2b2"
+    },
+    {
+      "date": "2024-04-22",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-22.dbn.zst",
+      "bytes": 5801806,
+      "sha256": "2883b66f66355040bc089b3cf82b435cb19ec2445e3e4fc505113d57f6723f0d"
+    },
+    {
+      "date": "2024-04-23",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-23.dbn.zst",
+      "bytes": 4412398,
+      "sha256": "c63efde027cf600dc557630421595baaf234f1fda0a30f7487eaf3777bd75c44"
+    },
+    {
+      "date": "2024-04-24",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-24.dbn.zst",
+      "bytes": 5367673,
+      "sha256": "36b4c917fd2988244129262d4afbd98463065fce1badcc84e885309991e7f59f"
+    },
+    {
+      "date": "2024-04-25",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-25.dbn.zst",
+      "bytes": 7415091,
+      "sha256": "97849f4ad8194db8dc2ef263ae4a15f3bc54f5b1fca71685723ebd8b00258348"
+    },
+    {
+      "date": "2024-04-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-26.dbn.zst",
+      "bytes": 6927440,
+      "sha256": "d87fa268c21c7ece7e7ec1a1b6b29e1762e4f122d6170a5190ab7d022813649a"
+    },
+    {
+      "date": "2024-04-29",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-29.dbn.zst",
+      "bytes": 3863013,
+      "sha256": "820ca358bf3f6dbc125cb5c65c9d14026ee8540b3f3f58af65ba3dae338527df"
+    },
+    {
+      "date": "2024-04-30",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-04-30.dbn.zst",
+      "bytes": 4696024,
+      "sha256": "d2bffe8dac9a2a8bca89d9d4fa7ebfd0b83b1b076d58f5cdc6f70c2473c6db1f"
+    },
+    {
+      "date": "2024-05-01",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-01.dbn.zst",
+      "bytes": 5262733,
+      "sha256": "076581e04892b13c1ba2853015e5abde8a181f58fd9533edd84081f6da6438fa"
+    },
+    {
+      "date": "2024-05-02",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-02.dbn.zst",
+      "bytes": 5210286,
+      "sha256": "7af7b6002f70da4228901bbaec51c7e6a776736be076c292a21ed829f1f7b65d"
+    },
+    {
+      "date": "2024-05-03",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-03.dbn.zst",
+      "bytes": 7887264,
+      "sha256": "2bbfe8eabdb42b1b3fe3675f662b44c2774825387dc8c0702691ea30b8ba01a7"
+    },
+    {
+      "date": "2024-05-06",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-06.dbn.zst",
+      "bytes": 4386945,
+      "sha256": "876758b9501d75eae8d0198da85d2df5f10846120e7bcf3607f28e32f2a9eaa7"
+    },
+    {
+      "date": "2024-05-07",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-07.dbn.zst",
+      "bytes": 4007468,
+      "sha256": "250d5dea8ad9c0153bea4ba267c4cf1ef4c55e1bd598beff2973d080c4452396"
+    },
+    {
+      "date": "2024-05-08",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-08.dbn.zst",
+      "bytes": 3806770,
+      "sha256": "ef6f42be4f64cea5227526c6ac5576bdf91d4ecedb60e6a2faa8abc2865d6f2a"
+    },
+    {
+      "date": "2024-05-09",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-09.dbn.zst",
+      "bytes": 3795320,
+      "sha256": "21c44913eff39e7515ba41d59bea6d05a5a8224a54c12a603ec4f350e2111ebc"
+    },
+    {
+      "date": "2024-05-10",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-10.dbn.zst",
+      "bytes": 4186400,
+      "sha256": "bda12d67542c55b144635d3c03483b6333ef3981ec5d1a8b7ea4bec4e76b4e7a"
+    },
+    {
+      "date": "2024-05-13",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-13.dbn.zst",
+      "bytes": 3684788,
+      "sha256": "6d5d784da16b14e3d791687c0bed447c82bd28ab842ac22d8dfc9cee757ddef5"
+    },
+    {
+      "date": "2024-05-14",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-14.dbn.zst",
+      "bytes": 4037558,
+      "sha256": "ce968d452b90444255dfc677cc8f96800486ace50d65fa870fe17dbe15333bb2"
+    },
+    {
+      "date": "2024-05-15",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-15.dbn.zst",
+      "bytes": 4942173,
+      "sha256": "3b8d4263c057f4a13987710c96e8ff44b6e52c18ccbdaf58f906ee1f2a551150"
+    },
+    {
+      "date": "2024-05-16",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-16.dbn.zst",
+      "bytes": 3552309,
+      "sha256": "3ff8420c34089ad468a7bdfea08668b7a941898edd763cbca8a2bc11d2d8426b"
+    },
+    {
+      "date": "2024-05-17",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-17.dbn.zst",
+      "bytes": 4180413,
+      "sha256": "d237a503e8078ffa74eae279f6b24be43af3db400c3349d0d8b4b0aa5256b9ad"
+    },
+    {
+      "date": "2024-05-20",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-20.dbn.zst",
+      "bytes": 3305156,
+      "sha256": "643c762cb6574b705b7381bba31332506ad35aa5eed596577aac10312ca024e3"
+    },
+    {
+      "date": "2024-05-21",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-21.dbn.zst",
+      "bytes": 3819791,
+      "sha256": "76c175f40e037e7cd465d8f99e08af7be5f143a7cffe323ebfe659b59394e586"
+    },
+    {
+      "date": "2024-05-22",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-22.dbn.zst",
+      "bytes": 2263190,
+      "sha256": "e358ccc8ac6f10df1bc31c5736901ec7eacb5e5703953d5fa65d242f2a2b4afe"
+    },
+    {
+      "date": "2024-05-23",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-23.dbn.zst",
+      "bytes": 3140288,
+      "sha256": "8de7f879e8213df564802605f6e8cc9f8db8559e9b0e080bd996130e8706f64b"
+    },
+    {
+      "date": "2024-05-24",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-24.dbn.zst",
+      "bytes": 4201743,
+      "sha256": "e71930c014c1ac279c23facbd3933c9a689946a839153fe65c7b2de7c20b447f"
+    },
+    {
+      "date": "2024-05-28",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-28.dbn.zst",
+      "bytes": 4834709,
+      "sha256": "1c0a055f1358e465fecdb272b5a71759c40111830145a5f7f39f5efb24093943"
+    },
+    {
+      "date": "2024-05-29",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-29.dbn.zst",
+      "bytes": 5458542,
+      "sha256": "b272205b7de12637901bc62b3ad63ceb3ce123fd99e6f9cadd305b2cbc17d5a3"
+    },
+    {
+      "date": "2024-05-30",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-30.dbn.zst",
+      "bytes": 5222685,
+      "sha256": "9bca4b92cebc6a7122fdd056bb94ef019080c35cbd528aa5b8aae2570fe0e6e3"
+    },
+    {
+      "date": "2024-05-31",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-05-31.dbn.zst",
+      "bytes": 4563450,
+      "sha256": "f5697b18b268a954314a72c0f6bb412d034e075522e6703951f503bd1647d202"
+    },
+    {
+      "date": "2024-06-03",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-03.dbn.zst",
+      "bytes": 3624537,
+      "sha256": "4a0d8e4c4413aae29b49b63c7f377d00486c1b22902d0d5772d37c6f99a9f4e6"
+    },
+    {
+      "date": "2024-06-04",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-04.dbn.zst",
+      "bytes": 4784717,
+      "sha256": "c1c4a2ec437ef2a1a47d4beee172b7b3aeecefea661b3a88741c11a07f4204c5"
+    },
+    {
+      "date": "2024-06-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-05.dbn.zst",
+      "bytes": 4989248,
+      "sha256": "3fa635a724b43667d49cd6f60798d43390446c988dbb4b9ac25bd3157c7467cb"
+    },
+    {
+      "date": "2024-06-06",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-06.dbn.zst",
+      "bytes": 4370331,
+      "sha256": "daa19084132ad21aea18476774c06e7dd4857d239c9d778fa9e31883f3e367a7"
+    },
+    {
+      "date": "2024-06-07",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-07.dbn.zst",
+      "bytes": 5732711,
+      "sha256": "8554adf134239eebc660201c0a51500e90e029c891781a2508a4f08fb8d72e8c"
+    },
+    {
+      "date": "2024-06-10",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-10.dbn.zst",
+      "bytes": 4401422,
+      "sha256": "f1af8f5283242d555bd925a6fbac8a2f2ac3e980221303f83267ac70e0c73a0b"
+    },
+    {
+      "date": "2024-06-11",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-11.dbn.zst",
+      "bytes": 3634910,
+      "sha256": "3d4d0f1a644addb0449ea60b329b41c8b409aea6c67b34aaed56cbe861163974"
+    },
+    {
+      "date": "2024-06-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-12.dbn.zst",
+      "bytes": 4397814,
+      "sha256": "42fb0c21422b88fbf81ba5d2a6f9987cb39ea9953896f00db697e2c83876f35b"
+    },
+    {
+      "date": "2024-06-13",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-13.dbn.zst",
+      "bytes": 4815341,
+      "sha256": "fbc89dd9023347ef3d792894db661a4f513927dee8439a9b261db61ff7564566"
+    },
+    {
+      "date": "2024-06-14",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-14.dbn.zst",
+      "bytes": 4268106,
+      "sha256": "1c591a407f4bf2f092e01ba76c13e2fe595dfaffb43320ca68db8e20e802c33a"
+    },
+    {
+      "date": "2024-06-17",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-17.dbn.zst",
+      "bytes": 2497737,
+      "sha256": "948dd9207fa40097e3a9c399ae8be8b2c677d6e9a51f85463c517da9e60e9511"
+    },
+    {
+      "date": "2024-06-18",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-18.dbn.zst",
+      "bytes": 4100623,
+      "sha256": "f9cbdc1c10107b606d6571dc763b2d7560f02711447c331f6787c25f787c8e02"
+    },
+    {
+      "date": "2024-06-20",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-20.dbn.zst",
+      "bytes": 4674756,
+      "sha256": "deb24b3544f21cb596fde8e13a3cc790e8f3ee22f6abc73092324328dcd676b2"
+    },
+    {
+      "date": "2024-06-21",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-21.dbn.zst",
+      "bytes": 5319005,
+      "sha256": "1f6158b110f273c46511cdf49ae2a50d997c8d2e6c01592c492c646a7ade74f0"
+    },
+    {
+      "date": "2024-06-24",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-24.dbn.zst",
+      "bytes": 4184585,
+      "sha256": "e048a8de064cf8f3e0247b75d54b78731cd0723b85cdf764ff34a474a68696cd"
+    },
+    {
+      "date": "2024-06-25",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-25.dbn.zst",
+      "bytes": 4139557,
+      "sha256": "b6e2fdbc601e362eb0fc184d4849d925907e7dc8550aba7473985c7980767524"
+    },
+    {
+      "date": "2024-06-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-26.dbn.zst",
+      "bytes": 3421412,
+      "sha256": "f513ce070a4c5afe9395e54b6f223d1f9051f1f16e06de80f9c2371ac61835b6"
+    },
+    {
+      "date": "2024-06-27",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-27.dbn.zst",
+      "bytes": 3859429,
+      "sha256": "4808eaf42f2f58e66f856f9576af9f676da2cf77e0deea97d0b624576de78d24"
+    },
+    {
+      "date": "2024-06-28",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-06-28.dbn.zst",
+      "bytes": 3978110,
+      "sha256": "0b8ceb7c67ad4e04efd0d16a19c176e912cc7bf42be48961ec96a062975dab55"
+    },
+    {
+      "date": "2024-07-01",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-01.dbn.zst",
+      "bytes": 4236157,
+      "sha256": "6b35c451d496dd727823d44700804a5e98bf12f86d8a09a36301059daeb41b77"
+    },
+    {
+      "date": "2024-07-02",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-02.dbn.zst",
+      "bytes": 4776448,
+      "sha256": "7a81bd4d6d3fb002d950b9e021357e39ee775952707f56d33ca359c8b5d943b5"
+    },
+    {
+      "date": "2024-07-03",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-03.dbn.zst",
+      "bytes": 3660196,
+      "sha256": "884f9b7a227bee300ec049672b4a6b1f58fd1e331a2fb64910687ad13436b446"
+    },
+    {
+      "date": "2024-07-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-05.dbn.zst",
+      "bytes": 2970120,
+      "sha256": "e5cf5b2f0545cb61a39585738f0ade883a95e6be02d9e7d740fe7fd9ee556204"
+    },
+    {
+      "date": "2024-07-08",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-08.dbn.zst",
+      "bytes": 3595981,
+      "sha256": "30730c175910e95375bebc9376a2fac3f12ce1e173a8ff208fb8bbe0631c33bd"
+    },
+    {
+      "date": "2024-07-09",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-09.dbn.zst",
+      "bytes": 2185624,
+      "sha256": "cb0e4436334b76dc7bc1a527e6eca603e3a53ec9a0368de99c18ee71fc5cd494"
+    },
+    {
+      "date": "2024-07-10",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-10.dbn.zst",
+      "bytes": 2288630,
+      "sha256": "7447d3f7f32be7e892ef1127d0c931c609348b032158f6a8fc1a54ce37c655e3"
+    },
+    {
+      "date": "2024-07-11",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-11.dbn.zst",
+      "bytes": 4194756,
+      "sha256": "07cb177d1c0760b25a1b50d7667bbeda18c4d1005d465bbb635679178e71fe11"
+    },
+    {
+      "date": "2024-07-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-12.dbn.zst",
+      "bytes": 3829868,
+      "sha256": "d0693a9008c318b918a479dea3029da06f36084a144e43084b460310feb07382"
+    },
+    {
+      "date": "2024-07-15",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-15.dbn.zst",
+      "bytes": 3109951,
+      "sha256": "4b3fda9f391c207472af088afe3db03e9b591d5575b23110b7fb832ec903cf67"
+    },
+    {
+      "date": "2024-07-16",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-16.dbn.zst",
+      "bytes": 3600039,
+      "sha256": "e58ac81b460c3ac5d2ea43cda6721fa3f4845ac312715debb71f4263cdf73652"
+    },
+    {
+      "date": "2024-07-17",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-17.dbn.zst",
+      "bytes": 5880922,
+      "sha256": "96c465b433f594eaaa99cee7f7296badf54112414616e08c9d3238702ead1739"
+    },
+    {
+      "date": "2024-07-18",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-18.dbn.zst",
+      "bytes": 4485604,
+      "sha256": "5028b59af9dda3f61400c2e6ace4026b16fbf423897af620dce477c1bbab7cfb"
+    },
+    {
+      "date": "2024-07-19",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-19.dbn.zst",
+      "bytes": 6150074,
+      "sha256": "748eaa93df070f122b01843e21a7839f26d51d2f9e970490a198252f1456140e"
+    },
+    {
+      "date": "2024-07-22",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-22.dbn.zst",
+      "bytes": 4312452,
+      "sha256": "551a6198dbfdfbbd661552212cd9a06f5b06e06e0a55db0d0826cba09733c8dc"
+    },
+    {
+      "date": "2024-07-23",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-23.dbn.zst",
+      "bytes": 4108744,
+      "sha256": "b07fa3ea996b7f9cd4a528b6df4cbdec5fda6b729ed749ffa6afc84cba20be90"
+    },
+    {
+      "date": "2024-07-24",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-24.dbn.zst",
+      "bytes": 4952297,
+      "sha256": "cb049319d191ba2c33b5b25f3510761fe35960518ad03ec81312ddfd46644b6e"
+    },
+    {
+      "date": "2024-07-25",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-25.dbn.zst",
+      "bytes": 7674218,
+      "sha256": "37f7433899757b87fb91253ed9c88cc8baf14005cf968512e504cb7003ea86a7"
+    },
+    {
+      "date": "2024-07-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-26.dbn.zst",
+      "bytes": 5928998,
+      "sha256": "5ebabac85cf8591694f6b9922bf1067ab61e52a681901e85a2c56b910b350369"
+    },
+    {
+      "date": "2024-07-29",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-29.dbn.zst",
+      "bytes": 5980243,
+      "sha256": "68b075dd2ad9a8df532d32f188e27da17a05bd3f26d62afa36765be8c70feda9"
+    },
+    {
+      "date": "2024-07-30",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-30.dbn.zst",
+      "bytes": 4121514,
+      "sha256": "84ceab66b5dbb24ccd8869b9dca10444c2727a3d609c05b4b61a3da5bf4cbe61"
+    },
+    {
+      "date": "2024-07-31",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-07-31.dbn.zst",
+      "bytes": 5932402,
+      "sha256": "9181e33a422b94f0c012bfc0e4b004fe81b2af05c942af443fb0e182b0caeb5b"
+    },
+    {
+      "date": "2024-08-01",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-01.dbn.zst",
+      "bytes": 6400849,
+      "sha256": "0bfedf1c0d8673a2b3109536c00a08bcd70542b504c1efbd0642e96f223fa50d"
+    },
+    {
+      "date": "2024-08-02",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-02.dbn.zst",
+      "bytes": 9670387,
+      "sha256": "9f6bbd22cc968df48eeaac6813b5e9f1b7e1052a1f1bbbfbf4df7f465e3aa49d"
+    },
+    {
+      "date": "2024-08-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-05.dbn.zst",
+      "bytes": 11201974,
+      "sha256": "6fbc00553be9e29cf6682f06002197023ebb78331e304df4b6e09dc7f6e0f027"
+    },
+    {
+      "date": "2024-08-06",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-06.dbn.zst",
+      "bytes": 10317006,
+      "sha256": "fd3abf9de41e7a81c48bcfee4c6941899aeab9200e6071210aefb78cbacd51d2"
+    },
+    {
+      "date": "2024-08-07",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-07.dbn.zst",
+      "bytes": 7600937,
+      "sha256": "6988a49e7af2f2a523e87fc451a1fab8f1a1def44cba5cd092b6589c0e5d498e"
+    },
+    {
+      "date": "2024-08-08",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-08.dbn.zst",
+      "bytes": 10688018,
+      "sha256": "88094f0824db368650a5930740fe1686d061b429387f74c54b28860ce2df2c92"
+    },
+    {
+      "date": "2024-08-09",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-09.dbn.zst",
+      "bytes": 7223700,
+      "sha256": "413822e6692c61ca61f027ec133486681f9c0239e40cc271c63cbc3269832eb7"
+    },
+    {
+      "date": "2024-08-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-12.dbn.zst",
+      "bytes": 5056624,
+      "sha256": "d4ff8c38b39724791815cb52375131fbf8828d7cf8790fd852f1bf83db1d4b41"
+    },
+    {
+      "date": "2024-08-13",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-13.dbn.zst",
+      "bytes": 4807281,
+      "sha256": "25b4caa09018154081d42d89e08a852abb52591839923c440222a978db7c08a1"
+    },
+    {
+      "date": "2024-08-14",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-14.dbn.zst",
+      "bytes": 4535425,
+      "sha256": "1206e4fab9b5616a635541107bdc136a6d10ff91350735e68325ff76471b8b55"
+    },
+    {
+      "date": "2024-08-15",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-15.dbn.zst",
+      "bytes": 4877801,
+      "sha256": "c04c2bad2b8b4926ffc364641d5512282b28e4401aebd0ff45374106b2becfdd"
+    },
+    {
+      "date": "2024-08-16",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-16.dbn.zst",
+      "bytes": 5842980,
+      "sha256": "b83c32e726ee6a29d979103700f354ecd77acf740625c83cba3d3c02f6ec08dc"
+    },
+    {
+      "date": "2024-08-19",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-19.dbn.zst",
+      "bytes": 4005133,
+      "sha256": "31b6756ab388f2986356bf9b9753c1bb418976208b67de6ef2239f2e74acc48a"
+    },
+    {
+      "date": "2024-08-20",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-20.dbn.zst",
+      "bytes": 2938398,
+      "sha256": "b432c1e5ee6190ad11e65b62efc58abf67431f11624bb7009f0beabe9dcf07c6"
+    },
+    {
+      "date": "2024-08-21",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-21.dbn.zst",
+      "bytes": 3745020,
+      "sha256": "cd57d2d015c35f45e26b0d1323363ddd75b3fc9a689c602f6566eb6548de4dbd"
+    },
+    {
+      "date": "2024-08-22",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-22.dbn.zst",
+      "bytes": 3669792,
+      "sha256": "0d78c42d231618a24f04010837f258dec256bbf6d508771b79702014c345e5c3"
+    },
+    {
+      "date": "2024-08-23",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-23.dbn.zst",
+      "bytes": 3893517,
+      "sha256": "96cf576d0b57b0fc37c21befcd737f3db01054e8e4ff2844af8cd539eccad09c"
+    },
+    {
+      "date": "2024-08-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-26.dbn.zst",
+      "bytes": 5114575,
+      "sha256": "d5f00e7426bf9e953b893a64748d8d426359e8fb4230aa86289199c99b0efc76"
+    },
+    {
+      "date": "2024-08-27",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-27.dbn.zst",
+      "bytes": 5546174,
+      "sha256": "043d9b33feaa7c593e0f7f629458caab72ecac33a65c0d1ca1e9fdcf5ba71fa7"
+    },
+    {
+      "date": "2024-08-28",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-28.dbn.zst",
+      "bytes": 4264899,
+      "sha256": "0498f8ae88fbb2c14bfce5ff3fdc79fdb4058534170e6186f641fc8ff869fbb5"
+    },
+    {
+      "date": "2024-08-29",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-29.dbn.zst",
+      "bytes": 6949427,
+      "sha256": "81d275a370efa2839f0e19ed82811a527787949d86148a8a52224f5d14afba66"
+    },
+    {
+      "date": "2024-08-30",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-08-30.dbn.zst",
+      "bytes": 4614323,
+      "sha256": "5ed4da5d2aee87e94ae5a07def8328f1b6499b335ed2332c8f18958fd118888c"
+    },
+    {
+      "date": "2024-09-03",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-03.dbn.zst",
+      "bytes": 6538882,
+      "sha256": "3f319bc9355f3b68969ebffba4b39c014d8769876713593519e9c482d834db3a"
+    },
+    {
+      "date": "2024-09-04",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-04.dbn.zst",
+      "bytes": 6193370,
+      "sha256": "a7865f3dd33c3020a88fc7efcc10563c323d539f072ff2b4044dd465caba2bf4"
+    },
+    {
+      "date": "2024-09-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-05.dbn.zst",
+      "bytes": 6148738,
+      "sha256": "4d661f6cb5a857da81820bd9654f0a0bbf095d8ed2150460faae809cb4e01053"
+    },
+    {
+      "date": "2024-09-06",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-06.dbn.zst",
+      "bytes": 9294332,
+      "sha256": "77d00e2424abb781a3aaf707c9b2c410b72a9a9341e8ba61ee150d9ed43f0e95"
+    },
+    {
+      "date": "2024-09-09",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-09.dbn.zst",
+      "bytes": 4334673,
+      "sha256": "3ee0d77fe8c3dd92d7a96520d73dcbec5c03818c0b21dd88815fe24ec43f6cd1"
+    },
+    {
+      "date": "2024-09-10",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-10.dbn.zst",
+      "bytes": 4707039,
+      "sha256": "4f9eca644c08b858ea2aea2749bd39d5324b4a5d5d0b42b4c8bd85cbe364ac93"
+    },
+    {
+      "date": "2024-09-11",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-11.dbn.zst",
+      "bytes": 7719828,
+      "sha256": "12a405e62968a0cfcc6a6471fb73aa76e93e9b2642e1607649aec0524c9765f3"
+    },
+    {
+      "date": "2024-09-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-12.dbn.zst",
+      "bytes": 6357355,
+      "sha256": "d57734e8ad04ad2049c4e6566cd6857d5bd9c7c81cf248275909f7eb13136165"
+    },
+    {
+      "date": "2024-09-13",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-13.dbn.zst",
+      "bytes": 4485441,
+      "sha256": "3e3f63aed8ac3d9b3681371397b2e2e870d2edeaaf84d0b14b647d16e8e86b33"
+    },
+    {
+      "date": "2024-09-16",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-16.dbn.zst",
+      "bytes": 5346856,
+      "sha256": "c5c0cbe69f37aedde8d353e604bfd620f47370d92b29fd3a5014a82336f370f8"
+    },
+    {
+      "date": "2024-09-17",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-17.dbn.zst",
+      "bytes": 4554380,
+      "sha256": "cac19eb819dff57a1abeba6a400332ee1e273714e02962252da9a427ba0277bb"
+    },
+    {
+      "date": "2024-09-18",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-18.dbn.zst",
+      "bytes": 3562084,
+      "sha256": "ac020d64bf9e4bc2d88c8bb3d657edc938cd4756296c9f4bd7a8fa0f42969ee4"
+    },
+    {
+      "date": "2024-09-19",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-19.dbn.zst",
+      "bytes": 4439112,
+      "sha256": "a1bf12bed7913fd267c98e5922d4c80c8fd76b68b34638864467023a0eb01d6d"
+    },
+    {
+      "date": "2024-09-20",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-20.dbn.zst",
+      "bytes": 4373311,
+      "sha256": "a13d4ff457b9620bde2fec42c1c99e902755a76f4624a2d228fe3083087bc8e3"
+    },
+    {
+      "date": "2024-09-23",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-23.dbn.zst",
+      "bytes": 4688377,
+      "sha256": "0cf59b9f0c30b17af53aea7228e88cfb17afe5b23e99b8c17e719b811c338c8d"
+    },
+    {
+      "date": "2024-09-24",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-24.dbn.zst",
+      "bytes": 3256281,
+      "sha256": "005792fab96614387bb4acdf2b1fdc20243434cde2fc63ee168fbaa207f3d301"
+    },
+    {
+      "date": "2024-09-25",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-25.dbn.zst",
+      "bytes": 3044571,
+      "sha256": "650349448036e70dbc056f6089cb14d660154ab4cd17ad3741782882bf05acf7"
+    },
+    {
+      "date": "2024-09-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-26.dbn.zst",
+      "bytes": 4896454,
+      "sha256": "c88cb6419b962fe34a9603e82a393a34f01bca27b46be359768f1f27707a8a51"
+    },
+    {
+      "date": "2024-09-27",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-27.dbn.zst",
+      "bytes": 4123857,
+      "sha256": "2d188faf406a2eca2edb7cfe359d5cffe035e5554edf7f1809e2a71d519a51cf"
+    },
+    {
+      "date": "2024-09-30",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-09-30.dbn.zst",
+      "bytes": 3185826,
+      "sha256": "187d8aa45d531205295ab39acaa5a7cdbb0f32c46599fa24009a8eccde6aadbf"
+    },
+    {
+      "date": "2024-10-01",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-01.dbn.zst",
+      "bytes": 6584957,
+      "sha256": "cd42d9acfa28d7916c21af644feff23f42dd22a0918cf2ced19b10af131a24e6"
+    },
+    {
+      "date": "2024-10-02",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-02.dbn.zst",
+      "bytes": 4532186,
+      "sha256": "d54a5233087f6cf0794cfc6353e5f68e73bf61dac767247d2f24afab3de2a55d"
+    },
+    {
+      "date": "2024-10-03",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-03.dbn.zst",
+      "bytes": 4964420,
+      "sha256": "0dab4b6d8c4021167a912487cd2f0a813fe02b02296f7c4880cc5992e2aa6a74"
+    },
+    {
+      "date": "2024-10-04",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-04.dbn.zst",
+      "bytes": 4921157,
+      "sha256": "ae9d962d1d8beb4fa733fff5ab7911cc45c17a828f0dd8ce2b84d667314e6c48"
+    },
+    {
+      "date": "2024-10-07",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-07.dbn.zst",
+      "bytes": 3645752,
+      "sha256": "0d7b7ab8476314fcc75cdb45de2583e450d1d788338639c2e5efc9c0e43813ec"
+    },
+    {
+      "date": "2024-10-08",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-08.dbn.zst",
+      "bytes": 3882422,
+      "sha256": "8e68d5be349430db180c5dff3a94b1f48ab96b956793602a534cf7e4aa0679fd"
+    },
+    {
+      "date": "2024-10-09",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-09.dbn.zst",
+      "bytes": 3214528,
+      "sha256": "a78618849440a07a43f656219a0a311997de6a26fdb510b2384fb5b2745b5590"
+    },
+    {
+      "date": "2024-10-10",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-10.dbn.zst",
+      "bytes": 3216860,
+      "sha256": "a0e5d99e7d6470273ed1a391b97a20c1e638019bf1b2d7832b30a90947f54321"
+    },
+    {
+      "date": "2024-10-11",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-11.dbn.zst",
+      "bytes": 4109327,
+      "sha256": "a740c589fe4e35a67448261e5366946cb84d1c6ba7d8a652cb6ed7e9a72c2881"
+    },
+    {
+      "date": "2024-10-14",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-14.dbn.zst",
+      "bytes": 3029373,
+      "sha256": "4e5204d299206451a1d1f5e67bcee055017362190a3591ffd2044e55a1ea2077"
+    },
+    {
+      "date": "2024-10-15",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-15.dbn.zst",
+      "bytes": 3164644,
+      "sha256": "143fb7372dfc1f1292f59bc68c3f55288aca8df795ab155a7c1e79aa2101015e"
+    },
+    {
+      "date": "2024-10-16",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-16.dbn.zst",
+      "bytes": 2952583,
+      "sha256": "8b02acc9de7816e10dbabd02fbdf5605e42134f9e3dba28db5d0b3fcc1b16821"
+    },
+    {
+      "date": "2024-10-17",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-17.dbn.zst",
+      "bytes": 5199896,
+      "sha256": "788755e3675fee0b8bb9d49d5b6684878ef38e1b7db02e3230cb9b7f5ba1e817"
+    },
+    {
+      "date": "2024-10-18",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-18.dbn.zst",
+      "bytes": 3470268,
+      "sha256": "3a487aaf000b37a1e39d0db70d3d3b13b5e38875ca8653fecf24977e233eb033"
+    },
+    {
+      "date": "2024-10-21",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-21.dbn.zst",
+      "bytes": 2918123,
+      "sha256": "4ab9fe3b2cdfb54fd21396026e158818eea7c15ca8c4dfb453698b3d0267c037"
+    },
+    {
+      "date": "2024-10-22",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-22.dbn.zst",
+      "bytes": 2521856,
+      "sha256": "60cea7b43baed61e2bfd1dfe087439a94356f5812502c7e1bfe545ad3a0cb91f"
+    },
+    {
+      "date": "2024-10-23",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-23.dbn.zst",
+      "bytes": 3219650,
+      "sha256": "bbf46058bb27b9d3989a2d44babb55ef71b11552df30d259f0ce2ae678aedbd9"
+    },
+    {
+      "date": "2024-10-24",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-24.dbn.zst",
+      "bytes": 4059407,
+      "sha256": "8d4902ea827f7a0d449da7e4e79f75bf82cd97dcf0d19c29306784d989b811a3"
+    },
+    {
+      "date": "2024-10-25",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-25.dbn.zst",
+      "bytes": 3251876,
+      "sha256": "43fb3acd3dc537c97b19814c23241fde46ad8bf7c68a0e970f9f28dd77fa3879"
+    },
+    {
+      "date": "2024-10-28",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-28.dbn.zst",
+      "bytes": 4772903,
+      "sha256": "fa9fe3aea6ebe21ed67c2b82e4d4207e3b9c57a6e04db700dd41105647698abc"
+    },
+    {
+      "date": "2024-10-29",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-29.dbn.zst",
+      "bytes": 4175940,
+      "sha256": "cd898f594959e977364fe17009236e0a6e12da8c161ddea3e6d460353670a671"
+    },
+    {
+      "date": "2024-10-30",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-30.dbn.zst",
+      "bytes": 4432810,
+      "sha256": "31fdd2c102f1614dfb561627320cdba6965313f89afc9eea3df07f704c3784b6"
+    },
+    {
+      "date": "2024-10-31",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-10-31.dbn.zst",
+      "bytes": 5643728,
+      "sha256": "38def0f4432b04a81e677498b488fd47aff721b0be48fa343b33ce9eea9e5ca5"
+    },
+    {
+      "date": "2024-11-01",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-01.dbn.zst",
+      "bytes": 5488460,
+      "sha256": "f1587b71e0fcf505659bd07b6541f59c92400fcab496dd9f919db8ef7a958550"
+    },
+    {
+      "date": "2024-11-04",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-04.dbn.zst",
+      "bytes": 5304559,
+      "sha256": "12af11b545b9556d1de72502de755425c671c7e9d1ed510d1a03fa8b8791b6a9"
+    },
+    {
+      "date": "2024-11-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-05.dbn.zst",
+      "bytes": 4552398,
+      "sha256": "f4be8e00dbd59946fd631b677232fb7cce0b54761ef695e90020c3de76aec0ff"
+    },
+    {
+      "date": "2024-11-06",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-06.dbn.zst",
+      "bytes": 9823106,
+      "sha256": "d37bc5d4f2a0d0dd82aee6f42a558d9b7b8d46ef43589aaabe46b2598ecadedc"
+    },
+    {
+      "date": "2024-11-07",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-07.dbn.zst",
+      "bytes": 3874788,
+      "sha256": "6a23a58625230b30b9d4650873362d99c06f40ec0a1d7662267a6d93ea32bd84"
+    },
+    {
+      "date": "2024-11-08",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-08.dbn.zst",
+      "bytes": 3282203,
+      "sha256": "67f91fe08363884ee4be086fdff263f1e0d53717e9ae79b13543b7be48266e97"
+    },
+    {
+      "date": "2024-11-11",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-11.dbn.zst",
+      "bytes": 3055198,
+      "sha256": "4ac7c31002535d9aeb0372f52208192b48eeb33332d532fbd1536e5e16814d24"
+    },
+    {
+      "date": "2024-11-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-12.dbn.zst",
+      "bytes": 3311010,
+      "sha256": "25e1f574b728c8bea3c5fb0eceacec7ef1041f50ec6cfc573e4415c2630b5526"
+    },
+    {
+      "date": "2024-11-13",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-13.dbn.zst",
+      "bytes": 3989460,
+      "sha256": "6d3cecb974012d49e27e17b559b23e12fdd59a9d08685d48d726deeda7588247"
+    },
+    {
+      "date": "2024-11-14",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-14.dbn.zst",
+      "bytes": 3512228,
+      "sha256": "32b9ec09f143194f832265d2a5f636db1bdbcbde3798b982e031ac629ea9c651"
+    },
+    {
+      "date": "2024-11-15",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-15.dbn.zst",
+      "bytes": 4956528,
+      "sha256": "34b0baf9497abdf0d9a46432c4d5756bd7218b2e6b23bc2bd7f303edcd2d710d"
+    },
+    {
+      "date": "2024-11-18",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-18.dbn.zst",
+      "bytes": 5197589,
+      "sha256": "5043221a25ac839d66cbfb26c213aa170eded9fb1480779b06a97dd4dbb907e9"
+    },
+    {
+      "date": "2024-11-19",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-19.dbn.zst",
+      "bytes": 6607522,
+      "sha256": "7e735d0988be641034f568d3a4959fff89620584b75ba23556b6e91ae82540e3"
+    },
+    {
+      "date": "2024-11-20",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-20.dbn.zst",
+      "bytes": 4841955,
+      "sha256": "1fa675a4e722a63e4b4e5da1e76f67413ca8f77c8eeddb939fd7c53a0083ef21"
+    },
+    {
+      "date": "2024-11-21",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-21.dbn.zst",
+      "bytes": 8085018,
+      "sha256": "9e2b72b38bc381cd99616f86cd474c6694f8141485a3145682b106cb11a80611"
+    },
+    {
+      "date": "2024-11-22",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-22.dbn.zst",
+      "bytes": 5553178,
+      "sha256": "68e5b7d365f3e9eeaedbddf0303a4b61ce3adbe0a22048cc7c69ec35049df797"
+    },
+    {
+      "date": "2024-11-25",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-25.dbn.zst",
+      "bytes": 5580958,
+      "sha256": "03d9810e05d82c2cc4bf2d82b413d5f0f5b2e7b35e2adc84674ad8a2a4d3e4d9"
+    },
+    {
+      "date": "2024-11-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-26.dbn.zst",
+      "bytes": 4514283,
+      "sha256": "92feabe9ac8a73b33283cfbedd236dd614492a75bc8c05ccadac32c13ce7049e"
+    },
+    {
+      "date": "2024-11-27",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-27.dbn.zst",
+      "bytes": 3855386,
+      "sha256": "2da02a0575ca917b41aee651967e94ed97d659dcfa53f1c40af7bd91565db78b"
+    },
+    {
+      "date": "2024-11-29",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-11-29.dbn.zst",
+      "bytes": 3034174,
+      "sha256": "42e227b2b1f1575a705fe60d8f6a2cef6ddc5d830f09b76321b67a17b9317a06"
+    },
+    {
+      "date": "2024-12-02",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-02.dbn.zst",
+      "bytes": 3533765,
+      "sha256": "9ed3efaddb0c460c065f27902ce8b9009e685f1f0abc159c0a54da9a5a54f018"
+    },
+    {
+      "date": "2024-12-03",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-03.dbn.zst",
+      "bytes": 2380908,
+      "sha256": "a859aeeefd0c442d1c2207186f9aaacfb2ae169231e83f5cd03ddeb4c1dd0bef"
+    },
+    {
+      "date": "2024-12-04",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-04.dbn.zst",
+      "bytes": 2717852,
+      "sha256": "473b78eb61a79826ee56bc451c6c25281de0e20bfc3233986cea6169fa946e13"
+    },
+    {
+      "date": "2024-12-05",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-05.dbn.zst",
+      "bytes": 2325547,
+      "sha256": "7cf75167cdc1a68d5eb4222b40dfcd720bd9e3be36bb0ce8fce7dc84a7458a6b"
+    },
+    {
+      "date": "2024-12-06",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-06.dbn.zst",
+      "bytes": 3272209,
+      "sha256": "4925d2aee438896cb0ef5b74f33342caa5772f349129c9915ef6f5714d0eedea"
+    },
+    {
+      "date": "2024-12-09",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-09.dbn.zst",
+      "bytes": 2978369,
+      "sha256": "393e3e2c9b1d91b26e5dce45201d6fdf3d70f958bf1f0174dc25eeaff0565b25"
+    },
+    {
+      "date": "2024-12-10",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-10.dbn.zst",
+      "bytes": 2797784,
+      "sha256": "426cba3e933740d68db4b667943b680ee47b5ba3cb50378a54f12504f27af368"
+    },
+    {
+      "date": "2024-12-11",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-11.dbn.zst",
+      "bytes": 2485491,
+      "sha256": "c053f4900f859c89f1f6321d5ebc2ae8f223403e844c4455033dd3d3a14dc0a8"
+    },
+    {
+      "date": "2024-12-12",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-12.dbn.zst",
+      "bytes": 3105653,
+      "sha256": "a4022e08b65fc559b7855d582aa6f8dbc2049dac3b716b39182341d57b5fa481"
+    },
+    {
+      "date": "2024-12-13",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-13.dbn.zst",
+      "bytes": 2865624,
+      "sha256": "27f937680a0b505495702f31c51e0fe99f5b7c15b7ba6618b61b6c69f08bb11c"
+    },
+    {
+      "date": "2024-12-16",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-16.dbn.zst",
+      "bytes": 3549822,
+      "sha256": "1f75aebd8c83717e2f12157777caa2b384a924db0120ca6b4db8d89e3919da76"
+    },
+    {
+      "date": "2024-12-17",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-17.dbn.zst",
+      "bytes": 4635959,
+      "sha256": "767e2d9a6857cded8b26b03e7a865e21fd7ed2dcc88c4ade4f45a71e85c4d98b"
+    },
+    {
+      "date": "2024-12-18",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-18.dbn.zst",
+      "bytes": 3283614,
+      "sha256": "3309dfc06d7d7bbb5aa9989c1f21012fedf480938ad5a81c228891bf8fc4649e"
+    },
+    {
+      "date": "2024-12-19",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-19.dbn.zst",
+      "bytes": 6429130,
+      "sha256": "0b9b31bf0436f3aef169d477ca673f6e6280a5388aec17acd83d6747d7ec24e2"
+    },
+    {
+      "date": "2024-12-20",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-20.dbn.zst",
+      "bytes": 7763258,
+      "sha256": "15e53a3c9240fcac2c5447c5c5760c9ecd82e525fbd1fc4a46de30ed432998ce"
+    },
+    {
+      "date": "2024-12-23",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-23.dbn.zst",
+      "bytes": 5998175,
+      "sha256": "2c6fc4cf2c8f8d8691c36e102ba42ab8aa1d35be5873ad56785d99c6f806fc62"
+    },
+    {
+      "date": "2024-12-24",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-24.dbn.zst",
+      "bytes": 3549607,
+      "sha256": "2c58cfcd9b0646f940394705931aa17563172b286464caf9a5e57a2e258a5385"
+    },
+    {
+      "date": "2024-12-26",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-26.dbn.zst",
+      "bytes": 3364425,
+      "sha256": "eb19adf6e6c8afff96390f0dd36cee26270195ebd438761230bc108ac153b698"
+    },
+    {
+      "date": "2024-12-27",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-27.dbn.zst",
+      "bytes": 4650688,
+      "sha256": "e468fada34d1c2f9fe0fac40780c85bb5cbea1692342676b7c3e0bdb6d0a2fce"
+    },
+    {
+      "date": "2024-12-30",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-30.dbn.zst",
+      "bytes": 7252186,
+      "sha256": "54a9f28d061fd9ca50cec5562b5b7bbf5cb5ccc7d17af4b5cc71a0994156eb2c"
+    },
+    {
+      "date": "2024-12-31",
+      "path": "external_artifacts\\databento_cash_etf_mbp1_open_v55\\EQUS.MINI\\mbp-1\\2024-12-31.dbn.zst",
+      "bytes": 4846173,
+      "sha256": "f69d7018a34e95e0c25306092a529f8e6933648d607b46365498ec8332fcb1bb"
+    }
+  ],
+  "source_unknowns": "Derive each symbol/date's data-quality errors directly from2024records;do not reuse the2023bad-date list. Such missing admission cannot be zero if a later economic replay is run.",
+  "preceding_2023_results_sha256": "ae4696f2c6ed846c90b83f7d817ec4ca705a15211bda87a24b932c1bfb7d5bcc",
+  "preceding_2023_audit_sha256": "0bdd0c7434840b938ec70eab7b4e3b6df16ba9010b068f5c777b83692658332d",
+  "code_sha256": {
+    "research/equity_follower_lag.py": "aa03f303f6f1f80f2aa3e4f946de6fd7e7833a207e0bc9b057732371aee3752e",
+    "research/equity_resilience.py": "334b0e935ffa4633a77f6f9cc92fc0337e12a3f32f3d618ce90d76b8399f98f7",
+    "research/equity_sweep.py": "e895a637bbf756319d274bcb9efb562489cf380d876b9de60cca979bd25da0df",
+    "research/equity_sweep_fast.py": "bc3732b75d8647dea6ebc37acdf8fc53a2e0935e0a2b322ef35e94f16619661b",
+    "research/exact_json.py": "9703136c57b581190c0739bca42bd71625f5e13987c59818d9eb71a51eaece4a",
+    "research_scout/databento_follower_2024_20261002.py": "9bae48728e8d51277550bb413093250980556e48fd4e7f365e11e067d78fefbf"
+  },
+  "returns_calculated": false
+}

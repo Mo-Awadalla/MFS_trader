@@ -1,0 +1,114 @@
+{
+  "files": [
+    {
+      "date": "2024-02-01",
+      "offset": 0,
+      "symbols": [
+        "ADAUSDT"
+      ],
+      "path": "research_scout\\perp_shock_flow_hft_20261002\\native\\2024-02-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-02-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"trade\", \"symbols\": [\"adausdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "reused_cached_source": false,
+      "http_status": 200,
+      "decoded_bytes": 468537,
+      "compressed_bytes": 39710,
+      "compressed_sha256": "f4135e90f9f82aca6787d8e046c206a526648657a94b6e19706991414e493171"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 0,
+      "symbols": [
+        "CELOUSDT"
+      ],
+      "path": "research_scout\\perp_shock_flow_hft_20261002\\native\\2024-03-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-03-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"trade\", \"symbols\": [\"celousdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "reused_cached_source": false,
+      "http_status": 200,
+      "decoded_bytes": 348512,
+      "compressed_bytes": 32550,
+      "compressed_sha256": "679d6d39139cf282ceda78eb0213b5156fea106fe1ff23144e8bf61361e47257"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 360,
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "path": "research_scout\\perp_shock_flow_hft_20261002\\native\\2024-04-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-04-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"trade\", \"symbols\": [\"xrpusdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "reused_cached_source": false,
+      "http_status": 200,
+      "decoded_bytes": 2021228,
+      "compressed_bytes": 159893,
+      "compressed_sha256": "acf17c5f433d980ffc77d6333da541259e0262068359c279b1f9987a8f48af97"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 360,
+      "symbols": [
+        "BAKEUSDT"
+      ],
+      "path": "research_scout\\perp_shock_flow_hft_20261002\\native\\2024-09-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-09-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"trade\", \"symbols\": [\"bakeusdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "reused_cached_source": false,
+      "http_status": 200,
+      "decoded_bytes": 2056057,
+      "compressed_bytes": 167677,
+      "compressed_sha256": "bc36fdddaebd926c88a4bc3e0dc38d9ae33baa0c65f9183d745217e9e1e7f204"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 720,
+      "symbols": [
+        "ZROUSDT"
+      ],
+      "path": "research_scout\\perp_shock_flow_hft_20261002\\native\\2024-09-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-09-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"trade\", \"symbols\": [\"zrousdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "reused_cached_source": false,
+      "http_status": 200,
+      "decoded_bytes": 143678,
+      "compressed_bytes": 12665,
+      "compressed_sha256": "f539f1a7275ccd16a5b3c38da12cab3b7c4384550e64a8d63743178100f86134"
+    }
+  ],
+  "expected_files": 5,
+  "complete": true,
+  "specification_sha256": "5bfe07d50e847bf913c3a99c9c6d13025ecf5d2e5479084302797be13a12f2cf",
+  "acquisition_sha256": "5b30f899302c008ae34d452467e4014e9f59c6c1cdc6ee6f94ed6a932eb9337f",
+  "new_decoded_bytes": 5038012
+}

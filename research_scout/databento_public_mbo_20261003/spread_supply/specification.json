@@ -1,0 +1,79 @@
+{
+  "created_at_utc": "2026-10-03T01:28:01.327650+00:00",
+  "source": {
+    "schema": "mbp1",
+    "rows": 2400522,
+    "source_sha256": "a876882b114a940e6d8570d1c4215dd8fd671c1e3f7b443e5e6c6a467599ab85",
+    "counts": {
+      "action": {
+        "A": 1106078,
+        "C": 1007384,
+        "T": 287059,
+        "F": 1
+      },
+      "side": {
+        "N": 96852,
+        "B": 1161879,
+        "A": 1141791
+      },
+      "symbol": {
+        "NVDA": 2400522
+      },
+      "publisher_id": {
+        "2": 2400522
+      },
+      "instrument_id": {
+        "11667": 2400522
+      },
+      "rtype": {
+        "1": 2400522
+      },
+      "flags": {
+        "128": 2239172,
+        "0": 161350
+      }
+    },
+    "first": {
+      "ts_recv": 1758009600015462508,
+      "ts_event": 1758009600015298471,
+      "sequence": 292498
+    },
+    "last": {
+      "ts_recv": 1758067196024803407,
+      "ts_event": 1758067196024640219,
+      "sequence": 566533418
+    },
+    "clock_checks": {
+      "receive_backwards": 0,
+      "event_backwards": 0,
+      "sequence_backwards": 0,
+      "timestamp_delta_mismatches": 0
+    },
+    "first_quality_flagged_rows": [],
+    "first_resets": [],
+    "typed_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\databento_public_mbo_20261003\\typed\\mbp1.parquet",
+    "typed_sha256": "fc0b1623167977086283b3630baf004e933c4ba3db7eaa3c4fac0e8a9f7871fe",
+    "typed_bytes": 64885727,
+    "timestamp_unit": "integer epoch nanoseconds",
+    "price_unit": "integer billionths of USD, null preserved",
+    "order_ids": "native uint64",
+    "returns_calculated": false
+  },
+  "source_book_audit_sha256": "00e0fda4f7799d44f292a95cb6e45158615357ec26f2551bef608fed377b6dd5",
+  "code_sha256": {
+    "research_scout\\databento_public_spread_supply_20261003.py": "6f33ac1584d4e378fd287fc5f2168f3d70224b92bae29d18b280a4d652b09328",
+    "research\\nasdaq_spread_supply.py": "a7f41446a1b1579243da4cd53679b4cefc5dbea187b0a92b20641d0b3879e6c2"
+  },
+  "kind": "Pre-trade passive bid-to-ask spread budget screen, not a trading-return backtest or a claim of fillability.",
+  "date": "2025-09-16",
+  "symbol": "NVDA",
+  "decision_grid": "Every 10ms from09:30:05ET through15:59:30ET inclusive.",
+  "causality": "Information cutoff decision minus1ms. Use final quote record strictly before cutoff, including all rows sharing its capture timestamp. Require this latest row to carry F_LAST; no fallback to an earlier valid row. Both capture/native ages must be positive and <=5ms. Never inspect a future quote for admission.",
+  "book": "Both positive sizes,5<=bid<ask<=1000USD,whole-cent prices,spread at most50bp of midpoint. Reject every other grid explicitly.",
+  "size": "Whole shares, at most10% of BOTH current touches and10000USD at a2% collar above current ask rounded up to cents. Fixed using present information.",
+  "cash": "Hypothetical purchase at current bid and sale at current ask; each commission max(1USD,0.005USD/share),adverse0.0001 each leg notional,sale0.00003notional+0.000166/share. No rebates. Require net>=2bp of entry notional. All cash uses exact integer1e-14USD arithmetic.",
+  "next_gate": "Any eligible cell only earns a separate causal order/queue/latency protocol with <=15s inventory; spread alone does not establish profit. The sample is one vendor-selected day,not untouched temporal validation.",
+  "economic_configurations_executed": 0,
+  "returns_calculated": false,
+  "paid_calls": 0
+}

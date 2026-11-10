@@ -1,0 +1,19 @@
+{
+  "frozen_at_utc": "2026-10-02T21:14:32.385349+00:00",
+  "specification_sha256": "83854d92a8ac81ea4f8c3ca311c21eff8f90e043f13a7a3d75b8a2ccfe0c6912",
+  "source_manifest_sha256": "481c979012412f3d2c4a31486ca9dc310e6fd9c1e7a91e5d0edcb484c1560ef6",
+  "quote_audit_sha256": "45323a9ad40a2592ecb0b704abd279ae40e02b38f70c2cbc5d1663f7b36c2713",
+  "flow_audit_sha256": "3d524ebc1c3df7c8053e3b970eae1e115915965401430a67c58bdd2d2a6088b8",
+  "events_sha256": "6d7709390c73598b608d2e513747c3720e95c167997eddd040585873ea05b4d4",
+  "code_sha256": {
+    "research/perp_shock_response.py": "c6c56b015461e49bd0b448ac5fa3df4daafedf7b113c6a7ff0cfcccfa6af5234",
+    "research/spot_perp_response.py": "c4135141c1a2ba0a75f2389c897a46361955c48c47904818506a6e1d0553deba",
+    "research/futures_response_hft.py": "38ae3e092f683441e46b0dc54bf43d83c856325b23dbf5b1592051a06304b783",
+    "research/spot_perp_supply.py": "cd918561a92d5475f20e6da44c79c3c76fc295b32c9146bfa7b7f0b6bb5174b7",
+    "tests/unit/test_perp_shock_response.py": "2286ea1c0135c41b5de965ce474ad17b17c50e3c4dc93dd76822002955c67f9c",
+    "research_scout/run_perp_shock_replay_20261002.py": "7098513063460608fe8332343f23b557e421862fda713907fb2dd50c3ec5c82d"
+  },
+  "focused_tests_passed": 14,
+  "economic_rules": 2,
+  "scenario_cases": 12
+}

@@ -1,0 +1,19 @@
+{
+  "created_at_utc": "2026-09-30T17:30:21.697761+00:00",
+  "new_hypotheses": 0,
+  "corrected_implementation_versions": 8,
+  "session_configurations": 116,
+  "session_implementation_versions": 164,
+  "original_specification_sha256": "2e5abd3823dabb834cd57eb46c4c1b3dbf74947d722d911a653f65aef773af56",
+  "acquisition_specification_sha256": "5329e1a31b2868aefabf02cdadfad4b2a71f2d0bc8c29b247436e1aed4b73b6c",
+  "raw_manifest_sha256": "9f81a9675753c04bd1be361f170fa5e97545438471174ba2f79b30c60c3083f8",
+  "invariants": "Original signals, dates, target times, causal sizing, FOK collars, fees, adverse allowance, fixed ACK holds, no-overlap cooldown and progression gates unchanged. No fresh outcomes or optimized parameters.",
+  "clock": "Match normalized snapshot to exactly one raw capture/E pair; initial T must precede target. Validate initial delta quantities inside known top-five coverage. Replay native T through target, including updates published at E after target. Stop at first sequenced T>target. Require pu/u continuity, nondecreasing T and no disconnect/context gaps. No arbitrary standing-quote expiry.",
+  "depth": "Initial five levels define contiguous known price coverage, including empty prices between levels. Absolute deltas may remove levels or add better levels. Initial deeper liquidity remains unknown. No arrival-time resizing. A FOK rejection requires a known worse price or known coverage spanning the complete collar; otherwise insufficient depth is unknown.",
+  "ties": "All pre/post-update states at T==order time retained. Mixed fill/rejection includes zero cashflow. Filled entry/exit extrema form conservative conditional cash intervals; no favorable branch selected. Any unpriceable branch retains possible/known inventory and halts the date. Capital interval crossing the fixed eligibility threshold also halts.",
+  "limitations": "Conditional historical feed-state model. Batched depth updates do not identify every intervening matching-engine state, live order priority or market impact. Bounds apply to observed timestamp-tie branches, not to every possible physical execution. All six dates already exposed discovery. A positive result would require fresh dates and measured forward execution.",
+  "code_sha256": {
+    "research/native_depth_execution.py": "2e64128b38c1080af92595b0c16a5f3209bd704e88fcc8832604e816b34a8f60",
+    "research_scout/run_absorption_native_20260930.py": "801c63f48e3707805405158d530fa2f593a50e7d8a6597d6ff33ee295e9274ad"
+  }
+}

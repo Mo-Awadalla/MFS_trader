@@ -1,0 +1,7 @@
+PERPETUAL PRICE-SHOCK QUOTE SCREEN — COMPLETE
+
+Sixty cached one-minute Binance USDT perpetual sources across twelve first-of-month 2024 dates. At 250ms decisions, require both bid and ask to move at least 30bp over one second, with fresh native capture/T/E clocks, spread at most 10bp and at least 2000 USDT on both sides at both endpoints.
+
+27,502,201 native messages; 3,732,360 signal rows; 3,797,840 quote rows. Eight raw qualifying rows became five events after the fixed 30-second cooldown: ADA, CELO, XRP, BAKE, ZRO. Independent raw-source audit reconciled every quote, clock, gate, selection and aggregate; maximum derived Decimal difference 5e-24. Nine focused tests passed.
+
+No P&L at the screen stage. These are previously exposed development sources, not independent validation. Continue to ../perp_shock_flow_hft_20261002/REPORT.txt and ../perp_shock_response_hft_20261002/REPORT.txt.

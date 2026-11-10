@@ -1,0 +1,14 @@
+{
+  "verified": true,
+  "archived_auction_snapshots_reconciled": 1332,
+  "quote_sources_hash_verified": 666,
+  "calendar_selected_native_check_sessions": 34,
+  "native_quote_targets_checked": 1076,
+  "priced_trades_across_dependent_scenarios": 497,
+  "unresolved_attempts_retained": 1559,
+  "fok_rejections_checked": 88,
+  "maximum_cash_error_dollars": 7.105427357601002e-15,
+  "candidates_for_additional_evidence": [],
+  "edge_established": false,
+  "scope": "Cash and cached execution checks cover every attempted path. Native as-of quote spot checks cover the first eligible date of each calendar month; this is not exhaustive native re-extraction of every target. Aggregated anonymized BBO remains a proxy, not proof of live venue execution."
+}

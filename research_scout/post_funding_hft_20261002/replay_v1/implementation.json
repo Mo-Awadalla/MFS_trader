@@ -1,0 +1,17 @@
+{
+  "frozen_at_utc": "2026-10-02T18:57:42.925631+00:00",
+  "specification_sha256": "8982d9d8f33267c5e69ee6c5f09101f5b57598d69e9fa2a8473ec070895ec2e7",
+  "source_manifest_sha256": "80873f4499de58afc7a47c010bfee1072d556e8e12a2f05677bfdc0e37e4fb56",
+  "events_sha256": "3f999c13b702180d148b75d51e9f465ff1e29efc5092fc64e9ab290e84d26b4b",
+  "code_sha256": {
+    "research_scout/run_post_funding_20261002.py": "15dd3f92b7784e4f4e098b72dfa29af3f241f0bbf59c7c4242b49a23af68247d",
+    "research/post_funding_hft.py": "bda26c1da43b23977cad713bc5453d7a2de0edda350f3a5d7d010d8ba1c77821",
+    "tests/unit/test_post_funding_hft.py": "f179b2e2e724f8778afe893b1ca4c4b65f28cec430764d539be936f58f5b9b20",
+    "research/external_quote_hft.py": "09267cffe35b63866d4902c0c8839b692ff88bc3b38642a293acf1354e31e276",
+    "research/wide_tick_supply.py": "c9ba882e1b0c76874d804741dd61e04e406945652c7f6eaba3e63e99b488eb56"
+  },
+  "focused_tests_passed": 11,
+  "economic_rules": 2,
+  "scenario_cases": 10,
+  "actual_execution_verified": false
+}

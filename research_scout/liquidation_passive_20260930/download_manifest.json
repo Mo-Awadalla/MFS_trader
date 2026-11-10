@@ -1,0 +1,128 @@
+[
+  {
+    "retrieved_at_utc": "2026-09-30T15:18:51.937471+00:00",
+    "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/07/01/BTCUSDT.csv.gz",
+    "date": "2024-07-01",
+    "symbol": "BTCUSDT",
+    "kind": "trades",
+    "bytes": 21281017,
+    "sha256": "58f06d337fae55be7fa1019ca4f62383ea2381bf69bc7a7e58497d96e34a0d0c",
+    "columns": [
+      "exchange",
+      "symbol",
+      "timestamp",
+      "local_timestamp",
+      "id",
+      "side",
+      "price",
+      "amount"
+    ],
+    "http_status": 200,
+    "authenticated": false
+  },
+  {
+    "retrieved_at_utc": "2026-09-30T15:18:59.230317+00:00",
+    "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/09/01/BTCUSDT.csv.gz",
+    "date": "2024-09-01",
+    "symbol": "BTCUSDT",
+    "kind": "trades",
+    "bytes": 28371011,
+    "sha256": "d704f37d42ebf46b55a8f7dcaf0fea464e0915b333b167ce08811aa179274ed4",
+    "columns": [
+      "exchange",
+      "symbol",
+      "timestamp",
+      "local_timestamp",
+      "id",
+      "side",
+      "price",
+      "amount"
+    ],
+    "http_status": 200,
+    "authenticated": false
+  },
+  {
+    "retrieved_at_utc": "2026-09-30T15:19:08.416603+00:00",
+    "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/08/01/BTCUSDT.csv.gz",
+    "date": "2024-08-01",
+    "symbol": "BTCUSDT",
+    "kind": "trades",
+    "bytes": 39694804,
+    "sha256": "4ab6ac6462f3b4e20a87f2634958b73d92e95d08aeb1e97f034428b06354bd3d",
+    "columns": [
+      "exchange",
+      "symbol",
+      "timestamp",
+      "local_timestamp",
+      "id",
+      "side",
+      "price",
+      "amount"
+    ],
+    "http_status": 200,
+    "authenticated": false
+  },
+  {
+    "retrieved_at_utc": "2026-09-30T15:19:23.799527+00:00",
+    "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/11/01/BTCUSDT.csv.gz",
+    "date": "2024-11-01",
+    "symbol": "BTCUSDT",
+    "kind": "trades",
+    "bytes": 42700288,
+    "sha256": "25f250e32b91518939ffd62caa6573726c69e53ec2880bbea9ad89be757bd026",
+    "columns": [
+      "exchange",
+      "symbol",
+      "timestamp",
+      "local_timestamp",
+      "id",
+      "side",
+      "price",
+      "amount"
+    ],
+    "http_status": 200,
+    "authenticated": false
+  },
+  {
+    "retrieved_at_utc": "2026-09-30T15:19:25.903706+00:00",
+    "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/10/01/BTCUSDT.csv.gz",
+    "date": "2024-10-01",
+    "symbol": "BTCUSDT",
+    "kind": "trades",
+    "bytes": 47881495,
+    "sha256": "7b59454dbc5f8eac0b88d093b73adb016a7a4493940399a5ecd14d29d2cb3ec4",
+    "columns": [
+      "exchange",
+      "symbol",
+      "timestamp",
+      "local_timestamp",
+      "id",
+      "side",
+      "price",
+      "amount"
+    ],
+    "http_status": 200,
+    "authenticated": false
+  },
+  {
+    "retrieved_at_utc": "2026-09-30T15:19:27.895504+00:00",
+    "url": "https://datasets.tardis.dev/v1/binance-futures/trades/2024/12/01/BTCUSDT.csv.gz",
+    "date": "2024-12-01",
+    "symbol": "BTCUSDT",
+    "kind": "trades",
+    "bytes": 17408459,
+    "sha256": "21e30e4b7fa691789eef1855ae5f7f67c75f0bbbfcfcdbead6ebb9be7c5c8ce2",
+    "columns": [
+      "exchange",
+      "symbol",
+      "timestamp",
+      "local_timestamp",
+      "id",
+      "side",
+      "price",
+      "amount"
+    ],
+    "http_status": 200,
+    "authenticated": false
+  }
+]

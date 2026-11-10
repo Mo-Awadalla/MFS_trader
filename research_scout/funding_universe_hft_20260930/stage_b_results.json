@@ -1,0 +1,21 @@
+{
+  "events": 18,
+  "counterpart_files": 16,
+  "successful_counterpart_files": 15,
+  "counterpart_native_normalized_rows": 1419702,
+  "compressed_bytes": 17125325,
+  "usable_pairs": 15,
+  "eligible_pairs": 1,
+  "outcomes": {
+    "payment_difference_below_cost_hurdle": 14,
+    "stale_invalid_or_wrong_funding_time_counterpart": 2,
+    "eligible": 1,
+    "unknown_counterpart_source": 1
+  },
+  "maximum_quoted_payment_difference_bps": 109.88941748959445,
+  "pairs_sha256": "0a4a12260ee07e07ab4c154cc703e28d9ede4bcb07fd0753c5a39bf973a14959",
+  "native_counterpart_verified": false,
+  "contract_equivalence_verified": false,
+  "strategy_pnl_tested": false,
+  "reliable_edge_established": false
+}

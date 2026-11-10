@@ -1,0 +1,16 @@
+{
+  "created_at_utc": "2026-10-02T19:22:13.639812+00:00",
+  "specification_sha256": "d81f47d319882d5ab2c506a33f9379a39a41b8365a616fd186d17f9fc9732c19",
+  "quote_manifest_sha256": "9560700c3fc43328e996b52112e56376247649364955a14b43d73eb572b3ebe9",
+  "impulses_sha256": "fbfa85ac267bfc3448c27bf206a8ccc9445c23af211fbc05f17a6a1308f2f787",
+  "code_sha256": {
+    "research_scout/screen_futures_etf_budget_20261002.py": "5617ad1b452d0b35062c1b1aa75ddaed0c10e04c218b9b043474423a171df20b",
+    "research/futures_etf_budget.py": "67af7aee2642369d235b304f1a916b11c29f3b5c0f666fe7568fc30b353ab710",
+    "research/same_index_supply.py": "4a99dcf4ff93f42d340268424fa54c9ae6343cfbc8f1eccfd0241afe8126c76a",
+    "tests/unit/test_futures_etf_budget.py": "181238abbe9744fe9c34f14a5cfbb7988cbdd4188884e4367442cbf62ce7c747"
+  },
+  "timestamp_policy": "Use strict predecessors of decision-100ms and exactly one second earlier. Every state in a conflicting equal-timestamp group is invalid; do not select a convenient tie. No arbitrary standing-quote expiry. Historical SIP receipt remains conditional.",
+  "quantity_units": "Apply the existing historical Alpaca SIP round-lot adapter implicit in Quotes: 100 shares per 2023 SPY quote lot. Historical contract definition evidence remains conditional, as in prior SIP tests.",
+  "cost_evaluation": "Compute the declared round-trip cost budget at current bid/ask, including both minimum commissions, sell charges, both adverse allowances and a calendar day of short borrow. This current-quote catch-up budget is not actual P&L.",
+  "future_returns_evaluated": false
+}

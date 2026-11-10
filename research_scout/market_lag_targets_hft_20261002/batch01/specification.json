@@ -1,0 +1,44 @@
+{
+  "created_at_utc": "2026-10-02T21:38:21.285701+00:00",
+  "relationship": "Second acquisition stage of the unchanged market-lag hypothesis. Only the native common-leader grids that also passed the exact contemporaneous normalized prefilter may admit targets; other times in these source minutes are not additional signals. No lagging-coin return or P&L has been evaluated for these sources.",
+  "hypothesis_specification_sha256": "0ae27a4a34f358b09231ab387d239dfe6d7aaba67fdd350c1569ef72ee77db13",
+  "native_parent_results_sha256": "bf70703c352cc4de69c81601b0d61037aef6f1d3e7124d9224a3c3c80c98c591",
+  "native_parent_audit_sha256": "3d5d14b92285bd6c112fe14ac22552529863a707332bd0ac2300a838c97591d1",
+  "admitted_leader_grids_path": "research_scout\\market_lag_native_hft_20261002\\batch01\\admitted_leader_grids.parquet",
+  "admitted_leader_grids_sha256": "71e3e81e96cda652d7e31b6dc963622359287a260f0059b349eafa05bcd6d8bd",
+  "jobs": [
+    {
+      "date": "2024-07-01",
+      "offset": 131
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 325
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 901
+    }
+  ],
+  "download": {
+    "exchange": "binance-futures",
+    "slice_minutes": 1,
+    "channels": [
+      "bookTicker"
+    ],
+    "all_symbols": true,
+    "workers": 2,
+    "per_slice_decoded_cap": 384000000,
+    "request_deadline_seconds": 240,
+    "authenticated": false,
+    "paid_fallback": false
+  },
+  "signal_consistency": "Match both BTC/ETH endpoint native price, quantity, ID, T/E and capture fields to the original audited two-symbol sources before using any target. All target clocks and source integrity must pass the unchanged parent gate.",
+  "targets_and_selection": "Use the original hypothesis exclusions, quality gates, >2bp cost budget and 20bp gap, ranking by descending budget then symbol; at most one per grid and 30s global decision cooldown within each disjoint source minute. No grid enters solely because its minute was selected by a later event.",
+  "progression": "No profitability computation in this stage. Any selected target needs the already declared causal native aggressor-flow confirmation and separately frozen order-rule/execution review. The other 37 chronological candidate minutes remain queued for native-leader screening, regardless of this batch's outcomes.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "26e7e217c2e01d55b27be9e6628685c76657722b2cc2972802bfc6a044332ca5"
+}

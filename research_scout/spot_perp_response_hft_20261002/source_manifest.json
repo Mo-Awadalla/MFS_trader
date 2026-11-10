@@ -1,0 +1,16 @@
+{
+  "params": {
+    "from": "2024-09-01",
+    "offset": 0,
+    "sliceSize": 1,
+    "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"enausdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"enausdt\"]}]"
+  },
+  "path": "research_scout\\spot_perp_response_hft_20261002\\ena_native.ndjson.gz",
+  "complete": true,
+  "authenticated": false,
+  "specification_sha256": "8c9be2a9678385ffa4bfebdf5e993de14a1181c2c4a0b3f764ec08e47abac54a",
+  "acquisition_sha256": "42fcda6dc1a641dda41b369edc1dfc5495ac2e729903e6e675b4d7f97c73fa3a",
+  "decoded_bytes": 589630,
+  "compressed_bytes": 64966,
+  "compressed_sha256": "6b8828c51acd60ad1ed68f5e7a643f0b245ae12832f20ba0261913a002005eaa"
+}

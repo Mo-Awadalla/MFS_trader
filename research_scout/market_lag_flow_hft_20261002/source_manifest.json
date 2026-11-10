@@ -1,0 +1,32 @@
+{
+  "files": [
+    {
+      "date": "2024-10-01",
+      "offset": 987,
+      "symbols": [
+        "BTCUSDT",
+        "ETHUSDT",
+        "TRXUSDT"
+      ],
+      "path": "research_scout\\market_lag_flow_hft_20261002\\native\\2024-10-01_0987.ndjson.gz",
+      "params": {
+        "from": "2024-10-01",
+        "offset": 987,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"trade\", \"symbols\": [\"btcusdt\", \"ethusdt\", \"trxusdt\"]}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "reused_cached_source": false,
+      "http_status": 200,
+      "decoded_bytes": 5202958,
+      "compressed_bytes": 422617,
+      "compressed_sha256": "30a6736ac12538fc59c26220d33ea5f39f7442a0f3948768db9fb96c4b66b94a"
+    }
+  ],
+  "expected_files": 1,
+  "complete": true,
+  "specification_sha256": "7855469fdf6c2fe8931c43c682368d2f45fc7cc390730f303013025e8563e52d",
+  "acquisition_sha256": "278c51f83a43f37ebd4ec16ab06e161ca422e51993349781cea93f977cadb319",
+  "new_decoded_bytes": 5202958
+}

@@ -1,0 +1,62 @@
+HFT EDGE SEARCH - PAUSED AT USER REQUEST
+Saved: 2026-10-02T16:54:44.076551+00:00
+
+Stopping point
+The already-running wide-spread passive HFT replay finished successfully.
+Session 69895 exited with code 0. No tracked research job remains running.
+No new experiment or source acquisition was started after the pause request.
+No reliable trading edge has been established. No live orders were submitted.
+
+User requirements to retain
+Stocks, ETFs and crypto; strictly HFT. Conservative fees.
+Optimize raw outperformance and actual reliability of the edge.
+Resume only when the user asks. Do not mark the goal complete.
+
+Latest completed work
+Wide-spread screen: 348 contracts, 26 selected contract/dates over 10 dates.
+Screening results already independently audited; selection remains frozen.
+All 30 native replay files retained; 2,212,109 native messages in the replay.
+Two schedules (10s and 22s resting quotes), six scenarios each.
+120 ledger files / 8,736 decision rows saved with hashes.
+19 execution tests and Ruff passed before the first economic replay.
+Cumulative research counts: 122 configurations, 172 implementation versions,
+190 focused tests. Stress scenarios are not counted as separate alpha rules.
+
+Provisional economic outcome (conditional public-tape model)
+10s baseline: -68.774015873596 USDT; 151 cycles with possible fills.
+22s baseline: -116.27227743300682 USDT; 256 cycles with possible fills.
+Both baselines have complete model accounting across all 10 selected dates.
+All 11 complete schedule/scenario aggregates have negative upper cash bounds.
+The 10s / 100ms clock scenario is UNKNOWN in full because one forced exit lacks
+sufficient depth. Its closed portion must not be presented as full P&L.
+Amounts sum across dates using 10,000 USDT reference capital; not annualized.
+These are preliminary simulated results, not independently audited trading
+profits/losses or evidence of an executable edge.
+Historical order filters, account permissions and private fills are unverified.
+2025 selection and validation data for this family remain unopened.
+
+Next work when explicitly resumed
+1. Independently reconstruct the frozen source-to-fill and cash accounting,
+   including queue consumption, boundary clocks, partial inventory, exit depth,
+   all fees, and the unknown-inventory date halt. Preserve the original run.
+2. If an implementation issue is found, version the correction and retain the
+   original outcomes. Do not retune thresholds based on losing development P&L.
+3. Decide whether to close this candidate family after the audit. Do not spend
+   the untouched validation set on a candidate that fails development costs.
+4. Continue a distinct, justified HFT hypothesis if no candidate survives.
+
+Resume artifacts (paths relative to workspace)
+research_scout/hft_edge_search_20260930/latest_checkpoint.json
+research_scout/wide_tick_hft_20260930/STATUS.txt
+research_scout/wide_tick_hft_20260930/replay_v1_20261002/results.json
+research_scout/wide_tick_hft_20260930/replay_v1_20261002/daily_results.json
+research_scout/wide_tick_hft_20260930/replay_v1_20261002/ledger_manifest.json
+research_scout/wide_tick_hft_20260930/replay_v1_20261002/implementation.json
+research_scout/wide_tick_hft_20260930/pre_replay_review_20261002.json
+research_scout/wide_tick_hft_20260930/pause_integrity_20261002.json
+research/wide_tick_replay.py
+tests/unit/test_wide_tick_replay.py
+
+Do not rerun the original runner into replay_v1_20261002; it deliberately
+refuses to overwrite its frozen implementation and existing output files.
+The September 30 pause checkpoint remains preserved as historical context.

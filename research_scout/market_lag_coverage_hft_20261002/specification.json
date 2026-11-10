@@ -1,0 +1,61 @@
+{
+  "created_at_utc": "2026-10-02T21:28:04.025133+00:00",
+  "relationship": "Broader development coverage for the unchanged coherent BTC/ETH-lag hypothesis. The initial 60 sparse minute samples contained zero common moves. This locates possible shock MINUTES in six full cached BTC days; it does not change the final 20bp joint-leader rule or target cost budget, and does not evaluate an economic strategy.",
+  "parent_specification_sha256": "0ae27a4a34f358b09231ab387d239dfe6d7aaba67fdd350c1569ef72ee77db13",
+  "parent_audit_sha256": "0dc497dd8f07d13b5d2ce2f3b323394f9c974f6f76344d54e60303020f0ff590",
+  "sources": [
+    {
+      "date": "2024-07-01",
+      "path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-07-01\\BTCUSDT.csv.gz",
+      "compressed_sha256": "822df7ed98a2d578aba93a3b0833317076a51eb4350847095c0467fa034ea6d1",
+      "compressed_bytes": 24574412,
+      "original_manifest_path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-07-01\\BTCUSDT.csv.gz.json"
+    },
+    {
+      "date": "2024-08-01",
+      "path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-08-01\\BTCUSDT.csv.gz",
+      "compressed_sha256": "706c56900fa4a41e2f9edd122d7c31d718be22e9b51c13b58cebd174148c0702",
+      "compressed_bytes": 33607354,
+      "original_manifest_path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-08-01\\BTCUSDT.csv.gz.json"
+    },
+    {
+      "date": "2024-09-01",
+      "path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-09-01\\BTCUSDT.csv.gz",
+      "compressed_sha256": "b4ad62827b91999148669303694f8f6089ab7244a5f52e5e2543ea87012552f4",
+      "compressed_bytes": 25750249,
+      "original_manifest_path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-09-01\\BTCUSDT.csv.gz.json"
+    },
+    {
+      "date": "2024-10-01",
+      "path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-10-01\\BTCUSDT.csv.gz",
+      "compressed_sha256": "d44556ff2551c9d27229e0a965f43bb3e005b0dd60a042811e6b5431df431916",
+      "compressed_bytes": 30153492,
+      "original_manifest_path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-10-01\\BTCUSDT.csv.gz.json"
+    },
+    {
+      "date": "2024-11-01",
+      "path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-11-01\\BTCUSDT.csv.gz",
+      "compressed_sha256": "68bc3c65d9f65844396917b404c0c92381ec198ac7c10d184eb2ca0f1558c113",
+      "compressed_bytes": 27935263,
+      "original_manifest_path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-11-01\\BTCUSDT.csv.gz.json"
+    },
+    {
+      "date": "2024-12-01",
+      "path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-12-01\\BTCUSDT.csv.gz",
+      "compressed_sha256": "de8ae2d6ab998dff100562fcd8a7f4ac28de15be08693fb82b969c8596ffa705",
+      "compressed_bytes": 22768491,
+      "original_manifest_path": "research_scout\\liquidation_event_20260930\\raw\\book_snapshot_5\\2024-12-01\\BTCUSDT.csv.gz.json"
+    }
+  ],
+  "decisions": "Every 250ms from second 2.00 through 58.75 in every minute of each listed UTC day, preserving parent in-minute signal timing. Latest normalized top-five snapshot strictly before d-250ms and d-1.25s, using local capture microseconds only; ages <=1s. Require finite positive uncrossed bid/ask. No future row, return or execution outcome is used.",
+  "prefilter": "Select a possible acquisition minute if both BTC bid and ask moved >=+15bp, or both <=-15bp, between the two prior captures. This intentionally looser 15bp acquisition threshold allows normalized snapshot aggregation/clock differences; it is NEVER an entry rule. No normalized timestamp is called native matching T, and missing disconnect/sequence data cannot establish final eligibility. Native BTC AND ETH must still each pass every unchanged 20bp/freshness/depth/spread gate before any target is considered.",
+  "capture_precision": "Normalized local_timestamp is retained as int64 microseconds. Exclude records at the cutoff microsecond, even if a native higher-precision time could precede it. Source rows are recorded for later native verification. No claim of complete full-day native BBO recall from normalized snapshots.",
+  "numeric_guard": "Use vectorized float64 only for acquisition candidates; separately mark any return within 1e-8 bp of the 15bp boundary for exact Decimal reconciliation before final minute selection. Preserve all passing grids and source-row references, then exact-check their threshold, ordering, freshness and spread validity.",
+  "native_acquisition_if_any": "Distinct candidate minutes in chronological order, initial batch at most twelve minutes. Fetch all-symbol Binance perpetual native bookTicker for each one-minute slice, then run the unchanged parent information-time and coherent-major/lag predicates. Preserve all remaining minutes as queued, not failed. Freeze exact job list and byte/time caps before network requests. No trade/response outcomes yet.",
+  "selection_2025_opened": false,
+  "future_returns_evaluated": false,
+  "economic_implementations": 0,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "7fb07b497825182c48bb8e8af1b77885ae84d3fe7f12c1571ae511c6210f039e"
+}

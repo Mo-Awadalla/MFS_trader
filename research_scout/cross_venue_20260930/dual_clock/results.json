@@ -1,0 +1,745 @@
+{
+  "results": {
+    "hold_30s": {
+      "base": {
+        "complete": true,
+        "net_dollars": -1.3926411199999393,
+        "closed_subtotal": -1.3926411199999393,
+        "gross_closed_subtotal": -0.0015999999999394277,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -1.3926411199999393,
+            "net_dollars": -1.3926411199999393
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "double_fees": {
+        "complete": true,
+        "net_dollars": -2.5849620799999395,
+        "closed_subtotal": -2.5849620799999395,
+        "gross_closed_subtotal": -0.0015999999999394277,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -2.5849620799999395,
+            "net_dollars": -2.5849620799999395
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "latency_3s": {
+        "complete": true,
+        "net_dollars": -0.7826144000000528,
+        "closed_subtotal": -0.7826144000000528,
+        "gross_closed_subtotal": 0.6079999999999472,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -0.7826144000000528,
+            "net_dollars": -0.7826144000000528
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "binance_extra_500ms": {
+        "complete": true,
+        "net_dollars": -0.7489908800000744,
+        "closed_subtotal": -0.7489908800000744,
+        "gross_closed_subtotal": 0.6415999999999258,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -0.7489908800000744,
+            "net_dollars": -0.7489908800000744
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "bybit_extra_500ms": {
+        "complete": true,
+        "net_dollars": -1.3926411199999393,
+        "closed_subtotal": -1.3926411199999393,
+        "gross_closed_subtotal": -0.0015999999999394277,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -1.3926411199999393,
+            "net_dollars": -1.3926411199999393
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "optimistic_200ms": {
+        "complete": true,
+        "net_dollars": -0.7017831799998995,
+        "closed_subtotal": -0.7017831799998995,
+        "gross_closed_subtotal": 2.2526000000001005,
+        "closed_pairs": 0,
+        "closed_single_legs": 3,
+        "known_fill_count": 6,
+        "outcomes": {
+          "closed_single_leg": 3,
+          "both_rejected": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -0.7017831799998995,
+            "net_dollars": -0.7017831799998995
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      }
+    },
+    "hold_120s": {
+      "base": {
+        "complete": true,
+        "net_dollars": -1.3926411199999393,
+        "closed_subtotal": -1.3926411199999393,
+        "gross_closed_subtotal": -0.0015999999999394277,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -1.3926411199999393,
+            "net_dollars": -1.3926411199999393
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "double_fees": {
+        "complete": true,
+        "net_dollars": -2.5849620799999395,
+        "closed_subtotal": -2.5849620799999395,
+        "gross_closed_subtotal": -0.0015999999999394277,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -2.5849620799999395,
+            "net_dollars": -2.5849620799999395
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "latency_3s": {
+        "complete": true,
+        "net_dollars": -0.7826144000000528,
+        "closed_subtotal": -0.7826144000000528,
+        "gross_closed_subtotal": 0.6079999999999472,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -0.7826144000000528,
+            "net_dollars": -0.7826144000000528
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "binance_extra_500ms": {
+        "complete": true,
+        "net_dollars": -0.7489908800000744,
+        "closed_subtotal": -0.7489908800000744,
+        "gross_closed_subtotal": 0.6415999999999258,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -0.7489908800000744,
+            "net_dollars": -0.7489908800000744
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "bybit_extra_500ms": {
+        "complete": true,
+        "net_dollars": -1.3926411199999393,
+        "closed_subtotal": -1.3926411199999393,
+        "gross_closed_subtotal": -0.0015999999999394277,
+        "closed_pairs": 0,
+        "closed_single_legs": 1,
+        "known_fill_count": 2,
+        "outcomes": {
+          "both_rejected": 3,
+          "closed_single_leg": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -1.3926411199999393,
+            "net_dollars": -1.3926411199999393
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      },
+      "optimistic_200ms": {
+        "complete": true,
+        "net_dollars": -0.7017831799998995,
+        "closed_subtotal": -0.7017831799998995,
+        "gross_closed_subtotal": 2.2526000000001005,
+        "closed_pairs": 0,
+        "closed_single_legs": 3,
+        "known_fill_count": 6,
+        "outcomes": {
+          "closed_single_leg": 3,
+          "both_rejected": 1
+        },
+        "daily": [
+          {
+            "date": "2024-07-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-08-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-09-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-10-01",
+            "complete": true,
+            "closed_subtotal": -0.7017831799998995,
+            "net_dollars": -0.7017831799998995
+          },
+          {
+            "date": "2024-11-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          },
+          {
+            "date": "2024-12-01",
+            "complete": true,
+            "closed_subtotal": 0.0,
+            "net_dollars": 0.0
+          }
+        ],
+        "edge_established": false
+      }
+    }
+  },
+  "source_audits": [
+    {
+      "date": "2024-07-01",
+      "raw_rows": 1268622,
+      "exchange_backtracks": 0,
+      "ambiguous_target_count": 0,
+      "ambiguity_intervals_us": [],
+      "execution_snapshots_captured_after_target": 8,
+      "signals_captured_after_target": 0,
+      "venue": "binance",
+      "source_sha256": "822df7ed98a2d578aba93a3b0833317076a51eb4350847095c0467fa034ea6d1",
+      "panel_sha256": "0690719a694ea75fa651b30b0ce96142e27aa07bdea0b0689ecbab88dd6eb5fa"
+    },
+    {
+      "date": "2024-07-01",
+      "raw_rows": 1503697,
+      "exchange_backtracks": 2,
+      "ambiguous_target_count": 0,
+      "ambiguity_intervals_us": [
+        [
+          59138702000,
+          59139842000
+        ],
+        [
+          76318704000,
+          76320622000
+        ]
+      ],
+      "execution_snapshots_captured_after_target": 30,
+      "signals_captured_after_target": 0,
+      "venue": "bybit",
+      "source_sha256": "77ce760507018b054fc15b98ed45e37a82623cd1932c055c7a1d0d3fce326ef7",
+      "panel_sha256": "4744b5542fe80e5b5cf75b67ec39a3c65464999b571a143e0042725bb9f87a3a"
+    },
+    {
+      "date": "2024-10-01",
+      "raw_rows": 1390566,
+      "exchange_backtracks": 0,
+      "ambiguous_target_count": 0,
+      "ambiguity_intervals_us": [],
+      "execution_snapshots_captured_after_target": 8,
+      "signals_captured_after_target": 0,
+      "venue": "binance",
+      "source_sha256": "d44556ff2551c9d27229e0a965f43bb3e005b0dd60a042811e6b5431df431916",
+      "panel_sha256": "a456b9ec2a7b840b75a26ff060826d2f3f434e7951a3427efcb75a29cf04fbf6"
+    },
+    {
+      "date": "2024-10-01",
+      "raw_rows": 2245557,
+      "exchange_backtracks": 13,
+      "ambiguous_target_count": 2,
+      "ambiguity_intervals_us": [
+        [
+          20221505000,
+          20222464000
+        ],
+        [
+          30601505000,
+          30602484000
+        ],
+        [
+          49349506000,
+          49350223000
+        ],
+        [
+          54297509000,
+          54298143000
+        ],
+        [
+          54393504000,
+          54395105000
+        ],
+        [
+          54401508000,
+          54404664000
+        ],
+        [
+          54429507000,
+          54431884000
+        ],
+        [
+          54621504000,
+          54625284000
+        ],
+        [
+          54637504000,
+          54640183000
+        ],
+        [
+          62433503000,
+          62435043000
+        ],
+        [
+          62541504000,
+          62542103000
+        ],
+        [
+          72617505000,
+          72618363000
+        ],
+        [
+          85437506000,
+          85440243000
+        ]
+      ],
+      "execution_snapshots_captured_after_target": 105,
+      "signals_captured_after_target": 0,
+      "venue": "bybit",
+      "source_sha256": "f6d0117bbd30b2b6be3cf22a8058cd6d9bc43aee24f4bf6fa206ee08ad255f18",
+      "panel_sha256": "4eda6a0bd0a89f54135c82a39a9197f6867b571fe03464f89c031472f45826f2"
+    }
+  ],
+  "edge_established": false
+}

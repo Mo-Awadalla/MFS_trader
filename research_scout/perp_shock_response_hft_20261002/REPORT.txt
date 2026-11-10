@@ -1,0 +1,25 @@
+PERPETUAL PRICE-SHOCK RESPONSE — NO RELIABLE EDGE ESTABLISHED
+
+Both predeclared controls (follow and fade) used all five confirmed events across four dates. Orders were at most 200 USDT, at most 10% of causal touch depth, with fixed quantity and 10bp FOK collar. Exit decision was 15 seconds after entry acknowledgement; planned inventory remained below 30 seconds. Costs: 6bp taker fee plus 1bp adverse allowance on entry and exit. No funding payment credited.
+
+Rule | Scenario | Full sample net lower/upper USDT | Completed round trips | Known component lower (not full net if unknown)
+follow_shock | base | -3.67024890000 / -3.67024890000 | 4 | -3.67024890000
+follow_shock | fees_2x | -4.60560510000 / -4.60560510000 | 4 | -4.60560510000
+follow_shock | adverse_2x | -3.82614160000 / -3.82614160000 | 4 | -3.82614160000
+follow_shock | latency_250ms | -2.99259580000 / -2.99259580000 | 4 | -2.99259580000
+follow_shock | latency_3s | -3.97589220000 / -3.97589220000 | 4 | -3.97589220000
+follow_shock | clock_100ms | UNKNOWN | 3 | -3.11480570000
+fade_shock | base | UNKNOWN | 3 | 1.060781100
+fade_shock | fees_2x | UNKNOWN | 3 | 0.361164900
+fade_shock | adverse_2x | UNKNOWN | 3 | 0.944178400
+fade_shock | latency_250ms | -0.22036020000 / -0.22036020000 | 5 | -0.22036020000
+fade_shock | latency_3s | 0.21715400000 / 0.21715400000 | 3 | 0.21715400000
+fade_shock | clock_100ms | UNKNOWN | 2 | 0.832350300
+
+Following lost in all five fully known cases; the 100ms clock case retained an unknown entry. Fading lost 0.2203602 USDT at 250ms delay. Its 3-second-delay result gained 0.217154 USDT from three completed trades on two dates, with two no-fills; removing the best three dates leaves zero. The baseline fade is UNKNOWN: BAKE offered insufficient complete touch depth for the frozen quantity, so ZRO later that date was halted. The known baseline component of +1.0607811 USDT includes CELO +1.166832; removing CELO makes that known component negative. Do not present it as full strategy P&L.
+
+Independent verification: all 69,047 native messages (68,447 BBO, 600 funding marks), ten causal plans, 112 execution envelopes, 42 cash rectangles and twelve scenario aggregates matched exactly. Fourteen focused execution tests and Ruff passed. Quote and trade-flow parent audits also passed.
+
+Limits: displayed-book execution is conditional, not private fill evidence. Historical order filters and account permissions remain unverified. Price grids and coarse ten-unit quantity increments were frozen assumptions; ZRO's launch tick is supported by the official notice at https://www.binance.com/en/support/announcement/detail/09bdfa5901c94bf6a4e60ab66078a75c . Five events cannot establish reliability. No candidate is promoted and no 2025 selection data was opened.
+
+Search accounting: two new economic configurations and two implementation versions; 31 focused tests across the quote, flow and execution stages. Cumulative 132 configurations, 182 implementation versions and 327 focused tests. The goal remains active; no reliable edge or competition win is claimed.

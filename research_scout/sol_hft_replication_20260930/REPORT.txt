@@ -1,0 +1,31 @@
+SOLUSDT PASSIVE LIQUIDATION HFT REPLICATION — 2026-09-30
+
+VERDICT: NO CANDIDATE PROGRESSES. No reliable edge or competition win established.
+
+Same eight rules as BTC: follow/reverse, 8/16bp offset, 30/120-second hold after cancellation acknowledgement. No favorable SOL date, offset or cost was selected.
+The Jan-Jun reported-notional distribution set a fixed 99th-percentile trigger of $9,164.3123 from 6,393 reports.
+Six July-December first-of-month dates produce 86 first-report events. These calendar dates already have BTC research exposure; this is historical development, not forward evidence.
+All acquired public files total 269,936,549 compressed bytes; no authentication, paid API or trading order was used.
+Native SOL price tick 0.001 USDT and quantity step 0.1 SOL are checked for consistency against observed trades; public tapes do not prove historical private order acceptance.
+
+BASELINE: rule | gross dollars | net dollars | completed trades
+follow_8bp_30s | -0.363800 | -3.536889 | 4
+follow_8bp_120s | -3.339100 | -6.510004 | 4
+follow_16bp_30s | +0.000000 | +0.000000 | 0
+follow_16bp_120s | +0.000000 | +0.000000 | 0
+reverse_8bp_30s | -9.085200 | -23.185509 | 16
+reverse_8bp_120s | -22.084900 | -36.176110 | 16
+reverse_16bp_30s | -1.590300 | -5.214471 | 5
+reverse_16bp_120s | +2.958000 | -0.669355 | 5
+
+Six baseline variants lose; two have zero modeled fills. No variant is complete and positive under every scenario with positive P&L after deleting its best date.
+The least-negative traded baseline is reverse/16bp/120s, -$0.6694 from five trades. That is not profitable or reliable evidence.
+Costs remain 3bp maker, 6bp taker plus 1bp market allowance. No fee reductions or VIP/rebate assumptions. Doubled fees, three-second outbound delay, full-first-through and touch-price fills are separate stresses.
+Max intended order $1000 and 10% of predecision visible size; $10000 starting cash on each isolated date. Every partial position persists until it is closed; unknown submitted execution invalidates the day.
+
+VERIFICATION AND LIMITS
+Independent source-tape audit: 692 maker-fill records and 2864 no-fill attempts checked across dependent scenarios. Maximum P&L discrepancy $0.
+Seven focused engine tests pass, including native instrument units. Capture-time decisions and exchange-time execution remain separated.
+Counterfactual trade-through fills are not actual queue fills. Price-band rejection, self-impact, real routing, disconnect behavior and continuous competition wealth remain unobserved.
+No later SOL validation dates were opened after this failure. Two zero-fill variants remain absence of evidence in these samples rather than proof of universally negative returns.
+The current search totals 76 configurations / 100 implementation versions, including repairs and dependent cross-asset variants. User explicitly requires strictly HFT; slower intraday ETF candidates are excluded.

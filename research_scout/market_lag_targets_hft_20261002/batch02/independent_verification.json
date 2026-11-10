@@ -1,0 +1,23 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T21:53:21.343001+00:00",
+  "source_files_verified": 2,
+  "source_counts": {
+    "native_messages": 1589929,
+    "book_messages": 1589929,
+    "universe_book_messages": 1451948
+  },
+  "quote_rows_verified": 137344,
+  "marginal_signal_rows_verified": 134976,
+  "target_rows_verified": 1172,
+  "selected_target_events_verified": 1,
+  "maximum_target_numeric_difference": "4.06E-24",
+  "results_sha256": "f378fdee4bdcde4360dfa1e228f27d05fea176d623265d9ead872a273b895954",
+  "auditor_sha256": "d81ccf8726c76e229a11abf714fce847acfb212b092863be07f2d85b6bc037ab",
+  "independent_raw_reconstruction_helper_sha256": "d6c303e136dc8aa05564072a782c90b5e07799c7374cb72709d9c000b78ad223",
+  "scope": "Complete independent raw-source clock/quote/marginal-gate reconciliation, both original leader endpoint identities, and every permitted target's exact-price spread/depth/relative-move/cost predicate plus ranking and cooldown. All final signal clocks were prospectively restricted to causal acquisition candidates. No P&L or future-return computation.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

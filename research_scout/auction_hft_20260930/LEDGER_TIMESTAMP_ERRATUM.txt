@@ -1,0 +1,3 @@
+Optional clock columns in the original ledgers were rounded by up to 128 nanoseconds when pandas inferred float64 for integer/empty rows.
+precise_ledgers/ restores exact nullable integer timestamps by rerunning the unchanged frozen replay against the same cached inputs. Every non-clock field is identical, including signals, quantities, statuses, fees and P&L. Original files remain preserved.
+This serialization repair creates no independent profitability evidence. Eight repeated implementations are conservatively retained in the experiment history.

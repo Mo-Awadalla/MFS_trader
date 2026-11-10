@@ -1,0 +1,22 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T21:13:18.848340+00:00",
+  "source_files_verified": 60,
+  "source_counts": {
+    "native_messages": 27502201,
+    "book_messages": 26299402,
+    "universe_book_messages": 24544390,
+    "disconnects": 2
+  },
+  "signal_rows_verified": 3732360,
+  "quote_rows_verified": 3797840,
+  "selected_events_verified": 5,
+  "maximum_numeric_difference": "5.0E-24",
+  "results_sha256": "48603ab7ca3d146e3adb25317cf1db889aebf81d1a0200524dba102ed49441da",
+  "auditor_sha256": "d6c303e136dc8aa05564072a782c90b5e07799c7374cb72709d9c000b78ad223",
+  "scope": "Independent raw parser and exact quarter-second information buckets; every quote, source clock, integrity state, both-sided displacement, spread/depth predicate, cooldown, selected event and aggregate. No production signal/parser import.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

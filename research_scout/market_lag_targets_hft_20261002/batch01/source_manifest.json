@@ -1,0 +1,59 @@
+{
+  "files": [
+    {
+      "date": "2024-07-01",
+      "offset": 131,
+      "path": "research_scout\\market_lag_targets_hft_20261002\\batch01\\native\\2024-07-01_0131.ndjson.gz",
+      "params": {
+        "from": "2024-07-01",
+        "offset": 131,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 98911340,
+      "compressed_bytes": 14198573,
+      "compressed_sha256": "8ef862964c209c14e1a4c7c0ac1041bb166b7fdef49ba668662a2633c521e8a8"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 325,
+      "path": "research_scout\\market_lag_targets_hft_20261002\\batch01\\native\\2024-08-01_0325.ndjson.gz",
+      "params": {
+        "from": "2024-08-01",
+        "offset": 325,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 132403536,
+      "compressed_bytes": 18393568,
+      "compressed_sha256": "acef5b7e6d1c2575250caf9031b0ec05d3e829a18d3f55e11b17182231cd5adc"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 901,
+      "path": "research_scout\\market_lag_targets_hft_20261002\\batch01\\native\\2024-08-01_0901.ndjson.gz",
+      "params": {
+        "from": "2024-08-01",
+        "offset": 901,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 256906965,
+      "compressed_bytes": 36033115,
+      "compressed_sha256": "ad04a5c3c9e315025f065f253e6b5e7a4a37315a0734060aeaefc51e4c21effd"
+    }
+  ],
+  "expected_files": 3,
+  "complete": true,
+  "specification_sha256": "fe96971e3403f0c524bde874c45051a39c2b9a2e04f0ee6c5bccd09d2db06339",
+  "acquisition_sha256": "d4f51c5653b359d56f5a5cd2ee00072fc143454b0f09cd8eec679b301ada4a34"
+}

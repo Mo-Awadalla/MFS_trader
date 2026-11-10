@@ -1,0 +1,12 @@
+The original five-trade AAPL report is not a correct implementation of its share-size threshold across 2025.
+
+Alpaca SIP quote sizes before November 3, 2025 are round-lot counts; from that date they are shares. The original rule compared both raw representations against a minimum of 100 shares. The prior absence of signals before November must not be interpreted as lack of eligible stock events.
+
+Official vendor notice:
+https://docs.alpaca.markets/us/v1.1/changelog/marketdata-bid-and-ask-size-display-change
+
+The separately versioned audit is in research_scout/sip_quote_units_repair_20260930/results.json and its runner is research_scout/audit_sip_quote_units_20260930.py. The new research adapter is research/alpaca_quote_units.py. Original raw data, specification and report remain unchanged.
+
+With only size units corrected, the original rule produces 102 signals, of which 52 across twelve dates have fresh execution quotes. Mean net proxy return is -3.1020 bps; the day-block 95% interval is [-4.1490,-1.9775] bps. Thirty-seven entries and thirteen exits lack fresh quotes. This remains conditional execution evidence, not a complete portfolio backtest.
+
+The correction does not rescue this rule or establish a stock trading edge. It invalidates the original event-count interpretation and supplies stronger negative economic evidence on the correctly measured rule.

@@ -1,0 +1,20 @@
+{
+  "verified": true,
+  "support_events_checked": 1397,
+  "break_events_checked": 914,
+  "native_quote_target_checks": 3990,
+  "native_quote_dates": [
+    "2024-07-01"
+  ],
+  "native_quote_symbols": [
+    "BTCUSDT",
+    "SOLUSDT"
+  ],
+  "priced_dependent_scenario_trades": 12423,
+  "unresolved_attempts_retained": 165,
+  "known_fok_rejections": 34,
+  "maximum_cash_error_dollars": 8.881784197001252e-16,
+  "candidates_for_additional_evidence": [],
+  "scope": "All declared event conditions, first observed break clocks, cached order branches and cashflows checked. Does not independently prove exhaustiveness of event detection. Native quotes independently reconstructed for both instruments on the first calendar date; other dates rely on hashed cache/stream integrity. Replay fills are historical proxies, not actual live execution.",
+  "reliable_edge_established": false
+}

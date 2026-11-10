@@ -1,0 +1,30 @@
+{
+  "purpose": "Describe unresolved price-only associations and test whether provider trade IDs equal native IDs; no record removal or mapping repair",
+  "mismatches": {
+    "IWM": {
+      "count": 10,
+      "vendor_before_associated_native_event": 8,
+      "vendor_before_associated_native_send": 8,
+      "native_trade_ids": 35,
+      "vendor_trades_in_overlap": 25,
+      "identical_trade_ids": 0
+    },
+    "QQQ": {
+      "count": 24,
+      "vendor_before_associated_native_event": 23,
+      "vendor_before_associated_native_send": 23,
+      "native_trade_ids": 78,
+      "vendor_trades_in_overlap": 46,
+      "identical_trade_ids": 0
+    },
+    "SPY": {
+      "count": 1,
+      "vendor_before_associated_native_event": 0,
+      "vendor_before_associated_native_send": 1,
+      "native_trade_ids": 57,
+      "vendor_trades_in_overlap": 56,
+      "identical_trade_ids": 0
+    }
+  },
+  "interpretation": "Quote associations are exploratory, not proof of identity: mismatches and negative lags exist. Provider trade IDs do not supply the hoped-for native join. Prefer native source for new causal simulations; keep prior result unresolved."
+}

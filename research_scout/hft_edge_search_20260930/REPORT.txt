@@ -1,0 +1,67 @@
+HFT EDGE SEARCH — 2026-09-30
+
+STATUS: ACTIVE. No reliable trading edge found or competition win established.
+
+24 new configurations: 9 own-price/book ETF, 6 cross-ETF, 9 BTC cost-aware.
+These are dependent configurations, not 24 independent discoveries. All failed progression.
+One earlier AAPL rule was also replayed after a verified quote-unit repair.
+
+DATA AND CHRONOLOGY
+Databento EQUS.MINI: 806 local opening sessions inventoried. 444 sessions from 2023-2024 trained models; 235 admitted 2025 sessions selected candidates (15 known degraded dates excluded).
+346,290 symbol-clock rows, six ETFs, 5/30/120-second holds. Later 2026 panel was not opened for this batch.
+BTCUSDT: existing audited 5 training and 4 selection dates; eight later historical dates remained unused by this batch. The archive has prior research exposure.
+AAPL SIP: twelve five-minute 2025 windows, source hashes verified. Insufficient to generalize to stocks broadly.
+
+RESULTS (each scenario begins with $10,000; INCOMPLETE is not a portfolio result)
+price_ridge_5s: INCOMPLETE; priced subtotal $-10.53; 5 priced trades; incomplete_exit_evidence.
+book_ridge_5s: $-160.81; 28 priced trades; failed_gates.
+book_histboost_5s: $-42.01; 30 priced trades; failed_gates.
+price_ridge_30s: $-39.46; 19 priced trades; failed_gates.
+book_ridge_30s: INCOMPLETE; priced subtotal $+0.00; 0 priced trades; incomplete_exit_evidence.
+book_histboost_30s: INCOMPLETE; priced subtotal $-18.52; 14 priced trades; incomplete_exit_evidence.
+price_ridge_120s: $+112.23; 12 priced trades; failed_gates.
+book_ridge_120s: $-32.95; 17 priced trades; failed_gates.
+book_histboost_120s: INCOMPLETE; priced subtotal $+31.75; 9 priced trades; incomplete_exit_evidence.
+cross_ridge_5s: INCOMPLETE; priced subtotal $-53.82; 5 priced trades; incomplete_exit_evidence.
+cross_histboost_5s: INCOMPLETE; priced subtotal $-112.84; 31 priced trades; incomplete_exit_evidence.
+cross_ridge_30s: INCOMPLETE; priced subtotal $-92.24; 34 priced trades; incomplete_exit_evidence.
+cross_histboost_30s: $-126.96; 41 priced trades; failed_gates.
+cross_ridge_120s: $-119.54; 23 priced trades; failed_gates.
+cross_histboost_120s: INCOMPLETE; priced subtotal $-44.08; 34 priced trades; incomplete_exit_evidence.
+price_ridge_margin0: $+0.00; 0 priced trades; no_trades.
+price_ridge_margin5: $+0.00; 0 priced trades; no_trades.
+price_ridge_margin10: $+0.00; 0 priced trades; no_trades.
+book_ridge_margin0: $+0.00; 0 priced trades; no_trades.
+book_ridge_margin5: $+0.00; 0 priced trades; no_trades.
+book_ridge_margin10: $+0.00; 0 priced trades; no_trades.
+book_boost_margin0: $+0.00; 0 priced trades; no_trades.
+book_boost_margin5: $+0.00; 0 priced trades; no_trades.
+book_boost_margin10: $+0.00; 0 priced trades; no_trades.
+
+WHY THE SMALL POSITIVE IS REJECTED
+price_ridge_120s: +$112.23 (+1.12%) from 12 trades / 11 trade days across 235 admitted sessions.
+Only three positive days; the best day supplied 86.16% of positive P&L. Removing the best five days gives -$24.56.
+Mean daily P&L 95% five-session-block interval: -$0.144 to +$1.683. Nine-trial-adjusted lower bound: -$0.187.
+One-second latency reduces profit to +$36.11. This is not reliable evidence of an edge.
+For context, cached adjusted-price SPY returned +17.06% from the first 2025 open to the last close. The strategy lacks a complete 250-session path because 15 dates were excluded, so this is not a formal matched-calendar comparison.
+
+A REAL MEASUREMENT ERROR FOUND
+Alpaca SIP quote sizes changed from round lots to shares on 2025-11-03. The old AAPL rule compared pre-change lot counts directly with a 100-share threshold.
+A separate adapter converts pre-change AAPL sizes by 100, retains raw values, and prevents double conversion. Original raw files, specifications and reports remain unchanged.
+Corrected signals: 102 rather than 17. Usable quote proxies: 52 across all twelve dates. Mean gross crossing return -1.216 bps; original-cost net -3.102 bps; stress -7.102 bps.
+Day-block 95% interval for net mean: [-4.149, -1.977] bps. 37 entries and 13 exits lacked fresh quotes; they are not booked as zero P&L or silently included in a portfolio return.
+Official source: https://docs.alpaca.markets/us/v1.1/changelog/marketdata-bid-and-ask-size-display-change
+
+EXECUTION AND RELIABILITY
+ETF base: observed ask/bid crossing, 250ms assumed combined delay, 1bp adverse slippage each side, $0.005/share commission each side, sell-notional and per-share levies. Whole shares, available cash, 10% of decision/arrival offer size. No broker commission minimum modeled; real minima would worsen these results.
+Stress: double slippage, 1s and 3s delay, wider spread. An unpriceable exit or insufficient displayed exit quantity invalidates the path. No passive fill assumptions.
+Crypto: bid/ask crossing, 1s delay, 60s holds, 5bps fee and 1bp slippage each side. Funding boundaries excluded. No model forecast clears the fixed cost threshold on selection dates.
+Crypto cache lacks execution depth and is already conditioned on future quote availability: usable for rejection screening, not deployment validation.
+EQUS.MINI aggregates anonymized component-venue BBOs; it does not establish consolidated NBBO routing, queue priority or actual fills.
+Source: https://databento.com/docs/venues-and-datasets/equs-mini
+Historical tuning exposure remains; new-batch multiplicity adjustments do not erase prior research. No reliable edge has been established.
+
+VERIFICATION
+Focused tests cover timestamp units, strict causality, same-clock cross-fund joins, fees, sizing, overlap, funding boundaries, invalid latest quotes and missing exits.
+Independent recomputation reconciled first-batch trade P&L to below $1e-13 and cash to below $1e-10.
+Original source data and historical reports were retained. No paid market-data request or broker order was made.

@@ -1,0 +1,1232 @@
+{
+  "created_at_utc": "2026-10-02T20:53:56.691261+00:00",
+  "family": "Broad native perpetual price displacement with subsequent pre-decision trade confirmation",
+  "relationship": "Dependent extension of the prior failed liquidation, absorption and short-horizon response families. Selection starts with both sides of the native market moving, rather than a liquidation broadcast or a cross-market basis. Prior failed variants remain; globally exposed historical data are not pristine validation.",
+  "sources": [
+    {
+      "date": "2024-01-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-01-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-01-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 77458362,
+      "compressed_bytes": 10565299,
+      "compressed_sha256": "ee34c1d5cbaecbe84dafd73ecfdb01509c72b3d62222c9d4e812b8a12a802c0d",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-01-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-01-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 59247070,
+      "compressed_bytes": 8135317,
+      "compressed_sha256": "bc4d42ed91d3a769a7924e208b9d5f17c06ddc53abb5e6b0386e1a8889bdfa8a",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-01-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-01-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-01-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 54714711,
+      "compressed_bytes": 7541652,
+      "decoded_sha256": "74014fc74f859c5211ed9e0fd6ffe29a763df86496f2900a539875da04dad8ee",
+      "compressed_sha256": "1c11d5688e8076c517f4da401ff82d16179cd778fffd2796d8193967fb162101",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-01-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-01-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 49918243,
+      "compressed_bytes": 6881326,
+      "compressed_sha256": "54690e83261514ed5c3dc503a3862764f01f292d6a39592b02e3f2b55423fee1",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-01-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-01-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 47799014,
+      "compressed_bytes": 6569632,
+      "compressed_sha256": "8acc8f2919c8b0f4bae677ac6525a546e2f7a4a5d638c83c9eea7503cf6d29d4",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-02-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-02-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 86622272,
+      "compressed_bytes": 11548439,
+      "compressed_sha256": "8da439cbd5f807975500247727c451eb1bd126f89afa6bd757dba8a6aaceff45",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-02-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-02-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 62194314,
+      "compressed_bytes": 8116640,
+      "compressed_sha256": "a9db555fbe38ee42d63f2285b903e94d71e053889d63b059ead4bd67b8e46101",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-02-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-02-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-02-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 84402748,
+      "compressed_bytes": 11125908,
+      "decoded_sha256": "aae7be65ddb62b44f5277cf369b18db20fc21e34aaf0f77a4baf816d045698dc",
+      "compressed_sha256": "5de17a1bf06dfa3bab02648a264adecc9afab5fa2ca3198d0aa1341f87f2a471",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-02-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-02-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 58728627,
+      "compressed_bytes": 7920367,
+      "compressed_sha256": "05ac72898529f2aa01a2fe2fb481e2912342c838ad2bbf211a0c3b2ee23b6f42",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-02-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-02-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-02-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 55367255,
+      "compressed_bytes": 7422983,
+      "compressed_sha256": "885ca341e34b25058fcf40eb5dcf929f9b815fc84534c28f417331f7c099a08f",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-03-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-03-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 104696816,
+      "compressed_bytes": 14377016,
+      "compressed_sha256": "87ae1e700cfbf5440ebd1094779a3e27e940ec441472c3710a44bc1e04efdeba",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-03-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-03-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 81120040,
+      "compressed_bytes": 10935136,
+      "compressed_sha256": "7cbfecd9937b12a79130eca4891499fb2f89e27f571b0b5d72488d459d62b8d2",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-03-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-03-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-03-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 105737245,
+      "compressed_bytes": 14080816,
+      "decoded_sha256": "ce8ce5acef8d186d138929ec161dfeac1a3828723334f364a0f90c5a0ab05fc1",
+      "compressed_sha256": "679d23abe54cb66e45c09f2628cc7d755cdb9f1175f5e0d284f0009d044483ad",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-03-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-03-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 97738303,
+      "compressed_bytes": 13198910,
+      "compressed_sha256": "999bea6e3a11bcc9038e4d34e99e50e037d00867e6ec4d99f25a3bf0a6cf816d",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-03-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-03-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 89961608,
+      "compressed_bytes": 12008384,
+      "compressed_sha256": "e59f37df0393e901dcf02a1cb5a6f46fdbf5442a00bd68c40ad29bcacd49dbc1",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-04-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-04-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 86372697,
+      "compressed_bytes": 12019886,
+      "compressed_sha256": "1dd12772190719b334adaed4bef4058406710ed6652bd911c961a8628d80c42b",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-04-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-04-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 242856880,
+      "compressed_bytes": 35961405,
+      "compressed_sha256": "c391900240f6a4dc92c4d93798df1cb2ac7a8cf1447700cedd37b014e4ea9aab",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-04-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-04-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-04-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 114242146,
+      "compressed_bytes": 16207994,
+      "decoded_sha256": "300c3ca80219822d5e7580681c4730e28cc54b76322bfc6e8e88ef02742c2047",
+      "compressed_sha256": "32d969bb50f15bbe8f8a6bd84d0decae4503341efe19997ba4920d166c744fdf",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-04-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-04-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 87623366,
+      "compressed_bytes": 12136691,
+      "compressed_sha256": "989e69c91fcb0a5fc06962703a971a8fe1ba0922edc2faf9f44206f3fe48eafb",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-04-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-04-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 81837849,
+      "compressed_bytes": 11556951,
+      "compressed_sha256": "ba1e981df145e46a5a360099bf6daf857a55a6ef3faf976775574e19039e9e01",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-05-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-05-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 108270361,
+      "compressed_bytes": 15361379,
+      "compressed_sha256": "2f6661ba42e89732433be36232cf03f18e811de6dc809e5f6762a973350b32d2",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-05-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-05-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 97748612,
+      "compressed_bytes": 13886982,
+      "compressed_sha256": "f9ce950cc6594f45c325d47a89821bf73d188eaa98636abee186e19e3b546cf2",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-05-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\acquisition_recovery_v1\\native\\2024-05-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 166072824,
+      "compressed_bytes": 23711084,
+      "decoded_sha256": "29458b3a8b9b46cd88dc6d7a9286e5274e9b9fc4ac8ad97d1c129e8f0dede9a6",
+      "compressed_sha256": "182088e6e8ac694f7ba6114dbb263302d59adae12bb25a5378a4f28dff9222c3",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-05-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-05-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 117081613,
+      "compressed_bytes": 16543437,
+      "compressed_sha256": "138b7396905318b629f3697cc826903430c26298c633cbaaa486519dc8e915b5",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-05-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-05-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 204661788,
+      "compressed_bytes": 29808383,
+      "compressed_sha256": "bec305681d9be8daeccdcb4e695061128c66cc929413485e2d77b538911aebda",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-06-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-06-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 80677550,
+      "compressed_bytes": 11338805,
+      "compressed_sha256": "a4284184f1dbe06d07b4f96df431ca108a0d4d82b565a958fc56307c303dd309",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-06-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-06-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 74351827,
+      "compressed_bytes": 10335075,
+      "compressed_sha256": "6c9bf172ae8ccdbb97240feef34244f9a4eebb0b1eecb1ebf2d61340f5e90c63",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-06-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-06-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-06-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 103151223,
+      "compressed_bytes": 14191581,
+      "decoded_sha256": "8c1a9952ad8f9efe03f52aba04a4ce56dd9932eb5b7e1c9f16df71b0712b2f38",
+      "compressed_sha256": "d866c36b5ec1021bdd1509d0e60ebd8b3a0dd69bb56d56c1fc6fd4acadb6b5d0",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-06-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-06-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 73936846,
+      "compressed_bytes": 10200623,
+      "compressed_sha256": "240202a354f4e613d5df9ad097ca86a3e3d33e1a001ec5dfd17cc35aac55a423",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-06-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-06-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 82404997,
+      "compressed_bytes": 11381895,
+      "compressed_sha256": "6b3b9f297a4edf6d5369a1ebe9dc391128cfbb2294ca235317f2a10d523ca6fe",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-07-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-07-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 75088132,
+      "compressed_bytes": 10479726,
+      "compressed_sha256": "2b732b93357ca68c778368a3b3643f23e4a546ca9aac847694b04679e3271a3b",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-07-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-07-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 54348862,
+      "compressed_bytes": 7667679,
+      "compressed_sha256": "95edaf11605ced4361617cafe68413bae8ab57c8dbf9dcd49b179b1035d640e6",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-07-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-07-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-07-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 80262484,
+      "compressed_bytes": 11202903,
+      "decoded_sha256": "056398e78203e649227247c1e9c0054d806c1bf4bf3acdf533aab769a851bc64",
+      "compressed_sha256": "f5f29cab332a250e36ff8ac7643cbbbf2fcdc0f966fcd7eda8c001b6bf87da77",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-07-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-07-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 83948387,
+      "compressed_bytes": 11616236,
+      "compressed_sha256": "8e3055b9e439126b3802264425b74b4ebeea31a8a99f17c42615ea9c029902aa",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-07-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-07-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 86424533,
+      "compressed_bytes": 11942233,
+      "compressed_sha256": "93cb320d5ad6a46c8585619e6e7ce92e40fb77acabcbc86c0cb8f5e6ff59582b",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-08-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-08-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 122042846,
+      "compressed_bytes": 16586489,
+      "compressed_sha256": "9a9dd75dd9577de6f1b73566d16cb65393423e1114417a6547bf8c97cb2943fe",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-08-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-08-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 89688475,
+      "compressed_bytes": 12139676,
+      "compressed_sha256": "bb5c2365e796d1fc33cd89d79588a523b309d70a4f31b21a00ba77351a7f76e8",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-08-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-08-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-08-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 77597771,
+      "compressed_bytes": 10576082,
+      "decoded_sha256": "3cca9683cc417667f8c25cf243427f395deb61eec67e45c654222781d820c241",
+      "compressed_sha256": "255d9780c09ecd418b5ff5e2878f205e63c829997026a50656052a504e0d7280",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-08-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-08-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 93763977,
+      "compressed_bytes": 12680971,
+      "compressed_sha256": "a295a7354a8274124da2f5279ad504dfb4babd40cd7fbe029eda59db6bbd7fd2",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-08-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-08-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 142793330,
+      "compressed_bytes": 19446266,
+      "compressed_sha256": "1a012968b6307993fc0450bbaf5513b6d17a47473d13ff5ddf88e61d7b422e79",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-09-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-09-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 68832060,
+      "compressed_bytes": 9255305,
+      "compressed_sha256": "27f6976ebef1c4c3cf8a77cd73d88a033e94a1c7657da323db773fa6fc82f323",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-09-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-09-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 107580084,
+      "compressed_bytes": 14554538,
+      "compressed_sha256": "b7524e4a73bc9dc8af37ce6f99622a16cd639030e4dfcdb1ed5d7a404b4257fa",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-09-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-09-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-09-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 64247196,
+      "compressed_bytes": 8767306,
+      "decoded_sha256": "8b89df6f096ea69307fcfc9ff0cfd0fcfe5311a62e60d19e4c5e6bb71117075b",
+      "compressed_sha256": "da986a0a5c4b4b10f34f7f439556c5a3bae2a30b78e1c29136bc548b72dda8c2",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-09-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-09-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 96540180,
+      "compressed_bytes": 13142062,
+      "compressed_sha256": "a637bf5b7d9ae2db3de2ad8b06e9b5665f162a7a54f9010f219eba2d05d7b467",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-09-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-09-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 80353781,
+      "compressed_bytes": 10931177,
+      "compressed_sha256": "78870163c04ca4e55281b1242c48cedb306cc1c3d225fe8bd3215c164e6c0460",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-10-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-10-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 121978461,
+      "compressed_bytes": 16779730,
+      "compressed_sha256": "561b2e0a7327a13da763cf207c457e55f41df3f27b51ac32d8a05acbb8a0cce6",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-10-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-10-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 70353037,
+      "compressed_bytes": 9680279,
+      "compressed_sha256": "69e0ec1eab9f5e716a3798960159c5f240601417edddbd15167be4aff851af3c",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-10-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-10-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-10-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 81850538,
+      "compressed_bytes": 11118860,
+      "decoded_sha256": "658276de8ccb980675459ab425c4291b726f7a5e8ab0f467387b9285951f3b22",
+      "compressed_sha256": "42c2200bdac3814d7614c458305b3491f22462e66375d1368c75de5f4d05a660",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-10-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-10-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 79428495,
+      "compressed_bytes": 10814482,
+      "compressed_sha256": "9c89b2f58da0746dad1f7478a6d1752f83ee920c32938bec19dc3bc734965e45",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-10-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-10-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 188240597,
+      "compressed_bytes": 26405158,
+      "compressed_sha256": "1277601a155b289e4a7d74b1ec1cf04982de3c2caafccf8f9a2b02e3209ef4ec",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-11-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-11-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 92782326,
+      "compressed_bytes": 12754234,
+      "compressed_sha256": "ef8759bf0a5a9a069e243492da7e4d49045f9dcc91a7bc9dd52b8a7ccdd9d801",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-11-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-11-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 66930543,
+      "compressed_bytes": 9110200,
+      "compressed_sha256": "7f7acd0381d4533a3b06a0f63a11c3bf829aa1cc404e0a562c4c02a60f8e08b5",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-11-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\native\\2024-11-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-11-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 78307347,
+      "compressed_bytes": 10989772,
+      "decoded_sha256": "3cec00e7149c45ecfd8b18f9ec7778a934f3a0a0c9fddb4c66accef3fe4135fe",
+      "compressed_sha256": "c0303d90a5620257919c7938d92da72475e68ec440942f0dea83a686361e954b",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-11-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-11-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 78386757,
+      "compressed_bytes": 10750956,
+      "compressed_sha256": "1a8209a90c091f667ace1b2109b2780a7a919b584c92ee7566eb04febaa02049",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-11-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-11-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 104438847,
+      "compressed_bytes": 14644285,
+      "compressed_sha256": "e398459eb6c8c420c35728985fcf35bc9a906102a92cbd5e010c98b7c05f849d",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 0,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-12-01_0000.ndjson.gz",
+      "params": {
+        "from": "2024-12-01",
+        "offset": 0,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 127988862,
+      "compressed_bytes": 17342957,
+      "compressed_sha256": "301f51631b7f2700869977b689758223165f016e8933132f63778dbfbe3962fc",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 360,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-12-01_0360.ndjson.gz",
+      "params": {
+        "from": "2024-12-01",
+        "offset": 360,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 100556488,
+      "compressed_bytes": 13684256,
+      "compressed_sha256": "f46370ecf2be6b773361673646f0cc53593662c4218d35c3a9dcb0a11fb1294b",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-12-01",
+      "path": "research_scout\\wide_tick_hft_20260930\\acquisition_recovery_v1\\native\\2024-12-01_09.ndjson.gz",
+      "complete": true,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 540,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}, {\"channel\": \"trade\"}]"
+      },
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 166768118,
+      "compressed_bytes": 22644829,
+      "decoded_sha256": "ed6dd1203c0f76d9c23abba03bb9ef282218b459b780fa9f03b31bdf540b3d38",
+      "compressed_sha256": "21eca129f4606bc68d50c526081837b0b121d027d5b56a19ffdc085ee99a8e56",
+      "offset": 540,
+      "parent_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+      "parent_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 720,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-12-01_0720.ndjson.gz",
+      "params": {
+        "from": "2024-12-01",
+        "offset": 720,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 106368389,
+      "compressed_bytes": 14251149,
+      "compressed_sha256": "1ec7ac7cfe53cafd75f93078cd7448eccaac2497b5201ae33ee1e5513e0e2a86",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 1080,
+      "venue": "perpetual",
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\native\\perpetual_2024-12-01_1080.ndjson.gz",
+      "params": {
+        "from": "2024-12-01",
+        "offset": 1080,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\"}]"
+      },
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 105012446,
+      "compressed_bytes": 14254302,
+      "compressed_sha256": "e0f29a770319defd351fb1acb6eefca2620bc2bbdc580274f955035948bfa093",
+      "parent_manifest": "research_scout\\spot_perp_clock_hft_20261002\\source_manifest.json",
+      "parent_manifest_sha256": "fc812d9f9f2aa062fac32ce4a3661a1b702fe68ab539e1a34f835d3de00f1e54"
+    }
+  ],
+  "parent_audits": [
+    {
+      "path": "research_scout\\spot_perp_hft_20261002\\independent_verification.json",
+      "sha256": "2d9e00b6a0b6115bf88a77039dad4882ff56a4d3ea32a9f6bfff42e9fdfee690"
+    },
+    {
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\independent_verification.json",
+      "sha256": "98df87d5342c4ebea113a37cdc847c66c9f1858c021823e4d9640b80b455d147"
+    }
+  ],
+  "universe": "Every recorded native alphanumeric USDT perpetual symbol, retaining multiplier prefixes. No current survivor list, cross-asset identity substitution, symbol ranking or dated-future suffixes. Every source symbol appears in every frozen decision row, including missing early quotes.",
+  "decisions": "Quarter-second decisions at minute seconds 2.00 through 58.75 inclusive (228 decisions). At d use the last full book captured strictly before d-250ms; compare with the last full book strictly before d-1.25s. Both information cutoffs are separated by one second. Warmup observation grids start at second 1.00.",
+  "quote_admission": "Each endpoint has positive finite bid/ask/sizes, bid<ask; latest capture is strictly before its cutoff and at most 250ms old at that cutoff. Transaction T and publication E are each at most 250ms old relative to that cutoff and no more than 1ms ahead of capture; T<=E+1ms. Full books retain original nanosecond capture and millisecond-derived T/E. No substitution of E for matching time.",
+  "integrity": "Increasing update IDs; exact equal-ID identical records never refresh age; conflicting/regressing IDs poison until a strictly higher ID. A rising-ID transaction clock below its previously observed high-water mark is invalid until the matching clock recovers. Clear source state/IDs/high-water marks on disconnect; endpoints separated by a disconnect cannot form a price displacement.",
+  "displacement": "Both bid and ask increase at least 30bp, or both decrease at least 30bp, between the two causal endpoints. Both endpoint full spreads <=10bp. Both sides at BOTH endpoints must display >=2000 USDT. These are event/liquidity gates, not expected or realized returns.",
+  "selection": "Keep earliest qualifying quarter-second event per symbol, then a fixed 30-second same-symbol cooldown within each source minute. Preserve every grid/rejection and all selected signals without return ranking. Events on the same market move are dependent.",
+  "flow_confirmation_before_returns": "For every selected shock, count raw same-symbol trade executions captured strictly before d-250ms with matching time in [d-1.25s,d-250ms). Require at least five unique trade IDs, at least 5000 USDT notional total and >=75% of total notional aggressing in the displacement direction. Raw m=true means sell aggressor. No aggregate/raw double counting. Duplicates, ID gaps, disconnects and inconsistent clocks must be audited; unresolved source evidence is not zero activity or zero P&L.",
+  "response_controls_if_flow_survives": "Separately freeze both follow and fade controls, fixed exit decision 15 seconds after entry ACK, planned inventory <=30s, conservative 6bp taker fee plus 1bp adverse allowance on each side. Include doubled fees/adverse, 250ms and 3s order latency, matching-clock uncertainty, fixed causal quantities, full touch depth, guarded FOK entry, unknown inventory and forced cleanup. Verify historical contract/order rules and funding-boundary clearance. Do not acquire extra future minutes or compute post-event returns before that implementation is frozen.",
+  "selection_2025_opened": false,
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "e88b21222f618e24c589dfee405ffba68deaa3ddbf7e56d7673e660a1edeff17",
+  "primary_native_source": "https://docs.tardis.dev/historical-data-details/binance-futures"
+}

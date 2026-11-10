@@ -1,0 +1,414 @@
+{
+  "sources": [
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:25.191339+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/01/01/BTCUSDT.csv.gz",
+      "date": "2024-01-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 20106,
+      "sha256": "b1acbb349ce22dbb082e954d4cb5195f65b0e006a864c87c150071f8f9a5ad41",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 1206,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "buy": 920,
+        "sell": 286
+      },
+      "reported_notional_quantiles": {
+        "0.5": 978.8923849999999,
+        "0.9": 9768.31362,
+        "0.99": 39032.79638000001,
+        "1.0": 92512.9722
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:25.835531+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/02/01/BTCUSDT.csv.gz",
+      "date": "2024-02-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 19396,
+      "sha256": "55644c942dd2042dd8d3a707d4ac2db770a864fae1cea78f20ea04073db03aa7",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 1169,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "sell": 590,
+        "buy": 579
+      },
+      "reported_notional_quantiles": {
+        "0.5": 1004.71704,
+        "0.9": 9229.482408000002,
+        "0.99": 42364.666513599914,
+        "1.0": 77847.2145
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:26.502546+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/03/01/BTCUSDT.csv.gz",
+      "date": "2024-03-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 33310,
+      "sha256": "1d3cffe952f15c8735941e26b76f3957eefc930fddcd3e0b993991532b93ebc9",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 2010,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "buy": 1323,
+        "sell": 687
+      },
+      "reported_notional_quantiles": {
+        "0.5": 937.736175,
+        "0.9": 9952.885602000006,
+        "0.99": 42907.69676960008,
+        "1.0": 116540.83485
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:27.070056+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/04/01/BTCUSDT.csv.gz",
+      "date": "2024-04-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 25456,
+      "sha256": "8acca79ed4f97dee6f69eb6723ee464fd3d82d57cc35609c4478ec2ed9b99e32",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 1557,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "sell": 884,
+        "buy": 673
+      },
+      "reported_notional_quantiles": {
+        "0.5": 1230.45552,
+        "0.9": 11610.933764000005,
+        "0.99": 50289.7651784,
+        "1.0": 122747.80635
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:27.698546+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/05/01/BTCUSDT.csv.gz",
+      "date": "2024-05-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 46185,
+      "sha256": "3f1b855e3ad38a9254cc7af7de0399c374dc0b30e1727ea8932b884ff996a60c",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 2850,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "sell": 1591,
+        "buy": 1259
+      },
+      "reported_notional_quantiles": {
+        "0.5": 1008.4847950000001,
+        "0.9": 7826.527757999999,
+        "0.99": 32836.36369849997,
+        "1.0": 390197.19654
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:28.321257+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/06/01/BTCUSDT.csv.gz",
+      "date": "2024-06-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 3445,
+      "sha256": "fab31d23e5d2a0b95e49ed4959e3937a61efd7641f39ffe19871c65169c06fd5",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 201,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "buy": 107,
+        "sell": 94
+      },
+      "reported_notional_quantiles": {
+        "0.5": 747.92058,
+        "0.9": 5169.5732,
+        "0.99": 22409.03224,
+        "1.0": 75730.33731999999
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:29.021072+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/07/01/BTCUSDT.csv.gz",
+      "date": "2024-07-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 14021,
+      "sha256": "ae5d38afe03fb231020656b507111aacaa2300dcf4042b6326cd3749b585a213",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 854,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "sell": 458,
+        "buy": 396
+      },
+      "reported_notional_quantiles": {
+        "0.5": 1190.576385,
+        "0.9": 12012.643269,
+        "0.99": 59758.41515700014,
+        "1.0": 195218.32995
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:29.669755+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/08/01/BTCUSDT.csv.gz",
+      "date": "2024-08-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 32792,
+      "sha256": "17ff8b8116648e85ab0e1244c90973666deb7ccba48d46190b08676b97c6f095",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 2030,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "sell": 1233,
+        "buy": 797
+      },
+      "reported_notional_quantiles": {
+        "0.5": 1105.0205700000001,
+        "0.9": 11493.308859000017,
+        "0.99": 50721.97312940001,
+        "1.0": 193998.23156
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:30.275739+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/09/01/BTCUSDT.csv.gz",
+      "date": "2024-09-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 20026,
+      "sha256": "efd289a08e5c53a4e6a388f015e077f778c6b50ca0c389b9025d058f05c24b7e",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 1232,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "sell": 828,
+        "buy": 404
+      },
+      "reported_notional_quantiles": {
+        "0.5": 811.3938700000001,
+        "0.9": 8125.200195000004,
+        "0.99": 38581.238298500044,
+        "1.0": 2258358.44564
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:30.963339+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/10/01/BTCUSDT.csv.gz",
+      "date": "2024-10-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 34534,
+      "sha256": "da8b40c2a17eb9fbd7d1418907fc853384165e522c250ca078f26125cb19562d",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 2124,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "sell": 1357,
+        "buy": 767
+      },
+      "reported_notional_quantiles": {
+        "0.5": 959.26963,
+        "0.9": 9741.626763,
+        "0.99": 49317.6196212,
+        "1.0": 599622.06723
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:31.600353+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/11/01/BTCUSDT.csv.gz",
+      "date": "2024-11-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 30601,
+      "sha256": "c27cc66ee754b98d158a0d2fe2117d126150cf9ee70b1471f22b6ae367a333cb",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 1881,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "sell": 1011,
+        "buy": 870
+      },
+      "reported_notional_quantiles": {
+        "0.5": 1032.8709,
+        "0.9": 12051.314159999998,
+        "0.99": 49959.38717200001,
+        "1.0": 148413.3916
+      }
+    },
+    {
+      "retrieved_at_utc": "2026-09-30T14:28:32.225008+00:00",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/liquidations/2024/12/01/BTCUSDT.csv.gz",
+      "date": "2024-12-01",
+      "symbol": "BTCUSDT",
+      "kind": "liquidations",
+      "bytes": 15075,
+      "sha256": "df836c1d853bc1c96b1948cb8b6f2e13b72ab0888cb88f190f3b253156ace9bc",
+      "columns": [
+        "exchange",
+        "symbol",
+        "timestamp",
+        "local_timestamp",
+        "id",
+        "side",
+        "price",
+        "amount"
+      ],
+      "http_status": 200,
+      "authenticated": false,
+      "records": 919,
+      "capture_time_backtracks": 0,
+      "invalid_values": 0,
+      "sides": {
+        "buy": 604,
+        "sell": 315
+      },
+      "reported_notional_quantiles": {
+        "0.5": 1049.66796,
+        "0.9": 9884.790300000008,
+        "0.99": 52114.43415559994,
+        "1.0": 509891.45965
+      }
+    }
+  ],
+  "failures": [],
+  "future_prices_inspected": false
+}

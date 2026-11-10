@@ -1,0 +1,580 @@
+{
+  "files": [
+    {
+      "date": "2024-02-01",
+      "hour": 8,
+      "symbols": [
+        "10000WENUSDT",
+        "WSMUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-02-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"10000WENUSDT\", \"WSMUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"10000WENUSDT\", \"WSMUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-02-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 461413,
+      "compressed_bytes": 69742,
+      "decoded_sha256": "60a66e7c38e0407300f53c88dc3ddf2c261d01f183467dae8a135cc00d5dd01a",
+      "compressed_sha256": "975720dcb8ff504001aedc0a5e7e788fbad89094fbbfcdbca0419d718f36263d"
+    },
+    {
+      "date": "2024-01-01",
+      "hour": 16,
+      "symbols": [
+        "ONTUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-01-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"ONTUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"ONTUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-01-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 433618,
+      "compressed_bytes": 63388,
+      "decoded_sha256": "3ff844f091e41b4a2e54970277462feb8066bce280d2af1bed2bdc6ad9020053",
+      "compressed_sha256": "bbf7bf35f1ca9fbf5d281c8a6eeeec08b9de692060149d8035911e896f55ef0a"
+    },
+    {
+      "date": "2024-01-01",
+      "hour": 8,
+      "symbols": [
+        "MULTIUSDT",
+        "ONTUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-01-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"MULTIUSDT\", \"ONTUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"MULTIUSDT\", \"ONTUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-01-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 761522,
+      "compressed_bytes": 114189,
+      "decoded_sha256": "4772c55539c1e67912948437fd9a7ac0ce6a1d87838d36b941f6b95d93e60b6d",
+      "compressed_sha256": "2f81fc3957a48d28962c5167b3cd4a66281cfc4270a43ed8f9ce1291fd3b5f1e"
+    },
+    {
+      "date": "2024-03-01",
+      "hour": 8,
+      "symbols": [
+        "1000TURBOUSDT",
+        "AXLUSDT",
+        "METISUSDT",
+        "MULTIUSDT",
+        "TAOUSDT",
+        "WIFUSDT",
+        "XRDUSDT",
+        "YFIIUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-03-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"1000TURBOUSDT\", \"AXLUSDT\", \"METISUSDT\", \"MULTIUSDT\", \"TAOUSDT\", \"WIFUSDT\", \"XRDUSDT\", \"YFIIUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"1000TURBOUSDT\", \"AXLUSDT\", \"METISUSDT\", \"MULTIUSDT\", \"TAOUSDT\", \"WIFUSDT\", \"XRDUSDT\", \"YFIIUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-03-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 2720625,
+      "compressed_bytes": 454699,
+      "decoded_sha256": "a77f9d3ff2637b0dacef11b2076017d56b84170a20060f40467d9a907317dbdc",
+      "compressed_sha256": "2f3b1bdd51919afdad6177f7c6e5f336f0b62116bce977f5faa7aed4a5a8bf7c"
+    },
+    {
+      "date": "2024-02-01",
+      "hour": 16,
+      "symbols": [
+        "1000BTTUSDT",
+        "CEEKUSDT",
+        "SILLYUSDT",
+        "WSMUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-02-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"1000BTTUSDT\", \"CEEKUSDT\", \"SILLYUSDT\", \"WSMUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"1000BTTUSDT\", \"CEEKUSDT\", \"SILLYUSDT\", \"WSMUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-02-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 362241,
+      "compressed_bytes": 55914,
+      "decoded_sha256": "87839dd4d6bd92591bfb014238a88655d0ce15011d8713d19c893898648a42d5",
+      "compressed_sha256": "d92996ab0daf6dadcc0b70701234ea4a6ba13817283d200ed06c004bf0799904"
+    },
+    {
+      "date": "2024-03-01",
+      "hour": 16,
+      "symbols": [
+        "1000TURBOUSDT",
+        "AIUSDT",
+        "AXLUSDT",
+        "MULTIUSDT",
+        "OGUSDT",
+        "PAXGUSDT",
+        "TAOUSDT",
+        "WIFUSDT",
+        "YFIIUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-03-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"1000TURBOUSDT\", \"AIUSDT\", \"AXLUSDT\", \"MULTIUSDT\", \"OGUSDT\", \"PAXGUSDT\", \"TAOUSDT\", \"WIFUSDT\", \"YFIIUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"1000TURBOUSDT\", \"AIUSDT\", \"AXLUSDT\", \"MULTIUSDT\", \"OGUSDT\", \"PAXGUSDT\", \"TAOUSDT\", \"WIFUSDT\", \"YFIIUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-03-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 3205257,
+      "compressed_bytes": 543114,
+      "decoded_sha256": "66916cb818b01469fe11b0f3ad1a85d4683404aa2aeab61cc6e84c0dd8e525ad",
+      "compressed_sha256": "8c13bfb94dd147a32abfabaf02d9a3ef159cbdbf3c3402d7d62df90c71a2a891"
+    },
+    {
+      "date": "2024-04-01",
+      "hour": 8,
+      "symbols": [
+        "ORNUSDT",
+        "POPCATUSDT",
+        "TAOUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-04-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"ORNUSDT\", \"POPCATUSDT\", \"TAOUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"ORNUSDT\", \"POPCATUSDT\", \"TAOUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-04-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 638233,
+      "compressed_bytes": 102162,
+      "decoded_sha256": "bee2a082d622d3a3f8e9199a15006fe2bd91ae131fce0f0636e8289f793e00af",
+      "compressed_sha256": "da3b99b10a5adad72078d18ab513924d987a4154e923286ee24f47fda9fd9d3d"
+    },
+    {
+      "date": "2024-04-01",
+      "hour": 16,
+      "symbols": [
+        "AKROUSDT",
+        "DEGENUSDT",
+        "POPCATUSDT",
+        "YFIIUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-04-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"AKROUSDT\", \"DEGENUSDT\", \"POPCATUSDT\", \"YFIIUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"AKROUSDT\", \"DEGENUSDT\", \"POPCATUSDT\", \"YFIIUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-04-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 1121734,
+      "compressed_bytes": 176182,
+      "decoded_sha256": "87a189f43d643dd730252f8d5c244e1fa05d1c7e2f83475012008068aef9e1e1",
+      "compressed_sha256": "5b164b67d3cf45dcfa5bf9d12b0916223cb3951e6f436034b6fe8744945e316e"
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 8,
+      "symbols": [
+        "CEEKUSDT",
+        "COVALUSDT",
+        "CVCUSDT",
+        "STEEMUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"CEEKUSDT\", \"COVALUSDT\", \"CVCUSDT\", \"STEEMUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"CEEKUSDT\", \"COVALUSDT\", \"CVCUSDT\", \"STEEMUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-05-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 1371673,
+      "compressed_bytes": 220863,
+      "decoded_sha256": "00c6c124121a402c73a43fa358c3a58dccfbcc40d631e14a19ae696f74d5b1b2",
+      "compressed_sha256": "25990028bfeadf8590f514c0b22835adcab2e35fb6e79d0150c228237e58d797"
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 16,
+      "symbols": [
+        "AEVOUSDT",
+        "CEEKUSDT",
+        "COVALUSDT",
+        "DAOUSDT",
+        "FLRUSDT",
+        "MTLUSDT",
+        "SAFEUSDT",
+        "STEEMUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"AEVOUSDT\", \"CEEKUSDT\", \"COVALUSDT\", \"DAOUSDT\", \"FLRUSDT\", \"MTLUSDT\", \"SAFEUSDT\", \"STEEMUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"AEVOUSDT\", \"CEEKUSDT\", \"COVALUSDT\", \"DAOUSDT\", \"FLRUSDT\", \"MTLUSDT\", \"SAFEUSDT\", \"STEEMUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-05-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 2496595,
+      "compressed_bytes": 413669,
+      "decoded_sha256": "ab5229b9ae54ab3915e9dbf86057053487f63327c7cb4b9c1a6629abd89f776d",
+      "compressed_sha256": "2741d7cd58b2320263836baecc906191f307255a3087ef8c4783e6aa452470a5"
+    },
+    {
+      "date": "2024-06-01",
+      "hour": 8,
+      "symbols": [
+        "ALICEUSDT",
+        "BEAMUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-06-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"ALICEUSDT\", \"BEAMUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"ALICEUSDT\", \"BEAMUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-06-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 846511,
+      "compressed_bytes": 128660,
+      "decoded_sha256": "1adf1e6cca19a25dedd968c5d4ea4fa6d768675947399304ef83aa7eedd838a4",
+      "compressed_sha256": "aea3c27d75389640a967fcdeee1cab9117c63cc70124e76d768b81fe4a3a6c2b"
+    },
+    {
+      "date": "2024-07-01",
+      "hour": 8,
+      "symbols": [
+        "MBLUSDT",
+        "PHAUSDT",
+        "SNTUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-07-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"MBLUSDT\", \"PHAUSDT\", \"SNTUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"MBLUSDT\", \"PHAUSDT\", \"SNTUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-07-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 468530,
+      "compressed_bytes": 75562,
+      "decoded_sha256": "507c696804856e1deefbbdb10931eb1b08c96988add12149a92be441f87b6cdb",
+      "compressed_sha256": "134243f3f02c705c27fc5c8f24b4ade87a926b93e00c48a66e178d475d49ef1d"
+    },
+    {
+      "date": "2024-08-01",
+      "hour": 8,
+      "symbols": [
+        "DEXEUSDT",
+        "JSTUSDT",
+        "L3USDT",
+        "XEMUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-08-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"DEXEUSDT\", \"JSTUSDT\", \"L3USDT\", \"XEMUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"DEXEUSDT\", \"JSTUSDT\", \"L3USDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-08-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 772040,
+      "compressed_bytes": 124416,
+      "decoded_sha256": "30eb88b8597879de3748c11e4119ad5a0cddb7a152a482a662e0715493997207",
+      "compressed_sha256": "30b5270eea2470706fabf284aac8d2ea64314b3e704f67025ff089ed84772c9f"
+    },
+    {
+      "date": "2024-07-01",
+      "hour": 16,
+      "symbols": [
+        "BALUSDT",
+        "LFTUSDT",
+        "MBLUSDT",
+        "PHAUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-07-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"BALUSDT\", \"LFTUSDT\", \"MBLUSDT\", \"PHAUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"BALUSDT\", \"LFTUSDT\", \"MBLUSDT\", \"PHAUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-07-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 1422835,
+      "compressed_bytes": 230932,
+      "decoded_sha256": "e047b2999ed81de2ed3f89fd871bf286f5b3e01d1b2be918a22e53aaf19f30cd",
+      "compressed_sha256": "701828998bd361144b2276a6ab50cf60973e0f4b16a40fcc0df942450a620132"
+    },
+    {
+      "date": "2024-08-01",
+      "hour": 16,
+      "symbols": [
+        "DEXEUSDT",
+        "DOP1USDT",
+        "L3USDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-08-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"DEXEUSDT\", \"DOP1USDT\", \"L3USDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"DEXEUSDT\", \"DOP1USDT\", \"L3USDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-08-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 1414701,
+      "compressed_bytes": 230065,
+      "decoded_sha256": "42e77be1ab485d736bbf49402912c352e03c96b3876167fe8601765f225d3474",
+      "compressed_sha256": "1ab98aec83d3e16531a01611e5c510f6ee69431c016a1f6d0e6f0835ed6dfd26"
+    },
+    {
+      "date": "2024-09-01",
+      "hour": 16,
+      "symbols": [
+        "CLOUDUSDT",
+        "MAPOUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-09-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"CLOUDUSDT\", \"MAPOUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"CLOUDUSDT\", \"MAPOUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-09-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 442765,
+      "compressed_bytes": 68243,
+      "decoded_sha256": "f692e64623e2a9c5a30ea2d179894fff2603f9a98c00f5cc2ae097baefb9531a",
+      "compressed_sha256": "f7d13265b5688627d4778527550619b41244ff1f0afa0e42b66cd1ee6cfa75e7"
+    },
+    {
+      "date": "2024-10-01",
+      "hour": 8,
+      "symbols": [
+        "ALEOUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-10-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"ALEOUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"ALEOUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-10-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 529020,
+      "compressed_bytes": 80430,
+      "decoded_sha256": "b4d38c90dc5896cdc1e741b5fc75fc9f7365ddbe9b78d35c3b01854dab6a8e52",
+      "compressed_sha256": "3f5d6db4c38bcfd3fcf7e877234c33b7207b58a55203509dd6629a4a1cf40e55"
+    },
+    {
+      "date": "2024-09-01",
+      "hour": 8,
+      "symbols": [
+        "ATHUSDT",
+        "CLOUDUSDT",
+        "STMXUSDT",
+        "SUNUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-09-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"ATHUSDT\", \"CLOUDUSDT\", \"STMXUSDT\", \"SUNUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"ATHUSDT\", \"CLOUDUSDT\", \"STMXUSDT\", \"SUNUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-09-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 1260523,
+      "compressed_bytes": 195934,
+      "decoded_sha256": "ddbc1619ce1604cf9bbacac314887ca8d95570a72de095c70bae8e1495dcf08f",
+      "compressed_sha256": "4204c9a1af0c4b05a54ab9e84ef915aa0a814b6fb37ee1d4be60602642183037"
+    },
+    {
+      "date": "2024-10-01",
+      "hour": 16,
+      "symbols": [
+        "ORBSUSDT",
+        "SNTUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-10-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"ORBSUSDT\", \"SNTUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"ORBSUSDT\", \"SNTUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-10-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 1094205,
+      "compressed_bytes": 164851,
+      "decoded_sha256": "9ec3758e3ed7e4ebc51a30fc8fb7bcb7e287aed2a797bf2326b8abfd9d4eb839",
+      "compressed_sha256": "54650ac594271d4a8288719fe52502fec4f0ced0e318c488fd56391f393bba4f"
+    },
+    {
+      "date": "2024-11-01",
+      "hour": 16,
+      "symbols": [
+        "SPXUSDT",
+        "XCNUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-11-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"SPXUSDT\", \"XCNUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"SPXUSDT\", \"XCNUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-11-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 536713,
+      "compressed_bytes": 80995,
+      "decoded_sha256": "281fe064c4899a62b73f90b78aa713261e840b052a42eb726a9e4d12ec7cb52f",
+      "compressed_sha256": "8f9805b67993d79d85c5f41ffb58b8ab78ef0b9641b9c73dff9cb6c9e806ba8a"
+    },
+    {
+      "date": "2024-11-01",
+      "hour": 8,
+      "symbols": [
+        "OGUSDT",
+        "SPXUSDT",
+        "XCNUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-11-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"OGUSDT\", \"SPXUSDT\", \"XCNUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"OGUSDT\", \"SPXUSDT\", \"XCNUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-11-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 1055402,
+      "compressed_bytes": 169901,
+      "decoded_sha256": "a9a21e261ac36bd6154b3a8fdc1f692200e49bc2bfb757c195149fe847df5fae",
+      "compressed_sha256": "9838b5cfc9f577211e6e7b3973fdd7acf4e5a3d71cd981997397a608e9643d9b"
+    },
+    {
+      "date": "2024-12-01",
+      "hour": 8,
+      "symbols": [
+        "GFTUSDT",
+        "ORCAUSDT",
+        "RENUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 479,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 479,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"GFTUSDT\", \"ORCAUSDT\", \"RENUSDT\", \"XEMUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"GFTUSDT\", \"ORCAUSDT\", \"RENUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-12-01_8.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 1878702,
+      "compressed_bytes": 303877,
+      "decoded_sha256": "6398a308f0187427404911035085bcc8640a07f4d6e7cbd19104c6ba5c8cf8ab",
+      "compressed_sha256": "1aabf4e329866eb6adda251c90e63afbbc21f22960fa1335d9dd063649abda20"
+    },
+    {
+      "date": "2024-12-01",
+      "hour": 16,
+      "symbols": [
+        "1000BTTUSDT",
+        "1000MUMUUSDT",
+        "AEROUSDT",
+        "BILLYUSDT",
+        "GFTUSDT",
+        "GLMRUSDT",
+        "GNOUSDT",
+        "MOBILEUSDT",
+        "ORCAUSDT",
+        "XCHUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 959,
+      "slice_minutes": 2,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 959,
+        "sliceSize": 2,
+        "filters": "[{\"channel\": \"tickers\", \"symbols\": [\"1000BTTUSDT\", \"1000MUMUUSDT\", \"AEROUSDT\", \"BILLYUSDT\", \"GFTUSDT\", \"GLMRUSDT\", \"GNOUSDT\", \"MOBILEUSDT\", \"ORCAUSDT\", \"XCHUSDT\", \"XEMUSDT\"]}, {\"channel\": \"orderbook.1\", \"symbols\": [\"1000BTTUSDT\", \"1000MUMUUSDT\", \"AEROUSDT\", \"BILLYUSDT\", \"GFTUSDT\", \"GLMRUSDT\", \"GNOUSDT\", \"MOBILEUSDT\", \"ORCAUSDT\", \"XCHUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\single_funding_hft_20261002\\native\\2024-12-01_16.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "decoded_bytes": 2621604,
+      "compressed_bytes": 432642,
+      "decoded_sha256": "0c4ebd351aa88e40a34f1a175e95ba877fca2f570edde363c2d1f80be12af8e4",
+      "compressed_sha256": "4935898f348e1965b98f705aa41a63e26ce5ecaba8c883cb2015568d97131b3b"
+    }
+  ],
+  "expected_files": 23,
+  "complete": true,
+  "decoded_bytes": 27916462
+}

@@ -1,0 +1,20 @@
+{
+  "frozen_at_utc": "2026-10-02T22:01:51.329279+00:00",
+  "specification_sha256": "1f5691f294ae5cd09fbe152be1ed581728b373b6ab4c70c492658220c1d17d22",
+  "source_manifest_sha256": "c5990b87eb037ee865deda956029d75d3abd88f8fbfc4daaa5dd5fb2636aa8c0",
+  "quote_audit_sha256": "454295cf0d4eb386bb12b12c56e6f2ea2992d3393817f1b2e187cfd83792163b",
+  "flow_audit_sha256": "f8df2237c9854a01e7168bec73f3f6ddeba1c2887cfe88704f8a03ceab38ecd0",
+  "events_sha256": "46749007689275c57dab8e01c7487105c76851a97944dc22a942fdb22f61a29a",
+  "code_sha256": {
+    "research/perp_shock_response.py": "c6c56b015461e49bd0b448ac5fa3df4daafedf7b113c6a7ff0cfcccfa6af5234",
+    "research/spot_perp_response.py": "c4135141c1a2ba0a75f2389c897a46361955c48c47904818506a6e1d0553deba",
+    "research/futures_response_hft.py": "38ae3e092f683441e46b0dc54bf43d83c856325b23dbf5b1592051a06304b783",
+    "research/spot_perp_supply.py": "cd918561a92d5475f20e6da44c79c3c76fc295b32c9146bfa7b7f0b6bb5174b7",
+    "tests/unit/test_perp_shock_response.py": "2286ea1c0135c41b5de965ce474ad17b17c50e3c4dc93dd76822002955c67f9c",
+    "research_scout/run_market_lag_replay_20261002.py": "3074f137de5d3280ac3e16cd738d0f9cb9927dfd9e531b5189ba191eb2ae76fa"
+  },
+  "reused_focused_tests_passed": 14,
+  "new_focused_tests": 0,
+  "economic_rules": 2,
+  "scenario_cases": 12
+}

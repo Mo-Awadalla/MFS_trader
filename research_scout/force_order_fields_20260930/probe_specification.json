@@ -1,0 +1,145 @@
+{
+  "created_at_utc": "2026-09-30T15:37:48.890708+00:00",
+  "selection": "Earliest frozen large-liquidation event per symbol/date. No P&L selection. Raw-field supply admission only, not a candidate strategy.",
+  "targets": [
+    {
+      "date": "2024-07-01",
+      "minute_offset": 71,
+      "chosen_events": [
+        {
+          "symbol": "BTCUSDT",
+          "event_id": 88,
+          "received_us": 4268510613
+        }
+      ]
+    },
+    {
+      "date": "2024-08-01",
+      "minute_offset": 95,
+      "chosen_events": [
+        {
+          "symbol": "BTCUSDT",
+          "event_id": 100,
+          "received_us": 5725257374
+        }
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "minute_offset": 32,
+      "chosen_events": [
+        {
+          "symbol": "BTCUSDT",
+          "event_id": 2,
+          "received_us": 1947512263
+        }
+      ]
+    },
+    {
+      "date": "2024-10-01",
+      "minute_offset": 66,
+      "chosen_events": [
+        {
+          "symbol": "BTCUSDT",
+          "event_id": 60,
+          "received_us": 3985458599
+        }
+      ]
+    },
+    {
+      "date": "2024-11-01",
+      "minute_offset": 82,
+      "chosen_events": [
+        {
+          "symbol": "BTCUSDT",
+          "event_id": 42,
+          "received_us": 4979355318
+        }
+      ]
+    },
+    {
+      "date": "2024-12-01",
+      "minute_offset": 106,
+      "chosen_events": [
+        {
+          "symbol": "BTCUSDT",
+          "event_id": 72,
+          "received_us": 6416301069
+        }
+      ]
+    },
+    {
+      "date": "2024-07-01",
+      "minute_offset": 490,
+      "chosen_events": [
+        {
+          "symbol": "SOLUSDT",
+          "event_id": 115,
+          "received_us": 29404289588
+        }
+      ]
+    },
+    {
+      "date": "2024-08-01",
+      "minute_offset": 31,
+      "chosen_events": [
+        {
+          "symbol": "SOLUSDT",
+          "event_id": 22,
+          "received_us": 1862260938
+        }
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "minute_offset": 101,
+      "chosen_events": [
+        {
+          "symbol": "SOLUSDT",
+          "event_id": 35,
+          "received_us": 6063103762
+        }
+      ]
+    },
+    {
+      "date": "2024-10-01",
+      "minute_offset": 22,
+      "chosen_events": [
+        {
+          "symbol": "SOLUSDT",
+          "event_id": 8,
+          "received_us": 1357565220
+        }
+      ]
+    },
+    {
+      "date": "2024-11-01",
+      "minute_offset": 81,
+      "chosen_events": [
+        {
+          "symbol": "SOLUSDT",
+          "event_id": 6,
+          "received_us": 4864087686
+        }
+      ]
+    },
+    {
+      "date": "2024-12-01",
+      "minute_offset": 59,
+      "chosen_events": [
+        {
+          "symbol": "SOLUSDT",
+          "event_id": 28,
+          "received_us": 3555151731
+        }
+      ]
+    }
+  ],
+  "maximum_decoded_bytes": 12000000,
+  "authentication": "None; only documented free first-of-month API samples. No paid or authenticated fallback.",
+  "economic_boundary": "Unfilled quantity of an IOC is not an observed resting order or proof of remaining account liquidation. Status and quantity availability are assessed without asserting that mechanism.",
+  "sources": [
+    "https://docs.tardis.dev/api/http-api-reference.md",
+    "https://docs.tardis.dev/historical-data-details/binance-futures"
+  ]
+}

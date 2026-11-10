@@ -1,0 +1,390 @@
+{
+  "results": {
+    "15s": {
+      "scenarios": {
+        "base": {
+          "all": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -7.072734000000648,
+            "conditional_full_allocations": 1,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "unknown_exit_observation": 9,
+              "conditional_full_allocation": 1
+            },
+            "strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -7.072734000000648,
+            "conditional_full_allocations": 1,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 5,
+              "conditional_full_allocation": 1
+            },
+            "strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": 0.0,
+            "conditional_full_allocations": 0,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 4
+            },
+            "strategy_execution_verified": false
+          }
+        },
+        "double_fees": {
+          "all": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -9.365923000000649,
+            "conditional_full_allocations": 1,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "unknown_exit_observation": 9,
+              "conditional_full_allocation": 1
+            },
+            "strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -9.365923000000649,
+            "conditional_full_allocations": 1,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 5,
+              "conditional_full_allocation": 1
+            },
+            "strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": 0.0,
+            "conditional_full_allocations": 0,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 4
+            },
+            "strategy_execution_verified": false
+          }
+        },
+        "latency_3s": {
+          "all": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -9.979320500000819,
+            "conditional_full_allocations": 2,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "unknown_exit_observation": 8,
+              "conditional_full_allocation": 2
+            },
+            "strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -9.979320500000819,
+            "conditional_full_allocations": 2,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 4,
+              "conditional_full_allocation": 2
+            },
+            "strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": 0.0,
+            "conditional_full_allocations": 0,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 4
+            },
+            "strategy_execution_verified": false
+          }
+        },
+        "extra_slippage": {
+          "all": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -9.002279000000648,
+            "conditional_full_allocations": 1,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "unknown_exit_observation": 9,
+              "conditional_full_allocation": 1
+            },
+            "strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -9.002279000000648,
+            "conditional_full_allocations": 1,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 5,
+              "conditional_full_allocation": 1
+            },
+            "strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": 0.0,
+            "conditional_full_allocations": 0,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 4
+            },
+            "strategy_execution_verified": false
+          }
+        }
+      },
+      "advance_to_allocation_evidence": false
+    },
+    "30s": {
+      "scenarios": {
+        "base": {
+          "all": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -16.648241700000543,
+            "conditional_full_allocations": 6,
+            "without_best_three": null,
+            "positive_dates": 1,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 6,
+              "unknown_exit_observation": 4
+            },
+            "strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -23.34978010000031,
+            "conditional_full_allocations": 5,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 5,
+              "unknown_exit_observation": 1
+            },
+            "strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": 6.701538399999768,
+            "conditional_full_allocations": 1,
+            "without_best_three": null,
+            "positive_dates": 1,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 3,
+              "conditional_full_allocation": 1
+            },
+            "strategy_execution_verified": false
+          }
+        },
+        "double_fees": {
+          "all": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -30.107226400000542,
+            "conditional_full_allocations": 6,
+            "without_best_three": null,
+            "positive_dates": 1,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 6,
+              "unknown_exit_observation": 4
+            },
+            "strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -34.52151920000031,
+            "conditional_full_allocations": 5,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 5,
+              "unknown_exit_observation": 1
+            },
+            "strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": 4.414292799999768,
+            "conditional_full_allocations": 1,
+            "without_best_three": null,
+            "positive_dates": 1,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 3,
+              "conditional_full_allocation": 1
+            },
+            "strategy_execution_verified": false
+          }
+        },
+        "latency_3s": {
+          "all": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -13.271579900001928,
+            "conditional_full_allocations": 2,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "unknown_exit_observation": 8,
+              "conditional_full_allocation": 2
+            },
+            "strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -13.271579900001928,
+            "conditional_full_allocations": 2,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 4,
+              "conditional_full_allocation": 2
+            },
+            "strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": 0.0,
+            "conditional_full_allocations": 0,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 4
+            },
+            "strategy_execution_verified": false
+          }
+        },
+        "extra_slippage": {
+          "all": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -26.247498700000545,
+            "conditional_full_allocations": 6,
+            "without_best_three": null,
+            "positive_dates": 1,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 6,
+              "unknown_exit_observation": 4
+            },
+            "strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": -31.05782110000031,
+            "conditional_full_allocations": 5,
+            "without_best_three": null,
+            "positive_dates": 0,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 5,
+              "unknown_exit_observation": 1
+            },
+            "strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "conditional_net": null,
+            "conditional_closed_subtotal": 4.810322399999768,
+            "conditional_full_allocations": 1,
+            "without_best_three": null,
+            "positive_dates": 1,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_exit_observation": 3,
+              "conditional_full_allocation": 1
+            },
+            "strategy_execution_verified": false
+          }
+        }
+      },
+      "advance_to_allocation_evidence": false
+    }
+  },
+  "advance_to_allocation_evidence": [],
+  "extraction": {
+    "cash_etf_tbbo_2023-03-28_2026-07-27.dbn.partial.dbn.zst": {
+      "rows_decoded": 14400000,
+      "warnings": [
+        "unclosed file <_io.BufferedReader name='C:\\\\Hazem\\\\quant_project\\\\untitled_project\\\\external_artifacts\\\\databento_cash_etf_budget_v1\\\\EQUS.MINI\\\\tbbo\\\\cash_etf_tbbo_2023-03-28_2026-07-27.dbn.partial.dbn.zst'>"
+      ]
+    },
+    "cash_etf_tbbo_tail_2024-10-03_2026-07-27.dbn.zst": {
+      "rows_decoded": 8000000,
+      "warnings": [
+        "unclosed file <_io.BufferedReader name='C:\\\\Hazem\\\\quant_project\\\\untitled_project\\\\external_artifacts\\\\databento_cash_etf_budget_v1\\\\EQUS.MINI\\\\tbbo\\\\cash_etf_tbbo_tail_2024-10-03_2026-07-27.dbn.zst'>"
+      ]
+    }
+  },
+  "evidence_sha256": {
+    "15s_base_ledger.parquet": "c63da85908b5c1415975ab4bba8ed9c1c3a2bec5d7e3164cc285cc7df5827f67",
+    "15s_double_fees_ledger.parquet": "a211562cfb6a032423ae252393815e331e7367a3935f0d5da87c1e12b381aa79",
+    "15s_extra_slippage_ledger.parquet": "69fd318b20ca64f95a435e24d9e47f832a50010cb87731f2eae93e4175bd55b8",
+    "15s_latency_3s_ledger.parquet": "32219fcf3302593000c355c8e51396970ebfb514dae9dc7bbe5ebdb1219edbd9",
+    "30s_base_ledger.parquet": "b1dc265fdaacf0351ed596cd4fbb933418f5ecc35129a4b2121c71a27f8c2535",
+    "30s_double_fees_ledger.parquet": "3575850cf9a165f1951492436b8e8057479aca96833368390a80178c22752831",
+    "30s_extra_slippage_ledger.parquet": "1b1b75dd94fb3c8a58f6b177bb56e7f66e0e9f8b468edc754439f3b22be5b960",
+    "30s_latency_3s_ledger.parquet": "ad727d74f6618eae48f5ce030d9d7185d7c5961786e00e7c0a34ec970707f65a",
+    "auction_references.parquet": "b807e65f4d5d73cb046528a0134171643cdb9e4d4aaf20605faff5b67945805f",
+    "exit_references.parquet": "1408a971f898d0d0edd2b4272d011de9c4b70d082c5732002eca90316b0b90c8"
+  },
+  "strategy_execution_verified": false,
+  "reliable_edge_established": false
+}

@@ -1,0 +1,31 @@
+POST-FUNDING PRICE RESPONSE HFT — DEVELOPMENT DOES NOT ESTABLISH AN EDGE
+
+Neither rule qualifies as a candidate. Every aggregate scenario is UNKNOWN because at least one submitted position has unresolved execution or data continuity. Known-component P&L is not portfolio P&L.
+
+Frozen rules: follow receiving-side position unwind, or trade its reversal, using only the pre-settlement quoted funding-rate sign. Enter at target +10 seconds, exit decision at +25 seconds; one-second order/acknowledgement delay in base and three seconds in stress. Planned inventory duration is 15 seconds plus clock uncertainty. Require a native nextFundingTime update beyond target +35 seconds before entering. No funding payment is credited or assumed.
+
+Sources: 23 complete two-minute windows, 125,203 native messages (90,662 books and 34,541 tickers), 13 disconnects, and 90 predeclared events across 12 dates. Both independent source clocks and disconnect resets are preserved.
+
+Only three events pass the frozen entry gates: STEEMUSDT on May 1 at 08:00 UTC; GFTUSDT and XEMUSDT on December 1 at 16:00 UTC. The remaining 87 are retained: 58 fail displayed size, eight exceed the spread gate, 17 lack observed funding-cycle advancement, one lacks a fresh ticker and three lack a valid book.
+
+SCENARIO RESULTS (USDT; known components only)
+unwind_continuation / base: -1.12014 to -1.12014; 1 priced, 2 unknown; full aggregate UNKNOWN.
+unwind_continuation / double_fees: -1.36026 to -1.36026; 1 priced, 2 unknown; full aggregate UNKNOWN.
+unwind_continuation / latency_3s: -1.44102889 to -1.44102889; 2 priced, 1 unknown; full aggregate UNKNOWN.
+unwind_continuation / double_adverse: -1.16016 to -1.16016; 1 priced, 2 unknown; full aggregate UNKNOWN.
+unwind_continuation / clock_100ms: 0 to 0; 0 priced, 3 unknown; full aggregate UNKNOWN.
+unwind_reversal / base: -0.00086089 to -0.00086089; 2 priced, 1 unknown; full aggregate UNKNOWN.
+unwind_reversal / double_fees: -0.42168451 to -0.42168451; 2 priced, 1 unknown; full aggregate UNKNOWN.
+unwind_reversal / latency_3s: -0.17104782 to -0.00102889; 2 priced, 1 unknown; full aggregate UNKNOWN.
+unwind_reversal / double_adverse: -0.07099816 to -0.07099816; 2 priced, 1 unknown; full aggregate UNKNOWN.
+unwind_reversal / clock_100ms: -0.00086089 to 0.05909711; 2 priced, 1 unknown; full aggregate UNKNOWN.
+
+Base continuation: one priced losing event, -1.12014 USDT, with two unknowns. Base reversal: one positive and one negative priced event, net -0.00086089 USDT, with one unknown. The small positive upper bound in the reversal clock stress is only a partial component and cannot establish portfolio profitability. STEEM has a post-submission ticker continuity gap; further unknowns arise from physical book depth. None is discarded or booked as zero.
+
+Validation: 11 focused execution tests and Ruff passed before P&L. Independent reconstruction then checked all 125,203 native messages, 90 signal plans, 900 ledger rows, 15 submitted unknown outcomes, 35 physical quote paths, 15 cash rectangles and ten scenario aggregates. Maximum numeric difference was 3.21e-15. Original frozen results remain unchanged; the independent verification is a separate artifact.
+
+The payment-capture hypothesis prepared immediately before this experiment remains UNRUN: the first unauthenticated Bybit historical-funding API request returned HTTP 403 with a country-access block. No rerouting or repeated symbol requests were used. Projected funding rates were not substituted for realized payments.
+
+This is conditional historical quote execution, not private fill evidence. Exact historical contract grids and account permissions remain unverified. Actual inventory duration is unresolved for unknown exits; the 15-second figure describes the planned schedule. No statistical reliability claim is justified by three entry opportunities. The 2025 validation sample for these funding branches remains unopened.
+
+Artifacts: specification.json; replay_v1/implementation.json; replay_v1/plans.json; the ten per-rule/scenario ledgers; replay_v1/results.json; replay_v1/independent_verification.json. All original evidence is preserved.

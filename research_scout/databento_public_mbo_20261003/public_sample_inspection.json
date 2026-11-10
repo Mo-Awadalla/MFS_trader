@@ -1,0 +1,54 @@
+{
+  "inspected_at_utc": "2026-10-03T01:12:10.173088+00:00",
+  "official_link_source": "https://databento.com/tick-data",
+  "sources": [
+    {
+      "schema": "mbo",
+      "url": "https://hist.databento.com/v0/dataset/sample/download/xnas.itch/mbo?sample_type=equities",
+      "bytes_received": 65536,
+      "status": 200,
+      "headers": {
+        "content-type": "text/csv",
+        "content-disposition": "attachment; filename=\"databento_xnas.itch_mbo.csv\""
+      },
+      "reached_response_eof": false,
+      "local_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\databento_public_mbo_20261003\\mbo.prefix.csv",
+      "sha256": "4bfd8d862076470cbf50bb5222df57c841d73392170f203893eccef0eaea4e12",
+      "complete_text_lines": 518,
+      "first_lines": [
+        "ts_recv,ts_event,rtype,publisher_id,instrument_id,action,side,price,size,channel_id,order_id,flags,ts_in_delta,sequence,symbol",
+        "2025-09-16T07:05:06.677677658Z,2025-09-16T07:05:06.677514564Z,160,2,11667,R,N,,0,0,0,8,0,0,NVDA",
+        "2025-09-16T08:00:00.015462508Z,2025-09-16T08:00:00.015298471Z,160,2,11667,A,A,186.000000000,100,0,2791,128,164037,292498,NVDA",
+        "2025-09-16T08:00:00.024146585Z,2025-09-16T08:00:00.023983524Z,160,2,11667,A,B,176.850000000,200,0,5383,128,163061,293283,NVDA",
+        "2025-09-16T08:00:00.025014585Z,2025-09-16T08:00:00.024851390Z,160,2,11667,A,A,177.570000000,200,0,5707,128,163195,293353,NVDA",
+        "2025-09-16T08:00:00.041430655Z,2025-09-16T08:00:00.041266934Z,160,2,11667,A,A,183.000000000,200,0,9939,128,163721,294307,NVDA"
+      ]
+    },
+    {
+      "schema": "mbp1",
+      "url": "https://hist.databento.com/v0/dataset/sample/download/xnas.itch/mbp-1?sample_type=equities",
+      "bytes_received": 65536,
+      "status": 200,
+      "headers": {
+        "content-type": "text/csv",
+        "content-disposition": "attachment; filename=\"databento_xnas.itch_mbp_1.csv\""
+      },
+      "reached_response_eof": false,
+      "local_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\databento_public_mbo_20261003\\mbp1.prefix.csv",
+      "sha256": "fc0ba26dc1a5fd9f37051383813988b780c4a71cac5f07cdaa283a5c1e0898a0",
+      "complete_text_lines": 414,
+      "first_lines": [
+        "ts_recv,ts_event,rtype,publisher_id,instrument_id,action,side,depth,price,size,flags,ts_in_delta,sequence,bid_px_00,ask_px_00,bid_sz_00,ask_sz_00,bid_ct_00,ask_ct_00,symbol",
+        "2025-09-16T08:00:00.015462508Z,2025-09-16T08:00:00.015298471Z,1,2,11667,A,N,0,186.000000000,100,128,164037,292498,,186.000000000,0,100,0,1,NVDA",
+        "2025-09-16T08:00:00.024146585Z,2025-09-16T08:00:00.023983524Z,1,2,11667,A,B,0,176.850000000,200,128,163061,293283,176.850000000,186.000000000,200,100,1,1,NVDA",
+        "2025-09-16T08:00:00.025014585Z,2025-09-16T08:00:00.024851390Z,1,2,11667,A,A,0,177.570000000,200,128,163195,293353,176.850000000,177.570000000,200,200,1,1,NVDA",
+        "2025-09-16T08:00:00.063916344Z,2025-09-16T08:00:00.063753225Z,1,2,11667,A,B,0,176.940000000,200,128,163119,296090,176.940000000,177.570000000,200,200,1,1,NVDA",
+        "2025-09-16T08:00:00.063970052Z,2025-09-16T08:00:00.063806251Z,1,2,11667,A,A,0,177.480000000,200,128,163801,296100,176.940000000,177.480000000,200,200,1,1,NVDA"
+      ]
+    }
+  ],
+  "authentication_used": false,
+  "paid_calls": 0,
+  "account_credit_queries": 0,
+  "returns_calculated": false
+}

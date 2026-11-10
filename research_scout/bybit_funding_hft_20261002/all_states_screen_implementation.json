@@ -1,0 +1,16 @@
+{
+  "created_at_utc": "2026-10-02T18:37:44.502198+00:00",
+  "native_states_sha256": "9604af14e269deac43708fe24d86b524a1ec3279c4598edbcb5bf230677955a4",
+  "recovery_plan_sha256": "66f2460aa02f45894dface9f9d1c495911819a16baef8c6e0d9d50fa71ff85b8",
+  "code_sha256": {
+    "research_scout/screen_all_bybit_states_20261002.py": "fbe66690c171babfad03a79451a0c20bd6683f7fb724e7472dcc0b81e1584615",
+    "research/bybit_pair_screen.py": "c2a58c583b16176e0e633c2afccb6990c3e9774a3c7524eb0cd45b29ec80db50",
+    "tests/unit/test_bybit_pair_screen.py": "cca21b8d14340e00eb59b8d939898ed4ef29634d5a255e7e59ecd820fe137231",
+    "research_scout/recover_bybit_funding_20261002.py": "9ef3a708db9f9d196e6f966063a2434bc92bda2539a1d1e8fdf56fd7e381ba64",
+    "research/wide_tick_supply.py": "c9ba882e1b0c76874d804741dd61e04e406945652c7f6eaba3e63e99b488eb56"
+  },
+  "universe": "Exactly the original 8,857 native symbol/windows. Do not add CSV-only symbols or discard prior rejections.",
+  "reconciliation": "Require original native sequence and publication freshness, fresh complete normalized state, and agreement with every known native funding rate, mark and funding time. Missing native fields may use only the last strictly earlier recovered full state. Field persistence/disconnect provenance remains to be audited before execution.",
+  "thresholds": "Unchanged absolute Bybit rate >=14bp; same-time exact Binance counterpart; matched payment difference >28bp before spreads. No P&L here.",
+  "strategy_pnl_tested": false
+}

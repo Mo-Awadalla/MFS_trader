@@ -1,0 +1,26 @@
+{
+  "created_at_utc": "2026-09-30T14:59:05.017520+00:00",
+  "dates": [
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "hypothesis": "BTCUSDT perpetual basis differences between Binance and Bybit may offer a sufficiently large initial price advantage to fund a four-fill convergence trade.",
+  "fees": "6bp per fill at both venues, without VIP discounts or rebates; 1bp adverse execution allowance per fill. Four fills imply an approximate 28bp round-trip cost floor on one-leg notional, before exit spread and residual basis.",
+  "fee_sources": [
+    "https://www.bybit.com/en/help-center/article/Trading-Fee-Structure"
+  ],
+  "gate": "33bp opening bid-short minus ask-long gap, divided by mean leg price. Five-bp cushion is additional to the estimated 28bp floor.",
+  "capital": "$10000 prefunded account notionally split $5000 per venue; equal BTC amounts, max $1000 per leg, <=10% both visible entry sizes, 0.001 BTC grid, min $100 per leg.",
+  "clocks": "100ms receive-clock grid; latest observation strictly before boundary; both quotes <=250ms old; source delay -1ms..1s. Freshness sensitivities of 100ms and 1s are diagnostics, not tuned strategies.",
+  "arrival_diagnostics": "200ms/1s/3s later snapshots and 1bp per-leg collars are diagnostic only. No future availability filters the initial opportunity count.",
+  "progression": "Only an opening opportunity above the fixed gate justifies a full four-leg replay with failed-leg unwinds, funding and exit-basis risk. No P&L or reliable edge is claimed by this admission screen.",
+  "limits": "Six calendar-selected first-of-month dates; price convergence is not guaranteed. Cross-venue orders are not atomic. Provider reconstruction and capture-location differences remain; no actual fills or impact are observed.",
+  "code_sha256": {
+    "research\\cross_venue_gate.py": "6b205f4efe3282c7758df59b6903436123004416233706fd8afb4abd37bb30a4",
+    "research_scout\\run_cross_venue_gate_20260930.py": "0db2f48371ed005392be08b9d283f04a44f74c633eda1367f7a07b9d601d93a9"
+  }
+}

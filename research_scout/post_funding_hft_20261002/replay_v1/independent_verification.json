@@ -1,0 +1,24 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T19:03:21.940714+00:00",
+  "auditor_sha256": "99505095b83d165c2b51f3f7966abe615d95dba670ef9ab1a4262d10bc240b1c",
+  "results_sha256": "8c14fa83411b306e02030b02d58a2eefd42458c51e37bf115f26216891c784e4",
+  "counts": {
+    "native_messages": 125203,
+    "book_messages": 90662,
+    "ticker_messages": 34541,
+    "disconnects": 13,
+    "signal_plans_verified": 90,
+    "ledger_rows_verified": 900,
+    "submitted_unknowns_verified": 15,
+    "compatible_physical_paths_verified": 35,
+    "cash_rectangles_verified": 15,
+    "scenario_aggregates_verified": 10
+  },
+  "maximum_numeric_difference": "3.20916351176E-15",
+  "scope": "Independent raw native level-one/ticker reconstruction, all signal gates, clock/depth bounds, all submitted unknowns, Decimal cash rectangles and date/scenario totals. No production replay functions imported.",
+  "actual_execution_verified": false,
+  "historical_contract_permissions_verified": false,
+  "funding_payment_assumed": false,
+  "reliable_edge_established": false
+}

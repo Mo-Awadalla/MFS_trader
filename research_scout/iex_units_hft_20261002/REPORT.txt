@@ -1,0 +1,22 @@
+NATIVE IEX DATA ADMISSION AND VENDOR UNIT/CLOCK INVESTIGATION
+
+No reliable edge or profitable strategy is established. This work evaluates data provenance, not returns.
+
+The official free HIST index includes 2023 native exchange files. A bounded 32 MiB prefix of the first existing development date, January 11, 2023, was downloaded using explicit byte ranges. It spans the pre-open through 09:31:27.803210 ET. The decoder checked 1,092,056 complete packets with contiguous IEX sequence numbers and byte offsets, keeping event, send and exchange-PCAP capture clocks separately. The prefix ends in 114 partial decoded bytes; the full gzip checksum and full session were NOT validated. No partial packet was used. Native TOPS prices are exact 1/10000 dollars and native quote/trade quantities are shares. The pre-open directory covers IEX-listed securities only and supplied no lot record for IWM, QQQ or SPY.
+
+A 2023 Alpaca staff explanation documents round-lot quote sizes and rounding down. An exploratory comparison of symbol and exact bid/ask prices within +/-2ms of native send time associates 19,462 vendor quotes uniquely. Of those, 19,427 match floor(native shares/100) on both sides; zero match an unscaled share interpretation. Thirty-five associations disagree. Thirty-two of those place the vendor timestamp before the associated native send time, so price-only matching is not reliable identity proof. These exceptions were retained. Native trade IDs do not match the vendor trade IDs and cannot supply a firm join. The observed clocks differ: no universal vendor timestamp mapping or full historical size validation is claimed.
+
+New research will use the native source directly. Five focused decoder tests passed, including exact nanosecond preservation, explicit partial tails, corrupted block rejection, original quote units and transport message boundaries. Five additional tests passed for the separately frozen native spread/activity screen. Full independent reconstruction of the native decoder and its source decisions has not yet been performed. No order acceptance, queue priority, fill, real trading or portfolio return was inferred from these checks.
+
+Source references:
+Alpaca staff statement: https://forum.alpaca.markets/t/bid-and-ask-size-for-iex-data-is-not-as-reported-by-iex/12712
+IEX historical index: https://iextrading.com/api/1.0/hist
+IEX feed description: https://www.iex.io/products/market-data-connectivity
+IEX TOPS specification: https://www.iex.io/documents/tops-v1-66
+IEX transport specification: https://www.iex.io/documents/iex-tp-v1
+PCAPNG format: https://www.ietf.org/archive/id/draft-tuexen-opsawg-pcapng-04.html
+
+Data provided for free by IEX. By accessing or using IEX Historical Data, you agree to the IEX Historical Data Terms of Use.
+https://www.iex.io/legal/hist-data-terms
+
+Next: the separately frozen 24-date native IEX spread/activity screen at 09:31 ET. It evaluates causal displayed economics only. Instrument identity must be confirmed before economic replay; profitable fills are not presumed. Goal remains ACTIVE.
