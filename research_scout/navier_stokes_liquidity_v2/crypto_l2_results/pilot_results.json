@@ -1,0 +1,212 @@
+{
+  "created_at_utc": "2026-09-13T19:03:20.494575+00:00",
+  "status": "exploratory_single_day_not_trading_approval",
+  "source": "research_scout/navier_stokes_liquidity_v2/free_data/tardis/binance-futures/incremental_book_L2/2020-02-01/BTCUSDT.csv.gz",
+  "known_data_warning": "Tardis flags collection issues before 2020-05-14; this 2020-02-01 sample requires post-cutoff replication.",
+  "configuration": {
+    "bin_seconds": 10,
+    "levels_per_side": 25,
+    "outcome_seconds": 60
+  },
+  "panel_rows": 61,
+  "evaluation": {
+    "rows": {
+      "train": 33,
+      "validation": 11,
+      "test": 11
+    },
+    "boundaries": {
+      "train_end": "2020-02-01 00:05:20+00:00",
+      "validation_end": "2020-02-01 00:07:10+00:00"
+    },
+    "jump_threshold_bps_training_only": 8.426852974121273,
+    "models": {
+      "baseline": {
+        "validation": {
+          "average_precision": 0.25,
+          "roc_auc": 0.7,
+          "brier": 0.20741858231802748
+        },
+        "test": {
+          "average_precision": 0.3333333333333333,
+          "roc_auc": 0.8,
+          "brier": 0.18804790411266803
+        }
+      },
+      "augmented": {
+        "validation": {
+          "average_precision": 0.2,
+          "roc_auc": 0.6,
+          "brier": 0.12806310328463727
+        },
+        "test": {
+          "average_precision": 0.25,
+          "roc_auc": 0.7,
+          "brier": 0.1440705139418659
+        }
+      }
+    },
+    "test_incremental": {
+      "average_precision": -0.08333333333333331,
+      "roc_auc": -0.10000000000000009,
+      "brier_improvement": 0.04397739017080213
+    }
+  },
+  "targeted_feature_tests": {
+    "h2_velocity_norm_concentration": {
+      "feature": "u_linf_l2",
+      "spearman_rho_test": 0.4373587656750771,
+      "spearman_p_naive_not_independence_adjusted": 0.17856077880912943,
+      "high_minus_low_future_excursion_bps": 0.34245603182172113,
+      "block_bootstrap_95pct_ci": [
+        0.34245603182172113,
+        0.34245603182172113
+      ],
+      "eligible_test_blocks": 1,
+      "directionally_supported": true
+    },
+    "h4_core_contraction": {
+      "feature": "negative_core_width",
+      "spearman_rho_test": -0.30523997187739754,
+      "spearman_p_naive_not_independence_adjusted": 0.36136637559800316,
+      "high_minus_low_future_excursion_bps": null,
+      "block_bootstrap_95pct_ci": [
+        null,
+        null
+      ],
+      "eligible_test_blocks": 0,
+      "directionally_supported": false
+    },
+    "h11_h13_gradient_energy": {
+      "feature": "gradient_energy",
+      "spearman_rho_test": -0.46469368852976933,
+      "spearman_p_naive_not_independence_adjusted": 0.1498485574804417,
+      "high_minus_low_future_excursion_bps": null,
+      "block_bootstrap_95pct_ci": [
+        null,
+        null
+      ],
+      "eligible_test_blocks": 0,
+      "directionally_supported": false
+    },
+    "h14_curvature_energy": {
+      "feature": "curvature_energy",
+      "spearman_rho_test": -0.2870166899742693,
+      "spearman_p_naive_not_independence_adjusted": 0.3921358377159476,
+      "high_minus_low_future_excursion_bps": null,
+      "block_bootstrap_95pct_ci": [
+        null,
+        null
+      ],
+      "eligible_test_blocks": 0,
+      "directionally_supported": false
+    },
+    "h17_h18_quadratic_opposing_flow": {
+      "feature": "opposing_flow_stress",
+      "spearman_rho_test": 0.086560589039859,
+      "spearman_p_naive_not_independence_adjusted": 0.8002206347159756,
+      "high_minus_low_future_excursion_bps": null,
+      "block_bootstrap_95pct_ci": [
+        null,
+        null
+      ],
+      "eligible_test_blocks": 0,
+      "directionally_supported": false
+    },
+    "h18_gross_hidden_by_net": {
+      "feature": "gross_to_net_flow",
+      "spearman_rho_test": -0.2277910237891026,
+      "spearman_p_naive_not_independence_adjusted": 0.5005338307078093,
+      "high_minus_low_future_excursion_bps": -1.9214407086084941,
+      "block_bootstrap_95pct_ci": [
+        -1.9214407086084941,
+        -1.9214407086084941
+      ],
+      "eligible_test_blocks": 1,
+      "directionally_supported": false
+    },
+    "h23_spectral_migration": {
+      "feature": "spectral_cascade_ratio",
+      "spearman_rho_test": 0.11845133237033335,
+      "spearman_p_naive_not_independence_adjusted": 0.7286875040111362,
+      "high_minus_low_future_excursion_bps": 2.787516094464239,
+      "block_bootstrap_95pct_ci": [
+        2.787516094464239,
+        2.787516094464239
+      ],
+      "eligible_test_blocks": 1,
+      "directionally_supported": true
+    },
+    "h24_event_acceleration": {
+      "feature": "inverse_interevent_rate",
+      "spearman_rho_test": -0.04555820475782052,
+      "spearman_p_naive_not_independence_adjusted": 0.894187401026699,
+      "high_minus_low_future_excursion_bps": null,
+      "block_bootstrap_95pct_ci": [
+        null,
+        null
+      ],
+      "eligible_test_blocks": 0,
+      "directionally_supported": false
+    },
+    "h45_transport_over_replenishment": {
+      "feature": "transport_to_replenishment",
+      "spearman_rho_test": -0.23234684426488467,
+      "spearman_p_naive_not_independence_adjusted": 0.4917654140586253,
+      "high_minus_low_future_excursion_bps": null,
+      "block_bootstrap_95pct_ci": [
+        null,
+        null
+      ],
+      "eligible_test_blocks": 0,
+      "directionally_supported": false
+    },
+    "h51_price_displacement_per_volume": {
+      "feature": "price_sensitivity",
+      "spearman_rho_test": -0.5045662100456622,
+      "spearman_p_naive_not_independence_adjusted": 0.11346398390173401,
+      "high_minus_low_future_excursion_bps": null,
+      "block_bootstrap_95pct_ci": [
+        null,
+        null
+      ],
+      "eligible_test_blocks": 0,
+      "directionally_supported": false
+    },
+    "h53_core_trajectory": {
+      "feature": "negative_core_width_change",
+      "spearman_rho_test": -0.02277910237891026,
+      "spearman_p_naive_not_independence_adjusted": 0.9469975714556126,
+      "high_minus_low_future_excursion_bps": null,
+      "block_bootstrap_95pct_ci": [
+        null,
+        null
+      ],
+      "eligible_test_blocks": 0,
+      "directionally_supported": false
+    }
+  },
+  "conditional_tests": {
+    "h21_h39_small_trade_amplification": {
+      "small_trade_bin_cutoff": 13.03,
+      "high_stress_impact_per_volume": null,
+      "low_stress_impact_per_volume": 1.0879862382325491,
+      "ratio": null,
+      "directionally_supported": false
+    },
+    "h52_tiny_imbalance_stress_amplification": {
+      "tiny_absolute_imbalance_cutoff": 0.24493668917027034,
+      "future_return_slope_by_state": {
+        "high_stress": null,
+        "low_stress": null
+      },
+      "directionally_supported": false
+    }
+  },
+  "directionally_supported_feature_tests": [
+    "h2_velocity_norm_concentration",
+    "h23_spectral_migration"
+  ],
+  "primary_gate_passed": false,
+  "verdict": "NO_INCREMENTAL_SIGNAL_IN_EXPLORATORY_DAY"
+}

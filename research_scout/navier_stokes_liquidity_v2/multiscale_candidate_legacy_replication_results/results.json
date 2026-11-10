@@ -1,0 +1,73 @@
+{
+  "created_at_utc": "2026-09-13T20:05:07.212070+00:00",
+  "status": "exploratory_replication_on_pre_quality_cutoff_day_not_trading_approval",
+  "paid_requests_made": false,
+  "known_limitation": "date precedes Tardis 2020-05-14 collection-quality cutoff",
+  "rows": {
+    "panel": 8640,
+    "train": 5180,
+    "validation": 1727,
+    "test": 1727
+  },
+  "jump_threshold_bps": 11.298033192718894,
+  "models": {
+    "baseline": {
+      "validation": {
+        "average_precision": 0.16556461840615197,
+        "roc_auc": 0.605260457889954,
+        "brier": 0.22373753560848864
+      },
+      "test": {
+        "average_precision": 0.14218566420792506,
+        "roc_auc": 0.586894480841771,
+        "brier": 0.18689346541444565
+      }
+    },
+    "augmented": {
+      "validation": {
+        "average_precision": 0.1663626917558711,
+        "roc_auc": 0.6064843314865301,
+        "brier": 0.22449934527593549
+      },
+      "test": {
+        "average_precision": 0.14137932943908363,
+        "roc_auc": 0.5957166964462974,
+        "brier": 0.18754285319514666
+      }
+    }
+  },
+  "test_incremental": {
+    "average_precision": -0.0008063347688414269,
+    "roc_auc": 0.008822215604526451,
+    "brier_improvement": -0.0006493877807010051
+  },
+  "combined_gate_passed": false,
+  "candidate_results": {
+    "h28_wavelet_high_frequency_energy": {
+      "spearman_rho_test": -0.14243257695182646,
+      "naive_p_not_independence_adjusted": 2.76210341494483e-09,
+      "high_minus_low_excursion_bps": -0.5121918567385709,
+      "block_bootstrap_95pct_ci": [
+        -1.4362238354129624,
+        0.37695032643136894
+      ],
+      "eligible_blocks": 28,
+      "replicated": false
+    },
+    "h30_cross_scale_coupling": {
+      "spearman_rho_test": 0.07017292449732446,
+      "naive_p_not_independence_adjusted": 0.003526514017526159,
+      "high_minus_low_excursion_bps": 1.2798121984160995,
+      "block_bootstrap_95pct_ci": [
+        0.4592069235241169,
+        2.1824357451082155
+      ],
+      "eligible_blocks": 29,
+      "replicated": true
+    }
+  },
+  "survivors_requiring_clean_new_day": [
+    "h30_cross_scale_coupling"
+  ],
+  "verdict": "LEGACY_REPLICATION_SURVIVORS"
+}

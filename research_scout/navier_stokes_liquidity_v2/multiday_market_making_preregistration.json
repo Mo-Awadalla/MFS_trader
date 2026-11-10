@@ -1,0 +1,38 @@
+{
+  "frozen_before_results": true,
+  "created_at": "2026-09-13",
+  "status": "exploratory_touch_fill_adverse_selection_not_live_execution_approval",
+  "hypotheses": [46, 47, 50, 76],
+  "source": "Official Binance USD-M daily BTCUSDT bookTicker and aggTrades archives",
+  "timestamp_integrity_amendment": "Added before accepting results after raw 2024-02-15 inspection revealed alternating future-timestamp rows: while streaming BBO, reject rows that move backward or jump more than 60 seconds beyond the last accepted event. BTCUSDT BBO is continuously active; rejected counts are reported and raw archives remain unchanged.",
+  "paid_requests_permitted": false,
+  "dates": {
+    "rule": "latest eight available monthly 15th bookTicker dates ending 2024-03-15; amended before results after the official 2024-04-15 archive returned 404",
+    "training": ["2023-08-15", "2023-09-15", "2023-10-15", "2023-11-15"],
+    "validation": ["2023-12-15", "2024-01-15"],
+    "untouched_holdout": ["2024-02-15", "2024-03-15"]
+  },
+  "hypothetical_fill": {
+    "bid": "sell-initiated aggregate trade price at or below the most recent BBO bid whose event timestamp is no later than the trade timestamp",
+    "ask": "buy-initiated aggregate trade price at or above the most recent BBO ask under the same timing rule",
+    "deduplication": "at most one observation per aggregate trade",
+    "aggregation": "one equal-weight observation per 10-second bin having at least one touch-qualified fill; the target is mean fill markout in that bin",
+    "claim_limit": "touch-qualified hypothetical fill only; no queue position, fill probability, fee, rebate, or latency claim"
+  },
+  "outcomes": {
+    "primary": "signed passive markout in bps from quoted fill price to BBO midpoint 10 seconds later",
+    "secondary": ["1-second signed markout", "60-second signed markout", "probability of negative 10-second markout"]
+  },
+  "state": {
+    "conventional": "spread, displayed BBO depth, imbalance, recent midpoint volatility and signed trade flow",
+    "breakdown": "local depth minimum/change, BBO update concentration, burst rate, opposing flow and model disagreement",
+    "critical_score": "nonlinear conventional-model predicted markout minus breakdown-model predicted markout, so higher values mean the breakdown model expects worse passive performance",
+    "critical_threshold": "validation-fixed bottom and top quintiles of critical score"
+  },
+  "primary_gate": [
+    "holdout high-minus-low breakdown-state 10-second passive markout is negative with a date-cluster bootstrap 95% interval strictly below zero",
+    "breakdown model improves holdout MAE over a nonlinear conventional-feature control by at least 5%",
+    "both holdout dates have directionally negative high-minus-low markout"
+  ],
+  "interpretation": "A pass would support state-dependent adverse selection under conservative touch qualification, not establish achievable market-making PnL. A failure rejects only this BBO proxy implementation."
+}

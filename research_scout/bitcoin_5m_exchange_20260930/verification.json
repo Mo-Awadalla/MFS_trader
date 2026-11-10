@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "checks": [
+    "future-bar perturbation leaves current/past features unchanged",
+    "long and short quantity/price P&L",
+    "millisecond-offset funding cash flow sign and magnitude",
+    "both-side notional cost accounting",
+    "no overlapping fixed-horizon positions",
+    "missing intermediate price blocks a trade",
+    "no signal means no trade"
+  ]
+}

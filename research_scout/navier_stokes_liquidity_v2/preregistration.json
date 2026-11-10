@@ -1,0 +1,33 @@
+{
+  "name": "Full-depth spatial liquidity concentration v2",
+  "status": "FROZEN_BEFORE_PAID_DATA_ACQUISITION",
+  "dataset": "Databento XNAS.ITCH",
+  "symbol": "QQQ",
+  "preferred_schema": "mbp-10",
+  "upgrade_schema": "mbo only if MBP-10 cannot identify the required flux robustly",
+  "session_window_et": "09:20:00 inclusive through 09:35:00 exclusive",
+  "observations": "30-second lookback windows sampled every 10 seconds from 09:25 through 09:34, with a non-overlapping next-30-second outcome",
+  "date_split": {
+    "development": "deterministically selected dates before 2026-01-01",
+    "validation": "deterministically selected dates from 2026-01-01 through 2026-06-15",
+    "untouched_holdout": "deterministically selected dates from 2026-06-16 onward"
+  },
+  "primary_claim": "Full-depth spatial concentration features improve prediction of the next-30-second maximum midpoint excursion beyond top-of-book state, recent volatility, and aggregate order-flow controls.",
+  "spatial_features": [
+    "L-infinity/L2, L4/L2, and L8/L2 flux-over-lagged-depth ratios across twenty side-level cells",
+    "first and second price-level gradient energy",
+    "inverse participation ratio and effective active-core width",
+    "bid-versus-ask anisotropy",
+    "directional transport/replenishment ratio",
+    "depth-profile self-similarity residual"
+  ],
+  "primary_metric": "date-clustered out-of-sample average precision for a training-defined 90th-percentile excursion",
+  "success_gate": "average-precision improvement >= 0.02 on validation and positive on untouched holdout, with a 95% date-cluster bootstrap interval excluding zero on the combined forward sample",
+  "kill_gate": "negative or immaterial incremental ranking value, effect explained by spread/volatility/top depth, or failure under date and event-time perturbations",
+  "purchase_rule": "No time-series request may execute until the user approves an explicit USD hard cap greater than or equal to the 125% protected metadata estimate.",
+  "non_claims": [
+    "QQQ obeys Navier-Stokes equations",
+    "the empirical transport/replenishment ratio is a physical Reynolds number",
+    "a positive statistical result authorizes trading"
+  ]
+}

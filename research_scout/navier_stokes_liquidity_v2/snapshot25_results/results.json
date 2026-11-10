@@ -1,0 +1,131 @@
+{
+  "created_at_utc": "2026-09-13T19:45:41.549391+00:00",
+  "status": "post_cutoff_spatial_replication_not_trading_approval",
+  "source": "research_scout/navier_stokes_liquidity_v2/free_data/tardis/binance-futures/book_snapshot_25/2020-09-01/BTCUSDT.csv.gz",
+  "rows": {
+    "panel": 8640,
+    "train": 5180,
+    "validation": 1727,
+    "test": 1727
+  },
+  "jump_threshold_bps": 12.49767285691362,
+  "models": {
+    "baseline": {
+      "validation": {
+        "average_precision": 0.14605828122943326,
+        "roc_auc": 0.6873538464885088,
+        "brier": 0.2059209038624874
+      },
+      "test": {
+        "average_precision": 0.323798325770857,
+        "roc_auc": 0.7686052366565961,
+        "brier": 0.11050893225214767
+      }
+    },
+    "augmented": {
+      "validation": {
+        "average_precision": 0.14565180167369884,
+        "roc_auc": 0.6891865435442295,
+        "brier": 0.2073799363238766
+      },
+      "test": {
+        "average_precision": 0.3122078642260816,
+        "roc_auc": 0.7542547834843908,
+        "brier": 0.10662576449367793
+      }
+    }
+  },
+  "test_incremental": {
+    "average_precision": -0.011590461544775388,
+    "roc_auc": -0.01435045317220529,
+    "brier_improvement": 0.0038831677584697383
+  },
+  "blocked_feature_tests": {
+    "h2_h3_liquidity_norm_concentration": {
+      "feature": "liquidity_linf_l2",
+      "spearman_rho_test": -0.0020487271475115648,
+      "naive_p_not_independence_adjusted": 0.9321995494001757,
+      "high_minus_low_excursion_bps": 0.279690302114041,
+      "block_bootstrap_95pct_ci": [
+        -0.8512053597306259,
+        2.0382983430895267
+      ],
+      "eligible_blocks": 29,
+      "directionally_supported": false
+    },
+    "h4_core_contraction": {
+      "feature": "negative_core_width",
+      "spearman_rho_test": -0.093158001406669,
+      "naive_p_not_independence_adjusted": 0.00010574581251622966,
+      "high_minus_low_excursion_bps": -0.8515436024217912,
+      "block_bootstrap_95pct_ci": [
+        -1.8273818484475046,
+        -0.15267664128734987
+      ],
+      "eligible_blocks": 29,
+      "directionally_supported": false
+    },
+    "h11_gradient_max": {
+      "feature": "gradient_max",
+      "spearman_rho_test": 0.011581088663005504,
+      "naive_p_not_independence_adjusted": 0.6305554752957104,
+      "high_minus_low_excursion_bps": 0.8439565531733697,
+      "block_bootstrap_95pct_ci": [
+        -0.7987395905033301,
+        3.7069728032922074
+      ],
+      "eligible_blocks": 29,
+      "directionally_supported": false
+    },
+    "h13_gradient_energy": {
+      "feature": "gradient_energy",
+      "spearman_rho_test": 0.024866757563939742,
+      "naive_p_not_independence_adjusted": 0.30169561460928257,
+      "high_minus_low_excursion_bps": 0.8717664405445725,
+      "block_bootstrap_95pct_ci": [
+        -0.7365334904521265,
+        3.4991863990299996
+      ],
+      "eligible_blocks": 29,
+      "directionally_supported": false
+    },
+    "h14_curvature_energy": {
+      "feature": "curvature_energy",
+      "spearman_rho_test": -0.030443660330481622,
+      "naive_p_not_independence_adjusted": 0.20603984879720344,
+      "high_minus_low_excursion_bps": -0.3096762236211212,
+      "block_bootstrap_95pct_ci": [
+        -0.7585262110440698,
+        0.09315087696110155
+      ],
+      "eligible_blocks": 29,
+      "directionally_supported": false
+    },
+    "h15_event_localization": {
+      "feature": "event_linf_l2",
+      "spearman_rho_test": -0.22397169803508368,
+      "naive_p_not_independence_adjusted": 4.475679667800052e-21,
+      "high_minus_low_excursion_bps": -1.7726489388586624,
+      "block_bootstrap_95pct_ci": [
+        -3.6167250080342344,
+        -0.18208094201500544
+      ],
+      "eligible_blocks": 13,
+      "directionally_supported": false
+    },
+    "h53_core_trajectory": {
+      "feature": "negative_core_width_change",
+      "spearman_rho_test": -0.0020896532379809647,
+      "naive_p_not_independence_adjusted": 0.930848503959672,
+      "high_minus_low_excursion_bps": -0.04318560367586443,
+      "block_bootstrap_95pct_ci": [
+        -0.39231343585503986,
+        0.336221342837147
+      ],
+      "eligible_blocks": 29,
+      "directionally_supported": false
+    }
+  },
+  "primary_gate_passed": false,
+  "verdict": "POST_CUTOFF_SPATIAL_FAIL"
+}

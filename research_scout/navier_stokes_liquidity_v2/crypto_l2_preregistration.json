@@ -1,0 +1,16 @@
+{
+  "locked_before_results": true,
+  "scope": "exploratory single-day mechanism test; never trading approval",
+  "source": "Tardis Binance Futures BTCUSDT 2020-02-01 free sample",
+  "known_limitation": "date precedes Tardis 2020-05-14 collection-quality cutoff",
+  "decision_interval_seconds": 10,
+  "future_outcome_seconds": 60,
+  "book_levels_per_side": 25,
+  "time_split": {"train": 0.6, "validation": 0.2, "test": 0.2},
+  "jump_definition": "training-period 95th percentile of future 60-second maximum absolute midpoint excursion",
+  "primary_comparison": "baseline logistic model versus baseline plus concentration features on untouched final 20 percent",
+  "primary_gate": "test average-precision improvement > 0.02 and positive Brier improvement",
+  "targeted_hypotheses": [2, 4, 5, 11, 13, 14, 17, 18, 20, 21, 22, 23, 24, 39, 40, 45, 51, 52, 53],
+  "block_inference": "10-minute non-overlapping test blocks; 1000 deterministic bootstrap resamples",
+  "multiple_testing_rule": "targeted feature results are descriptive and require replication; no single p-value establishes a hypothesis"
+}

@@ -1,0 +1,70 @@
+{
+  "paid_requests_made": false,
+  "tardis": {
+    "exchange": "binance-futures",
+    "symbol": "BTCUSDT",
+    "date": "2020-02-01",
+    "purpose": "schema and pipeline validation only; date precedes vendor quality cutoff",
+    "files": [
+      {
+        "type": "incremental_book_L2",
+        "compressed_bytes": 251173484,
+        "uncompressed_bytes": 2164054442,
+        "data_rows": 27199023,
+        "sha256": "182b05bc4c0997ae8f1211663827cd214f37ee31c29c1e335dbab1292e03f16f",
+        "gzip_crc_valid": true,
+        "source": "https://datasets.tardis.dev/v1/binance-futures/incremental_book_L2/2020/02/01/BTCUSDT.csv.gz"
+      },
+      {
+        "type": "trades",
+        "compressed_bytes": 3090479,
+        "uncompressed_bytes": 19417195,
+        "data_rows": 229564,
+        "sha256": "f636e8cebb88575280d6c3c258b6a9579941de7f696a3ade8d5af77885bb2725",
+        "gzip_crc_valid": true,
+        "source": "https://datasets.tardis.dev/v1/binance-futures/trades/2020/02/01/BTCUSDT.csv.gz"
+      },
+      {
+        "type": "derivative_ticker",
+        "compressed_bytes": 562380,
+        "uncompressed_bytes": 3768062,
+        "data_rows": 34121,
+        "sha256": "3e7aba5e69cc47a032ee67aa49cc9d88dabb17a3eb00d43ae3d8824d7757519c",
+        "gzip_crc_valid": true,
+        "source": "https://datasets.tardis.dev/v1/binance-futures/derivative_ticker/2020/02/01/BTCUSDT.csv.gz"
+      },
+      {
+        "type": "book_snapshot_25",
+        "date": "2020-09-01",
+        "compressed_bytes": 199978111,
+        "uncompressed_bytes": 3989831091,
+        "data_rows": 5206603,
+        "sha256": "c9ce8ae07da3fe22ed2b8bca00290c8875f9234cbe9e7734ff3ef662eb4d4712",
+        "gzip_crc_valid": true,
+        "source": "https://datasets.tardis.dev/v1/binance-futures/book_snapshot_25/2020/09/01/BTCUSDT.csv.gz"
+      },
+      {
+        "type": "trades",
+        "date": "2020-09-01",
+        "compressed_bytes": 8299661,
+        "uncompressed_bytes": 59643178,
+        "data_rows": 688368,
+        "sha256": "3441921db5e41014735ab9b3b7ff53a87feffe59db057c51251830c81b3cfa7d",
+        "gzip_crc_valid": true,
+        "source": "https://datasets.tardis.dev/v1/binance-futures/trades/2020/09/01/BTCUSDT.csv.gz"
+      }
+    ]
+  },
+  "binance_public": {
+    "exchange": "binance-futures-um",
+    "symbol": "BTCUSDT",
+    "date": "2024-01-15",
+    "all_official_sha256_checksums_match": true,
+    "files": [
+      {"type": "aggTrades", "compressed_bytes": 13510974, "uncompressed_bytes": 68771532},
+      {"type": "bookDepth", "compressed_bytes": 477151, "uncompressed_bytes": 1593629},
+      {"type": "bookTicker", "compressed_bytes": 188017444, "uncompressed_bytes": 1871514159},
+      {"type": "metrics", "compressed_bytes": 11639, "uncompressed_bytes": 30995}
+    ]
+  }
+}

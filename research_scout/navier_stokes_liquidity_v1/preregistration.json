@@ -1,0 +1,49 @@
+{
+  "name": "Navier-Stokes-inspired liquidity concentration feasibility v1",
+  "frozen_before_outcome_evaluation": true,
+  "scientific_claim": "Local concentration of signed aggressive flow contains incremental information about a subsequent five-minute opening price excursion beyond conventional top-of-book state and activity measures.",
+  "scope": {
+    "dataset": "Databento EQUS.MINI MBP-1",
+    "symbols": ["SPY", "SSO", "UPRO", "SH", "SDS", "SPXU"],
+    "available_dates": "2023-03-28 through 2026-06-15 with documented gaps",
+    "signal_window_et": "09:25:00 inclusive to 09:30:00 exclusive",
+    "outcome_window_et": "09:30:00 inclusive to 09:35:00 exclusive",
+    "sampling": "one-second causal BBO snapshots using ts_recv"
+  },
+  "primary_outcome": "maximum absolute midpoint excursion in basis points from the first outcome-window midpoint",
+  "event_definition": "at or above the training-period 90th percentile; the threshold is frozen from training data and applied unchanged to the next calendar year",
+  "baseline": [
+    "spread mean and terminal",
+    "top depth mean and minimum",
+    "top imbalance mean and terminal",
+    "pre-window realized volatility",
+    "gross trade volume",
+    "signed trade imbalance",
+    "event rate",
+    "symbol fixed effects"
+  ],
+  "candidate_family": [
+    "L-infinity/L2, L4/L2, and L8/L2 signed-flow-velocity norm ratios",
+    "temporal flow shear and enstrophy proxies",
+    "flow participation/core fraction",
+    "maximum displacement per normalized gross flow",
+    "gross-to-net and opposing-flow stress",
+    "high-frequency/low-frequency spectral power ratio",
+    "top-level transport/replenishment Reynolds proxy"
+  ],
+  "model": "class-weighted L2 logistic regression with C=0.25; median imputation and standardization fit on training only",
+  "validation": [
+    "train through 2024, test 2025",
+    "train through 2025, test 2026"
+  ],
+  "primary_metric": "out-of-sample average precision",
+  "secondary_metrics": ["ROC AUC", "Brier score"],
+  "success_gate": "positive augmented-minus-baseline average precision in both temporal folds and a pooled improvement of at least 0.02; confirmation still requires date-cluster bootstrap uncertainty and an independent full-depth dataset",
+  "kill_gate": "no material out-of-sample improvement, unstable sign across folds, or improvement attributable only to one symbol/year",
+  "non_claims": [
+    "Markets obey Navier-Stokes equations",
+    "The Reynolds proxy is a physical Reynolds number",
+    "MBP-1 can measure spatial liquidity gradients or full-depth core width",
+    "A feasibility result authorizes paper or live trading"
+  ]
+}

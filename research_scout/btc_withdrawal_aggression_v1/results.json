@@ -1,0 +1,302 @@
+{
+  "jump_threshold_bps_train_only": 7.182401790820952,
+  "models": {
+    "withdrawal": {
+      "metric": "average_precision",
+      "sections": {
+        "train": {
+          "rows": 7185,
+          "dates": 5,
+          "base_metric": 0.36828586375792793,
+          "augmented_metric": 0.37546698282329855,
+          "metric_increment": 0.007181119065370611,
+          "base_brier": 0.0759152084668296,
+          "augmented_brier": 0.07530384505177669,
+          "positive_date_increments": 3,
+          "by_date": {
+            "2023-08-15": {
+              "n": 1437,
+              "baseline": 0.20208753279285335,
+              "augmented": 0.22269144641277105
+            },
+            "2023-09-15": {
+              "n": 1437,
+              "baseline": 0.3047642756980428,
+              "augmented": 0.29067821163065066
+            },
+            "2023-10-15": {
+              "n": 1437,
+              "baseline": 0.17729634349980436,
+              "augmented": 0.17613885510414493
+            },
+            "2023-11-15": {
+              "n": 1437,
+              "baseline": 0.4809022444645234,
+              "augmented": 0.48917695863592703
+            },
+            "2023-12-15": {
+              "n": 1437,
+              "baseline": 0.2599152143851445,
+              "augmented": 0.2600759263797327
+            }
+          }
+        },
+        "validation_diagnostics_only": {
+          "rows": 5746,
+          "dates": 4,
+          "base_metric": 0.2851460574829778,
+          "augmented_metric": 0.2902174726306603,
+          "metric_increment": 0.005071415147682501,
+          "base_brier": 0.10669885731112663,
+          "augmented_brier": 0.10654864407211939,
+          "positive_date_increments": 3,
+          "by_date": {
+            "2024-01-15": {
+              "n": 1435,
+              "baseline": 0.27972619111415864,
+              "augmented": 0.2788534711992968
+            },
+            "2024-01-21": {
+              "n": 1437,
+              "baseline": 0.053067818237341184,
+              "augmented": 0.05852521943426422
+            },
+            "2024-01-28": {
+              "n": 1437,
+              "baseline": 0.15807937309981512,
+              "augmented": 0.1659114774056957
+            },
+            "2024-01-31": {
+              "n": 1437,
+              "baseline": 0.40484967195501287,
+              "augmented": 0.41194870425373353
+            }
+          }
+        },
+        "historical_test": {
+          "rows": 11496,
+          "dates": 8,
+          "base_metric": 0.5803387873287915,
+          "augmented_metric": 0.5836749427041125,
+          "metric_increment": 0.0033361553753209483,
+          "base_brier": 0.20650701062051655,
+          "augmented_brier": 0.2044058371467104,
+          "positive_date_increments": 4,
+          "by_date": {
+            "2024-03-03": {
+              "n": 1437,
+              "baseline": 0.38121193769695655,
+              "augmented": 0.3945020066227964
+            },
+            "2024-03-06": {
+              "n": 1437,
+              "baseline": 0.6699621191653794,
+              "augmented": 0.6690032915018694
+            },
+            "2024-03-10": {
+              "n": 1437,
+              "baseline": 0.34258568720652716,
+              "augmented": 0.3507947429789412
+            },
+            "2024-03-15": {
+              "n": 1437,
+              "baseline": 0.6938753224063744,
+              "augmented": 0.6986858869337373
+            },
+            "2024-03-17": {
+              "n": 1437,
+              "baseline": 0.5010658495639517,
+              "augmented": 0.49288829019304536
+            },
+            "2024-03-20": {
+              "n": 1437,
+              "baseline": 0.6408946142310028,
+              "augmented": 0.6383942626262508
+            },
+            "2024-03-24": {
+              "n": 1437,
+              "baseline": 0.3732853156731992,
+              "augmented": 0.36720323517293163
+            },
+            "2024-03-27": {
+              "n": 1437,
+              "baseline": 0.4669016372957736,
+              "augmented": 0.47816485016960564
+            }
+          }
+        }
+      },
+      "pass_gate": false
+    },
+    "aggression": {
+      "metric": "roc_auc",
+      "sections": {
+        "train": {
+          "rows": 6512,
+          "dates": 5,
+          "base_metric": 0.6067580625240659,
+          "augmented_metric": 0.6101529733752222,
+          "metric_increment": 0.0033949108511562853,
+          "base_brier": 0.24147160849394517,
+          "augmented_brier": 0.240719659110145,
+          "positive_date_increments": 3,
+          "by_date": {
+            "2023-08-15": {
+              "n": 1152,
+              "baseline": 0.7063772861955104,
+              "augmented": 0.7078663587635855
+            },
+            "2023-09-15": {
+              "n": 1376,
+              "baseline": 0.5842339761008071,
+              "augmented": 0.5786746965022425
+            },
+            "2023-10-15": {
+              "n": 1135,
+              "baseline": 0.66677033120821,
+              "augmented": 0.6693764577826155
+            },
+            "2023-11-15": {
+              "n": 1426,
+              "baseline": 0.552989100865956,
+              "augmented": 0.5583486496271661
+            },
+            "2023-12-15": {
+              "n": 1423,
+              "baseline": 0.5504324360630737,
+              "augmented": 0.5461870952702677
+            }
+          },
+          "execution": {
+            "mean_crossing_bps": 0.34089889485312985,
+            "mean_after_5bps_per_side": -9.659101105146869,
+            "mean_after_extra_5bps_per_side": -19.65910110514687,
+            "positive_net_dates": 0
+          }
+        },
+        "validation_diagnostics_only": {
+          "rows": 5587,
+          "dates": 4,
+          "base_metric": 0.5648749922458126,
+          "augmented_metric": 0.5628162234518412,
+          "metric_increment": -0.0020587687939713772,
+          "base_brier": 0.24811304742494691,
+          "augmented_brier": 0.24824501317950645,
+          "positive_date_increments": 2,
+          "by_date": {
+            "2024-01-15": {
+              "n": 1429,
+              "baseline": 0.4983878252331861,
+              "augmented": 0.5002572410407462
+            },
+            "2024-01-21": {
+              "n": 1317,
+              "baseline": 0.6375555822063138,
+              "augmented": 0.6288907544419639
+            },
+            "2024-01-28": {
+              "n": 1420,
+              "baseline": 0.5586557709438132,
+              "augmented": 0.5616772905916266
+            },
+            "2024-01-31": {
+              "n": 1421,
+              "baseline": 0.5686495909352034,
+              "augmented": 0.5592836908936035
+            }
+          },
+          "execution": {
+            "mean_crossing_bps": 0.2186592808373446,
+            "mean_after_5bps_per_side": -9.781340719162655,
+            "mean_after_extra_5bps_per_side": -19.781340719162653,
+            "positive_net_dates": 0
+          }
+        },
+        "historical_test": {
+          "rows": 11461,
+          "dates": 8,
+          "base_metric": 0.534823711407834,
+          "augmented_metric": 0.5325188237718296,
+          "metric_increment": -0.002304887636004449,
+          "base_brier": 0.25367844044074234,
+          "augmented_brier": 0.25444386259788915,
+          "positive_date_increments": 2,
+          "by_date": {
+            "2024-03-03": {
+              "n": 1422,
+              "baseline": 0.5761413172703495,
+              "augmented": 0.5656653721169851
+            },
+            "2024-03-06": {
+              "n": 1434,
+              "baseline": 0.5123324928794883,
+              "augmented": 0.5176709311917325
+            },
+            "2024-03-10": {
+              "n": 1428,
+              "baseline": 0.5380142998656323,
+              "augmented": 0.5406428074029757
+            },
+            "2024-03-15": {
+              "n": 1436,
+              "baseline": 0.5203946602506888,
+              "augmented": 0.5169079126081726
+            },
+            "2024-03-17": {
+              "n": 1436,
+              "baseline": 0.548512008691266,
+              "augmented": 0.5476952624839949
+            },
+            "2024-03-20": {
+              "n": 1436,
+              "baseline": 0.4961704192546583,
+              "augmented": 0.49104037267080747
+            },
+            "2024-03-24": {
+              "n": 1433,
+              "baseline": 0.5623397623222288,
+              "augmented": 0.5597272550165595
+            },
+            "2024-03-27": {
+              "n": 1436,
+              "baseline": 0.5398263737329647,
+              "augmented": 0.532757165720937
+            }
+          },
+          "execution": {
+            "mean_crossing_bps": 0.19253441910763167,
+            "mean_after_5bps_per_side": -9.807465580892368,
+            "mean_after_extra_5bps_per_side": -19.80746558089237,
+            "positive_net_dates": 0
+          }
+        }
+      },
+      "pass_gate": false
+    }
+  },
+  "source": {
+    "specification": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\btc_withdrawal_aggression_prereg_20260925.json",
+    "admission": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\btc_microstructure_admission_20260925.json",
+    "rows_total": 24427,
+    "eligible_rows_by_date": {
+      "2023-08-15": 1437,
+      "2023-09-15": 1437,
+      "2023-10-15": 1437,
+      "2023-11-15": 1437,
+      "2023-12-15": 1437,
+      "2024-01-15": 1435,
+      "2024-01-21": 1437,
+      "2024-01-28": 1437,
+      "2024-01-31": 1437,
+      "2024-03-03": 1437,
+      "2024-03-06": 1437,
+      "2024-03-10": 1437,
+      "2024-03-15": 1437,
+      "2024-03-17": 1437,
+      "2024-03-20": 1437,
+      "2024-03-24": 1437,
+      "2024-03-27": 1437
+    },
+    "historical_test_is_pristine": false
+  }
+}

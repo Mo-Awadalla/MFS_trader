@@ -1,0 +1,14 @@
+{
+  "locked_before_results": true,
+  "source": "Tardis Binance Futures BTCUSDT book_snapshot_25, 2020-09-01",
+  "scope": "post-cutoff spatial-only replication; no trade-flow hypotheses",
+  "decision_interval_seconds": 10,
+  "future_outcome_seconds": 60,
+  "time_split": {"train": 0.6, "validation": 0.2, "test": 0.2},
+  "jump_definition": "training-period 95th percentile of future 60-second maximum absolute midpoint excursion",
+  "baseline": ["spread", "total depth", "imbalance", "realized volatility", "event rate"],
+  "augmented": ["liquidity norm concentration", "core width", "gradients", "curvature", "event concentration", "spectral event migration", "core-width trajectory"],
+  "primary_gate": "test average-precision improvement > 0.02 and positive Brier improvement",
+  "targeted_hypotheses": [2, 3, 4, 7, 11, 13, 14, 15, 16, 53],
+  "block_inference": "10-minute non-overlapping test blocks with 1000 deterministic bootstrap resamples"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "tests_passed": 30,
+  "full_replay_reproduction": "Exact equality: all predictions, targets, signals, trade ledgers, fold and period results",
+  "checks": [
+    "All v1, prior audit and exchange result hashes unchanged",
+    "Executed source snapshots match both recorded run hashes",
+    "Final source hashes match the verification rerun",
+    "Two full quarterly runs produce bit-identical predictions and trade economics",
+    "Training/calibration/admission/evaluation labels strictly ordered for all11 quarters",
+    "2022 coverage restored above99.9%",
+    "No failed-admission signals become actionable",
+    "Cost, funding, gap, tie, future-feature, invalid-input and CLI preservation tests passed",
+    "Focused lint passes"
+  ],
+  "exact_future_decisions_note": "One extra feature row at September1 can be forecast without a realized candle; it is excluded from the evaluation and price-bar coverage denominator"
+}

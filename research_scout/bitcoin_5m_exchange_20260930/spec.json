@@ -1,0 +1,26 @@
+{
+  "id": "Bitcoin5mExchangeEconomics-20260930-v1",
+  "created_before_new_return_analysis": true,
+  "scope": "Research direct BTCUSDT perpetual exchange economics and a bounded model improvement experiment; no broker credentials or orders.",
+  "prior_exposure": "All 2020-2025 history has been exposed in this repository. Chronological testing here is diagnostic, not fresh confirmation. 2026 data, if obtainable and not already locally used, are a separately labeled later-period check, not a prospective live test.",
+  "baseline": "Frozen original model predictions, p>=0.55 long / p<=0.45 short, plus its originally published 0.50 direction rule. No tuning of original model.",
+  "variants": [
+    "recent_logistic: original features, StandardScaler + LogisticRegression C=0.1; most recent 24 months of training; separate following six-month Platt calibration",
+    "nonlinear_direction: original features plus lagged realized volatility, lagged return/volatility, taker-flow interactions and UTC cyclical clock; HistGradientBoostingClassifier max_iter=120,max_leaf_nodes=15,max_depth=4,learning_rate=0.05,l2_regularization=10,min_samples_leaf=300; following six-month Platt calibration",
+    "nonlinear_return: same expanded features; HistGradientBoostingRegressor with same fixed hyperparameters, squared_error and training-target clipping at 0.5/99.5 percentiles; following six-month predicted-return linear calibration"
+  ],
+  "horizons_bars": [1, 3, 6],
+  "horizon_interpretation": "5, 15 and 30 minutes are separate declared trials. Only the first is the original five-minute objective.",
+  "training": "2021-07-01 through 2023-06-30, with a 35-minute label embargo at boundaries",
+  "calibration": "2023-07-01 through 2023-12-31",
+  "selection": "2024-01-01 through 2024-12-31; choose at most one trading rule per model/horizon using net mean daily P&L at 12bps round trip",
+  "diagnostic_test": "2025-01-01 through 2025-12-31; rules frozen on 2024 and all results retained, including failures",
+  "thresholds": {"probability": [0.50, 0.55, 0.60], "predicted_return_bps": [6, 12, 24]},
+  "cost_round_trip_bps": [0, 2, 6, 12, 24, 50],
+  "cost_semantics": "All-in hypothetical round-trip trading friction, not a claim of actual account fees or fills. 2bps is an aggressive economic floor; 12bps is a perpetual taker scenario, 24bps a low-fee spot scenario. Funding is separately charged at observed settlement times, when available.",
+  "execution": "Separate non-overlapping fixed-horizon positions, 1x initial notional, flat between eligible signals, no leverage. Entry at decision bar open and exit at open h bars later are optimistic bar-reference prices, not executable quotes. Also evaluate unchanged signal with a full five-minute entry delay and same holding duration. Ties retained if reconstructing new panels. Long-only is a diagnostic on perpetual prices, not a validated spot implementation.",
+  "minimum_selection_trades": 500,
+  "uncertainty": "Circular seven-day block bootstrap, 2000 replications, seed 93026; interval for per-trade expectancy computed using daily P&L sums divided by daily trade counts. Multiple comparison adjustment reported separately using Bonferroni one-sided alpha across nine candidate model/horizon rows.",
+  "gate": "At least 500 selected trades; positive 2024 net expectancy at 12bps; positive 2025 net expectancy and its multiplicity-adjusted lower interval; positive each half of 2025; positive five-minute delayed net. Only a surviving candidate merits acquiring new confirmation/executable quote evidence. No claims of profitability from bar reference alone.",
+  "stop": "Do not search additional parameters, thresholds, horizons or reverse failed signals after observing results. Preserve original artifacts. A failure closes this bounded experiment, not all possible BTC trading."
+}

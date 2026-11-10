@@ -1,0 +1,9 @@
+{
+  "reason": "User identified US/New York and requested the best eligible low-fee exchange. This amendment precedes candidate outcome inspection.",
+  "added_cost_scenario_bps": 4,
+  "cost_reason": "Coinbase advertises US perpetual-style fees as low as 0.02% per execution, implying a 4bps fee-only optimistic round trip, subject to fee tier and contract minimum. Actual account fee is not verified. The 6bps row adds 2bps hypothetical execution friction.",
+  "boundary_detail": "The implementation purges labels whose holding window crosses a training, calibration or selection boundary. This is a horizon-dependent purge of up to 30 minutes, rather than the originally stated fixed 35-minute embargo. No overlapping labels cross partitions.",
+  "later_baseline_check": "Acquire January-August 2026 checksum-verified public Binance 5m prices, metrics and settled funding into an isolated cache. Evaluate only the original frozen probability model with original 0.50 and 0.55 rules. Do not tune any candidate using this period. This baseline diagnostic is useful even if model candidates fail; expensive candidate confirmation remains gated.",
+  "ny_exchange_shortlist": ["Coinbase Financial Markets US derivatives/API subject to application approval", "Gemini ActiveTrader spot/API", "Bitstamp spot/API", "Interactive Brokers CME bitcoin futures/API"],
+  "global_fee_trap": "MEXC official March 2026 launch announcement says futures API orders have separate 0.01% maker / 0.05% taker fees, overriding advertised web/app rates. Do not model bot fills as zero fee on this basis."
+}

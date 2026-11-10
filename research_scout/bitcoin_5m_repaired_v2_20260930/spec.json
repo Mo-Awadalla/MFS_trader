@@ -1,0 +1,44 @@
+{
+  "specification_id": "Bitcoin-5m-PayoffAware-v2-20260930",
+  "status": "research_only_repair_diagnostic",
+  "frozen_before_v2_results": "2026-09-30",
+  "data": "Existing Binance 5m price and optional OI archives, September 2020 through August 2026",
+  "features": "Prior completed price/flow bars; no trader-ratio dependencies; optional OI with training-only median imputation and explicit missing flags; longest lookback 289 completed bars",
+  "target": "Actual untrimmed next-open / current-open minus one; tied/zero-return outcomes retained",
+  "model": {
+    "direction": "Standardized L2 logistic C=0.1, max_iter1000, seed42",
+    "magnitudes": "Two conditional Ridge regressions alpha100 for positive and nonpositive return sizes using the same training-only preprocessing",
+    "calibration": "Separate Platt direction C=1 and conditional magnitude scale ratios on subsequent two calendar months",
+    "trials": 1
+  },
+  "updates": {
+    "frequency": "UTC calendar quarter start",
+    "training_months": 24,
+    "calibration_months": 2,
+    "admission_months": 1,
+    "strict_label_availability": "Each fit/calibration/admission partition requires target_end strictly earlier than next partition boundary",
+    "min_training_rows": 5000,
+    "min_calibration_rows": 1000,
+    "evaluation_start": "2024-01-01",
+    "evaluation_end_exclusive": "2026-09-01"
+  },
+  "trade_rule": {
+    "horizon_bars": 1,
+    "predicted_round_trip_cost_bps": 6,
+    "minimum_expected_net_edge_bps": 2,
+    "position_notional": "1x fixed initial notional diagnostic; no leverage optimization",
+    "admission": "At least100 candidate trades on at least20 active days in separate admission month, and seven-day-block bootstrap95% lower net6bps expectation >0",
+    "shadow": "Record ungated candidate diagnostics even when admission rejects; actionable signal stays flat",
+    "missing_model_or_admission": "flat; no trade"
+  },
+  "economics": {
+    "cost_scenarios_round_trip_bps": [0,2,4,6,12],
+    "fees": "Applied to actual entry and exit notionals",
+    "funding": "Available Binance settled events with containing5m-open approximate mark; exact entry and exit-boundary events excluded",
+    "delays_bars": [0,1],
+    "entry_reference": "Bar open optimistic reference, not executable bid/ask",
+    "confidence_intervals": "2000 circular7-calendar-day bootstrap samples; seed93028"
+  },
+  "preserve": "All original v1 models, data, predictions, source code, audit, and previous result evidence",
+  "limitations": "Already exposed historical data. One fixed repaired design; no post-result tuning or profitability confirmation. No live orders, deployment or account access. Actual quote latency, cross-venue transfer, margin, and funding differences remain unverified."
+}

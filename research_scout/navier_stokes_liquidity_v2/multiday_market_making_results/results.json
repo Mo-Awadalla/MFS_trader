@@ -1,0 +1,128 @@
+{
+  "created_at_utc": "2026-09-13T21:03:50.693221+00:00",
+  "status": "exploratory_touch_fill_adverse_selection_not_live_execution_approval",
+  "hypotheses": [
+    46,
+    47,
+    50,
+    76
+  ],
+  "paid_requests_made": false,
+  "dates": {
+    "training": [
+      "2023-08-15",
+      "2023-09-15",
+      "2023-10-15",
+      "2023-11-15"
+    ],
+    "validation": [
+      "2023-12-15",
+      "2024-01-15"
+    ],
+    "holdout": [
+      "2024-02-15",
+      "2024-03-15"
+    ]
+  },
+  "rows": {
+    "all_fill_bins": 64088,
+    "training": 34556,
+    "validation": 17278,
+    "holdout": 12254
+  },
+  "timestamp_rows_rejected_by_date": {
+    "2023-08-15": 0,
+    "2023-09-15": 0,
+    "2023-10-15": 0,
+    "2023-11-15": 0,
+    "2023-12-15": 0,
+    "2024-01-15": 0,
+    "2024-02-15": 30515198,
+    "2024-03-15": 0
+  },
+  "metrics": {
+    "validation": {
+      "conventional_mae": 0.50310694803209,
+      "breakdown_mae": 0.5233120439904733,
+      "actual_mean_markout_bps": -0.48563891457478453,
+      "actual_negative_markout_rate": 0.72572056951036
+    },
+    "test": {
+      "conventional_mae": 0.970263559442242,
+      "breakdown_mae": 0.9885030817081899,
+      "actual_mean_markout_bps": -0.891501720017475,
+      "actual_negative_markout_rate": 0.7448180186061694
+    }
+  },
+  "breakdown_relative_mae_improvement": -0.01879852344081949,
+  "validation_critical_score_cutoffs": {
+    "low_20pct": -0.00527491090472931,
+    "high_80pct": 0.21109891029540226
+  },
+  "holdout_high_minus_low_markout": {
+    "mean": 0.20800570500091836,
+    "block_bootstrap_95pct_ci": [
+      0.060171346096844824,
+      0.3558400639049919
+    ],
+    "eligible_blocks": 2,
+    "by_date": {
+      "2024-02-15": {
+        "high_minus_low_markout_bps": 0.060171346096844824,
+        "low_bins": 303,
+        "high_bins": 1229
+      },
+      "2024-03-15": {
+        "high_minus_low_markout_bps": 0.3558400639049919,
+        "low_bins": 2219,
+        "high_bins": 1581
+      }
+    }
+  },
+  "holdout_high_minus_low_conventional_absolute_error": {
+    "mean": -0.14068288060610007,
+    "block_bootstrap_95pct_ci": [
+      -0.21538565761468975,
+      -0.06598010359751039
+    ],
+    "eligible_blocks": 2,
+    "by_date": {
+      "2024-02-15": {
+        "high_minus_low_markout_bps": -0.06598010359751039,
+        "low_bins": 303,
+        "high_bins": 1229
+      },
+      "2024-03-15": {
+        "high_minus_low_markout_bps": -0.21538565761468975,
+        "low_bins": 2219,
+        "high_bins": 1581
+      }
+    }
+  },
+  "h47_lagged_observable_residual_markout_test": {
+    "mean": -0.45712339712471395,
+    "block_bootstrap_95pct_ci": [
+      -0.5518475684569817,
+      -0.36239922579244616
+    ],
+    "eligible_blocks": 2,
+    "by_date": {
+      "2024-02-15": {
+        "high_minus_low_markout_bps": -0.36239922579244616,
+        "low_bins": 708,
+        "high_bins": 612
+      },
+      "2024-03-15": {
+        "high_minus_low_markout_bps": -0.5518475684569817,
+        "low_bins": 207,
+        "high_bins": 6023
+      }
+    },
+    "validation_low_cutoff": 0.25319291110301967,
+    "validation_high_cutoff": 0.709086014107478,
+    "supported": true
+  },
+  "primary_gate_passed": false,
+  "verdict": "MULTIDAY_TOUCH_FILL_HYPOTHESIS_FAILED",
+  "claim_limit": "touch-qualified hypothetical fills only; queue position, fill probability, fees, rebates and latency are not modeled"
+}

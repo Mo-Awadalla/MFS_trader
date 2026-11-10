@@ -1,0 +1,56 @@
+{
+  "created_at_utc": "2026-09-13T20:14:07.747196+00:00",
+  "status": "clean_independent_date_replication_but_not_trading_approval",
+  "hypothesis": 36,
+  "paid_requests_made": false,
+  "rows": {
+    "panel": 8640,
+    "train": 5181,
+    "validation": 1727,
+    "test": 1727
+  },
+  "jump_threshold_bps": 11.860909164251364,
+  "models": {
+    "baseline": {
+      "validation": {
+        "average_precision": 0.32043050635489606,
+        "roc_auc": 0.758025716746647,
+        "brier": 0.3080245473861243
+      },
+      "test": {
+        "average_precision": 0.15183668272930864,
+        "roc_auc": 0.5603676093558947,
+        "brier": 0.25150070607471925
+      }
+    },
+    "augmented": {
+      "validation": {
+        "average_precision": 0.3130538393620389,
+        "roc_auc": 0.7546973052787007,
+        "brier": 0.3142817253917101
+      },
+      "test": {
+        "average_precision": 0.16453781508462595,
+        "roc_auc": 0.5628446337711513,
+        "brier": 0.25430096148853343
+      }
+    }
+  },
+  "test_incremental": {
+    "average_precision": 0.012701132355317307,
+    "roc_auc": 0.0024770244152566567,
+    "brier_improvement": -0.002800255413814179
+  },
+  "predictive_gate_passed": false,
+  "direct_state_test": {
+    "high_minus_low_susceptibility_bps": 0.30304907931556835,
+    "block_bootstrap_95pct_ci": [
+      -0.7449234755654551,
+      1.3407941148180595
+    ],
+    "eligible_blocks": 20,
+    "replicated": false
+  },
+  "h36_clean_date_replicated": false,
+  "verdict": "H36_REJECTED"
+}

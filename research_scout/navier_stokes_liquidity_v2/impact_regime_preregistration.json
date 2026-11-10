@@ -1,0 +1,24 @@
+{
+  "frozen_before_result": true,
+  "created_at": "2026-09-13",
+  "status": "exploratory_reuse_of_seen_clean_day_not_confirmation_or_trading_approval",
+  "hypotheses": [36, 37, 38, 41],
+  "source": "Tardis Binance Futures BTCUSDT snapshots and trades, 2020-09-01",
+  "paid_requests_permitted": false,
+  "causal_alignment": "liquidity state is lagged one 10-second bin before flow and contemporaneous midpoint response; predictive features use only information observable by the end of the decision bin",
+  "measurements": {
+    "participation": "absolute signed aggressive BTC divided by trailing five-minute median 10-second gross volume",
+    "immediate_impact": "absolute contemporaneous 10-second midpoint return in bps; direct impact-law comparisons require nonzero signed flow",
+    "state": "lagged spread in bps divided by displayed near-touch BTC",
+    "h36": "impact susceptibility I/sqrt(participation) is larger in high versus low prior-stress states",
+    "h37": "log-log impact exponent and quadratic log-impact curvature are larger in high prior-stress states",
+    "h38": "a positive trailing one-minute change in the five-minute rolling impact exponent predicts future excursion",
+    "h41": "signed impact retained after 60 seconds, relative to immediate impact and clipped to [-2,2], is larger in high prior-stress states; predictive permanence uses only episodes whose 60-second outcomes are already known"
+  },
+  "sampling": "10-second decisions, next-60-second maximum midpoint excursion, contiguous 60/20/20 split, training-only 95th percentile jump threshold",
+  "baseline": "spread, total depth, imbalance, realized volatility, event rate, trade count, trade volume, signed trade imbalance",
+  "primary_gate": "augmented test average-precision improvement greater than 0.02 and positive Brier improvement",
+  "direct_gate": "positive mean high-minus-low effect with a strictly positive 95% interval from 1000 deterministic resamples of eligible 10-minute test blocks",
+  "h38_gate": "positive Spearman correlation and strictly positive block-bootstrap interval for high-minus-low future excursion",
+  "interpretation": "Any survivor requires unchanged replication on the independent 2024 official Binance day. Failure rejects only these implementations."
+}

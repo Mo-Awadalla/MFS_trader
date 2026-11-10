@@ -1,0 +1,97 @@
+{
+  "created_at_utc": "2026-09-13T21:26:08.801724+00:00",
+  "status": "cross_symbol_replication_of_h47_not_live_execution_approval",
+  "hypothesis": 47,
+  "symbol": "ETHUSDT",
+  "paid_requests_made": false,
+  "dates": {
+    "training": [
+      "2023-08-15",
+      "2023-09-15",
+      "2023-10-15",
+      "2023-11-15"
+    ],
+    "validation": [
+      "2023-12-15",
+      "2024-01-15"
+    ],
+    "holdout": [
+      "2024-02-15",
+      "2024-03-15"
+    ]
+  },
+  "rows": {
+    "all_fill_bins": 64507,
+    "training": 34556,
+    "validation": 17278,
+    "holdout": 12673
+  },
+  "timestamp_rows_rejected_by_date": {
+    "2023-08-15": 0,
+    "2023-09-15": 0,
+    "2023-10-15": 0,
+    "2023-11-15": 0,
+    "2023-12-15": 0,
+    "2024-01-15": 0,
+    "2024-02-15": 25539609,
+    "2024-03-15": 0
+  },
+  "metrics": {
+    "validation": {
+      "control_mae": 0.5691792598595936,
+      "augmented_mae": 0.5673317916844545
+    },
+    "test": {
+      "control_mae": 0.965620682230215,
+      "augmented_mae": 0.9663841450492713
+    }
+  },
+  "holdout_mae_improvement_from_error_signals": -0.0007906446424624545,
+  "validation_excess_error_cutoffs": {
+    "low_20pct": -0.10263502917273336,
+    "high_80pct": 0.10879371090224475
+  },
+  "controlled_excess_error_holdout_effect": {
+    "mean": -0.016803653506758054,
+    "block_bootstrap_95pct_ci": [
+      -0.04029220206629436,
+      0.00668489505277825
+    ],
+    "eligible_blocks": 2,
+    "by_date": {
+      "2024-02-15": {
+        "high_minus_low_markout_bps": -0.04029220206629436,
+        "low_bins": 731,
+        "high_bins": 823
+      },
+      "2024-03-15": {
+        "high_minus_low_markout_bps": 0.00668489505277825,
+        "low_bins": 2238,
+        "high_bins": 3116
+      }
+    }
+  },
+  "uncontrolled_raw_error_holdout_effect": {
+    "mean": -0.45826010557032837,
+    "block_bootstrap_95pct_ci": [
+      -0.4923806185043699,
+      -0.42413959263628676
+    ],
+    "eligible_blocks": 2,
+    "by_date": {
+      "2024-02-15": {
+        "high_minus_low_markout_bps": -0.4923806185043699,
+        "low_bins": 681,
+        "high_bins": 888
+      },
+      "2024-03-15": {
+        "high_minus_low_markout_bps": -0.42413959263628676,
+        "low_bins": 224,
+        "high_bins": 5583
+      }
+    }
+  },
+  "primary_gate_passed": false,
+  "verdict": "H47_CROSS_SYMBOL_FAILED",
+  "claim_limit": "touch-qualified hypothetical fills only; no queue, fees, rebates, latency or actual fill probability"
+}

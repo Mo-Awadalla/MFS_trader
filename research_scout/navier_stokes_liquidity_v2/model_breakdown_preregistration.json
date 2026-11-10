@@ -1,0 +1,26 @@
+{
+  "frozen_before_result": true,
+  "created_at": "2026-09-13",
+  "status": "exploratory_test_of_operational_model_error_not_evidence_of_market_beliefs",
+  "hypotheses": [46, 47, 48, 50],
+  "not_testable": {
+    "49": "The free aggregate-trade and BBO data do not identify individual child orders, queue position, or counterfactual single-order price movement."
+  },
+  "source": "Official Binance USD-M BTCUSDT aggregate trades and event-level BBO, 2024-01-15",
+  "paid_requests_permitted": false,
+  "target": "log(1 + next-60-second maximum absolute BBO midpoint excursion in bps)",
+  "split": "first 60% train, next 20% validation for disagreement thresholds, final 20% untouched test",
+  "models": {
+    "parametric_regular": "ridge regression using average spread/depth/imbalance, realized volatility, trade volume, signed imbalance, and square-root normalized signed flow",
+    "nonlinear_regular_control": "histogram gradient boosting using exactly the same conventional features",
+    "breakdown": "same nonlinear model plus local minima/last state, event concentration, spectral activity, opposing flow, sensitivity, depth change, rolling impact exponent/convexity/permanence, and cross-scale coupling"
+  },
+  "disagreement": "absolute difference between nonlinear-regular and breakdown predictions, with low/high cutoffs fixed from validation 20th/80th percentiles",
+  "primary_gate": [
+    "breakdown test MAE at least 5% lower than nonlinear-regular control",
+    "high-minus-low disagreement conventional absolute error has a strictly positive 95% 10-minute-block bootstrap interval",
+    "high-minus-low disagreement breakdown advantage has a strictly positive 95% 10-minute-block bootstrap interval"
+  ],
+  "h47": "Past observable nonlinear-regular residual is delayed six bins, averaged over six completed outcomes, and tested as a predictor of current future excursion",
+  "interpretation": "A pass would show conventional-feature model breakdown, not prove that market participants explicitly use a mathematically incorrect Navier-Stokes assumption. A failure rejects only this operationalization."
+}

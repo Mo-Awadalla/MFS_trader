@@ -1,0 +1,513 @@
+{
+  "metric_missing_counts": {
+    "count_toptrader_long_short_ratio": 92226,
+    "sum_toptrader_long_short_ratio": 92192,
+    "count_long_short_ratio": 5797,
+    "sum_taker_long_short_vol_ratio": 37271
+  },
+  "required_inputs_by_year": [
+    {
+      "year": 2020,
+      "records": 35103,
+      "missing": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 0,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 3
+      },
+      "nonpositive": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 0,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 1
+      }
+    },
+    {
+      "year": 2021,
+      "records": 104652,
+      "missing": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 411,
+        "count_long_short_ratio": 410,
+        "sum_taker_long_short_vol_ratio": 418
+      },
+      "nonpositive": {
+        "sum_open_interest": 10,
+        "count_toptrader_long_short_ratio": 0,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    },
+    {
+      "year": 2022,
+      "records": 105120,
+      "missing": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 91733,
+        "count_long_short_ratio": 5349,
+        "sum_taker_long_short_vol_ratio": 36850
+      },
+      "nonpositive": {
+        "sum_open_interest": 117,
+        "count_toptrader_long_short_ratio": 0,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    },
+    {
+      "year": 2023,
+      "records": 105117,
+      "missing": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 21,
+        "count_long_short_ratio": 12,
+        "sum_taker_long_short_vol_ratio": 0
+      },
+      "nonpositive": {
+        "sum_open_interest": 16,
+        "count_toptrader_long_short_ratio": 0,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    },
+    {
+      "year": 2024,
+      "records": 105280,
+      "missing": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 7,
+        "count_long_short_ratio": 7,
+        "sum_taker_long_short_vol_ratio": 0
+      },
+      "nonpositive": {
+        "sum_open_interest": 305,
+        "count_toptrader_long_short_ratio": 0,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    },
+    {
+      "year": 2025,
+      "records": 105117,
+      "missing": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 54,
+        "count_long_short_ratio": 19,
+        "sum_taker_long_short_vol_ratio": 0
+      },
+      "nonpositive": {
+        "sum_open_interest": 54,
+        "count_toptrader_long_short_ratio": 0,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    }
+  ],
+  "metrics_and_panel_by_month_2022": [
+    {
+      "month": "2022-01",
+      "metric_records": 8928,
+      "eligible_panel_rows": 288,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 8640,
+        "count_long_short_ratio": 5344,
+        "sum_taker_long_short_vol_ratio": 8640
+      }
+    },
+    {
+      "month": "2022-02",
+      "metric_records": 8064,
+      "eligible_panel_rows": 0,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 8064,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 8064
+      }
+    },
+    {
+      "month": "2022-03",
+      "metric_records": 8928,
+      "eligible_panel_rows": 0,
+      "invalid_by_column": {
+        "sum_open_interest": 117,
+        "count_toptrader_long_short_ratio": 8928,
+        "count_long_short_ratio": 5,
+        "sum_taker_long_short_vol_ratio": 8928
+      }
+    },
+    {
+      "month": "2022-04",
+      "metric_records": 8640,
+      "eligible_panel_rows": 0,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 8640,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 8640
+      }
+    },
+    {
+      "month": "2022-05",
+      "metric_records": 8928,
+      "eligible_panel_rows": 1237,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 7675,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 2577
+      }
+    },
+    {
+      "month": "2022-06",
+      "metric_records": 8640,
+      "eligible_panel_rows": 6822,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 1811,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    },
+    {
+      "month": "2022-07",
+      "metric_records": 8928,
+      "eligible_panel_rows": 0,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 8928,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    },
+    {
+      "month": "2022-08",
+      "metric_records": 8928,
+      "eligible_panel_rows": 0,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 8928,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    },
+    {
+      "month": "2022-09",
+      "metric_records": 8640,
+      "eligible_panel_rows": 20,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 8620,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 1
+      }
+    },
+    {
+      "month": "2022-10",
+      "metric_records": 8928,
+      "eligible_panel_rows": 0,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 8928,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    },
+    {
+      "month": "2022-11",
+      "metric_records": 8640,
+      "eligible_panel_rows": 0,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 8640,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    },
+    {
+      "month": "2022-12",
+      "metric_records": 8928,
+      "eligible_panel_rows": 4931,
+      "invalid_by_column": {
+        "sum_open_interest": 0,
+        "count_toptrader_long_short_ratio": 3931,
+        "count_long_short_ratio": 0,
+        "sum_taker_long_short_vol_ratio": 0
+      }
+    }
+  ],
+  "refits": [
+    {
+      "year": 2025,
+      "confidence_rows": 227,
+      "cal_slope": 0.3943257814653407,
+      "economics": {
+        "trades": 227,
+        "days": 70,
+        "calendar_days": 365,
+        "gross_bps": 3.8931627564778166,
+        "funding_bps": 0.0,
+        "breakeven_round_trip_bps": 3.8922143040260075,
+        "win_rate": 0.5462555066079295,
+        "mean_win_bps": 48.86184396800961,
+        "mean_loss_bps": -50.24389035255075,
+        "net_bps": {
+          "0": 3.8931627564778166,
+          "2": 1.892675397674974,
+          "4": -0.1078119611278709,
+          "6": -2.1082993199307105,
+          "12": -8.10976139633924,
+          "24": -20.112685549156296,
+          "50": -46.11902121359326
+        },
+        "fixed_initial_notional_total_return_12bps": -0.18409158369690076,
+        "fixed_initial_notional_drawdown_12bps": -0.2101966961656718,
+        "annualized_daily_sharpe_12bps": -2.241895437676642,
+        "halves_12bps": {
+          "False": -15.149074954094944,
+          "True": -5.285345462671827
+        },
+        "months_12bps": {
+          "2025-01": -0.851878430249665,
+          "2025-02": 3.1288998422644902,
+          "2025-03": -15.356018893674324,
+          "2025-04": 4.351702736157667,
+          "2025-05": 6.118481741770592,
+          "2025-06": -6.92472181263582,
+          "2025-07": 26.63210982939342,
+          "2025-08": -21.689393689313558,
+          "2025-09": 10.300813948109285,
+          "2025-10": -16.412190717415065,
+          "2025-11": -7.338283219013319,
+          "2025-12": -22.34548122733241
+        },
+        "gross_plus_funding_ci95_bps": [
+          -1.665966207124724,
+          10.067204079846187
+        ],
+        "net_12bps_ci95_bps": [
+          -13.66379212977936,
+          -1.9396674237886644
+        ],
+        "net_12bps_adjusted_lower_bps": -15.111737231323934,
+        "net_2bps_ci95_bps": [
+          -3.6656038609004975,
+          8.066058829240378
+        ]
+      },
+      "confidence": {
+        "accuracy_advantage_over_half": {
+          "mean": 0.046255506607929514,
+          "ci95": [
+            -0.010106216807247735,
+            0.10465116279069768
+          ]
+        },
+        "realized_minus_claimed_confidence": {
+          "mean": -0.018447127433558832,
+          "ci95": [
+            -0.07382976700972481,
+            0.03894430507312164
+          ]
+        }
+      }
+    },
+    {
+      "year": 2026,
+      "confidence_rows": 564,
+      "cal_slope": 0.5586948867210176,
+      "economics": {
+        "trades": 566,
+        "days": 142,
+        "calendar_days": 243,
+        "gross_bps": 1.8257410015354165,
+        "funding_bps": 0.002086395759717476,
+        "breakeven_round_trip_bps": 1.8281257523176828,
+        "win_rate": 0.5512367491166078,
+        "mean_win_bps": 29.34808803854788,
+        "mean_loss_bps": -31.981236461251545,
+        "net_bps": {
+          "0": 1.8278273972951342,
+          "2": -0.17184619734443557,
+          "4": -2.1715197919840046,
+          "6": -4.171193386623574,
+          "12": -10.170214170542282,
+          "24": -22.1682557383797,
+          "50": -48.16401246869411
+        },
+        "fixed_initial_notional_total_return_12bps": -0.5756341220526932,
+        "fixed_initial_notional_drawdown_12bps": -0.5845427623701822,
+        "annualized_daily_sharpe_12bps": -5.317110175974964,
+        "halves_12bps": {
+          "False": -16.721611724128664,
+          "True": -9.215354608076252
+        },
+        "months_12bps": {
+          "2026-01": -8.859032644272398,
+          "2026-02": -12.036887413859397,
+          "2026-03": -8.975988224362276,
+          "2026-04": -7.361123585889314,
+          "2026-05": -4.627269543885019,
+          "2026-06": -5.484150033448322,
+          "2026-07": -16.2553985893378,
+          "2026-08": -16.985123495966977
+        },
+        "gross_plus_funding_ci95_bps": [
+          -0.6763993093754477,
+          5.139589323806525
+        ],
+        "net_12bps_ci95_bps": [
+          -12.673953849412774,
+          -6.858464859288096
+        ],
+        "net_12bps_adjusted_lower_bps": -13.281482483342248,
+        "net_2bps_ci95_bps": [
+          -2.6759917327150027,
+          3.1399136266240864
+        ]
+      },
+      "confidence": {
+        "accuracy_advantage_over_half": {
+          "mean": 0.0549645390070922,
+          "ci95": [
+            0.01919488830590667,
+            0.1
+          ]
+        },
+        "realized_minus_claimed_confidence": {
+          "mean": -0.008911552299890756,
+          "ci95": [
+            -0.045249311071652816,
+            0.03765082873236874
+          ]
+        }
+      }
+    }
+  ],
+  "frozen": {
+    "2024": {
+      "slope": {
+        "intercept": 0.013836238498456336,
+        "slope": 0.8168516398627149,
+        "interpretation": "Diagnostic fitted on evaluation outcomes; not deployed; perfect reliability intercept0 slope1"
+      },
+      "group_sensitivity": [
+        {
+          "group": "price_returns_and_shape",
+          "brier": 0.2497627306331692,
+          "brier_change": 0.0001437637518551249,
+          "accuracy": 0.5127527067164894
+        },
+        {
+          "group": "volume_and_trade_activity",
+          "brier": 0.24962430555078155,
+          "brier_change": 5.338669467475077e-06,
+          "accuracy": 0.5158666283414775
+        },
+        {
+          "group": "taker_flow",
+          "brier": 0.2498030398656764,
+          "brier_change": 0.00018407298436232122,
+          "accuracy": 0.5111717926607262
+        },
+        {
+          "group": "open_interest",
+          "brier": 0.24961958496511888,
+          "brier_change": 6.180838048042148e-07,
+          "accuracy": 0.5160869981795535
+        },
+        {
+          "group": "positioning_ratios",
+          "brier": 0.24959565914822224,
+          "brier_change": -2.3307733091837424e-05,
+          "accuracy": 0.5163648558014755
+        }
+      ],
+      "positive_brier_months": 9,
+      "months": 12
+    },
+    "2025": {
+      "slope": {
+        "intercept": -0.008143093655442052,
+        "slope": 0.6575818882851852,
+        "interpretation": "Diagnostic fitted on evaluation outcomes; not deployed; perfect reliability intercept0 slope1"
+      },
+      "group_sensitivity": [
+        {
+          "group": "price_returns_and_shape",
+          "brier": 0.24991268631262276,
+          "brier_change": 0.00011066233742246245,
+          "accuracy": 0.5100427676798533
+        },
+        {
+          "group": "volume_and_trade_activity",
+          "brier": 0.24979469504933982,
+          "brier_change": -7.328925860472513e-06,
+          "accuracy": 0.5113028868183901
+        },
+        {
+          "group": "taker_flow",
+          "brier": 0.24982749589528735,
+          "brier_change": 2.547192008706123e-05,
+          "accuracy": 0.5074079731174583
+        },
+        {
+          "group": "open_interest",
+          "brier": 0.2498068244959532,
+          "brier_change": 4.800520752912263e-06,
+          "accuracy": 0.5118661218878876
+        },
+        {
+          "group": "positioning_ratios",
+          "brier": 0.24976824157274244,
+          "brier_change": -3.37824024578548e-05,
+          "accuracy": 0.5111119596761876
+        }
+      ],
+      "positive_brier_months": 9,
+      "months": 12
+    },
+    "2026": {
+      "slope": {
+        "intercept": -0.001340012292626834,
+        "slope": 0.6978716657007893,
+        "interpretation": "Diagnostic fitted on evaluation outcomes; not deployed; perfect reliability intercept0 slope1"
+      },
+      "group_sensitivity": [
+        {
+          "group": "price_returns_and_shape",
+          "brier": 0.2499462857786085,
+          "brier_change": 0.00018988010220505336,
+          "accuracy": 0.5108337393597203
+        },
+        {
+          "group": "volume_and_trade_activity",
+          "brier": 0.24974661159057934,
+          "brier_change": -9.794085824105236e-06,
+          "accuracy": 0.5120518185205354
+        },
+        {
+          "group": "taker_flow",
+          "brier": 0.24976279192261389,
+          "brier_change": 6.38624621043804e-06,
+          "accuracy": 0.5133558797397609
+        },
+        {
+          "group": "open_interest",
+          "brier": 0.249758650852791,
+          "brier_change": 2.245176387555281e-06,
+          "accuracy": 0.5129689604769139
+        },
+        {
+          "group": "positioning_ratios",
+          "brier": 0.24972407136536856,
+          "brier_change": -3.2334311034887264e-05,
+          "accuracy": 0.5141010575793185
+        }
+      ],
+      "positive_brier_months": 7,
+      "months": 8
+    }
+  }
+}

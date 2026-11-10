@@ -1,0 +1,72 @@
+{
+  "frozen_at_utc": "2026-09-13T21:35:00Z",
+  "status": "source_availability_amended_before_new_holdout_acquisition",
+  "hypotheses": [1, 2],
+  "symbols": ["BTCUSDT", "ETHUSDT"],
+  "source": "free official Binance USD-M futures daily bookTicker and aggTrades archives",
+  "paid_requests_authorized": false,
+  "decision_interval_seconds": 10,
+  "trailing_state_seconds": 60,
+  "forward_outcome_seconds": 60,
+  "training_dates": [
+    "2023-08-15",
+    "2023-09-15",
+    "2023-10-15",
+    "2023-11-15"
+  ],
+  "validation_dates": ["2023-12-15", "2024-01-15"],
+  "excluded_previously_inspected_dates": ["2024-02-15", "2024-03-15"],
+  "unavailable_original_holdout_dates": [
+    "2024-04-15",
+    "2024-05-15",
+    "2024-06-15",
+    "2024-07-15",
+    "2024-08-15",
+    "2024-09-15"
+  ],
+  "source_availability_amendment": "BTCUSDT and ETHUSDT daily bookTicker returned HTTP 404 beginning with the first original holdout date; no result archive was acquired or inspected before replacement dates were frozen",
+  "untouched_holdout_dates": [
+    "2024-01-31",
+    "2024-02-07",
+    "2024-02-21",
+    "2024-03-06",
+    "2024-03-20",
+    "2024-03-27"
+  ],
+  "local_pressure": "aggressive trade quantity divided by timestamp-eligible same-side touch quantity, summed per one-second interval",
+  "primary_signal": "trailing-60-second maximum one-second local pressure divided by its trailing RMS",
+  "ordinary_aggregate_state": {
+    "variables": [
+      "trailing RMS local pressure",
+      "trailing total trade volume",
+      "realized volatility",
+      "mean touch depth"
+    ],
+    "bounds": "each variable between its training-set 20th and 80th percentile"
+  },
+  "baseline_features": [
+    "spread",
+    "mean touch depth",
+    "imbalance",
+    "realized volatility",
+    "trade volume",
+    "signed flow imbalance",
+    "quote-event rate",
+    "trailing RMS local pressure"
+  ],
+  "augmented_features": [
+    "baseline features",
+    "maximum one-second local pressure",
+    "maximum-to-RMS pressure ratio"
+  ],
+  "outcome": "next-60-second maximum absolute BBO midpoint excursion in basis points",
+  "threshold": "training-set 95th percentile of the outcome",
+  "inference": "combine symbols within date and use calendar-date clusters",
+  "primary_gate": {
+    "average_precision_improvement_strictly_greater_than": 0.02,
+    "brier_score_must_improve": true,
+    "cluster_interval_for_high_minus_low_excursion_must_be_strictly_positive": true,
+    "all_six_holdout_date_effects_must_be_positive": true
+  },
+  "claim_limit": "observable local concentration test only; not evidence that markets literally obey Navier-Stokes"
+}
