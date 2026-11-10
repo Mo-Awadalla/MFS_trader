@@ -1,0 +1,32 @@
+{
+  "status": "returns_blind_no_post_entry_prices_or_pnl_read",
+  "development_candidate_signals": 281,
+  "executable_entries": 281,
+  "entries_per_week": 1.8012820512820513,
+  "direction_counts": {
+    "UPRO": 160,
+    "SPXU": 121
+  },
+  "minority_direction_fraction": 0.4306049822064057,
+  "year_counts": {
+    "2021": 97,
+    "2022": 90,
+    "2023": 94
+  },
+  "entry_quote_availability": 1.0,
+  "cross_feed": {
+    "overlap_dates": 666,
+    "both_signal_dates": 214,
+    "same_direction_fraction": 1.0,
+    "same_action_fraction": 0.9414414414414415
+  },
+  "gates": {
+    "at_least_two_entries_per_week": false,
+    "entry_quote_availability_at_least_95_percent": true,
+    "minority_direction_at_least_20_percent": true,
+    "every_development_year_at_least_100_entries": false,
+    "cross_feed_direction_agreement_at_least_85_percent": true,
+    "cross_feed_action_agreement_at_least_75_percent": true
+  },
+  "feasibility_passed": false
+}

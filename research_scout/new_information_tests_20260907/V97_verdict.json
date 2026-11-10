@@ -1,0 +1,18 @@
+{
+  "hypothesis": "V97",
+  "status": "aborted_data_feasibility_before_outcomes",
+  "rule": "Upward change in same-fiscal-year adjusted annual EPS midpoint relative to the most recent verified public forecast on the same accounting basis",
+  "pilot_documents_readable": 10,
+  "public_issuer_documents_saved": 69,
+  "reason": "Readable quarterly releases do not establish an unbroken history of the most recent public forecast. An unreadable 2021-03-08 UNH disclosure falls between the two UNH pilot releases; broader intervening disclosures are also unresolved. Do not assume those documents leave guidance unchanged.",
+  "additional_semantic_evidence": "Lilly's 2021-11-02 public announcement estimated about $0.25 additional 2021 EPS, while its 2021-12-15 comparison table still prints the older quarterly forecast as prior. A quarterly-table-only comparison can misclassify new information. Non-GAAP policy changes were also found in 2022 and 2023.",
+  "strategy_outcomes_evaluated": false,
+  "signal_list_frozen": false,
+  "net_ending_cash": null,
+  "trade_days": null,
+  "later_outcomes_evaluated": false,
+  "rescue_variants": 0,
+  "profitability": "unknown",
+  "paid_data_purchases": 0,
+  "documents_preserved_for_distinct_future_research": true
+}

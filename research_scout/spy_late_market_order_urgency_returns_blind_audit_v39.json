@@ -1,0 +1,265 @@
+{
+  "status": "failed_returns_blind_feasibility_no_pnl_opened",
+  "returns_read": false,
+  "rule": {
+    "early_cutoff": "09:28:00",
+    "late_cutoff": "09:29:50",
+    "condition": "stable A/B side; late market imbalance positive; market/total imbalance share rises",
+    "direction": "stable published imbalance side",
+    "actuator": "B -> UPRO; A -> SPXU",
+    "primary_entry_target": "09:30:05",
+    "delay_diagnostics": [
+      "09:30:01",
+      "09:31:00"
+    ],
+    "exit_target": "09:35:00",
+    "maximum_event_wait_seconds": 60
+  },
+  "degraded_dates_excluded_union": [
+    "2021-01-21",
+    "2022-07-18",
+    "2022-08-22",
+    "2022-12-05",
+    "2022-12-27",
+    "2023-06-26",
+    "2023-09-22",
+    "2023-11-21",
+    "2023-12-01",
+    "2023-12-04",
+    "2023-12-05",
+    "2023-12-06",
+    "2023-12-07",
+    "2023-12-08",
+    "2023-12-11",
+    "2024-04-19",
+    "2024-06-18",
+    "2024-11-19",
+    "2025-03-24",
+    "2025-04-04",
+    "2025-05-06",
+    "2025-06-04",
+    "2025-06-16",
+    "2025-07-09",
+    "2025-08-08",
+    "2025-08-13",
+    "2025-08-19",
+    "2025-08-25",
+    "2025-09-03",
+    "2025-09-08",
+    "2025-09-12",
+    "2025-10-10",
+    "2025-10-13",
+    "2026-06-24",
+    "2026-07-14"
+  ],
+  "feature_development_2021_2023": {
+    "signals": 0,
+    "trades_per_declared_calendar_week": 0.0,
+    "side_counts": {},
+    "minority_side_share": 0.0
+  },
+  "executable_development_overlap_2023_03_28_2023_12_31": {
+    "signals": 0,
+    "trades_per_declared_calendar_week": 0.0,
+    "side_counts": {},
+    "minority_side_share": 0.0
+  },
+  "all_overlap": {
+    "signals": 7,
+    "executable_signals": 6,
+    "primary_quote_coverage_pct": 85.71428571428571,
+    "relevant_side_ladder_available_days": 6,
+    "relevant_side_ladder_coverage_pct": 100.0,
+    "delay_target_available_counts": {
+      "09:30:01": 6,
+      "09:31:00": 6
+    },
+    "quote_missing": {
+      "UPRO:09:35:00": 1
+    },
+    "relevant_ladder_missing": {}
+  },
+  "market_order_condition": {
+    "eligible_stable_side_days": 780,
+    "selected_signal_days": 7,
+    "selection_share_pct": 0.8974358974358974,
+    "post_2025_11_13_break_signals": 7
+  },
+  "by_year": {
+    "2021": {
+      "signals": 0,
+      "executable_signals": 0,
+      "side_counts": {}
+    },
+    "2022": {
+      "signals": 0,
+      "executable_signals": 0,
+      "side_counts": {}
+    },
+    "2023": {
+      "signals": 0,
+      "executable_signals": 0,
+      "side_counts": {}
+    },
+    "2024": {
+      "signals": 0,
+      "executable_signals": 0,
+      "side_counts": {}
+    },
+    "2025": {
+      "signals": 0,
+      "executable_signals": 0,
+      "side_counts": {}
+    },
+    "2026": {
+      "signals": 7,
+      "executable_signals": 6,
+      "side_counts": {
+        "B": 5,
+        "A": 2
+      }
+    }
+  },
+  "adjacent_cutoff_stability": {
+    "09:29:30": {
+      "signals": 14,
+      "joint_signal_days": 6,
+      "direction_agreement_on_joint_pct": 100.0,
+      "identical_action_including_cash_pct": 40.0
+    },
+    "09:29:59": {
+      "signals": 0,
+      "joint_signal_days": 0,
+      "direction_agreement_on_joint_pct": 0.0,
+      "identical_action_including_cash_pct": 0.0
+    }
+  },
+  "timestamp_observability": {
+    "all_signal_event_and_receive_times_before_cutoff_and_primary_order": true
+  },
+  "gates": {
+    "feature_frequency_at_least_two_per_declared_week_2021_2023": false,
+    "executable_frequency_at_least_two_per_declared_week_2023_overlap": false,
+    "at_least_100_feature_signals_each_development_year": false,
+    "at_least_20_feature_signals_2026_extension": false,
+    "minority_side_at_least_20pct_feature_and_executable_development": false,
+    "upro_and_spxu_each_executable_in_development": false,
+    "primary_entry_exit_quote_coverage_at_least_90pct": false,
+    "relevant_side_ladder_09_30_05_availability_at_least_80pct": true,
+    "adjacent_09_29_30_identical_action_at_least_60pct": false,
+    "adjacent_09_29_59_identical_action_at_least_60pct": false,
+    "market_order_condition_selects_between_10_and_80pct_stable_side_days": false,
+    "at_least_20_signals_after_quantity_definition_break": false,
+    "ts_event_and_ts_recv_before_cutoff_and_primary_order": true
+  },
+  "gate_passed": false,
+  "signals": {
+    "2026-01-30": {
+      "side": "B",
+      "symbol": "UPRO",
+      "early_market_imbalance_qty": 0,
+      "late_market_imbalance_qty": 21804,
+      "early_total_imbalance_qty": 7663,
+      "late_total_imbalance_qty": 91190,
+      "early_market_share": 0.0,
+      "late_market_share": 0.23910516504002632,
+      "reference_return": 0.00012291052114066225,
+      "indicative_return": 0.0018786127167629285,
+      "signal_ts_event": "2026-01-30T14:29:49.061247264+00:00",
+      "signal_ts_recv": "2026-01-30T14:29:49.061454899+00:00"
+    },
+    "2026-03-09": {
+      "side": "A",
+      "symbol": "SPXU",
+      "early_market_imbalance_qty": 19093,
+      "late_market_imbalance_qty": 22610,
+      "early_total_imbalance_qty": 59391,
+      "late_total_imbalance_qty": 67492,
+      "early_market_share": 0.3214796854742301,
+      "late_market_share": 0.3350026669827535,
+      "reference_return": 0.0007586284598339876,
+      "indicative_return": 0.0011592370112762929,
+      "signal_ts_event": "2026-03-09T13:29:49.056578841+00:00",
+      "signal_ts_recv": "2026-03-09T13:29:49.056785914+00:00"
+    },
+    "2026-03-23": {
+      "side": "B",
+      "symbol": "UPRO",
+      "early_market_imbalance_qty": 0,
+      "late_market_imbalance_qty": 1409,
+      "early_total_imbalance_qty": 2198,
+      "late_total_imbalance_qty": 46707,
+      "early_market_share": 0.0,
+      "late_market_share": 0.030166784422035242,
+      "reference_return": -0.0006909328352541211,
+      "indicative_return": 0.000683060109289757,
+      "signal_ts_event": "2026-03-23T13:29:49.060838805+00:00",
+      "signal_ts_recv": "2026-03-23T13:29:49.061047463+00:00"
+    },
+    "2026-03-25": {
+      "side": "B",
+      "symbol": "UPRO",
+      "early_market_imbalance_qty": 11002,
+      "late_market_imbalance_qty": 17732,
+      "early_total_imbalance_qty": 27997,
+      "late_total_imbalance_qty": 37660,
+      "early_market_share": 0.3929706754295103,
+      "late_market_share": 0.4708443972384493,
+      "reference_return": -0.000235279831205637,
+      "indicative_return": -0.00040927074017371723,
+      "signal_ts_event": "2026-03-25T13:29:49.049318900+00:00",
+      "signal_ts_recv": "2026-03-25T13:29:49.049526128+00:00"
+    },
+    "2026-05-04": {
+      "side": "B",
+      "symbol": "UPRO",
+      "early_market_imbalance_qty": 0,
+      "late_market_imbalance_qty": 1253,
+      "early_total_imbalance_qty": 7010,
+      "late_total_imbalance_qty": 34308,
+      "early_market_share": 0.0,
+      "late_market_share": 0.03652209397225137,
+      "reference_return": 0.00010417317749022992,
+      "indicative_return": 0.0008194330634296865,
+      "signal_ts_event": "2026-05-04T13:29:49.084278041+00:00",
+      "signal_ts_recv": "2026-05-04T13:29:49.084488900+00:00"
+    },
+    "2026-06-01": {
+      "side": "A",
+      "symbol": "SPXU",
+      "early_market_imbalance_qty": 162,
+      "late_market_imbalance_qty": 2192,
+      "early_total_imbalance_qty": 15227,
+      "late_total_imbalance_qty": 23270,
+      "early_market_share": 0.010638996519340645,
+      "late_market_share": 0.09419853889127631,
+      "reference_return": 0.0005828547962989372,
+      "indicative_return": 0.00038439616664254217,
+      "signal_ts_event": "2026-06-01T13:29:49.076773465+00:00",
+      "signal_ts_recv": "2026-06-01T13:29:49.076983235+00:00"
+    },
+    "2026-06-25": {
+      "side": "B",
+      "symbol": "UPRO",
+      "early_market_imbalance_qty": 5668,
+      "late_market_imbalance_qty": 23618,
+      "early_total_imbalance_qty": 15708,
+      "late_total_imbalance_qty": 42015,
+      "early_market_share": 0.3608352431881844,
+      "late_market_share": 0.5621325717005832,
+      "reference_return": -0.0002164970772894348,
+      "indicative_return": 0.000527247901147776,
+      "signal_ts_event": "2026-06-25T13:29:49.053998597+00:00",
+      "signal_ts_recv": "2026-06-25T13:29:49.054220488+00:00"
+    }
+  },
+  "executable_signal_dates": [
+    "2026-01-30",
+    "2026-03-09",
+    "2026-03-23",
+    "2026-03-25",
+    "2026-05-04",
+    "2026-06-01"
+  ],
+  "warning": "No post-entry bid, return, P&L, profit factor, benchmark, or placebo outcome was calculated."
+}

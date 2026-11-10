@@ -94,6 +94,8 @@ markers = [
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+# Preserve frozen scout source and its recorded hashes. Runnable modules and tests stay linted.
+extend-exclude = ["research_scout/"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "SIM", "C4"]

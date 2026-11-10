@@ -1,0 +1,84 @@
+{
+  "specification_id": "UPRO-SPXU-Cross-Market-Transitions-v12",
+  "saved_at": "2026-07-26",
+  "status": "preregistered-before-outcome-calculation",
+  "objective": "Test whether state changes inside QQQ/IWM during the first hour predict the SPY complex's afternoon direction strongly enough to trade with UPRO or SPXU.",
+  "lesson_carried_forward": {
+    "mechanism_only": "Independent equity segments can reveal information that has not fully diffused into SPY.",
+    "not_carried_forward": [
+      "the prior Breadth Consensus entry condition",
+      "the prior rule's favorable years or direction",
+      "any threshold inferred from prior returns",
+      "any combination with the prior lagged-flow strategy"
+    ],
+    "why_these_are_new_hypotheses": "Each candidate measures a transition between two fixed half-hour states. None conditions on the prior candidate's win/loss record or modifies its signal."
+  },
+  "data": {
+    "signal": "Local Alpaca IEX QQQ and IWM 30-minute regular-session bars",
+    "execution": "Databento ARCX.PILLAR UPRO/SPXU BBO-1m",
+    "consolidated_execution_audit": "Databento EQUS.MINI UPRO/SPXU BBO-1m where available",
+    "period": "2021-01-04 through 2026-06-29",
+    "excluded_sessions": "Databento dataset-condition dates marked degraded"
+  },
+  "shared_timing": {
+    "bar_one": "09:30-09:59",
+    "bar_two": "10:00-10:29",
+    "decision": "after bar two is complete",
+    "dead_minute": "10:30",
+    "entry": "10:31 observed ask",
+    "exit": "15:55 observed bid",
+    "overnight": false
+  },
+  "candidates": {
+    "synchronized_breadth_acceleration": {
+      "score": "Common nonzero sign of QQQ and IWM acceleration, where each acceleration is its second 30-minute return minus its first 30-minute return",
+      "trade": "UPRO when both markets accelerate upward, SPXU when both accelerate downward, otherwise cash",
+      "economic_claim": "A synchronized change in velocity across growth and small-cap equities is evidence of a market-wide information shock that should continue diffusing into SPY during the afternoon."
+    },
+    "consensus_formation_event": {
+      "score": "Common nonzero sign of QQQ and IWM second-bar returns, only when their first-bar return signs disagreed",
+      "trade": "UPRO when disagreement resolves upward, SPXU when it resolves downward, otherwise cash",
+      "economic_claim": "Resolution from cross-market disagreement into agreement identifies newly broadening information, unlike static agreement that may already be priced."
+    },
+    "leadership_curvature": {
+      "score": "(IWM second-bar return minus QQQ second-bar return) minus (IWM first-bar return minus QQQ first-bar return)",
+      "trade": "UPRO when small-cap leadership is strengthening, SPXU when it is weakening, skip exact ties",
+      "economic_claim": "The change in small-cap versus growth leadership measures expansion or contraction of risk appetite independently of the market's absolute first-hour direction."
+    }
+  },
+  "account": {
+    "starting_cash_usd": 100.0,
+    "gross_notional_per_trade": "lesser of current cash and $100",
+    "fractional_shares": true,
+    "short_sales": false,
+    "no_overnight": true
+  },
+  "development": "2021-01-04 through 2023-12-29",
+  "secondary_holdout": "2024-01-02 through 2025-12-31",
+  "diagnostic_extension": "2026-01-02 through 2026-06-29",
+  "gates": {
+    "minimum_trades_per_week": 2.0,
+    "profit_factor_at_least": 1.0,
+    "each_development_year_positive": true,
+    "bullish_and_bearish_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_per_share_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_ten_best_development_sessions": true,
+    "holdout_requires_2024_and_2025_positive": true,
+    "holdout_requires_bullish_and_bearish_positive": true,
+    "holdout_requires_ending_cash_above_spy": true,
+    "holdout_requires_positive_after_one_extra_cent_per_share_each_fill": true,
+    "holdout_requires_positive_after_removing_five_best_sessions": true
+  },
+  "prohibited_after_results": [
+    "change the fixed two-bar observation window",
+    "change 10:31 entry or 15:55 exit",
+    "invert any score",
+    "add a magnitude threshold or neutral band",
+    "select weekdays, years, directions, volatility states, or symbols",
+    "drop bearish trades",
+    "combine these candidates with each other or any prior candidate"
+  ],
+  "evidence_warning": "The broader research program has viewed all historical years. Frozen-rule partitions prevent within-test repair but do not create a pristine holdout; a survivor would still require future paper validation."
+}

@@ -1,0 +1,147 @@
+{
+  "created_utc": "2026-09-07T02:09:32.396970+00:00",
+  "status": "frozen before strategy returns",
+  "hypotheses": {
+    "V93": {
+      "name": "Pre-FOMC uncertainty premium",
+      "mechanism": "Scheduled monetary-policy uncertainty may command an intraday equity premium before resolution; condition on elevated prior volatility rather than post-release direction.",
+      "signal": "Scheduled FOMC date in existing official calendar, prior-session SPY 20-day close-return standard deviation above median of 252 prior-session RV20 observations.",
+      "trade": "Long SPY at 10:00 bar open; exit 13:30 bar open, before 14:00 announcement.",
+      "cost_bps_each_side": 3,
+      "delay_entry": "10:30",
+      "control": "Unconditional pre-FOMC SPY with same clocks; report selected high-volatility subset versus excluded low-volatility dates.",
+      "novelty": "Exact volatility-conditioned rule not located in archive. DT8 proposed unconditional pre-FOMC; V45 tested post-release discovery. Not a claim of literature novelty."
+    },
+    "V94": {
+      "name": "Overnight-and-opening pressure reversal",
+      "mechanism": "Stock-specific selling through the opening half hour may temporarily depress prices and reverse later; this tests stock selection rather than index breadth.",
+      "signal": "At 10:00 compare each stock 09:00 hourly close (ends10:00) to previous full-session15:00 hourly close (ends16:00), minus SPY 09:30 half-hour close versus previous15:30 half-hour close. Eligible absolute stock return <=15%, positive prices/volumes, at least15 of fixed19 issuers. Select three lowest residuals only if all three are negative.",
+      "trade": "Equal-weight three stocks, long at11:00 hourly open, exit15:00 hourly open. One-hour buffer after signal.",
+      "universe": "Existing static20 SIP panel excluding GOOG to avoid double-counting Alphabet; fixed19 survivors, explicit selection bias.",
+      "cost_bps_each_side": 5,
+      "delay_entry": "12:00",
+      "control": "Equal-weight all eligible issuers on the same signal days and mirrored top-three residual selection.",
+      "novelty": "Related to unimplemented overnight-loser proposal and failed event/daily reversals; this exact non-event hourly stock-selection rule not found. It is not a renamed V75 index breadth vote."
+    },
+    "V95": {
+      "name": "Alphabet voting-share premium normalization",
+      "mechanism": "GOOG and GOOGL share issuer economics but can have changing voting/liquidity premiums. An unusually wide same-clock premium may normalize intraday; long cheaper class only, not riskless arbitrage.",
+      "signal": "At11:00 use GOOG/GOOGL ratio of10:00 hourly closes. Compare log ratio with median and1.4826*MAD of preceding20 same-clock observations, excluding current day. If abs deviation>2scaledMAD and MAD>0, buy relatively cheap class: GOOGL for high ratio, GOOG for low.",
+      "trade": "Enter12:00 hourly open, exit15:00 hourly open. One-hour buffer.",
+      "cost_bps_each_side": 5,
+      "delay_entry": "13:00",
+      "control": "Equal-weight both classes on same signal days; report selected-minus-control return to isolate selection from Alphabet beta.",
+      "novelty": "No exact dual-class rule located. Related to broad relative-value research, distinct from leverage-wrapper fair-value identities. Not a claim that share classes are freely convertible."
+    }
+  },
+  "common": {
+    "development": "2021-01-04 through2023-12-29",
+    "later_descriptive": "2024-01-02 through2025-12-31; heavily exposed history, not pristine validation",
+    "capital": "$100 fully funded fractional long portfolio, weights sum1, cash on known no-signal days, zero cash interest; no shorting, leverage, overnight or external trading",
+    "inputs": "Use completed-bar features only; hourly bars start at timestamp. No high/low fill assumptions. All entries and exits use later bar opens.",
+    "execution": "Bar-open reference with adverse cost on both sides; all-in cost assumptions stand in for spread, fees and slippage, not historical observed quotes. Costs double in stress. Fractional fills/capacity/settlement unvalidated.",
+    "calendar": "NYSE regular full16:00 close sessions only for trading; full exchange calendar retained for strategy and SPY equity. Previous-session close features require prior full session. Missing feature/fill days remain explicit unknowns, not silently cash.",
+    "robustness": "Double cost, delayed entry, remove five best trade days, mechanism controls; 5000 five-session circular-block bootstrap draws, seed939495, paired daily excess against SPY and control. 98.333% intervals for three tested primary strategies (Bonferroni family alpha .05).",
+    "pass_definition": "Both development and later period: net compounded return beats matched-calendar SPY total return; doubled-cost and remove-five results positive; multiplicity-adjusted lower excess bound positive; no unresolved days. Positive bar results still require independent quote and point-in-time-universe validation. No old minimum-frequency veto: sparse hypotheses are tested and their limited samples reported.",
+    "benchmark": "Cached Yahoo adjusted OHLC total-return proxy; first calendar day adjusted open to close then adjusted close-to-close. No benchmark friction, conservative hurdle.",
+    "no_tuning": true
+  },
+  "sources": [
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\AAPL_1h.parquet",
+      "sha256": "9b0c6fe7fde743ad2562070e67151f26f05a18f03bff328795871929ad3d2ba9"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\AMD_1h.parquet",
+      "sha256": "418476f34eda25c3908f2bf294862867f5a4a0173fdefd794fdf4c72c26fe9c3"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\AMZN_1h.parquet",
+      "sha256": "edddab53986d0e8918d8bf86adcdc08fbf59f44b643eb8cf73f30e324e014453"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\AVGO_1h.parquet",
+      "sha256": "6ed3fcef52aba4eb7db4d8f89c494c45c6bae17f73ef30ba3c04cf8301ffd03e"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\COST_1h.parquet",
+      "sha256": "dcbcf2c54b55189fa4913cc4bf2ce658419a692991113db95b76e0bb28e73afc"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\CRM_1h.parquet",
+      "sha256": "db38fefdf677fa7a2c9324e447a33b43dbb49865d9487568504df631f565a8f2"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\GOOG_1h.parquet",
+      "sha256": "2dfee7420db4c49f9393785ecb0a53961bc0539adb85d6a1035c43a9bb932612"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\GOOGL_1h.parquet",
+      "sha256": "c9853b793dff6ee858d2b656552622d295b77b7736ac007bee81d90d965c557b"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\JPM_1h.parquet",
+      "sha256": "e88facbd5aefc05504b405fa1b5f662bdf9e0a3cae651afb48cbf404858cda0a"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\LLY_1h.parquet",
+      "sha256": "0c02ce1c11bf2388c817e5bacf14d8c520e4c6da3d491ac64a15dc63082ea21f"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\MA_1h.parquet",
+      "sha256": "bdb45ecdedfdd7195fccbe9570b294a62121f1c0f2ca8068c55dd97d78b4f7dc"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\META_1h.parquet",
+      "sha256": "d63675a06da99f0222281d164945454f793e192cd3f1e5274a7dbf05ca724492"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\MSFT_1h.parquet",
+      "sha256": "64bc0862fae1778836d7dd2ea4c8be48b3898134d5074b0f54874bec2a28bc49"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\NFLX_1h.parquet",
+      "sha256": "df0ebd745875ff295b99e363d05d30bf2856db0b580007f8134f330dfa805c52"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\NVDA_1h.parquet",
+      "sha256": "8d47cc9756d8da39b5c6a8315ffa5fd493ba8ff1f35a18083e358d77644f7669"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\ORCL_1h.parquet",
+      "sha256": "cb84170bb69a2e8789f308079c9afaab2569ec8bffa0955d43e2cca06062a00c"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\TSLA_1h.parquet",
+      "sha256": "6313e27cf575f9ebc9da17c90a9c3ab477f5169b187dfb430169011f3a49412d"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\UNH_1h.parquet",
+      "sha256": "40a24ac3a6ca5161f4df9d0fe2132e458eb76e9068adaf4034b18856c45eb3d6"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\V_1h.parquet",
+      "sha256": "3fda9dcbfb21d2f4539d9159ee27d9f9819a8836d3a1e557a479aaed237a46f2"
+    },
+    {
+      "path": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\XOM_1h.parquet",
+      "sha256": "cbd1e1df816b245b29e14acd3b5cae2c2d56b3ebad2fc70106c54ce53bcfb94a"
+    },
+    {
+      "path": "data\\parquet\\market_intraday_momentum\\alpaca_iex\\SPY_30min.parquet",
+      "sha256": "a1d1e49a97afe7ed3edc2df5be0ffd25eac033781a0722040e1b0b01678b95d8"
+    },
+    {
+      "path": "data\\parquet\\equity\\yahoo_chart\\SPY_1d.parquet",
+      "sha256": "c0418800014791cd41da1c667cf6f7a27c67108c854e875ef42cfec75b0212e0"
+    },
+    {
+      "path": "research_scout\\fomc_statement_calendar_v45.json",
+      "sha256": "2d8a8850876552d07b20a8f8ad9ad210e2966127edcac067b8492b7b885ea3fd"
+    }
+  ],
+  "official_context": [
+    "https://www.federalreserve.gov/newsevents/pressreleases/monetary20130313a.htm",
+    "https://www.sec.gov/Archives/edgar/data/1652044/000165204423000016/googexhibit420q42022.htm"
+  ]
+}

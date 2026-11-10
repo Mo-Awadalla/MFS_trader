@@ -1,0 +1,59 @@
+{
+  "specification_id": "UPRO-SPXU-DELTA-NEUTRAL-EVEN-MODE-V70",
+  "frozen_before_post_entry_return_read": true,
+  "development": "2021-01-01 through 2023-12-31",
+  "recent_partition_locked": "2024-01-01 through 2025-12-31",
+  "signal": {
+    "observation": "exact 09:32 midpoint",
+    "basis": "(UPRO/prior_NAV_UPRO - 1) + (SPXU/prior_NAV_SPXU - 1)",
+    "negative": "long equal dollars UPRO and SPXU",
+    "positive": "short equal dollars UPRO and SPXU",
+    "zero": "cash",
+    "threshold": null
+  },
+  "execution": {
+    "entry": "09:33",
+    "exit": "10:30",
+    "gross_usd": 100,
+    "gross_per_wrapper_usd": 50,
+    "long": "ask to bid",
+    "short": "bid to ask",
+    "short_proceeds_rehypothecated": false,
+    "borrow_cost": "zero intraday; no live use without locates",
+    "overnight": false
+  },
+  "returns_blind_gates": {
+    "coverage_minimum": 0.95,
+    "pair_trades_per_week_minimum": 2,
+    "pair_trades_each_year_minimum": 200,
+    "each_pair_direction_minimum": 200,
+    "neighbor_action_agreement_minimum": 0.85,
+    "independent_action_agreement_minimum": 0.9,
+    "independent_quote_coverage_minimum": 0.9
+  },
+  "development_gates": {
+    "profit_factor_minimum": 1.1,
+    "positive_each_year": true,
+    "both_pair_directions_positive": true,
+    "ending_cash_above_adjusted_spy": true,
+    "extra_cent_each_fill_positive": true,
+    "five_minute_delay_positive": true,
+    "delete_ten_best_positive": true,
+    "bootstrap_lower_mean_positive": true,
+    "independent_overlap_positive": true,
+    "mean_above_controls": true
+  },
+  "controls": [
+    "sign-flipped divergence",
+    "one-session-shifted pair direction"
+  ],
+  "prohibited_repairs": [
+    "basis threshold",
+    "sign inversion",
+    "neighbor persistence",
+    "clock selection",
+    "pair-direction selection",
+    "midpoint fills",
+    "recent-year access after a failed gate"
+  ]
+}

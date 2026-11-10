@@ -1,0 +1,73 @@
+{
+  "candidate": "v74",
+  "name": "TGA Realized Reserve Transfer",
+  "status": "preregistered_before_source_acquisition_and_returns_blind_audit",
+  "development": ["2021-01-01", "2023-12-31"],
+  "sources": {
+    "endpoints": [
+      "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/dts/operating_cash_balance",
+      "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/dts/deposits_withdrawals_operating_cash"
+    ],
+    "publisher": "U.S. Treasury Bureau of the Fiscal Service",
+    "publication_semantics": "available by 4:00 p.m. the following business day",
+    "new_paid_data": false,
+    "databento_purchase": false
+  },
+  "feature": {
+    "record_flow": "Total TGA Deposits (Table II) minus Total TGA Withdrawals (Table II) (-), in millions",
+    "publication_date": "record_date plus one U.S. federal business day",
+    "trade_date": "first SPY cash session strictly after publication_date",
+    "collision_policy": "sum record flows mapping to the same trade session",
+    "positive": "SPXU",
+    "negative": "UPRO",
+    "zero": "CASH",
+    "accounting_control": "TGA Closing Balance minus TGA Opening Balance"
+    ,"rounding_tolerance": "0.5 million times included Table II category rows plus 1.5 million"
+  },
+  "execution_if_admitted": {
+    "entry": "09:33 exact ask",
+    "exit": "15:30 exact bid",
+    "notional_usd": 100,
+    "fractional_shares": true,
+    "overnight": false
+  },
+  "blind_gates": {
+    "minimum_required_field_fraction": 0.99,
+    "minimum_accounting_reconciliation_fraction": 0.99,
+    "minimum_signals_per_week": 2.0,
+    "minimum_signals_each_year": 100,
+    "minimum_minority_action_share": 0.3,
+    "minimum_switches_each_year": 20,
+    "minimum_accounting_action_agreement": 0.99,
+    "maximum_v66_v71_or_rrp_action_agreement": 0.8,
+    "maximum_month_signal_share": 0.06,
+    "minimum_primary_quote_coverage": 0.95,
+    "minimum_independent_quote_coverage": 0.9
+  },
+  "return_gates": {
+    "minimum_profit_factor": 1.1,
+    "positive_every_year": true,
+    "positive_both_actions": true,
+    "ending_cash_above_adjusted_spy": true,
+    "positive_extra_cent": true,
+    "positive_09_38_delay": true,
+    "positive_delete_best_10": true,
+    "bootstrap_lower_mean_above_zero": true,
+    "month_cluster_permutation_p_below": 0.05,
+    "positive_independent_overlap_pf_above_one": true,
+    "mean_above_extra_publication_session_lag": true,
+    "mean_above_prior_spy_direction_control": true
+  },
+  "forbidden": [
+    "sign inversion",
+    "magnitude threshold",
+    "tax-day, month-end, debt-ceiling, reserve-level, or regime filter",
+    "component rescaling",
+    "RRP or auction netting",
+    "selected deposit or withdrawal categories",
+    "alternate publication lag",
+    "alternate entry or exit clock",
+    "year or SPXU deletion",
+    "recent-year access after any development miss"
+  ]
+}

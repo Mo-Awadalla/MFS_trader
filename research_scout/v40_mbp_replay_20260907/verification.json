@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "errors": [],
+  "trades_verified": 433,
+  "all_original_executable_dates_accounted_for": true,
+  "all_positions_flat_same_day": true,
+  "stages": {
+    "development": {
+      "ending_cash_decimal_reconstruction": 92.93997470005108,
+      "fixed_100_pnl_reconstruction": -7.286002619719742,
+      "frictionless_midpoint_ending_cash_diagnostic": 100.86077418459027,
+      "observed_ask_to_bid_before_extra_costs_ending_cash": 94.94872652201101,
+      "trades": 101
+    },
+    "contaminated_validation": {
+      "ending_cash_decimal_reconstruction": 82.17810913486689,
+      "fixed_100_pnl_reconstruction": -19.51271110946289,
+      "frictionless_midpoint_ending_cash_diagnostic": 99.36501451887754,
+      "observed_ask_to_bid_before_extra_costs_ending_cash": 86.95718018817982,
+      "trades": 270
+    },
+    "extension_complete_prefix": {
+      "ending_cash_decimal_reconstruction": 96.8156302973554,
+      "fixed_100_pnl_reconstruction": -3.2030122973873993,
+      "frictionless_midpoint_ending_cash_diagnostic": 100.54746259535021,
+      "observed_ask_to_bid_before_extra_costs_ending_cash": 98.06602005126732,
+      "trades": 62
+    }
+  }
+}

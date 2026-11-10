@@ -1,0 +1,27 @@
+{
+  "status": "returns_blind_no_post_entry_etf_prices_or_pnl_read",
+  "candidate_events": 16,
+  "executable_entries": 16,
+  "entries_per_week": 0.10256410256410256,
+  "direction_counts": {
+    "UPRO": 10,
+    "SPXU": 6
+  },
+  "minority_direction_fraction": 0.375,
+  "year_counts": {
+    "2021": 7,
+    "2022": 3,
+    "2023": 6
+  },
+  "arca_entry_quote_availability": 1.0,
+  "equs_overlap_entry_quote_availability": 1.0,
+  "median_structural_reward_risk": 46.5,
+  "gates": {
+    "at_least_two_entries_per_week": false,
+    "arca_entry_quote_availability_at_least_95_percent": true,
+    "minority_direction_at_least_20_percent": true,
+    "every_development_year_at_least_75_entries": false,
+    "median_structural_reward_risk_at_least_four": true
+  },
+  "feasibility_passed": false
+}

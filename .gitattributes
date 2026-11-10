@@ -1,0 +1,8 @@
+# Historical research files carry byte-level hashes across platforms.
+research_scout/** -text
+research_scout/**/results.json linguist-generated=true
+research_scout/**/*_results*.json linguist-generated=true
+research_scout/**/*verification*.json linguist-generated=true
+research_scout/**/*manifest*.json linguist-generated=true
+research_scout/**/*returns_blind_audit*.json linguist-generated=true
+research_scout/archive_sources/** linguist-generated=true

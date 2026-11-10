@@ -1,0 +1,52 @@
+{
+  "created_at": "2026-09-07T22:01:25.888496+00:00",
+  "purpose": "Evidence-led discovery and public-text data feasibility, not a backtest or a validated trading edge.",
+  "candidate": "Slow incorporation of information in management's answers to analysts, incremental to prepared remarks and the stock's response before entry.",
+  "pilot_selection": "Earliest transcript URL in January-March 2021 for each fixed company; fixed without reading any candidate stock return or sentiment score.",
+  "symbols": [
+    "AAPL",
+    "AMT",
+    "CAT",
+    "CVX",
+    "JNJ",
+    "JPM",
+    "LIN",
+    "MSFT",
+    "NEE",
+    "PG",
+    "WMT",
+    "XOM"
+  ],
+  "sectors_represented": "Technology, real estate, industrials, energy, health care, financials, materials, utilities and consumer staples; deliberately broad source-format pilot, not representative market-universe sampling.",
+  "data_requirements": [
+    "Timezone-aware publisher publication and modification times",
+    "Separate prepared remarks and Q&A",
+    "Separate management answers from analyst questions",
+    "Exclude surrounding advertisements, recommendations and later stock performance",
+    "Match local prices by identifier and exchange session before a future test",
+    "Call start alone is not transcript availability"
+  ],
+  "stop": "If source fields cannot support these checks, report the source failure; never create a backtest by guessing clocks or treating missing text as neutral sentiment.",
+  "scope": "At most three monthly sitemaps and one transcript per fixed pilot company, plus the two already-inspected 2023 MSFT format examples. No model training, return analysis, position or account change.",
+  "already_exposed": [
+    "The two July/January 2023 MSFT pages were inspected to locate timestamp and section fields",
+    "2021-2025 equity history has been used by older repository experiments",
+    "Published studies and their reported results informed discovery; they are not our confirmation"
+  ],
+  "local_price_file_hashes": {
+    "data\\parquet\\equity\\alpaca_sip\\AAPL_1d.parquet": "3cc714f934411c3b6711edc5d5868ea4ed25752722a4773e9f72d547e5ff4694",
+    "data\\parquet\\equity\\alpaca_sip\\CAT_1d.parquet": "c4f61fbb75f35163513f3819435c8ae0e48f10ea1300aca6f869c18f6307225b",
+    "data\\parquet\\equity\\alpaca_sip\\CVX_1d.parquet": "1aa842743feb0aa3d8a1ce23448a2ba011484c819139cea45312d85be392b246",
+    "data\\parquet\\equity\\alpaca_sip\\JNJ_1d.parquet": "50064427e18f3a84cf62104877bceb29c912ea8e3ba08ff9caae635e5f6007fc",
+    "data\\parquet\\equity\\alpaca_sip\\JPM_1d.parquet": "435ebf282f01b9c4b3d29f2d4293361aab5a5d342afb577f98fbd6a0ed19b00b",
+    "data\\parquet\\equity\\alpaca_sip\\LIN_1d.parquet": "1cfd12196407b492224d14dfe1ccddb3ba13b7b59a84a6a939d69d7fcafa8083",
+    "data\\parquet\\equity\\alpaca_sip\\MSFT_1d.parquet": "cb67f94598ed0063a2a131ac1911e8c9feed14117b410f8d0ccffb041508bb2b",
+    "data\\parquet\\equity\\alpaca_sip\\NEE_1d.parquet": "4c108ef9454a281873f747c1690c8d06232894607602b8c92f3c162a3015ace8",
+    "data\\parquet\\equity\\alpaca_sip\\PG_1d.parquet": "57246c86807dc2eb05187d7f21ee5489f1857175b6aef14157bbb3bfad212ad5",
+    "data\\parquet\\equity\\alpaca_sip\\WMT_1d.parquet": "e1b0bb0efb655d16047270773635dbd190ace46aef5529b3dc9a1d89a6956b45",
+    "data\\parquet\\equity\\alpaca_sip\\XOM_1d.parquet": "64a66850f3612b4640ca43cca9a3a2d48b2e7839f9de54655bde7deac85d3b25"
+  },
+  "missing_local_daily_price_files": [
+    "data\\parquet\\equity\\alpaca_sip\\AMT_1d.parquet"
+  ]
+}

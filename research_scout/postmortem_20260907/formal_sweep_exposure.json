@@ -1,0 +1,252 @@
+[
+  {
+    "experiment": "004c70b3-81d4-491c-87cf-9a4af22c8574",
+    "source": "experiments/004c70b3-81d4-491c-87cf-9a4af22c8574/validation/report.json",
+    "reported_m_raw": null,
+    "reported_m_eff": null,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe -0.11 < 0.8",
+      "WFA: oos_sortino -0.22 < 1.0",
+      "WFA: frac_negative_folds 0.59 > 0.5",
+      "MC: P(ruin) = 0.124 >= 0.05",
+      "MC: 5th pct CAGR = -0.006 <= 0",
+      "DSR: no positive Sharpe to deflate",
+      "Intraday: profit_factor 1.04 < 1.05"
+    ]
+  },
+  {
+    "experiment": "017c9b19-14ee-4b0b-92f7-7e5d8886ba2c",
+    "source": "experiments/017c9b19-14ee-4b0b-92f7-7e5d8886ba2c/validation/report.json",
+    "reported_m_raw": 4,
+    "reported_m_eff": 1.0,
+    "stored_sweep_rows": 4,
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.52 < 0.8",
+      "WFA: oos_sortino 0.83 < 1.0",
+      "DSR: DSR p-value (M_eff_corr) = 0.0605 >= 0.05",
+      "DSR: DSR collapses under M_raw: p = 0.5590 >= 0.10"
+    ]
+  },
+  {
+    "experiment": "05f16f85-f451-4a8e-a77f-195ce05f2974",
+    "source": "experiments/05f16f85-f451-4a8e-a77f-195ce05f2974/validation/report.json",
+    "reported_m_raw": 1,
+    "reported_m_eff": 1.0,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.00 < 0.8",
+      "WFA: oos_sortino 0.00 < 1.0",
+      "MC: 5th pct CAGR = 0.000 <= 0",
+      "DSR: DSR p-value (M_eff_corr) = 0.0611 >= 0.05",
+      "Stability: isolated_peak_detected \u2014 best params not on a stable plateau"
+    ]
+  },
+  {
+    "experiment": "119131fa-0f67-48d7-ab87-f20d81c70c1f",
+    "source": "experiments/119131fa-0f67-48d7-ab87-f20d81c70c1f/validation/report.json",
+    "reported_m_raw": 4,
+    "reported_m_eff": 1.0,
+    "stored_sweep_rows": 4,
+    "failure_reasons": []
+  },
+  {
+    "experiment": "33e52c7b-fd04-4679-8125-17aec1d3063d",
+    "source": "experiments/33e52c7b-fd04-4679-8125-17aec1d3063d/validation/report.json",
+    "reported_m_raw": 4,
+    "reported_m_eff": 1.0,
+    "stored_sweep_rows": 4,
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.59 < 0.8",
+      "WFA: oos_sortino 0.88 < 1.0",
+      "DSR: DSR collapses under M_raw: p = 0.2797 >= 0.10"
+    ]
+  },
+  {
+    "experiment": "4efffeea-4f6d-4f1c-abc1-8203869c48ed",
+    "source": "experiments/4efffeea-4f6d-4f1c-abc1-8203869c48ed/validation/report.json",
+    "reported_m_raw": 4,
+    "reported_m_eff": 1.0,
+    "stored_sweep_rows": 4,
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.59 < 0.8",
+      "WFA: oos_sortino 0.88 < 1.0",
+      "DSR: DSR collapses under M_raw: p = 0.2797 >= 0.10"
+    ]
+  },
+  {
+    "experiment": "5b8514cc-5f1b-4c63-b815-6f90a26c5aba",
+    "source": "experiments/5b8514cc-5f1b-4c63-b815-6f90a26c5aba/validation/report.json",
+    "reported_m_raw": null,
+    "reported_m_eff": null,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe -0.65 < 0.8",
+      "WFA: oos_sortino -1.17 < 1.0",
+      "WFA: frac_negative_folds 0.73 > 0.5",
+      "MC: P(ruin) = 0.908 >= 0.05",
+      "MC: 5th pct CAGR = -0.139 <= 0",
+      "MC: 95th pct max DD = -0.449 < -0.3",
+      "DSR: no positive Sharpe to deflate"
+    ]
+  },
+  {
+    "experiment": "651cdb3f-bde7-42ec-bc4f-74bf38232c37",
+    "source": "experiments/651cdb3f-bde7-42ec-bc4f-74bf38232c37/validation/report.json",
+    "reported_m_raw": null,
+    "reported_m_eff": null,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe -0.93 < 0.8",
+      "WFA: oos_sortino -1.11 < 1.0",
+      "WFA: frac_negative_folds 0.83 > 0.5",
+      "WFA: single fold contributes 100% of profit > 60%",
+      "MC: P(ruin) = 0.136 >= 0.05",
+      "MC: 5th pct CAGR = -0.224 <= 0",
+      "DSR: no positive Sharpe to deflate"
+    ]
+  },
+  {
+    "experiment": "68127d37-d4d3-4516-be61-ccf8148161e1",
+    "source": "experiments/68127d37-d4d3-4516-be61-ccf8148161e1/validation/report.json",
+    "reported_m_raw": 189,
+    "reported_m_eff": 3.8549480761458677,
+    "stored_sweep_rows": 189,
+    "failure_reasons": [
+      "WFA: oos_sharpe -0.03 < 0.8",
+      "WFA: oos_sortino 0.01 < 1.0",
+      "WFA: single fold contributes 100% of profit > 60%",
+      "MC: 5th pct CAGR = -0.053 <= 0",
+      "DSR: DSR p-value (M_eff_corr) = 0.1364 >= 0.05",
+      "DSR: DSR collapses under M_raw: p = 0.9689 >= 0.10",
+      "Stability: plateau_within_pct 0.69 < required 0.70"
+    ]
+  },
+  {
+    "experiment": "6ed472a7-a361-46b2-bdb9-2a196c459cca",
+    "source": "experiments/6ed472a7-a361-46b2-bdb9-2a196c459cca/validation/report.json",
+    "reported_m_raw": null,
+    "reported_m_eff": null,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe -0.93 < 0.8",
+      "WFA: oos_sortino -1.11 < 1.0",
+      "WFA: frac_negative_folds 0.83 > 0.5",
+      "WFA: single fold contributes 100% of profit > 60%",
+      "MC: P(ruin) = 0.136 >= 0.05",
+      "MC: 5th pct CAGR = -0.224 <= 0",
+      "DSR: no positive Sharpe to deflate"
+    ]
+  },
+  {
+    "experiment": "886f5819-9b51-4ff8-b025-11fbdd8dd06a",
+    "source": "experiments/886f5819-9b51-4ff8-b025-11fbdd8dd06a/validation/report.json",
+    "reported_m_raw": null,
+    "reported_m_eff": null,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe -5.68 < 0.8",
+      "WFA: oos_sortino -8.88 < 1.0",
+      "WFA: frac_negative_folds 1.00 > 0.5",
+      "MC: P(ruin) = 1.000 >= 0.05",
+      "MC: 5th pct CAGR = -0.662 <= 0",
+      "MC: 95th pct max DD = -1.000 < -0.3",
+      "DSR: no positive Sharpe to deflate"
+    ]
+  },
+  {
+    "experiment": "9a08eaef-e9d5-4517-989a-3b35575519d7",
+    "source": "experiments/9a08eaef-e9d5-4517-989a-3b35575519d7/validation/report.json",
+    "reported_m_raw": null,
+    "reported_m_eff": null,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe -1.51 < 0.8",
+      "WFA: oos_sortino -4.34 < 1.0",
+      "WFA: frac_negative_folds 0.98 > 0.5",
+      "WFA: single fold contributes 100% of profit > 60%",
+      "MC: P(ruin) = 1.000 >= 0.05",
+      "MC: 5th pct CAGR = -0.023 <= 0",
+      "MC: 95th pct max DD = -0.907 < -0.2",
+      "DSR: no positive Sharpe to deflate",
+      "Intraday: max_trades_per_session 25 > 20",
+      "Intraday: max_turnover_per_session 9.00 > 8.00",
+      "Intraday: max_holding_period_bars 5 > 1",
+      "Intraday: profit_factor 0.97 < 1.05",
+      "Intraday: expectancy_per_trade -0.000009 < 0.000000"
+    ]
+  },
+  {
+    "experiment": "a7dc94be-2578-4821-9706-cd268c013222",
+    "source": "experiments/a7dc94be-2578-4821-9706-cd268c013222/validation/report.json",
+    "reported_m_raw": 4,
+    "reported_m_eff": 1.0,
+    "stored_sweep_rows": 4,
+    "failure_reasons": []
+  },
+  {
+    "experiment": "aadae37d-192f-41f5-948d-b9bd65d4a7a3",
+    "source": "experiments/aadae37d-192f-41f5-948d-b9bd65d4a7a3/validation/report.json",
+    "reported_m_raw": 4,
+    "reported_m_eff": 1.0,
+    "stored_sweep_rows": 4,
+    "failure_reasons": [
+      "WFA: oos_sortino 0.99 < 1.0"
+    ]
+  },
+  {
+    "experiment": "b561f4a3-d360-4e1e-b663-a81a54e63375",
+    "source": "experiments/b561f4a3-d360-4e1e-b663-a81a54e63375/validation/report.json",
+    "reported_m_raw": null,
+    "reported_m_eff": null,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe -0.49 < 0.8",
+      "WFA: oos_sortino -1.57 < 1.0",
+      "WFA: frac_negative_folds 0.81 > 0.5",
+      "MC: P(ruin) = 0.993 >= 0.05",
+      "MC: 5th pct CAGR = -0.012 <= 0",
+      "MC: 95th pct max DD = -0.572 < -0.2",
+      "DSR: no positive Sharpe to deflate"
+    ]
+  },
+  {
+    "experiment": "f034ab13-523c-402d-9425-9ef9234add26",
+    "source": "experiments/f034ab13-523c-402d-9425-9ef9234add26/validation/report.json",
+    "reported_m_raw": null,
+    "reported_m_eff": null,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.00 < 0.8",
+      "WFA: oos_sortino 0.00 < 1.0",
+      "MC: 5th pct CAGR = 0.000 <= 0",
+      "DSR: no positive Sharpe to deflate"
+    ]
+  },
+  {
+    "experiment": "f5fc4a35-f999-476e-a1ec-b8546360dde3",
+    "source": "experiments/f5fc4a35-f999-476e-a1ec-b8546360dde3/validation/report.json",
+    "reported_m_raw": 1,
+    "reported_m_eff": 1.0,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.39 < 0.8",
+      "WFA: oos_sortino 0.54 < 1.0",
+      "Stability: isolated_peak_detected \u2014 best params not on a stable plateau"
+    ]
+  },
+  {
+    "experiment": "fcd91de3-6d84-4458-918f-693640c2eb52",
+    "source": "experiments/fcd91de3-6d84-4458-918f-693640c2eb52/validation/report.json",
+    "reported_m_raw": 1,
+    "reported_m_eff": 1.0,
+    "stored_sweep_rows": 1,
+    "failure_reasons": [
+      "WFA: oos_sharpe 0.63 < 0.8",
+      "WFA: oos_sortino 1.00 < 1.0",
+      "MC: 5th pct CAGR = -0.060 <= 0",
+      "DSR: DSR p-value (M_eff_corr) = 0.0611 >= 0.05",
+      "Stability: isolated_peak_detected \u2014 best params not on a stable plateau"
+    ]
+  }
+]

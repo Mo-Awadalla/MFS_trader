@@ -1,0 +1,149 @@
+{
+  "experiment": "V98",
+  "completed_utc": "2026-09-07T23:53:19.524702+00:00",
+  "status": "aborted_conditional_upper_bound_failure",
+  "primary_accounting_status": "incomplete_data",
+  "economic_interpretation": "Even perfect, costless trading within the cached daily ranges on every unknown day cannot make the fixed available-data run beat SPY.",
+  "limits": "Conditional on cached daily extrema covering the missing intraday prices and holding the fitted available-data models and known-day trades fixed. It does not bound a different model trained with missing observations restored.",
+  "bounds_are_not_actual_returns": true,
+  "historical_text_vintage_and_survivor_universe_unresolved": true,
+  "edge_validated": false,
+  "further_parameter_or_2024_plus_tests_run": false,
+  "portfolios": {
+    "primary": {
+      "missing_dates": [
+        "2021-04-19",
+        "2021-04-20",
+        "2021-09-22",
+        "2021-10-25",
+        "2022-01-24"
+      ],
+      "known_calendar_sessions": 748,
+      "unknown_day_factors": {
+        "2021-04-19": 1.009182364458848,
+        "2021-04-20": 1.0145462440295265,
+        "2021-09-22": 1.0318016484393504,
+        "2021-10-25": 1.0513085399449036,
+        "2022-01-24": 1.05518341307815
+      },
+      "unknown_day_multiplier": 1.1719143315160307,
+      "independent_known_day_reconciliation": {
+        "reference": {
+          "known_day_product_value": 81.6322855747489,
+          "absolute_difference": 8.526512829121202e-14,
+          "not_full_calendar_actual_equity": true
+        },
+        "net": {
+          "known_day_product_value": 72.47377920859086,
+          "absolute_difference": 9.237055564881302e-13,
+          "not_full_calendar_actual_equity": true
+        },
+        "cost_stress": {
+          "known_day_product_value": 64.34278206562162,
+          "absolute_difference": 6.679101716144942e-13,
+          "not_full_calendar_actual_equity": true
+        }
+      },
+      "optimistic_full_calendar_upper_bounds": {
+        "reference": 95.66604537945757,
+        "net": 84.93306051367617,
+        "cost_stress": 75.40422843231461
+      },
+      "SPY_ending_cash": 132.3969124078269,
+      "net_known_day_upper_bound_below_SPY": true,
+      "all_frictionless_upper_bound_below_SPY": true,
+      "actual_full_calendar_ending_equity": null,
+      "actual_full_calendar_equity_complete": false
+    },
+    "baseline": {
+      "missing_dates": [
+        "2021-04-19",
+        "2021-04-20",
+        "2021-09-22",
+        "2021-10-25",
+        "2022-01-24"
+      ],
+      "known_calendar_sessions": 748,
+      "unknown_day_factors": {
+        "2021-04-19": 1.009182364458848,
+        "2021-04-20": 1.0145462440295265,
+        "2021-09-22": 1.0318016484393504,
+        "2021-10-25": 1.0513085399449036,
+        "2022-01-24": 1.05518341307815
+      },
+      "unknown_day_multiplier": 1.1719143315160307,
+      "independent_known_day_reconciliation": {
+        "reference": {
+          "known_day_product_value": 94.78049623578269,
+          "absolute_difference": 1.4210854715202004e-13,
+          "not_full_calendar_actual_equity": true
+        },
+        "net": {
+          "known_day_product_value": 81.09032356827522,
+          "absolute_difference": 1.2931877790833823e-12,
+          "not_full_calendar_actual_equity": true
+        },
+        "cost_stress": {
+          "known_day_product_value": 69.37756526563454,
+          "absolute_difference": 1.1084466677857563e-12,
+          "not_full_calendar_actual_equity": true
+        }
+      },
+      "optimistic_full_calendar_upper_bounds": {
+        "reference": 111.07462188691494,
+        "net": 95.03091233693388,
+        "cost_stress": 81.3045630204859
+      },
+      "SPY_ending_cash": 132.3969124078269,
+      "net_known_day_upper_bound_below_SPY": true,
+      "all_frictionless_upper_bound_below_SPY": true,
+      "actual_full_calendar_ending_equity": null,
+      "actual_full_calendar_equity_complete": false
+    },
+    "all_events": {
+      "missing_dates": [
+        "2021-04-19",
+        "2021-04-20",
+        "2021-09-22",
+        "2021-10-25",
+        "2022-01-24"
+      ],
+      "known_calendar_sessions": 748,
+      "unknown_day_factors": {
+        "2021-04-19": 1.009182364458848,
+        "2021-04-20": 1.0145462440295265,
+        "2021-09-22": 1.0318016484393504,
+        "2021-10-25": 1.0513085399449036,
+        "2022-01-24": 1.05518341307815
+      },
+      "unknown_day_multiplier": 1.1719143315160307,
+      "independent_known_day_reconciliation": {
+        "reference": {
+          "known_day_product_value": 97.53507377733757,
+          "absolute_difference": 1.4210854715202004e-13,
+          "not_full_calendar_actual_equity": true
+        },
+        "net": {
+          "known_day_product_value": 73.78917355998091,
+          "absolute_difference": 2.0605739337042905e-12,
+          "not_full_calendar_actual_equity": true
+        },
+        "cost_stress": {
+          "known_day_product_value": 55.824445137951066,
+          "absolute_difference": 1.7834622667578515e-12,
+          "not_full_calendar_actual_equity": true
+        }
+      },
+      "optimistic_full_calendar_upper_bounds": {
+        "reference": 114.3027507851353,
+        "net": 86.47459000566539,
+        "cost_stress": 65.42146730609525
+      },
+      "SPY_ending_cash": 132.3969124078269,
+      "net_known_day_upper_bound_below_SPY": true,
+      "all_frictionless_upper_bound_below_SPY": true,
+      "actual_full_calendar_ending_equity": null,
+      "actual_full_calendar_equity_complete": false
+    }
+  }
+}

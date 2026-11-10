@@ -1,0 +1,85 @@
+{
+  "status": "returns_blind_v68_audit",
+  "sources": {
+    "official_nav": "data\\raw\\proshares_inventory_v59\\historical_nav.csv",
+    "official_splits": "data\\raw\\proshares_inventory_v59\\split_history.csv",
+    "new_databento_calls_or_purchases": false
+  },
+  "rule": {
+    "signal_clock": "09:32",
+    "entry_clock": "09:33",
+    "exit_clock": "10:30",
+    "pair_weights": "40% 3x and 60% 2x within each $50 ladder",
+    "maximum_gross": 100.0
+  },
+  "development_2021_2023": {
+    "expected_sessions": 753,
+    "nav_complete_sessions": 752,
+    "eligible_sessions": 0,
+    "eligible_coverage": 0.0,
+    "active_pair_trades": 0,
+    "active_pair_trades_per_week": 0.0,
+    "active_pair_trades_by_year": {
+      "2021": 0,
+      "2022": 0,
+      "2023": 0
+    },
+    "basis_sign_counts": {
+      "positive": {
+        "positive": 0,
+        "negative": 0,
+        "zero": 0
+      },
+      "inverse": {
+        "positive": 0,
+        "negative": 0,
+        "zero": 0
+      }
+    }
+  },
+  "neighboring_clock_stability": {
+    "09:31": {
+      "joint_pair_states": 0,
+      "identical_pair_action_including_cash": 0.0
+    },
+    "09:33": {
+      "joint_pair_states": 0,
+      "identical_pair_action_including_cash": 0.0
+    }
+  },
+  "independent_overlap_2023": {
+    "joint_pair_states": 0,
+    "identical_pair_action_including_cash": 0.0
+  },
+  "quote_evidence": {
+    "primary": {
+      "active_sessions": 0,
+      "four_leg_entry_exit_valid": 0,
+      "coverage": 0.0
+    },
+    "independent": {
+      "active_sessions": 0,
+      "four_leg_entry_exit_valid": 0,
+      "coverage": 0.0
+    }
+  },
+  "gates": {
+    "complete_prior_nav_coverage_at_least_95_percent": true,
+    "eligible_session_coverage_at_least_95_percent": false,
+    "active_pair_trades_at_least_2_per_week": false,
+    "at_least_200_active_pair_trades_each_year": false,
+    "each_ladder_each_basis_sign_at_least_100": false,
+    "neighboring_09_31_pair_action_agreement_at_least_85_percent": false,
+    "neighboring_09_33_pair_action_agreement_at_least_85_percent": false,
+    "independent_pair_action_agreement_at_least_90_percent": false,
+    "primary_four_leg_quote_coverage_at_least_95_percent": false,
+    "independent_four_leg_quote_coverage_at_least_90_percent": false,
+    "all_nav_source_dates_strictly_before_signal_dates": true,
+    "no_basis_threshold_or_fitted_weight": true,
+    "no_post_entry_return_or_recent_outcome_read": true
+  },
+  "gate_passed": false,
+  "decision": "reject_before_pnl",
+  "states": [],
+  "independent_states_2023": []
+}

@@ -1,0 +1,78 @@
+{
+  "created_utc": "2026-09-07T23:43:17.657827+00:00",
+  "frozen_before_candidate_portfolio_results": true,
+  "source_gap_diagnostic": "Nine same-resolution repeats and nine one-minute SIP requests did not recover required bars. Preserve primary inputs and missing states.",
+  "rule": "For each actual missing evaluation day, allow the entire funded portfolio to choose the best eligible event stock, buy at its full-day low and sell at its full-day high, with zero costs and without regard to chronology. Also allow cash. The resulting factor max(1, max(high/low)) is an optimistic upper bound for a single long-only basket of these stocks. Multiply these factors by the frozen model portfolio return factors on known days. Never label this bound an actual equity path or fill in missing prices.",
+  "bound_scope": "Conditional on cached daily extrema covering the missing intraday prices and holding the fitted available-data models and known-day trades fixed. It does not bound a different model trained with missing observations restored.",
+  "comparison": "Full 2021-2023 SPY adjusted proxy. Report bounds with known-day net returns and separately with all known-day transaction costs removed. If even the optimistic bound is below SPY, reject this fixed implementation and abort further tests. Otherwise report incomplete economics, not a pass.",
+  "cash_accounting": "Independently reconcile known-day share/cash products only. Full actual ending equity remains null.",
+  "possible_gap_day_universes": {
+    "2021-04-19": [
+      "PNC"
+    ],
+    "2021-04-20": [
+      "KO"
+    ],
+    "2021-09-22": [
+      "ADBE",
+      "AZO",
+      "FDX"
+    ],
+    "2021-10-25": [
+      "HCA",
+      "HON",
+      "ROP",
+      "SLB"
+    ],
+    "2022-01-24": [
+      "SLB"
+    ]
+  },
+  "daily_source_files": {
+    "PNC": {
+      "path": "data\\parquet\\equity\\alpaca_sip\\PNC_1d.parquet",
+      "exists": true,
+      "sha256": "1ae21202c45a895e3b5d250341f9c5361ae5dc88eb9f79e29fad703a5139b865"
+    },
+    "KO": {
+      "path": "data\\parquet\\equity\\alpaca_sip\\KO_1d.parquet",
+      "exists": true,
+      "sha256": "12b8fd0768503b4961296b66934ebbc7b3682f00fb5bdad42bf148114187be81"
+    },
+    "ADBE": {
+      "path": "data\\parquet\\equity\\alpaca_sip\\ADBE_1d.parquet",
+      "exists": true,
+      "sha256": "77f40fce4f377d50ef78353ab539eda798bb2231c267ecf70c25d9109091156d"
+    },
+    "AZO": {
+      "path": "data\\parquet\\equity\\alpaca_sip\\AZO_1d.parquet",
+      "exists": true,
+      "sha256": "06def6141bf55e62d6267ecf5c07754ce8c7762276d234f39d7add2291837a0f"
+    },
+    "FDX": {
+      "path": "data\\parquet\\equity\\alpaca_sip\\FDX_1d.parquet",
+      "exists": true,
+      "sha256": "918487a732c23148b6472f778d29908052e8557821ae6596adb0ef14fef25afe"
+    },
+    "HCA": {
+      "path": "data\\parquet\\equity\\alpaca_sip\\HCA_1d.parquet",
+      "exists": true,
+      "sha256": "902c6a4e09ada47b9ceadce49fc228c59e2a4f155d648e6ac821647393314c49"
+    },
+    "HON": {
+      "path": "data\\parquet\\equity\\alpaca_sip\\HON_1d.parquet",
+      "exists": true,
+      "sha256": "4466395fd6f1406b7659ff24c547fd0045610bf6d897a29d90820568a2bf41b1"
+    },
+    "ROP": {
+      "path": "data\\parquet\\equity\\alpaca_sip\\ROP_1d.parquet",
+      "exists": true,
+      "sha256": "129129cc2f7023713b962e06d8ce0339cbdd173214d4ab36b9f8c9bb29e0cb3a"
+    },
+    "SLB": {
+      "path": "data\\parquet\\equity\\alpaca_sip\\SLB_1d.parquet",
+      "exists": true,
+      "sha256": "f99142fc36f981591ed3a83ce18a52d453701f33b564b832aba8f078f67d3dd2"
+    }
+  }
+}

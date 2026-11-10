@@ -1,0 +1,31 @@
+{
+  "errors": [],
+  "independently_reconstructed_signals": 461,
+  "independently_reconstructed_warm_sessions": 758,
+  "comparisons": {
+    "adjacent_09_30_01": {
+      "matching_actions": 295,
+      "days_either_rule_trades": 600,
+      "agreement_pct": 49.166666666666664
+    },
+    "10": {
+      "matching_actions": 390,
+      "days_either_rule_trades": 514,
+      "agreement_pct": 75.87548638132296
+    },
+    "40": {
+      "matching_actions": 402,
+      "days_either_rule_trades": 506,
+      "agreement_pct": 79.44664031620553
+    }
+  },
+  "source_extraction_spotcheck_dates": [
+    "2023-03-28",
+    "2024-01-02",
+    "2025-01-02",
+    "2026-01-02"
+  ],
+  "original_code_hash_unchanged": true,
+  "pnl_calculated": false,
+  "passed": true
+}

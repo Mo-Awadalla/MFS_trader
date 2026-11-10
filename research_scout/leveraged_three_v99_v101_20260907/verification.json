@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "decimal_reconciliations": {
+    "V100_control_continuation_evaluation.json": {
+      "decimal_known_day_product": 87.94316614684787,
+      "error": 3.979039320256561e-13,
+      "complete": true
+    },
+    "V100_control_later_clock_evaluation.json": {
+      "decimal_known_day_product": 86.76463376050494,
+      "error": 5.826450433232822e-13,
+      "complete": true
+    },
+    "V100_control_UPRO_evaluation.json": {
+      "decimal_known_day_product": 79.83906308383382,
+      "error": 9.379164112033322e-13,
+      "complete": true
+    },
+    "V100_delay_evaluation.json": {
+      "decimal_known_day_product": 90.9507803877017,
+      "error": 5.968558980384842e-13,
+      "complete": true
+    },
+    "V100_evaluation.json": {
+      "decimal_known_day_product": 93.40722015756447,
+      "error": 6.394884621840902e-13,
+      "complete": true
+    },
+    "V101_control_no_congestion_evaluation.json": {
+      "decimal_known_day_product": 154.2443123167951,
+      "error": 1.3926637620897964e-12,
+      "complete": true
+    },
+    "V101_control_stale_congestion_evaluation.json": {
+      "decimal_known_day_product": 79.61940678371543,
+      "error": 1.2789769243681803e-13,
+      "complete": true
+    },
+    "V101_control_UPRO_evaluation.json": {
+      "decimal_known_day_product": 91.57649092902267,
+      "error": 4.405364961712621e-13,
+      "complete": true
+    },
+    "V101_delay_evaluation.json": {
+      "decimal_known_day_product": 120.35564285088951,
+      "error": 2.8421709430404007e-13,
+      "complete": true
+    },
+    "V101_evaluation.json": {
+      "decimal_known_day_product": 121.68753369744495,
+      "error": 2.5579538487363607e-13,
+      "complete": true
+    },
+    "V99_control_demand_only_evaluation.json": {
+      "decimal_known_day_product": 94.23413523118477,
+      "error": 1.7053025658242404e-13,
+      "complete": true
+    },
+    "V99_control_UPRO_evaluation.json": {
+      "decimal_known_day_product": 115.66015888139205,
+      "error": 2.2737367544323206e-13,
+      "complete": true
+    },
+    "V99_delay_evaluation.json": {
+      "decimal_known_day_product": 86.45730902344488,
+      "error": 1.5631940186722204e-13,
+      "complete": true
+    },
+    "V99_evaluation.json": {
+      "decimal_known_day_product": 85.88857788370676,
+      "error": 1.2789769243681803e-13,
+      "complete": true
+    }
+  },
+  "source_hashes_unchanged": true,
+  "code_and_signal_hashes_unchanged": true,
+  "market_data_downloads": 0,
+  "orders": 0,
+  "purchases": 0
+}

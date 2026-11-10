@@ -1,0 +1,106 @@
+{
+  "created_at_utc": "2026-07-29T13:58:19.944411+00:00",
+  "returns_read": false,
+  "source": "external_artifacts/databento_cash_etf_budget_v1/ARCX.PILLAR/imbalance/spy_imbalance_2021-01-01_2026-07-27.dbn.zst",
+  "total_rows": 10838203,
+  "degraded_dates_excluded": [
+    "2021-01-21",
+    "2022-07-18",
+    "2022-08-22",
+    "2022-12-05",
+    "2022-12-27",
+    "2023-06-26",
+    "2023-09-22",
+    "2023-11-21",
+    "2023-12-01",
+    "2023-12-04",
+    "2023-12-05",
+    "2023-12-06",
+    "2023-12-07",
+    "2023-12-08",
+    "2023-12-11",
+    "2024-04-19",
+    "2024-06-18",
+    "2024-11-19",
+    "2026-06-24",
+    "2026-07-14"
+  ],
+  "auction_type_counts_all": {
+    "C": 4890397,
+    "M": 5735469,
+    "O": 53883
+  },
+  "hour_counts_all": {
+    "03": 53883,
+    "08": 3653673,
+    "09": 2081796,
+    "12": 35069,
+    "13": 1,
+    "15": 4855216,
+    "16": 111
+  },
+  "opening_window_auction_type_counts": {
+    "M": 5656828
+  },
+  "closing_window_auction_type_counts": {
+    "C": 4855216
+  },
+  "selected_opening_auction_type_for_reachability": "M",
+  "decision_cutoff": "09:29:00 America/New_York; event timestamp strictly before cutoff",
+  "final_opening_sessions": 1375,
+  "valid_reference_and_match_price_sessions": 1374,
+  "first_valid_session": "2021-01-04",
+  "last_valid_session": "2026-07-24",
+  "buy_side_sessions": 645,
+  "sell_side_sessions": 729,
+  "buy_price_acceptance_sessions": 324,
+  "sell_price_acceptance_sessions": 275,
+  "buy_acceptance_trades_per_calendar_week": 1.1188949185989148,
+  "sell_acceptance_trades_per_calendar_week": 0.9496793290577208,
+  "by_year": {
+    "2021": {
+      "valid_sessions": 251,
+      "buy_side_sessions": 123,
+      "sell_side_sessions": 128,
+      "buy_price_acceptance_sessions": 84,
+      "sell_price_acceptance_sessions": 28
+    },
+    "2022": {
+      "valid_sessions": 247,
+      "buy_side_sessions": 114,
+      "sell_side_sessions": 133,
+      "buy_price_acceptance_sessions": 57,
+      "sell_price_acceptance_sessions": 50
+    },
+    "2023": {
+      "valid_sessions": 240,
+      "buy_side_sessions": 113,
+      "sell_side_sessions": 127,
+      "buy_price_acceptance_sessions": 24,
+      "sell_price_acceptance_sessions": 56
+    },
+    "2024": {
+      "valid_sessions": 248,
+      "buy_side_sessions": 109,
+      "sell_side_sessions": 139,
+      "buy_price_acceptance_sessions": 45,
+      "sell_price_acceptance_sessions": 22
+    },
+    "2025": {
+      "valid_sessions": 250,
+      "buy_side_sessions": 115,
+      "sell_side_sessions": 135,
+      "buy_price_acceptance_sessions": 43,
+      "sell_price_acceptance_sessions": 52
+    },
+    "2026": {
+      "valid_sessions": 138,
+      "buy_side_sessions": 71,
+      "sell_side_sessions": 67,
+      "buy_price_acceptance_sessions": 71,
+      "sell_price_acceptance_sessions": 67
+    }
+  },
+  "warning": "This is signal reachability only. No post-signal price or return was opened.",
+  "states_file": "research_scout/spy_auction_imbalance_states_v34.json"
+}

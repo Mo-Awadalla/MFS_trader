@@ -1,0 +1,410 @@
+{
+  "specification_id": "spy_official_macro_release_delayed_discovery_v45",
+  "returns_blind_feasibility": {
+    "status": "returns_blind_no_post_entry_return_or_pnl_computed",
+    "specification": "research_scout/spy_official_macro_release_delayed_discovery_prereg_v45.json",
+    "scheduled_development_episodes": 387,
+    "non_market_date_clock_episodes": 0,
+    "complete_episodes": 380,
+    "complete_fraction": 0.9819121447028424,
+    "nonzero_signal_episodes": 378,
+    "executable_trades": 378,
+    "executable_trades_per_calendar_week": 2.4186471663619744,
+    "year_counts": {
+      "2021": 128,
+      "2022": 128,
+      "2023": 122
+    },
+    "release_clock_counts": {
+      "08:30:00": 168,
+      "10:00:00": 186,
+      "14:00:00": 24
+    },
+    "direction_counts": {
+      "UPRO": 197,
+      "SPXU": 181
+    },
+    "minority_direction_fraction": 0.47883597883597884,
+    "equs_overlap_comparisons": 92,
+    "arca_equs_direction_agreement": 0.9782608695652174,
+    "executable_family_record_counts": {
+      "advance_economic_indicators": 35,
+      "business_inventories": 36,
+      "construction_spending": 34,
+      "durable_goods": 36,
+      "factory_orders": 34,
+      "fomc_statement": 24,
+      "housing_starts": 35,
+      "housing_vacancies": 11,
+      "international_trade": 35,
+      "new_home_sales": 36,
+      "retail_sales": 36,
+      "wholesale_trade": 35
+    },
+    "predeclared_feasibility_gates": {
+      "complete_fraction_at_least_95_percent": true,
+      "at_least_two_executable_trades_per_calendar_week": true,
+      "at_least_100_executable_trades_each_development_year": true,
+      "all_release_clocks_represented": true,
+      "minority_direction_at_least_20_percent": true,
+      "arca_equs_direction_agreement_at_least_75_percent": true,
+      "strict_nonoverlapping_timestamp_causality": true
+    },
+    "feasibility_passed": true
+  },
+  "development": {
+    "observed_bbo": {
+      "sessions": 378,
+      "trades_per_week": 2.431985294117647,
+      "fixed_notional_pnl_usd": -33.899997773349234,
+      "ending_cash_usd": 68.12818968165413,
+      "return_pct": -31.871810318345865,
+      "mean_session_pnl_usd": -0.0896825337919292,
+      "win_rate": 0.4708994708994709,
+      "profit_factor": 0.8349811119688285,
+      "maximum_drawdown_usd": -55.1103793047846,
+      "worst_session_usd": -7.3365686554381915,
+      "pnl_without_best_10_sessions_usd": -70.82454379288038,
+      "year_pnl_usd": {
+        "2021": 9.436012594528634,
+        "2022": -59.76814212480747,
+        "2023": 16.432131756929596
+      },
+      "instrument_pnl_usd": {
+        "SPXU": -23.634795238602155,
+        "UPRO": -10.265202534747072
+      }
+    },
+    "clock_pnl_usd": {
+      "08:30:00": -15.245041982274945,
+      "10:00:00": 2.7110426124142935,
+      "14:00:00": -21.36599840348858
+    },
+    "family_diagnostics": {
+      "advance_economic_indicators": {
+        "trades_inclusive": 35,
+        "fixed_notional_pnl_usd_inclusive": -1.043676967577023
+      },
+      "business_inventories": {
+        "trades_inclusive": 36,
+        "fixed_notional_pnl_usd_inclusive": 5.587458106227516
+      },
+      "construction_spending": {
+        "trades_inclusive": 34,
+        "fixed_notional_pnl_usd_inclusive": 6.155514108691373
+      },
+      "durable_goods": {
+        "trades_inclusive": 36,
+        "fixed_notional_pnl_usd_inclusive": -6.736535335774285
+      },
+      "factory_orders": {
+        "trades_inclusive": 34,
+        "fixed_notional_pnl_usd_inclusive": 1.550041136345126
+      },
+      "fomc_statement": {
+        "trades_inclusive": 24,
+        "fixed_notional_pnl_usd_inclusive": -21.365998403488582
+      },
+      "housing_starts": {
+        "trades_inclusive": 35,
+        "fixed_notional_pnl_usd_inclusive": -6.826705486076667
+      },
+      "housing_vacancies": {
+        "trades_inclusive": 11,
+        "fixed_notional_pnl_usd_inclusive": -1.686530682950893
+      },
+      "international_trade": {
+        "trades_inclusive": 35,
+        "fixed_notional_pnl_usd_inclusive": 0.45717421244648726
+      },
+      "new_home_sales": {
+        "trades_inclusive": 36,
+        "fixed_notional_pnl_usd_inclusive": -18.241299751886686
+      },
+      "retail_sales": {
+        "trades_inclusive": 36,
+        "fixed_notional_pnl_usd_inclusive": -3.1433518024822305
+      },
+      "wholesale_trade": {
+        "trades_inclusive": 35,
+        "fixed_notional_pnl_usd_inclusive": 9.345859695987857
+      }
+    },
+    "extra_cent_each_fill": {
+      "sessions": 378,
+      "trades_per_week": 2.431985294117647,
+      "fixed_notional_pnl_usd": -64.88754809382834,
+      "ending_cash_usd": 49.947535254363785,
+      "return_pct": -50.052464745636215,
+      "mean_session_pnl_usd": -0.17166018014240303,
+      "win_rate": 0.43915343915343913,
+      "profit_factor": 0.7083582393058113,
+      "maximum_drawdown_usd": -59.44026169223347,
+      "worst_session_usd": -7.391552511415512,
+      "pnl_without_best_10_sessions_usd": -100.74635268102021,
+      "year_pnl_usd": {
+        "2021": 1.5405457753973404,
+        "2022": -70.61175358920575,
+        "2023": 4.183659719980023
+      },
+      "instrument_pnl_usd": {
+        "SPXU": -47.5308959724776,
+        "UPRO": -17.356652121350734
+      }
+    },
+    "five_minute_entry_delay": {
+      "sessions": 378,
+      "trades_per_week": 2.431985294117647,
+      "fixed_notional_pnl_usd": -24.803058395003397,
+      "ending_cash_usd": 74.98430462728399,
+      "return_pct": -25.01569537271601,
+      "mean_session_pnl_usd": -0.06561655660053808,
+      "win_rate": 0.47883597883597884,
+      "profit_factor": 0.8673210443573254,
+      "maximum_drawdown_usd": -51.85506176947385,
+      "worst_session_usd": -7.230637324949985,
+      "pnl_without_best_10_sessions_usd": -61.227208062547135,
+      "year_pnl_usd": {
+        "2021": 9.830628381174233,
+        "2022": -49.248381066859615,
+        "2023": 14.614694290682005
+      },
+      "instrument_pnl_usd": {
+        "SPXU": -16.392830768644355,
+        "UPRO": -8.410227626359058
+      }
+    },
+    "controls": {
+      "direction_flipped": {
+        "sessions": 378,
+        "trades_per_week": 2.431985294117647,
+        "fixed_notional_pnl_usd": -5.288493337196794,
+        "ending_cash_usd": 90.67541292940702,
+        "return_pct": -9.324587070592983,
+        "mean_session_pnl_usd": -0.013990723114277232,
+        "win_rate": 0.4312169312169312,
+        "profit_factor": 0.9728503448272406,
+        "maximum_drawdown_usd": -43.02583259944825,
+        "worst_session_usd": -5.112266903463148,
+        "pnl_without_best_10_sessions_usd": -58.755698620576084,
+        "year_pnl_usd": {
+          "2021": -22.202543796940784,
+          "2022": 46.99150599827722,
+          "2023": -30.077455538533243
+        },
+        "instrument_pnl_usd": {
+          "UPRO": 3.832447399203656,
+          "SPXU": -9.120940736400463
+        }
+      },
+      "next_non_event_session_same_clock": {
+        "sessions": 303,
+        "trades_per_week": 1.949448529411765,
+        "fixed_notional_pnl_usd": -39.742504909055896,
+        "ending_cash_usd": 65.40962565797123,
+        "return_pct": -34.59037434202877,
+        "mean_session_pnl_usd": -0.13116338253813828,
+        "win_rate": 0.45544554455445546,
+        "profit_factor": 0.7449250702308677,
+        "maximum_drawdown_usd": -36.20054516658509,
+        "worst_session_usd": -5.985634477254587,
+        "pnl_without_best_10_sessions_usd": -71.28651460931701,
+        "year_pnl_usd": {
+          "2021": -11.604956887425772,
+          "2022": -22.06968868021584,
+          "2023": -6.067859341414296
+        },
+        "instrument_pnl_usd": {
+          "SPXU": -40.92887936065379,
+          "UPRO": 1.1863744515978922
+        }
+      }
+    },
+    "spy_price_only_hurdle": {
+      "first_date": "2021-01-04",
+      "last_date": "2023-12-29",
+      "ending_cash_usd": 126.66133759658939,
+      "return_pct": 26.66133759658939,
+      "price_only": true
+    },
+    "spy_total_return_hurdle": {
+      "first_timestamp": "2021-01-04 05:00:00+00:00",
+      "last_timestamp": "2023-12-29 05:00:00+00:00",
+      "ending_cash_usd": 132.39877177375382,
+      "return_pct": 32.39877177375382,
+      "split_and_dividend_adjusted": true,
+      "source": "data/parquet/equity/alpaca_sip/SPY_1d.parquet"
+    }
+  },
+  "independent_overlap": {
+    "observed_bbo": {
+      "sessions": 94,
+      "trades_per_week": 2.3927272727272726,
+      "fixed_notional_pnl_usd": 7.28470898932375,
+      "ending_cash_usd": 107.08813124885181,
+      "return_pct": 7.088131248851809,
+      "mean_session_pnl_usd": 0.07749690414174203,
+      "win_rate": 0.46808510638297873,
+      "profit_factor": 1.2523599163071484,
+      "maximum_drawdown_usd": -9.56377508075306,
+      "worst_session_usd": -2.959094865100087,
+      "pnl_without_best_5_sessions_usd": -3.2899028264441785,
+      "year_pnl_usd": {
+        "2023": 7.284708989323759
+      },
+      "instrument_pnl_usd": {
+        "UPRO": 8.320668109623941,
+        "SPXU": -1.035959120300189
+      }
+    },
+    "clock_pnl_usd": {
+      "08:30:00": -1.2600156594926304,
+      "10:00:00": 8.167277112881223,
+      "14:00:00": 0.37744753593516034
+    },
+    "family_diagnostics": {
+      "advance_economic_indicators": {
+        "trades_inclusive": 10,
+        "fixed_notional_pnl_usd_inclusive": 1.5765598491403354
+      },
+      "business_inventories": {
+        "trades_inclusive": 9,
+        "fixed_notional_pnl_usd_inclusive": 4.8068589623066815
+      },
+      "construction_spending": {
+        "trades_inclusive": 8,
+        "fixed_notional_pnl_usd_inclusive": 2.031663353229962
+      },
+      "durable_goods": {
+        "trades_inclusive": 9,
+        "fixed_notional_pnl_usd_inclusive": -1.6574248751869414
+      },
+      "factory_orders": {
+        "trades_inclusive": 8,
+        "fixed_notional_pnl_usd_inclusive": -0.9137018731297575
+      },
+      "fomc_statement": {
+        "trades_inclusive": 6,
+        "fixed_notional_pnl_usd_inclusive": 0.37744753593516034
+      },
+      "housing_starts": {
+        "trades_inclusive": 9,
+        "fixed_notional_pnl_usd_inclusive": -0.22833803193181845
+      },
+      "housing_vacancies": {
+        "trades_inclusive": 3,
+        "fixed_notional_pnl_usd_inclusive": 2.242277061457243
+      },
+      "international_trade": {
+        "trades_inclusive": 9,
+        "fixed_notional_pnl_usd_inclusive": -0.8373730554383951
+      },
+      "new_home_sales": {
+        "trades_inclusive": 9,
+        "fixed_notional_pnl_usd_inclusive": -1.32241244323269
+      },
+      "retail_sales": {
+        "trades_inclusive": 9,
+        "fixed_notional_pnl_usd_inclusive": -0.09464965905512379
+      },
+      "wholesale_trade": {
+        "trades_inclusive": 9,
+        "fixed_notional_pnl_usd_inclusive": 1.3225920522497825
+      }
+    },
+    "extra_cent_each_fill": {
+      "sessions": 94,
+      "trades_per_week": 2.3927272727272726,
+      "fixed_notional_pnl_usd": -2.5347638482198342,
+      "ending_cash_usd": 97.06614508880658,
+      "return_pct": -2.9338549111934213,
+      "mean_session_pnl_usd": -0.02696557285340249,
+      "win_rate": 0.4148936170212766,
+      "profit_factor": 0.92639522382312,
+      "maximum_drawdown_usd": -14.951362817294054,
+      "worst_session_usd": -3.130434782608693,
+      "pnl_without_best_5_sessions_usd": -12.383373514834242,
+      "year_pnl_usd": {
+        "2023": -2.5347638482198387
+      },
+      "instrument_pnl_usd": {
+        "UPRO": 6.1004592744886,
+        "SPXU": -8.635223122708435
+      }
+    },
+    "five_minute_entry_delay": {
+      "sessions": 94,
+      "trades_per_week": 2.3927272727272726,
+      "fixed_notional_pnl_usd": 5.699224925901905,
+      "ending_cash_usd": 105.43184819191428,
+      "return_pct": 5.431848191914284,
+      "mean_session_pnl_usd": 0.06063005240321176,
+      "win_rate": 0.46808510638297873,
+      "profit_factor": 1.2044916001623212,
+      "maximum_drawdown_usd": -8.963868353003306,
+      "worst_session_usd": -2.534965034965031,
+      "pnl_without_best_5_sessions_usd": -5.055874518752678,
+      "year_pnl_usd": {
+        "2023": 5.6992249259019
+      },
+      "instrument_pnl_usd": {
+        "UPRO": 6.573296197217038,
+        "SPXU": -0.874071271315136
+      }
+    },
+    "controls": {
+      "direction_flipped": {
+        "sessions": 94,
+        "trades_per_week": 2.3927272727272726,
+        "fixed_notional_pnl_usd": -18.325044776629994,
+        "ending_cash_usd": 82.88221110649798,
+        "return_pct": -17.117788893502023,
+        "mean_session_pnl_usd": -0.19494728485776588,
+        "win_rate": 0.3723404255319149,
+        "profit_factor": 0.566099367281493,
+        "maximum_drawdown_usd": -18.481850714328232,
+        "worst_session_usd": -2.7972027972027913,
+        "pnl_without_best_5_sessions_usd": -28.42020639336285,
+        "year_pnl_usd": {
+          "2023": -18.32504477663
+        },
+        "instrument_pnl_usd": {
+          "SPXU": -14.129715352663982,
+          "UPRO": -4.1953294239660135
+        }
+      }
+    },
+    "spy_price_only_hurdle": {
+      "first_date": "2023-03-28",
+      "last_date": "2023-12-29",
+      "ending_cash_usd": 120.11927022792743,
+      "return_pct": 20.11927022792743,
+      "price_only": true
+    },
+    "spy_total_return_hurdle": {
+      "first_timestamp": "2023-03-28 04:00:00+00:00",
+      "last_timestamp": "2023-12-29 05:00:00+00:00",
+      "ending_cash_usd": 121.45790554414783,
+      "return_pct": 21.457905544147835,
+      "split_and_dividend_adjusted": true,
+      "source": "data/parquet/equity/alpaca_sip/SPY_1d.parquet"
+    }
+  },
+  "development_gates": {
+    "minimum_two_trades_per_week": true,
+    "profit_factor_at_least_1_05": false,
+    "positive_fixed_notional_pnl": false,
+    "each_development_year_positive": false,
+    "both_upro_and_spxu_positive": false,
+    "each_release_clock_positive": false,
+    "ending_cash_above_spy_total_return": false,
+    "positive_after_extra_cent_each_fill": false,
+    "positive_after_five_minute_entry_delay": false,
+    "positive_after_removing_ten_best_trades": false,
+    "positive_independent_feed_overlap": true,
+    "outperform_next_non_event_same_clock_control": true,
+    "outperform_direction_flipped_control": false
+  },
+  "development_passed": false,
+  "holdout_status": "locked_not_read"
+}

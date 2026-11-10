@@ -1,0 +1,12 @@
+{
+  "specification_id": "ES-Prior-Scar-to-UPRO-SPXU-v20",
+  "status": "frozen-before-leveraged-etf-return-calculation",
+  "signal": "Exact unchanged ES Prior-Close Volume-Scar Handoff v1",
+  "entry": "10:01 exact UPRO/SPXU ask; cancel if the ES structural stop was touched in the 10:00 bar",
+  "stop": "ES opening center minus one tick for long or plus one tick for short; exit ETF at the following minute bid",
+  "survivor_exit": "15:30 exact ETF bid",
+  "account": "$100 starting equity, fractional shares, full reinvestment, long UPRO or long SPXU only",
+  "development": "2021-2023 with all usual frequency, year, side, cost, delay, concentration, and SPY gates",
+  "holdout": "2024-2025, opened only after development pass; require both years and actuators, costs, concentration, SPY, and EQUS.MINI rebuild",
+  "prohibited": "Any signal, anchor, clock, stop, exit, side, threshold, or year change"
+}

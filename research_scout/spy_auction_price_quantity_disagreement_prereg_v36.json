@@ -1,0 +1,115 @@
+{
+  "candidate": "V36",
+  "name": "SPY auction price/quantity disagreement handoff",
+  "status": "not_activated_returns_blind_feasibility_failed",
+  "returns_authorized": false,
+  "returns_viewed": false,
+  "freeze_reason": "The complete rule was specified before returns, but the preregistration was not activated because predeclared returns-blind gates failed. No V36 P&L may be calculated and the rule may not be repaired.",
+  "data": {
+    "signal_dataset": "ARCX.PILLAR",
+    "signal_schema": "imbalance",
+    "signal_symbol": "SPY",
+    "execution_dataset": "EQUS.MINI",
+    "execution_schema": "tbbo",
+    "execution_symbols": [
+      "UPRO",
+      "SPXU"
+    ],
+    "tbbo_boundary": {
+      "prefix": "New York dates <= 2024-10-02",
+      "tail": "New York dates >= 2024-10-03"
+    },
+    "feed_description": "Derived anonymized multi-venue trade-event TBBO, not official SIP NBBO and not a complete quote-update feed"
+  },
+  "feature": {
+    "observation_cutoff_new_york": "09:29:50",
+    "record_selection": "latest auction_type M message with ts_event strictly before cutoff",
+    "eligibility": [
+      "side is A or B",
+      "ref_price > 0",
+      "ind_match_price > 0",
+      "paired_qty > 0",
+      "total_imbalance_qty > 0"
+    ],
+    "normalization": "indicative_displacement = ind_match_price / ref_price - 1",
+    "signal": "B and displacement < 0, or A and displacement > 0",
+    "direction": "price-setting direction opposite published imbalance side",
+    "threshold": "sign only; no magnitude threshold"
+  },
+  "actuator_selection": {
+    "positive_price_direction": "UPRO",
+    "negative_price_direction": "SPXU",
+    "position_usd": 100.0,
+    "fractional_shares": true,
+    "long_only": true,
+    "margin": false,
+    "overlap": false
+  },
+  "execution": {
+    "order_anchor_new_york": "09:30:00",
+    "signal_to_order_delays_seconds": [
+      1,
+      5,
+      60
+    ],
+    "entry": "first valid trade-event ask at or after anchor plus delay",
+    "exit": "first valid trade-event bid at or after 09:35:00 New York",
+    "maximum_event_wait_seconds": 60,
+    "quote_rejections": [
+      "bid <= 0",
+      "ask <= 0",
+      "ask < bid",
+      "event wait > 60 seconds"
+    ],
+    "stop": null,
+    "maximum_holding_time": "approximately five minutes from 09:30 anchor",
+    "same_day_liquidation": "09:35 target, never overnight"
+  },
+  "costs": {
+    "commission_usd": 0.0,
+    "commission_assumption": "commission-free fractional ETF execution; any broker fee must be added prospectively",
+    "spread": "observed ask entry and bid exit, separately decomposed against midpoint",
+    "additional_adverse_stress": "one cent per share at entry and one cent per share at exit"
+  },
+  "session_filters": {
+    "primary": "exclude the union of exact ARCX.PILLAR and EQUS.MINI degraded dates and any documented abnormal RTH status session",
+    "degraded_sensitivity": "optional separate result only; inclusion cannot be selected from P&L",
+    "development_measurement": "2021-2023 feature measurement; executable overlap begins 2023-03-28",
+    "historical_validation": "2024-2025 with familywise contamination risk",
+    "temporal_extension": "2026, not presumed pristine"
+  },
+  "adjacent_cutoffs_frozen_for_stability_only": [
+    "09:29:30",
+    "09:29:59"
+  ],
+  "returns_blind_rejection_gates": {
+    "minimum_trades_per_week": 2.0,
+    "minimum_feature_signals_each_full_development_year": 100,
+    "minimum_minority_side_share": 0.2,
+    "minimum_execution_quote_coverage": 0.9,
+    "minimum_cross_ladder_5s_availability": 0.8,
+    "minimum_adjacent_identical_action_including_cash": 0.6,
+    "maximum_gap_or_momentum_directional_identity": 0.8,
+    "timestamp_lookahead_allowed": false
+  },
+  "failed_returns_blind_gates": {
+    "cross_ladder_5s_availability": "244 of 399 executable signal sessions, below 80%",
+    "09:29:30_identical_action_including_cash": 0.5390946502057613,
+    "09:29:59_identical_action_including_cash": 0.44588344125809435
+  },
+  "mandatory_controls_if_it_had_passed": [
+    "reversed imbalance sign",
+    "previous session imbalance",
+    "one-session-shifted signal",
+    "intraday time permutation",
+    "paired-quantity-only",
+    "opening-gap-only",
+    "recent-momentum-only",
+    "volatility/spread-matched",
+    "final imbalance snapshot continuation",
+    "randomized SPY-to-actuator session matching",
+    "SPY/SH 1x comparison",
+    "SSO/SDS 2x comparison",
+    "UPRO/SPXU 3x comparison with leverage scaling"
+  ]
+}

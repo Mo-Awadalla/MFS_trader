@@ -1,0 +1,31 @@
+{
+  "specification_id": "UPRO-SPXU-Persistent-Premarket-Wrapper-Premium-v19",
+  "saved_at": "2026-07-26",
+  "status": "preregistered-after-returns-blind-audit-before-post-open-return-calculation",
+  "signal": "At both 08:30 and 09:15, compute (UPRO log gap - 3*SPY log gap) - (SPXU log gap + 3*SPY log gap) from prior-session 15:59 exact observations. Buy UPRO if both are positive, SPXU if both are negative, otherwise cash.",
+  "execution": {
+    "starting_cash_usd": 100,
+    "fractional_shares": true,
+    "reinvest_equity": true,
+    "entry": "09:31 exact observed ask",
+    "exit": "11:30 exact observed bid",
+    "stop": null,
+    "overnight": false
+  },
+  "development": "2021-01-04 through 2023-12-29; lock later returns unless every gate passes",
+  "development_gates": [
+    "at least two trades per week",
+    "profit factor above one",
+    "2021, 2022, and 2023 each positive",
+    "UPRO and SPXU each positive",
+    "ending cash above price-only SPY",
+    "positive after one extra cent at both fills",
+    "positive after five-minute entry delay",
+    "positive after removing ten best sessions",
+    "outperform sign-flipped placebo"
+  ],
+  "holdout": "2024-2025; require each year and wrapper positive, SPY outperformance, extra-cent and winner-removal survival, and positive EQUS.MINI rebuild",
+  "prohibited_repairs": "No checkpoint, coefficient, sign, entry, exit, stop, magnitude filter, year, or wrapper change after outcomes.",
+  "preimplementation_critique": "research_scout/UPRO_SPXU_PREMARKET_WRAPPER_PREMIUM_PREIMPLEMENTATION_CRITIQUE_V19.md",
+  "returns_blind_audit": "research_scout/upro_spxu_premarket_wrapper_premium_returns_blind_audit_v19.json"
+}

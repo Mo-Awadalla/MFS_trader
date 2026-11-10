@@ -1,0 +1,81 @@
+{
+  "candidate": "V77 constituent liquidity relay",
+  "frozen_before_post_entry_return_read": true,
+  "development": {
+    "start": "2021-01-04",
+    "end": "2023-12-29",
+    "recent_years_locked": true
+  },
+  "signal_source": {
+    "provider": "Alpaca Historical Stock Bars API",
+    "feed": "iex",
+    "timeframe": "30Min",
+    "adjustment": "all",
+    "fields": ["open", "close", "volume", "trade_count", "vwap"],
+    "universe": "research.universes.residual_reversal_v1.STOCK_SYMBOLS",
+    "minimum_complete_fraction_per_session": 0.95,
+    "paid_data": false,
+    "databento_call": false
+  },
+  "signal": {
+    "first_window": "09:30-10:00 ET",
+    "second_window": "10:00-10:30 ET",
+    "direction": "sign(cross-sectional median first-window stock return)",
+    "leaders": "stocks whose first-window return has the direction sign",
+    "laggards": "stocks whose first-window return has the opposite sign",
+    "volume_condition": "laggard share of universe volume strictly rises from first to second window",
+    "laggard_price_condition": "median(direction * laggard second-window return) > 0",
+    "leader_price_condition": "median(direction * leader second-window return) >= 0",
+    "action": "UPRO if direction positive; SPXU if direction negative; otherwise CASH"
+  },
+  "execution": {
+    "entry": "observed ask at 10:31 ET",
+    "exit": "observed bid at 15:55 ET",
+    "account": 100.0,
+    "fractional_shares": true,
+    "overnight": false
+  },
+  "blind_gates": {
+    "signals_per_week_min": 2.0,
+    "signals_each_year_min": 100,
+    "minority_action_share_min": 0.30,
+    "switches_each_year_min": 25,
+    "selection_share_min": 0.20,
+    "selection_share_max": 0.80,
+    "odd_even_and_mod3_action_agreement_min": 0.70,
+    "spy_first_hour_action_agreement_max": 0.85,
+    "v75_signal_date_overlap_max": 0.80,
+    "v76_signal_date_overlap_max": 0.80,
+    "valid_session_source_coverage_min": 0.95,
+    "positive_volume_bar_share_min": 0.99,
+    "max_month_signal_share": 0.06,
+    "primary_quote_coverage_min": 0.95,
+    "independent_quote_coverage_min": 0.90
+  },
+  "development_gates": {
+    "profit_factor_strict_min": 1.10,
+    "each_year_pnl_positive": true,
+    "each_sleeve_pnl_positive": true,
+    "ending_cash_above_adjusted_spy": true,
+    "extra_cent_each_side_pnl_positive": true,
+    "five_minute_delay_pnl_positive": true,
+    "delete_ten_best_sessions_pnl_positive": true,
+    "five_session_block_bootstrap_95pct_lower_mean_positive": true,
+    "permutation_p_value_max": 0.05,
+    "independent_overlap_pnl_positive": true,
+    "mean_return_above_all_frozen_controls": true
+  },
+  "frozen_controls": [
+    "SPY first-hour momentum",
+    "price-only leader-laggard relay",
+    "volume-migration-only constituent direction"
+  ],
+  "prohibited_repairs": [
+    "sign flip",
+    "magnitude or percentile threshold",
+    "volatility/calendar/regime filter",
+    "universe or sleeve deletion",
+    "alternate signal/entry/exit clock",
+    "favorable subset promotion"
+  ]
+}

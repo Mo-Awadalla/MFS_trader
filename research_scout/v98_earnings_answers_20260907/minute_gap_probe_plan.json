@@ -1,0 +1,150 @@
+{
+  "created_utc": "2026-09-07T23:41:00.184030+00:00",
+  "purpose": "At most nine requests for one-minute bars over the exact previously missing instrument-sessions, same SIP feed, adjustments and symbol mapping. No source replacement, price imputation or trading-rule change. Audit before deciding whether aggregation can recover the frozen five-minute inputs.",
+  "requests": [
+    {
+      "day": "2018-05-02_AAPL_1Min",
+      "session_day": "2018-05-02",
+      "symbol": "AAPL",
+      "params": {
+        "symbols": "AAPL",
+        "timeframe": "1Min",
+        "start": "2018-05-02T13:30:00+00:00",
+        "end": "2018-05-02T20:00:00+00:00",
+        "limit": 10000,
+        "adjustment": "split",
+        "feed": "sip",
+        "sort": "asc",
+        "asof": "2023-12-29"
+      }
+    },
+    {
+      "day": "2018-11-07_EMR_1Min",
+      "session_day": "2018-11-07",
+      "symbol": "EMR",
+      "params": {
+        "symbols": "EMR",
+        "timeframe": "1Min",
+        "start": "2018-11-07T14:30:00+00:00",
+        "end": "2018-11-07T21:00:00+00:00",
+        "limit": 10000,
+        "adjustment": "split",
+        "feed": "sip",
+        "sort": "asc",
+        "asof": "2023-12-29"
+      }
+    },
+    {
+      "day": "2021-04-19_KO_1Min",
+      "session_day": "2021-04-19",
+      "symbol": "KO",
+      "params": {
+        "symbols": "KO",
+        "timeframe": "1Min",
+        "start": "2021-04-19T13:30:00+00:00",
+        "end": "2021-04-19T20:00:00+00:00",
+        "limit": 10000,
+        "adjustment": "split",
+        "feed": "sip",
+        "sort": "asc",
+        "asof": "2023-12-29"
+      }
+    },
+    {
+      "day": "2021-04-19_PNC_1Min",
+      "session_day": "2021-04-19",
+      "symbol": "PNC",
+      "params": {
+        "symbols": "PNC",
+        "timeframe": "1Min",
+        "start": "2021-04-19T13:30:00+00:00",
+        "end": "2021-04-19T20:00:00+00:00",
+        "limit": 10000,
+        "adjustment": "split",
+        "feed": "sip",
+        "sort": "asc",
+        "asof": "2023-12-29"
+      }
+    },
+    {
+      "day": "2021-09-22_AZO_1Min",
+      "session_day": "2021-09-22",
+      "symbol": "AZO",
+      "params": {
+        "symbols": "AZO",
+        "timeframe": "1Min",
+        "start": "2021-09-22T13:30:00+00:00",
+        "end": "2021-09-22T20:00:00+00:00",
+        "limit": 10000,
+        "adjustment": "split",
+        "feed": "sip",
+        "sort": "asc",
+        "asof": "2023-12-29"
+      }
+    },
+    {
+      "day": "2021-10-25_HCA_1Min",
+      "session_day": "2021-10-25",
+      "symbol": "HCA",
+      "params": {
+        "symbols": "HCA",
+        "timeframe": "1Min",
+        "start": "2021-10-25T13:30:00+00:00",
+        "end": "2021-10-25T20:00:00+00:00",
+        "limit": 10000,
+        "adjustment": "split",
+        "feed": "sip",
+        "sort": "asc",
+        "asof": "2023-12-29"
+      }
+    },
+    {
+      "day": "2021-10-25_ROP_1Min",
+      "session_day": "2021-10-25",
+      "symbol": "ROP",
+      "params": {
+        "symbols": "ROP",
+        "timeframe": "1Min",
+        "start": "2021-10-25T13:30:00+00:00",
+        "end": "2021-10-25T20:00:00+00:00",
+        "limit": 10000,
+        "adjustment": "split",
+        "feed": "sip",
+        "sort": "asc",
+        "asof": "2023-12-29"
+      }
+    },
+    {
+      "day": "2021-10-25_SLB_1Min",
+      "session_day": "2021-10-25",
+      "symbol": "SLB",
+      "params": {
+        "symbols": "SLB",
+        "timeframe": "1Min",
+        "start": "2021-10-25T13:30:00+00:00",
+        "end": "2021-10-25T20:00:00+00:00",
+        "limit": 10000,
+        "adjustment": "split",
+        "feed": "sip",
+        "sort": "asc",
+        "asof": "2023-12-29"
+      }
+    },
+    {
+      "day": "2022-01-24_SLB_1Min",
+      "session_day": "2022-01-24",
+      "symbol": "SLB",
+      "params": {
+        "symbols": "SLB",
+        "timeframe": "1Min",
+        "start": "2022-01-24T14:30:00+00:00",
+        "end": "2022-01-24T21:00:00+00:00",
+        "limit": 10000,
+        "adjustment": "split",
+        "feed": "sip",
+        "sort": "asc",
+        "asof": "2023-12-29"
+      }
+    }
+  ]
+}

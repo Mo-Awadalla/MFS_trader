@@ -1,0 +1,28 @@
+{
+  "documents": 3167,
+  "eligible_events": 1730,
+  "eligible_symbols": 129,
+  "eligible_by_year": {
+    "2018": 195,
+    "2019": 258,
+    "2020": 406,
+    "2021": 413,
+    "2022": 250,
+    "2023": 208
+  },
+  "problem_counts": {
+    "management_attribution_not_explicit": 297,
+    "revision_changes_entry_session": 240,
+    "prepared_management_text_below_500_words": 45,
+    "qa_management_text_below_500_words": 154,
+    "analyst_roles_unidentified": 222,
+    "unresolved_speaker_headers": 328,
+    "participants_heading_not_unique": 39,
+    "qa_heading_not_unique": 90,
+    "headline_ticker_ambiguous_or_unmatched": 762,
+    "ambiguous_multiple_issuer_session_documents": 6,
+    "entry_outside_frozen_period": 1
+  },
+  "conditional_historical_vintage": true,
+  "no_price_outcomes_read": true
+}

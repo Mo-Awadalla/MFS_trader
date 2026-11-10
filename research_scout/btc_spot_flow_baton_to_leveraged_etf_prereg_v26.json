@@ -1,0 +1,88 @@
+{
+  "specification_id": "BTC-Spot-Asia-Europe-Flow-Baton-to-UPRO-SPXU-v26",
+  "status": "preregistered_after_returns_blind_audit_and_before_any_post_entry_etf_return",
+  "preimplementation_critique": "research_scout/BTC_SPOT_FLOW_BATON_TO_LEVERAGED_ETF_PREIMPLEMENTATION_CRITIQUE_V26.md",
+  "returns_blind_audit": "research_scout/btc_spot_flow_baton_returns_blind_audit_v26.json",
+  "scope": {
+    "signal": "Binance BTCUSDT spot 30-minute klines only",
+    "prohibited_signal_data": [
+      "futures",
+      "perpetuals",
+      "funding",
+      "margin",
+      "mark price",
+      "index price"
+    ],
+    "actuator": "Long fractional UPRO for bullish or SPXU for bearish",
+    "starting_cash_usd": 100.0,
+    "gross_notional_per_trade_usd": 100.0,
+    "maximum_positions": 1,
+    "maximum_trades_per_equity_session": 1,
+    "short_sales": false,
+    "overnight_etf_positions": false
+  },
+  "frozen_signal": {
+    "timezone": "America/New_York",
+    "asia_cohort": "prior calendar day 16:00 through signal day 00:59; exactly eighteen 30-minute spot bars",
+    "europe_cohort": "signal day 01:00 through 08:59; exactly sixteen 30-minute spot bars",
+    "bar_signed_flow": "2 * taker_buy_quote_volume - quote_volume",
+    "cohort_imbalance": "sum(bar_signed_flow) / sum(quote_volume)",
+    "bullish": "both cohort imbalances strictly positive",
+    "bearish": "both cohort imbalances strictly negative",
+    "no_trade": "opposite signs, an exact zero, or incomplete cohort"
+  },
+  "execution": {
+    "primary_feed": "Databento ARCX.PILLAR UPRO/SPXU BBO-1m",
+    "holdout_execution_audit": "Databento EQUS.MINI UPRO/SPXU BBO-1m",
+    "entry": "09:31 observed ask",
+    "exit": "15:30 observed bid",
+    "invalid_quote": "skip; never forward-fill",
+    "baseline_cost": "full observed bid-ask spread at both fills",
+    "cost_stress": "one additional cent per share adverse at entry and exit",
+    "delay_stress": "09:36 observed ask with unchanged 15:30 exit"
+  },
+  "development": "2021-01-04 through 2023-12-29",
+  "secondary_holdout": "2024-01-02 through 2025-12-31",
+  "mechanism_contrasts": {
+    "sign_flipped": "trade the exact opposite UPRO/SPXU direction on every actual-signal date",
+    "btc_price_persistence": "trade only when Asia and Europe BTC spot price returns have the same sign; use that sign",
+    "europe_flow_only": "trade the sign of Europe cohort taker-flow imbalance without requiring the Asia baton"
+  },
+  "development_gates": {
+    "minimum_trades_per_week": 2.0,
+    "profit_factor_strictly_above": 1.0,
+    "each_of_2021_2022_2023_positive": true,
+    "UPRO_and_SPXU_pnl_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_ten_best_trades": true,
+    "fixed_notional_pnl_above_sign_flipped": true,
+    "fixed_notional_pnl_above_btc_price_persistence": true,
+    "fixed_notional_pnl_above_europe_flow_only": true
+  },
+  "holdout_gates": {
+    "development_must_pass_every_gate": true,
+    "2024_and_2025_each_positive": true,
+    "UPRO_and_SPXU_pnl_positive": true,
+    "ending_cash_above_price_only_spy": true,
+    "positive_after_one_extra_cent_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_removing_five_best_trades": true,
+    "primary_fixed_notional_pnl_above_all_three_contrasts": true,
+    "EQUS_observed_execution_positive": true
+  },
+  "prohibited_after_results": [
+    "change either overnight cohort",
+    "change New York time to a fitted UTC clock",
+    "add an imbalance magnitude, BTC return, volatility, weekday, month, year, or ETF-spread filter",
+    "drop UPRO or SPXU",
+    "invert the signal",
+    "use any crypto derivative field",
+    "change entry or exit",
+    "choose a favorable execution feed",
+    "combine V26 with a prior candidate based on historical P&L",
+    "open holdout after any development-gate failure"
+  ],
+  "evidence_warning": "The broader equity history is familywise contaminated by prior research. A historical survivor would remain a paper candidate requiring new forward validation."
+}

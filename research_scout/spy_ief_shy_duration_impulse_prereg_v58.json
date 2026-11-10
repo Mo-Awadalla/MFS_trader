@@ -1,0 +1,73 @@
+{
+  "specification_id": "spy_ief_shy_duration_impulse_persistence_v58",
+  "created_before_target_return_inspection": true,
+  "partitions": {
+    "development": ["2021-01-01", "2023-12-31"],
+    "holdout": ["2024-01-01", "2025-12-31"]
+  },
+  "data": {
+    "primary_signal": [
+      "data/parquet/equity/yahoo_chart/IEF_1d.parquet",
+      "data/parquet/equity/yahoo_chart/SHY_1d.parquet"
+    ],
+    "signal_fields": "split/dividend-adjusted close",
+    "source_invariance": [
+      "data/parquet/equity/alpaca/IEF_1d.parquet",
+      "data/parquet/equity/alpaca/SHY_1d.parquet"
+    ],
+    "execution_primary": "ARCX.PILLAR UPRO/SPXU BBO",
+    "execution_independent": "EQUS.MINI UPRO/SPXU BBO"
+  },
+  "signal": {
+    "ief_return_greater_than_shy_return": "UPRO next SPY session",
+    "ief_return_less_than_shy_return": "SPXU next SPY session",
+    "otherwise": "cash",
+    "threshold": "strict relative return only"
+  },
+  "execution": {
+    "entry": "next SPY session exact 09:31 observed ask",
+    "exit": "same session exact 15:30 observed bid",
+    "notional_usd": 100.0,
+    "overnight": false
+  },
+  "returns_blind_gates": {
+    "common_signal_coverage_min": 0.98,
+    "trades_per_week_min": 2.0,
+    "trades_each_development_year_min": 100,
+    "minority_direction_fraction_min": 0.20,
+    "primary_execution_coverage_min": 0.95,
+    "independent_execution_coverage_min": 0.95,
+    "primary_alternate_action_agreement_including_cash_min": 0.95,
+    "strict_causality": true
+  },
+  "development_gates": {
+    "trades_per_week_min": 2.0,
+    "profit_factor_min": 1.05,
+    "fixed_notional_pnl_positive": true,
+    "each_year_positive": true,
+    "both_directions_positive": true,
+    "ending_cash_above_spy_total_return": true,
+    "extra_cent_each_fill_positive": true,
+    "five_minute_delay_positive": true,
+    "delete_ten_best_positive": true,
+    "independent_overlap_positive": true,
+    "mean_trade_pnl_above_each_control": true
+  },
+  "controls": [
+    "prior-session IEF direction continuation",
+    "prior-session SHY direction continuation",
+    "prior-session SPY direction continuation",
+    "one-session-lagged IEF-minus-SHY direction",
+    "candidate action sign flipped"
+  ],
+  "prohibited_repairs": [
+    "return, yield, DV01, carry, or curve threshold",
+    "TLT, IEI, BIL, or another maturity substitution or addition",
+    "equity, commodity, gold, dollar, volatility, or crypto signal addition",
+    "volatility, gap, weekday, trend, macro-calendar, or regime filter",
+    "direction inversion or sleeve deletion",
+    "alternate entry, exit, stop, or hold window",
+    "inspect holdout unless all development gates pass"
+  ]
+}
+

@@ -1,0 +1,265 @@
+{
+  "V83": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 1.0,
+      "sell_notional_rate": 5.1e-06,
+      "sell_per_share": 0.000119
+    },
+    "calendar_sessions": 753,
+    "known_sessions": 753,
+    "trade_days": 107,
+    "legs": 107,
+    "missing_dates": [],
+    "complete_equity": true,
+    "ending_cash": 115.56350577208745,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 125.5931321493011,
+        "total_return": 0.255931321493011,
+        "fixed_initial_notional_pnl": 23.29238143161526,
+        "max_daily_drawdown": -0.062264614451140066,
+        "sharpe": 1.3401187859303412
+      },
+      "crossed": {
+        "ending_cash": 118.20289088586063,
+        "total_return": 0.18202890885860623,
+        "fixed_initial_notional_pnl": 17.21764050622494,
+        "max_daily_drawdown": -0.06832338348137035,
+        "sharpe": 0.9996425925109254
+      },
+      "net": {
+        "ending_cash": 115.56350577208745,
+        "total_return": 0.1556350577208745,
+        "fixed_initial_notional_pnl": 14.956019563442347,
+        "max_daily_drawdown": -0.07065772134231418,
+        "sharpe": 0.8710714701372582
+      },
+      "cost_stress": {
+        "ending_cash": 113.11671346581625,
+        "total_return": 0.13116713465816243,
+        "fixed_initial_notional_pnl": 12.813236219885138,
+        "max_daily_drawdown": -0.07288547289885339,
+        "sharpe": 0.7482320656619575
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "excess_mean_daily_95_interval": [
+      -0.0009816366312219546,
+      0.0005788741445806635
+    ],
+    "economic_checks": {
+      "data_complete": true,
+      "positive_net": true,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": true
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "observed_quotes",
+    "stress": "One-minute entry delay; original exit and direction; common base costs"
+  },
+  "V56": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 1.0,
+      "sell_notional_rate": 5.1e-06,
+      "sell_per_share": 0.000119
+    },
+    "calendar_sessions": 753,
+    "known_sessions": 753,
+    "trade_days": 382,
+    "legs": 382,
+    "missing_dates": [],
+    "complete_equity": true,
+    "ending_cash": 106.52033940096123,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 139.45761558813078,
+        "total_return": 0.3945761558813077,
+        "fixed_initial_notional_pnl": 46.378996926244156,
+        "max_daily_drawdown": -0.1967729162598062,
+        "sharpe": 0.5246412484775167
+      },
+      "crossed": {
+        "ending_cash": 115.42449055006325,
+        "total_return": 0.15424490550063252,
+        "fixed_initial_notional_pnl": 27.460302219798415,
+        "max_daily_drawdown": -0.2488325404197086,
+        "sharpe": 0.3107407781743879
+      },
+      "net": {
+        "ending_cash": 106.52033940096123,
+        "total_return": 0.06520339400961239,
+        "fixed_initial_notional_pnl": 19.42735490030316,
+        "max_daily_drawdown": -0.2715832443242857,
+        "sharpe": 0.21990632148086148
+      },
+      "cost_stress": {
+        "ending_cash": 98.68527562141904,
+        "total_return": -0.01314724378580967,
+        "fixed_initial_notional_pnl": 11.784214258725257,
+        "max_daily_drawdown": -0.2925455334420829,
+        "sharpe": 0.13342497763123626
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "excess_mean_daily_95_interval": [
+      -0.0016071222221915682,
+      0.0012968108030152815
+    ],
+    "economic_checks": {
+      "data_complete": true,
+      "positive_net": true,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": false
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "observed_quotes",
+    "stress": "One-minute entry delay; original exit and direction; common base costs"
+  },
+  "V76": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 1.0,
+      "sell_notional_rate": 5.1e-06,
+      "sell_per_share": 0.000119
+    },
+    "calendar_sessions": 753,
+    "known_sessions": 752,
+    "trade_days": 368,
+    "legs": 368,
+    "missing_dates": [
+      "2021-11-26"
+    ],
+    "complete_equity": false,
+    "ending_cash": null,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 150.18983492812941,
+        "total_return": 0.5018983492812941,
+        "fixed_initial_notional_pnl": 49.98525854625604,
+        "max_daily_drawdown": -0.32126826426749633,
+        "sharpe": 0.6719506177145019
+      },
+      "crossed": {
+        "ending_cash": 126.52791927977817,
+        "total_return": 0.2652791927977818,
+        "fixed_initial_notional_pnl": 32.8346907408537,
+        "max_daily_drawdown": -0.34246451179749104,
+        "sharpe": 0.44157573234309794
+      },
+      "net": {
+        "ending_cash": 117.12678935792911,
+        "total_return": 0.17126789357929106,
+        "fixed_initial_notional_pnl": 25.108198796761183,
+        "max_daily_drawdown": -0.3525635794222498,
+        "sharpe": 0.33779080186654453
+      },
+      "cost_stress": {
+        "ending_cash": 108.81583249693634,
+        "total_return": 0.08815832496936338,
+        "fixed_initial_notional_pnl": 17.74389615308285,
+        "max_daily_drawdown": -0.36207509913770053,
+        "sharpe": 0.23879185995849148
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "excess_mean_daily_95_interval": null,
+    "economic_checks": {
+      "data_complete": false,
+      "positive_net": true,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": true
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "observed_quotes",
+    "stress": "One-minute entry delay; original exit and direction; common base costs"
+  },
+  "V45": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 1.0,
+      "sell_notional_rate": 5.1e-06,
+      "sell_per_share": 0.000119
+    },
+    "calendar_sessions": 753,
+    "known_sessions": 753,
+    "trade_days": 306,
+    "legs": 378,
+    "missing_dates": [],
+    "complete_equity": true,
+    "ending_cash": 66.61743646883323,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 86.35566353474258,
+        "total_return": -0.13644336465257423,
+        "fixed_initial_notional_pnl": -10.557821516848609,
+        "max_daily_drawdown": -0.4387856852628532,
+        "sharpe": -0.21401635670843894
+      },
+      "crossed": {
+        "ending_cash": 72.12080236585167,
+        "total_return": -0.2787919763414832,
+        "fixed_initial_notional_pnl": -28.54378030856255,
+        "max_daily_drawdown": -0.46913027665473106,
+        "sharpe": -0.5774920400871899
+      },
+      "net": {
+        "ending_cash": 66.61743646883323,
+        "total_return": -0.33382563531166765,
+        "fixed_initial_notional_pnl": -36.46657404295451,
+        "max_daily_drawdown": -0.4873948489240235,
+        "sharpe": -0.7370031336579289
+      },
+      "cost_stress": {
+        "ending_cash": 61.7668100186342,
+        "total_return": -0.382331899813658,
+        "fixed_initial_notional_pnl": -44.01033099129792,
+        "max_daily_drawdown": -0.5045151684321878,
+        "sharpe": -0.888422307803971
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "excess_mean_daily_95_interval": [
+      -0.00196974691249793,
+      9.107540617818555e-05
+    ],
+    "economic_checks": {
+      "data_complete": true,
+      "positive_net": false,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": false
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "observed_quotes",
+    "stress": "One-minute entry delay; original exit and direction; common base costs"
+  }
+}

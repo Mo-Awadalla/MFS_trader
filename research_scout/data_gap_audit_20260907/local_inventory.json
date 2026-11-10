@@ -1,0 +1,2071 @@
+{
+  "scope": "local files and parquet metadata; no strategy outcomes, credentials, or network",
+  "warning": "Storage counts include derived panels and duplicates; rows are not unique independent observations. DBN row counts are taken from separate existing validation reports, not parquet totals.",
+  "groups": {
+    "data/parquet/alpaca_iex_l1_feasibility": {
+      "files": 3,
+      "bytes": 742803,
+      "extensions": {
+        ".json": 1,
+        ".parquet": 2
+      },
+      "parquet_rows": 39414,
+      "parquet_files": 2,
+      "schemas": [
+        {
+          "columns": [
+            "symbol",
+            "timestamp",
+            "raw_timestamp",
+            "ask_exchange",
+            "ask_price",
+            "ask_size",
+            "bid_exchange",
+            "bid_price",
+            "bid_size",
+            "conditions",
+            "tape",
+            "ingestion_run_id",
+            "page_index",
+            "row_index"
+          ],
+          "example": "data\\parquet\\alpaca_iex_l1_feasibility\\alpaca_iex\\equity\\AAPL\\2026-07-08\\quotes.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "symbol",
+            "timestamp",
+            "raw_timestamp",
+            "trade_id",
+            "exchange",
+            "price",
+            "size",
+            "conditions",
+            "tape",
+            "ingestion_run_id",
+            "page_index",
+            "row_index"
+          ],
+          "example": "data\\parquet\\alpaca_iex_l1_feasibility\\alpaca_iex\\equity\\AAPL\\2026-07-08\\trades.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0007
+    },
+    "data/parquet/alpaca_iex_l1_feature_feasibility": {
+      "files": 5,
+      "bytes": 3217671,
+      "extensions": {
+        ".parquet": 3,
+        ".json": 2
+      },
+      "parquet_rows": 228886,
+      "parquet_files": 3,
+      "schemas": [
+        {
+          "columns": [
+            "signal_timestamp",
+            "quote_count",
+            "terminal_quote_timestamp",
+            "terminal_midpoint",
+            "terminal_spread_bps",
+            "terminal_quote_size_imbalance",
+            "normal_quote_count",
+            "locked_quote_count",
+            "crossed_quote_count",
+            "one_sided_quote_count",
+            "invalid_quote_count",
+            "trade_count",
+            "total_volume",
+            "signed_volume",
+            "buy_volume",
+            "sell_volume",
+            "quote_matched_trades",
+            "maximum_trade_quote_age_ms",
+            "signed_trade_imbalance",
+            "quote_match_fraction",
+            "terminal_quote_age_ms",
+            "next_midpoint_return"
+          ],
+          "example": "data\\parquet\\alpaca_iex_l1_feature_feasibility\\alpaca_iex\\equity\\AAPL\\2026-07-08\\features_5min.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "symbol",
+            "timestamp",
+            "raw_timestamp",
+            "ask_exchange",
+            "ask_price",
+            "ask_size",
+            "bid_exchange",
+            "bid_price",
+            "bid_size",
+            "conditions",
+            "tape",
+            "ingestion_run_id",
+            "page_index",
+            "row_index"
+          ],
+          "example": "data\\parquet\\alpaca_iex_l1_feature_feasibility\\alpaca_iex\\equity\\AAPL\\2026-07-08\\quotes.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "symbol",
+            "timestamp",
+            "raw_timestamp",
+            "trade_id",
+            "exchange",
+            "price",
+            "size",
+            "conditions",
+            "tape",
+            "ingestion_run_id",
+            "page_index",
+            "row_index"
+          ],
+          "example": "data\\parquet\\alpaca_iex_l1_feature_feasibility\\alpaca_iex\\equity\\AAPL\\2026-07-08\\trades.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.003
+    },
+    "data/parquet/alpaca_iex_orderflow_v1": {
+      "files": 291,
+      "bytes": 284323772,
+      "extensions": {
+        ".parquet": 217,
+        ".json": 73,
+        ".md": 1
+      },
+      "parquet_rows": 22214900,
+      "parquet_files": 217,
+      "schemas": [
+        {
+          "columns": [
+            "signal_timestamp",
+            "symbol",
+            "session_date",
+            "quote_count",
+            "terminal_quote_timestamp",
+            "terminal_midpoint",
+            "terminal_spread_bps",
+            "terminal_quote_size_imbalance",
+            "normal_quote_count",
+            "one_sided_quote_count",
+            "locked_quote_count",
+            "crossed_quote_count",
+            "invalid_quote_count",
+            "excluded_quote_condition_count",
+            "raw_trade_count",
+            "eligible_condition_trade_count",
+            "excluded_trade_condition_count",
+            "trade_count",
+            "total_volume",
+            "classified_volume",
+            "signed_volume",
+            "buy_volume",
+            "sell_volume",
+            "quote_matched_trades",
+            "maximum_trade_quote_age_ms",
+            "stale_or_unmatched_trade_count",
+            "signed_trade_imbalance",
+            "quote_match_fraction",
+            "terminal_quote_age_ms",
+            "next_midpoint_return",
+            "current_midpoint_return",
+            "composite_score",
+            "selected",
+            "entry_quote_timestamp",
+            "entry_bid",
+            "entry_ask",
+            "exit_quote_timestamp",
+            "exit_bid",
+            "exit_ask",
+            "iex_crossing_return",
+            "iex_crossing_net_return",
+            "execution_quotes_missing"
+          ],
+          "example": "data\\parquet\\alpaca_iex_orderflow_v1\\development\\panel.parquet",
+          "files": 28
+        },
+        {
+          "columns": [
+            "symbol",
+            "timestamp",
+            "raw_timestamp",
+            "ask_exchange",
+            "ask_price",
+            "ask_size",
+            "bid_exchange",
+            "bid_price",
+            "bid_size",
+            "conditions",
+            "tape",
+            "ingestion_run_id",
+            "page_index",
+            "row_index"
+          ],
+          "example": "data\\parquet\\alpaca_iex_orderflow_v1\\development\\IWM\\2023-01-11\\quotes.parquet",
+          "files": 72
+        },
+        {
+          "columns": [
+            "symbol",
+            "timestamp",
+            "raw_timestamp",
+            "trade_id",
+            "exchange",
+            "price",
+            "size",
+            "conditions",
+            "tape",
+            "ingestion_run_id",
+            "page_index",
+            "row_index"
+          ],
+          "example": "data\\parquet\\alpaca_iex_orderflow_v1\\development\\IWM\\2023-01-11\\trades.parquet",
+          "files": 72
+        },
+        {
+          "columns": [
+            "signal_timestamp",
+            "symbol",
+            "session_date",
+            "quote_count",
+            "terminal_quote_timestamp",
+            "terminal_midpoint",
+            "terminal_spread_bps",
+            "terminal_quote_size_imbalance",
+            "normal_quote_count",
+            "locked_quote_count",
+            "crossed_quote_count",
+            "one_sided_quote_count",
+            "invalid_quote_count",
+            "excluded_quote_condition_count",
+            "raw_trade_count",
+            "eligible_condition_trade_count",
+            "excluded_trade_condition_count",
+            "trade_count",
+            "total_volume",
+            "classified_volume",
+            "signed_volume",
+            "buy_volume",
+            "sell_volume",
+            "quote_matched_trades",
+            "maximum_trade_quote_age_ms",
+            "stale_or_unmatched_trade_count",
+            "signed_trade_imbalance",
+            "quote_match_fraction",
+            "terminal_quote_age_ms",
+            "next_midpoint_return",
+            "current_midpoint_return",
+            "composite_score",
+            "selected",
+            "entry_quote_timestamp",
+            "entry_bid",
+            "entry_ask",
+            "exit_quote_timestamp",
+            "exit_bid",
+            "exit_ask",
+            "iex_crossing_return",
+            "iex_crossing_net_return",
+            "execution_quotes_missing"
+          ],
+          "example": "data\\parquet\\alpaca_iex_orderflow_v1\\development\\IWM\\2023-02-22\\features.parquet",
+          "files": 45
+        }
+      ],
+      "GiB": 0.2648
+    },
+    "data/parquet/binance_bitcoin_derivatives_public_v1": {
+      "files": 4770,
+      "bytes": 115642828,
+      "extensions": {
+        ".json": 2,
+        ".parquet": 8,
+        ".zip": 2380,
+        ".CHECKSUM": 2380
+      },
+      "parquet_rows": 1185112,
+      "parquet_files": 8,
+      "schemas": [
+        {
+          "columns": [
+            "calc_time",
+            "funding_interval_hours",
+            "last_funding_rate",
+            "calc_time_raw"
+          ],
+          "example": "data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\funding_rate.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "create_time",
+            "symbol",
+            "count_long_short_ratio",
+            "count_toptrader_long_short_ratio",
+            "sum_open_interest",
+            "sum_open_interest_value",
+            "sum_taker_long_short_vol_ratio",
+            "sum_toptrader_long_short_ratio"
+          ],
+          "example": "data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\futures_metrics_30m.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "create_time",
+            "symbol",
+            "sum_open_interest",
+            "sum_open_interest_value",
+            "count_toptrader_long_short_ratio",
+            "sum_toptrader_long_short_ratio",
+            "count_long_short_ratio",
+            "sum_taker_long_short_vol_ratio"
+          ],
+          "example": "data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\futures_metrics_5m.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "symbol",
+            "interval",
+            "product",
+            "open_time",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "close_time",
+            "quote_volume",
+            "trade_count",
+            "taker_buy_base_volume",
+            "taker_buy_quote_volume"
+          ],
+          "example": "data\\parquet\\binance_bitcoin_derivatives_public_v1\\normalized\\index_price_klines_30m.parquet",
+          "files": 5
+        }
+      ],
+      "GiB": 0.1077
+    },
+    "data/parquet/bitcoin_5m_probability_binance_v1": {
+      "files": 135,
+      "bytes": 152017229,
+      "extensions": {
+        ".parquet": 3,
+        ".json": 2,
+        ".pkl": 1,
+        ".md": 1,
+        ".zip": 64,
+        ".CHECKSUM": 64
+      },
+      "parquet_rows": 1492524,
+      "parquet_files": 3,
+      "schemas": [
+        {
+          "columns": [
+            "symbol",
+            "interval",
+            "open_time",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "close_time",
+            "quote_volume",
+            "trade_count",
+            "taker_buy_base_volume",
+            "taker_buy_quote_volume"
+          ],
+          "example": "data\\parquet\\bitcoin_5m_probability_binance_v1\\bars_5m.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "open_time",
+            "open",
+            "high",
+            "low",
+            "close",
+            "label",
+            "bar_return",
+            "log_return_1_bar",
+            "log_return_3_bars",
+            "log_return_6_bars",
+            "log_return_12_bars",
+            "log_range_1_bar",
+            "log_body_1_bar",
+            "volume_zscore_288_bars",
+            "trade_count_zscore_288_bars",
+            "taker_flow_1_bar",
+            "taker_flow_3_bar_mean",
+            "open_interest_log_change_12_bars",
+            "open_interest_log_change_48_bars",
+            "top_trader_long_short_log_ratio",
+            "global_long_short_log_ratio",
+            "taker_long_short_log_ratio"
+          ],
+          "example": "data\\parquet\\bitcoin_5m_probability_binance_v1\\panel.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "open_time",
+            "label",
+            "bar_return",
+            "split",
+            "p_up",
+            "model_direction"
+          ],
+          "example": "data\\parquet\\bitcoin_5m_probability_binance_v1\\predictions.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.1416
+    },
+    "data/parquet/bitcoin_confirmed_short_squeeze_continuation_v1": {
+      "files": 3,
+      "bytes": 1070392,
+      "extensions": {
+        ".parquet": 1,
+        ".json": 1,
+        ".md": 1
+      },
+      "parquet_rows": 3869,
+      "parquet_files": 1,
+      "schemas": [
+        {
+          "columns": [
+            "decision_timestamp",
+            "decision_clock",
+            "entry_timestamp",
+            "scheduled_exit_timestamp",
+            "latest_spot_close_timestamp",
+            "latest_metrics_available_at",
+            "latest_funding_available_at",
+            "latest_premium_available_at",
+            "funding_crowding",
+            "premium_crowding",
+            "positioning_crowding",
+            "oi_change_6h",
+            "spot_return_6h",
+            "realized_volatility_6h",
+            "spot_return_1h",
+            "oi_change_1h",
+            "taker_buy_ratio_1h",
+            "realized_volatility_1h",
+            "breakout",
+            "atr_1h",
+            "timestamp_alignment_valid",
+            "funding_crowding_threshold",
+            "funding_crowding_percentile",
+            "premium_crowding_threshold",
+            "premium_crowding_percentile",
+            "positioning_crowding_threshold",
+            "positioning_crowding_percentile",
+            "oi_change_6h_threshold",
+            "oi_change_6h_percentile",
+            "spot_return_1h_threshold",
+            "spot_return_1h_percentile",
+            "oi_change_1h_threshold",
+            "oi_change_1h_percentile",
+            "taker_buy_ratio_1h_threshold",
+            "taker_buy_ratio_1h_percentile",
+            "rolling_observations",
+            "crowding_votes",
+            "short_crowding_score",
+            "price_resistance",
+            "oi_buildup_6h",
+            "oi_contraction_1h",
+            "taker_buy_imbalance",
+            "volatility_expansion",
+            "stage_1",
+            "stage_2"
+          ],
+          "example": "data\\parquet\\bitcoin_confirmed_short_squeeze_continuation_v1\\feasibility\\feature_panel.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.001
+    },
+    "data/parquet/bitcoin_crowded_long_unwind_binance_v1": {
+      "files": 4,
+      "bytes": 141179,
+      "extensions": {
+        ".json": 2,
+        ".parquet": 1,
+        ".md": 1
+      },
+      "parquet_rows": 849,
+      "parquet_files": 1,
+      "schemas": [
+        {
+          "columns": [
+            "session_date",
+            "cutoff_timestamp",
+            "funding_timestamp",
+            "current_oi_timestamp",
+            "lag_oi_timestamp",
+            "entry_timestamp",
+            "exit_timestamp",
+            "funding_rate",
+            "funding_threshold",
+            "oi_current_btc",
+            "oi_lag_btc",
+            "oi_change_8h",
+            "premium_close",
+            "premium_threshold",
+            "entry_price",
+            "exit_price",
+            "underlying_return",
+            "short_return",
+            "funding_extreme",
+            "oi_expanding",
+            "basis_extreme",
+            "selected",
+            "timestamp_alignment_valid",
+            "strategy_gross_return",
+            "strategy_fee_only_return",
+            "strategy_conservative_return"
+          ],
+          "example": "data\\parquet\\bitcoin_crowded_long_unwind_binance_v1\\development\\panel.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0001
+    },
+    "data/parquet/bitcoin_delta_neutral_funding_carry_binance_v1": {
+      "files": 5,
+      "bytes": 22599,
+      "extensions": {
+        ".json": 2,
+        ".md": 2,
+        ".parquet": 1
+      },
+      "parquet_rows": 41,
+      "parquet_files": 1,
+      "schemas": [
+        {
+          "columns": [
+            "signal_date",
+            "decision_timestamp",
+            "latest_funding_timestamp",
+            "entry_timestamp",
+            "exit_timestamp",
+            "signal_basis",
+            "trailing_funding_mean",
+            "quantity_per_capital",
+            "funding_event_count",
+            "realized_funding_sum",
+            "spot_pnl",
+            "perp_pnl",
+            "basis_pnl",
+            "funding_pnl",
+            "gross_return",
+            "fee_cost",
+            "slippage_cost",
+            "fee_only_return",
+            "conservative_return",
+            "cashflow_accounting_valid"
+          ],
+          "example": "data\\parquet\\bitcoin_delta_neutral_funding_carry_binance_v1\\development\\trades.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0
+    },
+    "data/parquet/bitcoin_spot_perp_basis_convergence_binance_v1": {
+      "files": 3,
+      "bytes": 151924,
+      "extensions": {
+        ".parquet": 1,
+        ".json": 1,
+        ".md": 1
+      },
+      "parquet_rows": 1033,
+      "parquet_files": 1,
+      "schemas": [
+        {
+          "columns": [
+            "session_date",
+            "signal_timestamp",
+            "entry_timestamp",
+            "exit_timestamp",
+            "signal_basis",
+            "basis_threshold",
+            "entry_basis",
+            "exit_basis",
+            "basis_change",
+            "spot_entry",
+            "spot_exit",
+            "perp_entry",
+            "perp_exit",
+            "spot_return",
+            "perp_short_return",
+            "capital_gross_return",
+            "selected",
+            "timestamp_alignment_valid",
+            "strategy_gross_return",
+            "strategy_fee_return",
+            "strategy_conservative_return"
+          ],
+          "example": "data\\parquet\\bitcoin_spot_perp_basis_convergence_binance_v1\\development\\panel.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0001
+    },
+    "data/parquet/bitcoin_us_session_close_momentum_binance_v1": {
+      "files": 87,
+      "bytes": 8401966,
+      "extensions": {
+        ".parquet": 2,
+        ".json": 2,
+        ".md": 1,
+        ".zip": 41,
+        ".CHECKSUM": 41
+      },
+      "parquet_rows": 59386,
+      "parquet_files": 2,
+      "schemas": [
+        {
+          "columns": [
+            "symbol",
+            "interval",
+            "open_time",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "close_time",
+            "quote_volume",
+            "trade_count",
+            "taker_buy_base_volume",
+            "taker_buy_quote_volume"
+          ],
+          "example": "data\\parquet\\bitcoin_us_session_close_momentum_binance_v1\\development\\bars.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "session_date",
+            "prior_close_timestamp",
+            "signal_timestamp",
+            "entry_timestamp",
+            "exit_timestamp",
+            "prior_close_price",
+            "signal_price",
+            "entry_price",
+            "exit_price",
+            "signal_return",
+            "last_half_hour_return",
+            "selected",
+            "timestamp_alignment_valid",
+            "strategy_gross_return",
+            "strategy_fee_only_return",
+            "strategy_conservative_return"
+          ],
+          "example": "data\\parquet\\bitcoin_us_session_close_momentum_binance_v1\\development\\panel.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0078
+    },
+    "data/parquet/equity/alpaca": {
+      "files": 85,
+      "bytes": 4933574,
+      "extensions": {
+        ".parquet": 85
+      },
+      "parquet_rows": 126270,
+      "parquet_files": 85,
+      "schemas": [
+        {
+          "columns": [
+            "timestamp",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume"
+          ],
+          "example": "data\\parquet\\equity\\alpaca\\AAPL_1d.parquet",
+          "files": 85
+        }
+      ],
+      "GiB": 0.0046
+    },
+    "data/parquet/equity/alpaca_sip": {
+      "files": 136,
+      "bytes": 11366234,
+      "extensions": {
+        ".parquet": 136
+      },
+      "parquet_rows": 289980,
+      "parquet_files": 136,
+      "schemas": [
+        {
+          "columns": [
+            "timestamp",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume"
+          ],
+          "example": "data\\parquet\\equity\\alpaca_sip\\AAPL_1d.parquet",
+          "files": 136
+        }
+      ],
+      "GiB": 0.0106
+    },
+    "data/parquet/equity/yahoo_chart": {
+      "files": 7,
+      "bytes": 1836921,
+      "extensions": {
+        ".parquet": 7
+      },
+      "parquet_rows": 37560,
+      "parquet_files": 7,
+      "schemas": [
+        {
+          "columns": [
+            "timestamp",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume"
+          ],
+          "example": "data\\parquet\\equity\\yahoo_chart\\DBC_1d.parquet",
+          "files": 7
+        }
+      ],
+      "GiB": 0.0017
+    },
+    "data/parquet/market_intraday_momentum": {
+      "files": 3,
+      "bytes": 1820371,
+      "extensions": {
+        ".parquet": 3
+      },
+      "parquet_rows": 53486,
+      "parquet_files": 3,
+      "schemas": [
+        {
+          "columns": [
+            "timestamp",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume"
+          ],
+          "example": "data\\parquet\\market_intraday_momentum\\alpaca_iex\\IWM_30min.parquet",
+          "files": 3
+        }
+      ],
+      "GiB": 0.0017
+    },
+    "data/parquet/polymarket_bitcoin_5m_public_v1": {
+      "files": 34,
+      "bytes": 17542817,
+      "extensions": {
+        ".parquet": 33,
+        ".json": 1
+      },
+      "parquet_rows": 1654559,
+      "parquet_files": 33,
+      "schemas": [
+        {
+          "columns": [
+            "event_id",
+            "market_id",
+            "condition_id",
+            "question_id",
+            "slug",
+            "title",
+            "event_start_time",
+            "event_end_time",
+            "created_at",
+            "market_created_at",
+            "closed",
+            "active",
+            "accepting_orders",
+            "ready",
+            "funded",
+            "resolution_source",
+            "resolved_outcome",
+            "up_token_id",
+            "down_token_id",
+            "up_final_price",
+            "down_final_price",
+            "fees_enabled",
+            "fee_type",
+            "tick_size",
+            "minimum_order_size"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_public_v1\\contracts.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "event_id",
+            "event_start_time",
+            "up_price_time",
+            "up_price",
+            "up_price_age_seconds",
+            "down_price_time",
+            "down_price",
+            "down_price_age_seconds",
+            "condition_id",
+            "slug",
+            "resolved_outcome"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_public_v1\\decision_snapshots.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "event_id",
+            "token_id",
+            "outcome",
+            "timestamp",
+            "price",
+            "seconds_to_event_start",
+            "inside_event_window"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_public_v1\\sampled_prices\\date=2026-06-11\\prices.parquet",
+          "files": 31
+        }
+      ],
+      "GiB": 0.0163
+    },
+    "data/parquet/polymarket_bitcoin_5m_smoke": {
+      "files": 4,
+      "bytes": 295705,
+      "extensions": {
+        ".parquet": 3,
+        ".json": 1
+      },
+      "parquet_rows": 83606,
+      "parquet_files": 3,
+      "schemas": [
+        {
+          "columns": [
+            "event_id",
+            "market_id",
+            "condition_id",
+            "question_id",
+            "slug",
+            "title",
+            "event_start_time",
+            "event_end_time",
+            "created_at",
+            "market_created_at",
+            "closed",
+            "active",
+            "accepting_orders",
+            "resolution_source",
+            "resolved_outcome",
+            "up_token_id",
+            "down_token_id",
+            "up_final_price",
+            "down_final_price",
+            "fees_enabled",
+            "fee_type",
+            "tick_size",
+            "minimum_order_size"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_smoke\\contracts.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "event_id",
+            "event_start_time",
+            "up_price_time",
+            "up_price",
+            "down_price_time",
+            "down_price",
+            "up_price_age_seconds",
+            "down_price_age_seconds",
+            "condition_id",
+            "slug",
+            "resolved_outcome"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_smoke\\decision_snapshots.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "event_id",
+            "token_id",
+            "outcome",
+            "timestamp",
+            "price",
+            "seconds_to_event_start",
+            "inside_event_window"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_smoke\\sampled_prices.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0003
+    },
+    "data/parquet/polymarket_bitcoin_5m_smoke2": {
+      "files": 5,
+      "bytes": 304127,
+      "extensions": {
+        ".parquet": 4,
+        ".json": 1
+      },
+      "parquet_rows": 83606,
+      "parquet_files": 4,
+      "schemas": [
+        {
+          "columns": [
+            "event_id",
+            "market_id",
+            "condition_id",
+            "question_id",
+            "slug",
+            "title",
+            "event_start_time",
+            "event_end_time",
+            "created_at",
+            "market_created_at",
+            "closed",
+            "active",
+            "accepting_orders",
+            "resolution_source",
+            "resolved_outcome",
+            "up_token_id",
+            "down_token_id",
+            "up_final_price",
+            "down_final_price",
+            "fees_enabled",
+            "fee_type",
+            "tick_size",
+            "minimum_order_size"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_smoke2\\contracts.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "event_id",
+            "event_start_time",
+            "up_price_time",
+            "up_price",
+            "down_price_time",
+            "down_price",
+            "up_price_age_seconds",
+            "down_price_age_seconds",
+            "condition_id",
+            "slug",
+            "resolved_outcome"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_smoke2\\decision_snapshots.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "event_id",
+            "token_id",
+            "outcome",
+            "timestamp",
+            "price",
+            "seconds_to_event_start",
+            "inside_event_window"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_smoke2\\sampled_prices\\date=2026-07-08\\prices.parquet",
+          "files": 2
+        }
+      ],
+      "GiB": 0.0003
+    },
+    "data/parquet/polymarket_bitcoin_5m_smoke3": {
+      "files": 5,
+      "bytes": 263426,
+      "extensions": {
+        ".parquet": 4,
+        ".json": 1
+      },
+      "parquet_rows": 52137,
+      "parquet_files": 4,
+      "schemas": [
+        {
+          "columns": [
+            "event_id",
+            "market_id",
+            "condition_id",
+            "question_id",
+            "slug",
+            "title",
+            "event_start_time",
+            "event_end_time",
+            "created_at",
+            "market_created_at",
+            "closed",
+            "active",
+            "accepting_orders",
+            "ready",
+            "funded",
+            "resolution_source",
+            "resolved_outcome",
+            "up_token_id",
+            "down_token_id",
+            "up_final_price",
+            "down_final_price",
+            "fees_enabled",
+            "fee_type",
+            "tick_size",
+            "minimum_order_size"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_smoke3\\contracts.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "event_id",
+            "event_start_time",
+            "up_price_time",
+            "up_price",
+            "down_price_time",
+            "down_price",
+            "up_price_age_seconds",
+            "down_price_age_seconds",
+            "condition_id",
+            "slug",
+            "resolved_outcome"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_smoke3\\decision_snapshots.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "event_id",
+            "token_id",
+            "outcome",
+            "timestamp",
+            "price",
+            "seconds_to_event_start",
+            "inside_event_window"
+          ],
+          "example": "data\\parquet\\polymarket_bitcoin_5m_smoke3\\sampled_prices\\date=2026-07-08\\prices.parquet",
+          "files": 2
+        }
+      ],
+      "GiB": 0.0002
+    },
+    "data/parquet/pytest-btc-squeeze-final-20260725": {
+      "files": 1,
+      "bytes": 17,
+      "extensions": {
+        ".json": 1
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0
+    },
+    "data/parquet/sec_filings": {
+      "files": 368,
+      "bytes": 113344583,
+      "extensions": {
+        ".parquet": 1,
+        ".json": 367
+      },
+      "parquet_rows": 20107,
+      "parquet_files": 1,
+      "schemas": [
+        {
+          "columns": [
+            "symbol",
+            "cik",
+            "accession_number",
+            "acceptance_datetime",
+            "filing_date",
+            "form",
+            "items",
+            "primary_document"
+          ],
+          "example": "data\\parquet\\sec_filings\\sec_filing_events.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.1056
+    },
+    "data/parquet/sec_item_202_premarket_continuation_v1": {
+      "files": 546,
+      "bytes": 8936272,
+      "extensions": {
+        ".parquet": 543,
+        ".json": 2,
+        ".md": 1
+      },
+      "parquet_rows": 164395,
+      "parquet_files": 543,
+      "schemas": [
+        {
+          "columns": [
+            "symbol",
+            "cik",
+            "accession_number",
+            "acceptance_datetime",
+            "filing_date",
+            "form",
+            "items",
+            "primary_document",
+            "acceptance_local",
+            "session_date"
+          ],
+          "example": "data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\eligible_events.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "symbol",
+            "timestamp",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "trade_count",
+            "vwap",
+            "feed"
+          ],
+          "example": "data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\event_bars.parquet",
+          "files": 540
+        },
+        {
+          "columns": [
+            "session_date",
+            "symbol",
+            "cik",
+            "accession_number",
+            "acceptance_datetime",
+            "signal_open_timestamp",
+            "signal_known_timestamp",
+            "entry_timestamp",
+            "exit_timestamp",
+            "stock_signal_open",
+            "stock_signal_close",
+            "benchmark_signal_open",
+            "benchmark_signal_close",
+            "stock_entry",
+            "stock_exit",
+            "benchmark_entry",
+            "benchmark_exit",
+            "stock_signal_return",
+            "benchmark_signal_return",
+            "residual_signal_return",
+            "stock_gross_return",
+            "benchmark_holding_return",
+            "residual_gross_return",
+            "selected",
+            "complete_window",
+            "missing_inputs",
+            "timestamp_alignment_valid",
+            "stock_fixed_net_return",
+            "residual_fixed_net_return",
+            "residual_stress_net_return"
+          ],
+          "example": "data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\panel.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "session_date",
+            "trade_count",
+            "stock_gross_return",
+            "stock_fixed_net_return",
+            "residual_gross_return",
+            "residual_fixed_net_return",
+            "residual_stress_net_return"
+          ],
+          "example": "data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\session_returns.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0083
+    },
+    "data/parquet/vs_icsm_static20": {
+      "files": 20,
+      "bytes": 11716097,
+      "extensions": {
+        ".parquet": 20
+      },
+      "parquet_rows": 351327,
+      "parquet_files": 20,
+      "schemas": [
+        {
+          "columns": [
+            "timestamp",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume"
+          ],
+          "example": "data\\parquet\\vs_icsm_static20\\alpaca_sip\\AAPL_1h.parquet",
+          "files": 20
+        }
+      ],
+      "GiB": 0.0109
+    },
+    "data/raw/cboe_vx_monthly_v46": {
+      "files": 63,
+      "bytes": 1009641,
+      "extensions": {
+        ".json": 1,
+        ".csv": 62
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0009
+    },
+    "data/raw/proshares_inventory_v59": {
+      "files": 9,
+      "bytes": 58152899,
+      "extensions": {
+        ".csv": 6,
+        ".xml": 2,
+        ".json": 1
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0542
+    },
+    "external_artifacts/alpaca_iex_breadth_v75": {
+      "files": 2,
+      "bytes": 1321997,
+      "extensions": {
+        ".json": 1,
+        ".parquet": 1
+      },
+      "parquet_rows": 199831,
+      "parquet_files": 1,
+      "schemas": [
+        {
+          "columns": [
+            "session_date",
+            "symbol",
+            "timestamp",
+            "open",
+            "close",
+            "local_clock"
+          ],
+          "example": "external_artifacts\\alpaca_iex_breadth_v75\\signal_bars_30min_2021_2023.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0012
+    },
+    "external_artifacts/alpaca_iex_liquidity_relay_v77": {
+      "files": 2,
+      "bytes": 4220228,
+      "extensions": {
+        ".json": 1,
+        ".parquet": 1
+      },
+      "parquet_rows": 199831,
+      "parquet_files": 1,
+      "schemas": [
+        {
+          "columns": [
+            "session_date",
+            "symbol",
+            "timestamp",
+            "open",
+            "close",
+            "volume",
+            "trade_count",
+            "vwap",
+            "local_clock"
+          ],
+          "example": "external_artifacts\\alpaca_iex_liquidity_relay_v77\\signal_bars_30min_2021_2023.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0039
+    },
+    "external_artifacts/alpaca_iex_sec_earnings_v73": {
+      "files": 2,
+      "bytes": 205129,
+      "extensions": {
+        ".json": 1,
+        ".parquet": 1
+      },
+      "parquet_rows": 4183,
+      "parquet_files": 1,
+      "schemas": [
+        {
+          "columns": [
+            "symbol",
+            "timestamp",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "trade_count",
+            "vwap",
+            "session_date",
+            "local_clock"
+          ],
+          "example": "external_artifacts\\alpaca_iex_sec_earnings_v73\\signal_bars_30min_2021_2023.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0002
+    },
+    "external_artifacts/cftc_tff_futures_only": {
+      "files": 6,
+      "bytes": 7770202,
+      "extensions": {
+        ".zip": 3,
+        ".txt": 3
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0072
+    },
+    "external_artifacts/databento_cash_etf_budget_v1": {
+      "files": 12,
+      "bytes": 1094240110,
+      "extensions": {
+        ".json": 5,
+        ".zst": 7
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 1.0191
+    },
+    "external_artifacts/databento_cash_etf_mbp1_open_v55": {
+      "files": 1616,
+      "bytes": 4587430869,
+      "extensions": {
+        ".json": 810,
+        ".zst": 806
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 4.2724
+    },
+    "external_artifacts/databento_cost_estimates": {
+      "files": 4,
+      "bytes": 394058,
+      "extensions": {
+        ".json": 2,
+        ".log": 2
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0004
+    },
+    "external_artifacts/databento_es_close": {
+      "files": 3778,
+      "bytes": 726009858,
+      "extensions": {
+        ".json": 5,
+        ".jsonl": 1,
+        ".parquet": 3,
+        ".pid": 2,
+        ".log": 4,
+        ".zst": 3763
+      },
+      "parquet_rows": 6339,
+      "parquet_files": 3,
+      "schemas": [
+        {
+          "columns": [
+            "date",
+            "rth_bar_count",
+            "rth_open",
+            "preclose_price",
+            "bar_instrument_ids",
+            "rth_return",
+            "short_session",
+            "degraded",
+            "mechanically_eligible",
+            "same_clock_sigma60",
+            "trade_rows",
+            "buy_volume",
+            "sell_volume",
+            "signed_volume",
+            "total_trade_volume",
+            "trade_instrument_ids",
+            "trade_sides",
+            "entry_rows",
+            "entry_ts",
+            "entry_delay_ms",
+            "entry_bid",
+            "entry_ask",
+            "entry_bid_size",
+            "entry_ask_size",
+            "entry_spread",
+            "entry_instrument_ids",
+            "exit_rows",
+            "exit_ts",
+            "exit_delay_ms",
+            "exit_bid",
+            "exit_ask",
+            "exit_bid_size",
+            "exit_ask_size",
+            "exit_spread",
+            "exit_instrument_ids",
+            "bar_instrument_id",
+            "trade_instrument_id",
+            "entry_instrument_id",
+            "exit_instrument_id",
+            "es_roll_match",
+            "mes_roll_match",
+            "direction",
+            "large_move",
+            "flow_aligned",
+            "entry_spread_ticks",
+            "spread_ok",
+            "quote_valid",
+            "data_valid",
+            "entry_fill",
+            "exit_fill",
+            "gross_points",
+            "gross_usd",
+            "net_usd_1p24",
+            "frozen_signal"
+          ],
+          "example": "external_artifacts\\databento_es_close\\GLBX.MDP3\\es_close_flow_features_2021_2025.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "session_date",
+            "bar_instrument_ids"
+          ],
+          "example": "external_artifacts\\databento_es_close\\GLBX.MDP3\\validation_audit_bar_instrument_ids.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "date",
+            "component",
+            "path",
+            "bytes",
+            "rows",
+            "min_ts",
+            "max_ts",
+            "outside_requested_window",
+            "monotonic",
+            "missing_columns",
+            "instrument_ids",
+            "sides",
+            "crossed_quotes",
+            "nonpositive_quotes",
+            "stype_in",
+            "stype_out"
+          ],
+          "example": "external_artifacts\\databento_es_close\\GLBX.MDP3\\validation_audit_files.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.6761
+    },
+    "external_artifacts/databento_forward_2026": {
+      "files": 6,
+      "bytes": 13733743,
+      "extensions": {
+        ".json": 4,
+        ".zst": 2
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0128
+    },
+    "external_artifacts/databento_fractional_etf": {
+      "files": 9,
+      "bytes": 34008787,
+      "extensions": {
+        ".json": 6,
+        ".md": 1,
+        ".zst": 2
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0317
+    },
+    "external_artifacts/databento_leveraged_etf": {
+      "files": 8,
+      "bytes": 119416165,
+      "extensions": {
+        ".json": 3,
+        ".md": 1,
+        ".zst": 4
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.1112
+    },
+    "external_artifacts/databento_sh_bbo": {
+      "files": 5,
+      "bytes": 42388338,
+      "extensions": {
+        ".json": 3,
+        ".zst": 2
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0395
+    },
+    "external_artifacts/fiscaldata_tga_v74": {
+      "files": 3,
+      "bytes": 22145939,
+      "extensions": {
+        ".csv": 2,
+        ".json": 1
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0206
+    },
+    "external_artifacts/ishares_cross_asset_flow_v79": {
+      "files": 4,
+      "bytes": 7196707,
+      "extensions": {
+        ".csv": 1,
+        ".json": 1,
+        ".xml": 2
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0067
+    },
+    "external_artifacts/massive_es_futures": {
+      "files": 6,
+      "bytes": 8541780,
+      "extensions": {
+        ".parquet": 3,
+        ".log": 2,
+        ".json": 1
+      },
+      "parquet_rows": 345364,
+      "parquet_files": 3,
+      "schemas": [
+        {
+          "columns": [
+            "ticker",
+            "window_start",
+            "session_end_date",
+            "open",
+            "high",
+            "low",
+            "close",
+            "transactions",
+            "volume",
+            "dollar_volume",
+            "settlement_price"
+          ],
+          "example": "external_artifacts\\massive_es_futures\\2025\\candidate_session_bars.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "session_end_date",
+            "ticker"
+          ],
+          "example": "external_artifacts\\massive_es_futures\\2025\\previous_session_volume_roll_map.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "ticker",
+            "window_start",
+            "session_end_date",
+            "open",
+            "high",
+            "low",
+            "close",
+            "transactions",
+            "volume",
+            "dollar_volume"
+          ],
+          "example": "external_artifacts\\massive_es_futures\\2025\\selected_contract_1min.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.008
+    },
+    "external_artifacts/massive_es_futures_v2": {
+      "files": 7,
+      "bytes": 8662921,
+      "extensions": {
+        ".json": 2,
+        ".parquet": 3,
+        ".log": 2
+      },
+      "parquet_rows": 350561,
+      "parquet_files": 3,
+      "schemas": [
+        {
+          "columns": [
+            "ticker",
+            "window_start",
+            "session_end_date",
+            "open",
+            "high",
+            "low",
+            "close",
+            "transactions",
+            "volume",
+            "dollar_volume",
+            "settlement_price"
+          ],
+          "example": "external_artifacts\\massive_es_futures_v2\\2025\\candidate_session_bars.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "session_end_date",
+            "ticker"
+          ],
+          "example": "external_artifacts\\massive_es_futures_v2\\2025\\previous_session_volume_roll_map.parquet",
+          "files": 1
+        },
+        {
+          "columns": [
+            "ticker",
+            "window_start",
+            "session_end_date",
+            "open",
+            "high",
+            "low",
+            "close",
+            "transactions",
+            "volume",
+            "dollar_volume"
+          ],
+          "example": "external_artifacts\\massive_es_futures_v2\\2025\\selected_contract_1min.parquet",
+          "files": 1
+        }
+      ],
+      "GiB": 0.0081
+    },
+    "external_artifacts/nyfed_on_rrp": {
+      "files": 1,
+      "bytes": 15461,
+      "extensions": {
+        ".csv": 1
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0
+    },
+    "external_artifacts/nyfed_securities_lending": {
+      "files": 3,
+      "bytes": 30910057,
+      "extensions": {
+        ".csv": 3
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0288
+    },
+    "external_artifacts/public_intraday_futures_samples": {
+      "files": 4,
+      "bytes": 789483,
+      "extensions": {
+        ".json": 2,
+        ".zip": 2
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0007
+    },
+    "external_artifacts/pysystemtrade_futures_data": {
+      "files": 52,
+      "bytes": 72285704,
+      "extensions": {
+        ".json": 1,
+        ".parquet": 15,
+        "": 1,
+        ".md": 2,
+        ".csv": 33
+      },
+      "parquet_rows": 55725,
+      "parquet_files": 15,
+      "schemas": [
+        {
+          "columns": [
+            "CARRY",
+            "CARRY_CONTRACT",
+            "PRICE",
+            "PRICE_CONTRACT",
+            "FORWARD",
+            "FORWARD_CONTRACT",
+            "ADJUSTED",
+            "DATE"
+          ],
+          "example": "external_artifacts\\pysystemtrade_futures_data\\883c8681cf88\\daily\\COPPER.parquet",
+          "files": 15
+        }
+      ],
+      "GiB": 0.0673
+    },
+    "external_artifacts/treasury_auction_results": {
+      "files": 1,
+      "bytes": 5960171,
+      "extensions": {
+        ".json": 1
+      },
+      "parquet_rows": 0,
+      "parquet_files": 0,
+      "schemas": [],
+      "GiB": 0.0056
+    }
+  },
+  "selected_panel_facts": {
+    "external_artifacts/alpaca_iex_liquidity_relay_v77/signal_bars_30min_2021_2023.parquet": {
+      "rows": 199831,
+      "columns": [
+        "session_date",
+        "symbol",
+        "timestamp",
+        "open",
+        "close",
+        "volume",
+        "trade_count",
+        "vwap",
+        "local_clock"
+      ],
+      "symbols": 134,
+      "clocks": [
+        "09:30",
+        "10:00"
+      ],
+      "timestamp_min": "2021-01-04 14:30:00+00:00",
+      "timestamp_max": "2023-12-29 15:00:00+00:00",
+      "session_date_min": "2021-01-04",
+      "session_date_max": "2023-12-29"
+    },
+    "data/parquet/sec_filings/sec_filing_events.parquet": {
+      "rows": 20107,
+      "columns": [
+        "symbol",
+        "cik",
+        "accession_number",
+        "acceptance_datetime",
+        "filing_date",
+        "form",
+        "items",
+        "primary_document"
+      ],
+      "symbols": 133,
+      "acceptance_datetime_min": "2017-12-01 17:05:02+00:00",
+      "acceptance_datetime_max": "2026-07-02 20:05:43+00:00",
+      "forms": {
+        "8-K": 15252,
+        "10-Q": 3328,
+        "10-K": 1167,
+        "8-K/A": 310,
+        "10-K/A": 41,
+        "10-Q/A": 9
+      }
+    },
+    "data/parquet/market_intraday_momentum/alpaca_iex/SPY_30min.parquet": {
+      "rows": 17830,
+      "columns": [
+        "timestamp",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "timestamp_min": "2021-01-04 14:30:00+00:00",
+      "timestamp_max": "2026-06-29 19:30:00+00:00"
+    },
+    "data/parquet/vs_icsm_static20/alpaca_sip/AAPL_1h.parquet": {
+      "rows": 19796,
+      "columns": [
+        "timestamp",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume"
+      ],
+      "timestamp_min": "2021-01-01 00:00:00+00:00",
+      "timestamp_max": "2025-12-31 00:00:00+00:00"
+    }
+  },
+  "daily_equity_files": {
+    "alpaca": {
+      "files": 85,
+      "file_names": [
+        "AAPL_1d.parquet",
+        "ABBV_1d.parquet",
+        "ACN_1d.parquet",
+        "ADBE_1d.parquet",
+        "ADP_1d.parquet",
+        "AMAT_1d.parquet",
+        "AMD_1d.parquet",
+        "AMGN_1d.parquet",
+        "AMZN_1d.parquet",
+        "AVGO_1d.parquet",
+        "BA_1d.parquet",
+        "BAC_1d.parquet",
+        "BKNG_1d.parquet",
+        "BLK_1d.parquet",
+        "C_1d.parquet",
+        "CAT_1d.parquet",
+        "CMCSA_1d.parquet",
+        "COP_1d.parquet",
+        "COST_1d.parquet",
+        "CRM_1d.parquet",
+        "CSCO_1d.parquet",
+        "CVX_1d.parquet",
+        "DBC_1d.parquet",
+        "DE_1d.parquet",
+        "DIS_1d.parquet",
+        "EEM_1d.parquet",
+        "EFA_1d.parquet",
+        "GE_1d.parquet",
+        "GILD_1d.parquet",
+        "GLD_1d.parquet",
+        "GOOG_1d.parquet",
+        "GOOGL_1d.parquet",
+        "GS_1d.parquet",
+        "HD_1d.parquet",
+        "HON_1d.parquet",
+        "IBM_1d.parquet",
+        "IEF_1d.parquet",
+        "INTU_1d.parquet",
+        "ISRG_1d.parquet",
+        "IWM_1d.parquet",
+        "JNJ_1d.parquet",
+        "JPM_1d.parquet",
+        "KO_1d.parquet",
+        "LIN_1d.parquet",
+        "LLY_1d.parquet",
+        "LMT_1d.parquet",
+        "LOW_1d.parquet",
+        "MA_1d.parquet",
+        "MCD_1d.parquet",
+        "MDLZ_1d.parquet",
+        "META_1d.parquet",
+        "MRK_1d.parquet",
+        "MS_1d.parquet",
+        "MSFT_1d.parquet",
+        "MU_1d.parquet",
+        "NEE_1d.parquet",
+        "NFLX_1d.parquet",
+        "NKE_1d.parquet",
+        "NOW_1d.parquet",
+        "NVDA_1d.parquet",
+        "ORCL_1d.parquet",
+        "PANW_1d.parquet",
+        "PEP_1d.parquet",
+        "PFE_1d.parquet",
+        "PG_1d.parquet",
+        "PM_1d.parquet",
+        "QCOM_1d.parquet",
+        "QQQ_1d.parquet",
+        "RTX_1d.parquet",
+        "SBUX_1d.parquet",
+        "SCHW_1d.parquet",
+        "SHY_1d.parquet",
+        "SPGI_1d.parquet",
+        "SPY_1d.parquet",
+        "TJX_1d.parquet",
+        "TLT_1d.parquet",
+        "TMO_1d.parquet",
+        "TSLA_1d.parquet",
+        "TXN_1d.parquet",
+        "UNH_1d.parquet",
+        "UPS_1d.parquet",
+        "V_1d.parquet",
+        "VZ_1d.parquet",
+        "WMT_1d.parquet",
+        "XOM_1d.parquet"
+      ]
+    },
+    "alpaca_sip": {
+      "files": 136,
+      "file_names": [
+        "AAPL_1d.parquet",
+        "ABBV_1d.parquet",
+        "ABT_1d.parquet",
+        "ACN_1d.parquet",
+        "ADBE_1d.parquet",
+        "ADI_1d.parquet",
+        "ADP_1d.parquet",
+        "AFL_1d.parquet",
+        "AIG_1d.parquet",
+        "ALL_1d.parquet",
+        "AMAT_1d.parquet",
+        "AMD_1d.parquet",
+        "AMGN_1d.parquet",
+        "AMZN_1d.parquet",
+        "AON_1d.parquet",
+        "APD_1d.parquet",
+        "AVGO_1d.parquet",
+        "AZO_1d.parquet",
+        "BA_1d.parquet",
+        "BAC_1d.parquet",
+        "BK_1d.parquet",
+        "BKNG_1d.parquet",
+        "BLK_1d.parquet",
+        "BSX_1d.parquet",
+        "C_1d.parquet",
+        "CAT_1d.parquet",
+        "CB_1d.parquet",
+        "CI_1d.parquet",
+        "CL_1d.parquet",
+        "CME_1d.parquet",
+        "CMG_1d.parquet",
+        "COF_1d.parquet",
+        "COP_1d.parquet",
+        "COST_1d.parquet",
+        "CRM_1d.parquet",
+        "CSCO_1d.parquet",
+        "CVS_1d.parquet",
+        "CVX_1d.parquet",
+        "DE_1d.parquet",
+        "DHR_1d.parquet",
+        "DIS_1d.parquet",
+        "DUK_1d.parquet",
+        "EL_1d.parquet",
+        "EMR_1d.parquet",
+        "EOG_1d.parquet",
+        "EQIX_1d.parquet",
+        "FCX_1d.parquet",
+        "FDX_1d.parquet",
+        "FI_1d.parquet",
+        "GE_1d.parquet",
+        "GILD_1d.parquet",
+        "GM_1d.parquet",
+        "GOOG_1d.parquet",
+        "GOOGL_1d.parquet",
+        "GS_1d.parquet",
+        "HCA_1d.parquet",
+        "HD_1d.parquet",
+        "HON_1d.parquet",
+        "IBM_1d.parquet",
+        "ICE_1d.parquet",
+        "INTU_1d.parquet",
+        "ISRG_1d.parquet",
+        "ITW_1d.parquet",
+        "IWM_1d.parquet",
+        "JNJ_1d.parquet",
+        "JPM_1d.parquet",
+        "KMB_1d.parquet",
+        "KO_1d.parquet",
+        "LIN_1d.parquet",
+        "LLY_1d.parquet",
+        "LMT_1d.parquet",
+        "LOW_1d.parquet",
+        "MA_1d.parquet",
+        "MAR_1d.parquet",
+        "MCD_1d.parquet",
+        "MCO_1d.parquet",
+        "MDLZ_1d.parquet",
+        "MDT_1d.parquet",
+        "MET_1d.parquet",
+        "META_1d.parquet",
+        "MMC_1d.parquet",
+        "MO_1d.parquet",
+        "MPC_1d.parquet",
+        "MRK_1d.parquet",
+        "MS_1d.parquet",
+        "MSFT_1d.parquet",
+        "MU_1d.parquet",
+        "NEE_1d.parquet",
+        "NFLX_1d.parquet",
+        "NOC_1d.parquet",
+        "NOW_1d.parquet",
+        "NSC_1d.parquet",
+        "NVDA_1d.parquet",
+        "OKE_1d.parquet",
+        "ORCL_1d.parquet",
+        "PANW_1d.parquet",
+        "PEP_1d.parquet",
+        "PFE_1d.parquet",
+        "PG_1d.parquet",
+        "PLD_1d.parquet",
+        "PM_1d.parquet",
+        "PNC_1d.parquet",
+        "PRU_1d.parquet",
+        "PSA_1d.parquet",
+        "PSX_1d.parquet",
+        "QCOM_1d.parquet",
+        "QQQ_1d.parquet",
+        "REGN_1d.parquet",
+        "ROP_1d.parquet",
+        "ROST_1d.parquet",
+        "RTX_1d.parquet",
+        "SBUX_1d.parquet",
+        "SCHW_1d.parquet",
+        "SHW_1d.parquet",
+        "SLB_1d.parquet",
+        "SO_1d.parquet",
+        "SPGI_1d.parquet",
+        "SPY_1d.parquet",
+        "SYK_1d.parquet",
+        "TGT_1d.parquet",
+        "TJX_1d.parquet",
+        "TMO_1d.parquet",
+        "TRV_1d.parquet",
+        "TSLA_1d.parquet",
+        "TXN_1d.parquet",
+        "UNH_1d.parquet",
+        "UPS_1d.parquet",
+        "USB_1d.parquet",
+        "V_1d.parquet",
+        "VZ_1d.parquet",
+        "WELL_1d.parquet",
+        "WM_1d.parquet",
+        "WMT_1d.parquet",
+        "XOM_1d.parquet",
+        "YUM_1d.parquet",
+        "ZTS_1d.parquet"
+      ]
+    },
+    "yahoo_chart": {
+      "files": 7,
+      "file_names": [
+        "DBC_1d.parquet",
+        "GLD_1d.parquet",
+        "IEF_1d.parquet",
+        "IWM_1d.parquet",
+        "QQQ_1d.parquet",
+        "SHY_1d.parquet",
+        "SPY_1d.parquet"
+      ]
+    }
+  },
+  "errors": []
+}

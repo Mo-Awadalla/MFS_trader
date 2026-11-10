@@ -1,0 +1,66 @@
+{
+  "candidate": "v71",
+  "name": "Treasury Settlement / ON RRP Liquidity Netting",
+  "status": "preregistered_before_returns_blind_audit",
+  "development": ["2021-01-01", "2023-12-31"],
+  "sources": {
+    "treasury_auction_results": "external_artifacts/treasury_auction_results/auctions_2020_2023.json",
+    "on_rrp": "external_artifacts/nyfed_on_rrp/RRPONTSYD_2020-12-01_2023-12-31.csv",
+    "on_rrp_sha256": "230A192406D8277589316F5F462E383F6E7F8DED0F73EFDFC1BA54853DDAFA77",
+    "on_rrp_series": "RRPONTSYD",
+    "new_paid_data": false
+  },
+  "feature": {
+    "bucket": ["security_type", "security_term", "floating_rate", "inflation_index_security"],
+    "dealer_cash_change": "current primary_dealer_accepted minus immediately prior like-for-like primary_dealer_accepted",
+    "aggregate_clock": "official issue_date",
+    "rrp_cash_absorption": "(same-day ON RRP minus prior nonmissing ON RRP observation) times 1e9",
+    "net_cash_drain": "dealer_cash_change plus rrp_cash_absorption",
+    "positive": "SPXU",
+    "negative": "UPRO",
+    "zero": "CASH"
+  },
+  "execution_if_admitted": {
+    "entry": "13:17 exact ask",
+    "exit": "15:30 exact bid",
+    "notional_usd": 100,
+    "fractional_shares": true,
+    "overnight": false
+  },
+  "blind_gates": {
+    "auction_required_field_validity": 0.95,
+    "rrp_coverage": 1.0,
+    "minimum_signals_per_week": 2.0,
+    "minimum_signals_each_year": 100,
+    "minimum_minority_action_share": 0.3,
+    "minimum_switches_each_year": 20,
+    "minimum_trailing3_action_agreement": 0.7,
+    "maximum_component_or_v66_action_agreement": 0.8,
+    "maximum_month_signal_share": 0.06,
+    "minimum_primary_entry_exit_quote_coverage": 0.95,
+    "minimum_independent_entry_exit_quote_coverage": 0.9
+  },
+  "return_gates": {
+    "minimum_profit_factor": 1.1,
+    "positive_every_year": true,
+    "positive_both_actions": true,
+    "ending_cash_above_adjusted_spy": true,
+    "positive_extra_cent": true,
+    "positive_13_22_delay": true,
+    "positive_delete_best_10": true,
+    "bootstrap_lower_mean_above_zero": true,
+    "month_cluster_permutation_p_below": 0.05,
+    "positive_independent_overlap_pf_above_one": true,
+    "mean_above_all_controls": true
+  },
+  "forbidden": [
+    "sign inversion",
+    "component rescaling",
+    "security-type deletion",
+    "date, year, month-end, or regime filtering",
+    "magnitude thresholds",
+    "alternate RRP change definition",
+    "alternate entry or exit clock",
+    "recent-year access after any development miss"
+  ]
+}

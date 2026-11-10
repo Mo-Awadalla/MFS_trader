@@ -1,0 +1,92 @@
+{
+  "specification_id": "spy_official_macro_release_delayed_discovery_v45",
+  "created_before_target_return_inspection": true,
+  "calendar": {
+    "census_path": "research_scout/census_macro_release_calendar_v45.json",
+    "census_sha256": "11253a465c6626a40b4321f07c34fe9574a5f7382546a5ed65711df5c0503f8e",
+    "fomc_path": "research_scout/fomc_statement_calendar_v45.json",
+    "fomc_sha256": "2d8a8850876552d07b20a8f8ad9ad210e2966127edcac067b8492b7b885ea3fd",
+    "grouping": "one episode per release date and release clock",
+    "included_clocks_et": ["08:30:00", "10:00:00", "14:00:00"]
+  },
+  "partitions": {
+    "development": {"start": "2021-01-01", "end": "2023-12-31"},
+    "holdout": {"start": "2024-01-01", "end": "2025-12-31", "locked_until_all_development_gates_pass": true}
+  },
+  "episodes": {
+    "08:30:00": {
+      "signal_start_et": "09:31:00",
+      "signal_end_et": "09:40:00",
+      "entry_et": "09:41:00",
+      "exit_et": "09:55:00"
+    },
+    "10:00:00": {
+      "signal_start_et": "10:01:00",
+      "signal_end_et": "10:10:00",
+      "entry_et": "10:11:00",
+      "exit_et": "13:55:00"
+    },
+    "14:00:00": {
+      "signal_start_et": "14:01:00",
+      "signal_end_et": "14:10:00",
+      "entry_et": "14:11:00",
+      "exit_et": "15:30:00"
+    }
+  },
+  "signal": {
+    "source_symbol": "SPY",
+    "source_field": "exact 1-minute OHLCV bar close",
+    "bar_timestamp_semantics": "bar-open timestamp; close becomes known one minute later",
+    "primary_feed": "ARCX.PILLAR SPY OHLCV-1m",
+    "independent_feed": "EQUS.MINI SPY OHLCV-1m",
+    "positive_action": "UPRO",
+    "negative_action": "SPXU",
+    "zero_action": "cash",
+    "magnitude_threshold": null
+  },
+  "execution": {
+    "entry": "observed selected-instrument ask at exact entry timestamp",
+    "exit": "observed selected-instrument bid at exact exit timestamp",
+    "notional_per_trade_usd": 100.0,
+    "maximum_simultaneous_positions": 1,
+    "overnight_positions": false
+  },
+  "returns_blind_gates": {
+    "minimum_complete_fraction": 0.95,
+    "minimum_executable_trades_per_calendar_week": 2.0,
+    "minimum_executable_trades_each_development_year": 100,
+    "minimum_primary_feed_direction_share": 0.20,
+    "minimum_arca_equs_direction_agreement": 0.75,
+    "required_release_clocks": ["08:30:00", "10:00:00", "14:00:00"],
+    "require_strict_timestamp_causality": true
+  },
+  "development_return_gates": {
+    "minimum_profit_factor": 1.05,
+    "positive_fixed_notional_pnl": true,
+    "positive_every_development_year": true,
+    "positive_upro_and_spxu_sleeves": true,
+    "positive_each_release_clock_sleeve": true,
+    "ending_cash_above_same_period_spy_total_return": true,
+    "positive_after_one_extra_cent_each_fill": true,
+    "positive_with_five_minute_entry_delay": true,
+    "positive_after_removing_ten_best_trades": true,
+    "positive_independent_feed_overlap": true,
+    "outperform_next_session_shifted_calendar_control": true,
+    "outperform_direction_flipped_control": true
+  },
+  "prohibited_repairs": [
+    "change clocks, signal window, entry, or exit after target returns",
+    "delete an event family, release clock, year, or direction after target returns",
+    "add a magnitude, volatility, gap, day-of-week, or regime threshold",
+    "inspect holdout unless every development gate passes",
+    "promote a profitable control without a new preregistered hypothesis"
+  ],
+  "pre_return_technical_correction": {
+    "reason": "The leveraged-ETF ARCA and EQUS BBO files contain UPRO and SPXU only; SPY signal BBOs are not present. Before any post-entry return was inspected, the signal was corrected to the locally available SPY OHLCV-1m ARCX.PILLAR series with EQUS.MINI OHLCV-1m as the independent feed.",
+    "effective_signal_bar_timestamps": {
+      "08:30:00": ["09:30:00", "09:39:00"],
+      "10:00:00": ["10:00:00", "10:09:00"],
+      "14:00:00": ["14:00:00", "14:09:00"]
+    }
+  }
+}

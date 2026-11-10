@@ -1,0 +1,18 @@
+{
+  "status": "three_primary_backtests_complete_and_aborted",
+  "focused_tests_passed": 23,
+  "lint": "passed",
+  "evaluations_independently_reconciled": 14,
+  "maximum_decimal_error": 1.3926637620897964e-12,
+  "missing_primary_dates": {
+    "V99": [],
+    "V100": [],
+    "V101": []
+  },
+  "london_dst_mismatch_trade_dates": [],
+  "primary_changes_after_outcomes": 0,
+  "new_market_data_requests": 0,
+  "orders": 0,
+  "purchases": 0,
+  "chart_visual_review": "passed: legible labels, full-calendar paths, correct final cash and benchmark"
+}

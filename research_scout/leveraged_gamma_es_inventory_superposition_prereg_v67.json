@@ -1,0 +1,90 @@
+{
+  "specification_id": "LEVERAGED-GAMMA-ES-INVENTORY-SUPERPOSITION-V67",
+  "frozen_before_post_entry_return_read": true,
+  "development": {
+    "start": "2021-01-01",
+    "end": "2023-12-31"
+  },
+  "recent_partition": {
+    "start": "2024-01-01",
+    "end": "2025-12-31",
+    "locked_until_every_development_gate_passes": true
+  },
+  "causal_inputs": {
+    "fund_aum": "Prior-session official ProShares AUM for UPRO, SPXU, SSO, and SDS",
+    "fund_pressure": "sum(L*(L-1)*prior_AUM) multiplied by SPY return from prior official close through completed 15:29 bar",
+    "es_inventory_transfer": "(ES buyer-aggressor volume minus seller-aggressor volume from 15:00:00 through 15:29:59.999 ET) * ES 15:29 price * 50 USD per point",
+    "net_pressure": "fund_pressure + es_inventory_transfer"
+  },
+  "signal": {
+    "decision_time": "15:30 ET after both input windows are complete",
+    "positive_net_pressure": "UPRO",
+    "negative_net_pressure": "SPXU",
+    "exact_zero": "CASH",
+    "magnitude_threshold": null
+  },
+  "execution": {
+    "position": "one long fractional ETF, maximum gross exposure 100% of current cash",
+    "entry": "recorded ARCX.PILLAR 15:31 ask",
+    "exit": "recorded ARCX.PILLAR 15:59 bid",
+    "independent_overlap": "EQUS.MINI recorded ask/bid",
+    "overnight": false,
+    "passive_fill_assumption": false
+  },
+  "returns_blind_gates": {
+    "eligible_coverage_minimum": 0.95,
+    "signals_per_week_minimum": 2.0,
+    "signals_each_year_minimum": 100,
+    "minority_sleeve_share_minimum": 0.35,
+    "action_switches_each_year_minimum": 20,
+    "primary_entry_exit_quote_coverage_minimum": 0.95,
+    "independent_entry_exit_quote_coverage_minimum": 0.90,
+    "adjacent_spy_15_28_action_agreement_minimum": 0.85,
+    "component_distinctness": {
+      "combined_vs_fund_only_action_agreement_maximum": 0.90,
+      "combined_vs_es_only_action_agreement_maximum": 0.90
+    },
+    "all_aum_source_dates_strictly_before_signal_dates": true,
+    "no_post_entry_price_or_recent_outcome_read": true
+  },
+  "development_gates": {
+    "trades_per_week_minimum": 2.0,
+    "profit_factor_minimum": 1.10,
+    "fixed_notional_pnl_positive_each_year": true,
+    "both_upro_and_spxu_fixed_notional_pnl_positive": true,
+    "compounded_ending_cash_above_dividend_adjusted_spy": true,
+    "positive_after_one_extra_cent_each_fill": true,
+    "positive_after_five_minute_entry_delay": true,
+    "positive_after_deleting_ten_best_sessions": true,
+    "moving_block_bootstrap_lower_mean_above_zero": true,
+    "independent_2023_overlap_positive": true,
+    "combined_mean_trade_above_all_controls": true
+  },
+  "controls": {
+    "fund_only": "sign of modeled leveraged-fund pressure",
+    "es_only": "sign of ES inventory-transfer term",
+    "fixed_aum_coefficient": "replace actual coefficient with the first eligible 2021 coefficient",
+    "shifted_es": "combine current fund pressure with the prior eligible session's ES inventory-transfer term"
+  },
+  "stress": {
+    "extra_cost": "one adverse cent per share at entry and exit",
+    "delay": "entry at 15:36 ask with unchanged 15:59 exit",
+    "winner_deletion": 10,
+    "bootstrap": {
+      "block_length_sessions": 5,
+      "samples": 10000,
+      "seed": 20260730
+    }
+  },
+  "prohibited_repairs": [
+    "sign inversion",
+    "agreement-only or disagreement-only selection",
+    "net-pressure or component magnitude threshold",
+    "rescaling either notional term after outcomes",
+    "dropping SPXU",
+    "year, weekday, volatility, or regime selection",
+    "changing the ES flow window",
+    "changing entry or exit clocks",
+    "opening 2024-2025 after any failed development gate"
+  ]
+}

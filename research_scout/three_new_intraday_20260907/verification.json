@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "errors": [],
+  "portfolio_trade_days": 1472,
+  "legs_checked": 3924,
+  "independent_feature_reconstruction": true,
+  "input_hashes_unchanged": true,
+  "same_day_flat": true,
+  "stages": {
+    "V93": {
+      "development": {
+        "verified_net_cash": 99.13461903659315,
+        "gross_bar_reference_cash": 99.67139398348814,
+        "trade_days": 9,
+        "mean_gross_bps": -3.631851023942787,
+        "mean_net_bps": -9.627873106703433
+      },
+      "later_exposed": {
+        "verified_net_cash": 99.44199083390887,
+        "gross_bar_reference_cash": 99.92045981115099,
+        "trade_days": 8,
+        "mean_gross_bps": -0.9802564219554832,
+        "mean_net_bps": -6.977868984332641
+      }
+    },
+    "V94": {
+      "development": {
+        "verified_net_cash": 62.74865228844242,
+        "gross_bar_reference_cash": 131.3856855170162,
+        "trade_days": 739,
+        "mean_gross_bps": 4.197917619992045,
+        "mean_net_bps": -5.8012806984676155
+      },
+      "later_exposed": {
+        "verified_net_cash": 53.714395295294395,
+        "gross_bar_reference_cash": 87.41623975788906,
+        "trade_days": 487,
+        "mean_gross_bps": -2.2860214120181035,
+        "mean_net_bps": -12.278739031795125
+      }
+    },
+    "V95": {
+      "development": {
+        "verified_net_cash": 88.18996803693885,
+        "gross_bar_reference_cash": 101.84919383937124,
+        "trade_days": 144,
+        "mean_gross_bps": 1.648830419360564,
+        "mean_net_bps": -8.347820085804944
+      },
+      "later_exposed": {
+        "verified_net_cash": 99.45401511199951,
+        "gross_bar_reference_cash": 108.27728437107857,
+        "trade_days": 85,
+        "mean_gross_bps": 9.592076177006462,
+        "mean_net_bps": -0.4125136042787414
+      }
+    }
+  }
+}

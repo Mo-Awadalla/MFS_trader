@@ -1,0 +1,70 @@
+{
+  "specification_id": "spy_vx_fresh_position_risk_transfer_v55",
+  "created_before_target_return_inspection": true,
+  "relationship_to_prior_work": {
+    "v47": "independent same-contract position-formation state; no curve slope or v47 holdout information enters the rule",
+    "v44": "same price-plus-open-interest topology, but applied to the directly linked S&P 500 volatility futures market; multiplicity remains cumulative"
+  },
+  "partitions": {
+    "development": ["2021-01-01", "2023-12-31"],
+    "holdout": ["2024-01-01", "2025-12-31"]
+  },
+  "data": {
+    "vx_manifest": "data/raw/cboe_vx_monthly_v46/manifest.json",
+    "contracts": "standard monthly VX only",
+    "contract_policy": "nearest expiration strictly after signal date and identical front contract on prior signal date",
+    "settlement_field": "Settle",
+    "open_interest_field": "Open Interest",
+    "open_interest_alignment": "trade-day start OI minus signal-day start OI measures signal-day position change and is used only for the trade-day decision",
+    "execution_primary": "ARCX.PILLAR UPRO/SPXU BBO",
+    "execution_independent": "EQUS.MINI UPRO/SPXU BBO"
+  },
+  "signal": {
+    "front_settlement_up_and_same_contract_oi_up": "SPXU",
+    "front_settlement_down_and_same_contract_oi_up": "UPRO",
+    "otherwise": "cash",
+    "threshold": "strict sign only"
+  },
+  "execution": {
+    "entry": "next SPY session exact 09:31 observed ask",
+    "exit": "same session exact 15:30 observed bid",
+    "notional_usd": 100.0,
+    "overnight": false
+  },
+  "returns_blind_gates": {
+    "state_coverage_min": 0.95,
+    "trades_per_week_min": 2.0,
+    "trades_each_development_year_min": 100,
+    "minority_direction_fraction_min": 0.20,
+    "primary_execution_coverage_min": 0.95,
+    "independent_execution_coverage_min": 0.95,
+    "strict_causality": true
+  },
+  "development_gates": {
+    "trades_per_week_min": 2.0,
+    "profit_factor_min": 1.05,
+    "fixed_notional_pnl_positive": true,
+    "each_year_positive": true,
+    "both_directions_positive": true,
+    "ending_cash_above_spy_total_return": true,
+    "extra_cent_each_fill_positive": true,
+    "five_minute_delay_positive": true,
+    "delete_ten_best_positive": true,
+    "independent_overlap_positive": true,
+    "mean_trade_pnl_above_each_control": true
+  },
+  "controls": [
+    "front VX settlement direction without OI expansion",
+    "same mapping when OI decreases",
+    "one-session-lagged OI-expansion gate",
+    "candidate action sign flipped"
+  ],
+  "prohibited_repairs": [
+    "VX curve level or change",
+    "OI or settlement magnitude threshold",
+    "volume, SPY, gap, weekday, volatility, or regime filter",
+    "alternate contract or roll policy after returns",
+    "alternate clock, stop, or hold window after returns",
+    "inspect holdout unless all development gates pass"
+  ]
+}

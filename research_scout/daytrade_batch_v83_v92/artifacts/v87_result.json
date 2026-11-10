@@ -1,0 +1,12 @@
+{
+  "candidate": "v87",
+  "status": "rejected_before_pnl",
+  "failed_gates": [
+    "side_balance",
+    "net_position_distinctness"
+  ],
+  "signals": 364,
+  "trades": 0,
+  "pnl_calculated": false,
+  "confirmation": "locked_not_evaluated"
+}

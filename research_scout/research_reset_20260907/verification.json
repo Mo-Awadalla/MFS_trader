@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "method": "Decimal fractional-share purchases, sale proceeds and residual cash; sequential capital release; no evaluator imports",
+  "evaluations": {
+    "V45_evaluation": {
+      "legs": 378,
+      "trade_days": 306,
+      "missing_days": 0,
+      "max_cash_difference": 1.3500311979441904e-12
+    },
+    "V45_one_minute_delay_evaluation": {
+      "legs": 378,
+      "trade_days": 306,
+      "missing_days": 0,
+      "max_cash_difference": 1.1510792319313623e-12
+    },
+    "V56_audit_aligned_evaluation": {
+      "legs": 377,
+      "trade_days": 377,
+      "missing_days": 0,
+      "max_cash_difference": 2.1174173525650986e-12
+    },
+    "V56_evaluation": {
+      "legs": 382,
+      "trade_days": 382,
+      "missing_days": 0,
+      "max_cash_difference": 2.2311041902867146e-12
+    },
+    "V56_one_minute_delay_evaluation": {
+      "legs": 382,
+      "trade_days": 382,
+      "missing_days": 0,
+      "max_cash_difference": 2.2311041902867146e-12
+    },
+    "V76_evaluation": {
+      "legs": 368,
+      "trade_days": 368,
+      "missing_days": 1,
+      "max_cash_difference": 2.5295321393059567e-12
+    },
+    "V76_one_minute_delay_evaluation": {
+      "legs": 368,
+      "trade_days": 368,
+      "missing_days": 1,
+      "max_cash_difference": 2.6432189770275727e-12
+    },
+    "V83_evaluation": {
+      "legs": 107,
+      "trade_days": 107,
+      "missing_days": 0,
+      "max_cash_difference": 8.242295734817162e-13
+    },
+    "V83_one_minute_delay_evaluation": {
+      "legs": 107,
+      "trade_days": 107,
+      "missing_days": 0,
+      "max_cash_difference": 7.531752999057062e-13
+    },
+    "V94_development_evaluation": {
+      "legs": 2217,
+      "trade_days": 739,
+      "missing_days": 6,
+      "max_cash_difference": 5.080380560684716e-12
+    },
+    "V94_later_exposed_evaluation": {
+      "legs": 1461,
+      "trade_days": 487,
+      "missing_days": 3,
+      "max_cash_difference": 2.7355895326763857e-12
+    }
+  },
+  "all_selected_original_hashes_unchanged": true,
+  "limitation": "Reconciles exported prices and accounting. It does not independently establish quote freshness, fill capacity or alpha."
+}

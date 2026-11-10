@@ -1,0 +1,4413 @@
+{
+  "created_at_utc": "2026-07-29T15:58:57.348960+00:00",
+  "mode": "METADATA_ONLY_NO_PURCHASE_OR_DOWNLOAD",
+  "dataset": "EQUS.MINI",
+  "schema": "mbp-1",
+  "start_inclusive": "2023-03-28",
+  "end_exclusive": "2026-07-29",
+  "available_schemas": [
+    "mbp-1",
+    "tbbo",
+    "trades",
+    "bbo-1s",
+    "bbo-1m",
+    "ohlcv-1s",
+    "ohlcv-1m",
+    "ohlcv-1h",
+    "ohlcv-1d",
+    "definition"
+  ],
+  "symbol_sets": {
+    "minimal_actuators": [
+      "UPRO",
+      "SPXU"
+    ],
+    "full_six_etf_ladder": [
+      "SPY",
+      "SSO",
+      "UPRO",
+      "SH",
+      "SDS",
+      "SPXU"
+    ]
+  },
+  "estimates_usd": {
+    "continuous_full_range": {
+      "minimal_actuators": 115.665200293064,
+      "full_six_etf_ladder": 476.113731354475
+    },
+    "session_0920_0940_america_new_york": {
+      "minimal_actuators": 5.46423956751,
+      "full_six_etf_ladder": 20.958073765035
+    }
+  },
+  "calendar_weekdays_queried": 871,
+  "nonzero_cost_days": {
+    "minimal_actuators": 836,
+    "full_six_etf_ladder": 836
+  },
+  "method_notes": [
+    "All values came from Historical.metadata.get_cost.",
+    "No time-series or batch endpoint was called.",
+    "The 20-minute window is a discrete multiple of 10 minutes.",
+    "Weekdays include exchange holidays; zero-cost days contribute zero.",
+    "The full-range estimate includes all messages, including extended hours."
+  ],
+  "daily_opening_window_estimates": [
+    {
+      "date": "2023-03-28",
+      "minimal_actuators_usd": 0.005259186029,
+      "full_six_etf_ladder_usd": 0.032604038715
+    },
+    {
+      "date": "2023-03-29",
+      "minimal_actuators_usd": 0.003642529249,
+      "full_six_etf_ladder_usd": 0.021980434656
+    },
+    {
+      "date": "2023-03-30",
+      "minimal_actuators_usd": 0.003886163235,
+      "full_six_etf_ladder_usd": 0.022759258747
+    },
+    {
+      "date": "2023-03-31",
+      "minimal_actuators_usd": 0.003904312849,
+      "full_six_etf_ladder_usd": 0.024947047234
+    },
+    {
+      "date": "2023-04-03",
+      "minimal_actuators_usd": 0.003408819437,
+      "full_six_etf_ladder_usd": 0.01955267787
+    },
+    {
+      "date": "2023-04-04",
+      "minimal_actuators_usd": 0.004002213478,
+      "full_six_etf_ladder_usd": 0.022296130657
+    },
+    {
+      "date": "2023-04-05",
+      "minimal_actuators_usd": 0.003910213709,
+      "full_six_etf_ladder_usd": 0.025235742331
+    },
+    {
+      "date": "2023-04-06",
+      "minimal_actuators_usd": 0.003614276648,
+      "full_six_etf_ladder_usd": 0.0232231915
+    },
+    {
+      "date": "2023-04-07",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2023-04-10",
+      "minimal_actuators_usd": 0.003748297691,
+      "full_six_etf_ladder_usd": 0.022782236338
+    },
+    {
+      "date": "2023-04-11",
+      "minimal_actuators_usd": 0.004078388214,
+      "full_six_etf_ladder_usd": 0.022857964039
+    },
+    {
+      "date": "2023-04-12",
+      "minimal_actuators_usd": 0.006615579128,
+      "full_six_etf_ladder_usd": 0.029309391975
+    },
+    {
+      "date": "2023-04-13",
+      "minimal_actuators_usd": 0.005249887705,
+      "full_six_etf_ladder_usd": 0.02594974637
+    },
+    {
+      "date": "2023-04-14",
+      "minimal_actuators_usd": 0.00436475873,
+      "full_six_etf_ladder_usd": 0.026346534491
+    },
+    {
+      "date": "2023-04-17",
+      "minimal_actuators_usd": 0.004866063595,
+      "full_six_etf_ladder_usd": 0.019751608372
+    },
+    {
+      "date": "2023-04-18",
+      "minimal_actuators_usd": 0.003557503223,
+      "full_six_etf_ladder_usd": 0.020548313856
+    },
+    {
+      "date": "2023-04-19",
+      "minimal_actuators_usd": 0.003925591707,
+      "full_six_etf_ladder_usd": 0.021396070719
+    },
+    {
+      "date": "2023-04-20",
+      "minimal_actuators_usd": 0.001904457808,
+      "full_six_etf_ladder_usd": 0.010633707047
+    },
+    {
+      "date": "2023-04-21",
+      "minimal_actuators_usd": 0.004132658243,
+      "full_six_etf_ladder_usd": 0.022920191288
+    },
+    {
+      "date": "2023-04-24",
+      "minimal_actuators_usd": 0.003531754017,
+      "full_six_etf_ladder_usd": 0.021954238415
+    },
+    {
+      "date": "2023-04-25",
+      "minimal_actuators_usd": 0.003259956837,
+      "full_six_etf_ladder_usd": 0.020583450794
+    },
+    {
+      "date": "2023-04-26",
+      "minimal_actuators_usd": 0.005323201418,
+      "full_six_etf_ladder_usd": 0.029382616282
+    },
+    {
+      "date": "2023-04-27",
+      "minimal_actuators_usd": 0.004482597113,
+      "full_six_etf_ladder_usd": 0.026611983776
+    },
+    {
+      "date": "2023-04-28",
+      "minimal_actuators_usd": 0.004154384136,
+      "full_six_etf_ladder_usd": 0.020762532949
+    },
+    {
+      "date": "2023-05-01",
+      "minimal_actuators_usd": 0.003380030394,
+      "full_six_etf_ladder_usd": 0.016997516155
+    },
+    {
+      "date": "2023-05-02",
+      "minimal_actuators_usd": 0.004122376442,
+      "full_six_etf_ladder_usd": 0.021322757006
+    },
+    {
+      "date": "2023-05-03",
+      "minimal_actuators_usd": 0.00529512763,
+      "full_six_etf_ladder_usd": 0.024259150028
+    },
+    {
+      "date": "2023-05-04",
+      "minimal_actuators_usd": 0.006935030222,
+      "full_six_etf_ladder_usd": 0.038859218359
+    },
+    {
+      "date": "2023-05-05",
+      "minimal_actuators_usd": 0.005070447922,
+      "full_six_etf_ladder_usd": 0.028185993433
+    },
+    {
+      "date": "2023-05-08",
+      "minimal_actuators_usd": 0.002953201532,
+      "full_six_etf_ladder_usd": 0.016845524311
+    },
+    {
+      "date": "2023-05-09",
+      "minimal_actuators_usd": 0.002961426973,
+      "full_six_etf_ladder_usd": 0.018583238125
+    },
+    {
+      "date": "2023-05-10",
+      "minimal_actuators_usd": 0.00468018651,
+      "full_six_etf_ladder_usd": 0.025396496058
+    },
+    {
+      "date": "2023-05-11",
+      "minimal_actuators_usd": 0.004552870989,
+      "full_six_etf_ladder_usd": 0.025452107191
+    },
+    {
+      "date": "2023-05-12",
+      "minimal_actuators_usd": 0.002864778042,
+      "full_six_etf_ladder_usd": 0.018283814192
+    },
+    {
+      "date": "2023-05-15",
+      "minimal_actuators_usd": 0.003066211939,
+      "full_six_etf_ladder_usd": 0.019005954266
+    },
+    {
+      "date": "2023-05-16",
+      "minimal_actuators_usd": 0.00256383419,
+      "full_six_etf_ladder_usd": 0.01658436656
+    },
+    {
+      "date": "2023-05-17",
+      "minimal_actuators_usd": 0.002632945776,
+      "full_six_etf_ladder_usd": 0.017345398664
+    },
+    {
+      "date": "2023-05-18",
+      "minimal_actuators_usd": 0.002633213997,
+      "full_six_etf_ladder_usd": 0.015740096569
+    },
+    {
+      "date": "2023-05-19",
+      "minimal_actuators_usd": 0.003186553717,
+      "full_six_etf_ladder_usd": 0.018799960613
+    },
+    {
+      "date": "2023-05-22",
+      "minimal_actuators_usd": 0.003033131361,
+      "full_six_etf_ladder_usd": 0.019888669252
+    },
+    {
+      "date": "2023-05-23",
+      "minimal_actuators_usd": 0.003253608942,
+      "full_six_etf_ladder_usd": 0.021692365408
+    },
+    {
+      "date": "2023-05-24",
+      "minimal_actuators_usd": 0.003132462502,
+      "full_six_etf_ladder_usd": 0.018934428692
+    },
+    {
+      "date": "2023-05-25",
+      "minimal_actuators_usd": 0.004433691502,
+      "full_six_etf_ladder_usd": 0.022678792477
+    },
+    {
+      "date": "2023-05-26",
+      "minimal_actuators_usd": 0.005672872066,
+      "full_six_etf_ladder_usd": 0.026107102633
+    },
+    {
+      "date": "2023-05-29",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2023-05-30",
+      "minimal_actuators_usd": 0.004344463348,
+      "full_six_etf_ladder_usd": 0.026954501867
+    },
+    {
+      "date": "2023-05-31",
+      "minimal_actuators_usd": 0.00435885787,
+      "full_six_etf_ladder_usd": 0.023840457201
+    },
+    {
+      "date": "2023-06-01",
+      "minimal_actuators_usd": 0.004099577665,
+      "full_six_etf_ladder_usd": 0.022797435522
+    },
+    {
+      "date": "2023-06-02",
+      "minimal_actuators_usd": 0.003633052111,
+      "full_six_etf_ladder_usd": 0.020578086376
+    },
+    {
+      "date": "2023-06-05",
+      "minimal_actuators_usd": 0.002011746168,
+      "full_six_etf_ladder_usd": 0.014551699162
+    },
+    {
+      "date": "2023-06-06",
+      "minimal_actuators_usd": 0.002469688654,
+      "full_six_etf_ladder_usd": 0.0155608356
+    },
+    {
+      "date": "2023-06-07",
+      "minimal_actuators_usd": 0.003937661648,
+      "full_six_etf_ladder_usd": 0.02086097002
+    },
+    {
+      "date": "2023-06-08",
+      "minimal_actuators_usd": 0.004084646702,
+      "full_six_etf_ladder_usd": 0.025923371315
+    },
+    {
+      "date": "2023-06-09",
+      "minimal_actuators_usd": 0.003115832806,
+      "full_six_etf_ladder_usd": 0.021323829889
+    },
+    {
+      "date": "2023-06-12",
+      "minimal_actuators_usd": 0.003378152847,
+      "full_six_etf_ladder_usd": 0.021861165762
+    },
+    {
+      "date": "2023-06-13",
+      "minimal_actuators_usd": 0.004193723202,
+      "full_six_etf_ladder_usd": 0.024715304375
+    },
+    {
+      "date": "2023-06-14",
+      "minimal_actuators_usd": 0.002838402987,
+      "full_six_etf_ladder_usd": 0.019034385681
+    },
+    {
+      "date": "2023-06-15",
+      "minimal_actuators_usd": 0.003668099642,
+      "full_six_etf_ladder_usd": 0.022633731365
+    },
+    {
+      "date": "2023-06-16",
+      "minimal_actuators_usd": 0.005834162235,
+      "full_six_etf_ladder_usd": 0.028634816408
+    },
+    {
+      "date": "2023-06-19",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2023-06-20",
+      "minimal_actuators_usd": 0.002832055092,
+      "full_six_etf_ladder_usd": 0.016415834427
+    },
+    {
+      "date": "2023-06-21",
+      "minimal_actuators_usd": 0.002892404795,
+      "full_six_etf_ladder_usd": 0.019577890635
+    },
+    {
+      "date": "2023-06-22",
+      "minimal_actuators_usd": 0.002792090178,
+      "full_six_etf_ladder_usd": 0.019327908754
+    },
+    {
+      "date": "2023-06-23",
+      "minimal_actuators_usd": 0.003224104643,
+      "full_six_etf_ladder_usd": 0.02115046978
+    },
+    {
+      "date": "2023-06-26",
+      "minimal_actuators_usd": 0.002495259047,
+      "full_six_etf_ladder_usd": 0.014726042747
+    },
+    {
+      "date": "2023-06-27",
+      "minimal_actuators_usd": 0.003060042858,
+      "full_six_etf_ladder_usd": 0.02020829916
+    },
+    {
+      "date": "2023-06-28",
+      "minimal_actuators_usd": 0.002611756325,
+      "full_six_etf_ladder_usd": 0.019857823849
+    },
+    {
+      "date": "2023-06-29",
+      "minimal_actuators_usd": 0.003573864698,
+      "full_six_etf_ladder_usd": 0.024792730808
+    },
+    {
+      "date": "2023-06-30",
+      "minimal_actuators_usd": 0.002808094025,
+      "full_six_etf_ladder_usd": 0.01934748888
+    },
+    {
+      "date": "2023-07-03",
+      "minimal_actuators_usd": 0.001948267221,
+      "full_six_etf_ladder_usd": 0.016558885574
+    },
+    {
+      "date": "2023-07-04",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2023-07-05",
+      "minimal_actuators_usd": 0.002112597227,
+      "full_six_etf_ladder_usd": 0.017813265324
+    },
+    {
+      "date": "2023-07-06",
+      "minimal_actuators_usd": 0.003603726625,
+      "full_six_etf_ladder_usd": 0.025708973408
+    },
+    {
+      "date": "2023-07-07",
+      "minimal_actuators_usd": 0.004847109318,
+      "full_six_etf_ladder_usd": 0.02899646759
+    },
+    {
+      "date": "2023-07-10",
+      "minimal_actuators_usd": 0.003071844578,
+      "full_six_etf_ladder_usd": 0.017577588558
+    },
+    {
+      "date": "2023-07-11",
+      "minimal_actuators_usd": 0.002422124147,
+      "full_six_etf_ladder_usd": 0.019237607718
+    },
+    {
+      "date": "2023-07-12",
+      "minimal_actuators_usd": 0.003739535809,
+      "full_six_etf_ladder_usd": 0.023705363274
+    },
+    {
+      "date": "2023-07-13",
+      "minimal_actuators_usd": 0.00305378437,
+      "full_six_etf_ladder_usd": 0.022187769413
+    },
+    {
+      "date": "2023-07-14",
+      "minimal_actuators_usd": 0.002437144518,
+      "full_six_etf_ladder_usd": 0.015586137772
+    },
+    {
+      "date": "2023-07-17",
+      "minimal_actuators_usd": 0.003106981516,
+      "full_six_etf_ladder_usd": 0.022492200136
+    },
+    {
+      "date": "2023-07-18",
+      "minimal_actuators_usd": 0.002775371075,
+      "full_six_etf_ladder_usd": 0.020090013742
+    },
+    {
+      "date": "2023-07-19",
+      "minimal_actuators_usd": 0.00285834074,
+      "full_six_etf_ladder_usd": 0.021681457758
+    },
+    {
+      "date": "2023-07-20",
+      "minimal_actuators_usd": 0.002932190895,
+      "full_six_etf_ladder_usd": 0.018554002047
+    },
+    {
+      "date": "2023-07-21",
+      "minimal_actuators_usd": 0.003889024258,
+      "full_six_etf_ladder_usd": 0.021915525198
+    },
+    {
+      "date": "2023-07-24",
+      "minimal_actuators_usd": 0.003110736609,
+      "full_six_etf_ladder_usd": 0.018993616104
+    },
+    {
+      "date": "2023-07-25",
+      "minimal_actuators_usd": 0.002308309078,
+      "full_six_etf_ladder_usd": 0.017560869455
+    },
+    {
+      "date": "2023-07-26",
+      "minimal_actuators_usd": 0.003372788429,
+      "full_six_etf_ladder_usd": 0.020969957113
+    },
+    {
+      "date": "2023-07-27",
+      "minimal_actuators_usd": 0.003178864717,
+      "full_six_etf_ladder_usd": 0.019115835428
+    },
+    {
+      "date": "2023-07-28",
+      "minimal_actuators_usd": 0.003485709429,
+      "full_six_etf_ladder_usd": 0.019215255976
+    },
+    {
+      "date": "2023-07-31",
+      "minimal_actuators_usd": 0.003142565489,
+      "full_six_etf_ladder_usd": 0.016708821058
+    },
+    {
+      "date": "2023-08-01",
+      "minimal_actuators_usd": 0.002763301134,
+      "full_six_etf_ladder_usd": 0.015168875456
+    },
+    {
+      "date": "2023-08-02",
+      "minimal_actuators_usd": 0.003307074308,
+      "full_six_etf_ladder_usd": 0.019936054945
+    },
+    {
+      "date": "2023-08-03",
+      "minimal_actuators_usd": 0.004469543695,
+      "full_six_etf_ladder_usd": 0.024771094322
+    },
+    {
+      "date": "2023-08-04",
+      "minimal_actuators_usd": 0.003773331642,
+      "full_six_etf_ladder_usd": 0.023362934589
+    },
+    {
+      "date": "2023-08-07",
+      "minimal_actuators_usd": 0.003198176622,
+      "full_six_etf_ladder_usd": 0.020972371101
+    },
+    {
+      "date": "2023-08-08",
+      "minimal_actuators_usd": 0.002916812897,
+      "full_six_etf_ladder_usd": 0.018317431211
+    },
+    {
+      "date": "2023-08-09",
+      "minimal_actuators_usd": 0.002992093563,
+      "full_six_etf_ladder_usd": 0.017276197672
+    },
+    {
+      "date": "2023-08-10",
+      "minimal_actuators_usd": 0.006078064442,
+      "full_six_etf_ladder_usd": 0.02423992753
+    },
+    {
+      "date": "2023-08-11",
+      "minimal_actuators_usd": 0.003781020641,
+      "full_six_etf_ladder_usd": 0.017828643322
+    },
+    {
+      "date": "2023-08-14",
+      "minimal_actuators_usd": 0.004518806934,
+      "full_six_etf_ladder_usd": 0.018371164799
+    },
+    {
+      "date": "2023-08-15",
+      "minimal_actuators_usd": 0.004319339991,
+      "full_six_etf_ladder_usd": 0.018689364195
+    },
+    {
+      "date": "2023-08-16",
+      "minimal_actuators_usd": 0.003159195185,
+      "full_six_etf_ladder_usd": 0.014401763678
+    },
+    {
+      "date": "2023-08-17",
+      "minimal_actuators_usd": 0.002798348665,
+      "full_six_etf_ladder_usd": 0.012901961803
+    },
+    {
+      "date": "2023-08-18",
+      "minimal_actuators_usd": 0.005108177662,
+      "full_six_etf_ladder_usd": 0.021329462528
+    },
+    {
+      "date": "2023-08-21",
+      "minimal_actuators_usd": 0.0023047328,
+      "full_six_etf_ladder_usd": 0.013276487589
+    },
+    {
+      "date": "2023-08-22",
+      "minimal_actuators_usd": 0.002531379461,
+      "full_six_etf_ladder_usd": 0.014840215445
+    },
+    {
+      "date": "2023-08-23",
+      "minimal_actuators_usd": 0.004369944334,
+      "full_six_etf_ladder_usd": 0.015226364136
+    },
+    {
+      "date": "2023-08-24",
+      "minimal_actuators_usd": 0.002894461155,
+      "full_six_etf_ladder_usd": 0.01442617178
+    },
+    {
+      "date": "2023-08-25",
+      "minimal_actuators_usd": 0.003597289324,
+      "full_six_etf_ladder_usd": 0.014812231064
+    },
+    {
+      "date": "2023-08-28",
+      "minimal_actuators_usd": 0.003564298153,
+      "full_six_etf_ladder_usd": 0.016991078854
+    },
+    {
+      "date": "2023-08-29",
+      "minimal_actuators_usd": 0.002824723721,
+      "full_six_etf_ladder_usd": 0.012972056866
+    },
+    {
+      "date": "2023-08-30",
+      "minimal_actuators_usd": 0.003227770329,
+      "full_six_etf_ladder_usd": 0.014612585306
+    },
+    {
+      "date": "2023-08-31",
+      "minimal_actuators_usd": 0.00250133872,
+      "full_six_etf_ladder_usd": 0.014316827059
+    },
+    {
+      "date": "2023-09-01",
+      "minimal_actuators_usd": 0.004884302616,
+      "full_six_etf_ladder_usd": 0.019417405128
+    },
+    {
+      "date": "2023-09-04",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2023-09-05",
+      "minimal_actuators_usd": 0.002971976995,
+      "full_six_etf_ladder_usd": 0.016588121653
+    },
+    {
+      "date": "2023-09-06",
+      "minimal_actuators_usd": 0.002608001232,
+      "full_six_etf_ladder_usd": 0.014850407839
+    },
+    {
+      "date": "2023-09-07",
+      "minimal_actuators_usd": 0.003767520189,
+      "full_six_etf_ladder_usd": 0.019094467163
+    },
+    {
+      "date": "2023-09-08",
+      "minimal_actuators_usd": 0.00286129117,
+      "full_six_etf_ladder_usd": 0.016311407089
+    },
+    {
+      "date": "2023-09-11",
+      "minimal_actuators_usd": 0.003104388714,
+      "full_six_etf_ladder_usd": 0.018463790417
+    },
+    {
+      "date": "2023-09-12",
+      "minimal_actuators_usd": 0.00325986743,
+      "full_six_etf_ladder_usd": 0.019110023975
+    },
+    {
+      "date": "2023-09-13",
+      "minimal_actuators_usd": 0.004330068827,
+      "full_six_etf_ladder_usd": 0.020785868168
+    },
+    {
+      "date": "2023-09-14",
+      "minimal_actuators_usd": 0.005086451769,
+      "full_six_etf_ladder_usd": 0.023143798113
+    },
+    {
+      "date": "2023-09-15",
+      "minimal_actuators_usd": 0.003452986479,
+      "full_six_etf_ladder_usd": 0.019370824099
+    },
+    {
+      "date": "2023-09-18",
+      "minimal_actuators_usd": 0.004098057747,
+      "full_six_etf_ladder_usd": 0.018119931221
+    },
+    {
+      "date": "2023-09-19",
+      "minimal_actuators_usd": 0.003727465868,
+      "full_six_etf_ladder_usd": 0.020316928625
+    },
+    {
+      "date": "2023-09-20",
+      "minimal_actuators_usd": 0.002558469772,
+      "full_six_etf_ladder_usd": 0.015308529139
+    },
+    {
+      "date": "2023-09-21",
+      "minimal_actuators_usd": 0.004482954741,
+      "full_six_etf_ladder_usd": 0.033281117678
+    },
+    {
+      "date": "2023-09-22",
+      "minimal_actuators_usd": 0.003497600555,
+      "full_six_etf_ladder_usd": 0.025992929935
+    },
+    {
+      "date": "2023-09-25",
+      "minimal_actuators_usd": 0.004484653473,
+      "full_six_etf_ladder_usd": 0.026257127523
+    },
+    {
+      "date": "2023-09-26",
+      "minimal_actuators_usd": 0.004022330046,
+      "full_six_etf_ladder_usd": 0.019702702761
+    },
+    {
+      "date": "2023-09-27",
+      "minimal_actuators_usd": 0.004168957472,
+      "full_six_etf_ladder_usd": 0.015729099512
+    },
+    {
+      "date": "2023-09-28",
+      "minimal_actuators_usd": 0.005896478891,
+      "full_six_etf_ladder_usd": 0.033254474401
+    },
+    {
+      "date": "2023-09-29",
+      "minimal_actuators_usd": 0.005470722914,
+      "full_six_etf_ladder_usd": 0.025148570538
+    },
+    {
+      "date": "2023-10-02",
+      "minimal_actuators_usd": 0.003323882818,
+      "full_six_etf_ladder_usd": 0.0322920084
+    },
+    {
+      "date": "2023-10-03",
+      "minimal_actuators_usd": 0.004000782967,
+      "full_six_etf_ladder_usd": 0.021882981062
+    },
+    {
+      "date": "2023-10-04",
+      "minimal_actuators_usd": 0.003618210554,
+      "full_six_etf_ladder_usd": 0.022221028805
+    },
+    {
+      "date": "2023-10-05",
+      "minimal_actuators_usd": 0.004588097334,
+      "full_six_etf_ladder_usd": 0.026044428349
+    },
+    {
+      "date": "2023-10-06",
+      "minimal_actuators_usd": 0.00885951519,
+      "full_six_etf_ladder_usd": 0.037655889988
+    },
+    {
+      "date": "2023-10-09",
+      "minimal_actuators_usd": 0.004451572895,
+      "full_six_etf_ladder_usd": 0.023946493864
+    },
+    {
+      "date": "2023-10-10",
+      "minimal_actuators_usd": 0.005627989769,
+      "full_six_etf_ladder_usd": 0.023075401783
+    },
+    {
+      "date": "2023-10-11",
+      "minimal_actuators_usd": 0.003176987171,
+      "full_six_etf_ladder_usd": 0.017713218927
+    },
+    {
+      "date": "2023-10-12",
+      "minimal_actuators_usd": 0.005169421434,
+      "full_six_etf_ladder_usd": 0.023308396339
+    },
+    {
+      "date": "2023-10-13",
+      "minimal_actuators_usd": 0.005669385195,
+      "full_six_etf_ladder_usd": 0.024323433638
+    },
+    {
+      "date": "2023-10-16",
+      "minimal_actuators_usd": 0.003858089447,
+      "full_six_etf_ladder_usd": 0.023390471935
+    },
+    {
+      "date": "2023-10-17",
+      "minimal_actuators_usd": 0.00593367219,
+      "full_six_etf_ladder_usd": 0.027418255806
+    },
+    {
+      "date": "2023-10-18",
+      "minimal_actuators_usd": 0.005567908287,
+      "full_six_etf_ladder_usd": 0.026617616415
+    },
+    {
+      "date": "2023-10-19",
+      "minimal_actuators_usd": 0.006398051977,
+      "full_six_etf_ladder_usd": 0.031319439411
+    },
+    {
+      "date": "2023-10-20",
+      "minimal_actuators_usd": 0.007044196129,
+      "full_six_etf_ladder_usd": 0.034190565348
+    },
+    {
+      "date": "2023-10-23",
+      "minimal_actuators_usd": 0.005742967129,
+      "full_six_etf_ladder_usd": 0.029897153378
+    },
+    {
+      "date": "2023-10-24",
+      "minimal_actuators_usd": 0.004832357168,
+      "full_six_etf_ladder_usd": 0.030355989933
+    },
+    {
+      "date": "2023-10-25",
+      "minimal_actuators_usd": 0.004936248064,
+      "full_six_etf_ladder_usd": 0.029147833586
+    },
+    {
+      "date": "2023-10-26",
+      "minimal_actuators_usd": 0.007171779871,
+      "full_six_etf_ladder_usd": 0.037792861462
+    },
+    {
+      "date": "2023-10-27",
+      "minimal_actuators_usd": 0.008502691984,
+      "full_six_etf_ladder_usd": 0.038448214531
+    },
+    {
+      "date": "2023-10-30",
+      "minimal_actuators_usd": 0.005041390657,
+      "full_six_etf_ladder_usd": 0.022245436907
+    },
+    {
+      "date": "2023-10-31",
+      "minimal_actuators_usd": 0.006213247776,
+      "full_six_etf_ladder_usd": 0.028396725655
+    },
+    {
+      "date": "2023-11-01",
+      "minimal_actuators_usd": 0.005528926849,
+      "full_six_etf_ladder_usd": 0.027451783419
+    },
+    {
+      "date": "2023-11-02",
+      "minimal_actuators_usd": 0.005308538675,
+      "full_six_etf_ladder_usd": 0.023468792439
+    },
+    {
+      "date": "2023-11-03",
+      "minimal_actuators_usd": 0.005733668804,
+      "full_six_etf_ladder_usd": 0.023747473955
+    },
+    {
+      "date": "2023-11-06",
+      "minimal_actuators_usd": 0.004843443632,
+      "full_six_etf_ladder_usd": 0.021491378546
+    },
+    {
+      "date": "2023-11-07",
+      "minimal_actuators_usd": 0.004392653704,
+      "full_six_etf_ladder_usd": 0.024971723557
+    },
+    {
+      "date": "2023-11-08",
+      "minimal_actuators_usd": 0.002920478582,
+      "full_six_etf_ladder_usd": 0.020867854357
+    },
+    {
+      "date": "2023-11-09",
+      "minimal_actuators_usd": 0.002793878317,
+      "full_six_etf_ladder_usd": 0.021903187037
+    },
+    {
+      "date": "2023-11-10",
+      "minimal_actuators_usd": 0.004356980324,
+      "full_six_etf_ladder_usd": 0.023661196232
+    },
+    {
+      "date": "2023-11-13",
+      "minimal_actuators_usd": 0.003556787968,
+      "full_six_etf_ladder_usd": 0.02219197154
+    },
+    {
+      "date": "2023-11-14",
+      "minimal_actuators_usd": 0.005298793316,
+      "full_six_etf_ladder_usd": 0.030297875404
+    },
+    {
+      "date": "2023-11-15",
+      "minimal_actuators_usd": 0.003572165966,
+      "full_six_etf_ladder_usd": 0.022185266018
+    },
+    {
+      "date": "2023-11-16",
+      "minimal_actuators_usd": 0.003697514534,
+      "full_six_etf_ladder_usd": 0.022577226162
+    },
+    {
+      "date": "2023-11-17",
+      "minimal_actuators_usd": 0.003416597843,
+      "full_six_etf_ladder_usd": 0.024066478014
+    },
+    {
+      "date": "2023-11-20",
+      "minimal_actuators_usd": 0.001771688461,
+      "full_six_etf_ladder_usd": 0.019181102514
+    },
+    {
+      "date": "2023-11-21",
+      "minimal_actuators_usd": 0.002341032028,
+      "full_six_etf_ladder_usd": 0.015314877033
+    },
+    {
+      "date": "2023-11-22",
+      "minimal_actuators_usd": 0.003339260817,
+      "full_six_etf_ladder_usd": 0.01808783412
+    },
+    {
+      "date": "2023-11-23",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2023-11-24",
+      "minimal_actuators_usd": 0.002342194319,
+      "full_six_etf_ladder_usd": 0.014352679253
+    },
+    {
+      "date": "2023-11-27",
+      "minimal_actuators_usd": 0.003297418356,
+      "full_six_etf_ladder_usd": 0.02041965723
+    },
+    {
+      "date": "2023-11-28",
+      "minimal_actuators_usd": 0.002694010735,
+      "full_six_etf_ladder_usd": 0.019545435905
+    },
+    {
+      "date": "2023-11-29",
+      "minimal_actuators_usd": 0.003080070019,
+      "full_six_etf_ladder_usd": 0.021788209677
+    },
+    {
+      "date": "2023-11-30",
+      "minimal_actuators_usd": 0.003743737936,
+      "full_six_etf_ladder_usd": 0.020762979984
+    },
+    {
+      "date": "2023-12-01",
+      "minimal_actuators_usd": 0.00330170989,
+      "full_six_etf_ladder_usd": 0.016943871975
+    },
+    {
+      "date": "2023-12-04",
+      "minimal_actuators_usd": 0.003421783447,
+      "full_six_etf_ladder_usd": 0.01990672946
+    },
+    {
+      "date": "2023-12-05",
+      "minimal_actuators_usd": 0.003936052322,
+      "full_six_etf_ladder_usd": 0.024041175842
+    },
+    {
+      "date": "2023-12-06",
+      "minimal_actuators_usd": 0.00412273407,
+      "full_six_etf_ladder_usd": 0.023146122694
+    },
+    {
+      "date": "2023-12-07",
+      "minimal_actuators_usd": 0.003994166851,
+      "full_six_etf_ladder_usd": 0.015555381775
+    },
+    {
+      "date": "2023-12-08",
+      "minimal_actuators_usd": 0.006176948547,
+      "full_six_etf_ladder_usd": 0.031678676605
+    },
+    {
+      "date": "2023-12-11",
+      "minimal_actuators_usd": 0.008110553026,
+      "full_six_etf_ladder_usd": 0.032669663429
+    },
+    {
+      "date": "2023-12-12",
+      "minimal_actuators_usd": 0.006470739841,
+      "full_six_etf_ladder_usd": 0.026569604874
+    },
+    {
+      "date": "2023-12-13",
+      "minimal_actuators_usd": 0.004360556602,
+      "full_six_etf_ladder_usd": 0.017806559801
+    },
+    {
+      "date": "2023-12-14",
+      "minimal_actuators_usd": 0.006063580513,
+      "full_six_etf_ladder_usd": 0.025162428617
+    },
+    {
+      "date": "2023-12-15",
+      "minimal_actuators_usd": 0.004260599613,
+      "full_six_etf_ladder_usd": 0.025660783052
+    },
+    {
+      "date": "2023-12-18",
+      "minimal_actuators_usd": 0.003706455231,
+      "full_six_etf_ladder_usd": 0.021496206522
+    },
+    {
+      "date": "2023-12-19",
+      "minimal_actuators_usd": 0.002955257893,
+      "full_six_etf_ladder_usd": 0.01663005352
+    },
+    {
+      "date": "2023-12-20",
+      "minimal_actuators_usd": 0.002359628677,
+      "full_six_etf_ladder_usd": 0.014592558146
+    },
+    {
+      "date": "2023-12-21",
+      "minimal_actuators_usd": 0.004161536694,
+      "full_six_etf_ladder_usd": 0.026055693626
+    },
+    {
+      "date": "2023-12-22",
+      "minimal_actuators_usd": 0.003796756268,
+      "full_six_etf_ladder_usd": 0.018287748098
+    },
+    {
+      "date": "2023-12-25",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2023-12-26",
+      "minimal_actuators_usd": 0.002012819052,
+      "full_six_etf_ladder_usd": 0.013254493475
+    },
+    {
+      "date": "2023-12-27",
+      "minimal_actuators_usd": 0.002204596996,
+      "full_six_etf_ladder_usd": 0.016156196594
+    },
+    {
+      "date": "2023-12-28",
+      "minimal_actuators_usd": 0.001925110817,
+      "full_six_etf_ladder_usd": 0.010606527328
+    },
+    {
+      "date": "2023-12-29",
+      "minimal_actuators_usd": 0.00147074461,
+      "full_six_etf_ladder_usd": 0.010780334473
+    },
+    {
+      "date": "2024-01-01",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-01-02",
+      "minimal_actuators_usd": 0.005848109722,
+      "full_six_etf_ladder_usd": 0.032261252403
+    },
+    {
+      "date": "2024-01-03",
+      "minimal_actuators_usd": 0.00395321846,
+      "full_six_etf_ladder_usd": 0.022884696722
+    },
+    {
+      "date": "2024-01-04",
+      "minimal_actuators_usd": 0.003608286381,
+      "full_six_etf_ladder_usd": 0.021129637957
+    },
+    {
+      "date": "2024-01-05",
+      "minimal_actuators_usd": 0.003756344318,
+      "full_six_etf_ladder_usd": 0.022349685431
+    },
+    {
+      "date": "2024-01-08",
+      "minimal_actuators_usd": 0.002721726894,
+      "full_six_etf_ladder_usd": 0.016730904579
+    },
+    {
+      "date": "2024-01-09",
+      "minimal_actuators_usd": 0.002327978611,
+      "full_six_etf_ladder_usd": 0.016557365656
+    },
+    {
+      "date": "2024-01-10",
+      "minimal_actuators_usd": 0.002130925655,
+      "full_six_etf_ladder_usd": 0.014283388853
+    },
+    {
+      "date": "2024-01-11",
+      "minimal_actuators_usd": 0.004531860352,
+      "full_six_etf_ladder_usd": 0.025859445333
+    },
+    {
+      "date": "2024-01-12",
+      "minimal_actuators_usd": 0.003087580204,
+      "full_six_etf_ladder_usd": 0.018886238337
+    },
+    {
+      "date": "2024-01-15",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-01-16",
+      "minimal_actuators_usd": 0.0036675632,
+      "full_six_etf_ladder_usd": 0.023632407188
+    },
+    {
+      "date": "2024-01-17",
+      "minimal_actuators_usd": 0.002867281437,
+      "full_six_etf_ladder_usd": 0.01876026392
+    },
+    {
+      "date": "2024-01-18",
+      "minimal_actuators_usd": 0.004815816879,
+      "full_six_etf_ladder_usd": 0.021805644035
+    },
+    {
+      "date": "2024-01-19",
+      "minimal_actuators_usd": 0.002437055111,
+      "full_six_etf_ladder_usd": 0.019244670868
+    },
+    {
+      "date": "2024-01-22",
+      "minimal_actuators_usd": 0.003308594227,
+      "full_six_etf_ladder_usd": 0.019175201654
+    },
+    {
+      "date": "2024-01-23",
+      "minimal_actuators_usd": 0.003336757421,
+      "full_six_etf_ladder_usd": 0.018773853779
+    },
+    {
+      "date": "2024-01-24",
+      "minimal_actuators_usd": 0.002894192934,
+      "full_six_etf_ladder_usd": 0.018590122461
+    },
+    {
+      "date": "2024-01-25",
+      "minimal_actuators_usd": 0.004650592804,
+      "full_six_etf_ladder_usd": 0.024616956711
+    },
+    {
+      "date": "2024-01-26",
+      "minimal_actuators_usd": 0.003986477852,
+      "full_six_etf_ladder_usd": 0.023525476456
+    },
+    {
+      "date": "2024-01-29",
+      "minimal_actuators_usd": 0.001434713602,
+      "full_six_etf_ladder_usd": 0.017886579037
+    },
+    {
+      "date": "2024-01-30",
+      "minimal_actuators_usd": 0.003051906824,
+      "full_six_etf_ladder_usd": 0.01808398962
+    },
+    {
+      "date": "2024-01-31",
+      "minimal_actuators_usd": 0.004143297672,
+      "full_six_etf_ladder_usd": 0.03034606576
+    },
+    {
+      "date": "2024-02-01",
+      "minimal_actuators_usd": 0.004613310099,
+      "full_six_etf_ladder_usd": 0.032489597797
+    },
+    {
+      "date": "2024-02-02",
+      "minimal_actuators_usd": 0.004253894091,
+      "full_six_etf_ladder_usd": 0.033780097961
+    },
+    {
+      "date": "2024-02-05",
+      "minimal_actuators_usd": 0.003311276436,
+      "full_six_etf_ladder_usd": 0.02550137043
+    },
+    {
+      "date": "2024-02-06",
+      "minimal_actuators_usd": 0.002764463425,
+      "full_six_etf_ladder_usd": 0.025766640902
+    },
+    {
+      "date": "2024-02-07",
+      "minimal_actuators_usd": 0.002334862947,
+      "full_six_etf_ladder_usd": 0.018905103207
+    },
+    {
+      "date": "2024-02-08",
+      "minimal_actuators_usd": 0.001694172621,
+      "full_six_etf_ladder_usd": 0.011077970266
+    },
+    {
+      "date": "2024-02-09",
+      "minimal_actuators_usd": 0.002178758383,
+      "full_six_etf_ladder_usd": 0.015410274267
+    },
+    {
+      "date": "2024-02-12",
+      "minimal_actuators_usd": 0.001521170139,
+      "full_six_etf_ladder_usd": 0.014551252127
+    },
+    {
+      "date": "2024-02-13",
+      "minimal_actuators_usd": 0.00393819809,
+      "full_six_etf_ladder_usd": 0.03965190053
+    },
+    {
+      "date": "2024-02-14",
+      "minimal_actuators_usd": 0.002847343683,
+      "full_six_etf_ladder_usd": 0.026711046696
+    },
+    {
+      "date": "2024-02-15",
+      "minimal_actuators_usd": 0.00263902545,
+      "full_six_etf_ladder_usd": 0.023081302643
+    },
+    {
+      "date": "2024-02-16",
+      "minimal_actuators_usd": 0.003363579512,
+      "full_six_etf_ladder_usd": 0.025189697742
+    },
+    {
+      "date": "2024-02-19",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-02-20",
+      "minimal_actuators_usd": 0.00292083621,
+      "full_six_etf_ladder_usd": 0.028998613358
+    },
+    {
+      "date": "2024-02-21",
+      "minimal_actuators_usd": 0.002481043339,
+      "full_six_etf_ladder_usd": 0.024406850338
+    },
+    {
+      "date": "2024-02-22",
+      "minimal_actuators_usd": 0.003179579973,
+      "full_six_etf_ladder_usd": 0.028708487749
+    },
+    {
+      "date": "2024-02-23",
+      "minimal_actuators_usd": 0.002362132072,
+      "full_six_etf_ladder_usd": 0.018890887499
+    },
+    {
+      "date": "2024-02-26",
+      "minimal_actuators_usd": 0.002518862486,
+      "full_six_etf_ladder_usd": 0.017862170935
+    },
+    {
+      "date": "2024-02-27",
+      "minimal_actuators_usd": 0.003048062325,
+      "full_six_etf_ladder_usd": 0.022859930992
+    },
+    {
+      "date": "2024-02-28",
+      "minimal_actuators_usd": 0.003736495972,
+      "full_six_etf_ladder_usd": 0.027104258537
+    },
+    {
+      "date": "2024-02-29",
+      "minimal_actuators_usd": 0.003209620714,
+      "full_six_etf_ladder_usd": 0.018843322992
+    },
+    {
+      "date": "2024-03-01",
+      "minimal_actuators_usd": 0.003479987383,
+      "full_six_etf_ladder_usd": 0.025848984718
+    },
+    {
+      "date": "2024-03-04",
+      "minimal_actuators_usd": 0.003107696772,
+      "full_six_etf_ladder_usd": 0.017354339361
+    },
+    {
+      "date": "2024-03-05",
+      "minimal_actuators_usd": 0.003916472197,
+      "full_six_etf_ladder_usd": 0.027563989162
+    },
+    {
+      "date": "2024-03-06",
+      "minimal_actuators_usd": 0.004020899534,
+      "full_six_etf_ladder_usd": 0.025846928358
+    },
+    {
+      "date": "2024-03-07",
+      "minimal_actuators_usd": 0.004234850407,
+      "full_six_etf_ladder_usd": 0.024328529835
+    },
+    {
+      "date": "2024-03-08",
+      "minimal_actuators_usd": 0.007606208324,
+      "full_six_etf_ladder_usd": 0.044216662645
+    },
+    {
+      "date": "2024-03-11",
+      "minimal_actuators_usd": 0.006449997425,
+      "full_six_etf_ladder_usd": 0.044328153133
+    },
+    {
+      "date": "2024-03-12",
+      "minimal_actuators_usd": 0.010005891323,
+      "full_six_etf_ladder_usd": 0.0504334867
+    },
+    {
+      "date": "2024-03-13",
+      "minimal_actuators_usd": 0.0051651299,
+      "full_six_etf_ladder_usd": 0.030143469572
+    },
+    {
+      "date": "2024-03-14",
+      "minimal_actuators_usd": 0.004800885916,
+      "full_six_etf_ladder_usd": 0.028641521931
+    },
+    {
+      "date": "2024-03-15",
+      "minimal_actuators_usd": 0.004913806915,
+      "full_six_etf_ladder_usd": 0.04555991292
+    },
+    {
+      "date": "2024-03-18",
+      "minimal_actuators_usd": 0.004874110222,
+      "full_six_etf_ladder_usd": 0.025230824947
+    },
+    {
+      "date": "2024-03-19",
+      "minimal_actuators_usd": 0.004239320755,
+      "full_six_etf_ladder_usd": 0.026004731655
+    },
+    {
+      "date": "2024-03-20",
+      "minimal_actuators_usd": 0.00302991271,
+      "full_six_etf_ladder_usd": 0.01922044158
+    },
+    {
+      "date": "2024-03-21",
+      "minimal_actuators_usd": 0.00444996357,
+      "full_six_etf_ladder_usd": 0.020633339882
+    },
+    {
+      "date": "2024-03-22",
+      "minimal_actuators_usd": 0.003687143326,
+      "full_six_etf_ladder_usd": 0.022697657347
+    },
+    {
+      "date": "2024-03-25",
+      "minimal_actuators_usd": 0.003501355648,
+      "full_six_etf_ladder_usd": 0.017662882805
+    },
+    {
+      "date": "2024-03-26",
+      "minimal_actuators_usd": 0.003407746553,
+      "full_six_etf_ladder_usd": 0.016037553549
+    },
+    {
+      "date": "2024-03-27",
+      "minimal_actuators_usd": 0.003987193108,
+      "full_six_etf_ladder_usd": 0.016790449619
+    },
+    {
+      "date": "2024-03-28",
+      "minimal_actuators_usd": 0.0028167665,
+      "full_six_etf_ladder_usd": 0.014313340187
+    },
+    {
+      "date": "2024-03-29",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-04-01",
+      "minimal_actuators_usd": 0.00361391902,
+      "full_six_etf_ladder_usd": 0.01945656538
+    },
+    {
+      "date": "2024-04-02",
+      "minimal_actuators_usd": 0.004762619734,
+      "full_six_etf_ladder_usd": 0.026240944862
+    },
+    {
+      "date": "2024-04-03",
+      "minimal_actuators_usd": 0.004211962223,
+      "full_six_etf_ladder_usd": 0.023617386818
+    },
+    {
+      "date": "2024-04-04",
+      "minimal_actuators_usd": 0.003070950508,
+      "full_six_etf_ladder_usd": 0.019279718399
+    },
+    {
+      "date": "2024-04-05",
+      "minimal_actuators_usd": 0.005952000618,
+      "full_six_etf_ladder_usd": 0.032981514931
+    },
+    {
+      "date": "2024-04-08",
+      "minimal_actuators_usd": 0.00436770916,
+      "full_six_etf_ladder_usd": 0.028612554073
+    },
+    {
+      "date": "2024-04-09",
+      "minimal_actuators_usd": 0.00363868475,
+      "full_six_etf_ladder_usd": 0.023531913757
+    },
+    {
+      "date": "2024-04-10",
+      "minimal_actuators_usd": 0.008462905884,
+      "full_six_etf_ladder_usd": 0.046217948198
+    },
+    {
+      "date": "2024-04-11",
+      "minimal_actuators_usd": 0.006978213787,
+      "full_six_etf_ladder_usd": 0.034653425217
+    },
+    {
+      "date": "2024-04-12",
+      "minimal_actuators_usd": 0.006161302328,
+      "full_six_etf_ladder_usd": 0.031231373549
+    },
+    {
+      "date": "2024-04-15",
+      "minimal_actuators_usd": 0.006490677595,
+      "full_six_etf_ladder_usd": 0.031583994627
+    },
+    {
+      "date": "2024-04-16",
+      "minimal_actuators_usd": 0.009592205286,
+      "full_six_etf_ladder_usd": 0.040696799755
+    },
+    {
+      "date": "2024-04-17",
+      "minimal_actuators_usd": 0.007123410702,
+      "full_six_etf_ladder_usd": 0.028307676315
+    },
+    {
+      "date": "2024-04-18",
+      "minimal_actuators_usd": 0.008656293154,
+      "full_six_etf_ladder_usd": 0.027111232281
+    },
+    {
+      "date": "2024-04-19",
+      "minimal_actuators_usd": 0.009218752384,
+      "full_six_etf_ladder_usd": 0.028824985027
+    },
+    {
+      "date": "2024-04-22",
+      "minimal_actuators_usd": 0.006706416607,
+      "full_six_etf_ladder_usd": 0.024450927973
+    },
+    {
+      "date": "2024-04-23",
+      "minimal_actuators_usd": 0.004324793816,
+      "full_six_etf_ladder_usd": 0.019142568111
+    },
+    {
+      "date": "2024-04-24",
+      "minimal_actuators_usd": 0.006141901016,
+      "full_six_etf_ladder_usd": 0.022871553898
+    },
+    {
+      "date": "2024-04-25",
+      "minimal_actuators_usd": 0.007441788912,
+      "full_six_etf_ladder_usd": 0.031937867403
+    },
+    {
+      "date": "2024-04-26",
+      "minimal_actuators_usd": 0.007580280304,
+      "full_six_etf_ladder_usd": 0.029388427734
+    },
+    {
+      "date": "2024-04-29",
+      "minimal_actuators_usd": 0.003009080887,
+      "full_six_etf_ladder_usd": 0.017491400242
+    },
+    {
+      "date": "2024-04-30",
+      "minimal_actuators_usd": 0.0050124228,
+      "full_six_etf_ladder_usd": 0.020075887442
+    },
+    {
+      "date": "2024-05-01",
+      "minimal_actuators_usd": 0.004720598459,
+      "full_six_etf_ladder_usd": 0.023764640093
+    },
+    {
+      "date": "2024-05-02",
+      "minimal_actuators_usd": 0.00538739562,
+      "full_six_etf_ladder_usd": 0.02191901207
+    },
+    {
+      "date": "2024-05-03",
+      "minimal_actuators_usd": 0.00838431716,
+      "full_six_etf_ladder_usd": 0.033934772015
+    },
+    {
+      "date": "2024-05-06",
+      "minimal_actuators_usd": 0.004239410162,
+      "full_six_etf_ladder_usd": 0.019944280386
+    },
+    {
+      "date": "2024-05-07",
+      "minimal_actuators_usd": 0.003757953644,
+      "full_six_etf_ladder_usd": 0.01829507947
+    },
+    {
+      "date": "2024-05-08",
+      "minimal_actuators_usd": 0.003567248583,
+      "full_six_etf_ladder_usd": 0.017114013433
+    },
+    {
+      "date": "2024-05-09",
+      "minimal_actuators_usd": 0.003763496876,
+      "full_six_etf_ladder_usd": 0.017131537199
+    },
+    {
+      "date": "2024-05-10",
+      "minimal_actuators_usd": 0.002925395966,
+      "full_six_etf_ladder_usd": 0.019201397896
+    },
+    {
+      "date": "2024-05-13",
+      "minimal_actuators_usd": 0.003065139055,
+      "full_six_etf_ladder_usd": 0.016563534737
+    },
+    {
+      "date": "2024-05-14",
+      "minimal_actuators_usd": 0.003075420856,
+      "full_six_etf_ladder_usd": 0.018267631531
+    },
+    {
+      "date": "2024-05-15",
+      "minimal_actuators_usd": 0.004488676786,
+      "full_six_etf_ladder_usd": 0.022152990103
+    },
+    {
+      "date": "2024-05-16",
+      "minimal_actuators_usd": 0.002746939659,
+      "full_six_etf_ladder_usd": 0.016241490841
+    },
+    {
+      "date": "2024-05-17",
+      "minimal_actuators_usd": 0.00363394618,
+      "full_six_etf_ladder_usd": 0.018849223852
+    },
+    {
+      "date": "2024-05-20",
+      "minimal_actuators_usd": 0.002474606037,
+      "full_six_etf_ladder_usd": 0.014958411455
+    },
+    {
+      "date": "2024-05-21",
+      "minimal_actuators_usd": 0.002955704927,
+      "full_six_etf_ladder_usd": 0.016858667135
+    },
+    {
+      "date": "2024-05-22",
+      "minimal_actuators_usd": 0.002064406872,
+      "full_six_etf_ladder_usd": 0.009855777025
+    },
+    {
+      "date": "2024-05-23",
+      "minimal_actuators_usd": 0.004140079021,
+      "full_six_etf_ladder_usd": 0.013483464718
+    },
+    {
+      "date": "2024-05-24",
+      "minimal_actuators_usd": 0.004314690828,
+      "full_six_etf_ladder_usd": 0.018229275942
+    },
+    {
+      "date": "2024-05-27",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-05-28",
+      "minimal_actuators_usd": 0.003933995962,
+      "full_six_etf_ladder_usd": 0.021579086781
+    },
+    {
+      "date": "2024-05-29",
+      "minimal_actuators_usd": 0.004312992096,
+      "full_six_etf_ladder_usd": 0.024170637131
+    },
+    {
+      "date": "2024-05-30",
+      "minimal_actuators_usd": 0.004420906305,
+      "full_six_etf_ladder_usd": 0.022693008184
+    },
+    {
+      "date": "2024-05-31",
+      "minimal_actuators_usd": 0.004933744669,
+      "full_six_etf_ladder_usd": 0.01884368062
+    },
+    {
+      "date": "2024-06-03",
+      "minimal_actuators_usd": 0.003794342279,
+      "full_six_etf_ladder_usd": 0.015469551086
+    },
+    {
+      "date": "2024-06-04",
+      "minimal_actuators_usd": 0.005196601152,
+      "full_six_etf_ladder_usd": 0.020090460777
+    },
+    {
+      "date": "2024-06-05",
+      "minimal_actuators_usd": 0.004703521729,
+      "full_six_etf_ladder_usd": 0.021648108959
+    },
+    {
+      "date": "2024-06-06",
+      "minimal_actuators_usd": 0.00450566411,
+      "full_six_etf_ladder_usd": 0.018946319818
+    },
+    {
+      "date": "2024-06-07",
+      "minimal_actuators_usd": 0.006718844175,
+      "full_six_etf_ladder_usd": 0.023395121098
+    },
+    {
+      "date": "2024-06-10",
+      "minimal_actuators_usd": 0.005153864622,
+      "full_six_etf_ladder_usd": 0.018470048904
+    },
+    {
+      "date": "2024-06-11",
+      "minimal_actuators_usd": 0.003463178873,
+      "full_six_etf_ladder_usd": 0.015367984772
+    },
+    {
+      "date": "2024-06-12",
+      "minimal_actuators_usd": 0.004821628332,
+      "full_six_etf_ladder_usd": 0.01863732934
+    },
+    {
+      "date": "2024-06-13",
+      "minimal_actuators_usd": 0.004426538944,
+      "full_six_etf_ladder_usd": 0.021331518888
+    },
+    {
+      "date": "2024-06-14",
+      "minimal_actuators_usd": 0.004269629717,
+      "full_six_etf_ladder_usd": 0.018804252148
+    },
+    {
+      "date": "2024-06-17",
+      "minimal_actuators_usd": 0.004020899534,
+      "full_six_etf_ladder_usd": 0.010494500399
+    },
+    {
+      "date": "2024-06-18",
+      "minimal_actuators_usd": 0.004909157753,
+      "full_six_etf_ladder_usd": 0.018041878939
+    },
+    {
+      "date": "2024-06-19",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-06-20",
+      "minimal_actuators_usd": 0.003907978535,
+      "full_six_etf_ladder_usd": 0.020925074816
+    },
+    {
+      "date": "2024-06-21",
+      "minimal_actuators_usd": 0.004947692156,
+      "full_six_etf_ladder_usd": 0.023365259171
+    },
+    {
+      "date": "2024-06-24",
+      "minimal_actuators_usd": 0.003940433264,
+      "full_six_etf_ladder_usd": 0.018581002951
+    },
+    {
+      "date": "2024-06-25",
+      "minimal_actuators_usd": 0.004250496626,
+      "full_six_etf_ladder_usd": 0.018369019032
+    },
+    {
+      "date": "2024-06-26",
+      "minimal_actuators_usd": 0.003148555756,
+      "full_six_etf_ladder_usd": 0.015269100666
+    },
+    {
+      "date": "2024-06-27",
+      "minimal_actuators_usd": 0.004387021065,
+      "full_six_etf_ladder_usd": 0.016922414303
+    },
+    {
+      "date": "2024-06-28",
+      "minimal_actuators_usd": 0.004570394754,
+      "full_six_etf_ladder_usd": 0.01731839776
+    },
+    {
+      "date": "2024-07-01",
+      "minimal_actuators_usd": 0.003594964743,
+      "full_six_etf_ladder_usd": 0.019163399935
+    },
+    {
+      "date": "2024-07-02",
+      "minimal_actuators_usd": 0.004289388657,
+      "full_six_etf_ladder_usd": 0.021412432194
+    },
+    {
+      "date": "2024-07-03",
+      "minimal_actuators_usd": 0.002976000309,
+      "full_six_etf_ladder_usd": 0.016335278749
+    },
+    {
+      "date": "2024-07-04",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-07-05",
+      "minimal_actuators_usd": 0.003170192242,
+      "full_six_etf_ladder_usd": 0.013452351093
+    },
+    {
+      "date": "2024-07-08",
+      "minimal_actuators_usd": 0.003420084715,
+      "full_six_etf_ladder_usd": 0.01615011692
+    },
+    {
+      "date": "2024-07-09",
+      "minimal_actuators_usd": 0.002678900957,
+      "full_six_etf_ladder_usd": 0.009262830019
+    },
+    {
+      "date": "2024-07-10",
+      "minimal_actuators_usd": 0.003237515688,
+      "full_six_etf_ladder_usd": 0.009796321392
+    },
+    {
+      "date": "2024-07-11",
+      "minimal_actuators_usd": 0.00496789813,
+      "full_six_etf_ladder_usd": 0.017655462027
+    },
+    {
+      "date": "2024-07-12",
+      "minimal_actuators_usd": 0.005626738071,
+      "full_six_etf_ladder_usd": 0.015814125538
+    },
+    {
+      "date": "2024-07-15",
+      "minimal_actuators_usd": 0.00432613492,
+      "full_six_etf_ladder_usd": 0.012921631336
+    },
+    {
+      "date": "2024-07-16",
+      "minimal_actuators_usd": 0.004318714142,
+      "full_six_etf_ladder_usd": 0.015164405107
+    },
+    {
+      "date": "2024-07-17",
+      "minimal_actuators_usd": 0.006469488144,
+      "full_six_etf_ladder_usd": 0.024826258421
+    },
+    {
+      "date": "2024-07-18",
+      "minimal_actuators_usd": 0.005617171526,
+      "full_six_etf_ladder_usd": 0.018987983465
+    },
+    {
+      "date": "2024-07-19",
+      "minimal_actuators_usd": 0.007525026798,
+      "full_six_etf_ladder_usd": 0.025610893965
+    },
+    {
+      "date": "2024-07-22",
+      "minimal_actuators_usd": 0.00642862916,
+      "full_six_etf_ladder_usd": 0.01816034317
+    },
+    {
+      "date": "2024-07-23",
+      "minimal_actuators_usd": 0.005706042051,
+      "full_six_etf_ladder_usd": 0.017143785954
+    },
+    {
+      "date": "2024-07-24",
+      "minimal_actuators_usd": 0.005455344915,
+      "full_six_etf_ladder_usd": 0.021171748638
+    },
+    {
+      "date": "2024-07-25",
+      "minimal_actuators_usd": 0.010625213385,
+      "full_six_etf_ladder_usd": 0.031761199236
+    },
+    {
+      "date": "2024-07-26",
+      "minimal_actuators_usd": 0.007500976324,
+      "full_six_etf_ladder_usd": 0.024533361197
+    },
+    {
+      "date": "2024-07-29",
+      "minimal_actuators_usd": 0.007819622755,
+      "full_six_etf_ladder_usd": 0.024960815907
+    },
+    {
+      "date": "2024-07-30",
+      "minimal_actuators_usd": 0.00501948595,
+      "full_six_etf_ladder_usd": 0.017286390066
+    },
+    {
+      "date": "2024-07-31",
+      "minimal_actuators_usd": 0.006422370672,
+      "full_six_etf_ladder_usd": 0.025311648846
+    },
+    {
+      "date": "2024-08-01",
+      "minimal_actuators_usd": 0.007384121418,
+      "full_six_etf_ladder_usd": 0.026857584715
+    },
+    {
+      "date": "2024-08-02",
+      "minimal_actuators_usd": 0.012771964073,
+      "full_six_etf_ladder_usd": 0.03911653161
+    },
+    {
+      "date": "2024-08-05",
+      "minimal_actuators_usd": 0.015213310719,
+      "full_six_etf_ladder_usd": 0.045890003443
+    },
+    {
+      "date": "2024-08-06",
+      "minimal_actuators_usd": 0.01606875658,
+      "full_six_etf_ladder_usd": 0.040728092194
+    },
+    {
+      "date": "2024-08-07",
+      "minimal_actuators_usd": 0.010650783777,
+      "full_six_etf_ladder_usd": 0.03112873435
+    },
+    {
+      "date": "2024-08-08",
+      "minimal_actuators_usd": 0.015794813633,
+      "full_six_etf_ladder_usd": 0.04397508502
+    },
+    {
+      "date": "2024-08-09",
+      "minimal_actuators_usd": 0.009742408991,
+      "full_six_etf_ladder_usd": 0.030196666718
+    },
+    {
+      "date": "2024-08-12",
+      "minimal_actuators_usd": 0.006126880646,
+      "full_six_etf_ladder_usd": 0.020872414112
+    },
+    {
+      "date": "2024-08-13",
+      "minimal_actuators_usd": 0.006131887436,
+      "full_six_etf_ladder_usd": 0.019925147295
+    },
+    {
+      "date": "2024-08-14",
+      "minimal_actuators_usd": 0.005630046129,
+      "full_six_etf_ladder_usd": 0.018760085106
+    },
+    {
+      "date": "2024-08-15",
+      "minimal_actuators_usd": 0.006413072348,
+      "full_six_etf_ladder_usd": 0.020032525063
+    },
+    {
+      "date": "2024-08-16",
+      "minimal_actuators_usd": 0.006986349821,
+      "full_six_etf_ladder_usd": 0.024207115173
+    },
+    {
+      "date": "2024-08-19",
+      "minimal_actuators_usd": 0.004149645567,
+      "full_six_etf_ladder_usd": 0.016727149487
+    },
+    {
+      "date": "2024-08-20",
+      "minimal_actuators_usd": 0.002839028835,
+      "full_six_etf_ladder_usd": 0.012465298176
+    },
+    {
+      "date": "2024-08-21",
+      "minimal_actuators_usd": 0.004288941622,
+      "full_six_etf_ladder_usd": 0.015775591135
+    },
+    {
+      "date": "2024-08-22",
+      "minimal_actuators_usd": 0.003901183605,
+      "full_six_etf_ladder_usd": 0.015505313873
+    },
+    {
+      "date": "2024-08-23",
+      "minimal_actuators_usd": 0.004874199629,
+      "full_six_etf_ladder_usd": 0.016364425421
+    },
+    {
+      "date": "2024-08-26",
+      "minimal_actuators_usd": 0.00590506196,
+      "full_six_etf_ladder_usd": 0.021714180708
+    },
+    {
+      "date": "2024-08-27",
+      "minimal_actuators_usd": 0.00634843111,
+      "full_six_etf_ladder_usd": 0.023232400417
+    },
+    {
+      "date": "2024-08-28",
+      "minimal_actuators_usd": 0.003779232502,
+      "full_six_etf_ladder_usd": 0.018655121326
+    },
+    {
+      "date": "2024-08-29",
+      "minimal_actuators_usd": 0.00868704915,
+      "full_six_etf_ladder_usd": 0.028982430696
+    },
+    {
+      "date": "2024-08-30",
+      "minimal_actuators_usd": 0.005383819342,
+      "full_six_etf_ladder_usd": 0.019683927298
+    },
+    {
+      "date": "2024-09-02",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-09-03",
+      "minimal_actuators_usd": 0.007846355438,
+      "full_six_etf_ladder_usd": 0.027379184961
+    },
+    {
+      "date": "2024-09-04",
+      "minimal_actuators_usd": 0.007372945547,
+      "full_six_etf_ladder_usd": 0.025993824005
+    },
+    {
+      "date": "2024-09-05",
+      "minimal_actuators_usd": 0.007192343473,
+      "full_six_etf_ladder_usd": 0.025850504637
+    },
+    {
+      "date": "2024-09-06",
+      "minimal_actuators_usd": 0.011963278055,
+      "full_six_etf_ladder_usd": 0.038059294224
+    },
+    {
+      "date": "2024-09-09",
+      "minimal_actuators_usd": 0.006898552179,
+      "full_six_etf_ladder_usd": 0.01749792695
+    },
+    {
+      "date": "2024-09-10",
+      "minimal_actuators_usd": 0.005665183067,
+      "full_six_etf_ladder_usd": 0.019840568304
+    },
+    {
+      "date": "2024-09-11",
+      "minimal_actuators_usd": 0.009571731091,
+      "full_six_etf_ladder_usd": 0.031776130199
+    },
+    {
+      "date": "2024-09-12",
+      "minimal_actuators_usd": 0.007162928581,
+      "full_six_etf_ladder_usd": 0.026425123215
+    },
+    {
+      "date": "2024-09-13",
+      "minimal_actuators_usd": 0.005310326815,
+      "full_six_etf_ladder_usd": 0.018435448408
+    },
+    {
+      "date": "2024-09-16",
+      "minimal_actuators_usd": 0.006495684385,
+      "full_six_etf_ladder_usd": 0.022337973118
+    },
+    {
+      "date": "2024-09-17",
+      "minimal_actuators_usd": 0.005169332027,
+      "full_six_etf_ladder_usd": 0.018978863955
+    },
+    {
+      "date": "2024-09-18",
+      "minimal_actuators_usd": 0.005026191473,
+      "full_six_etf_ladder_usd": 0.014524430037
+    },
+    {
+      "date": "2024-09-19",
+      "minimal_actuators_usd": 0.004860877991,
+      "full_six_etf_ladder_usd": 0.018611222506
+    },
+    {
+      "date": "2024-09-20",
+      "minimal_actuators_usd": 0.005493253469,
+      "full_six_etf_ladder_usd": 0.018106162548
+    },
+    {
+      "date": "2024-09-23",
+      "minimal_actuators_usd": 0.005765229464,
+      "full_six_etf_ladder_usd": 0.019732028246
+    },
+    {
+      "date": "2024-09-24",
+      "minimal_actuators_usd": 0.0043438375,
+      "full_six_etf_ladder_usd": 0.013683021069
+    },
+    {
+      "date": "2024-09-25",
+      "minimal_actuators_usd": 0.004170745611,
+      "full_six_etf_ladder_usd": 0.012828558683
+    },
+    {
+      "date": "2024-09-26",
+      "minimal_actuators_usd": 0.005929023027,
+      "full_six_etf_ladder_usd": 0.020859628916
+    },
+    {
+      "date": "2024-09-27",
+      "minimal_actuators_usd": 0.005297988653,
+      "full_six_etf_ladder_usd": 0.017448484898
+    },
+    {
+      "date": "2024-09-30",
+      "minimal_actuators_usd": 0.003495812416,
+      "full_six_etf_ladder_usd": 0.013722449541
+    },
+    {
+      "date": "2024-10-01",
+      "minimal_actuators_usd": 0.008010953665,
+      "full_six_etf_ladder_usd": 0.027430951595
+    },
+    {
+      "date": "2024-10-02",
+      "minimal_actuators_usd": 0.005536258221,
+      "full_six_etf_ladder_usd": 0.018620073795
+    },
+    {
+      "date": "2024-10-03",
+      "minimal_actuators_usd": 0.006227374077,
+      "full_six_etf_ladder_usd": 0.020891726017
+    },
+    {
+      "date": "2024-10-04",
+      "minimal_actuators_usd": 0.005518645048,
+      "full_six_etf_ladder_usd": 0.020858377218
+    },
+    {
+      "date": "2024-10-07",
+      "minimal_actuators_usd": 0.004157871008,
+      "full_six_etf_ladder_usd": 0.015500128269
+    },
+    {
+      "date": "2024-10-08",
+      "minimal_actuators_usd": 0.004414916039,
+      "full_six_etf_ladder_usd": 0.016514718533
+    },
+    {
+      "date": "2024-10-09",
+      "minimal_actuators_usd": 0.003942131996,
+      "full_six_etf_ladder_usd": 0.013654053211
+    },
+    {
+      "date": "2024-10-10",
+      "minimal_actuators_usd": 0.003911823034,
+      "full_six_etf_ladder_usd": 0.013451635838
+    },
+    {
+      "date": "2024-10-11",
+      "minimal_actuators_usd": 0.003688305616,
+      "full_six_etf_ladder_usd": 0.018037766218
+    },
+    {
+      "date": "2024-10-14",
+      "minimal_actuators_usd": 0.003288209438,
+      "full_six_etf_ladder_usd": 0.013444930315
+    },
+    {
+      "date": "2024-10-15",
+      "minimal_actuators_usd": 0.003366261721,
+      "full_six_etf_ladder_usd": 0.013588786125
+    },
+    {
+      "date": "2024-10-16",
+      "minimal_actuators_usd": 0.003751426935,
+      "full_six_etf_ladder_usd": 0.012517958879
+    },
+    {
+      "date": "2024-10-17",
+      "minimal_actuators_usd": 0.006565690041,
+      "full_six_etf_ladder_usd": 0.021547615528
+    },
+    {
+      "date": "2024-10-18",
+      "minimal_actuators_usd": 0.003940701485,
+      "full_six_etf_ladder_usd": 0.014343827963
+    },
+    {
+      "date": "2024-10-21",
+      "minimal_actuators_usd": 0.003130048513,
+      "full_six_etf_ladder_usd": 0.012269943953
+    },
+    {
+      "date": "2024-10-22",
+      "minimal_actuators_usd": 0.003522276878,
+      "full_six_etf_ladder_usd": 0.010101735592
+    },
+    {
+      "date": "2024-10-23",
+      "minimal_actuators_usd": 0.003809809685,
+      "full_six_etf_ladder_usd": 0.013312786818
+    },
+    {
+      "date": "2024-10-24",
+      "minimal_actuators_usd": 0.004395067692,
+      "full_six_etf_ladder_usd": 0.016896039248
+    },
+    {
+      "date": "2024-10-25",
+      "minimal_actuators_usd": 0.003969490528,
+      "full_six_etf_ladder_usd": 0.013616144657
+    },
+    {
+      "date": "2024-10-28",
+      "minimal_actuators_usd": 0.005606174469,
+      "full_six_etf_ladder_usd": 0.019724339247
+    },
+    {
+      "date": "2024-10-29",
+      "minimal_actuators_usd": 0.004831463099,
+      "full_six_etf_ladder_usd": 0.017371863127
+    },
+    {
+      "date": "2024-10-30",
+      "minimal_actuators_usd": 0.005130439997,
+      "full_six_etf_ladder_usd": 0.01868480444
+    },
+    {
+      "date": "2024-10-31",
+      "minimal_actuators_usd": 0.006912410259,
+      "full_six_etf_ladder_usd": 0.023503035307
+    },
+    {
+      "date": "2024-11-01",
+      "minimal_actuators_usd": 0.006800025702,
+      "full_six_etf_ladder_usd": 0.022768378258
+    },
+    {
+      "date": "2024-11-04",
+      "minimal_actuators_usd": 0.005901485682,
+      "full_six_etf_ladder_usd": 0.021808415651
+    },
+    {
+      "date": "2024-11-05",
+      "minimal_actuators_usd": 0.005139827728,
+      "full_six_etf_ladder_usd": 0.019155263901
+    },
+    {
+      "date": "2024-11-06",
+      "minimal_actuators_usd": 0.011353433132,
+      "full_six_etf_ladder_usd": 0.040176987648
+    },
+    {
+      "date": "2024-11-07",
+      "minimal_actuators_usd": 0.004340082407,
+      "full_six_etf_ladder_usd": 0.016306400299
+    },
+    {
+      "date": "2024-11-08",
+      "minimal_actuators_usd": 0.00326102972,
+      "full_six_etf_ladder_usd": 0.013578146696
+    },
+    {
+      "date": "2024-11-11",
+      "minimal_actuators_usd": 0.002763837576,
+      "full_six_etf_ladder_usd": 0.012930840254
+    },
+    {
+      "date": "2024-11-12",
+      "minimal_actuators_usd": 0.003144532442,
+      "full_six_etf_ladder_usd": 0.013808369637
+    },
+    {
+      "date": "2024-11-13",
+      "minimal_actuators_usd": 0.004839420319,
+      "full_six_etf_ladder_usd": 0.016541898251
+    },
+    {
+      "date": "2024-11-14",
+      "minimal_actuators_usd": 0.004191577435,
+      "full_six_etf_ladder_usd": 0.014169126749
+    },
+    {
+      "date": "2024-11-15",
+      "minimal_actuators_usd": 0.006007790565,
+      "full_six_etf_ladder_usd": 0.020272761583
+    },
+    {
+      "date": "2024-11-18",
+      "minimal_actuators_usd": 0.006059288979,
+      "full_six_etf_ladder_usd": 0.021651238203
+    },
+    {
+      "date": "2024-11-19",
+      "minimal_actuators_usd": 0.007208436728,
+      "full_six_etf_ladder_usd": 0.026920974255
+    },
+    {
+      "date": "2024-11-20",
+      "minimal_actuators_usd": 0.005554765463,
+      "full_six_etf_ladder_usd": 0.020013302565
+    },
+    {
+      "date": "2024-11-21",
+      "minimal_actuators_usd": 0.009637713432,
+      "full_six_etf_ladder_usd": 0.032825052738
+    },
+    {
+      "date": "2024-11-22",
+      "minimal_actuators_usd": 0.006963819265,
+      "full_six_etf_ladder_usd": 0.022664576769
+    },
+    {
+      "date": "2024-11-25",
+      "minimal_actuators_usd": 0.007017016411,
+      "full_six_etf_ladder_usd": 0.023052871227
+    },
+    {
+      "date": "2024-11-26",
+      "minimal_actuators_usd": 0.005289047956,
+      "full_six_etf_ladder_usd": 0.018626958132
+    },
+    {
+      "date": "2024-11-27",
+      "minimal_actuators_usd": 0.004497349262,
+      "full_six_etf_ladder_usd": 0.015850692987
+    },
+    {
+      "date": "2024-11-28",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-11-29",
+      "minimal_actuators_usd": 0.003801316023,
+      "full_six_etf_ladder_usd": 0.012453764677
+    },
+    {
+      "date": "2024-12-02",
+      "minimal_actuators_usd": 0.003516733646,
+      "full_six_etf_ladder_usd": 0.014535963535
+    },
+    {
+      "date": "2024-12-03",
+      "minimal_actuators_usd": 0.002843141556,
+      "full_six_etf_ladder_usd": 0.009677410126
+    },
+    {
+      "date": "2024-12-04",
+      "minimal_actuators_usd": 0.003500282764,
+      "full_six_etf_ladder_usd": 0.010982483625
+    },
+    {
+      "date": "2024-12-05",
+      "minimal_actuators_usd": 0.002430260181,
+      "full_six_etf_ladder_usd": 0.009777456522
+    },
+    {
+      "date": "2024-12-06",
+      "minimal_actuators_usd": 0.003642082214,
+      "full_six_etf_ladder_usd": 0.013430535793
+    },
+    {
+      "date": "2024-12-09",
+      "minimal_actuators_usd": 0.003082305193,
+      "full_six_etf_ladder_usd": 0.012286752462
+    },
+    {
+      "date": "2024-12-10",
+      "minimal_actuators_usd": 0.00312307477,
+      "full_six_etf_ladder_usd": 0.011500865221
+    },
+    {
+      "date": "2024-12-11",
+      "minimal_actuators_usd": 0.002990663052,
+      "full_six_etf_ladder_usd": 0.010183900595
+    },
+    {
+      "date": "2024-12-12",
+      "minimal_actuators_usd": 0.003443151712,
+      "full_six_etf_ladder_usd": 0.012680053711
+    },
+    {
+      "date": "2024-12-13",
+      "minimal_actuators_usd": 0.003634303808,
+      "full_six_etf_ladder_usd": 0.011676996946
+    },
+    {
+      "date": "2024-12-16",
+      "minimal_actuators_usd": 0.004866778851,
+      "full_six_etf_ladder_usd": 0.014484196901
+    },
+    {
+      "date": "2024-12-17",
+      "minimal_actuators_usd": 0.004840940237,
+      "full_six_etf_ladder_usd": 0.019206225872
+    },
+    {
+      "date": "2024-12-18",
+      "minimal_actuators_usd": 0.004568874836,
+      "full_six_etf_ladder_usd": 0.013352572918
+    },
+    {
+      "date": "2024-12-19",
+      "minimal_actuators_usd": 0.008590131998,
+      "full_six_etf_ladder_usd": 0.025866687298
+    },
+    {
+      "date": "2024-12-20",
+      "minimal_actuators_usd": 0.009892255068,
+      "full_six_etf_ladder_usd": 0.030641287565
+    },
+    {
+      "date": "2024-12-23",
+      "minimal_actuators_usd": 0.007498919964,
+      "full_six_etf_ladder_usd": 0.024079978466
+    },
+    {
+      "date": "2024-12-24",
+      "minimal_actuators_usd": 0.003755807877,
+      "full_six_etf_ladder_usd": 0.014510929585
+    },
+    {
+      "date": "2024-12-25",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2024-12-26",
+      "minimal_actuators_usd": 0.004437714815,
+      "full_six_etf_ladder_usd": 0.013248413801
+    },
+    {
+      "date": "2024-12-27",
+      "minimal_actuators_usd": 0.005497008562,
+      "full_six_etf_ladder_usd": 0.01870071888
+    },
+    {
+      "date": "2024-12-30",
+      "minimal_actuators_usd": 0.009834319353,
+      "full_six_etf_ladder_usd": 0.028719037771
+    },
+    {
+      "date": "2024-12-31",
+      "minimal_actuators_usd": 0.005900770426,
+      "full_six_etf_ladder_usd": 0.019192814827
+    },
+    {
+      "date": "2025-01-01",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-01-02",
+      "minimal_actuators_usd": 0.009531587362,
+      "full_six_etf_ladder_usd": 0.028748989105
+    },
+    {
+      "date": "2025-01-03",
+      "minimal_actuators_usd": 0.006011456251,
+      "full_six_etf_ladder_usd": 0.018417924643
+    },
+    {
+      "date": "2025-01-06",
+      "minimal_actuators_usd": 0.009728193283,
+      "full_six_etf_ladder_usd": 0.031790792942
+    },
+    {
+      "date": "2025-01-07",
+      "minimal_actuators_usd": 0.005312114954,
+      "full_six_etf_ladder_usd": 0.019572347403
+    },
+    {
+      "date": "2025-01-08",
+      "minimal_actuators_usd": 0.01088181138,
+      "full_six_etf_ladder_usd": 0.033111155033
+    },
+    {
+      "date": "2025-01-09",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-01-10",
+      "minimal_actuators_usd": 0.013535946608,
+      "full_six_etf_ladder_usd": 0.039495080709
+    },
+    {
+      "date": "2025-01-13",
+      "minimal_actuators_usd": 0.010430306196,
+      "full_six_etf_ladder_usd": 0.030878037214
+    },
+    {
+      "date": "2025-01-14",
+      "minimal_actuators_usd": 0.009003996849,
+      "full_six_etf_ladder_usd": 0.028193950653
+    },
+    {
+      "date": "2025-01-15",
+      "minimal_actuators_usd": 0.010463654995,
+      "full_six_etf_ladder_usd": 0.032681196928
+    },
+    {
+      "date": "2025-01-16",
+      "minimal_actuators_usd": 0.006702035666,
+      "full_six_etf_ladder_usd": 0.022521972656
+    },
+    {
+      "date": "2025-01-17",
+      "minimal_actuators_usd": 0.010136067867,
+      "full_six_etf_ladder_usd": 0.032134205103
+    },
+    {
+      "date": "2025-01-20",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-01-21",
+      "minimal_actuators_usd": 0.006725281477,
+      "full_six_etf_ladder_usd": 0.023557037115
+    },
+    {
+      "date": "2025-01-22",
+      "minimal_actuators_usd": 0.004844516516,
+      "full_six_etf_ladder_usd": 0.016465902328
+    },
+    {
+      "date": "2025-01-23",
+      "minimal_actuators_usd": 0.003670156002,
+      "full_six_etf_ladder_usd": 0.013847887516
+    },
+    {
+      "date": "2025-01-24",
+      "minimal_actuators_usd": 0.002654403448,
+      "full_six_etf_ladder_usd": 0.011500060558
+    },
+    {
+      "date": "2025-01-27",
+      "minimal_actuators_usd": 0.011038273573,
+      "full_six_etf_ladder_usd": 0.039227932692
+    },
+    {
+      "date": "2025-01-28",
+      "minimal_actuators_usd": 0.006388932467,
+      "full_six_etf_ladder_usd": 0.024285614491
+    },
+    {
+      "date": "2025-01-29",
+      "minimal_actuators_usd": 0.004834771156,
+      "full_six_etf_ladder_usd": 0.018075585365
+    },
+    {
+      "date": "2025-01-30",
+      "minimal_actuators_usd": 0.005507111549,
+      "full_six_etf_ladder_usd": 0.020249336958
+    },
+    {
+      "date": "2025-01-31",
+      "minimal_actuators_usd": 0.005282253027,
+      "full_six_etf_ladder_usd": 0.01934927702
+    },
+    {
+      "date": "2025-02-03",
+      "minimal_actuators_usd": 0.013148456812,
+      "full_six_etf_ladder_usd": 0.041238516569
+    },
+    {
+      "date": "2025-02-04",
+      "minimal_actuators_usd": 0.006035864353,
+      "full_six_etf_ladder_usd": 0.02100071311
+    },
+    {
+      "date": "2025-02-05",
+      "minimal_actuators_usd": 0.004241734743,
+      "full_six_etf_ladder_usd": 0.016220927238
+    },
+    {
+      "date": "2025-02-06",
+      "minimal_actuators_usd": 0.003074526787,
+      "full_six_etf_ladder_usd": 0.011949330568
+    },
+    {
+      "date": "2025-02-07",
+      "minimal_actuators_usd": 0.00443905592,
+      "full_six_etf_ladder_usd": 0.013931840658
+    },
+    {
+      "date": "2025-02-10",
+      "minimal_actuators_usd": 0.003601402044,
+      "full_six_etf_ladder_usd": 0.014354377985
+    },
+    {
+      "date": "2025-02-11",
+      "minimal_actuators_usd": 0.002843767405,
+      "full_six_etf_ladder_usd": 0.013580828905
+    },
+    {
+      "date": "2025-02-12",
+      "minimal_actuators_usd": 0.005407422781,
+      "full_six_etf_ladder_usd": 0.019516289234
+    },
+    {
+      "date": "2025-02-13",
+      "minimal_actuators_usd": 0.004118531942,
+      "full_six_etf_ladder_usd": 0.016303449869
+    },
+    {
+      "date": "2025-02-14",
+      "minimal_actuators_usd": 0.003551959991,
+      "full_six_etf_ladder_usd": 0.012386351824
+    },
+    {
+      "date": "2025-02-17",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-02-18",
+      "minimal_actuators_usd": 0.00404047966,
+      "full_six_etf_ladder_usd": 0.01576307416
+    },
+    {
+      "date": "2025-02-19",
+      "minimal_actuators_usd": 0.002618908882,
+      "full_six_etf_ladder_usd": 0.011288702488
+    },
+    {
+      "date": "2025-02-20",
+      "minimal_actuators_usd": 0.002219170332,
+      "full_six_etf_ladder_usd": 0.009037703276
+    },
+    {
+      "date": "2025-02-21",
+      "minimal_actuators_usd": 0.003722280264,
+      "full_six_etf_ladder_usd": 0.01646733284
+    },
+    {
+      "date": "2025-02-24",
+      "minimal_actuators_usd": 0.005266338587,
+      "full_six_etf_ladder_usd": 0.020261406898
+    },
+    {
+      "date": "2025-02-25",
+      "minimal_actuators_usd": 0.00696220994,
+      "full_six_etf_ladder_usd": 0.024493932724
+    },
+    {
+      "date": "2025-02-26",
+      "minimal_actuators_usd": 0.006199926138,
+      "full_six_etf_ladder_usd": 0.022946923971
+    },
+    {
+      "date": "2025-02-27",
+      "minimal_actuators_usd": 0.007343441248,
+      "full_six_etf_ladder_usd": 0.02561339736
+    },
+    {
+      "date": "2025-02-28",
+      "minimal_actuators_usd": 0.011001527309,
+      "full_six_etf_ladder_usd": 0.040910124779
+    },
+    {
+      "date": "2025-03-03",
+      "minimal_actuators_usd": 0.008895993233,
+      "full_six_etf_ladder_usd": 0.031463742256
+    },
+    {
+      "date": "2025-03-04",
+      "minimal_actuators_usd": 0.018394321203,
+      "full_six_etf_ladder_usd": 0.067097783089
+    },
+    {
+      "date": "2025-03-05",
+      "minimal_actuators_usd": 0.014358222485,
+      "full_six_etf_ladder_usd": 0.051643162966
+    },
+    {
+      "date": "2025-03-06",
+      "minimal_actuators_usd": 0.013442248106,
+      "full_six_etf_ladder_usd": 0.047353684902
+    },
+    {
+      "date": "2025-03-07",
+      "minimal_actuators_usd": 0.016495585442,
+      "full_six_etf_ladder_usd": 0.051297605038
+    },
+    {
+      "date": "2025-03-10",
+      "minimal_actuators_usd": 0.013061374426,
+      "full_six_etf_ladder_usd": 0.049439549446
+    },
+    {
+      "date": "2025-03-11",
+      "minimal_actuators_usd": 0.014108687639,
+      "full_six_etf_ladder_usd": 0.050064861774
+    },
+    {
+      "date": "2025-03-12",
+      "minimal_actuators_usd": 0.01159080863,
+      "full_six_etf_ladder_usd": 0.043873697519
+    },
+    {
+      "date": "2025-03-13",
+      "minimal_actuators_usd": 0.012628465891,
+      "full_six_etf_ladder_usd": 0.041282504797
+    },
+    {
+      "date": "2025-03-14",
+      "minimal_actuators_usd": 0.009306997061,
+      "full_six_etf_ladder_usd": 0.032588839531
+    },
+    {
+      "date": "2025-03-17",
+      "minimal_actuators_usd": 0.010916948318,
+      "full_six_etf_ladder_usd": 0.036787837744
+    },
+    {
+      "date": "2025-03-18",
+      "minimal_actuators_usd": 0.00888133049,
+      "full_six_etf_ladder_usd": 0.028445720673
+    },
+    {
+      "date": "2025-03-19",
+      "minimal_actuators_usd": 0.008068710566,
+      "full_six_etf_ladder_usd": 0.025529980659
+    },
+    {
+      "date": "2025-03-20",
+      "minimal_actuators_usd": 0.008452445269,
+      "full_six_etf_ladder_usd": 0.024742215872
+    },
+    {
+      "date": "2025-03-21",
+      "minimal_actuators_usd": 0.011176764965,
+      "full_six_etf_ladder_usd": 0.038636147976
+    },
+    {
+      "date": "2025-03-24",
+      "minimal_actuators_usd": 0.004840672016,
+      "full_six_etf_ladder_usd": 0.014911472797
+    },
+    {
+      "date": "2025-03-25",
+      "minimal_actuators_usd": 0.004389613867,
+      "full_six_etf_ladder_usd": 0.015468388796
+    },
+    {
+      "date": "2025-03-26",
+      "minimal_actuators_usd": 0.004805266857,
+      "full_six_etf_ladder_usd": 0.0182903409
+    },
+    {
+      "date": "2025-03-27",
+      "minimal_actuators_usd": 0.007911086082,
+      "full_six_etf_ladder_usd": 0.026774615049
+    },
+    {
+      "date": "2025-03-28",
+      "minimal_actuators_usd": 0.00830796361,
+      "full_six_etf_ladder_usd": 0.028797000647
+    },
+    {
+      "date": "2025-03-31",
+      "minimal_actuators_usd": 0.011020213366,
+      "full_six_etf_ladder_usd": 0.035986214876
+    },
+    {
+      "date": "2025-04-01",
+      "minimal_actuators_usd": 0.009347856045,
+      "full_six_etf_ladder_usd": 0.036722928286
+    },
+    {
+      "date": "2025-04-02",
+      "minimal_actuators_usd": 0.007561951876,
+      "full_six_etf_ladder_usd": 0.027898281813
+    },
+    {
+      "date": "2025-04-03",
+      "minimal_actuators_usd": 0.017074584961,
+      "full_six_etf_ladder_usd": 0.057206064463
+    },
+    {
+      "date": "2025-04-04",
+      "minimal_actuators_usd": 0.02568680048,
+      "full_six_etf_ladder_usd": 0.081705093384
+    },
+    {
+      "date": "2025-04-07",
+      "minimal_actuators_usd": 0.025624930859,
+      "full_six_etf_ladder_usd": 0.083575665951
+    },
+    {
+      "date": "2025-04-08",
+      "minimal_actuators_usd": 0.020692527294,
+      "full_six_etf_ladder_usd": 0.057877153158
+    },
+    {
+      "date": "2025-04-09",
+      "minimal_actuators_usd": 0.024108231068,
+      "full_six_etf_ladder_usd": 0.064232379198
+    },
+    {
+      "date": "2025-04-10",
+      "minimal_actuators_usd": 0.019195854664,
+      "full_six_etf_ladder_usd": 0.052382916212
+    },
+    {
+      "date": "2025-04-11",
+      "minimal_actuators_usd": 0.018742471933,
+      "full_six_etf_ladder_usd": 0.05112361908
+    },
+    {
+      "date": "2025-04-14",
+      "minimal_actuators_usd": 0.011335194111,
+      "full_six_etf_ladder_usd": 0.036014199257
+    },
+    {
+      "date": "2025-04-15",
+      "minimal_actuators_usd": 0.009543567896,
+      "full_six_etf_ladder_usd": 0.032933324575
+    },
+    {
+      "date": "2025-04-16",
+      "minimal_actuators_usd": 0.009639143944,
+      "full_six_etf_ladder_usd": 0.033843666315
+    },
+    {
+      "date": "2025-04-17",
+      "minimal_actuators_usd": 0.01263910532,
+      "full_six_etf_ladder_usd": 0.037688702345
+    },
+    {
+      "date": "2025-04-18",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-04-21",
+      "minimal_actuators_usd": 0.008522808552,
+      "full_six_etf_ladder_usd": 0.026595801115
+    },
+    {
+      "date": "2025-04-22",
+      "minimal_actuators_usd": 0.00832888484,
+      "full_six_etf_ladder_usd": 0.029744803905
+    },
+    {
+      "date": "2025-04-23",
+      "minimal_actuators_usd": 0.014013648033,
+      "full_six_etf_ladder_usd": 0.045431166887
+    },
+    {
+      "date": "2025-04-24",
+      "minimal_actuators_usd": 0.009260237217,
+      "full_six_etf_ladder_usd": 0.029074341059
+    },
+    {
+      "date": "2025-04-25",
+      "minimal_actuators_usd": 0.008154809475,
+      "full_six_etf_ladder_usd": 0.02546775341
+    },
+    {
+      "date": "2025-04-28",
+      "minimal_actuators_usd": 0.007929056883,
+      "full_six_etf_ladder_usd": 0.02390062809
+    },
+    {
+      "date": "2025-04-29",
+      "minimal_actuators_usd": 0.007306605577,
+      "full_six_etf_ladder_usd": 0.023655116558
+    },
+    {
+      "date": "2025-04-30",
+      "minimal_actuators_usd": 0.011433899403,
+      "full_six_etf_ladder_usd": 0.032271981239
+    },
+    {
+      "date": "2025-05-01",
+      "minimal_actuators_usd": 0.008066654205,
+      "full_six_etf_ladder_usd": 0.01976108551
+    },
+    {
+      "date": "2025-05-02",
+      "minimal_actuators_usd": 0.008388340473,
+      "full_six_etf_ladder_usd": 0.026815921068
+    },
+    {
+      "date": "2025-05-05",
+      "minimal_actuators_usd": 0.006372928619,
+      "full_six_etf_ladder_usd": 0.020414829254
+    },
+    {
+      "date": "2025-05-06",
+      "minimal_actuators_usd": 0.006872355938,
+      "full_six_etf_ladder_usd": 0.021536797285
+    },
+    {
+      "date": "2025-05-07",
+      "minimal_actuators_usd": 0.009562343359,
+      "full_six_etf_ladder_usd": 0.028699010611
+    },
+    {
+      "date": "2025-05-08",
+      "minimal_actuators_usd": 0.005919903517,
+      "full_six_etf_ladder_usd": 0.02385994792
+    },
+    {
+      "date": "2025-05-09",
+      "minimal_actuators_usd": 0.006331443787,
+      "full_six_etf_ladder_usd": 0.015654355288
+    },
+    {
+      "date": "2025-05-12",
+      "minimal_actuators_usd": 0.009030997753,
+      "full_six_etf_ladder_usd": 0.033032298088
+    },
+    {
+      "date": "2025-05-13",
+      "minimal_actuators_usd": 0.005015015602,
+      "full_six_etf_ladder_usd": 0.018521279097
+    },
+    {
+      "date": "2025-05-14",
+      "minimal_actuators_usd": 0.004735171795,
+      "full_six_etf_ladder_usd": 0.018947482109
+    },
+    {
+      "date": "2025-05-15",
+      "minimal_actuators_usd": 0.004119068384,
+      "full_six_etf_ladder_usd": 0.019561439753
+    },
+    {
+      "date": "2025-05-16",
+      "minimal_actuators_usd": 0.004937767982,
+      "full_six_etf_ladder_usd": 0.019406765699
+    },
+    {
+      "date": "2025-05-19",
+      "minimal_actuators_usd": 0.005286544561,
+      "full_six_etf_ladder_usd": 0.021365046501
+    },
+    {
+      "date": "2025-05-20",
+      "minimal_actuators_usd": 0.004591941833,
+      "full_six_etf_ladder_usd": 0.020050406456
+    },
+    {
+      "date": "2025-05-21",
+      "minimal_actuators_usd": 0.004639863968,
+      "full_six_etf_ladder_usd": 0.02785795927
+    },
+    {
+      "date": "2025-05-22",
+      "minimal_actuators_usd": 0.007623910904,
+      "full_six_etf_ladder_usd": 0.033440619707
+    },
+    {
+      "date": "2025-05-23",
+      "minimal_actuators_usd": 0.013294905424,
+      "full_six_etf_ladder_usd": 0.053389549255
+    },
+    {
+      "date": "2025-05-26",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-05-27",
+      "minimal_actuators_usd": 0.006734758615,
+      "full_six_etf_ladder_usd": 0.036146610975
+    },
+    {
+      "date": "2025-05-28",
+      "minimal_actuators_usd": 0.004489481449,
+      "full_six_etf_ladder_usd": 0.022652596235
+    },
+    {
+      "date": "2025-05-29",
+      "minimal_actuators_usd": 0.008644133806,
+      "full_six_etf_ladder_usd": 0.034368127584
+    },
+    {
+      "date": "2025-05-30",
+      "minimal_actuators_usd": 0.00626116991,
+      "full_six_etf_ladder_usd": 0.031328648329
+    },
+    {
+      "date": "2025-06-02",
+      "minimal_actuators_usd": 0.006333231926,
+      "full_six_etf_ladder_usd": 0.027741283178
+    },
+    {
+      "date": "2025-06-03",
+      "minimal_actuators_usd": 0.004812598228,
+      "full_six_etf_ladder_usd": 0.025874108076
+    },
+    {
+      "date": "2025-06-04",
+      "minimal_actuators_usd": 0.002949804068,
+      "full_six_etf_ladder_usd": 0.019075244665
+    },
+    {
+      "date": "2025-06-05",
+      "minimal_actuators_usd": 0.007265657187,
+      "full_six_etf_ladder_usd": 0.034706801176
+    },
+    {
+      "date": "2025-06-06",
+      "minimal_actuators_usd": 0.005967289209,
+      "full_six_etf_ladder_usd": 0.03737193346
+    },
+    {
+      "date": "2025-06-09",
+      "minimal_actuators_usd": 0.005397230387,
+      "full_six_etf_ladder_usd": 0.02392655611
+    },
+    {
+      "date": "2025-06-10",
+      "minimal_actuators_usd": 0.003309577703,
+      "full_six_etf_ladder_usd": 0.019797027111
+    },
+    {
+      "date": "2025-06-11",
+      "minimal_actuators_usd": 0.005958616734,
+      "full_six_etf_ladder_usd": 0.02355748415
+    },
+    {
+      "date": "2025-06-12",
+      "minimal_actuators_usd": 0.005971759558,
+      "full_six_etf_ladder_usd": 0.024985492229
+    },
+    {
+      "date": "2025-06-13",
+      "minimal_actuators_usd": 0.006861001253,
+      "full_six_etf_ladder_usd": 0.027552008629
+    },
+    {
+      "date": "2025-06-16",
+      "minimal_actuators_usd": 0.00575825572,
+      "full_six_etf_ladder_usd": 0.025410890579
+    },
+    {
+      "date": "2025-06-17",
+      "minimal_actuators_usd": 0.005936980247,
+      "full_six_etf_ladder_usd": 0.024773597717
+    },
+    {
+      "date": "2025-06-18",
+      "minimal_actuators_usd": 0.004100292921,
+      "full_six_etf_ladder_usd": 0.01897162199
+    },
+    {
+      "date": "2025-06-19",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-06-20",
+      "minimal_actuators_usd": 0.007914751768,
+      "full_six_etf_ladder_usd": 0.028743088245
+    },
+    {
+      "date": "2025-06-23",
+      "minimal_actuators_usd": 0.007515370846,
+      "full_six_etf_ladder_usd": 0.030344367027
+    },
+    {
+      "date": "2025-06-24",
+      "minimal_actuators_usd": 0.005262672901,
+      "full_six_etf_ladder_usd": 0.024508327246
+    },
+    {
+      "date": "2025-06-25",
+      "minimal_actuators_usd": 0.003437250853,
+      "full_six_etf_ladder_usd": 0.019573241472
+    },
+    {
+      "date": "2025-06-26",
+      "minimal_actuators_usd": 0.003640115261,
+      "full_six_etf_ladder_usd": 0.023751050234
+    },
+    {
+      "date": "2025-06-27",
+      "minimal_actuators_usd": 0.002981454134,
+      "full_six_etf_ladder_usd": 0.020766198635
+    },
+    {
+      "date": "2025-06-30",
+      "minimal_actuators_usd": 0.003990590572,
+      "full_six_etf_ladder_usd": 0.023120909929
+    },
+    {
+      "date": "2025-07-01",
+      "minimal_actuators_usd": 0.003903955221,
+      "full_six_etf_ladder_usd": 0.02153930068
+    },
+    {
+      "date": "2025-07-02",
+      "minimal_actuators_usd": 0.005190610886,
+      "full_six_etf_ladder_usd": 0.023868530989
+    },
+    {
+      "date": "2025-07-03",
+      "minimal_actuators_usd": 0.003497779369,
+      "full_six_etf_ladder_usd": 0.021206796169
+    },
+    {
+      "date": "2025-07-04",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-07-07",
+      "minimal_actuators_usd": 0.00429341197,
+      "full_six_etf_ladder_usd": 0.020614027977
+    },
+    {
+      "date": "2025-07-08",
+      "minimal_actuators_usd": 0.002939522266,
+      "full_six_etf_ladder_usd": 0.02016761899
+    },
+    {
+      "date": "2025-07-09",
+      "minimal_actuators_usd": 0.00473383069,
+      "full_six_etf_ladder_usd": 0.022806912661
+    },
+    {
+      "date": "2025-07-10",
+      "minimal_actuators_usd": 0.004135787487,
+      "full_six_etf_ladder_usd": 0.020574510098
+    },
+    {
+      "date": "2025-07-11",
+      "minimal_actuators_usd": 0.004734635353,
+      "full_six_etf_ladder_usd": 0.025497168303
+    },
+    {
+      "date": "2025-07-14",
+      "minimal_actuators_usd": 0.006398677826,
+      "full_six_etf_ladder_usd": 0.026932775974
+    },
+    {
+      "date": "2025-07-15",
+      "minimal_actuators_usd": 0.005593746901,
+      "full_six_etf_ladder_usd": 0.029809445143
+    },
+    {
+      "date": "2025-07-16",
+      "minimal_actuators_usd": 0.006006807089,
+      "full_six_etf_ladder_usd": 0.029447883368
+    },
+    {
+      "date": "2025-07-17",
+      "minimal_actuators_usd": 0.005605995655,
+      "full_six_etf_ladder_usd": 0.025389164686
+    },
+    {
+      "date": "2025-07-18",
+      "minimal_actuators_usd": 0.005078494549,
+      "full_six_etf_ladder_usd": 0.019618213177
+    },
+    {
+      "date": "2025-07-21",
+      "minimal_actuators_usd": 0.003591567278,
+      "full_six_etf_ladder_usd": 0.014631360769
+    },
+    {
+      "date": "2025-07-22",
+      "minimal_actuators_usd": 0.004779070616,
+      "full_six_etf_ladder_usd": 0.021368712187
+    },
+    {
+      "date": "2025-07-23",
+      "minimal_actuators_usd": 0.005984723568,
+      "full_six_etf_ladder_usd": 0.025448620319
+    },
+    {
+      "date": "2025-07-24",
+      "minimal_actuators_usd": 0.006413519382,
+      "full_six_etf_ladder_usd": 0.028333514929
+    },
+    {
+      "date": "2025-07-25",
+      "minimal_actuators_usd": 0.003344267607,
+      "full_six_etf_ladder_usd": 0.020398736
+    },
+    {
+      "date": "2025-07-28",
+      "minimal_actuators_usd": 0.00504720211,
+      "full_six_etf_ladder_usd": 0.022145569324
+    },
+    {
+      "date": "2025-07-29",
+      "minimal_actuators_usd": 0.003492414951,
+      "full_six_etf_ladder_usd": 0.018597453833
+    },
+    {
+      "date": "2025-07-30",
+      "minimal_actuators_usd": 0.004421979189,
+      "full_six_etf_ladder_usd": 0.020252913237
+    },
+    {
+      "date": "2025-07-31",
+      "minimal_actuators_usd": 0.006738603115,
+      "full_six_etf_ladder_usd": 0.031515866518
+    },
+    {
+      "date": "2025-08-01",
+      "minimal_actuators_usd": 0.014369308949,
+      "full_six_etf_ladder_usd": 0.055768758059
+    },
+    {
+      "date": "2025-08-04",
+      "minimal_actuators_usd": 0.007003068924,
+      "full_six_etf_ladder_usd": 0.026401162148
+    },
+    {
+      "date": "2025-08-05",
+      "minimal_actuators_usd": 0.007678806782,
+      "full_six_etf_ladder_usd": 0.022725105286
+    },
+    {
+      "date": "2025-08-06",
+      "minimal_actuators_usd": 0.009939104319,
+      "full_six_etf_ladder_usd": 0.029222309589
+    },
+    {
+      "date": "2025-08-07",
+      "minimal_actuators_usd": 0.006544142962,
+      "full_six_etf_ladder_usd": 0.025799363852
+    },
+    {
+      "date": "2025-08-08",
+      "minimal_actuators_usd": 0.006064474583,
+      "full_six_etf_ladder_usd": 0.019191741943
+    },
+    {
+      "date": "2025-08-11",
+      "minimal_actuators_usd": 0.004619926214,
+      "full_six_etf_ladder_usd": 0.01383921504
+    },
+    {
+      "date": "2025-08-12",
+      "minimal_actuators_usd": 0.005293428898,
+      "full_six_etf_ladder_usd": 0.018262892962
+    },
+    {
+      "date": "2025-08-13",
+      "minimal_actuators_usd": 0.003085434437,
+      "full_six_etf_ladder_usd": 0.009605169296
+    },
+    {
+      "date": "2025-08-14",
+      "minimal_actuators_usd": 0.005232989788,
+      "full_six_etf_ladder_usd": 0.01599624753
+    },
+    {
+      "date": "2025-08-15",
+      "minimal_actuators_usd": 0.004590779543,
+      "full_six_etf_ladder_usd": 0.013450831175
+    },
+    {
+      "date": "2025-08-18",
+      "minimal_actuators_usd": 0.004269719124,
+      "full_six_etf_ladder_usd": 0.014233678579
+    },
+    {
+      "date": "2025-08-19",
+      "minimal_actuators_usd": 0.004527568817,
+      "full_six_etf_ladder_usd": 0.012532711029
+    },
+    {
+      "date": "2025-08-20",
+      "minimal_actuators_usd": 0.006410837173,
+      "full_six_etf_ladder_usd": 0.024085789919
+    },
+    {
+      "date": "2025-08-21",
+      "minimal_actuators_usd": 0.00776642561,
+      "full_six_etf_ladder_usd": 0.022416383028
+    },
+    {
+      "date": "2025-08-22",
+      "minimal_actuators_usd": 0.004829138517,
+      "full_six_etf_ladder_usd": 0.01744222641
+    },
+    {
+      "date": "2025-08-25",
+      "minimal_actuators_usd": 0.005529105663,
+      "full_six_etf_ladder_usd": 0.017439901829
+    },
+    {
+      "date": "2025-08-26",
+      "minimal_actuators_usd": 0.004703700542,
+      "full_six_etf_ladder_usd": 0.013565003872
+    },
+    {
+      "date": "2025-08-27",
+      "minimal_actuators_usd": 0.003832787275,
+      "full_six_etf_ladder_usd": 0.012630343437
+    },
+    {
+      "date": "2025-08-28",
+      "minimal_actuators_usd": 0.005058556795,
+      "full_six_etf_ladder_usd": 0.018119573593
+    },
+    {
+      "date": "2025-08-29",
+      "minimal_actuators_usd": 0.004054427147,
+      "full_six_etf_ladder_usd": 0.019664973021
+    },
+    {
+      "date": "2025-09-01",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-09-02",
+      "minimal_actuators_usd": 0.008948653936,
+      "full_six_etf_ladder_usd": 0.029944002628
+    },
+    {
+      "date": "2025-09-03",
+      "minimal_actuators_usd": 0.005623787642,
+      "full_six_etf_ladder_usd": 0.022566318512
+    },
+    {
+      "date": "2025-09-04",
+      "minimal_actuators_usd": 0.004758685827,
+      "full_six_etf_ladder_usd": 0.020460695028
+    },
+    {
+      "date": "2025-09-05",
+      "minimal_actuators_usd": 0.004709154367,
+      "full_six_etf_ladder_usd": 0.022427022457
+    },
+    {
+      "date": "2025-09-08",
+      "minimal_actuators_usd": 0.004929274321,
+      "full_six_etf_ladder_usd": 0.020614296198
+    },
+    {
+      "date": "2025-09-09",
+      "minimal_actuators_usd": 0.004547685385,
+      "full_six_etf_ladder_usd": 0.014715045691
+    },
+    {
+      "date": "2025-09-10",
+      "minimal_actuators_usd": 0.00589299202,
+      "full_six_etf_ladder_usd": 0.023074418306
+    },
+    {
+      "date": "2025-09-11",
+      "minimal_actuators_usd": 0.005018502474,
+      "full_six_etf_ladder_usd": 0.020391583443
+    },
+    {
+      "date": "2025-09-12",
+      "minimal_actuators_usd": 0.002840816975,
+      "full_six_etf_ladder_usd": 0.015488684177
+    },
+    {
+      "date": "2025-09-15",
+      "minimal_actuators_usd": 0.002536028624,
+      "full_six_etf_ladder_usd": 0.015627980232
+    },
+    {
+      "date": "2025-09-16",
+      "minimal_actuators_usd": 0.002051085234,
+      "full_six_etf_ladder_usd": 0.013302326202
+    },
+    {
+      "date": "2025-09-17",
+      "minimal_actuators_usd": 0.002478718758,
+      "full_six_etf_ladder_usd": 0.015221893787
+    },
+    {
+      "date": "2025-09-18",
+      "minimal_actuators_usd": 0.003034114838,
+      "full_six_etf_ladder_usd": 0.018438488245
+    },
+    {
+      "date": "2025-09-19",
+      "minimal_actuators_usd": 0.004069268703,
+      "full_six_etf_ladder_usd": 0.018081218004
+    },
+    {
+      "date": "2025-09-22",
+      "minimal_actuators_usd": 0.002827316523,
+      "full_six_etf_ladder_usd": 0.012233108282
+    },
+    {
+      "date": "2025-09-23",
+      "minimal_actuators_usd": 0.002169281244,
+      "full_six_etf_ladder_usd": 0.010368794203
+    },
+    {
+      "date": "2025-09-24",
+      "minimal_actuators_usd": 0.003263443708,
+      "full_six_etf_ladder_usd": 0.014819204807
+    },
+    {
+      "date": "2025-09-25",
+      "minimal_actuators_usd": 0.005121231079,
+      "full_six_etf_ladder_usd": 0.022635787725
+    },
+    {
+      "date": "2025-09-26",
+      "minimal_actuators_usd": 0.003912001848,
+      "full_six_etf_ladder_usd": 0.0183160007
+    },
+    {
+      "date": "2025-09-29",
+      "minimal_actuators_usd": 0.004002481699,
+      "full_six_etf_ladder_usd": 0.017634361982
+    },
+    {
+      "date": "2025-09-30",
+      "minimal_actuators_usd": 0.00403046608,
+      "full_six_etf_ladder_usd": 0.017350316048
+    },
+    {
+      "date": "2025-10-01",
+      "minimal_actuators_usd": 0.005330264568,
+      "full_six_etf_ladder_usd": 0.019146054983
+    },
+    {
+      "date": "2025-10-02",
+      "minimal_actuators_usd": 0.004174143076,
+      "full_six_etf_ladder_usd": 0.016607701778
+    },
+    {
+      "date": "2025-10-03",
+      "minimal_actuators_usd": 0.00346416235,
+      "full_six_etf_ladder_usd": 0.01426461339
+    },
+    {
+      "date": "2025-10-06",
+      "minimal_actuators_usd": 0.004328280687,
+      "full_six_etf_ladder_usd": 0.021525263786
+    },
+    {
+      "date": "2025-10-07",
+      "minimal_actuators_usd": 0.003172338009,
+      "full_six_etf_ladder_usd": 0.014771103859
+    },
+    {
+      "date": "2025-10-08",
+      "minimal_actuators_usd": 0.003122806549,
+      "full_six_etf_ladder_usd": 0.01552310586
+    },
+    {
+      "date": "2025-10-09",
+      "minimal_actuators_usd": 0.003348380327,
+      "full_six_etf_ladder_usd": 0.015261501074
+    },
+    {
+      "date": "2025-10-10",
+      "minimal_actuators_usd": 0.003119766712,
+      "full_six_etf_ladder_usd": 0.014297604561
+    },
+    {
+      "date": "2025-10-13",
+      "minimal_actuators_usd": 0.008202373981,
+      "full_six_etf_ladder_usd": 0.032173901796
+    },
+    {
+      "date": "2025-10-14",
+      "minimal_actuators_usd": 0.010398566723,
+      "full_six_etf_ladder_usd": 0.03283944726
+    },
+    {
+      "date": "2025-10-15",
+      "minimal_actuators_usd": 0.005765140057,
+      "full_six_etf_ladder_usd": 0.021957814693
+    },
+    {
+      "date": "2025-10-16",
+      "minimal_actuators_usd": 0.00559347868,
+      "full_six_etf_ladder_usd": 0.020890384912
+    },
+    {
+      "date": "2025-10-17",
+      "minimal_actuators_usd": 0.012518852949,
+      "full_six_etf_ladder_usd": 0.037396252155
+    },
+    {
+      "date": "2025-10-20",
+      "minimal_actuators_usd": 0.004353672266,
+      "full_six_etf_ladder_usd": 0.015303075314
+    },
+    {
+      "date": "2025-10-21",
+      "minimal_actuators_usd": 0.004646748304,
+      "full_six_etf_ladder_usd": 0.016266167164
+    },
+    {
+      "date": "2025-10-22",
+      "minimal_actuators_usd": 0.006035774946,
+      "full_six_etf_ladder_usd": 0.01567876339
+    },
+    {
+      "date": "2025-10-23",
+      "minimal_actuators_usd": 0.00462475419,
+      "full_six_etf_ladder_usd": 0.01499953866
+    },
+    {
+      "date": "2025-10-24",
+      "minimal_actuators_usd": 0.002587258816,
+      "full_six_etf_ladder_usd": 0.013661652803
+    },
+    {
+      "date": "2025-10-27",
+      "minimal_actuators_usd": 0.00500652194,
+      "full_six_etf_ladder_usd": 0.017067968845
+    },
+    {
+      "date": "2025-10-28",
+      "minimal_actuators_usd": 0.00499945879,
+      "full_six_etf_ladder_usd": 0.015895932913
+    },
+    {
+      "date": "2025-10-29",
+      "minimal_actuators_usd": 0.004246383905,
+      "full_six_etf_ladder_usd": 0.018442153931
+    },
+    {
+      "date": "2025-10-30",
+      "minimal_actuators_usd": 0.009008556604,
+      "full_six_etf_ladder_usd": 0.028743624687
+    },
+    {
+      "date": "2025-10-31",
+      "minimal_actuators_usd": 0.005211979151,
+      "full_six_etf_ladder_usd": 0.018184840679
+    },
+    {
+      "date": "2025-11-03",
+      "minimal_actuators_usd": 0.00461563468,
+      "full_six_etf_ladder_usd": 0.016085475683
+    },
+    {
+      "date": "2025-11-04",
+      "minimal_actuators_usd": 0.004910856485,
+      "full_six_etf_ladder_usd": 0.027176499367
+    },
+    {
+      "date": "2025-11-05",
+      "minimal_actuators_usd": 0.006571859121,
+      "full_six_etf_ladder_usd": 0.022467166185
+    },
+    {
+      "date": "2025-11-06",
+      "minimal_actuators_usd": 0.006115704775,
+      "full_six_etf_ladder_usd": 0.020419836044
+    },
+    {
+      "date": "2025-11-07",
+      "minimal_actuators_usd": 0.009118258953,
+      "full_six_etf_ladder_usd": 0.031321495771
+    },
+    {
+      "date": "2025-11-10",
+      "minimal_actuators_usd": 0.006351739168,
+      "full_six_etf_ladder_usd": 0.022225499153
+    },
+    {
+      "date": "2025-11-11",
+      "minimal_actuators_usd": 0.005211442709,
+      "full_six_etf_ladder_usd": 0.016979366541
+    },
+    {
+      "date": "2025-11-12",
+      "minimal_actuators_usd": 0.004019021988,
+      "full_six_etf_ladder_usd": 0.015976220369
+    },
+    {
+      "date": "2025-11-13",
+      "minimal_actuators_usd": 0.007963478565,
+      "full_six_etf_ladder_usd": 0.02656763792
+    },
+    {
+      "date": "2025-11-14",
+      "minimal_actuators_usd": 0.012157469988,
+      "full_six_etf_ladder_usd": 0.040777176619
+    },
+    {
+      "date": "2025-11-17",
+      "minimal_actuators_usd": 0.007701963186,
+      "full_six_etf_ladder_usd": 0.031616538763
+    },
+    {
+      "date": "2025-11-18",
+      "minimal_actuators_usd": 0.011423975229,
+      "full_six_etf_ladder_usd": 0.045791566372
+    },
+    {
+      "date": "2025-11-19",
+      "minimal_actuators_usd": 0.009245753288,
+      "full_six_etf_ladder_usd": 0.039114117622
+    },
+    {
+      "date": "2025-11-20",
+      "minimal_actuators_usd": 0.010664910078,
+      "full_six_etf_ladder_usd": 0.041669458151
+    },
+    {
+      "date": "2025-11-21",
+      "minimal_actuators_usd": 0.020068109035,
+      "full_six_etf_ladder_usd": 0.05097001791
+    },
+    {
+      "date": "2025-11-24",
+      "minimal_actuators_usd": 0.014235377312,
+      "full_six_etf_ladder_usd": 0.038439631462
+    },
+    {
+      "date": "2025-11-25",
+      "minimal_actuators_usd": 0.010208398104,
+      "full_six_etf_ladder_usd": 0.024420708418
+    },
+    {
+      "date": "2025-11-26",
+      "minimal_actuators_usd": 0.010092169046,
+      "full_six_etf_ladder_usd": 0.02651488781
+    },
+    {
+      "date": "2025-11-27",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-11-28",
+      "minimal_actuators_usd": 0.003605782986,
+      "full_six_etf_ladder_usd": 0.009649425745
+    },
+    {
+      "date": "2025-12-01",
+      "minimal_actuators_usd": 0.008825719357,
+      "full_six_etf_ladder_usd": 0.024870425463
+    },
+    {
+      "date": "2025-12-02",
+      "minimal_actuators_usd": 0.006465554237,
+      "full_six_etf_ladder_usd": 0.0179451406
+    },
+    {
+      "date": "2025-12-03",
+      "minimal_actuators_usd": 0.014492332935,
+      "full_six_etf_ladder_usd": 0.0357234478
+    },
+    {
+      "date": "2025-12-04",
+      "minimal_actuators_usd": 0.009615004063,
+      "full_six_etf_ladder_usd": 0.025729089975
+    },
+    {
+      "date": "2025-12-05",
+      "minimal_actuators_usd": 0.007287293673,
+      "full_six_etf_ladder_usd": 0.019869089127
+    },
+    {
+      "date": "2025-12-08",
+      "minimal_actuators_usd": 0.007171332836,
+      "full_six_etf_ladder_usd": 0.022060006857
+    },
+    {
+      "date": "2025-12-09",
+      "minimal_actuators_usd": 0.009669989347,
+      "full_six_etf_ladder_usd": 0.031430572271
+    },
+    {
+      "date": "2025-12-10",
+      "minimal_actuators_usd": 0.007742911577,
+      "full_six_etf_ladder_usd": 0.024943560362
+    },
+    {
+      "date": "2025-12-11",
+      "minimal_actuators_usd": 0.010659456253,
+      "full_six_etf_ladder_usd": 0.032783657312
+    },
+    {
+      "date": "2025-12-12",
+      "minimal_actuators_usd": 0.006685853004,
+      "full_six_etf_ladder_usd": 0.018275141716
+    },
+    {
+      "date": "2025-12-15",
+      "minimal_actuators_usd": 0.007575362921,
+      "full_six_etf_ladder_usd": 0.026129096746
+    },
+    {
+      "date": "2025-12-16",
+      "minimal_actuators_usd": 0.01204803586,
+      "full_six_etf_ladder_usd": 0.041379064322
+    },
+    {
+      "date": "2025-12-17",
+      "minimal_actuators_usd": 0.012869864702,
+      "full_six_etf_ladder_usd": 0.03393933177
+    },
+    {
+      "date": "2025-12-18",
+      "minimal_actuators_usd": 0.009812504053,
+      "full_six_etf_ladder_usd": 0.034630000591
+    },
+    {
+      "date": "2025-12-19",
+      "minimal_actuators_usd": 0.009127467871,
+      "full_six_etf_ladder_usd": 0.030421793461
+    },
+    {
+      "date": "2025-12-22",
+      "minimal_actuators_usd": 0.008553028107,
+      "full_six_etf_ladder_usd": 0.023014783859
+    },
+    {
+      "date": "2025-12-23",
+      "minimal_actuators_usd": 0.006558984518,
+      "full_six_etf_ladder_usd": 0.017798960209
+    },
+    {
+      "date": "2025-12-24",
+      "minimal_actuators_usd": 0.003182798624,
+      "full_six_etf_ladder_usd": 0.010831475258
+    },
+    {
+      "date": "2025-12-25",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2025-12-26",
+      "minimal_actuators_usd": 0.005662679672,
+      "full_six_etf_ladder_usd": 0.013168483973
+    },
+    {
+      "date": "2025-12-29",
+      "minimal_actuators_usd": 0.008285880089,
+      "full_six_etf_ladder_usd": 0.026379883289
+    },
+    {
+      "date": "2025-12-30",
+      "minimal_actuators_usd": 0.005829334259,
+      "full_six_etf_ladder_usd": 0.018683731556
+    },
+    {
+      "date": "2025-12-31",
+      "minimal_actuators_usd": 0.005810558796,
+      "full_six_etf_ladder_usd": 0.017900794744
+    },
+    {
+      "date": "2026-01-01",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2026-01-02",
+      "minimal_actuators_usd": 0.009985327721,
+      "full_six_etf_ladder_usd": 0.037749677896
+    },
+    {
+      "date": "2026-01-05",
+      "minimal_actuators_usd": 0.012986004353,
+      "full_six_etf_ladder_usd": 0.048208594322
+    },
+    {
+      "date": "2026-01-06",
+      "minimal_actuators_usd": 0.008809268475,
+      "full_six_etf_ladder_usd": 0.028943270445
+    },
+    {
+      "date": "2026-01-07",
+      "minimal_actuators_usd": 0.00724580884,
+      "full_six_etf_ladder_usd": 0.025394886732
+    },
+    {
+      "date": "2026-01-08",
+      "minimal_actuators_usd": 0.011046230793,
+      "full_six_etf_ladder_usd": 0.036290645599
+    },
+    {
+      "date": "2026-01-09",
+      "minimal_actuators_usd": 0.011442750692,
+      "full_six_etf_ladder_usd": 0.039672642946
+    },
+    {
+      "date": "2026-01-12",
+      "minimal_actuators_usd": 0.008943736553,
+      "full_six_etf_ladder_usd": 0.030793726444
+    },
+    {
+      "date": "2026-01-13",
+      "minimal_actuators_usd": 0.010348767042,
+      "full_six_etf_ladder_usd": 0.035054326057
+    },
+    {
+      "date": "2026-01-14",
+      "minimal_actuators_usd": 0.013501435518,
+      "full_six_etf_ladder_usd": 0.043040066957
+    },
+    {
+      "date": "2026-01-15",
+      "minimal_actuators_usd": 0.009523719549,
+      "full_six_etf_ladder_usd": 0.032482892275
+    },
+    {
+      "date": "2026-01-16",
+      "minimal_actuators_usd": 0.007276922464,
+      "full_six_etf_ladder_usd": 0.025157600641
+    },
+    {
+      "date": "2026-01-19",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2026-01-20",
+      "minimal_actuators_usd": 0.017514199018,
+      "full_six_etf_ladder_usd": 0.061734348536
+    },
+    {
+      "date": "2026-01-21",
+      "minimal_actuators_usd": 0.016327947378,
+      "full_six_etf_ladder_usd": 0.054488003254
+    },
+    {
+      "date": "2026-01-22",
+      "minimal_actuators_usd": 0.010170310736,
+      "full_six_etf_ladder_usd": 0.035334706306
+    },
+    {
+      "date": "2026-01-23",
+      "minimal_actuators_usd": 0.007823109627,
+      "full_six_etf_ladder_usd": 0.031871169806
+    },
+    {
+      "date": "2026-01-26",
+      "minimal_actuators_usd": 0.007555067539,
+      "full_six_etf_ladder_usd": 0.030473023653
+    },
+    {
+      "date": "2026-01-27",
+      "minimal_actuators_usd": 0.00708219409,
+      "full_six_etf_ladder_usd": 0.02913531661
+    },
+    {
+      "date": "2026-01-28",
+      "minimal_actuators_usd": 0.008394598961,
+      "full_six_etf_ladder_usd": 0.027442127466
+    },
+    {
+      "date": "2026-01-29",
+      "minimal_actuators_usd": 0.008815705776,
+      "full_six_etf_ladder_usd": 0.032531350851
+    },
+    {
+      "date": "2026-01-30",
+      "minimal_actuators_usd": 0.012650996447,
+      "full_six_etf_ladder_usd": 0.039091318846
+    },
+    {
+      "date": "2026-02-02",
+      "minimal_actuators_usd": 0.011826306581,
+      "full_six_etf_ladder_usd": 0.041886717081
+    },
+    {
+      "date": "2026-02-03",
+      "minimal_actuators_usd": 0.010002404451,
+      "full_six_etf_ladder_usd": 0.036445051432
+    },
+    {
+      "date": "2026-02-04",
+      "minimal_actuators_usd": 0.0163384974,
+      "full_six_etf_ladder_usd": 0.050469785929
+    },
+    {
+      "date": "2026-02-05",
+      "minimal_actuators_usd": 0.025415182114,
+      "full_six_etf_ladder_usd": 0.085336983204
+    },
+    {
+      "date": "2026-02-06",
+      "minimal_actuators_usd": 0.020352423191,
+      "full_six_etf_ladder_usd": 0.076013445854
+    },
+    {
+      "date": "2026-02-09",
+      "minimal_actuators_usd": 0.016997158527,
+      "full_six_etf_ladder_usd": 0.047453641891
+    },
+    {
+      "date": "2026-02-10",
+      "minimal_actuators_usd": 0.009286344051,
+      "full_six_etf_ladder_usd": 0.028450191021
+    },
+    {
+      "date": "2026-02-11",
+      "minimal_actuators_usd": 0.013257980347,
+      "full_six_etf_ladder_usd": 0.032958984375
+    },
+    {
+      "date": "2026-02-12",
+      "minimal_actuators_usd": 0.009061932564,
+      "full_six_etf_ladder_usd": 0.028786540031
+    },
+    {
+      "date": "2026-02-13",
+      "minimal_actuators_usd": 0.020194172859,
+      "full_six_etf_ladder_usd": 0.055322885513
+    },
+    {
+      "date": "2026-02-16",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2026-02-17",
+      "minimal_actuators_usd": 0.017772853374,
+      "full_six_etf_ladder_usd": 0.047782748938
+    },
+    {
+      "date": "2026-02-18",
+      "minimal_actuators_usd": 0.018952131271,
+      "full_six_etf_ladder_usd": 0.055463701487
+    },
+    {
+      "date": "2026-02-19",
+      "minimal_actuators_usd": 0.014914602041,
+      "full_six_etf_ladder_usd": 0.052275627851
+    },
+    {
+      "date": "2026-02-20",
+      "minimal_actuators_usd": 0.016356915236,
+      "full_six_etf_ladder_usd": 0.053251236677
+    },
+    {
+      "date": "2026-02-23",
+      "minimal_actuators_usd": 0.01164534688,
+      "full_six_etf_ladder_usd": 0.039650917053
+    },
+    {
+      "date": "2026-02-24",
+      "minimal_actuators_usd": 0.015868037939,
+      "full_six_etf_ladder_usd": 0.044405758381
+    },
+    {
+      "date": "2026-02-25",
+      "minimal_actuators_usd": 0.008541762829,
+      "full_six_etf_ladder_usd": 0.030493050814
+    },
+    {
+      "date": "2026-02-26",
+      "minimal_actuators_usd": 0.011487901211,
+      "full_six_etf_ladder_usd": 0.042698085308
+    },
+    {
+      "date": "2026-02-27",
+      "minimal_actuators_usd": 0.016833901405,
+      "full_six_etf_ladder_usd": 0.058296024799
+    },
+    {
+      "date": "2026-03-02",
+      "minimal_actuators_usd": 0.020945012569,
+      "full_six_etf_ladder_usd": 0.063666075468
+    },
+    {
+      "date": "2026-03-03",
+      "minimal_actuators_usd": 0.021875023842,
+      "full_six_etf_ladder_usd": 0.076421946287
+    },
+    {
+      "date": "2026-03-04",
+      "minimal_actuators_usd": 0.022454738617,
+      "full_six_etf_ladder_usd": 0.06082239747
+    },
+    {
+      "date": "2026-03-05",
+      "minimal_actuators_usd": 0.014699220657,
+      "full_six_etf_ladder_usd": 0.04491135478
+    },
+    {
+      "date": "2026-03-06",
+      "minimal_actuators_usd": 0.022130638361,
+      "full_six_etf_ladder_usd": 0.064677983522
+    },
+    {
+      "date": "2026-03-09",
+      "minimal_actuators_usd": 0.018501609564,
+      "full_six_etf_ladder_usd": 0.055976897478
+    },
+    {
+      "date": "2026-03-10",
+      "minimal_actuators_usd": 0.016347795725,
+      "full_six_etf_ladder_usd": 0.040161699057
+    },
+    {
+      "date": "2026-03-11",
+      "minimal_actuators_usd": 0.012605845928,
+      "full_six_etf_ladder_usd": 0.03648430109
+    },
+    {
+      "date": "2026-03-12",
+      "minimal_actuators_usd": 0.0151065588,
+      "full_six_etf_ladder_usd": 0.042091995478
+    },
+    {
+      "date": "2026-03-13",
+      "minimal_actuators_usd": 0.013626426458,
+      "full_six_etf_ladder_usd": 0.046173602343
+    },
+    {
+      "date": "2026-03-16",
+      "minimal_actuators_usd": 0.009218126535,
+      "full_six_etf_ladder_usd": 0.032227993011
+    },
+    {
+      "date": "2026-03-17",
+      "minimal_actuators_usd": 0.006352454424,
+      "full_six_etf_ladder_usd": 0.022202163935
+    },
+    {
+      "date": "2026-03-18",
+      "minimal_actuators_usd": 0.010636478662,
+      "full_six_etf_ladder_usd": 0.037275642157
+    },
+    {
+      "date": "2026-03-19",
+      "minimal_actuators_usd": 0.014286786318,
+      "full_six_etf_ladder_usd": 0.045375555754
+    },
+    {
+      "date": "2026-03-20",
+      "minimal_actuators_usd": 0.010915607214,
+      "full_six_etf_ladder_usd": 0.035851120949
+    },
+    {
+      "date": "2026-03-23",
+      "minimal_actuators_usd": 0.025407761335,
+      "full_six_etf_ladder_usd": 0.06828519702
+    },
+    {
+      "date": "2026-03-24",
+      "minimal_actuators_usd": 0.013129591942,
+      "full_six_etf_ladder_usd": 0.043742358685
+    },
+    {
+      "date": "2026-03-25",
+      "minimal_actuators_usd": 0.010705679655,
+      "full_six_etf_ladder_usd": 0.032400459051
+    },
+    {
+      "date": "2026-03-26",
+      "minimal_actuators_usd": 0.010126501322,
+      "full_six_etf_ladder_usd": 0.028931379318
+    },
+    {
+      "date": "2026-03-27",
+      "minimal_actuators_usd": 0.011384725571,
+      "full_six_etf_ladder_usd": 0.033027648926
+    },
+    {
+      "date": "2026-03-30",
+      "minimal_actuators_usd": 0.011556565762,
+      "full_six_etf_ladder_usd": 0.033793956041
+    },
+    {
+      "date": "2026-03-31",
+      "minimal_actuators_usd": 0.013530135155,
+      "full_six_etf_ladder_usd": 0.040034562349
+    },
+    {
+      "date": "2026-04-01",
+      "minimal_actuators_usd": 0.011824697256,
+      "full_six_etf_ladder_usd": 0.032884597778
+    },
+    {
+      "date": "2026-04-02",
+      "minimal_actuators_usd": 0.01083496213,
+      "full_six_etf_ladder_usd": 0.035360008478
+    },
+    {
+      "date": "2026-04-03",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2026-04-06",
+      "minimal_actuators_usd": 0.011764258146,
+      "full_six_etf_ladder_usd": 0.034791827202
+    },
+    {
+      "date": "2026-04-07",
+      "minimal_actuators_usd": 0.011436402798,
+      "full_six_etf_ladder_usd": 0.032474130392
+    },
+    {
+      "date": "2026-04-08",
+      "minimal_actuators_usd": 0.009102255106,
+      "full_six_etf_ladder_usd": 0.029368668795
+    },
+    {
+      "date": "2026-04-09",
+      "minimal_actuators_usd": 0.006188482046,
+      "full_six_etf_ladder_usd": 0.021840423346
+    },
+    {
+      "date": "2026-04-10",
+      "minimal_actuators_usd": 0.006837397814,
+      "full_six_etf_ladder_usd": 0.020210087299
+    },
+    {
+      "date": "2026-04-13",
+      "minimal_actuators_usd": 0.004849612713,
+      "full_six_etf_ladder_usd": 0.012739688158
+    },
+    {
+      "date": "2026-04-14",
+      "minimal_actuators_usd": 0.007588237524,
+      "full_six_etf_ladder_usd": 0.022103011608
+    },
+    {
+      "date": "2026-04-15",
+      "minimal_actuators_usd": 0.005611985922,
+      "full_six_etf_ladder_usd": 0.02069914341
+    },
+    {
+      "date": "2026-04-16",
+      "minimal_actuators_usd": 0.005252838135,
+      "full_six_etf_ladder_usd": 0.018808364868
+    },
+    {
+      "date": "2026-04-17",
+      "minimal_actuators_usd": 0.01078659296,
+      "full_six_etf_ladder_usd": 0.026902109385
+    },
+    {
+      "date": "2026-04-20",
+      "minimal_actuators_usd": 0.009047359228,
+      "full_six_etf_ladder_usd": 0.025776028633
+    },
+    {
+      "date": "2026-04-21",
+      "minimal_actuators_usd": 0.006663680077,
+      "full_six_etf_ladder_usd": 0.021272689104
+    },
+    {
+      "date": "2026-04-22",
+      "minimal_actuators_usd": 0.007963299751,
+      "full_six_etf_ladder_usd": 0.023501425982
+    },
+    {
+      "date": "2026-04-23",
+      "minimal_actuators_usd": 0.008512705564,
+      "full_six_etf_ladder_usd": 0.021660625935
+    },
+    {
+      "date": "2026-04-24",
+      "minimal_actuators_usd": 0.010832548141,
+      "full_six_etf_ladder_usd": 0.02442535758
+    },
+    {
+      "date": "2026-04-27",
+      "minimal_actuators_usd": 0.007958739996,
+      "full_six_etf_ladder_usd": 0.025532305241
+    },
+    {
+      "date": "2026-04-28",
+      "minimal_actuators_usd": 0.012999951839,
+      "full_six_etf_ladder_usd": 0.034162759781
+    },
+    {
+      "date": "2026-04-29",
+      "minimal_actuators_usd": 0.009400159121,
+      "full_six_etf_ladder_usd": 0.025420993567
+    },
+    {
+      "date": "2026-04-30",
+      "minimal_actuators_usd": 0.014903962612,
+      "full_six_etf_ladder_usd": 0.039507955313
+    },
+    {
+      "date": "2026-05-01",
+      "minimal_actuators_usd": 0.009483665228,
+      "full_six_etf_ladder_usd": 0.028729230165
+    },
+    {
+      "date": "2026-05-04",
+      "minimal_actuators_usd": 0.011955142021,
+      "full_six_etf_ladder_usd": 0.03000113368
+    },
+    {
+      "date": "2026-05-05",
+      "minimal_actuators_usd": 0.006241679192,
+      "full_six_etf_ladder_usd": 0.020350813866
+    },
+    {
+      "date": "2026-05-06",
+      "minimal_actuators_usd": 0.007819265127,
+      "full_six_etf_ladder_usd": 0.02543208003
+    },
+    {
+      "date": "2026-05-07",
+      "minimal_actuators_usd": 0.00576415658,
+      "full_six_etf_ladder_usd": 0.015075802803
+    },
+    {
+      "date": "2026-05-08",
+      "minimal_actuators_usd": 0.006809860468,
+      "full_six_etf_ladder_usd": 0.019949018955
+    },
+    {
+      "date": "2026-05-11",
+      "minimal_actuators_usd": 0.00701880455,
+      "full_six_etf_ladder_usd": 0.021762549877
+    },
+    {
+      "date": "2026-05-12",
+      "minimal_actuators_usd": 0.008354187012,
+      "full_six_etf_ladder_usd": 0.02423286438
+    },
+    {
+      "date": "2026-05-13",
+      "minimal_actuators_usd": 0.007216125727,
+      "full_six_etf_ladder_usd": 0.020773351192
+    },
+    {
+      "date": "2026-05-14",
+      "minimal_actuators_usd": 0.005867689848,
+      "full_six_etf_ladder_usd": 0.01622235775
+    },
+    {
+      "date": "2026-05-15",
+      "minimal_actuators_usd": 0.007534503937,
+      "full_six_etf_ladder_usd": 0.026531785727
+    },
+    {
+      "date": "2026-05-18",
+      "minimal_actuators_usd": 0.01698589325,
+      "full_six_etf_ladder_usd": 0.041095107794
+    },
+    {
+      "date": "2026-05-19",
+      "minimal_actuators_usd": 0.017347455025,
+      "full_six_etf_ladder_usd": 0.039001554251
+    },
+    {
+      "date": "2026-05-20",
+      "minimal_actuators_usd": 0.015543222427,
+      "full_six_etf_ladder_usd": 0.037350833416
+    },
+    {
+      "date": "2026-05-21",
+      "minimal_actuators_usd": 0.01888641715,
+      "full_six_etf_ladder_usd": 0.042988836765
+    },
+    {
+      "date": "2026-05-22",
+      "minimal_actuators_usd": 0.011297106743,
+      "full_six_etf_ladder_usd": 0.026955485344
+    },
+    {
+      "date": "2026-05-25",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2026-05-26",
+      "minimal_actuators_usd": 0.00788757205,
+      "full_six_etf_ladder_usd": 0.023789405823
+    },
+    {
+      "date": "2026-05-27",
+      "minimal_actuators_usd": 0.007293283939,
+      "full_six_etf_ladder_usd": 0.022851616144
+    },
+    {
+      "date": "2026-05-28",
+      "minimal_actuators_usd": 0.006958276033,
+      "full_six_etf_ladder_usd": 0.020711481571
+    },
+    {
+      "date": "2026-05-29",
+      "minimal_actuators_usd": 0.005099236965,
+      "full_six_etf_ladder_usd": 0.016598492861
+    },
+    {
+      "date": "2026-06-01",
+      "minimal_actuators_usd": 0.012398153543,
+      "full_six_etf_ladder_usd": 0.03565916419
+    },
+    {
+      "date": "2026-06-02",
+      "minimal_actuators_usd": 0.006506413221,
+      "full_six_etf_ladder_usd": 0.02022922039
+    },
+    {
+      "date": "2026-06-03",
+      "minimal_actuators_usd": 0.005069106817,
+      "full_six_etf_ladder_usd": 0.018348634243
+    },
+    {
+      "date": "2026-06-04",
+      "minimal_actuators_usd": 0.011299967766,
+      "full_six_etf_ladder_usd": 0.032720804214
+    },
+    {
+      "date": "2026-06-05",
+      "minimal_actuators_usd": 0.01184374094,
+      "full_six_etf_ladder_usd": 0.033649742603
+    },
+    {
+      "date": "2026-06-08",
+      "minimal_actuators_usd": 0.017411023378,
+      "full_six_etf_ladder_usd": 0.0453338027
+    },
+    {
+      "date": "2026-06-09",
+      "minimal_actuators_usd": 0.010236024857,
+      "full_six_etf_ladder_usd": 0.029665410519
+    },
+    {
+      "date": "2026-06-10",
+      "minimal_actuators_usd": 0.024954020977,
+      "full_six_etf_ladder_usd": 0.059048295021
+    },
+    {
+      "date": "2026-06-11",
+      "minimal_actuators_usd": 0.012477368116,
+      "full_six_etf_ladder_usd": 0.043798416853
+    },
+    {
+      "date": "2026-06-12",
+      "minimal_actuators_usd": 0.025833785534,
+      "full_six_etf_ladder_usd": 0.058103710413
+    },
+    {
+      "date": "2026-06-15",
+      "minimal_actuators_usd": 0.00825548172,
+      "full_six_etf_ladder_usd": 0.027975440025
+    },
+    {
+      "date": "2026-06-16",
+      "minimal_actuators_usd": 0.004040122032,
+      "full_six_etf_ladder_usd": 0.018161326647
+    },
+    {
+      "date": "2026-06-17",
+      "minimal_actuators_usd": 0.007586807013,
+      "full_six_etf_ladder_usd": 0.025008559227
+    },
+    {
+      "date": "2026-06-18",
+      "minimal_actuators_usd": 0.012490600348,
+      "full_six_etf_ladder_usd": 0.037757903337
+    },
+    {
+      "date": "2026-06-19",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2026-06-22",
+      "minimal_actuators_usd": 0.007871210575,
+      "full_six_etf_ladder_usd": 0.025875896215
+    },
+    {
+      "date": "2026-06-23",
+      "minimal_actuators_usd": 0.022568017244,
+      "full_six_etf_ladder_usd": 0.050454676151
+    },
+    {
+      "date": "2026-06-24",
+      "minimal_actuators_usd": 0.015474289656,
+      "full_six_etf_ladder_usd": 0.034915655851
+    },
+    {
+      "date": "2026-06-25",
+      "minimal_actuators_usd": 0.013350427151,
+      "full_six_etf_ladder_usd": 0.038848489523
+    },
+    {
+      "date": "2026-06-26",
+      "minimal_actuators_usd": 0.023483276367,
+      "full_six_etf_ladder_usd": 0.054701507092
+    },
+    {
+      "date": "2026-06-29",
+      "minimal_actuators_usd": 0.009377360344,
+      "full_six_etf_ladder_usd": 0.034016221762
+    },
+    {
+      "date": "2026-06-30",
+      "minimal_actuators_usd": 0.007256627083,
+      "full_six_etf_ladder_usd": 0.025454074144
+    },
+    {
+      "date": "2026-07-01",
+      "minimal_actuators_usd": 0.011876553297,
+      "full_six_etf_ladder_usd": 0.0379114151
+    },
+    {
+      "date": "2026-07-02",
+      "minimal_actuators_usd": 0.015123188496,
+      "full_six_etf_ladder_usd": 0.042909175158
+    },
+    {
+      "date": "2026-07-03",
+      "minimal_actuators_usd": 0.0,
+      "full_six_etf_ladder_usd": 0.0
+    },
+    {
+      "date": "2026-07-06",
+      "minimal_actuators_usd": 0.007527887821,
+      "full_six_etf_ladder_usd": 0.0265853405
+    },
+    {
+      "date": "2026-07-07",
+      "minimal_actuators_usd": 0.008361339569,
+      "full_six_etf_ladder_usd": 0.02591791749
+    },
+    {
+      "date": "2026-07-08",
+      "minimal_actuators_usd": 0.015640676022,
+      "full_six_etf_ladder_usd": 0.038555055857
+    },
+    {
+      "date": "2026-07-09",
+      "minimal_actuators_usd": 0.010058999062,
+      "full_six_etf_ladder_usd": 0.029067635536
+    },
+    {
+      "date": "2026-07-10",
+      "minimal_actuators_usd": 0.006681025028,
+      "full_six_etf_ladder_usd": 0.020830303431
+    },
+    {
+      "date": "2026-07-13",
+      "minimal_actuators_usd": 0.008409798145,
+      "full_six_etf_ladder_usd": 0.028762847185
+    },
+    {
+      "date": "2026-07-14",
+      "minimal_actuators_usd": 0.011774897575,
+      "full_six_etf_ladder_usd": 0.033430337906
+    },
+    {
+      "date": "2026-07-15",
+      "minimal_actuators_usd": 0.007604330778,
+      "full_six_etf_ladder_usd": 0.026281267405
+    },
+    {
+      "date": "2026-07-16",
+      "minimal_actuators_usd": 0.010808229446,
+      "full_six_etf_ladder_usd": 0.030155986547
+    },
+    {
+      "date": "2026-07-17",
+      "minimal_actuators_usd": 0.006387501955,
+      "full_six_etf_ladder_usd": 0.028369009495
+    },
+    {
+      "date": "2026-07-20",
+      "minimal_actuators_usd": 0.008318781853,
+      "full_six_etf_ladder_usd": 0.024429291487
+    },
+    {
+      "date": "2026-07-21",
+      "minimal_actuators_usd": 0.007512778044,
+      "full_six_etf_ladder_usd": 0.02359136939
+    },
+    {
+      "date": "2026-07-22",
+      "minimal_actuators_usd": 0.005877614021,
+      "full_six_etf_ladder_usd": 0.018947482109
+    },
+    {
+      "date": "2026-07-23",
+      "minimal_actuators_usd": 0.012274503708,
+      "full_six_etf_ladder_usd": 0.034565716982
+    },
+    {
+      "date": "2026-07-24",
+      "minimal_actuators_usd": 0.010682523251,
+      "full_six_etf_ladder_usd": 0.029948830605
+    },
+    {
+      "date": "2026-07-27",
+      "minimal_actuators_usd": 0.009802132845,
+      "full_six_etf_ladder_usd": 0.027553796768
+    },
+    {
+      "date": "2026-07-28",
+      "minimal_actuators_usd": 0.014420628548,
+      "full_six_etf_ladder_usd": 0.035802841187
+    }
+  ]
+}

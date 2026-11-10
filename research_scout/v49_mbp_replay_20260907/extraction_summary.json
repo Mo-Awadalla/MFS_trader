@@ -1,0 +1,4038 @@
+{
+  "files": 806,
+  "quote_states": 29016,
+  "source_rows": 223597341,
+  "nonpositive_size_states": 0,
+  "sessions": [
+    {
+      "date": "2023-03-28",
+      "states": 36,
+      "source_rows": 364670
+    },
+    {
+      "date": "2023-03-29",
+      "states": 36,
+      "source_rows": 245847
+    },
+    {
+      "date": "2023-03-30",
+      "states": 36,
+      "source_rows": 254558
+    },
+    {
+      "date": "2023-03-31",
+      "states": 36,
+      "source_rows": 279028
+    },
+    {
+      "date": "2023-04-03",
+      "states": 36,
+      "source_rows": 218693
+    },
+    {
+      "date": "2023-04-04",
+      "states": 36,
+      "source_rows": 249378
+    },
+    {
+      "date": "2023-04-05",
+      "states": 36,
+      "source_rows": 282257
+    },
+    {
+      "date": "2023-04-06",
+      "states": 36,
+      "source_rows": 259747
+    },
+    {
+      "date": "2023-04-10",
+      "states": 36,
+      "source_rows": 254815
+    },
+    {
+      "date": "2023-04-11",
+      "states": 36,
+      "source_rows": 255662
+    },
+    {
+      "date": "2023-04-12",
+      "states": 36,
+      "source_rows": 327820
+    },
+    {
+      "date": "2023-04-13",
+      "states": 36,
+      "source_rows": 290243
+    },
+    {
+      "date": "2023-04-14",
+      "states": 36,
+      "source_rows": 294681
+    },
+    {
+      "date": "2023-04-17",
+      "states": 36,
+      "source_rows": 220918
+    },
+    {
+      "date": "2023-04-18",
+      "states": 36,
+      "source_rows": 229829
+    },
+    {
+      "date": "2023-04-19",
+      "states": 36,
+      "source_rows": 239311
+    },
+    {
+      "date": "2023-04-20",
+      "states": 36,
+      "source_rows": 118936
+    },
+    {
+      "date": "2023-04-21",
+      "states": 36,
+      "source_rows": 256358
+    },
+    {
+      "date": "2023-04-24",
+      "states": 36,
+      "source_rows": 245554
+    },
+    {
+      "date": "2023-04-25",
+      "states": 36,
+      "source_rows": 230222
+    },
+    {
+      "date": "2023-04-26",
+      "states": 36,
+      "source_rows": 328639
+    },
+    {
+      "date": "2023-04-27",
+      "states": 36,
+      "source_rows": 297650
+    },
+    {
+      "date": "2023-04-28",
+      "states": 36,
+      "source_rows": 232225
+    },
+    {
+      "date": "2023-05-01",
+      "states": 36,
+      "source_rows": 190114
+    },
+    {
+      "date": "2023-05-02",
+      "states": 36,
+      "source_rows": 238491
+    },
+    {
+      "date": "2023-05-03",
+      "states": 36,
+      "source_rows": 271334
+    },
+    {
+      "date": "2023-05-04",
+      "states": 36,
+      "source_rows": 434633
+    },
+    {
+      "date": "2023-05-05",
+      "states": 36,
+      "source_rows": 315255
+    },
+    {
+      "date": "2023-05-08",
+      "states": 36,
+      "source_rows": 188414
+    },
+    {
+      "date": "2023-05-09",
+      "states": 36,
+      "source_rows": 207850
+    },
+    {
+      "date": "2023-05-10",
+      "states": 36,
+      "source_rows": 284055
+    },
+    {
+      "date": "2023-05-11",
+      "states": 36,
+      "source_rows": 284677
+    },
+    {
+      "date": "2023-05-12",
+      "states": 36,
+      "source_rows": 204501
+    },
+    {
+      "date": "2023-05-15",
+      "states": 36,
+      "source_rows": 212578
+    },
+    {
+      "date": "2023-05-16",
+      "states": 36,
+      "source_rows": 185493
+    },
+    {
+      "date": "2023-05-17",
+      "states": 36,
+      "source_rows": 194005
+    },
+    {
+      "date": "2023-05-18",
+      "states": 36,
+      "source_rows": 176050
+    },
+    {
+      "date": "2023-05-19",
+      "states": 36,
+      "source_rows": 210274
+    },
+    {
+      "date": "2023-05-22",
+      "states": 36,
+      "source_rows": 222451
+    },
+    {
+      "date": "2023-05-23",
+      "states": 36,
+      "source_rows": 242625
+    },
+    {
+      "date": "2023-05-24",
+      "states": 36,
+      "source_rows": 211778
+    },
+    {
+      "date": "2023-05-25",
+      "states": 36,
+      "source_rows": 253658
+    },
+    {
+      "date": "2023-05-26",
+      "states": 36,
+      "source_rows": 292003
+    },
+    {
+      "date": "2023-05-30",
+      "states": 36,
+      "source_rows": 301481
+    },
+    {
+      "date": "2023-05-31",
+      "states": 36,
+      "source_rows": 266651
+    },
+    {
+      "date": "2023-06-01",
+      "states": 36,
+      "source_rows": 254985
+    },
+    {
+      "date": "2023-06-02",
+      "states": 36,
+      "source_rows": 230162
+    },
+    {
+      "date": "2023-06-05",
+      "states": 36,
+      "source_rows": 162758
+    },
+    {
+      "date": "2023-06-06",
+      "states": 36,
+      "source_rows": 174045
+    },
+    {
+      "date": "2023-06-07",
+      "states": 36,
+      "source_rows": 233326
+    },
+    {
+      "date": "2023-06-08",
+      "states": 36,
+      "source_rows": 289948
+    },
+    {
+      "date": "2023-06-09",
+      "states": 36,
+      "source_rows": 238503
+    },
+    {
+      "date": "2023-06-12",
+      "states": 36,
+      "source_rows": 244513
+    },
+    {
+      "date": "2023-06-13",
+      "states": 36,
+      "source_rows": 276436
+    },
+    {
+      "date": "2023-06-14",
+      "states": 36,
+      "source_rows": 212896
+    },
+    {
+      "date": "2023-06-15",
+      "states": 36,
+      "source_rows": 253154
+    },
+    {
+      "date": "2023-06-16",
+      "states": 36,
+      "source_rows": 320275
+    },
+    {
+      "date": "2023-06-20",
+      "states": 36,
+      "source_rows": 183608
+    },
+    {
+      "date": "2023-06-21",
+      "states": 36,
+      "source_rows": 218975
+    },
+    {
+      "date": "2023-06-22",
+      "states": 36,
+      "source_rows": 216179
+    },
+    {
+      "date": "2023-06-23",
+      "states": 36,
+      "source_rows": 236564
+    },
+    {
+      "date": "2023-06-26",
+      "states": 36,
+      "source_rows": 164708
+    },
+    {
+      "date": "2023-06-27",
+      "states": 36,
+      "source_rows": 226026
+    },
+    {
+      "date": "2023-06-28",
+      "states": 36,
+      "source_rows": 222106
+    },
+    {
+      "date": "2023-06-29",
+      "states": 36,
+      "source_rows": 277302
+    },
+    {
+      "date": "2023-06-30",
+      "states": 36,
+      "source_rows": 216398
+    },
+    {
+      "date": "2023-07-03",
+      "states": 36,
+      "source_rows": 185208
+    },
+    {
+      "date": "2023-07-05",
+      "states": 36,
+      "source_rows": 199238
+    },
+    {
+      "date": "2023-07-06",
+      "states": 36,
+      "source_rows": 287550
+    },
+    {
+      "date": "2023-07-07",
+      "states": 36,
+      "source_rows": 324320
+    },
+    {
+      "date": "2023-07-10",
+      "states": 36,
+      "source_rows": 196602
+    },
+    {
+      "date": "2023-07-11",
+      "states": 36,
+      "source_rows": 215169
+    },
+    {
+      "date": "2023-07-12",
+      "states": 36,
+      "source_rows": 265140
+    },
+    {
+      "date": "2023-07-13",
+      "states": 36,
+      "source_rows": 248166
+    },
+    {
+      "date": "2023-07-14",
+      "states": 36,
+      "source_rows": 174328
+    },
+    {
+      "date": "2023-07-17",
+      "states": 36,
+      "source_rows": 251571
+    },
+    {
+      "date": "2023-07-18",
+      "states": 36,
+      "source_rows": 224703
+    },
+    {
+      "date": "2023-07-19",
+      "states": 36,
+      "source_rows": 242503
+    },
+    {
+      "date": "2023-07-20",
+      "states": 36,
+      "source_rows": 207523
+    },
+    {
+      "date": "2023-07-21",
+      "states": 36,
+      "source_rows": 245121
+    },
+    {
+      "date": "2023-07-24",
+      "states": 36,
+      "source_rows": 212440
+    },
+    {
+      "date": "2023-07-25",
+      "states": 36,
+      "source_rows": 196415
+    },
+    {
+      "date": "2023-07-26",
+      "states": 36,
+      "source_rows": 234545
+    },
+    {
+      "date": "2023-07-27",
+      "states": 36,
+      "source_rows": 213807
+    },
+    {
+      "date": "2023-07-28",
+      "states": 36,
+      "source_rows": 214919
+    },
+    {
+      "date": "2023-07-31",
+      "states": 36,
+      "source_rows": 186885
+    },
+    {
+      "date": "2023-08-01",
+      "states": 36,
+      "source_rows": 169661
+    },
+    {
+      "date": "2023-08-02",
+      "states": 36,
+      "source_rows": 222981
+    },
+    {
+      "date": "2023-08-03",
+      "states": 36,
+      "source_rows": 277060
+    },
+    {
+      "date": "2023-08-04",
+      "states": 36,
+      "source_rows": 261310
+    },
+    {
+      "date": "2023-08-07",
+      "states": 36,
+      "source_rows": 234572
+    },
+    {
+      "date": "2023-08-08",
+      "states": 36,
+      "source_rows": 204877
+    },
+    {
+      "date": "2023-08-09",
+      "states": 36,
+      "source_rows": 193231
+    },
+    {
+      "date": "2023-08-10",
+      "states": 36,
+      "source_rows": 271119
+    },
+    {
+      "date": "2023-08-11",
+      "states": 36,
+      "source_rows": 199410
+    },
+    {
+      "date": "2023-08-14",
+      "states": 36,
+      "source_rows": 205478
+    },
+    {
+      "date": "2023-08-15",
+      "states": 36,
+      "source_rows": 209037
+    },
+    {
+      "date": "2023-08-16",
+      "states": 36,
+      "source_rows": 161081
+    },
+    {
+      "date": "2023-08-17",
+      "states": 36,
+      "source_rows": 144306
+    },
+    {
+      "date": "2023-08-18",
+      "states": 36,
+      "source_rows": 238566
+    },
+    {
+      "date": "2023-08-21",
+      "states": 36,
+      "source_rows": 148495
+    },
+    {
+      "date": "2023-08-22",
+      "states": 36,
+      "source_rows": 165985
+    },
+    {
+      "date": "2023-08-23",
+      "states": 36,
+      "source_rows": 170304
+    },
+    {
+      "date": "2023-08-24",
+      "states": 36,
+      "source_rows": 161354
+    },
+    {
+      "date": "2023-08-25",
+      "states": 36,
+      "source_rows": 165672
+    },
+    {
+      "date": "2023-08-28",
+      "states": 36,
+      "source_rows": 190042
+    },
+    {
+      "date": "2023-08-29",
+      "states": 36,
+      "source_rows": 145090
+    },
+    {
+      "date": "2023-08-30",
+      "states": 36,
+      "source_rows": 163439
+    },
+    {
+      "date": "2023-08-31",
+      "states": 36,
+      "source_rows": 160131
+    },
+    {
+      "date": "2023-09-01",
+      "states": 36,
+      "source_rows": 217180
+    },
+    {
+      "date": "2023-09-05",
+      "states": 36,
+      "source_rows": 185535
+    },
+    {
+      "date": "2023-09-06",
+      "states": 36,
+      "source_rows": 166099
+    },
+    {
+      "date": "2023-09-07",
+      "states": 36,
+      "source_rows": 213568
+    },
+    {
+      "date": "2023-09-08",
+      "states": 36,
+      "source_rows": 182440
+    },
+    {
+      "date": "2023-09-11",
+      "states": 36,
+      "source_rows": 206514
+    },
+    {
+      "date": "2023-09-12",
+      "states": 36,
+      "source_rows": 213742
+    },
+    {
+      "date": "2023-09-13",
+      "states": 36,
+      "source_rows": 232486
+    },
+    {
+      "date": "2023-09-14",
+      "states": 36,
+      "source_rows": 258859
+    },
+    {
+      "date": "2023-09-15",
+      "states": 36,
+      "source_rows": 216659
+    },
+    {
+      "date": "2023-09-18",
+      "states": 36,
+      "source_rows": 202668
+    },
+    {
+      "date": "2023-09-19",
+      "states": 36,
+      "source_rows": 227241
+    },
+    {
+      "date": "2023-09-20",
+      "states": 36,
+      "source_rows": 171223
+    },
+    {
+      "date": "2023-09-21",
+      "states": 36,
+      "source_rows": 372243
+    },
+    {
+      "date": "2023-09-22",
+      "states": 36,
+      "source_rows": 290726
+    },
+    {
+      "date": "2023-09-25",
+      "states": 36,
+      "source_rows": 293681
+    },
+    {
+      "date": "2023-09-26",
+      "states": 36,
+      "source_rows": 220371
+    },
+    {
+      "date": "2023-09-27",
+      "states": 36,
+      "source_rows": 175927
+    },
+    {
+      "date": "2023-09-28",
+      "states": 36,
+      "source_rows": 371945
+    },
+    {
+      "date": "2023-09-29",
+      "states": 36,
+      "source_rows": 281282
+    },
+    {
+      "date": "2023-10-02",
+      "states": 36,
+      "source_rows": 361180
+    },
+    {
+      "date": "2023-10-03",
+      "states": 36,
+      "source_rows": 244757
+    },
+    {
+      "date": "2023-10-04",
+      "states": 36,
+      "source_rows": 248538
+    },
+    {
+      "date": "2023-10-05",
+      "states": 36,
+      "source_rows": 291302
+    },
+    {
+      "date": "2023-10-06",
+      "states": 36,
+      "source_rows": 421174
+    },
+    {
+      "date": "2023-10-09",
+      "states": 36,
+      "source_rows": 267837
+    },
+    {
+      "date": "2023-10-10",
+      "states": 36,
+      "source_rows": 258094
+    },
+    {
+      "date": "2023-10-11",
+      "states": 36,
+      "source_rows": 198119
+    },
+    {
+      "date": "2023-10-12",
+      "states": 36,
+      "source_rows": 260700
+    },
+    {
+      "date": "2023-10-13",
+      "states": 36,
+      "source_rows": 272053
+    },
+    {
+      "date": "2023-10-16",
+      "states": 36,
+      "source_rows": 261618
+    },
+    {
+      "date": "2023-10-17",
+      "states": 36,
+      "source_rows": 306668
+    },
+    {
+      "date": "2023-10-18",
+      "states": 36,
+      "source_rows": 297713
+    },
+    {
+      "date": "2023-10-19",
+      "states": 36,
+      "source_rows": 350302
+    },
+    {
+      "date": "2023-10-20",
+      "states": 36,
+      "source_rows": 382415
+    },
+    {
+      "date": "2023-10-23",
+      "states": 36,
+      "source_rows": 334394
+    },
+    {
+      "date": "2023-10-24",
+      "states": 36,
+      "source_rows": 339526
+    },
+    {
+      "date": "2023-10-25",
+      "states": 36,
+      "source_rows": 326013
+    },
+    {
+      "date": "2023-10-26",
+      "states": 36,
+      "source_rows": 422706
+    },
+    {
+      "date": "2023-10-27",
+      "states": 36,
+      "source_rows": 430036
+    },
+    {
+      "date": "2023-10-30",
+      "states": 36,
+      "source_rows": 248811
+    },
+    {
+      "date": "2023-10-31",
+      "states": 36,
+      "source_rows": 317612
+    },
+    {
+      "date": "2023-11-01",
+      "states": 36,
+      "source_rows": 307043
+    },
+    {
+      "date": "2023-11-02",
+      "states": 36,
+      "source_rows": 262494
+    },
+    {
+      "date": "2023-11-03",
+      "states": 36,
+      "source_rows": 265611
+    },
+    {
+      "date": "2023-11-06",
+      "states": 36,
+      "source_rows": 240377
+    },
+    {
+      "date": "2023-11-07",
+      "states": 36,
+      "source_rows": 279304
+    },
+    {
+      "date": "2023-11-08",
+      "states": 36,
+      "source_rows": 233403
+    },
+    {
+      "date": "2023-11-09",
+      "states": 36,
+      "source_rows": 244983
+    },
+    {
+      "date": "2023-11-10",
+      "states": 36,
+      "source_rows": 264646
+    },
+    {
+      "date": "2023-11-13",
+      "states": 36,
+      "source_rows": 248213
+    },
+    {
+      "date": "2023-11-14",
+      "states": 36,
+      "source_rows": 338876
+    },
+    {
+      "date": "2023-11-15",
+      "states": 36,
+      "source_rows": 248138
+    },
+    {
+      "date": "2023-11-16",
+      "states": 36,
+      "source_rows": 252522
+    },
+    {
+      "date": "2023-11-17",
+      "states": 36,
+      "source_rows": 269179
+    },
+    {
+      "date": "2023-11-20",
+      "states": 36,
+      "source_rows": 214537
+    },
+    {
+      "date": "2023-11-21",
+      "states": 36,
+      "source_rows": 171294
+    },
+    {
+      "date": "2023-11-22",
+      "states": 36,
+      "source_rows": 202309
+    },
+    {
+      "date": "2023-11-24",
+      "states": 36,
+      "source_rows": 160532
+    },
+    {
+      "date": "2023-11-27",
+      "states": 36,
+      "source_rows": 228390
+    },
+    {
+      "date": "2023-11-28",
+      "states": 36,
+      "source_rows": 218612
+    },
+    {
+      "date": "2023-11-29",
+      "states": 36,
+      "source_rows": 243697
+    },
+    {
+      "date": "2023-11-30",
+      "states": 36,
+      "source_rows": 232230
+    },
+    {
+      "date": "2023-12-01",
+      "states": 36,
+      "source_rows": 189514
+    },
+    {
+      "date": "2023-12-04",
+      "states": 36,
+      "source_rows": 222653
+    },
+    {
+      "date": "2023-12-05",
+      "states": 36,
+      "source_rows": 268896
+    },
+    {
+      "date": "2023-12-06",
+      "states": 36,
+      "source_rows": 258885
+    },
+    {
+      "date": "2023-12-07",
+      "states": 36,
+      "source_rows": 173984
+    },
+    {
+      "date": "2023-12-08",
+      "states": 36,
+      "source_rows": 354320
+    },
+    {
+      "date": "2023-12-11",
+      "states": 36,
+      "source_rows": 365404
+    },
+    {
+      "date": "2023-12-12",
+      "states": 36,
+      "source_rows": 297176
+    },
+    {
+      "date": "2023-12-13",
+      "states": 36,
+      "source_rows": 199163
+    },
+    {
+      "date": "2023-12-14",
+      "states": 36,
+      "source_rows": 281437
+    },
+    {
+      "date": "2023-12-15",
+      "states": 36,
+      "source_rows": 287011
+    },
+    {
+      "date": "2023-12-18",
+      "states": 36,
+      "source_rows": 240431
+    },
+    {
+      "date": "2023-12-19",
+      "states": 36,
+      "source_rows": 186004
+    },
+    {
+      "date": "2023-12-20",
+      "states": 36,
+      "source_rows": 163215
+    },
+    {
+      "date": "2023-12-21",
+      "states": 36,
+      "source_rows": 291428
+    },
+    {
+      "date": "2023-12-22",
+      "states": 36,
+      "source_rows": 204545
+    },
+    {
+      "date": "2023-12-26",
+      "states": 36,
+      "source_rows": 148249
+    },
+    {
+      "date": "2023-12-27",
+      "states": 36,
+      "source_rows": 180704
+    },
+    {
+      "date": "2023-12-28",
+      "states": 36,
+      "source_rows": 118632
+    },
+    {
+      "date": "2023-12-29",
+      "states": 36,
+      "source_rows": 120576
+    },
+    {
+      "date": "2024-01-02",
+      "states": 36,
+      "source_rows": 360836
+    },
+    {
+      "date": "2024-01-03",
+      "states": 36,
+      "source_rows": 255961
+    },
+    {
+      "date": "2024-01-04",
+      "states": 36,
+      "source_rows": 236331
+    },
+    {
+      "date": "2024-01-05",
+      "states": 36,
+      "source_rows": 249977
+    },
+    {
+      "date": "2024-01-08",
+      "states": 36,
+      "source_rows": 187132
+    },
+    {
+      "date": "2024-01-09",
+      "states": 36,
+      "source_rows": 185191
+    },
+    {
+      "date": "2024-01-10",
+      "states": 36,
+      "source_rows": 159757
+    },
+    {
+      "date": "2024-01-11",
+      "states": 36,
+      "source_rows": 289233
+    },
+    {
+      "date": "2024-01-12",
+      "states": 36,
+      "source_rows": 211239
+    },
+    {
+      "date": "2024-01-16",
+      "states": 36,
+      "source_rows": 264324
+    },
+    {
+      "date": "2024-01-17",
+      "states": 36,
+      "source_rows": 209830
+    },
+    {
+      "date": "2024-01-18",
+      "states": 36,
+      "source_rows": 243892
+    },
+    {
+      "date": "2024-01-19",
+      "states": 36,
+      "source_rows": 215248
+    },
+    {
+      "date": "2024-01-22",
+      "states": 36,
+      "source_rows": 214471
+    },
+    {
+      "date": "2024-01-23",
+      "states": 36,
+      "source_rows": 209982
+    },
+    {
+      "date": "2024-01-24",
+      "states": 36,
+      "source_rows": 207927
+    },
+    {
+      "date": "2024-01-25",
+      "states": 36,
+      "source_rows": 275336
+    },
+    {
+      "date": "2024-01-26",
+      "states": 36,
+      "source_rows": 263128
+    },
+    {
+      "date": "2024-01-29",
+      "states": 36,
+      "source_rows": 200058
+    },
+    {
+      "date": "2024-01-30",
+      "states": 36,
+      "source_rows": 202266
+    },
+    {
+      "date": "2024-01-31",
+      "states": 36,
+      "source_rows": 339415
+    },
+    {
+      "date": "2024-02-01",
+      "states": 36,
+      "source_rows": 363390
+    },
+    {
+      "date": "2024-02-02",
+      "states": 36,
+      "source_rows": 377824
+    },
+    {
+      "date": "2024-02-05",
+      "states": 36,
+      "source_rows": 285228
+    },
+    {
+      "date": "2024-02-06",
+      "states": 36,
+      "source_rows": 288195
+    },
+    {
+      "date": "2024-02-07",
+      "states": 36,
+      "source_rows": 211450
+    },
+    {
+      "date": "2024-02-08",
+      "states": 36,
+      "source_rows": 123905
+    },
+    {
+      "date": "2024-02-09",
+      "states": 36,
+      "source_rows": 172361
+    },
+    {
+      "date": "2024-02-12",
+      "states": 36,
+      "source_rows": 162753
+    },
+    {
+      "date": "2024-02-13",
+      "states": 36,
+      "source_rows": 443499
+    },
+    {
+      "date": "2024-02-14",
+      "states": 36,
+      "source_rows": 298758
+    },
+    {
+      "date": "2024-02-15",
+      "states": 36,
+      "source_rows": 258160
+    },
+    {
+      "date": "2024-02-16",
+      "states": 36,
+      "source_rows": 281742
+    },
+    {
+      "date": "2024-02-20",
+      "states": 36,
+      "source_rows": 324344
+    },
+    {
+      "date": "2024-02-21",
+      "states": 36,
+      "source_rows": 272986
+    },
+    {
+      "date": "2024-02-22",
+      "states": 36,
+      "source_rows": 321099
+    },
+    {
+      "date": "2024-02-23",
+      "states": 36,
+      "source_rows": 211291
+    },
+    {
+      "date": "2024-02-26",
+      "states": 36,
+      "source_rows": 199785
+    },
+    {
+      "date": "2024-02-27",
+      "states": 36,
+      "source_rows": 255684
+    },
+    {
+      "date": "2024-02-28",
+      "states": 36,
+      "source_rows": 303156
+    },
+    {
+      "date": "2024-02-29",
+      "states": 36,
+      "source_rows": 210759
+    },
+    {
+      "date": "2024-03-01",
+      "states": 36,
+      "source_rows": 289116
+    },
+    {
+      "date": "2024-03-04",
+      "states": 36,
+      "source_rows": 194105
+    },
+    {
+      "date": "2024-03-05",
+      "states": 36,
+      "source_rows": 308298
+    },
+    {
+      "date": "2024-03-06",
+      "states": 36,
+      "source_rows": 289093
+    },
+    {
+      "date": "2024-03-07",
+      "states": 36,
+      "source_rows": 272110
+    },
+    {
+      "date": "2024-03-08",
+      "states": 36,
+      "source_rows": 494555
+    },
+    {
+      "date": "2024-03-11",
+      "states": 36,
+      "source_rows": 495802
+    },
+    {
+      "date": "2024-03-12",
+      "states": 36,
+      "source_rows": 564089
+    },
+    {
+      "date": "2024-03-13",
+      "states": 36,
+      "source_rows": 337149
+    },
+    {
+      "date": "2024-03-14",
+      "states": 36,
+      "source_rows": 320350
+    },
+    {
+      "date": "2024-03-15",
+      "states": 36,
+      "source_rows": 509579
+    },
+    {
+      "date": "2024-03-18",
+      "states": 36,
+      "source_rows": 282202
+    },
+    {
+      "date": "2024-03-19",
+      "states": 36,
+      "source_rows": 290858
+    },
+    {
+      "date": "2024-03-20",
+      "states": 36,
+      "source_rows": 214977
+    },
+    {
+      "date": "2024-03-21",
+      "states": 36,
+      "source_rows": 230780
+    },
+    {
+      "date": "2024-03-22",
+      "states": 36,
+      "source_rows": 253869
+    },
+    {
+      "date": "2024-03-25",
+      "states": 36,
+      "source_rows": 197556
+    },
+    {
+      "date": "2024-03-26",
+      "states": 36,
+      "source_rows": 179377
+    },
+    {
+      "date": "2024-03-27",
+      "states": 36,
+      "source_rows": 187798
+    },
+    {
+      "date": "2024-03-28",
+      "states": 36,
+      "source_rows": 160092
+    },
+    {
+      "date": "2024-04-01",
+      "states": 36,
+      "source_rows": 217618
+    },
+    {
+      "date": "2024-04-02",
+      "states": 36,
+      "source_rows": 293500
+    },
+    {
+      "date": "2024-04-03",
+      "states": 36,
+      "source_rows": 264156
+    },
+    {
+      "date": "2024-04-04",
+      "states": 36,
+      "source_rows": 215640
+    },
+    {
+      "date": "2024-04-05",
+      "states": 36,
+      "source_rows": 368892
+    },
+    {
+      "date": "2024-04-08",
+      "states": 36,
+      "source_rows": 320026
+    },
+    {
+      "date": "2024-04-09",
+      "states": 36,
+      "source_rows": 263200
+    },
+    {
+      "date": "2024-04-10",
+      "states": 36,
+      "source_rows": 516939
+    },
+    {
+      "date": "2024-04-11",
+      "states": 36,
+      "source_rows": 387592
+    },
+    {
+      "date": "2024-04-12",
+      "states": 36,
+      "source_rows": 349317
+    },
+    {
+      "date": "2024-04-15",
+      "states": 36,
+      "source_rows": 353261
+    },
+    {
+      "date": "2024-04-16",
+      "states": 36,
+      "source_rows": 455186
+    },
+    {
+      "date": "2024-04-17",
+      "states": 36,
+      "source_rows": 316616
+    },
+    {
+      "date": "2024-04-18",
+      "states": 36,
+      "source_rows": 303234
+    },
+    {
+      "date": "2024-04-19",
+      "states": 36,
+      "source_rows": 322402
+    },
+    {
+      "date": "2024-04-22",
+      "states": 36,
+      "source_rows": 273479
+    },
+    {
+      "date": "2024-04-23",
+      "states": 36,
+      "source_rows": 214106
+    },
+    {
+      "date": "2024-04-24",
+      "states": 36,
+      "source_rows": 255814
+    },
+    {
+      "date": "2024-04-25",
+      "states": 36,
+      "source_rows": 357219
+    },
+    {
+      "date": "2024-04-26",
+      "states": 36,
+      "source_rows": 328704
+    },
+    {
+      "date": "2024-04-29",
+      "states": 36,
+      "source_rows": 195638
+    },
+    {
+      "date": "2024-04-30",
+      "states": 36,
+      "source_rows": 224545
+    },
+    {
+      "date": "2024-05-01",
+      "states": 36,
+      "source_rows": 265803
+    },
+    {
+      "date": "2024-05-02",
+      "states": 36,
+      "source_rows": 245160
+    },
+    {
+      "date": "2024-05-03",
+      "states": 36,
+      "source_rows": 379554
+    },
+    {
+      "date": "2024-05-06",
+      "states": 36,
+      "source_rows": 223073
+    },
+    {
+      "date": "2024-05-07",
+      "states": 36,
+      "source_rows": 204627
+    },
+    {
+      "date": "2024-05-08",
+      "states": 36,
+      "source_rows": 191417
+    },
+    {
+      "date": "2024-05-09",
+      "states": 36,
+      "source_rows": 191613
+    },
+    {
+      "date": "2024-05-10",
+      "states": 36,
+      "source_rows": 214764
+    },
+    {
+      "date": "2024-05-13",
+      "states": 36,
+      "source_rows": 185260
+    },
+    {
+      "date": "2024-05-14",
+      "states": 36,
+      "source_rows": 204320
+    },
+    {
+      "date": "2024-05-15",
+      "states": 36,
+      "source_rows": 247777
+    },
+    {
+      "date": "2024-05-16",
+      "states": 36,
+      "source_rows": 181658
+    },
+    {
+      "date": "2024-05-17",
+      "states": 36,
+      "source_rows": 210825
+    },
+    {
+      "date": "2024-05-20",
+      "states": 36,
+      "source_rows": 167307
+    },
+    {
+      "date": "2024-05-21",
+      "states": 36,
+      "source_rows": 188561
+    },
+    {
+      "date": "2024-05-22",
+      "states": 36,
+      "source_rows": 110235
+    },
+    {
+      "date": "2024-05-23",
+      "states": 36,
+      "source_rows": 150810
+    },
+    {
+      "date": "2024-05-24",
+      "states": 36,
+      "source_rows": 203891
+    },
+    {
+      "date": "2024-05-28",
+      "states": 36,
+      "source_rows": 241358
+    },
+    {
+      "date": "2024-05-29",
+      "states": 36,
+      "source_rows": 270344
+    },
+    {
+      "date": "2024-05-30",
+      "states": 36,
+      "source_rows": 253817
+    },
+    {
+      "date": "2024-05-31",
+      "states": 36,
+      "source_rows": 210763
+    },
+    {
+      "date": "2024-06-03",
+      "states": 36,
+      "source_rows": 173024
+    },
+    {
+      "date": "2024-06-04",
+      "states": 36,
+      "source_rows": 224708
+    },
+    {
+      "date": "2024-06-05",
+      "states": 36,
+      "source_rows": 242130
+    },
+    {
+      "date": "2024-06-06",
+      "states": 36,
+      "source_rows": 211911
+    },
+    {
+      "date": "2024-06-07",
+      "states": 36,
+      "source_rows": 261670
+    },
+    {
+      "date": "2024-06-10",
+      "states": 36,
+      "source_rows": 206584
+    },
+    {
+      "date": "2024-06-11",
+      "states": 36,
+      "source_rows": 171888
+    },
+    {
+      "date": "2024-06-12",
+      "states": 36,
+      "source_rows": 208455
+    },
+    {
+      "date": "2024-06-13",
+      "states": 36,
+      "source_rows": 238589
+    },
+    {
+      "date": "2024-06-14",
+      "states": 36,
+      "source_rows": 210322
+    },
+    {
+      "date": "2024-06-17",
+      "states": 36,
+      "source_rows": 117379
+    },
+    {
+      "date": "2024-06-18",
+      "states": 36,
+      "source_rows": 201795
+    },
+    {
+      "date": "2024-06-20",
+      "states": 36,
+      "source_rows": 234043
+    },
+    {
+      "date": "2024-06-21",
+      "states": 36,
+      "source_rows": 261336
+    },
+    {
+      "date": "2024-06-24",
+      "states": 36,
+      "source_rows": 207825
+    },
+    {
+      "date": "2024-06-25",
+      "states": 36,
+      "source_rows": 205454
+    },
+    {
+      "date": "2024-06-26",
+      "states": 36,
+      "source_rows": 170782
+    },
+    {
+      "date": "2024-06-27",
+      "states": 36,
+      "source_rows": 189274
+    },
+    {
+      "date": "2024-06-28",
+      "states": 36,
+      "source_rows": 193703
+    },
+    {
+      "date": "2024-07-01",
+      "states": 36,
+      "source_rows": 214339
+    },
+    {
+      "date": "2024-07-02",
+      "states": 36,
+      "source_rows": 239494
+    },
+    {
+      "date": "2024-07-03",
+      "states": 36,
+      "source_rows": 182707
+    },
+    {
+      "date": "2024-07-05",
+      "states": 36,
+      "source_rows": 150462
+    },
+    {
+      "date": "2024-07-08",
+      "states": 36,
+      "source_rows": 180636
+    },
+    {
+      "date": "2024-07-09",
+      "states": 36,
+      "source_rows": 103603
+    },
+    {
+      "date": "2024-07-10",
+      "states": 36,
+      "source_rows": 109570
+    },
+    {
+      "date": "2024-07-11",
+      "states": 36,
+      "source_rows": 197473
+    },
+    {
+      "date": "2024-07-12",
+      "states": 36,
+      "source_rows": 176878
+    },
+    {
+      "date": "2024-07-15",
+      "states": 36,
+      "source_rows": 144526
+    },
+    {
+      "date": "2024-07-16",
+      "states": 36,
+      "source_rows": 169611
+    },
+    {
+      "date": "2024-07-17",
+      "states": 36,
+      "source_rows": 277677
+    },
+    {
+      "date": "2024-07-18",
+      "states": 36,
+      "source_rows": 212377
+    },
+    {
+      "date": "2024-07-19",
+      "states": 36,
+      "source_rows": 286453
+    },
+    {
+      "date": "2024-07-22",
+      "states": 36,
+      "source_rows": 203120
+    },
+    {
+      "date": "2024-07-23",
+      "states": 36,
+      "source_rows": 191750
+    },
+    {
+      "date": "2024-07-24",
+      "states": 36,
+      "source_rows": 236802
+    },
+    {
+      "date": "2024-07-25",
+      "states": 36,
+      "source_rows": 355243
+    },
+    {
+      "date": "2024-07-26",
+      "states": 36,
+      "source_rows": 274401
+    },
+    {
+      "date": "2024-07-29",
+      "states": 36,
+      "source_rows": 279182
+    },
+    {
+      "date": "2024-07-30",
+      "states": 36,
+      "source_rows": 193345
+    },
+    {
+      "date": "2024-07-31",
+      "states": 36,
+      "source_rows": 283106
+    },
+    {
+      "date": "2024-08-01",
+      "states": 36,
+      "source_rows": 300397
+    },
+    {
+      "date": "2024-08-02",
+      "states": 36,
+      "source_rows": 437511
+    },
+    {
+      "date": "2024-08-05",
+      "states": 36,
+      "source_rows": 513271
+    },
+    {
+      "date": "2024-08-06",
+      "states": 36,
+      "source_rows": 455536
+    },
+    {
+      "date": "2024-08-07",
+      "states": 36,
+      "source_rows": 348169
+    },
+    {
+      "date": "2024-08-08",
+      "states": 36,
+      "source_rows": 491853
+    },
+    {
+      "date": "2024-08-09",
+      "states": 36,
+      "source_rows": 337744
+    },
+    {
+      "date": "2024-08-12",
+      "states": 36,
+      "source_rows": 233454
+    },
+    {
+      "date": "2024-08-13",
+      "states": 36,
+      "source_rows": 222859
+    },
+    {
+      "date": "2024-08-14",
+      "states": 36,
+      "source_rows": 209828
+    },
+    {
+      "date": "2024-08-15",
+      "states": 36,
+      "source_rows": 224060
+    },
+    {
+      "date": "2024-08-16",
+      "states": 36,
+      "source_rows": 270752
+    },
+    {
+      "date": "2024-08-19",
+      "states": 36,
+      "source_rows": 187090
+    },
+    {
+      "date": "2024-08-20",
+      "states": 36,
+      "source_rows": 139422
+    },
+    {
+      "date": "2024-08-21",
+      "states": 36,
+      "source_rows": 176447
+    },
+    {
+      "date": "2024-08-22",
+      "states": 36,
+      "source_rows": 173424
+    },
+    {
+      "date": "2024-08-23",
+      "states": 36,
+      "source_rows": 183033
+    },
+    {
+      "date": "2024-08-26",
+      "states": 36,
+      "source_rows": 242869
+    },
+    {
+      "date": "2024-08-27",
+      "states": 36,
+      "source_rows": 259850
+    },
+    {
+      "date": "2024-08-28",
+      "states": 36,
+      "source_rows": 208654
+    },
+    {
+      "date": "2024-08-29",
+      "states": 36,
+      "source_rows": 324163
+    },
+    {
+      "date": "2024-08-30",
+      "states": 36,
+      "source_rows": 220161
+    },
+    {
+      "date": "2024-09-03",
+      "states": 36,
+      "source_rows": 306231
+    },
+    {
+      "date": "2024-09-04",
+      "states": 36,
+      "source_rows": 290736
+    },
+    {
+      "date": "2024-09-05",
+      "states": 36,
+      "source_rows": 289133
+    },
+    {
+      "date": "2024-09-06",
+      "states": 36,
+      "source_rows": 425686
+    },
+    {
+      "date": "2024-09-09",
+      "states": 36,
+      "source_rows": 195711
+    },
+    {
+      "date": "2024-09-10",
+      "states": 36,
+      "source_rows": 221913
+    },
+    {
+      "date": "2024-09-11",
+      "states": 36,
+      "source_rows": 355410
+    },
+    {
+      "date": "2024-09-12",
+      "states": 36,
+      "source_rows": 295560
+    },
+    {
+      "date": "2024-09-13",
+      "states": 36,
+      "source_rows": 206197
+    },
+    {
+      "date": "2024-09-16",
+      "states": 36,
+      "source_rows": 249846
+    },
+    {
+      "date": "2024-09-17",
+      "states": 36,
+      "source_rows": 212275
+    },
+    {
+      "date": "2024-09-18",
+      "states": 36,
+      "source_rows": 162453
+    },
+    {
+      "date": "2024-09-19",
+      "states": 36,
+      "source_rows": 208163
+    },
+    {
+      "date": "2024-09-20",
+      "states": 36,
+      "source_rows": 202514
+    },
+    {
+      "date": "2024-09-23",
+      "states": 36,
+      "source_rows": 220699
+    },
+    {
+      "date": "2024-09-24",
+      "states": 36,
+      "source_rows": 153042
+    },
+    {
+      "date": "2024-09-25",
+      "states": 36,
+      "source_rows": 143485
+    },
+    {
+      "date": "2024-09-26",
+      "states": 36,
+      "source_rows": 233311
+    },
+    {
+      "date": "2024-09-27",
+      "states": 36,
+      "source_rows": 195158
+    },
+    {
+      "date": "2024-09-30",
+      "states": 36,
+      "source_rows": 153483
+    },
+    {
+      "date": "2024-10-01",
+      "states": 36,
+      "source_rows": 306810
+    },
+    {
+      "date": "2024-10-02",
+      "states": 36,
+      "source_rows": 208262
+    },
+    {
+      "date": "2024-10-03",
+      "states": 36,
+      "source_rows": 233670
+    },
+    {
+      "date": "2024-10-04",
+      "states": 36,
+      "source_rows": 233297
+    },
+    {
+      "date": "2024-10-07",
+      "states": 36,
+      "source_rows": 173366
+    },
+    {
+      "date": "2024-10-08",
+      "states": 36,
+      "source_rows": 184714
+    },
+    {
+      "date": "2024-10-09",
+      "states": 36,
+      "source_rows": 152718
+    },
+    {
+      "date": "2024-10-10",
+      "states": 36,
+      "source_rows": 150454
+    },
+    {
+      "date": "2024-10-11",
+      "states": 36,
+      "source_rows": 201749
+    },
+    {
+      "date": "2024-10-14",
+      "states": 36,
+      "source_rows": 150379
+    },
+    {
+      "date": "2024-10-15",
+      "states": 36,
+      "source_rows": 151988
+    },
+    {
+      "date": "2024-10-16",
+      "states": 36,
+      "source_rows": 140011
+    },
+    {
+      "date": "2024-10-17",
+      "states": 36,
+      "source_rows": 241006
+    },
+    {
+      "date": "2024-10-18",
+      "states": 36,
+      "source_rows": 160433
+    },
+    {
+      "date": "2024-10-21",
+      "states": 36,
+      "source_rows": 137237
+    },
+    {
+      "date": "2024-10-22",
+      "states": 36,
+      "source_rows": 112986
+    },
+    {
+      "date": "2024-10-23",
+      "states": 36,
+      "source_rows": 148901
+    },
+    {
+      "date": "2024-10-24",
+      "states": 36,
+      "source_rows": 188979
+    },
+    {
+      "date": "2024-10-25",
+      "states": 36,
+      "source_rows": 152294
+    },
+    {
+      "date": "2024-10-28",
+      "states": 36,
+      "source_rows": 220613
+    },
+    {
+      "date": "2024-10-29",
+      "states": 36,
+      "source_rows": 194301
+    },
+    {
+      "date": "2024-10-30",
+      "states": 36,
+      "source_rows": 208986
+    },
+    {
+      "date": "2024-10-31",
+      "states": 36,
+      "source_rows": 262877
+    },
+    {
+      "date": "2024-11-01",
+      "states": 36,
+      "source_rows": 254660
+    },
+    {
+      "date": "2024-11-04",
+      "states": 36,
+      "source_rows": 243923
+    },
+    {
+      "date": "2024-11-05",
+      "states": 36,
+      "source_rows": 214248
+    },
+    {
+      "date": "2024-11-06",
+      "states": 36,
+      "source_rows": 449372
+    },
+    {
+      "date": "2024-11-07",
+      "states": 36,
+      "source_rows": 182384
+    },
+    {
+      "date": "2024-11-08",
+      "states": 36,
+      "source_rows": 151869
+    },
+    {
+      "date": "2024-11-11",
+      "states": 36,
+      "source_rows": 144629
+    },
+    {
+      "date": "2024-11-12",
+      "states": 36,
+      "source_rows": 154444
+    },
+    {
+      "date": "2024-11-13",
+      "states": 36,
+      "source_rows": 185018
+    },
+    {
+      "date": "2024-11-14",
+      "states": 36,
+      "source_rows": 158479
+    },
+    {
+      "date": "2024-11-15",
+      "states": 36,
+      "source_rows": 226747
+    },
+    {
+      "date": "2024-11-18",
+      "states": 36,
+      "source_rows": 242165
+    },
+    {
+      "date": "2024-11-19",
+      "states": 36,
+      "source_rows": 301106
+    },
+    {
+      "date": "2024-11-20",
+      "states": 36,
+      "source_rows": 223845
+    },
+    {
+      "date": "2024-11-21",
+      "states": 36,
+      "source_rows": 367142
+    },
+    {
+      "date": "2024-11-22",
+      "states": 36,
+      "source_rows": 253499
+    },
+    {
+      "date": "2024-11-25",
+      "states": 36,
+      "source_rows": 257842
+    },
+    {
+      "date": "2024-11-26",
+      "states": 36,
+      "source_rows": 208339
+    },
+    {
+      "date": "2024-11-27",
+      "states": 36,
+      "source_rows": 177287
+    },
+    {
+      "date": "2024-11-29",
+      "states": 36,
+      "source_rows": 139293
+    },
+    {
+      "date": "2024-12-02",
+      "states": 36,
+      "source_rows": 162582
+    },
+    {
+      "date": "2024-12-03",
+      "states": 36,
+      "source_rows": 108240
+    },
+    {
+      "date": "2024-12-04",
+      "states": 36,
+      "source_rows": 122837
+    },
+    {
+      "date": "2024-12-05",
+      "states": 36,
+      "source_rows": 109359
+    },
+    {
+      "date": "2024-12-06",
+      "states": 36,
+      "source_rows": 150218
+    },
+    {
+      "date": "2024-12-09",
+      "states": 36,
+      "source_rows": 137425
+    },
+    {
+      "date": "2024-12-10",
+      "states": 36,
+      "source_rows": 128635
+    },
+    {
+      "date": "2024-12-11",
+      "states": 36,
+      "source_rows": 113905
+    },
+    {
+      "date": "2024-12-12",
+      "states": 36,
+      "source_rows": 141824
+    },
+    {
+      "date": "2024-12-13",
+      "states": 36,
+      "source_rows": 130605
+    },
+    {
+      "date": "2024-12-16",
+      "states": 36,
+      "source_rows": 162003
+    },
+    {
+      "date": "2024-12-17",
+      "states": 36,
+      "source_rows": 214818
+    },
+    {
+      "date": "2024-12-18",
+      "states": 36,
+      "source_rows": 149346
+    },
+    {
+      "date": "2024-12-19",
+      "states": 36,
+      "source_rows": 289314
+    },
+    {
+      "date": "2024-12-20",
+      "states": 36,
+      "source_rows": 342717
+    },
+    {
+      "date": "2024-12-23",
+      "states": 36,
+      "source_rows": 269330
+    },
+    {
+      "date": "2024-12-24",
+      "states": 36,
+      "source_rows": 162302
+    },
+    {
+      "date": "2024-12-26",
+      "states": 36,
+      "source_rows": 148181
+    },
+    {
+      "date": "2024-12-27",
+      "states": 36,
+      "source_rows": 209164
+    },
+    {
+      "date": "2024-12-30",
+      "states": 36,
+      "source_rows": 321217
+    },
+    {
+      "date": "2024-12-31",
+      "states": 36,
+      "source_rows": 214668
+    },
+    {
+      "date": "2025-01-02",
+      "states": 36,
+      "source_rows": 321552
+    },
+    {
+      "date": "2025-01-03",
+      "states": 36,
+      "source_rows": 206001
+    },
+    {
+      "date": "2025-01-06",
+      "states": 36,
+      "source_rows": 355574
+    },
+    {
+      "date": "2025-01-07",
+      "states": 36,
+      "source_rows": 218913
+    },
+    {
+      "date": "2025-01-08",
+      "states": 36,
+      "source_rows": 370342
+    },
+    {
+      "date": "2025-01-10",
+      "states": 36,
+      "source_rows": 441745
+    },
+    {
+      "date": "2025-01-13",
+      "states": 36,
+      "source_rows": 345365
+    },
+    {
+      "date": "2025-01-14",
+      "states": 36,
+      "source_rows": 315344
+    },
+    {
+      "date": "2025-01-15",
+      "states": 36,
+      "source_rows": 365533
+    },
+    {
+      "date": "2025-01-16",
+      "states": 36,
+      "source_rows": 251904
+    },
+    {
+      "date": "2025-01-17",
+      "states": 36,
+      "source_rows": 359415
+    },
+    {
+      "date": "2025-01-21",
+      "states": 36,
+      "source_rows": 263481
+    },
+    {
+      "date": "2025-01-22",
+      "states": 36,
+      "source_rows": 184168
+    },
+    {
+      "date": "2025-01-23",
+      "states": 36,
+      "source_rows": 154886
+    },
+    {
+      "date": "2025-01-24",
+      "states": 36,
+      "source_rows": 128626
+    },
+    {
+      "date": "2025-01-27",
+      "states": 36,
+      "source_rows": 438757
+    },
+    {
+      "date": "2025-01-28",
+      "states": 36,
+      "source_rows": 271630
+    },
+    {
+      "date": "2025-01-29",
+      "states": 36,
+      "source_rows": 202172
+    },
+    {
+      "date": "2025-01-30",
+      "states": 36,
+      "source_rows": 226485
+    },
+    {
+      "date": "2025-01-31",
+      "states": 36,
+      "source_rows": 216418
+    },
+    {
+      "date": "2025-02-03",
+      "states": 36,
+      "source_rows": 461245
+    },
+    {
+      "date": "2025-02-04",
+      "states": 36,
+      "source_rows": 234889
+    },
+    {
+      "date": "2025-02-05",
+      "states": 36,
+      "source_rows": 181428
+    },
+    {
+      "date": "2025-02-06",
+      "states": 36,
+      "source_rows": 133651
+    },
+    {
+      "date": "2025-02-07",
+      "states": 36,
+      "source_rows": 155825
+    },
+    {
+      "date": "2025-02-10",
+      "states": 36,
+      "source_rows": 160551
+    },
+    {
+      "date": "2025-02-11",
+      "states": 36,
+      "source_rows": 151899
+    },
+    {
+      "date": "2025-02-12",
+      "states": 36,
+      "source_rows": 218286
+    },
+    {
+      "date": "2025-02-13",
+      "states": 36,
+      "source_rows": 182351
+    },
+    {
+      "date": "2025-02-14",
+      "states": 36,
+      "source_rows": 138539
+    },
+    {
+      "date": "2025-02-18",
+      "states": 36,
+      "source_rows": 176307
+    },
+    {
+      "date": "2025-02-19",
+      "states": 36,
+      "source_rows": 126262
+    },
+    {
+      "date": "2025-02-20",
+      "states": 36,
+      "source_rows": 101085
+    },
+    {
+      "date": "2025-02-21",
+      "states": 36,
+      "source_rows": 184184
+    },
+    {
+      "date": "2025-02-24",
+      "states": 36,
+      "source_rows": 226620
+    },
+    {
+      "date": "2025-02-25",
+      "states": 36,
+      "source_rows": 273960
+    },
+    {
+      "date": "2025-02-26",
+      "states": 36,
+      "source_rows": 256657
+    },
+    {
+      "date": "2025-02-27",
+      "states": 36,
+      "source_rows": 286481
+    },
+    {
+      "date": "2025-02-28",
+      "states": 36,
+      "source_rows": 457572
+    },
+    {
+      "date": "2025-03-03",
+      "states": 36,
+      "source_rows": 351916
+    },
+    {
+      "date": "2025-03-04",
+      "states": 36,
+      "source_rows": 750476
+    },
+    {
+      "date": "2025-03-05",
+      "states": 36,
+      "source_rows": 577619
+    },
+    {
+      "date": "2025-03-06",
+      "states": 36,
+      "source_rows": 529642
+    },
+    {
+      "date": "2025-03-07",
+      "states": 36,
+      "source_rows": 573754
+    },
+    {
+      "date": "2025-03-10",
+      "states": 36,
+      "source_rows": 552972
+    },
+    {
+      "date": "2025-03-11",
+      "states": 36,
+      "source_rows": 559966
+    },
+    {
+      "date": "2025-03-12",
+      "states": 36,
+      "source_rows": 490719
+    },
+    {
+      "date": "2025-03-13",
+      "states": 36,
+      "source_rows": 461737
+    },
+    {
+      "date": "2025-03-14",
+      "states": 36,
+      "source_rows": 364500
+    },
+    {
+      "date": "2025-03-17",
+      "states": 36,
+      "source_rows": 411465
+    },
+    {
+      "date": "2025-03-18",
+      "states": 36,
+      "source_rows": 318160
+    },
+    {
+      "date": "2025-03-19",
+      "states": 36,
+      "source_rows": 285548
+    },
+    {
+      "date": "2025-03-20",
+      "states": 36,
+      "source_rows": 276737
+    },
+    {
+      "date": "2025-03-21",
+      "states": 36,
+      "source_rows": 432138
+    },
+    {
+      "date": "2025-03-24",
+      "states": 36,
+      "source_rows": 166782
+    },
+    {
+      "date": "2025-03-25",
+      "states": 36,
+      "source_rows": 173011
+    },
+    {
+      "date": "2025-03-26",
+      "states": 36,
+      "source_rows": 204574
+    },
+    {
+      "date": "2025-03-27",
+      "states": 36,
+      "source_rows": 299469
+    },
+    {
+      "date": "2025-03-28",
+      "states": 36,
+      "source_rows": 322089
+    },
+    {
+      "date": "2025-03-31",
+      "states": 36,
+      "source_rows": 402499
+    },
+    {
+      "date": "2025-04-01",
+      "states": 36,
+      "source_rows": 410739
+    },
+    {
+      "date": "2025-04-02",
+      "states": 36,
+      "source_rows": 312037
+    },
+    {
+      "date": "2025-04-03",
+      "states": 36,
+      "source_rows": 639839
+    },
+    {
+      "date": "2025-04-04",
+      "states": 36,
+      "source_rows": 913856
+    },
+    {
+      "date": "2025-04-07",
+      "states": 36,
+      "source_rows": 934778
+    },
+    {
+      "date": "2025-04-08",
+      "states": 36,
+      "source_rows": 647345
+    },
+    {
+      "date": "2025-04-09",
+      "states": 36,
+      "source_rows": 718427
+    },
+    {
+      "date": "2025-04-10",
+      "states": 36,
+      "source_rows": 585893
+    },
+    {
+      "date": "2025-04-11",
+      "states": 36,
+      "source_rows": 571808
+    },
+    {
+      "date": "2025-04-14",
+      "states": 36,
+      "source_rows": 402812
+    },
+    {
+      "date": "2025-04-15",
+      "states": 36,
+      "source_rows": 368353
+    },
+    {
+      "date": "2025-04-16",
+      "states": 36,
+      "source_rows": 378535
+    },
+    {
+      "date": "2025-04-17",
+      "states": 36,
+      "source_rows": 421541
+    },
+    {
+      "date": "2025-04-21",
+      "states": 36,
+      "source_rows": 297469
+    },
+    {
+      "date": "2025-04-22",
+      "states": 36,
+      "source_rows": 332690
+    },
+    {
+      "date": "2025-04-23",
+      "states": 36,
+      "source_rows": 508139
+    },
+    {
+      "date": "2025-04-24",
+      "states": 36,
+      "source_rows": 325191
+    },
+    {
+      "date": "2025-04-25",
+      "states": 36,
+      "source_rows": 284852
+    },
+    {
+      "date": "2025-04-28",
+      "states": 36,
+      "source_rows": 267324
+    },
+    {
+      "date": "2025-04-29",
+      "states": 36,
+      "source_rows": 264578
+    },
+    {
+      "date": "2025-04-30",
+      "states": 36,
+      "source_rows": 360956
+    },
+    {
+      "date": "2025-05-01",
+      "states": 36,
+      "source_rows": 221024
+    },
+    {
+      "date": "2025-05-02",
+      "states": 36,
+      "source_rows": 299931
+    },
+    {
+      "date": "2025-05-05",
+      "states": 36,
+      "source_rows": 228336
+    },
+    {
+      "date": "2025-05-06",
+      "states": 36,
+      "source_rows": 240885
+    },
+    {
+      "date": "2025-05-07",
+      "states": 36,
+      "source_rows": 320993
+    },
+    {
+      "date": "2025-05-08",
+      "states": 36,
+      "source_rows": 266869
+    },
+    {
+      "date": "2025-05-09",
+      "states": 36,
+      "source_rows": 175091
+    },
+    {
+      "date": "2025-05-12",
+      "states": 36,
+      "source_rows": 369460
+    },
+    {
+      "date": "2025-05-13",
+      "states": 36,
+      "source_rows": 207157
+    },
+    {
+      "date": "2025-05-14",
+      "states": 36,
+      "source_rows": 211924
+    },
+    {
+      "date": "2025-05-15",
+      "states": 36,
+      "source_rows": 218791
+    },
+    {
+      "date": "2025-05-16",
+      "states": 36,
+      "source_rows": 217061
+    },
+    {
+      "date": "2025-05-19",
+      "states": 36,
+      "source_rows": 238964
+    },
+    {
+      "date": "2025-05-20",
+      "states": 36,
+      "source_rows": 224260
+    },
+    {
+      "date": "2025-05-21",
+      "states": 36,
+      "source_rows": 311586
+    },
+    {
+      "date": "2025-05-22",
+      "states": 36,
+      "source_rows": 374027
+    },
+    {
+      "date": "2025-05-23",
+      "states": 36,
+      "source_rows": 597152
+    },
+    {
+      "date": "2025-05-27",
+      "states": 36,
+      "source_rows": 404293
+    },
+    {
+      "date": "2025-05-28",
+      "states": 36,
+      "source_rows": 253365
+    },
+    {
+      "date": "2025-05-29",
+      "states": 36,
+      "source_rows": 384401
+    },
+    {
+      "date": "2025-05-30",
+      "states": 36,
+      "source_rows": 350405
+    },
+    {
+      "date": "2025-06-02",
+      "states": 36,
+      "source_rows": 310281
+    },
+    {
+      "date": "2025-06-03",
+      "states": 36,
+      "source_rows": 289397
+    },
+    {
+      "date": "2025-06-04",
+      "states": 36,
+      "source_rows": 213353
+    },
+    {
+      "date": "2025-06-05",
+      "states": 36,
+      "source_rows": 388189
+    },
+    {
+      "date": "2025-06-06",
+      "states": 36,
+      "source_rows": 417998
+    },
+    {
+      "date": "2025-06-09",
+      "states": 36,
+      "source_rows": 267614
+    },
+    {
+      "date": "2025-06-10",
+      "states": 36,
+      "source_rows": 221426
+    },
+    {
+      "date": "2025-06-11",
+      "states": 36,
+      "source_rows": 263486
+    },
+    {
+      "date": "2025-06-12",
+      "states": 36,
+      "source_rows": 279458
+    },
+    {
+      "date": "2025-06-13",
+      "states": 36,
+      "source_rows": 308164
+    },
+    {
+      "date": "2025-06-16",
+      "states": 36,
+      "source_rows": 284216
+    },
+    {
+      "date": "2025-06-17",
+      "states": 36,
+      "source_rows": 277088
+    },
+    {
+      "date": "2025-06-18",
+      "states": 36,
+      "source_rows": 212194
+    },
+    {
+      "date": "2025-06-20",
+      "states": 36,
+      "source_rows": 321486
+    },
+    {
+      "date": "2025-06-23",
+      "states": 36,
+      "source_rows": 339396
+    },
+    {
+      "date": "2025-06-24",
+      "states": 36,
+      "source_rows": 274121
+    },
+    {
+      "date": "2025-06-25",
+      "states": 36,
+      "source_rows": 218923
+    },
+    {
+      "date": "2025-06-26",
+      "states": 36,
+      "source_rows": 265651
+    },
+    {
+      "date": "2025-06-27",
+      "states": 36,
+      "source_rows": 232266
+    },
+    {
+      "date": "2025-06-30",
+      "states": 36,
+      "source_rows": 258603
+    },
+    {
+      "date": "2025-07-01",
+      "states": 36,
+      "source_rows": 240913
+    },
+    {
+      "date": "2025-07-02",
+      "states": 36,
+      "source_rows": 266965
+    },
+    {
+      "date": "2025-07-03",
+      "states": 36,
+      "source_rows": 237194
+    },
+    {
+      "date": "2025-07-07",
+      "states": 36,
+      "source_rows": 230564
+    },
+    {
+      "date": "2025-07-08",
+      "states": 36,
+      "source_rows": 225571
+    },
+    {
+      "date": "2025-07-09",
+      "states": 36,
+      "source_rows": 255091
+    },
+    {
+      "date": "2025-07-10",
+      "states": 36,
+      "source_rows": 230122
+    },
+    {
+      "date": "2025-07-11",
+      "states": 36,
+      "source_rows": 285181
+    },
+    {
+      "date": "2025-07-14",
+      "states": 36,
+      "source_rows": 301238
+    },
+    {
+      "date": "2025-07-15",
+      "states": 36,
+      "source_rows": 333413
+    },
+    {
+      "date": "2025-07-16",
+      "states": 36,
+      "source_rows": 329369
+    },
+    {
+      "date": "2025-07-17",
+      "states": 36,
+      "source_rows": 283973
+    },
+    {
+      "date": "2025-07-18",
+      "states": 36,
+      "source_rows": 219426
+    },
+    {
+      "date": "2025-07-21",
+      "states": 36,
+      "source_rows": 163649
+    },
+    {
+      "date": "2025-07-22",
+      "states": 36,
+      "source_rows": 239005
+    },
+    {
+      "date": "2025-07-23",
+      "states": 36,
+      "source_rows": 284638
+    },
+    {
+      "date": "2025-07-24",
+      "states": 36,
+      "source_rows": 316905
+    },
+    {
+      "date": "2025-07-25",
+      "states": 36,
+      "source_rows": 228156
+    },
+    {
+      "date": "2025-07-28",
+      "states": 36,
+      "source_rows": 247694
+    },
+    {
+      "date": "2025-07-29",
+      "states": 36,
+      "source_rows": 208009
+    },
+    {
+      "date": "2025-07-30",
+      "states": 36,
+      "source_rows": 226525
+    },
+    {
+      "date": "2025-07-31",
+      "states": 36,
+      "source_rows": 352499
+    },
+    {
+      "date": "2025-08-01",
+      "states": 36,
+      "source_rows": 623763
+    },
+    {
+      "date": "2025-08-04",
+      "states": 36,
+      "source_rows": 295292
+    },
+    {
+      "date": "2025-08-05",
+      "states": 36,
+      "source_rows": 254176
+    },
+    {
+      "date": "2025-08-06",
+      "states": 36,
+      "source_rows": 326846
+    },
+    {
+      "date": "2025-08-07",
+      "states": 36,
+      "source_rows": 288561
+    },
+    {
+      "date": "2025-08-08",
+      "states": 36,
+      "source_rows": 214656
+    },
+    {
+      "date": "2025-08-11",
+      "states": 36,
+      "source_rows": 154789
+    },
+    {
+      "date": "2025-08-12",
+      "states": 36,
+      "source_rows": 204267
+    },
+    {
+      "date": "2025-08-13",
+      "states": 36,
+      "source_rows": 107432
+    },
+    {
+      "date": "2025-08-14",
+      "states": 36,
+      "source_rows": 178915
+    },
+    {
+      "date": "2025-08-15",
+      "states": 36,
+      "source_rows": 150445
+    },
+    {
+      "date": "2025-08-18",
+      "states": 36,
+      "source_rows": 159201
+    },
+    {
+      "date": "2025-08-19",
+      "states": 36,
+      "source_rows": 140176
+    },
+    {
+      "date": "2025-08-20",
+      "states": 36,
+      "source_rows": 269395
+    },
+    {
+      "date": "2025-08-21",
+      "states": 36,
+      "source_rows": 250723
+    },
+    {
+      "date": "2025-08-22",
+      "states": 36,
+      "source_rows": 195088
+    },
+    {
+      "date": "2025-08-25",
+      "states": 36,
+      "source_rows": 195062
+    },
+    {
+      "date": "2025-08-26",
+      "states": 36,
+      "source_rows": 151722
+    },
+    {
+      "date": "2025-08-27",
+      "states": 36,
+      "source_rows": 141268
+    },
+    {
+      "date": "2025-08-28",
+      "states": 36,
+      "source_rows": 202664
+    },
+    {
+      "date": "2025-08-29",
+      "states": 36,
+      "source_rows": 219949
+    },
+    {
+      "date": "2025-09-02",
+      "states": 36,
+      "source_rows": 334918
+    },
+    {
+      "date": "2025-09-03",
+      "states": 36,
+      "source_rows": 252400
+    },
+    {
+      "date": "2025-09-04",
+      "states": 36,
+      "source_rows": 228849
+    },
+    {
+      "date": "2025-09-05",
+      "states": 36,
+      "source_rows": 250842
+    },
+    {
+      "date": "2025-09-08",
+      "states": 36,
+      "source_rows": 230567
+    },
+    {
+      "date": "2025-09-09",
+      "states": 36,
+      "source_rows": 164585
+    },
+    {
+      "date": "2025-09-10",
+      "states": 36,
+      "source_rows": 258083
+    },
+    {
+      "date": "2025-09-11",
+      "states": 36,
+      "source_rows": 228076
+    },
+    {
+      "date": "2025-09-12",
+      "states": 36,
+      "source_rows": 173238
+    },
+    {
+      "date": "2025-09-15",
+      "states": 36,
+      "source_rows": 174796
+    },
+    {
+      "date": "2025-09-16",
+      "states": 36,
+      "source_rows": 148784
+    },
+    {
+      "date": "2025-09-17",
+      "states": 36,
+      "source_rows": 170254
+    },
+    {
+      "date": "2025-09-18",
+      "states": 36,
+      "source_rows": 206231
+    },
+    {
+      "date": "2025-09-19",
+      "states": 36,
+      "source_rows": 202235
+    },
+    {
+      "date": "2025-09-22",
+      "states": 36,
+      "source_rows": 136825
+    },
+    {
+      "date": "2025-09-23",
+      "states": 36,
+      "source_rows": 115973
+    },
+    {
+      "date": "2025-09-24",
+      "states": 36,
+      "source_rows": 165750
+    },
+    {
+      "date": "2025-09-25",
+      "states": 36,
+      "source_rows": 253177
+    },
+    {
+      "date": "2025-09-26",
+      "states": 36,
+      "source_rows": 204861
+    },
+    {
+      "date": "2025-09-29",
+      "states": 36,
+      "source_rows": 197237
+    },
+    {
+      "date": "2025-09-30",
+      "states": 36,
+      "source_rows": 194060
+    },
+    {
+      "date": "2025-10-01",
+      "states": 36,
+      "source_rows": 214145
+    },
+    {
+      "date": "2025-10-02",
+      "states": 36,
+      "source_rows": 185754
+    },
+    {
+      "date": "2025-10-03",
+      "states": 36,
+      "source_rows": 159547
+    },
+    {
+      "date": "2025-10-06",
+      "states": 36,
+      "source_rows": 240756
+    },
+    {
+      "date": "2025-10-07",
+      "states": 36,
+      "source_rows": 165212
+    },
+    {
+      "date": "2025-10-08",
+      "states": 36,
+      "source_rows": 173623
+    },
+    {
+      "date": "2025-10-09",
+      "states": 36,
+      "source_rows": 170697
+    },
+    {
+      "date": "2025-10-10",
+      "states": 36,
+      "source_rows": 159916
+    },
+    {
+      "date": "2025-10-13",
+      "states": 36,
+      "source_rows": 359859
+    },
+    {
+      "date": "2025-10-14",
+      "states": 36,
+      "source_rows": 367303
+    },
+    {
+      "date": "2025-10-15",
+      "states": 36,
+      "source_rows": 245594
+    },
+    {
+      "date": "2025-10-16",
+      "states": 36,
+      "source_rows": 233655
+    },
+    {
+      "date": "2025-10-17",
+      "states": 36,
+      "source_rows": 418270
+    },
+    {
+      "date": "2025-10-20",
+      "states": 36,
+      "source_rows": 171162
+    },
+    {
+      "date": "2025-10-21",
+      "states": 36,
+      "source_rows": 181934
+    },
+    {
+      "date": "2025-10-22",
+      "states": 36,
+      "source_rows": 175364
+    },
+    {
+      "date": "2025-10-23",
+      "states": 36,
+      "source_rows": 167767
+    },
+    {
+      "date": "2025-10-24",
+      "states": 36,
+      "source_rows": 152803
+    },
+    {
+      "date": "2025-10-27",
+      "states": 36,
+      "source_rows": 190902
+    },
+    {
+      "date": "2025-10-28",
+      "states": 36,
+      "source_rows": 177793
+    },
+    {
+      "date": "2025-10-29",
+      "states": 36,
+      "source_rows": 206272
+    },
+    {
+      "date": "2025-10-30",
+      "states": 36,
+      "source_rows": 321492
+    },
+    {
+      "date": "2025-10-31",
+      "states": 36,
+      "source_rows": 203394
+    },
+    {
+      "date": "2025-11-03",
+      "states": 36,
+      "source_rows": 179913
+    },
+    {
+      "date": "2025-11-04",
+      "states": 36,
+      "source_rows": 303964
+    },
+    {
+      "date": "2025-11-05",
+      "states": 36,
+      "source_rows": 251291
+    },
+    {
+      "date": "2025-11-06",
+      "states": 36,
+      "source_rows": 228392
+    },
+    {
+      "date": "2025-11-07",
+      "states": 36,
+      "source_rows": 350325
+    },
+    {
+      "date": "2025-11-10",
+      "states": 36,
+      "source_rows": 248588
+    },
+    {
+      "date": "2025-11-11",
+      "states": 36,
+      "source_rows": 189911
+    },
+    {
+      "date": "2025-11-12",
+      "states": 36,
+      "source_rows": 178691
+    },
+    {
+      "date": "2025-11-13",
+      "states": 36,
+      "source_rows": 297154
+    },
+    {
+      "date": "2025-11-14",
+      "states": 36,
+      "source_rows": 456085
+    },
+    {
+      "date": "2025-11-17",
+      "states": 36,
+      "source_rows": 353625
+    },
+    {
+      "date": "2025-11-18",
+      "states": 36,
+      "source_rows": 512170
+    },
+    {
+      "date": "2025-11-19",
+      "states": 36,
+      "source_rows": 437484
+    },
+    {
+      "date": "2025-11-20",
+      "states": 36,
+      "source_rows": 466065
+    },
+    {
+      "date": "2025-11-21",
+      "states": 36,
+      "source_rows": 570090
+    },
+    {
+      "date": "2025-11-24",
+      "states": 36,
+      "source_rows": 429940
+    },
+    {
+      "date": "2025-11-25",
+      "states": 36,
+      "source_rows": 273141
+    },
+    {
+      "date": "2025-11-26",
+      "states": 36,
+      "source_rows": 296564
+    },
+    {
+      "date": "2025-11-28",
+      "states": 36,
+      "source_rows": 107927
+    },
+    {
+      "date": "2025-12-01",
+      "states": 36,
+      "source_rows": 278171
+    },
+    {
+      "date": "2025-12-02",
+      "states": 36,
+      "source_rows": 200713
+    },
+    {
+      "date": "2025-12-03",
+      "states": 36,
+      "source_rows": 399560
+    },
+    {
+      "date": "2025-12-04",
+      "states": 36,
+      "source_rows": 287775
+    },
+    {
+      "date": "2025-12-05",
+      "states": 36,
+      "source_rows": 222232
+    },
+    {
+      "date": "2025-12-08",
+      "states": 36,
+      "source_rows": 246737
+    },
+    {
+      "date": "2025-12-09",
+      "states": 36,
+      "source_rows": 351545
+    },
+    {
+      "date": "2025-12-10",
+      "states": 36,
+      "source_rows": 278989
+    },
+    {
+      "date": "2025-12-11",
+      "states": 36,
+      "source_rows": 366679
+    },
+    {
+      "date": "2025-12-12",
+      "states": 36,
+      "source_rows": 204404
+    },
+    {
+      "date": "2025-12-15",
+      "states": 36,
+      "source_rows": 292249
+    },
+    {
+      "date": "2025-12-16",
+      "states": 36,
+      "source_rows": 462817
+    },
+    {
+      "date": "2025-12-17",
+      "states": 36,
+      "source_rows": 379605
+    },
+    {
+      "date": "2025-12-18",
+      "states": 36,
+      "source_rows": 387330
+    },
+    {
+      "date": "2025-12-19",
+      "states": 36,
+      "source_rows": 340262
+    },
+    {
+      "date": "2025-12-22",
+      "states": 36,
+      "source_rows": 257416
+    },
+    {
+      "date": "2025-12-23",
+      "states": 36,
+      "source_rows": 199078
+    },
+    {
+      "date": "2025-12-24",
+      "states": 36,
+      "source_rows": 121148
+    },
+    {
+      "date": "2025-12-26",
+      "states": 36,
+      "source_rows": 147287
+    },
+    {
+      "date": "2025-12-29",
+      "states": 36,
+      "source_rows": 295054
+    },
+    {
+      "date": "2025-12-30",
+      "states": 36,
+      "source_rows": 208974
+    },
+    {
+      "date": "2025-12-31",
+      "states": 36,
+      "source_rows": 200217
+    },
+    {
+      "date": "2026-01-02",
+      "states": 36,
+      "source_rows": 422223
+    },
+    {
+      "date": "2026-01-05",
+      "states": 36,
+      "source_rows": 539204
+    },
+    {
+      "date": "2026-01-06",
+      "states": 36,
+      "source_rows": 323725
+    },
+    {
+      "date": "2026-01-07",
+      "states": 36,
+      "source_rows": 284037
+    },
+    {
+      "date": "2026-01-08",
+      "states": 36,
+      "source_rows": 405904
+    },
+    {
+      "date": "2026-01-09",
+      "states": 36,
+      "source_rows": 443731
+    },
+    {
+      "date": "2026-01-12",
+      "states": 36,
+      "source_rows": 344422
+    },
+    {
+      "date": "2026-01-13",
+      "states": 36,
+      "source_rows": 392076
+    },
+    {
+      "date": "2026-01-14",
+      "states": 36,
+      "source_rows": 481395
+    },
+    {
+      "date": "2026-01-15",
+      "states": 36,
+      "source_rows": 363315
+    },
+    {
+      "date": "2026-01-16",
+      "states": 36,
+      "source_rows": 281383
+    },
+    {
+      "date": "2026-01-20",
+      "states": 36,
+      "source_rows": 690487
+    },
+    {
+      "date": "2026-01-21",
+      "states": 36,
+      "source_rows": 609438
+    },
+    {
+      "date": "2026-01-22",
+      "states": 36,
+      "source_rows": 395212
+    },
+    {
+      "date": "2026-01-23",
+      "states": 36,
+      "source_rows": 356473
+    },
+    {
+      "date": "2026-01-26",
+      "states": 36,
+      "source_rows": 340835
+    },
+    {
+      "date": "2026-01-27",
+      "states": 36,
+      "source_rows": 325873
+    },
+    {
+      "date": "2026-01-28",
+      "states": 36,
+      "source_rows": 306935
+    },
+    {
+      "date": "2026-01-29",
+      "states": 36,
+      "source_rows": 363857
+    },
+    {
+      "date": "2026-01-30",
+      "states": 36,
+      "source_rows": 437229
+    },
+    {
+      "date": "2026-02-02",
+      "states": 36,
+      "source_rows": 468495
+    },
+    {
+      "date": "2026-02-03",
+      "states": 36,
+      "source_rows": 407631
+    },
+    {
+      "date": "2026-02-04",
+      "states": 36,
+      "source_rows": 564495
+    },
+    {
+      "date": "2026-02-05",
+      "states": 36,
+      "source_rows": 954478
+    },
+    {
+      "date": "2026-02-06",
+      "states": 36,
+      "source_rows": 850196
+    },
+    {
+      "date": "2026-02-09",
+      "states": 36,
+      "source_rows": 530760
+    },
+    {
+      "date": "2026-02-10",
+      "states": 36,
+      "source_rows": 318210
+    },
+    {
+      "date": "2026-02-11",
+      "states": 36,
+      "source_rows": 368640
+    },
+    {
+      "date": "2026-02-12",
+      "states": 36,
+      "source_rows": 321972
+    },
+    {
+      "date": "2026-02-13",
+      "states": 36,
+      "source_rows": 618776
+    },
+    {
+      "date": "2026-02-17",
+      "states": 36,
+      "source_rows": 534441
+    },
+    {
+      "date": "2026-02-18",
+      "states": 36,
+      "source_rows": 620351
+    },
+    {
+      "date": "2026-02-19",
+      "states": 36,
+      "source_rows": 584693
+    },
+    {
+      "date": "2026-02-20",
+      "states": 36,
+      "source_rows": 595605
+    },
+    {
+      "date": "2026-02-23",
+      "states": 36,
+      "source_rows": 443488
+    },
+    {
+      "date": "2026-02-24",
+      "states": 36,
+      "source_rows": 496670
+    },
+    {
+      "date": "2026-02-25",
+      "states": 36,
+      "source_rows": 341059
+    },
+    {
+      "date": "2026-02-26",
+      "states": 36,
+      "source_rows": 477570
+    },
+    {
+      "date": "2026-02-27",
+      "states": 36,
+      "source_rows": 652030
+    },
+    {
+      "date": "2026-03-02",
+      "states": 36,
+      "source_rows": 712093
+    },
+    {
+      "date": "2026-03-03",
+      "states": 36,
+      "source_rows": 854765
+    },
+    {
+      "date": "2026-03-04",
+      "states": 36,
+      "source_rows": 680287
+    },
+    {
+      "date": "2026-03-05",
+      "states": 36,
+      "source_rows": 502325
+    },
+    {
+      "date": "2026-03-06",
+      "states": 36,
+      "source_rows": 723411
+    },
+    {
+      "date": "2026-03-09",
+      "states": 36,
+      "source_rows": 626091
+    },
+    {
+      "date": "2026-03-10",
+      "states": 36,
+      "source_rows": 449201
+    },
+    {
+      "date": "2026-03-11",
+      "states": 36,
+      "source_rows": 408070
+    },
+    {
+      "date": "2026-03-12",
+      "states": 36,
+      "source_rows": 470791
+    },
+    {
+      "date": "2026-03-13",
+      "states": 36,
+      "source_rows": 516443
+    },
+    {
+      "date": "2026-03-16",
+      "states": 36,
+      "source_rows": 360464
+    },
+    {
+      "date": "2026-03-17",
+      "states": 36,
+      "source_rows": 248327
+    },
+    {
+      "date": "2026-03-18",
+      "states": 36,
+      "source_rows": 416921
+    },
+    {
+      "date": "2026-03-19",
+      "states": 36,
+      "source_rows": 507517
+    },
+    {
+      "date": "2026-03-20",
+      "states": 36,
+      "source_rows": 400988
+    },
+    {
+      "date": "2026-03-23",
+      "states": 36,
+      "source_rows": 763757
+    },
+    {
+      "date": "2026-03-24",
+      "states": 36,
+      "source_rows": 489250
+    },
+    {
+      "date": "2026-03-25",
+      "states": 36,
+      "source_rows": 362393
+    },
+    {
+      "date": "2026-03-26",
+      "states": 36,
+      "source_rows": 323592
+    },
+    {
+      "date": "2026-03-27",
+      "states": 36,
+      "source_rows": 369408
+    },
+    {
+      "date": "2026-03-30",
+      "states": 36,
+      "source_rows": 377979
+    },
+    {
+      "date": "2026-03-31",
+      "states": 36,
+      "source_rows": 447779
+    },
+    {
+      "date": "2026-04-01",
+      "states": 36,
+      "source_rows": 367808
+    },
+    {
+      "date": "2026-04-02",
+      "states": 36,
+      "source_rows": 395495
+    },
+    {
+      "date": "2026-04-06",
+      "states": 36,
+      "source_rows": 389140
+    },
+    {
+      "date": "2026-04-07",
+      "states": 36,
+      "source_rows": 363217
+    },
+    {
+      "date": "2026-04-08",
+      "states": 36,
+      "source_rows": 328483
+    },
+    {
+      "date": "2026-04-09",
+      "states": 36,
+      "source_rows": 244281
+    },
+    {
+      "date": "2026-04-10",
+      "states": 36,
+      "source_rows": 226046
+    },
+    {
+      "date": "2026-04-13",
+      "states": 36,
+      "source_rows": 142491
+    },
+    {
+      "date": "2026-04-14",
+      "states": 36,
+      "source_rows": 247218
+    },
+    {
+      "date": "2026-04-15",
+      "states": 36,
+      "source_rows": 231516
+    },
+    {
+      "date": "2026-04-16",
+      "states": 36,
+      "source_rows": 210368
+    },
+    {
+      "date": "2026-04-17",
+      "states": 36,
+      "source_rows": 300895
+    },
+    {
+      "date": "2026-04-20",
+      "states": 36,
+      "source_rows": 288300
+    },
+    {
+      "date": "2026-04-21",
+      "states": 36,
+      "source_rows": 237931
+    },
+    {
+      "date": "2026-04-22",
+      "states": 36,
+      "source_rows": 262859
+    },
+    {
+      "date": "2026-04-23",
+      "states": 36,
+      "source_rows": 242270
+    },
+    {
+      "date": "2026-04-24",
+      "states": 36,
+      "source_rows": 273193
+    },
+    {
+      "date": "2026-04-27",
+      "states": 36,
+      "source_rows": 285574
+    },
+    {
+      "date": "2026-04-28",
+      "states": 36,
+      "source_rows": 382104
+    },
+    {
+      "date": "2026-04-29",
+      "states": 36,
+      "source_rows": 284329
+    },
+    {
+      "date": "2026-04-30",
+      "states": 36,
+      "source_rows": 441889
+    },
+    {
+      "date": "2026-05-01",
+      "states": 36,
+      "source_rows": 321331
+    },
+    {
+      "date": "2026-05-04",
+      "states": 36,
+      "source_rows": 335557
+    },
+    {
+      "date": "2026-05-05",
+      "states": 36,
+      "source_rows": 227620
+    },
+    {
+      "date": "2026-05-06",
+      "states": 36,
+      "source_rows": 284453
+    },
+    {
+      "date": "2026-05-07",
+      "states": 36,
+      "source_rows": 168620
+    },
+    {
+      "date": "2026-05-08",
+      "states": 36,
+      "source_rows": 223126
+    },
+    {
+      "date": "2026-05-11",
+      "states": 36,
+      "source_rows": 243410
+    },
+    {
+      "date": "2026-05-12",
+      "states": 36,
+      "source_rows": 271040
+    },
+    {
+      "date": "2026-05-13",
+      "states": 36,
+      "source_rows": 232346
+    },
+    {
+      "date": "2026-05-14",
+      "states": 36,
+      "source_rows": 181444
+    },
+    {
+      "date": "2026-05-15",
+      "states": 36,
+      "source_rows": 296753
+    },
+    {
+      "date": "2026-05-18",
+      "states": 36,
+      "source_rows": 459641
+    },
+    {
+      "date": "2026-05-19",
+      "states": 36,
+      "source_rows": 436225
+    },
+    {
+      "date": "2026-05-20",
+      "states": 36,
+      "source_rows": 417762
+    },
+    {
+      "date": "2026-05-21",
+      "states": 36,
+      "source_rows": 480822
+    },
+    {
+      "date": "2026-05-22",
+      "states": 36,
+      "source_rows": 301492
+    },
+    {
+      "date": "2026-05-26",
+      "states": 36,
+      "source_rows": 266080
+    },
+    {
+      "date": "2026-05-27",
+      "states": 36,
+      "source_rows": 255591
+    },
+    {
+      "date": "2026-05-28",
+      "states": 36,
+      "source_rows": 231654
+    },
+    {
+      "date": "2026-05-29",
+      "states": 36,
+      "source_rows": 185651
+    },
+    {
+      "date": "2026-06-01",
+      "states": 36,
+      "source_rows": 398841
+    },
+    {
+      "date": "2026-06-02",
+      "states": 36,
+      "source_rows": 226260
+    },
+    {
+      "date": "2026-06-03",
+      "states": 36,
+      "source_rows": 205226
+    },
+    {
+      "date": "2026-06-04",
+      "states": 36,
+      "source_rows": 365976
+    },
+    {
+      "date": "2026-06-05",
+      "states": 36,
+      "source_rows": 376366
+    },
+    {
+      "date": "2026-06-08",
+      "states": 36,
+      "source_rows": 507050
+    },
+    {
+      "date": "2026-06-09",
+      "states": 36,
+      "source_rows": 331802
+    },
+    {
+      "date": "2026-06-10",
+      "states": 36,
+      "source_rows": 660444
+    },
+    {
+      "date": "2026-06-11",
+      "states": 36,
+      "source_rows": 489877
+    },
+    {
+      "date": "2026-06-15",
+      "states": 36,
+      "source_rows": 312900
+    }
+  ]
+}

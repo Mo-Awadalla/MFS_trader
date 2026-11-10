@@ -1,0 +1,36 @@
+{
+  "focused_tests": {
+    "status": "passed",
+    "passed": 47,
+    "failed": 0,
+    "elapsed_seconds": 11.27,
+    "command": ".venv/Scripts/python.exe -X utf8 -m pytest tests/unit/test_intraday_contract.py tests/unit/test_alpaca_downloader.py tests/unit/test_etf_tsm_yahoo_download.py tests/unit/test_equity_data_contract.py tests/unit/test_data_pipeline.py tests/unit/test_ccxt_downloader.py tests/unit/test_resample.py -q -p no:cacheprovider --basetemp=research_scout/research_reset_20260907/pytest_tmp_final01",
+    "scope": "Targeted data, accounting and affected downloader regressions; not a full repository test run"
+  },
+  "lint": {
+    "status": "passed",
+    "files": [
+      "data/equity_contract.py",
+      "data/alpaca_downloader.py",
+      "data/base.py",
+      "data/pipeline.py",
+      "data/ccxt_downloader.py",
+      "scripts/download_etf_tsm_yahoo_daily.py",
+      "scripts/run_vs_icsm_alpaca_sip_validation.py",
+      "research/intraday_contract.py",
+      "tests/unit/test_alpaca_downloader.py",
+      "tests/unit/test_equity_data_contract.py",
+      "tests/unit/test_intraday_contract.py",
+      "research_scout/research_reset_20260907.py",
+      "research_scout/calibrate_intraday_contract_20260907.py",
+      "research_scout/reconcile_reset_diagnostics_20260907.py",
+      "research_scout/verify_research_reset_20260907.py"
+    ]
+  },
+  "synthetic_control": "Positive passed; zero of twenty shuffled nulls passed",
+  "independent_accounting": "All eleven exported evaluations matched Decimal share/cash reconstruction within 6e-12 dollars",
+  "market_data_network_calls": 0,
+  "purchases": 0,
+  "orders": 0,
+  "further_candidate_tests": "stopped"
+}

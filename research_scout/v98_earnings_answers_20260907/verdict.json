@@ -1,0 +1,181 @@
+{
+  "experiment": "V98",
+  "completed_utc": "2026-09-07T23:53:19.428699+00:00",
+  "status": "incomplete_data",
+  "gates": {
+    "data_readiness": "Conditional corpus available; original vintages and point-in-time universe unverified",
+    "signal_stability": "Fixed monthly past-only models; no parameter search",
+    "economics": "incomplete",
+    "incremental_value": "reported as paired diagnostic",
+    "robustness": "expensive quote and latency work aborted on clear failure",
+    "confirmation": "not opened; no fresh historical period certified"
+  },
+  "edge_validated": false,
+  "deployment_authorized": false,
+  "candidate_years_after_2023_read": false,
+  "no_rescue_search": true,
+  "paired_forecast_diagnostics": {
+    "baseline_prediction": {
+      "events": 864,
+      "mean_squared_error": 0.0002795951576648194,
+      "mean_error": -0.0004942339710334982,
+      "correlation_with_return": -0.03005981597392461
+    },
+    "augmented_prediction": {
+      "events": 864,
+      "mean_squared_error": 0.0002805386190419337,
+      "mean_error": -0.0004831612530953963,
+      "correlation_with_return": -0.031103099973017884
+    },
+    "increment_correlation_with_return": -0.012833264364648551,
+    "positive_increment_events": 431,
+    "median_absolute_increment_bps": 3.5995565040010766
+  },
+  "annual_net_metrics": {
+    "2021": {
+      "SPY": {
+        "ending_cash": 128.23828806745644,
+        "total_return": 0.2823828806745643,
+        "fixed_initial_notional_pnl": 25.731475823605166,
+        "max_daily_drawdown": -0.051141653117200536,
+        "sharpe": 1.973776218376809
+      }
+    },
+    "2022": {
+      "SPY": {
+        "ending_cash": 81.8246374637281,
+        "total_return": -0.181753625362719,
+        "fixed_initial_notional_pnl": -17.13423955976541,
+        "max_daily_drawdown": -0.24496380282076635,
+        "sharpe": -0.7095869222002155
+      }
+    },
+    "2023": {
+      "primary": {
+        "ending_cash": 89.47089632198106,
+        "total_return": -0.10529103678018936,
+        "fixed_initial_notional_pnl": -10.94026903449581,
+        "max_daily_drawdown": -0.12284291493374022,
+        "sharpe": -1.8207436524024558
+      },
+      "baseline": {
+        "ending_cash": 94.19503305375781,
+        "total_return": -0.05804966946242185,
+        "fixed_initial_notional_pnl": -5.73978455787344,
+        "max_daily_drawdown": -0.12165163603444928,
+        "sharpe": -0.8308685772288187
+      },
+      "all_events": {
+        "ending_cash": 86.1828816546577,
+        "total_return": -0.13817118345342294,
+        "fixed_initial_notional_pnl": -14.302094947584386,
+        "max_daily_drawdown": -0.21237236492279743,
+        "sharpe": -1.351903055700733
+      },
+      "SPY": {
+        "ending_cash": 126.17579670693269,
+        "total_return": 0.26175796706932686,
+        "fixed_initial_notional_pnl": 24.105429172798665,
+        "max_daily_drawdown": -0.09974320175213958,
+        "sharpe": 1.8582974684059457
+      }
+    }
+  },
+  "independent_share_cash_reconciliation": {
+    "primary": {
+      "reference": {
+        "independent_ending_cash": null,
+        "absolute_difference": null
+      },
+      "net": {
+        "independent_ending_cash": null,
+        "absolute_difference": null
+      },
+      "cost_stress": {
+        "independent_ending_cash": null,
+        "absolute_difference": null
+      }
+    },
+    "baseline": {
+      "reference": {
+        "independent_ending_cash": null,
+        "absolute_difference": null
+      },
+      "net": {
+        "independent_ending_cash": null,
+        "absolute_difference": null
+      },
+      "cost_stress": {
+        "independent_ending_cash": null,
+        "absolute_difference": null
+      }
+    },
+    "all_events": {
+      "reference": {
+        "independent_ending_cash": null,
+        "absolute_difference": null
+      },
+      "net": {
+        "independent_ending_cash": null,
+        "absolute_difference": null
+      },
+      "cost_stress": {
+        "independent_ending_cash": null,
+        "absolute_difference": null
+      }
+    }
+  },
+  "historical_inputs_unchanged": {
+    "research_scout\\new_information_tests_20260907\\specification.json": true,
+    "data\\parquet\\equity\\yahoo_chart\\SPY_1d.parquet": true,
+    "research\\intraday_contract.py": true,
+    "research_scout\\audit_transcript_pilot_20260907.py": true,
+    "research_scout\\edge_discovery_20260907\\completion_checks.json": true,
+    "research_scout\\edge_discovery_20260907\\discovery_protocol.json": true,
+    "research_scout\\edge_discovery_20260907\\discovery_verdict.json": true,
+    "research_scout\\edge_discovery_20260907\\novelty_scan.json": true,
+    "research_scout\\edge_discovery_20260907\\opportunity_hurdles.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_audit.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_manifest.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_retrieval.json": true,
+    "research_scout\\edge_discovery_20260907\\publication_timing_audit.json": true,
+    "research_scout\\edge_discovery_20260907\\REPORT.md": true,
+    "research_scout\\edge_discovery_20260907\\source_probe_retrieval.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\AAPL.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\AMT.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\CVX.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\JNJ.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\JPM.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\LIN.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\MSFT.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\NEE.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\PG.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\WMT.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_parsed\\XOM.json": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\AAPL.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\AMT.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\CVX.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\JNJ.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\JPM.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\LIN.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\MSFT.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\NEE.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\PG.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\sitemap_202102.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\sitemap_202103.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\WMT.gz": true,
+    "research_scout\\edge_discovery_20260907\\pilot_raw\\XOM.gz": true,
+    "research_scout\\edge_discovery_20260907\\source_probe\\fast_numbers_readme.txt": true,
+    "research_scout\\edge_discovery_20260907\\source_probe\\fool_msft_20230124.txt": true,
+    "research_scout\\edge_discovery_20260907\\source_probe\\fool_msft_20230725.txt": true,
+    "research_scout\\edge_discovery_20260907\\source_probe\\fool_sitemap_202101.txt": true,
+    "research_scout\\edge_discovery_20260907\\source_probe\\kurry_dataset_api.txt": true,
+    "research_scout\\edge_discovery_20260907\\source_probe\\kurry_dataset_card.txt": true
+  },
+  "packages": {
+    "python": "3.12.2",
+    "sklearn": "1.9.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5"
+  }
+}

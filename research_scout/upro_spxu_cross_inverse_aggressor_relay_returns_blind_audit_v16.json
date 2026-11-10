@@ -1,0 +1,65 @@
+{
+  "status": "returns_blind_no_post_signal_prices_or_pnl_read",
+  "definition": {
+    "window": "09:45-10:14 ET",
+    "fresh_trade": "ts_event must lie strictly after interval_end minus one minute and no later than interval_end",
+    "side_mapping": "B=buy aggressor, A=sell aggressor; multiply SPXU by -1",
+    "relay": "adjacent fresh events from different wrappers, same projected underlying sign, no more than 120 seconds apart",
+    "score": "sum of projected signs across relays"
+  },
+  "arca_2021_2025": {
+    "eligible_feed_session_dates": 1237,
+    "eligible_sessions": 1237,
+    "coverage_fraction_of_weekdays": 1.0,
+    "nonzero_signal_sessions": 1158,
+    "signals_per_calendar_week": 4.448957189901208,
+    "direction_counts": {
+      "UPRO": 634,
+      "SPXU": 524,
+      "NO_TRADE": 79
+    },
+    "minority_direction_fraction": 0.4525043177892919,
+    "median_fresh_events": 55.0,
+    "median_relays": 21.0,
+    "relay_quantiles": {
+      "0.05": 12.0,
+      "0.25": 18.0,
+      "0.5": 21.0,
+      "0.75": 24.0,
+      "0.95": 29.0
+    },
+    "year_signal_counts": {
+      "2021": 238,
+      "2022": 236,
+      "2023": 219,
+      "2024": 229,
+      "2025": 236
+    }
+  },
+  "cross_feed_overlap_2023_2025": {
+    "overlap_sessions": 666,
+    "both_signal_sessions": 566,
+    "conditional_direction_agreement": 0.6166077738515902,
+    "all_date_action_agreement": 0.5345345345345346,
+    "arca_direction_counts": {
+      "UPRO": 350,
+      "SPXU": 265,
+      "NO_TRADE": 51
+    },
+    "equs_direction_counts": {
+      "UPRO": 342,
+      "SPXU": 268,
+      "NO_TRADE": 56
+    },
+    "score_correlation": 0.25084705103215754
+  },
+  "predeclared_feasibility_gates": {
+    "paired_session_coverage_at_least_95_percent": true,
+    "at_least_two_nonzero_signals_per_week": true,
+    "minority_direction_at_least_20_percent": true,
+    "median_relays_at_least_ten": true,
+    "conditional_cross_feed_direction_agreement_at_least_60_percent": true,
+    "all_date_cross_feed_action_agreement_at_least_50_percent": true
+  },
+  "feasibility_passed": true
+}

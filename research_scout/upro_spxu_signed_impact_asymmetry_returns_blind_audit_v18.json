@@ -1,0 +1,57 @@
+{
+  "status": "returns_blind_no_post_signal_prices_or_pnl_read",
+  "definition": {
+    "fresh_trade_window": "09:31-10:13 ET",
+    "response": "next BBO-minute midpoint log return",
+    "underlying_projection": "UPRO wrapper return divided by +3; SPXU divided by -3",
+    "score": "equally weighted wrapper mean own-direction impact for bullish events minus the equivalent bearish-event impact",
+    "minimum_events_per_wrapper_direction_cell": 3
+  },
+  "arca_2021_2025": {
+    "eligible_feed_session_dates": 1237,
+    "valid_state_sessions": 1237,
+    "coverage_fraction": 1.0,
+    "nonzero_signal_sessions": 1237,
+    "signals_per_calendar_week": 4.752469813391877,
+    "direction_counts": {
+      "UPRO": 639,
+      "SPXU": 598,
+      "NO_TRADE": 0
+    },
+    "minority_direction_fraction": 0.4834276475343573,
+    "median_minimum_cell_events": 15.0,
+    "year_signal_counts": {
+      "2021": 251,
+      "2022": 247,
+      "2023": 240,
+      "2024": 249,
+      "2025": 250
+    }
+  },
+  "cross_feed_overlap_2023_2025": {
+    "overlap_sessions": 655,
+    "both_signal_sessions": 655,
+    "conditional_direction_agreement": 0.8122137404580153,
+    "all_date_action_agreement": 0.8122137404580153,
+    "arca_direction_counts": {
+      "UPRO": 342,
+      "SPXU": 313,
+      "NO_TRADE": 0
+    },
+    "equs_direction_counts": {
+      "UPRO": 339,
+      "SPXU": 316,
+      "NO_TRADE": 0
+    },
+    "score_correlation": 0.8786508352635894
+  },
+  "predeclared_feasibility_gates": {
+    "valid_paired_states_at_least_90_percent": true,
+    "at_least_two_nonzero_signals_per_week": true,
+    "minority_direction_at_least_20_percent": true,
+    "median_minimum_cell_events_at_least_ten": true,
+    "conditional_cross_feed_direction_agreement_at_least_60_percent": true,
+    "all_date_cross_feed_action_agreement_at_least_50_percent": true
+  },
+  "feasibility_passed": true
+}

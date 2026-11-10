@@ -1,0 +1,43 @@
+{
+  "V56": {
+    "cause": "Feasibility excludes degraded ARCA signal dates as well as execution dates; the economic path excludes execution dates only, although its actual signals use Yahoo daily prices.",
+    "extra_economic_trades": [
+      {
+        "trade_day": "2022-07-19",
+        "signal_day": "2022-07-18"
+      },
+      {
+        "trade_day": "2022-08-23",
+        "signal_day": "2022-08-22"
+      },
+      {
+        "trade_day": "2022-12-06",
+        "signal_day": "2022-12-05"
+      },
+      {
+        "trade_day": "2022-12-28",
+        "signal_day": "2022-12-27"
+      },
+      {
+        "trade_day": "2023-12-12",
+        "signal_day": "2023-12-11"
+      }
+    ],
+    "original_economic_trades": 382,
+    "audit_aligned_trades": 377,
+    "audit_aligned_ending_cash": 103.7275619135227,
+    "audit_aligned_preliminary_pass": false,
+    "interpretation": "Protocol mismatch, not established bad Yahoo signal values. Neither eligibility policy establishes SPY outperformance."
+  },
+  "V45": {
+    "event_trades": 378,
+    "distinct_trade_days": 306,
+    "correction": "Original sessions field counts event trades, including sequential trades on one date."
+  },
+  "V76": {
+    "missing_day": "2021-11-26",
+    "exchange_close": "2021-11-26T13:00:00-05:00",
+    "original_exit": "15:55:00 America/New_York",
+    "interpretation": "Original exit falls after the 13:00 regular-session close and no qualifying exit was retained. An early-close policy must be declared; do not insert zero return or invent a 12:55 fill after seeing outcomes."
+  }
+}

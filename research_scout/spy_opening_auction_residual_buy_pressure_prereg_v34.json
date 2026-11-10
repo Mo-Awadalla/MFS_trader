@@ -1,0 +1,93 @@
+{
+  "specification_id": "SPY-Opening-Auction-Residual-Buy-Pressure-v34",
+  "saved_at": "2026-07-27",
+  "status": "preregistered_after_returns-blind-critique_before-any-post-signal-return-calculation",
+  "objective": "Test whether official SPY primary-listing opening-auction residual buy pressure continues during the first cash-session hour strongly enough for a long-UPRO/cash strategy to substantially outperform SPY after observed execution.",
+  "research_history_warning": "Many prior hypotheses exposed the researcher to 2021-2026 market outcomes. This exact actual-imbalance rule is new, but all historical partitions are secondary evidence and any survivor requires prospective paper validation.",
+  "distinctness": {
+    "nearest_failed_families": [
+      "opening gaps and opening-range rules",
+      "SPY auction-value bar proxies v24/v29",
+      "UPRO/SPXU aggressor relay v16"
+    ],
+    "why_not_a_repeat": "V34 uses the official ARCX.PILLAR SPY opening-auction imbalance message. It does not infer auction state from OHLCV, displayed depth, or last-sale flow, and it deliberately omits the structurally costly inverse sleeve."
+  },
+  "data": {
+    "signal": "Databento ARCX.PILLAR SPY imbalance messages",
+    "primary_execution": "Databento ARCX.PILLAR UPRO BBO-1m",
+    "secondary_execution": "Databento EQUS.MINI UPRO TBBO, using the pre-trade BBO on the first eligible trade from one through sixty seconds after each scheduled boundary",
+    "benchmark": "Databento ARCX.PILLAR SPY OHLCV-1m",
+    "excluded_sessions": "Dates marked degraded in the corresponding Databento dataset-condition file",
+    "signal_cutoff": "09:29:00 America/New_York, strict ts_event before cutoff",
+    "required_auction_type": "M"
+  },
+  "signal": {
+    "message_selection": "For each session, select the latest SPY auction_type M message whose ts_event is strictly before 09:29:00 ET.",
+    "eligibility": "ref_price and ind_match_price are positive; paired_qty and total_imbalance_qty are positive; side is A or B.",
+    "trade_state": "Buy UPRO only when side is B. Side A and missing/ineligible states hold cash.",
+    "magnitude_threshold": null,
+    "price_direction_filter": null,
+    "path_filter": null,
+    "rationale": "A positive total imbalance with side B is unresolved deadline-bound buy pressure. Thresholds and price-path filters are intentionally omitted until the sign mechanism itself earns support."
+  },
+  "execution": {
+    "account": "Start with $100 cash and deploy all available equity in fractional UPRO shares, reinvesting realized equity.",
+    "entry": "Observed UPRO ask at 09:31 ET on ARCX.PILLAR BBO-1m. Exact minute required; no forward fill.",
+    "exit": "Observed UPRO bid at 10:30 ET on ARCX.PILLAR BBO-1m. Exact minute required; no forward fill.",
+    "position": "Long UPRO or cash only",
+    "overnight": false,
+    "max_trades_per_session": 1,
+    "stop": null,
+    "cash_settlement_warning": "The economic simulation assumes daily redeployment. Literal settled-cash constraints require separate operational review before paper or live use."
+  },
+  "development": {
+    "period": "2021-01-04 through 2023-12-29",
+    "holdout_lock": "Do not calculate any 2024-2026 post-signal return unless every development gate passes.",
+    "gates": {
+      "minimum_trades_per_week": 2.0,
+      "profit_factor_strictly_above": 1.1,
+      "each_calendar_year_fixed_notional_pnl_positive": true,
+      "ending_cash_at_least_110_percent_of_price_only_spy": true,
+      "positive_after_one_extra_cent_per_share_at_entry_and_exit": true,
+      "positive_after_five_minute_entry_delay": true,
+      "positive_after_removing_ten_best_sessions": true,
+      "session_block_bootstrap_95pct_lower_mean_return_above": 0.0,
+      "positive_on_nonnegative_reference_gap_subset": true,
+      "positive_on_negative_reference_gap_subset": true,
+      "outperform_sell_side_sign_flip_placebo": true,
+      "outperform_previous_session_signal_placebo": true
+    }
+  },
+  "secondary_holdout": {
+    "period": "2024-01-02 through 2025-12-31",
+    "requirements": [
+      "minimum two trades per calendar week",
+      "positive fixed-notional P&L in 2024 and 2025 separately",
+      "profit factor above 1.1",
+      "ending cash at least 110 percent of same-period price-only SPY",
+      "positive after one extra cent per share at both fills",
+      "positive after five-minute entry delay",
+      "positive after removing five best sessions",
+      "positive on both reference-gap sign subsets",
+      "outperform both frozen placebos",
+      "EQUS.MINI observed execution rebuild positive"
+    ]
+  },
+  "diagnostic_extension": {
+    "period": "2026-01-02 through 2026-07-24",
+    "lock": "Open only if development and secondary holdout both pass. It is diagnostic, not pristine prospective evidence."
+  },
+  "placebos": {
+    "sell_side_sign_flip": "Trade UPRO on eligible side A sessions using the same execution clock.",
+    "previous_session_signal": "Trade UPRO today when the prior eligible session's frozen state was side B. No current-session auction state is used."
+  },
+  "reference_gap_identification": "Define pre-open reference gap as ref_price divided by prior session SPY close minus one. The actual strategy must have positive fixed-notional P&L in both nonnegative-gap and negative-gap subsets.",
+  "bootstrap": {
+    "unit": "trading session",
+    "resamples": 5000,
+    "seed": 340034
+  },
+  "preimplementation_critique": "research_scout/SPY_OPENING_AUCTION_RESIDUAL_BUY_PRESSURE_PREIMPLEMENTATION_CRITIQUE_V34.md",
+  "feasibility_audit": "research_scout/spy_auction_imbalance_feasibility_v34.json",
+  "parameter_policy": "One sign, one 09:29 cutoff, one UPRO actuator, one 09:31 entry, one 10:30 exit, and one implementation. No post-result threshold, timing, sign, stop, actuator, or sleeve repair."
+}

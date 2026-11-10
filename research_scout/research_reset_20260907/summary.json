@@ -1,0 +1,467 @@
+{
+  "V83": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 1.0,
+      "sell_notional_rate": 5.1e-06,
+      "sell_per_share": 0.000119
+    },
+    "calendar_sessions": 753,
+    "known_sessions": 753,
+    "trade_days": 107,
+    "legs": 107,
+    "missing_dates": [],
+    "complete_equity": true,
+    "ending_cash": 116.55571778146152,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 126.38639467633621,
+        "total_return": 0.2638639467633621,
+        "fixed_initial_notional_pnl": 23.93412109283125,
+        "max_daily_drawdown": -0.06386477469441842,
+        "sharpe": 1.3607348218451705
+      },
+      "crossed": {
+        "ending_cash": 119.21776428465658,
+        "total_return": 0.1921776428465658,
+        "fixed_initial_notional_pnl": 18.08546604582506,
+        "max_daily_drawdown": -0.06935531163681385,
+        "sharpe": 1.0365484467814623
+      },
+      "net": {
+        "ending_cash": 116.55571778146152,
+        "total_return": 0.1655571778146152,
+        "fixed_initial_notional_pnl": 15.823664754307277,
+        "max_daily_drawdown": -0.07168706397728819,
+        "sharpe": 0.9098446470513736
+      },
+      "cost_stress": {
+        "ending_cash": 114.08791766053052,
+        "total_return": 0.14087917660530525,
+        "fixed_initial_notional_pnl": 13.680707898822176,
+        "max_daily_drawdown": -0.07391234806870706,
+        "sharpe": 0.788761987836796
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "excess_mean_daily_95_interval": [
+      -0.000965525792338823,
+      0.0005938622046603751
+    ],
+    "economic_checks": {
+      "data_complete": true,
+      "positive_net": true,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": true
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "observed_quotes",
+    "family": "calendar rebalancing",
+    "original_reported_ending_cash": 116.55571778146152,
+    "original_excluded_dates_in_calendar": [
+      "2021-01-21",
+      "2022-07-18",
+      "2022-08-22",
+      "2022-12-05",
+      "2022-12-27",
+      "2023-06-26",
+      "2023-09-22",
+      "2023-11-21",
+      "2023-12-01",
+      "2023-12-04",
+      "2023-12-05",
+      "2023-12-06",
+      "2023-12-07",
+      "2023-12-08",
+      "2023-12-11"
+    ]
+  },
+  "V56": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 1.0,
+      "sell_notional_rate": 5.1e-06,
+      "sell_per_share": 0.000119
+    },
+    "calendar_sessions": 753,
+    "known_sessions": 753,
+    "trade_days": 382,
+    "legs": 382,
+    "missing_dates": [],
+    "complete_equity": true,
+    "ending_cash": 108.71571564916489,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 143.01939811841174,
+        "total_return": 0.43019398118411734,
+        "fixed_initial_notional_pnl": 49.05220327664984,
+        "max_daily_drawdown": -0.1984896051111622,
+        "sharpe": 0.5518087003059244
+      },
+      "crossed": {
+        "ending_cash": 117.80338068916375,
+        "total_return": 0.1780338068916374,
+        "fixed_initial_notional_pnl": 29.637647440885452,
+        "max_daily_drawdown": -0.2536353618499201,
+        "sharpe": 0.3336880696549429
+      },
+      "net": {
+        "ending_cash": 108.71571564916489,
+        "total_return": 0.0871571564916489,
+        "fixed_initial_notional_pnl": 21.604240979200227,
+        "max_daily_drawdown": -0.2762406020940661,
+        "sharpe": 0.24331585890415536
+      },
+      "cost_stress": {
+        "ending_cash": 100.71917178965373,
+        "total_return": 0.007191717896537275,
+        "fixed_initial_notional_pnl": 13.960665002669426,
+        "max_daily_drawdown": -0.29706886233439245,
+        "sharpe": 0.15727266905386036
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "excess_mean_daily_95_interval": [
+      -0.0015915381053329166,
+      0.0013287035862034357
+    ],
+    "economic_checks": {
+      "data_complete": true,
+      "positive_net": true,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": true
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "observed_quotes",
+    "family": "stock/bond transmission",
+    "original_reported_ending_cash": 117.80338068916375,
+    "original_excluded_dates_in_calendar": [
+      "2021-01-21",
+      "2022-07-18",
+      "2022-08-22",
+      "2022-12-05",
+      "2022-12-27",
+      "2023-06-26",
+      "2023-09-22",
+      "2023-11-21",
+      "2023-12-01",
+      "2023-12-04",
+      "2023-12-05",
+      "2023-12-06",
+      "2023-12-07",
+      "2023-12-08",
+      "2023-12-11"
+    ]
+  },
+  "V76": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 1.0,
+      "sell_notional_rate": 5.1e-06,
+      "sell_per_share": 0.000119
+    },
+    "calendar_sessions": 753,
+    "known_sessions": 752,
+    "trade_days": 368,
+    "legs": 368,
+    "missing_dates": [
+      "2021-11-26"
+    ],
+    "complete_equity": false,
+    "ending_cash": null,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 146.4121358492484,
+        "total_return": 0.4641213584924839,
+        "fixed_initial_notional_pnl": 47.46629332843607,
+        "max_daily_drawdown": -0.32649162528589193,
+        "sharpe": 0.6370782736165901
+      },
+      "crossed": {
+        "ending_cash": 123.28717005630759,
+        "total_return": 0.23287170056307582,
+        "fixed_initial_notional_pnl": 30.272149540738614,
+        "max_daily_drawdown": -0.3471244449499722,
+        "sharpe": 0.4064110139897613
+      },
+      "net": {
+        "ending_cash": 114.12683050442138,
+        "total_return": 0.14126830504421384,
+        "fixed_initial_notional_pnl": 22.546196467127587,
+        "max_daily_drawdown": -0.3571519408027469,
+        "sharpe": 0.3027950678182683
+      },
+      "cost_stress": {
+        "ending_cash": 106.02874150015805,
+        "total_return": 0.06028741500158041,
+        "fixed_initial_notional_pnl": 15.182406174024976,
+        "max_daily_drawdown": -0.36659605267961215,
+        "sharpe": 0.20396144527149324
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "excess_mean_daily_95_interval": null,
+    "economic_checks": {
+      "data_complete": false,
+      "positive_net": true,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": true
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "observed_quotes",
+    "family": "constituent dispersion",
+    "original_reported_ending_cash": 123.28717005630759,
+    "original_excluded_dates_in_calendar": [
+      "2021-01-21",
+      "2022-07-18",
+      "2022-08-22",
+      "2022-12-05",
+      "2022-12-27",
+      "2023-06-26",
+      "2023-09-22",
+      "2023-11-21",
+      "2023-12-01",
+      "2023-12-04",
+      "2023-12-05",
+      "2023-12-06",
+      "2023-12-07",
+      "2023-12-08",
+      "2023-12-11"
+    ]
+  },
+  "V45": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 1.0,
+      "sell_notional_rate": 5.1e-06,
+      "sell_per_share": 0.000119
+    },
+    "calendar_sessions": 753,
+    "known_sessions": 753,
+    "trade_days": 306,
+    "legs": 378,
+    "missing_dates": [],
+    "complete_equity": true,
+    "ending_cash": 62.92949050720979,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 81.70755363384413,
+        "total_return": -0.18292446366155868,
+        "fixed_initial_notional_pnl": -15.792639171058298,
+        "max_daily_drawdown": -0.4572594689099667,
+        "sharpe": -0.30959774594116235
+      },
+      "crossed": {
+        "ending_cash": 68.12818968165418,
+        "total_return": -0.3187181031834583,
+        "fixed_initial_notional_pnl": -33.92880689453155,
+        "max_daily_drawdown": -0.4904380023889895,
+        "sharpe": -0.663217799758663
+      },
+      "net": {
+        "ending_cash": 62.92949050720979,
+        "total_return": -0.37070509492790205,
+        "fixed_initial_notional_pnl": -41.84938475688651,
+        "max_daily_drawdown": -0.5077841861708284,
+        "sharpe": -0.8171065695963363
+      },
+      "cost_stress": {
+        "ending_cash": 58.3473950779659,
+        "total_return": -0.416526049220341,
+        "fixed_initial_notional_pnl": -49.39104486303999,
+        "max_daily_drawdown": -0.5248088304678091,
+        "sharpe": -0.9631589074484898
+      }
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "excess_mean_daily_95_interval": [
+      -0.0020644230563947106,
+      5.157944666465779e-05
+    ],
+    "economic_checks": {
+      "data_complete": true,
+      "positive_net": false,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": false
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "observed_quotes",
+    "family": "post-release macro response",
+    "original_reported_ending_cash": 68.12818968165413,
+    "original_excluded_dates_in_calendar": [
+      "2021-01-21",
+      "2022-07-18",
+      "2022-08-22",
+      "2022-12-05",
+      "2022-12-27",
+      "2023-06-26",
+      "2023-09-22",
+      "2023-11-21",
+      "2023-12-01",
+      "2023-12-04",
+      "2023-12-05",
+      "2023-12-06",
+      "2023-12-07",
+      "2023-12-08",
+      "2023-12-11"
+    ]
+  },
+  "V49": {
+    "family": "signal stability, original P&L gate preserved",
+    "failure_stage": "signal_stability",
+    "gate_passed": false,
+    "economic_evaluation": "not run, original gate retained",
+    "agreement": 49.166666666666664
+  },
+  "V94_development": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 5,
+      "sell_notional_rate": 0,
+      "sell_per_share": 0
+    },
+    "calendar_sessions": 753,
+    "known_sessions": 747,
+    "trade_days": 739,
+    "legs": 2217,
+    "missing_dates": [
+      "2021-01-04",
+      "2021-04-20",
+      "2021-10-26",
+      "2022-01-25",
+      "2022-03-08",
+      "2022-03-09"
+    ],
+    "complete_equity": false,
+    "ending_cash": null,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 131.3856855170162,
+        "total_return": 0.31385685517016215,
+        "fixed_initial_notional_pnl": 31.022611211741435,
+        "max_daily_drawdown": -0.29204898444276906,
+        "sharpe": 0.6604056304131176
+      },
+      "net": {
+        "ending_cash": 62.74865228845214,
+        "total_return": -0.37251347711547855,
+        "fixed_initial_notional_pnl": -42.87146436167576,
+        "max_daily_drawdown": -0.4840426327756491,
+        "sharpe": -0.9135478668544735
+      },
+      "cost_stress": {
+        "ending_cash": 29.968195497515882,
+        "total_return": -0.7003180450248412,
+        "fixed_initial_notional_pnl": -116.69171967978271,
+        "max_daily_drawdown": -0.7014610261877865,
+        "sharpe": -2.488784284008492
+      },
+      "crossed": null
+    },
+    "SPY": {
+      "ending_cash": 132.3969124078269,
+      "total_return": 0.32396912407826894,
+      "fixed_initial_notional_pnl": 32.702665436638426,
+      "max_daily_drawdown": -0.24496380282076535,
+      "sharpe": 0.6212951379720983
+    },
+    "excess_mean_daily_95_interval": null,
+    "economic_checks": {
+      "data_complete": false,
+      "positive_net": false,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": false
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "bar_scenario_not_quote_validated"
+  },
+  "V94_later_exposed": {
+    "contract_version": 1,
+    "costs": {
+      "extra_bps_each_side": 5,
+      "sell_notional_rate": 0,
+      "sell_per_share": 0
+    },
+    "calendar_sessions": 502,
+    "known_sessions": 499,
+    "trade_days": 487,
+    "legs": 1461,
+    "missing_dates": [
+      "2025-03-10",
+      "2025-03-11",
+      "2025-12-31"
+    ],
+    "complete_equity": false,
+    "ending_cash": null,
+    "available_case_metrics": {
+      "reference": {
+        "ending_cash": 87.41623975788919,
+        "total_return": -0.12583760242110809,
+        "fixed_initial_notional_pnl": -11.132924276528177,
+        "max_daily_drawdown": -0.34236973252407066,
+        "sharpe": -0.36748940012887926
+      },
+      "net": {
+        "ending_cash": 53.71439529529975,
+        "total_return": -0.46285604704700245,
+        "fixed_initial_notional_pnl": -59.79745908484245,
+        "max_daily_drawdown": -0.5462810833473404,
+        "sharpe": -1.9754789955121517
+      },
+      "cost_stress": {
+        "ending_cash": 33.005715727136646,
+        "total_return": -0.6699428427286336,
+        "fixed_initial_notional_pnl": -108.41337797427207,
+        "max_daily_drawdown": -0.7039532446073923,
+        "sharpe": -3.583575097833976
+      },
+      "crossed": null
+    },
+    "SPY": {
+      "ending_cash": 147.99598966571006,
+      "total_return": 0.4799598966571006,
+      "fixed_initial_notional_pnl": 41.85859668567026,
+      "max_daily_drawdown": -0.18755234489427297,
+      "sharpe": 1.2842929459015147
+    },
+    "excess_mean_daily_95_interval": null,
+    "economic_checks": {
+      "data_complete": false,
+      "positive_net": false,
+      "beats_SPY": false,
+      "positive_excess_lower95": false,
+      "positive_cost_stress": false
+    },
+    "preliminary_economic_pass": false,
+    "execution_evidence": "bar_scenario_not_quote_validated"
+  }
+}

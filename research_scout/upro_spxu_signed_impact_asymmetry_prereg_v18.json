@@ -1,0 +1,78 @@
+{
+  "specification_id": "UPRO-SPXU-Cross-Inverse-Signed-Impact-Asymmetry-v18",
+  "saved_at": "2026-07-26",
+  "status": "preregistered_after-returns-blind-audit-before-post-signal-return-calculation",
+  "objective": "Test whether the S&P direction receiving greater next-minute quote impact from timestamp-verified aggressor events across both inverse leveraged wrappers persists through the afternoon.",
+  "signal": {
+    "event_window": "09:31-10:13 ET",
+    "response_window": "Each event's current BBO minute to the next BBO minute, ending no later than 10:14",
+    "freshness": "Count a last trade only when A/B side is present and ts_event lies inside its own one-minute BBO interval.",
+    "projection": "UPRO aggressor and midpoint-return signs map through +3; SPXU maps through -3.",
+    "cell_impact": "Mean of projected trade sign multiplied by next-minute projected midpoint log return.",
+    "wrapper_weighting": "Compute bullish and bearish cell impact within each wrapper, then average UPRO and SPXU equally.",
+    "score": "Equal-wrapper bullish impact minus equal-wrapper bearish impact.",
+    "minimum_data": "At least three fresh events in every wrapper-by-underlying-direction cell.",
+    "decision": "Positive buys UPRO, negative buys SPXU, exact zero holds cash.",
+    "filters": "No price, magnitude, volatility, weekday, or regime filter."
+  },
+  "execution": {
+    "starting_account_usd": 100.0,
+    "fractional_shares": true,
+    "reinvest_equity": true,
+    "entry": "10:16 exact observed ask",
+    "exit": "15:30 exact observed bid",
+    "stop": null,
+    "maximum_positions": 1,
+    "maximum_trades_per_session": 1,
+    "overnight": false
+  },
+  "data": {
+    "primary": "Databento ARCX.PILLAR UPRO/SPXU BBO-1m, 2021-2025",
+    "independent_feed_rebuild": "Databento EQUS.MINI UPRO/SPXU BBO-1m, available from 2023-03-28",
+    "benchmark": "Databento ARCX.PILLAR SPY OHLCV-1m",
+    "extension": "2026 ARCX.PILLAR, opened only after a full development pass",
+    "excluded": "Dataset-condition dates marked degraded"
+  },
+  "development": {
+    "period": "2021-01-04 through 2023-12-29",
+    "holdout_lock": "No 2024-2026 post-signal returns unless every development gate passes.",
+    "gates": [
+      "at least two trades per week",
+      "profit factor strictly above one",
+      "positive fixed-$100 P&L in 2021, 2022, and 2023 separately",
+      "positive UPRO and SPXU P&L separately",
+      "compounded ending cash above price-only SPY",
+      "positive after one extra cent per share at both fills",
+      "positive after a five-minute entry delay",
+      "positive after removing the ten best sessions",
+      "outperform the sign-flipped impact score",
+      "outperform the raw projected aggressor-count placebo"
+    ]
+  },
+  "holdout": {
+    "period": "2024-01-02 through 2025-12-31",
+    "gates": [
+      "positive in 2024 and 2025 separately",
+      "positive UPRO and SPXU P&L separately",
+      "ending cash above price-only SPY",
+      "positive one-extra-cent stress",
+      "positive after removing five best sessions",
+      "positive EQUS.MINI signal-and-execution rebuild"
+    ]
+  },
+  "placebos": {
+    "sign_flipped": "Trade the opposite wrapper from the frozen impact score.",
+    "raw_aggressor_count": "Ignore quote response and trade the sign of all fresh projected aggressor events."
+  },
+  "prohibited_repairs": [
+    "invert the impact interpretation",
+    "change event or response windows",
+    "change the three-event validity minimum",
+    "weight one wrapper more heavily",
+    "add a score threshold",
+    "drop SPXU or any year",
+    "change entry, exit, or add a stop"
+  ],
+  "preimplementation_critique": "research_scout/UPRO_SPXU_SIGNED_IMPACT_ASYMMETRY_PREIMPLEMENTATION_CRITIQUE_V18.md",
+  "returns_blind_audit": "research_scout/upro_spxu_signed_impact_asymmetry_returns_blind_audit_v18.json"
+}

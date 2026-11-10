@@ -1,0 +1,63 @@
+{
+  "status": "historical_hypothesis_generation_paused_at_learned_data_boundary",
+  "pnl_calculated_for_v48_v54": false,
+  "preregistrations_created_for_v48_v54": false,
+  "paid_api_calls_made": false,
+  "failure_laws": [
+    {
+      "name": "specificity_cadence_tradeoff",
+      "evidence": [
+        "V48: 1.982 signals/week",
+        "V51: 0.633 signals/week",
+        "V53: 1.342 signals/week"
+      ],
+      "rule": "Do not widen or delete mechanistic conditions after observing cadence."
+    },
+    {
+      "name": "trade_event_quote_coverage_ceiling",
+      "evidence": [
+        "V49: zero synchronized 2023 development signals under five-second all-six observation",
+        "V50: 87.387% complete multi-clock execution evidence",
+        "V53: 86.364% complete multi-clock execution evidence"
+      ],
+      "rule": "Do not treat trade-event TBBO as a complete quote stream or open covered-subset P&L after a coverage failure."
+    },
+    {
+      "name": "clock_endpoint_instability",
+      "evidence": [
+        "V50 left-window identical action: 59.877%",
+        "V52 transition-only identical action: 36.675%",
+        "V53 adjacent-clock identical action: 48.394% and 21.859%"
+      ],
+      "rule": "Do not select the passing neighboring clock or add magnitude thresholds."
+    },
+    {
+      "name": "field_substitution_is_not_independence",
+      "evidence": [
+        "V54 rejected because it reused V40 pair consensus with statistic timing instead of quantity"
+      ],
+      "rule": "A new column inside a consumed comparison topology is not a new causal family."
+    },
+    {
+      "name": "frequency_does_not_establish_mechanism",
+      "evidence": [
+        "V52: 3.701 signals/week and 90.649% coverage but failed endpoint stability and selection-share gates"
+      ],
+      "rule": "Do not inspect returns when a frequent state is definition-sensitive."
+    }
+  ],
+  "prohibited_next_repairs": [
+    "round V48 cadence upward",
+    "widen V49 synchronization",
+    "choose V50 right-shifted window",
+    "replace V51 hard market imbalance with total imbalance",
+    "add a tick threshold to V52",
+    "choose V53's best clock",
+    "run V54 latency consensus without independent timing semantics"
+  ],
+  "next_authorized_evidence_families": [
+    "complete quote-update or official consolidated BBO with observable quote age",
+    "intraday iNAV/NAV plus creations-redemptions-baskets-shares-outstanding",
+    "prospectively frozen untouched forward collection"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "status": "returns_blind_no_post_entry_return_or_pnl_computed",
+  "eligible_development_signal_sessions": 738,
+  "complete_primary_signal_states": 738,
+  "common_signal_coverage": 1.0,
+  "candidate_signals": 382,
+  "executable_trades": 377,
+  "executable_trades_per_calendar_week": 2.4122486288848264,
+  "primary_execution_coverage": 0.9869109947643979,
+  "year_counts": {
+    "2021": 118,
+    "2022": 133,
+    "2023": 126
+  },
+  "direction_counts": {
+    "SPXU": 189,
+    "UPRO": 188
+  },
+  "minority_direction_fraction": 0.4986737400530504,
+  "independent_candidate_signals": 102,
+  "independent_executable_signals": 101,
+  "independent_execution_coverage": 0.9901960784313726,
+  "source_action_comparisons": 753,
+  "primary_alternate_action_agreement_including_cash": 0.9721115537848606,
+  "predeclared_feasibility_gates": {
+    "common_signal_coverage_at_least_98_percent": true,
+    "at_least_two_executable_trades_per_calendar_week": true,
+    "at_least_100_executable_trades_each_development_year": true,
+    "minority_direction_at_least_20_percent": true,
+    "primary_execution_coverage_at_least_95_percent": true,
+    "independent_execution_coverage_at_least_95_percent": true,
+    "primary_alternate_action_agreement_at_least_95_percent": true,
+    "strict_signal_before_trade_causality": true
+  },
+  "feasibility_passed": true
+}

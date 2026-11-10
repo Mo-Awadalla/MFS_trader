@@ -1,0 +1,105 @@
+{
+  "status": "returns_blind_no_post_entry_returns_read",
+  "returns_read": false,
+  "recent_years_read": false,
+  "source_integrity": {
+    "source_sha256": "e9f83e2edc7b499234283a88430cb3ac936d9d26b3a270e0f196d2b36b09f8d2",
+    "api_meta_total_count": 1760,
+    "local_rows": 1760,
+    "required_valid_fraction_2021_2023": 1.0,
+    "valid_rows_after_maturity_check": 1760,
+    "auction_rows_by_year": {
+      "2021": 445,
+      "2022": 384,
+      "2023": 428
+    },
+    "distinct_auction_dates_by_year": {
+      "2021": 199,
+      "2022": 183,
+      "2023": 194
+    }
+  },
+  "development_2021_2023": {
+    "expected_cash_sessions": 753,
+    "eligible_auction_dates": 572,
+    "mapped_source_auction_dates": 572,
+    "auction_date_mapping_coverage": 1.0,
+    "mapped_event_sessions": 572,
+    "signals": 572,
+    "signals_per_week": 3.798140770252324,
+    "upro_signals": 304,
+    "spxu_signals": 268,
+    "minority_actuator_share": 0.46853146853146854,
+    "signals_by_year": {
+      "2021": 197,
+      "2022": 183,
+      "2023": 192
+    },
+    "direction_switches_by_year": {
+      "2021": 88,
+      "2022": 101,
+      "2023": 88
+    }
+  },
+  "feature_concentration": {
+    "largest_bucket": "Note|7-Year|FRN=No|TIPS=No",
+    "largest_bucket_share": 0.11741957815938205,
+    "security_type_shares": {
+      "Bill": 0.1826684089404351,
+      "Bond": 0.3801382306398044,
+      "Note": 0.43719336041976065
+    }
+  },
+  "weighting_stability": {
+    "notional_only": {
+      "overlap": 572,
+      "identical_actions": 472,
+      "identical_action_including_cash": 0.8251748251748252
+    },
+    "fixed_coupon_conditional": {
+      "overlap": 274,
+      "identical_actions": 267,
+      "identical_action_including_cash": 0.9744525547445255
+    }
+  },
+  "distinctness": {
+    "prior_spy_direction": {
+      "overlap": 572,
+      "identical_actions": 276,
+      "identical_action_including_cash": 0.4825174825174825
+    },
+    "v58_duration_impulse": {
+      "overlap": 572,
+      "identical_actions": 273,
+      "identical_action_including_cash": 0.4772727272727273
+    }
+  },
+  "entry_quote_evidence": {
+    "primary": {
+      "signals": 564,
+      "available": 564,
+      "coverage": 1.0
+    },
+    "independent": {
+      "signals": 192,
+      "available": 151,
+      "coverage": 0.7864583333333334
+    }
+  },
+  "strict_causality": true,
+  "gates": {
+    "required_source_fields_valid_at_least_95_percent": true,
+    "auction_date_mapping_coverage_at_least_90_percent": true,
+    "at_least_two_signals_per_week": true,
+    "at_least_90_signals_each_year": true,
+    "minority_actuator_share_at_least_35_percent": true,
+    "at_least_20_direction_switches_each_year": true,
+    "largest_bucket_below_50_percent_absolute_shock": true,
+    "notional_only_action_agreement_at_least_70_percent": true,
+    "coupon_only_conditional_agreement_at_least_70_percent": true,
+    "primary_entry_quote_coverage_at_least_90_percent": true,
+    "prior_spy_action_agreement_below_80_percent": true,
+    "v58_action_agreement_below_80_percent": true
+  },
+  "gate_passed": true
+}

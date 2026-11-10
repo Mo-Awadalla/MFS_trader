@@ -1,0 +1,102 @@
+{
+  "specification_id": "CFTC-RELATIVE-TRANSFER-ES-OPENING-ACCEPTANCE-V65",
+  "frozen_before_post_0936_return_read": true,
+  "development_partition": {
+    "start": "2021-01-01",
+    "end": "2023-12-31",
+    "expected_cash_sessions": 753,
+    "returns_blind_eligible_states": 743,
+    "returns_blind_feature_signals": 381
+  },
+  "recent_years": {
+    "status": "locked",
+    "unlock_rule": "every frozen 2021-2023 development gate must pass"
+  },
+  "source": {
+    "report": "CFTC Traders in Financial Futures, Futures Only",
+    "market": "S&P 500 Consolidated - CHICAGO MERCANTILE EXCHANGE",
+    "cftc_contract_market_code": "13874+",
+    "availability": "report date plus seven calendar days",
+    "state_expiry": "next report safe-availability date, exclusive"
+  },
+  "slow_state": {
+    "asset_manager_net_change": "Change_in_Asset_Mgr_Long_All minus Change_in_Asset_Mgr_Short_All",
+    "leveraged_fund_net_change": "Change_in_Lev_Money_Long_All minus Change_in_Lev_Money_Short_All",
+    "relative_transfer": "asset_manager_net_change minus leveraged_fund_net_change",
+    "direction": "strict sign of relative_transfer",
+    "magnitude_threshold": null,
+    "normalization": null
+  },
+  "fast_confirmation": {
+    "market": "ES.v.0 one-minute OHLCV",
+    "timezone": "America/New_York",
+    "move": "09:34 completed-bar close minus 09:30 bar open",
+    "known_at": "09:35",
+    "signal": "strict sign equals slow-state direction",
+    "zero_move": "cash"
+  },
+  "actuation": {
+    "positive": "UPRO",
+    "negative": "SPXU",
+    "position": "long selected ETF only",
+    "notional_usd": 100.0,
+    "fractional_shares": true,
+    "entry": "exact 09:36 ask",
+    "exit": "exact 15:30 bid",
+    "stop": null,
+    "commission_usd": 0.0,
+    "overnight": false
+  },
+  "stress_tests": {
+    "adverse_cents_each_fill": 0.01,
+    "entry_delay_minutes": 5,
+    "delete_best_source_report_clusters": 5,
+    "cluster_bootstrap": {
+      "unit": "source CFTC report",
+      "include_zero_trade_reports": true,
+      "moving_block_reports": 4,
+      "resamples": 10000,
+      "seed": 650065,
+      "lower_quantile": 0.025
+    },
+    "source_report_direction_permutation": {
+      "method": "shuffle slow-state direction labels across source reports while preserving report multiplicity and the realized fast market/quote panel",
+      "samples": 5000,
+      "seed": 650165,
+      "statistic": "mean fixed-notional trade PnL",
+      "alternative": "actual greater than permuted"
+    }
+  },
+  "controls": {
+    "es_only_opening_direction": "trade every nonzero five-minute ES direction",
+    "cot_only_relative_transfer": "trade the slow direction every eligible session",
+    "one_report_shifted_transfer": "replace each source report direction with the immediately preceding source report direction",
+    "asset_manager_only_confirmation": "five-minute ES direction equals sign of Asset Manager net change",
+    "leveraged_fund_rejection": "five-minute ES direction is opposite sign of Leveraged Fund net change"
+  },
+  "development_gates": [
+    "more than 2.0 executed trades per 753/5 declared weeks",
+    "at least 95 percent execution coverage after degraded-session exclusions",
+    "profit factor greater than 1.10",
+    "positive fixed-notional PnL in 2021, 2022, and 2023",
+    "positive UPRO and SPXU fixed-notional PnL separately",
+    "compounded ending cash above adjusted SPY",
+    "positive fixed-notional PnL after one extra cent adverse at entry and exit",
+    "positive fixed-notional PnL after a five-minute entry delay",
+    "positive PnL after deleting the five best source-report clusters",
+    "source-report moving-block-bootstrap 2.5th percentile above zero",
+    "one-sided source-report direction-permutation p-value below 0.05",
+    "positive independent-feed overlap PnL with profit factor above one and both sleeves represented",
+    "actual mean trade PnL above the one-report-shifted and COT-only controls"
+  ],
+  "prohibited_repairs": [
+    "change either signal clock",
+    "change report lag",
+    "normalize or threshold relative transfer",
+    "require strict category collision after seeing outcomes",
+    "remove a year, weekday, or actuator",
+    "add a stop, volatility filter, or magnitude filter",
+    "substitute a control for the candidate",
+    "read 2024-2025 after any gate miss"
+  ]
+}

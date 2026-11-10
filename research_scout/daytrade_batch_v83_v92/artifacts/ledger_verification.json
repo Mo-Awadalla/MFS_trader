@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "total_trades_reconciled": 591,
+  "checks": [
+    {
+      "candidate": "v83",
+      "trades_reconciled": 107,
+      "ending_cash_reconciled": 116.55571778146117,
+      "one_position_per_day": true,
+      "all_flat_same_day": true,
+      "confirmation_not_in_ledger": true
+    },
+    {
+      "candidate": "v84",
+      "trades_reconciled": 105,
+      "ending_cash_reconciled": 85.03090695582142,
+      "one_position_per_day": true,
+      "all_flat_same_day": true,
+      "confirmation_not_in_ledger": true
+    },
+    {
+      "candidate": "v85",
+      "trades_reconciled": 335,
+      "ending_cash_reconciled": 104.25632944772997,
+      "one_position_per_day": true,
+      "all_flat_same_day": true,
+      "confirmation_not_in_ledger": true
+    },
+    {
+      "candidate": "v86",
+      "trades_reconciled": 44,
+      "ending_cash_reconciled": 88.0231464460472,
+      "one_position_per_day": true,
+      "all_flat_same_day": true,
+      "confirmation_not_in_ledger": true
+    }
+  ]
+}

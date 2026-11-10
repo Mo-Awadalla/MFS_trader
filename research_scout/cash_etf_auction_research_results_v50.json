@@ -1,0 +1,79 @@
+{
+  "program_status": "no_new_candidate_authorized_pnl",
+  "constraints": {
+    "cash_etfs_only": true,
+    "margin_required": false,
+    "short_sales": false,
+    "overnight_positions": false,
+    "fixed_position_usd": 100,
+    "new_futures_hypotheses_used": false
+  },
+  "candidates": {
+    "V48": {
+      "family": "official_open_cross_leverage_basis",
+      "status": "failed_returns_blind_no_pnl",
+      "development_signals": 310,
+      "development_signals_per_week": 1.9817351598173518,
+      "development_side_counts": {
+        "UPRO": 169,
+        "SPXU": 141
+      },
+      "failed_gates": [
+        "feature_frequency_at_least_two_per_declared_week_2021_2023",
+        "at_least_100_signals_each_full_development_year",
+        "statistics_unique_positive_and_received_before_09_30_01"
+      ]
+    },
+    "V49": {
+      "family": "synchronized_six_fund_post_open_fair_value_simplex",
+      "status": "failed_returns_blind_no_pnl",
+      "development_signals": 0,
+      "all_period_synchronized_warm_sessions": 20,
+      "all_period_signals": 13,
+      "feature_exclusions": {
+        "feature_event_wait_over_5s": 420,
+        "incomplete_six_symbol_tbbo": 344
+      }
+    },
+    "V50": {
+      "family": "auction_indicative_revision_intensity_acceleration",
+      "status": "failed_returns_blind_no_pnl",
+      "development_signals": 365,
+      "development_signals_per_week": 2.3333333333333335,
+      "development_side_counts": {
+        "UPRO": 161,
+        "SPXU": 204
+      },
+      "signals_by_year": {
+        "2021": 115,
+        "2022": 116,
+        "2023": 134,
+        "2024": 153,
+        "2025": 112,
+        "2026": 73
+      },
+      "executable_development_signals": 103,
+      "executable_development_signals_per_week": 2.5842293906810037,
+      "left_window_identical_action_including_cash_pct": 59.877300613496935,
+      "right_window_identical_action_including_cash_pct": 65.38461538461539,
+      "execution_coverage_pct": 87.38738738738739,
+      "primary_entry_wait_p95_seconds": 24.765284986450187,
+      "failed_gates": [
+        "left_window_identical_action_including_cash_at_least_60pct",
+        "execution_coverage_at_least_90pct"
+      ],
+      "returns_blind_control_agreement_pct": {
+        "opening_gap_direction": 45.03597122302158,
+        "early_window_direction": 69.9530516431925,
+        "final_imbalance_side": 54.3509272467903
+      }
+    }
+  },
+  "pnl_calculated": false,
+  "preregistration_created": false,
+  "paid_api_calls_made": false,
+  "next_required_evidence": [
+    "complete quote-update or official consolidated BBO history with observable quote age",
+    "prospective untouched SPY auction message collection under a separately frozen mechanism"
+  ]
+}

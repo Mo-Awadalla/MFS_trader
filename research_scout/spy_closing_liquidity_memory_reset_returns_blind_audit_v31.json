@@ -1,0 +1,40 @@
+{
+  "status": "returns_blind_no_post_entry_prices_or_pnl_read",
+  "candidate_entries": 104,
+  "executable_entries": 104,
+  "entries_per_week": 0.6666666666666666,
+  "direction_counts": {
+    "UPRO": 43,
+    "SPXU": 61
+  },
+  "minority_direction_fraction": 0.41346153846153844,
+  "year_counts": {
+    "2021": 26,
+    "2022": 41,
+    "2023": 37
+  },
+  "entry_quote_availability": 1.0,
+  "signal_state_counts": {
+    "not_exactly_two_distinct_visits": 555,
+    "same_bar_dual_touch": 66,
+    "signal": 104,
+    "terminal_not_owned": 9,
+    "missing_blocks": 2,
+    "dead_bar_revisited_first": 1
+  },
+  "cross_feed": {
+    "overlap_dates": 665,
+    "both_signal_dates": 86,
+    "same_direction_fraction": 1.0,
+    "same_action_fraction": 0.9639097744360903
+  },
+  "gates": {
+    "at_least_two_entries_per_week": false,
+    "every_development_year_at_least_100_entries": false,
+    "minority_direction_at_least_20_percent": true,
+    "entry_quote_availability_at_least_95_percent": true,
+    "cross_feed_direction_agreement_at_least_85_percent": true,
+    "cross_feed_action_agreement_at_least_75_percent": true
+  },
+  "feasibility_passed": false
+}

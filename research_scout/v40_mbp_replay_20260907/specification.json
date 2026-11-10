@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-09-07T01:57:50.045531+00:00",
+  "original_code_sha256": "17d6dd45dbbf0fead5c8bf3080ce4f6e8f094c2217914d7180f321a14b9b8c2b",
+  "measurement_amendment": "Use already extracted MBP-1 earliest valid event quote at each original execution target instead of trade-triggered TBBO. Original signals, dates, thresholds, exclusions and denominators unchanged.",
+  "features": "2021-01-01 through 2026-07-24; execution original overlap starts 2023-03-28",
+  "quote_source": "research_scout\\v49_mbp_replay_20260907\\quote_cache",
+  "economic_stage_only_if_all_gates_pass": true,
+  "economic_preregistration": {
+    "development": [
+      "2023-03-28",
+      "2023-12-31"
+    ],
+    "later_stages": "2024-2025 contaminated validation and available 2026 extension reported separately; none is pristine confirmation",
+    "entry": "09:31:05 ask",
+    "exit": "09:35:00 bid",
+    "delays": [
+      "09:31:01",
+      "09:32:00"
+    ],
+    "capital": "$100 compounded, and fixed $100 per trade; idle cash zero interest",
+    "costs": "Observed spread plus 1bp adverse execution each side, sell notional fee 0.0000051 plus $0.000119/share; fixed research assumptions, not historical fee reconstruction. Stress adds $0.01/share on each side.",
+    "robustness": "Matched delay subsets, remove top ten primary trades, 5-session block bootstrap excess versus SPY total return (5000 draws, seed 400907).",
+    "benchmark": "SPY adjusted daily close total-return proxy, first day adjusted open to close then close-to-close, over full stage calendar; separate matched-session passive SPY and same-window SPY ask-to-bid controls. Missing signal execution is unresolved, not cash.",
+    "controls": "Original overnight sign; prior-close-to-official-open UPRO return minus SPXU return sign; raw UPRO+SSO opening quantity minus SPXU+SDS sign (deliberately unnormalized raw participation control); prior trading-session consensus direction. Controls use matched executable primary dates; no sign optimization. Relevant 1x/2x/3x ladder also reported.",
+    "admission": "Development compounded net return must exceed SPY; bootstrap lower 95% excess bound >0; cent stress and remove-top-ten must remain profitable. Failure is terminal; later historical stages descriptive only.",
+    "limits": "Full local quotes absent for 28 late-2026 dates; never invent fills or mark missing signals as cash. Fractional fills, settlement and executable capacity not operationally validated; daily drawdown only."
+  }
+}
