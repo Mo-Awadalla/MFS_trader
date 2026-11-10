@@ -1,0 +1,62 @@
+{
+  "source": "Massive Futures Basic ($0) REST API",
+  "year": 2025,
+  "candidate_tickers": [
+    "ESH5",
+    "ESM5",
+    "ESU5",
+    "ESZ5",
+    "ESH6"
+  ],
+  "roll_rule": "highest prior-session aggregate volume among candidate contracts",
+  "intervals": [
+    {
+      "ticker": "ESH5",
+      "first_session": "2025-01-02",
+      "last_session": "2025-03-17",
+      "sessions": 49
+    },
+    {
+      "ticker": "ESM5",
+      "first_session": "2025-03-19",
+      "last_session": "2025-06-16",
+      "sessions": 62
+    },
+    {
+      "ticker": "ESU5",
+      "first_session": "2025-06-17",
+      "last_session": "2025-09-15",
+      "sessions": 62
+    },
+    {
+      "ticker": "ESZ5",
+      "first_session": "2025-09-16",
+      "last_session": "2025-12-15",
+      "sessions": 64
+    },
+    {
+      "ticker": "ESH6",
+      "first_session": "2025-12-16",
+      "last_session": "2025-12-31",
+      "sessions": 11
+    }
+  ],
+  "api_calls": 14,
+  "session_rows": 712,
+  "mapping_sessions": 248,
+  "minute_rows": 344404,
+  "files": {
+    "candidate_session_bars.parquet": {
+      "bytes": 43184,
+      "sha256": "b9859ae0536dff2688a8a8db3f2da27192702f290cba13ff9fb01df147cdff18"
+    },
+    "previous_session_volume_roll_map.parquet": {
+      "bytes": 3039,
+      "sha256": "550639d413b1d98615f7d65f69e12489aef4062ab74eafc7e8a33275a956029b"
+    },
+    "selected_contract_1min.parquet": {
+      "bytes": 8491878,
+      "sha256": "4473ba7b3ed36a4b8289356b99d7ef8dc450c64220a8156c3aaf9282434e4e21"
+    }
+  }
+}

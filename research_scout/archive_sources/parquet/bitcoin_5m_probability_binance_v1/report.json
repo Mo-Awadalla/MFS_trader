@@ -1,0 +1,282 @@
+{
+  "specification_id": "Bitcoin-5m-Probability-BinancePerp-v1",
+  "specification_sha256": "23db5c6ec2fe919db60ff18cc552d1ac7d90a518fc428a0144a04579d6ddf368",
+  "source": {
+    "price_data": "Official Binance public futures monthly BTCUSDT 5m klines",
+    "derivatives_data": "Official Binance public futures 5m metrics",
+    "price_url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/5m/",
+    "metrics_url": "https://data.binance.vision/data/futures/um/daily/metrics/BTCUSDT/"
+  },
+  "dataset": {
+    "rows": 465750,
+    "first_open_time": "2020-09-02T00:00:00+00:00",
+    "last_open_time": "2025-12-31T23:55:00+00:00",
+    "actual_up_rate": 0.49997638217928075,
+    "panel_path": "data\\parquet\\bitcoin_5m_probability_binance_v1\\panel.parquet"
+  },
+  "partitions": {
+    "training": {
+      "rows": 203984,
+      "bounds": {
+        "start": "2020-09-01",
+        "end": "2023-06-30"
+      }
+    },
+    "calibration": {
+      "rows": 52644,
+      "bounds": {
+        "start": "2023-07-01",
+        "end": "2023-12-31"
+      }
+    },
+    "internal_validation": {
+      "rows": 104370,
+      "bounds": {
+        "start": "2024-01-01",
+        "end": "2024-12-31"
+      }
+    },
+    "final_holdout": {
+      "rows": 104752,
+      "bounds": {
+        "start": "2025-01-01",
+        "end": "2025-12-31"
+      }
+    }
+  },
+  "baseline_training_up_rate": 0.4993430857322143,
+  "metrics": {
+    "training_in_sample": {
+      "rows": 203984,
+      "actual_up_rate": 0.4993430857322143,
+      "mean_predicted_probability": 0.4961019624153514,
+      "brier_score": 0.24835958328008875,
+      "log_loss": 0.6898621207220268,
+      "directional_accuracy_at_50pct": 0.5378755196485999,
+      "baseline_brier_score": 0.24999956846364474,
+      "baseline_log_loss": 0.6931463174869866,
+      "confident_rows": 10303,
+      "confident_coverage": 0.05050886344026982,
+      "confident_accuracy": 0.591187032903038,
+      "calibration_table": [
+        {
+          "count": 3,
+          "mean_predicted": 0.18719130980346935,
+          "actual_rate": 0.3333333333333333,
+          "absolute_calibration_error": 0.14614202352986397
+        },
+        {
+          "count": 19,
+          "mean_predicted": 0.2729998285032628,
+          "actual_rate": 0.47368421052631576,
+          "absolute_calibration_error": 0.20068438202305294
+        },
+        {
+          "count": 332,
+          "mean_predicted": 0.3756354628999819,
+          "actual_rate": 0.4066265060240964,
+          "absolute_calibration_error": 0.030991043124114492
+        },
+        {
+          "count": 114258,
+          "mean_predicted": 0.4791051524874483,
+          "actual_rate": 0.46588422692502934,
+          "absolute_calibration_error": 0.01322092556241894
+        },
+        {
+          "count": 89067,
+          "mean_predicted": 0.5179372494918654,
+          "actual_rate": 0.5422547071305871,
+          "absolute_calibration_error": 0.02431745763872173
+        },
+        {
+          "count": 284,
+          "mean_predicted": 0.6249506122635397,
+          "actual_rate": 0.602112676056338,
+          "absolute_calibration_error": 0.022837936207201648
+        },
+        {
+          "count": 14,
+          "mean_predicted": 0.7294824919070092,
+          "actual_rate": 0.5714285714285714,
+          "absolute_calibration_error": 0.1580539204784378
+        },
+        {
+          "count": 6,
+          "mean_predicted": 0.8377925318598601,
+          "actual_rate": 0.8333333333333334,
+          "absolute_calibration_error": 0.004459198526526764
+        },
+        {
+          "count": 1,
+          "mean_predicted": 0.9641596157378414,
+          "actual_rate": 1.0,
+          "absolute_calibration_error": 0.03584038426215863
+        }
+      ],
+      "roc_auc": 0.5534895831444938
+    },
+    "calibration": {
+      "rows": 52644,
+      "actual_up_rate": 0.49952511207355066,
+      "mean_predicted_probability": 0.4995335776282966,
+      "brier_score": 0.24941130339401538,
+      "log_loss": 0.6919655671844994,
+      "directional_accuracy_at_50pct": 0.5165071043233797,
+      "baseline_brier_score": 0.24999980761504617,
+      "baseline_log_loss": 0.6931467957900648,
+      "confident_rows": 1615,
+      "confident_coverage": 0.030677760048628523,
+      "confident_accuracy": 0.5603715170278638,
+      "calibration_table": [
+        {
+          "count": 2,
+          "mean_predicted": 0.26394513759812654,
+          "actual_rate": 0.0,
+          "absolute_calibration_error": 0.26394513759812654
+        },
+        {
+          "count": 11,
+          "mean_predicted": 0.3760299387477563,
+          "actual_rate": 0.45454545454545453,
+          "absolute_calibration_error": 0.07851551579769822
+        },
+        {
+          "count": 26175,
+          "mean_predicted": 0.4799608096792046,
+          "actual_rate": 0.48297994269340977,
+          "absolute_calibration_error": 0.0030191330142051442
+        },
+        {
+          "count": 26445,
+          "mean_predicted": 0.5189097844748953,
+          "actual_rate": 0.5158631121194933,
+          "absolute_calibration_error": 0.0030466723554020136
+        },
+        {
+          "count": 9,
+          "mean_predicted": 0.6309735825286968,
+          "actual_rate": 0.6666666666666666,
+          "absolute_calibration_error": 0.03569308413796979
+        },
+        {
+          "count": 1,
+          "mean_predicted": 0.7404692865307634,
+          "actual_rate": 1.0,
+          "absolute_calibration_error": 0.2595307134692366
+        },
+        {
+          "count": 1,
+          "mean_predicted": 0.8187657415480929,
+          "actual_rate": 1.0,
+          "absolute_calibration_error": 0.1812342584519071
+        }
+      ],
+      "roc_auc": 0.5267957513261234
+    },
+    "internal_validation": {
+      "rows": 104370,
+      "actual_up_rate": 0.5029414582734503,
+      "mean_predicted_probability": 0.49941003786946103,
+      "brier_score": 0.24961896688131407,
+      "log_loss": 0.6923833311657748,
+      "directional_accuracy_at_50pct": 0.5162115550445531,
+      "baseline_brier_score": 0.25000429610817104,
+      "baseline_log_loss": 0.6931557727814797,
+      "confident_rows": 3938,
+      "confident_coverage": 0.03773114879754719,
+      "confident_accuracy": 0.5518029456576943,
+      "calibration_table": [
+        {
+          "count": 27,
+          "mean_predicted": 0.37895688112851816,
+          "actual_rate": 0.25925925925925924,
+          "absolute_calibration_error": 0.11969762186925892
+        },
+        {
+          "count": 52378,
+          "mean_predicted": 0.4798452366528299,
+          "actual_rate": 0.48690289816335103,
+          "absolute_calibration_error": 0.007057661510521118
+        },
+        {
+          "count": 51923,
+          "mean_predicted": 0.5190980073519446,
+          "actual_rate": 0.5191341024208925,
+          "absolute_calibration_error": 3.609506894797221e-05
+        },
+        {
+          "count": 40,
+          "mean_predicted": 0.6299564863071891,
+          "actual_rate": 0.625,
+          "absolute_calibration_error": 0.004956486307189145
+        },
+        {
+          "count": 2,
+          "mean_predicted": 0.7679580279689018,
+          "actual_rate": 1.0,
+          "absolute_calibration_error": 0.23204197203109822
+        }
+      ],
+      "roc_auc": 0.52227316539287
+    },
+    "final_holdout": {
+      "rows": 104752,
+      "actual_up_rate": 0.49848212921948987,
+      "mean_predicted_probability": 0.5008606446929454,
+      "brier_score": 0.2498020239752003,
+      "log_loss": 0.6927504830407667,
+      "directional_accuracy_at_50pct": 0.5119138536734382,
+      "baseline_brier_score": 0.24999843731441043,
+      "baseline_log_loss": 0.6931440551872163,
+      "confident_rows": 4334,
+      "confident_coverage": 0.041373911715289445,
+      "confident_accuracy": 0.5470696815874481,
+      "calibration_table": [
+        {
+          "count": 24,
+          "mean_predicted": 0.37386155965302453,
+          "actual_rate": 0.375,
+          "absolute_calibration_error": 0.0011384403469754667
+        },
+        {
+          "count": 50093,
+          "mean_predicted": 0.4797569812999308,
+          "actual_rate": 0.48601601022098895,
+          "absolute_calibration_error": 0.006259028921058174
+        },
+        {
+          "count": 54612,
+          "mean_predicted": 0.5202200544340391,
+          "actual_rate": 0.5099062477111258,
+          "absolute_calibration_error": 0.010313806722913266
+        },
+        {
+          "count": 22,
+          "mean_predicted": 0.6196885862889233,
+          "actual_rate": 0.6363636363636364,
+          "absolute_calibration_error": 0.016675050074713038
+        },
+        {
+          "count": 1,
+          "mean_predicted": 0.8243495362126236,
+          "actual_rate": 1.0,
+          "absolute_calibration_error": 0.17565046378737637
+        }
+      ],
+      "roc_auc": 0.5175659775122783
+    }
+  },
+  "artifacts": {
+    "panel": "data\\parquet\\bitcoin_5m_probability_binance_v1\\panel.parquet",
+    "predictions": "data\\parquet\\bitcoin_5m_probability_binance_v1\\predictions.parquet",
+    "model": "data\\parquet\\bitcoin_5m_probability_binance_v1\\model.pkl"
+  },
+  "limitations": [
+    "Polymarket profitability",
+    "historical Polymarket fill quality",
+    "an executable edge after prediction-market fees",
+    "a universal BTC directional edge",
+    "live or paper-trading approval"
+  ]
+}

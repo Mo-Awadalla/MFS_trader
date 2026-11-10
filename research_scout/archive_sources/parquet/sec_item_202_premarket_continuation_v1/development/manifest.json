@@ -1,0 +1,46 @@
+{
+  "schema_version": "sec_item_202_premarket_continuation:v1",
+  "specification_id": "SEC-Item-2.02-Premarket-Continuation-AlpacaIEX-v1",
+  "specification_sha256": "68b4e2fa9cda02f0f4c9362806f7c7933c36a0feeb98754c6ba4ebd07691ecbb",
+  "partition": "development",
+  "data_source": {
+    "event_source": "official SEC submissions JSON normalized by data.sec_filings",
+    "bar_source": "Alpaca historical stock bars",
+    "feed": "iex",
+    "frequency": "5min",
+    "adjustment": "all",
+    "observed_available_start": "2020-07-28",
+    "request_delay_seconds": 0.4,
+    "maximum_rate_limit_retries": 6,
+    "regular_session_only": true,
+    "venue_limitation": "IEX is venue-local and does not represent consolidated SIP/NBBO execution."
+  },
+  "requested_bounds": {
+    "start": "2020-07-28",
+    "end": "2022-12-31",
+    "minimum_selected_events": 250,
+    "minimum_selected_sessions": 100
+  },
+  "files": {
+    "events": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\eligible_events.parquet",
+      "sha256": "1d5c61afaf66be682750d8e536c25be20d0892a24265ddbad8f0d2c3a43b2cb7",
+      "rows": 806
+    },
+    "bars": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\event_bars.parquet",
+      "sha256": "4eac6d5cb284395d219ff07276dba10cc9d0ca5449a71ddcd56e5241ca633c46",
+      "rows": 81268
+    },
+    "panel": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\panel.parquet",
+      "sha256": "affbea1f79f396f69f6ee9c2e86a9b9c95fab5ee681d2fc7ed4a0d7c737b9a3f",
+      "rows": 806
+    },
+    "session_returns": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\sec_item_202_premarket_continuation_v1\\development\\session_returns.parquet",
+      "sha256": "f9efb7689d1442cac57d97e1abbc757ec56a00b820d62eddf59e0f90788bcb35",
+      "rows": 247
+    }
+  }
+}

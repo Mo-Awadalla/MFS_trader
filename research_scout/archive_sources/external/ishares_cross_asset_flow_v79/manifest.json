@@ -1,0 +1,32 @@
+{
+  "candidate": "v79",
+  "source": "official BlackRock iShares product-data fundDownload",
+  "downloaded": {
+    "HYG": {
+      "portfolio_id": "239565",
+      "url": "https://www.blackrock.com/varnish-api/blk-one01-product-data/product-data/api/v1/get-fund-document?appSubType=ISHARES&appType=PRODUCT_PAGE&component=fundDownload&locale=en_US&targetSite=us-ishares&userType=individual&portfolioId=239565",
+      "bytes": 4659070,
+      "sha256": "CDB3FC9FFC09F1D747EE4EBA5A66423363B5E1435762702B66202E307A83DE19",
+      "content_type": "application/vnd.ms-excel"
+    },
+    "IEF": {
+      "portfolio_id": "239456",
+      "url": "https://www.blackrock.com/varnish-api/blk-one01-product-data/product-data/api/v1/get-fund-document?appSubType=ISHARES&appType=PRODUCT_PAGE&component=fundDownload&locale=en_US&targetSite=us-ishares&userType=individual&portfolioId=239456",
+      "bytes": 2452616,
+      "sha256": "0704A6142978F9FFDB9CE597541FD67010E9F272C55BC507D2D7ADD1B6167A6E",
+      "content_type": "application/vnd.ms-excel"
+    }
+  },
+  "output": "historical_nav_shares_2020_2023.csv",
+  "output_rows": 2012,
+  "output_sha256": "84B3AB3432A4B0EE4AABF10C909076DA283289BF1E07DAA610F96006CFE0472B",
+  "date_min": "2020-01-02",
+  "date_max": "2023-12-29",
+  "rows_by_ticker": {
+    "HYG": 1006,
+    "IEF": 1006
+  },
+  "post_2023_rows_in_output": 0,
+  "paid_data": false,
+  "databento_call": false
+}

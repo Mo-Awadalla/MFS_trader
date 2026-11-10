@@ -1,0 +1,59 @@
+{
+  "specification_id": "Bitcoin-SpotPerp-Basis-Convergence-Binance-v1",
+  "days": 1033,
+  "selected_days": 93,
+  "mean_signal_basis_bps": 10.024577794605898,
+  "mean_basis_change_bps": -2.0697243050529526,
+  "mean_gross_capital_bps": 1.027315453627405,
+  "mean_fee_only_capital_bps": -13.972684546372594,
+  "mean_conservative_capital_bps": -23.972684546372594,
+  "directional_accuracy": 0.6881720430107527,
+  "bootstrap_95_gross_bps": [
+    0.5610004127880254,
+    1.500529011165413
+  ],
+  "chronological_halves_gross_bps": [
+    1.0677822616507882,
+    0.987709641519413
+  ],
+  "trimmed_mean_gross_bps": 0.9534033206207412,
+  "top_5pct_profit_contribution": 0.1938732380133609,
+  "performance": {
+    "gross": {
+      "total_return": 0.009596794472893633,
+      "annualized_return": 0.0033827818620748573,
+      "sharpe_zero_cash": 2.336754809549436,
+      "max_drawdown": -0.0009310079800211035
+    },
+    "fee_only": {
+      "total_return": -0.12193912006520069,
+      "annualized_return": -0.04493850409786093,
+      "sharpe_zero_cash": -5.919341561760052,
+      "max_drawdown": -0.12193912006520069
+    },
+    "conservative": {
+      "total_return": -0.2000580709366344,
+      "annualized_return": -0.0758909230183189,
+      "sharpe_zero_cash": -5.977727028730846,
+      "max_drawdown": -0.2000580709366344
+    }
+  },
+  "gates": {
+    "minimum_selected_days": true,
+    "positive_mean_gross": true,
+    "positive_each_chronological_half_gross": true,
+    "bootstrap_lower_above_zero": true,
+    "positive_after_conservative_costs": false,
+    "positive_after_top_5pct_absolute_removed": true,
+    "top_5pct_profit_contribution_within_cap": true,
+    "complete_timestamp_alignment": true,
+    "basis_contraction_on_average": true
+  },
+  "passed": false,
+  "partition": "development",
+  "partition_bounds": {
+    "start": "2020-01-01",
+    "end": "2022-12-31"
+  },
+  "specification_sha256": "cb00c2fa31e47a7c072ada0398ff58645323a8063eab1f8657663c981bb90666"
+}

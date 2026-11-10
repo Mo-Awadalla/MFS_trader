@@ -1,0 +1,394 @@
+{
+  "source_repository": "pst-group/pysystemtrade",
+  "source_commit": "883c8681cf880d83acad5c39b842403a8eac5676",
+  "source_license": "GPL-3.0",
+  "source_warning": "Research/backtest data distributed by pysystemtrade. The source documentation calls the shipped CSV data stale and unsuitable for production.",
+  "downloaded_files": {
+    "LICENSE": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/LICENSE",
+      "bytes": 35140,
+      "sha256": "b98fbb37db5b23bc5cfdcd16793206a5a7120a7b01f75374e5e0888376e4691c"
+    },
+    "README.md": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/README.md",
+      "bytes": 4511,
+      "sha256": "6f50ed3562ea201e3f048ee98a00c23f71495ef792d3e18fe8bea7d09ab334d0"
+    },
+    "docs/data.md": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/docs/data.md",
+      "bytes": 76517,
+      "sha256": "369a4ad64f2dd23b6720418d5c0af7a45f33ce6fb7351c4590207f55bc17f5e3"
+    },
+    "data/futures/csvconfig/instrumentconfig.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/csvconfig/instrumentconfig.csv",
+      "bytes": 35500,
+      "sha256": "33d4cecb6eacebf8400e23727036b28cfead50b7c74030f28487e0c119a5776b"
+    },
+    "data/futures/csvconfig/rollconfig.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/csvconfig/rollconfig.csv",
+      "bytes": 16924,
+      "sha256": "8c752d19cd6ce9f512caa888189a9264793a98f68d99791fe05b4d7f93485422"
+    },
+    "data/futures/csvconfig/spreadcosts.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/csvconfig/spreadcosts.csv",
+      "bytes": 8748,
+      "sha256": "a3458c27842b0ff1057c565e7d067f1db7ced9ee9084643185abadd383d87175"
+    },
+    "data/futures/multiple_prices_csv/SP500.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/SP500.csv",
+      "bytes": 2377012,
+      "sha256": "3373bd1e83a6d1297e7e56f543fe2df1397d9bfb67b276a7befbaa5c8b5aa670"
+    },
+    "data/futures/adjusted_prices_csv/SP500.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/SP500.csv",
+      "bytes": 1024193,
+      "sha256": "03b350fa2ca647d658977e3d772d02535a5396ee8652a1c80722516705cb7c7e"
+    },
+    "data/futures/multiple_prices_csv/NASDAQ.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/NASDAQ.csv",
+      "bytes": 3426195,
+      "sha256": "d865b923c091f140a984f61746b4bd59f88bada0c548d4bbfc2be11c2767972c"
+    },
+    "data/futures/adjusted_prices_csv/NASDAQ.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/NASDAQ.csv",
+      "bytes": 1431913,
+      "sha256": "56e8c2077ede58a4ca67e46cfcfd8c8b2846962c6d2c760257fed2fbb721ba52"
+    },
+    "data/futures/multiple_prices_csv/US2.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/US2.csv",
+      "bytes": 2298938,
+      "sha256": "a0ad3b69e0afe568236f553f700b8474b364ec537a087b45244e3f6d87f1c303"
+    },
+    "data/futures/adjusted_prices_csv/US2.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/US2.csv",
+      "bytes": 981595,
+      "sha256": "c1e75baf9222c1c9f8b4d9ba69e9115f080b078720fc5f5d54382c1bf804afc7"
+    },
+    "data/futures/multiple_prices_csv/US5.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/US5.csv",
+      "bytes": 3139356,
+      "sha256": "362700c4d41be008af0ea25da659a3b7a9420c58a2374676db51d76ce23498fd"
+    },
+    "data/futures/adjusted_prices_csv/US5.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/US5.csv",
+      "bytes": 1508912,
+      "sha256": "8f792ef2456ae99ca21e3a37d7d88b3ba77f1fc50b63f03abe6ca3325fde12a9"
+    },
+    "data/futures/multiple_prices_csv/US10.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/US10.csv",
+      "bytes": 3317999,
+      "sha256": "bfe2cb8e457709261d5e4dc2578d73a8c36f814e4d109db15787a676125391b8"
+    },
+    "data/futures/adjusted_prices_csv/US10.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/US10.csv",
+      "bytes": 1549638,
+      "sha256": "09fffacf7d7b1ce79fac6b6e19283c13d06526c5e99f05f9a500c188ce969888"
+    },
+    "data/futures/multiple_prices_csv/US20.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/US20.csv",
+      "bytes": 3249512,
+      "sha256": "8f5a9270d2b234f219c2c1285af89e1960ba99eb118f1d5c98563f23de3315d4"
+    },
+    "data/futures/adjusted_prices_csv/US20.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/US20.csv",
+      "bytes": 1842818,
+      "sha256": "305bde8479c91fccdaa8b2dcc61294fb01eadea41e8e71834f70acb6a6b48922"
+    },
+    "data/futures/multiple_prices_csv/EUR.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/EUR.csv",
+      "bytes": 2880703,
+      "sha256": "eca74f7e539041b99311c8e407a451ccda28930a59c6ae8576866114becdf520"
+    },
+    "data/futures/adjusted_prices_csv/EUR.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/EUR.csv",
+      "bytes": 1562754,
+      "sha256": "52f2757baa6d785e518bd49ab8ef5a106e109a83b2b895f39411c362e314947c"
+    },
+    "data/futures/multiple_prices_csv/JPY.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/JPY.csv",
+      "bytes": 3889785,
+      "sha256": "bd93c15eb89d979cb60d0186dbe06619ddb9d94e42ebdac34ff190ef086c9b71"
+    },
+    "data/futures/adjusted_prices_csv/JPY.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/JPY.csv",
+      "bytes": 2237881,
+      "sha256": "985fed2f4f619ecd0f0d4361c7a0801552a2cf31b4025f953c5bce2f877c08a8"
+    },
+    "data/futures/multiple_prices_csv/GBP.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/GBP.csv",
+      "bytes": 4187302,
+      "sha256": "f61d177dba02bcef43b3f06143b86e5fecad03e03d202c3c7c6bca4c6edbecd6"
+    },
+    "data/futures/adjusted_prices_csv/GBP.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/GBP.csv",
+      "bytes": 2280533,
+      "sha256": "dce2f5261d98e8752b9b2aa156aaa1cd9d1de1f99b74dafabf4de812ef718af8"
+    },
+    "data/futures/multiple_prices_csv/CRUDE_W.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/CRUDE_W.csv",
+      "bytes": 2814629,
+      "sha256": "64a8c9f46998830eb242695d9d519f2547d20820d222b2c127ebd71f213958d1"
+    },
+    "data/futures/adjusted_prices_csv/CRUDE_W.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/CRUDE_W.csv",
+      "bytes": 1547312,
+      "sha256": "10dcfbdd9ee3f9757cd1eaa4e45f62f33f0e405b7130327ca5cfd8633c87646c"
+    },
+    "data/futures/multiple_prices_csv/GAS_US.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/GAS_US.csv",
+      "bytes": 3847511,
+      "sha256": "8d1b2ad71db68931ace326244f3527ea893a63876e4c3eb21709ed696f1da7c6"
+    },
+    "data/futures/adjusted_prices_csv/GAS_US.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/GAS_US.csv",
+      "bytes": 2095638,
+      "sha256": "73d3adbc85d8249a99df659bf8c214a8b235cb2b763c7bfe50b2236268393cfd"
+    },
+    "data/futures/multiple_prices_csv/GOLD.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/GOLD.csv",
+      "bytes": 3379539,
+      "sha256": "5e02e932c5c17aa7e5807e942866a6a0f6f867c1bdca6698acf3609d05af6bdd"
+    },
+    "data/futures/adjusted_prices_csv/GOLD.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/GOLD.csv",
+      "bytes": 1946584,
+      "sha256": "fc85606ff457b752fbce4d73d606bc19dbdd405c5fd8b6b3327e7f3d2f8bc9ae"
+    },
+    "data/futures/multiple_prices_csv/COPPER.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/COPPER.csv",
+      "bytes": 3385082,
+      "sha256": "8c31c285cb11f85d08097398c3babe5a87ec555c0cbebf7b1cce9456ed71a2fb"
+    },
+    "data/futures/adjusted_prices_csv/COPPER.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/COPPER.csv",
+      "bytes": 1802249,
+      "sha256": "2944c5130d66043f871525bc4091eb08c5101db338c013244c7ddb5533b3537a"
+    },
+    "data/futures/multiple_prices_csv/CORN.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/CORN.csv",
+      "bytes": 2345568,
+      "sha256": "47183abccaa9e260e2c934acab3819ee0d4edcaf3fa7fc0c4a96abd933452e1c"
+    },
+    "data/futures/adjusted_prices_csv/CORN.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/CORN.csv",
+      "bytes": 988145,
+      "sha256": "f8b59d6fc0a75cd016a42ec70964110a9266f56eba3b40e52e89445bc55fd3f8"
+    },
+    "data/futures/multiple_prices_csv/SOYBEAN.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/multiple_prices_csv/SOYBEAN.csv",
+      "bytes": 2236196,
+      "sha256": "911a09de70eca193a756bf88a12eca98eb195a248f3007ade5573c029f0b1bf4"
+    },
+    "data/futures/adjusted_prices_csv/SOYBEAN.csv": {
+      "source_url": "https://raw.githubusercontent.com/pst-group/pysystemtrade/883c8681cf880d83acad5c39b842403a8eac5676/data/futures/adjusted_prices_csv/SOYBEAN.csv",
+      "bytes": 935430,
+      "sha256": "a49d86c4525892c5872470299bdae9ea223483a3eaa58564773f956baaaed016"
+    }
+  },
+  "normalization": "Source-compatible business-day last observation. Carry price, carry contract, held price, and held contract coexist on one source timestamp; no forward filling.",
+  "requested_start": "2010-01-01",
+  "known_limitations": [
+    "Source data ends on 2024-03-28.",
+    "Multiple-price files contain selected price, carry, and forward contracts rather than every listed contract.",
+    "No volume or open-interest history is included.",
+    "Roll calendars and multiple-price series may contain manual curation by the source maintainer.",
+    "Use for research only, not live production."
+  ],
+  "instruments": [
+    {
+      "instrument": "SP500",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3596,
+      "carry_ready_fraction": 0.9679676985195155,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "NASDAQ",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3563,
+      "carry_ready_fraction": 0.9590847913862719,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "US2",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3616,
+      "carry_ready_fraction": 0.9733512786002692,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "US5",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 2564,
+      "carry_ready_fraction": 0.6901749663526245,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "US10",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3098,
+      "carry_ready_fraction": 0.8339165545087484,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "US20",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3031,
+      "carry_ready_fraction": 0.8158815612382234,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "EUR",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3446,
+      "carry_ready_fraction": 0.9275908479138627,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "JPY",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3470,
+      "carry_ready_fraction": 0.9340511440107672,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "GBP",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3650,
+      "carry_ready_fraction": 0.9825033647375505,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "CRUDE_W",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3538,
+      "carry_ready_fraction": 0.9523553162853298,
+      "price_contract_count": 15,
+      "carry_contract_count": 15,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "GAS_US",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3148,
+      "carry_ready_fraction": 0.8473755047106326,
+      "price_contract_count": 156,
+      "carry_contract_count": 154,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "GOLD",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3535,
+      "carry_ready_fraction": 0.9515477792732167,
+      "price_contract_count": 87,
+      "carry_contract_count": 87,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "COPPER",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3649,
+      "carry_ready_fraction": 0.9822341857335127,
+      "price_contract_count": 58,
+      "carry_contract_count": 58,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "CORN",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3183,
+      "carry_ready_fraction": 0.8567967698519515,
+      "price_contract_count": 15,
+      "carry_contract_count": 15,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    },
+    {
+      "instrument": "SOYBEAN",
+      "start": "2010-01-01",
+      "end": "2024-03-28",
+      "daily_rows": 3715,
+      "carry_ready_rows": 3544,
+      "carry_ready_fraction": 0.9539703903095559,
+      "price_contract_count": 15,
+      "carry_contract_count": 15,
+      "duplicate_dates": 0,
+      "has_volume": false,
+      "has_open_interest": false
+    }
+  ]
+}

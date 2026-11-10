@@ -1,0 +1,81 @@
+{
+  "artifact_root": "external_artifacts/massive_es_futures_v2/2025",
+  "source": "Massive Futures Basic ($0) REST API",
+  "year": 2025,
+  "api_calls": 14,
+  "rows": 349588,
+  "mapping_business_dates": 261,
+  "dates_with_minute_bars": 252,
+  "candidate_session_dates": 254,
+  "mapped_dates_without_bars": [
+    "2025-01-01",
+    "2025-01-20",
+    "2025-02-17",
+    "2025-04-18",
+    "2025-05-26",
+    "2025-06-19",
+    "2025-09-01",
+    "2025-11-27",
+    "2025-12-25"
+  ],
+  "candidate_dates_not_in_mapping": [
+    "2024-12-23",
+    "2024-12-24",
+    "2024-12-26",
+    "2024-12-27",
+    "2024-12-30",
+    "2024-12-31"
+  ],
+  "duplicate_ticker_window_rows": 0,
+  "null_counts": {
+    "open": 0,
+    "high": 0,
+    "low": 0,
+    "close": 0,
+    "volume": 0
+  },
+  "wrong_contract_rows": 0,
+  "full_390_minute_rth_sessions": 238,
+  "short_rth_sessions": {
+    "2025-01-16": 370,
+    "2025-01-23": 357,
+    "2025-02-13": 345,
+    "2025-07-03": 225,
+    "2025-07-04": 210,
+    "2025-09-09": 182,
+    "2025-12-24": 225
+  },
+  "roll_intervals": [
+    {
+      "ticker": "ESH5",
+      "first_session": "2025-01-01",
+      "last_session": "2025-03-17",
+      "sessions": 54
+    },
+    {
+      "ticker": "ESM5",
+      "first_session": "2025-03-18",
+      "last_session": "2025-06-16",
+      "sessions": 65
+    },
+    {
+      "ticker": "ESU5",
+      "first_session": "2025-06-17",
+      "last_session": "2025-09-15",
+      "sessions": 65
+    },
+    {
+      "ticker": "ESZ5",
+      "first_session": "2025-09-16",
+      "last_session": "2025-12-15",
+      "sessions": 65
+    },
+    {
+      "ticker": "ESH6",
+      "first_session": "2025-12-16",
+      "last_session": "2025-12-31",
+      "sessions": 12
+    }
+  ],
+  "hashes_verified": true
+}

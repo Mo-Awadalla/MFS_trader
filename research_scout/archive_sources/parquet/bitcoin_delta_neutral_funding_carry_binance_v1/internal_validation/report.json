@@ -1,0 +1,12 @@
+{
+  "specification_id": "Bitcoin-DeltaNeutral-Funding-Carry-Binance-v1",
+  "partition": "internal_validation",
+  "partition_bounds": {
+    "start": "2023-01-01",
+    "end": "2023-12-31"
+  },
+  "specification_sha256": "8b74690cfd2e4948309b75c2c997e6af82e1ce2346f1ec1240d348b4888a36aa",
+  "trade_count": 0,
+  "passed": false,
+  "failure_reason": "no qualifying non-overlapping trades"
+}

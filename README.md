@@ -90,6 +90,8 @@ Broker-paper qualification is **NOT ESTABLISHED**. Synthetic drills do not satis
 
 ## Latest research scouts
 
+The [research inventory](RESEARCH_INVENTORY.md) covers the ETF, futures, crypto, and microstructure studies. The [archive guide](research_scout/ARCHIVE.md) describes the inputs needed for historical replays.
+
 ### Cross-asset futures carry plus trend
 
 `CrossAssetCarryTrendScout-v1` tested a predeclared 15-market futures carry/trend portfolio on the public `pst-group/pysystemtrade` panel pinned to commit `883c8681cf880d83acad5c39b842403a8eac5676`. The panel covers 2010-01-04 through 2024-03-28 and is suitable for mechanism falsification, not deployment validation.

@@ -1,0 +1,48 @@
+{
+  "created_at_utc": "2026-07-27T13:27:53.682050+00:00",
+  "observed_usage_before_usd": 26.37,
+  "hard_cap_usd": 40.0,
+  "estimate_buffer_multiplier": 1.1,
+  "incremental_estimated_cost_usd": 8.441818803549,
+  "buffered_total_usage_usd": 35.6560006839039,
+  "requests": [
+    {
+      "name": "cash_etf_tbbo_tail",
+      "dataset": "EQUS.MINI",
+      "schema": "tbbo",
+      "symbols": [
+        "SPY",
+        "SSO",
+        "SDS",
+        "UPRO",
+        "SPXU",
+        "SH"
+      ],
+      "start": "2024-10-03",
+      "end": "2026-07-27",
+      "estimated_cost_usd": 8.41494306922,
+      "path": "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/tbbo/cash_etf_tbbo_tail_2024-10-03_2026-07-27.dbn.zst",
+      "bytes": 414770120,
+      "sha256": "2d90b0660d351245280d8c32abeae5d53d965019a82b3ab3171cecff7759bedd"
+    },
+    {
+      "name": "cash_etf_equs_definition",
+      "dataset": "EQUS.MINI",
+      "schema": "definition",
+      "symbols": [
+        "SPY",
+        "SSO",
+        "SDS",
+        "UPRO",
+        "SPXU",
+        "SH"
+      ],
+      "start": "2023-03-28",
+      "end": "2026-07-27",
+      "estimated_cost_usd": 0.026875734329,
+      "path": "external_artifacts/databento_cash_etf_budget_v1/EQUS.MINI/definition/cash_etf_equs_definition_2023-03-28_2026-07-27.dbn.zst",
+      "bytes": 219836,
+      "sha256": "55008b77c2bdb8690845adc2169a62c5dacd91e5d8dba9762968d3a34921de73"
+    }
+  ]
+}

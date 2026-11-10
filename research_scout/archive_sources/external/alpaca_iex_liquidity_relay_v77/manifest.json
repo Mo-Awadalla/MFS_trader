@@ -1,0 +1,19 @@
+{
+  "candidate": "v77",
+  "source": "Alpaca Historical Stock Bars API",
+  "feed": "iex",
+  "timeframe": "30Min",
+  "fields": [
+    "open",
+    "close",
+    "volume",
+    "trade_count",
+    "vwap"
+  ],
+  "sessions_requested": 753,
+  "symbols_requested": 134,
+  "rows": 199831,
+  "sha256": "18E9629A027F0C59A539E063C0E86E5983CA00FD874E15F72616E2B70C997BCE",
+  "paid_data": false,
+  "databento_call": false
+}

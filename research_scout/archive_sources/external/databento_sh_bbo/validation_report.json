@@ -1,0 +1,59 @@
+{
+  "status": "passed",
+  "checks": {
+    "primary_has_at_least_99pct_valid_quote_rows": true,
+    "audit_has_at_least_98pct_valid_quote_rows": true,
+    "primary_has_at_least_95pct_executable_entry_exit_coverage": true,
+    "audit_has_at_least_95pct_executable_entry_exit_coverage": true
+  },
+  "feeds": {
+    "ARCX.PILLAR": {
+      "path": "external_artifacts/databento_sh_bbo/ARCX.PILLAR/bbo/sh_bbo_1m_2021-01-01_2026-07-25.dbn.zst",
+      "bytes": 31964023,
+      "rows": 1144183,
+      "symbols": [
+        "SH"
+      ],
+      "first_timestamp": "2021-01-04 00:24:00-05:00",
+      "last_timestamp": "2026-07-24 19:59:00-04:00",
+      "sessions": 1395,
+      "valid_quote_rows": 1142721,
+      "invalid_or_crossed_quote_rows": 1462,
+      "valid_quote_row_fraction": 0.99872223,
+      "sessions_with_exact_11_01_quote": 1395,
+      "sessions_with_exact_15_30_quote": 1389,
+      "sessions_with_executable_11_01_quote": 1395,
+      "sessions_with_executable_15_30_quote": 1393,
+      "executable_entry_exit_coverage_fraction": 0.998566,
+      "spread_bps_valid_rows": {
+        "median": 6.445375,
+        "p95": 8.956561,
+        "maximum": 13077.625571
+      }
+    },
+    "EQUS.MINI": {
+      "path": "external_artifacts/databento_sh_bbo/EQUS.MINI/bbo/sh_bbo_1m_2023-03-28_2026-07-25.dbn.zst",
+      "bytes": 10418547,
+      "rows": 536072,
+      "symbols": [
+        "SH"
+      ],
+      "first_timestamp": "2023-03-28 05:34:00-04:00",
+      "last_timestamp": "2026-07-24 16:55:00-04:00",
+      "sessions": 835,
+      "valid_quote_rows": 531236,
+      "invalid_or_crossed_quote_rows": 4836,
+      "valid_quote_row_fraction": 0.99097882,
+      "sessions_with_exact_11_01_quote": 834,
+      "sessions_with_exact_15_30_quote": 826,
+      "sessions_with_executable_11_01_quote": 834,
+      "sessions_with_executable_15_30_quote": 826,
+      "executable_entry_exit_coverage_fraction": 0.989222,
+      "spread_bps_valid_rows": {
+        "median": 4.830918,
+        "p95": 9.161704,
+        "maximum": 11206.61157
+      }
+    }
+  }
+}

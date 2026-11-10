@@ -1,0 +1,224 @@
+{
+  "original_path": "external_artifacts/databento_cash_etf_mbp1_open_v55/validation_report.json",
+  "original_sha256": "0015b7f3c3dfad9671430fdbd7e4a87893b064b32b2184d65eea3e7835ff8295",
+  "original_bytes": 6371916,
+  "summarized_file_rows": 806,
+  "created_at_utc": "2026-07-29T16:44:36.696642+00:00",
+  "paid_api_calls_made": false,
+  "source_manifest_mode": "ACQUISITION_INCOMPLETE",
+  "files_found": 806,
+  "partial_files": [],
+  "expected_nonzero_cost_sessions": 836,
+  "completed_dates": 806,
+  "missing_dates": [
+    "2026-06-12",
+    "2026-06-16",
+    "2026-06-17",
+    "2026-06-18",
+    "2026-06-22",
+    "2026-06-23",
+    "2026-06-24",
+    "2026-06-25",
+    "2026-06-26",
+    "2026-06-29",
+    "2026-06-30",
+    "2026-07-01",
+    "2026-07-02",
+    "2026-07-06",
+    "2026-07-07",
+    "2026-07-08",
+    "2026-07-09",
+    "2026-07-10",
+    "2026-07-13",
+    "2026-07-14",
+    "2026-07-15",
+    "2026-07-16",
+    "2026-07-17",
+    "2026-07-20",
+    "2026-07-21",
+    "2026-07-22",
+    "2026-07-23",
+    "2026-07-24",
+    "2026-07-27",
+    "2026-07-28"
+  ],
+  "unexpected_dates": [],
+  "invalid_files": [],
+  "all_files_decode": true,
+  "exact_metadata_windows": true,
+  "all_files_monotonic": true,
+  "all_files_contain_six_symbols": true,
+  "sessions_with_all_four_targets_all_six_valid": 803,
+  "target_coverage_pct_of_completed": 99.62779156327544,
+  "quote_age_summary_seconds": {
+    "09:30:01": {
+      "SPY": {
+        "observations": 806,
+        "median_seconds": 0.0038669999999999998,
+        "p95_seconds": 0.03755425,
+        "max_seconds": 0.166873
+      },
+      "SSO": {
+        "observations": 806,
+        "median_seconds": 0.020368,
+        "p95_seconds": 0.19767075,
+        "max_seconds": 0.955138
+      },
+      "UPRO": {
+        "observations": 806,
+        "median_seconds": 0.0143235,
+        "p95_seconds": 0.15998225,
+        "max_seconds": 5.887348
+      },
+      "SH": {
+        "observations": 806,
+        "median_seconds": 0.0514515,
+        "p95_seconds": 0.862034,
+        "max_seconds": 7.160448
+      },
+      "SDS": {
+        "observations": 806,
+        "median_seconds": 0.026032,
+        "p95_seconds": 0.2485205,
+        "max_seconds": 0.907401
+      },
+      "SPXU": {
+        "observations": 806,
+        "median_seconds": 0.020437999999999998,
+        "p95_seconds": 0.31756075,
+        "max_seconds": 0.917854
+      }
+    },
+    "09:30:05": {
+      "SPY": {
+        "observations": 806,
+        "median_seconds": 0.0069095,
+        "p95_seconds": 0.06637699999999999,
+        "max_seconds": 0.209422
+      },
+      "SSO": {
+        "observations": 806,
+        "median_seconds": 0.0314185,
+        "p95_seconds": 0.35109475,
+        "max_seconds": 1.897443
+      },
+      "UPRO": {
+        "observations": 806,
+        "median_seconds": 0.018434,
+        "p95_seconds": 0.24188374999999998,
+        "max_seconds": 1.024231
+      },
+      "SH": {
+        "observations": 806,
+        "median_seconds": 0.060427999999999996,
+        "p95_seconds": 1.15824375,
+        "max_seconds": 3.981194
+      },
+      "SDS": {
+        "observations": 806,
+        "median_seconds": 0.0358855,
+        "p95_seconds": 0.37925400000000004,
+        "max_seconds": 3.5426349999999998
+      },
+      "SPXU": {
+        "observations": 806,
+        "median_seconds": 0.035553,
+        "p95_seconds": 0.4015695,
+        "max_seconds": 1.7658800000000001
+      }
+    },
+    "09:31:00": {
+      "SPY": {
+        "observations": 806,
+        "median_seconds": 0.013956,
+        "p95_seconds": 0.10647925,
+        "max_seconds": 0.645165
+      },
+      "SSO": {
+        "observations": 806,
+        "median_seconds": 0.066722,
+        "p95_seconds": 0.647141,
+        "max_seconds": 5.365495
+      },
+      "UPRO": {
+        "observations": 806,
+        "median_seconds": 0.046241000000000004,
+        "p95_seconds": 0.4974575,
+        "max_seconds": 1.358223
+      },
+      "SH": {
+        "observations": 806,
+        "median_seconds": 0.1241385,
+        "p95_seconds": 1.93392025,
+        "max_seconds": 10.523711
+      },
+      "SDS": {
+        "observations": 806,
+        "median_seconds": 0.070632,
+        "p95_seconds": 0.6974285,
+        "max_seconds": 6.711803
+      },
+      "SPXU": {
+        "observations": 806,
+        "median_seconds": 0.07156499999999999,
+        "p95_seconds": 0.86776625,
+        "max_seconds": 4.281912
+      }
+    },
+    "09:35:00": {
+      "SPY": {
+        "observations": 806,
+        "median_seconds": 0.0180465,
+        "p95_seconds": 0.12058275,
+        "max_seconds": 0.507262
+      },
+      "SSO": {
+        "observations": 806,
+        "median_seconds": 0.10027,
+        "p95_seconds": 0.687933,
+        "max_seconds": 24.082995
+      },
+      "UPRO": {
+        "observations": 806,
+        "median_seconds": 0.06614,
+        "p95_seconds": 0.5800075,
+        "max_seconds": 3.630481
+      },
+      "SH": {
+        "observations": 806,
+        "median_seconds": 0.18752000000000002,
+        "p95_seconds": 1.43750675,
+        "max_seconds": 12.684114
+      },
+      "SDS": {
+        "observations": 806,
+        "median_seconds": 0.09009600000000001,
+        "p95_seconds": 0.8364925,
+        "max_seconds": 7.341026
+      },
+      "SPXU": {
+        "observations": 806,
+        "median_seconds": 0.097659,
+        "p95_seconds": 1.0563547500000001,
+        "max_seconds": 8.34209
+      }
+    }
+  },
+  "known_degraded_dates_equs_mini": [
+    "2025-03-24",
+    "2025-04-04",
+    "2025-05-06",
+    "2025-06-04",
+    "2025-06-16",
+    "2025-07-09",
+    "2025-08-08",
+    "2025-08-13",
+    "2025-08-19",
+    "2025-08-25",
+    "2025-09-03",
+    "2025-09-08",
+    "2025-09-12",
+    "2025-10-10",
+    "2025-10-13"
+  ]
+}

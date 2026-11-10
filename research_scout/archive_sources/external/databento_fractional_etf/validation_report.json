@@ -1,0 +1,105 @@
+{
+  "created_at_utc": "2026-07-26T15:33:41.794332+00:00",
+  "status": "valid",
+  "expected_symbols": [
+    "SH",
+    "SPY"
+  ],
+  "files": {
+    "ARCX.PILLAR": {
+      "path": "external_artifacts/databento_fractional_etf/ARCX.PILLAR/bars/spy_sh_ohlcv_1m_2021-01-01_2026-01-01.dbn.zst",
+      "bytes": 24672239,
+      "rows": 1411233,
+      "symbols": [
+        "SH",
+        "SPY"
+      ],
+      "instrument_ids": [
+        14553,
+        15144
+      ],
+      "by_symbol": {
+        "SH": {
+          "rows_all_hours": 292932,
+          "rows_rth": 243783,
+          "first_timestamp": "2021-01-04T04:00:00-05:00",
+          "last_timestamp": "2025-12-31T17:28:00-05:00",
+          "rth_session_dates": 1255,
+          "median_rth_rows_per_date": 185.0,
+          "nonpositive_price_rows": 0,
+          "negative_volume_rows": 0
+        },
+        "SPY": {
+          "rows_all_hours": 1118301,
+          "rows_rth": 489360,
+          "first_timestamp": "2021-01-04T04:00:00-05:00",
+          "last_timestamp": "2025-12-31T18:59:00-05:00",
+          "rth_session_dates": 1255,
+          "median_rth_rows_per_date": 390.0,
+          "nonpositive_price_rows": 0,
+          "negative_volume_rows": 0
+        }
+      }
+    },
+    "EQUS.MINI": {
+      "path": "external_artifacts/databento_fractional_etf/EQUS.MINI/bars/spy_sh_ohlcv_1m_2023-03-28_2026-01-01.dbn.zst",
+      "bytes": 9083155,
+      "rows": 503861,
+      "symbols": [
+        "SH",
+        "SPY"
+      ],
+      "instrument_ids": [
+        14553,
+        15144
+      ],
+      "by_symbol": {
+        "SH": {
+          "rows_all_hours": 134407,
+          "rows_rth": 129226,
+          "first_timestamp": "2023-03-28T08:28:00-04:00",
+          "last_timestamp": "2025-12-31T16:31:00-05:00",
+          "rth_session_dates": 694,
+          "median_rth_rows_per_date": 178.0,
+          "nonpositive_price_rows": 0,
+          "negative_volume_rows": 0
+        },
+        "SPY": {
+          "rows_all_hours": 369454,
+          "rows_rth": 269361,
+          "first_timestamp": "2023-03-28T07:06:00-04:00",
+          "last_timestamp": "2025-12-31T16:46:00-05:00",
+          "rth_session_dates": 694,
+          "median_rth_rows_per_date": 390.0,
+          "nonpositive_price_rows": 0,
+          "negative_volume_rows": 0
+        }
+      }
+    }
+  },
+  "overlap": {
+    "overlapping_rows_all_hours": 462648,
+    "overlapping_rows_rth": 361681,
+    "by_symbol": {
+      "SH": {
+        "overlapping_rth_minutes": 92320,
+        "exact_ohlc_fraction": 0.54596,
+        "median_absolute_close_difference_bps": 0.0,
+        "p99_absolute_close_difference_bps": 7.272727,
+        "arca_volume_divided_by_consolidated_median": 0.722222
+      },
+      "SPY": {
+        "overlapping_rth_minutes": 269361,
+        "exact_ohlc_fraction": 0.032354,
+        "median_absolute_close_difference_bps": 0.170074,
+        "p99_absolute_close_difference_bps": 1.574781,
+        "arca_volume_divided_by_consolidated_median": 3.373262
+      }
+    }
+  },
+  "known_limitations": [
+    "ARCX.PILLAR contains only NYSE Arca executions and is not a consolidated tape.",
+    "EQUS.MINI begins on 2023-03-28 and cannot validate 2021 through early 2023.",
+    "One-minute bars do not provide executable fractional-share bid and ask fills."
+  ]
+}

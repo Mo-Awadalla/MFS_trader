@@ -1,0 +1,108 @@
+{
+  "specification_id": "Bitcoin-US-Session-Close-Momentum-BinanceSpot-v1",
+  "sessions": 1209,
+  "selected_sessions": 621,
+  "exposure_fraction": 0.5136476426799007,
+  "mean_signal_bps": 9.259975265369564,
+  "mean_last_half_hour_all_bps": 0.2747110774432769,
+  "mean_selected_gross_bps": -0.6231138219282791,
+  "mean_selected_fee_only_bps": -20.623113821928285,
+  "mean_selected_conservative_bps": -30.623113821928282,
+  "directional_accuracy": 0.5104669887278583,
+  "chronological_halves_gross_bps": [
+    -2.719773857809057,
+    1.466804541811403
+  ],
+  "bootstrap_95_gross_bps": [
+    -5.361379046966598,
+    3.972250910690191
+  ],
+  "trimmed_mean_gross_bps": 0.5430962587634187,
+  "top_5pct_profit_contribution": 0.243495591867899,
+  "predictive_regression": {
+    "slope": 0.0007353094700849168,
+    "intercept": 2.6790212993789858e-05,
+    "r_squared": 1.671000314078699e-05,
+    "pvalue_iid": 0.8870889367737875,
+    "note": "IID diagnostic only; the source paper uses pooled/Newey-West and recursive OOS tests."
+  },
+  "performance": {
+    "gross": {
+      "total_return": -0.04833517997162262,
+      "annualized_return": -0.014855757714346884,
+      "annualized_volatility": 0.08062300500447594,
+      "sharpe_zero_cash": -0.14499863956996253,
+      "max_drawdown": -0.16733364538116124
+    },
+    "fee_only": {
+      "total_return": -0.7255283541898474,
+      "annualized_return": -0.32334867678773793,
+      "annualized_volatility": 0.08299463867721081,
+      "sharpe_zero_cash": -4.661865334773714,
+      "max_drawdown": -0.7302954760993923
+    },
+    "conservative": {
+      "total_return": -0.8527354445481875,
+      "annualized_return": -0.43937193115842077,
+      "annualized_volatility": 0.08576765482336357,
+      "sharpe_zero_cash": -6.698558234959344,
+      "max_drawdown": -0.8535802545188553
+    }
+  },
+  "by_year": {
+    "2017": {
+      "sessions": 120,
+      "selected_sessions": 67,
+      "mean_selected_gross_bps": -3.6373619633682663,
+      "mean_selected_conservative_bps": -33.63736196336827
+    },
+    "2018": {
+      "sessions": 360,
+      "selected_sessions": 170,
+      "mean_selected_gross_bps": 0.03952307180793751,
+      "mean_selected_conservative_bps": -29.960476928192065
+    },
+    "2019": {
+      "sessions": 365,
+      "selected_sessions": 189,
+      "mean_selected_gross_bps": -4.153952172420859,
+      "mean_selected_conservative_bps": -34.15395217242086
+    },
+    "2020": {
+      "sessions": 364,
+      "selected_sessions": 195,
+      "mean_selected_gross_bps": 3.2570646487610535,
+      "mean_selected_conservative_bps": -26.742935351238945
+    }
+  },
+  "gates": {
+    "minimum_selected_sessions": true,
+    "positive_mean_gross": false,
+    "directional_accuracy_above_50pct": true,
+    "positive_each_chronological_half_gross": false,
+    "bootstrap_lower_above_zero": false,
+    "positive_after_conservative_costs": false,
+    "positive_after_top_5pct_absolute_removed": true,
+    "top_5pct_profit_contribution_within_cap": true,
+    "complete_timestamp_alignment": true
+  },
+  "passed": false,
+  "partition": "development",
+  "date_bounds": {
+    "start": "2017-09-01",
+    "end": "2020-12-31"
+  },
+  "specification_sha256": "37a5f20d3ec66dcc3754a1e6b3ed75519ff93b95bfc9476f4d26f6c7bc5d48ed",
+  "files": {
+    "bars": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\bitcoin_us_session_close_momentum_binance_v1\\development\\bars.parquet",
+      "sha256": "75dcbe1891b9557f1b98980cbda1515063c22b2509719cf08375e71b69f3346d",
+      "rows": 58177
+    },
+    "panel": {
+      "path": "C:\\Hazem\\quant_project\\untitled_project\\data\\parquet\\bitcoin_us_session_close_momentum_binance_v1\\development\\panel.parquet",
+      "sha256": "9e52fc2213c8cf109a92100835859a417477823a8859ecea652c4c51e3ca94b1",
+      "rows": 1209
+    }
+  }
+}
