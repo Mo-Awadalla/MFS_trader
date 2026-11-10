@@ -1,0 +1,2570 @@
+{
+  "imbalance_8bps_base": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9999.711031960001,
+        "closed_trade_pnl": -0.2889680399985082,
+        "complete": true,
+        "counts": {
+          "decisions": 8563,
+          "posted": 8563,
+          "entry_rejected": 0,
+          "entry_no_fill": 8557,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 4,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 17
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 9999.615283619998,
+        "closed_trade_pnl": -0.3847163800019189,
+        "complete": true,
+        "counts": {
+          "decisions": 8532,
+          "posted": 8528,
+          "entry_rejected": 4,
+          "entry_no_fill": 8519,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 3,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.424,
+        "closed_trade_pnl": -0.5759999999991123,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 8571,
+          "entry_rejected": 1,
+          "entry_no_fill": 8569,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9959.335800059998,
+        "closed_trade_pnl": -40.66419994000171,
+        "complete": true,
+        "counts": {
+          "decisions": 8268,
+          "posted": 8265,
+          "entry_rejected": 3,
+          "entry_no_fill": 8208,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 38,
+          "taker_only_exits": 19,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9988.911746920006,
+        "closed_trade_pnl": -11.088253079993592,
+        "complete": true,
+        "counts": {
+          "decisions": 8453,
+          "posted": 8451,
+          "entry_rejected": 2,
+          "entry_no_fill": 8435,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 10,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -53.00213743999484,
+    "net_dollars": -53.00213743999484,
+    "trades": 90,
+    "positive_days": 0,
+    "mean_net_bps": -6.020289038762721,
+    "daily_mean_ci95": [
+      -26.673964187999445,
+      -0.3846737679999933
+    ],
+    "adjusted_daily_mean_lower": -34.74901056800009,
+    "net_excluding_best_day": -52.71316939999633,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "imbalance_8bps_double_fees": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9996.734274160002,
+        "closed_trade_pnl": -3.2657258399976854,
+        "complete": true,
+        "counts": {
+          "decisions": 8563,
+          "posted": 8563,
+          "entry_rejected": 0,
+          "entry_no_fill": 8557,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 4,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 17
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 9995.199271829997,
+        "closed_trade_pnl": -4.8007281700029125,
+        "complete": true,
+        "counts": {
+          "decisions": 8532,
+          "posted": 8528,
+          "entry_rejected": 4,
+          "entry_no_fill": 8519,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 3,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9998.348092119999,
+        "closed_trade_pnl": -1.6519078800010902,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 8571,
+          "entry_rejected": 1,
+          "entry_no_fill": 8569,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9931.558453709991,
+        "closed_trade_pnl": -68.44154629000877,
+        "complete": true,
+        "counts": {
+          "decisions": 8268,
+          "posted": 8265,
+          "entry_rejected": 3,
+          "entry_no_fill": 8208,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 38,
+          "taker_only_exits": 19,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9979.77526004,
+        "closed_trade_pnl": -20.22473996000008,
+        "complete": true,
+        "counts": {
+          "decisions": 8453,
+          "posted": 8451,
+          "entry_rejected": 2,
+          "entry_no_fill": 8435,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 10,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -98.38464814001054,
+    "net_dollars": -98.38464814001054,
+    "trades": 90,
+    "positive_days": 0,
+    "mean_net_bps": -11.188157982095108,
+    "daily_mean_ci95": [
+      -45.440257342005495,
+      -2.9271991220000926
+    ],
+    "adjusted_daily_mean_lower": -58.79818502400703,
+    "net_excluding_best_day": -96.73274026000945,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "imbalance_8bps_latency_1s": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": null,
+        "closed_trade_pnl": -0.9530267999998614,
+        "complete": false,
+        "counts": {
+          "decisions": 6835,
+          "posted": 6835,
+          "entry_rejected": 0,
+          "entry_no_fill": 6831,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 2,
+          "unresolved_exits": 1,
+          "funding_exclusions": 18
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10000.852514539998,
+        "closed_trade_pnl": 0.8525145399980829,
+        "complete": true,
+        "counts": {
+          "decisions": 8526,
+          "posted": 8522,
+          "entry_rejected": 4,
+          "entry_no_fill": 8511,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 8,
+          "taker_only_exits": 3,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9998.68350448,
+        "closed_trade_pnl": -1.316495520000899,
+        "complete": true,
+        "counts": {
+          "decisions": 8557,
+          "posted": 8556,
+          "entry_rejected": 1,
+          "entry_no_fill": 8553,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": null,
+        "closed_trade_pnl": -32.7153893199993,
+        "complete": false,
+        "counts": {
+          "decisions": 6596,
+          "posted": 6593,
+          "entry_rejected": 3,
+          "entry_no_fill": 6545,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 30,
+          "taker_only_exits": 17,
+          "unresolved_exits": 1,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9990.033990520005,
+        "closed_trade_pnl": -9.966009479994682,
+        "complete": true,
+        "counts": {
+          "decisions": 8459,
+          "posted": 8455,
+          "entry_rejected": 4,
+          "entry_no_fill": 8439,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 7,
+          "taker_only_exits": 9,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      }
+    ],
+    "complete": false,
+    "closed_trade_pnl": -44.09840657999666,
+    "net_dollars": null,
+    "trades": 80,
+    "positive_days": null,
+    "mean_net_bps": -5.644436599528552,
+    "daily_mean_ci95": null,
+    "adjusted_daily_mean_lower": null,
+    "net_excluding_best_day": null,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "imbalance_8bps_full_first_print": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9999.711031960001,
+        "closed_trade_pnl": -0.2889680399985082,
+        "complete": true,
+        "counts": {
+          "decisions": 8563,
+          "posted": 8563,
+          "entry_rejected": 0,
+          "entry_no_fill": 8557,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 4,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 17
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 9999.615283619998,
+        "closed_trade_pnl": -0.3847163800019189,
+        "complete": true,
+        "counts": {
+          "decisions": 8532,
+          "posted": 8528,
+          "entry_rejected": 4,
+          "entry_no_fill": 8519,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 3,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.424,
+        "closed_trade_pnl": -0.5759999999991123,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 8571,
+          "entry_rejected": 1,
+          "entry_no_fill": 8569,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9959.335800059998,
+        "closed_trade_pnl": -40.66419994000171,
+        "complete": true,
+        "counts": {
+          "decisions": 8268,
+          "posted": 8265,
+          "entry_rejected": 3,
+          "entry_no_fill": 8208,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 38,
+          "taker_only_exits": 19,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9988.911746920006,
+        "closed_trade_pnl": -11.088253079993592,
+        "complete": true,
+        "counts": {
+          "decisions": 8453,
+          "posted": 8451,
+          "entry_rejected": 2,
+          "entry_no_fill": 8435,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 10,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -53.00213743999484,
+    "net_dollars": -53.00213743999484,
+    "trades": 90,
+    "positive_days": 0,
+    "mean_net_bps": -6.020289038762682,
+    "daily_mean_ci95": [
+      -26.673964187999445,
+      -0.3846737679999933
+    ],
+    "adjusted_daily_mean_lower": -34.74901056800009,
+    "net_excluding_best_day": -52.71316939999633,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "imbalance_16bps_base": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9999.29197924,
+        "closed_trade_pnl": -0.7080207599992718,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 8573,
+          "entry_rejected": 1,
+          "entry_no_fill": 8572,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10000.70808232,
+        "closed_trade_pnl": 0.7080823199994484,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 8569,
+          "entry_rejected": 3,
+          "entry_no_fill": 8567,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.80874496,
+        "closed_trade_pnl": -0.19125503999930515,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 8573,
+          "entry_rejected": 1,
+          "entry_no_fill": 8572,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9993.540723899998,
+        "closed_trade_pnl": -6.459276100002171,
+        "complete": true,
+        "counts": {
+          "decisions": 8516,
+          "posted": 8516,
+          "entry_rejected": 0,
+          "entry_no_fill": 8509,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 4,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10002.82151082,
+        "closed_trade_pnl": 2.821510820000185,
+        "complete": true,
+        "counts": {
+          "decisions": 8565,
+          "posted": 8564,
+          "entry_rejected": 1,
+          "entry_no_fill": 8560,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -3.8289587600011146,
+    "net_dollars": -3.8289587600011146,
+    "trades": 15,
+    "positive_days": 2,
+    "mean_net_bps": -2.1519901031478237,
+    "daily_mean_ci95": [
+      -3.8755533480012674,
+      1.5534537199997431
+    ],
+    "adjusted_daily_mean_lower": -5.309025032001591,
+    "net_excluding_best_day": -6.6504695800013,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "imbalance_16bps_double_fees": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9998.5980882,
+        "closed_trade_pnl": -1.4019117999996524,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 8573,
+          "entry_rejected": 1,
+          "entry_no_fill": 8572,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 9999.62771007,
+        "closed_trade_pnl": -0.37228992999916954,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 8569,
+          "entry_rejected": 3,
+          "entry_no_fill": 8567,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.12478204,
+        "closed_trade_pnl": -0.8752179599996452,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 8573,
+          "entry_rejected": 1,
+          "entry_no_fill": 8572,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9989.651468060001,
+        "closed_trade_pnl": -10.348531939998793,
+        "complete": true,
+        "counts": {
+          "decisions": 8516,
+          "posted": 8516,
+          "entry_rejected": 0,
+          "entry_no_fill": 8509,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 4,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10001.214672319998,
+        "closed_trade_pnl": 1.214672319998499,
+        "complete": true,
+        "counts": {
+          "decisions": 8565,
+          "posted": 8564,
+          "entry_rejected": 1,
+          "entry_no_fill": 8560,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -11.783279309998761,
+    "net_dollars": -11.783279309998761,
+    "trades": 15,
+    "positive_days": 1,
+    "mean_net_bps": -7.751794996407898,
+    "daily_mean_ci95": [
+      -6.559206347999134,
+      0.27337743999923986
+    ],
+    "adjusted_daily_mean_lower": -8.559207911998964,
+    "net_excluding_best_day": -12.99795162999726,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "imbalance_16bps_latency_1s": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9998.98616284,
+        "closed_trade_pnl": -1.0138371600005485,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 8571,
+          "entry_rejected": 1,
+          "entry_no_fill": 8570,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10001.17461014,
+        "closed_trade_pnl": 1.1746101400003681,
+        "complete": true,
+        "counts": {
+          "decisions": 8582,
+          "posted": 8578,
+          "entry_rejected": 4,
+          "entry_no_fill": 8577,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.5529916,
+        "closed_trade_pnl": -0.44700840000041353,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 8571,
+          "entry_rejected": 1,
+          "entry_no_fill": 8570,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": null,
+        "closed_trade_pnl": -11.518600199999128,
+        "complete": false,
+        "counts": {
+          "decisions": 6769,
+          "posted": 6768,
+          "entry_rejected": 1,
+          "entry_no_fill": 6760,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 5,
+          "unresolved_exits": 1,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10001.718682820001,
+        "closed_trade_pnl": 1.7186828200010495,
+        "complete": true,
+        "counts": {
+          "decisions": 8550,
+          "posted": 8548,
+          "entry_rejected": 2,
+          "entry_no_fill": 8544,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      }
+    ],
+    "complete": false,
+    "closed_trade_pnl": -10.086152799998672,
+    "net_dollars": null,
+    "trades": 14,
+    "positive_days": null,
+    "mean_net_bps": -7.368565490117051,
+    "daily_mean_ci95": null,
+    "adjusted_daily_mean_lower": null,
+    "net_excluding_best_day": null,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "imbalance_16bps_full_first_print": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9999.29197924,
+        "closed_trade_pnl": -0.7080207599992718,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 8573,
+          "entry_rejected": 1,
+          "entry_no_fill": 8572,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10000.70808232,
+        "closed_trade_pnl": 0.7080823199994484,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 8569,
+          "entry_rejected": 3,
+          "entry_no_fill": 8567,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.80874496,
+        "closed_trade_pnl": -0.19125503999930515,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 8573,
+          "entry_rejected": 1,
+          "entry_no_fill": 8572,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9993.540723899998,
+        "closed_trade_pnl": -6.459276100002171,
+        "complete": true,
+        "counts": {
+          "decisions": 8516,
+          "posted": 8516,
+          "entry_rejected": 0,
+          "entry_no_fill": 8509,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 4,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10002.82151082,
+        "closed_trade_pnl": 2.821510820000185,
+        "complete": true,
+        "counts": {
+          "decisions": 8565,
+          "posted": 8564,
+          "entry_rejected": 1,
+          "entry_no_fill": 8560,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -3.8289587600011146,
+    "net_dollars": -3.8289587600011146,
+    "trades": 15,
+    "positive_days": 2,
+    "mean_net_bps": -2.151990103147903,
+    "daily_mean_ci95": [
+      -3.8755533480012674,
+      1.5534537199997431
+    ],
+    "adjusted_daily_mean_lower": -5.309025032001591,
+    "net_excluding_best_day": -6.6504695800013,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "follow_8bps_base": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 10000.2325736,
+        "closed_trade_pnl": 0.23257360000025074,
+        "complete": true,
+        "counts": {
+          "decisions": 8577,
+          "posted": 5643,
+          "entry_rejected": 12,
+          "entry_no_fill": 5640,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 17
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10001.102660679999,
+        "closed_trade_pnl": 1.1026606799987348,
+        "complete": true,
+        "counts": {
+          "decisions": 8548,
+          "posted": 7599,
+          "entry_rejected": 57,
+          "entry_no_fill": 7591,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 7,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 10000.518102039998,
+        "closed_trade_pnl": 0.518102039997757,
+        "complete": true,
+        "counts": {
+          "decisions": 8562,
+          "posted": 5549,
+          "entry_rejected": 21,
+          "entry_no_fill": 5546,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9964.595152120002,
+        "closed_trade_pnl": -35.40484787999776,
+        "complete": true,
+        "counts": {
+          "decisions": 8215,
+          "posted": 7899,
+          "entry_rejected": 155,
+          "entry_no_fill": 7839,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 37,
+          "taker_only_exits": 23,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9987.157132220002,
+        "closed_trade_pnl": -12.842867779998414,
+        "complete": true,
+        "counts": {
+          "decisions": 8479,
+          "posted": 8158,
+          "entry_rejected": 60,
+          "entry_no_fill": 8146,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 4,
+          "taker_only_exits": 8,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -46.39437933999943,
+    "net_dollars": -46.39437933999943,
+    "trades": 86,
+    "positive_days": 3,
+    "mean_net_bps": -5.59031837973651,
+    "daily_mean_ci95": [
+      -23.59095014799859,
+      0.6948198079986468
+    ],
+    "adjusted_daily_mean_lower": -30.89245185999789,
+    "net_excluding_best_day": -47.49704001999817,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "follow_8bps_double_fees": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9998.74240936,
+        "closed_trade_pnl": -1.257590639999762,
+        "complete": true,
+        "counts": {
+          "decisions": 8577,
+          "posted": 5643,
+          "entry_rejected": 12,
+          "entry_no_fill": 5640,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 17
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 9997.67084556,
+        "closed_trade_pnl": -2.329154439999911,
+        "complete": true,
+        "counts": {
+          "decisions": 8548,
+          "posted": 7599,
+          "entry_rejected": 57,
+          "entry_no_fill": 7591,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 7,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.75224848,
+        "closed_trade_pnl": -0.2477515200007474,
+        "complete": true,
+        "counts": {
+          "decisions": 8562,
+          "posted": 5549,
+          "entry_rejected": 21,
+          "entry_no_fill": 5546,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9936.556718049998,
+        "closed_trade_pnl": -63.44328195000162,
+        "complete": true,
+        "counts": {
+          "decisions": 8215,
+          "posted": 7899,
+          "entry_rejected": 155,
+          "entry_no_fill": 7839,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 37,
+          "taker_only_exits": 23,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9980.4884159,
+        "closed_trade_pnl": -19.51158410000062,
+        "complete": true,
+        "counts": {
+          "decisions": 8479,
+          "posted": 8158,
+          "entry_rejected": 60,
+          "entry_no_fill": 8146,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 4,
+          "taker_only_exits": 8,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -86.78936265000266,
+    "net_dollars": -86.78936265000266,
+    "trades": 86,
+    "positive_days": 0,
+    "mean_net_bps": -10.776570689977541,
+    "daily_mean_ci95": [
+      -42.01783629400124,
+      -1.067967752000186
+    ],
+    "adjusted_daily_mean_lower": -54.65694238000142,
+    "net_excluding_best_day": -86.54161113000191,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "follow_8bps_latency_1s": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9998.21293336,
+        "closed_trade_pnl": -1.7870666399994661,
+        "complete": true,
+        "counts": {
+          "decisions": 8567,
+          "posted": 5634,
+          "entry_rejected": 11,
+          "entry_no_fill": 5632,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 18
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10000.00810522,
+        "closed_trade_pnl": 0.008105220000288682,
+        "complete": true,
+        "counts": {
+          "decisions": 8520,
+          "posted": 7574,
+          "entry_rejected": 55,
+          "entry_no_fill": 7564,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 7,
+          "taker_only_exits": 3,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9997.651525719997,
+        "closed_trade_pnl": -2.348474280002847,
+        "complete": true,
+        "counts": {
+          "decisions": 8539,
+          "posted": 5529,
+          "entry_rejected": 20,
+          "entry_no_fill": 5525,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 3,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": null,
+        "closed_trade_pnl": -20.37651509999705,
+        "complete": false,
+        "counts": {
+          "decisions": 6602,
+          "posted": 6345,
+          "entry_rejected": 105,
+          "entry_no_fill": 6298,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 32,
+          "taker_only_exits": 14,
+          "unresolved_exits": 1,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9988.326468779998,
+        "closed_trade_pnl": -11.673531220001678,
+        "complete": true,
+        "counts": {
+          "decisions": 8485,
+          "posted": 8163,
+          "entry_rejected": 61,
+          "entry_no_fill": 8151,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 5,
+          "taker_only_exits": 7,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      }
+    ],
+    "complete": false,
+    "closed_trade_pnl": -36.17748202000075,
+    "net_dollars": null,
+    "trades": 74,
+    "positive_days": null,
+    "mean_net_bps": -5.022438065995481,
+    "daily_mean_ci95": null,
+    "adjusted_daily_mean_lower": null,
+    "net_excluding_best_day": null,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "follow_8bps_full_first_print": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 10000.2325736,
+        "closed_trade_pnl": 0.23257360000025074,
+        "complete": true,
+        "counts": {
+          "decisions": 8577,
+          "posted": 5643,
+          "entry_rejected": 12,
+          "entry_no_fill": 5640,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 17
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10001.102660679999,
+        "closed_trade_pnl": 1.1026606799987348,
+        "complete": true,
+        "counts": {
+          "decisions": 8548,
+          "posted": 7599,
+          "entry_rejected": 57,
+          "entry_no_fill": 7591,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 7,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 10000.518102039998,
+        "closed_trade_pnl": 0.518102039997757,
+        "complete": true,
+        "counts": {
+          "decisions": 8562,
+          "posted": 5549,
+          "entry_rejected": 21,
+          "entry_no_fill": 5546,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9964.595152120002,
+        "closed_trade_pnl": -35.40484787999776,
+        "complete": true,
+        "counts": {
+          "decisions": 8215,
+          "posted": 7899,
+          "entry_rejected": 155,
+          "entry_no_fill": 7839,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 37,
+          "taker_only_exits": 23,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9987.157132220002,
+        "closed_trade_pnl": -12.842867779998414,
+        "complete": true,
+        "counts": {
+          "decisions": 8479,
+          "posted": 8158,
+          "entry_rejected": 60,
+          "entry_no_fill": 8146,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 4,
+          "taker_only_exits": 8,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -46.39437933999943,
+    "net_dollars": -46.39437933999943,
+    "trades": 86,
+    "positive_days": 3,
+    "mean_net_bps": -5.590318379736437,
+    "daily_mean_ci95": [
+      -23.59095014799859,
+      0.6948198079986468
+    ],
+    "adjusted_daily_mean_lower": -30.89245185999789,
+    "net_excluding_best_day": -47.49704001999817,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "follow_16bps_base": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 10001.19163948,
+        "closed_trade_pnl": 1.1916394799991394,
+        "complete": true,
+        "counts": {
+          "decisions": 8583,
+          "posted": 5648,
+          "entry_rejected": 13,
+          "entry_no_fill": 5647,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8586,
+          "posted": 7638,
+          "entry_rejected": 56,
+          "entry_no_fill": 7638,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8586,
+          "posted": 5571,
+          "entry_rejected": 22,
+          "entry_no_fill": 5571,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 10004.273337319999,
+        "closed_trade_pnl": 4.273337319998973,
+        "complete": true,
+        "counts": {
+          "decisions": 8545,
+          "posted": 8205,
+          "entry_rejected": 179,
+          "entry_no_fill": 8197,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8586,
+          "posted": 8265,
+          "entry_rejected": 60,
+          "entry_no_fill": 8265,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": 5.464976799998112,
+    "net_dollars": 5.464976799998112,
+    "trades": 9,
+    "positive_days": 2,
+    "mean_net_bps": 6.612145783250109,
+    "daily_mean_ci95": [
+      0.0,
+      2.8023302879992116
+    ],
+    "adjusted_daily_mean_lower": 0.0,
+    "net_excluding_best_day": 1.1916394799991394,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "follow_16bps_double_fees": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 10000.79547896,
+        "closed_trade_pnl": 0.7954789600007643,
+        "complete": true,
+        "counts": {
+          "decisions": 8583,
+          "posted": 5648,
+          "entry_rejected": 13,
+          "entry_no_fill": 5647,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8586,
+          "posted": 7638,
+          "entry_rejected": 56,
+          "entry_no_fill": 7638,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8586,
+          "posted": 5571,
+          "entry_rejected": 22,
+          "entry_no_fill": 5571,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 10000.70724008,
+        "closed_trade_pnl": 0.7072400800007017,
+        "complete": true,
+        "counts": {
+          "decisions": 8545,
+          "posted": 8205,
+          "entry_rejected": 179,
+          "entry_no_fill": 8197,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8586,
+          "posted": 8265,
+          "entry_rejected": 60,
+          "entry_no_fill": 8265,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": 1.502719040001466,
+    "net_dollars": 1.502719040001466,
+    "trades": 9,
+    "positive_days": 2,
+    "mean_net_bps": 1.9453535762946599,
+    "daily_mean_ci95": [
+      0.0,
+      0.6187353920005989
+    ],
+    "adjusted_daily_mean_lower": 0.0,
+    "net_excluding_best_day": 0.7072400800007017,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "follow_16bps_latency_1s": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 10001.19163948,
+        "closed_trade_pnl": 1.1916394799991394,
+        "complete": true,
+        "counts": {
+          "decisions": 8581,
+          "posted": 5646,
+          "entry_rejected": 13,
+          "entry_no_fill": 5645,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8584,
+          "posted": 7637,
+          "entry_rejected": 56,
+          "entry_no_fill": 7637,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8584,
+          "posted": 5571,
+          "entry_rejected": 22,
+          "entry_no_fill": 5571,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 10002.17886768,
+        "closed_trade_pnl": 2.1788676800006215,
+        "complete": true,
+        "counts": {
+          "decisions": 8508,
+          "posted": 8172,
+          "entry_rejected": 175,
+          "entry_no_fill": 8159,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 9,
+          "taker_only_exits": 4,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9999.34007894,
+        "closed_trade_pnl": -0.6599210599997605,
+        "complete": true,
+        "counts": {
+          "decisions": 8571,
+          "posted": 8250,
+          "entry_rejected": 60,
+          "entry_no_fill": 8249,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": 2.7105861000000004,
+    "net_dollars": 2.7105861000000004,
+    "trades": 15,
+    "positive_days": 2,
+    "mean_net_bps": 2.1487421582267996,
+    "daily_mean_ci95": [
+      -0.26396842399990417,
+      1.5456485040002008
+    ],
+    "adjusted_daily_mean_lower": -0.5279368479998083,
+    "net_excluding_best_day": 0.531718419999379,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "follow_16bps_full_first_print": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 10001.19163948,
+        "closed_trade_pnl": 1.1916394799991394,
+        "complete": true,
+        "counts": {
+          "decisions": 8583,
+          "posted": 5648,
+          "entry_rejected": 13,
+          "entry_no_fill": 5647,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8586,
+          "posted": 7638,
+          "entry_rejected": 56,
+          "entry_no_fill": 7638,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8586,
+          "posted": 5571,
+          "entry_rejected": 22,
+          "entry_no_fill": 5571,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 10004.273337319997,
+        "closed_trade_pnl": 4.273337319997154,
+        "complete": true,
+        "counts": {
+          "decisions": 8545,
+          "posted": 8205,
+          "entry_rejected": 179,
+          "entry_no_fill": 8197,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10000.0,
+        "closed_trade_pnl": 0.0,
+        "complete": true,
+        "counts": {
+          "decisions": 8586,
+          "posted": 8265,
+          "entry_rejected": 60,
+          "entry_no_fill": 8265,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 0,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": 5.464976799996293,
+    "net_dollars": 5.464976799996293,
+    "trades": 9,
+    "positive_days": 2,
+    "mean_net_bps": 6.612145783249925,
+    "daily_mean_ci95": [
+      0.0,
+      2.80233028799812
+    ],
+    "adjusted_daily_mean_lower": 0.0,
+    "net_excluding_best_day": 1.1916394799991394,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "fade_8bps_base": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9998.73938064,
+        "closed_trade_pnl": -1.260619360000419,
+        "complete": true,
+        "counts": {
+          "decisions": 8550,
+          "posted": 5600,
+          "entry_rejected": 28,
+          "entry_no_fill": 5596,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 9997.810028359996,
+        "closed_trade_pnl": -2.1899716400039324,
+        "complete": true,
+        "counts": {
+          "decisions": 8469,
+          "posted": 7477,
+          "entry_rejected": 100,
+          "entry_no_fill": 7461,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 8,
+          "taker_only_exits": 8,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.60914258,
+        "closed_trade_pnl": -0.39085741999952006,
+        "complete": true,
+        "counts": {
+          "decisions": 8571,
+          "posted": 5538,
+          "entry_rejected": 40,
+          "entry_no_fill": 5535,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": null,
+        "closed_trade_pnl": -35.33062756000254,
+        "complete": false,
+        "counts": {
+          "decisions": 6941,
+          "posted": 6643,
+          "entry_rejected": 146,
+          "entry_no_fill": 6596,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 28,
+          "taker_only_exits": 18,
+          "unresolved_exits": 1,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9995.671696340003,
+        "closed_trade_pnl": -4.328303659996891,
+        "complete": true,
+        "counts": {
+          "decisions": 8434,
+          "posted": 8063,
+          "entry_rejected": 113,
+          "entry_no_fill": 8044,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 9,
+          "taker_only_exits": 10,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": false,
+    "closed_trade_pnl": -43.5003796400033,
+    "net_dollars": null,
+    "trades": 88,
+    "positive_days": null,
+    "mean_net_bps": -5.4089614314178025,
+    "daily_mean_ci95": null,
+    "adjusted_daily_mean_lower": null,
+    "net_excluding_best_day": null,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "fade_8bps_double_fees": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9996.55539472,
+        "closed_trade_pnl": -3.4446052799994504,
+        "complete": true,
+        "counts": {
+          "decisions": 8550,
+          "posted": 5600,
+          "entry_rejected": 28,
+          "entry_no_fill": 5596,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 9989.955247829996,
+        "closed_trade_pnl": -10.044752170004358,
+        "complete": true,
+        "counts": {
+          "decisions": 8469,
+          "posted": 7477,
+          "entry_rejected": 100,
+          "entry_no_fill": 7461,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 8,
+          "taker_only_exits": 8,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9998.349477279999,
+        "closed_trade_pnl": -1.6505227200013906,
+        "complete": true,
+        "counts": {
+          "decisions": 8571,
+          "posted": 5538,
+          "entry_rejected": 40,
+          "entry_no_fill": 5535,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": null,
+        "closed_trade_pnl": -55.46666450999692,
+        "complete": false,
+        "counts": {
+          "decisions": 6941,
+          "posted": 6643,
+          "entry_rejected": 146,
+          "entry_no_fill": 6596,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 28,
+          "taker_only_exits": 18,
+          "unresolved_exits": 1,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9985.394790890003,
+        "closed_trade_pnl": -14.605209109997304,
+        "complete": true,
+        "counts": {
+          "decisions": 8434,
+          "posted": 8063,
+          "entry_rejected": 113,
+          "entry_no_fill": 8044,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 9,
+          "taker_only_exits": 10,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": false,
+    "closed_trade_pnl": -85.21175378999942,
+    "net_dollars": null,
+    "trades": 88,
+    "positive_days": null,
+    "mean_net_bps": -10.740136461655927,
+    "daily_mean_ci95": null,
+    "adjusted_daily_mean_lower": null,
+    "net_excluding_best_day": null,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "fade_8bps_latency_1s": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": null,
+        "closed_trade_pnl": -0.33976676000020234,
+        "complete": false,
+        "counts": {
+          "decisions": 6840,
+          "posted": 4419,
+          "entry_rejected": 22,
+          "entry_no_fill": 4416,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 1,
+          "taker_only_exits": 1,
+          "unresolved_exits": 1,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": null,
+        "closed_trade_pnl": -2.2201431800021965,
+        "complete": false,
+        "counts": {
+          "decisions": 8074,
+          "posted": 7104,
+          "entry_rejected": 88,
+          "entry_no_fill": 7087,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 7,
+          "taker_only_exits": 9,
+          "unresolved_exits": 1,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.75394382,
+        "closed_trade_pnl": -0.24605617999986862,
+        "complete": true,
+        "counts": {
+          "decisions": 8564,
+          "posted": 5533,
+          "entry_rejected": 40,
+          "entry_no_fill": 5529,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": null,
+        "closed_trade_pnl": -4.651331560000472,
+        "complete": false,
+        "counts": {
+          "decisions": 6417,
+          "posted": 6150,
+          "entry_rejected": 116,
+          "entry_no_fill": 6139,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 4,
+          "taker_only_exits": 6,
+          "unresolved_exits": 1,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9994.744985360003,
+        "closed_trade_pnl": -5.255014639997171,
+        "complete": true,
+        "counts": {
+          "decisions": 8399,
+          "posted": 8028,
+          "entry_rejected": 113,
+          "entry_no_fill": 8006,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 10,
+          "taker_only_exits": 12,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      }
+    ],
+    "complete": false,
+    "closed_trade_pnl": -12.71231231999991,
+    "net_dollars": null,
+    "trades": 54,
+    "positive_days": null,
+    "mean_net_bps": -2.5887829313278976,
+    "daily_mean_ci95": null,
+    "adjusted_daily_mean_lower": null,
+    "net_excluding_best_day": null,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "fade_8bps_full_first_print": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9998.73938064,
+        "closed_trade_pnl": -1.260619360000419,
+        "complete": true,
+        "counts": {
+          "decisions": 8550,
+          "posted": 5600,
+          "entry_rejected": 28,
+          "entry_no_fill": 5596,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 9997.810028359996,
+        "closed_trade_pnl": -2.1899716400039324,
+        "complete": true,
+        "counts": {
+          "decisions": 8469,
+          "posted": 7477,
+          "entry_rejected": 100,
+          "entry_no_fill": 7461,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 8,
+          "taker_only_exits": 8,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.60914258,
+        "closed_trade_pnl": -0.39085741999952006,
+        "complete": true,
+        "counts": {
+          "decisions": 8571,
+          "posted": 5538,
+          "entry_rejected": 40,
+          "entry_no_fill": 5535,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": null,
+        "closed_trade_pnl": -35.33062756000254,
+        "complete": false,
+        "counts": {
+          "decisions": 6941,
+          "posted": 6643,
+          "entry_rejected": 146,
+          "entry_no_fill": 6596,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 28,
+          "taker_only_exits": 18,
+          "unresolved_exits": 1,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 9995.671696340003,
+        "closed_trade_pnl": -4.328303659996891,
+        "complete": true,
+        "counts": {
+          "decisions": 8434,
+          "posted": 8063,
+          "entry_rejected": 113,
+          "entry_no_fill": 8044,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 9,
+          "taker_only_exits": 10,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": false,
+    "closed_trade_pnl": -43.5003796400033,
+    "net_dollars": null,
+    "trades": 88,
+    "positive_days": null,
+    "mean_net_bps": -5.408961431417857,
+    "daily_mean_ci95": null,
+    "adjusted_daily_mean_lower": null,
+    "net_excluding_best_day": null,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "fade_16bps_base": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9999.29197924,
+        "closed_trade_pnl": -0.7080207599992718,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 5623,
+          "entry_rejected": 29,
+          "entry_no_fill": 5622,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10003.109712959998,
+        "closed_trade_pnl": 3.109712959998433,
+        "complete": true,
+        "counts": {
+          "decisions": 8559,
+          "posted": 7567,
+          "entry_rejected": 100,
+          "entry_no_fill": 7562,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.80874496,
+        "closed_trade_pnl": -0.19125503999930515,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 5541,
+          "entry_rejected": 40,
+          "entry_no_fill": 5540,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9984.89975664,
+        "closed_trade_pnl": -15.100243360000604,
+        "complete": true,
+        "counts": {
+          "decisions": 8492,
+          "posted": 8142,
+          "entry_rejected": 189,
+          "entry_no_fill": 8130,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 6,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10002.82151082,
+        "closed_trade_pnl": 2.821510820000185,
+        "complete": true,
+        "counts": {
+          "decisions": 8565,
+          "posted": 8192,
+          "entry_rejected": 113,
+          "entry_no_fill": 8188,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -10.068295380000563,
+    "net_dollars": -10.068295380000563,
+    "trades": 23,
+    "positive_days": 2,
+    "mean_net_bps": -3.385285417370626,
+    "daily_mean_ci95": [
+      -8.63744800400018,
+      2.334238503999586
+    ],
+    "adjusted_daily_mean_lower": -12.221798840000337,
+    "net_excluding_best_day": -13.178008339998996,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "fade_16bps_double_fees": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9998.5980882,
+        "closed_trade_pnl": -1.4019117999996524,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 5623,
+          "entry_rejected": 29,
+          "entry_no_fill": 5622,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10000.672304370002,
+        "closed_trade_pnl": 0.6723043700021663,
+        "complete": true,
+        "counts": {
+          "decisions": 8559,
+          "posted": 7567,
+          "entry_rejected": 100,
+          "entry_no_fill": 7562,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.12478204,
+        "closed_trade_pnl": -0.8752179599996452,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 5541,
+          "entry_rejected": 40,
+          "entry_no_fill": 5540,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9978.887863400001,
+        "closed_trade_pnl": -21.11213659999885,
+        "complete": true,
+        "counts": {
+          "decisions": 8492,
+          "posted": 8142,
+          "entry_rejected": 189,
+          "entry_no_fill": 8130,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 6,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10001.214672319998,
+        "closed_trade_pnl": 1.214672319998499,
+        "complete": true,
+        "counts": {
+          "decisions": 8565,
+          "posted": 8192,
+          "entry_rejected": 113,
+          "entry_no_fill": 8188,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -21.50228966999748,
+    "net_dollars": -21.50228966999748,
+    "trades": 23,
+    "positive_days": 2,
+    "mean_net_bps": -8.821018556949642,
+    "daily_mean_ci95": [
+      -12.813203445998806,
+      0.5828819059996022
+    ],
+    "adjusted_daily_mean_lower": -17.170091639999008,
+    "net_excluding_best_day": -22.71696198999598,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "fade_16bps_latency_1s": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9998.98616284,
+        "closed_trade_pnl": -1.0138371600005485,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 5621,
+          "entry_rejected": 29,
+          "entry_no_fill": 5620,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10003.67620072,
+        "closed_trade_pnl": 3.6762007199995423,
+        "complete": true,
+        "counts": {
+          "decisions": 8569,
+          "posted": 7577,
+          "entry_rejected": 101,
+          "entry_no_fill": 7573,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.5529916,
+        "closed_trade_pnl": -0.44700840000041353,
+        "complete": true,
+        "counts": {
+          "decisions": 8572,
+          "posted": 5541,
+          "entry_rejected": 40,
+          "entry_no_fill": 5540,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": null,
+        "closed_trade_pnl": -15.74800998000137,
+        "complete": false,
+        "counts": {
+          "decisions": 6775,
+          "posted": 6485,
+          "entry_rejected": 138,
+          "entry_no_fill": 6475,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 5,
+          "taker_only_exits": 4,
+          "unresolved_exits": 1,
+          "funding_exclusions": 26
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10002.34113964,
+        "closed_trade_pnl": 2.3411396400006197,
+        "complete": true,
+        "counts": {
+          "decisions": 8550,
+          "posted": 8177,
+          "entry_rejected": 113,
+          "entry_no_fill": 8173,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 2,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 26
+        }
+      }
+    ],
+    "complete": false,
+    "closed_trade_pnl": -11.19151518000217,
+    "net_dollars": null,
+    "trades": 19,
+    "positive_days": null,
+    "mean_net_bps": -5.093135725237518,
+    "daily_mean_ci95": null,
+    "adjusted_daily_mean_lower": null,
+    "net_excluding_best_day": null,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  },
+  "fade_16bps_full_first_print": {
+    "daily": [
+      {
+        "date": "2023-08-15",
+        "cash": 9999.29197924,
+        "closed_trade_pnl": -0.7080207599992718,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 5623,
+          "entry_rejected": 29,
+          "entry_no_fill": 5622,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-09-15",
+        "cash": 10003.109712959998,
+        "closed_trade_pnl": 3.109712959998433,
+        "complete": true,
+        "counts": {
+          "decisions": 8559,
+          "posted": 7567,
+          "entry_rejected": 100,
+          "entry_no_fill": 7562,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 2,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-10-15",
+        "cash": 9999.80874496,
+        "closed_trade_pnl": -0.19125503999930515,
+        "complete": true,
+        "counts": {
+          "decisions": 8574,
+          "posted": 5541,
+          "entry_rejected": 40,
+          "entry_no_fill": 5540,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 0,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-11-15",
+        "cash": 9984.89975664,
+        "closed_trade_pnl": -15.100243360000604,
+        "complete": true,
+        "counts": {
+          "decisions": 8492,
+          "posted": 8142,
+          "entry_rejected": 189,
+          "entry_no_fill": 8130,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 6,
+          "taker_only_exits": 6,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      },
+      {
+        "date": "2023-12-15",
+        "cash": 10002.82151082,
+        "closed_trade_pnl": 2.821510820000185,
+        "complete": true,
+        "counts": {
+          "decisions": 8565,
+          "posted": 8192,
+          "entry_rejected": 113,
+          "entry_no_fill": 8188,
+          "partial_entries": 0,
+          "mixed_exits": 0,
+          "maker_only_exits": 3,
+          "taker_only_exits": 1,
+          "unresolved_exits": 0,
+          "funding_exclusions": 24
+        }
+      }
+    ],
+    "complete": true,
+    "closed_trade_pnl": -10.068295380000563,
+    "net_dollars": -10.068295380000563,
+    "trades": 23,
+    "positive_days": 2,
+    "mean_net_bps": -3.385285417370677,
+    "daily_mean_ci95": [
+      -8.63744800400018,
+      2.334238503999586
+    ],
+    "adjusted_daily_mean_lower": -12.221798840000337,
+    "net_excluding_best_day": -13.178008339998996,
+    "partial_entries": 0,
+    "mixed_exits": 0
+  }
+}

@@ -1,0 +1,428 @@
+{
+  "created_at_utc": "2026-10-03T00:21:24.799447+00:00",
+  "hypothesis": "Recent, liquid stock price displacements confirmed by trades and both displayed quote sides may predict a seconds-long continuation or reversal large enough to cover conservative costs.",
+  "dates": [
+    "2023-01-11",
+    "2023-01-25",
+    "2023-02-08",
+    "2023-02-22",
+    "2023-03-08",
+    "2023-03-29",
+    "2023-04-12",
+    "2023-04-26",
+    "2023-05-10",
+    "2023-05-31",
+    "2023-06-14",
+    "2023-06-28",
+    "2023-07-12",
+    "2023-07-26",
+    "2023-08-09",
+    "2023-08-30",
+    "2023-09-13",
+    "2023-09-27",
+    "2023-10-11",
+    "2023-10-25",
+    "2023-11-08",
+    "2023-11-29",
+    "2023-12-13",
+    "2023-12-27"
+  ],
+  "sources": {
+    "2023-01-11": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sources\\2023-01-11\\extended_prefix.gz",
+      "prefix_sha256": "627d6bcc40fb6c180114826a45809f5aee31449b00f73347db213eeacfd41f4b",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230111%2F20230111_IEXTP1_DEEP1.0.pcap.gz?generation=1673481572369368&alt=media",
+        "date": "20230111",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3657142056"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-01-11.json",
+      "source_record_sha256": "ebb9e34b76e3af902d1846e64c5df18bbf9e3636ed62ba898f3b1fe5306f4ddf",
+      "first_decision_ns": 1673447430000000000,
+      "final_decision_ns": 1673447460000000000
+    },
+    "2023-01-25": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sources\\2023-01-25\\extended_prefix.gz",
+      "prefix_sha256": "724e3af316bf18b2487769c3d15bfc4352de66130b2ab00678f28aae77c430a0",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230125%2F20230125_IEXTP1_DEEP1.0.pcap.gz?generation=1674690668007102&alt=media",
+        "date": "20230125",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "4129739690"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-01-25.json",
+      "source_record_sha256": "190556b5624fd5b127d87dccb2af551bfc30e51e8987b7c48df21e4e726710c6",
+      "first_decision_ns": 1674657030000000000,
+      "final_decision_ns": 1674657060000000000
+    },
+    "2023-02-08": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sources\\2023-02-08\\extended_prefix.gz",
+      "prefix_sha256": "e904d4b8a37d3a2ba21355089b2e2551df80f289ae1f68d01619c615f11f3f8a",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230208%2F20230208_IEXTP1_DEEP1.0.pcap.gz?generation=1675900547795026&alt=media",
+        "date": "20230208",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "4309323093"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-02-08.json",
+      "source_record_sha256": "9f559acf5df99b68afb0e9741838a8e61ecb4f9c24b3312b29340aed65dd4844",
+      "first_decision_ns": 1675866630000000000,
+      "final_decision_ns": 1675866660000000000
+    },
+    "2023-02-22": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-02-22\\prefix.gz",
+      "prefix_sha256": "a6f469196566a1ec254902f05edf555df33d67d2841a8d7a12c0e9b8629edcc6",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230222%2F20230222_IEXTP1_DEEP1.0.pcap.gz?generation=1677109127059440&alt=media",
+        "date": "20230222",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3977141764"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-02-22.json",
+      "source_record_sha256": "b883f97bb4910915c74efe0e48657e24e815b5c0bb11171338d4baa6024f0391",
+      "first_decision_ns": 1677076230000000000,
+      "final_decision_ns": 1677076260000000000
+    },
+    "2023-03-08": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sources\\2023-03-08\\extended_prefix.gz",
+      "prefix_sha256": "ae49e86d52297f0c80462f618cb028313cddb319c7b6ca73b6e121148715f0ee",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230308%2F20230308_IEXTP1_DEEP1.0.pcap.gz?generation=1678318219349175&alt=media",
+        "date": "20230308",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3736165478"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-03-08.json",
+      "source_record_sha256": "0dea73a30a18c9a72390cbae661ddbaa128c33270b4c8a3a178e1db52b17adf4",
+      "first_decision_ns": 1678285830000000000,
+      "final_decision_ns": 1678285860000000000
+    },
+    "2023-03-29": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-03-29\\prefix.gz",
+      "prefix_sha256": "c4c1dc17f1be25dc03896064e98f7b8420100bf5e036edf4208f19ad5d43d2cc",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230329%2F20230329_IEXTP1_DEEP1.0.pcap.gz?generation=1680135856960818&alt=media",
+        "date": "20230329",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3198996854"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-03-29.json",
+      "source_record_sha256": "2ef0c5b95718ecea080fefefbf6f483acd2e5ca4f530d6653c2b40a0a9e3e272",
+      "first_decision_ns": 1680096630000000000,
+      "final_decision_ns": 1680096660000000000
+    },
+    "2023-04-12": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-04-12\\prefix.gz",
+      "prefix_sha256": "c6ede4cbac1c02d37c9585b85553690822f279cab00d1c9007453c77b92bf6f8",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230412%2F20230412_IEXTP1_DEEP1.0.pcap.gz?generation=1681341542309562&alt=media",
+        "date": "20230412",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3760943236"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sessions\\2023-04-12.json",
+      "source_record_sha256": "dfbda57d04bcf2733e7561fa285bd8629951974c7cc264db8cf96282301d8c0b",
+      "first_decision_ns": 1681306230000000000,
+      "final_decision_ns": 1681306260000000000
+    },
+    "2023-04-26": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sources\\2023-04-26\\extended_prefix.gz",
+      "prefix_sha256": "68134b0e251a796b12fa9f792dde1ddeaa71d61713180c145f31f377d6a32385",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230426%2F20230426_IEXTP1_DEEP1.0.pcap.gz?generation=1682547814724969&alt=media",
+        "date": "20230426",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3478598793"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-04-26.json",
+      "source_record_sha256": "52e336c19a3f51e0639a861cf26efe9eeaad2e73674c20a6d8d2ceefc1bd88f8",
+      "first_decision_ns": 1682515830000000000,
+      "final_decision_ns": 1682515860000000000
+    },
+    "2023-05-10": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sources\\2023-05-10\\extended_prefix.gz",
+      "prefix_sha256": "9264d473f166800e963c3f2e5ee2167b6f2776da86868ef0d7226c1caf41c648",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230510%2F20230510_IEXTP1_DEEP1.0.pcap.gz?generation=1683757700085627&alt=media",
+        "date": "20230510",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3849846421"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-05-10.json",
+      "source_record_sha256": "e802e440eeeef74a624a6c4d2a9872249d4cc7982f1f49d135283ba4db687417",
+      "first_decision_ns": 1683725430000000000,
+      "final_decision_ns": 1683725460000000000
+    },
+    "2023-05-31": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-05-31\\prefix.gz",
+      "prefix_sha256": "f5c0b59962c432d1670ac28e0960dc507c861a186ec25ce20aaeddcd87fdc224",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230531%2F20230531_IEXTP1_DEEP1.0.pcap.gz?generation=1685571653841255&alt=media",
+        "date": "20230531",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3422508661"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-05-31.json",
+      "source_record_sha256": "08da22f3fbbae8d79da7963392ec3ac4217d34ab042f934bfea972e02f58b537",
+      "first_decision_ns": 1685539830000000000,
+      "final_decision_ns": 1685539860000000000
+    },
+    "2023-06-14": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-06-14\\prefix.gz",
+      "prefix_sha256": "9ef635d3f1e53f4631461def52bce24f126548c0e7a0c355ee5d8b59b362ce23",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230614%2F20230614_IEXTP1_DEEP1.0.pcap.gz?generation=1686782143853777&alt=media",
+        "date": "20230614",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "4052698388"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-06-14.json",
+      "source_record_sha256": "b81069a927594f086e74aaa1f9d0b7b4f751f2b22c099254b3b29a4844825795",
+      "first_decision_ns": 1686749430000000000,
+      "final_decision_ns": 1686749460000000000
+    },
+    "2023-06-28": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-06-28\\prefix.gz",
+      "prefix_sha256": "3db3483dd05fdf9ea477b956c22bc38a82b3a5c3374fc16c3a04378eff5dd69c",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230628%2F20230628_IEXTP1_DEEP1.0.pcap.gz?generation=1687990991464594&alt=media",
+        "date": "20230628",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3574186180"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-06-28.json",
+      "source_record_sha256": "e0f5e7b3f5c8d61b592335579a3b43253615c5729267c7512e6b96320605c72b",
+      "first_decision_ns": 1687959030000000000,
+      "final_decision_ns": 1687959060000000000
+    },
+    "2023-07-12": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sources\\2023-07-12\\extended_prefix.gz",
+      "prefix_sha256": "afad4cb54b970d74f34cde3748e62a5f5a127aebf6d0f93293c654d60bd066a6",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230712%2F20230712_IEXTP1_DEEP1.0.pcap.gz?generation=1689200885163532&alt=media",
+        "date": "20230712",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3866190788"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-07-12.json",
+      "source_record_sha256": "91d940df18eb834bac46a0e3138e5cf6b84d8e769a6369b403f6711fa51f1409",
+      "first_decision_ns": 1689168630000000000,
+      "final_decision_ns": 1689168660000000000
+    },
+    "2023-07-26": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-07-26\\prefix.gz",
+      "prefix_sha256": "367e51ac7c93df2a5e926e56b26d79077078405faf9240587c0131be02adf112",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230726%2F20230726_IEXTP1_DEEP1.0.pcap.gz?generation=1690410307847684&alt=media",
+        "date": "20230726",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3648734266"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-07-26.json",
+      "source_record_sha256": "f98e443c402a10557e74a5ff4368e7134ae698a1d52c9a46e558a29ccfee69a1",
+      "first_decision_ns": 1690378230000000000,
+      "final_decision_ns": 1690378260000000000
+    },
+    "2023-08-09": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-08-09\\prefix.gz",
+      "prefix_sha256": "212dc8637fce0b19561640fbc562d45721700c717439424c87b5bf38c7997d8f",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230809%2F20230809_IEXTP1_DEEP1.0.pcap.gz?generation=1691620107847499&alt=media",
+        "date": "20230809",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3811542692"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-08-09.json",
+      "source_record_sha256": "c291368c45cbf836656287e2a2301f127dbc6666c8be017eb3c7cd01791d5d40",
+      "first_decision_ns": 1691587830000000000,
+      "final_decision_ns": 1691587860000000000
+    },
+    "2023-08-30": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-08-30\\prefix.gz",
+      "prefix_sha256": "21ac4db332d7fd76f7f0d814faf4726cf2ed3543d211996d6ae8e67c95c6f93e",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230830%2F20230830_IEXTP1_DEEP1.0.pcap.gz?generation=1693433729676469&alt=media",
+        "date": "20230830",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3074456799"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-08-30.json",
+      "source_record_sha256": "9ccd6a301e6946fba8abf2df0cb4c3d1dd69fe976810755243212288c6f2598d",
+      "first_decision_ns": 1693402230000000000,
+      "final_decision_ns": 1693402260000000000
+    },
+    "2023-09-13": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-09-13\\prefix.gz",
+      "prefix_sha256": "8da618f67944b1c8e919241b6483ab6c1592ce3c9a9b0d506c0e56369bbbb0b2",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230913%2F20230913_IEXTP1_DEEP1.0.pcap.gz?generation=1694644220623172&alt=media",
+        "date": "20230913",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "4058850445"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-09-13.json",
+      "source_record_sha256": "de956104a3132061f6b7880bc9940624adc794cc288bbefd4527f3f6fe193225",
+      "first_decision_ns": 1694611830000000000,
+      "final_decision_ns": 1694611860000000000
+    },
+    "2023-09-27": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-09-27\\prefix.gz",
+      "prefix_sha256": "b6668f0d402033d63257f34259b9db9a4abe2d4cfaac173e1df8b86870195a3c",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20230927%2F20230927_IEXTP1_DEEP1.0.pcap.gz?generation=1695853754790658&alt=media",
+        "date": "20230927",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "3977215781"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-09-27.json",
+      "source_record_sha256": "2f829f90e8dff3292e06f95df0f7e97643085b38d683617c7abe99c76ed34d05",
+      "first_decision_ns": 1695821430000000000,
+      "final_decision_ns": 1695821460000000000
+    },
+    "2023-10-11": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sources\\2023-10-11\\extended_prefix.gz",
+      "prefix_sha256": "1f7d4bbddd49ce52efcde4c57aa922aa6bfa2479285dc70c4a81ccd5655ab5b7",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20231011%2F20231011_IEXTP1_DEEP1.0.pcap.gz?generation=1697064209395161&alt=media",
+        "date": "20231011",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "4766626477"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-10-11.json",
+      "source_record_sha256": "9dd3735a2280ee5faba26c61b5ea78067be0d0d537902c3727b4b88611a302c5",
+      "first_decision_ns": 1697031030000000000,
+      "final_decision_ns": 1697031060000000000
+    },
+    "2023-10-25": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sources\\2023-10-25\\extended_prefix.gz",
+      "prefix_sha256": "cdbb1b0aa7f03fb2763fe09d53d7cd9cec22126012d318e0d772bf54bb3117de",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20231025%2F20231025_IEXTP1_DEEP1.0.pcap.gz?generation=1698274589497674&alt=media",
+        "date": "20231025",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "5662947808"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-10-25.json",
+      "source_record_sha256": "8d70b1636a33661e8c334c12edfc6340c88eb2e8c74d6bc6033a6a83a833424c",
+      "first_decision_ns": 1698240630000000000,
+      "final_decision_ns": 1698240660000000000
+    },
+    "2023-11-08": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-11-08\\prefix.gz",
+      "prefix_sha256": "5629df5186baa0e0441a4518d21ecc441c173a0254f45e38d3ad253626adc7d3",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20231108%2F20231108_IEXTP1_DEEP1.0.pcap.gz?generation=1699486769653739&alt=media",
+        "date": "20231108",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "4655245756"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-11-08.json",
+      "source_record_sha256": "a3d44b212752b51736e007a81e910aa055e52935880da8cfe6831193b78a1ae7",
+      "first_decision_ns": 1699453830000000000,
+      "final_decision_ns": 1699453860000000000
+    },
+    "2023-12-13": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-12-13\\prefix.gz",
+      "prefix_sha256": "fbd0480d435388abbe3951a8a38dc4a98d44dc4a32e4dd77ef8ee262d9d69891",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20231213%2F20231213_IEXTP1_DEEP1.0.pcap.gz?generation=1702511416894082&alt=media",
+        "date": "20231213",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "5286615457"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\price_probe_v1\\sessions\\2023-12-13.json",
+      "source_record_sha256": "f54d5fd31b8a7843029a9211bf59095b6c9b818f50e9c98c4c7cecbd7a6da288",
+      "first_decision_ns": 1702477830000000000,
+      "final_decision_ns": 1702477860000000000
+    },
+    "2023-12-27": {
+      "prefix_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sources\\2023-12-27\\prefix.gz",
+      "prefix_sha256": "f533a7fcae5e010dc3dc9e7dbb118f079df09c0b0d0823592264c249d882da6e",
+      "source": {
+        "link": "https://www.googleapis.com/download/storage/v1/b/iex/o/data%2Ffeeds%2F20231227%2F20231227_IEXTP1_DEEP1.0.pcap.gz?generation=1703720512916622&alt=media",
+        "date": "20231227",
+        "feed": "DEEP",
+        "version": "1.0",
+        "protocol": "IEXTP1",
+        "size": "4814832161"
+      },
+      "source_record": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\iex_deep_hft_20261002\\sessions\\2023-12-27.json",
+      "source_record_sha256": "60696d682ecae1d31251597735b82f07ecb2ba0ff373d92b3b1661bc62e0f4bc",
+      "first_decision_ns": 1703687430000000000,
+      "final_decision_ns": 1703687460000000000
+    }
+  },
+  "unknown_admission_dates": [
+    "2023-11-29"
+  ],
+  "grid": "09:30:30 through09:31:00 ET inclusive every100ms; information cutoff decision-1ms. Source packets captured strictly before cutoff; all observed native event/send clocks<=cutoff. Each reference snapshot is at cutoff-1s using the identical causal rule. Native stream contiguous from sequence1/offset0; atomic DEEP final PLU only; any pending atomic state rejects that symbol.",
+  "scope": "All uppercase ASCII alphabetic1-5char native symbols, explicit test flag excluded. Both snapshots H=T/O=N, positive uncrossed $5-$1000 cent quotes and positive touch sizes. Confirm stock/ETF identity before any economic replay.",
+  "freshness": "Current and reference completed quotes: both capture and native event ages<=250ms. Current eligible trade<=100ms; reference eligible trade<=250ms. Latest eligible trade as observed at each snapshot; both must lie inside their contemporaneous BBO. A later causally known break invalidates the saved reference. Eligible T:positive price/quantity,flags&0x58==0; known B removed. No unbroken duplicate trade IDs in the active1s window.",
+  "signal": "Absolute latest trade price change>=30bp versus reference. Both bid and ask strictly move in the same direction. Prior1s native eligible trade window inclusive requires>=5 distinct native event times and >=$25000 notional. Current spread<=5bp, reference spread<=50bp.",
+  "sizing": "Buy limit is102% of current ask rounded up to whole cent. Fixed quantity=min(floor$10000/limit,floor10% current bid size,floor10% current ask size). Do not resize using future depth or prices.",
+  "cost_hurdle": "Aggressive current ask-to-bid roundtrip:spread+two max($1,$.005/share) commissions+1bp adverse allowance on each notional+sale levy .00003 sale notional+.000166/share. No rebates. Cost<=12bp of entry notional and observed move>=3times this cost. Exact Decimal accounting.",
+  "selection": "Two separate long-only policies:follow_rise and fade_fall. Each has one slot,global6s cooldown,symbol30s cooldown,max6signals/date. Each grid ranks eligible candidates by descending(movebp-3costbp),descending prior1s notional,ascending symbol. Selection solely causal; a selected event starts its cooldown regardless of later fill.",
+  "planned_execution": "If supply exists, freeze a separate depth-aware aggressive IOC entry and forced exit5s later, all inventory<30s; baseline1ms and5/25/250ms assumed one-way arrival delays including350us exchange speed bump, plus doubled-cost stresses. Venue/simulator access and actual fast latency are unverified; any result is conditional. Economic replay must separately account for depth, ambiguous clocks and unknown residual inventory.",
+  "limits": "2023 dates repeatedly used for discovery; no untouched validation claim. IEX-only book lacks NBBO, private acceptance and hidden liquidity. Missing Nov29 initial history remains unknown. No future returns inspected by this screen; no economic implementation yet.",
+  "acquisition": "Reuse immutable, generation-pinned local IEX prefixes only; no new download or paid API.",
+  "code_sha256": {
+    "research/iex_fast_displacement.py": "cd850c64cc973bb7045d5ea8470cf0e425d722e1669c4a43d489a0fc6b58f368",
+    "research/iex_deep_supply.py": "16eca5b71071c3a949e9c4b421b08cd1a152438c362b26142a8652e7a158367f",
+    "research/iex_native_prefix.py": "cb1594166f66925e19645ceb20854260a8ab5f3fe44ee2f0ec57bb18a8aa2d0e",
+    "research_scout/screen_iex_fast_20261002.py": "8c5a6e2627c0c6a4f0899b42109c87f6e753daa9782c231496710678081cdad2"
+  },
+  "parent_screen_sha256": "0df3e703a3c6875b33004f79d7bf0e54f39e8bf8316ef399540cedee5b7a8674",
+  "parent_audit_sha256": "c9fb10e43cc79621f8c060d4f25183fd81f5ac6694778d85baf415c4e4c02ba4",
+  "extended_source_audit_sha256": "43cf7bf0e4e6fddaa39c5704c770a307100b5c289816e082bdc8eae852854c7d",
+  "economic_configurations_executed": 0,
+  "returns_calculated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "attribution": "Data provided for free by IEX. By accessing or using IEX Historical Data, you agree to the IEX Historical Data Terms of Use.",
+  "terms": "https://www.iex.io/legal/hist-data-terms"
+}

@@ -1,0 +1,19 @@
+{
+  "created_at_utc": "2026-09-30T17:49:28.705853+00:00",
+  "stage": "predecision source-clock correction only",
+  "original_specification_sha256": "fc3ad97dbbe2b7f0f0a67a9bbbfb98f8148c6215fa8e70930e038fa59445191c",
+  "code_sha256": "7e6a62c41ca8036e6683cf9add818609990fbec68c73c9adf47aef6de4709b21",
+  "repair": "For C-type full16:00 sessions only: accept already-UTC scheduled close unchanged. If raw scheduled timestamp equals same-date16:00 encoded as UTC, interpret its wall time as America/New_York with date-specific DST. Any other value is not repaired. Normalize only auction_time, never capture/event/decision timestamps.",
+  "evidence": "Native658 predecision snapshots:619 legacy16:00Z encodings,39 correct21:00Z encodings starting2025-11-03 in this file. Databento2025-11-09 release notes document fixing auction_time to UTC for NYSE datasets. Publication date is not used as the historical encoding cutoff; match exact observed encoding to the known exchange session schedule.",
+  "invariants": "All original economic, quantity, price cap, cost, freshness, source selection, dates and side rules unchanged. No future auction or post-entry prices inspected. Original screen retained; this is not a new alpha configuration or an independent result.",
+  "sources": [
+    "https://databento.com/docs/release-notes",
+    "https://www.nyse.com/trade/auctions"
+  ],
+  "source_panel_sha256": {
+    "calendar.parquet": "84efc9b8f718096e7a3b07c5c976029ea9b74be6d9c6d46760da4fba3153dacd",
+    "auction_inputs.parquet": "fb1e58385c74aadb834b93cba94865ac58a0836c7e35cff8c4d1c7dc10dfc827",
+    "quote_inputs.parquet": "dea3a57b743f6987f87f82bc241722ce1d1a6a26dbffb8da7dcd6fe9fe7fe203",
+    "screen.parquet": "a5f06aca03ca9fca20a0735d7abfb0e19ca8adfeba6bd8f8ccb2c71541cc97df"
+  }
+}

@@ -1,0 +1,40 @@
+SECONDS-ONLY ETF OPENING-AUCTION SCREEN — ORIGINAL EVENT-CLOCK VERSION
+No qualified candidate; all eight configurations have incomplete execution paths.
+Closed-trade subtotals below are NOT total strategy returns. Unknown attempts remain unknown.
+
+Data: 666 sessions; 171,294,232 raw quote rows; 10,838,203 native auction messages scanned.
+431 development sessions (2023-24), 235 selection sessions (2025); both historically exposed.
+No 2026 quote-price files were opened in this batch. Known degraded source dates excluded upfront.
+Decision 09:29:50 ET; 250ms processing, 1s outbound/return acknowledgement (3s stress).
+Hold 15 or 30 seconds after entry acknowledgement. Long SPY/SH or UPRO/SPXU; no auction fill assumed.
+$10,000 reset per date; integer shares capped at 10% predecision displayed size, with 1% cash reserve.
+$0.0075/share, $1 minimum each side; sell levy 0.30bp + $0.0002/share; 1bp adverse allowance each side.
+Entry FOK with a 5bp causal price collar; no resizing to future depth and no invented deeper liquidity.
+
+BASELINE CLOSED SUBTOTALS (NOT COMPLETE STRATEGY NET RETURNS)
+Rule | Development closed $ / trades | 2025 closed $ / trades | Total net
+indicative_gap_1x_15s | -7.8251 / 1 | +0.0000 / 0 | UNKNOWN
+indicative_gap_1x_30s | -8.8676 / 4 | +0.0000 / 0 | UNKNOWN
+indicative_gap_3x_15s | -76.3746 / 7 | -10.2431 / 6 | UNKNOWN
+indicative_gap_3x_30s | -43.8307 / 8 | -19.2018 / 10 | UNKNOWN
+indicative_leadership_3x_15s | -222.1520 / 21 | -212.3667 / 23 | UNKNOWN
+indicative_leadership_3x_30s | -256.5868 / 21 | -162.7005 / 20 | UNKNOWN
+price_momentum_3x_15s | -6.5882 / 1 | -7.3829 / 2 | UNKNOWN
+price_momentum_3x_30s | -31.3765 / 3 | -79.3781 / 4 | UNKNOWN
+
+Clock audit: 3,700,782 backwards source-event steps, median about 28 microseconds;
+99.60% are at most 1ms. The original 250ms guard marks 3,883 of 15,984 execution targets ambiguous.
+Sorting anonymized multi-venue snapshots by their component event clocks is not a venue book replay.
+The failed completion gate is partly a modeling limitation, not proof that all rules lose money.
+
+Serialization repair: optional timestamp columns rounded by up to 128ns when pandas introduced floats.
+Rebuilt exact nullable integer timestamps from the unchanged simulation records in precise_ledgers/.
+Original ledgers preserved; EVERY non-clock column is identical (signals, fills, quantities, fees, P&L).
+This repair is not a new strategy or independent evidence.
+
+Independent checks: 1,332 auction snapshots reconciled; 666 quote source hashes verified;
+1,076 native as-of targets checked across 34 calendar-selected sessions (spot checks, not exhaustive).
+All 497 priced dependent-scenario trades reconciled; 1,559 unresolved attempts retained; maximum cash error $7.11e-15.
+
+Next: preserve this version and correct aggregate-quote chronology with a separately frozen execution model.
+No claim of a reliable edge, live fills, competition outperformance, or a win.

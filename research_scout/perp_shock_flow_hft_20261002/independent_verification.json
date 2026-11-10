@@ -1,0 +1,22 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T21:13:34.687004+00:00",
+  "source_files_verified": 5,
+  "source_counts": {
+    "native_messages": 26697,
+    "relevant_trade_messages": 26697
+  },
+  "candidate_events_verified": 5,
+  "selected_events_verified": 5,
+  "precutoff_prefix_rows_verified": 16626,
+  "counted_window_executions_verified": 5730,
+  "maximum_numeric_difference": "0",
+  "results_sha256": "ea49d162a4e3bdf5fdb5be1ddc921f4efc2d7588592c872f4df0fc97b12377b9",
+  "parent_audit_sha256": "45323a9ad40a2592ecb0b704abd279ae40e02b38f70c2cbc5d1663f7b36c2713",
+  "auditor_sha256": "34a89003d4609c5f29c6d35cf6882f25e4ee0c8ea47df60a661bfd5983b63ea1",
+  "scope": "Independent native parsing, exact information/matching intervals, every available prefix row, ID/clock/disconnect integrity, MARKET-only directional Decimal aggregation and complete selection. No production signal/parser imports or future-return calculation.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

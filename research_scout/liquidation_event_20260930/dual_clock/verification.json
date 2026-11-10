@@ -1,0 +1,153 @@
+{
+  "verified": true,
+  "decision_input_snapshots_identical": 496,
+  "priced_trades_across_dependent_scenarios": 4432,
+  "maximum_pnl_error_dollars": 1.092459456231154e-13,
+  "frozen_candidate_outcomes": [
+    {
+      "rule": "follow_immediate_30s",
+      "original_complete": true,
+      "corrected_complete": false,
+      "original_base_net": -128.99548136000158,
+      "corrected_base_net": null,
+      "corrected_closed_subtotal": -124.80736813999829,
+      "corrected_trades": 109
+    },
+    {
+      "rule": "follow_immediate_120s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -132.79681372000414,
+      "corrected_base_net": -132.84029916001055,
+      "corrected_closed_subtotal": -132.84029916001055,
+      "corrected_trades": 116
+    },
+    {
+      "rule": "follow_quiet_30s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -85.24100627999542,
+      "corrected_base_net": -85.27408641999682,
+      "corrected_closed_subtotal": -85.27408641999682,
+      "corrected_trades": 78
+    },
+    {
+      "rule": "follow_quiet_120s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -81.76917524000055,
+      "corrected_base_net": -81.80875148000086,
+      "corrected_closed_subtotal": -81.80875148000086,
+      "corrected_trades": 78
+    },
+    {
+      "rule": "reverse_immediate_30s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -144.60257533999174,
+      "corrected_base_net": -144.65842559999328,
+      "corrected_closed_subtotal": -144.65842559999328,
+      "corrected_trades": 119
+    },
+    {
+      "rule": "reverse_immediate_120s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -141.26963630000682,
+      "corrected_base_net": -141.25272714000312,
+      "corrected_closed_subtotal": -141.25272714000312,
+      "corrected_trades": 119
+    },
+    {
+      "rule": "reverse_quiet_30s",
+      "original_complete": false,
+      "corrected_complete": false,
+      "original_base_net": null,
+      "corrected_base_net": null,
+      "corrected_closed_subtotal": -73.52279171999908,
+      "corrected_trades": 62
+    },
+    {
+      "rule": "reverse_quiet_120s",
+      "original_complete": false,
+      "corrected_complete": false,
+      "original_base_net": null,
+      "corrected_base_net": null,
+      "corrected_closed_subtotal": -81.1933118600009,
+      "corrected_trades": 67
+    },
+    {
+      "rule": "price_follow_immediate_30s",
+      "original_complete": true,
+      "corrected_complete": false,
+      "original_base_net": -131.89528388000144,
+      "corrected_base_net": null,
+      "corrected_closed_subtotal": -123.73536813999817,
+      "corrected_trades": 109
+    },
+    {
+      "rule": "price_follow_immediate_120s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -137.14841624000292,
+      "corrected_base_net": -137.19190168000932,
+      "corrected_closed_subtotal": -137.19190168000932,
+      "corrected_trades": 116
+    },
+    {
+      "rule": "price_follow_quiet_30s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -85.92180627999551,
+      "corrected_base_net": -85.95488641999691,
+      "corrected_closed_subtotal": -85.95488641999691,
+      "corrected_trades": 78
+    },
+    {
+      "rule": "price_follow_quiet_120s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -78.76057523999953,
+      "corrected_base_net": -78.80015147999984,
+      "corrected_closed_subtotal": -78.80015147999984,
+      "corrected_trades": 78
+    },
+    {
+      "rule": "price_reverse_immediate_30s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -141.70277281999188,
+      "corrected_base_net": -141.7586230799934,
+      "corrected_closed_subtotal": -141.7586230799934,
+      "corrected_trades": 119
+    },
+    {
+      "rule": "price_reverse_immediate_120s",
+      "original_complete": true,
+      "corrected_complete": true,
+      "original_base_net": -136.91803378000805,
+      "corrected_base_net": -136.90112462000434,
+      "corrected_closed_subtotal": -136.90112462000434,
+      "corrected_trades": 119
+    },
+    {
+      "rule": "price_reverse_quiet_30s",
+      "original_complete": false,
+      "corrected_complete": false,
+      "original_base_net": null,
+      "corrected_base_net": null,
+      "corrected_closed_subtotal": -72.84199171999899,
+      "corrected_trades": 62
+    },
+    {
+      "rule": "price_reverse_quiet_120s",
+      "original_complete": false,
+      "corrected_complete": false,
+      "original_base_net": null,
+      "corrected_base_net": null,
+      "corrected_closed_subtotal": -84.20191186000193,
+      "corrected_trades": 67
+    }
+  ],
+  "reliable_edge_established": false
+}

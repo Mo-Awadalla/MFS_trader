@@ -1,0 +1,229 @@
+{
+  "created_at_utc": "2026-10-02T21:32:10.417143+00:00",
+  "relationship": "Operational two-stage acquisition refinement, frozen before new native records. First download BTC/ETH only for the same first twelve chronological candidate minutes. The unchanged joint-leader gate can reject a minute without downloading target symbols. Only native-positive minutes progress to all-symbol quote acquisition; targets and strategy thresholds do not change. This saves bandwidth and does not rank by or inspect any future trading return.",
+  "hypothesis_specification_sha256": "0ae27a4a34f358b09231ab387d239dfe6d7aaba67fdd350c1569ef72ee77db13",
+  "coverage_results_sha256": "aea108418ea873194c86c6d67212d565611e31721e9d3628c7ec29420433e31e",
+  "coverage_audit_sha256": "3fc12228dbf6bd080ce400bba88f79a27b1e04e621a32b2f7b38ece53f1b9bcc",
+  "jobs": [
+    {
+      "date": "2024-07-01",
+      "offset": 66
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 131
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 1186
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 325
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 399
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 425
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 901
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 920
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 927
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 948
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1066
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1068
+    }
+  ],
+  "queued_jobs": [
+    {
+      "date": "2024-08-01",
+      "offset": 1070
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1071
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1072
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1078
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1081
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1229
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1231
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1235
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1237
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1242
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1249
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1308
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 324
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 328
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 830
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 854
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 855
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 72
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 73
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 892
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 910
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 987
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1016
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1040
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1065
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1208
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1210
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1219
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1225
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 817
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 863
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 942
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1056
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1176
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1190
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 130
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 506
+    }
+  ],
+  "download": {
+    "exchange": "binance-futures",
+    "slice_minutes": 1,
+    "symbols": [
+      "btcusdt",
+      "ethusdt"
+    ],
+    "channels": [
+      "bookTicker"
+    ],
+    "workers": 2,
+    "per_slice_decoded_cap": 96000000,
+    "request_deadline_seconds": 180,
+    "authenticated": false,
+    "paid_fallback": false
+  },
+  "screen": "Reconstruct native full books on the original quarter-second information grid; apply the unchanged complete BTC/ETH 20bp same-direction, 5bp spread, 2000-USDT depth and 250ms freshness gates. Preserve all grids, IDs, T/E/capture clocks and source lines. No normalized candidate is assumed to be a valid native signal. Independently audit native eligibility before target or execution promotion.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "257930e865cf8f910750c1a0089ee0115b0b78f0fab2a7135a7b75f27c4276d5"
+}

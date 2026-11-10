@@ -1,0 +1,3224 @@
+[
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 52,
+      "external_cushion_exhausted": 8,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 52,
+      "external_cushion_exhausted": 8,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 52,
+      "external_cushion_exhausted": 8,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 52,
+      "external_cushion_exhausted": 8,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 52,
+      "external_cushion_exhausted": 8,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 52,
+      "external_cushion_exhausted": 8,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 46,
+      "external_cushion_exhausted": 12,
+      "external_freshness_expired": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 46,
+      "external_cushion_exhausted": 12,
+      "external_freshness_expired": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 46,
+      "external_cushion_exhausted": 12,
+      "external_freshness_expired": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 46,
+      "external_cushion_exhausted": 12,
+      "external_freshness_expired": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 46,
+      "external_cushion_exhausted": 12,
+      "external_freshness_expired": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 56,
+      "predecision_no_order": 28
+    },
+    "date": "2024-02-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 56,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 46,
+      "external_cushion_exhausted": 12,
+      "external_freshness_expired": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 56,
+      "external_cushion_below_cost": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 14,
+      "external_freshness_expired": 4
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 14,
+      "external_freshness_expired": 4
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 14,
+      "external_freshness_expired": 4
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 14,
+      "external_freshness_expired": 4
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 14,
+      "external_freshness_expired": 4
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 14,
+      "external_freshness_expired": 4
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 17,
+      "scheduled": 13,
+      "external_freshness_expired": 6
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 17,
+      "scheduled": 13,
+      "external_freshness_expired": 6
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 17,
+      "scheduled": 13,
+      "external_freshness_expired": 6
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 17,
+      "scheduled": 13,
+      "external_freshness_expired": 6
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 17,
+      "scheduled": 13,
+      "external_freshness_expired": 6
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 20,
+      "bounded_complete": 36
+    },
+    "date": "2024-04-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 36,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 17,
+      "scheduled": 13,
+      "external_freshness_expired": 6
+    },
+    "reasons": {
+      "external_cushion_below_cost": 20,
+      "both_orders_resolved_and_all_inventory_flattened": 36
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 7,
+      "scheduled": 7
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 7,
+      "scheduled": 7
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 7,
+      "scheduled": 7
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 7,
+      "scheduled": 7
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 7,
+      "scheduled": 7
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 7,
+      "scheduled": 7
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.1856999999999971,
+    "net_high": -0.1856999999999971,
+    "closed_portion_net_low": -0.1856999999999971,
+    "closed_portion_net_high": -0.1856999999999971,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 1,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 2
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.5421750000004977,
+    "net_high": -0.5421750000004977,
+    "closed_portion_net_low": -0.5421750000004977,
+    "closed_portion_net_high": -0.5421750000004977,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 2
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.06447499999922002,
+    "net_high": 0.06447499999922002,
+    "closed_portion_net_low": 0.06447499999922002,
+    "closed_portion_net_high": 0.06447499999922002,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 1,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 2
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.2649250000013126,
+    "net_high": -0.2649250000013126,
+    "closed_portion_net_low": -0.2649250000013126,
+    "closed_portion_net_high": -0.2649250000013126,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 2
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.1856999999999971,
+    "net_high": -0.1856999999999971,
+    "closed_portion_net_low": -0.1856999999999971,
+    "closed_portion_net_high": -0.1856999999999971,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 1,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 2
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.1856999999999971,
+    "net_high": -0.1856999999999971,
+    "closed_portion_net_low": -0.1856999999999971,
+    "closed_portion_net_high": -0.1856999999999971,
+    "statuses": {
+      "predecision_no_order": 98,
+      "bounded_complete": 14
+    },
+    "date": "2024-05-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 1,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 2
+    },
+    "reasons": {
+      "external_cushion_below_cost": 87,
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "signal_spread_or_depth_below_gate": 10,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 17,
+      "external_cushion_exhausted": 4
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 17,
+      "external_cushion_exhausted": 4
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 17,
+      "external_cushion_exhausted": 4
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 17,
+      "external_cushion_exhausted": 4
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 17,
+      "external_cushion_exhausted": 4
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 17,
+      "external_cushion_exhausted": 4
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 6,
+      "scheduled": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 6,
+      "scheduled": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 6,
+      "scheduled": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 6,
+      "scheduled": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 6,
+      "scheduled": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 21,
+      "predecision_no_order": 7
+    },
+    "date": "2024-06-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 21,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 6,
+      "scheduled": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 21,
+      "external_cushion_below_cost": 7
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 24,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 24,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.050902110000606626,
+    "net_high": -0.050902110000606626,
+    "closed_portion_net_low": -0.050902110000606626,
+    "closed_portion_net_high": -0.050902110000606626,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "scheduled": 24,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 24,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 24,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 24,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.012175019999631331,
+    "net_high": -0.012175019999631331,
+    "closed_portion_net_low": -0.012175019999631331,
+    "closed_portion_net_high": -0.012175019999631331,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 28
+    },
+    "date": "2024-07-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 28,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 18,
+      "external_cushion_exhausted": 15
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 28
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.782030479998866,
+    "net_high": -2.782030479998866,
+    "closed_portion_net_low": -2.782030479998866,
+    "closed_portion_net_high": -2.782030479998866,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 27,
+      "scheduled": 77,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -3.3062061099990387,
+    "net_high": -3.3062061099990387,
+    "closed_portion_net_low": -3.3062061099990387,
+    "closed_portion_net_high": -3.3062061099990387,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 27,
+      "scheduled": 77,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -1.8836169999995036,
+    "net_high": -1.8836169999995036,
+    "closed_portion_net_low": -1.8836169999995036,
+    "closed_portion_net_high": -1.8836169999995036,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 27,
+      "scheduled": 77,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.89858533000006,
+    "net_high": -2.89858533000006,
+    "closed_portion_net_low": -2.89858533000006,
+    "closed_portion_net_high": -2.89858533000006,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 27,
+      "scheduled": 77,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.782030479998866,
+    "net_high": -2.782030479998866,
+    "closed_portion_net_low": -2.782030479998866,
+    "closed_portion_net_high": -2.782030479998866,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 27,
+      "scheduled": 77,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.819328999999925,
+    "net_high": -2.782030479998866,
+    "closed_portion_net_low": -2.819328999999925,
+    "closed_portion_net_high": -2.782030479998866,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 27,
+      "scheduled": 77,
+      "external_freshness_expired": 1
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.782030479998866,
+    "net_high": -2.782030479998866,
+    "closed_portion_net_low": -2.782030479998866,
+    "closed_portion_net_high": -2.782030479998866,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 34,
+      "scheduled": 66,
+      "external_freshness_expired": 5
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -3.3062061099990387,
+    "net_high": -3.3062061099990387,
+    "closed_portion_net_low": -3.3062061099990387,
+    "closed_portion_net_high": -3.3062061099990387,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 34,
+      "scheduled": 66,
+      "external_freshness_expired": 5
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -1.9964997699989908,
+    "net_high": -1.9964997699989908,
+    "closed_portion_net_low": -1.9964997699989908,
+    "closed_portion_net_high": -1.9964997699989908,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 34,
+      "scheduled": 66,
+      "external_freshness_expired": 5
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.89858533000006,
+    "net_high": -2.89858533000006,
+    "closed_portion_net_low": -2.89858533000006,
+    "closed_portion_net_high": -2.89858533000006,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 34,
+      "scheduled": 66,
+      "external_freshness_expired": 5
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.782030479998866,
+    "net_high": -2.782030479998866,
+    "closed_portion_net_low": -2.782030479998866,
+    "closed_portion_net_high": -2.782030479998866,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 34,
+      "scheduled": 66,
+      "external_freshness_expired": 5
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.819328999999925,
+    "net_high": -2.782030479998866,
+    "closed_portion_net_low": -2.819328999999925,
+    "closed_portion_net_high": -2.782030479998866,
+    "statuses": {
+      "bounded_complete": 84,
+      "predecision_no_order": 28
+    },
+    "date": "2024-08-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 84,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 34,
+      "scheduled": 66,
+      "external_freshness_expired": 5
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 84,
+      "external_cushion_below_cost": 27,
+      "signal_spread_or_depth_below_gate": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 74,
+      "external_cushion_exhausted": 15,
+      "external_freshness_expired": 2
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 74,
+      "external_cushion_exhausted": 15,
+      "external_freshness_expired": 2
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.47959508699932485,
+    "net_high": -0.47959508699932485,
+    "closed_portion_net_low": -0.47959508699932485,
+    "closed_portion_net_high": -0.47959508699932485,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "scheduled": 74,
+      "external_cushion_exhausted": 15,
+      "external_freshness_expired": 2
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 74,
+      "external_cushion_exhausted": 15,
+      "external_freshness_expired": 2
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 74,
+      "external_cushion_exhausted": 15,
+      "external_freshness_expired": 2
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 74,
+      "external_cushion_exhausted": 15,
+      "external_freshness_expired": 2
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -1.7072077360007825,
+    "net_high": -1.7072077360007825,
+    "closed_portion_net_low": -1.7072077360007825,
+    "closed_portion_net_high": -1.7072077360007825,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "scheduled": 63,
+      "external_cushion_exhausted": 21,
+      "external_freshness_expired": 7
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.2462608400001045,
+    "net_high": -2.2462608400001045,
+    "closed_portion_net_low": -2.2462608400001045,
+    "closed_portion_net_high": -2.2462608400001045,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "scheduled": 63,
+      "external_cushion_exhausted": 21,
+      "external_freshness_expired": 7
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -2.1868028230001073,
+    "net_high": -2.1868028230001073,
+    "closed_portion_net_low": -2.1868028230001073,
+    "closed_portion_net_high": -2.1868028230001073,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 4,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 4,
+    "cancellation_reasons": {
+      "scheduled": 63,
+      "external_cushion_exhausted": 21,
+      "external_freshness_expired": 7
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -1.8269623680007498,
+    "net_high": -1.8269623680007498,
+    "closed_portion_net_low": -1.8269623680007498,
+    "closed_portion_net_high": -1.8269623680007498,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "scheduled": 63,
+      "external_cushion_exhausted": 21,
+      "external_freshness_expired": 7
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -1.4875006000002031,
+    "net_high": -1.4875006000002031,
+    "closed_portion_net_low": -1.4875006000002031,
+    "closed_portion_net_high": -1.4875006000002031,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "scheduled": 63,
+      "external_cushion_exhausted": 21,
+      "external_freshness_expired": 7
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -1.7072077360007825,
+    "net_high": -1.7072077360007825,
+    "closed_portion_net_low": -1.7072077360007825,
+    "closed_portion_net_high": -1.7072077360007825,
+    "statuses": {
+      "bounded_complete": 86,
+      "predecision_no_order": 26
+    },
+    "date": "2024-09-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 86,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "scheduled": 63,
+      "external_cushion_exhausted": 21,
+      "external_freshness_expired": 7
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 86,
+      "external_cushion_below_cost": 25,
+      "external_state_missing_or_stale": 1
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.07085582999934559,
+    "net_high": -0.07085582999934559,
+    "closed_portion_net_low": -0.07085582999934559,
+    "closed_portion_net_high": -0.07085582999934559,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 18
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.09716409000066051,
+    "net_high": -0.09716409000066051,
+    "closed_portion_net_low": -0.09716409000066051,
+    "closed_portion_net_high": -0.09716409000066051,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 18
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.5532504299990251,
+    "net_high": -0.5532504299990251,
+    "closed_portion_net_low": -0.5532504299990251,
+    "closed_portion_net_high": -0.5532504299990251,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 18
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.07670340000004217,
+    "net_high": -0.07670340000004217,
+    "closed_portion_net_low": -0.07670340000004217,
+    "closed_portion_net_high": -0.07670340000004217,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 18
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.07085582999934559,
+    "net_high": -0.07085582999934559,
+    "closed_portion_net_low": -0.07085582999934559,
+    "closed_portion_net_high": -0.07085582999934559,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 18
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.5532504299990251,
+    "net_high": -0.07085582999934559,
+    "closed_portion_net_low": -0.5532504299990251,
+    "closed_portion_net_high": -0.07085582999934559,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 12,
+      "scheduled": 18
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.5532504299990251,
+    "net_high": -0.5532504299990251,
+    "closed_portion_net_low": -0.5532504299990251,
+    "closed_portion_net_high": -0.5532504299990251,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 18,
+      "scheduled": 12
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.7590561900015018,
+    "net_high": -0.7590561900015018,
+    "closed_portion_net_low": -0.7590561900015018,
+    "closed_portion_net_high": -0.7590561900015018,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 18,
+      "scheduled": 12
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -1.0396554299986747,
+    "net_high": -1.0396554299986747,
+    "closed_portion_net_low": -1.0396554299986747,
+    "closed_portion_net_high": -1.0396554299986747,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 3,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 3,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 18,
+      "scheduled": 12
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.5989950999992288,
+    "net_high": -0.5989950999992288,
+    "closed_portion_net_low": -0.5989950999992288,
+    "closed_portion_net_high": -0.5989950999992288,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 18,
+      "scheduled": 12
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.5532504299990251,
+    "net_high": -0.5532504299990251,
+    "closed_portion_net_low": -0.5532504299990251,
+    "closed_portion_net_high": -0.5532504299990251,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 18,
+      "scheduled": 12
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.5532504299990251,
+    "net_high": -0.5532504299990251,
+    "closed_portion_net_low": -0.5532504299990251,
+    "closed_portion_net_high": -0.5532504299990251,
+    "statuses": {
+      "bounded_complete": 30,
+      "predecision_no_order": 26
+    },
+    "date": "2024-10-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 30,
+    "cycles_with_possible_fills": 2,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 2,
+    "cancellation_reasons": {
+      "external_cushion_exhausted": 18,
+      "scheduled": 12
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 30,
+      "external_cushion_below_cost": 26
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 50,
+      "external_cushion_exhausted": 11,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 50,
+      "external_cushion_exhausted": 11,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 50,
+      "external_cushion_exhausted": 11,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 50,
+      "external_cushion_exhausted": 11,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 50,
+      "external_cushion_exhausted": 11,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 50,
+      "external_cushion_exhausted": 11,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.996527999999671,
+    "net_high": -0.996527999999671,
+    "closed_portion_net_low": -0.996527999999671,
+    "closed_portion_net_high": -0.996527999999671,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "scheduled": 42,
+      "external_cushion_exhausted": 18,
+      "external_freshness_expired": 1,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -1.173666000000594,
+    "net_high": -1.173666000000594,
+    "closed_portion_net_low": -1.173666000000594,
+    "closed_portion_net_high": -1.173666000000594,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "scheduled": 42,
+      "external_cushion_exhausted": 18,
+      "external_freshness_expired": 1,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.996527999999671,
+    "net_high": -0.996527999999671,
+    "closed_portion_net_low": -0.996527999999671,
+    "closed_portion_net_high": -0.996527999999671,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "scheduled": 42,
+      "external_cushion_exhausted": 18,
+      "external_freshness_expired": 1,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -1.0359179999995831,
+    "net_high": -1.0359179999995831,
+    "closed_portion_net_low": -1.0359179999995831,
+    "closed_portion_net_high": -1.0359179999995831,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "scheduled": 42,
+      "external_cushion_exhausted": 18,
+      "external_freshness_expired": 1,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.996527999999671,
+    "net_high": -0.996527999999671,
+    "closed_portion_net_low": -0.996527999999671,
+    "closed_portion_net_high": -0.996527999999671,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "scheduled": 42,
+      "external_cushion_exhausted": 18,
+      "external_freshness_expired": 1,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": -0.996527999999671,
+    "net_high": -0.996527999999671,
+    "closed_portion_net_low": -0.996527999999671,
+    "closed_portion_net_high": -0.996527999999671,
+    "statuses": {
+      "bounded_complete": 54,
+      "predecision_no_order": 58
+    },
+    "date": "2024-11-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 54,
+    "cycles_with_possible_fills": 1,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 1,
+    "cancellation_reasons": {
+      "scheduled": 42,
+      "external_cushion_exhausted": 18,
+      "external_freshness_expired": 1,
+      "external_state_invalid": 3
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 54,
+      "external_cushion_below_cost": 56,
+      "signal_spread_or_depth_below_gate": 2
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 10,
+    "scenario": "base",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 5,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 10,
+    "scenario": "double_fees",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 5,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 10,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 5,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 10,
+    "scenario": "double_adverse",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 5,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 10,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 5,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 10,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 5,
+      "external_cushion_exhausted": 9
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 22,
+    "scenario": "base",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 4,
+      "external_cushion_exhausted": 10
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 22,
+    "scenario": "double_fees",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 4,
+      "external_cushion_exhausted": 10
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 22,
+    "scenario": "outbound_and_ack_3s",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 4,
+      "external_cushion_exhausted": 10
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 22,
+    "scenario": "double_adverse",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 4,
+      "external_cushion_exhausted": 10
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 22,
+    "scenario": "queue_ahead_double",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 4,
+      "external_cushion_exhausted": 10
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  },
+  {
+    "complete": true,
+    "net_low": 0.0,
+    "net_high": 0.0,
+    "closed_portion_net_low": 0.0,
+    "closed_portion_net_high": 0.0,
+    "statuses": {
+      "bounded_complete": 14,
+      "predecision_no_order": 14
+    },
+    "date": "2024-12-01",
+    "rest_seconds": 22,
+    "scenario": "clock_envelope_100ms",
+    "submitted_cycles": 14,
+    "cycles_with_possible_fills": 0,
+    "definitely_profitable_cycles": 0,
+    "definitely_losing_cycles": 0,
+    "cancellation_reasons": {
+      "scheduled": 4,
+      "external_cushion_exhausted": 10
+    },
+    "reasons": {
+      "both_orders_resolved_and_all_inventory_flattened": 14,
+      "external_cushion_below_cost": 14
+    }
+  }
+]

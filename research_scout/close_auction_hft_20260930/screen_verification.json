@@ -1,0 +1,16 @@
+{
+  "verified": true,
+  "dates_checked": 658,
+  "native_asof_states_rebuilt": 1316,
+  "eligible_dates": [
+    "2025-11-14",
+    "2025-11-17",
+    "2025-11-24",
+    "2025-12-09",
+    "2025-12-18"
+  ],
+  "source_files_hashed": 3,
+  "maximum_hypothetical_cost_error": 8.881784197001252e-16,
+  "profitability_tested": false,
+  "scope": "Every retained predecision auction/BBO snapshot independently rebuilt from integer-price/timestamp native DBN records; every signal and algebraic cost cap reconciled. This verifies supply only, not auction acceptance, fills, after-hours exits, or profitability."
+}

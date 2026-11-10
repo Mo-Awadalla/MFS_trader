@@ -1,0 +1,109 @@
+{
+  "specification_id": "SIP-Stock-Offer-Depletion-Seconds-v1",
+  "source": "historical consolidated SIP Level 1; free after a 15-minute delay, not available live in this workspace",
+  "coverage": [
+    {
+      "date": "2025-01-08",
+      "status": "loaded",
+      "quotes": 9413,
+      "signals": 0
+    },
+    {
+      "date": "2025-02-05",
+      "status": "loaded",
+      "quotes": 7845,
+      "signals": 0
+    },
+    {
+      "date": "2025-03-05",
+      "status": "loaded",
+      "quotes": 9737,
+      "signals": 0
+    },
+    {
+      "date": "2025-04-02",
+      "status": "loaded",
+      "quotes": 9037,
+      "signals": 0
+    },
+    {
+      "date": "2025-05-07",
+      "status": "loaded",
+      "quotes": 15268,
+      "signals": 0
+    },
+    {
+      "date": "2025-06-04",
+      "status": "loaded",
+      "quotes": 7154,
+      "signals": 0
+    },
+    {
+      "date": "2025-07-02",
+      "status": "loaded",
+      "quotes": 6677,
+      "signals": 0
+    },
+    {
+      "date": "2025-08-06",
+      "status": "loaded",
+      "quotes": 10005,
+      "signals": 0
+    },
+    {
+      "date": "2025-09-03",
+      "status": "loaded",
+      "quotes": 14237,
+      "signals": 0
+    },
+    {
+      "date": "2025-10-01",
+      "status": "loaded",
+      "quotes": 5156,
+      "signals": 0
+    },
+    {
+      "date": "2025-11-05",
+      "status": "loaded",
+      "quotes": 8508,
+      "signals": 8
+    },
+    {
+      "date": "2025-12-03",
+      "status": "loaded",
+      "quotes": 11452,
+      "signals": 9
+    }
+  ],
+  "signals": 17,
+  "crossing_proxies": 5,
+  "distinct_trading_sessions": 2,
+  "mean_gross_bps": 0.17018134025903464,
+  "mean_net_bps": -1.5461059208826264,
+  "mean_stress_net_bps": -5.546105920882626,
+  "calendar_half_mean_net_bps": [
+    null,
+    -1.5461059208826264
+  ],
+  "day_block_bootstrap_95_bps": [
+    -3.413830601821677,
+    -0.3009561335899263
+  ],
+  "gates": {
+    "complete_coverage": true,
+    "minimum_distinct_sessions": false,
+    "minimum_trades": false,
+    "positive_mean_net": false,
+    "positive_day_block_lower": false,
+    "positive_each_calendar_half": false,
+    "positive_5bps_stress": false
+  },
+  "verdict": "FAIL_OR_INCOMPLETE",
+  "limitations": [
+    "IEX only; no consolidated NBBO, queue identity, or broker fill evidence.",
+    "Crossing displayed quotes is a latency-stressed proxy, not an observed fill.",
+    "AAPL is a fixed scout symbol, not a diversified or survivorship-safe stock universe."
+  ],
+  "mode": "development",
+  "spec_sha256": "8ae773e59602e170731f59792b9fd76b0dcce152beb7b334d168a593e270878e"
+}

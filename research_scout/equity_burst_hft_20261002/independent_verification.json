@@ -1,0 +1,42 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T22:40:24.850235+00:00",
+  "source_sessions_verified": 192,
+  "source_rows_verified": 46428207,
+  "group_counters": {
+    "trade_bearing_source_groups": 359650,
+    "burst_below_size_or_notional": 205876,
+    "unknown_or_mixed_trade_side_price": 94218,
+    "ambiguous_stale_or_inconsistent_prestate": 26597,
+    "mixed_clocks_or_bad_group": 17890,
+    "invalid_pre_or_completion_book": 7587,
+    "trade_price_not_preburst_touch": 7473,
+    "prestate_qualified_bursts": 9
+  },
+  "candidate_windows_verified": 159,
+  "seed_rejections": {
+    "intervening_invalid_or_stale_book": 83,
+    "missing_quarter_second_postburst_proof": 6,
+    "defended_price_did_not_hold": 50,
+    "invalid_or_stale_endpoint": 20
+  },
+  "selected_events_verified": 0,
+  "unknown_symbol_sessions": [
+    {
+      "date": "2023-03-28",
+      "symbol": "SPY",
+      "reason": "BAD_TS_RECV record: no removal or timestamp repair"
+    },
+    {
+      "date": "2023-07-31",
+      "symbol": "UPRO",
+      "reason": "BAD_TS_RECV record: no removal or timestamp repair"
+    }
+  ],
+  "scope": "All native source groups independently reconstructed from F_LAST boundaries; complete side/price/clock/prestate/size filtering and all nine qualifying bursts matched. Every candidate signal window independently checked from raw completed books and trades, proving zero seeds under the frozen predicates. No production parser, burst detector or price-survival function imported.",
+  "results_sha256": "242b08c1caf8551481ec72ca16aa569d726ffeef15065e8fc4e46d16c445b5cc",
+  "auditor_sha256": "850b5c95be6dafbc9eb5d10a11552e3cd7412889cbb1cfec140c7f1959bc71c7",
+  "future_returns_evaluated": false,
+  "economic_implementations_run": 0,
+  "reliable_edge_established": false
+}

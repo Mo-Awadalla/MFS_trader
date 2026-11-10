@@ -1,0 +1,34 @@
+DATABENTO SPY/FOLLOWER PRICE GAP: NO QUALIFYING SIGNAL IN 2023 OR 2024
+Updated 2026-10-03T01:01:25.321758+00:00
+
+No edge has been established. The unchanged causal signal produced no selected event in either development period. All computable hypothetical convergence budgets were negative after the specified costs. No future price replay or economic configuration was executed for this family.
+
+Period | cached sessions processed | source records | SPY sweeps | valid leader signals | follower checks | budgets | best projected net bp | selected
+2023 | 192 | 46428207 | 558 | 252 | 1260 | 202 | -4.857484276729559748427672956 | 0
+2024 | 252 | 60075871 | 1482 | 554 | 2770 | 623 | -2.344341372912801484230055659 | 0
+
+Combined: 444 cached sessions, 106,504,078 source records and 825 budgets. These are opportunity checks, not executed trades or independent profit observations.
+All market-data reads were from existing local Databento DBN files. The runners made zero market-data API or paid calls. Issuer documentation was separately consulted to verify fund identities and daily objectives; it was not used to select trading outcomes.
+
+RULES HELD FIXED
+A previously defined large, completed, single-side SPY multi-price trade group triggers a decision at the first whole millisecond strictly after its capture time plus 1ms. The information cutoff is decision minus 1ms, within 09:30:05–09:39:30 ET. The common reference is exactly one second earlier. Use only the latest complete F_LAST state strictly before each cutoff. Current SPY quote age is at most 5ms; reference SPY and both follower snapshots at most 250ms by receive/native clocks. Both SPY bid and ask must move in the initiating direction. Positive uncrossed cent prices and spreads at most 5bp are required.
+A positive SPY move can select a long SSO or UPRO position; a negative move can select long SH, SDS or SPXU. The projected follower mid equals its reference mid times [1 + beta * (current SPY mid / reference SPY mid - 1)]. Subtract the current follower half-spread and round down to cents for the modeled liquidation price. The published multipliers are daily targets; their use over one second is an unverified forecasting assumption, not a price guarantee or proof of arbitrage.
+Fixed quantity is at most 10% of both current touches and at most $10,000 at a buy collar 2% above current ask, rounded up to cents. Costs retain two max($1, $0.005/share) commissions, 1bp adverse allowance on each notional, and sale charges. Current roundtrip cost must be at most 12bp, and the projected net gain at least 2bp. Rank projected dollars, then projected basis points; impose 6s global and 60s symbol cooldowns. No threshold, fee, size or timing rule changed for 2024.
+
+2024 AUDIT
+Independently enumerated 346,319 SPY trade-bearing groups, including 344,837 rejected groups and 1,482 qualifying groups. Recomputed all reference clocks, eligible follower checks, 623 projected prices and cash budgets, and zero selections. Whole-cent projected exit prices were independently derived from integer rational arithmetic. All source hashes and source-record totals agreed.
+Both implementations use the Databento SDK to decode DBN. The audit is independent field, grouping and calculation logic, not a separate binary-format decoder. The 2023 audit covered all reported qualifying SPY groups and their downstream checks, but did not independently enumerate every earlier rejected group; the 2024 audit now does.
+
+UNKNOWN DATA AND LIMITS
+SPY on 2024-04-10 has BAD_TS_RECV and is unassessable; it is not evidence of no opportunity that day. Earlier source unknowns remain SPY on 2023-03-28 and UPRO on 2023-07-31. No missing signal or inventory was assigned zero profit. EQUS.MINI is an anonymized component-venue feed; consolidated NBBO, routing, acceptance, hidden liquidity and private fills are not established. Actual client latency is unmeasured.
+The cached files cover opening windows, not complete trading days. This does not reject all intraday, stock or crypto HFT strategies, and it does not prove that no opportunity existed outside these windows or in unassessable data. The planned 1s/5s execution cases were not run because there was no selected signal.
+2024 was a discovery expansion after an empty 2023 signal screen. Unrelated earlier research had already used 2024 data; this is not an untouched validation claim. No 2025 or 2026 DBN outcomes were opened for this family.
+
+NEXT WORK
+A final unchanged supply expansion can inspect all 250 cached 2025 opening sessions before rejecting this particular sweep-triggered follower hypothesis over the available development years. Freeze source hashes and rules first; do not cherry-pick volatility dates or relax thresholds. Keep the 112 cached 2026 files out of this family until a candidate is selected and a separate temporal evaluation is frozen. If 2025 supply is also empty, stop revising this signal and move to a structurally different HFT mechanism.
+Keep all source-quality failures explicit. A positive hypothetical budget would only justify replay; it would still need independent causal execution/cash checks, complete source enumeration, concentration and multiple-search assessment, temporal replication and actual execution feasibility. No reliable edge or competition win is claimed.
+
+Global ledger: 143 economic configurations, 195 implementation versions, 439 focused tests. This 2024 expansion reused frozen tested rules and adds no economic configuration or test count. Goal remains active.
+Specification SHA256: 8b3d26dd33894ce600e90193d1f5bc93a68b11cb0cb75c37df58a9d48a3a93f6
+Results SHA256: 7cee023ccefb1d77b6b9c7f3834727fc4db866e5acf98da7bb49571f58d1825c
+Audit SHA256: 253d59b54911cd4dcb02f6e8deee3e5fd0ddffef7c0c8460318ded4ae29d1b05

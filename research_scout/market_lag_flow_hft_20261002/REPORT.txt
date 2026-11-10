@@ -1,0 +1,5 @@
+COMMON-MOVE TRADE CONFIRMATION — AUDITED
+
+The one TRX candidate passed the predeclared joint trade gate. In the preceding matching-time second, captured strictly before the decision cutoff: BTC had 5,111 trades and 41,072,942.94340 USDT, with 96.9784% sell notional; ETH had 2,090 trades and 7,391,206.65340 USDT, with 87.8302% sell notional; TRX had 57 trades and 24,762.78212 USDT. Both leaders required at least 75% directional notional. The target required activity only, although all its counted trades were sells.
+
+The independent audit checked all 27,286 source executions, 20,592 pre-cutoff integrity rows, 7,258 counted trades, all three role gates and selection. Exact match. Four new joint-gate tests passed; unchanged parent parser tests were not counted again. One event proceeds to both predeclared controls.

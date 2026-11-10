@@ -1,0 +1,19 @@
+HFT EDGE SEARCH — MARKET-LAG COVERAGE CHECKPOINT
+
+Goal ACTIVE. No reliable edge or competition win established. Stocks, ETFs and crypto remain authorized; this branch tests crypto only. Strict HFT and conservative costs are unchanged.
+
+Completed prior branch: five own-price-shock events and both follow/fade controls across six execution scenarios. Follow baseline -3.6702489 USDT. Fade baseline unknown due to insufficient entry depth; known-component profit depended on one event. Fade at 250ms lost 0.2203602 USDT; the 3s control gained only 0.217154 USDT from three trades on two dates. Not a reliable survivor. Independent native/execution/cash audit passed; see ../perp_shock_response_hft_20261002/REPORT.txt.
+
+New hypothesis: fresh lagging-coin quotes after a coherent BTC/ETH shock. The initial 60 sparse minute sources contained no joint leader event. Broader coverage was frozen before further data.
+
+Full-day acquisition prefilter: all six cached first-of-month BTC top-five histories, July–December 2024. 8,071,556 normalized rows, 1,969,920 quarter-second grids, 174 candidate grids across 49 minutes. The 15bp BTC-only prefilter locates data to acquire; final native signals still require the original 20bp move in BOTH BTC and ETH and all original quality gates. Full independent as-of/Decimal candidate audit passed with zero difference. Normalized timestamps never prove native matching clocks or execution, and these historical dates were previously exposed to research.
+
+First twelve native minutes independently audited: three causal joint leader events. All-symbol target screen on those three minutes independently audited: 781 checks, zero eligible targets. No economic implementation or future-return calculation for this market-lag family.
+
+The remaining 37 native minutes are screened and independently audited: 4 causally admitted leader grids. Next freeze and fetch all-symbol targets only for their admitted minutes, then apply the unchanged gates.
+
+Remaining-data acquisition: all 37 files complete, 485,891,461 decoded bytes. Free public endpoint only; no authentication, paid API, order or account changes. All source/code/spec/result hashes preserved.
+
+Search accounting: 132 economic configurations, 182 implementation versions, 338 focused tests. The market-lag extension adds six gate tests and five acquisition-filter tests; reused tests are not counted again. The second-batch screen retains a style-only Ruff I001 import-format warning to preserve its frozen hash; other Ruff checks pass. No 2025 selection data opened for these families.
+
+Active process handles: []

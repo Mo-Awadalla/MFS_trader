@@ -1,0 +1,49 @@
+{
+  "specification_id": "SIP-Stock-Offer-Depletion-Seconds-v1",
+  "status": "frozen_falsification_scout",
+  "market": "US listed stock",
+  "symbol": "AAPL",
+  "feed": "alpaca_sip",
+  "scope": "historical consolidated SIP Level 1; free after a 15-minute delay, not available live in this workspace",
+  "signal_window_et": ["11:00:10", "11:04:30"],
+  "data_window_et": ["11:00:00", "11:05:00"],
+  "development_dates": [
+    "2025-01-08", "2025-02-05", "2025-03-05", "2025-04-02",
+    "2025-05-07", "2025-06-04", "2025-07-02", "2025-08-06",
+    "2025-09-03", "2025-10-01", "2025-11-05", "2025-12-03"
+  ],
+  "signal": {
+    "direction": "long_only",
+    "quote_condition": ["R"],
+    "minimum_previous_offer_shares": 100,
+    "maximum_offer_size_ratio": 0.5,
+    "minimum_bid_size_ratio": 0.8,
+    "maximum_previous_quote_age_milliseconds": 250,
+    "maximum_spread_dollars": 0.03,
+    "require_unchanged_bid_and_ask_prices": true,
+    "minimum_seconds_between_signals": 30
+  },
+  "execution_diagnostic": {
+    "entry_delay_seconds": 1,
+    "holding_seconds": 10,
+    "maximum_quote_age_milliseconds": 250,
+    "entry_price": "SIP ask at last eligible quote at or before signal+1s",
+    "exit_price": "SIP bid at last eligible quote at or before entry+10s",
+    "shares": 100,
+    "commission_per_share_per_order_usd": 0.0075,
+    "minimum_commission_per_order_usd": 1.0,
+    "additional_round_trip_friction_bps": 1.0,
+    "stress_additional_round_trip_friction_bps": 5.0,
+    "fill_assumption": "crossing SIP best quotes; diagnostic only, no broker fill claim"
+  },
+  "development_gates": {
+    "minimum_distinct_sessions": 10,
+    "minimum_trades": 100,
+    "minimum_mean_net_bps": 0.0,
+    "minimum_day_block_bootstrap_lower_95_bps": 0.0,
+    "require_positive_each_calendar_half": true,
+    "require_positive_after_5bps_stress": true
+  },
+  "bootstrap": {"day_resamples": 2000, "seed": 42},
+  "progression": "The 2026-07-08 one-second SIP checks were schema and quote-feasibility checks only; no forward returns were inspected. A development failure closes this rule. A pass permits unchanged testing on fresh days, but live use requires a separate real-time consolidated feed and broker fill evidence."
+}

@@ -1,0 +1,21 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T21:16:22.872162+00:00",
+  "source_files_verified": 5,
+  "source_counts": {
+    "native_messages": 69047,
+    "mark_messages": 600,
+    "book_messages": 68447
+  },
+  "intents_verified": 10,
+  "quote_envelopes_verified": 112,
+  "cash_rectangles_verified": 42,
+  "scenario_aggregates_verified": 12,
+  "maximum_numeric_difference": "0",
+  "results_sha256": "9d79e930f57f5b6180c0755d00ff1f1f2331ee1a27c86c764107c213834dbfda",
+  "auditor_sha256": "7490ab7dc7b3f748327fb8c0a90feeccf22d8cf82b9eb1b3cbdf641a265458f1",
+  "scope": "Every native quote/mark and capture/transaction/publication clock, funding clearance, both direction plans, all observed compatible FOK and exit states, distinct cash outcomes, unknown-inventory halts and full aggregates independently reconciled. No production replay/parser import. Cohort has no disconnect, duplicate, invalid book or clock regression.",
+  "actual_execution_verified": false,
+  "historical_order_filters_verified": false,
+  "reliable_edge_established": false
+}

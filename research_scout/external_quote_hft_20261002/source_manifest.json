@@ -1,0 +1,597 @@
+{
+  "files": [
+    {
+      "date": "2024-02-01",
+      "symbols": [
+        "FLOWUSDT",
+        "LINAUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-02-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"FLOWUSDT\", \"LINAUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-02-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-02-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22FLOWUSDT%22%2C+%22LINAUSDT%22%2C+%22XEMUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-02-01",
+      "symbols": [
+        "FLOWUSDT",
+        "LINAUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-02-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"FLOWUSDT\", \"LINAUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-02-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-02-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22FLOWUSDT%22%2C+%22LINAUSDT%22%2C+%22XEMUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-02-01",
+      "symbols": [
+        "FLOWUSDT",
+        "LINAUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-02-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"FLOWUSDT\", \"LINAUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-02-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-02-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22FLOWUSDT%22%2C+%22LINAUSDT%22%2C+%22XEMUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-04-01",
+      "symbols": [
+        "CRVUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-04-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-04-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-04-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%2C+%22XEMUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-04-01",
+      "symbols": [
+        "CRVUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-04-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-04-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-04-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%2C+%22XEMUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-04-01",
+      "symbols": [
+        "CRVUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-04-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-04-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-04-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%2C+%22XEMUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-05-01",
+      "symbols": [
+        "ENAUSDT",
+        "EOSUSDT",
+        "LINAUSDT",
+        "TNSRUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"ENAUSDT\", \"EOSUSDT\", \"LINAUSDT\", \"TNSRUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-05-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-05-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22ENAUSDT%22%2C+%22EOSUSDT%22%2C+%22LINAUSDT%22%2C+%22TNSRUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-05-01",
+      "symbols": [
+        "ENAUSDT",
+        "EOSUSDT",
+        "LINAUSDT",
+        "TNSRUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"ENAUSDT\", \"EOSUSDT\", \"LINAUSDT\", \"TNSRUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-05-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-05-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22ENAUSDT%22%2C+%22EOSUSDT%22%2C+%22LINAUSDT%22%2C+%22TNSRUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-06-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-06-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-06-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-06-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-06-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-06-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-06-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-06-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-05-01",
+      "symbols": [
+        "ENAUSDT",
+        "EOSUSDT",
+        "LINAUSDT",
+        "TNSRUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"ENAUSDT\", \"EOSUSDT\", \"LINAUSDT\", \"TNSRUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-05-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-05-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22ENAUSDT%22%2C+%22EOSUSDT%22%2C+%22LINAUSDT%22%2C+%22TNSRUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-06-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-06-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-06-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-06-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-07-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-07-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-07-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-07-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-07-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-07-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-07-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-07-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-07-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-07-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-07-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-07-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-08-01",
+      "symbols": [
+        "CRVUSDT",
+        "EOSUSDT",
+        "FLOWUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-08-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\", \"EOSUSDT\", \"FLOWUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-08-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-08-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%2C+%22EOSUSDT%22%2C+%22FLOWUSDT%22%2C+%22XEMUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-08-01",
+      "symbols": [
+        "CRVUSDT",
+        "EOSUSDT",
+        "FLOWUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-08-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\", \"EOSUSDT\", \"FLOWUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-08-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-08-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%2C+%22EOSUSDT%22%2C+%22FLOWUSDT%22%2C+%22XEMUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-08-01",
+      "symbols": [
+        "CRVUSDT",
+        "EOSUSDT",
+        "FLOWUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-08-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\", \"EOSUSDT\", \"FLOWUSDT\", \"XEMUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-08-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-08-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%2C+%22EOSUSDT%22%2C+%22FLOWUSDT%22%2C+%22XEMUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-09-01",
+      "symbols": [
+        "CELOUSDT",
+        "CRVUSDT",
+        "REEFUSDT",
+        "STMXUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-09-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CELOUSDT\", \"CRVUSDT\", \"REEFUSDT\", \"STMXUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-09-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-09-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CELOUSDT%22%2C+%22CRVUSDT%22%2C+%22REEFUSDT%22%2C+%22STMXUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-09-01",
+      "symbols": [
+        "CELOUSDT",
+        "CRVUSDT",
+        "REEFUSDT",
+        "STMXUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-09-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CELOUSDT\", \"CRVUSDT\", \"REEFUSDT\", \"STMXUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-09-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-09-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CELOUSDT%22%2C+%22CRVUSDT%22%2C+%22REEFUSDT%22%2C+%22STMXUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-09-01",
+      "symbols": [
+        "CELOUSDT",
+        "CRVUSDT",
+        "REEFUSDT",
+        "STMXUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-09-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CELOUSDT\", \"CRVUSDT\", \"REEFUSDT\", \"STMXUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-09-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-09-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CELOUSDT%22%2C+%22CRVUSDT%22%2C+%22REEFUSDT%22%2C+%22STMXUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-10-01",
+      "symbols": [
+        "CELOUSDT",
+        "NEIROETHUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-10-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CELOUSDT\", \"NEIROETHUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-10-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-10-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CELOUSDT%22%2C+%22NEIROETHUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-10-01",
+      "symbols": [
+        "CELOUSDT",
+        "NEIROETHUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-10-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CELOUSDT\", \"NEIROETHUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-10-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-10-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CELOUSDT%22%2C+%22NEIROETHUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-11-01",
+      "symbols": [
+        "CRVUSDT",
+        "LINAUSDT",
+        "NEIROETHUSDT",
+        "SCRUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-11-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\", \"LINAUSDT\", \"NEIROETHUSDT\", \"SCRUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-11-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-11-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%2C+%22LINAUSDT%22%2C+%22NEIROETHUSDT%22%2C+%22SCRUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-10-01",
+      "symbols": [
+        "CELOUSDT",
+        "NEIROETHUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-10-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CELOUSDT\", \"NEIROETHUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-10-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-10-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CELOUSDT%22%2C+%22NEIROETHUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-11-01",
+      "symbols": [
+        "CRVUSDT",
+        "LINAUSDT",
+        "NEIROETHUSDT",
+        "SCRUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-11-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\", \"LINAUSDT\", \"NEIROETHUSDT\", \"SCRUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-11-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-11-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%2C+%22LINAUSDT%22%2C+%22NEIROETHUSDT%22%2C+%22SCRUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-11-01",
+      "symbols": [
+        "CRVUSDT",
+        "LINAUSDT",
+        "NEIROETHUSDT",
+        "SCRUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-11-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\", \"LINAUSDT\", \"NEIROETHUSDT\", \"SCRUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-11-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-11-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%2C+%22LINAUSDT%22%2C+%22NEIROETHUSDT%22%2C+%22SCRUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-12-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-12-01_0540.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-12-01&offset=540&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-12-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-12-01_0550.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-12-01&offset=550&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    },
+    {
+      "date": "2024-12-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"CRVUSDT\"]}]"
+      },
+      "path": "research_scout\\external_quote_hft_20261002\\native\\2024-12-01_0560.ndjson.gz",
+      "complete": false,
+      "authenticated": false,
+      "error_type": "ConnectionError",
+      "error": "HTTPSConnectionPool(host='api.tardis.dev', port=443): Max retries exceeded with url: /v1/data-feeds/bybit?from=2024-12-01&offset=560&sliceSize=10&filters=%5B%7B%22channel%22%3A+%22orderbook.1%22%2C+%22symbols%22%3A+%5B%22CRVUSDT%22%5D%7D%5D (Caused by NewConnectionError(\"HTTPSConnection(host='api.tardis.dev', port=443): Failed to establish a new connection: [WinError 10051] A socket operation was attempted to an unreachable network\"))"
+    }
+  ],
+  "expected_files": 30,
+  "complete": false,
+  "specification_sha256": "dd716bcdd3645440610edd3c0441585775fcac6cdfa92964dba476253271e6ac",
+  "decoded_bytes": 0,
+  "orders_submitted": false
+}

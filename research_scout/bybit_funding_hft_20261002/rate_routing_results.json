@@ -1,0 +1,188 @@
+{
+  "native_states": 8857,
+  "unique_symbols": 481,
+  "routed_rate_observations": 60,
+  "recovery_symbol_dates": 52,
+  "native_full_states": 0,
+  "reasons": {
+    "unobserved_funding_rate": 5519,
+    "rate_below_prescreen_hurdle": 2357,
+    "stale_or_invalid_publication": 921,
+    "large_rate_requires_full_state": 60
+  },
+  "diagnostics": [
+    {
+      "date": "2024-01-01",
+      "hour": 8,
+      "native_messages": 14952,
+      "precutoff_usdt_messages": 9788,
+      "other_symbols": 2876
+    },
+    {
+      "date": "2024-01-01",
+      "hour": 16,
+      "native_messages": 19913,
+      "precutoff_usdt_messages": 13598,
+      "other_symbols": 3524
+    },
+    {
+      "date": "2024-02-01",
+      "hour": 8,
+      "native_messages": 20630,
+      "precutoff_usdt_messages": 14394,
+      "other_symbols": 3554
+    },
+    {
+      "date": "2024-02-01",
+      "hour": 16,
+      "native_messages": 22958,
+      "precutoff_usdt_messages": 15189,
+      "other_symbols": 4550
+    },
+    {
+      "date": "2024-03-01",
+      "hour": 8,
+      "native_messages": 48203,
+      "precutoff_usdt_messages": 35683,
+      "other_symbols": 5080
+    },
+    {
+      "date": "2024-03-01",
+      "hour": 16,
+      "native_messages": 61441,
+      "precutoff_usdt_messages": 47632,
+      "other_symbols": 6426
+    },
+    {
+      "date": "2024-04-01",
+      "hour": 8,
+      "native_messages": 49098,
+      "precutoff_usdt_messages": 37418,
+      "other_symbols": 3588
+    },
+    {
+      "date": "2024-04-01",
+      "hour": 16,
+      "native_messages": 103003,
+      "precutoff_usdt_messages": 79612,
+      "other_symbols": 8864
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 8,
+      "native_messages": 115568,
+      "precutoff_usdt_messages": 87146,
+      "other_symbols": 14450
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 16,
+      "native_messages": 74720,
+      "precutoff_usdt_messages": 55135,
+      "other_symbols": 8573
+    },
+    {
+      "date": "2024-06-01",
+      "hour": 8,
+      "native_messages": 41149,
+      "precutoff_usdt_messages": 30021,
+      "other_symbols": 4669
+    },
+    {
+      "date": "2024-06-01",
+      "hour": 16,
+      "native_messages": 65065,
+      "other_symbols": 8091,
+      "precutoff_usdt_messages": 49780
+    },
+    {
+      "date": "2024-07-01",
+      "hour": 8,
+      "native_messages": 41973,
+      "precutoff_usdt_messages": 29994,
+      "other_symbols": 5911
+    },
+    {
+      "date": "2024-07-01",
+      "hour": 16,
+      "native_messages": 86087,
+      "precutoff_usdt_messages": 64504,
+      "other_symbols": 11026
+    },
+    {
+      "date": "2024-08-01",
+      "hour": 8,
+      "native_messages": 52077,
+      "precutoff_usdt_messages": 36554,
+      "other_symbols": 6767
+    },
+    {
+      "date": "2024-08-01",
+      "hour": 16,
+      "native_messages": 76593,
+      "precutoff_usdt_messages": 55102,
+      "other_symbols": 10755
+    },
+    {
+      "date": "2024-09-01",
+      "hour": 8,
+      "native_messages": 53361,
+      "other_symbols": 5936,
+      "precutoff_usdt_messages": 38687
+    },
+    {
+      "date": "2024-09-01",
+      "hour": 16,
+      "native_messages": 65277,
+      "precutoff_usdt_messages": 48341,
+      "other_symbols": 7346
+    },
+    {
+      "date": "2024-10-01",
+      "hour": 8,
+      "native_messages": 38591,
+      "precutoff_usdt_messages": 27997,
+      "other_symbols": 5018
+    },
+    {
+      "date": "2024-10-01",
+      "hour": 16,
+      "native_messages": 86863,
+      "precutoff_usdt_messages": 64990,
+      "other_symbols": 10877
+    },
+    {
+      "date": "2024-11-01",
+      "hour": 8,
+      "native_messages": 43841,
+      "precutoff_usdt_messages": 32073,
+      "other_symbols": 5660
+    },
+    {
+      "date": "2024-11-01",
+      "hour": 16,
+      "native_messages": 120567,
+      "precutoff_usdt_messages": 89783,
+      "other_symbols": 14283
+    },
+    {
+      "date": "2024-12-01",
+      "hour": 8,
+      "native_messages": 54193,
+      "precutoff_usdt_messages": 40384,
+      "other_symbols": 5803
+    },
+    {
+      "date": "2024-12-01",
+      "hour": 16,
+      "native_messages": 76727,
+      "precutoff_usdt_messages": 56295,
+      "other_symbols": 8966
+    }
+  ],
+  "native_messages": 1432850,
+  "states_sha256": "9604af14e269deac43708fe24d86b524a1ec3279c4598edbcb5bf230677955a4",
+  "candidates_sha256": "a342010993ab7886e28d697e29c513f8d6b0bbdbb8683e9963ded224787cb8c9",
+  "economic_implementations_run": 0,
+  "reliable_edge_established": false
+}

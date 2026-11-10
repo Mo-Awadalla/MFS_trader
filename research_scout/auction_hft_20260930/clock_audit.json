@@ -1,0 +1,23 @@
+{
+  "source_event_backsteps": 3700782,
+  "backstep_ns_quantiles": {
+    "0": 1.0,
+    "0.25": 5588.0,
+    "0.5": 28242.0,
+    "0.9": 122348.0,
+    "0.99": 581394.3299999996,
+    "1": 245330785.0
+  },
+  "fraction_backsteps_at_most_1ms": 0.9960413772008186,
+  "fraction_backsteps_at_most_10ms": 0.998982377238108,
+  "execution_targets": 15984,
+  "ambiguous_execution_targets": 3883,
+  "sampled_target_source_delay_ns_quantiles": {
+    "0": -1.0,
+    "0.5": 17553.0,
+    "0.99": 124950.49999999997,
+    "1": 988340.0
+  },
+  "interpretation": "Multi-venue aggregate snapshots cannot be reconstructed as one matching-engine stream by sorting component ts_event values. The original +/-250ms backstep guard creates unknown paths, not evidence of missing quotes or zero returns. Capture-order replay with explicit timing uncertainty is a distinct execution proxy, not verified routable venue fills.",
+  "source_documentation": "https://databento.com/docs/standards-and-conventions/common-fields-enums-types"
+}

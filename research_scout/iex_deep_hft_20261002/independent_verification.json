@@ -1,0 +1,240 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T23:51:28.415772+00:00",
+  "dates_verified": 23,
+  "requested_dates": 24,
+  "unknown_source_dates": [
+    {
+      "date": "2023-11-29",
+      "source_sha256": "57a15c78405da192b498f04817a84cf20abb8b0ff665f7c362b4b20689376293",
+      "issue": "native_sequence_or_byte_offset_discontinuity",
+      "expected_sequence": 1,
+      "received_sequence": 45296,
+      "expected_offset": 0,
+      "received_offset": 962448,
+      "capture_ns": 1701261514170576000,
+      "send_ns": 1701261514170115291,
+      "previous_messages": 0
+    }
+  ],
+  "full_cohort_source_complete": false,
+  "source_messages_verified": 22486404,
+  "symbol_decisions_verified": 174007,
+  "cost_budgets_verified": 249,
+  "candidates_verified": 52,
+  "tops_comparisons_verified": 56,
+  "results_sha256": "0df3e703a3c6875b33004f79d7bf0e54f39e8bf8316ef399540cedee5b7a8674",
+  "auditor_sha256": "a7bd40f8337ef5f760cc74839910b43fb6918d68d3b152c9036d68e367fb8f0e",
+  "sessions": [
+    {
+      "date": "2023-01-11",
+      "source_messages": 1134204,
+      "symbol_decisions": 8912,
+      "cost_budgets": 13,
+      "candidates": 2,
+      "tops_comparisons": 3,
+      "session_sha256": "eddebad3e4dd56fb9d381bc9fd8e57eab64dd0b5dcd82e4e89fb4821978df4b0"
+    },
+    {
+      "date": "2023-01-25",
+      "source_messages": 1134557,
+      "symbol_decisions": 8842,
+      "cost_budgets": 10,
+      "candidates": 2,
+      "tops_comparisons": 2,
+      "session_sha256": "7307492bc8fe6f11890830a6b4c70f1edcc1bbf3c2119474b3468c8be3c9169d"
+    },
+    {
+      "date": "2023-02-08",
+      "source_messages": 1042348,
+      "symbol_decisions": 8816,
+      "cost_budgets": 15,
+      "candidates": 3,
+      "tops_comparisons": 4,
+      "session_sha256": "ee9c40e2ea2b61f4fe54c6b90404f6e292ad3ac5d28f414a2ab046545b6e625a"
+    },
+    {
+      "date": "2023-02-22",
+      "source_messages": 910243,
+      "symbol_decisions": 7803,
+      "cost_budgets": 8,
+      "candidates": 1,
+      "tops_comparisons": 3,
+      "session_sha256": "38088d95b90e0762fcf077485620bee4baba00ad6e5033cc27290ea9db8d93eb"
+    },
+    {
+      "date": "2023-03-08",
+      "source_messages": 1105224,
+      "symbol_decisions": 7575,
+      "cost_budgets": 15,
+      "candidates": 2,
+      "tops_comparisons": 2,
+      "session_sha256": "e64bc0592109ab323a1a1aece2a7129bd81dcc25134663b10b997a7315be333e"
+    },
+    {
+      "date": "2023-03-29",
+      "source_messages": 860352,
+      "symbol_decisions": 7651,
+      "cost_budgets": 15,
+      "candidates": 2,
+      "tops_comparisons": 2,
+      "session_sha256": "d0d36f7d56029d78285f7bf99d933cc737e919493584513feeb8886dc6ef0c98"
+    },
+    {
+      "date": "2023-04-12",
+      "source_messages": 1253327,
+      "symbol_decisions": 7749,
+      "cost_budgets": 6,
+      "candidates": 0,
+      "tops_comparisons": 0,
+      "session_sha256": "dfbda57d04bcf2733e7561fa285bd8629951974c7cc264db8cf96282301d8c0b"
+    },
+    {
+      "date": "2023-04-26",
+      "source_messages": 980607,
+      "symbol_decisions": 7594,
+      "cost_budgets": 8,
+      "candidates": 2,
+      "tops_comparisons": 2,
+      "session_sha256": "15c7e0d83a9d612dbf0a2fba30008ba2a07c6277b3c4151db9e47d4094db3262"
+    },
+    {
+      "date": "2023-05-10",
+      "source_messages": 1081866,
+      "symbol_decisions": 7437,
+      "cost_budgets": 18,
+      "candidates": 3,
+      "tops_comparisons": 3,
+      "session_sha256": "44f81c8725980e22c3abc3421ab87f4ec2546b94de146686a77e00deab512725"
+    },
+    {
+      "date": "2023-05-31",
+      "source_messages": 866094,
+      "symbol_decisions": 7531,
+      "cost_budgets": 11,
+      "candidates": 4,
+      "tops_comparisons": 2,
+      "session_sha256": "bf60f031079acd77b1f5b504bfcf8137590d52916c63e5a1ea50b884b1dd608d"
+    },
+    {
+      "date": "2023-06-14",
+      "source_messages": 865463,
+      "symbol_decisions": 7207,
+      "cost_budgets": 14,
+      "candidates": 2,
+      "tops_comparisons": 3,
+      "session_sha256": "338bfa96b9bc374ec3f7dc229923bd7a5d03ac8bf333957d1519f7f40a9dec94"
+    },
+    {
+      "date": "2023-06-28",
+      "source_messages": 748094,
+      "symbol_decisions": 7482,
+      "cost_budgets": 13,
+      "candidates": 3,
+      "tops_comparisons": 3,
+      "session_sha256": "d54871542baf110100367b580d65254d6491845efabd9e4afd276da927c6671f"
+    },
+    {
+      "date": "2023-07-12",
+      "source_messages": 1236239,
+      "symbol_decisions": 7492,
+      "cost_budgets": 9,
+      "candidates": 1,
+      "tops_comparisons": 1,
+      "session_sha256": "77bd8b419ddebf0a055ca2651123cd885ab803e316d10b00a14bec319d0ca91c"
+    },
+    {
+      "date": "2023-07-26",
+      "source_messages": 783150,
+      "symbol_decisions": 7481,
+      "cost_budgets": 10,
+      "candidates": 3,
+      "tops_comparisons": 3,
+      "session_sha256": "8446e3d01bfb351061f61eb697651f808f055d1391065fcf8c41e3f4b1d18b9e"
+    },
+    {
+      "date": "2023-08-09",
+      "source_messages": 837710,
+      "symbol_decisions": 7402,
+      "cost_budgets": 7,
+      "candidates": 1,
+      "tops_comparisons": 1,
+      "session_sha256": "54c3a1cb0b77eda8d8365fe10cdda411fd50b0c7fb72900ef48210d95a054bb6"
+    },
+    {
+      "date": "2023-08-30",
+      "source_messages": 916339,
+      "symbol_decisions": 7423,
+      "cost_budgets": 13,
+      "candidates": 2,
+      "tops_comparisons": 2,
+      "session_sha256": "8ebdf841885910cccb0031292a0549cd4a5ec00365e2394891d8836d2fb494ad"
+    },
+    {
+      "date": "2023-09-13",
+      "source_messages": 1260507,
+      "symbol_decisions": 7364,
+      "cost_budgets": 15,
+      "candidates": 4,
+      "tops_comparisons": 4,
+      "session_sha256": "17b1cb6f3bb8d16b2d1254565bbae933068c072b359531b7463eaf6a1fa24ab3"
+    },
+    {
+      "date": "2023-09-27",
+      "source_messages": 755258,
+      "symbol_decisions": 7432,
+      "cost_budgets": 13,
+      "candidates": 6,
+      "tops_comparisons": 6,
+      "session_sha256": "ab13b32b949f0e712de75956f1db88e70b0ddf3bdccdb46fc7d5ae919bc3bd9a"
+    },
+    {
+      "date": "2023-10-11",
+      "source_messages": 1121836,
+      "symbol_decisions": 7554,
+      "cost_budgets": 10,
+      "candidates": 2,
+      "tops_comparisons": 3,
+      "session_sha256": "d66a784806f836c2fdac7d10e393729652a477df5347830e9a253b484e913dd8"
+    },
+    {
+      "date": "2023-10-25",
+      "source_messages": 978894,
+      "symbol_decisions": 7536,
+      "cost_budgets": 10,
+      "candidates": 4,
+      "tops_comparisons": 4,
+      "session_sha256": "2bbcd0e4bdd66f5bd7d20cf085cde6f6bc9d95ce6f9adcc859eca305835294c2"
+    },
+    {
+      "date": "2023-11-08",
+      "source_messages": 921337,
+      "symbol_decisions": 7432,
+      "cost_budgets": 5,
+      "candidates": 2,
+      "tops_comparisons": 1,
+      "session_sha256": "1b9c0e1d046771f8611d7116d9801821257f7f4e3be3c92bb15f641d2596b990"
+    },
+    {
+      "date": "2023-12-13",
+      "source_messages": 932027,
+      "symbol_decisions": 6093,
+      "cost_budgets": 9,
+      "candidates": 1,
+      "tops_comparisons": 2,
+      "session_sha256": "043ea99e3141c3e7a44017bef05c43127ab0cc917b0057c911dfe55e5d9b7355"
+    },
+    {
+      "date": "2023-12-27",
+      "source_messages": 760728,
+      "symbol_decisions": 6199,
+      "cost_budgets": 2,
+      "candidates": 0,
+      "tops_comparisons": 0,
+      "session_sha256": "60696d682ecae1d31251597735b82f07ecb2ba0ff373d92b3b1661bc62e0f4bc"
+    }
+  ],
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "scope": "Independent raw DEEP decoding, atomic displayed books, causal eligibility/ranking/costs, TOPS comparisons; no future returns, queue or hidden execution proof."
+}

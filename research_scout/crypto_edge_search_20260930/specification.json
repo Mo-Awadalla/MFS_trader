@@ -1,0 +1,56 @@
+{
+  "created_at_utc": "2026-09-30T13:34:36.964924+00:00",
+  "splits": {
+    "train": [
+      "2023-08-15",
+      "2023-09-15",
+      "2023-10-15",
+      "2023-11-15",
+      "2023-12-15"
+    ],
+    "validation_diagnostics_only": [
+      "2024-01-15",
+      "2024-01-21",
+      "2024-01-28",
+      "2024-01-31"
+    ],
+    "historical_test": [
+      "2024-03-03",
+      "2024-03-06",
+      "2024-03-10",
+      "2024-03-15",
+      "2024-03-17",
+      "2024-03-20",
+      "2024-03-24",
+      "2024-03-27"
+    ]
+  },
+  "hypothesis": "Direct conditional return magnitude can isolate events that exceed execution costs even where unconditional classification is uneconomic.",
+  "families": [
+    "price_ridge",
+    "book_ridge",
+    "book_boost"
+  ],
+  "margin_bps": [
+    0,
+    5,
+    10
+  ],
+  "trials": 9,
+  "ridge_alpha": 100,
+  "boost": {
+    "iterations": 100,
+    "leaf_nodes": 7,
+    "min_samples_leaf": 100,
+    "l2": 10
+  },
+  "target": "60s delayed entry-to-exit midpoint arithmetic return; direct regression, no accuracy objective",
+  "execution": "BTCUSDT perpetual, hypothetical one position, at most 1x capital, 1s delay, 60s hold, observed bid/ask; 5bps fee and 1bp slippage EACH side",
+  "selection": "Fixed net-cost thresholds, largest expected sign; never relax threshold after seeing validation",
+  "funding": "No entries crossing 00:00/08:00/16:00 UTC; no estimated funding profit",
+  "capacity": "Size at entry/exit missing in cache: this is an optimistic small-order feasibility screen, cannot establish deployable capacity",
+  "freshness": "Inherited <=1s at both execution quotes; original extraction filtered unavailable future quotes, so admission is conditional and cannot be a complete forward trading path",
+  "confirmation": "All dates previously exposed; even a screen pass is provisional and needs fresh dates and raw replay",
+  "screen_gate": ">=100 trades, >=3 positive selection days, 9-trial adjusted date-bootstrap lower>0, profit excluding best day, positive doubled fees/slippage",
+  "paid_requests": false
+}

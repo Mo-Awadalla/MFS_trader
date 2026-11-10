@@ -1,0 +1,19 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-03T00:09:53.056088+00:00",
+  "fresh_source_messages_verified": 1489879,
+  "fresh_native_symbol_rows_verified": 28885,
+  "fresh_derived_quotes_verified": 28424,
+  "fresh_event_cases_verified": 10,
+  "prior_audited_event_cases_reused_exactly": 10,
+  "calendar_rows_verified": 240,
+  "aggregate_checks": 20,
+  "results_sha256": "2edf3f31cd72925f3cafc49f7df6c74e7abdbdc1de9966d8bfe3ac10be41ccca",
+  "auditor_sha256": "74791d8bbb10289d406e98f480f01781fab3cd846d2363dc60ab6f610cd4fde1",
+  "independent_source_decoder_sha256": "a7bd40f8337ef5f760cc74839910b43fb6918d68d3b152c9036d68e367fb8f0e",
+  "independent_book_cash_auditor_sha256": "23ad3a2be6750a311b4fbae6e83da11a0a7cac73b6ebb182c8a6eb1a69ca2116",
+  "independent_policy_auditor_sha256": "fd4f51b6def8fa65c991561d4f28c0e8b8b5ad5ee48b444664a9741f6f215bee",
+  "scope": "Fresh native source, atomic venue-clock quotes and conditional allocations/cash for newly selected events; exact event/policy/outcome reuse for already audited events; full calendar unknown propagation. No actual execution claim.",
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

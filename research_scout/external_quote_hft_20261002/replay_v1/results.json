@@ -1,0 +1,335 @@
+{
+  "completed_at_utc": "2026-10-02T17:21:39.144528+00:00",
+  "configurations_run": 2,
+  "scenario_results": [
+    {
+      "rest_seconds": 10,
+      "scenario": "base",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -2.852886309998212,
+      "net_high": -2.852886309998212,
+      "closed_portion_net_low": -2.852886309998212,
+      "closed_portion_net_high": -2.852886309998212,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 4,
+      "definitely_profitable_cycles": 0,
+      "definitely_losing_cycles": 4,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 342,
+        "external_cushion_exhausted": 116,
+        "external_freshness_expired": 8,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "double_fees",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -3.4033701999996993,
+      "net_high": -3.4033701999996993,
+      "closed_portion_net_low": -3.4033701999996993,
+      "closed_portion_net_high": -3.4033701999996993,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 4,
+      "definitely_profitable_cycles": 0,
+      "definitely_losing_cycles": 4,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 342,
+        "external_cushion_exhausted": 116,
+        "external_freshness_expired": 8,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "outbound_and_ack_3s",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -2.96736462699846,
+      "net_high": -2.96736462699846,
+      "closed_portion_net_low": -2.96736462699846,
+      "closed_portion_net_high": -2.96736462699846,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 6,
+      "definitely_profitable_cycles": 0,
+      "definitely_losing_cycles": 6,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 342,
+        "external_cushion_exhausted": 116,
+        "external_freshness_expired": 8,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "double_adverse",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -2.975288730000102,
+      "net_high": -2.975288730000102,
+      "closed_portion_net_low": -2.975288730000102,
+      "closed_portion_net_high": -2.975288730000102,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 4,
+      "definitely_profitable_cycles": 0,
+      "definitely_losing_cycles": 4,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 342,
+        "external_cushion_exhausted": 116,
+        "external_freshness_expired": 8,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "queue_ahead_double",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -2.852886309998212,
+      "net_high": -2.852886309998212,
+      "closed_portion_net_low": -2.852886309998212,
+      "closed_portion_net_high": -2.852886309998212,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 4,
+      "definitely_profitable_cycles": 0,
+      "definitely_losing_cycles": 4,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 342,
+        "external_cushion_exhausted": 116,
+        "external_freshness_expired": 8,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 10,
+      "scenario": "clock_envelope_100ms",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -3.37257942999895,
+      "net_high": -2.852886309998212,
+      "closed_portion_net_low": -3.37257942999895,
+      "closed_portion_net_high": -2.852886309998212,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 5,
+      "definitely_profitable_cycles": 0,
+      "definitely_losing_cycles": 4,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 342,
+        "external_cushion_exhausted": 116,
+        "external_freshness_expired": 8,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "base",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -6.224716645998342,
+      "net_high": -6.224716645998342,
+      "closed_portion_net_low": -6.224716645998342,
+      "closed_portion_net_high": -6.224716645998342,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 11,
+      "definitely_profitable_cycles": 1,
+      "definitely_losing_cycles": 10,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 281,
+        "external_cushion_exhausted": 163,
+        "external_freshness_expired": 22,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "double_fees",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -8.027364140001737,
+      "net_high": -8.027364140001737,
+      "closed_portion_net_low": -8.027364140001737,
+      "closed_portion_net_high": -8.027364140001737,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 11,
+      "definitely_profitable_cycles": 0,
+      "definitely_losing_cycles": 11,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 281,
+        "external_cushion_exhausted": 163,
+        "external_freshness_expired": 22,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "outbound_and_ack_3s",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -6.167186042997855,
+      "net_high": -6.167186042997855,
+      "closed_portion_net_low": -6.167186042997855,
+      "closed_portion_net_high": -6.167186042997855,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 14,
+      "definitely_profitable_cycles": 1,
+      "definitely_losing_cycles": 13,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 281,
+        "external_cushion_exhausted": 163,
+        "external_freshness_expired": 22,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "double_adverse",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -6.625385798000934,
+      "net_high": -6.625385798000934,
+      "closed_portion_net_low": -6.625385798000934,
+      "closed_portion_net_high": -6.625385798000934,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 11,
+      "definitely_profitable_cycles": 0,
+      "definitely_losing_cycles": 11,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 281,
+        "external_cushion_exhausted": 163,
+        "external_freshness_expired": 22,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "queue_ahead_double",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -6.0050095099977625,
+      "net_high": -6.0050095099977625,
+      "closed_portion_net_low": -6.0050095099977625,
+      "closed_portion_net_high": -6.0050095099977625,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 10,
+      "definitely_profitable_cycles": 1,
+      "definitely_losing_cycles": 9,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 281,
+        "external_cushion_exhausted": 163,
+        "external_freshness_expired": 22,
+        "external_state_invalid": 3
+      }
+    },
+    {
+      "rest_seconds": 22,
+      "scenario": "clock_envelope_100ms",
+      "complete": true,
+      "complete_dates": 10,
+      "net_low": -6.262015165999401,
+      "net_high": -6.224716645998342,
+      "closed_portion_net_low": -6.262015165999401,
+      "closed_portion_net_high": -6.224716645998342,
+      "submitted_cycles": 423,
+      "cycles_with_possible_fills": 11,
+      "definitely_profitable_cycles": 1,
+      "definitely_losing_cycles": 10,
+      "reasons": {
+        "both_orders_resolved_and_all_inventory_flattened": 423,
+        "external_cushion_below_cost": 290,
+        "signal_spread_or_depth_below_gate": 13,
+        "external_state_missing_or_stale": 2
+      },
+      "cancellation_reasons": {
+        "scheduled": 281,
+        "external_cushion_exhausted": 163,
+        "external_freshness_expired": 22,
+        "external_state_invalid": 3
+      }
+    }
+  ],
+  "ledger_files": 120,
+  "ledger_rows": 8736,
+  "source_native_messages": {
+    "binance": 2212109,
+    "bybit": 316327
+  },
+  "independent_accounting_verified": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "selection_2025_opened": false,
+  "conditional_public_tape_model": true,
+  "artifacts_sha256": {
+    "implementation.json": "4330d39406611fcf63a557aec8209585c858e4d0bf89ea4a8b7e85418fa04fa5",
+    "source_diagnostics.json": "ff3d2623b61e723a2328335164f63d720a390e7fa678796263186a1f26282bdd",
+    "daily_results.json": "1edf79b6b3daed7b02e4988ea9fb857bdf8e105493596965f87d41889b7ac343",
+    "ledger_manifest.json": "54f39053b26386fcccff1fe69621d9f17abd30a16e829ad943376795d1d2298d"
+  }
+}

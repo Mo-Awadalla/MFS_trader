@@ -1,0 +1,24 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T20:33:49.505970+00:00",
+  "source_files_verified": 60,
+  "source_counts": {
+    "native_messages": 21889483,
+    "relevant_book_messages": 1972743
+  },
+  "grid_rows_verified": 254150,
+  "fx_rows_verified": 3000,
+  "symbol_windows_verified": 5083,
+  "selected_windows_verified": 48,
+  "maximum_numeric_difference": "0",
+  "results_sha256": "d1c6385f84d8655e5edbdf3a1616c3cb80785a93fbeab688c19e542f85bd0bf4",
+  "auditor_sha256": "47ed3401de07f8242de7dde05c596fe9981bd2eaa3e756990c615529caf1f1ac",
+  "clock_serialization_repair_sha256": "778b84967b2377fc7cdf1cf860ad99e802844b965a3b30103f76558b75755f86",
+  "original_clock_rounding_maximum_ns": 128,
+  "all_non_clock_fields_and_selection_unchanged": true,
+  "scope": "Every source envelope decoded, all native capture clocks and relevant IDs checked, independent causal buckets and Decimal cost/size gates reconciled, all selected windows and separate observed FX quotes verified. No production parsing, budget or selection imports.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

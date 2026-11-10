@@ -1,0 +1,27 @@
+{
+  "verified": true,
+  "source_files": 31,
+  "source_rows": 119228,
+  "successful_response_bytes": 13443835,
+  "exchange_holiday_failed_sources": 2,
+  "release_scenario_dispositions": 1008,
+  "quote_envelopes": 90,
+  "quote_states": 1005,
+  "closed_cashflows": 28,
+  "maximum_cash_error": 1.049826892085548e-12,
+  "dispositions": {
+    "no_content_trigger": 612,
+    "no_postrelease_decision_quote": 160,
+    "no_order_exchange_holiday": 24,
+    "no_order_invalid_signal_quote": 42,
+    "no_order_spread_gate": 94,
+    "unknown_tied_signal_state": 14,
+    "fok_price_reject": 34,
+    "conditional_round_trip": 28
+  },
+  "legacy_100_share_unit_verified": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "report_sha256": "366e2b805e09e0f004482d92daf0a4bd5f4fb8b8b419fd5efdf9641d9d1aa292",
+  "auditor_sha256": "b2037b07d7c0f5da3f8cef9e5fe0751e62465d6d9278f10c2966b0324326976d"
+}

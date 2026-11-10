@@ -1,0 +1,47 @@
+{
+  "findings": [
+    {
+      "verified_unchanged": true,
+      "source_capture_matches": 1,
+      "csv_clock_matches_E": true,
+      "csv_clock_matches_T": false,
+      "source_E_minus_T_us": 19000,
+      "source_native_T_us": 263966000,
+      "source_native_E_us": 263985000,
+      "reason": "top_five_unchanged_with_native_sequence_continuity",
+      "updates_between_source_and_target": 4,
+      "successor_T_us": 264261000,
+      "successor_E_us": 264266000,
+      "successor_local_us": 264268389,
+      "symbol": "SOLUSDT",
+      "date": "2024-07-01",
+      "target_us": 264250000,
+      "source_age_us": 265000,
+      "source_sha256": "7600d438e95584ca7bc2193634b27c9f01f77944b29eee9ff62fa1cf1acbbc59",
+      "native_messages": 2275
+    },
+    {
+      "verified_unchanged": true,
+      "source_capture_matches": 1,
+      "csv_clock_matches_E": true,
+      "csv_clock_matches_T": false,
+      "source_E_minus_T_us": 1000,
+      "source_native_T_us": 12199705000,
+      "source_native_E_us": 12199706000,
+      "reason": "top_five_unchanged_with_native_sequence_continuity",
+      "updates_between_source_and_target": 5,
+      "successor_T_us": 12200017000,
+      "successor_E_us": 12200024000,
+      "successor_local_us": 12200027009,
+      "symbol": "BTCUSDT",
+      "date": "2024-07-01",
+      "target_us": 12200000000,
+      "source_age_us": 294000,
+      "source_sha256": "25f6bf5c344d0094378bf8d2cd515cecafc3936dc9db79a9cd2b687eb11e1ebf",
+      "native_messages": 2260
+    }
+  ],
+  "original_results_modified": false,
+  "scope": "Only first chronological aged target per instrument. Does not validate other targets or constitute a corrected P&L replay. Native Binance E is event publication time; T is transaction time. The pilot distinguishes the two rather than calling the normalized timestamp a matching-engine clock.",
+  "consequence": "The original simulation is a publication-clock proxy with an over-restrictive 250ms expiry, not proven transaction-time execution. No candidate passed. Any next execution implementation must correctly apply sequenced native T updates, including changes whose E follows order time, and preserve deeper-liquidity unknowns and timestamp-tie uncertainty."
+}

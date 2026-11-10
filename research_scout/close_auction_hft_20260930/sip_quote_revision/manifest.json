@@ -1,0 +1,324 @@
+{
+  "complete": true,
+  "files": [
+    {
+      "date": "2023-08-02",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2023-08-02.parquet",
+      "sha256": "d52ebe0b891faf923fa4d0ec5398e1e879952cdf66a4a05da8102768d929e9a4",
+      "rows": 9397,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-08-02T20:00:00+00:00",
+        "requested_end": "2023-08-02T20:01:00+00:00",
+        "asof": "2023-08-02",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 1,
+        "events_fetched": 9397,
+        "response_bytes": 1062277,
+        "duration_seconds": 0.5779999999940628,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "443ab590cedd482707365b6614f48996"
+        ],
+        "ingestion_run_id": "83957d67-649e-4e4b-a253-223c1f38d4ab",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    },
+    {
+      "date": "2024-02-23",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2024-02-23.parquet",
+      "sha256": "4539d2d76e9098c690f070b5a23d3316a1ffd00298fcc3672445a31c586d0013",
+      "rows": 7984,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2024-02-23T21:00:00+00:00",
+        "requested_end": "2024-02-23T21:01:00+00:00",
+        "asof": "2024-02-23",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 1,
+        "events_fetched": 7984,
+        "response_bytes": 906539,
+        "duration_seconds": 0.28100000000267755,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "2943e1a7daa67d5a45ba3563a6a6da29"
+        ],
+        "ingestion_run_id": "915e2e6f-0409-4c0c-9534-71a92078dfc1",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    },
+    {
+      "date": "2024-03-28",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2024-03-28.parquet",
+      "sha256": "dba1c004166f4414c18d2026a96e9d1b3573f6e1bdcb04acd85178ce035f2b7b",
+      "rows": 10546,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2024-03-28T20:00:00+00:00",
+        "requested_end": "2024-03-28T20:01:00+00:00",
+        "asof": "2024-03-28",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 2,
+        "events_fetched": 10546,
+        "response_bytes": 1195262,
+        "duration_seconds": 0.25,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "ef00ef3f411f09ebac25538ab9a934cc",
+          "ec084d8d3de0849921c8c89bcd1c7428"
+        ],
+        "ingestion_run_id": "5ebdd24c-65a3-4b7a-9094-ed64fa344cc9",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    },
+    {
+      "date": "2024-04-17",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2024-04-17.parquet",
+      "sha256": "233974deafd47be45ba0dc79b2548a94cd292e9afa2c52f5e8e134952f14f821",
+      "rows": 12458,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2024-04-17T20:00:00+00:00",
+        "requested_end": "2024-04-17T20:01:00+00:00",
+        "asof": "2024-04-17",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 2,
+        "events_fetched": 12458,
+        "response_bytes": 1413114,
+        "duration_seconds": 0.26600000000325963,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "d0068bd5e39de8e7c2213c31a58cb25a",
+          "aacfe77ac60d831f2a80ad80f6650f3f"
+        ],
+        "ingestion_run_id": "03d60f9d-eaf5-446b-b5e9-6448775d27be",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    },
+    {
+      "date": "2024-04-30",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2024-04-30.parquet",
+      "sha256": "00a60366e7414ad827bc3880e215725d32d742d787add1b1791bb67c4443089d",
+      "rows": 11147,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2024-04-30T20:00:00+00:00",
+        "requested_end": "2024-04-30T20:01:00+00:00",
+        "asof": "2024-04-30",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 2,
+        "events_fetched": 11147,
+        "response_bytes": 1257211,
+        "duration_seconds": 0.25,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "e706ab58c02cdb2e0e8ad332211194c7",
+          "822e64f95d12e2f42506065fd0e1cd65"
+        ],
+        "ingestion_run_id": "fa03af53-2102-4575-9e51-1197095989ec",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    },
+    {
+      "date": "2024-12-19",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2024-12-19.parquet",
+      "sha256": "9b52cc747288b3ced77952567233057bf0bef5ba7c7386c77c161e446282f356",
+      "rows": 9719,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2024-12-19T21:00:00+00:00",
+        "requested_end": "2024-12-19T21:01:00+00:00",
+        "asof": "2024-12-19",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 1,
+        "events_fetched": 9719,
+        "response_bytes": 1099785,
+        "duration_seconds": 0.21800000000803266,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "0f8c45900ad8e331fa37505bd4911edf"
+        ],
+        "ingestion_run_id": "be3d24e3-331d-4e40-91f9-d6f05ec703d5",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    },
+    {
+      "date": "2025-03-11",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2025-03-11.parquet",
+      "sha256": "dd329c1b1c09c383020aedfe494d6cc96d9c3cac75a937d9d2502c909ae4b0a2",
+      "rows": 18138,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2025-03-11T20:00:00+00:00",
+        "requested_end": "2025-03-11T20:01:00+00:00",
+        "asof": "2025-03-11",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 2,
+        "events_fetched": 18138,
+        "response_bytes": 2051343,
+        "duration_seconds": 0.3120000000053551,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "3f51355c5c3fd533f143dcc71223790d",
+          "c1964636f6914843c04efa420a1e8777"
+        ],
+        "ingestion_run_id": "dd350488-88bc-4f1b-9407-a6eb0e9433e2",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    },
+    {
+      "date": "2025-03-26",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2025-03-26.parquet",
+      "sha256": "48d492686a8fe410b7a7f95ba08d45dc6b9f817628d8686b4ea10a4fa781abf9",
+      "rows": 9428,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2025-03-26T20:00:00+00:00",
+        "requested_end": "2025-03-26T20:01:00+00:00",
+        "asof": "2025-03-26",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 1,
+        "events_fetched": 9428,
+        "response_bytes": 1069340,
+        "duration_seconds": 0.21899999999732245,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "53ec0f0276eefcf20839362c642699f4"
+        ],
+        "ingestion_run_id": "a6a4914f-44ed-4771-83c4-ef8ba50dd2c7",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    },
+    {
+      "date": "2025-04-03",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2025-04-03.parquet",
+      "sha256": "bb56b1ccdfc4e2bd87ac11fbe81fd31079a96c26a781325f9ba2b254da6456b9",
+      "rows": 11652,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2025-04-03T20:00:00+00:00",
+        "requested_end": "2025-04-03T20:01:00+00:00",
+        "asof": "2025-04-03",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 2,
+        "events_fetched": 11652,
+        "response_bytes": 1315031,
+        "duration_seconds": 0.34300000000803266,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "1113a45c08ca3ff6ba04f7ac5951d12e",
+          "83d3f305123431b19f2f7d0e8cfac4ee"
+        ],
+        "ingestion_run_id": "28ea3637-0e9e-4872-ae25-873e0920dfc6",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    },
+    {
+      "date": "2025-06-30",
+      "path": "research_scout\\close_auction_hft_20260930\\sip_quote_revision\\raw\\2025-06-30.parquet",
+      "sha256": "7ac44a2fb9cbe0422156290bda431c90f1aa8c4f955888c967a3e2e2f213788d",
+      "rows": 14009,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2025-06-30T20:00:00+00:00",
+        "requested_end": "2025-06-30T20:01:00+00:00",
+        "asof": "2025-06-30",
+        "page_size": 10000,
+        "max_pages": 10,
+        "maximum_possible_events": 100000,
+        "pages_fetched": 2,
+        "events_fetched": 14009,
+        "response_bytes": 1586573,
+        "duration_seconds": 0.3120000000053551,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "5512a1db0bb5612af554fcb3a16580cf",
+          "4c1b53b4460c89047e4820bec245e6d0"
+        ],
+        "ingestion_run_id": "455d0e9e-6c78-4169-8125-24bc165be564",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      },
+      "credentials_recorded": false
+    }
+  ],
+  "response_bytes": 12956475,
+  "billing_changed": false,
+  "orders_submitted": false
+}

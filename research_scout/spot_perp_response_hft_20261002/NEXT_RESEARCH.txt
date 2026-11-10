@@ -1,0 +1,11 @@
+{
+  "reviewed_at_utc": "2026-10-02T20:14:46.660375+00:00",
+  "status": "Possible next research direction only; no new strategy or P&L run",
+  "observation": "Primary Binance notices document zero maker fees for seven FDUSD spot pairs, while regular-user taker fees became 0.100% on 2024-04-25. The 2026-01-29 update removes the remaining taker promotion for other tiers while retaining zero maker fees. Do not assume VIP status or current zero taker fees.",
+  "sources": [
+    "https://www.binance.com/en/support/announcement/detail/3d8514bbc817423eba52fb23483bcbed",
+    "https://www.binance.com/en-TR/support/announcement/detail/4856a6d4e4014d4e8a5a29ec5fb44857"
+  ],
+  "possible_test": "Check a separately frozen necessary spread/depth budget in those published maker-fee pairs using already cached all-symbol spot books. Preserve conservative adverse execution, nonzero fee stress and full 10bp taker cost for emergency exits. If no supply exists, stop at the screen. Any actual replay needs native passive queue/trade evidence, full residual inventory, matching-clock uncertainty, historical order rules and FDUSD valuation/conversion costs. Do not modify old fee assumptions to rescue old strategies.",
+  "not_an_edge": true
+}

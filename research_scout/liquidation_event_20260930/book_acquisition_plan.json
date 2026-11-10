@@ -1,0 +1,37 @@
+{
+  "public_unauthenticated": true,
+  "samples": [
+    {
+      "date": "2024-07-01",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/book_snapshot_5/2024/07/01/BTCUSDT.csv.gz",
+      "bytes": 24574412
+    },
+    {
+      "date": "2024-08-01",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/book_snapshot_5/2024/08/01/BTCUSDT.csv.gz",
+      "bytes": 33607354
+    },
+    {
+      "date": "2024-09-01",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/book_snapshot_5/2024/09/01/BTCUSDT.csv.gz",
+      "bytes": 25750249
+    },
+    {
+      "date": "2024-10-01",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/book_snapshot_5/2024/10/01/BTCUSDT.csv.gz",
+      "bytes": 30153492
+    },
+    {
+      "date": "2024-11-01",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/book_snapshot_5/2024/11/01/BTCUSDT.csv.gz",
+      "bytes": 27935263
+    },
+    {
+      "date": "2024-12-01",
+      "url": "https://datasets.tardis.dev/v1/binance-futures/book_snapshot_5/2024/12/01/BTCUSDT.csv.gz",
+      "bytes": 22768491
+    }
+  ],
+  "expected_bytes": 164789261,
+  "total_cap": 2000000000
+}

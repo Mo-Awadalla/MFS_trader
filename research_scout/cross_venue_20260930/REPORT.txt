@@ -1,0 +1,43 @@
+CROSS-VENUE BTCUSDT HFT — 2026-09-30
+
+VERDICT: NO RELIABLE EDGE. Goal remains active.
+
+Four opening-gap intervals cleared a fixed 33bp admission threshold across six July-December 2024 monthly-first-day samples.
+Three intervals fell within 18 seconds on October 1; these are not four independent market regimes.
+Costs: 6bp taker fee plus 1bp adverse allowance at every fill; two entries plus two exits cost about 28bp of one-leg notional.
+Capital: $10000 prefunded, $5000 per venue. Max $1000 per leg, equal BTC and at most 10% of both observed touch quantities.
+
+THE APPARENT WINNER WAS A TIMING ARTIFACT
+A receipt-time 200ms simulation showed +$1.0956 at 30 seconds and +$1.4548 at 120 seconds, entirely from one pair.
+Its Bybit signal book was captured 873ms after the exchange timestamp; its alleged entry state was captured 966ms after the exchange timestamp.
+These receive-time prices did not establish prices available at the exchange when our order would arrive.
+The corrected replay preserves all initial signals, sizes, collars, costs and latencies; decisions use capture time, executions use exchange time.
+
+CORRECTED RESULTS (30s and 120s holds identical because no paired position opened)
+scenario | net dollars across six isolated dates | closed pairs | single-leg unwinds
+base | -1.392641 | 0 | 1
+double_fees | -2.584962 | 0 | 1
+latency_3s | -0.782614 | 0 | 1
+binance_extra_500ms | -0.748991 | 0 | 1
+bybit_extra_500ms | -1.392641 | 0 | 1
+optimistic_200ms | -0.701783 | 0 | 3
+
+Three baseline attempts were rejected at both venues. One left an unmatched leg that had to be unwound after acknowledgements and another outbound trip.
+Unknown submitted-order outcomes invalidate a day, rather than becoming zero-profit observations. All corrected scenario paths in this batch are complete.
+The optimistic 200ms case is a diagnostic, not the baseline; it also loses. No fee, threshold or latency was relaxed to rescue the result.
+
+VERIFICATION
+Independent reconciliation verified 40 known fills across dependent scenarios and preserved versions, with maximum P&L discrepancy $4.44e-16.
+Every signal book was identical between versions. Raw/cache/code hashes, strict clock ordering, causal collars, five-level weighted prices, per-venue flatness, acknowledgement timing and daily totals checked.
+Thirteen focused cross-venue tests pass, including partial venue failure, unknown execution, future capture isolation and exchange-clock backtrack handling.
+
+LIMITS AND SEARCH RECORD
+Calendar-selected historical samples and hypothetical fills cannot establish actual execution or broad statistical reliability. Neither public book timestamps nor captured prices are private order-execution logs.
+Orders are non-atomic across venues. No transfer, margin liquidation, exchange price-band rejection, queue impact or live routing is proven by this small replay.
+This adds two hold configurations, evaluated under both receipt- and exchange-time implementations: 60 configurations and 68 implementation versions in the current search. These are dependent, and earlier research exposure remains.
+The older cadence-blocked V21/V22/V24/V31/V46/V64 records are not negative-return evidence. They use slower intraday constructions and minute quote coverage; they do not presently validate an HFT edge.
+No later cross-venue validation dates were opened after this failure. No paid data API or trading order was sent.
+
+Source documentation:
+https://docs.tardis.dev/faq/data
+https://bybit-exchange.github.io/docs/v5/order/create-order

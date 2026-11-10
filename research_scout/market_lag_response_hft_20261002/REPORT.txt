@@ -1,0 +1,27 @@
+COMMON-MOVE HFT RESPONSE — NO PROFITABLE SURVIVOR
+
+Both predeclared directions were tested on the one flow-confirmed TRX event. Orders were fixed before transmission, at most 200 USDT and 10% of causal touch size; minimum entry 100 USDT, 10bp FOK collar, full notional reserved with 2% buffer, no leverage. Exit decision: 15 seconds after entry acknowledgement. Fees: 6bp plus 1bp adverse allowance on EACH leg. No funding credited.
+
+Rule | Scenario | Conditional net lower / upper USDT | Completed round trips | Outcome
+follow_common_move | base | -0.379335680 / -0.379335680 | 1 | {'conditional_complete': 1}
+follow_common_move | fees_2x | -0.616709120 / -0.616709120 | 1 | {'conditional_complete': 1}
+follow_common_move | adverse_2x | -0.418897920 / -0.418897920 | 1 | {'conditional_complete': 1}
+follow_common_move | latency_250ms | -0.353717760 / -0.353717760 | 1 | {'conditional_complete': 1}
+follow_common_move | latency_3s | -0.430499840 / -0.430499840 | 1 | {'conditional_complete': 1}
+follow_common_move | clock_100ms | UNKNOWN | 0 | {'unknown_exit': 1}
+fade_common_move | base | -0.212926720 / -0.200135680 | 1 | {'conditional_complete': 1}
+fade_common_move | fees_2x | -0.450292480 / -0.437509120 | 1 | {'conditional_complete': 1}
+fade_common_move | adverse_2x | -0.252487680 / -0.239697920 | 1 | {'conditional_complete': 1}
+fade_common_move | latency_250ms | -0.238526720 / -0.238526720 | 1 | {'conditional_complete': 1}
+fade_common_move | latency_3s | -0.148899840 / -0.148899840 | 1 | {'conditional_complete': 1}
+fade_common_move | clock_100ms | -0.212926720 / -0.200135680 | 1 | {'conditional_complete': 1}
+
+All eleven calculable scenario cases lost after costs. Baseline follow: -0.379335680 USDT; baseline fade: -0.212926720 to -0.200135680 USDT. Follow under 100ms clock uncertainty has an unknown exit because at least one compatible state lacks enough touch quantity. Unknown P&L is not zero. Neither direction is promoted.
+
+Independent audit: 2,005 native messages, two fixed intents, 24 execution envelopes, 11 cash rectangles and all twelve scenario aggregates matched exactly. The unchanged execution engine's 14 existing tests were reused without inflating the cumulative test count. New scripts passed Ruff.
+
+These are conditional displayed-book outcomes, not private fill evidence. Historical price/lot filters and account permissions remain unverified. One event would be insufficient for reliability even if positive. No 2025 selection data was opened for this family. This dependent development experiment adds two economic configurations and two implementation versions.
+
+Cumulative accounting: 134 economic configurations, 184 implementation versions, 342 focused tests. The goal remains ACTIVE; no reliable edge or competition win established.
+
+Next research: separately freeze a maintained-depth confirmation experiment. An unchanged BBO is an acquisition clue only; require a bridged snapshot, uninterrupted native depth sequence and fresh capture/T/E proof before admitting any resting quote. Keep the same seven causal leader grids, price-gap/cost gates and all search history. No simple relaxation of quote freshness.

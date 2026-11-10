@@ -1,0 +1,14 @@
+{
+  "created_at_utc": "2026-10-02T20:31:32.125023+00:00",
+  "reason": "Pandas inferred float64 for optional receive_ns columns when some symbols had not yet been observed. The independent audit caught rounded saved clocks. All causal decisions were computed using original integer clocks before serialization.",
+  "original_results_sha256": "d1c6385f84d8655e5edbdf3a1616c3cb80785a93fbeab688c19e542f85bd0bf4",
+  "original_implementation_sha256": "128478c67971b598c1860c6e412a15947e51be080ebad289c36a09279d625d01",
+  "original_failed_auditor_sha256": "cf53328db06c88c2b060e315bacda700344d008d364acb0ad1d0d9d372932eba",
+  "repair_sha256": "0306cb79c97a87953303aa0813b83b4150c160d1f159d6faddd3d876700ccda6",
+  "exact_frame_helper_sha256": "f118f6c4f94afb51dcac3ce4a7c4891634763c29dd33f7d86443f54a9cff400c",
+  "previous_plan_sha256": "9ea896981f81d0904097aed4491435d6158559fb7aa39bdd647f5fd4088c2bab",
+  "previous_attempt": "Failed before completion because pandas None and NaN representations in optional object fields compared unequal. This attempt verifies identical missingness and exactly identical observed non-clock fields after canonicalizing missing representations. Prior script, plan and partial files are preserved.",
+  "changes": "Rebuild native rows with unchanged frozen signal code and sources. Write precise_grids_v2/ and precise_fx_v2/ using nullable Int64 clocks from original Python integers. Preserve originals; compare non-clock missingness and observed fields, selected windows and source counts exactly.",
+  "economic_configuration_changed": false,
+  "future_returns_evaluated": false
+}

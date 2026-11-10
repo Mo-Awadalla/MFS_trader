@@ -1,0 +1,56 @@
+{
+  "created_at_utc": "2026-10-02T19:46:52.984314+00:00",
+  "family": "Seconds-only response to a transient Binance spot/perpetual price discrepancy",
+  "relationship": "Dependent cross-market research, using the same fixed calendar minutes as the failed wide-tick study. All contemporaneous USDT perpetuals are considered, not just its selected symbols. Previous BTC/ETH cross-flow, passive and cross-venue failures remain part of selection history. This is not pristine independent discovery.",
+  "dates": [
+    "2024-01-01",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-01",
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "source_window": "09:00 inclusive through 09:01 exclusive UTC. Existing complete Binance perpetual native bookTicker/trade slices are reused; acquire the same Binance spot slice. No subsequent prices or P&L are evaluated by the supply screen.",
+  "perpetual_manifest": "research_scout\\wide_tick_hft_20260930\\complete_manifest_v1.json",
+  "perpetual_manifest_sha256": "cd29853413e6161be998f271a05d33800a50742592de4975fecdd493f93af76c",
+  "universe": "Every recorded native USDT perpetual symbol, matched to the exact spot symbol. Exclude dated futures and do not join multiplier-prefixed symbols to differently named spot assets. Matching text is provisional; actual contract/underlying equivalence and historical order rules must be checked before economic replay. Keep unmatched and invalid states.",
+  "signal_grid": "One-second decisions 09:00:10 through 09:00:59 inclusive; all observations strictly before decision minus 250ms. Standing states are carried only across an observed unbroken stream. Current spot and perpetual BBO capture age must each be <=1 second; perpetual transaction/publication clocks must also be consistent and <=1 second old. These are signal freshness gates, not a claim that older standing quotes are invalid.",
+  "native_semantics": "Both BBOs are full updates with update id u, symbol s, b/B/a/A. Conflicting equal-id and regressing updates poison the state until a later strictly higher id; exact duplicate updates do not refresh the observation age. A disconnect clears books and id histories. Spot bookTicker has no venue matching timestamp: preserve its capture clock and do not invent a transaction clock. Perpetual T is transaction time, E publication time. Reject malformed/nonpositive/crossed books and clocks more than 1ms ahead of capture or publication. No backward capture-time sort or repair.",
+  "anchor": "For each current decision use the ten preceding one-second decision-grid states, each itself as of its own decision minus 250ms. Require at least eight paired fresh/valid observations; median of perpetual mid / spot mid is the reference ratio. Median absolute relative deviation from that ratio must be <=10bp. No assumption that fair basis is zero.",
+  "dislocation": "Current perpetual mid divided by current spot mid times the historical median ratio, minus one, expressed in bp. Absolute deviation >=25bp. Require the same deviation sign and all gates on the immediately preceding grid; a candidate therefore persists across two consecutive one-second observations. At most the earliest qualifying event per symbol/date is selected.",
+  "liquidity": "Both sides of both current books must each show >=2000 USDT. This is only a necessary supply gate for a later <=200 USDT order at <=10% touch depth, not a fill or tick/lot-size claim.",
+  "convergence_budget": "Per unit of perpetual, project return to reference_ratio * current_spot_mid, retaining the current perpetual absolute half-spread at exit. Short when rich, long when cheap. Charge 6bp taker fee and 1bp adverse allowance per side on the respective entry/exit notionals. Require projected net >5bp of entry notional. This explicitly hypothetical full-convergence budget is NOT a forecast or realized P&L. Only the perpetual would be traded; spot is a predictor.",
+  "if_supply": "Before reading subsequent native paths, freeze two controls: fade the basis deviation and follow it, both with a 15-second post-ACK exit decision, <=30-second planned inventory, 250ms feed delay, 50ms processing and 1-second outbound/ACK base. Include 250ms and 3-second order latency, doubled fees/adverse allowance and source-clock uncertainty. Fixed causal quantities, IOC/FOK guards, full actual depth, unresolved exits/unknown states and same-date inventory halts are mandatory. Verify native clocks, contract lifecycle, lot/tick/minimum order rules and funding boundary avoidance before promotion. No funding payments, rebates or free fills assumed.",
+  "download": {
+    "exchange": "binance",
+    "offset": 540,
+    "slice_minutes": 1,
+    "channels": [
+      "bookTicker"
+    ],
+    "per_slice_decoded_cap": 512000000,
+    "total_decoded_cap": 6144000000,
+    "workers": 3,
+    "request_deadline_seconds": 180,
+    "authenticated": false,
+    "paid_fallback": false
+  },
+  "source_pilot": "First chronological spot minute, January 1. Inspect native schema and completeness only; no economic threshold changes based on pilot prices.",
+  "primary_sources": [
+    "https://docs.tardis.dev/historical-data-details/binance",
+    "https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams",
+    "https://developers.binance.com/docs/derivatives/usds-margined-futures/websocket-market-streams/Individual-Symbol-Book-Ticker-Streams"
+  ],
+  "economic_implementations": 0,
+  "selection_2025_opened": false,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "b3ec48c715fb4e6e2761c0e1009addf5906b109ae8851561c2fa4ab8c1c56dc2"
+}

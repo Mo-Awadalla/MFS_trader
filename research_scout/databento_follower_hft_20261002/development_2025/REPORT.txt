@@ -1,0 +1,34 @@
+DATABENTO SPY SWEEP / FOLLOWER LAG: CLOSED AFTER THREE EMPTY DEVELOPMENT PERIODS
+Updated 2026-10-03T01:11:05.076276+00:00
+
+No qualifying signal and no reliable edge. Every computable projected convergence budget was negative after unchanged conservative costs. These are pre-trade hypothetical budgets, not realized or simulated P&L. No future-return replay or economic configuration was executed for this family.
+
+Year | cached sessions | source records | qualified SPY groups | valid leader signals | follower checks | budgets | best projected net bp | selected
+2023 | 192 | 46428207 | 558 | 252 | 1260 | 202 | -4.857484276729559748427672956 | 0
+2024 | 252 | 60075871 | 1482 | 554 | 2770 | 623 | -2.344341372912801484230055659 | 0
+2025 | 250 | 71983330 | 485 | 239 | 1195 | 307 | -4.650992917650326343563393973 | 0
+
+Combined: 694 cached opening windows; 178,487,408 source records; 1132 computable budgets, all negative. Checks are not independent trades. The cached files are not complete trading days.
+
+UNCHANGED RULE
+A completed, large, single-side SPY group trading monotonically across multiple prices triggers a decision strictly after capture plus 1ms. Use only complete quotes strictly before decision minus 1ms, with an exactly one-second reference. Both SPY bid and ask must move in the initiating direction. Long SSO/UPRO follows a positive SPY move; long SH/SDS/SPXU follows a negative move. Quotes must be positive, uncrossed and cent-priced; spreads at most 5bp. Current SPY quote age is at most 5ms; all other reference/current ages at most 250ms by capture and native clocks.
+The reference follower mid is projected using the fund's daily objective multiplier and the one-second SPY move. The current follower half-spread is subtracted and the exit price rounded down to cents. Daily objectives do not guarantee second-scale tracking; this is an unverified forecasting model, not an arbitrage identity.
+Quantity is fixed causally at at most 10% of both current touch quantities and $10,000 at a 2% buy collar. Costs remain two max($1, $0.005/share) commissions, 1bp adverse allowance on each leg, plus specified sales charges. Current roundtrip cost must not exceed 12bp and projected net gain must reach 2bp. Rank projected dollars then basis points, with 6s global and 60s symbol cooldowns. No economic parameter was changed for either annual expansion.
+
+2025 INDEPENDENT AUDIT
+Rebuilt all 341,738 SPY trade-bearing groups: 485 qualified, 341,253 rejected. Recomputed all leader/follower clocks, 307 budgets with integer-rational projected prices and exact Decimal cash, ranking, source hashes and zero selections. No 2025 symbol-session failed the source clock check.
+The 2024 audit also independently enumerated all rejected source groups. The 2023 audit checked every reported qualifying group and downstream decision, but did not independently enumerate all earlier rejections. Audits share the Databento SDK binary decoder while using separate field and calculation logic.
+Five additional focused tests verify nanosecond distinctions, backward-clock precedence, unsigned timestamp overflow and BAD_TS_RECV handling in the 2025 auditor. Ruff and all five tests passed. Production economic/source code and prior results remained unchanged.
+
+SOURCE LIMITS
+Unassessable source data remain explicit: SPY 2023-03-28, UPRO 2023-07-31, and SPY 2024-04-10. No missing opportunity is called zero profit or proof of no signal. EQUS.MINI is an anonymous component-venue quote feed. Consolidated NBBO, routeability, order acceptance, hidden liquidity, private fills and actual client latency are not established.
+All market data for this family came from files already on disk: zero market-data API calls and zero paid calls. The 2025 expansion is additional discovery; unrelated prior work already used 2025. The 112 cached 2026 files were not opened for this family.
+
+DECISION
+Close this exact SPY-sweep-triggered follower hypothesis over the cached 2023-2025 windows. Do not lower its thresholds, alter costs or consume 2026 merely to rescue an empty signal. This does not reject every HFT strategy or opportunities outside these source windows.
+The next investigation is free public Databento Nasdaq order-level samples. First establish source completeness, native clocks, order identifiers and usable history. An identified venue and MBO data may support more defensible queue research; they do not themselves establish an edge or private execution. No paid query, account credit consumption or contact with a third party is authorized or needed for public sample inspection.
+
+Global ledger: 143 economic configurations, 195 implementation versions, 444 focused tests. Goal remains active; no reliable edge or competition win has been established.
+Specification SHA256: e4f49e9eb18e6f2b35a22fbd0a46278f2b89bf5d546892e8128294b401a60904
+Results SHA256: c06dd485060fa1f8e171a3ec450773ddb91a0da299a4e305e035b7e94beb955a
+Audit SHA256: 10383a1fe2ba3dcbc36f1dc92c616a5cfd0e6e775fa9265157adb7f992a53134

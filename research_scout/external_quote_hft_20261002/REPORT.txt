@@ -1,0 +1,67 @@
+EXTERNAL-PRICE QUOTE PROTECTION - DEVELOPMENT FAILURE
+
+No reliable HFT edge was established. Both frozen quote schedules lose money
+after costs, and all twelve complete stress results have negative upper cash
+bounds. This is a dependent extension of the earlier failed passive study.
+
+Base results
+  Rest cap 10s: -2.85288631 USDT, 423 submitted cycles, 4 cycles with fills,
+    zero profitable and four losing filled cycles.
+  Rest cap 22s: -6.224716646 USDT, 423 submitted cycles, 11 cycles with fills,
+    one profitable and ten losing filled cycles.
+  The reference capital is 10,000 USDT/date. These are sums of simulated cash
+  across ten monthly 2024 dates, not compounded or annualized returns.
+
+Rule
+Use Bybit's causal price as a predictive input to quoting on Binance. Each
+side must have a price cushion exceeding the frozen 3bp maker / 6bp taker /
+1bp adverse-per-execution budget. Cancel if that cushion disappears, the
+external state becomes invalid or expires, retaining source, order and cancel
+latency. Flatten partial inventory only after cancellations are acknowledged.
+No Bybit orders or assumed Bybit fills are used. Stress fees do not reselect
+which quotes are sent. Maximum inventory horizon remains below 30 seconds.
+
+The reduction in modeled losses mainly comes with a collapse in fills.
+It is not evidence of positive expected outperformance. Do not advance either
+rule or spend the unopened 2025 validation set searching for a favorable year.
+
+Source and verification
+The original 26 contract/dates and all 30 Binance files remain unchanged.
+Added 30 free native Bybit slices: 316,327 messages, 66,622,083 decoded bytes.
+The initial network-unreachable failures and the identical permitted retry
+remain preserved. No paid API, account access or live orders were used.
+
+2024 depth-one messages use deltas, although today's documentation describes
+snapshots. The pre-outcome source addendum specifies atomic reconstruction,
+unknown state before both sides are seen, sequence/reset checks and invalidation
+on disconnect. All 316,327 messages have matching-engine cts timestamps.
+
+Fifteen focused tests passed, including fills during cancellation latency,
+separate side cancellations, delayed residual liquidation and fixed signal
+selection under fee stress. Production code, tests and audit pass Ruff.
+
+The independent audit re-read every Bybit source, reconciled 493 repeated
+snapshots, checked 5,628 causal cancellation paths and all 8,736 ledger rows,
+and recomputed 5,076 cash rectangles and all aggregates with Decimal arithmetic.
+The largest numeric discrepancy was below 0.000000000003 USDT.
+
+Audit limitation: it does not independently reconstruct every native Binance
+fill under this extension's changed cancellation times. The parent engine was
+fully independently audited, and the changed execution paths have focused
+tests. Actual private fills, historical order filters and account permissions
+remain unverified. No profitable candidate is being advanced on this audit.
+
+Preservation
+Original economic inputs, code hashes, outputs and first audit remain intact.
+After execution, the test import statement was wrapped for lint compliance;
+the original bytes are retained in replay_v1/frozen_test_external_quote_hft.py,
+and the audit verifies exact AST equivalence with the current test source.
+The original auditor and first successful audit are also retained alongside
+the current signal_and_cash_verification_v2.json.
+
+Evidence
+specification.json; source_semantics_addendum.json; source_format_audit.json
+source_manifest_network_retry1.json; replay_v1/results.json
+replay_v1/signal_and_cash_verification_v2.json; replay_v1/ledger_manifest.json
+
+Status: close these two rules as development failures. Goal remains active.

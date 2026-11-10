@@ -1,0 +1,18 @@
+{
+  "created_at_utc": "2026-09-30T19:23:47.028093+00:00",
+  "dates": [
+    "2024-05-01",
+    "2024-12-01"
+  ],
+  "reason": "Initial full-channel minutes exceeded 128 MB; retry the identical intervals and filters with a 512 MB per-minute limit. No strategy statistics or return outcomes have been computed.",
+  "original_manifest_sha256": "50aed05bbee012267ecdfa50523fffcc6e5c5ddebc9665a9ee7cb939bc8bef43",
+  "new_download_bounds": {
+    "per_slice_decoded_cap": 512000000,
+    "total_decoded_cap": 1024000000,
+    "workers": 1,
+    "slice_minutes": 1,
+    "authenticated": false,
+    "paid_fallback": false
+  },
+  "original_results_preserved": true
+}

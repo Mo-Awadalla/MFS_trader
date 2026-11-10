@@ -1,0 +1,6 @@
+RECEIPT-TIME EXECUTION ERRATUM
+
+The execution/ artifacts are preserved as a receipt-time proxy, not valid executable-edge evidence.
+The single apparent optimistic paired trade used a Bybit book captured almost a second after its exchange timestamp.
+dual_clock/ replays exactly the same signals and orders using exchange-time book states for fills, while decisions retain capture-time information.
+No paired trade completes after this correction. Every tested scenario loses on failed-pair single-leg unwinds.

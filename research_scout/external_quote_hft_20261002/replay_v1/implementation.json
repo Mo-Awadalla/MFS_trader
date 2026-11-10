@@ -1,0 +1,69 @@
+{
+  "created_at_utc": "2026-10-02T17:21:08.270536+00:00",
+  "economic_configurations": 2,
+  "execution_scenarios": {
+    "base": {
+      "delay_ns": 1000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 1000000
+    },
+    "double_fees": {
+      "delay_ns": 1000000000,
+      "maker_bps": 6.0,
+      "taker_bps": 12.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 1000000
+    },
+    "outbound_and_ack_3s": {
+      "delay_ns": 3000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 1000000
+    },
+    "double_adverse": {
+      "delay_ns": 1000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 2.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 1000000
+    },
+    "queue_ahead_double": {
+      "delay_ns": 1000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 2.0,
+      "epsilon_ns": 1000000
+    },
+    "clock_envelope_100ms": {
+      "delay_ns": 1000000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0,
+      "queue_factor": 1.0,
+      "epsilon_ns": 100000000
+    }
+  },
+  "execution_tests_passed": 15,
+  "code_sha256": {
+    "research/external_quote_hft.py": "09267cffe35b63866d4902c0c8839b692ff88bc3b38642a293acf1354e31e276",
+    "research/wide_tick_replay.py": "684d531be39d99c62b2075b4cff6c925eb88845c48c1b8be6a550a4fd8d2466d",
+    "research/wide_tick_supply.py": "c9ba882e1b0c76874d804741dd61e04e406945652c7f6eaba3e63e99b488eb56",
+    "research_scout/run_external_quote_20261002.py": "b76c512ecd7c6abc8a4e43b8e4bdcab4e61ecb988142d72b32a7771e710948e7",
+    "tests/unit/test_external_quote_hft.py": "ae94a85da95ceb371072de2681448856e7ff22d71cafa7eb598f15dc58304579"
+  },
+  "inputs_sha256": {
+    "research_scout\\external_quote_hft_20261002\\specification.json": "dd716bcdd3645440610edd3c0441585775fcac6cdfa92964dba476253271e6ac",
+    "research_scout\\external_quote_hft_20261002\\source_semantics_addendum.json": "589b7d6f1b5089704df364d0aad9703df672b3f9f2f4d7534877e8cd805c1098",
+    "research_scout\\external_quote_hft_20261002\\source_manifest_network_retry1.json": "0fdf42014c46d897cfd91401390e0b664679d31706db1cb519b980f57f67587c",
+    "research_scout\\wide_tick_hft_20260930\\replay_manifest.json": "1cfdad462d91b9584e2ca66ad4bd15758e67a4575e6a6bdd9e5826ebd9f2d94f",
+    "research_scout\\wide_tick_hft_20260930\\selected.parquet": "d7105b0b8bd3d03e8c5561521707b5fa0c89c4a936e124488d6aa19621eb3cb3"
+  }
+}

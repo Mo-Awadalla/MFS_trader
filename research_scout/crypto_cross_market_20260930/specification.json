@@ -1,0 +1,106 @@
+{
+  "created_at_utc": "2026-09-30T14:11:30.743420+00:00",
+  "train": [
+    "2023-08-15",
+    "2023-09-15",
+    "2023-10-15",
+    "2023-11-15",
+    "2023-12-15"
+  ],
+  "selection": [
+    "2024-01-15",
+    "2024-01-21",
+    "2024-01-28",
+    "2024-01-31"
+  ],
+  "hypothesis": "BTC returns and aggressive flow can add useful ETH direction/magnitude information beyond ETH price and ETH flow alone",
+  "features": {
+    "price": [
+      "ETH_spread_bps",
+      "ETH_ret_1",
+      "ETH_ret_5",
+      "ETH_ret_30",
+      "ETH_ret_60",
+      "ETH_rv_60"
+    ],
+    "own_flow": [
+      "ETH_spread_bps",
+      "ETH_ret_1",
+      "ETH_ret_5",
+      "ETH_ret_30",
+      "ETH_ret_60",
+      "ETH_rv_60",
+      "ETH_imbalance",
+      "ETH_microprice_bps",
+      "ETH_log_depth",
+      "ETH_depth_change_5",
+      "ETH_ofi_5",
+      "ETH_ofi_30",
+      "ETH_flow_5",
+      "ETH_flow_30",
+      "ETH_log_volume_30"
+    ],
+    "cross_flow": [
+      "ETH_spread_bps",
+      "ETH_ret_1",
+      "ETH_ret_5",
+      "ETH_ret_30",
+      "ETH_ret_60",
+      "ETH_rv_60",
+      "ETH_imbalance",
+      "ETH_microprice_bps",
+      "ETH_log_depth",
+      "ETH_depth_change_5",
+      "ETH_ofi_5",
+      "ETH_ofi_30",
+      "ETH_flow_5",
+      "ETH_flow_30",
+      "ETH_log_volume_30",
+      "BTC_spread_bps",
+      "BTC_ret_1",
+      "BTC_ret_5",
+      "BTC_ret_30",
+      "BTC_ret_60",
+      "BTC_rv_60",
+      "BTC_imbalance",
+      "BTC_microprice_bps",
+      "BTC_log_depth",
+      "BTC_depth_change_5",
+      "BTC_ofi_5",
+      "BTC_ofi_30",
+      "BTC_flow_5",
+      "BTC_flow_30",
+      "BTC_log_volume_30",
+      "relative_ret_5",
+      "relative_ret_30",
+      "relative_ret_60",
+      "relative_flow_30"
+    ]
+  },
+  "model": {
+    "max_iter": 100,
+    "max_leaf_nodes": 7,
+    "min_samples_leaf": 200,
+    "learning_rate": 0.05,
+    "l2_regularization": 10,
+    "early_stopping": false,
+    "random_state": 93026
+  },
+  "horizons_seconds": [
+    30,
+    120
+  ],
+  "configurations": 6,
+  "version_count_for_multiplicity": 42,
+  "clocks": "10-second decisions; 250ms feed delay, then 1s outbound latency; 3s outbound stress; all features strictly prior to feed clock",
+  "costs": "5bp taker fee plus 1bp adverse execution-cost allowance EACH SIDE; displayed bid/ask crossing; doubled fees stress uses 10bp each side",
+  "orders": "Max $1000 ticket on a $10000 daily account, <=10% of visible pre-decision touch size, 0.001 ETH units. IOC entry with causal 5bp price collar and actual arrival-size partial fills. Missing entry/exit or inadequate exit depth invalidates day.",
+  "scheduling": "One position at a time with exit acknowledgement before reentry. No positions spanning 08:00/16:00/24:00 UTC funding boundaries.",
+  "gate": "Complete and profitable under all stresses; >=100 base fills; >=3 of 4 positive selection days; 42-version-adjusted date bootstrap lower>0; profit remains excluding best day. Cross-flow also must beat own-flow matched-date control.",
+  "limits": "All selected historical dates have earlier research exposure. Four selection dates cannot establish production reliability. Aggregate event timestamps plus assumed delay are not measured receipt or execution latency. Historical tape is unaffected by simulated orders.",
+  "code_sha256": {
+    "research\\crypto_cross_market.py": "d859cab5bb5a0972faf8aaa5fb7621238a0e62ad4d1f7197a6b0651c0106f724",
+    "research\\crypto_symbol_cache.py": "d672a2f3eab0204b70f138176c38d741b5c3055f8acc59a319dcb32db2134bbb",
+    "research_scout\\run_crypto_cross_market_20260930.py": "c830c524da26b5b9605f767b9649b9ed48c881f585ad2c51bcde62fb2e7e9940"
+  }
+}

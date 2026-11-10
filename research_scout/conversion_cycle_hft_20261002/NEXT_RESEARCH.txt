@@ -1,0 +1,9 @@
+{
+  "reviewed_at_utc": "2026-10-02T20:49:54.366513+00:00",
+  "status": "Next hypothesis under consideration; no parameter freeze or new economic run",
+  "observation": "Displayed three-leg spot conversion gaps do not cover conservative all-leg costs. The FDUSD passive branch separately lacked two-sided trade activity. Neither branch justifies an execution backtest or loosening its original costs.",
+  "next_direction": "A broad contemporaneous crypto-perpetual universe may supply brief, large price displacements with independently observed aggressive trade flow. Unlike selecting by liquidation broadcasts, first detect shocks in both bid and ask using native capture/matching clocks, then require actual same-contract trades before considering fixed 15-second follow and fade controls. This is a related price/flow extension, not an independent or unprecedented discovery.",
+  "first_step": "Freeze displacement, spread, depth, clock and cooldown gates before inspecting new selected outcomes; reuse the sixty already cached first-of-month 2024 perpetual BBO slices. Retain every symbol and failure. Acquire only pre-decision trades for any surviving events to test whether the shock is backed by executions, then freeze execution before subsequent returns.",
+  "constraints": "Strictly HFT, <=30-second planned inventory, conservative costs, no future resizing, no paid data or real orders. Preserve prior failed liquidation, absorption, spot/perpetual and macro-response results. No current survivor list, forward fill of invalid states or claim of globally untouched historical holdout.",
+  "not_an_edge": true
+}

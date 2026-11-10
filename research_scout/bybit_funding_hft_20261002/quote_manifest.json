@@ -1,0 +1,81 @@
+{
+  "files": [
+    {
+      "date": "2024-03-01",
+      "hour": 16,
+      "symbol": "AXLUSDT",
+      "exchange": "binance-futures",
+      "offset": 959,
+      "params": {
+        "from": "2024-03-01",
+        "offset": 959,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"axlusdt\"]}]"
+      },
+      "path": "research_scout\\bybit_funding_hft_20261002\\quotes\\2024-03-01_16_AXLUSDT_binance-futures.ndjson.gz",
+      "complete": true,
+      "decoded_bytes": 251945,
+      "compressed_bytes": 29814,
+      "decoded_sha256": "5af2b8b29ce0395e18faf9464bf5d7267253f0b0fbbbf6f5cf90e82313211c2f",
+      "compressed_sha256": "2985dbad632109210418879b6a931de0304adf6ad7910b9ee69a2d3399d76f48"
+    },
+    {
+      "date": "2024-03-01",
+      "hour": 16,
+      "symbol": "AXLUSDT",
+      "exchange": "bybit",
+      "offset": 959,
+      "params": {
+        "from": "2024-03-01",
+        "offset": 959,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"AXLUSDT\"]}]"
+      },
+      "path": "research_scout\\bybit_funding_hft_20261002\\quotes\\2024-03-01_16_AXLUSDT_bybit.ndjson.gz",
+      "complete": true,
+      "decoded_bytes": 150177,
+      "compressed_bytes": 22813,
+      "decoded_sha256": "cd4495aafc452fc45b3da372ff9fe8cdf4a258f61da7dbccaaf7ce00f66d55f6",
+      "compressed_sha256": "7517f0a84d4af8131c29c5a3bda5a497d5bc16ed973a62bab079d1e6f59b041f"
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 8,
+      "symbol": "STEEMUSDT",
+      "exchange": "binance-futures",
+      "offset": 479,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 479,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"steemusdt\"]}]"
+      },
+      "path": "research_scout\\bybit_funding_hft_20261002\\quotes\\2024-05-01_8_STEEMUSDT_binance-futures.ndjson.gz",
+      "complete": true,
+      "decoded_bytes": 257896,
+      "compressed_bytes": 33813,
+      "decoded_sha256": "16864c05ed915055184a047889fd90ee0ca51613def10e026a7c246fcc84d07a",
+      "compressed_sha256": "dda82d93a007c0bb85ebc1953e9635ae5f20323106bb2d5c9d1d563d85c9f103"
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 8,
+      "symbol": "STEEMUSDT",
+      "exchange": "bybit",
+      "offset": 479,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 479,
+        "sliceSize": 1,
+        "filters": "[{\"channel\": \"orderbook.1\", \"symbols\": [\"STEEMUSDT\"]}]"
+      },
+      "path": "research_scout\\bybit_funding_hft_20261002\\quotes\\2024-05-01_8_STEEMUSDT_bybit.ndjson.gz",
+      "complete": true,
+      "decoded_bytes": 149637,
+      "compressed_bytes": 22498,
+      "decoded_sha256": "693cb4be3bc5686435564411beba014912bfb0873e639f13673f41252346de80",
+      "compressed_sha256": "177f9b1fa17d48c60e077487cd0ce1725282a1888aaa085458a6015959f6a307"
+    }
+  ],
+  "complete": true
+}

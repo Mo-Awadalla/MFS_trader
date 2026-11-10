@@ -1,0 +1,5971 @@
+{
+  "economic_configurations_run": 2,
+  "scenario_cases": 12,
+  "events": 5,
+  "dates": 4,
+  "source_counts": {
+    "native_messages": 69047,
+    "mark_messages": 600,
+    "book_messages": 68447
+  },
+  "scenarios": [
+    {
+      "rule": "follow_shock",
+      "scenario": "base",
+      "complete": true,
+      "net_lower": "-3.67024890000",
+      "net_upper": "-3.67024890000",
+      "known_component_lower": "-3.67024890000",
+      "known_component_upper": "-3.67024890000",
+      "completed_round_trips": 4,
+      "outcomes": {
+        "conditional_complete": 4,
+        "no_fill": 1
+      },
+      "daily_lower": {
+        "2024-02-01": "-0.466607700",
+        "2024-03-01": "-2.0731680",
+        "2024-04-01": "-0.65544320",
+        "2024-09-01": "-0.47503000000"
+      },
+      "drop_best_three_dates_lower": "-2.0731680",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": false,
+            "entry_arrival_ns": 1706745635550000000,
+            "exit_arrival_ns": 1706745652600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745635550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3275,
+              "stop_index": 3276,
+              "successor_ns": 1706745635571000000,
+              "source_lines": [
+                3311
+              ],
+              "prices": [
+                "0.49720"
+              ],
+              "sizes": [
+                "19353"
+              ],
+              "price_lower": "0.49720",
+              "price_upper": "0.49720",
+              "minimum_touch_quantity": "19353"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745652600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4589,
+              "stop_index": 4590,
+              "successor_ns": 1706745652658000000,
+              "source_lines": [
+                4642
+              ],
+              "prices": [
+                "0.49770"
+              ],
+              "sizes": [
+                "18408"
+              ],
+              "price_lower": "0.49770",
+              "price_upper": "0.49770",
+              "minimum_touch_quantity": "18408"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49770",
+              "gross": "-0.19500",
+              "fees": "0.232806600",
+              "adverse": "0.038801100",
+              "net": "-0.466607700"
+            },
+            "upper": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49770",
+              "gross": "-0.19500",
+              "fees": "0.232806600",
+              "adverse": "0.038801100",
+              "net": "-0.466607700"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": false,
+            "entry_arrival_ns": 1709251253300000000,
+            "exit_arrival_ns": 1709251270350000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251253300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4301,
+              "stop_index": 4302,
+              "successor_ns": 1709251253313000000,
+              "source_lines": [
+                4355
+              ],
+              "prices": [
+                "1.079"
+              ],
+              "sizes": [
+                "13629.6"
+              ],
+              "price_lower": "1.079",
+              "price_upper": "1.079",
+              "minimum_touch_quantity": "13629.6"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251270350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6068,
+              "stop_index": 6070,
+              "successor_ns": 1709251270353000000,
+              "source_lines": [
+                6139,
+                6140
+              ],
+              "prices": [
+                "1.089",
+                "1.089"
+              ],
+              "sizes": [
+                "10090.0",
+                "10090.0"
+              ],
+              "price_lower": "1.089",
+              "price_upper": "1.089",
+              "minimum_touch_quantity": "10090.0"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.079",
+              "exit_price": "1.089",
+              "gross": "-1.800",
+              "fees": "0.2341440",
+              "adverse": "0.0390240",
+              "net": "-2.0731680"
+            },
+            "upper": {
+              "entry_price": "1.079",
+              "exit_price": "1.089",
+              "gross": "-1.800",
+              "fees": "0.2341440",
+              "adverse": "0.0390240",
+              "net": "-2.0731680"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 320,
+            "long": false,
+            "entry_arrival_ns": 1711951229050000000,
+            "exit_arrival_ns": 1711951246100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951229050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5835,
+              "stop_index": 5837,
+              "successor_ns": 1711951229070000000,
+              "source_lines": [
+                5865,
+                5866
+              ],
+              "prices": [
+                "0.6053",
+                "0.6053"
+              ],
+              "sizes": [
+                "40948.1",
+                "40948.1"
+              ],
+              "price_lower": "0.6053",
+              "price_upper": "0.6053",
+              "minimum_touch_quantity": "40948.1"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951246100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8949,
+              "stop_index": 8950,
+              "successor_ns": 1711951246107000000,
+              "source_lines": [
+                8996
+              ],
+              "prices": [
+                "0.6065"
+              ],
+              "sizes": [
+                "35464.7"
+              ],
+              "price_lower": "0.6065",
+              "price_upper": "0.6065",
+              "minimum_touch_quantity": "35464.7"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.6053",
+              "exit_price": "0.6065",
+              "gross": "-0.3840",
+              "fees": "0.23266560",
+              "adverse": "0.03877760",
+              "net": "-0.65544320"
+            },
+            "upper": {
+              "entry_price": "0.6053",
+              "exit_price": "0.6065",
+              "gross": "-0.3840",
+              "fees": "0.23266560",
+              "adverse": "0.03877760",
+              "net": "-0.65544320"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "no_fill",
+            "quantity": 780,
+            "long": false,
+            "entry_arrival_ns": 1725170447050000000,
+            "exit_arrival_ns": 1725170464100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170447050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6635,
+              "stop_index": 6636,
+              "successor_ns": 1725170447066000000,
+              "source_lines": [
+                6683
+              ],
+              "prices": [
+                "0.2505"
+              ],
+              "sizes": [
+                "14864"
+              ],
+              "price_lower": "0.2505",
+              "price_upper": "0.2505",
+              "minimum_touch_quantity": "14864"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170464100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 12121,
+              "stop_index": 12122,
+              "successor_ns": 1725170464111000000,
+              "source_lines": [
+                12186
+              ],
+              "prices": [
+                "0.2488"
+              ],
+              "sizes": [
+                "3414"
+              ],
+              "price_lower": "0.2488",
+              "price_upper": "0.2488",
+              "minimum_touch_quantity": "3414"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "no_fill"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 50,
+            "long": true,
+            "entry_arrival_ns": 1725192037300000000,
+            "exit_arrival_ns": 1725192054350000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725192037300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2111,
+              "stop_index": 2112,
+              "successor_ns": 1725192037308000000,
+              "source_lines": [
+                2149
+              ],
+              "prices": [
+                "3.9310000"
+              ],
+              "sizes": [
+                "361.2"
+              ],
+              "price_lower": "3.9310000",
+              "price_upper": "3.9310000",
+              "minimum_touch_quantity": "361.2"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725192054350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3018,
+              "stop_index": 3020,
+              "successor_ns": 1725192054376000000,
+              "source_lines": [
+                3073,
+                3074
+              ],
+              "prices": [
+                "3.9270000",
+                "3.9270000"
+              ],
+              "sizes": [
+                "2138.3",
+                "2369.7"
+              ],
+              "price_lower": "3.9270000",
+              "price_upper": "3.9270000",
+              "minimum_touch_quantity": "2138.3"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2000000",
+              "fees": "0.23574000000",
+              "adverse": "0.03929000000",
+              "net": "-0.47503000000"
+            },
+            "upper": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2000000",
+              "fees": "0.23574000000",
+              "adverse": "0.03929000000",
+              "net": "-0.47503000000"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_shock",
+      "scenario": "fees_2x",
+      "complete": true,
+      "net_lower": "-4.60560510000",
+      "net_upper": "-4.60560510000",
+      "known_component_lower": "-4.60560510000",
+      "known_component_upper": "-4.60560510000",
+      "completed_round_trips": 4,
+      "outcomes": {
+        "conditional_complete": 4,
+        "no_fill": 1
+      },
+      "daily_lower": {
+        "2024-02-01": "-0.699414300",
+        "2024-03-01": "-2.3073120",
+        "2024-04-01": "-0.88810880",
+        "2024-09-01": "-0.71077000000"
+      },
+      "drop_best_three_dates_lower": "-2.3073120",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": false,
+            "entry_arrival_ns": 1706745635550000000,
+            "exit_arrival_ns": 1706745652600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745635550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3275,
+              "stop_index": 3276,
+              "successor_ns": 1706745635571000000,
+              "source_lines": [
+                3311
+              ],
+              "prices": [
+                "0.49720"
+              ],
+              "sizes": [
+                "19353"
+              ],
+              "price_lower": "0.49720",
+              "price_upper": "0.49720",
+              "minimum_touch_quantity": "19353"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745652600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4589,
+              "stop_index": 4590,
+              "successor_ns": 1706745652658000000,
+              "source_lines": [
+                4642
+              ],
+              "prices": [
+                "0.49770"
+              ],
+              "sizes": [
+                "18408"
+              ],
+              "price_lower": "0.49770",
+              "price_upper": "0.49770",
+              "minimum_touch_quantity": "18408"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49770",
+              "gross": "-0.19500",
+              "fees": "0.465613200",
+              "adverse": "0.038801100",
+              "net": "-0.699414300"
+            },
+            "upper": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49770",
+              "gross": "-0.19500",
+              "fees": "0.465613200",
+              "adverse": "0.038801100",
+              "net": "-0.699414300"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": false,
+            "entry_arrival_ns": 1709251253300000000,
+            "exit_arrival_ns": 1709251270350000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251253300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4301,
+              "stop_index": 4302,
+              "successor_ns": 1709251253313000000,
+              "source_lines": [
+                4355
+              ],
+              "prices": [
+                "1.079"
+              ],
+              "sizes": [
+                "13629.6"
+              ],
+              "price_lower": "1.079",
+              "price_upper": "1.079",
+              "minimum_touch_quantity": "13629.6"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251270350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6068,
+              "stop_index": 6070,
+              "successor_ns": 1709251270353000000,
+              "source_lines": [
+                6139,
+                6140
+              ],
+              "prices": [
+                "1.089",
+                "1.089"
+              ],
+              "sizes": [
+                "10090.0",
+                "10090.0"
+              ],
+              "price_lower": "1.089",
+              "price_upper": "1.089",
+              "minimum_touch_quantity": "10090.0"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.079",
+              "exit_price": "1.089",
+              "gross": "-1.800",
+              "fees": "0.4682880",
+              "adverse": "0.0390240",
+              "net": "-2.3073120"
+            },
+            "upper": {
+              "entry_price": "1.079",
+              "exit_price": "1.089",
+              "gross": "-1.800",
+              "fees": "0.4682880",
+              "adverse": "0.0390240",
+              "net": "-2.3073120"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 320,
+            "long": false,
+            "entry_arrival_ns": 1711951229050000000,
+            "exit_arrival_ns": 1711951246100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951229050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5835,
+              "stop_index": 5837,
+              "successor_ns": 1711951229070000000,
+              "source_lines": [
+                5865,
+                5866
+              ],
+              "prices": [
+                "0.6053",
+                "0.6053"
+              ],
+              "sizes": [
+                "40948.1",
+                "40948.1"
+              ],
+              "price_lower": "0.6053",
+              "price_upper": "0.6053",
+              "minimum_touch_quantity": "40948.1"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951246100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8949,
+              "stop_index": 8950,
+              "successor_ns": 1711951246107000000,
+              "source_lines": [
+                8996
+              ],
+              "prices": [
+                "0.6065"
+              ],
+              "sizes": [
+                "35464.7"
+              ],
+              "price_lower": "0.6065",
+              "price_upper": "0.6065",
+              "minimum_touch_quantity": "35464.7"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.6053",
+              "exit_price": "0.6065",
+              "gross": "-0.3840",
+              "fees": "0.46533120",
+              "adverse": "0.03877760",
+              "net": "-0.88810880"
+            },
+            "upper": {
+              "entry_price": "0.6053",
+              "exit_price": "0.6065",
+              "gross": "-0.3840",
+              "fees": "0.46533120",
+              "adverse": "0.03877760",
+              "net": "-0.88810880"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "no_fill",
+            "quantity": 780,
+            "long": false,
+            "entry_arrival_ns": 1725170447050000000,
+            "exit_arrival_ns": 1725170464100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170447050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6635,
+              "stop_index": 6636,
+              "successor_ns": 1725170447066000000,
+              "source_lines": [
+                6683
+              ],
+              "prices": [
+                "0.2505"
+              ],
+              "sizes": [
+                "14864"
+              ],
+              "price_lower": "0.2505",
+              "price_upper": "0.2505",
+              "minimum_touch_quantity": "14864"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170464100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 12121,
+              "stop_index": 12122,
+              "successor_ns": 1725170464111000000,
+              "source_lines": [
+                12186
+              ],
+              "prices": [
+                "0.2488"
+              ],
+              "sizes": [
+                "3414"
+              ],
+              "price_lower": "0.2488",
+              "price_upper": "0.2488",
+              "minimum_touch_quantity": "3414"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "no_fill"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 50,
+            "long": true,
+            "entry_arrival_ns": 1725192037300000000,
+            "exit_arrival_ns": 1725192054350000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725192037300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2111,
+              "stop_index": 2112,
+              "successor_ns": 1725192037308000000,
+              "source_lines": [
+                2149
+              ],
+              "prices": [
+                "3.9310000"
+              ],
+              "sizes": [
+                "361.2"
+              ],
+              "price_lower": "3.9310000",
+              "price_upper": "3.9310000",
+              "minimum_touch_quantity": "361.2"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725192054350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3018,
+              "stop_index": 3020,
+              "successor_ns": 1725192054376000000,
+              "source_lines": [
+                3073,
+                3074
+              ],
+              "prices": [
+                "3.9270000",
+                "3.9270000"
+              ],
+              "sizes": [
+                "2138.3",
+                "2369.7"
+              ],
+              "price_lower": "3.9270000",
+              "price_upper": "3.9270000",
+              "minimum_touch_quantity": "2138.3"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2000000",
+              "fees": "0.47148000000",
+              "adverse": "0.03929000000",
+              "net": "-0.71077000000"
+            },
+            "upper": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2000000",
+              "fees": "0.47148000000",
+              "adverse": "0.03929000000",
+              "net": "-0.71077000000"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_shock",
+      "scenario": "adverse_2x",
+      "complete": true,
+      "net_lower": "-3.82614160000",
+      "net_upper": "-3.82614160000",
+      "known_component_lower": "-3.82614160000",
+      "known_component_upper": "-3.82614160000",
+      "completed_round_trips": 4,
+      "outcomes": {
+        "conditional_complete": 4,
+        "no_fill": 1
+      },
+      "daily_lower": {
+        "2024-02-01": "-0.505408800",
+        "2024-03-01": "-2.1121920",
+        "2024-04-01": "-0.69422080",
+        "2024-09-01": "-0.51432000000"
+      },
+      "drop_best_three_dates_lower": "-2.1121920",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": false,
+            "entry_arrival_ns": 1706745635550000000,
+            "exit_arrival_ns": 1706745652600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745635550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3275,
+              "stop_index": 3276,
+              "successor_ns": 1706745635571000000,
+              "source_lines": [
+                3311
+              ],
+              "prices": [
+                "0.49720"
+              ],
+              "sizes": [
+                "19353"
+              ],
+              "price_lower": "0.49720",
+              "price_upper": "0.49720",
+              "minimum_touch_quantity": "19353"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745652600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4589,
+              "stop_index": 4590,
+              "successor_ns": 1706745652658000000,
+              "source_lines": [
+                4642
+              ],
+              "prices": [
+                "0.49770"
+              ],
+              "sizes": [
+                "18408"
+              ],
+              "price_lower": "0.49770",
+              "price_upper": "0.49770",
+              "minimum_touch_quantity": "18408"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49770",
+              "gross": "-0.19500",
+              "fees": "0.232806600",
+              "adverse": "0.077602200",
+              "net": "-0.505408800"
+            },
+            "upper": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49770",
+              "gross": "-0.19500",
+              "fees": "0.232806600",
+              "adverse": "0.077602200",
+              "net": "-0.505408800"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": false,
+            "entry_arrival_ns": 1709251253300000000,
+            "exit_arrival_ns": 1709251270350000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251253300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4301,
+              "stop_index": 4302,
+              "successor_ns": 1709251253313000000,
+              "source_lines": [
+                4355
+              ],
+              "prices": [
+                "1.079"
+              ],
+              "sizes": [
+                "13629.6"
+              ],
+              "price_lower": "1.079",
+              "price_upper": "1.079",
+              "minimum_touch_quantity": "13629.6"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251270350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6068,
+              "stop_index": 6070,
+              "successor_ns": 1709251270353000000,
+              "source_lines": [
+                6139,
+                6140
+              ],
+              "prices": [
+                "1.089",
+                "1.089"
+              ],
+              "sizes": [
+                "10090.0",
+                "10090.0"
+              ],
+              "price_lower": "1.089",
+              "price_upper": "1.089",
+              "minimum_touch_quantity": "10090.0"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.079",
+              "exit_price": "1.089",
+              "gross": "-1.800",
+              "fees": "0.2341440",
+              "adverse": "0.0780480",
+              "net": "-2.1121920"
+            },
+            "upper": {
+              "entry_price": "1.079",
+              "exit_price": "1.089",
+              "gross": "-1.800",
+              "fees": "0.2341440",
+              "adverse": "0.0780480",
+              "net": "-2.1121920"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 320,
+            "long": false,
+            "entry_arrival_ns": 1711951229050000000,
+            "exit_arrival_ns": 1711951246100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951229050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5835,
+              "stop_index": 5837,
+              "successor_ns": 1711951229070000000,
+              "source_lines": [
+                5865,
+                5866
+              ],
+              "prices": [
+                "0.6053",
+                "0.6053"
+              ],
+              "sizes": [
+                "40948.1",
+                "40948.1"
+              ],
+              "price_lower": "0.6053",
+              "price_upper": "0.6053",
+              "minimum_touch_quantity": "40948.1"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951246100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8949,
+              "stop_index": 8950,
+              "successor_ns": 1711951246107000000,
+              "source_lines": [
+                8996
+              ],
+              "prices": [
+                "0.6065"
+              ],
+              "sizes": [
+                "35464.7"
+              ],
+              "price_lower": "0.6065",
+              "price_upper": "0.6065",
+              "minimum_touch_quantity": "35464.7"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.6053",
+              "exit_price": "0.6065",
+              "gross": "-0.3840",
+              "fees": "0.23266560",
+              "adverse": "0.07755520",
+              "net": "-0.69422080"
+            },
+            "upper": {
+              "entry_price": "0.6053",
+              "exit_price": "0.6065",
+              "gross": "-0.3840",
+              "fees": "0.23266560",
+              "adverse": "0.07755520",
+              "net": "-0.69422080"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "no_fill",
+            "quantity": 780,
+            "long": false,
+            "entry_arrival_ns": 1725170447050000000,
+            "exit_arrival_ns": 1725170464100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170447050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6635,
+              "stop_index": 6636,
+              "successor_ns": 1725170447066000000,
+              "source_lines": [
+                6683
+              ],
+              "prices": [
+                "0.2505"
+              ],
+              "sizes": [
+                "14864"
+              ],
+              "price_lower": "0.2505",
+              "price_upper": "0.2505",
+              "minimum_touch_quantity": "14864"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170464100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 12121,
+              "stop_index": 12122,
+              "successor_ns": 1725170464111000000,
+              "source_lines": [
+                12186
+              ],
+              "prices": [
+                "0.2488"
+              ],
+              "sizes": [
+                "3414"
+              ],
+              "price_lower": "0.2488",
+              "price_upper": "0.2488",
+              "minimum_touch_quantity": "3414"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "no_fill"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 50,
+            "long": true,
+            "entry_arrival_ns": 1725192037300000000,
+            "exit_arrival_ns": 1725192054350000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725192037300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2111,
+              "stop_index": 2112,
+              "successor_ns": 1725192037308000000,
+              "source_lines": [
+                2149
+              ],
+              "prices": [
+                "3.9310000"
+              ],
+              "sizes": [
+                "361.2"
+              ],
+              "price_lower": "3.9310000",
+              "price_upper": "3.9310000",
+              "minimum_touch_quantity": "361.2"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725192054350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3018,
+              "stop_index": 3020,
+              "successor_ns": 1725192054376000000,
+              "source_lines": [
+                3073,
+                3074
+              ],
+              "prices": [
+                "3.9270000",
+                "3.9270000"
+              ],
+              "sizes": [
+                "2138.3",
+                "2369.7"
+              ],
+              "price_lower": "3.9270000",
+              "price_upper": "3.9270000",
+              "minimum_touch_quantity": "2138.3"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2000000",
+              "fees": "0.23574000000",
+              "adverse": "0.07858000000",
+              "net": "-0.51432000000"
+            },
+            "upper": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2000000",
+              "fees": "0.23574000000",
+              "adverse": "0.07858000000",
+              "net": "-0.51432000000"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_shock",
+      "scenario": "latency_250ms",
+      "complete": true,
+      "net_lower": "-2.99259580000",
+      "net_upper": "-2.99259580000",
+      "known_component_lower": "-2.99259580000",
+      "known_component_upper": "-2.99259580000",
+      "completed_round_trips": 4,
+      "outcomes": {
+        "conditional_complete": 4,
+        "no_fill": 1
+      },
+      "daily_lower": {
+        "2024-02-01": "-0.427580400",
+        "2024-03-01": "-1.3526640",
+        "2024-04-01": "-0.68728640",
+        "2024-09-01": "-0.52506500000"
+      },
+      "drop_best_three_dates_lower": "-1.3526640",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": false,
+            "entry_arrival_ns": 1706745634800000000,
+            "exit_arrival_ns": 1706745650350000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745634800000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3100,
+              "stop_index": 3102,
+              "successor_ns": 1706745634806000000,
+              "source_lines": [
+                3135,
+                3136
+              ],
+              "prices": [
+                "0.49720",
+                "0.49720"
+              ],
+              "sizes": [
+                "27290",
+                "27290"
+              ],
+              "price_lower": "0.49720",
+              "price_upper": "0.49720",
+              "minimum_touch_quantity": "27290"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745650350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4510,
+              "stop_index": 4512,
+              "successor_ns": 1706745650365000000,
+              "source_lines": [
+                4561,
+                4562
+              ],
+              "prices": [
+                "0.49760",
+                "0.49760"
+              ],
+              "sizes": [
+                "60555",
+                "60555"
+              ],
+              "price_lower": "0.49760",
+              "price_upper": "0.49760",
+              "minimum_touch_quantity": "60555"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49760",
+              "gross": "-0.15600",
+              "fees": "0.232783200",
+              "adverse": "0.038797200",
+              "net": "-0.427580400"
+            },
+            "upper": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49760",
+              "gross": "-0.15600",
+              "fees": "0.232783200",
+              "adverse": "0.038797200",
+              "net": "-0.427580400"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": false,
+            "entry_arrival_ns": 1709251252550000000,
+            "exit_arrival_ns": 1709251268100000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251252550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4255,
+              "stop_index": 4256,
+              "successor_ns": 1709251252555000000,
+              "source_lines": [
+                4308
+              ],
+              "prices": [
+                "1.079"
+              ],
+              "sizes": [
+                "14222.0"
+              ],
+              "price_lower": "1.079",
+              "price_upper": "1.079",
+              "minimum_touch_quantity": "14222.0"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251268100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5731,
+              "stop_index": 5732,
+              "successor_ns": 1709251268142000000,
+              "source_lines": [
+                5800
+              ],
+              "prices": [
+                "1.085"
+              ],
+              "sizes": [
+                "11943.4"
+              ],
+              "price_lower": "1.085",
+              "price_upper": "1.085",
+              "minimum_touch_quantity": "11943.4"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.079",
+              "exit_price": "1.085",
+              "gross": "-1.080",
+              "fees": "0.2337120",
+              "adverse": "0.0389520",
+              "net": "-1.3526640"
+            },
+            "upper": {
+              "entry_price": "1.079",
+              "exit_price": "1.085",
+              "gross": "-1.080",
+              "fees": "0.2337120",
+              "adverse": "0.0389520",
+              "net": "-1.3526640"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 320,
+            "long": false,
+            "entry_arrival_ns": 1711951228300000000,
+            "exit_arrival_ns": 1711951243850000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951228300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5377,
+              "stop_index": 5379,
+              "successor_ns": 1711951228302000000,
+              "source_lines": [
+                5406,
+                5407
+              ],
+              "prices": [
+                "0.6049",
+                "0.6049"
+              ],
+              "sizes": [
+                "70217.6",
+                "65443.3"
+              ],
+              "price_lower": "0.6049",
+              "price_upper": "0.6049",
+              "minimum_touch_quantity": "65443.3"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951243850000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8713,
+              "stop_index": 8715,
+              "successor_ns": 1711951243857000000,
+              "source_lines": [
+                8757,
+                8758
+              ],
+              "prices": [
+                "0.6062",
+                "0.6062"
+              ],
+              "sizes": [
+                "19830.9",
+                "19830.9"
+              ],
+              "price_lower": "0.6062",
+              "price_upper": "0.6062",
+              "minimum_touch_quantity": "19830.9"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.6049",
+              "exit_price": "0.6062",
+              "gross": "-0.4160",
+              "fees": "0.23253120",
+              "adverse": "0.03875520",
+              "net": "-0.68728640"
+            },
+            "upper": {
+              "entry_price": "0.6049",
+              "exit_price": "0.6062",
+              "gross": "-0.4160",
+              "fees": "0.23253120",
+              "adverse": "0.03875520",
+              "net": "-0.68728640"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "no_fill",
+            "quantity": 780,
+            "long": false,
+            "entry_arrival_ns": 1725170446300000000,
+            "exit_arrival_ns": 1725170461850000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170446300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6563,
+              "stop_index": 6564,
+              "successor_ns": 1725170446324000000,
+              "source_lines": [
+                6610
+              ],
+              "prices": [
+                "0.2507"
+              ],
+              "sizes": [
+                "233"
+              ],
+              "price_lower": "0.2507",
+              "price_upper": "0.2507",
+              "minimum_touch_quantity": "233"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170461850000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 11603,
+              "stop_index": 11604,
+              "successor_ns": 1725170461991000000,
+              "source_lines": [
+                11665
+              ],
+              "prices": [
+                "0.2507"
+              ],
+              "sizes": [
+                "14502"
+              ],
+              "price_lower": "0.2507",
+              "price_upper": "0.2507",
+              "minimum_touch_quantity": "14502"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "no_fill"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 50,
+            "long": true,
+            "entry_arrival_ns": 1725192036550000000,
+            "exit_arrival_ns": 1725192052100000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725192036550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2040,
+              "stop_index": 2041,
+              "successor_ns": 1725192036561000000,
+              "source_lines": [
+                2077
+              ],
+              "prices": [
+                "3.9320000"
+              ],
+              "sizes": [
+                "461.8"
+              ],
+              "price_lower": "3.9320000",
+              "price_upper": "3.9320000",
+              "minimum_touch_quantity": "461.8"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725192052100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2902,
+              "stop_index": 2903,
+              "successor_ns": 1725192052153000000,
+              "source_lines": [
+                2954
+              ],
+              "prices": [
+                "3.9270000"
+              ],
+              "sizes": [
+                "422.2"
+              ],
+              "price_lower": "3.9270000",
+              "price_upper": "3.9270000",
+              "minimum_touch_quantity": "422.2"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "3.9320000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2500000",
+              "fees": "0.23577000000",
+              "adverse": "0.03929500000",
+              "net": "-0.52506500000"
+            },
+            "upper": {
+              "entry_price": "3.9320000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2500000",
+              "fees": "0.23577000000",
+              "adverse": "0.03929500000",
+              "net": "-0.52506500000"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_shock",
+      "scenario": "latency_3s",
+      "complete": true,
+      "net_lower": "-3.97589220000",
+      "net_upper": "-3.97589220000",
+      "known_component_lower": "-3.97589220000",
+      "known_component_upper": "-3.97589220000",
+      "completed_round_trips": 4,
+      "outcomes": {
+        "conditional_complete": 4,
+        "no_fill": 1
+      },
+      "daily_lower": {
+        "2024-02-01": "-0.739635000",
+        "2024-03-01": "-2.0736720",
+        "2024-04-01": "-0.68755520",
+        "2024-09-01": "-0.47503000000"
+      },
+      "drop_best_three_dates_lower": "-2.0736720",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": false,
+            "entry_arrival_ns": 1706745637550000000,
+            "exit_arrival_ns": 1706745658600000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745637550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3519,
+              "stop_index": 3521,
+              "successor_ns": 1706745637566000000,
+              "source_lines": [
+                3557,
+                3558
+              ],
+              "prices": [
+                "0.49690",
+                "0.49690"
+              ],
+              "sizes": [
+                "13934",
+                "12290"
+              ],
+              "price_lower": "0.49690",
+              "price_upper": "0.49690",
+              "minimum_touch_quantity": "12290"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745658600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4952,
+              "stop_index": 4953,
+              "successor_ns": 1706745658719000000,
+              "source_lines": [
+                5011
+              ],
+              "prices": [
+                "0.49810"
+              ],
+              "sizes": [
+                "26846"
+              ],
+              "price_lower": "0.49810",
+              "price_upper": "0.49810",
+              "minimum_touch_quantity": "26846"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49690",
+              "exit_price": "0.49810",
+              "gross": "-0.46800",
+              "fees": "0.232830000",
+              "adverse": "0.038805000",
+              "net": "-0.739635000"
+            },
+            "upper": {
+              "entry_price": "0.49690",
+              "exit_price": "0.49810",
+              "gross": "-0.46800",
+              "fees": "0.232830000",
+              "adverse": "0.038805000",
+              "net": "-0.739635000"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": false,
+            "entry_arrival_ns": 1709251255300000000,
+            "exit_arrival_ns": 1709251276350000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251255300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4454,
+              "stop_index": 4455,
+              "successor_ns": 1709251255428000000,
+              "source_lines": [
+                4510
+              ],
+              "prices": [
+                "1.081"
+              ],
+              "sizes": [
+                "12264.3"
+              ],
+              "price_lower": "1.081",
+              "price_upper": "1.081",
+              "minimum_touch_quantity": "12264.3"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251276350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 7131,
+              "stop_index": 7132,
+              "successor_ns": 1709251276358000000,
+              "source_lines": [
+                7208
+              ],
+              "prices": [
+                "1.091"
+              ],
+              "sizes": [
+                "4803.1"
+              ],
+              "price_lower": "1.091",
+              "price_upper": "1.091",
+              "minimum_touch_quantity": "4803.1"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.081",
+              "exit_price": "1.091",
+              "gross": "-1.800",
+              "fees": "0.2345760",
+              "adverse": "0.0390960",
+              "net": "-2.0736720"
+            },
+            "upper": {
+              "entry_price": "1.081",
+              "exit_price": "1.091",
+              "gross": "-1.800",
+              "fees": "0.2345760",
+              "adverse": "0.0390960",
+              "net": "-2.0736720"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 320,
+            "long": false,
+            "entry_arrival_ns": 1711951231050000000,
+            "exit_arrival_ns": 1711951252100000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951231050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6345,
+              "stop_index": 6346,
+              "successor_ns": 1711951231054000000,
+              "source_lines": [
+                6376
+              ],
+              "prices": [
+                "0.6055"
+              ],
+              "sizes": [
+                "29289.1"
+              ],
+              "price_lower": "0.6055",
+              "price_upper": "0.6055",
+              "minimum_touch_quantity": "29289.1"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951252100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 9899,
+              "stop_index": 9900,
+              "successor_ns": 1711951252109000000,
+              "source_lines": [
+                9952
+              ],
+              "prices": [
+                "0.6068"
+              ],
+              "sizes": [
+                "37254.4"
+              ],
+              "price_lower": "0.6068",
+              "price_upper": "0.6068",
+              "minimum_touch_quantity": "37254.4"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.6055",
+              "exit_price": "0.6068",
+              "gross": "-0.4160",
+              "fees": "0.23276160",
+              "adverse": "0.03879360",
+              "net": "-0.68755520"
+            },
+            "upper": {
+              "entry_price": "0.6055",
+              "exit_price": "0.6068",
+              "gross": "-0.4160",
+              "fees": "0.23276160",
+              "adverse": "0.03879360",
+              "net": "-0.68755520"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "no_fill",
+            "quantity": 780,
+            "long": false,
+            "entry_arrival_ns": 1725170449050000000,
+            "exit_arrival_ns": 1725170470100000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170449050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 7256,
+              "stop_index": 7257,
+              "successor_ns": 1725170449065000000,
+              "source_lines": [
+                7306
+              ],
+              "prices": [
+                "0.2487"
+              ],
+              "sizes": [
+                "4963"
+              ],
+              "price_lower": "0.2487",
+              "price_upper": "0.2487",
+              "minimum_touch_quantity": "4963"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170470100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 13083,
+              "stop_index": 13085,
+              "successor_ns": 1725170470103000000,
+              "source_lines": [
+                13154,
+                13155
+              ],
+              "prices": [
+                "0.2497",
+                "0.2497"
+              ],
+              "sizes": [
+                "8209",
+                "10209"
+              ],
+              "price_lower": "0.2497",
+              "price_upper": "0.2497",
+              "minimum_touch_quantity": "8209"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "no_fill"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 50,
+            "long": true,
+            "entry_arrival_ns": 1725192039300000000,
+            "exit_arrival_ns": 1725192060350000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725192039300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2194,
+              "stop_index": 2195,
+              "successor_ns": 1725192039309000000,
+              "source_lines": [
+                2234
+              ],
+              "prices": [
+                "3.9310000"
+              ],
+              "sizes": [
+                "906.7"
+              ],
+              "price_lower": "3.9310000",
+              "price_upper": "3.9310000",
+              "minimum_touch_quantity": "906.7"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725192060350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3178,
+              "stop_index": 3179,
+              "successor_ns": 1725192060391000000,
+              "source_lines": [
+                3239
+              ],
+              "prices": [
+                "3.9270000"
+              ],
+              "sizes": [
+                "2336.7"
+              ],
+              "price_lower": "3.9270000",
+              "price_upper": "3.9270000",
+              "minimum_touch_quantity": "2336.7"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2000000",
+              "fees": "0.23574000000",
+              "adverse": "0.03929000000",
+              "net": "-0.47503000000"
+            },
+            "upper": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2000000",
+              "fees": "0.23574000000",
+              "adverse": "0.03929000000",
+              "net": "-0.47503000000"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_shock",
+      "scenario": "clock_100ms",
+      "complete": false,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-3.11480570000",
+      "known_component_upper": "-2.83467970000",
+      "completed_round_trips": 3,
+      "outcomes": {
+        "conditional_complete": 3,
+        "unknown_entry": 1,
+        "no_fill": 1
+      },
+      "daily_lower": null,
+      "drop_best_three_dates_lower": null,
+      "unknown_dates": [
+        "2024-04-01"
+      ],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": false,
+            "entry_arrival_ns": 1706745635550000000,
+            "exit_arrival_ns": 1706745652600000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745635550000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3271,
+              "stop_index": 3280,
+              "successor_ns": 1706745635693000000,
+              "source_lines": [
+                3307,
+                3308,
+                3309,
+                3310,
+                3311,
+                3312,
+                3313,
+                3314,
+                3315
+              ],
+              "prices": [
+                "0.49720",
+                "0.49720",
+                "0.49720",
+                "0.49720",
+                "0.49720",
+                "0.49720",
+                "0.49720",
+                "0.49720",
+                "0.49720"
+              ],
+              "sizes": [
+                "18997",
+                "18997",
+                "19231",
+                "19353",
+                "19353",
+                "19353",
+                "19416",
+                "19395",
+                "19395"
+              ],
+              "price_lower": "0.49720",
+              "price_upper": "0.49720",
+              "minimum_touch_quantity": "18997"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745652600000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4589,
+              "stop_index": 4591,
+              "successor_ns": 1706745652728000000,
+              "source_lines": [
+                4642,
+                4643
+              ],
+              "prices": [
+                "0.49770",
+                "0.49770"
+              ],
+              "sizes": [
+                "18408",
+                "18722"
+              ],
+              "price_lower": "0.49770",
+              "price_upper": "0.49770",
+              "minimum_touch_quantity": "18408"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49770",
+              "gross": "-0.19500",
+              "fees": "0.232806600",
+              "adverse": "0.038801100",
+              "net": "-0.466607700"
+            },
+            "upper": {
+              "entry_price": "0.49720",
+              "exit_price": "0.49770",
+              "gross": "-0.19500",
+              "fees": "0.232806600",
+              "adverse": "0.038801100",
+              "net": "-0.466607700"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": false,
+            "entry_arrival_ns": 1709251253300000000,
+            "exit_arrival_ns": 1709251270350000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251253300000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4301,
+              "stop_index": 4304,
+              "successor_ns": 1709251253417000000,
+              "source_lines": [
+                4355,
+                4356,
+                4357
+              ],
+              "prices": [
+                "1.079",
+                "1.079",
+                "1.079"
+              ],
+              "sizes": [
+                "13629.6",
+                "13401.7",
+                "13401.7"
+              ],
+              "price_lower": "1.079",
+              "price_upper": "1.079",
+              "minimum_touch_quantity": "13401.7"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251270350000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6035,
+              "stop_index": 6079,
+              "successor_ns": 1709251270464000000,
+              "source_lines": [
+                6106,
+                6107,
+                6108,
+                6109,
+                6110,
+                6111,
+                6112,
+                6113,
+                6114,
+                6115,
+                6116,
+                6117,
+                6118,
+                6119,
+                6120,
+                6121,
+                6122,
+                6123,
+                6124,
+                6125,
+                6126,
+                6127,
+                6128,
+                6129,
+                6130,
+                6131,
+                6132,
+                6133,
+                6134,
+                6135,
+                6136,
+                6137,
+                6138,
+                6139,
+                6140,
+                6141,
+                6142,
+                6143,
+                6144,
+                6145,
+                6146,
+                6147,
+                6148,
+                6149
+              ],
+              "prices": [
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089",
+                "1.089"
+              ],
+              "sizes": [
+                "8868.2",
+                "10668.2",
+                "8868.2",
+                "8868.2",
+                "5622.4",
+                "5622.4",
+                "5622.4",
+                "9870.3",
+                "9870.3",
+                "8784.0",
+                "8409.7",
+                "8409.7",
+                "8409.7",
+                "8368.2",
+                "8368.2",
+                "10368.2",
+                "10368.2",
+                "10352.3",
+                "10239.3",
+                "10239.3",
+                "10239.3",
+                "10239.3",
+                "10205.6",
+                "10269.1",
+                "10235.4",
+                "10705.9",
+                "10705.9",
+                "10551.9",
+                "10344.4",
+                "10244.5",
+                "10090.0",
+                "10090.0",
+                "11890.0",
+                "10090.0",
+                "10090.0",
+                "10090.0",
+                "11890.0",
+                "10090.0",
+                "10090.0",
+                "10090.0",
+                "9937.3",
+                "9937.3",
+                "9482.9",
+                "9458.7"
+              ],
+              "price_lower": "1.088",
+              "price_upper": "1.089",
+              "minimum_touch_quantity": "5622.4"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.079",
+              "exit_price": "1.089",
+              "gross": "-1.800",
+              "fees": "0.2341440",
+              "adverse": "0.0390240",
+              "net": "-2.0731680"
+            },
+            "upper": {
+              "entry_price": "1.079",
+              "exit_price": "1.088",
+              "gross": "-1.620",
+              "fees": "0.2340360",
+              "adverse": "0.0390060",
+              "net": "-1.8930420"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "unknown_entry",
+            "quantity": 320,
+            "long": false,
+            "entry_arrival_ns": 1711951229050000000,
+            "exit_arrival_ns": 1711951246100000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951229050000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5797,
+              "stop_index": 5858,
+              "successor_ns": 1711951229152000000,
+              "source_lines": [
+                5826,
+                5827,
+                5828,
+                5829,
+                5830,
+                5831,
+                5832,
+                5833,
+                5834,
+                5835,
+                5836,
+                5837,
+                5838,
+                5839,
+                5840,
+                5841,
+                5842,
+                5843,
+                5844,
+                5845,
+                5846,
+                5847,
+                5848,
+                5849,
+                5850,
+                5851,
+                5852,
+                5853,
+                5854,
+                5855,
+                5856,
+                5857,
+                5858,
+                5859,
+                5860,
+                5862,
+                5863,
+                5864,
+                5865,
+                5866,
+                5867,
+                5868,
+                5869,
+                5870,
+                5871,
+                5872,
+                5873,
+                5874,
+                5875,
+                5876,
+                5877,
+                5878,
+                5879,
+                5880,
+                5881,
+                5882,
+                5883,
+                5884,
+                5885,
+                5886,
+                5887
+              ],
+              "prices": [
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6053",
+                "0.6054",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052",
+                "0.6052"
+              ],
+              "sizes": [
+                "17462.1",
+                "17462.1",
+                "17462.1",
+                "17462.1",
+                "17497.8",
+                "17497.8",
+                "17560.8",
+                "7555.9",
+                "7555.9",
+                "39656.7",
+                "157.0",
+                "36353.7",
+                "36353.7",
+                "36353.7",
+                "36353.7",
+                "36353.7",
+                "34713.4",
+                "34713.4",
+                "34713.4",
+                "29713.4",
+                "29713.4",
+                "29713.4",
+                "29555.4",
+                "29555.4",
+                "29555.4",
+                "24555.4",
+                "21211.2",
+                "21211.2",
+                "22863.1",
+                "22863.1",
+                "30525.3",
+                "30983.6",
+                "30983.6",
+                "35983.6",
+                "35948.1",
+                "40948.1",
+                "40948.1",
+                "40948.1",
+                "40948.1",
+                "40948.1",
+                "40948.1",
+                "41106.1",
+                "41264.1",
+                "41264.1",
+                "41302.7",
+                "41302.7",
+                "39650.8",
+                "14890.2",
+                "65506.7",
+                "65506.7",
+                "65506.7",
+                "65506.7",
+                "65506.7",
+                "70506.7",
+                "70506.7",
+                "70506.7",
+                "70011.7",
+                "70011.7",
+                "70011.7",
+                "69846.5",
+                "69846.5"
+              ],
+              "price_lower": "0.6052",
+              "price_upper": "0.6054",
+              "minimum_touch_quantity": "157.0"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951246100000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8943,
+              "stop_index": 8956,
+              "successor_ns": 1711951246228000000,
+              "source_lines": [
+                8989,
+                8990,
+                8991,
+                8992,
+                8994,
+                8995,
+                8996,
+                8997,
+                8998,
+                8999,
+                9000,
+                9001,
+                9002
+              ],
+              "prices": [
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065",
+                "0.6065"
+              ],
+              "sizes": [
+                "35464.7",
+                "35464.7",
+                "35464.7",
+                "35464.7",
+                "35464.7",
+                "35464.7",
+                "35464.7",
+                "35425.5",
+                "36848.5",
+                "38213.3",
+                "39608.2",
+                "41012.2",
+                "40251.4"
+              ],
+              "price_lower": "0.6065",
+              "price_upper": "0.6065",
+              "minimum_touch_quantity": "35425.5"
+            },
+            "potential_inventory_quantity": [
+              0,
+              320
+            ],
+            "entry_outcome": "unknown"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "no_fill",
+            "quantity": 780,
+            "long": false,
+            "entry_arrival_ns": 1725170447050000000,
+            "exit_arrival_ns": 1725170464100000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170447050000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6620,
+              "stop_index": 6645,
+              "successor_ns": 1725170447165000000,
+              "source_lines": [
+                6667,
+                6668,
+                6669,
+                6670,
+                6671,
+                6672,
+                6673,
+                6674,
+                6675,
+                6676,
+                6678,
+                6679,
+                6680,
+                6681,
+                6682,
+                6683,
+                6684,
+                6685,
+                6686,
+                6687,
+                6688,
+                6689,
+                6690,
+                6691,
+                6692
+              ],
+              "prices": [
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505",
+                "0.2505"
+              ],
+              "sizes": [
+                "10663",
+                "10663",
+                "10663",
+                "10663",
+                "21650",
+                "20447",
+                "20447",
+                "19951",
+                "19951",
+                "19554",
+                "19554",
+                "19554",
+                "15564",
+                "15165",
+                "14766",
+                "14864",
+                "14864",
+                "19144",
+                "18962",
+                "18962",
+                "18184",
+                "16284",
+                "14384",
+                "14079",
+                "13892"
+              ],
+              "price_lower": "0.2505",
+              "price_upper": "0.2506",
+              "minimum_touch_quantity": "10663"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170464100000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 12100,
+              "stop_index": 12169,
+              "successor_ns": 1725170464207000000,
+              "source_lines": [
+                12164,
+                12165,
+                12166,
+                12167,
+                12168,
+                12169,
+                12170,
+                12171,
+                12172,
+                12173,
+                12174,
+                12175,
+                12176,
+                12178,
+                12179,
+                12180,
+                12181,
+                12182,
+                12183,
+                12184,
+                12185,
+                12186,
+                12187,
+                12188,
+                12189,
+                12190,
+                12191,
+                12192,
+                12193,
+                12194,
+                12195,
+                12196,
+                12197,
+                12198,
+                12199,
+                12200,
+                12201,
+                12202,
+                12203,
+                12204,
+                12205,
+                12206,
+                12207,
+                12208,
+                12209,
+                12210,
+                12211,
+                12212,
+                12213,
+                12214,
+                12215,
+                12216,
+                12217,
+                12218,
+                12219,
+                12220,
+                12221,
+                12222,
+                12223,
+                12224,
+                12225,
+                12226,
+                12227,
+                12228,
+                12229,
+                12230,
+                12231,
+                12232,
+                12233
+              ],
+              "prices": [
+                "0.2489",
+                "0.2489",
+                "0.2489",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2488",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2488",
+                "0.2488",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487"
+              ],
+              "sizes": [
+                "9115",
+                "9115",
+                "9115",
+                "872",
+                "1118",
+                "3128",
+                "3309",
+                "3309",
+                "3063",
+                "2191",
+                "2592",
+                "2993",
+                "3315",
+                "3315",
+                "3315",
+                "1308",
+                "1308",
+                "1191",
+                "1191",
+                "1191",
+                "1404",
+                "3414",
+                "3414",
+                "3414",
+                "3414",
+                "3414",
+                "3414",
+                "3414",
+                "9271",
+                "9058",
+                "9189",
+                "13256",
+                "13256",
+                "13858",
+                "1253",
+                "3263",
+                "3663",
+                "8267",
+                "8267",
+                "8403",
+                "8403",
+                "59",
+                "260",
+                "260",
+                "31111",
+                "31510",
+                "400",
+                "601",
+                "783",
+                "413",
+                "2423",
+                "1115",
+                "1515",
+                "1757",
+                "2159",
+                "2159",
+                "2732",
+                "2732",
+                "573",
+                "573",
+                "2583",
+                "2583",
+                "2583",
+                "2825",
+                "3227",
+                "3227",
+                "3440",
+                "3227",
+                "1972"
+              ],
+              "price_lower": "0.2487",
+              "price_upper": "0.2489",
+              "minimum_touch_quantity": "59"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "no_fill"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 50,
+            "long": true,
+            "entry_arrival_ns": 1725192037300000000,
+            "exit_arrival_ns": 1725192054350000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725192037300000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2091,
+              "stop_index": 2114,
+              "successor_ns": 1725192037414000000,
+              "source_lines": [
+                2129,
+                2130,
+                2131,
+                2132,
+                2133,
+                2134,
+                2135,
+                2136,
+                2137,
+                2138,
+                2139,
+                2140,
+                2141,
+                2142,
+                2143,
+                2144,
+                2145,
+                2146,
+                2147,
+                2148,
+                2149,
+                2150,
+                2151
+              ],
+              "prices": [
+                "3.9320000",
+                "3.9320000",
+                "3.9320000",
+                "3.9320000",
+                "3.9320000",
+                "3.9320000",
+                "3.9320000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000",
+                "3.9310000"
+              ],
+              "sizes": [
+                "495.0",
+                "495.0",
+                "495.0",
+                "616.7",
+                "612.5",
+                "616.7",
+                "659.2",
+                "71.1",
+                "213.9",
+                "271.4",
+                "384.8",
+                "384.8",
+                "384.8",
+                "271.4",
+                "323.1",
+                "323.1",
+                "335.8",
+                "361.2",
+                "361.2",
+                "374.2",
+                "361.2",
+                "424.8",
+                "429.0"
+              ],
+              "price_lower": "3.9310000",
+              "price_upper": "3.9320000",
+              "minimum_touch_quantity": "71.1"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725192054350000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2998,
+              "stop_index": 3025,
+              "successor_ns": 1725192054461000000,
+              "source_lines": [
+                3053,
+                3054,
+                3055,
+                3056,
+                3057,
+                3058,
+                3059,
+                3060,
+                3061,
+                3062,
+                3063,
+                3064,
+                3065,
+                3066,
+                3067,
+                3068,
+                3069,
+                3070,
+                3071,
+                3072,
+                3073,
+                3074,
+                3075,
+                3076,
+                3077,
+                3078,
+                3079
+              ],
+              "prices": [
+                "3.9260000",
+                "3.9260000",
+                "3.9260000",
+                "3.9260000",
+                "3.9260000",
+                "3.9260000",
+                "3.9260000",
+                "3.9260000",
+                "3.9260000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000",
+                "3.9270000"
+              ],
+              "sizes": [
+                "1193.9",
+                "1257.5",
+                "1282.9",
+                "1346.5",
+                "1410.1",
+                "1473.7",
+                "1469.4",
+                "1473.7",
+                "1473.7",
+                "1493.0",
+                "1676.5",
+                "1822.0",
+                "1822.0",
+                "1866.8",
+                "1906.8",
+                "2035.7",
+                "2074.7",
+                "2074.7",
+                "2074.7",
+                "2074.7",
+                "2138.3",
+                "2369.7",
+                "2369.7",
+                "2330.7",
+                "2335.0",
+                "2335.0",
+                "2373.5"
+              ],
+              "price_lower": "3.9260000",
+              "price_upper": "3.9270000",
+              "minimum_touch_quantity": "1193.9"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "3.9320000",
+              "exit_price": "3.9260000",
+              "gross": "-0.3000000",
+              "fees": "0.23574000000",
+              "adverse": "0.03929000000",
+              "net": "-0.57503000000"
+            },
+            "upper": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9270000",
+              "gross": "-0.2000000",
+              "fees": "0.23574000000",
+              "adverse": "0.03929000000",
+              "net": "-0.47503000000"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_shock",
+      "scenario": "base",
+      "complete": false,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "1.060781100",
+      "known_component_upper": "1.060781100",
+      "completed_round_trips": 3,
+      "outcomes": {
+        "conditional_complete": 3,
+        "unknown_entry": 1,
+        "halted_after_unknown_inventory": 1
+      },
+      "daily_lower": null,
+      "drop_best_three_dates_lower": null,
+      "unknown_dates": [
+        "2024-09-01"
+      ],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": true,
+            "entry_arrival_ns": 1706745635550000000,
+            "exit_arrival_ns": 1706745652600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745635550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3275,
+              "stop_index": 3276,
+              "successor_ns": 1706745635571000000,
+              "source_lines": [
+                3311
+              ],
+              "prices": [
+                "0.49730"
+              ],
+              "sizes": [
+                "14520"
+              ],
+              "price_lower": "0.49730",
+              "price_upper": "0.49730",
+              "minimum_touch_quantity": "14520"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745652600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4589,
+              "stop_index": 4590,
+              "successor_ns": 1706745652658000000,
+              "source_lines": [
+                4642
+              ],
+              "prices": [
+                "0.49760"
+              ],
+              "sizes": [
+                "38725"
+              ],
+              "price_lower": "0.49760",
+              "price_upper": "0.49760",
+              "minimum_touch_quantity": "38725"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49760",
+              "gross": "0.11700",
+              "fees": "0.232806600",
+              "adverse": "0.038801100",
+              "net": "-0.154607700"
+            },
+            "upper": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49760",
+              "gross": "0.11700",
+              "fees": "0.232806600",
+              "adverse": "0.038801100",
+              "net": "-0.154607700"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": true,
+            "entry_arrival_ns": 1709251253300000000,
+            "exit_arrival_ns": 1709251270350000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251253300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4301,
+              "stop_index": 4302,
+              "successor_ns": 1709251253313000000,
+              "source_lines": [
+                4355
+              ],
+              "prices": [
+                "1.080"
+              ],
+              "sizes": [
+                "5967.5"
+              ],
+              "price_lower": "1.080",
+              "price_upper": "1.080",
+              "minimum_touch_quantity": "5967.5"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251270350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6068,
+              "stop_index": 6070,
+              "successor_ns": 1709251270353000000,
+              "source_lines": [
+                6139,
+                6140
+              ],
+              "prices": [
+                "1.088",
+                "1.088"
+              ],
+              "sizes": [
+                "8566.9",
+                "10366.9"
+              ],
+              "price_lower": "1.088",
+              "price_upper": "1.088",
+              "minimum_touch_quantity": "8566.9"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.080",
+              "exit_price": "1.088",
+              "gross": "1.440",
+              "fees": "0.2341440",
+              "adverse": "0.0390240",
+              "net": "1.1668320"
+            },
+            "upper": {
+              "entry_price": "1.080",
+              "exit_price": "1.088",
+              "gross": "1.440",
+              "fees": "0.2341440",
+              "adverse": "0.0390240",
+              "net": "1.1668320"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 320,
+            "long": true,
+            "entry_arrival_ns": 1711951229050000000,
+            "exit_arrival_ns": 1711951246100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951229050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5835,
+              "stop_index": 5837,
+              "successor_ns": 1711951229070000000,
+              "source_lines": [
+                5865,
+                5866
+              ],
+              "prices": [
+                "0.6054",
+                "0.6054"
+              ],
+              "sizes": [
+                "29641.2",
+                "26241.2"
+              ],
+              "price_lower": "0.6054",
+              "price_upper": "0.6054",
+              "minimum_touch_quantity": "26241.2"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951246100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8949,
+              "stop_index": 8950,
+              "successor_ns": 1711951246107000000,
+              "source_lines": [
+                8996
+              ],
+              "prices": [
+                "0.6064"
+              ],
+              "sizes": [
+                "25231.8"
+              ],
+              "price_lower": "0.6064",
+              "price_upper": "0.6064",
+              "minimum_touch_quantity": "25231.8"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.6054",
+              "exit_price": "0.6064",
+              "gross": "0.3200",
+              "fees": "0.23266560",
+              "adverse": "0.03877760",
+              "net": "0.04855680"
+            },
+            "upper": {
+              "entry_price": "0.6054",
+              "exit_price": "0.6064",
+              "gross": "0.3200",
+              "fees": "0.23266560",
+              "adverse": "0.03877760",
+              "net": "0.04855680"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "unknown_entry",
+            "quantity": 780,
+            "long": true,
+            "entry_arrival_ns": 1725170447050000000,
+            "exit_arrival_ns": 1725170464100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170447050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6635,
+              "stop_index": 6636,
+              "successor_ns": 1725170447066000000,
+              "source_lines": [
+                6683
+              ],
+              "prices": [
+                "0.2506"
+              ],
+              "sizes": [
+                "293"
+              ],
+              "price_lower": "0.2506",
+              "price_upper": "0.2506",
+              "minimum_touch_quantity": "293"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170464100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 12121,
+              "stop_index": 12122,
+              "successor_ns": 1725170464111000000,
+              "source_lines": [
+                12186
+              ],
+              "prices": [
+                "0.2487"
+              ],
+              "sizes": [
+                "15413"
+              ],
+              "price_lower": "0.2487",
+              "price_upper": "0.2487",
+              "minimum_touch_quantity": "15413"
+            },
+            "potential_inventory_quantity": [
+              0,
+              780
+            ],
+            "entry_outcome": "unknown"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": false,
+            "status": "halted_after_unknown_inventory"
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_shock",
+      "scenario": "fees_2x",
+      "complete": false,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "0.361164900",
+      "known_component_upper": "0.361164900",
+      "completed_round_trips": 3,
+      "outcomes": {
+        "conditional_complete": 3,
+        "unknown_entry": 1,
+        "halted_after_unknown_inventory": 1
+      },
+      "daily_lower": null,
+      "drop_best_three_dates_lower": null,
+      "unknown_dates": [
+        "2024-09-01"
+      ],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": true,
+            "entry_arrival_ns": 1706745635550000000,
+            "exit_arrival_ns": 1706745652600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745635550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3275,
+              "stop_index": 3276,
+              "successor_ns": 1706745635571000000,
+              "source_lines": [
+                3311
+              ],
+              "prices": [
+                "0.49730"
+              ],
+              "sizes": [
+                "14520"
+              ],
+              "price_lower": "0.49730",
+              "price_upper": "0.49730",
+              "minimum_touch_quantity": "14520"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745652600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4589,
+              "stop_index": 4590,
+              "successor_ns": 1706745652658000000,
+              "source_lines": [
+                4642
+              ],
+              "prices": [
+                "0.49760"
+              ],
+              "sizes": [
+                "38725"
+              ],
+              "price_lower": "0.49760",
+              "price_upper": "0.49760",
+              "minimum_touch_quantity": "38725"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49760",
+              "gross": "0.11700",
+              "fees": "0.465613200",
+              "adverse": "0.038801100",
+              "net": "-0.387414300"
+            },
+            "upper": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49760",
+              "gross": "0.11700",
+              "fees": "0.465613200",
+              "adverse": "0.038801100",
+              "net": "-0.387414300"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": true,
+            "entry_arrival_ns": 1709251253300000000,
+            "exit_arrival_ns": 1709251270350000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251253300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4301,
+              "stop_index": 4302,
+              "successor_ns": 1709251253313000000,
+              "source_lines": [
+                4355
+              ],
+              "prices": [
+                "1.080"
+              ],
+              "sizes": [
+                "5967.5"
+              ],
+              "price_lower": "1.080",
+              "price_upper": "1.080",
+              "minimum_touch_quantity": "5967.5"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251270350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6068,
+              "stop_index": 6070,
+              "successor_ns": 1709251270353000000,
+              "source_lines": [
+                6139,
+                6140
+              ],
+              "prices": [
+                "1.088",
+                "1.088"
+              ],
+              "sizes": [
+                "8566.9",
+                "10366.9"
+              ],
+              "price_lower": "1.088",
+              "price_upper": "1.088",
+              "minimum_touch_quantity": "8566.9"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.080",
+              "exit_price": "1.088",
+              "gross": "1.440",
+              "fees": "0.4682880",
+              "adverse": "0.0390240",
+              "net": "0.9326880"
+            },
+            "upper": {
+              "entry_price": "1.080",
+              "exit_price": "1.088",
+              "gross": "1.440",
+              "fees": "0.4682880",
+              "adverse": "0.0390240",
+              "net": "0.9326880"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 320,
+            "long": true,
+            "entry_arrival_ns": 1711951229050000000,
+            "exit_arrival_ns": 1711951246100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951229050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5835,
+              "stop_index": 5837,
+              "successor_ns": 1711951229070000000,
+              "source_lines": [
+                5865,
+                5866
+              ],
+              "prices": [
+                "0.6054",
+                "0.6054"
+              ],
+              "sizes": [
+                "29641.2",
+                "26241.2"
+              ],
+              "price_lower": "0.6054",
+              "price_upper": "0.6054",
+              "minimum_touch_quantity": "26241.2"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951246100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8949,
+              "stop_index": 8950,
+              "successor_ns": 1711951246107000000,
+              "source_lines": [
+                8996
+              ],
+              "prices": [
+                "0.6064"
+              ],
+              "sizes": [
+                "25231.8"
+              ],
+              "price_lower": "0.6064",
+              "price_upper": "0.6064",
+              "minimum_touch_quantity": "25231.8"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.6054",
+              "exit_price": "0.6064",
+              "gross": "0.3200",
+              "fees": "0.46533120",
+              "adverse": "0.03877760",
+              "net": "-0.18410880"
+            },
+            "upper": {
+              "entry_price": "0.6054",
+              "exit_price": "0.6064",
+              "gross": "0.3200",
+              "fees": "0.46533120",
+              "adverse": "0.03877760",
+              "net": "-0.18410880"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "unknown_entry",
+            "quantity": 780,
+            "long": true,
+            "entry_arrival_ns": 1725170447050000000,
+            "exit_arrival_ns": 1725170464100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170447050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6635,
+              "stop_index": 6636,
+              "successor_ns": 1725170447066000000,
+              "source_lines": [
+                6683
+              ],
+              "prices": [
+                "0.2506"
+              ],
+              "sizes": [
+                "293"
+              ],
+              "price_lower": "0.2506",
+              "price_upper": "0.2506",
+              "minimum_touch_quantity": "293"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170464100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 12121,
+              "stop_index": 12122,
+              "successor_ns": 1725170464111000000,
+              "source_lines": [
+                12186
+              ],
+              "prices": [
+                "0.2487"
+              ],
+              "sizes": [
+                "15413"
+              ],
+              "price_lower": "0.2487",
+              "price_upper": "0.2487",
+              "minimum_touch_quantity": "15413"
+            },
+            "potential_inventory_quantity": [
+              0,
+              780
+            ],
+            "entry_outcome": "unknown"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": false,
+            "status": "halted_after_unknown_inventory"
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_shock",
+      "scenario": "adverse_2x",
+      "complete": false,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "0.944178400",
+      "known_component_upper": "0.944178400",
+      "completed_round_trips": 3,
+      "outcomes": {
+        "conditional_complete": 3,
+        "unknown_entry": 1,
+        "halted_after_unknown_inventory": 1
+      },
+      "daily_lower": null,
+      "drop_best_three_dates_lower": null,
+      "unknown_dates": [
+        "2024-09-01"
+      ],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": true,
+            "entry_arrival_ns": 1706745635550000000,
+            "exit_arrival_ns": 1706745652600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745635550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3275,
+              "stop_index": 3276,
+              "successor_ns": 1706745635571000000,
+              "source_lines": [
+                3311
+              ],
+              "prices": [
+                "0.49730"
+              ],
+              "sizes": [
+                "14520"
+              ],
+              "price_lower": "0.49730",
+              "price_upper": "0.49730",
+              "minimum_touch_quantity": "14520"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745652600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4589,
+              "stop_index": 4590,
+              "successor_ns": 1706745652658000000,
+              "source_lines": [
+                4642
+              ],
+              "prices": [
+                "0.49760"
+              ],
+              "sizes": [
+                "38725"
+              ],
+              "price_lower": "0.49760",
+              "price_upper": "0.49760",
+              "minimum_touch_quantity": "38725"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49760",
+              "gross": "0.11700",
+              "fees": "0.232806600",
+              "adverse": "0.077602200",
+              "net": "-0.193408800"
+            },
+            "upper": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49760",
+              "gross": "0.11700",
+              "fees": "0.232806600",
+              "adverse": "0.077602200",
+              "net": "-0.193408800"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": true,
+            "entry_arrival_ns": 1709251253300000000,
+            "exit_arrival_ns": 1709251270350000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251253300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4301,
+              "stop_index": 4302,
+              "successor_ns": 1709251253313000000,
+              "source_lines": [
+                4355
+              ],
+              "prices": [
+                "1.080"
+              ],
+              "sizes": [
+                "5967.5"
+              ],
+              "price_lower": "1.080",
+              "price_upper": "1.080",
+              "minimum_touch_quantity": "5967.5"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251270350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6068,
+              "stop_index": 6070,
+              "successor_ns": 1709251270353000000,
+              "source_lines": [
+                6139,
+                6140
+              ],
+              "prices": [
+                "1.088",
+                "1.088"
+              ],
+              "sizes": [
+                "8566.9",
+                "10366.9"
+              ],
+              "price_lower": "1.088",
+              "price_upper": "1.088",
+              "minimum_touch_quantity": "8566.9"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.080",
+              "exit_price": "1.088",
+              "gross": "1.440",
+              "fees": "0.2341440",
+              "adverse": "0.0780480",
+              "net": "1.1278080"
+            },
+            "upper": {
+              "entry_price": "1.080",
+              "exit_price": "1.088",
+              "gross": "1.440",
+              "fees": "0.2341440",
+              "adverse": "0.0780480",
+              "net": "1.1278080"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 320,
+            "long": true,
+            "entry_arrival_ns": 1711951229050000000,
+            "exit_arrival_ns": 1711951246100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951229050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5835,
+              "stop_index": 5837,
+              "successor_ns": 1711951229070000000,
+              "source_lines": [
+                5865,
+                5866
+              ],
+              "prices": [
+                "0.6054",
+                "0.6054"
+              ],
+              "sizes": [
+                "29641.2",
+                "26241.2"
+              ],
+              "price_lower": "0.6054",
+              "price_upper": "0.6054",
+              "minimum_touch_quantity": "26241.2"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951246100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8949,
+              "stop_index": 8950,
+              "successor_ns": 1711951246107000000,
+              "source_lines": [
+                8996
+              ],
+              "prices": [
+                "0.6064"
+              ],
+              "sizes": [
+                "25231.8"
+              ],
+              "price_lower": "0.6064",
+              "price_upper": "0.6064",
+              "minimum_touch_quantity": "25231.8"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.6054",
+              "exit_price": "0.6064",
+              "gross": "0.3200",
+              "fees": "0.23266560",
+              "adverse": "0.07755520",
+              "net": "0.00977920"
+            },
+            "upper": {
+              "entry_price": "0.6054",
+              "exit_price": "0.6064",
+              "gross": "0.3200",
+              "fees": "0.23266560",
+              "adverse": "0.07755520",
+              "net": "0.00977920"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "unknown_entry",
+            "quantity": 780,
+            "long": true,
+            "entry_arrival_ns": 1725170447050000000,
+            "exit_arrival_ns": 1725170464100000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170447050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6635,
+              "stop_index": 6636,
+              "successor_ns": 1725170447066000000,
+              "source_lines": [
+                6683
+              ],
+              "prices": [
+                "0.2506"
+              ],
+              "sizes": [
+                "293"
+              ],
+              "price_lower": "0.2506",
+              "price_upper": "0.2506",
+              "minimum_touch_quantity": "293"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170464100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 12121,
+              "stop_index": 12122,
+              "successor_ns": 1725170464111000000,
+              "source_lines": [
+                12186
+              ],
+              "prices": [
+                "0.2487"
+              ],
+              "sizes": [
+                "15413"
+              ],
+              "price_lower": "0.2487",
+              "price_upper": "0.2487",
+              "minimum_touch_quantity": "15413"
+            },
+            "potential_inventory_quantity": [
+              0,
+              780
+            ],
+            "entry_outcome": "unknown"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": false,
+            "status": "halted_after_unknown_inventory"
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_shock",
+      "scenario": "latency_250ms",
+      "complete": true,
+      "net_lower": "-0.22036020000",
+      "net_upper": "-0.22036020000",
+      "known_component_lower": "-0.22036020000",
+      "known_component_upper": "-0.22036020000",
+      "completed_round_trips": 5,
+      "outcomes": {
+        "conditional_complete": 5
+      },
+      "daily_lower": {
+        "2024-02-01": "-0.193580400",
+        "2024-03-01": "0.4473360",
+        "2024-04-01": "0.08071360",
+        "2024-09-01": "-0.55482940000"
+      },
+      "drop_best_three_dates_lower": "-0.55482940000",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": true,
+            "entry_arrival_ns": 1706745634800000000,
+            "exit_arrival_ns": 1706745650350000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745634800000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3100,
+              "stop_index": 3102,
+              "successor_ns": 1706745634806000000,
+              "source_lines": [
+                3135,
+                3136
+              ],
+              "prices": [
+                "0.49730",
+                "0.49730"
+              ],
+              "sizes": [
+                "22677",
+                "20377"
+              ],
+              "price_lower": "0.49730",
+              "price_upper": "0.49730",
+              "minimum_touch_quantity": "20377"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745650350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4510,
+              "stop_index": 4512,
+              "successor_ns": 1706745650365000000,
+              "source_lines": [
+                4561,
+                4562
+              ],
+              "prices": [
+                "0.49750",
+                "0.49750"
+              ],
+              "sizes": [
+                "30254",
+                "32254"
+              ],
+              "price_lower": "0.49750",
+              "price_upper": "0.49750",
+              "minimum_touch_quantity": "30254"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49750",
+              "gross": "0.07800",
+              "fees": "0.232783200",
+              "adverse": "0.038797200",
+              "net": "-0.193580400"
+            },
+            "upper": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49750",
+              "gross": "0.07800",
+              "fees": "0.232783200",
+              "adverse": "0.038797200",
+              "net": "-0.193580400"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": true,
+            "entry_arrival_ns": 1709251252550000000,
+            "exit_arrival_ns": 1709251268100000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251252550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4255,
+              "stop_index": 4256,
+              "successor_ns": 1709251252555000000,
+              "source_lines": [
+                4308
+              ],
+              "prices": [
+                "1.080"
+              ],
+              "sizes": [
+                "5819.1"
+              ],
+              "price_lower": "1.080",
+              "price_upper": "1.080",
+              "minimum_touch_quantity": "5819.1"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251268100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5731,
+              "stop_index": 5732,
+              "successor_ns": 1709251268142000000,
+              "source_lines": [
+                5800
+              ],
+              "prices": [
+                "1.084"
+              ],
+              "sizes": [
+                "7245.7"
+              ],
+              "price_lower": "1.084",
+              "price_upper": "1.084",
+              "minimum_touch_quantity": "7245.7"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.080",
+              "exit_price": "1.084",
+              "gross": "0.720",
+              "fees": "0.2337120",
+              "adverse": "0.0389520",
+              "net": "0.4473360"
+            },
+            "upper": {
+              "entry_price": "1.080",
+              "exit_price": "1.084",
+              "gross": "0.720",
+              "fees": "0.2337120",
+              "adverse": "0.0389520",
+              "net": "0.4473360"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 320,
+            "long": true,
+            "entry_arrival_ns": 1711951228300000000,
+            "exit_arrival_ns": 1711951243850000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951228300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5377,
+              "stop_index": 5379,
+              "successor_ns": 1711951228302000000,
+              "source_lines": [
+                5406,
+                5407
+              ],
+              "prices": [
+                "0.6050",
+                "0.6050"
+              ],
+              "sizes": [
+                "24705.5",
+                "24705.5"
+              ],
+              "price_lower": "0.6050",
+              "price_upper": "0.6050",
+              "minimum_touch_quantity": "24705.5"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951243850000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8713,
+              "stop_index": 8715,
+              "successor_ns": 1711951243857000000,
+              "source_lines": [
+                8757,
+                8758
+              ],
+              "prices": [
+                "0.6061",
+                "0.6061"
+              ],
+              "sizes": [
+                "31822.3",
+                "31858.4"
+              ],
+              "price_lower": "0.6061",
+              "price_upper": "0.6061",
+              "minimum_touch_quantity": "31822.3"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.6050",
+              "exit_price": "0.6061",
+              "gross": "0.3520",
+              "fees": "0.23253120",
+              "adverse": "0.03875520",
+              "net": "0.08071360"
+            },
+            "upper": {
+              "entry_price": "0.6050",
+              "exit_price": "0.6061",
+              "gross": "0.3520",
+              "fees": "0.23253120",
+              "adverse": "0.03875520",
+              "net": "0.08071360"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 780,
+            "long": true,
+            "entry_arrival_ns": 1725170446300000000,
+            "exit_arrival_ns": 1725170461850000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170446300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6563,
+              "stop_index": 6564,
+              "successor_ns": 1725170446324000000,
+              "source_lines": [
+                6610
+              ],
+              "prices": [
+                "0.2508"
+              ],
+              "sizes": [
+                "7459"
+              ],
+              "price_lower": "0.2508",
+              "price_upper": "0.2508",
+              "minimum_touch_quantity": "7459"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170461850000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 11603,
+              "stop_index": 11604,
+              "successor_ns": 1725170461991000000,
+              "source_lines": [
+                11665
+              ],
+              "prices": [
+                "0.2506"
+              ],
+              "sizes": [
+                "5307"
+              ],
+              "price_lower": "0.2506",
+              "price_upper": "0.2506",
+              "minimum_touch_quantity": "5307"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.2508",
+              "exit_price": "0.2506",
+              "gross": "-0.1560",
+              "fees": "0.23465520",
+              "adverse": "0.03910920",
+              "net": "-0.42976440"
+            },
+            "upper": {
+              "entry_price": "0.2508",
+              "exit_price": "0.2506",
+              "gross": "-0.1560",
+              "fees": "0.23465520",
+              "adverse": "0.03910920",
+              "net": "-0.42976440"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 50,
+            "long": false,
+            "entry_arrival_ns": 1725192036550000000,
+            "exit_arrival_ns": 1725192052100000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725192036550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2040,
+              "stop_index": 2041,
+              "successor_ns": 1725192036561000000,
+              "source_lines": [
+                2077
+              ],
+              "prices": [
+                "3.9310000"
+              ],
+              "sizes": [
+                "1252.8"
+              ],
+              "price_lower": "3.9310000",
+              "price_upper": "3.9310000",
+              "minimum_touch_quantity": "1252.8"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725192052100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2902,
+              "stop_index": 2903,
+              "successor_ns": 1725192052153000000,
+              "source_lines": [
+                2954
+              ],
+              "prices": [
+                "3.9280000"
+              ],
+              "sizes": [
+                "816.7"
+              ],
+              "price_lower": "3.9280000",
+              "price_upper": "3.9280000",
+              "minimum_touch_quantity": "816.7"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9280000",
+              "gross": "0.1500000",
+              "fees": "0.23577000000",
+              "adverse": "0.03929500000",
+              "net": "-0.12506500000"
+            },
+            "upper": {
+              "entry_price": "3.9310000",
+              "exit_price": "3.9280000",
+              "gross": "0.1500000",
+              "fees": "0.23577000000",
+              "adverse": "0.03929500000",
+              "net": "-0.12506500000"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_shock",
+      "scenario": "latency_3s",
+      "complete": true,
+      "net_lower": "0.21715400000",
+      "net_upper": "0.21715400000",
+      "known_component_lower": "0.21715400000",
+      "known_component_upper": "0.21715400000",
+      "completed_round_trips": 3,
+      "outcomes": {
+        "conditional_complete": 3,
+        "no_fill": 2
+      },
+      "daily_lower": {
+        "2024-02-01": "0.118365000",
+        "2024-09-01": "0.09878900000",
+        "2024-03-01": "0",
+        "2024-04-01": "0"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": true,
+            "entry_arrival_ns": 1706745637550000000,
+            "exit_arrival_ns": 1706745658600000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745637550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3519,
+              "stop_index": 3521,
+              "successor_ns": 1706745637566000000,
+              "source_lines": [
+                3557,
+                3558
+              ],
+              "prices": [
+                "0.49700",
+                "0.49700"
+              ],
+              "sizes": [
+                "47828",
+                "47828"
+              ],
+              "price_lower": "0.49700",
+              "price_upper": "0.49700",
+              "minimum_touch_quantity": "47828"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745658600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4952,
+              "stop_index": 4953,
+              "successor_ns": 1706745658719000000,
+              "source_lines": [
+                5011
+              ],
+              "prices": [
+                "0.49800"
+              ],
+              "sizes": [
+                "20463"
+              ],
+              "price_lower": "0.49800",
+              "price_upper": "0.49800",
+              "minimum_touch_quantity": "20463"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49700",
+              "exit_price": "0.49800",
+              "gross": "0.39000",
+              "fees": "0.232830000",
+              "adverse": "0.038805000",
+              "net": "0.118365000"
+            },
+            "upper": {
+              "entry_price": "0.49700",
+              "exit_price": "0.49800",
+              "gross": "0.39000",
+              "fees": "0.232830000",
+              "adverse": "0.038805000",
+              "net": "0.118365000"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "no_fill",
+            "quantity": 180,
+            "long": true,
+            "entry_arrival_ns": 1709251255300000000,
+            "exit_arrival_ns": 1709251276350000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251255300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4454,
+              "stop_index": 4455,
+              "successor_ns": 1709251255428000000,
+              "source_lines": [
+                4510
+              ],
+              "prices": [
+                "1.082"
+              ],
+              "sizes": [
+                "17974.0"
+              ],
+              "price_lower": "1.082",
+              "price_upper": "1.082",
+              "minimum_touch_quantity": "17974.0"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251276350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 7131,
+              "stop_index": 7132,
+              "successor_ns": 1709251276358000000,
+              "source_lines": [
+                7208
+              ],
+              "prices": [
+                "1.090"
+              ],
+              "sizes": [
+                "14318.5"
+              ],
+              "price_lower": "1.090",
+              "price_upper": "1.090",
+              "minimum_touch_quantity": "14318.5"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "no_fill"
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "no_fill",
+            "quantity": 320,
+            "long": true,
+            "entry_arrival_ns": 1711951231050000000,
+            "exit_arrival_ns": 1711951252100000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951231050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6345,
+              "stop_index": 6346,
+              "successor_ns": 1711951231054000000,
+              "source_lines": [
+                6376
+              ],
+              "prices": [
+                "0.6056"
+              ],
+              "sizes": [
+                "13832.9"
+              ],
+              "price_lower": "0.6056",
+              "price_upper": "0.6056",
+              "minimum_touch_quantity": "13832.9"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951252100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 9899,
+              "stop_index": 9900,
+              "successor_ns": 1711951252109000000,
+              "source_lines": [
+                9952
+              ],
+              "prices": [
+                "0.6067"
+              ],
+              "sizes": [
+                "19676.6"
+              ],
+              "price_lower": "0.6067",
+              "price_upper": "0.6067",
+              "minimum_touch_quantity": "19676.6"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "no_fill"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 780,
+            "long": true,
+            "entry_arrival_ns": 1725170449050000000,
+            "exit_arrival_ns": 1725170470100000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170449050000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 7256,
+              "stop_index": 7257,
+              "successor_ns": 1725170449065000000,
+              "source_lines": [
+                7306
+              ],
+              "prices": [
+                "0.2489"
+              ],
+              "sizes": [
+                "14285"
+              ],
+              "price_lower": "0.2489",
+              "price_upper": "0.2489",
+              "minimum_touch_quantity": "14285"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170470100000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 13083,
+              "stop_index": 13085,
+              "successor_ns": 1725170470103000000,
+              "source_lines": [
+                13154,
+                13155
+              ],
+              "prices": [
+                "0.2496",
+                "0.2496"
+              ],
+              "sizes": [
+                "4171",
+                "4171"
+              ],
+              "price_lower": "0.2496",
+              "price_upper": "0.2496",
+              "minimum_touch_quantity": "4171"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.2489",
+              "exit_price": "0.2496",
+              "gross": "0.5460",
+              "fees": "0.23329800",
+              "adverse": "0.03888300",
+              "net": "0.27381900"
+            },
+            "upper": {
+              "entry_price": "0.2489",
+              "exit_price": "0.2496",
+              "gross": "0.5460",
+              "fees": "0.23329800",
+              "adverse": "0.03888300",
+              "net": "0.27381900"
+            }
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 50,
+            "long": false,
+            "entry_arrival_ns": 1725192039300000000,
+            "exit_arrival_ns": 1725192060350000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725192039300000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 2194,
+              "stop_index": 2195,
+              "successor_ns": 1725192039309000000,
+              "source_lines": [
+                2234
+              ],
+              "prices": [
+                "3.9300000"
+              ],
+              "sizes": [
+                "2086.8"
+              ],
+              "price_lower": "3.9300000",
+              "price_upper": "3.9300000",
+              "minimum_touch_quantity": "2086.8"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725192060350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3178,
+              "stop_index": 3179,
+              "successor_ns": 1725192060391000000,
+              "source_lines": [
+                3239
+              ],
+              "prices": [
+                "3.9280000"
+              ],
+              "sizes": [
+                "1322.9"
+              ],
+              "price_lower": "3.9280000",
+              "price_upper": "3.9280000",
+              "minimum_touch_quantity": "1322.9"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "3.9300000",
+              "exit_price": "3.9280000",
+              "gross": "0.1000000",
+              "fees": "0.23574000000",
+              "adverse": "0.03929000000",
+              "net": "-0.17503000000"
+            },
+            "upper": {
+              "entry_price": "3.9300000",
+              "exit_price": "3.9280000",
+              "gross": "0.1000000",
+              "fees": "0.23574000000",
+              "adverse": "0.03929000000",
+              "net": "-0.17503000000"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_shock",
+      "scenario": "clock_100ms",
+      "complete": false,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "0.832350300",
+      "known_component_upper": "1.012224300",
+      "completed_round_trips": 2,
+      "outcomes": {
+        "conditional_complete": 2,
+        "unknown_entry": 2,
+        "halted_after_unknown_inventory": 1
+      },
+      "daily_lower": null,
+      "drop_best_three_dates_lower": null,
+      "unknown_dates": [
+        "2024-04-01",
+        "2024-09-01"
+      ],
+      "rows": [
+        {
+          "date": "2024-02-01",
+          "symbol": "ADAUSDT",
+          "decision_ns": 1706745634500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 390,
+            "long": true,
+            "entry_arrival_ns": 1706745635550000000,
+            "exit_arrival_ns": 1706745652600000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1706745635550000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 3271,
+              "stop_index": 3280,
+              "successor_ns": 1706745635693000000,
+              "source_lines": [
+                3307,
+                3308,
+                3309,
+                3310,
+                3311,
+                3312,
+                3313,
+                3314,
+                3315
+              ],
+              "prices": [
+                "0.49730",
+                "0.49730",
+                "0.49730",
+                "0.49730",
+                "0.49730",
+                "0.49730",
+                "0.49730",
+                "0.49730",
+                "0.49730"
+              ],
+              "sizes": [
+                "13292",
+                "14297",
+                "14297",
+                "14297",
+                "14520",
+                "14501",
+                "14501",
+                "14501",
+                "15506"
+              ],
+              "price_lower": "0.49730",
+              "price_upper": "0.49730",
+              "minimum_touch_quantity": "13292"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1706745652600000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4589,
+              "stop_index": 4591,
+              "successor_ns": 1706745652728000000,
+              "source_lines": [
+                4642,
+                4643
+              ],
+              "prices": [
+                "0.49760",
+                "0.49760"
+              ],
+              "sizes": [
+                "38725",
+                "38725"
+              ],
+              "price_lower": "0.49760",
+              "price_upper": "0.49760",
+              "minimum_touch_quantity": "38725"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49760",
+              "gross": "0.11700",
+              "fees": "0.232806600",
+              "adverse": "0.038801100",
+              "net": "-0.154607700"
+            },
+            "upper": {
+              "entry_price": "0.49730",
+              "exit_price": "0.49760",
+              "gross": "0.11700",
+              "fees": "0.232806600",
+              "adverse": "0.038801100",
+              "net": "-0.154607700"
+            }
+          }
+        },
+        {
+          "date": "2024-03-01",
+          "symbol": "CELOUSDT",
+          "decision_ns": 1709251252250000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 180,
+            "long": true,
+            "entry_arrival_ns": 1709251253300000000,
+            "exit_arrival_ns": 1709251270350000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1709251253300000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 4301,
+              "stop_index": 4304,
+              "successor_ns": 1709251253417000000,
+              "source_lines": [
+                4355,
+                4356,
+                4357
+              ],
+              "prices": [
+                "1.080",
+                "1.080",
+                "1.080"
+              ],
+              "sizes": [
+                "5967.5",
+                "5967.5",
+                "6891.9"
+              ],
+              "price_lower": "1.080",
+              "price_upper": "1.080",
+              "minimum_touch_quantity": "5967.5"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1709251270350000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6035,
+              "stop_index": 6079,
+              "successor_ns": 1709251270464000000,
+              "source_lines": [
+                6106,
+                6107,
+                6108,
+                6109,
+                6110,
+                6111,
+                6112,
+                6113,
+                6114,
+                6115,
+                6116,
+                6117,
+                6118,
+                6119,
+                6120,
+                6121,
+                6122,
+                6123,
+                6124,
+                6125,
+                6126,
+                6127,
+                6128,
+                6129,
+                6130,
+                6131,
+                6132,
+                6133,
+                6134,
+                6135,
+                6136,
+                6137,
+                6138,
+                6139,
+                6140,
+                6141,
+                6142,
+                6143,
+                6144,
+                6145,
+                6146,
+                6147,
+                6148,
+                6149
+              ],
+              "prices": [
+                "1.087",
+                "1.087",
+                "1.087",
+                "1.087",
+                "1.087",
+                "1.087",
+                "1.087",
+                "1.087",
+                "1.087",
+                "1.087",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088",
+                "1.088"
+              ],
+              "sizes": [
+                "14315.2",
+                "14315.2",
+                "14315.2",
+                "14273.1",
+                "14273.1",
+                "14231.0",
+                "14261.0",
+                "14261.0",
+                "13184.3",
+                "13184.3",
+                "822.0",
+                "1209.0",
+                "1984.2",
+                "1984.2",
+                "3984.2",
+                "3984.2",
+                "7265.7",
+                "7265.7",
+                "7265.7",
+                "7539.1",
+                "9339.1",
+                "10165.5",
+                "10165.5",
+                "10165.5",
+                "10165.5",
+                "10165.5",
+                "10366.9",
+                "10366.9",
+                "10366.9",
+                "10366.9",
+                "10366.9",
+                "8566.9",
+                "8566.9",
+                "8566.9",
+                "10366.9",
+                "8566.9",
+                "8566.9",
+                "8566.9",
+                "8025.4",
+                "8067.8",
+                "8067.8",
+                "8100.9",
+                "8100.9",
+                "8100.9"
+              ],
+              "price_lower": "1.087",
+              "price_upper": "1.088",
+              "minimum_touch_quantity": "822.0"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "1.080",
+              "exit_price": "1.087",
+              "gross": "1.260",
+              "fees": "0.2340360",
+              "adverse": "0.0390060",
+              "net": "0.9869580"
+            },
+            "upper": {
+              "entry_price": "1.080",
+              "exit_price": "1.088",
+              "gross": "1.440",
+              "fees": "0.2341440",
+              "adverse": "0.0390240",
+              "net": "1.1668320"
+            }
+          }
+        },
+        {
+          "date": "2024-04-01",
+          "symbol": "XRPUSDT",
+          "decision_ns": 1711951228000000000,
+          "result": {
+            "submitted": true,
+            "status": "unknown_entry",
+            "quantity": 320,
+            "long": true,
+            "entry_arrival_ns": 1711951229050000000,
+            "exit_arrival_ns": 1711951246100000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1711951229050000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 5797,
+              "stop_index": 5858,
+              "successor_ns": 1711951229152000000,
+              "source_lines": [
+                5826,
+                5827,
+                5828,
+                5829,
+                5830,
+                5831,
+                5832,
+                5833,
+                5834,
+                5835,
+                5836,
+                5837,
+                5838,
+                5839,
+                5840,
+                5841,
+                5842,
+                5843,
+                5844,
+                5845,
+                5846,
+                5847,
+                5848,
+                5849,
+                5850,
+                5851,
+                5852,
+                5853,
+                5854,
+                5855,
+                5856,
+                5857,
+                5858,
+                5859,
+                5860,
+                5862,
+                5863,
+                5864,
+                5865,
+                5866,
+                5867,
+                5868,
+                5869,
+                5870,
+                5871,
+                5872,
+                5873,
+                5874,
+                5875,
+                5876,
+                5877,
+                5878,
+                5879,
+                5880,
+                5881,
+                5882,
+                5883,
+                5884,
+                5885,
+                5886,
+                5887
+              ],
+              "prices": [
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6055",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6054",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053",
+                "0.6053"
+              ],
+              "sizes": [
+                "30157.1",
+                "34157.1",
+                "29157.1",
+                "34157.1",
+                "34157.1",
+                "39157.1",
+                "39157.1",
+                "39157.1",
+                "38999.1",
+                "38999.1",
+                "38999.1",
+                "38999.1",
+                "7662.2",
+                "11062.2",
+                "16062.2",
+                "26067.1",
+                "26067.1",
+                "27864.1",
+                "32585.4",
+                "32585.4",
+                "37585.4",
+                "42585.4",
+                "42585.4",
+                "37864.1",
+                "27859.2",
+                "27859.2",
+                "27859.2",
+                "29763.4",
+                "29763.4",
+                "29619.0",
+                "29619.0",
+                "29619.0",
+                "29594.9",
+                "29594.9",
+                "29594.9",
+                "29594.9",
+                "34316.2",
+                "29594.9",
+                "29641.2",
+                "26241.2",
+                "29529.7",
+                "29529.7",
+                "29529.7",
+                "29568.6",
+                "29568.6",
+                "24568.6",
+                "24568.6",
+                "24568.6",
+                "24568.6",
+                "7662.2",
+                "12662.2",
+                "17383.5",
+                "22104.0",
+                "22104.0",
+                "27104.0",
+                "28901.0",
+                "28901.0",
+                "29195.4",
+                "29313.1",
+                "29313.1",
+                "29811.9"
+              ],
+              "price_lower": "0.6053",
+              "price_upper": "0.6055",
+              "minimum_touch_quantity": "7662.2"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1711951246100000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 8943,
+              "stop_index": 8956,
+              "successor_ns": 1711951246228000000,
+              "source_lines": [
+                8989,
+                8990,
+                8991,
+                8992,
+                8994,
+                8995,
+                8996,
+                8997,
+                8998,
+                8999,
+                9000,
+                9001,
+                9002
+              ],
+              "prices": [
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064",
+                "0.6064"
+              ],
+              "sizes": [
+                "33059.8",
+                "32794.1",
+                "32774.5",
+                "25112.3",
+                "25060.2",
+                "25043.9",
+                "25231.8",
+                "25231.8",
+                "25231.8",
+                "25231.8",
+                "25231.8",
+                "25231.8",
+                "25231.8"
+              ],
+              "price_lower": "0.6064",
+              "price_upper": "0.6064",
+              "minimum_touch_quantity": "25043.9"
+            },
+            "potential_inventory_quantity": [
+              0,
+              320
+            ],
+            "entry_outcome": "unknown"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "BAKEUSDT",
+          "decision_ns": 1725170446000000000,
+          "result": {
+            "submitted": true,
+            "status": "unknown_entry",
+            "quantity": 780,
+            "long": true,
+            "entry_arrival_ns": 1725170447050000000,
+            "exit_arrival_ns": 1725170464100000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1725170447050000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 6620,
+              "stop_index": 6645,
+              "successor_ns": 1725170447165000000,
+              "source_lines": [
+                6667,
+                6668,
+                6669,
+                6670,
+                6671,
+                6672,
+                6673,
+                6674,
+                6675,
+                6676,
+                6678,
+                6679,
+                6680,
+                6681,
+                6682,
+                6683,
+                6684,
+                6685,
+                6686,
+                6687,
+                6688,
+                6689,
+                6690,
+                6691,
+                6692
+              ],
+              "prices": [
+                "0.2507",
+                "0.2507",
+                "0.2507",
+                "0.2507",
+                "0.2507",
+                "0.2507",
+                "0.2507",
+                "0.2507",
+                "0.2507",
+                "0.2507",
+                "0.2507",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506",
+                "0.2506"
+              ],
+              "sizes": [
+                "10288",
+                "9891",
+                "9815",
+                "9419",
+                "9419",
+                "9419",
+                "4301",
+                "4701",
+                "11220",
+                "11220",
+                "11665",
+                "293",
+                "293",
+                "293",
+                "293",
+                "293",
+                "543",
+                "543",
+                "543",
+                "4650",
+                "4650",
+                "4650",
+                "4650",
+                "4650",
+                "4650"
+              ],
+              "price_lower": "0.2506",
+              "price_upper": "0.2507",
+              "minimum_touch_quantity": "293"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1725170464100000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 12100,
+              "stop_index": 12169,
+              "successor_ns": 1725170464207000000,
+              "source_lines": [
+                12164,
+                12165,
+                12166,
+                12167,
+                12168,
+                12169,
+                12170,
+                12171,
+                12172,
+                12173,
+                12174,
+                12175,
+                12176,
+                12178,
+                12179,
+                12180,
+                12181,
+                12182,
+                12183,
+                12184,
+                12185,
+                12186,
+                12187,
+                12188,
+                12189,
+                12190,
+                12191,
+                12192,
+                12193,
+                12194,
+                12195,
+                12196,
+                12197,
+                12198,
+                12199,
+                12200,
+                12201,
+                12202,
+                12203,
+                12204,
+                12205,
+                12206,
+                12207,
+                12208,
+                12209,
+                12210,
+                12211,
+                12212,
+                12213,
+                12214,
+                12215,
+                12216,
+                12217,
+                12218,
+                12219,
+                12220,
+                12221,
+                12222,
+                12223,
+                12224,
+                12225,
+                12226,
+                12227,
+                12228,
+                12229,
+                12230,
+                12231,
+                12232,
+                12233
+              ],
+              "prices": [
+                "0.2488",
+                "0.2488",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2487",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486",
+                "0.2486"
+              ],
+              "sizes": [
+                "3005",
+                "1021",
+                "16479",
+                "16479",
+                "16479",
+                "16479",
+                "16479",
+                "18799",
+                "18799",
+                "18799",
+                "18799",
+                "18799",
+                "18799",
+                "18599",
+                "18198",
+                "18198",
+                "17797",
+                "17797",
+                "15813",
+                "15413",
+                "15413",
+                "15413",
+                "15012",
+                "14611",
+                "10593",
+                "6575",
+                "6174",
+                "5773",
+                "5773",
+                "5773",
+                "5773",
+                "5773",
+                "4604",
+                "4604",
+                "20398",
+                "20398",
+                "20398",
+                "20398",
+                "19878",
+                "19878",
+                "23880",
+                "23880",
+                "23880",
+                "24280",
+                "24280",
+                "24280",
+                "24280",
+                "24280",
+                "24280",
+                "24280",
+                "24280",
+                "24280",
+                "24280",
+                "24280",
+                "24280",
+                "24213",
+                "24213",
+                "32256",
+                "32256",
+                "31854",
+                "31854",
+                "31454",
+                "31253",
+                "31253",
+                "31253",
+                "30243",
+                "30243",
+                "30243",
+                "30243"
+              ],
+              "price_lower": "0.2486",
+              "price_upper": "0.2488",
+              "minimum_touch_quantity": "1021"
+            },
+            "potential_inventory_quantity": [
+              0,
+              780
+            ],
+            "entry_outcome": "unknown"
+          }
+        },
+        {
+          "date": "2024-09-01",
+          "symbol": "ZROUSDT",
+          "decision_ns": 1725192036250000000,
+          "result": {
+            "submitted": false,
+            "status": "halted_after_unknown_inventory"
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    }
+  ],
+  "eligible_intents": 10,
+  "complete_scenarios": 7,
+  "positive_complete_scenarios": 1,
+  "independent_execution_audit_complete": false,
+  "actual_execution_verified": false,
+  "historical_price_grid_verified": false,
+  "historical_lot_size_verified": false,
+  "historical_permissions_verified": false,
+  "selection_2025_opened": false,
+  "candidates": [],
+  "reliable_edge_established": false
+}

@@ -1,0 +1,114 @@
+POST-VOLATILITY-HALT STOCK HFT FEASIBILITY -- 2026-09-30
+
+VERDICT: NO QUALIFYING ORDER IN THE FROZEN DEVELOPMENT COHORT.
+This is a feasibility result, not a measured trading loss or evidence that
+post-halt HFT can never work. No entry or exit profitability was evaluated.
+No reliable edge, actual execution or competition win has been established.
+
+DESIGN
+Investigate long upside continuation and long downside rebound after a
+volatility pause. Each has a planned 15s and 30s hold, four configurations.
+Entry is after a reported reopening and five seconds of observed price
+support. The reopening auction price is a signal anchor, never an assumed
+entry fill. Costs, guarded FOK entry, acknowledgement/outgoing delays, quote
+ambiguity, repeat-halt inventory and progression gates are frozen in
+specification.json before quote/trade outcomes were opened.
+
+The free NYSE archive contained 73,832 records, including 27,403 LULD pauses
+in 2023-25. Historical names and symbols, including subsequently delisted
+ones, define a fixed common/ordinary-share cohort. Select the first LULD
+halt per symbol on the first NYSE trading session of each month in 2023-24,
+then apply the predeclared clock and 295-900 second same-day duration filters.
+The first halt is never replaced with a later one when it fails a filter.
+152 events: 78 development events in 2023; 74 reserved events in 2024.
+Only 2023 quotes/trades were acquired. 2024 remains unopened for selection;
+no 2025/2026 economic outcomes were used in this family.
+
+SIGNAL
+The prehalt midpoint move from halt-30s to halt-1s must be >=100bp for upside
+continuation or <=-100bp for downside rebound. Require valid latest strictly
+prior quotes, at most five seconds old. A primary-venue reopening trade
+must carry condition 5, have positive price/size, contain no specified late
+or special-price flags, and align within five seconds of the archive resume.
+Both rules require reopening price at least 50bp above the last prehalt
+midpoint, then a bid at/above reopening price after five seconds. The decision
+quote must be post-reopening, at most one second old relative to the modeled
+source cutoff, with ask $2-$500 and spread <=50bp. Fixed causal quantity is
+<=10% observed ask depth and <=$10,000 cash, with a $100 minimum ticket.
+
+Execution plans include $0.0075/share, minimum $1 commission each side;
+sell 0.30bp plus $0.0002/share; 1bp adverse allowance each side; one-second
+outgoing/return delay plus 250ms processing. Stress double fees, double
+adverse allowance, three-second delay and +/-100ms quote alignment. Since
+no signal reaches sizing/entry, these execution plans were not evaluated.
+
+SOURCE RECOVERY AND IMPLEMENTATION CORRECTION
+154 original files completed with full pagination: 145,043 trades and
+90,743 quotes. Two trade requests initially failed the client's strict
+list-schema check. The saved HTTP200 recovery bodies for GWII2023-02-01
+and MSSA2023-07-03 explicitly contain trades:null and no next-page token.
+They mean no provider records returned, not proof that no real trades took
+place. Original failures, raw recovery bodies and hashes are preserved.
+
+The original strict Nasdaq-Q implementation rejected 48 first-half2023
+reopening prints labeled T in these files. Alpaca's official SDK/OpenAPI
+identifies T as NASDAQ Int and Q as NASDAQ OMX; Nasdaq documents T as its
+CTS market-center identifier. A versioned compatibility interpretation
+allows both for Nasdaq-listed events. Native fields remain unchanged.
+The exact provider normalization transition and identity of these Tape-C/T
+reports have not been independently confirmed, so this compatibility screen
+is explicitly conditional. No price/time/threshold/holding-period change
+was made. Both original and corrected screens have zero eligible orders.
+
+CORRECTED SCREEN, ALL 78 EVENTS
+  53: missing, old, invalid or tied/ambiguous required signal quote.
+  17: reopening concession or subsequent price support absent.
+   6: no qualifying primary reopening print, including the two empty windows.
+   2: price or spread gate fails.
+   0: eligible order.
+
+72 reopening anchors were identified: 48 original T codes and 24 Q codes.
+Their source times are 0.008151154 to 0.995228536 seconds after the archived
+resume second. This alignment supports the archive's time interpretation,
+but does not establish message capture time or achievable trading latency.
+
+Quote failures are not all missing data: some reflect the frozen freshness,
+validity or ambiguity requirements. Nonexclusive failed quote counts are
+33 prehalt, 34 thirty-second anchors and 38 decision quotes. No old valid
+quote was substituted after a more recent invalid quote.
+
+The 100-share historical lot multiplier is a stated conditional assumption
+for this universe. Individual security definitions were not verified. It
+does not affect this zero-order conclusion: all 78 events fail earlier
+price/quote/anchor conditions. Do not claim the multiplier has been audited.
+
+VERIFICATION AND LIMITS
+Independent reconciliation checked every successful source hash, complete
+pagination, 235,786 exact raw source timestamps, both empty-response bodies,
+all 72 reopening anchors and all 78 feasibility dispositions. Latest quotes
+were independently reconstructed using Boolean source-time masks; no exit
+returns were opened. Nine focused tests pass, including qualifying synthetic
+examples for both directions, future-quote invariance, strict cutoffs, ties,
+invalid states, guarded FOK ambiguity, halt boundaries and exact fees.
+
+This does not establish archive completeness, earliest administrative
+publication, historical trade corrections/cancels as seen live, actual
+provider receipt clocks, routing, queue position or real execution. It
+establishes that the exact frozen screen makes no order on this sample under
+either venue-code interpretation. Selection2024 is not opened to rescue it.
+
+SEARCH ACCOUNTING
+Four proposed configurations screened; zero profitability implementations
+evaluated. Record this separately from the 118 configurations /168 economic
+implementation versions already evaluated in the current search. Cumulative
+focused tests now139. Counts are bookkeeping, not independent experiments.
+No download or replay process remains active from this study.
+
+PRIMARY SOURCES
+https://www.nyse.com/trade/trading-halts
+https://www.nyse.com/api/trade-halts/historical/download
+https://docs.alpaca.markets/us/docs/market-data-faq
+https://www.nasdaqtrader.com/content/technicalsupport/specifications/utp/utdfspecification.pdf
+https://github.com/alpacahq/alpaca-py/blob/master/alpaca/data/enums.py
+https://github.com/alpacahq/alpaca-docs/blob/master/oas/data/openapi.yaml
+https://www.nasdaqtrader.com/TraderNews.aspx?id=hta2007-007

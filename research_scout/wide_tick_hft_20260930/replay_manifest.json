@@ -1,0 +1,687 @@
+{
+  "files": [
+    {
+      "date": "2024-02-01",
+      "symbols": [
+        "FLOWUSDT",
+        "LINAUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-02-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-02-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 8734787,
+      "compressed_bytes": 1405629,
+      "decoded_sha256": "ef306af8ba6e216a476dec2d8dc47a58238f72207dc9defa9995da46808a430c",
+      "compressed_sha256": "4f37325ca9cf99dcbc978a357859a75a665e06a564e6432995f6b19df9c6abee"
+    },
+    {
+      "date": "2024-02-01",
+      "symbols": [
+        "FLOWUSDT",
+        "LINAUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-02-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-02-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 8794977,
+      "compressed_bytes": 1425650,
+      "decoded_sha256": "76953890668a1d0d30c7d158e9c1fe3fffbe587abce473cd118a2d74225dc51e",
+      "compressed_sha256": "b835034240c6fd3de454ee322d0866712687abf452e4b1fc3f97c4b3f4bbf297"
+    },
+    {
+      "date": "2024-02-01",
+      "symbols": [
+        "FLOWUSDT",
+        "LINAUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-02-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"flowusdt\", \"linausdt\", \"xemusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-02-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 9556314,
+      "compressed_bytes": 1530472,
+      "decoded_sha256": "62a2aef29506281cba5464ca67c55322ff090568320c154cffe4ae99c7484fdb",
+      "compressed_sha256": "cca3a3b107fe7261b0cb8d8837bc208480911be33cdfaf8089ed5f502bae021a"
+    },
+    {
+      "date": "2024-04-01",
+      "symbols": [
+        "CRVUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-04-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-04-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 6995641,
+      "compressed_bytes": 1052694,
+      "decoded_sha256": "fc0b7e2ba7372d4627cf5d3dad316e35ed473ecae57ce50a95f7f903b32bd4bf",
+      "compressed_sha256": "0fe6516b67c8471853b2bfed909bdc97de80f27f881dfc4a51b3e7ec090a36a7"
+    },
+    {
+      "date": "2024-04-01",
+      "symbols": [
+        "CRVUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-04-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-04-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 9310997,
+      "compressed_bytes": 1396592,
+      "decoded_sha256": "c79ef6aa090d3c147185cc40572a337fd832d5cfb160e4bc41da8df420133cb6",
+      "compressed_sha256": "61cdca0c65bc09718864736b7c42a6abb98adbdcd7585b0ec8d6ac5ff239256f"
+    },
+    {
+      "date": "2024-04-01",
+      "symbols": [
+        "CRVUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-04-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\", \"xemusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-04-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 7751227,
+      "compressed_bytes": 1147927,
+      "decoded_sha256": "df93542a9a0538320286b776fca6aa84ebfab8c02d858e603d3091e1c5f57c44",
+      "compressed_sha256": "a768a298d0cb7653915025291a8de9d6c713081a6076ca3e9deb283c8840749c"
+    },
+    {
+      "date": "2024-05-01",
+      "symbols": [
+        "ENAUSDT",
+        "EOSUSDT",
+        "LINAUSDT",
+        "TNSRUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-05-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 36936340,
+      "compressed_bytes": 5522974,
+      "decoded_sha256": "d914ee3358789b8f577aaff5852eaccf6dca577ea92878ed10b782bcd0fa8622",
+      "compressed_sha256": "cfa898b1e570b3c55728fa606d0fb3fcc2438fc87a0cf8508cf4480820b38d9d"
+    },
+    {
+      "date": "2024-05-01",
+      "symbols": [
+        "ENAUSDT",
+        "EOSUSDT",
+        "LINAUSDT",
+        "TNSRUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-05-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 28975459,
+      "compressed_bytes": 4381256,
+      "decoded_sha256": "c6a93e2f8931fbc13cbab548b71e992cfe7203dcbe4b842367b20dce309788ad",
+      "compressed_sha256": "328c807e842dd050b3cc551075a28ef83d66804b7ce4c27e6fa2c50f9bca2c41"
+    },
+    {
+      "date": "2024-05-01",
+      "symbols": [
+        "ENAUSDT",
+        "EOSUSDT",
+        "LINAUSDT",
+        "TNSRUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-05-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"enausdt\", \"eosusdt\", \"linausdt\", \"tnsrusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-05-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 34224205,
+      "compressed_bytes": 5076265,
+      "decoded_sha256": "827fbb3305cffe7e5666e53c8926c06a8edf333e0b09318265cdb62d02e9be8a",
+      "compressed_sha256": "2848c03648ed1cafa27f5dae1f464e7bb201d548f1ea1e659e220a8cdb43c53b"
+    },
+    {
+      "date": "2024-06-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-06-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-06-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 4617144,
+      "compressed_bytes": 653705,
+      "decoded_sha256": "4a2f239682e1371b1cd5ec41f42ec6bf4e07648933b511383e9a279cdaa469f3",
+      "compressed_sha256": "95edc6864082ece366be2a0dc78b6d6b0b46c900532023f91cb47c91a378b084"
+    },
+    {
+      "date": "2024-06-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-06-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-06-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 3353346,
+      "compressed_bytes": 479822,
+      "decoded_sha256": "01de5ac793b870ec53c9d0244b49ad14c16d1af92a9bb60bfa74308aebf4139b",
+      "compressed_sha256": "af75ed16427fa5400097f56309ec96b944358e94a7e52304f734f5196beaeb32"
+    },
+    {
+      "date": "2024-06-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-06-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-06-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 4559044,
+      "compressed_bytes": 632912,
+      "decoded_sha256": "f44fa8156af5e12f3867e2b23db0ad88dd9e8f503a3057aebaeaa9c652823fea",
+      "compressed_sha256": "1429e0e4110cc44966f1346d787d04d9072148bda01046499a0bf66c3cefe00e"
+    },
+    {
+      "date": "2024-07-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-07-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-07-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 10597928,
+      "compressed_bytes": 1499676,
+      "decoded_sha256": "e2def1d248bde02338dfb5d3036e6b8042970083a44e759e7f9cfc41ff53d889",
+      "compressed_sha256": "d58137b2d34e266e9cf2b8d82d04fa99d64bdb031c6a383ca46d7228014f60c7"
+    },
+    {
+      "date": "2024-07-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-07-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-07-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 8772147,
+      "compressed_bytes": 1259468,
+      "decoded_sha256": "d3818aa7673c6d1c81903425ecb87a80d034a68ca39052924c7562e39061c6cb",
+      "compressed_sha256": "e1343f7dd600991bb5ecd4331b866f378c8bf5783a70190816229126f56b86f1"
+    },
+    {
+      "date": "2024-07-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-07-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-07-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 8833346,
+      "compressed_bytes": 1245301,
+      "decoded_sha256": "4af50f062c905af8157f877720b3096abbdfd3641e636b7edc91806ffbbb8523",
+      "compressed_sha256": "20dc0221864774eff7749c6a04945608b65cfdc90f2d74627ad3ab2a4b6b116c"
+    },
+    {
+      "date": "2024-08-01",
+      "symbols": [
+        "CRVUSDT",
+        "EOSUSDT",
+        "FLOWUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-08-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-08-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 22334024,
+      "compressed_bytes": 3429057,
+      "decoded_sha256": "033dcb7cc511f32534f9d994faeb8ef69708d96c41e29088c49001bcc277cfde",
+      "compressed_sha256": "726ca76035c6cf5818069f16ece3418178e3f5d2a9752a5133912e7cf47f9354"
+    },
+    {
+      "date": "2024-08-01",
+      "symbols": [
+        "CRVUSDT",
+        "EOSUSDT",
+        "FLOWUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-08-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-08-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 25762908,
+      "compressed_bytes": 3883436,
+      "decoded_sha256": "f8bb606d5b4f0c7dc368ec0971bc32fcef1e4b9e923c0a0cdfa470d53b1bb826",
+      "compressed_sha256": "dca017e14989829b5581767e2805f5ee36528746517c926998d62f58fafc6120"
+    },
+    {
+      "date": "2024-08-01",
+      "symbols": [
+        "CRVUSDT",
+        "EOSUSDT",
+        "FLOWUSDT",
+        "XEMUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-08-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\", \"eosusdt\", \"flowusdt\", \"xemusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-08-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 20924116,
+      "compressed_bytes": 3210819,
+      "decoded_sha256": "6a75e68dfd60e3155e402f1e19a55430292836823b07d8040ac1af92a4027cc0",
+      "compressed_sha256": "9657e732a28902255979ceda3bb70fdc2049e045ba907f8864196c50cfc789e0"
+    },
+    {
+      "date": "2024-09-01",
+      "symbols": [
+        "CELOUSDT",
+        "CRVUSDT",
+        "REEFUSDT",
+        "STMXUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-09-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-09-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 22608124,
+      "compressed_bytes": 3562610,
+      "decoded_sha256": "84a6efea86680c970b554061c33cccdcfb2b2f102340dd7a9aa0cfa960dd678d",
+      "compressed_sha256": "dfc3b3f8444112b9b2ae3f973ab3e306d1263febb3b2683adec758d1492765e1"
+    },
+    {
+      "date": "2024-09-01",
+      "symbols": [
+        "CELOUSDT",
+        "CRVUSDT",
+        "REEFUSDT",
+        "STMXUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-09-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-09-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 23064740,
+      "compressed_bytes": 3531843,
+      "decoded_sha256": "f52d65e9f0c4de50f688b2717b92c322917a7d2cc208c3721e85a1c6ce19296d",
+      "compressed_sha256": "2dca61dafdc748260cbb63f8a19daf4c2b3bfedf8e1ff7a682dc5518dde125ca"
+    },
+    {
+      "date": "2024-09-01",
+      "symbols": [
+        "CELOUSDT",
+        "CRVUSDT",
+        "REEFUSDT",
+        "STMXUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-09-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"celousdt\", \"crvusdt\", \"reefusdt\", \"stmxusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-09-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 23166602,
+      "compressed_bytes": 3511458,
+      "decoded_sha256": "2c84e7c74174759e80e744c49a1253fe729d2b33c2c05ab37d2d24c919c8eeee",
+      "compressed_sha256": "7b9b767f04a21cd78028b26edfa87cb3265f6c16059ec2732f433995083f6971"
+    },
+    {
+      "date": "2024-10-01",
+      "symbols": [
+        "CELOUSDT",
+        "NEIROETHUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-10-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-10-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 16571231,
+      "compressed_bytes": 2469115,
+      "decoded_sha256": "bd9af47bf0420e83b2deb96e6f3538c3d463facc1e901659faa643d498c4aca5",
+      "compressed_sha256": "8e2e6f65b26d6c2a6c77c7c6ae17dad63dd962a7d5e8c9f6695334b5253f567c"
+    },
+    {
+      "date": "2024-10-01",
+      "symbols": [
+        "CELOUSDT",
+        "NEIROETHUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-10-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-10-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 14585132,
+      "compressed_bytes": 2132705,
+      "decoded_sha256": "4abdba6830d988657ea8835c4384f60aa6499aa5e63d75e9f49c04ba7fc04e5f",
+      "compressed_sha256": "8f6cd11ba4b19169f65a6a6ef178735aa138fa5abd24149203b463395c2f5a94"
+    },
+    {
+      "date": "2024-10-01",
+      "symbols": [
+        "CELOUSDT",
+        "NEIROETHUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-10-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"celousdt\", \"neiroethusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-10-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 12809238,
+      "compressed_bytes": 1904253,
+      "decoded_sha256": "a6741b6eab08e11df2bdcb9257458e0b98aed217e91ff65acdce5034de102b3d",
+      "compressed_sha256": "3e07ffff198105bb670e54ae10c3862e7619b6376cb4490797b02f0d854872ca"
+    },
+    {
+      "date": "2024-11-01",
+      "symbols": [
+        "CRVUSDT",
+        "LINAUSDT",
+        "NEIROETHUSDT",
+        "SCRUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-11-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-11-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 23727728,
+      "compressed_bytes": 3602933,
+      "decoded_sha256": "d92faaab9ce557d300282cba9a51fd148871af1ef65da9ec69352113c9b6a079",
+      "compressed_sha256": "47f1ac995c04258916486d84e5397ac96e632620f1902abb799154d66dcc3c09"
+    },
+    {
+      "date": "2024-11-01",
+      "symbols": [
+        "CRVUSDT",
+        "LINAUSDT",
+        "NEIROETHUSDT",
+        "SCRUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-11-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-11-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 19617561,
+      "compressed_bytes": 2975621,
+      "decoded_sha256": "9dd37be911011aba66f19ccec3979cc9375dfa61d779639e97ba6167be09739c",
+      "compressed_sha256": "3ab337da8ac8ba8fb6e3c590a1e57d9b7224226ae4db2027e4dd1455b66a5e9c"
+    },
+    {
+      "date": "2024-11-01",
+      "symbols": [
+        "CRVUSDT",
+        "LINAUSDT",
+        "NEIROETHUSDT",
+        "SCRUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-11-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\", \"linausdt\", \"neiroethusdt\", \"scrusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-11-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 21768586,
+      "compressed_bytes": 3267783,
+      "decoded_sha256": "c08f006131524ced82f729c8382b75a4f914965947a6c60403804465a2c1d25e",
+      "compressed_sha256": "db05a913a9cdef30c113865f79c0ecca326077ec68bc6d6f7179b6fa725c8c9c"
+    },
+    {
+      "date": "2024-12-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 540,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 540,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-12-01_0540.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 23168352,
+      "compressed_bytes": 2936486,
+      "decoded_sha256": "c40d47b91ff445701f86778975f0edf89f41ac8d9ffe7c4d8c74d6776e2ae88b",
+      "compressed_sha256": "e16f87b668332cf518cf32299ecfafb7295e035b47b8e041f98cdb745a6436b1"
+    },
+    {
+      "date": "2024-12-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 550,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 550,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-12-01_0550.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 21997706,
+      "compressed_bytes": 2758547,
+      "decoded_sha256": "10a8a6f69ae6e7d941bde40b9c71e39cd420879334752c80d43bd881c0ce2ec2",
+      "compressed_sha256": "216d7229b874e1260d8922ccce9282f6751aa540e3229e7b04bf4a9fca51a0a1"
+    },
+    {
+      "date": "2024-12-01",
+      "symbols": [
+        "CRVUSDT"
+      ],
+      "offset": 560,
+      "params": {
+        "from": "2024-12-01",
+        "offset": 560,
+        "sliceSize": 10,
+        "filters": "[{\"channel\": \"bookTicker\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"trade\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"depth\", \"symbols\": [\"crvusdt\"]}, {\"channel\": \"markPrice\", \"symbols\": [\"crvusdt\"]}]"
+      },
+      "path": "research_scout\\wide_tick_hft_20260930\\replay_native\\2024-12-01_0560.ndjson.gz",
+      "complete": true,
+      "authenticated": false,
+      "http_status": 200,
+      "decoded_bytes": 18916851,
+      "compressed_bytes": 2422033,
+      "decoded_sha256": "0f07e9b7859f6b22bb96f262acea88ed0abf5991f8b9586c0bc1c1108a139c4d",
+      "compressed_sha256": "5647763dd174d7e9886d72cc4ea1a9210e38acf9897e228fac6a3f6fcabafdce"
+    }
+  ],
+  "expected_files": 30,
+  "complete": true,
+  "specification_sha256": "0db2a6f725ab7a1f6f414cf14f9ee28ea2ed4db854409acbee92c2d34085a405",
+  "decoded_bytes_reserved": 503035801,
+  "orders_submitted": false
+}

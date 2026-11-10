@@ -1,0 +1,49 @@
+{
+  "sources": [
+    {
+      "filename": "binance_dgb_ctk.html",
+      "url": "https://www.binance.com/en/support/announcement/detail/ce74360a3fd444b2b35da7186f8dd0ad",
+      "retrieved_at_utc": "2026-09-30T19:17:44.330595+00:00",
+      "authenticated": false,
+      "complete": true,
+      "http_status": 202,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "binance_fet_update.html",
+      "url": "https://www.binance.com/en/support/announcement/detail/e485541c370240adba3929fded74f269",
+      "retrieved_at_utc": "2026-09-30T19:17:44.805357+00:00",
+      "authenticated": false,
+      "complete": true,
+      "http_status": 202,
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "filename": "bybit_fet.html",
+      "url": "https://announcements.bybit.com/en/article/delisting-of-fetusdt-oceanusdt-and-agixusdt-perpetual-contracts-blt76ce31b7f7becb38/",
+      "retrieved_at_utc": "2026-09-30T19:17:44.868651+00:00",
+      "authenticated": false,
+      "complete": true,
+      "http_status": 403,
+      "content_type": "text/html",
+      "bytes": 514,
+      "sha256": "11cebdd2e5bd6d2cce3ee6a3d59cb76e2c67d8ff9e8b737a7be74c53191dfc1d"
+    },
+    {
+      "filename": "fet_source_diagnostic.txt",
+      "url": "https://datasets.tardis.dev/v1/bybit/derivative_ticker/2024/07/01/FETUSDT.csv.gz",
+      "retrieved_at_utc": "2026-09-30T19:17:45.218764+00:00",
+      "authenticated": false,
+      "complete": true,
+      "http_status": 400,
+      "content_type": "application/json",
+      "bytes": 886,
+      "sha256": "17dd170249bd90199cf19a20457d3fea8b107a77f5a5380b814236578491fc02"
+    }
+  ],
+  "paid_fallback": false
+}

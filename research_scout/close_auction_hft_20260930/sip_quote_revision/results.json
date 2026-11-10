@@ -1,0 +1,581 @@
+{
+  "results": {
+    "15s": {
+      "scenarios": {
+        "base": {
+          "all": {
+            "conditional_complete": false,
+            "net_lower": null,
+            "net_upper": null,
+            "closed_lower": -18.111864100002272,
+            "closed_upper": -18.111864100002272,
+            "conditional_allocations": 9,
+            "positive_dates": 2,
+            "without_best_three": null,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 9,
+              "unknown_quote_state_or_depth": 1
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": true,
+            "net_lower": -23.54034420000176,
+            "net_upper": -23.54034420000176,
+            "closed_lower": -23.54034420000176,
+            "closed_upper": -23.54034420000176,
+            "conditional_allocations": 6,
+            "positive_dates": 0,
+            "without_best_three": -23.54034420000176,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 6
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "net_lower": null,
+            "net_upper": null,
+            "closed_lower": 5.428480099999491,
+            "closed_upper": 5.428480099999491,
+            "conditional_allocations": 3,
+            "positive_dates": 2,
+            "without_best_three": null,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 3,
+              "unknown_quote_state_or_depth": 1
+            },
+            "actual_strategy_execution_verified": false
+          }
+        },
+        "double_fees": {
+          "all": {
+            "conditional_complete": false,
+            "net_lower": null,
+            "net_upper": null,
+            "closed_lower": -38.44251020000227,
+            "closed_upper": -38.44251020000227,
+            "conditional_allocations": 9,
+            "positive_dates": 2,
+            "without_best_three": null,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 9,
+              "unknown_quote_state_or_depth": 1
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": true,
+            "net_lower": -36.99673040000176,
+            "net_upper": -36.99673040000176,
+            "closed_lower": -36.99673040000176,
+            "closed_upper": -36.99673040000176,
+            "conditional_allocations": 6,
+            "positive_dates": 0,
+            "without_best_three": -36.99673040000176,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 6
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "net_lower": null,
+            "net_upper": null,
+            "closed_lower": -1.4457798000005084,
+            "closed_upper": -1.4457798000005084,
+            "conditional_allocations": 3,
+            "positive_dates": 2,
+            "without_best_three": null,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 3,
+              "unknown_quote_state_or_depth": 1
+            },
+            "actual_strategy_execution_verified": false
+          }
+        },
+        "latency_3s": {
+          "all": {
+            "conditional_complete": true,
+            "net_lower": -15.545697800002035,
+            "net_upper": -15.545697800002035,
+            "closed_lower": -15.545697800002035,
+            "closed_upper": -15.545697800002035,
+            "conditional_allocations": 10,
+            "positive_dates": 2,
+            "without_best_three": -30.790038100002356,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 10
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": true,
+            "net_lower": -24.150264900001435,
+            "net_upper": -24.150264900001435,
+            "closed_lower": -24.150264900001435,
+            "closed_upper": -24.150264900001435,
+            "conditional_allocations": 6,
+            "positive_dates": 0,
+            "without_best_three": -24.150264900001435,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 6
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": true,
+            "net_lower": 8.6045670999994,
+            "net_upper": 8.6045670999994,
+            "closed_lower": 8.6045670999994,
+            "closed_upper": 8.6045670999994,
+            "conditional_allocations": 4,
+            "positive_dates": 2,
+            "without_best_three": -6.639773200000919,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 4
+            },
+            "actual_strategy_execution_verified": false
+          }
+        },
+        "extra_slippage": {
+          "all": {
+            "conditional_complete": false,
+            "net_lower": null,
+            "net_upper": null,
+            "closed_lower": -33.45308210000228,
+            "closed_upper": -33.45308210000228,
+            "conditional_allocations": 9,
+            "positive_dates": 2,
+            "without_best_three": null,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 9,
+              "unknown_quote_state_or_depth": 1
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": true,
+            "net_lower": -33.124302200001765,
+            "net_upper": -33.124302200001765,
+            "closed_lower": -33.124302200001765,
+            "closed_upper": -33.124302200001765,
+            "conditional_allocations": 6,
+            "positive_dates": 0,
+            "without_best_three": -33.124302200001765,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 6
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "net_lower": null,
+            "net_upper": null,
+            "closed_lower": -0.32877990000051005,
+            "closed_upper": -0.32877990000051005,
+            "conditional_allocations": 3,
+            "positive_dates": 2,
+            "without_best_three": null,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 3,
+              "unknown_quote_state_or_depth": 1
+            },
+            "actual_strategy_execution_verified": false
+          }
+        },
+        "alignment_100ms": {
+          "all": {
+            "conditional_complete": false,
+            "net_lower": null,
+            "net_upper": null,
+            "closed_lower": -7.411057400000349,
+            "closed_upper": -6.141222500001505,
+            "conditional_allocations": 6,
+            "positive_dates": 2,
+            "without_best_three": null,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 6,
+              "unknown_quote_state_or_depth": 4
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": false,
+            "net_lower": null,
+            "net_upper": null,
+            "closed_lower": -12.319605100000313,
+            "closed_upper": -11.929655800000669,
+            "conditional_allocations": 3,
+            "positive_dates": 0,
+            "without_best_three": null,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "unknown_quote_state_or_depth": 3,
+              "conditional_full_allocation": 3
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": false,
+            "net_lower": null,
+            "net_upper": null,
+            "closed_lower": 4.908547699999964,
+            "closed_upper": 5.788433299999164,
+            "conditional_allocations": 3,
+            "positive_dates": 2,
+            "without_best_three": null,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 3,
+              "unknown_quote_state_or_depth": 1
+            },
+            "actual_strategy_execution_verified": false
+          }
+        }
+      },
+      "advance_to_allocation_evidence": false
+    },
+    "30s": {
+      "scenarios": {
+        "base": {
+          "all": {
+            "conditional_complete": true,
+            "net_lower": -13.745931800001795,
+            "net_upper": -13.745931800001795,
+            "closed_lower": -13.745931800001795,
+            "closed_upper": -13.745931800001795,
+            "conditional_allocations": 10,
+            "positive_dates": 2,
+            "without_best_three": -34.73952460000302,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 10
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": true,
+            "net_lower": -27.999764400002196,
+            "net_upper": -27.999764400002196,
+            "closed_lower": -27.999764400002196,
+            "closed_upper": -27.999764400002196,
+            "conditional_allocations": 6,
+            "positive_dates": 0,
+            "without_best_three": -27.999764400002196,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 6
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": true,
+            "net_lower": 14.253832600000402,
+            "net_upper": 14.253832600000402,
+            "closed_lower": 14.253832600000402,
+            "closed_upper": 14.253832600000402,
+            "conditional_allocations": 4,
+            "positive_dates": 2,
+            "without_best_three": -6.739760200000825,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 4
+            },
+            "actual_strategy_execution_verified": false
+          }
+        },
+        "double_fees": {
+          "all": {
+            "conditional_complete": true,
+            "net_lower": -36.2641666000018,
+            "net_upper": -36.2641666000018,
+            "closed_lower": -36.2641666000018,
+            "closed_upper": -36.2641666000018,
+            "conditional_allocations": 10,
+            "positive_dates": 2,
+            "without_best_three": -52.67654020000303,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 10
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": true,
+            "net_lower": -41.456016800002196,
+            "net_upper": -41.456016800002196,
+            "closed_lower": -41.456016800002196,
+            "closed_upper": -41.456016800002196,
+            "conditional_allocations": 6,
+            "positive_dates": 0,
+            "without_best_three": -41.456016800002196,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 6
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": true,
+            "net_lower": 5.191850200000399,
+            "net_upper": 5.191850200000399,
+            "closed_lower": 5.191850200000399,
+            "closed_upper": 5.191850200000399,
+            "conditional_allocations": 4,
+            "positive_dates": 2,
+            "without_best_three": -11.220523400000829,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 4
+            },
+            "actual_strategy_execution_verified": false
+          }
+        },
+        "latency_3s": {
+          "all": {
+            "conditional_complete": true,
+            "net_lower": -16.58556260000473,
+            "net_upper": -16.58556260000473,
+            "closed_lower": -16.58556260000473,
+            "closed_upper": -16.58556260000473,
+            "conditional_allocations": 10,
+            "positive_dates": 2,
+            "without_best_three": -38.65901500000497,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 10
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": true,
+            "net_lower": -32.86913130000328,
+            "net_upper": -32.86913130000328,
+            "closed_lower": -32.86913130000328,
+            "closed_upper": -32.86913130000328,
+            "conditional_allocations": 6,
+            "positive_dates": 0,
+            "without_best_three": -32.86913130000328,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 6
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": true,
+            "net_lower": 16.28356869999855,
+            "net_upper": 16.28356869999855,
+            "closed_lower": 16.28356869999855,
+            "closed_upper": 16.28356869999855,
+            "conditional_allocations": 4,
+            "positive_dates": 2,
+            "without_best_three": -5.789883700001692,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 4
+            },
+            "actual_strategy_execution_verified": false
+          }
+        },
+        "extra_slippage": {
+          "all": {
+            "conditional_complete": true,
+            "net_lower": -30.3236288000018,
+            "net_upper": -30.3236288000018,
+            "closed_lower": -30.3236288000018,
+            "closed_upper": -30.3236288000018,
+            "conditional_allocations": 10,
+            "positive_dates": 2,
+            "without_best_three": -47.492033600003026,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 10
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": true,
+            "net_lower": -37.5832764000022,
+            "net_upper": -37.5832764000022,
+            "closed_lower": -37.5832764000022,
+            "closed_upper": -37.5832764000022,
+            "conditional_allocations": 6,
+            "positive_dates": 0,
+            "without_best_three": -37.5832764000022,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 6
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": true,
+            "net_lower": 7.259647600000399,
+            "net_upper": 7.259647600000399,
+            "closed_lower": 7.259647600000399,
+            "closed_upper": 7.259647600000399,
+            "conditional_allocations": 4,
+            "positive_dates": 2,
+            "without_best_three": -9.908757200000828,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 4
+            },
+            "actual_strategy_execution_verified": false
+          }
+        },
+        "alignment_100ms": {
+          "all": {
+            "conditional_complete": true,
+            "net_lower": -15.275732900004387,
+            "net_upper": -12.866046200002598,
+            "closed_lower": -15.275732900004387,
+            "closed_upper": -12.866046200002598,
+            "conditional_allocations": 10,
+            "positive_dates": 2,
+            "without_best_three": -35.57941540000431,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 22,
+              "conditional_full_allocation": 10
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "development_2023_2024": {
+            "conditional_complete": true,
+            "net_lower": -28.63968120000366,
+            "net_upper": -27.999764400002196,
+            "closed_lower": -28.63968120000366,
+            "closed_upper": -27.999764400002196,
+            "conditional_allocations": 6,
+            "positive_dates": 0,
+            "without_best_three": -28.63968120000366,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 6
+            },
+            "actual_strategy_execution_verified": false
+          },
+          "selection_2025": {
+            "conditional_complete": true,
+            "net_lower": 13.363948299999276,
+            "net_upper": 15.1337181999996,
+            "closed_lower": 13.363948299999276,
+            "closed_upper": 15.1337181999996,
+            "conditional_allocations": 4,
+            "positive_dates": 2,
+            "without_best_three": -6.939734200000647,
+            "outcomes": {
+              "outside_limit_no_reference_fill": 11,
+              "conditional_full_allocation": 4
+            },
+            "actual_strategy_execution_verified": false
+          }
+        }
+      },
+      "advance_to_allocation_evidence": false
+    }
+  },
+  "unit_audit": [
+    {
+      "date": "2023-08-02",
+      "definition_event_ns": 1690950365046722304,
+      "round_lot": 100,
+      "rows": 9397,
+      "source_sha256": "d52ebe0b891faf923fa4d0ec5398e1e879952cdf66a4a05da8102768d929e9a4"
+    },
+    {
+      "date": "2024-02-23",
+      "definition_event_ns": 1708666279429688595,
+      "round_lot": 100,
+      "rows": 7984,
+      "source_sha256": "4539d2d76e9098c690f070b5a23d3316a1ffd00298fcc3672445a31c586d0013"
+    },
+    {
+      "date": "2024-03-28",
+      "definition_event_ns": 1711600265342248251,
+      "round_lot": 100,
+      "rows": 10546,
+      "source_sha256": "dba1c004166f4414c18d2026a96e9d1b3573f6e1bdcb04acd85178ce035f2b7b"
+    },
+    {
+      "date": "2024-04-17",
+      "definition_event_ns": 1713328389733040915,
+      "round_lot": 100,
+      "rows": 12458,
+      "source_sha256": "233974deafd47be45ba0dc79b2548a94cd292e9afa2c52f5e8e134952f14f821"
+    },
+    {
+      "date": "2024-04-30",
+      "definition_event_ns": 1714451503832350927,
+      "round_lot": 100,
+      "rows": 11147,
+      "source_sha256": "00a60366e7414ad827bc3880e215725d32d742d787add1b1791bb67c4443089d"
+    },
+    {
+      "date": "2024-12-19",
+      "definition_event_ns": 1734591660011258977,
+      "round_lot": 100,
+      "rows": 9719,
+      "source_sha256": "9b52cc747288b3ced77952567233057bf0bef5ba7c7386c77c161e446282f356"
+    },
+    {
+      "date": "2025-03-11",
+      "definition_event_ns": 1741672860011457559,
+      "round_lot": 100,
+      "rows": 18138,
+      "source_sha256": "dd329c1b1c09c383020aedfe494d6cc96d9c3cac75a937d9d2502c909ae4b0a2"
+    },
+    {
+      "date": "2025-03-26",
+      "definition_event_ns": 1742968860011270758,
+      "round_lot": 100,
+      "rows": 9428,
+      "source_sha256": "48d492686a8fe410b7a7f95ba08d45dc6b9f817628d8686b4ea10a4fa781abf9"
+    },
+    {
+      "date": "2025-04-03",
+      "definition_event_ns": 1743660060011458350,
+      "round_lot": 100,
+      "rows": 11652,
+      "source_sha256": "bb56b1ccdfc4e2bd87ac11fbe81fd31079a96c26a781325f9ba2b254da6456b9"
+    },
+    {
+      "date": "2025-06-30",
+      "definition_event_ns": 1751263260011474107,
+      "round_lot": 100,
+      "rows": 14009,
+      "source_sha256": "7ac44a2fb9cbe0422156290bda431c90f1aa8c4f955888c967a3e2e2f213788d"
+    }
+  ],
+  "advance_to_allocation_evidence": [],
+  "conditional_benchmark_only": true,
+  "reliable_edge_established": false,
+  "output_sha256": {
+    "15s_alignment_100ms_ledger.parquet": "a1ab816eee4e6d362a7218be2a0e2ffd4ddb796a5914c23cb5048c1aeaecc038",
+    "15s_base_ledger.parquet": "d3bddb7c7da204f0a2e70aaade6cc534bf8002438ee460552aee5263c6e27dee",
+    "15s_double_fees_ledger.parquet": "27eb375cceedcc83e4d977de3bd6df47cc0d6ffa1833ea639b6e97d6ab0e0307",
+    "15s_extra_slippage_ledger.parquet": "ea0c77bd0387b7fd8c4c4a519407412de65df319e32d09223d4279446f077a77",
+    "15s_latency_3s_ledger.parquet": "a9c2372556e1559c801d1ddbc0dc9e905def602bfeb762b95a52f5a69f91426e",
+    "30s_alignment_100ms_ledger.parquet": "771f3a64d93b6d069d64b2a439db96daa5df8dafa0552bedf5f1171b4f197e68",
+    "30s_base_ledger.parquet": "b2450b5418e267ff72d19abed8faad344aeedaf6a67b6356a0bc19cc4e010441",
+    "30s_double_fees_ledger.parquet": "01b884f6c63bff35664073fc703256a25419dd98c81113ca2dba608c081a9f01",
+    "30s_extra_slippage_ledger.parquet": "7765f1462853658f0fc471e3fc57dd774585e4aafe3253b16fb22557ae91d0ae",
+    "30s_latency_3s_ledger.parquet": "2b2b7881846a8930ae88be22f61a22e2efb03d6f8ab4728590b124dc94674563",
+    "quote_envelopes.parquet": "bf30f41856dcbbf8a00163f67bb805ce553a556ed5ecceee5d3d846314d6e217"
+  }
+}

@@ -1,0 +1,2995 @@
+{
+  "results": {
+    "follow_immediate_30s": {
+      "scenarios": {
+        "base": {
+          "complete": false,
+          "closed_trade_subtotal": -124.80736813999829,
+          "net_dollars": null,
+          "trades": 109,
+          "gross_dollars": -1.0864999999994325,
+          "mean_gross_bps": -0.06513731805622058,
+          "mean_net_bps": -12.065342374609106,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -22.104796740000893,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -26.595012079998924,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -11.155309039999338,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -25.887089359999663,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -22.5326413199964,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -16.53251960000307,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": false,
+          "closed_trade_subtotal": -227.78294223999728,
+          "net_dollars": null,
+          "trades": 109,
+          "gross_dollars": -1.1179999999993697,
+          "mean_gross_bps": -0.06513731805621414,
+          "mean_net_bps": -22.065513255069835,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -38.407710690002205,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -52.71085547999792,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -20.925233239999216,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -42.6799971599994,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -42.951193069997316,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -30.107952600001227,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -127.46414283999547,
+          "net_dollars": -127.46414283999547,
+          "trades": 113,
+          "gross_dollars": 1.8824000000000751,
+          "mean_gross_bps": 0.17497712718507877,
+          "mean_net_bps": -11.82508354424258,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -25.45961394666453,
+            -16.483781299999766
+          ],
+          "sixty_four_version_adjusted_mean_lower": -27.014547186662337,
+          "net_without_best_day": -116.39410907999627,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -21.989172600002348,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -25.602483479997318,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 3
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -11.070033759999205,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -24.61071255999923,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -27.720579039994846,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -16.47116140000253,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": false
+    },
+    "follow_immediate_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -132.84029916001055,
+          "net_dollars": -132.84029916001055,
+          "trades": 116,
+          "gross_dollars": -0.936600000000368,
+          "mean_gross_bps": 0.05685203992246596,
+          "mean_net_bps": -11.943358439067271,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -27.030517716669237,
+            -16.504126346668272
+          ],
+          "sixty_four_version_adjusted_mean_lower": -28.709722360003372,
+          "net_without_best_day": -122.89622836000854,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -24.318816660001175,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -30.245489720004116,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -9.94407080000201,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -23.458192960000815,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -26.9575586200026,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -17.916170399999828,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -242.76004846000433,
+          "net_dollars": -242.76004846000433,
+          "trades": 116,
+          "gross_dollars": -0.936600000000368,
+          "mean_gross_bps": 0.05685203992246596,
+          "mean_net_bps": -21.943533838225385,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -50.37385192500066,
+            -30.483931986667812
+          ],
+          "sixty_four_version_adjusted_mean_lower": -55.34375264499977,
+          "net_without_best_day": -223.04691866000576,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -40.620747210001355,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -56.36389782000333,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -19.71312979999857,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -40.247353760003534,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -54.323607469996205,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -31.491312400001334,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -133.59242534000077,
+          "net_dollars": -133.59242534000077,
+          "trades": 113,
+          "gross_dollars": -4.241900000000555,
+          "mean_gross_bps": -0.4208286383975227,
+          "mean_net_bps": -12.421143170348513,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -27.6314193800002,
+            -16.437174683332767
+          ],
+          "sixty_four_version_adjusted_mean_lower": -30.040801250000186,
+          "net_without_best_day": -123.58058738000182,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -24.82512090000091,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -29.913670239999192,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 3
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -10.011837959998957,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -20.80019037999955,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -30.16793226000118,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -17.873673600000984,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": false
+    },
+    "follow_quiet_30s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -85.27408641999682,
+          "net_dollars": -85.27408641999682,
+          "trades": 78,
+          "gross_dollars": 5.125099999999975,
+          "mean_gross_bps": 0.6712042026256986,
+          "mean_net_bps": -11.328915176975029,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -17.151435483329504,
+            -11.214223076665803
+          ],
+          "sixty_four_version_adjusted_mean_lower": -18.965249439997326,
+          "net_without_best_day": -77.24479981999866,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -16.411274400001275,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -13.910378459997446,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -8.029286599998159,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -12.875825800001621,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -20.242236959995353,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -13.805084200002966,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -160.60674177000146,
+          "net_dollars": -160.60674177000146,
+          "trades": 78,
+          "gross_dollars": 5.125099999999975,
+          "mean_gross_bps": 0.6712042026256986,
+          "mean_net_bps": -21.329014659975634,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -32.63918584666741,
+            -21.269675699998817
+          ],
+          "sixty_four_version_adjusted_mean_lower": -35.60688201000145,
+          "net_without_best_day": -144.77504967000277,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -28.71983640000144,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -29.335110510002778,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -15.83169209999869,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -22.533847299997433,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -38.74276776000079,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -25.443487700000333,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -79.99575344000914,
+          "net_dollars": -79.99575344000914,
+          "trades": 74,
+          "gross_dollars": 5.743599999999219,
+          "mean_gross_bps": 0.8030989060554871,
+          "mean_net_bps": -11.197420774859658,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -17.17425517000144,
+            -9.721979126669188
+          ],
+          "sixty_four_version_adjusted_mean_lower": -19.451221406668385,
+          "net_without_best_day": -74.08360578000611,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -15.506478300001618,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -12.064581039998302,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -5.912147660003029,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -11.410043280004174,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -21.42359296000177,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -13.678910200000246,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": false
+    },
+    "follow_quiet_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -81.80875148000086,
+          "net_dollars": -81.80875148000086,
+          "trades": 78,
+          "gross_dollars": 8.589399999999955,
+          "mean_gross_bps": 1.0937872949689502,
+          "mean_net_bps": -10.906198326019174,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -18.50703324333396,
+            -8.574508163333727
+          ],
+          "sixty_four_version_adjusted_mean_lower": -20.522696700000477,
+          "net_without_best_day": -76.32760057999985,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -21.07991849999962,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -14.909630559999641,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -5.773572719997901,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -5.481150900001012,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -20.244085800000903,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -14.320393000001786,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -157.01376998999694,
+          "net_dollars": -157.01376998999694,
+          "trades": 78,
+          "gross_dollars": 8.578899999999976,
+          "mean_gross_bps": 1.0937872949689533,
+          "mean_net_bps": -20.906186343509283,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -33.40638076166579,
+            -18.67143534666684
+          ],
+          "sixty_four_version_adjusted_mean_lower": -36.61566783333061,
+          "net_without_best_day": -143.43888666999555,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -33.38776725000207,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -30.21021496999674,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -13.57488332000139,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -15.13552664999952,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -38.747157299996616,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -25.958220500000607,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -87.02023421999911,
+          "net_dollars": -87.02023421999911,
+          "trades": 74,
+          "gross_dollars": -1.2807000000007065,
+          "mean_gross_bps": -0.21629648320097233,
+          "mean_net_bps": -12.216838162845239,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -19.13568230999863,
+            -9.792051989999587
+          ],
+          "sixty_four_version_adjusted_mean_lower": -21.304855069998666,
+          "net_without_best_day": -79.94027407999965,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -20.51389560000098,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -15.69042889999946,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -7.498859040000752,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -7.079960139999457,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -22.095814539996354,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -14.141276000002108,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": false
+    },
+    "reverse_immediate_30s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -144.65842559999328,
+          "net_dollars": -144.65842559999328,
+          "trades": 119,
+          "gross_dollars": -7.690199999999777,
+          "mean_gross_bps": -0.6399981296017123,
+          "mean_net_bps": -12.639792769792118,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -31.704129609998745,
+            -16.852249826665382
+          ],
+          "sixty_four_version_adjusted_mean_lower": -36.399912659998336,
+          "net_without_best_day": -132.25424173999454,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -18.40371027999754,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -37.023527759998615,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -12.404183859998739,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -24.97418654000103,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -35.776297559998056,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -16.0765195999993,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -258.661726429993,
+          "net_dollars": -258.661726429993,
+          "trades": 119,
+          "gross_dollars": -7.682699999999727,
+          "mean_gross_bps": -0.6399981296017083,
+          "mean_net_bps": -22.63962163661746,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -55.56293415666611,
+            -30.891977641664806
+          ],
+          "sixty_four_version_adjusted_mean_lower": -62.52892321000036,
+          "net_without_best_day": -236.5656931899939,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -35.52630217999649,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -63.89196756000456,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -22.096033239999088,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -46.329591989999244,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -61.165878859996155,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -29.651952599997458,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": false,
+          "closed_trade_subtotal": -103.88562520000596,
+          "net_dollars": null,
+          "trades": 93,
+          "gross_dollars": 3.0752000000003363,
+          "mean_gross_bps": 0.3772043693338683,
+          "mean_net_bps": -11.622830209717419,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -16.08034642000166,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -10.605883500000346,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -12.483405520002634,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -19.825914079998256,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 3
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -28.752914280001278,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -16.137161400001787,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": false
+    },
+    "reverse_immediate_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -141.25272714000312,
+          "net_dollars": -141.25272714000312,
+          "trades": 119,
+          "gross_dollars": -4.281300000000101,
+          "mean_gross_bps": -0.3028611705762155,
+          "mean_net_bps": -12.302941257709131,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -31.074990443333263,
+            -16.631248706664337
+          ],
+          "sixty_four_version_adjusted_mean_lower": -36.21159733333419,
+          "net_without_best_day": -127.63118644000133,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -17.60078785999758,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -31.556299800000488,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -13.621540700001788,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -25.242682280004374,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -38.53924610000104,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -14.692170399997849,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -255.25050494001152,
+          "net_dollars": -255.25050494001152,
+          "trades": 119,
+          "gross_dollars": -4.265600000000063,
+          "mean_gross_bps": -0.3028611705762119,
+          "mean_net_bps": -22.303007996986548,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -54.40911906667043,
+            -30.90065962104352
+          ],
+          "sixty_four_version_adjusted_mean_lower": -61.18054207500427,
+          "net_without_best_day": -231.94617514001038,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -34.72369441000046,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -58.42821630000435,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -23.304329800001142,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -46.59408418000021,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -63.932867850004186,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -28.267312400001174,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": false,
+          "closed_trade_subtotal": -110.9934876000043,
+          "net_dollars": null,
+          "trades": 99,
+          "gross_dollars": 2.9705999999991377,
+          "mean_gross_bps": 0.41357463991462834,
+          "mean_net_bps": -11.586572778841555,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -14.915501339999537,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -6.691754699999365,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -13.548804680000103,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -23.28236630000174,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 3
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -37.82138698000199,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -14.733673600001566,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": false
+    },
+    "reverse_quiet_30s": {
+      "scenarios": {
+        "base": {
+          "complete": false,
+          "closed_trade_subtotal": -73.52279171999908,
+          "net_dollars": null,
+          "trades": 62,
+          "gross_dollars": -1.554599999999141,
+          "mean_gross_bps": -0.24377862561290084,
+          "mean_net_bps": -12.243662090847137,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -13.168274400000882,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -8.220766399999775,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -10.795858360001148,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -10.334425799997916,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -16.85238255999866,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -14.151084200000696,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": false,
+          "closed_trade_subtotal": -133.36690545999772,
+          "net_dollars": null,
+          "trades": 62,
+          "gross_dollars": -1.554599999999141,
+          "mean_gross_bps": -0.24377862561290084,
+          "mean_net_bps": -22.24356497854233,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -25.476836399993772,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -13.027238400001806,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -18.527694300000803,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -19.992447300001004,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -30.55320135999864,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -25.7894877000017,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -94.33709177999845,
+          "net_dollars": -94.33709177999845,
+          "trades": 77,
+          "gross_dollars": -4.9845000000003665,
+          "mean_gross_bps": -0.6736528451460082,
+          "mean_net_bps": -12.674288059258982,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -20.250405253331945,
+            -11.263435973334103
+          ],
+          "sixty_four_version_adjusted_mean_lower": -23.237152779998723,
+          "net_without_best_day": -85.10260379999818,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -14.072478299998693,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -23.662161799999012,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -10.278909740003655,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -9.234487980000267,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -22.812143759998435,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -14.276910199998383,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": false
+    },
+    "reverse_quiet_120s": {
+      "scenarios": {
+        "base": {
+          "complete": false,
+          "closed_trade_subtotal": -81.1933118600009,
+          "net_dollars": null,
+          "trades": 67,
+          "gross_dollars": -3.3845000000004575,
+          "mean_gross_bps": -0.48444605338598606,
+          "mean_net_bps": -12.483836118641626,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -8.497918499999287,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -4.103796800000055,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -13.05733943999985,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -17.743544779999866,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -24.156319340001573,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -13.634393000000273,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": false,
+          "closed_trade_subtotal": -145.89621829000134,
+          "net_dollars": null,
+          "trades": 67,
+          "gross_dollars": -3.3761000000005197,
+          "mean_gross_bps": -0.48444605338599583,
+          "mean_net_bps": -22.483327839688,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -20.805767249998098,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -8.911960800000088,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -20.779685519999475,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -27.397915430003195,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -42.728668789999574,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -25.272220500000913,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -93.13665089999813,
+          "net_dollars": -93.13665089999813,
+          "trades": 77,
+          "gross_dollars": -3.7863000000004376,
+          "mean_gross_bps": -0.4917253135862094,
+          "mean_net_bps": -12.492050095091752,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -19.60496060999776,
+            -11.725710859999708
+          ],
+          "sixty_four_version_adjusted_mean_lower": -22.238041406662887,
+          "net_without_best_day": -84.07375529999808,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -9.062895600000047,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -19.976020799998878,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -11.594778779999615,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -15.005037540004196,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -23.684642179994626,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -13.81327600000077,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": false
+    },
+    "price_follow_immediate_30s": {
+      "scenarios": {
+        "base": {
+          "complete": false,
+          "closed_trade_subtotal": -123.73536813999817,
+          "net_dollars": null,
+          "trades": 109,
+          "gross_dollars": -0.01449999999931606,
+          "mean_gross_bps": 0.03679883660211465,
+          "mean_net_bps": -11.963406508146317,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -21.858796740001708,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -26.595012079998924,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -11.155309039999338,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -25.887089359999663,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -22.5326413199964,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -15.706519600002139,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": false,
+          "closed_trade_subtotal": -226.71094223999717,
+          "net_dollars": null,
+          "trades": 109,
+          "gross_dollars": -0.045999999999253305,
+          "mean_gross_bps": 0.03679883660212107,
+          "mean_net_bps": -21.963577628770004,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -38.16171069000302,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -52.71085547999792,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -20.925233239999216,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -42.6799971599994,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -42.951193069997316,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -29.281952600000295,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": false,
+          "closed_trade_subtotal": -119.79156931999569,
+          "net_dollars": null,
+          "trades": 108,
+          "gross_dollars": 3.7222000000000435,
+          "mean_gross_bps": 0.3596812964451495,
+          "mean_net_bps": -11.640375835115996,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -21.644172600003003,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -25.602483479997318,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 3
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -11.070033759999205,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -24.61071255999923,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -21.549005519995262,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -15.31516140000167,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": true
+    },
+    "price_follow_immediate_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -137.19190168000932,
+          "net_dollars": -137.19190168000932,
+          "trades": 116,
+          "gross_dollars": -5.288200000000103,
+          "mean_gross_bps": -0.3232335796037376,
+          "mean_net_bps": -12.323443959160507,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -29.27755189000254,
+            -16.4530820033339
+          ],
+          "sixty_four_version_adjusted_mean_lower": -32.568166443336246,
+          "net_without_best_day": -127.24783088000731,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -22.935816659999546,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -30.245489720004116,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -9.94407080000201,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -23.458192960000815,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -34.39016114000333,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -16.218170399999508,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -247.11165308000454,
+          "net_dollars": -247.11165308000454,
+          "trades": 116,
+          "gross_dollars": -5.288200000000103,
+          "mean_gross_bps": -0.3232335796037376,
+          "mean_net_bps": -22.32361927545781,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -52.67598466166479,
+            -29.74966422833404
+          ],
+          "sixty_four_version_adjusted_mean_lower": -59.06005495499994,
+          "net_without_best_day": -227.39852328000597,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -39.237747210001544,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -56.36389782000333,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -19.71312979999857,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -40.247353760003534,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -61.75621208999655,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -29.793312400001014,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -135.00162617999922,
+          "net_dollars": -135.00162617999922,
+          "trades": 114,
+          "gross_dollars": -4.48350000000039,
+          "mean_gross_bps": -0.43427394978528816,
+          "mean_net_bps": -12.434400864423703,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -29.021929623333563,
+            -16.06755573333309
+          ],
+          "sixty_four_version_adjusted_mean_lower": -32.877131066667665,
+          "net_without_best_day": -124.98978822000026,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -23.44212089999928,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -29.913670239999192,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 3
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -10.011837959998957,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -20.80019037999955,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 5
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -34.764133100001345,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -16.069673600000897,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": true
+    },
+    "price_follow_quiet_30s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -85.95488641999691,
+          "net_dollars": -85.95488641999691,
+          "trades": 78,
+          "gross_dollars": 4.444299999999998,
+          "mean_gross_bps": 0.5808283772580469,
+          "mean_net_bps": -11.419291427571585,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -17.29706881666304,
+            -11.601407366667141
+          ],
+          "sixty_four_version_adjusted_mean_lower": -18.97671149999648,
+          "net_without_best_day": -77.05179981999754,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -17.374274400001013,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -13.910378459997446,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -8.90308659999937,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -12.875825800001621,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -20.242236959995353,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -12.649084200002108,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -161.28754177000155,
+          "net_dollars": -161.28754177000155,
+          "trades": 78,
+          "gross_dollars": 4.444299999999998,
+          "mean_gross_bps": 0.5808283772580469,
+          "mean_net_bps": -21.419391264929608,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -32.586904890001584,
+            -21.64203730999907
+          ],
+          "sixty_four_version_adjusted_mean_lower": -35.722790640000916,
+          "net_without_best_day": -144.58204967000347,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -29.68283640000118,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -29.335110510002778,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -16.705492099998082,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -22.533847299997433,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -38.74276776000079,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -24.287487700001293,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -80.57795344000806,
+          "net_dollars": -80.57795344000806,
+          "trades": 74,
+          "gross_dollars": 5.161399999999048,
+          "mean_gross_bps": 0.7205573789070271,
+          "mean_net_bps": -11.279962750233922,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -17.400146916668138,
+            -10.049024266668615
+          ],
+          "sixty_four_version_adjusted_mean_lower": -19.834221406668195,
+          "net_without_best_day": -73.85660578000534,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -16.65547830000105,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -12.064581039998302,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -6.721347660002721,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -11.410043280004174,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -21.42359296000177,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -12.302910200000042,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": true
+    },
+    "price_follow_quiet_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -78.80015147999984,
+          "net_dollars": -78.80015147999984,
+          "trades": 78,
+          "gross_dollars": 11.59800000000007,
+          "mean_gross_bps": 1.4918504094400311,
+          "mean_net_bps": -10.508135636550106,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -18.067061126667493,
+            -7.982015436666188
+          ],
+          "sixty_four_version_adjusted_mean_lower": -20.380696700000044,
+          "net_without_best_day": -73.80517876000158,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -20.653918499998326,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -14.909630559999641,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -4.994972719998259,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -5.481150900001012,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -20.244085800000903,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -12.516393000001699,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -154.00516998999592,
+          "net_dollars": -154.00516998999592,
+          "trades": 78,
+          "gross_dollars": 11.587500000000091,
+          "mean_gross_bps": 1.491850409440034,
+          "mean_net_bps": -20.508124008208558,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -32.96371409499928,
+            -18.050186838333804
+          ],
+          "sixty_four_version_adjusted_mean_lower": -36.360101903330964,
+          "net_without_best_day": -141.208886669996,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -32.961767250002595,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -30.21021496999674,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -12.79628331999993,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -15.13552664999952,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -38.747157299996616,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -24.15422050000052,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -83.46943421999822,
+          "net_dollars": -83.46943421999822,
+          "trades": 74,
+          "gross_dollars": 2.270099999999161,
+          "mean_gross_bps": 0.27636492439545046,
+          "mean_net_bps": -11.724177203203531,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -18.789520863332353,
+            -9.033623876667056
+          ],
+          "sixty_four_version_adjusted_mean_lower": -21.231355069998244,
+          "net_without_best_day": -77.35437517999708,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -20.366895600000134,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -15.69042889999946,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -6.115059040001142,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -7.079960139999457,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -22.095814539996354,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -12.121276000001671,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": true
+    },
+    "price_reverse_immediate_30s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -141.7586230799934,
+          "net_dollars": -141.7586230799934,
+          "trades": 119,
+          "gross_dollars": -4.790399999999863,
+          "mean_gross_bps": -0.39109775325732493,
+          "mean_net_bps": -12.39089249081627,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -30.791964076665863,
+            -17.039550623332616
+          ],
+          "sixty_four_version_adjusted_mean_lower": -34.414011399998344,
+          "net_without_best_day": -129.35443921999467,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -18.649710279996725,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -37.023527759998615,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -12.404183859998739,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -24.97418654000103,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -31.804495039998073,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -16.902519600000232,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -255.7619218099935,
+          "net_dollars": -255.7619218099935,
+          "trades": 119,
+          "gross_dollars": -4.782899999999813,
+          "mean_gross_bps": -0.3910977532573209,
+          "mean_net_bps": -22.390721438782055,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -54.279586918334644,
+            -31.208310974998312
+          ],
+          "sixty_four_version_adjusted_mean_lower": -60.543020900000556,
+          "net_without_best_day": -233.66588856999442,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -35.77230217999568,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -63.89196756000456,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -22.096033239999088,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -46.329591989999244,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -57.19407423999655,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -30.47795259999839,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": false,
+          "closed_trade_subtotal": -110.89459872000589,
+          "net_dollars": null,
+          "trades": 98,
+          "gross_dollars": 1.899000000000001,
+          "mean_gross_bps": 0.2336098852557499,
+          "mean_net_bps": -11.766430099747936,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -16.425346420001006,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -10.605883500000346,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -12.483405520002634,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -19.825914079998256,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 3
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -34.260887800001,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -17.293161400002646,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": true
+    },
+    "price_reverse_immediate_120s": {
+      "scenarios": {
+        "base": {
+          "complete": true,
+          "closed_trade_subtotal": -136.90112462000434,
+          "net_dollars": -136.90112462000434,
+          "trades": 119,
+          "gross_dollars": 0.07029999999963366,
+          "mean_gross_bps": 0.06764245854176451,
+          "mean_net_bps": -11.932437725517403,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -28.333668853334228,
+            -17.37498205666725
+          ],
+          "sixty_four_version_adjusted_mean_lower": -31.3314716900004,
+          "net_without_best_day": -123.27958392000255,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -18.98378785999921,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -31.556299800000488,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -13.621540700001788,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -25.242682280004374,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -31.10664358000031,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -16.39017039999817,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": true,
+          "closed_trade_subtotal": -250.8989003200113,
+          "net_dollars": -250.8989003200113,
+          "trades": 119,
+          "gross_dollars": 0.08599999999967167,
+          "mean_gross_bps": 0.06764245854176809,
+          "mean_net_bps": -21.932504545566697,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -52.09295627500281,
+            -31.453410400000696
+          ],
+          "sixty_four_version_adjusted_mean_lower": -57.464239765004095,
+          "net_without_best_day": -227.59457052001017,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -36.10669441000027,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -58.42821630000435,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -23.304329800001142,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -46.59408418000021,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -56.50026323000384,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -29.965312400001494,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": false,
+          "closed_trade_subtotal": -109.58428676000585,
+          "net_dollars": null,
+          "trades": 98,
+          "gross_dollars": 3.2121999999989725,
+          "mean_gross_bps": 0.43772942334847936,
+          "mean_net_bps": -11.56263453888157,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -16.298501340001167,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -6.691754699999365,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -13.548804680000103,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -23.28236630000174,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 3
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -33.225186140001824,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 2
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -16.537673600001654,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": true
+    },
+    "price_reverse_quiet_30s": {
+      "scenarios": {
+        "base": {
+          "complete": false,
+          "closed_trade_subtotal": -72.84199171999899,
+          "net_dollars": null,
+          "trades": 62,
+          "gross_dollars": -0.8737999999991644,
+          "mean_gross_bps": -0.1300800066019843,
+          "mean_net_bps": -12.129962936870825,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -12.205274400001144,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -8.220766399999775,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -9.922058359999937,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -10.334425799997916,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -16.85238255999866,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -15.307084200001555,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": false,
+          "closed_trade_subtotal": -132.68610545999763,
+          "net_dollars": null,
+          "trades": 62,
+          "gross_dollars": -0.8737999999991644,
+          "mean_gross_bps": -0.1300800066019843,
+          "mean_net_bps": -22.129865378761526,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -24.513836399994034,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -13.027238400001806,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -17.65389430000141,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -19.992447300001004,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -30.55320135999864,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -26.94548770000074,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -93.75489177999953,
+          "net_dollars": -93.75489177999953,
+          "trades": 77,
+          "gross_dollars": -4.402300000000196,
+          "mean_gross_bps": -0.5943272216526833,
+          "mean_net_bps": -12.594962005003195,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -20.395836276665552,
+            -11.036667616668334
+          ],
+          "sixty_four_version_adjusted_mean_lower": -23.237152779998723,
+          "net_without_best_day": -84.52040379999926,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -12.92347829999926,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -23.662161799999012,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -9.469709740003964,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -9.234487980000267,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -22.812143759998435,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -15.652910199998587,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": true
+    },
+    "price_reverse_quiet_120s": {
+      "scenarios": {
+        "base": {
+          "complete": false,
+          "closed_trade_subtotal": -84.20191186000193,
+          "net_dollars": null,
+          "trades": 67,
+          "gross_dollars": -6.393100000000572,
+          "mean_gross_bps": -0.9478628135164977,
+          "mean_net_bps": -12.947252383993677,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -8.923918500000582,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -4.103796800000055,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -13.835939439999493,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -17.743544779999866,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -24.156319340001573,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -15.43839300000036,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "double_fees": {
+          "complete": false,
+          "closed_trade_subtotal": -148.90481829000237,
+          "net_dollars": null,
+          "trades": 67,
+          "gross_dollars": -6.384700000000635,
+          "mean_gross_bps": -0.9478628135165075,
+          "mean_net_bps": -22.946743692724667,
+          "positive_days": null,
+          "mean_daily_ci95": null,
+          "sixty_four_version_adjusted_mean_lower": null,
+          "net_without_best_day": null,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -21.231767249997574,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -8.911960800000088,
+              "complete": false,
+              "unresolved": 1,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -21.558285520000936,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -27.397915430003195,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -42.728668789999574,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -27.076220500001,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        },
+        "latency_3s": {
+          "complete": true,
+          "closed_trade_subtotal": -96.68745089999902,
+          "net_dollars": -96.68745089999902,
+          "trades": 77,
+          "gross_dollars": -7.337100000000305,
+          "mean_gross_bps": -0.9651921208866676,
+          "mean_net_bps": -12.965516471890279,
+          "positive_days": 0,
+          "mean_daily_ci95": [
+            -19.973633686663863,
+            -12.53587705000094
+          ],
+          "sixty_four_version_adjusted_mean_lower": -22.376081149995724,
+          "net_without_best_day": -87.47755529999813,
+          "daily": [
+            {
+              "date": "2024-07-01",
+              "closed_trade_subtotal": -9.209895600000891,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-08-01",
+              "closed_trade_subtotal": -19.976020799998878,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 1
+            },
+            {
+              "date": "2024-09-01",
+              "closed_trade_subtotal": -12.978578779999225,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-10-01",
+              "closed_trade_subtotal": -15.005037540004196,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-11-01",
+              "closed_trade_subtotal": -23.684642179994626,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            },
+            {
+              "date": "2024-12-01",
+              "closed_trade_subtotal": -15.833276000001206,
+              "complete": true,
+              "unresolved": 0,
+              "rejected_or_ineligible": 0
+            }
+          ]
+        }
+      },
+      "is_price_control": true
+    }
+  },
+  "source_audits": [
+    {
+      "date": "2024-07-01",
+      "raw_rows": 1268622,
+      "exchange_backtracks": 0,
+      "ambiguous_target_count": 0,
+      "ambiguity_intervals_us": [],
+      "execution_snapshots_captured_after_target": 8,
+      "signals_captured_after_target": 0,
+      "events_sha256": "b454b79221498e956584097a310140df3061fd836423a2d3a5ab8058a9366add",
+      "panel_sha256": "4787d16ecb1c9fd3b93d6f9271211c48867469bf1183455a45b8f6338a46201e",
+      "source_sha256": "822df7ed98a2d578aba93a3b0833317076a51eb4350847095c0467fa034ea6d1",
+      "events": 19
+    },
+    {
+      "date": "2024-08-01",
+      "raw_rows": 1447793,
+      "exchange_backtracks": 0,
+      "ambiguous_target_count": 0,
+      "ambiguity_intervals_us": [],
+      "execution_snapshots_captured_after_target": 27,
+      "signals_captured_after_target": 0,
+      "events_sha256": "7884eeba65441162871fd19073a5b8f15ca78e0f00591c34202e5425ed61a212",
+      "panel_sha256": "30d5f5418d9a3215823d25adb4a5e8fa4dc89a2a5478b4a5ee3c0de6f17f1c05",
+      "source_sha256": "706c56900fa4a41e2f9edd122d7c31d718be22e9b51c13b58cebd174148c0702",
+      "events": 30
+    },
+    {
+      "date": "2024-09-01",
+      "raw_rows": 1303118,
+      "exchange_backtracks": 0,
+      "ambiguous_target_count": 0,
+      "ambiguity_intervals_us": [],
+      "execution_snapshots_captured_after_target": 6,
+      "signals_captured_after_target": 0,
+      "events_sha256": "5626d440bdac2d24033e307d221acbd6127388113b59fe22456884429e0b2bcf",
+      "panel_sha256": "96c9ee7a0558e920d1cbb6f4a2e3a3d6c54e53b1ff6433d036f41dc0a63415fd",
+      "source_sha256": "b4ad62827b91999148669303694f8f6089ab7244a5f52e5e2543ea87012552f4",
+      "events": 10
+    },
+    {
+      "date": "2024-10-01",
+      "raw_rows": 1390566,
+      "exchange_backtracks": 0,
+      "ambiguous_target_count": 0,
+      "ambiguity_intervals_us": [],
+      "execution_snapshots_captured_after_target": 14,
+      "signals_captured_after_target": 0,
+      "events_sha256": "d3bc31bbc522bc63129d04a066e4a8bcc227383fc234083626ffa05078bfc4eb",
+      "panel_sha256": "3f90e6aae81c0fc2a5094f259e838c03f76320fc4ce6ad590054797691f38a14",
+      "source_sha256": "d44556ff2551c9d27229e0a965f43bb3e005b0dd60a042811e6b5431df431916",
+      "events": 23
+    },
+    {
+      "date": "2024-11-01",
+      "raw_rows": 1373696,
+      "exchange_backtracks": 0,
+      "ambiguous_target_count": 0,
+      "ambiguity_intervals_us": [],
+      "execution_snapshots_captured_after_target": 19,
+      "signals_captured_after_target": 0,
+      "events_sha256": "7ff285bc94957040a6f2067d5ab4c5f3858eec5e4f0e4360b4a34fd7d63a4eb9",
+      "panel_sha256": "843ee811d736fdc4d8e3656f745a07bcb0c1fb8d3de41c4e9c83cc0df1fd3467",
+      "source_sha256": "68bc3c65d9f65844396917b404c0c92381ec198ac7c10d184eb2ca0f1558c113",
+      "events": 28
+    },
+    {
+      "date": "2024-12-01",
+      "raw_rows": 1287761,
+      "exchange_backtracks": 0,
+      "ambiguous_target_count": 0,
+      "ambiguity_intervals_us": [],
+      "execution_snapshots_captured_after_target": 7,
+      "signals_captured_after_target": 0,
+      "events_sha256": "664fc479744975f6f8d990552af9284930ee68b5385f9fff872318099f6203c7",
+      "panel_sha256": "de7b50c6e965463f3ee27023a08381b8e5add07bc5c35ec0ab167b69f81295c4",
+      "source_sha256": "de8ae2d6ab998dff100562fcd8a7f4ac28de15be08693fb82b969c8596ffa705",
+      "events": 14
+    }
+  ],
+  "complete_and_positive_all_scenarios": [],
+  "reliable_edge_established": false
+}

@@ -1,0 +1,14 @@
+{
+  "created_at_utc": "2026-09-30T18:40:12.181947+00:00",
+  "implementation_sha256": {
+    "research/cpi_quote_benchmark.py": "4a82a1f57eb3d711451e27d9b3dac9d55ad56678f6aaa244e0d63a4080da6fad",
+    "research/halt_hft.py": "bb5645bd25976e95c5c66d2e9ccd4be8365204aa93a45ec972a554d292896d43",
+    "research/alpaca_quote_units.py": "df84da4227c18fedc08a3d63761f278f7d6c0a860b8981a18ceadb2b989d09a8",
+    "research_scout/run_cpi_hft_20260930.py": "4d0d7ab967448431801e2d177b122e02707798b6477a5d9d6df284ff4527933c",
+    "research_scout/verify_cpi_releases_20260930.py": "1c2c8f6352560a3f8f14391ac436560d84eb5c10a66cbb26e24ae8990c0adec5"
+  },
+  "protocol_sha256": "ee77cf1e8a8779bcadd1a5bf08e3de4b8eb63dc84482c210ba559d4cf9c8d408",
+  "manifest_sha256": "4f1a8da10eb55ec9ba8764bd7b656cfaad12271a38c3cd9ee0f75872897254d0",
+  "calendar_elaboration": "CPI may be published on an exchange holiday. XNYS closed date means no venue session and no order; never move signal to next session. Such events remain in the84-release cohort. No alpha filter or return-dependent change.",
+  "source_economic_limit": "Current official dated nowcasts and first releases reconciled; historical receipt time, exact venue state and premarket FOK routing remain conditional. No actual execution verified."
+}

@@ -1,0 +1,24 @@
+{
+  "verified_at_utc": "2026-10-02T17:29:10.859963+00:00",
+  "passed": true,
+  "counts": {
+    "external_native_messages": 316327,
+    "independent_snapshot_reconciliations": 493,
+    "independent_cancellation_paths": 5628,
+    "admitted_cycle_plans": 5076,
+    "decimal_cash_rectangles": 5076,
+    "ledger_rows": 8736,
+    "no_external_budget": 3480,
+    "disconnects": 2
+  },
+  "maximum_numeric_discrepancy": 2.2373214392246155e-12,
+  "scope": "Independent raw Bybit reconstruction, decision predecessor, source freshness, enabled-side budgets, every causal cancellation path and Decimal cash extrema/aggregates. Frozen input/code and ledger hashes verified.",
+  "limits": "This new audit does not independently replay native Binance fills under the changed cancellation intervals. The parent fixed-schedule Binance engine had a full independent audit; this extension has focused execution tests. No positive strategy advances on this limited audit.",
+  "independent_external_signals_and_cash_verified": true,
+  "full_independent_execution_verified": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "auditor_sha256": "ea2effacfff729752f2a012e33792535f795efd33921e48a5812707eb9eec79a",
+  "results_sha256": "0dd9a2820cbbad55672887fce1d2b05eec16777a44c6babf8c521459b99091e0",
+  "test_source_preservation": "The original frozen test source is retained in frozen_test_external_quote_hft.py; current tests differ only in import formatting, verified by AST equality. Original auditor and first successful audit remain preserved."
+}

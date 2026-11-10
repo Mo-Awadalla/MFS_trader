@@ -1,0 +1,160 @@
+{
+  "created_at_utc": "2026-09-30T15:52:53.069637+00:00",
+  "configs": 24,
+  "calibration_dates": [
+    "2024-01-01",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-01"
+  ],
+  "evaluation_dates": [
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "threshold_quantile": 0.99,
+  "threshold_executed_order_notional": {
+    "BTCUSDT": 112560.6816791961,
+    "SOLUSDT": 50404.90065600001
+  },
+  "calibration_counts": {
+    "BTCUSDT": 8888,
+    "SOLUSDT": 6317
+  },
+  "field_audit_sha256": "d19452c436819aa215bbdfae9b2c223ea4a83e5494bafe5aaa9946031515b7ae",
+  "orders_sha256": "66791692e6e275247d10af7026667aee6f953b35657e7300f8c8cedde4cb0a43",
+  "assets": {
+    "BTCUSDT": {
+      "source": "liquidation_event_20260930",
+      "trades": "liquidation_passive_20260930",
+      "tick_size": 0.1,
+      "quantity_step": 0.001
+    },
+    "SOLUSDT": {
+      "source": "sol_hft_replication_20260930",
+      "trades": "sol_hft_replication_20260930",
+      "tick_size": 0.001,
+      "quantity_step": 0.1
+    }
+  },
+  "rules": "First reported completed order with cumulative z times average ap at or above the Jan-Jun 99th percentile, five-minute refractory period. No threshold optimization. Follow/reverse with 30/120-second holds; taker entry and passive 8/16bp offsets. Same calendar dates and all prior exposure remain.",
+  "capital": "$10000 reset daily per isolated strategy, max $1000 order, <=10% predecision top-level quantity; independent asset results are not an allocated portfolio.",
+  "taker_execution": "5bp causal FOK collar, physical five-level weighted fills; 250ms processing + 1s outbound + 1s return acknowledgment. Hold begins only after entry acknowledgment. 6bp fees plus 1bp adverse cost EACH side. Doubled fees and three-second outbound/return stress.",
+  "passive_execution": "Unchanged counterfactual strict-through partial fills, five-second resting time, wait for cancellation acknowledgment then hold and market exit. 3bp maker, 6bp taker plus 1bp exit allowance. Doubled fees, three-second delay, full-first-through and touch-price sensitivities.",
+  "clocks": "Signals strictly prior capture time; submitted fills strictly prior exchange-time state <=250ms old. Unknown submitted outcomes invalidate day and retain unresolved inventory. No position within one minute of a UTC hour.",
+  "availability": "Five-minute startup warmup on each day and five minutes after the first captured report following a raw disconnect marker. This is a causal recovery cooldown, applied equally to calibration and event selection. Previously submitted positions keep their scheduled exits; a subsequent liquidation-feed disconnect never deletes a trade or loss. Book/trade availability is independently enforced at execution.",
+  "recovery_warmups": [
+    {
+      "date": "2024-02-01",
+      "recovery_local_timestamp": 1706772844335112,
+      "warmup_end_local_timestamp": 1706773144335112
+    },
+    {
+      "date": "2024-03-01",
+      "recovery_local_timestamp": 1709296442582544,
+      "warmup_end_local_timestamp": 1709296742582544
+    },
+    {
+      "date": "2024-03-01",
+      "recovery_local_timestamp": 1709307072967815,
+      "warmup_end_local_timestamp": 1709307372967815
+    },
+    {
+      "date": "2024-05-01",
+      "recovery_local_timestamp": 1714547286415036,
+      "warmup_end_local_timestamp": 1714547586415036
+    },
+    {
+      "date": "2024-05-01",
+      "recovery_local_timestamp": 1714547336575607,
+      "warmup_end_local_timestamp": 1714547636575607
+    },
+    {
+      "date": "2024-05-01",
+      "recovery_local_timestamp": 1714547343026429,
+      "warmup_end_local_timestamp": 1714547643026429
+    },
+    {
+      "date": "2024-10-01",
+      "recovery_local_timestamp": 1727762823401464,
+      "warmup_end_local_timestamp": 1727763123401464
+    },
+    {
+      "date": "2024-10-01",
+      "recovery_local_timestamp": 1727777303232167,
+      "warmup_end_local_timestamp": 1727777603232167
+    },
+    {
+      "date": "2024-10-01",
+      "recovery_local_timestamp": 1727780413134650,
+      "warmup_end_local_timestamp": 1727780713134650
+    },
+    {
+      "date": "2024-11-01",
+      "recovery_local_timestamp": 1730463237052942,
+      "warmup_end_local_timestamp": 1730463537052942
+    }
+  ],
+  "taker_scenarios": {
+    "base": {
+      "delay_us": 1000000,
+      "taker_bps": 6.0
+    },
+    "double_fees": {
+      "delay_us": 1000000,
+      "taker_bps": 12.0
+    },
+    "latency_3s": {
+      "delay_us": 3000000,
+      "taker_bps": 6.0
+    }
+  },
+  "passive_scenarios": {
+    "base": {
+      "delay_us": 1000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "through_partial"
+    },
+    "double_fees": {
+      "delay_us": 1000000,
+      "maker_bps": 6.0,
+      "taker_bps": 12.0,
+      "fill_mode": "through_partial"
+    },
+    "latency_3s": {
+      "delay_us": 3000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "through_partial"
+    },
+    "first_through_full": {
+      "delay_us": 1000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "through_full"
+    },
+    "touch_partial": {
+      "delay_us": 1000000,
+      "maker_bps": 3.0,
+      "taker_bps": 6.0,
+      "fill_mode": "touch_partial"
+    }
+  },
+  "progression": "Every scenario complete and net positive; base remains positive after deleting the best date. Passing is only permission to test further independent dates, never a declaration of reliable alpha. No latency or fee assumptions may be relaxed to rescue a failure.",
+  "exposure": "24 additional configurations, session totals 100 configurations / 124 implementation versions, dependent rather than independent trials. Historical raw-field correction does not erase previous selection. No corrected statistical significance claim from six dates.",
+  "limitations": "Throttled observed reports omit forced orders. FILLED quantity is completed order volume, not future residual demand. Counterfactual queue/fill/impact and real execution remain unverified. Monthly samples are not continuous competition returns.",
+  "code_sha256": {
+    "research/raw_liquidation_replay.py": "c72d645a40708191f676ddfd0f71c17bd231b89aa8b0c2c2dc7207ddd534c7f2",
+    "research/liquidation_passive.py": "4fedfbd2a3a855dfcb1b09ee4f1829a273fe1086539934bc6696281696bcdf84",
+    "research/liquidation_event_replay.py": "45cf40d45caee7fb78771bd9a5322280fe85889bd6500029fb11085282b93088",
+    "research/cross_venue_dual_clock.py": "722f25c19a02b81d1bafaa7edef151573cf604c34a7b3a8fb2c55b0d579f5fe6",
+    "research_scout/run_raw_liquidation_20260930.py": "6dee53a78efe27baa31ec57afb2a19245d3c3f31bdd2aa23934ae4ee6c1b68c5",
+    "research_scout/audit_force_order_full_20260930.py": "835def92867eacab652d205492e0a227b7c30c524abb0d7f3f8eeca5e43bc110"
+  }
+}

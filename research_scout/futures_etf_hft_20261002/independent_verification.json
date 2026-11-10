@@ -1,0 +1,21 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T19:25:22.009756+00:00",
+  "counts": {
+    "native_futures_trade_records": 5255266,
+    "decision_flags_verified": 1724096,
+    "futures_source_files_verified": 248,
+    "calendar_excluded_sessions": 2,
+    "futures_impulses_verified": 26,
+    "sip_quote_records_verified": 436267,
+    "spy_cost_budgets_verified": 23,
+    "invalid_or_tied_spy_states_verified": 3
+  },
+  "maximum_numeric_difference": 1.0818013151947525e-12,
+  "auditor_sha256": "294ef1120669cc3cc3ed9c268fbae17594681d1ad00a261ec43071673d5257c4",
+  "budget_results_sha256": "5504cd86307adf3f5536b2b8dc652082b091f25df88ecff0bad9694a8589ccb9",
+  "scope": "All frozen futures decision flags recomputed with a separate moving-window algorithm and exact integer impulse/flow thresholds. Every selected SIP state, ambiguous tie and Decimal cost budget independently checked. No production signal or budget functions imported.",
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

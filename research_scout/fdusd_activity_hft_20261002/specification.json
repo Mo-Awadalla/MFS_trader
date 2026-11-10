@@ -1,0 +1,756 @@
+{
+  "created_at_utc": "2026-10-02T20:35:25.791324+00:00",
+  "family": "FDUSD maker HFT past-only activity filter",
+  "relationship": "Dependent liquidity filter on every one of the 48 frozen spread/depth candidates. Thresholds fixed before acquiring or evaluating these raw trade streams. This is an operational filter, not a mathematical necessary condition for every possible HFT strategy.",
+  "parent_audit_sha256": "507c8d61bc9d7fe6c0163a0293a00448e417ada5c61b51b38d403bd2aa77102b",
+  "parent_selection_sha256": "c784e156e41e1f0e17b895b8a1c033108bc25ac6faf189e063c351888a60e4e9",
+  "windows": [
+    {
+      "date": "2024-01-01",
+      "offset": 0,
+      "symbols": [
+        "1000SATSFDUSD"
+      ]
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 360,
+      "symbols": [
+        "1000SATSFDUSD"
+      ]
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 0,
+      "symbols": [
+        "AEVOFDUSD"
+      ]
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 540,
+      "symbols": [
+        "AEVOFDUSD"
+      ]
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 0,
+      "symbols": [
+        "TIAFDUSD"
+      ]
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 540,
+      "symbols": [
+        "TIAFDUSD"
+      ]
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 720,
+      "symbols": [
+        "WFDUSD"
+      ]
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 0,
+      "symbols": [
+        "BCHFDUSD",
+        "ENAFDUSD",
+        "TIAFDUSD"
+      ]
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 360,
+      "symbols": [
+        "ENAFDUSD"
+      ]
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 720,
+      "symbols": [
+        "ENAFDUSD"
+      ]
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 1080,
+      "symbols": [
+        "ENAFDUSD"
+      ]
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 0,
+      "symbols": [
+        "AEVOFDUSD",
+        "OPFDUSD"
+      ]
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 360,
+      "symbols": [
+        "WFDUSD",
+        "WLDFDUSD"
+      ]
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 540,
+      "symbols": [
+        "LDOFDUSD"
+      ]
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 720,
+      "symbols": [
+        "ENAFDUSD",
+        "OPFDUSD",
+        "WFDUSD"
+      ]
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 1080,
+      "symbols": [
+        "WFDUSD"
+      ]
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 540,
+      "symbols": [
+        "PEPEFDUSD",
+        "STRKFDUSD"
+      ]
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 720,
+      "symbols": [
+        "OPFDUSD"
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 0,
+      "symbols": [
+        "ENAFDUSD"
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 360,
+      "symbols": [
+        "ENAFDUSD",
+        "WFDUSD"
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 540,
+      "symbols": [
+        "ENAFDUSD",
+        "PEPEFDUSD"
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 720,
+      "symbols": [
+        "ENAFDUSD",
+        "NOTFDUSD",
+        "PEPEFDUSD"
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 1080,
+      "symbols": [
+        "FILFDUSD",
+        "LINKFDUSD"
+      ]
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 0,
+      "symbols": [
+        "LINKFDUSD"
+      ]
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 360,
+      "symbols": [
+        "LINKFDUSD",
+        "OPFDUSD"
+      ]
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 540,
+      "symbols": [
+        "OPFDUSD",
+        "SAGAFDUSD"
+      ]
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 720,
+      "symbols": [
+        "LINKFDUSD"
+      ]
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1080,
+      "symbols": [
+        "SAGAFDUSD"
+      ]
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 0,
+      "symbols": [
+        "LINKFDUSD"
+      ]
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 540,
+      "symbols": [
+        "OPFDUSD",
+        "PEPEFDUSD"
+      ]
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 360,
+      "symbols": [
+        "EGLDFDUSD"
+      ]
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 540,
+      "symbols": [
+        "FILFDUSD",
+        "SAGAFDUSD"
+      ]
+    }
+  ],
+  "candidate_windows": [
+    {
+      "date": "2024-01-01",
+      "offset_minutes": 0,
+      "symbol": "1000SATSFDUSD",
+      "grid_points": 50,
+      "valid_grids": 48,
+      "supply_grids": 48,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-01-01",
+      "offset_minutes": 360,
+      "symbol": "1000SATSFDUSD",
+      "grid_points": 50,
+      "valid_grids": 43,
+      "supply_grids": 43,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-04-01",
+      "offset_minutes": 0,
+      "symbol": "AEVOFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 34,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-04-01",
+      "offset_minutes": 540,
+      "symbol": "AEVOFDUSD",
+      "grid_points": 50,
+      "valid_grids": 45,
+      "supply_grids": 33,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-05-01",
+      "offset_minutes": 0,
+      "symbol": "TIAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 42,
+      "supply_grids": 35,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-05-01",
+      "offset_minutes": 540,
+      "symbol": "TIAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 47,
+      "supply_grids": 36,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-05-01",
+      "offset_minutes": 720,
+      "symbol": "WFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 31,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 0,
+      "symbol": "BCHFDUSD",
+      "grid_points": 50,
+      "valid_grids": 48,
+      "supply_grids": 36,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 0,
+      "symbol": "ENAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 45,
+      "supply_grids": 33,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 0,
+      "symbol": "TIAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 43,
+      "supply_grids": 32,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 360,
+      "symbol": "ENAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 47,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 720,
+      "symbol": "ENAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 48,
+      "supply_grids": 41,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 1080,
+      "symbol": "ENAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 47,
+      "supply_grids": 44,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 0,
+      "symbol": "AEVOFDUSD",
+      "grid_points": 50,
+      "valid_grids": 45,
+      "supply_grids": 34,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 0,
+      "symbol": "OPFDUSD",
+      "grid_points": 50,
+      "valid_grids": 49,
+      "supply_grids": 47,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 360,
+      "symbol": "WFDUSD",
+      "grid_points": 50,
+      "valid_grids": 46,
+      "supply_grids": 42,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 360,
+      "symbol": "WLDFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 32,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 540,
+      "symbol": "LDOFDUSD",
+      "grid_points": 50,
+      "valid_grids": 43,
+      "supply_grids": 30,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 720,
+      "symbol": "ENAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 34,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 720,
+      "symbol": "OPFDUSD",
+      "grid_points": 50,
+      "valid_grids": 48,
+      "supply_grids": 43,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 720,
+      "symbol": "WFDUSD",
+      "grid_points": 50,
+      "valid_grids": 46,
+      "supply_grids": 32,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 1080,
+      "symbol": "WFDUSD",
+      "grid_points": 50,
+      "valid_grids": 46,
+      "supply_grids": 32,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-08-01",
+      "offset_minutes": 540,
+      "symbol": "PEPEFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 41,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-08-01",
+      "offset_minutes": 540,
+      "symbol": "STRKFDUSD",
+      "grid_points": 50,
+      "valid_grids": 41,
+      "supply_grids": 32,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-08-01",
+      "offset_minutes": 720,
+      "symbol": "OPFDUSD",
+      "grid_points": 50,
+      "valid_grids": 43,
+      "supply_grids": 31,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 0,
+      "symbol": "ENAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 46,
+      "supply_grids": 46,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 360,
+      "symbol": "ENAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 50,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 360,
+      "symbol": "WFDUSD",
+      "grid_points": 50,
+      "valid_grids": 45,
+      "supply_grids": 39,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 540,
+      "symbol": "ENAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 49,
+      "supply_grids": 49,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 540,
+      "symbol": "PEPEFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 39,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 720,
+      "symbol": "ENAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 50,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 720,
+      "symbol": "NOTFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 39,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 720,
+      "symbol": "PEPEFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 31,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 1080,
+      "symbol": "FILFDUSD",
+      "grid_points": 50,
+      "valid_grids": 47,
+      "supply_grids": 35,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 1080,
+      "symbol": "LINKFDUSD",
+      "grid_points": 50,
+      "valid_grids": 49,
+      "supply_grids": 37,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 0,
+      "symbol": "LINKFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 43,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 360,
+      "symbol": "LINKFDUSD",
+      "grid_points": 50,
+      "valid_grids": 45,
+      "supply_grids": 45,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 360,
+      "symbol": "OPFDUSD",
+      "grid_points": 50,
+      "valid_grids": 41,
+      "supply_grids": 35,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 540,
+      "symbol": "OPFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 35,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 540,
+      "symbol": "SAGAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 49,
+      "supply_grids": 38,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 720,
+      "symbol": "LINKFDUSD",
+      "grid_points": 50,
+      "valid_grids": 49,
+      "supply_grids": 46,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 1080,
+      "symbol": "SAGAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 44,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-11-01",
+      "offset_minutes": 0,
+      "symbol": "LINKFDUSD",
+      "grid_points": 50,
+      "valid_grids": 49,
+      "supply_grids": 39,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-11-01",
+      "offset_minutes": 540,
+      "symbol": "OPFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 38,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-11-01",
+      "offset_minutes": 540,
+      "symbol": "PEPEFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 40,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-12-01",
+      "offset_minutes": 360,
+      "symbol": "EGLDFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 50,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-12-01",
+      "offset_minutes": 540,
+      "symbol": "FILFDUSD",
+      "grid_points": 50,
+      "valid_grids": 42,
+      "supply_grids": 42,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    },
+    {
+      "date": "2024-12-01",
+      "offset_minutes": 540,
+      "symbol": "SAGAFDUSD",
+      "grid_points": 50,
+      "valid_grids": 50,
+      "supply_grids": 50,
+      "selected": true,
+      "reason": "requires_native_queue_study"
+    }
+  ],
+  "selection_time": "End of the original screening minute. Count raw trades with matching time at or after second 10, captured strictly before minute end minus 250ms. No future-minute prices or return labels are opened.",
+  "activity_gate": "At least ten unique raw executions and at least 2000 FDUSD executed notional in EACH aggressor direction during the past interval. No cross-side netting. All passing windows retained without ranking. These are not fills or profits.",
+  "source_integrity": "Require complete unauthenticated response, ordered capture clocks, expected channel/symbol, positive finite price/quantity, integer native trade IDs/T/E. Deduplicate equal symbol+trade-ID fingerprints. Conflicting duplicates, unknown regressing IDs, interior ID gaps or explicit disconnections before the availability cutoff invalidate that symbol/window. Do not infer completeness solely from a lack of trades.",
+  "clock_gate": "T is exchange matching time, E is publication time, both milliseconds in the 2024 source. Require T<=E, E<=capture+1ms, and capture-T<=1s for trades that would otherwise enter the counting interval. A violation makes that symbol/window ineligible, not a zero-return observation. Late records after the availability cutoff cannot change past eligibility.",
+  "direction": "m=true means the buyer was maker, so the aggressor sold; m=false means the aggressor bought. Native quantity is base-asset units and price*quantity is FDUSD; no SIP lot multiplier or stablecoin-at-par assumption.",
+  "next_stage": "If activity survives, freeze a long-only maker queue/partial inventory replay before acquiring future minutes. Preserve 15s central hold, at most 30s planned inventory and conservative parent costs. Native execution, historical symbol filters, source clocks and FDUSD terminal valuation still require separate verification.",
+  "download": {
+    "channel": "trade",
+    "slice_minutes": 1,
+    "workers": 3,
+    "per_slice_decoded_cap": 8000000,
+    "total_decoded_cap": 320000000,
+    "request_deadline_seconds": 75,
+    "automatic_retries": 0
+  },
+  "primary_sources": [
+    "https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams",
+    "https://docs.tardis.dev/historical-data-details/binance"
+  ],
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "1da80ba763046daea5478c4ce60008fd89c3aa1f6c3f73c2f8dd8ff323e2fd5a"
+}

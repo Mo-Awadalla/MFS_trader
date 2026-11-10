@@ -1,0 +1,52 @@
+WIDER-SPREAD PASSIVE HFT — SCREEN VERIFIED; EXECUTION TESTING PENDING
+
+Paused at the user's request. No reliable trading edge is established.
+
+Completed screening
+  Twelve monthly sample minutes in 2024, all contemporaneous USDT symbols.
+  348 distinct contracts; 3,275 symbol/date observations; 163,750 grid states.
+  5,733,723 native messages independently examined.
+  29 symbol/dates passed the frozen spread, depth and two-sided-flow gates.
+  The predeclared maximum-four-per-date rule selected 26 across ten dates.
+  Their median quoted spreads were approximately 12.76 to 41.75 bp.
+  These are observed spreads, not executable returns or profits.
+
+  Nine focused screening tests passed. Independent audit reconstructed every
+  grid predecessor, native value, liquidity total and selection decision.
+  Two initially capped downloads were recovered for the identical intervals;
+  original failures, recovery plan and hashes are retained.
+
+Execution study prepared
+  replay_specification.json freezes two schedules with 10 or 22 seconds of
+  resting two-sided quotes, followed by cancellation and residual flattening.
+  Fees: maker 3 bp, taker 6 bp, adverse allowance 1 bp per execution.
+  Six predeclared base/stress scenarios include doubled fees, longer latency,
+  doubled adverse allowance, doubled queue ahead and wider clock envelopes.
+  All 30 selected native replay files are downloaded. They cover 09:00-09:30
+  UTC with bookTicker, trade, depth and markPrice, for the frozen 26 contract/dates.
+
+  research/wide_tick_replay.py is an initial implementation draft. It passed
+  Ruff, but its execution/accounting behavior has NOT been tested or run.
+  There is no P&L result and no validated candidate from this implementation.
+  replay_interval_clarification.json specifies how bounded partial fills,
+  post-only acceptance and forced exits must remain in the cash accounting.
+
+Next steps on resumption
+  1. Review the draft and add focused tests for queue consumption, native
+     boundary/tied clocks, partial inventory, cash extrema, capital reservation
+     and stopping a whole date after unbounded exposure.
+  2. Audit replay-source clocks and sequence continuity, including the sparse
+     depth seed used to establish queue size at each submitted limit price.
+     Verify contract trading status and historical order-grid assumptions.
+  3. Freeze implementation hashes and run both schedules and all stated stress
+     scenarios. Account for all submitted orders and every partial fill.
+  4. Independently reconstruct source-to-fill evidence and cashflows. Only a
+     positive complete result justifies unchanged 2025 validation and statistical
+     reliability testing corrected for the wider search history.
+
+Preserved evidence
+  specification.json; source_semantics_addendum.json; screen_implementation.json
+  screen_results.json; verification.json; selected.parquet
+  complete_manifest_v1.json; replay_manifest.json; replay_specification.json
+
+No live orders were submitted. No background research job is running.

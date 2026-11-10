@@ -1,0 +1,49 @@
+WIDER-SPREAD PASSIVE HFT - AUDITED DEVELOPMENT FAILURE
+
+The independent native-message and Decimal accounting audit passed on
+October 2, 2026. No reliable or executable trading edge was established.
+
+Both frozen baseline schedules lose money after conservative costs:
+  10-second quote rest: -68.7740 USDT, 151 cycles with fills.
+  22-second quote rest: -116.2723 USDT, 256 cycles with fills.
+Each uses the same 26 selected contract/dates across 10 monthly 2024 dates.
+Amounts are aggregate simulated cashflows on fixed 10,000 USDT reference
+capital per date, not compounded or annualized returns.
+
+All 11 complete schedule/scenario aggregates have negative upper cash bounds.
+The 10s / 100ms-clock full outcome is UNKNOWN because a possible forced exit
+has insufficient depth. The audit confirmed both that inventory problem and
+the subsequent whole-date halt, while preserving already-submitted orders.
+
+Independent verification covered:
+  30 compressed and decoded native files; 2,212,109 messages.
+  120 day/scenario ledgers and 8,736 scheduled decisions.
+  32,964 queue-volume paths and 11,637 native fill-proof references.
+  8,525 cash rectangles; 150 causal gate rejections; 60 halted decisions.
+  Full source/capture/transaction clocks, queue seeds and displayed depth,
+  at-price queue consumption, capped through-price fills, partial quantities,
+  all fees/adverse allowances, cash extrema, collateral and aggregate cash.
+Maximum scenario cash discrepancy was below 0.000000000017 USDT.
+The auditor imports no replay functions and reconstructs cash with Decimal.
+
+The underlying screen was independently audited earlier. Nineteen execution
+tests and Ruff passed before the first economic replay. All original inputs,
+code hashes, outputs and pause checkpoints remain preserved.
+
+Scope and decision
+This validates calculations under the declared public-tape queue model.
+It does not establish private fills, historical account permissions, order
+filters or live executability. Those limitations cannot rescue a losing model.
+Close these two unchanged schedules as failed development candidates.
+Do not open 2025 validation to search for a favorable period.
+
+The next dependent experiment may use an external venue price to determine
+which quotes to submit and when to cancel. It must be frozen separately before
+new results, preserve cancellation latency and all partial fills, and remain
+part of the same multiple-search history. No live orders were submitted.
+
+Evidence
+replay_v1_20261002/results.json
+replay_v1_20261002/independent_verification.json
+replay_v1_20261002/baseline_attribution.json
+replay_v1_20261002/ledger_manifest.json

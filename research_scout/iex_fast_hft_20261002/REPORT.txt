@@ -1,0 +1,36 @@
+NATIVE IEX FAST DISPLACEMENT: NO QUALIFYING SIGNAL IN THE LATER OPENING INTERVAL
+Updated 2026-10-03T00:31:55.190562+00:00
+
+Result: no signal qualified; no subsequent returns, order fills or strategy profit were evaluated. This rejects the supply of the frozen signal in this limited development window, not every HFT opportunity. No reliable edge has been established.
+
+Scope: the same24fixed2023dates;23intact native DEEP sources. November29 has missing initial sequence/book history and remains unknown. Every100ms decision from09:30:30 through09:31:00 ET;1ms information-age assumption; strictly prior captured information, native event/send clocks at or before cutoff. Reference snapshot1s earlier. No2024+holdout opened. Existing local, generation-pinned free data only.
+
+Independent reconstruction verified 22,523,167 native messages, 6,923 decision grids and 52,282,580 symbol/grid checks. Complete atomic DEEP books, trade eligibility, broken-trade handling, freshness, rejection counts and candidate selection were independently rebuilt. Ten focused tests and Ruff passed.
+
+Frozen admission: active normal trading; non-test candidate symbol; latest current trade at most100ms old and reference trade at most250ms old, with capture and native clocks checked. Both snapshots need a complete quote at most250ms old. Trades must be inside their respective BBO. At least5distinct native trade times and$25,000notional in the prior1s; absolute trade-price change>=30bp and both bid and ask confirming direction. Current spread<=5bp;reference spread<=50bp.
+
+Fixed order quantity is at most10%of each current touch, with max$10,000at a cent-rounded buy limit2%above current ask. Ask-to-bid cost includes two max($1,$.005/share) commissions,1bp adverse allowance perleg and sale levy. Cost<=12bp and observed displacement>=3times cost. Separate long-only rise-following and fall-fading rules;6s global and30s symbol cooldown,6event/date cap perrule.
+
+Observed rejection counts (ordered first failure):
+trade_age: 50,401,494
+move_below_30bp: 5,525
+symbol: 1,862,340
+no_reference: 6,552
+one_second_activity: 300
+spread: 57
+quote_age: 23
+invalid_quote_price: 2
+trading_status: 6,287
+
+There were382symbol/grid observations past the recent-trade and30bp-move filters:300failed minimum activity,57spread,23quote age and2valid-price checks. These are repeated snapshots, not382independent opportunities. None reached the cost-admitted signal stage.
+
+The planned1/5/25/250ms arrival-delay cases have NOT been economically tested because admission was empty. Actual client latency, venue/simulator access, NBBO protection and acceptance remain unverified. The1ms information age is an explicit feasibility assumption, not a measured infrastructure capability.
+
+Next, per the user's latest steering: use existing local Databento data without paid calls. A new immediate response to verified ETF multi-price sweeps will test explicit millisecond delay assumptions with fixed causal size and bounded L1 fills. The earlier IEX window was prepared only as code; it was not frozen or run and is deferred.
+
+Global search ledger:139economic configurations,191implementation versions,421focused tests. This signal-only screen adds no economic configuration. Goal active.
+Data provided for free by IEX. By accessing or using IEX Historical Data, you agree to the IEX Historical Data Terms of Use. https://www.iex.io/legal/hist-data-terms
+
+Specification SHA256: 3b9f59d67f7306ff4669a7237090cc6308e23eacb70ce0072846fd27b7e76df7
+Results SHA256: 04f00dba1e9fea0860f8fe3d709109a24881e677168fe891f190813a312b28c4
+Audit SHA256: 2b27571d842b255c0a59eef4b47583b129a746926322bd44dddf081b2e32f634

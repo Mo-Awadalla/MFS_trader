@@ -1,0 +1,49 @@
+{
+  "specification_id": "IEX-Stock-Offer-Depletion-Seconds-v1",
+  "status": "frozen_falsification_scout",
+  "market": "US listed stock",
+  "symbol": "AAPL",
+  "feed": "alpaca_iex",
+  "scope": "IEX venue-local Level 1; no consolidated NBBO or queue identity",
+  "signal_window_et": ["09:31:00", "09:34:30"],
+  "data_window_et": ["09:30:00", "09:35:00"],
+  "development_dates": [
+    "2025-01-08", "2025-02-05", "2025-03-05", "2025-04-02",
+    "2025-05-07", "2025-06-04", "2025-07-02", "2025-08-06",
+    "2025-09-03", "2025-10-01", "2025-11-05", "2025-12-03"
+  ],
+  "signal": {
+    "direction": "long_only",
+    "quote_condition": ["R"],
+    "minimum_previous_offer_shares": 100,
+    "maximum_offer_size_ratio": 0.5,
+    "minimum_bid_size_ratio": 0.8,
+    "maximum_previous_quote_age_milliseconds": 250,
+    "maximum_spread_dollars": 0.03,
+    "require_unchanged_bid_and_ask_prices": true,
+    "minimum_seconds_between_signals": 30
+  },
+  "execution_diagnostic": {
+    "entry_delay_seconds": 1,
+    "holding_seconds": 10,
+    "maximum_quote_age_milliseconds": 250,
+    "entry_price": "IEX ask at the last eligible quote at or before signal+1s",
+    "exit_price": "IEX bid at the last eligible quote at or before entry+10s",
+    "shares": 100,
+    "commission_per_share_per_order_usd": 0.0075,
+    "minimum_commission_per_order_usd": 1.0,
+    "additional_round_trip_friction_bps": 1.0,
+    "stress_additional_round_trip_friction_bps": 5.0,
+    "fill_assumption": "crossing displayed IEX top of book; diagnostic only, no broker fill claim"
+  },
+  "development_gates": {
+    "minimum_distinct_sessions": 10,
+    "minimum_trades": 100,
+    "minimum_mean_net_bps": 0.0,
+    "minimum_day_block_bootstrap_lower_95_bps": 0.0,
+    "require_positive_each_calendar_half": true,
+    "require_positive_after_5bps_stress": true
+  },
+  "bootstrap": {"day_resamples": 2000, "seed": 42},
+  "progression": "A failure closes this exact rule. A pass permits an unchanged-specification test on fresh days and requires live feed/route/fill evidence before a trading claim. The existing AAPL 2026-07-08 sample is plumbing only and is excluded from performance gates."
+}

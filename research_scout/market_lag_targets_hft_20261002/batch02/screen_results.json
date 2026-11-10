@@ -1,0 +1,193 @@
+{
+  "source_files": 2,
+  "source_counts": {
+    "native_messages": 1589929,
+    "book_messages": 1589929,
+    "universe_book_messages": 1451948
+  },
+  "admitted_leader_grids": 4,
+  "target_rows": 1172,
+  "raw_target_candidates": 1,
+  "selected_target_events": 1,
+  "selected_sha256": "ba1c4866b72dbc5c4ce55c44e273657b9d65acf13d71e75fd60042a5deda9b99",
+  "target_reasons": {
+    "target_endpoint_spread_or_depth": 1160,
+    "insufficient_hypothesis_budget": 11,
+    "requires_native_trade_confirmation": 1
+  },
+  "windows": [
+    {
+      "date": "2024-10-01",
+      "offset": 987,
+      "source_counts": {
+        "native_messages": 602990,
+        "book_messages": 602990,
+        "universe_book_messages": 553353
+      },
+      "symbols": 296,
+      "quote_rows": 68672,
+      "signal_rows": 67488,
+      "valid_endpoints": 33669,
+      "raw_shock_rows": 3,
+      "selected": [
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 987,
+          "symbol": "BTCUSDT",
+          "decision_ns": 1727800077000000000,
+          "valid_endpoints": true,
+          "supply": true,
+          "direction": -1,
+          "bid_return_bps": "-33.51815606861363712869144500",
+          "ask_return_bps": "-33.40589444122069370128975000",
+          "anchor_spread_bps": "0.01602971267541514952115240810",
+          "current_spread_bps": "0.1286682514306301205943186534",
+          "minimum_touch_usdt": "9823.77640",
+          "spread_gate": true,
+          "depth_gate": true,
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        }
+      ],
+      "reasons": {
+        "displacement_gate": 33654,
+        "current_capture_freshness_gate": 11000,
+        "anchor_capture_freshness_gate": 22192,
+        "current_native_clock_gate": 202,
+        "anchor_native_clock_gate": 294,
+        "anchor_missing_book": 131,
+        "requires_native_trade_confirmation": 3,
+        "spread_gate": 5,
+        "depth_gate": 7
+      },
+      "quotes_path": "research_scout\\market_lag_targets_hft_20261002\\batch02\\quotes\\2024-10-01_0987.parquet",
+      "quotes_sha256": "a4150ec3fe83fe74ecb9a590224a22b00db1fc3fe22f60dc67b8bfcacdafe51f",
+      "signals_path": "research_scout\\market_lag_targets_hft_20261002\\batch02\\signals\\2024-10-01_0987.parquet",
+      "signals_sha256": "709cd6b47345978334426310beee2b8170f6b4df8970ca51d87905b325feb2d2",
+      "target_rows": 879,
+      "raw_target_candidates": 1,
+      "selected_targets": [
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 987,
+          "decision_ns": 1727800077500000000,
+          "symbol": "TRXUSDT",
+          "direction": -1,
+          "common_move_bps": "24.30061169133848246458315100",
+          "target_supply": true,
+          "gap_bps": "20.41887526124208600990242400",
+          "budget_bps": "3.183445972958347112851489348",
+          "minimum_signed_target_return_bps": "1.940742657523612368999871000",
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        }
+      ],
+      "target_reasons": {
+        "target_endpoint_spread_or_depth": 869,
+        "insufficient_hypothesis_budget": 9,
+        "requires_native_trade_confirmation": 1
+      },
+      "targets_path": "research_scout\\market_lag_targets_hft_20261002\\batch02\\targets\\2024-10-01_0987.parquet",
+      "targets_sha256": "8d8f574a3c179511681b992dce0af21dedb5c29f46d98f96c448a51c9d1b9b62"
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1016,
+      "source_counts": {
+        "native_messages": 986939,
+        "book_messages": 986939,
+        "universe_book_messages": 898595
+      },
+      "symbols": 296,
+      "quote_rows": 68672,
+      "signal_rows": 67488,
+      "valid_endpoints": 48804,
+      "raw_shock_rows": 3,
+      "selected": [
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 1016,
+          "symbol": "BTCUSDT",
+          "decision_ns": 1727801793000000000,
+          "valid_endpoints": true,
+          "supply": true,
+          "direction": 1,
+          "bid_return_bps": "30.62304384048996870144784000",
+          "ask_return_bps": "30.67124510458299490957049000",
+          "anchor_spread_bps": "0.01608351849484000517889295534",
+          "current_spread_bps": "0.06413751082320495141583555142",
+          "minimum_touch_usdt": "3741.97200",
+          "spread_gate": true,
+          "depth_gate": true,
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        },
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 1016,
+          "symbol": "ETHUSDT",
+          "decision_ns": 1727801792750000000,
+          "valid_endpoints": true,
+          "supply": true,
+          "direction": 1,
+          "bid_return_bps": "31.88637727545509101820364000",
+          "ask_return_bps": "33.68660257410452448679941000",
+          "anchor_spread_bps": "0.04000792156847055717031972330",
+          "current_spread_bps": "1.834350201379750368863899190",
+          "minimum_touch_usdt": "2677.97796",
+          "spread_gate": true,
+          "depth_gate": true,
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        },
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 1016,
+          "symbol": "PIXELUSDT",
+          "decision_ns": 1727801793000000000,
+          "valid_endpoints": true,
+          "supply": true,
+          "direction": 1,
+          "bid_return_bps": "35.63791874554526015680684000",
+          "ask_return_bps": "35.61253561253561253561254000",
+          "anchor_spread_bps": "7.125044531528322052012825080",
+          "current_spread_bps": "7.099751508697195598154064608",
+          "minimum_touch_usdt": "3791.0400000",
+          "spread_gate": true,
+          "depth_gate": true,
+          "reason": "requires_native_trade_confirmation",
+          "selected": true
+        }
+      ],
+      "reasons": {
+        "displacement_gate": 48704,
+        "current_capture_freshness_gate": 7051,
+        "anchor_capture_freshness_gate": 11090,
+        "depth_gate": 40,
+        "current_native_clock_gate": 170,
+        "anchor_native_clock_gate": 367,
+        "anchor_missing_book": 6,
+        "requires_native_trade_confirmation": 3,
+        "spread_gate": 57
+      },
+      "quotes_path": "research_scout\\market_lag_targets_hft_20261002\\batch02\\quotes\\2024-10-01_1016.parquet",
+      "quotes_sha256": "46df58f35ac764ed598229bc8cb0953e18e698dddcb53021d12006aafcac15ae",
+      "signals_path": "research_scout\\market_lag_targets_hft_20261002\\batch02\\signals\\2024-10-01_1016.parquet",
+      "signals_sha256": "c6c168330d0e6d3cc3622e031a1b2002b039f1f45578a220fcd5b50a1f8e066e",
+      "target_rows": 293,
+      "raw_target_candidates": 0,
+      "selected_targets": [],
+      "target_reasons": {
+        "target_endpoint_spread_or_depth": 291,
+        "insufficient_hypothesis_budget": 2
+      },
+      "targets_path": "research_scout\\market_lag_targets_hft_20261002\\batch02\\targets\\2024-10-01_1016.parquet",
+      "targets_sha256": "5545235baa919038293c07beac01d7eecc204178383ddbfb6e10f330f69e61af"
+    }
+  ],
+  "implementation_sha256": "38143bfc643c46a276a1a8b035f84125d1487c7ef75ddf377215e1028be2a426",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

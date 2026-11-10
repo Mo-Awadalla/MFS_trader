@@ -1,0 +1,62 @@
+LOCAL DATABENTO MILLISECOND SWEEP RESPONSE: NO PROFITABLE BASELINE TRADE
+Updated 2026-10-03T00:41:44.665197+00:00
+
+Result: no reliable edge. All32rule/holding-period/scenario aggregates have negative known components. Four observed-event cohorts are complete and negative; all32full-calendar totals remain unknown. None of the344priced baseline event/horizon cases is profitable after the frozen conservative costs. These cases reuse180selected events; they are not344independent trades or2880independent observations.
+No network, API or paid call was made. Only existing local Databento DBN files were read. No new data purchase, account operation or trading order occurred.
+
+DATA:192previously exposed2023opening sessions from EQUS.MINI mbp-1,46,428,207records. Six ETFs:SPY,SSO,UPRO,SH,SDS,SPXU. The broader local cache has806daily MBP-1 files; later-year returns were not opened for this experiment. The parent had563source-verified large completed multi-price trade sweeps. All563were considered,including events previously rejected by the slower signal rule.
+SIGNAL:Decision at the first whole millisecond strictly after complete sweep receive+1ms,information cutoff decision-1ms. The latest complete book must be strictly earlier,valid,no older than5ms by capture and native clocks,with both sides displaced in the sweep direction and spread<=5bp. Fixed quantity<=10%of both signal touch sizes and<=10000USD at the2%cent-rounded buy collar. Causal ask-to-bid roundtrip cost<=12bp. Same conservative commission,adverse allowance and levy assumptions as earlier work.
+SELECTED:221raw admissions;180after causal ranking and6s global/60s symbol cooldown.93follow-buy-sweep longs and87fade-sell-sweep longs. One- and five-second holds yield4economic configurations. Eight cases each:1/5/25/250ms delays,doubled fees,doubled adverse allowance,and fixed-1/+1ms clock shifts. Processing assumption50us. These are feasibility assumptions,not verified infrastructure latency.
+EXECUTION MODEL:At the fixed future receive-clock reference,use the last valid completed quote,requiring a later quote to bracket arrival. Equal timestamps,future native events,staleness or missing references are unknown. IOC buy at ask if within the causal collar;fixed requested quantity is never resized from future data,while assumed fill is capped by future displayed ask size. Exit only priced when displayed bid size covers the assumed filled inventory;otherwise residual inventory/PnL stays unknown. No best-future-price search.
+
+Rule | hold milliseconds | case | priced/selected | unknown events | known USD | complete observed-event cohort USD
+follow_buy_sweep | 1000 | base_1ms | 90/93 | 3 | -351.4938431 | None
+follow_buy_sweep | 1000 | delay_5ms | 90/93 | 3 | -352.0664238 | None
+follow_buy_sweep | 1000 | delay_25ms | 92/93 | 1 | -358.0709327 | None
+follow_buy_sweep | 1000 | delay_250ms | 93/93 | 0 | -364.5820630 | -364.5820630
+follow_buy_sweep | 1000 | fees_2x | 90/93 | 3 | -550.4317042 | None
+follow_buy_sweep | 1000 | adverse_2x | 90/93 | 3 | -476.1698251 | None
+follow_buy_sweep | 1000 | clock_minus_1ms | 92/93 | 1 | -359.7449200 | None
+follow_buy_sweep | 1000 | clock_plus_1ms | 91/93 | 2 | -355.1434830 | None
+follow_buy_sweep | 5000 | base_1ms | 86/93 | 7 | -341.3783428 | None
+follow_buy_sweep | 5000 | delay_5ms | 86/93 | 7 | -347.4704359 | None
+follow_buy_sweep | 5000 | delay_25ms | 89/93 | 4 | -355.9201098 | None
+follow_buy_sweep | 5000 | delay_250ms | 92/93 | 1 | -367.3346087 | None
+follow_buy_sweep | 5000 | fees_2x | 86/93 | 7 | -531.3569096 | None
+follow_buy_sweep | 5000 | adverse_2x | 86/93 | 7 | -459.7381188 | None
+follow_buy_sweep | 5000 | clock_minus_1ms | 88/93 | 5 | -351.6291367 | None
+follow_buy_sweep | 5000 | clock_plus_1ms | 86/93 | 7 | -346.9221011 | None
+fade_sell_sweep | 1000 | base_1ms | 83/87 | 4 | -320.6301651 | None
+fade_sell_sweep | 1000 | delay_5ms | 85/87 | 2 | -325.7917305 | None
+fade_sell_sweep | 1000 | delay_25ms | 84/87 | 3 | -320.0262148 | None
+fade_sell_sweep | 1000 | delay_250ms | 84/87 | 3 | -328.6425706 | None
+fade_sell_sweep | 1000 | fees_2x | 83/87 | 4 | -503.9102022 | None
+fade_sell_sweep | 1000 | adverse_2x | 83/87 | 4 | -434.2402931 | None
+fade_sell_sweep | 1000 | clock_minus_1ms | 85/87 | 2 | -331.8262223 | None
+fade_sell_sweep | 1000 | clock_plus_1ms | 85/87 | 2 | -329.6059773 | None
+fade_sell_sweep | 5000 | base_1ms | 85/87 | 2 | -328.1086752 | None
+fade_sell_sweep | 5000 | delay_5ms | 87/87 | 0 | -333.2501880 | -333.2501880
+fade_sell_sweep | 5000 | delay_25ms | 85/87 | 2 | -324.8841541 | None
+fade_sell_sweep | 5000 | delay_250ms | 84/87 | 3 | -322.0420857 | None
+fade_sell_sweep | 5000 | fees_2x | 85/87 | 2 | -515.9756054 | None
+fade_sell_sweep | 5000 | adverse_2x | 85/87 | 2 | -445.5804202 | None
+fade_sell_sweep | 5000 | clock_minus_1ms | 87/87 | 0 | -338.1347741 | -338.1347741
+fade_sell_sweep | 5000 | clock_plus_1ms | 87/87 | 0 | -336.3945771 | -336.3945771
+
+BASELINE DECOMPOSITION:rule | hold milliseconds | gross USD | commission+levy USD | adverse USD | net USD
+follow_buy_sweep | 1000 | -27.88 | 198.9378611 | 124.675982 | -351.4938431
+follow_buy_sweep | 5000 | -33.04 | 189.9785668 | 118.359776 | -341.3783428
+fade_sell_sweep | 1000 | -23.74 | 183.2800371 | 113.610128 | -320.6301651
+fade_sell_sweep | 5000 | -22.77 | 187.8669302 | 117.471745 | -328.1086752
+
+Gross aggregate cash is already negative for all four baseline cohorts before commissions and adverse allowances. This is not a candidate rescued merely by a lower fee assumption.
+UNKNOWN HANDLING:2784event-case calculations priced,30unknown from insufficient exit depth,32unknown from exit clock/book conditions,34unknown from entry clock/book conditions. SPY2023-03-28 andUPRO2023-07-31 have BAD_TS_RECV source records;their admission remains unknown and prevents a complete calendar claim in every scenario. Known components do not bound the missing inventory outcomes.
+AUDIT:Independent DBN field/group,signal,cooldown/ranking,receive-clock reference,quantity,cash and32aggregate calculations verified:46,428,207source records,all563reported qualified groups,180selected events and2880event cases. Both paths use the Databento SDK binary decoder;this is not a separate binary-format audit. Earlier rejected-group enumeration remains unaudited and would be required for promotion. Eight focused implementation tests plus two new clock-regression tests passed;Ruff passed.
+AUDIT REPAIR:The first audit disagreed on one SPY signal because NumPy searching a uint64 array with a Python-int key could promote to floating point. It incorrectly excluded a quote36ns before cutoff. Explicit uint64 audit keys repaired it;the production int64 path was correct. All192sessions were rerun and passed. The frozen strategy,selected quantity and PnL records were not changed. SeeAUDIT_CLOCK_ERRATUM.txt.
+LIMITS:EQUS.MINI is an anonymized component-venue BBO feed,not consolidated NBBO or private fills. Venue routing,price protection,acceptance,hidden liquidity and actual client latency remain unproven. Negative conditional results warrant no promotion;they are not a universal impossibility proof. No live competition performance or funded portfolio has been established.
+SEARCH LEDGER:143economic configurations,195implementation versions,431focused tests. Goal active;no reliable edge. This experiment adds4economic configurations and4implementation versions. Ten tests were added for this Databento branch. Earlier IEX fast-displacement work added10tests and zeroeconomic variants.
+
+Specification SHA256: 5000a144d553f7d2f10e17a06dd7dfae4930a9219c4bc50590dca2b4947862ce
+Screen SHA256: 57540479ffbfb46d538bc1d1eb681b9454efe35797875a18f65ae5dfe810fd8d
+Replay SHA256: 57e6624de1b532c73f549545b4754e6905e9a8e32c7e78d66301a9f12323ee57
+Independent audit SHA256: e95179da50a2c5c0b27e0a154061a2623c5f9bdcdb9afc9986fe83a69e88dce0

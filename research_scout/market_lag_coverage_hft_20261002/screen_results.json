@@ -1,0 +1,558 @@
+{
+  "source_files": 6,
+  "normalized_source_rows": 8071556,
+  "decision_grids": 1969920,
+  "candidate_grids": 174,
+  "candidate_minutes": 49,
+  "all_native_jobs": [
+    {
+      "date": "2024-07-01",
+      "offset": 66
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 131
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 1186
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 325
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 399
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 425
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 901
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 920
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 927
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 948
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1066
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1068
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1070
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1071
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1072
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1078
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1081
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1229
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1231
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1235
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1237
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1242
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1249
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1308
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 324
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 328
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 830
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 854
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 855
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 72
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 73
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 892
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 910
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 987
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1016
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1040
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1065
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1208
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1210
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1219
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1225
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 817
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 863
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 942
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1056
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1176
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1190
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 130
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 506
+    }
+  ],
+  "initial_native_jobs": [
+    {
+      "date": "2024-07-01",
+      "offset": 66
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 131
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 1186
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 325
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 399
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 425
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 901
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 920
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 927
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 948
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1066
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1068
+    }
+  ],
+  "queued_native_jobs": [
+    {
+      "date": "2024-08-01",
+      "offset": 1070
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1071
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1072
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1078
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1081
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1229
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1231
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1235
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1237
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1242
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1249
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 1308
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 324
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 328
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 830
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 854
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 855
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 72
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 73
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 892
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 910
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 987
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1016
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1040
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1065
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1208
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1210
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1219
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1225
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 817
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 863
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 942
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1056
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1176
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 1190
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 130
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 506
+    }
+  ],
+  "windows": [
+    {
+      "date": "2024-07-01",
+      "normalized_source_rows": 1268622,
+      "decision_grids": 328320,
+      "valid_capture_quote_grids": 328306,
+      "float_prefilter_rows": 15,
+      "near_boundary_rows": 0,
+      "decimal_checked_rows": 15,
+      "rounding_rejected_rows": 0,
+      "rounding_added_rows": 0,
+      "candidate_grids": 15,
+      "candidate_minutes": [
+        66,
+        131,
+        1186
+      ],
+      "candidate_path": "research_scout\\market_lag_coverage_hft_20261002\\candidates\\2024-07-01.parquet",
+      "candidate_sha256": "46bb8482ae7e167d21494b4fd6bd4be695fd00030d0c9726a5f67ae5acea354e"
+    },
+    {
+      "date": "2024-08-01",
+      "normalized_source_rows": 1447793,
+      "decision_grids": 328320,
+      "valid_capture_quote_grids": 328301,
+      "float_prefilter_rows": 71,
+      "near_boundary_rows": 0,
+      "decimal_checked_rows": 71,
+      "rounding_rejected_rows": 0,
+      "rounding_added_rows": 0,
+      "candidate_grids": 71,
+      "candidate_minutes": [
+        325,
+        399,
+        425,
+        901,
+        920,
+        927,
+        948,
+        1066,
+        1068,
+        1070,
+        1071,
+        1072,
+        1078,
+        1081,
+        1229,
+        1231,
+        1235,
+        1237,
+        1242,
+        1249,
+        1308
+      ],
+      "candidate_path": "research_scout\\market_lag_coverage_hft_20261002\\candidates\\2024-08-01.parquet",
+      "candidate_sha256": "0cf0c48e2ef368b7c8edd7ce1d7fa8045506bd3d2b7d59d14d57f541e6088e82"
+    },
+    {
+      "date": "2024-09-01",
+      "normalized_source_rows": 1303118,
+      "decision_grids": 328320,
+      "valid_capture_quote_grids": 328289,
+      "float_prefilter_rows": 30,
+      "near_boundary_rows": 0,
+      "decimal_checked_rows": 30,
+      "rounding_rejected_rows": 0,
+      "rounding_added_rows": 0,
+      "candidate_grids": 30,
+      "candidate_minutes": [
+        324,
+        328,
+        830,
+        854,
+        855
+      ],
+      "candidate_path": "research_scout\\market_lag_coverage_hft_20261002\\candidates\\2024-09-01.parquet",
+      "candidate_sha256": "a720a29ec68e80bf388432d778dc15bad97bc532ee940f8958ee1bf3cc26389e"
+    },
+    {
+      "date": "2024-10-01",
+      "normalized_source_rows": 1390566,
+      "decision_grids": 328320,
+      "valid_capture_quote_grids": 328279,
+      "float_prefilter_rows": 46,
+      "near_boundary_rows": 0,
+      "decimal_checked_rows": 46,
+      "rounding_rejected_rows": 0,
+      "rounding_added_rows": 0,
+      "candidate_grids": 46,
+      "candidate_minutes": [
+        72,
+        73,
+        892,
+        910,
+        987,
+        1016,
+        1040,
+        1065,
+        1208,
+        1210,
+        1219,
+        1225
+      ],
+      "candidate_path": "research_scout\\market_lag_coverage_hft_20261002\\candidates\\2024-10-01.parquet",
+      "candidate_sha256": "1d10db0aad3494bee329e02374f7f1f2f12d8acdc6e72bbce172031bd678c04b"
+    },
+    {
+      "date": "2024-11-01",
+      "normalized_source_rows": 1373696,
+      "decision_grids": 328320,
+      "valid_capture_quote_grids": 328288,
+      "float_prefilter_rows": 9,
+      "near_boundary_rows": 0,
+      "decimal_checked_rows": 9,
+      "rounding_rejected_rows": 0,
+      "rounding_added_rows": 0,
+      "candidate_grids": 9,
+      "candidate_minutes": [
+        817,
+        863,
+        942,
+        1056,
+        1176,
+        1190
+      ],
+      "candidate_path": "research_scout\\market_lag_coverage_hft_20261002\\candidates\\2024-11-01.parquet",
+      "candidate_sha256": "0bf4bdc071d0d88c22e9eb4f321395ac7e9d5beb5365b70ada3c3342f5cfb158"
+    },
+    {
+      "date": "2024-12-01",
+      "normalized_source_rows": 1287761,
+      "decision_grids": 328320,
+      "valid_capture_quote_grids": 328254,
+      "float_prefilter_rows": 3,
+      "near_boundary_rows": 0,
+      "decimal_checked_rows": 3,
+      "rounding_rejected_rows": 0,
+      "rounding_added_rows": 0,
+      "candidate_grids": 3,
+      "candidate_minutes": [
+        130,
+        506
+      ],
+      "candidate_path": "research_scout\\market_lag_coverage_hft_20261002\\candidates\\2024-12-01.parquet",
+      "candidate_sha256": "b8689c1e86c1eac3a421dac8082ceb357a35f0950270a69df72a3e8a9b38861f"
+    }
+  ],
+  "implementation_sha256": "1243d5843418f253f1a4ad5cc17c8cacd3a8e1619749d47157828d01fb3e325b",
+  "native_signal_eligibility_verified": false,
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

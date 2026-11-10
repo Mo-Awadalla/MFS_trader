@@ -1,0 +1,200 @@
+{
+  "windows": [
+    {
+      "date": "2024-02-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 2485,
+        "relevant_trade_messages": 2485
+      },
+      "events": [
+        {
+          "result": {
+            "date": "2024-02-01",
+            "offset_minutes": 0,
+            "symbol": "ADAUSDT",
+            "decision_ns": 1706745634500000000,
+            "direction": -1,
+            "window_start_ns": 1706745633250000000,
+            "cutoff_ns": 1706745634250000000,
+            "native_market_trade_count": 1104,
+            "buy_notional_usdt": "180117.01140",
+            "sell_notional_usdt": "803541.92490",
+            "total_notional_usdt": "983658.93630",
+            "aligned_notional_usdt": "803541.92490",
+            "aligned_fraction": "0.8168907893242915278133685776",
+            "source_integrity_ok": true,
+            "integrity_problems": "",
+            "flow_gate": true,
+            "selected": true,
+            "reason": "requires_response_replay"
+          },
+          "ledger_path": "research_scout\\perp_shock_flow_hft_20261002\\ledgers\\2024-02-01_ADAUSDT_1706745634500000000.parquet",
+          "ledger_sha256": "5fda16b3dc8cad80a5db0bd34d4435216fd5cda3ebd4ca29c5b986a0cba36c72"
+        }
+      ]
+    },
+    {
+      "date": "2024-03-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 1842,
+        "relevant_trade_messages": 1842
+      },
+      "events": [
+        {
+          "result": {
+            "date": "2024-03-01",
+            "offset_minutes": 0,
+            "symbol": "CELOUSDT",
+            "decision_ns": 1709251252250000000,
+            "direction": -1,
+            "window_start_ns": 1709251251000000000,
+            "cutoff_ns": 1709251252000000000,
+            "native_market_trade_count": 112,
+            "buy_notional_usdt": "10113.9579",
+            "sell_notional_usdt": "41771.6196",
+            "total_notional_usdt": "51885.5775",
+            "aligned_notional_usdt": "41771.6196",
+            "aligned_fraction": "0.8050718834150010183465723206",
+            "source_integrity_ok": true,
+            "integrity_problems": "",
+            "flow_gate": true,
+            "selected": true,
+            "reason": "requires_response_replay"
+          },
+          "ledger_path": "research_scout\\perp_shock_flow_hft_20261002\\ledgers\\2024-03-01_CELOUSDT_1709251252250000000.parquet",
+          "ledger_sha256": "7748a300b6c6690cf9f27c415d1757aa8dacc15da3941f447cfdf10db8818621"
+        }
+      ]
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 10705,
+        "relevant_trade_messages": 10705
+      },
+      "events": [
+        {
+          "result": {
+            "date": "2024-04-01",
+            "offset_minutes": 360,
+            "symbol": "XRPUSDT",
+            "decision_ns": 1711951228000000000,
+            "direction": -1,
+            "window_start_ns": 1711951226750000000,
+            "cutoff_ns": 1711951227750000000,
+            "native_market_trade_count": 4082,
+            "buy_notional_usdt": "148249.99728",
+            "sell_notional_usdt": "2736561.49906",
+            "total_notional_usdt": "2884811.49634",
+            "aligned_notional_usdt": "2736561.49906",
+            "aligned_fraction": "0.9486101613682256849737689991",
+            "source_integrity_ok": true,
+            "integrity_problems": "",
+            "flow_gate": true,
+            "selected": true,
+            "reason": "requires_response_replay"
+          },
+          "ledger_path": "research_scout\\perp_shock_flow_hft_20261002\\ledgers\\2024-04-01_XRPUSDT_1711951228000000000.parquet",
+          "ledger_sha256": "7c083652fa8ab91e5e6d09f8de24448e0f5b3af0a82ef507d82ce75d5d830f4c"
+        }
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 10907,
+        "relevant_trade_messages": 10907
+      },
+      "events": [
+        {
+          "result": {
+            "date": "2024-09-01",
+            "offset_minutes": 360,
+            "symbol": "BAKEUSDT",
+            "decision_ns": 1725170446000000000,
+            "direction": -1,
+            "window_start_ns": 1725170444750000000,
+            "cutoff_ns": 1725170445750000000,
+            "native_market_trade_count": 154,
+            "buy_notional_usdt": "13989.5123",
+            "sell_notional_usdt": "61266.3768",
+            "total_notional_usdt": "75255.8891",
+            "aligned_notional_usdt": "61266.3768",
+            "aligned_fraction": "0.8141074078413884555381593385",
+            "source_integrity_ok": true,
+            "integrity_problems": "",
+            "flow_gate": true,
+            "selected": true,
+            "reason": "requires_response_replay"
+          },
+          "ledger_path": "research_scout\\perp_shock_flow_hft_20261002\\ledgers\\2024-09-01_BAKEUSDT_1725170446000000000.parquet",
+          "ledger_sha256": "d900471e8b373e211680b6fd7a72189f968f932863ef3c064ee441d7ca8b4ad6"
+        }
+      ]
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 758,
+        "relevant_trade_messages": 758
+      },
+      "events": [
+        {
+          "result": {
+            "date": "2024-09-01",
+            "offset_minutes": 720,
+            "symbol": "ZROUSDT",
+            "decision_ns": 1725192036250000000,
+            "direction": 1,
+            "window_start_ns": 1725192035000000000,
+            "cutoff_ns": 1725192036000000000,
+            "native_market_trade_count": 278,
+            "buy_notional_usdt": "98482.03100000",
+            "sell_notional_usdt": "499.26240000",
+            "total_notional_usdt": "98981.29340000",
+            "aligned_notional_usdt": "98482.03100000",
+            "aligned_fraction": "0.9949559923612798537142574862",
+            "source_integrity_ok": true,
+            "integrity_problems": "",
+            "flow_gate": true,
+            "selected": true,
+            "reason": "requires_response_replay"
+          },
+          "ledger_path": "research_scout\\perp_shock_flow_hft_20261002\\ledgers\\2024-09-01_ZROUSDT_1725192036250000000.parquet",
+          "ledger_sha256": "cb85c4747b7b3659a2efc3dad2680a2bd1336358d5f1d022a9e6a641391f4b10"
+        }
+      ]
+    }
+  ],
+  "source_counts": {
+    "native_messages": 26697,
+    "relevant_trade_messages": 26697
+  },
+  "candidate_events": 5,
+  "selected_events": 5,
+  "selected_symbols": [
+    "ADAUSDT",
+    "BAKEUSDT",
+    "CELOUSDT",
+    "XRPUSDT",
+    "ZROUSDT"
+  ],
+  "selected_dates": 4,
+  "reasons": {
+    "requires_response_replay": 5
+  },
+  "implementation_sha256": "80a055f43fea8fd5d5337bbc9d5ee30fffa3f97cbebfb271729f2589a61dbda6",
+  "flow_sha256": "6d7709390c73598b608d2e513747c3720e95c167997eddd040585873ea05b4d4",
+  "selected_sha256": "6d7709390c73598b608d2e513747c3720e95c167997eddd040585873ea05b4d4",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "independent_audit_complete": false,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

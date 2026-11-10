@@ -1,0 +1,1029 @@
+{
+  "files": [
+    {
+      "date": "2023-01-18",
+      "start_ns": 1674072625500000000,
+      "end_ns": 1674072660500000000,
+      "decision_ns": [
+        1674072630500000000
+      ],
+      "window_id": 0,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-01-18_000_SPY.parquet",
+      "complete": true,
+      "sha256": "689744c6dcf7e27d834c25b498407e26a0b1825e4aed9c5e2fac202054294f45",
+      "rows": 6289,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-01-18T20:10:25.500000+00:00",
+        "requested_end": "2023-01-18T20:11:00.500000+00:00",
+        "asof": "2023-01-18",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 1,
+        "events_fetched": 6289,
+        "response_bytes": 709626,
+        "duration_seconds": 1.062000000005355,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "f24ec2ae2448d57f3256205320c59d8c"
+        ],
+        "ingestion_run_id": "a968c22b-84b6-4a29-9f10-0801014e89ce",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-02-01",
+      "start_ns": 1675281805250000000,
+      "end_ns": 1675281840250000000,
+      "decision_ns": [
+        1675281810250000000
+      ],
+      "window_id": 1,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-02-01_001_SPY.parquet",
+      "complete": true,
+      "sha256": "1bbbfa5cd12e897cbf56f1eb50bfc6200b32a0b4834c3881c50b7cf6ae6bf3c3",
+      "rows": 14454,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-02-01T20:03:25.250000+00:00",
+        "requested_end": "2023-02-01T20:04:00.250000+00:00",
+        "asof": "2023-02-01",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 14454,
+        "response_bytes": 1627357,
+        "duration_seconds": 0.7030000000086147,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "ec0e82c07e4dcb010585be1b3637aa92",
+          "0fee189560827dd4a5e110bfd05ce257"
+        ],
+        "ingestion_run_id": "b1a13722-7526-4412-bed1-0e81e81e0295",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-02-03",
+      "start_ns": 1675454490000000000,
+      "end_ns": 1675454525000000000,
+      "decision_ns": [
+        1675454495000000000
+      ],
+      "window_id": 2,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-02-03_002_SPY.parquet",
+      "complete": true,
+      "sha256": "7bf65ff013abe6627ff0ba6611fde8dc66446d5d9e71ad7df0b4b0fce843ba68",
+      "rows": 6161,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-02-03T20:01:30+00:00",
+        "requested_end": "2023-02-03T20:02:05+00:00",
+        "asof": "2023-02-03",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 1,
+        "events_fetched": 6161,
+        "response_bytes": 695645,
+        "duration_seconds": 0.23399999999674037,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "1451c6b84d572a9d029ecfcb7f4717e6"
+        ],
+        "ingestion_run_id": "68b51182-dcbe-455c-b8a5-b82d4b6e4d4d",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-02-09",
+      "start_ns": 1675973038000000000,
+      "end_ns": 1675973073000000000,
+      "decision_ns": [
+        1675973043000000000
+      ],
+      "window_id": 3,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-02-09_003_SPY.parquet",
+      "complete": true,
+      "sha256": "38712553c84ef204d3121afd4f67c652f5ba6b89284dc7b6c910ffedf0c85fdd",
+      "rows": 15465,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-02-09T20:03:58+00:00",
+        "requested_end": "2023-02-09T20:04:33+00:00",
+        "asof": "2023-02-09",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 15465,
+        "response_bytes": 1744158,
+        "duration_seconds": 0.7030000000086147,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "c218558e955132abcd3b5ce832994231",
+          "52240ab183547c1048a5f57ca23e7edf"
+        ],
+        "ingestion_run_id": "e39fda0f-88ae-4415-89f8-0c78ab914ecd",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-10",
+      "start_ns": 1678478523750000000,
+      "end_ns": 1678478558750000000,
+      "decision_ns": [
+        1678478528750000000
+      ],
+      "window_id": 4,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-10_004_SPY.parquet",
+      "complete": true,
+      "sha256": "b710f41606e105097bc08986dd52a103ea8c43db74b6d5dba8957829e2f96277",
+      "rows": 12705,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-10T20:02:03.750000+00:00",
+        "requested_end": "2023-03-10T20:02:38.750000+00:00",
+        "asof": "2023-03-10",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 12705,
+        "response_bytes": 1428626,
+        "duration_seconds": 0.46899999998277053,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "1e0fd8202fe0ef0c7ed1f4692c639678",
+          "9dedf58be6382aece8229370786452d3"
+        ],
+        "ingestion_run_id": "5e8681b5-e02b-4e99-83ed-8d079d838e74",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-10",
+      "start_ns": 1678478607500000000,
+      "end_ns": 1678478642500000000,
+      "decision_ns": [
+        1678478612500000000
+      ],
+      "window_id": 5,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-10_005_SPY.parquet",
+      "complete": true,
+      "sha256": "76489f1e4f08c80254467ff6de23b2d2db5ef0c238f91fab82a47832f2db4de4",
+      "rows": 10064,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-10T20:03:27.500000+00:00",
+        "requested_end": "2023-03-10T20:04:02.500000+00:00",
+        "asof": "2023-03-10",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 10064,
+        "response_bytes": 1133704,
+        "duration_seconds": 0.35999999998603016,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "81f4fb595404c00e90412256cf921083",
+          "88579a79e1936bd6d90e9845cac9271c"
+        ],
+        "ingestion_run_id": "5e47950c-f1e1-41ed-8277-3a31cdfe0eb0",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-13",
+      "start_ns": 1678734102750000000,
+      "end_ns": 1678734137750000000,
+      "decision_ns": [
+        1678734107750000000
+      ],
+      "window_id": 6,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-13_006_SPY.parquet",
+      "complete": true,
+      "sha256": "6335e369c35f4faacf61a1a5ecc14807fec985b361e7bc4ac125f9155bff3e98",
+      "rows": 8771,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-13T19:01:42.750000+00:00",
+        "requested_end": "2023-03-13T19:02:17.750000+00:00",
+        "asof": "2023-03-13",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 1,
+        "events_fetched": 8771,
+        "response_bytes": 987684,
+        "duration_seconds": 0.2970000000204891,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "9214bb02fdd9687364375f5cf526f7eb"
+        ],
+        "ingestion_run_id": "7f3ccd7d-a1cd-439f-b28f-1666bc1aaa78",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-15",
+      "start_ns": 1678906926500000000,
+      "end_ns": 1678906961500000000,
+      "decision_ns": [
+        1678906931500000000
+      ],
+      "window_id": 7,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-15_007_SPY.parquet",
+      "complete": true,
+      "sha256": "b8d852efdbbc091c491445b2e870d3a9f8b6948fdcdd1871b353f8f37d283894",
+      "rows": 10707,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-15T19:02:06.500000+00:00",
+        "requested_end": "2023-03-15T19:02:41.500000+00:00",
+        "asof": "2023-03-15",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 10707,
+        "response_bytes": 1205550,
+        "duration_seconds": 0.39100000000325963,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "b3fee78a58049071e20b076d6ace1a1d",
+          "489b026b40d4f461780bf3bf4b0692bd"
+        ],
+        "ingestion_run_id": "7fbe6cc6-0c8d-4c77-baa9-67aa9d69c005",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-15",
+      "start_ns": 1678907203500000000,
+      "end_ns": 1678907238500000000,
+      "decision_ns": [
+        1678907208500000000
+      ],
+      "window_id": 8,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-15_008_SPY.parquet",
+      "complete": true,
+      "sha256": "cf1d3570cef1da9727d9d1cb2b0823e77a7819fc9e601512917a6e483bcce177",
+      "rows": 15825,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-15T19:06:43.500000+00:00",
+        "requested_end": "2023-03-15T19:07:18.500000+00:00",
+        "asof": "2023-03-15",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 15825,
+        "response_bytes": 1782954,
+        "duration_seconds": 0.639999999984866,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "be0b61c5bd5a00a5a8237a62ef4ad738",
+          "5619e042bd3cb3b6033e808eabb2c94d"
+        ],
+        "ingestion_run_id": "51d35a11-6115-4f98-a16a-eabfe4f644eb",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-22",
+      "start_ns": 1679512095500000000,
+      "end_ns": 1679512130500000000,
+      "decision_ns": [
+        1679512100500000000
+      ],
+      "window_id": 9,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-22_009_SPY.parquet",
+      "complete": true,
+      "sha256": "72d54424f6d96a1d4d48f28f94fd9cbee183434527961ef26cfe8e8ab955f844",
+      "rows": 18074,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-22T19:08:15.500000+00:00",
+        "requested_end": "2023-03-22T19:08:50.500000+00:00",
+        "asof": "2023-03-22",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 18074,
+        "response_bytes": 2035073,
+        "duration_seconds": 0.5620000000053551,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "05df9eb13470c7ffbe23392a7ee7cbc9",
+          "188007ddc25c864704637140e3b49432"
+        ],
+        "ingestion_run_id": "6131def8-e92f-4bf5-8bde-a86ccc6d08bd",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-23",
+      "start_ns": 1679598096500000000,
+      "end_ns": 1679598131500000000,
+      "decision_ns": [
+        1679598101500000000
+      ],
+      "window_id": 10,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-23_010_SPY.parquet",
+      "complete": true,
+      "sha256": "f00a16fc8943927ac7171cb07590f89043eaa2596aa944dd1fccc94e47b42b2f",
+      "rows": 31460,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-23T19:01:36.500000+00:00",
+        "requested_end": "2023-03-23T19:02:11.500000+00:00",
+        "asof": "2023-03-23",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 4,
+        "events_fetched": 31460,
+        "response_bytes": 3542589,
+        "duration_seconds": 1.202999999979511,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "2fd4e2e044816bac313b71811d0bfa5a",
+          "0f7df3cfcd0a06ee2ca20eef296fcc4f",
+          "6e16b94aa4359dacbb291571e5badf1f",
+          "8f77f51dd9efeceb24ac2ceaa3db0b50"
+        ],
+        "ingestion_run_id": "4883e601-8d7a-4c1f-a7fd-0f04d56181b3",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-23",
+      "start_ns": 1679598189250000000,
+      "end_ns": 1679598224250000000,
+      "decision_ns": [
+        1679598194250000000
+      ],
+      "window_id": 11,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-23_011_SPY.parquet",
+      "complete": true,
+      "sha256": "a2b5fe6d3251381785641f8fc49f84d521c0972b51712de75ed5ff0cad28ac0a",
+      "rows": 21666,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-23T19:03:09.250000+00:00",
+        "requested_end": "2023-03-23T19:03:44.250000+00:00",
+        "asof": "2023-03-23",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 3,
+        "events_fetched": 21666,
+        "response_bytes": 2441169,
+        "duration_seconds": 0.8429999999934807,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "5677e2af0ccb4d46af4022c4f215ef28",
+          "29bd389a06cbdc2bb81cc67bd5767057",
+          "7b2183148f1fca000b856483bcf756c8"
+        ],
+        "ingestion_run_id": "1452e552-53fc-45b1-94bc-71e5818860d3",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-23",
+      "start_ns": 1679598890750000000,
+      "end_ns": 1679598925750000000,
+      "decision_ns": [
+        1679598895750000000
+      ],
+      "window_id": 12,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-23_012_SPY.parquet",
+      "complete": true,
+      "sha256": "d9c042258b428cbbdf5d79baf938a17e9f35c9935c349e015a78e431c965eb61",
+      "rows": 17644,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-23T19:14:50.750000+00:00",
+        "requested_end": "2023-03-23T19:15:25.750000+00:00",
+        "asof": "2023-03-23",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 17644,
+        "response_bytes": 1986840,
+        "duration_seconds": 0.6559999999881256,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "dc50392e2a637de737a307b9089bea93",
+          "0ff7cf01025236cbbca3b1bca70695da"
+        ],
+        "ingestion_run_id": "b528feab-970c-4040-b518-64ebe2788f53",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-23",
+      "start_ns": 1679599638000000000,
+      "end_ns": 1679599673000000000,
+      "decision_ns": [
+        1679599643000000000
+      ],
+      "window_id": 13,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-23_013_SPY.parquet",
+      "complete": true,
+      "sha256": "0c36bd96fc82a4e5c9697fd191f4ba16829ecae5c47a0e6a1e71e256d9a7cfa3",
+      "rows": 21029,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-23T19:27:18+00:00",
+        "requested_end": "2023-03-23T19:27:53+00:00",
+        "asof": "2023-03-23",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 3,
+        "events_fetched": 21029,
+        "response_bytes": 2368422,
+        "duration_seconds": 0.6879999999946449,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "68a4949a7a21a8cba2734a2a1ceee929",
+          "ed026136e5de340fb64d14cc94267df2",
+          "9b9321294c2bb546fd72711217077048"
+        ],
+        "ingestion_run_id": "a1e081bf-a0e0-43b9-8e1c-7575df8f7bc5",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-03-29",
+      "start_ns": 1680116482750000000,
+      "end_ns": 1680116517750000000,
+      "decision_ns": [
+        1680116487750000000
+      ],
+      "window_id": 14,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-03-29_014_SPY.parquet",
+      "complete": true,
+      "sha256": "a25e930ff45eebf0c1becc617538338b0c0aa6ec2acd70c0338562e0719fcf84",
+      "rows": 14851,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-03-29T19:01:22.750000+00:00",
+        "requested_end": "2023-03-29T19:01:57.750000+00:00",
+        "asof": "2023-03-29",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 14851,
+        "response_bytes": 1674924,
+        "duration_seconds": 0.5310000000172295,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "ec2bb8ac66f9c470d301df772668b44f",
+          "4e4edd7588f8fd78732a673f3205bc3f"
+        ],
+        "ingestion_run_id": "be841591-234b-4588-8fa4-240843b5fff8",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-05-03",
+      "start_ns": 1683140499000000000,
+      "end_ns": 1683140534000000000,
+      "decision_ns": [
+        1683140504000000000
+      ],
+      "window_id": 15,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-05-03_015_SPY.parquet",
+      "complete": true,
+      "sha256": "dc4274f7699256efb8b4ede195a67940852997b431e0aa55bc3ef88154e01f0d",
+      "rows": 12911,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-05-03T19:01:39+00:00",
+        "requested_end": "2023-05-03T19:02:14+00:00",
+        "asof": "2023-05-03",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 12911,
+        "response_bytes": 1453880,
+        "duration_seconds": 0.5,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "54685ee413f8e59bf8619977db27e6c3",
+          "27b038d4b4ba588aa02bebd6b6a943ce"
+        ],
+        "ingestion_run_id": "5ed2b17b-620e-4271-ace5-99bd6511c10c",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-05-03",
+      "start_ns": 1683140851500000000,
+      "end_ns": 1683140886500000000,
+      "decision_ns": [
+        1683140856500000000
+      ],
+      "window_id": 16,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-05-03_016_SPY.parquet",
+      "complete": true,
+      "sha256": "d06f2e73670d9edbcc21bbe1f3ff6785ba7758b8a4bea228d0ebd4ce20bad65c",
+      "rows": 20817,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-05-03T19:07:31.500000+00:00",
+        "requested_end": "2023-05-03T19:08:06.500000+00:00",
+        "asof": "2023-05-03",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 3,
+        "events_fetched": 20817,
+        "response_bytes": 2342482,
+        "duration_seconds": 0.7809999999881256,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "da9ed6cb9dc6e49e9e77c17646ed3992",
+          "175da6776ebf9c43870179e489071dd1",
+          "924545c23314b60597249e8bc9ffdcfa"
+        ],
+        "ingestion_run_id": "77ce2903-7b86-4cda-9ff0-b4ceac2124b7",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-05-03",
+      "start_ns": 1683140947500000000,
+      "end_ns": 1683140982500000000,
+      "decision_ns": [
+        1683140952500000000
+      ],
+      "window_id": 17,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-05-03_017_SPY.parquet",
+      "complete": true,
+      "sha256": "e0a32986ebe71fa663ddb24628fb6df3cdbe1c48ecce60b179e911e2a9aa76a6",
+      "rows": 25479,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-05-03T19:09:07.500000+00:00",
+        "requested_end": "2023-05-03T19:09:42.500000+00:00",
+        "asof": "2023-05-03",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 3,
+        "events_fetched": 25479,
+        "response_bytes": 2870539,
+        "duration_seconds": 0.9210000000020955,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "e9ad189f18a735e3a1619d730ad05796",
+          "691dd8da39f5d8cee484e37327b301a9",
+          "187ea42a8cff0970ec36fc3a40cf7d02"
+        ],
+        "ingestion_run_id": "a6b55290-da69-47a5-a5b5-65a31bf72cc1",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-05-03",
+      "start_ns": 1683141104250000000,
+      "end_ns": 1683141139250000000,
+      "decision_ns": [
+        1683141109250000000
+      ],
+      "window_id": 18,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-05-03_018_SPY.parquet",
+      "complete": true,
+      "sha256": "6c1d0ff0ab7f523d958b95599e14dba054da066d5c616b53081a21550274d4ce",
+      "rows": 19834,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-05-03T19:11:44.250000+00:00",
+        "requested_end": "2023-05-03T19:12:19.250000+00:00",
+        "asof": "2023-05-03",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 19834,
+        "response_bytes": 2234060,
+        "duration_seconds": 0.5939999999827705,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "384432c25d660265302f673cf842b9c9",
+          "77c60e747a967e10b384b65a0ccfe328"
+        ],
+        "ingestion_run_id": "01b481f9-937a-4bdd-a0a6-f9e8f0aa7b32",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-07-26",
+      "start_ns": 1690398487500000000,
+      "end_ns": 1690398522500000000,
+      "decision_ns": [
+        1690398492500000000
+      ],
+      "window_id": 19,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-07-26_019_SPY.parquet",
+      "complete": true,
+      "sha256": "e6e13a04617baa86b4cc331a7d62b47618c89be0636a1a0ec1c94547f18218af",
+      "rows": 32703,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-07-26T19:08:07.500000+00:00",
+        "requested_end": "2023-07-26T19:08:42.500000+00:00",
+        "asof": "2023-07-26",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 4,
+        "events_fetched": 32703,
+        "response_bytes": 3684891,
+        "duration_seconds": 1.187999999994645,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "5226991d1681819b5b3215c708881371",
+          "0ce5527ffe3d846ca6b20044d26b88e7",
+          "bc732ebfbf5af1148e3c4b14584ed62b",
+          "ee2c18c53aa96ccca22a14a6a19403c0"
+        ],
+        "ingestion_run_id": "9d4ce9b9-e680-4a29-8d26-da39c079e5f1",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-08-16",
+      "start_ns": 1692213078000000000,
+      "end_ns": 1692213113000000000,
+      "decision_ns": [
+        1692213083000000000
+      ],
+      "window_id": 20,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-08-16_020_SPY.parquet",
+      "complete": true,
+      "sha256": "fd0082decbd630ea74d8687d65e8ea608ce21e92ed7204e259818e69c0e10ca1",
+      "rows": 16381,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-08-16T19:11:18+00:00",
+        "requested_end": "2023-08-16T19:11:53+00:00",
+        "asof": "2023-08-16",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 16381,
+        "response_bytes": 1850566,
+        "duration_seconds": 0.4840000000258442,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "e6cbc198e83bf40c0149e719908d495c",
+          "e7b63a6e491358378bbb5aff96ffdd8e"
+        ],
+        "ingestion_run_id": "ed80b17b-c008-4645-9e45-faec5b2c6ef0",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-09-25",
+      "start_ns": 1695669404500000000,
+      "end_ns": 1695669439500000000,
+      "decision_ns": [
+        1695669409500000000
+      ],
+      "window_id": 21,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-09-25_021_SPY.parquet",
+      "complete": true,
+      "sha256": "31a3147a7299b609d675c7ab21b6ddf556cae3d819144f66bd5b38d398a82f59",
+      "rows": 11709,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-09-25T19:16:44.500000+00:00",
+        "requested_end": "2023-09-25T19:17:19.500000+00:00",
+        "asof": "2023-09-25",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 11709,
+        "response_bytes": 1322228,
+        "duration_seconds": 0.3909999999741558,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "aff092a9ae371751de7275308ef0de16",
+          "e3295db1d678265b69f9a8d06e7881c5"
+        ],
+        "ingestion_run_id": "d5a21d1d-0fb4-4603-b388-732027ae367e",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-10-09",
+      "start_ns": 1696878119250000000,
+      "end_ns": 1696878154250000000,
+      "decision_ns": [
+        1696878124250000000
+      ],
+      "window_id": 22,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-10-09_022_SPY.parquet",
+      "complete": true,
+      "sha256": "7cd20b558d6341faad6f863d1d5e12368d3c43fb1f23401c83f29502a747c8a5",
+      "rows": 6252,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-10-09T19:01:59.250000+00:00",
+        "requested_end": "2023-10-09T19:02:34.250000+00:00",
+        "asof": "2023-10-09",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 1,
+        "events_fetched": 6252,
+        "response_bytes": 707037,
+        "duration_seconds": 0.15599999998812564,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "0331756e3cdcfac861a26ede0e8d031b"
+        ],
+        "ingestion_run_id": "b328dedc-96f3-42d6-9683-a32ae4fb22bc",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-10-23",
+      "start_ns": 1698088368000000000,
+      "end_ns": 1698088403000000000,
+      "decision_ns": [
+        1698088373000000000
+      ],
+      "window_id": 23,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-10-23_023_SPY.parquet",
+      "complete": true,
+      "sha256": "ea8925a9ee4ddc92b22ef974cf358e6ab91bd3a65b2532e2da6632e9d2cc181b",
+      "rows": 29628,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-10-23T19:12:48+00:00",
+        "requested_end": "2023-10-23T19:13:23+00:00",
+        "asof": "2023-10-23",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 3,
+        "events_fetched": 29628,
+        "response_bytes": 3337264,
+        "duration_seconds": 0.6560000000172295,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "ae8a7ed1b260d7c1a5e5a48c5d541a50",
+          "ace6d2edd57287123fbbd19f3396d847",
+          "055058ef3efb9537d969340b2b94cb89"
+        ],
+        "ingestion_run_id": "e2e30cf6-b53a-4eed-8881-147b5ebcb416",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-10-23",
+      "start_ns": 1698088926750000000,
+      "end_ns": 1698088961750000000,
+      "decision_ns": [
+        1698088931750000000
+      ],
+      "window_id": 24,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-10-23_024_SPY.parquet",
+      "complete": true,
+      "sha256": "ee733fb789aad298f4de6ade29cf992419c627039342a1009ead6ea874b26209",
+      "rows": 15422,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-10-23T19:22:06.750000+00:00",
+        "requested_end": "2023-10-23T19:22:41.750000+00:00",
+        "asof": "2023-10-23",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 15422,
+        "response_bytes": 1741874,
+        "duration_seconds": 0.389999999984866,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "e7cf74dc6be8ba30c3ba79a41b99ff80",
+          "cbd3cab7c818d1f94133aeabc5426e1c"
+        ],
+        "ingestion_run_id": "c6389d1c-a272-436a-95f2-b38b73d7ea74",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    },
+    {
+      "date": "2023-10-30",
+      "start_ns": 1698692446750000000,
+      "end_ns": 1698692481750000000,
+      "decision_ns": [
+        1698692451750000000
+      ],
+      "window_id": 25,
+      "symbol": "SPY",
+      "path": "research_scout\\futures_etf_hft_20261002\\quotes\\2023-10-30_025_SPY.parquet",
+      "complete": true,
+      "sha256": "10ca96c41baa2ff4c4976de16f5f2dd21bbe6e7c6c92a08af890ed522fcea60a",
+      "rows": 19966,
+      "metadata": {
+        "provider": "alpaca",
+        "feed": "sip",
+        "feed_scope": "historical consolidated SIP Level 1; delayed at least 15 minutes",
+        "event_type": "quotes",
+        "symbol": "SPY",
+        "requested_start": "2023-10-30T19:00:46.750000+00:00",
+        "requested_end": "2023-10-30T19:01:21.750000+00:00",
+        "asof": "2023-10-30",
+        "page_size": 10000,
+        "max_pages": 16,
+        "maximum_possible_events": 160000,
+        "pages_fetched": 2,
+        "events_fetched": 19966,
+        "response_bytes": 2250065,
+        "duration_seconds": 0.5160000000032596,
+        "pagination_complete": true,
+        "next_page_token_present": false,
+        "request_ids": [
+          "20cbb26f284cfbe63e45d4955e605231",
+          "3a051384073b643dd1c6727400cf812d"
+        ],
+        "ingestion_run_id": "a4bb6dbb-9768-4706-8225-0fe3e0af347b",
+        "interval_semantics": "Alpaca start/end are inclusive; no adjacent chunking is used"
+      }
+    }
+  ],
+  "expected_files": 26,
+  "complete": true,
+  "response_byte_upper_bound": 49159207,
+  "quote_plan_sha256": "50c4c23037034b15b4044df47faad3e23a844be401cba6a9b7736326bef83f6d",
+  "orders_submitted": false,
+  "billing_changed": false
+}

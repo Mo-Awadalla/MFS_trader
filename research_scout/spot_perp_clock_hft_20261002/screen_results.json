@@ -1,0 +1,1278 @@
+{
+  "windows": [
+    {
+      "date": "2024-01-01",
+      "offset_minutes": 0,
+      "grid_rows": 12150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 370,
+      "perpetual_symbols": 243,
+      "source_counts": {
+        "spot_native_messages": 243392,
+        "spot_book_messages": 243392,
+        "perpetual_native_messages": 373593,
+        "perpetual_book_messages": 373593
+      },
+      "reasons": {
+        "missing_spot_symbol": 1000,
+        "spot_capture_freshness_gate": 4658,
+        "insufficient_fresh_anchor": 3536,
+        "gap_below_25bp": 2651,
+        "perpetual_capture_freshness_gate": 248,
+        "insufficient_displayed_depth": 7,
+        "unstable_anchor": 48,
+        "perpetual_perpetual_clock_gate": 2
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-01-01_0000.parquet",
+      "sha256": "dc9bd93c37063794441c527b58d840cc2535762ec5435af3a7b16cf27b5d0d6a"
+    },
+    {
+      "date": "2024-01-01",
+      "offset_minutes": 360,
+      "grid_rows": 12150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 370,
+      "perpetual_symbols": 243,
+      "source_counts": {
+        "spot_native_messages": 211231,
+        "spot_book_messages": 211231,
+        "perpetual_native_messages": 285879,
+        "perpetual_book_messages": 285879
+      },
+      "reasons": {
+        "missing_spot_symbol": 1000,
+        "gap_below_25bp": 2524,
+        "spot_capture_freshness_gate": 4797,
+        "insufficient_fresh_anchor": 3467,
+        "perpetual_capture_freshness_gate": 361,
+        "perpetual_perpetual_clock_gate": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-01-01_0360.parquet",
+      "sha256": "06a4c90f4b20d88c2e935828dc23151adf9d4c6bd60f44942984c680f62c0d9f"
+    },
+    {
+      "date": "2024-01-01",
+      "offset_minutes": 720,
+      "grid_rows": 12150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 368,
+      "perpetual_symbols": 243,
+      "source_counts": {
+        "spot_native_messages": 190622,
+        "spot_book_messages": 190622,
+        "perpetual_native_messages": 240472,
+        "perpetual_book_messages": 240472
+      },
+      "reasons": {
+        "missing_spot_symbol": 1000,
+        "spot_capture_freshness_gate": 5628,
+        "insufficient_fresh_anchor": 2873,
+        "gap_below_25bp": 2196,
+        "perpetual_capture_freshness_gate": 452,
+        "perpetual_perpetual_clock_gate": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-01-01_0720.parquet",
+      "sha256": "58ccea6ae103aa230f793feeb6fb5c974a1ce3a6ac9aeb0f9a7e97d205b381fa"
+    },
+    {
+      "date": "2024-01-01",
+      "offset_minutes": 1080,
+      "grid_rows": 12150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 369,
+      "perpetual_symbols": 243,
+      "source_counts": {
+        "spot_native_messages": 172539,
+        "spot_book_messages": 172539,
+        "perpetual_native_messages": 230204,
+        "perpetual_book_messages": 230204
+      },
+      "reasons": {
+        "missing_spot_symbol": 1000,
+        "insufficient_fresh_anchor": 3030,
+        "gap_below_25bp": 1934,
+        "spot_capture_freshness_gate": 5774,
+        "perpetual_capture_freshness_gate": 406,
+        "spot_missing_book": 5,
+        "perpetual_perpetual_clock_gate": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-01-01_1080.parquet",
+      "sha256": "f4bbac7f916a3f9a191641df4be529ac53cdf9c522c1af7a22ab82e93e0649a3"
+    },
+    {
+      "date": "2024-02-01",
+      "offset_minutes": 0,
+      "grid_rows": 12550,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 375,
+      "perpetual_symbols": 251,
+      "source_counts": {
+        "spot_native_messages": 251009,
+        "spot_book_messages": 251009,
+        "perpetual_native_messages": 415674,
+        "perpetual_book_messages": 415674
+      },
+      "reasons": {
+        "missing_spot_symbol": 1100,
+        "insufficient_fresh_anchor": 3924,
+        "gap_below_25bp": 2956,
+        "spot_capture_freshness_gate": 4191,
+        "perpetual_capture_freshness_gate": 367,
+        "perpetual_perpetual_clock_gate": 3,
+        "spot_missing_book": 8,
+        "unstable_anchor": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-02-01_0000.parquet",
+      "sha256": "83f10f7215249993cf48740409e3ae0c6b18e82d7fb53adfea1cb0c32f28886e"
+    },
+    {
+      "date": "2024-02-01",
+      "offset_minutes": 360,
+      "grid_rows": 12550,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 374,
+      "perpetual_symbols": 251,
+      "source_counts": {
+        "spot_native_messages": 202644,
+        "spot_book_messages": 202644,
+        "perpetual_native_messages": 297908,
+        "perpetual_book_messages": 297908
+      },
+      "reasons": {
+        "missing_spot_symbol": 1100,
+        "insufficient_fresh_anchor": 3695,
+        "gap_below_25bp": 2478,
+        "spot_capture_freshness_gate": 4752,
+        "perpetual_capture_freshness_gate": 451,
+        "perpetual_perpetual_clock_gate": 3,
+        "spot_missing_book": 71
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-02-01_0360.parquet",
+      "sha256": "1f6150f4f2cdf08b77f7837adc0031e1c057fd477860c9ba276c9c0209684cd8"
+    },
+    {
+      "date": "2024-02-01",
+      "offset_minutes": 720,
+      "grid_rows": 12550,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 373,
+      "perpetual_symbols": 251,
+      "source_counts": {
+        "spot_native_messages": 206992,
+        "spot_book_messages": 206992,
+        "perpetual_native_messages": 281140,
+        "perpetual_book_messages": 281140
+      },
+      "reasons": {
+        "missing_spot_symbol": 1100,
+        "gap_below_25bp": 2296,
+        "spot_capture_freshness_gate": 5108,
+        "insufficient_fresh_anchor": 3664,
+        "perpetual_capture_freshness_gate": 369,
+        "spot_missing_book": 9,
+        "perpetual_perpetual_clock_gate": 4
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-02-01_0720.parquet",
+      "sha256": "f372bca37af2d5b6e3c49bc5f98e8e5b92861bada9a2e4f357bf749eed2a3573"
+    },
+    {
+      "date": "2024-02-01",
+      "offset_minutes": 1080,
+      "grid_rows": 12550,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 370,
+      "perpetual_symbols": 251,
+      "source_counts": {
+        "spot_native_messages": 179242,
+        "spot_book_messages": 179242,
+        "perpetual_native_messages": 264918,
+        "perpetual_book_messages": 264918
+      },
+      "reasons": {
+        "missing_spot_symbol": 1100,
+        "gap_below_25bp": 1921,
+        "spot_capture_freshness_gate": 5553,
+        "insufficient_fresh_anchor": 3639,
+        "perpetual_capture_freshness_gate": 336,
+        "perpetual_perpetual_clock_gate": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-02-01_1080.parquet",
+      "sha256": "687ccc0c1755e990e328f835ae02b1ad16bb8505d34b53e916c8995a8501a415"
+    },
+    {
+      "date": "2024-03-01",
+      "offset_minutes": 0,
+      "grid_rows": 13000,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 371,
+      "perpetual_symbols": 260,
+      "source_counts": {
+        "spot_native_messages": 377448,
+        "spot_book_messages": 377448,
+        "perpetual_native_messages": 502136,
+        "perpetual_book_messages": 502136
+      },
+      "reasons": {
+        "missing_spot_symbol": 1250,
+        "insufficient_fresh_anchor": 3035,
+        "gap_below_25bp": 5284,
+        "spot_capture_freshness_gate": 3223,
+        "perpetual_capture_freshness_gate": 206,
+        "perpetual_perpetual_clock_gate": 2
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-03-01_0000.parquet",
+      "sha256": "c401f7cc25db4d403bf42713cc93dd57bb71a7d9dbd94a06abc518fe8c70613b"
+    },
+    {
+      "date": "2024-03-01",
+      "offset_minutes": 360,
+      "grid_rows": 13000,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 370,
+      "perpetual_symbols": 260,
+      "source_counts": {
+        "spot_native_messages": 310456,
+        "spot_book_messages": 310456,
+        "perpetual_native_messages": 389329,
+        "perpetual_book_messages": 389329
+      },
+      "reasons": {
+        "missing_spot_symbol": 1250,
+        "perpetual_capture_freshness_gate": 305,
+        "gap_below_25bp": 4229,
+        "spot_capture_freshness_gate": 3540,
+        "insufficient_fresh_anchor": 3668,
+        "spot_missing_book": 5,
+        "perpetual_perpetual_clock_gate": 3
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-03-01_0360.parquet",
+      "sha256": "ed2698dd03ee3f689fe414cfb8b50370a9460e4bfd13663c2c482da00bf10410"
+    },
+    {
+      "date": "2024-03-01",
+      "offset_minutes": 720,
+      "grid_rows": 13000,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 372,
+      "perpetual_symbols": 260,
+      "source_counts": {
+        "spot_native_messages": 369917,
+        "spot_book_messages": 369917,
+        "perpetual_native_messages": 468264,
+        "perpetual_book_messages": 468264
+      },
+      "reasons": {
+        "missing_spot_symbol": 1250,
+        "gap_below_25bp": 5334,
+        "spot_capture_freshness_gate": 3152,
+        "perpetual_capture_freshness_gate": 281,
+        "insufficient_fresh_anchor": 2981,
+        "perpetual_perpetual_clock_gate": 2
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-03-01_0720.parquet",
+      "sha256": "99669fcbb88e35c57622cefbe9befbaad591fd0669f4aeb57cfd8df24ff12061"
+    },
+    {
+      "date": "2024-03-01",
+      "offset_minutes": 1080,
+      "grid_rows": 13100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 372,
+      "perpetual_symbols": 262,
+      "source_counts": {
+        "spot_native_messages": 286338,
+        "spot_book_messages": 286338,
+        "perpetual_native_messages": 429376,
+        "perpetual_book_messages": 429376
+      },
+      "reasons": {
+        "missing_spot_symbol": 1300,
+        "gap_below_25bp": 3935,
+        "spot_capture_freshness_gate": 3946,
+        "insufficient_fresh_anchor": 3639,
+        "perpetual_capture_freshness_gate": 278,
+        "perpetual_perpetual_clock_gate": 2
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-03-01_1080.parquet",
+      "sha256": "56bb5f3f566973ecd5fedbbcfef0d4a2fbcf5128d3a68613d411f3fec70ae816"
+    },
+    {
+      "date": "2024-04-01",
+      "offset_minutes": 0,
+      "grid_rows": 13250,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 378,
+      "perpetual_symbols": 265,
+      "source_counts": {
+        "spot_native_messages": 419577,
+        "spot_book_messages": 419577,
+        "perpetual_native_messages": 414745,
+        "perpetual_book_messages": 414745
+      },
+      "reasons": {
+        "missing_spot_symbol": 1200,
+        "insufficient_fresh_anchor": 3829,
+        "spot_capture_freshness_gate": 3360,
+        "gap_below_25bp": 4501,
+        "perpetual_capture_freshness_gate": 343,
+        "perpetual_perpetual_clock_gate": 17
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-04-01_0000.parquet",
+      "sha256": "6e5cd3713497ce32766a149eff640d2799f045e18c57094b4671aae0a71c27c4"
+    },
+    {
+      "date": "2024-04-01",
+      "offset_minutes": 360,
+      "grid_rows": 13250,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 378,
+      "perpetual_symbols": 265,
+      "source_counts": {
+        "spot_native_messages": 962153,
+        "spot_book_messages": 962153,
+        "perpetual_native_messages": 1167824,
+        "perpetual_book_messages": 1167824
+      },
+      "reasons": {
+        "missing_spot_symbol": 1200,
+        "gap_below_25bp": 11554,
+        "spot_capture_freshness_gate": 270,
+        "perpetual_capture_freshness_gate": 41,
+        "insufficient_fresh_anchor": 184,
+        "perpetual_perpetual_clock_gate": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-04-01_0360.parquet",
+      "sha256": "fbc9f2f478cb6531dc2ccd5b2d976a7d3fe1f874bb663aba2f5b4f2490209969"
+    },
+    {
+      "date": "2024-04-01",
+      "offset_minutes": 720,
+      "grid_rows": 13100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 378,
+      "perpetual_symbols": 262,
+      "source_counts": {
+        "spot_native_messages": 398346,
+        "spot_book_messages": 398346,
+        "perpetual_native_messages": 421247,
+        "perpetual_book_messages": 421247
+      },
+      "reasons": {
+        "missing_spot_symbol": 1150,
+        "gap_below_25bp": 5299,
+        "spot_capture_freshness_gate": 3044,
+        "insufficient_fresh_anchor": 3267,
+        "perpetual_perpetual_clock_gate": 5,
+        "perpetual_capture_freshness_gate": 335
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-04-01_0720.parquet",
+      "sha256": "c92eb0b343bd1bb49faeafeb59f0a2402b40467bfe70e288106724202165040b"
+    },
+    {
+      "date": "2024-04-01",
+      "offset_minutes": 1080,
+      "grid_rows": 13100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 378,
+      "perpetual_symbols": 262,
+      "source_counts": {
+        "spot_native_messages": 416579,
+        "spot_book_messages": 416579,
+        "perpetual_native_messages": 392908,
+        "perpetual_book_messages": 392908
+      },
+      "reasons": {
+        "missing_spot_symbol": 1150,
+        "gap_below_25bp": 5388,
+        "spot_capture_freshness_gate": 3161,
+        "insufficient_fresh_anchor": 3000,
+        "perpetual_capture_freshness_gate": 399,
+        "perpetual_perpetual_clock_gate": 2
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-04-01_1080.parquet",
+      "sha256": "bbb3b89a3832d0a573bc678bd21a331faaf905a94ed3db86a381c29315772d59"
+    },
+    {
+      "date": "2024-05-01",
+      "offset_minutes": 0,
+      "grid_rows": 13450,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 382,
+      "perpetual_symbols": 269,
+      "source_counts": {
+        "spot_native_messages": 362955,
+        "spot_book_messages": 362955,
+        "perpetual_native_messages": 518891,
+        "perpetual_book_messages": 518891
+      },
+      "reasons": {
+        "missing_spot_symbol": 1150,
+        "insufficient_fresh_anchor": 3551,
+        "spot_capture_freshness_gate": 3240,
+        "gap_below_25bp": 5290,
+        "perpetual_capture_freshness_gate": 213,
+        "perpetual_perpetual_clock_gate": 2,
+        "spot_missing_book": 4
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-05-01_0000.parquet",
+      "sha256": "6df4e019b76a8b1180df68d82ba0757d87b0293e4dbe501e673a5301d40a8b41"
+    },
+    {
+      "date": "2024-05-01",
+      "offset_minutes": 360,
+      "grid_rows": 13450,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 381,
+      "perpetual_symbols": 269,
+      "source_counts": {
+        "spot_native_messages": 367195,
+        "spot_book_messages": 367195,
+        "perpetual_native_messages": 468202,
+        "perpetual_book_messages": 468202
+      },
+      "reasons": {
+        "missing_spot_symbol": 1150,
+        "spot_capture_freshness_gate": 3417,
+        "gap_below_25bp": 5296,
+        "insufficient_fresh_anchor": 3316,
+        "perpetual_capture_freshness_gate": 260,
+        "perpetual_perpetual_clock_gate": 10,
+        "unstable_anchor": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-05-01_0360.parquet",
+      "sha256": "cf4461682210dd8a0f00bceb75a84762c364ace0edfe24b76dfb698a310e969d"
+    },
+    {
+      "date": "2024-05-01",
+      "offset_minutes": 720,
+      "grid_rows": 13450,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 381,
+      "perpetual_symbols": 269,
+      "source_counts": {
+        "spot_native_messages": 409495,
+        "spot_book_messages": 409495,
+        "perpetual_native_messages": 560556,
+        "perpetual_book_messages": 560556
+      },
+      "reasons": {
+        "missing_spot_symbol": 1150,
+        "spot_capture_freshness_gate": 3102,
+        "insufficient_fresh_anchor": 3285,
+        "gap_below_25bp": 5716,
+        "perpetual_capture_freshness_gate": 194,
+        "perpetual_perpetual_clock_gate": 3
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-05-01_0720.parquet",
+      "sha256": "aad43ba886e1d2801f65bd2eab85cce87fb4e5bc7a2d1c9374393a215e4f027a"
+    },
+    {
+      "date": "2024-05-01",
+      "offset_minutes": 1080,
+      "grid_rows": 13450,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 381,
+      "perpetual_symbols": 269,
+      "source_counts": {
+        "spot_native_messages": 742122,
+        "spot_book_messages": 742122,
+        "perpetual_native_messages": 981316,
+        "perpetual_book_messages": 981316
+      },
+      "reasons": {
+        "missing_spot_symbol": 1150,
+        "gap_below_25bp": 9698,
+        "spot_capture_freshness_gate": 1302,
+        "perpetual_capture_freshness_gate": 76,
+        "insufficient_fresh_anchor": 1216,
+        "insufficient_displayed_depth": 2,
+        "perpetual_perpetual_clock_gate": 3,
+        "unstable_anchor": 3
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-05-01_1080.parquet",
+      "sha256": "206131f4e74fa2bf73883773dc7971d9f93e08c51832fa45b7e46c5e7feda3e1"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 0,
+      "grid_rows": 13100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 384,
+      "perpetual_symbols": 262,
+      "source_counts": {
+        "spot_native_messages": 248231,
+        "spot_book_messages": 248231,
+        "perpetual_native_messages": 386373,
+        "perpetual_book_messages": 386373
+      },
+      "reasons": {
+        "missing_spot_symbol": 1200,
+        "insufficient_fresh_anchor": 4241,
+        "spot_capture_freshness_gate": 4198,
+        "gap_below_25bp": 3037,
+        "perpetual_capture_freshness_gate": 415,
+        "perpetual_perpetual_clock_gate": 9
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-06-01_0000.parquet",
+      "sha256": "3ca50c851401bb749604028840e973082a29c43fb268f7b481ed45f6ab868ea5"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 360,
+      "grid_rows": 13100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 384,
+      "perpetual_symbols": 262,
+      "source_counts": {
+        "spot_native_messages": 274983,
+        "spot_book_messages": 274983,
+        "perpetual_native_messages": 355740,
+        "perpetual_book_messages": 355740
+      },
+      "reasons": {
+        "missing_spot_symbol": 1200,
+        "insufficient_fresh_anchor": 3621,
+        "gap_below_25bp": 2940,
+        "spot_capture_freshness_gate": 4882,
+        "perpetual_capture_freshness_gate": 448,
+        "perpetual_perpetual_clock_gate": 4,
+        "spot_missing_book": 5
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-06-01_0360.parquet",
+      "sha256": "8dad55255b23c029029b10f7b6614cef5de0a2058259d3cbb62cd0d003114c5c"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 720,
+      "grid_rows": 13100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 383,
+      "perpetual_symbols": 262,
+      "source_counts": {
+        "spot_native_messages": 265662,
+        "spot_book_messages": 265662,
+        "perpetual_native_messages": 353686,
+        "perpetual_book_messages": 353686
+      },
+      "reasons": {
+        "missing_spot_symbol": 1200,
+        "perpetual_capture_freshness_gate": 415,
+        "gap_below_25bp": 3079,
+        "spot_capture_freshness_gate": 4827,
+        "insufficient_fresh_anchor": 3576,
+        "perpetual_perpetual_clock_gate": 3
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-06-01_0720.parquet",
+      "sha256": "aa1e9ba8055ba3fc74c7c0f1881410878ff381db06086527863604923188cd29"
+    },
+    {
+      "date": "2024-06-01",
+      "offset_minutes": 1080,
+      "grid_rows": 13100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 384,
+      "perpetual_symbols": 262,
+      "source_counts": {
+        "spot_native_messages": 288833,
+        "spot_book_messages": 288833,
+        "perpetual_native_messages": 393914,
+        "perpetual_book_messages": 393914
+      },
+      "reasons": {
+        "missing_spot_symbol": 1200,
+        "gap_below_25bp": 3170,
+        "spot_capture_freshness_gate": 4754,
+        "insufficient_fresh_anchor": 3637,
+        "perpetual_perpetual_clock_gate": 5,
+        "perpetual_capture_freshness_gate": 334
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-06-01_1080.parquet",
+      "sha256": "e9e87c9364e4a484e77c545dc5295f67e47fef5e7ca0537e94d105cd775531f5"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 0,
+      "grid_rows": 13200,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 384,
+      "perpetual_symbols": 264,
+      "source_counts": {
+        "spot_native_messages": 235393,
+        "spot_book_messages": 235393,
+        "perpetual_native_messages": 358839,
+        "perpetual_book_messages": 358839
+      },
+      "reasons": {
+        "missing_spot_symbol": 1350,
+        "spot_capture_freshness_gate": 4970,
+        "insufficient_fresh_anchor": 3830,
+        "gap_below_25bp": 2757,
+        "perpetual_capture_freshness_gate": 293
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-07-01_0000.parquet",
+      "sha256": "3e9911bb737bac39ca6be230cb1374960731de36572392c5091e02229a7cf4b9"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 360,
+      "grid_rows": 13200,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 382,
+      "perpetual_symbols": 264,
+      "source_counts": {
+        "spot_native_messages": 194354,
+        "spot_book_messages": 194354,
+        "perpetual_native_messages": 259914,
+        "perpetual_book_messages": 259914
+      },
+      "reasons": {
+        "missing_spot_symbol": 1350,
+        "spot_capture_freshness_gate": 5525,
+        "gap_below_25bp": 2038,
+        "insufficient_fresh_anchor": 3801,
+        "perpetual_capture_freshness_gate": 482,
+        "perpetual_perpetual_clock_gate": 4
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-07-01_0360.parquet",
+      "sha256": "16e0bef2e21acde494abc27eddf0c00105d9d1357c3cde71cb353468468fb967"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 720,
+      "grid_rows": 13200,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 382,
+      "perpetual_symbols": 264,
+      "source_counts": {
+        "spot_native_messages": 311560,
+        "spot_book_messages": 311560,
+        "perpetual_native_messages": 401229,
+        "perpetual_book_messages": 401229
+      },
+      "reasons": {
+        "missing_spot_symbol": 1350,
+        "gap_below_25bp": 3774,
+        "spot_capture_freshness_gate": 4207,
+        "insufficient_fresh_anchor": 3574,
+        "perpetual_capture_freshness_gate": 292,
+        "perpetual_perpetual_clock_gate": 2,
+        "spot_missing_book": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-07-01_0720.parquet",
+      "sha256": "c18de99b5fcbaee348f3af4ca82f5a4dac16ce96d2156bbe59fd8b806295c473"
+    },
+    {
+      "date": "2024-07-01",
+      "offset_minutes": 1080,
+      "grid_rows": 13200,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 382,
+      "perpetual_symbols": 264,
+      "source_counts": {
+        "spot_native_messages": 276165,
+        "spot_book_messages": 276165,
+        "perpetual_native_messages": 412535,
+        "perpetual_book_messages": 412535
+      },
+      "reasons": {
+        "missing_spot_symbol": 1350,
+        "spot_capture_freshness_gate": 4813,
+        "insufficient_fresh_anchor": 3626,
+        "gap_below_25bp": 3129,
+        "perpetual_capture_freshness_gate": 264,
+        "unstable_anchor": 1,
+        "spot_missing_book": 16,
+        "perpetual_perpetual_clock_gate": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-07-01_1080.parquet",
+      "sha256": "ad6c2fa44cf7e83c014e97ce70c4a5203947676e87fc666dac55190e411b59e7"
+    },
+    {
+      "date": "2024-08-01",
+      "offset_minutes": 0,
+      "grid_rows": 13150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 379,
+      "perpetual_symbols": 263,
+      "source_counts": {
+        "spot_native_messages": 385187,
+        "spot_book_messages": 385187,
+        "perpetual_native_messages": 583291,
+        "perpetual_book_messages": 583291
+      },
+      "reasons": {
+        "missing_spot_symbol": 1400,
+        "insufficient_fresh_anchor": 3373,
+        "gap_below_25bp": 4651,
+        "spot_capture_freshness_gate": 3438,
+        "perpetual_capture_freshness_gate": 283,
+        "perpetual_perpetual_clock_gate": 5
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-08-01_0000.parquet",
+      "sha256": "f9c40b20483fd771d9ee9732aa7b7925e56a7dac6bc46c9f4a6d696cf992d0f0"
+    },
+    {
+      "date": "2024-08-01",
+      "offset_minutes": 360,
+      "grid_rows": 13150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 379,
+      "perpetual_symbols": 263,
+      "source_counts": {
+        "spot_native_messages": 334429,
+        "spot_book_messages": 334429,
+        "perpetual_native_messages": 428000,
+        "perpetual_book_messages": 428000
+      },
+      "reasons": {
+        "missing_spot_symbol": 1400,
+        "gap_below_25bp": 4010,
+        "spot_capture_freshness_gate": 3916,
+        "insufficient_fresh_anchor": 3384,
+        "perpetual_capture_freshness_gate": 431,
+        "insufficient_displayed_depth": 5,
+        "perpetual_perpetual_clock_gate": 4
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-08-01_0360.parquet",
+      "sha256": "bcaa82ae090378e883ee6cda0080ff99862b5d61f4538657c36ad8dd0e779822"
+    },
+    {
+      "date": "2024-08-01",
+      "offset_minutes": 720,
+      "grid_rows": 13150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 379,
+      "perpetual_symbols": 263,
+      "source_counts": {
+        "spot_native_messages": 331270,
+        "spot_book_messages": 331270,
+        "perpetual_native_messages": 446742,
+        "perpetual_book_messages": 446742
+      },
+      "reasons": {
+        "missing_spot_symbol": 1400,
+        "gap_below_25bp": 4531,
+        "spot_capture_freshness_gate": 3702,
+        "insufficient_fresh_anchor": 3077,
+        "perpetual_capture_freshness_gate": 437,
+        "perpetual_perpetual_clock_gate": 3
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-08-01_0720.parquet",
+      "sha256": "b8045fb8ca6906bf15015f727741bcdede0d91ea7ca711715dee69f5665c6e4b"
+    },
+    {
+      "date": "2024-08-01",
+      "offset_minutes": 1080,
+      "grid_rows": 13150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 379,
+      "perpetual_symbols": 263,
+      "source_counts": {
+        "spot_native_messages": 492150,
+        "spot_book_messages": 492150,
+        "perpetual_native_messages": 681456,
+        "perpetual_book_messages": 681456
+      },
+      "reasons": {
+        "missing_spot_symbol": 1400,
+        "gap_below_25bp": 7056,
+        "insufficient_fresh_anchor": 2282,
+        "spot_capture_freshness_gate": 2125,
+        "perpetual_capture_freshness_gate": 282,
+        "perpetual_perpetual_clock_gate": 3,
+        "unstable_anchor": 2
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-08-01_1080.parquet",
+      "sha256": "4d1af6942f3782ab2a10b82275f2c502d1b08bf6ab0fa5a047a2a81de3f4268e"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 0,
+      "grid_rows": 13850,
+      "selected_events": 1,
+      "raw_eligible_grids": 5,
+      "spot_symbols": 376,
+      "perpetual_symbols": 277,
+      "source_counts": {
+        "spot_native_messages": 185525,
+        "spot_book_messages": 185525,
+        "perpetual_native_messages": 327722,
+        "perpetual_book_messages": 327722
+      },
+      "reasons": {
+        "missing_spot_symbol": 1550,
+        "insufficient_fresh_anchor": 4080,
+        "gap_below_25bp": 1859,
+        "spot_capture_freshness_gate": 5975,
+        "perpetual_capture_freshness_gate": 376,
+        "insufficient_displayed_depth": 1,
+        "unstable_anchor": 3,
+        "requires_consecutive_confirmation": 1,
+        "selected_for_native_execution_review": 1,
+        "one_event_per_symbol_date": 3,
+        "spot_missing_book": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-09-01_0000.parquet",
+      "sha256": "06322879a8d356a7fa0c1a7170a3c7f2c97bbaf9dc88a9a12ed0a8580bc5411c"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 360,
+      "grid_rows": 13850,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 375,
+      "perpetual_symbols": 277,
+      "source_counts": {
+        "spot_native_messages": 377624,
+        "spot_book_messages": 377624,
+        "perpetual_native_messages": 512085,
+        "perpetual_book_messages": 512085
+      },
+      "reasons": {
+        "missing_spot_symbol": 1550,
+        "gap_below_25bp": 4449,
+        "spot_capture_freshness_gate": 3623,
+        "perpetual_capture_freshness_gate": 459,
+        "insufficient_fresh_anchor": 3769
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-09-01_0360.parquet",
+      "sha256": "1ac1328ca2b564cfe0c8253aad4fdfb4991a62b053d8e02f2a5a59c3c28bc825"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 720,
+      "grid_rows": 13850,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 376,
+      "perpetual_symbols": 277,
+      "source_counts": {
+        "spot_native_messages": 325616,
+        "spot_book_messages": 325616,
+        "perpetual_native_messages": 459160,
+        "perpetual_book_messages": 459160
+      },
+      "reasons": {
+        "missing_spot_symbol": 1550,
+        "gap_below_25bp": 4005,
+        "spot_capture_freshness_gate": 4060,
+        "insufficient_fresh_anchor": 3840,
+        "perpetual_capture_freshness_gate": 382,
+        "unstable_anchor": 2,
+        "perpetual_perpetual_clock_gate": 5,
+        "spot_missing_book": 6
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-09-01_0720.parquet",
+      "sha256": "6dc0900dbd618fd69f1280b163b99bfb3439ffc29dc62e2cf8070045c75e5531"
+    },
+    {
+      "date": "2024-09-01",
+      "offset_minutes": 1080,
+      "grid_rows": 13850,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 376,
+      "perpetual_symbols": 277,
+      "source_counts": {
+        "spot_native_messages": 266925,
+        "spot_book_messages": 266925,
+        "perpetual_native_messages": 381882,
+        "perpetual_book_messages": 381882
+      },
+      "reasons": {
+        "missing_spot_symbol": 1550,
+        "gap_below_25bp": 3171,
+        "spot_capture_freshness_gate": 4683,
+        "insufficient_fresh_anchor": 4047,
+        "perpetual_perpetual_clock_gate": 4,
+        "perpetual_capture_freshness_gate": 385,
+        "insufficient_displayed_depth": 1,
+        "unstable_anchor": 2,
+        "spot_missing_book": 7
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-09-01_1080.parquet",
+      "sha256": "df3b26f1a384d4081ab9e6849820f99feae8b25a6529bac0c2b69a05e91c7dd7"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 0,
+      "grid_rows": 14750,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 381,
+      "perpetual_symbols": 295,
+      "source_counts": {
+        "spot_native_messages": 516723,
+        "spot_book_messages": 516723,
+        "perpetual_native_messages": 581031,
+        "perpetual_book_messages": 581031
+      },
+      "reasons": {
+        "missing_spot_symbol": 1600,
+        "insufficient_fresh_anchor": 4040,
+        "gap_below_25bp": 5538,
+        "spot_capture_freshness_gate": 3118,
+        "perpetual_capture_freshness_gate": 446,
+        "perpetual_perpetual_clock_gate": 4,
+        "convergence_budget_below_buffer": 1,
+        "insufficient_displayed_depth": 2,
+        "unstable_anchor": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-10-01_0000.parquet",
+      "sha256": "3960b95662c628e5f8f9e3d325966882dbdfb6bd0eda20cf0866dfb61aa8a4de"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 360,
+      "grid_rows": 14800,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 382,
+      "perpetual_symbols": 296,
+      "source_counts": {
+        "spot_native_messages": 377831,
+        "spot_book_messages": 377831,
+        "perpetual_native_messages": 334526,
+        "perpetual_book_messages": 334526,
+        "perpetual_disconnects": 2
+      },
+      "reasons": {
+        "missing_spot_symbol": 1600,
+        "gap_below_25bp": 3150,
+        "spot_capture_freshness_gate": 5596,
+        "insufficient_fresh_anchor": 3719,
+        "perpetual_capture_freshness_gate": 711,
+        "perpetual_perpetual_clock_gate": 3,
+        "perpetual_invalid_values": 13,
+        "insufficient_displayed_depth": 2,
+        "spot_missing_book": 1,
+        "perpetual_missing_book": 5
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-10-01_0360.parquet",
+      "sha256": "c4ab0199b1a83c3aa82c4eed8c95d35173f22ecdb980eec4706f0a870c414454"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 720,
+      "grid_rows": 14800,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 382,
+      "perpetual_symbols": 296,
+      "source_counts": {
+        "spot_native_messages": 419405,
+        "spot_book_messages": 419405,
+        "perpetual_native_messages": 377929,
+        "perpetual_book_messages": 377929
+      },
+      "reasons": {
+        "missing_spot_symbol": 1600,
+        "spot_capture_freshness_gate": 4887,
+        "insufficient_fresh_anchor": 4090,
+        "gap_below_25bp": 3473,
+        "perpetual_capture_freshness_gate": 737,
+        "perpetual_perpetual_clock_gate": 3,
+        "spot_missing_book": 10
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-10-01_0720.parquet",
+      "sha256": "49b3d39b23aa516e8ef003e4f98162cef399b3ab5b52a5fd159e8d6a71c65be7"
+    },
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 1080,
+      "grid_rows": 14800,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 382,
+      "perpetual_symbols": 296,
+      "source_counts": {
+        "spot_native_messages": 1008256,
+        "spot_book_messages": 1008256,
+        "perpetual_native_messages": 896455,
+        "perpetual_book_messages": 896455
+      },
+      "reasons": {
+        "missing_spot_symbol": 1600,
+        "gap_below_25bp": 10368,
+        "spot_capture_freshness_gate": 1268,
+        "perpetual_capture_freshness_gate": 203,
+        "insufficient_fresh_anchor": 1352,
+        "insufficient_displayed_depth": 6,
+        "unstable_anchor": 2,
+        "perpetual_perpetual_clock_gate": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-10-01_1080.parquet",
+      "sha256": "0314bc034965dee1d59aee765bbc1c7936450ffaa4f2c1bdef27cc0e8ec65f8f"
+    },
+    {
+      "date": "2024-11-01",
+      "offset_minutes": 0,
+      "grid_rows": 15100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 384,
+      "perpetual_symbols": 302,
+      "source_counts": {
+        "spot_native_messages": 318501,
+        "spot_book_messages": 318501,
+        "perpetual_native_messages": 441390,
+        "perpetual_book_messages": 441390
+      },
+      "reasons": {
+        "missing_spot_symbol": 1800,
+        "insufficient_fresh_anchor": 4469,
+        "gap_below_25bp": 3638,
+        "spot_capture_freshness_gate": 4713,
+        "perpetual_capture_freshness_gate": 447,
+        "perpetual_perpetual_clock_gate": 6,
+        "spot_missing_book": 27
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-11-01_0000.parquet",
+      "sha256": "e8e4cfc17dc9998755f94c4906c21fa1aac33034980ada7e2d8f468547cc0fff"
+    },
+    {
+      "date": "2024-11-01",
+      "offset_minutes": 360,
+      "grid_rows": 15100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 384,
+      "perpetual_symbols": 302,
+      "source_counts": {
+        "spot_native_messages": 276047,
+        "spot_book_messages": 276047,
+        "perpetual_native_messages": 318283,
+        "perpetual_book_messages": 318283
+      },
+      "reasons": {
+        "missing_spot_symbol": 1800,
+        "insufficient_fresh_anchor": 3973,
+        "gap_below_25bp": 2895,
+        "spot_capture_freshness_gate": 5766,
+        "perpetual_capture_freshness_gate": 661,
+        "perpetual_perpetual_clock_gate": 4,
+        "spot_missing_book": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-11-01_0360.parquet",
+      "sha256": "2a8a1606694f576439226bc7d52b23ac74b8782f2f43b8270824f1cea53dc4bd"
+    },
+    {
+      "date": "2024-11-01",
+      "offset_minutes": 720,
+      "grid_rows": 15100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 384,
+      "perpetual_symbols": 302,
+      "source_counts": {
+        "spot_native_messages": 327552,
+        "spot_book_messages": 327552,
+        "perpetual_native_messages": 372741,
+        "perpetual_book_messages": 372741
+      },
+      "reasons": {
+        "missing_spot_symbol": 1800,
+        "spot_capture_freshness_gate": 5145,
+        "insufficient_fresh_anchor": 4305,
+        "gap_below_25bp": 3288,
+        "perpetual_capture_freshness_gate": 562
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-11-01_0720.parquet",
+      "sha256": "ba480cf2d76554e986bdbbe6f425732351f31e44e6b343fa0580f085cf605fff"
+    },
+    {
+      "date": "2024-11-01",
+      "offset_minutes": 1080,
+      "grid_rows": 15100,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 384,
+      "perpetual_symbols": 302,
+      "source_counts": {
+        "spot_native_messages": 424493,
+        "spot_book_messages": 424493,
+        "perpetual_native_messages": 496982,
+        "perpetual_book_messages": 496982
+      },
+      "reasons": {
+        "missing_spot_symbol": 1800,
+        "gap_below_25bp": 5238,
+        "spot_capture_freshness_gate": 3879,
+        "perpetual_capture_freshness_gate": 474,
+        "insufficient_fresh_anchor": 3709
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-11-01_1080.parquet",
+      "sha256": "13ead26bc5930dfe3a069206c6b620cb2e6f0cf6f4f6e69650fc8f71506530c7"
+    },
+    {
+      "date": "2024-12-01",
+      "offset_minutes": 0,
+      "grid_rows": 16150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 387,
+      "perpetual_symbols": 323,
+      "source_counts": {
+        "spot_native_messages": 660427,
+        "spot_book_messages": 660427,
+        "perpetual_native_messages": 612446,
+        "perpetual_book_messages": 612446
+      },
+      "reasons": {
+        "missing_spot_symbol": 2550,
+        "insufficient_fresh_anchor": 3750,
+        "gap_below_25bp": 6722,
+        "spot_capture_freshness_gate": 2814,
+        "perpetual_capture_freshness_gate": 308,
+        "perpetual_perpetual_clock_gate": 5,
+        "unstable_anchor": 1
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-12-01_0000.parquet",
+      "sha256": "5fa5dda596c2c071eb9e93f6718b2aa4dc5215491be56acfb550f6d61fb5cbef"
+    },
+    {
+      "date": "2024-12-01",
+      "offset_minutes": 360,
+      "grid_rows": 16150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 387,
+      "perpetual_symbols": 323,
+      "source_counts": {
+        "spot_native_messages": 592976,
+        "spot_book_messages": 592976,
+        "perpetual_native_messages": 479712,
+        "perpetual_book_messages": 479712
+      },
+      "reasons": {
+        "missing_spot_symbol": 2550,
+        "gap_below_25bp": 5426,
+        "insufficient_fresh_anchor": 3728,
+        "spot_capture_freshness_gate": 3955,
+        "perpetual_capture_freshness_gate": 489,
+        "perpetual_perpetual_clock_gate": 2
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-12-01_0360.parquet",
+      "sha256": "97e05374a7f80aa3a09b51c03edaed157037657bf8b892bba57f759c04de5dd8"
+    },
+    {
+      "date": "2024-12-01",
+      "offset_minutes": 720,
+      "grid_rows": 16150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 387,
+      "perpetual_symbols": 323,
+      "source_counts": {
+        "spot_native_messages": 592577,
+        "spot_book_messages": 592577,
+        "perpetual_native_messages": 509006,
+        "perpetual_book_messages": 509006
+      },
+      "reasons": {
+        "missing_spot_symbol": 2550,
+        "gap_below_25bp": 5821,
+        "spot_capture_freshness_gate": 3503,
+        "insufficient_fresh_anchor": 3731,
+        "perpetual_capture_freshness_gate": 543,
+        "perpetual_perpetual_clock_gate": 2
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-12-01_0720.parquet",
+      "sha256": "3a2cfc0440d23b1cf216dbf3c1ba2727a62fc26563aada1487912bb11df7dd7d"
+    },
+    {
+      "date": "2024-12-01",
+      "offset_minutes": 1080,
+      "grid_rows": 16150,
+      "selected_events": 0,
+      "raw_eligible_grids": 0,
+      "spot_symbols": 387,
+      "perpetual_symbols": 323,
+      "source_counts": {
+        "spot_native_messages": 548271,
+        "spot_book_messages": 548271,
+        "perpetual_native_messages": 500827,
+        "perpetual_book_messages": 500827
+      },
+      "reasons": {
+        "missing_spot_symbol": 2550,
+        "gap_below_25bp": 5733,
+        "spot_capture_freshness_gate": 3744,
+        "insufficient_fresh_anchor": 3634,
+        "perpetual_capture_freshness_gate": 483,
+        "perpetual_perpetual_clock_gate": 6
+      },
+      "path": "research_scout\\spot_perp_clock_hft_20261002\\grids\\2024-12-01_1080.parquet",
+      "sha256": "a92790f4e34bb0dac0c5034d891eb45c0403ac9171f0584394df27e29f654687"
+    }
+  ],
+  "source_counts": {
+    "spot_native_messages": 17937218,
+    "spot_book_messages": 17937218,
+    "perpetual_native_messages": 21768478,
+    "perpetual_book_messages": 21768478,
+    "perpetual_disconnects": 2
+  },
+  "reasons": {
+    "missing_spot_symbol": 68550,
+    "gap_below_25bp": 209426,
+    "spot_capture_freshness_gate": 193304,
+    "insufficient_fresh_anchor": 165057,
+    "perpetual_capture_freshness_gate": 17963,
+    "perpetual_perpetual_clock_gate": 156,
+    "insufficient_displayed_depth": 26,
+    "unstable_anchor": 67,
+    "spot_missing_book": 177,
+    "requires_consecutive_confirmation": 1,
+    "selected_for_native_execution_review": 1,
+    "one_event_per_symbol_date": 3,
+    "convergence_budget_below_buffer": 1,
+    "perpetual_invalid_values": 13,
+    "perpetual_missing_book": 5
+  },
+  "grid_rows": 654750,
+  "selected_events": 1,
+  "raw_eligible_grids": 5,
+  "selected_dates": 1,
+  "selected_sha256": "fce59ff2c8838ecdf0d326652ded2da17da24719fe2fc95c8a6fcedcd2d6c0ea",
+  "implementation_sha256": "a4eba9f4f613eae372e11634760362c1fd608dc11c6930acfa64e7dc1e6eb25a",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "independent_verification_complete": false,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

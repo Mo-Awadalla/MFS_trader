@@ -1,0 +1,458 @@
+{
+  "daily_summaries": [
+    {
+      "date": "2023-01-03",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.243297407221345,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 574,
+        "missing_invalid_or_tied_current_state": 26
+      }
+    },
+    {
+      "date": "2023-01-03",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.15004850135522,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 580,
+        "no_sized_hedge_within_budget_depth_and_tolerance": 20
+      }
+    },
+    {
+      "date": "2023-01-03",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.694437310738707,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 591,
+        "missing_invalid_or_tied_current_state": 9
+      }
+    },
+    {
+      "date": "2023-02-01",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.940292122166872,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 563,
+        "missing_invalid_or_tied_current_state": 37
+      }
+    },
+    {
+      "date": "2023-02-01",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.265854937884312,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 597,
+        "no_sized_hedge_within_budget_depth_and_tolerance": 3
+      }
+    },
+    {
+      "date": "2023-02-01",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.40063260053496,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 586,
+        "missing_invalid_or_tied_current_state": 14
+      }
+    },
+    {
+      "date": "2023-03-01",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.935179182980047,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 577,
+        "missing_invalid_or_tied_current_state": 23
+      }
+    },
+    {
+      "date": "2023-03-01",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.29485433294451,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 600
+      }
+    },
+    {
+      "date": "2023-03-01",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -16.738208983854097,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 595,
+        "missing_invalid_or_tied_current_state": 5
+      }
+    },
+    {
+      "date": "2023-04-03",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.627248362096068,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 582,
+        "missing_invalid_or_tied_current_state": 18
+      }
+    },
+    {
+      "date": "2023-04-03",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": null,
+      "outcomes": {
+        "missing_invalid_or_tied_current_state": 466,
+        "fewer_than_45_valid_reference_samples": 134
+      }
+    },
+    {
+      "date": "2023-04-03",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": null,
+      "outcomes": {
+        "missing_invalid_or_tied_current_state": 409,
+        "fewer_than_45_valid_reference_samples": 191
+      }
+    },
+    {
+      "date": "2023-05-01",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.990138474526534,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 584,
+        "missing_invalid_or_tied_current_state": 16
+      }
+    },
+    {
+      "date": "2023-05-01",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": null,
+      "outcomes": {
+        "missing_invalid_or_tied_current_state": 489,
+        "fewer_than_45_valid_reference_samples": 111
+      }
+    },
+    {
+      "date": "2023-05-01",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": null,
+      "outcomes": {
+        "missing_invalid_or_tied_current_state": 478,
+        "fewer_than_45_valid_reference_samples": 122
+      }
+    },
+    {
+      "date": "2023-06-01",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.302949501760494,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 573,
+        "missing_invalid_or_tied_current_state": 27
+      }
+    },
+    {
+      "date": "2023-06-01",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": null,
+      "outcomes": {
+        "missing_invalid_or_tied_current_state": 556,
+        "fewer_than_45_valid_reference_samples": 44
+      }
+    },
+    {
+      "date": "2023-06-01",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": null,
+      "outcomes": {
+        "missing_invalid_or_tied_current_state": 405,
+        "fewer_than_45_valid_reference_samples": 195
+      }
+    },
+    {
+      "date": "2023-07-03",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.54256307817361,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 571,
+        "missing_invalid_or_tied_current_state": 29
+      }
+    },
+    {
+      "date": "2023-07-03",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.299864484758391,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 598,
+        "missing_invalid_or_tied_current_state": 2
+      }
+    },
+    {
+      "date": "2023-07-03",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.212453179048046,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 592,
+        "missing_invalid_or_tied_current_state": 8
+      }
+    },
+    {
+      "date": "2023-08-01",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.87680016056276,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 574,
+        "missing_invalid_or_tied_current_state": 26
+      }
+    },
+    {
+      "date": "2023-08-01",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.166574497741601,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 600
+      }
+    },
+    {
+      "date": "2023-08-01",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.034297776425655,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 594,
+        "missing_invalid_or_tied_current_state": 6
+      }
+    },
+    {
+      "date": "2023-09-01",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.151640685218718,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 572,
+        "missing_invalid_or_tied_current_state": 28
+      }
+    },
+    {
+      "date": "2023-09-01",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.575883547854527,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 600
+      }
+    },
+    {
+      "date": "2023-09-01",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.208084792754672,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 588,
+        "missing_invalid_or_tied_current_state": 12
+      }
+    },
+    {
+      "date": "2023-10-02",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.761891977021836,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 573,
+        "missing_invalid_or_tied_current_state": 27
+      }
+    },
+    {
+      "date": "2023-10-02",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.616436769030498,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 599,
+        "missing_invalid_or_tied_current_state": 1
+      }
+    },
+    {
+      "date": "2023-10-02",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.821314612669635,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 597,
+        "missing_invalid_or_tied_current_state": 3
+      }
+    },
+    {
+      "date": "2023-11-01",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.916553474007188,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 583,
+        "missing_invalid_or_tied_current_state": 17
+      }
+    },
+    {
+      "date": "2023-11-01",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.477710389857101,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 600
+      }
+    },
+    {
+      "date": "2023-11-01",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.75592945899562,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 592,
+        "missing_invalid_or_tied_current_state": 8
+      }
+    },
+    {
+      "date": "2023-12-01",
+      "pair": "SPY_IVV",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -14.92037894661115,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 586,
+        "missing_invalid_or_tied_current_state": 14
+      }
+    },
+    {
+      "date": "2023-12-01",
+      "pair": "QQQ_QQQM",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.50278674958883,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 598,
+        "missing_invalid_or_tied_current_state": 2
+      }
+    },
+    {
+      "date": "2023-12-01",
+      "pair": "IWM_VTWO",
+      "decisions": 600,
+      "eligible_decisions": 0,
+      "hypothetical_attempts": 0,
+      "maximum_budget_bps": -15.55532799360306,
+      "outcomes": {
+        "convergence_budget_below_cost_and_uncertainty_hurdle": 587,
+        "missing_invalid_or_tied_current_state": 13
+      }
+    }
+  ],
+  "totals": {
+    "SPY_IVV": {
+      "attempts": 0,
+      "dates": 0,
+      "eligible_decisions": 0,
+      "unknown_source_dates": 0
+    },
+    "QQQ_QQQM": {
+      "attempts": 0,
+      "dates": 0,
+      "eligible_decisions": 0,
+      "unknown_source_dates": 0
+    },
+    "IWM_VTWO": {
+      "attempts": 0,
+      "dates": 0,
+      "eligible_decisions": 0,
+      "unknown_source_dates": 0
+    }
+  },
+  "failed_sources": [],
+  "advance_to_economics": [],
+  "future_returns_evaluated": false,
+  "economic_implementations": 0,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

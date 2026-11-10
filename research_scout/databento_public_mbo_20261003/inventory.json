@@ -1,0 +1,169 @@
+{
+  "created_at_utc": "2026-10-03T01:16:04.844077+00:00",
+  "sources": [
+    {
+      "schema": "mbo",
+      "rows": 6480679,
+      "source_sha256": "d055eb1e2f40f10aaa018b65831f90ef924793d39a15afe686cdcd4d3ac89953",
+      "counts": {
+        "action": {
+          "R": 1,
+          "A": 2965279,
+          "C": 3006568,
+          "T": 287059,
+          "F": 221772
+        },
+        "side": {
+          "N": 65297,
+          "A": 3091366,
+          "B": 3324016
+        },
+        "symbol": {
+          "NVDA": 6480679
+        },
+        "publisher_id": {
+          "2": 6480679
+        },
+        "instrument_id": {
+          "11667": 6480679
+        },
+        "rtype": {
+          "160": 6480679
+        },
+        "flags": {
+          "8": 1,
+          "128": 4397642,
+          "0": 2083036
+        }
+      },
+      "first": {
+        "ts_recv": 1758006306677677658,
+        "ts_event": 1758006306677514564,
+        "sequence": 0
+      },
+      "last": {
+        "ts_recv": 1758067199748544733,
+        "ts_event": 1758067199748381803,
+        "sequence": 566540756
+      },
+      "clock_checks": {
+        "receive_backwards": 0,
+        "event_backwards": 0,
+        "sequence_backwards": 0,
+        "timestamp_delta_mismatches": 0
+      },
+      "first_quality_flagged_rows": [
+        {
+          "source_row": 0,
+          "ts_recv": 1758006306677677658,
+          "ts_event": 1758006306677514564,
+          "rtype": 160,
+          "publisher_id": 2,
+          "instrument_id": 11667,
+          "action": "R",
+          "side": "N",
+          "price": null,
+          "size": 0,
+          "channel_id": 0,
+          "order_id": 0,
+          "flags": 8,
+          "ts_in_delta": 0,
+          "sequence": 0,
+          "symbol": "NVDA"
+        }
+      ],
+      "first_resets": [
+        {
+          "source_row": 0,
+          "ts_recv": 1758006306677677658,
+          "ts_event": 1758006306677514564,
+          "rtype": 160,
+          "publisher_id": 2,
+          "instrument_id": 11667,
+          "action": "R",
+          "side": "N",
+          "price": null,
+          "size": 0,
+          "channel_id": 0,
+          "order_id": 0,
+          "flags": 8,
+          "ts_in_delta": 0,
+          "sequence": 0,
+          "symbol": "NVDA"
+        }
+      ],
+      "typed_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\databento_public_mbo_20261003\\typed\\mbo.parquet",
+      "typed_sha256": "8a5bfe91bd4c0cdb6767d27227444e8d10ceaab7d4200ab518209cd658b70277",
+      "typed_bytes": 147642191,
+      "timestamp_unit": "integer epoch nanoseconds",
+      "price_unit": "integer billionths of USD, null preserved",
+      "order_ids": "native uint64",
+      "returns_calculated": false
+    },
+    {
+      "schema": "mbp1",
+      "rows": 2400522,
+      "source_sha256": "a876882b114a940e6d8570d1c4215dd8fd671c1e3f7b443e5e6c6a467599ab85",
+      "counts": {
+        "action": {
+          "A": 1106078,
+          "C": 1007384,
+          "T": 287059,
+          "F": 1
+        },
+        "side": {
+          "N": 96852,
+          "B": 1161879,
+          "A": 1141791
+        },
+        "symbol": {
+          "NVDA": 2400522
+        },
+        "publisher_id": {
+          "2": 2400522
+        },
+        "instrument_id": {
+          "11667": 2400522
+        },
+        "rtype": {
+          "1": 2400522
+        },
+        "flags": {
+          "128": 2239172,
+          "0": 161350
+        }
+      },
+      "first": {
+        "ts_recv": 1758009600015462508,
+        "ts_event": 1758009600015298471,
+        "sequence": 292498
+      },
+      "last": {
+        "ts_recv": 1758067196024803407,
+        "ts_event": 1758067196024640219,
+        "sequence": 566533418
+      },
+      "clock_checks": {
+        "receive_backwards": 0,
+        "event_backwards": 0,
+        "sequence_backwards": 0,
+        "timestamp_delta_mismatches": 0
+      },
+      "first_quality_flagged_rows": [],
+      "first_resets": [],
+      "typed_path": "C:\\Hazem\\quant_project\\untitled_project\\research_scout\\databento_public_mbo_20261003\\typed\\mbp1.parquet",
+      "typed_sha256": "fc0b1623167977086283b3630baf004e933c4ba3db7eaa3c4fac0e8a9f7871fe",
+      "typed_bytes": 64885727,
+      "timestamp_unit": "integer epoch nanoseconds",
+      "price_unit": "integer billionths of USD, null preserved",
+      "order_ids": "native uint64",
+      "returns_calculated": false
+    }
+  ],
+  "acquisition_sha256": "37923f0f3373fe548b8088858701d41bc1977e65a1ca3fa2cd76d6cd215a463b",
+  "inventory_code_sha256": "ecf544d0593504661525ce4d5a772e8a485d0d54caa77bc8821c60aee9655ddd",
+  "csv_parser_sha256": "d4d53d480cbc9536936ce47c76a0d1c4e90f51714eedd082b88c86dfe555c16e",
+  "strategy_return_computations": 0,
+  "paid_calls": 0,
+  "reliable_edge_established": false
+}

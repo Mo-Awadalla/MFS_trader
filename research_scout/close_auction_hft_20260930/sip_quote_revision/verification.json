@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "source_dates": 10,
+  "native_sip_quotes": 114478,
+  "envelopes_checked": 100,
+  "dependent_quote_states_checked": 729,
+  "dependent_conditional_cashflows_checked": 93,
+  "unknown_conditional_paths_retained": 7,
+  "outside_limit_dependent_paths": 220,
+  "maximum_cash_error": 0.0,
+  "optional_clock_annotations_repaired": 18,
+  "clock_repair_scope": "Ancillary optional first/last/successor source ns annotations only; maximum128ns original float promotion. Exact integer quote indices, target/ACK clocks, prices, sizes and P&L unchanged. Original panel retained.",
+  "precise_envelopes_sha256": "081ea3b286191164cf460e2d09e7a57a3740467462c9346935bed6dafe1a51e5",
+  "advance_to_allocation_evidence": [],
+  "actual_strategy_execution_verified": false,
+  "reliable_edge_established": false
+}

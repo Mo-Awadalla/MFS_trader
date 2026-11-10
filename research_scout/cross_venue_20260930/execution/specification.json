@@ -1,0 +1,140 @@
+{
+  "created_at_utc": "2026-09-30T15:05:39.070213+00:00",
+  "dates": [
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "events_sha256": "57d4f0c4f0796e217d5981f1be4911fb416b1956ebf4b0b736d60f9cde035ceb",
+  "events": [
+    {
+      "date": "2024-07-01",
+      "clock_us": 7893700000,
+      "direction": "buy_binance_sell_bybit",
+      "opening_gap_bps": 40.484011651957495,
+      "intended_btc": 0.002,
+      "long_ask": 63328.7,
+      "short_bid": 63585.6,
+      "diagnostic_after_200ms": "one_or_both_legs_need_full_depth_replay",
+      "gap_after_200ms_bps": 28.275397647392403,
+      "diagnostic_after_1000ms": "one_or_both_legs_need_full_depth_replay",
+      "gap_after_1000ms_bps": 7.26400073112696,
+      "diagnostic_after_3000ms": "one_or_both_legs_need_full_depth_replay",
+      "gap_after_3000ms_bps": -1.8730674154741271,
+      "event_id": 0
+    },
+    {
+      "date": "2024-10-01",
+      "clock_us": 54630500000,
+      "direction": "buy_bybit_sell_binance",
+      "opening_gap_bps": 47.74656549172715,
+      "intended_btc": 0.016,
+      "long_ask": 61804.2,
+      "short_bid": 62100.0,
+      "diagnostic_after_200ms": "both_top_levels_inside_collars",
+      "gap_after_200ms_bps": 47.74656549172715,
+      "diagnostic_after_1000ms": "unknown_arrival",
+      "gap_after_1000ms_bps": NaN,
+      "diagnostic_after_3000ms": "unknown_arrival",
+      "gap_after_3000ms_bps": NaN,
+      "event_id": 1
+    },
+    {
+      "date": "2024-10-01",
+      "clock_us": 54641400000,
+      "direction": "buy_bybit_sell_binance",
+      "opening_gap_bps": 37.94625571129822,
+      "intended_btc": 0.002,
+      "long_ask": 61864.8,
+      "short_bid": 62100.0,
+      "diagnostic_after_200ms": "one_or_both_legs_need_full_depth_replay",
+      "gap_after_200ms_bps": 26.992903478601825,
+      "diagnostic_after_1000ms": "one_or_both_legs_need_full_depth_replay",
+      "gap_after_1000ms_bps": 14.010914954714016,
+      "diagnostic_after_3000ms": "one_or_both_legs_need_full_depth_replay",
+      "gap_after_3000ms_bps": 9.526808277020208,
+      "event_id": 2
+    },
+    {
+      "date": "2024-10-01",
+      "clock_us": 54648400000,
+      "direction": "buy_bybit_sell_binance",
+      "opening_gap_bps": 34.61697909592558,
+      "intended_btc": 0.016,
+      "long_ask": 61885.4,
+      "short_bid": 62100.0,
+      "diagnostic_after_200ms": "one_or_both_legs_need_full_depth_replay",
+      "gap_after_200ms_bps": 23.602700768055332,
+      "diagnostic_after_1000ms": "one_or_both_legs_need_full_depth_replay",
+      "gap_after_1000ms_bps": 21.940306567824894,
+      "diagnostic_after_3000ms": "one_or_both_legs_need_full_depth_replay",
+      "gap_after_3000ms_bps": 16.77734719680482,
+      "event_id": 3
+    }
+  ],
+  "horizons_seconds": [
+    30,
+    120
+  ],
+  "scenarios": {
+    "base": {
+      "fee_bps": 6.0,
+      "feed_us": 250000,
+      "binance_us": 1000000,
+      "bybit_us": 1000000
+    },
+    "double_fees": {
+      "fee_bps": 12.0,
+      "feed_us": 250000,
+      "binance_us": 1000000,
+      "bybit_us": 1000000
+    },
+    "latency_3s": {
+      "fee_bps": 6.0,
+      "feed_us": 250000,
+      "binance_us": 3000000,
+      "bybit_us": 3000000
+    },
+    "binance_extra_500ms": {
+      "fee_bps": 6.0,
+      "feed_us": 250000,
+      "binance_us": 1500000,
+      "bybit_us": 1000000
+    },
+    "bybit_extra_500ms": {
+      "fee_bps": 6.0,
+      "feed_us": 250000,
+      "binance_us": 1000000,
+      "bybit_us": 1500000
+    },
+    "optimistic_200ms": {
+      "fee_bps": 6.0,
+      "feed_us": 0,
+      "binance_us": 200000,
+      "bybit_us": 200000
+    }
+  },
+  "primary_scenario": "base",
+  "fast_scenario_is_diagnostic_only": true,
+  "prior_exposure": "Opening-gap screen and 200ms/1s/3s top-level diagnostics already inspected. These are development results, not an untouched validation sample.",
+  "execution": "Send two independent FOK orders with 1bp causal collars and 0.1-USDT ticks. Equal BTC, predetermined quantity <=$1000 per leg and <=10% both touch sizes. No atomicity assumed.",
+  "clocks": "Base uses 250ms extra feed/processing delay then 1s outbound per venue. Confirm both outcomes after another return delay; only then unwind a single filled leg or start the fixed hold. Closing orders incur outbound and acknowledgement delay.",
+  "costs": "6bp fees and 1bp adverse cost on every fill, including failed-pair unwinds; fees doubled to 12bp in stress. Four pair fills cost roughly 28bp of mean one-leg notional.",
+  "funding": "No funding earnings assumed; reject positions crossing any UTC hour plus a one-minute buffer, covering conventional hourly and coarser funding schedules.",
+  "inventory": "$10000 notionally prefunded, $5000 per venue; max one active pair or unmatched leg; each completed attempt updates venue equity; isolated dates reset account. No transfers required or modeled.",
+  "unknowns": "Latest native capture strictly before target, all five levels valid, <=250ms age and <=1s source delay. Unknown submitted entry/exit/deeper liquidity stops day and invalidates total, keeping known fills. They are not dropped.",
+  "limits": "Only four screened episodes on two of six calendar-selected dates. Native capture-clock proxy is not venue-engine truth. Market-close proxy assumes enough shown depth and exchange acceptance; no queue, impact, disconnect, price-band or real-fill evidence. No competition execution specification known.",
+  "progression": "Any putative survivor requires positive complete base and stresses, replication on later unopened dates, block-aware uncertainty and forward paper execution. No reliable-edge claim from these four episodes.",
+  "sources": [
+    "https://bybit-exchange.github.io/docs/v5/order/create-order",
+    "https://docs.tardis.dev/downloadable-csv-files/data-types"
+  ],
+  "code_sha256": {
+    "research\\cross_venue_execution.py": "e6b3ab846501ca9ced4422a6c58ceb6a032b43232daaccd151a6953283919beb",
+    "research\\liquidation_event_replay.py": "45cf40d45caee7fb78771bd9a5322280fe85889bd6500029fb11085282b93088",
+    "research_scout\\run_cross_venue_execution_20260930.py": "cc788e6a6d42c3ab29d16361b34f5dc6bf4f1b95e0de230d2596e7d8d8f5eb6b"
+  }
+}

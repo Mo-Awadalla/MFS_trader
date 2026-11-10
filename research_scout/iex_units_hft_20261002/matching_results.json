@@ -1,0 +1,80 @@
+{
+  "source_date": "2023-01-11",
+  "overlap_start_ns": 1673447400000000000,
+  "overlap_end_ns": 1673447487801210000,
+  "by_symbol": {
+    "IWM": {
+      "vendor_quotes_in_overlap": 9144,
+      "unique_price_matches": 6549,
+      "share_identity_matches": 0,
+      "hundred_share_lot_floor_matches": 6539,
+      "native_sizes_with_partial_lot": 13,
+      "zero_two_sided_size_matches": 0,
+      "ambiguous_price_match": 2575,
+      "no_nearby_price_match": 20,
+      "vendor_minus_event_ns": {
+        "min": -565685,
+        "middle_order_statistic": 289107,
+        "max": 156891249
+      },
+      "vendor_minus_send_ns": {
+        "min": -1162666,
+        "middle_order_statistic": 247172,
+        "max": 1892640
+      },
+      "vendor_source_sha256": "04963ca35ea3197d54855385cbd52bdc382e6145af84f402b21ebbce1ba6d58b"
+    },
+    "QQQ": {
+      "vendor_quotes_in_overlap": 12312,
+      "unique_price_matches": 9264,
+      "share_identity_matches": 0,
+      "hundred_share_lot_floor_matches": 9240,
+      "native_sizes_with_partial_lot": 475,
+      "zero_two_sided_size_matches": 0,
+      "ambiguous_price_match": 2880,
+      "no_nearby_price_match": 168,
+      "vendor_minus_event_ns": {
+        "min": -1531655,
+        "middle_order_statistic": 259545,
+        "max": 111625512
+      },
+      "vendor_minus_send_ns": {
+        "min": -1588378,
+        "middle_order_statistic": 217917,
+        "max": 1986908
+      },
+      "vendor_source_sha256": "d4fd122b8ee610a7d004677f8467bfeb289d56023e33b19a319df4c7c0cd97e9"
+    },
+    "SPY": {
+      "vendor_quotes_in_overlap": 5390,
+      "ambiguous_price_match": 1666,
+      "unique_price_matches": 3649,
+      "share_identity_matches": 0,
+      "hundred_share_lot_floor_matches": 3648,
+      "native_sizes_with_partial_lot": 75,
+      "zero_two_sided_size_matches": 0,
+      "no_nearby_price_match": 75,
+      "vendor_minus_event_ns": {
+        "min": -613724,
+        "middle_order_statistic": 290619,
+        "max": 54989505
+      },
+      "vendor_minus_send_ns": {
+        "min": -1120478,
+        "middle_order_statistic": 247380,
+        "max": 1654774
+      },
+      "vendor_source_sha256": "2fab03b64e21a6888f9cd5e3638db302e07357d31daf230f70d766b8b612a63d"
+    }
+  },
+  "matches": 19462,
+  "ledger_sha256": "f6a13415e6b60f30e271c5f82b6905abfb8cee34eb470206edaed950cb8c9b01",
+  "native_rows_sha256": "09de912123c1a3a0477ad98afc8a330fb20933406e4a9108405171f69196aa41",
+  "native_prefix_sha256": "a5b10f7ff16a053f2f7373de035294a3df79257fa359a15856bc66303c185fd2",
+  "specification_sha256": "8b672a95162b3569db5d223ccdd490ebc44e585c49a734ce1475a4f033e9c31e",
+  "size_match_uses_price_only": true,
+  "universal_historical_mapping_established": false,
+  "native_clock_identity_established": false,
+  "queue_priority_or_execution_verified": false,
+  "returns_calculated": false
+}

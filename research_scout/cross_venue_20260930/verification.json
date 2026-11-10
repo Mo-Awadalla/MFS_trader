@@ -1,0 +1,30 @@
+{
+  "verified": true,
+  "known_fills_across_dependent_versions_and_scenarios": 40,
+  "closed_attempts_across_dependent_versions_and_scenarios": 18,
+  "maximum_pnl_reconciliation_error": 4.440892098500626e-16,
+  "all_frozen_signals_identical_between_execution_versions": true,
+  "signal_capture_delays": [
+    {
+      "event_id": 0,
+      "date": "2024-07-01",
+      "bybit_capture_delay_ms": 713.613
+    },
+    {
+      "event_id": 1,
+      "date": "2024-10-01",
+      "bybit_capture_delay_ms": 873.273
+    },
+    {
+      "event_id": 2,
+      "date": "2024-10-01",
+      "bybit_capture_delay_ms": 65.638
+    },
+    {
+      "event_id": 3,
+      "date": "2024-10-01",
+      "bybit_capture_delay_ms": 36.134
+    }
+  ],
+  "edge_established": false
+}

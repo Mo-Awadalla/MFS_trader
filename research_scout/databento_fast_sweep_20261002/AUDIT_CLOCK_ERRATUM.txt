@@ -1,0 +1,7 @@
+Independent auditor repair,2026-10-03UTC
+
+The first audit verified191of192sessions but failed an exact signal comparison forSPY2023-05-25. Its np.searchsorted call combined uint64 native timestamps with a Python integer key;NumPy could promote comparison to floating point. It incorrectly excluded the completed quote captured36ns before the cutoff1685021583403000000. The frozen production path uses signed int64 receive-clock arrays and correctly selected that quote:200displayed bid shares,20requested shares. The erroneous auditor selected the preceding100-share quote and inferred10shares.
+
+The auditor now supplies explicitly uint64 search keys in both signal and execution-reference searches. Two focused regressions passed,including the exact real-source36ns boundary and adjacent nanosecond synthetic clocks. The production specification,admission,orders and PnL artifacts were not changed. A full independent audit is being rerun; only its successful verification can establish reconciliation.
+
+Full rerun completed successfully:192sessions,46,428,207records,563groups,180selected events,2880event cases and32aggregates reconciled. Audit SHA256:e95179da50a2c5c0b27e0a154061a2623c5f9bdcdb9afc9986fe83a69e88dce0

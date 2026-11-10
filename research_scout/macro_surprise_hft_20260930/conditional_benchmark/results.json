@@ -1,0 +1,312 @@
+{
+  "results": {
+    "15s": {
+      "base": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -5.708042999999726,
+        "closed_upper": -5.708042999999726,
+        "priced_trades": 1,
+        "positive_dates": 0,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": -5.708042999999726
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "double_fees": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -7.828185999999727,
+        "closed_upper": -7.828185999999727,
+        "priced_trades": 1,
+        "positive_dates": 0,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": -7.828185999999727
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "3s_outgoing_and_return": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": 13.69364400000025,
+        "closed_upper": 13.69364400000025,
+        "priced_trades": 1,
+        "positive_dates": 1,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": 13.69364400000025
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "double_adverse": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -6.495942999999727,
+        "closed_upper": -6.495942999999727,
+        "priced_trades": 1,
+        "positive_dates": 0,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": -6.495942999999727
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "100ms_alignment": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -9.907496999999887,
+        "closed_upper": 10.69309099999957,
+        "priced_trades": 1,
+        "positive_dates": 0,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": -9.907496999999887
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "10s_news_delay": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -78.79648360000044,
+        "closed_upper": -77.916598,
+        "priced_trades": 9,
+        "positive_dates": 2,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SH": -59.67055960000043,
+          "SPY": -19.125924000000015
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_order_invalid_signal_quote": 11,
+          "conditional_round_trip": 9,
+          "no_order_spread_gate": 7,
+          "unknown_tied_signal_state": 2,
+          "no_order_exchange_holiday": 2,
+          "fok_price_reject": 2
+        },
+        "actual_execution_verified": false
+      }
+    },
+    "30s": {
+      "base": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -6.107990999999932,
+        "closed_upper": -6.107990999999932,
+        "priced_trades": 1,
+        "positive_dates": 0,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": -6.107990999999932
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "double_fees": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -8.228121999999932,
+        "closed_upper": -8.228121999999932,
+        "priced_trades": 1,
+        "positive_dates": 0,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": -8.228121999999932
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "3s_outgoing_and_return": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": 12.393813000000296,
+        "closed_upper": 12.393813000000296,
+        "priced_trades": 1,
+        "positive_dates": 1,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": 12.393813000000296
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "double_adverse": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -6.895850999999931,
+        "closed_upper": -6.895850999999931,
+        "priced_trades": 1,
+        "positive_dates": 0,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": -6.895850999999931
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "100ms_alignment": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -6.107990999999932,
+        "closed_upper": 8.093428999999658,
+        "priced_trades": 1,
+        "positive_dates": 0,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SPY": -6.107990999999932
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_postrelease_decision_quote": 16,
+          "no_order_spread_gate": 8,
+          "fok_price_reject": 3,
+          "no_order_exchange_holiday": 2,
+          "no_order_invalid_signal_quote": 2,
+          "unknown_tied_signal_state": 1,
+          "conditional_round_trip": 1
+        },
+        "actual_execution_verified": false
+      },
+      "10s_news_delay": {
+        "conditional_complete": false,
+        "net_lower": null,
+        "net_upper": null,
+        "closed_lower": -67.54794610000052,
+        "closed_upper": -66.04814110000065,
+        "priced_trades": 9,
+        "positive_dates": 3,
+        "without_best_three": null,
+        "bootstrap_97_5_lower": null,
+        "priced_by_symbol": {
+          "SH": -53.48136430000057,
+          "SPY": -14.066581799999959
+        },
+        "outcomes": {
+          "no_content_trigger": 51,
+          "no_order_invalid_signal_quote": 11,
+          "conditional_round_trip": 9,
+          "no_order_spread_gate": 7,
+          "unknown_tied_signal_state": 2,
+          "no_order_exchange_holiday": 2,
+          "fok_price_reject": 2
+        },
+        "actual_execution_verified": false
+      }
+    }
+  },
+  "advance_to_selection": [],
+  "selection_opened": false,
+  "actual_strategy_execution_verified": false,
+  "reliable_edge_established": false
+}

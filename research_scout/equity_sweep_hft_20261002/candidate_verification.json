@@ -1,0 +1,17 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T22:48:09.895128+00:00",
+  "source_sessions_hash_verified": 192,
+  "qualified_groups_verified": 563,
+  "admissions_before_cooldown_verified": 227,
+  "selected_events_verified": 172,
+  "results_sha256": "01ea3ad1232c00ba69f1e76564b4441e7b247dd724c4f4642a0710f23cdea813",
+  "auditor_sha256": "bdc88ce51ae2972fb7fb302df31de3ec5e0fe8d2bd71ed782fc11e509c21aa86",
+  "independent_book_helper_sha256": "850b5c95be6dafbc9eb5d10a11552e3cd7412889cbb1cfec140c7f1959bc71c7",
+  "scope": "All reported prestate-qualified sweep identities, exact volume/notional, every fixed-clock admission/rejection, both cooldown stages, global ranking and final selected ledger independently reconciled from source. No production sweep or admission import.",
+  "earlier_group_rejection_enumeration_independently_recomputed": false,
+  "remaining_positive_survivor_audit": "Recompute all earlier group-rejection enumeration before reliability promotion.",
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

@@ -1,0 +1,66 @@
+{
+  "created_at_utc": "2026-10-02T21:54:31.058538+00:00",
+  "family": "Coherent-major/lagging-target native execution-flow confirmation",
+  "relationship": "Every target surviving the complete fixed 49-minute acquisition cohort, not just a chosen winner. The original hypothesis already froze distinct flow requirements for the two leaders and target. No target post-event return has been calculated.",
+  "hypothesis_specification_sha256": "0ae27a4a34f358b09231ab387d239dfe6d7aaba67fdd350c1569ef72ee77db13",
+  "quote_parents": [
+    {
+      "path": "research_scout\\market_lag_targets_hft_20261002\\batch01",
+      "results_sha256": "7439b1c3e67262cefd37bf0d91f2c8deb2366cd955d7c61b7c010cef1d301f82",
+      "selection_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b"
+    },
+    {
+      "path": "research_scout\\market_lag_targets_hft_20261002\\batch02",
+      "results_sha256": "f378fdee4bdcde4360dfa1e228f27d05fea176d623265d9ead872a273b895954",
+      "selection_sha256": "ba1c4866b72dbc5c4ce55c44e273657b9d65acf13d71e75fd60042a5deda9b99"
+    }
+  ],
+  "parent_independent_audits_required_before_pnl": true,
+  "events": [
+    {
+      "date": "2024-10-01",
+      "offset_minutes": 987,
+      "decision_ns": 1727800077500000000,
+      "symbol": "TRXUSDT",
+      "direction": -1,
+      "common_move_bps": "24.30061169133848246458315100",
+      "target_supply": true,
+      "gap_bps": "20.41887526124208600990242400",
+      "budget_bps": "3.183445972958347112851489348",
+      "minimum_signed_target_return_bps": "1.940742657523612368999871000",
+      "reason": "requires_native_trade_confirmation",
+      "selected": true
+    }
+  ],
+  "jobs": [
+    {
+      "date": "2024-10-01",
+      "offset": 987,
+      "symbols": [
+        "BTCUSDT",
+        "ETHUSDT",
+        "TRXUSDT"
+      ]
+    }
+  ],
+  "gate": "BTC and ETH EACH need >=5 unique native MARKET trades, >=5000 USDT total and >=75% notional in the common quote-move direction. The target needs >=5 trades and >=5000 USDT total, without a directional-imbalance requirement. All three causal prefixes must pass integrity checks; missing or ambiguous evidence is not zero volume or a valid signal.",
+  "counting": "Same captured-before-d-250ms and matching-T-in-[d-1.25s,d-250ms) interval as frozen in the hypothesis. Deduplicate exact native t IDs; MARKET executions only. Preserve raw m side (true=seller aggressor), prices and quantities as Decimal. No funding, ADL or insurance executions interpreted as ordinary trade flow.",
+  "integrity_and_clocks": "Reuse unchanged independently audited native flow-prefix engine: ordered captures within the requested minute, exact native schema, unique contiguous IDs within each symbol prefix, no conflicting/reversed IDs or earlier disconnect, finite positive in-window values, T<=E+1ms, both T/E<=capture+1ms, capture-T<=250ms. Only pre-cutoff data can invalidate a past event. The engine's own 75% legacy target gate is recorded only as a diagnostic; the joint gate implements the original activity-only target requirement.",
+  "acquisition": "Retrieve only these same whole minutes, preserving all data but counting causal prefixes only. No additional future minute or return calculation at this stage.",
+  "download": {
+    "channel": "trade",
+    "slice_minutes": 1,
+    "workers": 2,
+    "per_slice_decoded_cap": 96000000,
+    "total_decoded_cap": 192000000,
+    "request_deadline_seconds": 120,
+    "automatic_retries": 0
+  },
+  "progression": "After independent quote and flow audits, freeze both previously declared follow_common_move and fade_common_move 15-second execution controls with 6bp fee+1bp adverse per leg, latency/clock/cost stress, historical order checks, funding clearance and unknown-inventory accounting. No rule promotion from one event.",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false,
+  "preparation_sha256": "cdcbfe3954bbfaa262a4be1f4847cecca03b1e5fb296903d71ee1748edc65bcf"
+}

@@ -1,0 +1,37 @@
+SIX-INSTRUMENT CROSS-VENUE FUNDING HFT FEASIBILITY SCREEN
+No eligible entry. No strategy P&L tested and no reliable edge established.
+
+Hypothesis: enter equal-coin long/short USDT perpetuals 30s before settlement, close about 30s after.
+Buy the lower quoted funding payment and sell the higher. This is a seconds-long hypothesis, not carry.
+Two venues: Binance USD-M and Bybit. Six fixed instruments: BTC, ETH, SOL, BNB, XRP and DOGE.
+Dates: first of each month in 2024, 08:00 and 16:00 UTC funding events. Not continuous market coverage.
+Data: 144 free unauthenticated public files, 218,529,624 compressed bytes, 16,053,178 ticker updates.
+Use only the last ticker received strictly before settlement minus 30s; both source clocks <=5s old.
+Both next-funding times must equal the target settlement. Rates can change before actual settlement.
+
+Paired observations: 144; usable: 141; eligible: 0.
+Largest quoted net funding difference: 3.1416bp of one-leg reference notional.
+Entry hurdle: >28bp = four executions at 6bp commission + 1bp adverse allowance each, before spreads.
+Per-asset maximum quoted difference (bp):
+  BNBUSDT: 3.1416; 24 usable observations
+  BTCUSDT: 2.5808; 24 usable observations
+  DOGEUSDT: 2.4907; 24 usable observations
+  ETHUSDT: 2.9096; 24 usable observations
+  SOLUSDT: 1.9723; 24 usable observations
+  XRPUSDT: 1.9262; 21 usable observations
+
+Three XRP/Bybit snapshots were 7.8-8.4s old and failed the predeclared freshness gate.
+The quoted funding component is too small to trigger this rule in this sample. This does not prove
+that price alpha, other contracts, other dates or other funding mechanisms are impossible.
+
+A later execution test would need actual settled rates and mark prices, full-book entry/exit cashflows,
+basis repricing, missed-leg unwind, separate capture/execution clocks and settlement inclusion uncertainty.
+Bybit documents uncertain funding inclusion for positions opened or closed within five seconds of settlement.
+Current documentation alone is not proof of unchanged historical rules. No such tight-cutoff fill is assumed here.
+
+Audit: all 144 file hashes, 288 snapshot eligibility checks and 144 paired rate calculations verified;
+24 calendar-selected native CSV as-of rows checked. Three causal timing tests passed.
+Native WebSocket field normalization not independently reconciled; required before any P&L claim.
+
+Sources: https://docs.tardis.dev/downloadable-csv-files/data-types
+Sources: https://www.bybit.com/en/help-center/article/Funding-fee-calculation

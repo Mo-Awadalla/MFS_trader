@@ -1,0 +1,99 @@
+BTC/SOL PRICE RESILIENCE AND BREAK: NATIVE TRANSACTION-CLOCK CORRECTION
+Reliable edge established: NO. Competition win established: NO. Candidates advancing: [].
+
+Same eight rules, signals, dates, quantities, costs, processing delays and ACK-based holds as the original study.
+No parameter rescue and no fresh test dates. This adds 8 implementation versions, not 8 new hypotheses.
+All six first-of-month Jul-Dec 2024 dates were already exposed historical discovery.
+
+EXECUTION CORRECTION
+Match each normalized initial top-five snapshot to its exact raw capture/E pair, check its delta quantities,
+then follow pu/u-sequenced native depth updates in transaction time T until the first successor after the order.
+Include T-before-order updates even if E publication occurs after the order. Do not expire an unchanged book
+merely because no top-five update was published in 250ms. Native gaps/backtracks would remain unknown.
+At equal transaction timestamps retain pre/post-update states. Initial five levels delimit known price coverage;
+deleted top levels cannot be replaced with invented deeper liquidity. Insufficient coverage stays unknown.
+A fill/unknown branch retains possible inventory and halts later orders that date. FOK prices and quantities
+remain fixed from predecision data. Long/short cash intervals include every observed admissible fill branch.
+
+BASELINE: six independent daily reset accounts, dollar sums, no annualization or portfolio aggregation
+Rule | full net [lower,upper] | closed subtotal [lower,upper] | mandatory trades | unknown attempts
+BTCUSDT/hold_fade_15s | UNKNOWN | [-1124.6445,-1124.6445] | 831 | 1
+BTCUSDT/hold_fade_30s | UNKNOWN | [-857.8829,-857.8829] | 636 | 3
+BTCUSDT/break_follow_15s | UNKNOWN | [-553.2372,-553.2372] | 453 | 2
+BTCUSDT/break_follow_30s | UNKNOWN | [-558.1334,-558.1334] | 453 | 2
+SOLUSDT/hold_fade_15s | [-586.1580,-586.0836] | [-586.1580,-586.0836] | 471 | 0
+SOLUSDT/hold_fade_30s | [-575.8282,-575.7609] | [-575.8282,-575.7609] | 471 | 0
+SOLUSDT/break_follow_15s | [-267.2426,-267.2047] | [-267.2426,-267.2047] | 272 | 0
+SOLUSDT/break_follow_30s | [-278.5031,-278.5031] | [-278.5031,-278.5031] | 272 | 0
+
+For incomplete rules, closed subtotals exclude unresolved inventory and all later halted paths;
+they are not net strategy returns. Configurations overlap; never add their dollar sums into a portfolio.
+All four SOL baseline rules are complete and lose on every sampled date. All four BTC baselines remain
+incomplete because some submitted orders need more depth than the known range. No missing fill is dropped.
+
+COMPLETE SCENARIO RESULTS / ALL 40 CANDIDATE-SCENARIO COMBINATIONS
+BTCUSDT/break_follow_15s/latency_3s: [-706.0314,-706.0314]
+BTCUSDT/break_follow_30s/latency_3s: [-695.4691,-695.4691]
+SOLUSDT/hold_fade_15s/base: [-586.1580,-586.0836]
+SOLUSDT/hold_fade_15s/double_fees: [-1074.6695,-1074.5951]
+SOLUSDT/hold_fade_15s/extra_slippage: [-667.5766,-667.5022]
+SOLUSDT/hold_fade_30s/base: [-575.8282,-575.7609]
+SOLUSDT/hold_fade_30s/double_fees: [-1064.3433,-1064.2760]
+SOLUSDT/hold_fade_30s/latency_3s: [-554.8450,-554.7233]
+SOLUSDT/hold_fade_30s/extra_slippage: [-657.2473,-657.1801]
+SOLUSDT/break_follow_15s/base: [-267.2426,-267.2047]
+SOLUSDT/break_follow_15s/double_fees: [-502.2012,-502.1634]
+SOLUSDT/break_follow_15s/latency_1s: [-274.6637,-274.6637]
+SOLUSDT/break_follow_15s/latency_3s: [-279.7130,-279.7090]
+SOLUSDT/break_follow_15s/extra_slippage: [-306.4023,-306.3645]
+SOLUSDT/break_follow_30s/base: [-278.5031,-278.5031]
+SOLUSDT/break_follow_30s/double_fees: [-513.4614,-513.4614]
+SOLUSDT/break_follow_30s/latency_1s: [-276.7516,-276.7516]
+SOLUSDT/break_follow_30s/latency_3s: [-280.5167,-280.5167]
+SOLUSDT/break_follow_30s/extra_slippage: [-317.6628,-317.6628]
+Complete: 19/40. Every complete result has a negative upper endpoint.
+Incomplete scenarios remain unknown; stress losses are dependent replays, not independent samples.
+
+GROSS ECONOMICS OF RESOLVED PATHS ONLY
+Rule | gross [lower,upper] | commission + adverse allowance [lower,upper]
+BTCUSDT/hold_fade_15s | [-4.0943,-4.0943] | [1120.5502,1120.5502]
+BTCUSDT/hold_fade_30s | [1.1943,1.1943] | [859.0772,859.0772]
+BTCUSDT/break_follow_15s | [5.2899,5.2899] | [558.5271,558.5271]
+BTCUSDT/break_follow_30s | [0.3927,0.3927] | [558.5261,558.5261]
+SOLUSDT/hold_fade_15s | [-16.2279,-16.1536] | [569.9300,569.9301]
+SOLUSDT/hold_fade_30s | [-5.8939,-5.8267] | [569.9342,569.9343]
+SOLUSDT/break_follow_15s | [6.8759,6.9137] | [274.1184,274.1185]
+SOLUSDT/break_follow_30s | [-4.3851,-4.3851] | [274.1180,274.1180]
+
+These signals do not demonstrate an economic margin over conservative execution costs on this sample.
+Do not spend fresh outcome data tuning these failed thresholds, holding periods or fee assumptions.
+
+AUDIT
+20,527 unique execution targets checked, including unreached targets and all stresses.
+1,224 public raw slices; 3,398,242,245 decoded bytes / 774,995,770 compressed bytes; no paid API.
+2,637,853 raw depth messages scanned.
+48,605 unique proof lines independently matched to raw files.
+377 targets had transaction-timestamp ties; before/after alternatives retained.
+187 old-age targets had continuous native state through the order.
+1,470 targets had at least one native state different from their publication-clock snapshot.
+Source E-T delay: median2ms, p90=10ms, p99=29.74ms, maximum133ms across selected source states.
+19,406 dependent closed attempts; 41 unresolved attempts retained; 41 known FOK rejections.
+Maximum independently reconciled cash error: $1.14e-13.
+Historical next-funding timestamps in all12 corresponding ticker sources fell on hourly boundaries.
+The frozen completed paths avoid every hourly boundary. Unknown inventory includes any unknown later funding.
+22 new focused cases passed across event detection, standing-book admission and native execution; cumulative112.
+
+SCOPE AND NEXT EVIDENCE
+This is conditional historical feed-state execution. Batched depth data cannot prove every intervening
+matching-engine state, actual order priority or impact. The intervals bound specified timestamp alternatives,
+not every possible physical fill. There is no significant, reliable or live-tradable edge claim.
+Progression required each development/selection period to be complete and positive in every stress,
+baseline>=50 mandatory trades, >=2 positive dates and positive after removing its best date. None passed.
+Session bookkeeping:116 configurations /164 implementation versions. Preserve the full multiple-search history.
+Next research must remain seconds-scale stocks/ETFs/crypto, with an economic mechanism and causal cost gate
+frozen before new outcomes. Do not relabel the failed family or reuse selection results as a holdout.
+
+Primary source documentation:
+https://docs.tardis.dev/historical-data-details/binance-futures.md
+https://docs.tardis.dev/downloadable-csv-files/data-types
+Native E/T and delta mappings above were directly reconciled to the downloaded historical messages.

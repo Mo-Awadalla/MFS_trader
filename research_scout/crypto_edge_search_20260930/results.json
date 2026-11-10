@@ -1,0 +1,838 @@
+{
+  "created_at_utc": "2026-09-30T13:34:37.847921+00:00",
+  "candidates": {
+    "price_ridge_margin0": {
+      "base": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_fees": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_slippage": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "zero_fee_diagnostic": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "screen_pass": false
+    },
+    "price_ridge_margin5": {
+      "base": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_fees": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_slippage": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "zero_fee_diagnostic": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "screen_pass": false
+    },
+    "price_ridge_margin10": {
+      "base": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_fees": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_slippage": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "zero_fee_diagnostic": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "screen_pass": false
+    },
+    "book_ridge_margin0": {
+      "base": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_fees": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_slippage": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "zero_fee_diagnostic": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "screen_pass": false
+    },
+    "book_ridge_margin5": {
+      "base": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_fees": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_slippage": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "zero_fee_diagnostic": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "screen_pass": false
+    },
+    "book_ridge_margin10": {
+      "base": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_fees": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_slippage": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "zero_fee_diagnostic": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "screen_pass": false
+    },
+    "book_boost_margin0": {
+      "base": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_fees": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_slippage": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "zero_fee_diagnostic": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "screen_pass": false
+    },
+    "book_boost_margin5": {
+      "base": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_fees": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_slippage": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "zero_fee_diagnostic": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "screen_pass": false
+    },
+    "book_boost_margin10": {
+      "base": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_fees": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "double_slippage": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "zero_fee_diagnostic": {
+        "days": 4,
+        "trades": 0,
+        "net_dollars": 0.0,
+        "positive_days": 0,
+        "trade_days": 0,
+        "mean_gross_bps": null,
+        "mean_net_bps": null,
+        "net_without_best_day": 0.0,
+        "daily_mean_ci95": [
+          0.0,
+          0.0
+        ],
+        "nine_trial_adjusted_daily_mean_lower": 0.0,
+        "max_drawdown_pct": 0.0,
+        "by_date": {
+          "2024-01-15": 0.0,
+          "2024-01-21": 0.0,
+          "2024-01-28": 0.0,
+          "2024-01-31": 0.0
+        }
+      },
+      "screen_pass": false
+    }
+  },
+  "historical_test_opened": false,
+  "input_sha256": {
+    "2023-08-15": "2fd84db9e92ea115e7e196eca4cccd08619d46459215097a7c330b3617c5eb90",
+    "2023-09-15": "955c31affb22ec78c884acf823484054b2ced127be32e787c1b7f095c916f85a",
+    "2023-10-15": "9826c1ca1b2d83e2e7425ec52a8e8db9d98c61e3f9dfc8104e6f788ecd044a78",
+    "2023-11-15": "fea41d81ca5f7001c6e7976f7e4705f3a91a45b1be426401f9420ac56ed4e429",
+    "2023-12-15": "01090443b8943f9a797e4fb1b3191dc88c3234f492ff609cb95461e3893c3416",
+    "2024-01-15": "f7f48e6e43e24a3e7779a1525c2bbef6d4ee845aa6faa0bbd57a9c9c1225b70d",
+    "2024-01-21": "acc68423cb064eaf7d464887e30c7424e6db57dbd8afc25a6679355f0b59701a",
+    "2024-01-28": "e6f71c8820babb6a0d55d91250cd6a2fd3554a1b4bfaea991ff286cada8a51c7",
+    "2024-01-31": "395baea950ba9f4abf7a87a6547ccbef13490c11f1a854d3fece89ef4ac1d400"
+  },
+  "verdict": "NO_COST_AWARE_CRYPTO_SURVIVOR",
+  "code_sha256": "99d105bf6811c9ee68e110a8a34c47c739560822e1818adc2d0358c4470ec8bf"
+}

@@ -1,0 +1,15 @@
+SPOT/PERPETUAL HFT DISCREPANCY — INITIAL SUPPLY SCREEN
+
+No selected entry and no P&L test in the initial screen. No reliable edge established.
+
+Frozen mechanism: compare a USDT perpetual with its exact-symbol spot counterpart. Use only native books captured before each decision minus 250ms. Require current one-second freshness, at least eight of the prior ten paired one-second observations, median-ratio dispersion <=10bp, current discrepancy >=25bp, both sides of both books >=2000 USDT, and a hypothetical full-convergence budget >5bp after two 6bp taker fees and two 1bp adverse allowances. Require all gates in two consecutive seconds with the same direction. Only the perpetual would be traded. The recent ratio is a reference, not a known fair value or a promise of convergence.
+
+Coverage: 09:00–09:01 UTC on the first day of each month in 2024. Twelve complete paired minutes; 3,952,265 spot messages and 5,733,723 perpetual messages; 163,750 symbol/decision rows. All contemporaneous native USDT perpetuals were considered, including absent spot counterparts. Symbols were not selected from today's surviving markets.
+
+Only AEVOUSDT at 09:00:59 on April 1 passed the one-observation price/depth/budget gates. It lacked the required preceding qualifying observation, so no entry was selected inside the frozen window. This does not establish what happened after the window.
+
+Independent validation passed for all 24 source files and every grid decision. A separate native parser and time-bucket reconstruction checked reference ratios, dispersion, costs and selection. Maximum Decimal difference 4.9999e-24. Ten focused causal/source tests passed. The first audit's economically zero direction-label rounding discrepancy is documented in AUDIT_NUMERIC_NOTE.txt; no production rule or result changed.
+
+Most rows failed quote freshness, anchor coverage or the price-gap threshold. Failure of a deliberate freshness gate does not establish that an older standing quote was invalid. Spot BBO messages lack an exchange matching timestamp; capture time is preserved without inventing one. The screen cannot prove private fills, contract eligibility or global absence of opportunities. Family-specific 2025 validation is unopened.
+
+Evidence: specification.json, spot_manifest.json, screen_implementation.json, grid_states.parquet, screen_results.json, independent_verification.json. The separately frozen clock expansion is in ../spot_perp_clock_hft_20261002/.

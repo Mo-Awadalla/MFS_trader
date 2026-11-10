@@ -1,0 +1,34 @@
+{
+  "created_at_utc": "2026-09-30T17:57:38.725237+00:00",
+  "symbol": "SPY",
+  "dates": [
+    "2023-08-02",
+    "2024-02-23",
+    "2024-03-28",
+    "2024-04-17",
+    "2024-04-30",
+    "2024-12-19",
+    "2025-03-11",
+    "2025-03-26",
+    "2025-04-03",
+    "2025-06-30"
+  ],
+  "feed": "sip",
+  "window_et": [
+    "16:00:00",
+    "16:01:00"
+  ],
+  "per_date_byte_cap": 5000000,
+  "per_date_page_cap": 10,
+  "total_success_byte_cap": 50000000,
+  "selection": "Every original price-eligible auction date, irrespective of profit, missing exit or previous quote coverage.32 original triggers unchanged;22 prices above their LOC caps need no exit quote. No new dates or instruments selected to improve P&L.",
+  "purpose": "Replace sparse trade-triggered exit observations with a consistent historical consolidated-quote reference for all10 possible entries. This still cannot establish auction allocation, venue routing or real fills.",
+  "sources": [
+    "https://docs.alpaca.markets/us/docs/market-data-faq"
+  ],
+  "cost_and_authorization": "Historical endpoints ending years before the current15-minute restriction; no subscription upgrade, paid fallback or orders. Use only already-configured Alpaca credentials against data.alpaca.markets.",
+  "source_sha256": {
+    "screen": "aa280e40f7aade8a0bff6c92fc6545b911956f190b49b44116f1b6d32d2f44f7",
+    "auction_references": "b807e65f4d5d73cb046528a0134171643cdb9e4d4aaf20605faff5b67945805f"
+  }
+}

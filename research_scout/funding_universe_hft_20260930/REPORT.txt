@@ -1,0 +1,75 @@
+BROAD NATIVE FUNDING SCREEN — NO QUALIFIED HFT CANDIDATE
+Status: independently audited feasibility screen. No strategy P&L was run.
+
+We checked the first day of every month in 2024, immediately before the
+08:00 and 16:00 UTC funding times. Historical native Binance messages
+provided the universe, avoiding a present-day list of surviving contracts.
+This is a dependent extension of the previous six-contract funding study.
+
+Scope and cost hurdle
+  24 full-channel native slices; 348 distinct USDT symbols;
+  6,552 symbol/event states. Decisions use only messages received before
+  funding minus 30 seconds. Both capture and publication must be within
+  five seconds, and the advertised next funding time must match the event.
+  E is a publication timestamp, not a book transaction timestamp.
+
+  Eighteen observations had an absolute Binance rate of at least 14 bp.
+  Their 16 distinct symbol/date counterparts were requested from Bybit.
+  Fifteen files were available, containing 1,419,702 normalized updates.
+  The proposed equal-unit payment difference had to exceed 28 bp:
+  four executions, each charged 6 bp plus 1 bp adverse allowance.
+  Spreads and basis movement would still need to be paid after this screen.
+
+Results after lifecycle correction
+  14 observations: payment difference below 28 bp.
+   2 observations: Binance had prohibited new positions and settled/delisted
+                   the contract earlier that day (DGBUSDT and CTKUSDT).
+   1 observation: Bybit source was older than the frozen five-second limit.
+   1 observation: requested FETUSDT counterpart source unavailable.
+   0 observations: qualified for execution replay.
+
+The tempting false positive
+  DGBUSDT at 2024-04-01 16:00 UTC showed a nominal 109.88941749 bp payment
+  difference. Binance's mark-price stream still had fresh event and capture
+  timestamps. However, its dated notice prohibited new positions from
+  08:30 UTC and settled/delisted the contract at 09:00 UTC. The proposed
+  entry at 15:59:30 was impossible. Fresh feed timestamps did not establish
+  that the instrument was tradable. CTKUSDT was covered by the same notice.
+
+  Primary notice, published March 25, 2024:
+  https://www.binance.com/en/support/announcement/detail/ce74360a3fd444b2b35da7186f8dd0ad
+
+FET was not silently deleted or treated as a zero return
+  The provider returned HTTP 400 / code 140 and explicitly states its
+  Bybit FETUSDT coverage ends at 2024-06-08 00:00 UTC, exclusive, identifying
+  a delisted instrument. The response is saved. The exchange notice body
+  was inaccessible; the original unknown-counterpart status is retained.
+
+  Binance's separate merger notice was updated on June 20 to retain FET
+  trading. Its old proposed FET delisting must not be applied to July 1.
+  https://www.binance.com/en/support/announcement/detail/e485541c370240adba3929fded74f269
+
+Audit and preservation
+  Independent code verified all 24 native source hashes and decoded hashes,
+  examined 428,520 native messages, reconstructed all 6,552 as-of states,
+  and checked all 15 available Bybit files and 18 paired dispositions.
+  Maximum independent payment-gap error: 1.25e-14 bp.
+  Native acquisition: 91,925,162 decoded bytes / 17,129,667 compressed bytes.
+  Successful counterpart acquisition: 17,125,325 compressed bytes.
+  Five focused timing/state tests passed; new audit scripts passed Ruff.
+
+  Original stage_a_results.json, stage_b_results.json and funding_pairs.parquet
+  are preserved. lifecycle_facts.json records the correction and retrieval
+  limits. funding_pairs_lifecycle_v1.parquet applies it additively.
+  verification.json records the independent checks and hashes.
+
+Limits and decision
+  This is a large-Binance-rate screen; it does not cover Bybit-only extreme
+  rates when Binance is below the 14 bp prescreen. It is not an exhaustive
+  proof that funding HFT cannot work. The data are monthly sample days.
+  Bybit native snapshot/delta normalization, complete instrument histories,
+  historical order acceptance and contract unit equivalence were not proven.
+  No filled orders, realized funding cashflows or profitable strategy are
+  claimed. No execution replay is warranted for the present candidates.
+  Economic strategy counts remain unchanged: 120 configurations / 170
+  implementation versions across the search. No reliable edge established.

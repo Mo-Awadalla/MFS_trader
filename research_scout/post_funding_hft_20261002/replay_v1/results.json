@@ -1,0 +1,1533 @@
+{
+  "family": "Post-funding unwind continuation and reversal over 15 seconds",
+  "economic_configurations_run": 2,
+  "scenario_cases": 10,
+  "scenarios": [
+    {
+      "rule": "unwind_continuation",
+      "scenario": "base",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 1,
+      "unknown_events": 2,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-1.12014",
+      "known_component_upper": "-1.12014",
+      "positive_lower_events": 0,
+      "negative_upper_events": 1,
+      "gross_lower_components": "-0.84000",
+      "fee_lower_components": "0.24012",
+      "adverse_lower_components": "0.04002",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "unknown_entry_or_exit_execution": 1,
+        "conditional_taker_execution": 1
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "-1.12014",
+          "known_component_upper": "-1.12014",
+          "submitted": 2,
+          "unknown": 1
+        }
+      ],
+      "ledger": "unwind_continuation_base.json",
+      "ledger_sha256": "a8379831ba168f3eb5ca7838c42b0b6bb744c5b7470116cb42ee0dd6142facfd"
+    },
+    {
+      "rule": "unwind_continuation",
+      "scenario": "double_fees",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 1,
+      "unknown_events": 2,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-1.36026",
+      "known_component_upper": "-1.36026",
+      "positive_lower_events": 0,
+      "negative_upper_events": 1,
+      "gross_lower_components": "-0.84000",
+      "fee_lower_components": "0.48024",
+      "adverse_lower_components": "0.04002",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "unknown_entry_or_exit_execution": 1,
+        "conditional_taker_execution": 1
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "-1.36026",
+          "known_component_upper": "-1.36026",
+          "submitted": 2,
+          "unknown": 1
+        }
+      ],
+      "ledger": "unwind_continuation_double_fees.json",
+      "ledger_sha256": "5df3b50fe47f4c7b39467564897353730fe7f89659dcdc9fbe4ff29c57672a98"
+    },
+    {
+      "rule": "unwind_continuation",
+      "scenario": "latency_3s",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 2,
+      "unknown_events": 1,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-1.44102889",
+      "known_component_upper": "-1.44102889",
+      "positive_lower_events": 0,
+      "negative_upper_events": 2,
+      "gross_lower_components": "-0.94990",
+      "fee_lower_components": "0.42096762",
+      "adverse_lower_components": "0.07016127",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "conditional_taker_execution": 2
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": true,
+          "net_lower": "-1.44102889",
+          "net_upper": "-1.44102889",
+          "known_component_lower": "-1.44102889",
+          "known_component_upper": "-1.44102889",
+          "submitted": 2,
+          "unknown": 0
+        }
+      ],
+      "ledger": "unwind_continuation_latency_3s.json",
+      "ledger_sha256": "1b98db65be10f0fc85dfcf39ba3a0790aef1dd6e9f6e964a6d583e0ec3495764"
+    },
+    {
+      "rule": "unwind_continuation",
+      "scenario": "double_adverse",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 1,
+      "unknown_events": 2,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-1.16016",
+      "known_component_upper": "-1.16016",
+      "positive_lower_events": 0,
+      "negative_upper_events": 1,
+      "gross_lower_components": "-0.84000",
+      "fee_lower_components": "0.24012",
+      "adverse_lower_components": "0.08004",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "unknown_entry_or_exit_execution": 1,
+        "conditional_taker_execution": 1
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "-1.16016",
+          "known_component_upper": "-1.16016",
+          "submitted": 2,
+          "unknown": 1
+        }
+      ],
+      "ledger": "unwind_continuation_double_adverse.json",
+      "ledger_sha256": "fc3937412d8312818e286dfa49318a942c4f41b51b7a8f3cd8022b5ea4f47099"
+    },
+    {
+      "rule": "unwind_continuation",
+      "scenario": "clock_100ms",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 0,
+      "unknown_events": 3,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "0",
+      "known_component_upper": "0",
+      "positive_lower_events": 0,
+      "negative_upper_events": 0,
+      "gross_lower_components": "0",
+      "fee_lower_components": "0",
+      "adverse_lower_components": "0",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "unknown_entry_or_exit_execution": 2
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 2,
+          "unknown": 2
+        }
+      ],
+      "ledger": "unwind_continuation_clock_100ms.json",
+      "ledger_sha256": "02590d0abd43f3bd311a5beed5781c18a0ef6dd9a82d6e72e3e215dfcfe29f8a"
+    },
+    {
+      "rule": "unwind_reversal",
+      "scenario": "base",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 2,
+      "unknown_events": 1,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-0.00086089",
+      "known_component_upper": "-0.00086089",
+      "positive_lower_events": 1,
+      "negative_upper_events": 1,
+      "gross_lower_components": "0.49010",
+      "fee_lower_components": "0.42082362",
+      "adverse_lower_components": "0.07013727",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "conditional_taker_execution": 2
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": true,
+          "net_lower": "-0.00086089",
+          "net_upper": "-0.00086089",
+          "known_component_lower": "-0.00086089",
+          "known_component_upper": "-0.00086089",
+          "submitted": 2,
+          "unknown": 0
+        }
+      ],
+      "ledger": "unwind_reversal_base.json",
+      "ledger_sha256": "2e55e8bd736d4a3816e6206707424c1bb9f03137087e0bb8b7879b792941788b"
+    },
+    {
+      "rule": "unwind_reversal",
+      "scenario": "double_fees",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 2,
+      "unknown_events": 1,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-0.42168451",
+      "known_component_upper": "-0.42168451",
+      "positive_lower_events": 1,
+      "negative_upper_events": 1,
+      "gross_lower_components": "0.49010",
+      "fee_lower_components": "0.84164724",
+      "adverse_lower_components": "0.07013727",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "conditional_taker_execution": 2
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": true,
+          "net_lower": "-0.42168451",
+          "net_upper": "-0.42168451",
+          "known_component_lower": "-0.42168451",
+          "known_component_upper": "-0.42168451",
+          "submitted": 2,
+          "unknown": 0
+        }
+      ],
+      "ledger": "unwind_reversal_double_fees.json",
+      "ledger_sha256": "997e547d097e309dd468942173567fcf6fb827b0b8c5fbca17a717d3ea0d8615"
+    },
+    {
+      "rule": "unwind_reversal",
+      "scenario": "latency_3s",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 2,
+      "unknown_events": 1,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-0.17104782",
+      "known_component_upper": "-0.00102889",
+      "positive_lower_events": 1,
+      "negative_upper_events": 1,
+      "gross_lower_components": "0.32020",
+      "fee_lower_components": "0.42106956",
+      "adverse_lower_components": "0.07017826",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "conditional_taker_execution": 2
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": true,
+          "net_lower": "-0.17104782",
+          "net_upper": "-0.00102889",
+          "known_component_lower": "-0.17104782",
+          "known_component_upper": "-0.00102889",
+          "submitted": 2,
+          "unknown": 0
+        }
+      ],
+      "ledger": "unwind_reversal_latency_3s.json",
+      "ledger_sha256": "957ec29040fd987ad89cd7d27073e2f25d4494b8cb17c6d47b06e69485a79128"
+    },
+    {
+      "rule": "unwind_reversal",
+      "scenario": "double_adverse",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 2,
+      "unknown_events": 1,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-0.07099816",
+      "known_component_upper": "-0.07099816",
+      "positive_lower_events": 1,
+      "negative_upper_events": 1,
+      "gross_lower_components": "0.49010",
+      "fee_lower_components": "0.42082362",
+      "adverse_lower_components": "0.14027454",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "conditional_taker_execution": 2
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": true,
+          "net_lower": "-0.07099816",
+          "net_upper": "-0.07099816",
+          "known_component_lower": "-0.07099816",
+          "known_component_upper": "-0.07099816",
+          "submitted": 2,
+          "unknown": 0
+        }
+      ],
+      "ledger": "unwind_reversal_double_adverse.json",
+      "ledger_sha256": "4400c37de66b835a1f33261876ac8c4889b98daf566355a43b5ca731ae22afbb"
+    },
+    {
+      "rule": "unwind_reversal",
+      "scenario": "clock_100ms",
+      "complete": false,
+      "events": 90,
+      "submitted": 3,
+      "known_submitted": 2,
+      "unknown_events": 1,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "-0.00086089",
+      "known_component_upper": "0.05909711",
+      "positive_lower_events": 1,
+      "negative_upper_events": 1,
+      "gross_lower_components": "0.49010",
+      "fee_lower_components": "0.42082362",
+      "adverse_lower_components": "0.07013727",
+      "outcomes": {
+        "insufficient_displayed_size": 58,
+        "missing_stale_or_invalid_native_ticker": 1,
+        "spread_above_frozen_gate": 8,
+        "funding_cycle_advance_unobserved": 17,
+        "unknown_ticker_continuity_after_submission": 1,
+        "missing_or_invalid_native_book": 3,
+        "conditional_taker_execution": 2
+      },
+      "by_date": [
+        {
+          "date": "2024-01-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-02-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-03-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-04-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-05-01",
+          "complete": false,
+          "net_lower": null,
+          "net_upper": null,
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 1,
+          "unknown": 1
+        },
+        {
+          "date": "2024-06-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-07-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-08-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-09-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-10-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-11-01",
+          "complete": true,
+          "net_lower": "0",
+          "net_upper": "0",
+          "known_component_lower": "0",
+          "known_component_upper": "0",
+          "submitted": 0,
+          "unknown": 0
+        },
+        {
+          "date": "2024-12-01",
+          "complete": true,
+          "net_lower": "-0.00086089",
+          "net_upper": "0.05909711",
+          "known_component_lower": "-0.00086089",
+          "known_component_upper": "0.05909711",
+          "submitted": 2,
+          "unknown": 0
+        }
+      ],
+      "ledger": "unwind_reversal_clock_100ms.json",
+      "ledger_sha256": "fc4326b2ba50afbcd5ddf4c22e3ff0ae8ab6f795130a66035f7f1808c9aa857d"
+    }
+  ],
+  "source_files": 23,
+  "native_messages": 125203,
+  "source_decoded_bytes": 27916462,
+  "source_complete": true,
+  "plans_sha256": "9757e822e3d0a0e1ea9bf926dd6188092c387bdd882e5ec633785713a03d2264",
+  "implementation_sha256": "deaeefbd048f7e8864b065c4c6184accfb80aa018dfb7a37e6d3119cc7165532",
+  "complete_scenarios": 0,
+  "positive_lower_complete_scenarios": 0,
+  "independent_execution_audit_complete": false,
+  "actual_execution_verified": false,
+  "funding_payment_assumed": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

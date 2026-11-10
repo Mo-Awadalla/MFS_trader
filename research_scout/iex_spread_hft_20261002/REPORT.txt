@@ -1,0 +1,29 @@
+IEX NATIVE SPREAD / SHORT-HOLD CONDITIONAL PROBE -- NOT AN ESTABLISHED EDGE
+Updated 2026-10-02T23:41:45.149581+00:00
+
+Causal supply: 24 fixed 2023 dates; 19,566,059 native TOPS messages;61 spread/activity candidates;22 daily selections in20 stocks/ETFs. Full independent signal/decoder/budget audit passed.
+One fixed long-only seconds-long policy: original bid limit, cancel after5s; original ask target after cancellation ACK; cancel target after15s; forced residual exit after ACK. Fixed causal size, partial fills, each nonempty order's commission, conservative fees/adverse allowance. No post-only assumption for2023.
+The source/price/print probe extended only to decision+35s. 22dates;23,460,044messages;35,609selected-symbol messages;220event-case rows;10aggregate cases. Independent raw decoder, conditional allocations, inventory and Decimal cash matched exactly.
+Eight focused probe tests passed. Seven separate DEEP admission tests passed; no DEEP price outcomes examined by this report.
+
+Model | scenario | known conditional USD | full conditional USD | unknown events | priced entries
+touch | base | -6.191803 | None | 1 | 1
+touch | fees_2x | -8.283436 | None | 1 | 1
+touch | adverse_2x | -6.791973 | None | 1 | 1
+touch | latency_250ms | -9.291400 | -9.291400 | 0 | 1
+touch | latency_3s | -205.265920 | None | 1 | 1
+strict_trade_through | base | -6.191803 | None | 1 | 1
+strict_trade_through | fees_2x | -8.283436 | None | 1 | 1
+strict_trade_through | adverse_2x | -6.791973 | None | 1 | 1
+strict_trade_through | latency_250ms | -9.291400 | -9.291400 | 0 | 1
+strict_trade_through | latency_3s | -205.265920 | None | 1 | 1
+
+Baseline in both models:20 conditional no-entries,1 priced META trade losing$6.191803,1 ALB entry-state unknown. Only250ms has complete observed-cohort outcomes;both models lose$9.291400. The3s known component loses$205.265920. No positive priced trade in any case.
+LIMITS: These are conditional price/print calculations, not counterfactual fill or funded-portfolio proof. Touch prints do not establish queue position. Strict-through prints do not establish order acceptance or historical price sliding. Unknown outcomes are not zero. No-entry labels depend on the assumed print model. Forced exits use venue TOPS protected prices and ignore depth; better odd-lot prices can exist in DEEP. This is neither an executable backtest nor a formal universal upper bound on profit.
+The2021 IEX odd-lot filing explains that TOPS protected aggregation may omit better-priced displayed odd lots shown inDEEP. Source:https://www.sec.gov/rules/sro/iex/2021/34-90933.pdf . Native depth admission is the next source-quality check; it uses the same fixed dates, cutoff, thresholds and ranking. All development remains exploratory after many searches; no temporal-holdout validation or actual fills are claimed.
+No reliable edge established, no paid API, no orders. Current global search ledger:137 economic configurations,189 implementation versions,401 focused tests.
+Data provided for free by IEX. By accessing or using IEX Historical Data, you agree to the IEX Historical Data Terms of Use. https://www.iex.io/legal/hist-data-terms
+
+Specification SHA256: 26635c93ed9aacf619277e6c864add4e77dcd4632972317e228d95542d88f1a3
+Results SHA256: 1bfa3c5ff2e5103e551ba9ad19dd6b22ef8e094f5c0692e647e5cf18769dd87d
+Audit SHA256: a98520982604b3b00242e885b2befa706284da0a0c29c83cc951305d1e6cd679

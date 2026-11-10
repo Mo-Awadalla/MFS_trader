@@ -1,0 +1,13 @@
+FDUSD MAKER HFT — PAST-ONLY ACTIVITY FILTER FAILS
+
+No candidate survives. No P&L test was run and no reliable edge is established.
+
+All 48 spread/depth windows from the audited parent were retained. Before obtaining trade data, the follow-up froze a minimum of ten unique executions and 2000 FDUSD executed notional in EACH aggressor direction. Only matching times at or after second 10, with capture strictly before minute end minus 250ms, can count. The threshold is an operational liquidity requirement, not proof that every alternative HFT strategy is impossible.
+
+The 32 complete, unauthenticated historical responses contain 148 native trades, 127 of which enter the past-only counting interval. All 48 candidates fail two-sided activity. 26 symbol/windows have no qualifying counted trade; the largest smaller-side trade count is 7. Total new decoded data: 29,294 bytes.
+
+Independent parsing verifies every native trade, exact nanosecond ledger clock, direction, notional, ID sequence, candidate denominator and selection, with zero difference. There are no detected pre-cutoff duplicate conflicts, ID gaps, regressions or clock failures. Eleven focused source/causality tests passed. The auditor has one nonsemantic Ruff B905 warning for an intentionally adjacent-pair zip; it passes with B905 ignored. The verified source and auditor hashes are preserved, without editing frozen code for style.
+
+This rejects the frozen liquidity filter in these sampled windows. Empty responses do not establish that the asset could not trade, nor does this limited sample prove an absence of profitable HFT everywhere. No private fill, queue clearance, new executable quote, future return or historical order-rule eligibility was inferred. No 2025 family validation, paid acquisition or real order was opened.
+
+Evidence: specification.json, source_manifest.json, native/, screen_implementation.json, ledgers/, activity.parquet, selected.parquet, screen_results.json, independent_verification.json.

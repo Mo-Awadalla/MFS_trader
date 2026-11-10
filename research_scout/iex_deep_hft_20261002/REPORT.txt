@@ -1,0 +1,39 @@
+IEX DEEP: DISPLAYED-DEPTH ADMISSION AND CONDITIONAL SHORT-HOLD PROBE
+Updated 2026-10-03T00:00:02.637922+00:00
+
+No reliable edge established. No strategy is promoted for deployment.
+Source admission: 24 fixed 2023 dates; 23 intact native DEEP feeds; 22,486,404 messages; 174,007 symbol decisions; 249 cost budgets; 52 candidates; 21 daily selections in 19 stocks/ETFs. Independent decoding, book, cost and ranking audit passed for the intact sources.
+The remaining date, 2023-11-29, begins at sequence 45,296 and byte offset 962,448, rather than 1/0. Its 45,295 earlier messages and initial book state are absent. Independent raw inspection reproduced this. Missing admission remains unknown in every full-calendar result.
+Among 56 original TOPS candidates with intact DEEP data, 11 had better-priced displayed odd lots; 45 still passed the same budget/activity thresholds. DEEP reconstruction exactly reproduced TOPS protected aggregation for all 56 at the fixed cutoff, assuming a 100-share round lot. This is evidence for those comparisons, not a universal instrument/clock mapping.
+Example: RSG on Jan 11 had an original spread budget of $3.0791065. It becomes -$0.9179075 at the actual better 33-share bid. DDOG and TQQQ on Jan 11 retain their original displayed budgets. Displayed budgets are not profits.
+
+One new exploratory data-source variant, unchanged policy/costs:
+Fixed causal DEEP bid limit; cancel remainder after 5s; after cancellation acknowledgement, target the original DEEP ask; cancel target after 15s; after acknowledgement, force remaining shares. Whole-share size fixed before order; partial print allocations preserved. Per nonempty order: max($1, $.005/share), 1bp adverse on each actual notional, conservative sell levy. Fee/adverse doubling and 250ms/1s/3s delay cases. Touch and strict-through models are conditional assumptions.
+Native venue-clock quotes are reconstructed from exact event-time atomic DEEP transitions. Intermediate book updates are never execution references. The causal signal separately uses only pre-cutoff captured messages. Four focused tests cover clock ordering, atomic completion and exact integer preservation.
+Probe audit: 26,539,328 native messages; 56,543 selected-symbol messages; 52,872 derived atomic quotes; 210 selected event-case rows; 240 calendar rows; 20 aggregate checks. Independent source, venue-book, conditional allocation and Decimal cash reconstruction passed.
+
+Model | case | known conditional USD | full-calendar USD | unknown dates | priced entries
+touch | base | -6.191803 | None | 2 | 1
+touch | fees_2x | -8.283436 | None | 2 | 1
+touch | adverse_2x | -6.791973 | None | 2 | 1
+touch | latency_250ms | -9.291400 | None | 1 | 1
+touch | latency_3s | -205.265920 | None | 2 | 1
+strict_trade_through | base | -6.191803 | None | 2 | 1
+strict_trade_through | fees_2x | -8.283436 | None | 2 | 1
+strict_trade_through | adverse_2x | -6.791973 | None | 2 | 1
+strict_trade_through | latency_250ms | -9.291400 | None | 1 | 1
+strict_trade_through | latency_3s | -205.265920 | None | 2 | 1
+
+Baseline: 19 conditional no-entries, 2 known no-signal dates, 1 META conditional trade losing $6.191803, 1 ALB entry-state unknown, 1 source-admission unknown. META is the only priced trade and loses in every case. The 250ms selected-cohort sum is complete and -$9.291400; full-calendar cash remains unknown. The known 3s component of -$205.265920 is based on an IEX displayed bid at $280; actual NBBO/order protection is unresolved.
+LIMITS: Public prints do not establish private fills or queue priority. The probe still ignores future execution depth, hidden-liquidity conditions, NBBO routing/protection, historical acceptance/repricing and private clock uncertainty. Even the negative cash figures are conditional, not actual executions or a mathematical bound on all possible implementations. Unknown outcomes are never zero. Independent per-event budgets do not constitute a funded portfolio or benchmark outperformance.
+These 250ms-to-3s delay cases and the 250ms information cutoff do not establish the economics of a 1ms HFT implementation. Faster assumptions require a separately frozen feasibility test and actual venue/simulator latency evidence before a reliability claim. No slower intraday strategy is authorized.
+All 2023 results are exploratory after repeated search. No new 2024+ economic holdout has been opened in this branch. A positive future candidate requires untouched temporal replication, costs/depth/latency stress, concentration and multiple-search assessment.
+Current global ledger: 138 economic configurations, 190 implementation versions, 405 focused tests. No paid API or real orders.
+Data provided for free by IEX. By accessing or using IEX Historical Data, you agree to the IEX Historical Data Terms of Use. https://www.iex.io/legal/hist-data-terms
+Protocol:https://assets-global.website-files.com/635ad1b3d188c10deb1ebcba/63bd4a1cb0d2bef3cbf36bcc_IEX%20DEEP%20Specification%20v1.08.pdf
+Odd-lot aggregation:https://www.sec.gov/rules/sro/iex/2021/34-90933.pdf
+
+Supply results SHA256: 0df3e703a3c6875b33004f79d7bf0e54f39e8bf8316ef399540cedee5b7a8674
+Probe specification SHA256: ed8ce013d96f6ae2aca969a64e4d9b7eb58dfbb9fdd361f7930ef05db92b9f61
+Probe results SHA256: 4809cfb7ed701918d2f25e76a10a4a0f634b599ea5ed73f43c635818a65593be
+Probe independent audit SHA256: 43cf7bf0e4e6fddaa39c5704c770a307100b5c289816e082bdc8eae852854c7d

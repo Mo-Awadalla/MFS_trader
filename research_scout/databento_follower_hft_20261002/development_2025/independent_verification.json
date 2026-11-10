@@ -1,0 +1,22 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-03T01:09:25.760345+00:00",
+  "sessions_verified": 250,
+  "source_rows_verified": 71983330,
+  "trade_groups_verified": 341738,
+  "qualified_groups_verified": 485,
+  "rejected_groups_verified": 341253,
+  "valid_leaders_verified": 239,
+  "follower_checks_verified": 1195,
+  "budgets_verified": 307,
+  "selected_verified": 0,
+  "unknown_symbols_verified": 0,
+  "results_sha256": "c06dd485060fa1f8e171a3ec450773ddb91a0da299a4e305e035b7e94beb955a",
+  "auditor_sha256": "da85a0360825b55331338869f4fe9ae8fcd7eaf00ce23382ca9c2d5453ef86da",
+  "group_auditor_sha256": "4fba867b36a1511de1321b48c7b47af445ded02e089658b98dd8e1110af1d10b",
+  "signal_auditor_sha256": "9e62fafd600ec228024d42116ccc8192ac6071671fb5ba3e72043313bfbd8265",
+  "scope": "Independent enumeration of every accepted and rejected 2025 SPY trade group, source clocks and flags, common-clock leader/follower quotes, integer-rational projected prices, Decimal costs, ranking and source unknowns. Shared Databento SDK decoder. No future returns or actual executions.",
+  "returns_calculated": false,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false
+}

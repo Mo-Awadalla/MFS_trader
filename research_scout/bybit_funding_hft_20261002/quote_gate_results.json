@@ -1,0 +1,87 @@
+{
+  "events": [
+    {
+      "date": "2024-03-01",
+      "hour": 16,
+      "symbol": "AXLUSDT",
+      "decision_ns": 1709308789750000000,
+      "settlement_ns": 1709308800000000000,
+      "eligible": false,
+      "reason": "insufficient_displayed_size",
+      "binance_quote_source_index": 1074,
+      "bybit_quote_source_index": 546,
+      "binance_bid": 2.02,
+      "binance_ask": 2.0204,
+      "bybit_bid": 2.0301,
+      "bybit_ask": 2.0317,
+      "quoted_funding_per_unit": 0.0070588443389444,
+      "spread_cost_per_unit": 0.002,
+      "fees_and_adverse_per_unit": 0.00567154,
+      "payment_budget_after_spread_per_unit": -0.0006126956610556,
+      "payment_budget_bps": -3.0186513329831994,
+      "conditional_quantity": 0,
+      "size_ok": false,
+      "diagnostics": {
+        "binance": {
+          "date": "2024-03-01",
+          "native_messages": 1198,
+          "symbols": {
+            "AXLUSDT": {
+              "bookTicker": 1198
+            }
+          }
+        },
+        "bybit": {
+          "date": "2024-03-01",
+          "native_messages": 721,
+          "incomplete_depth_one": 3,
+          "matching_clock_present": 721,
+          "complete_depth_one": 718
+        }
+      }
+    },
+    {
+      "date": "2024-05-01",
+      "hour": 8,
+      "symbol": "STEEMUSDT",
+      "decision_ns": 1714550389750000000,
+      "settlement_ns": 1714550400000000000,
+      "eligible": false,
+      "reason": "insufficient_displayed_size",
+      "binance_quote_source_index": 1045,
+      "bybit_quote_source_index": 629,
+      "binance_bid": 0.26178,
+      "binance_ask": 0.26184,
+      "bybit_bid": 0.2618,
+      "bybit_ask": 0.2619,
+      "quoted_funding_per_unit": 0.0007666390933915,
+      "spread_cost_per_unit": 0.00016,
+      "fees_and_adverse_per_unit": 0.000733124,
+      "payment_budget_after_spread_per_unit": -0.0001264849066085,
+      "payment_budget_bps": -4.827668191164122,
+      "conditional_quantity": 10,
+      "size_ok": false,
+      "diagnostics": {
+        "binance": {
+          "date": "2024-05-01",
+          "native_messages": 1231,
+          "symbols": {
+            "STEEMUSDT": {
+              "bookTicker": 1231
+            }
+          }
+        },
+        "bybit": {
+          "date": "2024-05-01",
+          "native_messages": 715,
+          "incomplete_depth_one": 1,
+          "matching_clock_present": 715,
+          "complete_depth_one": 714
+        }
+      }
+    }
+  ],
+  "eligible_events": 0,
+  "strategy_pnl_tested": false,
+  "reliable_edge_established": false
+}

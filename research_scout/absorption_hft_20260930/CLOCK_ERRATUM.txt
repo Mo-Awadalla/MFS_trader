@@ -1,0 +1,15 @@
+BINANCE HISTORICAL QUOTE CLOCK ERRATUM
+
+Verified scope: every20,527 requested execution target in the BTC/SOL Jul-Dec2024 absorption study.
+The normalized book_snapshot_5 timestamp matched the exact native E publication/event field.
+Native T transaction time was separately recovered. E-T was nonnegative, median2ms and maximum133ms
+in the selected source snapshots.20,527 states matched native E; this does not mean T always differed.
+1,470 requested targets had at least one changed admissible book state after the native-T correction.
+
+Earlier Binance execution studies that used the same normalized timestamp are publication-clock proxies,
+not audited transaction-time fills. Their original outcomes remain preserved for reproducibility.
+No earlier result had established a reliable edge; this erratum does not promote or validate those results.
+The new correction applies to absorption execution only. It does not automatically establish semantics
+for every historic export, Bybit timestamps, equity component clocks, trade fields or live matching-engine priority.
+The normalized capture clocks still define the frozen causal signals; signal thresholds were not changed.
+Corrected experiment and full audit: C:\Hazem\quant_project\untitled_project\research_scout\absorption_hft_20260930\native_transaction_clock\REPORT.txt

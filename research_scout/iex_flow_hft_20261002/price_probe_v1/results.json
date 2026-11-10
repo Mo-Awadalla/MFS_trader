@@ -1,0 +1,4186 @@
+{
+  "created_at_utc": "2026-10-03T00:08:31.461376+00:00",
+  "selected_events": 2,
+  "newly_replayed_events": 1,
+  "reused_audited_events": 1,
+  "fresh_source_messages_checked": 1489879,
+  "calendar_case_rows": [
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "base",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1673447461050000000,
+        "entry_cancel_arrival": 1673447466000000000,
+        "entry_cancel_ack": 1673447467000000000,
+        "target_arrival": 1673447468050000000,
+        "target_cancel_arrival": 1673447476000000000,
+        "target_cancel_ack": 1673447477000000000,
+        "forced_arrival": 1673447478050000000
+      },
+      "intended_quantity": 410,
+      "orders": [
+        {
+          "side": "buy",
+          "quantity": 410,
+          "price": 187500,
+          "role": "entry"
+        },
+        {
+          "side": "sell",
+          "quantity": 410,
+          "price": 186800,
+          "role": "forced"
+        }
+      ],
+      "net_usd": "-34.632454",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 410,
+      "entry_allocations": [
+        {
+          "quantity": 410,
+          "trade": {
+            "type": "T",
+            "flags": 128,
+            "event_ns": 1673447465785203897,
+            "symbol": "TQQQ",
+            "size": 1400,
+            "price": 187400,
+            "trade_id": 63404498,
+            "capture_ns": 1673447465785249000,
+            "send_ns": 1673447465785237731,
+            "sequence": 1196476
+          }
+        }
+      ],
+      "target_quantity": 0,
+      "target_allocations": [],
+      "forced_reference_quote": {
+        "type": "Q",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 186800,
+        "ask_price": 187000,
+        "bid_size": 4300,
+        "ask_size": 1675,
+        "event_ns": 1673447478049792741,
+        "capture_ns": 1673447478049861000,
+        "send_ns": 1673447478049849192,
+        "sequence": 1325047,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1673447478049792741,
+          "symbol": "TQQQ",
+          "size": 0,
+          "price": 186900,
+          "capture_ns": 1673447478049861000,
+          "send_ns": 1673447478049849192,
+          "sequence": 1325047
+        },
+        "derived_from": "DEEP displayed levels after atomic completion",
+        "bid_levels": [
+          [
+            186800,
+            4300
+          ],
+          [
+            186700,
+            100
+          ],
+          [
+            186600,
+            100
+          ],
+          [
+            186500,
+            100
+          ],
+          [
+            186400,
+            100
+          ],
+          [
+            186300,
+            100
+          ],
+          [
+            183400,
+            100
+          ],
+          [
+            160000,
+            100
+          ],
+          [
+            149500,
+            100
+          ]
+        ],
+        "ask_levels": [
+          [
+            187000,
+            1675
+          ],
+          [
+            187100,
+            4100
+          ],
+          [
+            187200,
+            4100
+          ],
+          [
+            187300,
+            4300
+          ],
+          [
+            187400,
+            300
+          ],
+          [
+            187500,
+            300
+          ],
+          [
+            187600,
+            300
+          ],
+          [
+            187700,
+            300
+          ],
+          [
+            187800,
+            300
+          ],
+          [
+            187900,
+            200
+          ],
+          [
+            190000,
+            5
+          ],
+          [
+            191100,
+            100
+          ],
+          [
+            224200,
+            100
+          ],
+          [
+            349900,
+            100
+          ]
+        ]
+      },
+      "gross_usd": "-28.7",
+      "commission_usd": "4.100",
+      "adverse_usd": "1.53463",
+      "sell_levy_usd": "0.297824",
+      "outcome": "conditional_priced",
+      "forced_quantity": 410,
+      "exposure_ns": 12264796103
+    },
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1673447461050000000,
+        "entry_cancel_arrival": 1673447466000000000,
+        "entry_cancel_ack": 1673447467000000000,
+        "target_arrival": 1673447468050000000,
+        "target_cancel_arrival": 1673447476000000000,
+        "target_cancel_ack": 1673447477000000000,
+        "forced_arrival": 1673447478050000000
+      },
+      "intended_quantity": 410,
+      "orders": [
+        {
+          "side": "buy",
+          "quantity": 410,
+          "price": 187500,
+          "role": "entry"
+        },
+        {
+          "side": "sell",
+          "quantity": 410,
+          "price": 186800,
+          "role": "forced"
+        }
+      ],
+      "net_usd": "-39.030278",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 410,
+      "entry_allocations": [
+        {
+          "quantity": 410,
+          "trade": {
+            "type": "T",
+            "flags": 128,
+            "event_ns": 1673447465785203897,
+            "symbol": "TQQQ",
+            "size": 1400,
+            "price": 187400,
+            "trade_id": 63404498,
+            "capture_ns": 1673447465785249000,
+            "send_ns": 1673447465785237731,
+            "sequence": 1196476
+          }
+        }
+      ],
+      "target_quantity": 0,
+      "target_allocations": [],
+      "forced_reference_quote": {
+        "type": "Q",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 186800,
+        "ask_price": 187000,
+        "bid_size": 4300,
+        "ask_size": 1675,
+        "event_ns": 1673447478049792741,
+        "capture_ns": 1673447478049861000,
+        "send_ns": 1673447478049849192,
+        "sequence": 1325047,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1673447478049792741,
+          "symbol": "TQQQ",
+          "size": 0,
+          "price": 186900,
+          "capture_ns": 1673447478049861000,
+          "send_ns": 1673447478049849192,
+          "sequence": 1325047
+        },
+        "derived_from": "DEEP displayed levels after atomic completion",
+        "bid_levels": [
+          [
+            186800,
+            4300
+          ],
+          [
+            186700,
+            100
+          ],
+          [
+            186600,
+            100
+          ],
+          [
+            186500,
+            100
+          ],
+          [
+            186400,
+            100
+          ],
+          [
+            186300,
+            100
+          ],
+          [
+            183400,
+            100
+          ],
+          [
+            160000,
+            100
+          ],
+          [
+            149500,
+            100
+          ]
+        ],
+        "ask_levels": [
+          [
+            187000,
+            1675
+          ],
+          [
+            187100,
+            4100
+          ],
+          [
+            187200,
+            4100
+          ],
+          [
+            187300,
+            4300
+          ],
+          [
+            187400,
+            300
+          ],
+          [
+            187500,
+            300
+          ],
+          [
+            187600,
+            300
+          ],
+          [
+            187700,
+            300
+          ],
+          [
+            187800,
+            300
+          ],
+          [
+            187900,
+            200
+          ],
+          [
+            190000,
+            5
+          ],
+          [
+            191100,
+            100
+          ],
+          [
+            224200,
+            100
+          ],
+          [
+            349900,
+            100
+          ]
+        ]
+      },
+      "gross_usd": "-28.7",
+      "commission_usd": "8.200",
+      "adverse_usd": "1.53463",
+      "sell_levy_usd": "0.595648",
+      "outcome": "conditional_priced",
+      "forced_quantity": 410,
+      "exposure_ns": 12264796103
+    },
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1673447461050000000,
+        "entry_cancel_arrival": 1673447466000000000,
+        "entry_cancel_ack": 1673447467000000000,
+        "target_arrival": 1673447468050000000,
+        "target_cancel_arrival": 1673447476000000000,
+        "target_cancel_ack": 1673447477000000000,
+        "forced_arrival": 1673447478050000000
+      },
+      "intended_quantity": 410,
+      "orders": [
+        {
+          "side": "buy",
+          "quantity": 410,
+          "price": 187500,
+          "role": "entry"
+        },
+        {
+          "side": "sell",
+          "quantity": 410,
+          "price": 186800,
+          "role": "forced"
+        }
+      ],
+      "net_usd": "-36.167084",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 410,
+      "entry_allocations": [
+        {
+          "quantity": 410,
+          "trade": {
+            "type": "T",
+            "flags": 128,
+            "event_ns": 1673447465785203897,
+            "symbol": "TQQQ",
+            "size": 1400,
+            "price": 187400,
+            "trade_id": 63404498,
+            "capture_ns": 1673447465785249000,
+            "send_ns": 1673447465785237731,
+            "sequence": 1196476
+          }
+        }
+      ],
+      "target_quantity": 0,
+      "target_allocations": [],
+      "forced_reference_quote": {
+        "type": "Q",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 186800,
+        "ask_price": 187000,
+        "bid_size": 4300,
+        "ask_size": 1675,
+        "event_ns": 1673447478049792741,
+        "capture_ns": 1673447478049861000,
+        "send_ns": 1673447478049849192,
+        "sequence": 1325047,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1673447478049792741,
+          "symbol": "TQQQ",
+          "size": 0,
+          "price": 186900,
+          "capture_ns": 1673447478049861000,
+          "send_ns": 1673447478049849192,
+          "sequence": 1325047
+        },
+        "derived_from": "DEEP displayed levels after atomic completion",
+        "bid_levels": [
+          [
+            186800,
+            4300
+          ],
+          [
+            186700,
+            100
+          ],
+          [
+            186600,
+            100
+          ],
+          [
+            186500,
+            100
+          ],
+          [
+            186400,
+            100
+          ],
+          [
+            186300,
+            100
+          ],
+          [
+            183400,
+            100
+          ],
+          [
+            160000,
+            100
+          ],
+          [
+            149500,
+            100
+          ]
+        ],
+        "ask_levels": [
+          [
+            187000,
+            1675
+          ],
+          [
+            187100,
+            4100
+          ],
+          [
+            187200,
+            4100
+          ],
+          [
+            187300,
+            4300
+          ],
+          [
+            187400,
+            300
+          ],
+          [
+            187500,
+            300
+          ],
+          [
+            187600,
+            300
+          ],
+          [
+            187700,
+            300
+          ],
+          [
+            187800,
+            300
+          ],
+          [
+            187900,
+            200
+          ],
+          [
+            190000,
+            5
+          ],
+          [
+            191100,
+            100
+          ],
+          [
+            224200,
+            100
+          ],
+          [
+            349900,
+            100
+          ]
+        ]
+      },
+      "gross_usd": "-28.7",
+      "commission_usd": "4.100",
+      "adverse_usd": "3.06926",
+      "sell_levy_usd": "0.297824",
+      "outcome": "conditional_priced",
+      "forced_quantity": 410,
+      "exposure_ns": 12264796103
+    },
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1673447460300000000,
+        "entry_cancel_arrival": 1673447465250000000,
+        "entry_cancel_ack": 1673447465500000000,
+        "target_arrival": 1673447465800000000,
+        "target_cancel_arrival": 1673447475250000000,
+        "target_cancel_ack": 1673447475500000000,
+        "forced_arrival": 1673447475800000000
+      },
+      "intended_quantity": 410,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1673447463050000000,
+        "entry_cancel_arrival": 1673447468000000000,
+        "entry_cancel_ack": 1673447471000000000,
+        "target_arrival": 1673447474050000000,
+        "target_cancel_arrival": 1673447478000000000,
+        "target_cancel_ack": 1673447481000000000,
+        "forced_arrival": 1673447484050000000
+      },
+      "intended_quantity": 410,
+      "orders": [
+        {
+          "side": "buy",
+          "quantity": 410,
+          "price": 187500,
+          "role": "entry"
+        },
+        {
+          "side": "sell",
+          "quantity": 410,
+          "price": 186600,
+          "role": "forced"
+        }
+      ],
+      "net_usd": "-42.831388",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 410,
+      "entry_allocations": [
+        {
+          "quantity": 410,
+          "trade": {
+            "type": "T",
+            "flags": 128,
+            "event_ns": 1673447465785203897,
+            "symbol": "TQQQ",
+            "size": 1400,
+            "price": 187400,
+            "trade_id": 63404498,
+            "capture_ns": 1673447465785249000,
+            "send_ns": 1673447465785237731,
+            "sequence": 1196476
+          }
+        }
+      ],
+      "target_quantity": 0,
+      "target_allocations": [],
+      "forced_reference_quote": {
+        "type": "Q",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 186600,
+        "ask_price": 186700,
+        "bid_size": 2300,
+        "ask_size": 4175,
+        "event_ns": 1673447484048007652,
+        "capture_ns": 1673447484048041000,
+        "send_ns": 1673447484048028077,
+        "sequence": 1384806,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1673447484048007652,
+          "symbol": "TQQQ",
+          "size": 4175,
+          "price": 186700,
+          "capture_ns": 1673447484048041000,
+          "send_ns": 1673447484048028077,
+          "sequence": 1384806
+        },
+        "derived_from": "DEEP displayed levels after atomic completion",
+        "bid_levels": [
+          [
+            186600,
+            2300
+          ],
+          [
+            186500,
+            4100
+          ],
+          [
+            186400,
+            100
+          ],
+          [
+            186300,
+            100
+          ],
+          [
+            186200,
+            100
+          ],
+          [
+            186100,
+            100
+          ],
+          [
+            183400,
+            100
+          ],
+          [
+            160000,
+            100
+          ],
+          [
+            149500,
+            100
+          ]
+        ],
+        "ask_levels": [
+          [
+            186700,
+            4175
+          ],
+          [
+            186800,
+            4100
+          ],
+          [
+            186900,
+            4100
+          ],
+          [
+            187000,
+            4100
+          ],
+          [
+            187100,
+            100
+          ],
+          [
+            187200,
+            100
+          ],
+          [
+            187300,
+            300
+          ],
+          [
+            187400,
+            300
+          ],
+          [
+            187500,
+            300
+          ],
+          [
+            187600,
+            200
+          ],
+          [
+            190000,
+            5
+          ],
+          [
+            191100,
+            100
+          ],
+          [
+            224200,
+            100
+          ],
+          [
+            349900,
+            100
+          ]
+        ]
+      },
+      "gross_usd": "-36.9",
+      "commission_usd": "4.100",
+      "adverse_usd": "1.53381",
+      "sell_levy_usd": "0.297578",
+      "outcome": "conditional_priced",
+      "forced_quantity": 410,
+      "exposure_ns": 18264796103
+    },
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1673447461050000000,
+        "entry_cancel_arrival": 1673447466000000000,
+        "entry_cancel_ack": 1673447467000000000,
+        "target_arrival": 1673447468050000000,
+        "target_cancel_arrival": 1673447476000000000,
+        "target_cancel_ack": 1673447477000000000,
+        "forced_arrival": 1673447478050000000
+      },
+      "intended_quantity": 410,
+      "orders": [
+        {
+          "side": "buy",
+          "quantity": 410,
+          "price": 187500,
+          "role": "entry"
+        },
+        {
+          "side": "sell",
+          "quantity": 410,
+          "price": 186800,
+          "role": "forced"
+        }
+      ],
+      "net_usd": "-34.632454",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 410,
+      "entry_allocations": [
+        {
+          "quantity": 410,
+          "trade": {
+            "type": "T",
+            "flags": 128,
+            "event_ns": 1673447465785203897,
+            "symbol": "TQQQ",
+            "size": 1400,
+            "price": 187400,
+            "trade_id": 63404498,
+            "capture_ns": 1673447465785249000,
+            "send_ns": 1673447465785237731,
+            "sequence": 1196476
+          }
+        }
+      ],
+      "target_quantity": 0,
+      "target_allocations": [],
+      "forced_reference_quote": {
+        "type": "Q",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 186800,
+        "ask_price": 187000,
+        "bid_size": 4300,
+        "ask_size": 1675,
+        "event_ns": 1673447478049792741,
+        "capture_ns": 1673447478049861000,
+        "send_ns": 1673447478049849192,
+        "sequence": 1325047,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1673447478049792741,
+          "symbol": "TQQQ",
+          "size": 0,
+          "price": 186900,
+          "capture_ns": 1673447478049861000,
+          "send_ns": 1673447478049849192,
+          "sequence": 1325047
+        },
+        "derived_from": "DEEP displayed levels after atomic completion",
+        "bid_levels": [
+          [
+            186800,
+            4300
+          ],
+          [
+            186700,
+            100
+          ],
+          [
+            186600,
+            100
+          ],
+          [
+            186500,
+            100
+          ],
+          [
+            186400,
+            100
+          ],
+          [
+            186300,
+            100
+          ],
+          [
+            183400,
+            100
+          ],
+          [
+            160000,
+            100
+          ],
+          [
+            149500,
+            100
+          ]
+        ],
+        "ask_levels": [
+          [
+            187000,
+            1675
+          ],
+          [
+            187100,
+            4100
+          ],
+          [
+            187200,
+            4100
+          ],
+          [
+            187300,
+            4300
+          ],
+          [
+            187400,
+            300
+          ],
+          [
+            187500,
+            300
+          ],
+          [
+            187600,
+            300
+          ],
+          [
+            187700,
+            300
+          ],
+          [
+            187800,
+            300
+          ],
+          [
+            187900,
+            200
+          ],
+          [
+            190000,
+            5
+          ],
+          [
+            191100,
+            100
+          ],
+          [
+            224200,
+            100
+          ],
+          [
+            349900,
+            100
+          ]
+        ]
+      },
+      "gross_usd": "-28.7",
+      "commission_usd": "4.100",
+      "adverse_usd": "1.53463",
+      "sell_levy_usd": "0.297824",
+      "outcome": "conditional_priced",
+      "forced_quantity": 410,
+      "exposure_ns": 12264796103
+    },
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1673447461050000000,
+        "entry_cancel_arrival": 1673447466000000000,
+        "entry_cancel_ack": 1673447467000000000,
+        "target_arrival": 1673447468050000000,
+        "target_cancel_arrival": 1673447476000000000,
+        "target_cancel_ack": 1673447477000000000,
+        "forced_arrival": 1673447478050000000
+      },
+      "intended_quantity": 410,
+      "orders": [
+        {
+          "side": "buy",
+          "quantity": 410,
+          "price": 187500,
+          "role": "entry"
+        },
+        {
+          "side": "sell",
+          "quantity": 410,
+          "price": 186800,
+          "role": "forced"
+        }
+      ],
+      "net_usd": "-39.030278",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 410,
+      "entry_allocations": [
+        {
+          "quantity": 410,
+          "trade": {
+            "type": "T",
+            "flags": 128,
+            "event_ns": 1673447465785203897,
+            "symbol": "TQQQ",
+            "size": 1400,
+            "price": 187400,
+            "trade_id": 63404498,
+            "capture_ns": 1673447465785249000,
+            "send_ns": 1673447465785237731,
+            "sequence": 1196476
+          }
+        }
+      ],
+      "target_quantity": 0,
+      "target_allocations": [],
+      "forced_reference_quote": {
+        "type": "Q",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 186800,
+        "ask_price": 187000,
+        "bid_size": 4300,
+        "ask_size": 1675,
+        "event_ns": 1673447478049792741,
+        "capture_ns": 1673447478049861000,
+        "send_ns": 1673447478049849192,
+        "sequence": 1325047,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1673447478049792741,
+          "symbol": "TQQQ",
+          "size": 0,
+          "price": 186900,
+          "capture_ns": 1673447478049861000,
+          "send_ns": 1673447478049849192,
+          "sequence": 1325047
+        },
+        "derived_from": "DEEP displayed levels after atomic completion",
+        "bid_levels": [
+          [
+            186800,
+            4300
+          ],
+          [
+            186700,
+            100
+          ],
+          [
+            186600,
+            100
+          ],
+          [
+            186500,
+            100
+          ],
+          [
+            186400,
+            100
+          ],
+          [
+            186300,
+            100
+          ],
+          [
+            183400,
+            100
+          ],
+          [
+            160000,
+            100
+          ],
+          [
+            149500,
+            100
+          ]
+        ],
+        "ask_levels": [
+          [
+            187000,
+            1675
+          ],
+          [
+            187100,
+            4100
+          ],
+          [
+            187200,
+            4100
+          ],
+          [
+            187300,
+            4300
+          ],
+          [
+            187400,
+            300
+          ],
+          [
+            187500,
+            300
+          ],
+          [
+            187600,
+            300
+          ],
+          [
+            187700,
+            300
+          ],
+          [
+            187800,
+            300
+          ],
+          [
+            187900,
+            200
+          ],
+          [
+            190000,
+            5
+          ],
+          [
+            191100,
+            100
+          ],
+          [
+            224200,
+            100
+          ],
+          [
+            349900,
+            100
+          ]
+        ]
+      },
+      "gross_usd": "-28.7",
+      "commission_usd": "8.200",
+      "adverse_usd": "1.53463",
+      "sell_levy_usd": "0.595648",
+      "outcome": "conditional_priced",
+      "forced_quantity": 410,
+      "exposure_ns": 12264796103
+    },
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1673447461050000000,
+        "entry_cancel_arrival": 1673447466000000000,
+        "entry_cancel_ack": 1673447467000000000,
+        "target_arrival": 1673447468050000000,
+        "target_cancel_arrival": 1673447476000000000,
+        "target_cancel_ack": 1673447477000000000,
+        "forced_arrival": 1673447478050000000
+      },
+      "intended_quantity": 410,
+      "orders": [
+        {
+          "side": "buy",
+          "quantity": 410,
+          "price": 187500,
+          "role": "entry"
+        },
+        {
+          "side": "sell",
+          "quantity": 410,
+          "price": 186800,
+          "role": "forced"
+        }
+      ],
+      "net_usd": "-36.167084",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 410,
+      "entry_allocations": [
+        {
+          "quantity": 410,
+          "trade": {
+            "type": "T",
+            "flags": 128,
+            "event_ns": 1673447465785203897,
+            "symbol": "TQQQ",
+            "size": 1400,
+            "price": 187400,
+            "trade_id": 63404498,
+            "capture_ns": 1673447465785249000,
+            "send_ns": 1673447465785237731,
+            "sequence": 1196476
+          }
+        }
+      ],
+      "target_quantity": 0,
+      "target_allocations": [],
+      "forced_reference_quote": {
+        "type": "Q",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 186800,
+        "ask_price": 187000,
+        "bid_size": 4300,
+        "ask_size": 1675,
+        "event_ns": 1673447478049792741,
+        "capture_ns": 1673447478049861000,
+        "send_ns": 1673447478049849192,
+        "sequence": 1325047,
+        "native_final_update": {
+          "type": "8",
+          "flags": 1,
+          "event_ns": 1673447478049792741,
+          "symbol": "TQQQ",
+          "size": 0,
+          "price": 186900,
+          "capture_ns": 1673447478049861000,
+          "send_ns": 1673447478049849192,
+          "sequence": 1325047
+        },
+        "derived_from": "DEEP displayed levels after atomic completion",
+        "bid_levels": [
+          [
+            186800,
+            4300
+          ],
+          [
+            186700,
+            100
+          ],
+          [
+            186600,
+            100
+          ],
+          [
+            186500,
+            100
+          ],
+          [
+            186400,
+            100
+          ],
+          [
+            186300,
+            100
+          ],
+          [
+            183400,
+            100
+          ],
+          [
+            160000,
+            100
+          ],
+          [
+            149500,
+            100
+          ]
+        ],
+        "ask_levels": [
+          [
+            187000,
+            1675
+          ],
+          [
+            187100,
+            4100
+          ],
+          [
+            187200,
+            4100
+          ],
+          [
+            187300,
+            4300
+          ],
+          [
+            187400,
+            300
+          ],
+          [
+            187500,
+            300
+          ],
+          [
+            187600,
+            300
+          ],
+          [
+            187700,
+            300
+          ],
+          [
+            187800,
+            300
+          ],
+          [
+            187900,
+            200
+          ],
+          [
+            190000,
+            5
+          ],
+          [
+            191100,
+            100
+          ],
+          [
+            224200,
+            100
+          ],
+          [
+            349900,
+            100
+          ]
+        ]
+      },
+      "gross_usd": "-28.7",
+      "commission_usd": "4.100",
+      "adverse_usd": "3.06926",
+      "sell_levy_usd": "0.297824",
+      "outcome": "conditional_priced",
+      "forced_quantity": 410,
+      "exposure_ns": 12264796103
+    },
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1673447460300000000,
+        "entry_cancel_arrival": 1673447465250000000,
+        "entry_cancel_ack": 1673447465500000000,
+        "target_arrival": 1673447465800000000,
+        "target_cancel_arrival": 1673447475250000000,
+        "target_cancel_ack": 1673447475500000000,
+        "forced_arrival": 1673447475800000000
+      },
+      "intended_quantity": 410,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-01-11",
+      "symbol": "TQQQ",
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1673447463050000000,
+        "entry_cancel_arrival": 1673447468000000000,
+        "entry_cancel_ack": 1673447471000000000,
+        "target_arrival": 1673447474050000000,
+        "target_cancel_arrival": 1673447478000000000,
+        "target_cancel_ack": 1673447481000000000,
+        "forced_arrival": 1673447484050000000
+      },
+      "intended_quantity": 410,
+      "orders": [
+        {
+          "side": "buy",
+          "quantity": 410,
+          "price": 187500,
+          "role": "entry"
+        },
+        {
+          "side": "sell",
+          "quantity": 410,
+          "price": 186600,
+          "role": "forced"
+        }
+      ],
+      "net_usd": "-42.831388",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 410,
+      "entry_allocations": [
+        {
+          "quantity": 410,
+          "trade": {
+            "type": "T",
+            "flags": 128,
+            "event_ns": 1673447465785203897,
+            "symbol": "TQQQ",
+            "size": 1400,
+            "price": 187400,
+            "trade_id": 63404498,
+            "capture_ns": 1673447465785249000,
+            "send_ns": 1673447465785237731,
+            "sequence": 1196476
+          }
+        }
+      ],
+      "target_quantity": 0,
+      "target_allocations": [],
+      "forced_reference_quote": {
+        "type": "Q",
+        "flags": 0,
+        "symbol": "TQQQ",
+        "bid_price": 186600,
+        "ask_price": 186700,
+        "bid_size": 2300,
+        "ask_size": 4175,
+        "event_ns": 1673447484048007652,
+        "capture_ns": 1673447484048041000,
+        "send_ns": 1673447484048028077,
+        "sequence": 1384806,
+        "native_final_update": {
+          "type": "5",
+          "flags": 1,
+          "event_ns": 1673447484048007652,
+          "symbol": "TQQQ",
+          "size": 4175,
+          "price": 186700,
+          "capture_ns": 1673447484048041000,
+          "send_ns": 1673447484048028077,
+          "sequence": 1384806
+        },
+        "derived_from": "DEEP displayed levels after atomic completion",
+        "bid_levels": [
+          [
+            186600,
+            2300
+          ],
+          [
+            186500,
+            4100
+          ],
+          [
+            186400,
+            100
+          ],
+          [
+            186300,
+            100
+          ],
+          [
+            186200,
+            100
+          ],
+          [
+            186100,
+            100
+          ],
+          [
+            183400,
+            100
+          ],
+          [
+            160000,
+            100
+          ],
+          [
+            149500,
+            100
+          ]
+        ],
+        "ask_levels": [
+          [
+            186700,
+            4175
+          ],
+          [
+            186800,
+            4100
+          ],
+          [
+            186900,
+            4100
+          ],
+          [
+            187000,
+            4100
+          ],
+          [
+            187100,
+            100
+          ],
+          [
+            187200,
+            100
+          ],
+          [
+            187300,
+            300
+          ],
+          [
+            187400,
+            300
+          ],
+          [
+            187500,
+            300
+          ],
+          [
+            187600,
+            200
+          ],
+          [
+            190000,
+            5
+          ],
+          [
+            191100,
+            100
+          ],
+          [
+            224200,
+            100
+          ],
+          [
+            349900,
+            100
+          ]
+        ]
+      },
+      "gross_usd": "-36.9",
+      "commission_usd": "4.100",
+      "adverse_usd": "1.53381",
+      "sell_levy_usd": "0.297578",
+      "outcome": "conditional_priced",
+      "forced_quantity": 410,
+      "exposure_ns": 18264796103
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-01-25",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-08",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-02-22",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-08",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-03-29",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-12",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-04-26",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-10",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-05-31",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-14",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-06-28",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-12",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-07-26",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "base",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1691587861050000000,
+        "entry_cancel_arrival": 1691587866000000000,
+        "entry_cancel_ack": 1691587867000000000,
+        "target_arrival": 1691587868050000000,
+        "target_cancel_arrival": 1691587876000000000,
+        "target_cancel_ack": 1691587877000000000,
+        "forced_arrival": 1691587878050000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1691587861050000000,
+        "entry_cancel_arrival": 1691587866000000000,
+        "entry_cancel_ack": 1691587867000000000,
+        "target_arrival": 1691587868050000000,
+        "target_cancel_arrival": 1691587876000000000,
+        "target_cancel_ack": 1691587877000000000,
+        "forced_arrival": 1691587878050000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1691587861050000000,
+        "entry_cancel_arrival": 1691587866000000000,
+        "entry_cancel_ack": 1691587867000000000,
+        "target_arrival": 1691587868050000000,
+        "target_cancel_arrival": 1691587876000000000,
+        "target_cancel_ack": 1691587877000000000,
+        "forced_arrival": 1691587878050000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1691587860300000000,
+        "entry_cancel_arrival": 1691587865250000000,
+        "entry_cancel_ack": 1691587865500000000,
+        "target_arrival": 1691587865800000000,
+        "target_cancel_arrival": 1691587875250000000,
+        "target_cancel_ack": 1691587875500000000,
+        "forced_arrival": 1691587875800000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "times_ns": {
+        "entry_arrival": 1691587863050000000,
+        "entry_cancel_arrival": 1691587868000000000,
+        "entry_cancel_ack": 1691587871000000000,
+        "target_arrival": 1691587874050000000,
+        "target_cancel_arrival": 1691587878000000000,
+        "target_cancel_ack": 1691587881000000000,
+        "forced_arrival": 1691587884050000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1691587861050000000,
+        "entry_cancel_arrival": 1691587866000000000,
+        "entry_cancel_ack": 1691587867000000000,
+        "target_arrival": 1691587868050000000,
+        "target_cancel_arrival": 1691587876000000000,
+        "target_cancel_ack": 1691587877000000000,
+        "forced_arrival": 1691587878050000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1691587861050000000,
+        "entry_cancel_arrival": 1691587866000000000,
+        "entry_cancel_ack": 1691587867000000000,
+        "target_arrival": 1691587868050000000,
+        "target_cancel_arrival": 1691587876000000000,
+        "target_cancel_ack": 1691587877000000000,
+        "forced_arrival": 1691587878050000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1691587861050000000,
+        "entry_cancel_arrival": 1691587866000000000,
+        "entry_cancel_ack": 1691587867000000000,
+        "target_arrival": 1691587868050000000,
+        "target_cancel_arrival": 1691587876000000000,
+        "target_cancel_ack": 1691587877000000000,
+        "forced_arrival": 1691587878050000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1691587860300000000,
+        "entry_cancel_arrival": 1691587865250000000,
+        "entry_cancel_ack": 1691587865500000000,
+        "target_arrival": 1691587865800000000,
+        "target_cancel_arrival": 1691587875250000000,
+        "target_cancel_ack": 1691587875500000000,
+        "forced_arrival": 1691587875800000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-09",
+      "symbol": "RBLX",
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "times_ns": {
+        "entry_arrival": 1691587863050000000,
+        "entry_cancel_arrival": 1691587868000000000,
+        "entry_cancel_ack": 1691587871000000000,
+        "target_arrival": 1691587874050000000,
+        "target_cancel_arrival": 1691587878000000000,
+        "target_cancel_ack": 1691587881000000000,
+        "forced_arrival": 1691587884050000000
+      },
+      "intended_quantity": 20,
+      "orders": [],
+      "net_usd": "0",
+      "actual_execution_verified": false,
+      "classification_is_conditional_on_proxy": true,
+      "bought_quantity": 0,
+      "entry_allocations": [],
+      "outcome": "conditional_no_entry"
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-08-30",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-13",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-09-27",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-11",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-10-25",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-08",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-11-29",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "unknown_source_before_signal",
+      "net_usd": null,
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-13",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "touch",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "base",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "fees_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "adverse_2x",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "latency_250ms",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    },
+    {
+      "date": "2023-12-27",
+      "symbol": null,
+      "case": "latency_3s",
+      "fill_model": "strict_trade_through",
+      "outcome": "conditional_no_selected_signal",
+      "net_usd": "0",
+      "actual_execution_verified": false
+    }
+  ],
+  "scenario_results": [
+    {
+      "fill_model": "touch",
+      "case": "base",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_selected_signal": 21,
+        "conditional_no_entry": 1,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-34.632454",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "-34.632454",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "touch",
+      "case": "fees_2x",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_selected_signal": 21,
+        "conditional_no_entry": 1,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-39.030278",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "-39.030278",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "touch",
+      "case": "adverse_2x",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_selected_signal": 21,
+        "conditional_no_entry": 1,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-36.167084",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "-36.167084",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "touch",
+      "case": "latency_250ms",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_no_entry": 2,
+        "conditional_no_selected_signal": 21,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 0,
+      "positive_events": 0,
+      "negative_events": 0,
+      "known_component_usd": "0",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 0,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "touch",
+      "case": "latency_3s",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_selected_signal": 21,
+        "conditional_no_entry": 1,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-42.831388",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "-42.831388",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 18264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "base",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_selected_signal": 21,
+        "conditional_no_entry": 1,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-34.632454",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "-34.632454",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "fees_2x",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_selected_signal": 21,
+        "conditional_no_entry": 1,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-39.030278",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "-39.030278",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "adverse_2x",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_selected_signal": 21,
+        "conditional_no_entry": 1,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-36.167084",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "-36.167084",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "latency_250ms",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_no_entry": 2,
+        "conditional_no_selected_signal": 21,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 0,
+      "positive_events": 0,
+      "negative_events": 0,
+      "known_component_usd": "0",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 0,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "latency_3s",
+      "events": 24,
+      "known_events": 23,
+      "unknown_events": 1,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_selected_signal": 21,
+        "conditional_no_entry": 1,
+        "unknown_source_before_signal": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-42.831388",
+      "full_conditional_net_usd": null,
+      "drop_best_three_known_component_usd": "-42.831388",
+      "drop_best_three_full_conditional_net_usd": null,
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 18264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    }
+  ],
+  "observed_selected_cohort_results": [
+    {
+      "fill_model": "touch",
+      "case": "base",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_entry": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-34.632454",
+      "full_conditional_net_usd": "-34.632454",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "touch",
+      "case": "fees_2x",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_entry": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-39.030278",
+      "full_conditional_net_usd": "-39.030278",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "touch",
+      "case": "adverse_2x",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_entry": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-36.167084",
+      "full_conditional_net_usd": "-36.167084",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "touch",
+      "case": "latency_250ms",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_no_entry": 2
+      },
+      "conditionally_priced_entries": 0,
+      "positive_events": 0,
+      "negative_events": 0,
+      "known_component_usd": "0",
+      "full_conditional_net_usd": "0",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 0,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "touch",
+      "case": "latency_3s",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_entry": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-42.831388",
+      "full_conditional_net_usd": "-42.831388",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 18264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "base",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_entry": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-34.632454",
+      "full_conditional_net_usd": "-34.632454",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "fees_2x",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_entry": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-39.030278",
+      "full_conditional_net_usd": "-39.030278",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "adverse_2x",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_entry": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-36.167084",
+      "full_conditional_net_usd": "-36.167084",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 12264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "latency_250ms",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_no_entry": 2
+      },
+      "conditionally_priced_entries": 0,
+      "positive_events": 0,
+      "negative_events": 0,
+      "known_component_usd": "0",
+      "full_conditional_net_usd": "0",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 0,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    },
+    {
+      "fill_model": "strict_trade_through",
+      "case": "latency_3s",
+      "events": 2,
+      "known_events": 2,
+      "unknown_events": 0,
+      "outcomes": {
+        "conditional_priced": 1,
+        "conditional_no_entry": 1
+      },
+      "conditionally_priced_entries": 1,
+      "positive_events": 0,
+      "negative_events": 1,
+      "known_component_usd": "-42.831388",
+      "full_conditional_net_usd": "-42.831388",
+      "drop_best_three_known_component_usd": "0",
+      "drop_best_three_full_conditional_net_usd": "0",
+      "maximum_known_event_usd": "0",
+      "maximum_exposure_ns": 18264796103,
+      "actual_execution_verified": false,
+      "reliable_edge_established": false
+    }
+  ],
+  "unknown_admission_dates": [
+    "2023-11-29"
+  ],
+  "session_hashes": {
+    "2023-01-11": "8b32fb91a632deff0d9d86b6b930d087c155331a6861537f3eb70ca326e5b3b4",
+    "2023-08-09": "628ad3623751c39a6d420504b5d27a371983850a185e6fd16f49e4921dcaf8d8"
+  },
+  "specification_sha256": "606c9c60659a860e01f0ec7f7597b88d50a54f1d9f4668947dcf631790a604ec",
+  "economic_configurations_executed": 1,
+  "economic_implementation_versions": 1,
+  "actual_execution_verified": false,
+  "reliable_edge_established": false,
+  "interpretation": "Selection variant only, conditional price/print assumptions. Reused results are not fresh validation; missing source admission remains unknown."
+}

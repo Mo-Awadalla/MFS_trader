@@ -1,0 +1,80 @@
+{
+  "sessions": 72,
+  "source_hashes_and_pagination_verified": true,
+  "venue_code": "V",
+  "by_symbol": {
+    "IWM": {
+      "dates": 24,
+      "quotes": 5195187,
+      "trades": 21764,
+      "fresh_regular_seconds_fraction": 0.9232681280059194,
+      "spread_quantiles_bps": {
+        "0.1": 1.0818998160775848,
+        "0.5": 1.746470673846668,
+        "0.9": 3.07336113533858,
+        "0.95": 3.7810450818528687,
+        "0.99": 195.14787188125834
+      },
+      "at_most_1bp_fraction_of_usable_seconds": 0.02449316921073392,
+      "at_most_3bp_fraction_of_usable_seconds": 0.8940632865425312,
+      "at_most_5bp_fraction_of_usable_seconds": 0.9784369952040471,
+      "trade_locations": {
+        "trades": 21764,
+        "fresh_quote_matched": 21245,
+        "strictly_inside_displayed_quote": 10935,
+        "outside_prior_displayed_quote": 69
+      }
+    },
+    "QQQ": {
+      "dates": 24,
+      "quotes": 9292897,
+      "trades": 30578,
+      "fresh_regular_seconds_fraction": 0.9918608953015169,
+      "spread_quantiles_bps": {
+        "0.1": 0.5390399698148035,
+        "0.5": 1.0626569081221051,
+        "0.9": 6.001485934922484,
+        "0.95": 54.142432120937,
+        "0.99": 1108.7133304580268
+      },
+      "at_most_1bp_fraction_of_usable_seconds": 0.451230883998508,
+      "at_most_3bp_fraction_of_usable_seconds": 0.8781121782916822,
+      "at_most_5bp_fraction_of_usable_seconds": 0.896971745617307,
+      "trade_locations": {
+        "trades": 30578,
+        "fresh_quote_matched": 30477,
+        "strictly_inside_displayed_quote": 16196,
+        "outside_prior_displayed_quote": 88
+      }
+    },
+    "SPY": {
+      "dates": 24,
+      "quotes": 7624354,
+      "trades": 48536,
+      "fresh_regular_seconds_fraction": 0.9533620051794303,
+      "spread_quantiles_bps": {
+        "0.1": 0.45686195232922117,
+        "0.5": 1.1709053441727897,
+        "0.9": 203.75514093725377,
+        "0.95": 400.6014117886897,
+        "0.99": 845.54126819251
+      },
+      "at_most_1bp_fraction_of_usable_seconds": 0.4357400984695981,
+      "at_most_3bp_fraction_of_usable_seconds": 0.6470616768935995,
+      "at_most_5bp_fraction_of_usable_seconds": 0.6884383109796027,
+      "trade_locations": {
+        "trades": 48536,
+        "fresh_quote_matched": 47449,
+        "strictly_inside_displayed_quote": 26371,
+        "outside_prior_displayed_quote": 82
+      }
+    }
+  },
+  "returns_or_strategies_evaluated": false,
+  "execution_limits": [
+    "IEX quotes are venue-local, not consolidated NBBO.",
+    "Public historical event timestamps do not provide receive latency.",
+    "Displayed L1 and public prints do not establish hidden liquidity, queue priority or actual post-only acceptance.",
+    "Size normalization and broker/venue costs must be explicit before any P&L replay."
+  ]
+}

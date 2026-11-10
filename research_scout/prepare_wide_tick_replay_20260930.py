@@ -1,0 +1,59 @@
+"""Freeze short two-sided quoting schedules before acquiring outcome windows."""
+
+import hashlib
+import json
+from datetime import UTC, datetime
+
+import pandas as pd
+
+from research_scout.prepare_wide_tick_20260930 import OUT
+
+
+def main():
+    path = OUT / "replay_specification.json"
+    if path.exists():
+        raise RuntimeError("Preserve pre-outcome execution specification")
+    selected_path = OUT / "selected.parquet"
+    selected = pd.read_parquet(selected_path)
+    cohorts = [{"date": day, "symbols": sorted(group.symbol.tolist())} for day, group in selected.groupby("date")]
+    spec = {
+        "created_at_utc": datetime.now(UTC).isoformat(),
+        "selected_sha256": hashlib.sha256(selected_path.read_bytes()).hexdigest(),
+        "cohorts": cohorts,
+        "economic_configurations_planned": 2,
+        "economic_implementations_run": 0,
+        "selection_policy": "Original 09:00-09:01 spread/liquidity selection is frozen. All selected dates and symbols stay in the replay, including failures. No symbol-specific tuning or retrospective removal.",
+        "decisions_utc": "Every whole minute 09:02 through 09:29 inclusive; each selected symbol uses the same rule. No other schedules will be chosen using these returns.",
+        "source_delay_ns": 250000000,
+        "outbound_delay_ns": 1000000000,
+        "acknowledgement_delay_ns": 1000000000,
+        "rest_seconds": [10, 22],
+        "decision_rule": "At decision minus 250 ms, use the last strictly earlier received native full book. Require the original positive finite, clock, spread 12-100 bp and both-side 2,000 USDT depth criteria. Post one buy at the observed bid and one sell at the observed ask, both post-only. Never recenter these orders during their scheduled lifetime.",
+        "quantity_rule": "Same quantity on both orders, rounded down to a multiple of ten whole contract units: min(200 USDT / ask, 10 percent of known bid quantity, 10 percent of known ask quantity). Require at least 100 USDT bid notional. The multiple-of-ten grid is an explicitly conditional historical order-grid assumption; native quoted prices supply limit prices. Historical contract equivalence, min/max quantities, tick and quantity rules must be verified before an executable-edge claim.",
+        "capital": "10,000 USDT fixed reference capital per date, shared across all selected symbols (maximum four), with full notional collateral for one unpaired side per symbol. Reserve fees and cease new orders if actual cash cannot cover the next cycle. Mark all equity and cash changes; report return on this capital, turnover and raw P&L. Do not compound or change leverage to rescue results.",
+        "cancellation": "Both orders arrive at decision+outbound delay. Their cancellations arrive after the fixed rest duration, with cancellation commands sent one outbound delay earlier. Continue accounting for fills until cancellation arrival. Only after cancellation acknowledgement may residual inventory be flattened; the flattening order incurs another outbound delay. Rest 22 s plus two 3 s delays in the latency stress keeps maximum inventory age below 30 s.",
+        "passive_queue": "Use complete displayed size ahead at each own price, with a conservative initialization at least as large as the known signal size and all compatible observed arrival quantities. The own price was a known displayed level when selected; use subsequent native absolute level updates and sequence continuity to establish its arrival size. Missing level state or source continuity is unknown, never zero queue. Do not advance the queue on cancellations. At-price, opposite-aggressor regular executions consume queue ahead before filling us. Strict trade-through clears preceding displayed queue and can fill only up to actually printed eligible volume. Keep every partial fill and do not use an eventual round trip as a condition for retaining an entry. This remains a counterfactual model of public data, not proof of private order priority.",
+        "clock_uncertainty": "Use native T for physical book changes and matches, native E for publication, and capture time for information available to decisions. Assess all compatible physical book states in a plus/minus 1 ms arrival envelope, including tied predecessor states. Acceptance or inventory ambiguous across compatible states remains unknown. Trades at arrival/cancellation boundaries cannot be silently discarded if they could change inventory.",
+        "flattening": "After both cancellations are acknowledged, flatten exact signed residual as a taker at the native opposing best quote at physical arrival. Require sufficient displayed depth in every compatible envelope state and preserve price bounds. Unpriced inventory or uncertain order state makes the complete strategy outcome UNKNOWN; report closed portions separately. Never assign zero to unknown exposure.",
+        "funding_and_lifecycle": "Observe native markPrice next funding time. Exclude a cycle before submission if its possible inventory interval overlaps a known funding time or known trading suspension. Any unexpected funding exposure requires actual funding cashflow rather than deletion. Native feed activity alone does not prove tradability; carry forward the funding-screen lesson.",
+        "fees_bps": {"maker": 3, "taker": 6, "adverse_each_execution": 1},
+        "stress_scenarios": {
+            "base": "As above",
+            "double_fees": "Maker 6 bp, taker 12 bp; unchanged adverse allowance",
+            "outbound_and_ack_3s": "Three-second outbound and acknowledgement delays, unchanged source delay and rest duration",
+            "double_adverse": "Two bp adverse allowance per maker or taker execution",
+            "queue_ahead_double": "Double the initialized displayed queue ahead; retain actual executed-volume limits and strict-through logic",
+            "clock_envelope_100ms": "Use plus/minus 100 ms physical-clock envelopes and retain all uncertain outcomes"
+        },
+        "reliability": "No candidate advances on closed profitable subsets while its complete outcome is unknown. Inspect date concentration, both quote schedules, doubled costs, latency and queue sensitivity. Only positive complete development evidence warrants an unchanged 2025 selection/replay, day-block bootstrap and correction for the global search history. Do not describe monthly samples or dependent cycles as independent trials.",
+        "download": {"channels": ["bookTicker", "trade", "depth", "markPrice"], "offsets": [540, 550, 560], "slice_minutes": 10,
+                     "per_slice_decoded_cap": 192000000, "total_decoded_cap": 5760000000, "workers": 3,
+                     "authenticated": False, "paid_fallback": False},
+        "selection_2025_opened": False, "strategy_pnl_tested": False, "reliable_edge_established": False,
+    }
+    path.write_text(json.dumps(spec, indent=2)+"\n")
+    print(json.dumps({"cohort_dates": len(cohorts), "symbol_dates": len(selected), "planned_native_slices": len(cohorts)*3, "planned_economic_configurations": 2}))
+
+
+if __name__ == "__main__":
+    main()

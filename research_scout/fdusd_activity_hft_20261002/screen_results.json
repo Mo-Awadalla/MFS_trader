@@ -1,0 +1,1063 @@
+{
+  "windows": [
+    {
+      "date": "2024-01-01",
+      "offset": 0,
+      "source_counts": {},
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-01-01_0000.parquet",
+      "ledger_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+      "summaries": [
+        {
+          "date": "2024-01-01",
+          "offset_minutes": 0,
+          "symbol": "1000SATSFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-01-01",
+      "offset": 360,
+      "source_counts": {},
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-01-01_0360.parquet",
+      "ledger_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+      "summaries": [
+        {
+          "date": "2024-01-01",
+          "offset_minutes": 360,
+          "symbol": "1000SATSFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 3
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-04-01_0000.parquet",
+      "ledger_sha256": "344b8a495bc5fb9875f4762ffb0818fed35fee5173290ec8d0ad1021009b12d0",
+      "summaries": [
+        {
+          "date": "2024-04-01",
+          "offset_minutes": 0,
+          "symbol": "AEVOFDUSD",
+          "buy_count": 0,
+          "sell_count": 1,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "199.3761000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-04-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 3
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-04-01_0540.parquet",
+      "ledger_sha256": "00366be401163259f4149ee2b6f741058620601286e7577c0005200317a815ac",
+      "summaries": [
+        {
+          "date": "2024-04-01",
+          "offset_minutes": 540,
+          "symbol": "AEVOFDUSD",
+          "buy_count": 0,
+          "sell_count": 3,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "694.5942000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 0,
+      "source_counts": {},
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-05-01_0000.parquet",
+      "ledger_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+      "summaries": [
+        {
+          "date": "2024-05-01",
+          "offset_minutes": 0,
+          "symbol": "TIAFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 1
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-05-01_0540.parquet",
+      "ledger_sha256": "b900f4ac4b96dba30f76b3d9d05eb3371c07ed23237685f3be53b46f36e9c1ad",
+      "summaries": [
+        {
+          "date": "2024-05-01",
+          "offset_minutes": 540,
+          "symbol": "TIAFDUSD",
+          "buy_count": 0,
+          "sell_count": 1,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "199.9160000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-05-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 4
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-05-01_0720.parquet",
+      "ledger_sha256": "01f5ae8ed50f5ef2e025508a7f5156df3e866c48546ad806200128d9333494e2",
+      "summaries": [
+        {
+          "date": "2024-05-01",
+          "offset_minutes": 720,
+          "symbol": "WFDUSD",
+          "buy_count": 1,
+          "sell_count": 3,
+          "buy_notional_fdusd": "10.3648000000000000",
+          "sell_notional_fdusd": "17.6580000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 1
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-06-01_0000.parquet",
+      "ledger_sha256": "fd43fc87b56f892d1e7ddb6e345348953a1a6462eca97e261b4b248cb4d403cd",
+      "summaries": [
+        {
+          "date": "2024-06-01",
+          "offset_minutes": 0,
+          "symbol": "BCHFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-06-01",
+          "offset_minutes": 0,
+          "symbol": "ENAFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-06-01",
+          "offset_minutes": 0,
+          "symbol": "TIAFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 2
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-06-01_0360.parquet",
+      "ledger_sha256": "a6a6c7797bd1ccaedaf3ef57a73c03ec18ac2f5e0d542d8a8ceef4161eb7394f",
+      "summaries": [
+        {
+          "date": "2024-06-01",
+          "offset_minutes": 360,
+          "symbol": "ENAFDUSD",
+          "buy_count": 0,
+          "sell_count": 2,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "515.7106100000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 2
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-06-01_0720.parquet",
+      "ledger_sha256": "eb5b0087f67a2f02f43db207b1d2e40d8465c482d84b9e53279cbcb233e79425",
+      "summaries": [
+        {
+          "date": "2024-06-01",
+          "offset_minutes": 720,
+          "symbol": "ENAFDUSD",
+          "buy_count": 2,
+          "sell_count": 0,
+          "buy_notional_fdusd": "1210.5000000000000000",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-06-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 2
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-06-01_1080.parquet",
+      "ledger_sha256": "fe7380bfd49bc208e9583e3e62619ff64dac523e7bdbe2e62fc504205f63cd6e",
+      "summaries": [
+        {
+          "date": "2024-06-01",
+          "offset_minutes": 1080,
+          "symbol": "ENAFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 0,
+      "source_counts": {},
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-07-01_0000.parquet",
+      "ledger_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+      "summaries": [
+        {
+          "date": "2024-07-01",
+          "offset_minutes": 0,
+          "symbol": "AEVOFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-07-01",
+          "offset_minutes": 0,
+          "symbol": "OPFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 1
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-07-01_0360.parquet",
+      "ledger_sha256": "4e6a56328c009f3b35e0be4b18c90f7a0c58e01cade655f5d6851411f83fb027",
+      "summaries": [
+        {
+          "date": "2024-07-01",
+          "offset_minutes": 360,
+          "symbol": "WFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-07-01",
+          "offset_minutes": 360,
+          "symbol": "WLDFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 540,
+      "source_counts": {},
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-07-01_0540.parquet",
+      "ledger_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+      "summaries": [
+        {
+          "date": "2024-07-01",
+          "offset_minutes": 540,
+          "symbol": "LDOFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 5
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-07-01_0720.parquet",
+      "ledger_sha256": "97937d9c09666a2d04220a450e723e65b01e5378add602b950fcba00eb1764c2",
+      "summaries": [
+        {
+          "date": "2024-07-01",
+          "offset_minutes": 720,
+          "symbol": "ENAFDUSD",
+          "buy_count": 2,
+          "sell_count": 1,
+          "buy_notional_fdusd": "941.4612000000000000",
+          "sell_notional_fdusd": "12.2673000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-07-01",
+          "offset_minutes": 720,
+          "symbol": "OPFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-07-01",
+          "offset_minutes": 720,
+          "symbol": "WFDUSD",
+          "buy_count": 2,
+          "sell_count": 0,
+          "buy_notional_fdusd": "199.9005000000000000",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-07-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 6
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-07-01_1080.parquet",
+      "ledger_sha256": "ab4731ebe50f067239329dbdb44e70a3a91b3f890fce78f2370cc709601916f6",
+      "summaries": [
+        {
+          "date": "2024-07-01",
+          "offset_minutes": 1080,
+          "symbol": "WFDUSD",
+          "buy_count": 0,
+          "sell_count": 1,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "200.0534000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 5
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-08-01_0540.parquet",
+      "ledger_sha256": "75498fded88418e65af0fb25448bb2f52734c52699e150659b82df98968edfb9",
+      "summaries": [
+        {
+          "date": "2024-08-01",
+          "offset_minutes": 540,
+          "symbol": "PEPEFDUSD",
+          "buy_count": 4,
+          "sell_count": 0,
+          "buy_notional_fdusd": "19.1217345700",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-08-01",
+          "offset_minutes": 540,
+          "symbol": "STRKFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-08-01",
+      "offset": 720,
+      "source_counts": {},
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-08-01_0720.parquet",
+      "ledger_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+      "summaries": [
+        {
+          "date": "2024-08-01",
+          "offset_minutes": 720,
+          "symbol": "OPFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 7
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-09-01_0000.parquet",
+      "ledger_sha256": "5547d2d5187e6ace7ddc8a60b93bb018e6300f5f2a1a69edc86317e19fc63b07",
+      "summaries": [
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 0,
+          "symbol": "ENAFDUSD",
+          "buy_count": 0,
+          "sell_count": 7,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "3884.8660800000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 4
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-09-01_0360.parquet",
+      "ledger_sha256": "ed658ca29ac9c2a4d86e7ab5fafa079eadc45df48536f954b387c13dbcc9fe48",
+      "summaries": [
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 360,
+          "symbol": "ENAFDUSD",
+          "buy_count": 3,
+          "sell_count": 0,
+          "buy_notional_fdusd": "972.8199000000000000",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 360,
+          "symbol": "WFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 9
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-09-01_0540.parquet",
+      "ledger_sha256": "b390720ee85010aaeb9db2092e488626f7409a38bf3de4d65f64aa657ddaa5ac",
+      "summaries": [
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 540,
+          "symbol": "ENAFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 540,
+          "symbol": "PEPEFDUSD",
+          "buy_count": 0,
+          "sell_count": 9,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "33.3612955000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 65
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-09-01_0720.parquet",
+      "ledger_sha256": "251ac79fccdc0a4cf0b0f59fc37bf3a3de112ee3daa48afeb492dc0ae3e3d957",
+      "summaries": [
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 720,
+          "symbol": "ENAFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 720,
+          "symbol": "NOTFDUSD",
+          "buy_count": 3,
+          "sell_count": 1,
+          "buy_notional_fdusd": "1181.1356900000",
+          "sell_notional_fdusd": "17.0265200000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 720,
+          "symbol": "PEPEFDUSD",
+          "buy_count": 48,
+          "sell_count": 7,
+          "buy_notional_fdusd": "9429.2683705700",
+          "sell_notional_fdusd": "132.3617331000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-09-01",
+      "offset": 1080,
+      "source_counts": {},
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-09-01_1080.parquet",
+      "ledger_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+      "summaries": [
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 1080,
+          "symbol": "FILFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-09-01",
+          "offset_minutes": 1080,
+          "symbol": "LINKFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 7
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-10-01_0000.parquet",
+      "ledger_sha256": "39bc66014b87098d6d63b31c0884c1ff4fc47527b3027c7d8cc2e7b0334b2e9c",
+      "summaries": [
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 0,
+          "symbol": "LINKFDUSD",
+          "buy_count": 0,
+          "sell_count": 7,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "4951.9266000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 360,
+      "source_counts": {
+        "native_messages": 1
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-10-01_0360.parquet",
+      "ledger_sha256": "dc96c5ee3793c2c35b30f03487bb02df19c1801f091cb1c3bfb6e1154e85fb36",
+      "summaries": [
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 360,
+          "symbol": "LINKFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 360,
+          "symbol": "OPFDUSD",
+          "buy_count": 1,
+          "sell_count": 0,
+          "buy_notional_fdusd": "92.1104000000000000",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 3
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-10-01_0540.parquet",
+      "ledger_sha256": "1227b3f0e68ad100b99d9faa3217b0c2e0b85ecad634878428277d384e89daff",
+      "summaries": [
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 540,
+          "symbol": "OPFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 540,
+          "symbol": "SAGAFDUSD",
+          "buy_count": 2,
+          "sell_count": 0,
+          "buy_notional_fdusd": "20.5824000000000000",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 720,
+      "source_counts": {
+        "native_messages": 7
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-10-01_0720.parquet",
+      "ledger_sha256": "1fa927267b147d53a5f3488d787acfd6ff409fcca050306c5c888141787f3ec6",
+      "summaries": [
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 720,
+          "symbol": "LINKFDUSD",
+          "buy_count": 3,
+          "sell_count": 4,
+          "buy_notional_fdusd": "188.1810000000000000",
+          "sell_notional_fdusd": "388.3347000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-10-01",
+      "offset": 1080,
+      "source_counts": {
+        "native_messages": 2
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-10-01_1080.parquet",
+      "ledger_sha256": "46afdc47209ebc73bddf584e4f23ba4332ceabac5f1cf7dab79343b4dc6a8259",
+      "summaries": [
+        {
+          "date": "2024-10-01",
+          "offset_minutes": 1080,
+          "symbol": "SAGAFDUSD",
+          "buy_count": 0,
+          "sell_count": 1,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "13.6268000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 0,
+      "source_counts": {
+        "native_messages": 4
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-11-01_0000.parquet",
+      "ledger_sha256": "65f3319d80080a393a2ce9796277f2ee183b1c684e792ccab6050a02a0d54935",
+      "summaries": [
+        {
+          "date": "2024-11-01",
+          "offset_minutes": 0,
+          "symbol": "LINKFDUSD",
+          "buy_count": 0,
+          "sell_count": 4,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "64.3913000000000000",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-11-01",
+      "offset": 540,
+      "source_counts": {
+        "native_messages": 4
+      },
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-11-01_0540.parquet",
+      "ledger_sha256": "be471b11104bab55a1aa1f938e8e59f16fbf6b5a803851c1314b6346874823d1",
+      "summaries": [
+        {
+          "date": "2024-11-01",
+          "offset_minutes": 540,
+          "symbol": "OPFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-11-01",
+          "offset_minutes": 540,
+          "symbol": "PEPEFDUSD",
+          "buy_count": 1,
+          "sell_count": 3,
+          "buy_notional_fdusd": "2.7447930000",
+          "sell_notional_fdusd": "585.2233425400",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 360,
+      "source_counts": {},
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-12-01_0360.parquet",
+      "ledger_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+      "summaries": [
+        {
+          "date": "2024-12-01",
+          "offset_minutes": 360,
+          "symbol": "EGLDFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    },
+    {
+      "date": "2024-12-01",
+      "offset": 540,
+      "source_counts": {},
+      "ledger_path": "research_scout\\fdusd_activity_hft_20261002\\ledgers\\2024-12-01_0540.parquet",
+      "ledger_sha256": "4f2104c0ab435e42cc5194c124be60dc6b9ab89095f4647767d644264f776b7b",
+      "summaries": [
+        {
+          "date": "2024-12-01",
+          "offset_minutes": 540,
+          "symbol": "FILFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        },
+        {
+          "date": "2024-12-01",
+          "offset_minutes": 540,
+          "symbol": "SAGAFDUSD",
+          "buy_count": 0,
+          "sell_count": 0,
+          "buy_notional_fdusd": "0",
+          "sell_notional_fdusd": "0",
+          "source_integrity_ok": true,
+          "integrity_problems": "",
+          "activity_gate": false,
+          "selected": false,
+          "reason": "insufficient_two_sided_activity"
+        }
+      ],
+      "selected": 0
+    }
+  ],
+  "source_counts": {
+    "native_messages": 148
+  },
+  "candidate_windows": 48,
+  "source_minutes": 32,
+  "selected_windows": 0,
+  "selected_symbols": [],
+  "selected_dates": 0,
+  "source_integrity_failures": 0,
+  "reasons": {
+    "insufficient_two_sided_activity": 48
+  },
+  "implementation_sha256": "3df86bec2a4edad39f7b98b06592bf5eaee51b861bd15052a571a4fd0bbbce47",
+  "summary_sha256": "6092d0e86a0f293b7318bd712bec3148bf3cf59eaa4aca36a21fba27b601337d",
+  "selected_sha256": "06211c45a32c3f2d3a98b53777348bb00fa8fc49cdcfd25f5bae9cd3b0e894eb",
+  "economic_implementations": 0,
+  "future_returns_evaluated": false,
+  "independent_audit_complete": false,
+  "actual_execution_verified": false,
+  "selection_2025_opened": false,
+  "reliable_edge_established": false
+}

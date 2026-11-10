@@ -1,0 +1,31 @@
+SPY RESPONSE TO FUTURES IMPULSES — NO RELIABLE EDGE
+
+Both frozen HFT rules fail to qualify. All four complete scenario aggregates lose money. The eight incomplete aggregates remain UNKNOWN; their priced components are not portfolio returns.
+
+This is a dependent extension of the failed instantaneous catch-up screen. Before reading subsequent quote returns, two rules were frozen: follow the ES impulse or fade it. All 26 original impulses across 17 dates in 2023 remain in each rule. The parent residual/cost gate is not reused to select outcomes. Only SPY is traded.
+
+Execution: fixed causal whole-share quantity, $10,000/day per independent rule account, 10% predecision displayed depth, inward penny-rounded 10bp FOK entry collar. Base feed delay is 100ms, processing 50ms and outbound/acknowledgement 100ms each. Exit decision occurs 15 seconds after entry acknowledgement. The 250ms and one-second latency stresses retain the original anchor and quantity. A submitted unknown halts every later attempt for that date; no phantom flat reset or zero P&L is assigned.
+
+Every possible SIP state in the arrival-clock interval, including the complete tied predecessor group, is examined. A fill requires every state to satisfy the fixed collar and full quantity. Uniformly outside-collar states imply no fill; mixed states or inadequate depth remain unknown. Quotes alone do not establish actual fills. Costs match the parent conservative commission, levy, adverse allowance and short-borrow assumptions.
+
+SCENARIOS (US dollars; independent scenarios must not be added together)
+follow_impulse / base: full net UNKNOWN; priced component -123.415528004109589041095890 to -123.175559204109589041095890; 22 priced; {'conditional_complete': 22, 'predecision_no_order': 3, 'unknown_entry': 1}.
+follow_impulse / fees_2x: full net UNKNOWN; priced component -187.712695008219178082191782 to -187.472733408219178082191782; 22 priced; {'conditional_complete': 22, 'predecision_no_order': 3, 'unknown_entry': 1}.
+follow_impulse / adverse_2x: full net UNKNOWN; priced component -159.463889004109589041095890 to -159.223944204109589041095890; 22 priced; {'conditional_complete': 22, 'predecision_no_order': 3, 'unknown_entry': 1}.
+follow_impulse / latency_250ms: complete net -130.248637745205479452054795 to -129.308515772602739726027398; 23 priced; {'conditional_complete': 23, 'predecision_no_order': 3}.
+follow_impulse / latency_1s: complete net -123.460192347945205479452056 to -122.980199547945205479452056; 23 priced; {'conditional_complete': 23, 'predecision_no_order': 3}.
+follow_impulse / clock_100ms: full net UNKNOWN; priced component -54.799111998630136986301371 to -49.058998589041095890410959; 9 priced; {'unknown_entry': 8, 'unknown_exit': 2, 'conditional_complete': 9, 'predecision_no_order': 3, 'halted_after_unknown_inventory': 4}.
+fade_impulse / base: full net UNKNOWN; priced component -92.953145824657534246575343 to -92.953145824657534246575343; 22 priced; {'conditional_complete': 22, 'predecision_no_order': 3, 'unknown_entry': 1}.
+fade_impulse / fees_2x: full net UNKNOWN; priced component -154.434212649315068493150685 to -154.434212649315068493150685; 22 priced; {'conditional_complete': 22, 'predecision_no_order': 3, 'unknown_entry': 1}.
+fade_impulse / adverse_2x: full net UNKNOWN; priced component -131.195224824657534246575343 to -131.195224824657534246575343; 22 priced; {'conditional_complete': 22, 'predecision_no_order': 3, 'unknown_entry': 1}.
+fade_impulse / latency_250ms: complete net -94.417645558904109589041096 to -94.017697558904109589041096; 23 priced; {'conditional_complete': 23, 'predecision_no_order': 3}.
+fade_impulse / latency_1s: complete net -97.850876928767123287671233 to -97.370828928767123287671233; 23 priced; {'conditional_complete': 23, 'predecision_no_order': 3}.
+fade_impulse / clock_100ms: full net UNKNOWN; priced component -37.082898190410958904109589 to -29.563017636986301369863014; 9 priced; {'unknown_entry': 8, 'unknown_exit': 2, 'conditional_complete': 9, 'predecision_no_order': 3, 'halted_after_unknown_inventory': 4}.
+
+Complete cases: follow at 250ms loses about $130.25 and at one second $123.46; fade at 250ms loses $94.42 and at one second $97.85, using the conservative interval endpoints. Removing the best three dates leaves every complete case negative. Each base case has one ambiguous submitted entry, 22 priced events and three predecision rejections. Neither the base partial values nor any stress result supports promotion.
+
+Validation: eight focused execution tests and Ruff passed. The independent auditor imports no production replayer. It reconciled 436,267 raw SIP records, 46 entry intents, six predecision rejections, 504 quote envelopes, 242 cash rectangles enumerating all observed price combinations, 312 ledger rows, 26 submitted unknowns, eight later inventory halts and 12 scenario aggregates. Maximum numeric difference was zero. Original frozen results are unchanged; the completed independent audit is a separate artifact.
+
+No actual execution, historical short availability or account permissions have been established. Unknown exits cannot be claimed to meet the planned holding time. The family-specific 2024/2025 selection sample remains unopened; it is not globally pristine given older research. This failure does not establish that every HFT strategy loses, and it does not fulfill the competition goal.
+
+Evidence: specification.json; replay_v1/implementation.json; replay_v1/intents.json; all 12 scenario ledgers; replay_v1/results.json; replay_v1/independent_verification.json.

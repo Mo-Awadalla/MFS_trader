@@ -1,0 +1,55 @@
+{
+  "created_at_utc": "2026-09-30T14:55:23.430282+00:00",
+  "contract": {
+    "id": "BTCUSDT",
+    "type": "perpetual",
+    "dataTypes": [
+      "trades",
+      "incremental_book_L2",
+      "quotes",
+      "book_snapshot_5",
+      "book_snapshot_25",
+      "derivative_ticker",
+      "liquidations",
+      "book_ticker"
+    ],
+    "availableSince": "2020-05-28T00:00:00.000Z",
+    "availableTo": "2026-09-30T00:00:00.000Z"
+  },
+  "samples": [
+    {
+      "date": "2024-07-01",
+      "url": "https://datasets.tardis.dev/v1/bybit/book_snapshot_5/2024/07/01/BTCUSDT.csv.gz",
+      "bytes": 25833040
+    },
+    {
+      "date": "2024-08-01",
+      "url": "https://datasets.tardis.dev/v1/bybit/book_snapshot_5/2024/08/01/BTCUSDT.csv.gz",
+      "bytes": 48988178
+    },
+    {
+      "date": "2024-09-01",
+      "url": "https://datasets.tardis.dev/v1/bybit/book_snapshot_5/2024/09/01/BTCUSDT.csv.gz",
+      "bytes": 29643814
+    },
+    {
+      "date": "2024-10-01",
+      "url": "https://datasets.tardis.dev/v1/bybit/book_snapshot_5/2024/10/01/BTCUSDT.csv.gz",
+      "bytes": 41308582
+    },
+    {
+      "date": "2024-11-01",
+      "url": "https://datasets.tardis.dev/v1/bybit/book_snapshot_5/2024/11/01/BTCUSDT.csv.gz",
+      "bytes": 35184123
+    },
+    {
+      "date": "2024-12-01",
+      "url": "https://datasets.tardis.dev/v1/bybit/book_snapshot_5/2024/12/01/BTCUSDT.csv.gz",
+      "bytes": 25444727
+    }
+  ],
+  "bytes": 206402464,
+  "aggregate_cap": 2000000000,
+  "authenticated": false,
+  "paid_fallback": false
+}

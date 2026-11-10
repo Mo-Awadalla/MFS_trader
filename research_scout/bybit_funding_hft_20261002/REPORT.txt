@@ -1,0 +1,17 @@
+BYBIT-FIRST PAIRED FUNDING HFT — SOURCE SCREEN COMPLETE
+
+No viable candidate or reliable edge established. No paired trading P&L was run.
+
+This dependent extension checks Bybit-only extreme funding rates omitted by the earlier Binance-first screen. Scope: the first day of each month of 2024 at 08:00 and 16:00 UTC, using information captured strictly before settlement minus 10.25 seconds. The original rate, freshness and conservative cost gates remained fixed.
+
+Coverage: 24 native windows, 1,432,850 Bybit native messages, 8,857 symbol/windows, 481 symbols. Short delta windows omitted 5,519 funding rates; a separately frozen recovery downloaded 12 complete full-universe normalized source files (3,274,038,156 compressed bytes) and read 159,983,313 records. All 8,857 original observations have a recovered state. Recovered does not mean fresh, complete, tradable or profitable.
+
+Full screen: 5,952 usable Bybit source states, 90 large Bybit rate observations, 19 usable exact-symbol Binance pairs. Outcomes: 5,862 below the rate prescreen; 1,984 stale/invalid/wrong-time normalized states; 921 stale/invalid native states; 71 missing exact Binance counterparts; 17 pairs below the fee hurdle; two candidates above the fee-only hurdle. No native/normalized field conflicts occurred among usable comparisons. The originally missing-rate group adds no new candidate above costs.
+
+The two candidates are AXLUSDT on 2024-03-01 at 16:00 UTC and STEEMUSDT on 2024-05-01 at 08:00 UTC. Their projected equal-unit payment gaps are 34.77777bp and 29.26103bp before spreads. After both full spreads and four 6bp taker fees plus four 1bp adverse allowances, the projected budgets are -3.01865bp and -4.82767bp. Both also fail the frozen displayed-size gate. These are payment-alone budgets with unchanged quotes, not actual cash profits or a settlement price forecast.
+
+Independent validation passed: 107,100,000 normalized prefix rows, 8,868 CSV states (including 11 states outside the original native universe), 1,861,370 combined Bybit/Binance native messages, 10,524 native fields and all 8,857 decision flags were reconciled. A separate raw-quote/Decimal audit verified both spread budgets. Six native-field tests, three aggregate reconstruction tests and seven pair-gate tests passed.
+
+Limits: stale/invalid states remain unusable rather than zero opportunities. Exact historical trading permissions, full native initialization/disconnect history for carried fields and actual execution/funding credits are not established. The two observed negative budgets do not prove that every funding strategy fails. The 2025 validation sample for this branch remains unopened.
+
+Frozen artifacts: specification.json; native_states.parquet; all_states_recovery_plan.json; all_states_manifest.json; all_states_screen_implementation.json; all_funding_pairs.parquet; all_states_screen_results.json; all_states_independent_verification.json; quote_gate_results.json; quote_gate_independent_verification.json. Earlier partial screens remain intact.

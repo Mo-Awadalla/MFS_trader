@@ -1,0 +1,20 @@
+{
+  "verified": true,
+  "source_files": 72,
+  "native_quotes": 5836428,
+  "decision_slots": 21600,
+  "convergence_budgets": 17606,
+  "distinct_hypothetical_attempts": 0,
+  "outcomes": {
+    "convergence_budget_below_cost_and_uncertainty_hurdle": 17606,
+    "missing_invalid_or_tied_current_state": 3174,
+    "no_sized_hedge_within_budget_depth_and_tolerance": 23,
+    "fewer_than_45_valid_reference_samples": 797
+  },
+  "maximum_numeric_error": 3.8120617773529375e-12,
+  "future_returns_evaluated": false,
+  "quote_units_independently_verified": false,
+  "execution_verified": false,
+  "result_sha256": "0cba74bdfac2547eb9a5c20d54066be01e6b1148c31c5f09f3c21d35a8abd7e0",
+  "auditor_sha256": "18708a3d30fea3820f23b1e95bef0bd6338b5622e125caad8b2eabc6ea824fa8"
+}

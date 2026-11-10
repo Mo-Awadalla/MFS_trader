@@ -1,0 +1,1102 @@
+{
+  "verified": true,
+  "releases": 84,
+  "verified_releases": 84,
+  "verified_trigger_releases": 33,
+  "records": [
+    {
+      "date": "2017-01-18",
+      "url": "https://www.bls.gov/news.release/archives/cpi_01182017.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "f890bbb4618b6a0bc3e1140542a61389f0852f0c2fad396b11b861eac07ee980",
+      "parsed": {
+        "release_date": "2017-01-18",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.3,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2017-02-15",
+      "url": "https://www.bls.gov/news.release/archives/cpi_02152017.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "08c3eab0b86fb9d27f036df2632bec5c87b2b6a163f161015bce35fb9d9a27b7",
+      "parsed": {
+        "release_date": "2017-02-15",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.6,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2017-03-15",
+      "url": "https://www.bls.gov/news.release/archives/cpi_03152017.pdf",
+      "content_trigger": false,
+      "verified": true,
+      "html_attempt_sha256": "b6dfeef414dbf55ef160fc4949a85cac267b2e38b02f4eaec2acb9e627400e7a",
+      "source_sha256": "3ce2e6a58ab05497795cc3483f44ed91df9a0c228528f8d12c55c2f206cb49aa",
+      "parsed": {
+        "release_date": "2017-03-15",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2017-04-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_04142017.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "bf0c5506518e9a76651945f0ddd0f6d17758214293e273d20fcde8956e95ccf6",
+      "parsed": {
+        "release_date": "2017-04-14",
+        "clock_et": "08:30:00",
+        "headline_announced": -0.3,
+        "core_announced": -0.1
+      }
+    },
+    {
+      "date": "2017-05-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_05122017.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "78ec793e713efd2f6e2edaff54a524267d55126273ca0d5422aad30732f75cbc",
+      "parsed": {
+        "release_date": "2017-05-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2017-06-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_06142017.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "2f2f6c7fac65e19bf60569c3ef80320ee18e68f3e09dc0c985a055a4be40f312",
+      "parsed": {
+        "release_date": "2017-06-14",
+        "clock_et": "08:30:00",
+        "headline_announced": -0.1,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2017-07-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_07142017.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "a1ae4e5b9a301b6dcc6291c666aff80b882174ed85424788c4ab8119e656d7ef",
+      "parsed": {
+        "release_date": "2017-07-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.0,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2017-08-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_08112017.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "0c004aa6a5c27e08a01df139297874d520adea63ddb965cf3c4c8618a51af127",
+      "parsed": {
+        "release_date": "2017-08-11",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2017-09-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_09142017.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "e3e2da239f791faacd3810301c0771267ef16d928861eefac32ede5cf919f602",
+      "parsed": {
+        "release_date": "2017-09-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2017-10-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10132017.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "7d5d8092b188f41d048157b432b4e141d20b828216237cb4b279c7c5f0181cb6",
+      "parsed": {
+        "release_date": "2017-10-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.5,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2017-11-15",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11152017.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "dae8f6c76f3dc9d2304a8fe98600cf5ec81dece06f1e3c9e0ba0f14043915e7f",
+      "parsed": {
+        "release_date": "2017-11-15",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2017-12-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_12132017.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "e8f0aaf55edeca8ccd3c8def004ff3b80a524711684c94cf91c5a5ac4da15565",
+      "parsed": {
+        "release_date": "2017-12-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2018-01-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_01122018.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "745d825c7c52cb449dccf5822b69b64ee3421eba10ddbf6bd54c4506cd916f63",
+      "parsed": {
+        "release_date": "2018-01-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2018-02-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_02142018.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "994386cbb2ab94cbbf2f2f47d4df31211f4b4e0882c362a57d6b2e2ff62ea314",
+      "parsed": {
+        "release_date": "2018-02-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.5,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2018-03-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_03132018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "f08133e5b30f5b7dc80ffe6ed876a46491bf6266bbec90ccd6f658407bfb873d",
+      "parsed": {
+        "release_date": "2018-03-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2018-04-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_04112018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "fd3f4f37ade5e805f4e0c299b7be81b47902ceae71d4f48c6f6560d1ecc4f9ed",
+      "parsed": {
+        "release_date": "2018-04-11",
+        "clock_et": "08:30:00",
+        "headline_announced": -0.1,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2018-05-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_05102018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "19e9e37353c994f4a3f8fac29d14b5c0b049c7d8741f1b3aa97684b5656421e8",
+      "parsed": {
+        "release_date": "2018-05-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2018-06-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_06122018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "cd07033bd3834ab46ee257cb07295200ee49955ec534681767aed0fe3e8870bd",
+      "parsed": {
+        "release_date": "2018-06-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2018-07-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_07122018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "a6ec0d0cf696823c540817e2b31c4a32dd6f3b3832eb2d46d8079eefd5c40ae8",
+      "parsed": {
+        "release_date": "2018-07-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2018-08-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_08102018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "7587f9ff3773a51310255caf3c4fe37672559f81a9e7df53971901db2ddc3ff0",
+      "parsed": {
+        "release_date": "2018-08-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2018-09-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_09132018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "9f1648a7efb24a83bdd6b8d42694144aa1e988cc6e9f78e79684c9c22e9524da",
+      "parsed": {
+        "release_date": "2018-09-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2018-10-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10112018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "7d862574bd3ea3bbebabe3e66f7b770be37692ed4365bc761c109e7ab1233a8d",
+      "parsed": {
+        "release_date": "2018-10-11",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2018-11-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11142018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "588a1de96d213ca9b3f3801757da4dada727c0e0e063a1c1f549cfea8cdbcac3",
+      "parsed": {
+        "release_date": "2018-11-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.3,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2018-12-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_12122018.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "269d5f84eee30aa425e70e4f1015b9f65dfc552944b020b918dad46c70b38c64",
+      "parsed": {
+        "release_date": "2018-12-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.0,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2019-01-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_01112019.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "98e5762de93183233485770c2f242c2ca48fbf41a566a85b134bd9c6d6631173",
+      "parsed": {
+        "release_date": "2019-01-11",
+        "clock_et": "08:30:00",
+        "headline_announced": -0.1,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2019-02-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_02132019.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "d85b6eff35a09798fbda33c1c0baf0fab2f3d299245cfe59f21bbb8d3df31951",
+      "parsed": {
+        "release_date": "2019-02-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.0,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2019-03-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_03122019.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "88ef2f3821ce0c0513efaa3edfd42e13ff2500101955a1d9ad96db7e2dd9f80e",
+      "parsed": {
+        "release_date": "2019-03-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2019-04-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_04102019.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "127cef7f4922c6ef86c68fd013affc2832136e32c900f2a3db257bca7d4f4bb2",
+      "parsed": {
+        "release_date": "2019-04-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2019-05-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_05102019.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "662e46f81b2c18564877a9a1296e3a62794aeb4266ea2d6d71877b96552faae9",
+      "parsed": {
+        "release_date": "2019-05-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.3,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2019-06-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_06122019.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "d022e8679f9111ede7c59767081e692ef85b9648b9e37a1877269e4c81326b10",
+      "parsed": {
+        "release_date": "2019-06-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2019-07-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_07112019.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "984c6443b98cce28465463b496a48c4e34ad807fa57ff55a58327751578061ed",
+      "parsed": {
+        "release_date": "2019-07-11",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2019-08-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_08132019.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "55b71f5cbab484000257bc2e0f65f53b4af1ae5c775908ffd8bcd141dadd92f0",
+      "parsed": {
+        "release_date": "2019-08-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.3,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2019-09-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_09122019.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "262ce5cb0c006a1342720d8f265581d53c6d30551aaaac839f735f1967b57341",
+      "parsed": {
+        "release_date": "2019-09-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2019-10-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10102019.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "64fb2a750a762cbf067aa90754fd659aaaa2e58dfc8b302f5ce2b1e07d3270ed",
+      "parsed": {
+        "release_date": "2019-10-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.0,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2019-11-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11132019.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "3e3579abfc270932345db6fc3bb54560994f9d00a78f00f33fcc7992d28b8ee1",
+      "parsed": {
+        "release_date": "2019-11-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2019-12-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_12112019.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "839f5f120fee7de36b9c211274537900f1e5c02310a5d74bee912e00fca80bf0",
+      "parsed": {
+        "release_date": "2019-12-11",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.3,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2020-01-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_01142020.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "7540cfff532d1230d5e67e6800099770010c5fe22cda486423d8ac9bbafa76b1",
+      "parsed": {
+        "release_date": "2020-01-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2020-02-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_02132020.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "4f16d2bbdb870984910a85e7de252a5932b3c88e8bf6d41e11dc7ad7b0e4590e",
+      "parsed": {
+        "release_date": "2020-02-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2020-03-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_03112020.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "8c380dc0e5e8d84425e60b56f15c8816be11d263ffdc0d35138e992cc4d02c56",
+      "parsed": {
+        "release_date": "2020-03-11",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2020-04-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_04102020.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "90fb2ee80af380c7cb67161b690cb56f3dc8663a198ce0f4170cc5e86047e938",
+      "parsed": {
+        "release_date": "2020-04-10",
+        "clock_et": "08:30:00",
+        "headline_announced": -0.4,
+        "core_announced": -0.1
+      }
+    },
+    {
+      "date": "2020-05-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_05122020.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "14351b60ad2ce5af7fb3283f22d1273f5062f628986e7e093453b6b26e63ad19",
+      "parsed": {
+        "release_date": "2020-05-12",
+        "clock_et": "08:30:00",
+        "headline_announced": -0.8,
+        "core_announced": -0.4
+      }
+    },
+    {
+      "date": "2020-06-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_06102020.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "20770fc4cb7859fcd4fdf46af2f9683590d0af7254c308ee73d3cb174dcbe61d",
+      "parsed": {
+        "release_date": "2020-06-10",
+        "clock_et": "08:30:00",
+        "headline_announced": -0.1,
+        "core_announced": -0.1
+      }
+    },
+    {
+      "date": "2020-07-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_07142020.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "d96c6f221490599a0c530a27b201bc6f5db5c540739fdbcb12804bc6a92fcaad",
+      "parsed": {
+        "release_date": "2020-07-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.6,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2020-08-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_08122020.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "344ac418779533d3e6a77ff7f06043bd934d9321e38782181bbe2f45fabdebd9",
+      "parsed": {
+        "release_date": "2020-08-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.6,
+        "core_announced": 0.6
+      }
+    },
+    {
+      "date": "2020-09-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_09112020.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "6f6f6e325d862e3bd7971ce9745f37ca53413c6bbac4f6413de3b5fff402110e",
+      "parsed": {
+        "release_date": "2020-09-11",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.4
+      }
+    },
+    {
+      "date": "2020-10-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10132020.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "77aadb66f428629fe6bede8886ece060fe7f2f990a8f164c35291a88f84e3e36",
+      "parsed": {
+        "release_date": "2020-10-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2020-11-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11122020.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "0acecec35811b60d2063f2cfbb941988dc4f813cbdfaa5961e7c508eb96ef44c",
+      "parsed": {
+        "release_date": "2020-11-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.0,
+        "core_announced": 0.0
+      }
+    },
+    {
+      "date": "2020-12-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_12102020.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "f8dde41d6dda9e4246271317737d0ae34fb400558c8ef8749bfc9e375d451182",
+      "parsed": {
+        "release_date": "2020-12-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2021-01-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_01132021.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "34ad2960403687ff970c99f953f93f2902d8a901d20e4773e1281832417d7df2",
+      "parsed": {
+        "release_date": "2021-01-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2021-02-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_02102021.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "c8061bf07796bdd00646dd763e4e245346f1ccd5472bc739b4dadf0eed196c12",
+      "parsed": {
+        "release_date": "2021-02-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.3,
+        "core_announced": 0.0
+      }
+    },
+    {
+      "date": "2021-03-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_03102021.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "f3d89a61a92cdc9ca3ea9b1ab9fc58818c75456dc5b9d51094f6d72f7b365c6a",
+      "parsed": {
+        "release_date": "2021-03-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2021-04-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_04132021.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "f6eed81feced6256412b3d15ef27e97b75e45eded6d32923e46a6611348d000a",
+      "parsed": {
+        "release_date": "2021-04-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.6,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2021-05-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_05122021.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "111c3cd4006c407199371e0b3f7446491571a434f088eba982cd8af839932826",
+      "parsed": {
+        "release_date": "2021-05-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.8,
+        "core_announced": 0.9
+      }
+    },
+    {
+      "date": "2021-06-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_06102021.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "b4ea489d674d313199d8efb9cad5fc4083fd596cb0dd6757d3435b0ed98ea444",
+      "parsed": {
+        "release_date": "2021-06-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.6,
+        "core_announced": 0.7
+      }
+    },
+    {
+      "date": "2021-07-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_07132021.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "3aac791ea242b52fd589b179098d74a5bd865e1a1d3d5bfc9efb511619992250",
+      "parsed": {
+        "release_date": "2021-07-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.9,
+        "core_announced": 0.9
+      }
+    },
+    {
+      "date": "2021-08-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_08112021.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "136b455c82f346f5ded5e207a91de2a3f28ed8e8a3b62aefa8c94d1c9e9ef2e0",
+      "parsed": {
+        "release_date": "2021-08-11",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.5,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2021-09-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_09142021.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "ad62a494d5a8b195740e90c1e6fe4bc236c3a0791bd55f1279c5aa81738e1c4f",
+      "parsed": {
+        "release_date": "2021-09-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.3,
+        "core_announced": 0.1
+      }
+    },
+    {
+      "date": "2021-10-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10132021.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "7fafb2e453ea67879bf056bb4cb26e05dcf8057153955971cf45d375c2c42541",
+      "parsed": {
+        "release_date": "2021-10-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2021-11-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11102021.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "a411fa42d8a603c21dfbddf8ed12459b6fb4b580f1972327121586167f5f43f7",
+      "parsed": {
+        "release_date": "2021-11-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.9,
+        "core_announced": 0.6
+      }
+    },
+    {
+      "date": "2021-12-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_12102021.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "75dab6898079405e0e25cec4833b1a27dad6d88540f8cdff48371339ce23d62f",
+      "parsed": {
+        "release_date": "2021-12-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.8,
+        "core_announced": 0.5
+      }
+    },
+    {
+      "date": "2022-01-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_01122022.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "03b2a9534c690df50f856c2ca09f2c249bf07e5c27ccead9b446e50932644131",
+      "parsed": {
+        "release_date": "2022-01-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.5,
+        "core_announced": 0.6
+      }
+    },
+    {
+      "date": "2022-02-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_02102022.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "57578f7a8c6564fb03d84aae8ac0356d773793699f32624b45c518f97eed2805",
+      "parsed": {
+        "release_date": "2022-02-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.6,
+        "core_announced": 0.6
+      }
+    },
+    {
+      "date": "2022-03-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_03102022.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "07ffbf5f8c1cf7911bc8a79ed49c0edeace26777780b407a98e913d629b4a6ab",
+      "parsed": {
+        "release_date": "2022-03-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.8,
+        "core_announced": 0.5
+      }
+    },
+    {
+      "date": "2022-04-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_04122022.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "4f5df15c1a3d22c2ba9b3602e9e4446452f69045af298a669af3122c229ffc43",
+      "parsed": {
+        "release_date": "2022-04-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 1.2,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2022-05-11",
+      "url": "https://www.bls.gov/news.release/archives/cpi_05112022.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "e9afec6889e317d860c63093c9abc920c72dda58b0d27ad2c44c6af3eaaf350f",
+      "parsed": {
+        "release_date": "2022-05-11",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.3,
+        "core_announced": 0.6
+      }
+    },
+    {
+      "date": "2022-06-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_06102022.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "9c28ec5ee794666969e1522c776aa628c6ddb5db16a2e2ac6e8dc8f2901ebc6f",
+      "parsed": {
+        "release_date": "2022-06-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 1.0,
+        "core_announced": 0.6
+      }
+    },
+    {
+      "date": "2022-07-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_07132022.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "f7a504fb0abc1de7e8ae120e241b48bf119ecc41eddc6e25deaab4691738ab51",
+      "parsed": {
+        "release_date": "2022-07-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 1.3,
+        "core_announced": 0.7
+      }
+    },
+    {
+      "date": "2022-08-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_08102022.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "a3ec9ea830b73b29e7d3bd33c17ebacbd1bfe7ad6e0fa1da86d7cfe04b9d85f5",
+      "parsed": {
+        "release_date": "2022-08-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.0,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2022-09-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_09132022.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "94bac9daf8159adcb6761b361d27d0c0264178acbfcd1da5799f64269d732bd9",
+      "parsed": {
+        "release_date": "2022-09-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.6
+      }
+    },
+    {
+      "date": "2022-10-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10132022.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "170851d347df3518430b5008aa68040a2eff73f62566cc58b2f56687e76f1602",
+      "parsed": {
+        "release_date": "2022-10-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.6
+      }
+    },
+    {
+      "date": "2022-11-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11102022.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "dcf4729cbbe3c23a3453eb2ced6df2c6c2fadc71c86184469cdaca7b6602bc7e",
+      "parsed": {
+        "release_date": "2022-11-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2022-12-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_12132022.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "df10aca30836c5443d16f0f008f653a0caeeb7ae02189ef68f6c995474b75ee1",
+      "parsed": {
+        "release_date": "2022-12-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2023-01-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_01122023.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "fe36f133564d3fd505f7d04a7ef7461791d36c9abf895ed337e1e4a8d7a94fa0",
+      "parsed": {
+        "release_date": "2023-01-12",
+        "clock_et": "08:30:00",
+        "headline_announced": -0.1,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2023-02-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_02142023.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "63af8873e92e8b7e9c85b18067a25941288da689e7c8e8bc2204cde2489308fd",
+      "parsed": {
+        "release_date": "2023-02-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.5,
+        "core_announced": 0.4
+      }
+    },
+    {
+      "date": "2023-03-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_03142023.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "d65f63823c28f4e491dfe0be0848f14252c1a78565f44341f949475803c564b0",
+      "parsed": {
+        "release_date": "2023-03-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.5
+      }
+    },
+    {
+      "date": "2023-04-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_04122023.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "f8246a8ee74e743167142aa5c437cac79aba15ca10e9d5c1ee139f52fa97a32e",
+      "parsed": {
+        "release_date": "2023-04-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.4
+      }
+    },
+    {
+      "date": "2023-05-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_05102023.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "9dd57edc45badf5728a6f11bd564dec59819bca8aa97013802456da11dcdca3a",
+      "parsed": {
+        "release_date": "2023-05-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.4
+      }
+    },
+    {
+      "date": "2023-06-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_06132023.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "f1292c7221e52e845d8e6e11782ac8ee66744b647249cd42ebc122c2ec038218",
+      "parsed": {
+        "release_date": "2023-06-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.4
+      }
+    },
+    {
+      "date": "2023-07-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_07122023.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "4ee2a5f238aea802f5f2db091aae35b2af99b6ab53a4ef91ce5ec6dc11f67719",
+      "parsed": {
+        "release_date": "2023-07-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2023-08-10",
+      "url": "https://www.bls.gov/news.release/archives/cpi_08102023.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "51ba04fad848c2851bdd163369a3d24abfdb0b03a7720b93eae735661fd140f1",
+      "parsed": {
+        "release_date": "2023-08-10",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.2,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2023-09-13",
+      "url": "https://www.bls.gov/news.release/archives/cpi_09132023.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "3717b04db5f91834e7ce811db7e69325dcfd1d19118613cc7169dc55767b8dca",
+      "parsed": {
+        "release_date": "2023-09-13",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.6,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2023-10-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10122023.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "b28ce87c2134a5ce4e058ae1520c23aa90e879dab42ff679838e2574ae7d56ad",
+      "parsed": {
+        "release_date": "2023-10-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.4,
+        "core_announced": 0.3
+      }
+    },
+    {
+      "date": "2023-11-14",
+      "url": "https://www.bls.gov/news.release/archives/cpi_11142023.htm",
+      "content_trigger": true,
+      "verified": true,
+      "source_sha256": "5dcb0ff4b889a28573376b4455e0565e2f278fbc3dfe0fc543bd7ccec1db83de",
+      "parsed": {
+        "release_date": "2023-11-14",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.0,
+        "core_announced": 0.2
+      }
+    },
+    {
+      "date": "2023-12-12",
+      "url": "https://www.bls.gov/news.release/archives/cpi_12122023.htm",
+      "content_trigger": false,
+      "verified": true,
+      "source_sha256": "9886595875d1aa94ae453beb964e64e89d24944845ec063f6d4e1522614af82d",
+      "parsed": {
+        "release_date": "2023-12-12",
+        "clock_et": "08:30:00",
+        "headline_announced": 0.1,
+        "core_announced": 0.3
+      }
+    }
+  ],
+  "historical_receipt_time_verified": false
+}

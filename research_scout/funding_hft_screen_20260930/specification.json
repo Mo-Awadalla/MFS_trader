@@ -1,0 +1,43 @@
+{
+  "created_at_utc": "2026-09-30T16:47:21.855468+00:00",
+  "symbols": [
+    "BTCUSDT",
+    "ETHUSDT",
+    "SOLUSDT",
+    "BNBUSDT",
+    "XRPUSDT",
+    "DOGEUSDT"
+  ],
+  "dates": [
+    "2024-01-01",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-01",
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "exchanges": [
+    "binance-futures",
+    "bybit"
+  ],
+  "per_file_compressed_cap": 32000000,
+  "total_compressed_cap": 600000000,
+  "selection": "Six fixed common USDT perpetuals, twelve calendar first-of-month 2024 dates. Convenience/existing-instrument universe, not a point-in-time broad-market selection or independent holdout.",
+  "scope": "Strict HFT feasibility only: hypothetical paired entry at settlement minus 30s, exit plus 30s, with delayed order/ACK handling required in any later replay. No multiday carry and no price-return or realized-profit backtest here.",
+  "signal": "Last received ticker strictly before T-30s, receive/event age <=5s, both next-funding timestamps equal T, finite funding rate and positive mark. Use funding_rate for the immediately upcoming event, never predicted_funding_rate for the following one.",
+  "gate": "Equal coin quantities, buy lower funding payment/coin and sell higher. Predecision quoted funding difference = abs(rate_A*mark_A-rate_B*mark_B)/max(mark_A,mark_B)*10000; require >28bp, the approximate four executions at 6bp fee plus 1bp adverse allowance per execution, before spread or basis risk. This is a predeclared economic trigger, not a bound proving impossibility of strategies with additional price alpha.",
+  "next_stage": "Only eligible events justify a separately frozen full-book paired replay including actual settled rates/mark cashflows, price-basis repricing, funding uncertainty, missed leg/unwind, conservative fees, latency and no lookahead. Funding field normalization must be checked against native messages before any P&L claim.",
+  "funding_timing": "Bybit warns that inclusion is uncertain within five seconds of settlement. A later model must keep confirmed inventory well outside this interval and stress inclusion; current documentation is not automatically proof of unchanged historical rules.",
+  "sources": [
+    "https://docs.tardis.dev/downloadable-csv-files/data-types",
+    "https://www.bybit.com/en/help-center/article/Funding-fee-calculation"
+  ],
+  "authentication": "None; public first-of-month samples. No paid fallback or credentials.",
+  "code_sha256": "c40088215f16e6fc0701360f60064a36b699de0487aa40107b89a021622aff00"
+}

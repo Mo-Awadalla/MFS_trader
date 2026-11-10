@@ -1,0 +1,20 @@
+STRICT HFT EDGE SEARCH — AUDITED EQUITY RESILIENCE SCREEN
+
+Goal ACTIVE. No reliable edge, deployable strategy, or competition win established.
+
+Most recent economic experiment: the one flow-confirmed TRX lagging-coin event failed. Both predeclared directions used a 15-second exit after entry ACK and conservative fees. All eleven calculable cases lost; the remaining case had unknown exit depth under clock uncertainty. The complete native-source/execution/cash audit matched exactly. A separate maintained-quote acquisition extension added no new candidate after its nullable-metadata reader was corrected. See ../market_lag_response_hft_20261002/REPORT.txt and ../market_lag_maintained_hft_20261002/REPORT.txt.
+
+NEW EQUITY EXPERIMENT
+All 192 cached 2023 opening sessions, six equity ETFs, 100ms decisions and a 250ms information buffer. Two long-only rules: buy a bid that survives heavy selling; or buy a later break above an ask that survived heavy buying. Resilience required two seconds of a constant defended price, fresh valid quotes, at least 10000 USD of directional prints, five times the initial displayed quantity, 80% directional volume and five distinct trade capture clocks. Unknown-side volume remained in the denominator. Native fixed-point prices and integer clocks were retained.
+
+Independent source audit: 46,428,207 native records; 1,150 assessable symbol-sessions; 6,498,650 decision grids. There were 1,079,213 continuous, clean, tight-spread book windows; 43,455 held-bid and 43,654 held-ask observations. These overlapping windows are not independent events.
+
+ZERO entries qualified. Most held-price observations had no completed trade flow. In held-price windows with valid flow, 2141 bid-side and 2182 ask-side checks failed the five-distinct-clock requirement. Other remaining checks failed notional, directional-share or five-times-size gates. The maximum at-level/initial-display multiple was 19 on the bid and 5.0866666667 on the ask, but neither statistic means all the other entry conditions passed. No threshold was tuned.
+
+Two symbol-sessions were unassessable because a BAD_TS_RECV record was present: SPY on 2023-03-28 and UPRO on 2023-07-31. Their signals/returns remain unknown. They were not assigned zero P&L, nor were bad records removed to reuse an older quote. This is not a full-calendar portfolio or a statement that every equity resilience strategy loses.
+
+The planned cheap price proxy deliberately chooses favorable quotes and ignores execution depth, while charging commission max(1 USD,0.005 USD/share) on each leg, 1bp adverse allowance per leg and conservative sell levies. It would only identify leads for realistic replay. Because there were no orders, no cash calculation or economic replay actually ran. The result file's two economic_screen_configurations denotes two specified hypotheses; it must NOT add two executed economic configurations to cumulative accounting.
+
+Eight new focused tests passed. The independent audit used prefix counts and direct trade-window aggregation, without importing the production detector; all sources and implementation hashes were verified. No paid data, no real orders, no new 2024/2025/2026 outcomes for this family. EQUS.MINI is an anonymized component-venue aggregate, not routeable NBBO or private fill evidence.
+
+Cumulative completed accounting: 134 economic configurations, 184 implementation versions, 358 focused tests. No background processes remain. Next question is saved in NEXT_RESEARCH.txt.

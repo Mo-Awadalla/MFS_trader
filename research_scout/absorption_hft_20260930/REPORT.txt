@@ -1,0 +1,31 @@
+BTC/SOL SAMPLED PRICE RESILIENCE AND LEVEL BREAK: ORIGINAL PUBLICATION-CLOCK VERSION
+Reliable edge established: NO. Competition win established: NO.
+This version is superseded for execution by native_transaction_clock/REPORT.txt.
+
+Eight fixed rules: BTC/SOL x fade defended level / follow first observed break x 15/30s ACK-based holds.
+Six first-of-month Jul-Dec 2024 dates. Jul-Sep development, Oct-Dec selection; all globally exposed discovery.
+1,397 causal defended-level events and 914 subsequent breaks. This is sampled price resilience, not proof of hidden orders.
+250ms processing + 250ms outbound/return; delays stressed to 1s/3s. $1,000 maximum ticket,
+10% of predecision opposite touch size, $100 minimum, $10,000 reset per date, fixed native quantity steps.
+Five-bp causal FOK entry collar, market exit against observed depth. 6bp taker + 1bp adverse allowance EACH side.
+Double-fee and extra-adverse stresses; no rebates, funding credit or favorable resizing.
+
+IMPORTANT CLOCK ERRATUM: Binance normalized book timestamp matches raw E (publication), not raw T (transaction).
+The original execution model used E as a transaction-time proxy and imposed a 250ms quote expiry.
+All eight six-day totals were incomplete. Closed subtotals below are NOT complete strategy returns.
+
+Rule | full net | priced closed subtotal | completed trades
+BTCUSDT/hold_fade_15s | UNKNOWN | -691.7724 | 513
+BTCUSDT/hold_fade_30s | UNKNOWN | -278.7481 | 210
+BTCUSDT/break_follow_15s | UNKNOWN | -375.4340 | 310
+BTCUSDT/break_follow_30s | UNKNOWN | -205.9244 | 163
+SOLUSDT/hold_fade_15s | UNKNOWN | -352.3448 | 255
+SOLUSDT/hold_fade_30s | UNKNOWN | -240.6786 | 190
+SOLUSDT/break_follow_15s | UNKNOWN | -135.3652 | 128
+SOLUSDT/break_follow_30s | UNKNOWN | -210.2561 | 189
+
+Independent original arithmetic/event audit passed: 12,423 dependent priced trades, 165 unresolved attempts,
+34 known FOK rejections. Exact CSV-asof spot checks: 3,990 targets on first July date, both assets.
+These checks validated the specified publication-clock model, not physical fills.
+Original specification, source hashes, events, quotes, results and ledgers remain unchanged.
+All requested execution targets were subsequently reconstructed from sequenced native depth; see correction report.

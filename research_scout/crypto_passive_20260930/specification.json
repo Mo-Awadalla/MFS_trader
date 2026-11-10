@@ -1,0 +1,43 @@
+{
+  "created_at_utc": "2026-09-30T13:57:15.760577+00:00",
+  "mechanism": "Passive spread capture with strict trade-through fills; imbalance, momentum-pullback and transient-impact-fade direction controls",
+  "development": [
+    "2023-08-15",
+    "2023-09-15",
+    "2023-10-15",
+    "2023-11-15",
+    "2023-12-15"
+  ],
+  "selection": [
+    "2024-01-15",
+    "2024-01-21",
+    "2024-01-28",
+    "2024-01-31"
+  ],
+  "historical_test": [
+    "2024-03-03",
+    "2024-03-06",
+    "2024-03-10",
+    "2024-03-15",
+    "2024-03-17",
+    "2024-03-20",
+    "2024-03-24",
+    "2024-03-27"
+  ],
+  "new_configurations": 6,
+  "session_configurations": 30,
+  "fees": "2bps maker and 5bps taker per side; 1bp extra adverse slippage on taker exits; stress doubles fees",
+  "cash": "Each date starts with $10,000, maximum $1,000 ticket; fixed initial-capital dollar P&L, not compounded portfolio wealth",
+  "entry": "One-sided post-only quote 8 or 16bps from causal midpoint, every 10 seconds; 250ms feed and order latency, five-second lifetime",
+  "fills": "Strictly through price and correctly signed single aggregate print at least twice own quantity, ignoring price improvement; never touch fills",
+  "exit": "Old midpoint limit sent after fill acknowledgement and outbound latency, 120s timeout then bid/ask crossing. Missing exits invalidate day. Orders finished before next entry; no funding-boundary exposure",
+  "sizing": "0.001BTC quantity grid; at most 10% of arrival touch depth, at least $100 notional",
+  "stresses": [
+    "double_fees",
+    "1s_order_latency",
+    "5x_required_print_volume"
+  ],
+  "gate": "Development and selection separately: complete every scenario, >=100 base fills, >=75% positive base days, 30-trial-adjusted date-bootstrap lower>0, net excluding best day>0, all stresses net>0",
+  "limits": "Historical tape is unaffected by simulated orders; BBO is not queue-level data. Selected historical days were already exposed. A survivor would need larger untouched data and measured fills.",
+  "reference": "https://hftbacktest.readthedocs.io/en/latest/tutorials/Accelerated%20Backtesting.html"
+}

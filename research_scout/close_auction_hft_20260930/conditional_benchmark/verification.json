@@ -1,0 +1,14 @@
+{
+  "verified": true,
+  "corrected_signal_dates": 32,
+  "native_auction_prices_checked": 32,
+  "native_exit_references_checked": 40,
+  "dependent_conditional_cashflows_checked": 25,
+  "outside_limit_dependent_paths": 176,
+  "unresolved_conditional_paths": 55,
+  "maximum_cash_error": 0.0,
+  "advance_to_allocation_evidence": [],
+  "scope": "Clock encoding repair, unchanged signal inputs, all eligible official auction prices, every first-after-target exit reference and conditional cashflow reconciled. This does not establish auction allocation, routing, actual fills or strategy profitability.",
+  "strategy_execution_verified": false,
+  "reliable_edge_established": false
+}

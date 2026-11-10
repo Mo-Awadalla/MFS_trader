@@ -1,0 +1,18 @@
+{
+  "created_at_utc": "2026-10-02T23:07:44.973794+00:00",
+  "source_date": "2023-01-11",
+  "symbols": [
+    "IWM",
+    "QQQ",
+    "SPY"
+  ],
+  "identity": "Exact symbol, both bid/ask prices; UNIQUE native quote within plus/minus 2ms of vendor timestamp vs native send timestamp. Size excluded from identity. No nearest-match substitution.",
+  "size_hypotheses": [
+    "native shares equal vendor size",
+    "native shares floored by 100 equal vendor size"
+  ],
+  "clock_report": "Keep native event, native send, exchange PCAP capture and vendor raw timestamp separately. Report associations; do not infer a universal clock guarantee.",
+  "prefix_only": true,
+  "returns_calculated": false,
+  "implementation_sha256": "4062961e8ce66f311aa63702b88581102efe3748577bc4c7a82c8b86c6aeb6a3"
+}

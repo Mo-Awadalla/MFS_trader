@@ -1,0 +1,10 @@
+RAW LIQUIDATION FIELD AUDIT — 2026-09-30
+
+All 29,828 historical BTC/SOL CSV reports match native messages by instrument and capture timestamp; order trade timestamps and sides match.
+CSV amount matches last fill l in 29,828 reports; cumulative filled quantity z in 20,458.
+CSV price matches order limit p in 29,828 reports; actual average execution price ap in 225.
+True executed order notional / old CSV proxy ranges from 0.992213 to 20770.427769 in these exports.
+Prior strategy results remain preserved and reproducible as tests of last-fill-times-limit proxies. They are not tests of total executed order notional.
+Current open-source normalization uses z. Findings above refer to these exact archived CSV files, not all Tardis versions or datasets.
+Recovering z and ap creates a new input, not evidence of an edge. The raw stream still omits orders under its one-second throttling rule.
+Disconnect-marked ten-minute slices: 8. Native payload hashes and every calendar slice are checked.

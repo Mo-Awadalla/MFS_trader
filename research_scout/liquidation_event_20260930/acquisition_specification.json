@@ -1,0 +1,25 @@
+{
+  "created_at_utc": "2026-09-30T14:27:54.470170+00:00",
+  "dates": [
+    "2024-01-01",
+    "2024-02-01",
+    "2024-03-01",
+    "2024-04-01",
+    "2024-05-01",
+    "2024-06-01",
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01",
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "symbol": "BTCUSDT",
+  "stage": "liquidation supply audit, no future-price outcomes",
+  "first_stage_bytes_cap": 240000000,
+  "sources": [
+    "https://docs.tardis.dev/downloadable-csv-files/overview",
+    "https://docs.tardis.dev/faq/data"
+  ],
+  "limits": "First day of each month is a calendar-selected sample, not continuous coverage. Binance publishes throttled snapshots; reported notional is not total forced volume."
+}

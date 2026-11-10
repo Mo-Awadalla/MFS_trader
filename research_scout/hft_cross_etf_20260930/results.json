@@ -1,0 +1,626 @@
+{
+  "candidates": {
+    "cross_ridge_5s": {
+      "base": {
+        "complete": false,
+        "days": 181,
+        "trades": 5,
+        "trade_days": 4,
+        "net_dollars": -53.8216525022508,
+        "total_return_pct": -0.5382165250225079,
+        "mean_trade_net_bps": -41.96218983034175,
+        "positive_days": 0,
+        "max_drawdown_pct": -0.5382165250225057,
+        "mean_daily_pnl_ci95": [
+          -0.7698067529091426,
+          -0.0059979775224390085
+        ],
+        "mean_daily_pnl_familywise_lower": -1.1408407926187993,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": -53.8216525022508,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "double_slippage": {
+        "complete": false,
+        "days": 181,
+        "trades": 5,
+        "trade_days": 4,
+        "net_dollars": -55.78271751449938,
+        "total_return_pct": -0.5578271751449938,
+        "mean_trade_net_bps": -43.958289358188004,
+        "positive_days": 0,
+        "max_drawdown_pct": -0.5578271751449981,
+        "mean_daily_pnl_ci95": [
+          -0.7962548624480867,
+          -0.0069916766470814965
+        ],
+        "mean_daily_pnl_familywise_lower": -1.1767115854033077,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": -55.78271751449938,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "latency_1s": {
+        "complete": true,
+        "days": 235,
+        "trades": 24,
+        "trade_days": 15,
+        "net_dollars": -111.14971522662745,
+        "total_return_pct": -1.1114971522662744,
+        "mean_trade_net_bps": -34.429839200095124,
+        "positive_days": 0,
+        "max_drawdown_pct": -1.111497152266272,
+        "mean_daily_pnl_ci95": [
+          -0.9949534175766261,
+          -0.11043168249069919
+        ],
+        "mean_daily_pnl_familywise_lower": -1.285667814539317,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": -111.14971522662745,
+        "unresolved_exits": 0,
+        "rejected_entries": 1
+      },
+      "latency_3s": {
+        "complete": false,
+        "days": 188,
+        "trades": 16,
+        "trade_days": 9,
+        "net_dollars": -87.87122326803546,
+        "total_return_pct": -0.8787122326803547,
+        "mean_trade_net_bps": -40.449487114221625,
+        "positive_days": 0,
+        "max_drawdown_pct": -0.8787122326803565,
+        "mean_daily_pnl_ci95": [
+          -1.0091649005602388,
+          -0.0738605739824031
+        ],
+        "mean_daily_pnl_familywise_lower": -1.3388707380660263,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": -87.87122326803546,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "wider_spread_1bp": {
+        "complete": false,
+        "days": 181,
+        "trades": 5,
+        "trade_days": 4,
+        "net_dollars": -54.80218500837873,
+        "total_return_pct": -0.5480218500837872,
+        "mean_trade_net_bps": -42.96023959426591,
+        "positive_days": 0,
+        "max_drawdown_pct": -0.5480218500837908,
+        "mean_daily_pnl_ci95": [
+          -0.783030807678665,
+          -0.0064948270847602525
+        ],
+        "mean_daily_pnl_familywise_lower": -1.1587761890111037,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": -54.80218500837873,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "selection_gate": false
+    },
+    "cross_histboost_5s": {
+      "base": {
+        "complete": false,
+        "days": 174,
+        "trades": 31,
+        "trade_days": 17,
+        "net_dollars": -112.83676988028128,
+        "total_return_pct": -1.1283676988028128,
+        "mean_trade_net_bps": -13.648505445607706,
+        "positive_days": 2,
+        "max_drawdown_pct": -1.1283676988028124,
+        "mean_daily_pnl_ci95": [
+          -1.5373906453429602,
+          -0.07374813418459102
+        ],
+        "mean_daily_pnl_familywise_lower": -2.043811928102264,
+        "best_day_share_positive_pnl": 0.5441864355706275,
+        "net_without_best_five_days": -113.79241675287813,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "double_slippage": {
+        "complete": false,
+        "days": 174,
+        "trades": 31,
+        "trade_days": 17,
+        "net_dollars": -123.52855264057143,
+        "total_return_pct": -1.2352855264057143,
+        "mean_trade_net_bps": -15.647474279163635,
+        "positive_days": 1,
+        "max_drawdown_pct": -1.235285526405716,
+        "mean_daily_pnl_ci95": [
+          -1.6557102021750518,
+          -0.09460063539038516
+        ],
+        "mean_daily_pnl_familywise_lower": -2.2032029131525332,
+        "best_day_share_positive_pnl": 1.0,
+        "net_without_best_five_days": -123.902509605241,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "latency_1s": {
+        "complete": false,
+        "days": 72,
+        "trades": 15,
+        "trade_days": 9,
+        "net_dollars": -11.732057721454112,
+        "total_return_pct": -0.11732057721454112,
+        "mean_trade_net_bps": -11.228460443757294,
+        "positive_days": 1,
+        "max_drawdown_pct": -0.11732057721454137,
+        "mean_daily_pnl_ci95": [
+          -0.35138706334252245,
+          -0.022091579997206654
+        ],
+        "mean_daily_pnl_familywise_lower": -0.4656863432996602,
+        "best_day_share_positive_pnl": 1.0,
+        "net_without_best_five_days": -12.167634018840545,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "latency_3s": {
+        "complete": false,
+        "days": 46,
+        "trades": 3,
+        "trade_days": 2,
+        "net_dollars": -1.779258652966746,
+        "total_return_pct": -0.017792586529667462,
+        "mean_trade_net_bps": -4.859041818624099,
+        "positive_days": 0,
+        "max_drawdown_pct": -0.017792586529663534,
+        "mean_daily_pnl_ci95": [
+          -0.10350827140198658,
+          0.0
+        ],
+        "mean_daily_pnl_familywise_lower": -0.14218780733604627,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": -1.779258652966746,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "wider_spread_1bp": {
+        "complete": false,
+        "days": 174,
+        "trades": 31,
+        "trade_days": 17,
+        "net_dollars": -118.18266126043636,
+        "total_return_pct": -1.1818266126043637,
+        "mean_trade_net_bps": -14.647989862386828,
+        "positive_days": 1,
+        "max_drawdown_pct": -1.1818266126043642,
+        "mean_daily_pnl_ci95": [
+          -1.5966474420412378,
+          -0.08381845784977686
+        ],
+        "mean_daily_pnl_familywise_lower": -2.12334499856607,
+        "best_day_share_positive_pnl": 1.0,
+        "net_without_best_five_days": -118.58743814643822,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "selection_gate": false
+    },
+    "cross_ridge_30s": {
+      "base": {
+        "complete": false,
+        "days": 174,
+        "trades": 34,
+        "trade_days": 18,
+        "net_dollars": -92.24187143664312,
+        "total_return_pct": -0.9224187143664312,
+        "mean_trade_net_bps": -23.711962271315127,
+        "positive_days": 1,
+        "max_drawdown_pct": -0.9224187143664353,
+        "mean_daily_pnl_ci95": [
+          -0.9904730976840972,
+          -0.13906895812227932
+        ],
+        "mean_daily_pnl_familywise_lower": -1.2171533983778884,
+        "best_day_share_positive_pnl": 1.0,
+        "net_without_best_five_days": -95.55577506732698,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "double_slippage": {
+        "complete": false,
+        "days": 174,
+        "trades": 34,
+        "trade_days": 18,
+        "net_dollars": -100.5354543082849,
+        "total_return_pct": -1.005354543082849,
+        "mean_trade_net_bps": -25.709887608153284,
+        "positive_days": 1,
+        "max_drawdown_pct": -1.005354543082848,
+        "mean_daily_pnl_ci95": [
+          -1.0718403077677416,
+          -0.15548667995754756
+        ],
+        "mean_daily_pnl_familywise_lower": -1.3133913094459049,
+        "best_day_share_positive_pnl": 1.0,
+        "net_without_best_five_days": -103.66905839965148,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "latency_1s": {
+        "complete": false,
+        "days": 2,
+        "trades": 1,
+        "trade_days": 1,
+        "net_dollars": -3.193268533099399,
+        "total_return_pct": -0.03193268533099399,
+        "mean_trade_net_bps": -34.043374553292146,
+        "positive_days": 0,
+        "max_drawdown_pct": -0.03193268533099314,
+        "mean_daily_pnl_ci95": [
+          -1.5966342665496995,
+          -1.5966342665496995
+        ],
+        "mean_daily_pnl_familywise_lower": -1.5966342665496995,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": 0.0,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "latency_3s": {
+        "complete": false,
+        "days": 2,
+        "trades": 1,
+        "trade_days": 1,
+        "net_dollars": -1.4930370032525389,
+        "total_return_pct": -0.014930370032525389,
+        "mean_trade_net_bps": -15.951250034742955,
+        "positive_days": 0,
+        "max_drawdown_pct": -0.014930370032528728,
+        "mean_daily_pnl_ci95": [
+          -0.7465185016262694,
+          -0.7465185016262694
+        ],
+        "mean_daily_pnl_familywise_lower": -0.7465185016262694,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": 0.0,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "wider_spread_1bp": {
+        "complete": false,
+        "days": 174,
+        "trades": 34,
+        "trade_days": 18,
+        "net_dollars": -96.3886628724722,
+        "total_return_pct": -0.963886628724722,
+        "mean_trade_net_bps": -24.710924939735264,
+        "positive_days": 1,
+        "max_drawdown_pct": -0.9638866287247194,
+        "mean_daily_pnl_ci95": [
+          -1.0314470600570433,
+          -0.1476616592743352
+        ],
+        "mean_daily_pnl_familywise_lower": -1.2619308697434433,
+        "best_day_share_positive_pnl": 1.0,
+        "net_without_best_five_days": -99.6124167334965,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "selection_gate": false
+    },
+    "cross_histboost_30s": {
+      "base": {
+        "complete": true,
+        "days": 235,
+        "trades": 41,
+        "trade_days": 30,
+        "net_dollars": -126.96381695446689,
+        "total_return_pct": -1.269638169544669,
+        "mean_trade_net_bps": -11.559736823455621,
+        "positive_days": 9,
+        "max_drawdown_pct": -1.2696381695446735,
+        "mean_daily_pnl_ci95": [
+          -1.3117958859633372,
+          -0.05846324556423624
+        ],
+        "mean_daily_pnl_familywise_lower": -1.7350161735359215,
+        "best_day_share_positive_pnl": 0.6337313811989975,
+        "net_without_best_five_days": -140.7322212410363,
+        "unresolved_exits": 0,
+        "rejected_entries": 1
+      },
+      "double_slippage": {
+        "complete": true,
+        "days": 235,
+        "trades": 41,
+        "trade_days": 30,
+        "net_dollars": -144.3563266289384,
+        "total_return_pct": -1.443563266289384,
+        "mean_trade_net_bps": -13.55889450695575,
+        "positive_days": 5,
+        "max_drawdown_pct": -1.4435632662893827,
+        "mean_daily_pnl_ci95": [
+          -1.4164847402423717,
+          -0.10425259682697695
+        ],
+        "mean_daily_pnl_familywise_lower": -1.8577184070642407,
+        "best_day_share_positive_pnl": 0.8053560469681053,
+        "net_without_best_five_days": -154.76721340423865,
+        "unresolved_exits": 0,
+        "rejected_entries": 1
+      },
+      "latency_1s": {
+        "complete": false,
+        "days": 208,
+        "trades": 35,
+        "trade_days": 25,
+        "net_dollars": -118.59789416484637,
+        "total_return_pct": -1.1859789416484636,
+        "mean_trade_net_bps": -12.403890151815423,
+        "positive_days": 7,
+        "max_drawdown_pct": -1.185978941648469,
+        "mean_daily_pnl_ci95": [
+          -1.4434924373384619,
+          -0.01934160299423763
+        ],
+        "mean_daily_pnl_familywise_lower": -1.9636691648553695,
+        "best_day_share_positive_pnl": 0.6663900872190289,
+        "net_without_best_five_days": -132.90124774133255,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "latency_3s": {
+        "complete": false,
+        "days": 3,
+        "trades": 0,
+        "trade_days": 0,
+        "net_dollars": 0.0,
+        "total_return_pct": 0.0,
+        "mean_trade_net_bps": null,
+        "positive_days": 0,
+        "max_drawdown_pct": 0.0,
+        "mean_daily_pnl_ci95": [
+          0.0,
+          0.0
+        ],
+        "mean_daily_pnl_familywise_lower": 0.0,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": 0.0,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "wider_spread_1bp": {
+        "complete": true,
+        "days": 235,
+        "trades": 41,
+        "trade_days": 30,
+        "net_dollars": -135.66007179171538,
+        "total_return_pct": -1.3566007179171538,
+        "mean_trade_net_bps": -12.55931566520683,
+        "positive_days": 8,
+        "max_drawdown_pct": -1.3566007179171558,
+        "mean_daily_pnl_ci95": [
+          -1.3686875040860529,
+          -0.08206034174452052
+        ],
+        "mean_daily_pnl_familywise_lower": -1.7951514136608626,
+        "best_day_share_positive_pnl": 0.7159816773979139,
+        "net_without_best_five_days": -147.47327106656667,
+        "unresolved_exits": 0,
+        "rejected_entries": 1
+      },
+      "selection_gate": false
+    },
+    "cross_ridge_120s": {
+      "base": {
+        "complete": true,
+        "days": 235,
+        "trades": 23,
+        "trade_days": 20,
+        "net_dollars": -119.53751356092835,
+        "total_return_pct": -1.1953751356092834,
+        "mean_trade_net_bps": -16.72139103974908,
+        "positive_days": 3,
+        "max_drawdown_pct": -1.28139197664765,
+        "mean_daily_pnl_ci95": [
+          -0.9946292832128951,
+          -0.11445735235103402
+        ],
+        "mean_daily_pnl_familywise_lower": -1.2721844212366673,
+        "best_day_share_positive_pnl": 0.8684750184726315,
+        "net_without_best_five_days": -129.57042862250455,
+        "unresolved_exits": 0,
+        "rejected_entries": 0
+      },
+      "double_slippage": {
+        "complete": true,
+        "days": 235,
+        "trades": 23,
+        "trade_days": 20,
+        "net_dollars": -135.22226461382343,
+        "total_return_pct": -1.3522226461382343,
+        "mean_trade_net_bps": -18.720066477591363,
+        "positive_days": 1,
+        "max_drawdown_pct": -1.4363220703949575,
+        "mean_daily_pnl_ci95": [
+          -1.1076974842166447,
+          -0.15172999325302358
+        ],
+        "mean_daily_pnl_familywise_lower": -1.407524247788894,
+        "best_day_share_positive_pnl": 1.0,
+        "net_without_best_five_days": -143.75476117069775,
+        "unresolved_exits": 0,
+        "rejected_entries": 0
+      },
+      "latency_1s": {
+        "complete": true,
+        "days": 235,
+        "trades": 22,
+        "trade_days": 19,
+        "net_dollars": -38.05037591034488,
+        "total_return_pct": -0.3805037591034488,
+        "mean_trade_net_bps": -24.241066859736954,
+        "positive_days": 3,
+        "max_drawdown_pct": -1.2508145072956833,
+        "mean_daily_pnl_ci95": [
+          -0.9651183902142126,
+          0.8480492724804474
+        ],
+        "mean_daily_pnl_familywise_lower": -1.3432539339191085,
+        "best_day_share_positive_pnl": 0.9903037525639324,
+        "net_without_best_five_days": -127.04676788219331,
+        "unresolved_exits": 0,
+        "rejected_entries": 1
+      },
+      "latency_3s": {
+        "complete": false,
+        "days": 21,
+        "trades": 0,
+        "trade_days": 0,
+        "net_dollars": 0.0,
+        "total_return_pct": 0.0,
+        "mean_trade_net_bps": null,
+        "positive_days": 0,
+        "max_drawdown_pct": 0.0,
+        "mean_daily_pnl_ci95": [
+          0.0,
+          0.0
+        ],
+        "mean_daily_pnl_familywise_lower": 0.0,
+        "best_day_share_positive_pnl": null,
+        "net_without_best_five_days": 0.0,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "wider_spread_1bp": {
+        "complete": true,
+        "days": 235,
+        "trades": 23,
+        "trade_days": 20,
+        "net_dollars": -127.3859471476826,
+        "total_return_pct": -1.273859471476826,
+        "mean_trade_net_bps": -17.72072875867138,
+        "positive_days": 2,
+        "max_drawdown_pct": -1.3589168520975359,
+        "mean_daily_pnl_ci95": [
+          -1.0526051165570371,
+          -0.13546066216130223
+        ],
+        "mean_daily_pnl_familywise_lower": -1.3380731161572803,
+        "best_day_share_positive_pnl": 0.9775249087680904,
+        "net_without_best_five_days": -136.207120140627,
+        "unresolved_exits": 0,
+        "rejected_entries": 0
+      },
+      "selection_gate": false
+    },
+    "cross_histboost_120s": {
+      "base": {
+        "complete": false,
+        "days": 63,
+        "trades": 34,
+        "trade_days": 23,
+        "net_dollars": -44.07706640262586,
+        "total_return_pct": -0.4407706640262586,
+        "mean_trade_net_bps": -6.870225492632369,
+        "positive_days": 9,
+        "max_drawdown_pct": -0.8145297268647433,
+        "mean_daily_pnl_ci95": [
+          -3.129516574764965,
+          1.7680421851088655
+        ],
+        "mean_daily_pnl_familywise_lower": -4.4468972760719305,
+        "best_day_share_positive_pnl": 0.4868213881291705,
+        "net_without_best_five_days": -125.208364050397,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "double_slippage": {
+        "complete": false,
+        "days": 63,
+        "trades": 34,
+        "trade_days": 23,
+        "net_dollars": -66.99412597010996,
+        "total_return_pct": -0.6699412597010996,
+        "mean_trade_net_bps": -8.869869289277048,
+        "positive_days": 9,
+        "max_drawdown_pct": -0.8879453798780412,
+        "mean_daily_pnl_ci95": [
+          -3.5364372160493436,
+          1.3722418523499633
+        ],
+        "mean_daily_pnl_familywise_lower": -4.880883931436433,
+        "best_day_share_positive_pnl": 0.527143803486367,
+        "net_without_best_five_days": -141.4379324858055,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "latency_1s": {
+        "complete": false,
+        "days": 64,
+        "trades": 37,
+        "trade_days": 23,
+        "net_dollars": -120.14736890823588,
+        "total_return_pct": -1.2014736890823587,
+        "mean_trade_net_bps": -9.442028922085587,
+        "positive_days": 12,
+        "max_drawdown_pct": -1.2014736890823552,
+        "mean_daily_pnl_ci95": [
+          -5.241436852470343,
+          0.7155216699011191
+        ],
+        "mean_daily_pnl_familywise_lower": -7.102838248641921,
+        "best_day_share_positive_pnl": 0.3641117866253322,
+        "net_without_best_five_days": -188.99250382335777,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "latency_3s": {
+        "complete": false,
+        "days": 62,
+        "trades": 32,
+        "trade_days": 22,
+        "net_dollars": -72.0645555723786,
+        "total_return_pct": -0.720645555723786,
+        "mean_trade_net_bps": -5.601157896930038,
+        "positive_days": 9,
+        "max_drawdown_pct": -0.7497980643536128,
+        "mean_daily_pnl_ci95": [
+          -2.916284049890648,
+          0.12216763948840553
+        ],
+        "mean_daily_pnl_familywise_lower": -3.904197488696567,
+        "best_day_share_positive_pnl": 0.304997193272739,
+        "net_without_best_five_days": -100.48889401464112,
+        "unresolved_exits": 1,
+        "rejected_entries": 0
+      },
+      "wider_spread_1bp": {
+        "complete": false,
+        "days": 63,
+        "trades": 34,
+        "trade_days": 23,
+        "net_dollars": -55.50447976346004,
+        "total_return_pct": -0.5550447976346004,
+        "mean_trade_net_bps": -7.870047390956097,
+        "positive_days": 9,
+        "max_drawdown_pct": -0.8509263891421814,
+        "mean_daily_pnl_ci95": [
+          -3.3386345247753937,
+          1.5775405717633721
+        ],
+        "mean_daily_pnl_familywise_lower": -4.64585332464146,
+        "best_day_share_positive_pnl": 0.5055448750834881,
+        "net_without_best_five_days": -133.15052760636354,
+        "unresolved_exits": 1,
+        "rejected_entries": 1
+      },
+      "selection_gate": false
+    }
+  },
+  "historical_evaluation_opened": false,
+  "data_dates": 679,
+  "code_sha256": "5af0a30ee026639fbd4b14406ef355bc67641488251227d708f5fb67e0a02aa6",
+  "verdict": "NO_CROSS_ETF_SURVIVOR"
+}

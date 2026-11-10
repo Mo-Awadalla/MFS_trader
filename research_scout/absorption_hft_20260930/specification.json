@@ -1,0 +1,72 @@
+{
+  "created_at_utc": "2026-09-30T17:05:57.719360+00:00",
+  "configurations": 8,
+  "instruments": [
+    "BTCUSDT",
+    "SOLUSDT"
+  ],
+  "development_dates": [
+    "2024-07-01",
+    "2024-08-01",
+    "2024-09-01"
+  ],
+  "selection_dates": [
+    "2024-10-01",
+    "2024-11-01",
+    "2024-12-01"
+  ],
+  "holds_seconds": [
+    15,
+    30
+  ],
+  "mechanisms": [
+    "hold_fade",
+    "break_follow"
+  ],
+  "scenarios": {
+    "base": {
+      "delay_us": 250000,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0
+    },
+    "double_fees": {
+      "delay_us": 250000,
+      "taker_bps": 12.0,
+      "adverse_bps": 1.0
+    },
+    "latency_1s": {
+      "delay_us": 1000000,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0
+    },
+    "latency_3s": {
+      "delay_us": 3000000,
+      "taker_bps": 6.0,
+      "adverse_bps": 1.0
+    },
+    "extra_slippage": {
+      "delay_us": 250000,
+      "taker_bps": 6.0,
+      "adverse_bps": 2.0
+    }
+  },
+  "novelty": "Explicit defended-price/volume event followed by an observed level break. Separate from prior liquidation triggers and unconditioned imbalance/return models. Related flow and passive-control ideas already tested; no claim of pristine discovery.",
+  "data": "Existing native Binance BTC/SOL top-five books and signed trades, six first-of-month Jul-Dec 2024 dates. All globally exposed discovery. No later data unless the frozen rule passes. Calendar samples, not continuous-year returns.",
+  "signal_clock": "Every whole receipt-clock second. Use only capture times strictly earlier. Book sampled at last receipt before each 100ms endpoint. Over the prior 2s, all 21 sampled states from anchor through decision must be valid and <=500ms old with source lag -1ms..1s. This does not assert the price never changed between samples.",
+  "absorption": "Sell trades exactly at anchor bid within 0.4 tick must total >=5x anchor displayed bid quantity, >=80% of ALL same-window base-coin volume, and >=$10000 at defended price; sampled bid never below anchor beyond 0.4 tick. Mirror aggressive buys against ask. Trade capture/event order must be preserved; no future exchange timestamp or trade source lag outside -1ms..1s. This is a price-resilience proxy, not proof of hidden orders or an institution.",
+  "hold_fade": "Immediately trade with the defending side: buy defended bid after selling is absorbed; sell defended ask after buying is absorbed.",
+  "break_follow": "After the same parent event watch for at most 10s; first fresh sampled bid below defended bid by >0.5 tick triggers short, or ask above defended ask triggers long. No retrospective choice of the eventual break time. A break is optional; parents without breaks stay in the record.",
+  "cooldown": "60s from each parent event, independent of prices, profits, fill outcomes or strategy. At most one watched level. Both rules remain flat around every hourly boundary (60s before, 115s after decision safety margin), so no funding cashflow is assumed away while exposed.",
+  "orders": "250ms processing plus 250ms outbound/return in base; 1s and 3s delay stresses. Hold15/30s only after entry ACK. Five-bp causal FOK entry collar rounded conservatively to tick; market exit sweeps at most five recorded levels. Single-venue native-time as-of quotes <=250ms old, no capture-clock prices for fills. Unknown depth/clock after submission halts further orders that day and retains possible/known inventory.",
+  "capital": "$10000 reset independently per date. Fixed <=$1000 ticket and <=10% predecision opposite touch quantity, >=$100 minimum, native quantity grid. No future resizing or compounded scaling; capital shortage is an explicit causal no-order. Each candidate is standalone, not summed into a portfolio.",
+  "fees": "6bp taker commission each side plus separate 1bp adverse allowance each side. Double fees and independently double adverse allowance; no VIP discount, rebate or funding credit. Conservative research assumptions, not exact unknown competition terms.",
+  "progression": "Both discovery periods separately: every scenario complete and positive; baseline >=50 completed trades, >=2 positive dates, positive without best date. Even a pass only justifies a separately frozen larger/later test, date-blocked uncertainty and forward measured execution. No win or reliability claim from these six exposed days.",
+  "multiplicity": "8 new configurations: session totals116 configurations/156 implementations, plus separate funding-only supply screens and repository-wide history. All five stresses per candidate are dependent replays.",
+  "code_sha256": {
+    "research/absorption_hft.py": "825de31abcc91f7f7bcffbc667ffeac97bbe6851cbc2ce3bde7f57eedd5b0c5d",
+    "research/cross_venue_gate.py": "6b205f4efe3282c7758df59b6903436123004416233706fd8afb4abd37bb30a4",
+    "research/cross_venue_dual_clock.py": "722f25c19a02b81d1bafaa7edef151573cf604c34a7b3a8fb2c55b0d579f5fe6",
+    "research/liquidation_event_replay.py": "45cf40d45caee7fb78771bd9a5322280fe85889bd6500029fb11085282b93088",
+    "research_scout/run_absorption_hft_20260930.py": "8409dd693bec04b6baeae5770c9cadd3be607233548b36fa11e3f4070fcff945"
+  }
+}

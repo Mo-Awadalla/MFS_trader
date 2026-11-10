@@ -1,0 +1,21 @@
+ETH PASSIVE REPLICATION — 2026-09-30
+
+No strategy passed both chronological sections and the frozen stress tests.
+Six rules copied from BTC with ETH price/quantity increments. 2bp maker / 5bp taker fees per side; 1bp additional cost on taker exits.
+Daily account starts at $10000; max ticket $1000. Totals sum isolated-date P&L, not a compounded continuous account.
+
+Rule | development net | later-period net | later-period priced trades
+imbalance_8bps | $-58.41 | $-37.06 | 65
+imbalance_16bps | INCOMPLETE (closed subtotal $-15.36) | $-1.98 | 6
+follow_8bps | $-54.82 | $-38.53 | 69
+follow_16bps | INCOMPLETE (closed subtotal $-5.97) | $-6.41 | 2
+fade_8bps | INCOMPLETE (closed subtotal $-52.88) | INCOMPLETE (closed subtotal $-24.66) | 68
+fade_16bps | $-8.90 | $+5.40 | 9
+
+The later +$5.40 for fade_16bps does not establish replication: its development result was -$8.90.
+Several scenarios have unpriceable exits and therefore no complete net result; they are not booked as successful or zero-return days.
+Independent verification reconciled 1944 priced trades across dependent stress scenarios; maximum P&L discrepancy 2.27e-13 dollars.
+Three additional tests cover ETH increments, notional accounting and parity with the frozen BTC engine; all pass.
+The session now contains 42 strategy configurations and 48 evaluated implementation versions, including prior execution repairs.
+Historical tape cannot establish all at-price fills, queue priority or impact. These previously exposed dates are not pristine forward evidence.
+Goal remains active; this report establishes no reliable trading edge.

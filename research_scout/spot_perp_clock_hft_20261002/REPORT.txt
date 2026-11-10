@@ -1,0 +1,15 @@
+SPOT/PERPETUAL HFT DISCREPANCY — EXPANDED CLOCK COVERAGE
+
+One event requires execution testing; no reliable edge established by the screen.
+
+Frozen mechanism: compare a USDT perpetual with its exact-symbol spot counterpart. Use only native books captured before each decision minus 250ms. Require current one-second freshness, at least eight of the prior ten paired one-second observations, median-ratio dispersion <=10bp, current discrepancy >=25bp, both sides of both books >=2000 USDT, and a hypothetical full-convergence budget >5bp after two 6bp taker fees and two 1bp adverse allowances. Require all gates in two consecutive seconds with the same direction. Only the perpetual would be traded. The recent ratio is a reference, not a known fair value or a promise of convergence.
+
+Coverage was expanded prospectively to 00:00, 06:00, 12:00 and 18:00 UTC on the same twelve 2024 dates. All economic thresholds stayed fixed. This is a dependent coverage expansion, not an independent discovery. Ninety-six complete new native files contain 39,705,696 messages and produce 654,750 symbol/decision rows. There are two observed perpetual disconnects; source state is reset instead of carried through them.
+
+Including the initial 09:00 sample: 49,391,684 native messages, 818,500 decision rows, 60 paired minute windows across 12 dates and five clock times. These rows are highly dependent; they are not that many independent trading opportunities.
+
+Five expanded one-observation gates survive, all from ENAUSDT on September 1 at midnight. The earliest confirmed event is 00:00:16 UTC: approximately +33.8106bp perpetual deviation and +15.5014bp hypothetical convergence budget. The latter is an assumption-based budget, not observed return. Exactly one event is retained; no alternate winning time is selected.
+
+Independent verification passed for all 96 files and all 654,750 decisions. The independent parser preserves exact source clock fractions, verifies capture/event ordering, and reconstructs all costs and gates. Maximum Decimal difference 5e-24. Three additional midnight/evening boundary tests passed. Original sources and both screen versions remain intact.
+
+The predeclared follow/fade response test is separately reported in ../spot_perp_response_hft_20261002/REPORT.txt. A single event is insufficient for any statistical reliability claim. No 2025 family validation was opened.

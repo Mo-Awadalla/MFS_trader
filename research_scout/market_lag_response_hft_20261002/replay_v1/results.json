@@ -1,0 +1,1340 @@
+{
+  "economic_configurations_run": 2,
+  "scenario_cases": 12,
+  "events": 1,
+  "dates": 1,
+  "source_counts": {
+    "native_messages": 2005,
+    "book_messages": 1885,
+    "mark_messages": 120
+  },
+  "scenarios": [
+    {
+      "rule": "follow_common_move",
+      "scenario": "base",
+      "complete": true,
+      "net_lower": "-0.379335680",
+      "net_upper": "-0.379335680",
+      "known_component_lower": "-0.379335680",
+      "known_component_upper": "-0.379335680",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.379335680"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": false,
+            "entry_arrival_ns": 1727800078550000000,
+            "exit_arrival_ns": 1727800095600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800078550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 773,
+              "stop_index": 774,
+              "successor_ns": 1727800078628000000,
+              "source_lines": [
+                832
+              ],
+              "prices": [
+                "0.15450"
+              ],
+              "sizes": [
+                "9111"
+              ],
+              "price_lower": "0.15450",
+              "price_upper": "0.15450",
+              "minimum_touch_quantity": "9111"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800095600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1292,
+              "stop_index": 1296,
+              "successor_ns": 1727800095602000000,
+              "source_lines": [
+                1368,
+                1369,
+                1370,
+                1371
+              ],
+              "prices": [
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458"
+              ],
+              "sizes": [
+                "199177",
+                "199177",
+                "199177",
+                "199177"
+              ],
+              "price_lower": "0.15458",
+              "price_upper": "0.15458",
+              "minimum_touch_quantity": "199177"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15450",
+              "exit_price": "0.15458",
+              "gross": "-0.10240",
+              "fees": "0.237373440",
+              "adverse": "0.039562240",
+              "net": "-0.379335680"
+            },
+            "upper": {
+              "entry_price": "0.15450",
+              "exit_price": "0.15458",
+              "gross": "-0.10240",
+              "fees": "0.237373440",
+              "adverse": "0.039562240",
+              "net": "-0.379335680"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_common_move",
+      "scenario": "fees_2x",
+      "complete": true,
+      "net_lower": "-0.616709120",
+      "net_upper": "-0.616709120",
+      "known_component_lower": "-0.616709120",
+      "known_component_upper": "-0.616709120",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.616709120"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": false,
+            "entry_arrival_ns": 1727800078550000000,
+            "exit_arrival_ns": 1727800095600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800078550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 773,
+              "stop_index": 774,
+              "successor_ns": 1727800078628000000,
+              "source_lines": [
+                832
+              ],
+              "prices": [
+                "0.15450"
+              ],
+              "sizes": [
+                "9111"
+              ],
+              "price_lower": "0.15450",
+              "price_upper": "0.15450",
+              "minimum_touch_quantity": "9111"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800095600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1292,
+              "stop_index": 1296,
+              "successor_ns": 1727800095602000000,
+              "source_lines": [
+                1368,
+                1369,
+                1370,
+                1371
+              ],
+              "prices": [
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458"
+              ],
+              "sizes": [
+                "199177",
+                "199177",
+                "199177",
+                "199177"
+              ],
+              "price_lower": "0.15458",
+              "price_upper": "0.15458",
+              "minimum_touch_quantity": "199177"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15450",
+              "exit_price": "0.15458",
+              "gross": "-0.10240",
+              "fees": "0.474746880",
+              "adverse": "0.039562240",
+              "net": "-0.616709120"
+            },
+            "upper": {
+              "entry_price": "0.15450",
+              "exit_price": "0.15458",
+              "gross": "-0.10240",
+              "fees": "0.474746880",
+              "adverse": "0.039562240",
+              "net": "-0.616709120"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_common_move",
+      "scenario": "adverse_2x",
+      "complete": true,
+      "net_lower": "-0.418897920",
+      "net_upper": "-0.418897920",
+      "known_component_lower": "-0.418897920",
+      "known_component_upper": "-0.418897920",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.418897920"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": false,
+            "entry_arrival_ns": 1727800078550000000,
+            "exit_arrival_ns": 1727800095600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800078550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 773,
+              "stop_index": 774,
+              "successor_ns": 1727800078628000000,
+              "source_lines": [
+                832
+              ],
+              "prices": [
+                "0.15450"
+              ],
+              "sizes": [
+                "9111"
+              ],
+              "price_lower": "0.15450",
+              "price_upper": "0.15450",
+              "minimum_touch_quantity": "9111"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800095600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1292,
+              "stop_index": 1296,
+              "successor_ns": 1727800095602000000,
+              "source_lines": [
+                1368,
+                1369,
+                1370,
+                1371
+              ],
+              "prices": [
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458"
+              ],
+              "sizes": [
+                "199177",
+                "199177",
+                "199177",
+                "199177"
+              ],
+              "price_lower": "0.15458",
+              "price_upper": "0.15458",
+              "minimum_touch_quantity": "199177"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15450",
+              "exit_price": "0.15458",
+              "gross": "-0.10240",
+              "fees": "0.237373440",
+              "adverse": "0.079124480",
+              "net": "-0.418897920"
+            },
+            "upper": {
+              "entry_price": "0.15450",
+              "exit_price": "0.15458",
+              "gross": "-0.10240",
+              "fees": "0.237373440",
+              "adverse": "0.079124480",
+              "net": "-0.418897920"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_common_move",
+      "scenario": "latency_250ms",
+      "complete": true,
+      "net_lower": "-0.353717760",
+      "net_upper": "-0.353717760",
+      "known_component_lower": "-0.353717760",
+      "known_component_upper": "-0.353717760",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.353717760"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": false,
+            "entry_arrival_ns": 1727800077800000000,
+            "exit_arrival_ns": 1727800093350000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800077800000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 758,
+              "stop_index": 759,
+              "successor_ns": 1727800077934000000,
+              "source_lines": [
+                816
+              ],
+              "prices": [
+                "0.15450"
+              ],
+              "sizes": [
+                "17848"
+              ],
+              "price_lower": "0.15450",
+              "price_upper": "0.15450",
+              "minimum_touch_quantity": "17848"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800093350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1242,
+              "stop_index": 1243,
+              "successor_ns": 1727800093391000000,
+              "source_lines": [
+                1316
+              ],
+              "prices": [
+                "0.15456"
+              ],
+              "sizes": [
+                "27233"
+              ],
+              "price_lower": "0.15456",
+              "price_upper": "0.15456",
+              "minimum_touch_quantity": "27233"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15450",
+              "exit_price": "0.15456",
+              "gross": "-0.07680",
+              "fees": "0.237358080",
+              "adverse": "0.039559680",
+              "net": "-0.353717760"
+            },
+            "upper": {
+              "entry_price": "0.15450",
+              "exit_price": "0.15456",
+              "gross": "-0.07680",
+              "fees": "0.237358080",
+              "adverse": "0.039559680",
+              "net": "-0.353717760"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_common_move",
+      "scenario": "latency_3s",
+      "complete": true,
+      "net_lower": "-0.430499840",
+      "net_upper": "-0.430499840",
+      "known_component_lower": "-0.430499840",
+      "known_component_upper": "-0.430499840",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.430499840"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": false,
+            "entry_arrival_ns": 1727800080550000000,
+            "exit_arrival_ns": 1727800101600000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800080550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 835,
+              "stop_index": 836,
+              "successor_ns": 1727800080564000000,
+              "source_lines": [
+                896
+              ],
+              "prices": [
+                "0.15446"
+              ],
+              "sizes": [
+                "45574"
+              ],
+              "price_lower": "0.15446",
+              "price_upper": "0.15446",
+              "minimum_touch_quantity": "45574"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800101600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1390,
+              "stop_index": 1391,
+              "successor_ns": 1727800101967000000,
+              "source_lines": [
+                1472
+              ],
+              "prices": [
+                "0.15458"
+              ],
+              "sizes": [
+                "220622"
+              ],
+              "price_lower": "0.15458",
+              "price_upper": "0.15458",
+              "minimum_touch_quantity": "220622"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15446",
+              "exit_price": "0.15458",
+              "gross": "-0.15360",
+              "fees": "0.237342720",
+              "adverse": "0.039557120",
+              "net": "-0.430499840"
+            },
+            "upper": {
+              "entry_price": "0.15446",
+              "exit_price": "0.15458",
+              "gross": "-0.15360",
+              "fees": "0.237342720",
+              "adverse": "0.039557120",
+              "net": "-0.430499840"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "follow_common_move",
+      "scenario": "clock_100ms",
+      "complete": false,
+      "net_lower": null,
+      "net_upper": null,
+      "known_component_lower": "0",
+      "known_component_upper": "0",
+      "completed_round_trips": 0,
+      "outcomes": {
+        "unknown_exit": 1
+      },
+      "daily_lower": null,
+      "drop_best_three_dates_lower": null,
+      "unknown_dates": [
+        "2024-10-01"
+      ],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "unknown_exit",
+            "quantity": 1280,
+            "long": false,
+            "entry_arrival_ns": 1727800078550000000,
+            "exit_arrival_ns": 1727800095600000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800078550000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 773,
+              "stop_index": 776,
+              "successor_ns": 1727800078728000000,
+              "source_lines": [
+                832,
+                833,
+                834
+              ],
+              "prices": [
+                "0.15450",
+                "0.15450",
+                "0.15450"
+              ],
+              "sizes": [
+                "9111",
+                "9111",
+                "9111"
+              ],
+              "price_lower": "0.15450",
+              "price_upper": "0.15450",
+              "minimum_touch_quantity": "9111"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800095600000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1286,
+              "stop_index": 1302,
+              "successor_ns": 1727800095708000000,
+              "source_lines": [
+                1362,
+                1363,
+                1364,
+                1365,
+                1366,
+                1367,
+                1368,
+                1369,
+                1370,
+                1371,
+                1372,
+                1373,
+                1374,
+                1375,
+                1376,
+                1377
+              ],
+              "prices": [
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458",
+                "0.15458"
+              ],
+              "sizes": [
+                "28528",
+                "28635",
+                "28635",
+                "28585",
+                "23353",
+                "107",
+                "199177",
+                "199177",
+                "199177",
+                "199177",
+                "199177",
+                "199177",
+                "199177",
+                "199120",
+                "199120",
+                "199068"
+              ],
+              "price_lower": "0.15457",
+              "price_upper": "0.15458",
+              "minimum_touch_quantity": "107"
+            },
+            "potential_inventory_quantity": [
+              0,
+              1280
+            ],
+            "entry_outcome": "filled"
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_common_move",
+      "scenario": "base",
+      "complete": true,
+      "net_lower": "-0.212926720",
+      "net_upper": "-0.200135680",
+      "known_component_lower": "-0.212926720",
+      "known_component_upper": "-0.200135680",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.212926720"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": true,
+            "entry_arrival_ns": 1727800078550000000,
+            "exit_arrival_ns": 1727800095600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800078550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 773,
+              "stop_index": 774,
+              "successor_ns": 1727800078628000000,
+              "source_lines": [
+                832
+              ],
+              "prices": [
+                "0.15451"
+              ],
+              "sizes": [
+                "35976"
+              ],
+              "price_lower": "0.15451",
+              "price_upper": "0.15451",
+              "minimum_touch_quantity": "35976"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800095600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1292,
+              "stop_index": 1296,
+              "successor_ns": 1727800095602000000,
+              "source_lines": [
+                1368,
+                1369,
+                1370,
+                1371
+              ],
+              "prices": [
+                "0.15456",
+                "0.15457",
+                "0.15457",
+                "0.15457"
+              ],
+              "sizes": [
+                "119281",
+                "6770",
+                "10965",
+                "19254"
+              ],
+              "price_lower": "0.15456",
+              "price_upper": "0.15457",
+              "minimum_touch_quantity": "6770"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15451",
+              "exit_price": "0.15456",
+              "gross": "0.06400",
+              "fees": "0.237365760",
+              "adverse": "0.039560960",
+              "net": "-0.212926720"
+            },
+            "upper": {
+              "entry_price": "0.15451",
+              "exit_price": "0.15457",
+              "gross": "0.07680",
+              "fees": "0.237373440",
+              "adverse": "0.039562240",
+              "net": "-0.200135680"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_common_move",
+      "scenario": "fees_2x",
+      "complete": true,
+      "net_lower": "-0.450292480",
+      "net_upper": "-0.437509120",
+      "known_component_lower": "-0.450292480",
+      "known_component_upper": "-0.437509120",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.450292480"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": true,
+            "entry_arrival_ns": 1727800078550000000,
+            "exit_arrival_ns": 1727800095600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800078550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 773,
+              "stop_index": 774,
+              "successor_ns": 1727800078628000000,
+              "source_lines": [
+                832
+              ],
+              "prices": [
+                "0.15451"
+              ],
+              "sizes": [
+                "35976"
+              ],
+              "price_lower": "0.15451",
+              "price_upper": "0.15451",
+              "minimum_touch_quantity": "35976"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800095600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1292,
+              "stop_index": 1296,
+              "successor_ns": 1727800095602000000,
+              "source_lines": [
+                1368,
+                1369,
+                1370,
+                1371
+              ],
+              "prices": [
+                "0.15456",
+                "0.15457",
+                "0.15457",
+                "0.15457"
+              ],
+              "sizes": [
+                "119281",
+                "6770",
+                "10965",
+                "19254"
+              ],
+              "price_lower": "0.15456",
+              "price_upper": "0.15457",
+              "minimum_touch_quantity": "6770"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15451",
+              "exit_price": "0.15456",
+              "gross": "0.06400",
+              "fees": "0.474731520",
+              "adverse": "0.039560960",
+              "net": "-0.450292480"
+            },
+            "upper": {
+              "entry_price": "0.15451",
+              "exit_price": "0.15457",
+              "gross": "0.07680",
+              "fees": "0.474746880",
+              "adverse": "0.039562240",
+              "net": "-0.437509120"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_common_move",
+      "scenario": "adverse_2x",
+      "complete": true,
+      "net_lower": "-0.252487680",
+      "net_upper": "-0.239697920",
+      "known_component_lower": "-0.252487680",
+      "known_component_upper": "-0.239697920",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.252487680"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": true,
+            "entry_arrival_ns": 1727800078550000000,
+            "exit_arrival_ns": 1727800095600000000,
+            "inventory_schedule_upper_ns": 17052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800078550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 773,
+              "stop_index": 774,
+              "successor_ns": 1727800078628000000,
+              "source_lines": [
+                832
+              ],
+              "prices": [
+                "0.15451"
+              ],
+              "sizes": [
+                "35976"
+              ],
+              "price_lower": "0.15451",
+              "price_upper": "0.15451",
+              "minimum_touch_quantity": "35976"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800095600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1292,
+              "stop_index": 1296,
+              "successor_ns": 1727800095602000000,
+              "source_lines": [
+                1368,
+                1369,
+                1370,
+                1371
+              ],
+              "prices": [
+                "0.15456",
+                "0.15457",
+                "0.15457",
+                "0.15457"
+              ],
+              "sizes": [
+                "119281",
+                "6770",
+                "10965",
+                "19254"
+              ],
+              "price_lower": "0.15456",
+              "price_upper": "0.15457",
+              "minimum_touch_quantity": "6770"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15451",
+              "exit_price": "0.15456",
+              "gross": "0.06400",
+              "fees": "0.237365760",
+              "adverse": "0.079121920",
+              "net": "-0.252487680"
+            },
+            "upper": {
+              "entry_price": "0.15451",
+              "exit_price": "0.15457",
+              "gross": "0.07680",
+              "fees": "0.237373440",
+              "adverse": "0.079124480",
+              "net": "-0.239697920"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_common_move",
+      "scenario": "latency_250ms",
+      "complete": true,
+      "net_lower": "-0.238526720",
+      "net_upper": "-0.238526720",
+      "known_component_lower": "-0.238526720",
+      "known_component_upper": "-0.238526720",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.238526720"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": true,
+            "entry_arrival_ns": 1727800077800000000,
+            "exit_arrival_ns": 1727800093350000000,
+            "inventory_schedule_upper_ns": 15552000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800077800000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 758,
+              "stop_index": 759,
+              "successor_ns": 1727800077934000000,
+              "source_lines": [
+                816
+              ],
+              "prices": [
+                "0.15452"
+              ],
+              "sizes": [
+                "26841"
+              ],
+              "price_lower": "0.15452",
+              "price_upper": "0.15452",
+              "minimum_touch_quantity": "26841"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800093350000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1242,
+              "stop_index": 1243,
+              "successor_ns": 1727800093391000000,
+              "source_lines": [
+                1316
+              ],
+              "prices": [
+                "0.15455"
+              ],
+              "sizes": [
+                "36418"
+              ],
+              "price_lower": "0.15455",
+              "price_upper": "0.15455",
+              "minimum_touch_quantity": "36418"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15452",
+              "exit_price": "0.15455",
+              "gross": "0.03840",
+              "fees": "0.237365760",
+              "adverse": "0.039560960",
+              "net": "-0.238526720"
+            },
+            "upper": {
+              "entry_price": "0.15452",
+              "exit_price": "0.15455",
+              "gross": "0.03840",
+              "fees": "0.237365760",
+              "adverse": "0.039560960",
+              "net": "-0.238526720"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_common_move",
+      "scenario": "latency_3s",
+      "complete": true,
+      "net_lower": "-0.148899840",
+      "net_upper": "-0.148899840",
+      "known_component_lower": "-0.148899840",
+      "known_component_upper": "-0.148899840",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.148899840"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": true,
+            "entry_arrival_ns": 1727800080550000000,
+            "exit_arrival_ns": 1727800101600000000,
+            "inventory_schedule_upper_ns": 21052000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800080550000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 835,
+              "stop_index": 836,
+              "successor_ns": 1727800080564000000,
+              "source_lines": [
+                896
+              ],
+              "prices": [
+                "0.15447"
+              ],
+              "sizes": [
+                "69271"
+              ],
+              "price_lower": "0.15447",
+              "price_upper": "0.15447",
+              "minimum_touch_quantity": "69271"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800101600000000,
+              "radius_ns": 1000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1390,
+              "stop_index": 1391,
+              "successor_ns": 1727800101967000000,
+              "source_lines": [
+                1472
+              ],
+              "prices": [
+                "0.15457"
+              ],
+              "sizes": [
+                "43973"
+              ],
+              "price_lower": "0.15457",
+              "price_upper": "0.15457",
+              "minimum_touch_quantity": "43973"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15447",
+              "exit_price": "0.15457",
+              "gross": "0.12800",
+              "fees": "0.237342720",
+              "adverse": "0.039557120",
+              "net": "-0.148899840"
+            },
+            "upper": {
+              "entry_price": "0.15447",
+              "exit_price": "0.15457",
+              "gross": "0.12800",
+              "fees": "0.237342720",
+              "adverse": "0.039557120",
+              "net": "-0.148899840"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    },
+    {
+      "rule": "fade_common_move",
+      "scenario": "clock_100ms",
+      "complete": true,
+      "net_lower": "-0.212926720",
+      "net_upper": "-0.200135680",
+      "known_component_lower": "-0.212926720",
+      "known_component_upper": "-0.200135680",
+      "completed_round_trips": 1,
+      "outcomes": {
+        "conditional_complete": 1
+      },
+      "daily_lower": {
+        "2024-10-01": "-0.212926720"
+      },
+      "drop_best_three_dates_lower": "0",
+      "unknown_dates": [],
+      "rows": [
+        {
+          "date": "2024-10-01",
+          "symbol": "TRXUSDT",
+          "decision_ns": 1727800077500000000,
+          "result": {
+            "submitted": true,
+            "status": "conditional_complete",
+            "quantity": 1280,
+            "long": true,
+            "entry_arrival_ns": 1727800078550000000,
+            "exit_arrival_ns": 1727800095600000000,
+            "inventory_schedule_upper_ns": 17250000000,
+            "entry_quotes": {
+              "known": true,
+              "arrival_ns": 1727800078550000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 773,
+              "stop_index": 776,
+              "successor_ns": 1727800078728000000,
+              "source_lines": [
+                832,
+                833,
+                834
+              ],
+              "prices": [
+                "0.15451",
+                "0.15451",
+                "0.15451"
+              ],
+              "sizes": [
+                "35976",
+                "64441",
+                "93104"
+              ],
+              "price_lower": "0.15451",
+              "price_upper": "0.15451",
+              "minimum_touch_quantity": "35976"
+            },
+            "exit_quotes": {
+              "known": true,
+              "arrival_ns": 1727800095600000000,
+              "radius_ns": 100000000,
+              "reason": "conditional_native_matching_clock",
+              "first_index": 1286,
+              "stop_index": 1302,
+              "successor_ns": 1727800095708000000,
+              "source_lines": [
+                1362,
+                1363,
+                1364,
+                1365,
+                1366,
+                1367,
+                1368,
+                1369,
+                1370,
+                1371,
+                1372,
+                1373,
+                1374,
+                1375,
+                1376,
+                1377
+              ],
+              "prices": [
+                "0.15456",
+                "0.15456",
+                "0.15456",
+                "0.15456",
+                "0.15456",
+                "0.15456",
+                "0.15456",
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15457",
+                "0.15457"
+              ],
+              "sizes": [
+                "119174",
+                "119174",
+                "119281",
+                "119281",
+                "119281",
+                "119281",
+                "119281",
+                "6770",
+                "10965",
+                "19254",
+                "47917",
+                "81438",
+                "83062",
+                "83062",
+                "86795",
+                "86795"
+              ],
+              "price_lower": "0.15456",
+              "price_upper": "0.15457",
+              "minimum_touch_quantity": "6770"
+            },
+            "potential_inventory_quantity": [
+              0,
+              0
+            ],
+            "entry_outcome": "filled",
+            "lower": {
+              "entry_price": "0.15451",
+              "exit_price": "0.15456",
+              "gross": "0.06400",
+              "fees": "0.237365760",
+              "adverse": "0.039560960",
+              "net": "-0.212926720"
+            },
+            "upper": {
+              "entry_price": "0.15451",
+              "exit_price": "0.15457",
+              "gross": "0.07680",
+              "fees": "0.237373440",
+              "adverse": "0.039562240",
+              "net": "-0.200135680"
+            }
+          }
+        }
+      ],
+      "actual_execution_verified": false
+    }
+  ],
+  "eligible_intents": 2,
+  "complete_scenarios": 11,
+  "positive_complete_scenarios": 0,
+  "independent_execution_audit_complete": false,
+  "actual_execution_verified": false,
+  "historical_price_grid_verified": false,
+  "historical_lot_size_verified": false,
+  "historical_permissions_verified": false,
+  "selection_2025_opened": false,
+  "candidates": [],
+  "reliable_edge_established": false
+}

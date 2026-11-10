@@ -1,0 +1,13 @@
+The first independent FDUSD screen audit failed on a saved receive_ns value:
+the source integer 1704088808677574900 had been stored in a nullable float column.
+Pandas inferred float64 because other rows had no observed quote yet. Nanosecond
+integers at contemporary epoch magnitudes cannot all be represented by float64.
+
+The screen computed its decisions from original Python integers before creating
+the DataFrame. The repair preserves all original files and rebuilds new precise
+clock tables from the same hashed sources and unchanged signal code. Every
+non-clock field, cost budget and selected window must remain identical.
+
+Use precise_grids/ and precise_fx/ with clock_serialization_repair.json after
+the repair completes. Only a later successful independent_verification.json
+establishes the full source-to-result audit. No P&L has been run in this screen.

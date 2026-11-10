@@ -1,0 +1,37 @@
+HISTORICAL ARCX SCHEDULED AUCTION TIME -- 2026-09-30
+
+The saved ARCX.PILLAR imbalance export used by this study has mixed encodings
+of the scheduled auction_time field. Among 658 predecision SPY closing-auction
+states, 619 contain the correct New York wall-clock hour encoded as UTC:
+16:00 UTC rather than the actual 20:00 UTC (summer) or 21:00 UTC (winter).
+39 states are already correct UTC. In this particular source, the observed
+transition to correct encoding begins 2025-11-03. Databento's 2025-11-09
+release note documents a NYSE auction_time UTC fix. Publication date and
+observed source transition are different; do not use the publication date
+as a repair cutoff.
+
+Frozen repair: only a closing-auction record on a full 16:00 New York session
+whose scheduled timestamp exactly equals that date's 16:00 encoded as UTC
+is interpreted as New York wall time and localized using historical DST.
+An already-correct scheduled UTC close is preserved. Other values are not
+guessed. ts_recv, ts_event, signal decision times and all economic fields
+are unchanged. This is a scheduled-time encoding repair, not a change to
+message arrival or market-event clocks.
+
+The original screen is preserved. The corrected screen admits 32 dates,
+versus the original five. Subsequent conditional economic studies reject
+both 15s and 30s configurations; the repair establishes no trading edge.
+
+Scope: the exact local export and selected records inspected here. Do not
+assume every export/provider/version has this encoding. The earlier opening
+auction HFT forecast did not depend on scheduled auction_time, so this finding
+does not by itself revise that forecast's economics. Older slow auction code
+with a scheduled-clock filter requires its own review before reuse; no such
+strategy was revived under the user's strictly-HFT requirement.
+
+Independent verification checks all 658 mappings, non-schedule-field identity,
+original native as-of source audit, and corrected cost/eligibility arithmetic.
+See clock_corrected/specification.json and verification.json, and
+correct_close_auction_clock_20260930.py for the frozen implementation.
+
+Source: https://databento.com/docs/release-notes

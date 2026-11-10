@@ -1,0 +1,23 @@
+{
+  "verified": true,
+  "verified_at_utc": "2026-10-02T19:37:18.873195+00:00",
+  "counts": {
+    "sip_source_records_verified": 436267,
+    "entry_intents_verified": 46,
+    "predecision_rejections_verified": 6,
+    "quote_envelopes_verified": 504,
+    "cash_rectangles_verified": 242,
+    "ledger_rows_verified": 312,
+    "submitted_unknowns_verified": 26,
+    "scenario_aggregates_verified": 12,
+    "subsequent_inventory_halts_verified": 8
+  },
+  "maximum_numeric_difference": "0",
+  "auditor_sha256": "26cdd5301afc18394233860c8fd67f6cc79585545f9d008081a61bcb2e135ba1",
+  "independent_signal_quote_parser_sha256": "294ef1120669cc3cc3ed9c268fbae17594681d1ad00a261ec43071673d5257c4",
+  "results_sha256": "5a7cae1b06075da2590f2e846a5294785d0bfddd6af3a82724f18e8178e2c85a",
+  "scope": "All causal intents, raw SIP clock/depth/FOK paths, collateral gates, post-unknown halts, every observed distinct price-pair cash outcome and account/day/scenario aggregates independently reconciled. No production replay imports.",
+  "actual_execution_verified": false,
+  "historical_borrow_and_permissions_verified": false,
+  "reliable_edge_established": false
+}
